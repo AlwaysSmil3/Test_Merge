@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rp6-ed-wnS">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="qHu-vT-h55">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="Rp6-ed-wnS" customClass="LoginViewController" customModule="FinPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hH3-dy-6xI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IM9-lX-Nu5">
+                                <rect key="frame" x="20" y="268.5" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FinPlus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6h-6l-w05">
+                                <rect key="frame" x="144.5" y="182" width="85.5" height="30.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hya-Xm-eXV">
+                                <rect key="frame" x="156.5" y="324.5" width="61" height="32"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <state key="normal" title="Tiếp tục"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="s6h-6l-w05" firstAttribute="centerX" secondItem="hH3-dy-6xI" secondAttribute="centerX" id="0s6-PI-IMo"/>
+                            <constraint firstItem="Hya-Xm-eXV" firstAttribute="top" secondItem="IM9-lX-Nu5" secondAttribute="bottom" constant="26" id="13R-Od-PWS"/>
+                            <constraint firstItem="IM9-lX-Nu5" firstAttribute="top" secondItem="s6h-6l-w05" secondAttribute="bottom" constant="56" id="9fn-3V-lNH"/>
+                            <constraint firstItem="Hya-Xm-eXV" firstAttribute="centerX" secondItem="hH3-dy-6xI" secondAttribute="centerX" id="Prc-s3-onN"/>
+                            <constraint firstItem="IM9-lX-Nu5" firstAttribute="leading" secondItem="hH3-dy-6xI" secondAttribute="leading" constant="20" id="mQN-RM-5eM"/>
+                            <constraint firstItem="IM9-lX-Nu5" firstAttribute="centerY" secondItem="hH3-dy-6xI" secondAttribute="centerY" constant="-50" id="n6W-6F-XKe"/>
+                            <constraint firstAttribute="trailing" secondItem="IM9-lX-Nu5" secondAttribute="trailing" constant="20" id="pf6-KR-oz9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="b4W-3t-Hft"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k74-jP-1Y4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="212" y="143.47826086956522"/>
+        </scene>
+    </scenes>
+</document>
