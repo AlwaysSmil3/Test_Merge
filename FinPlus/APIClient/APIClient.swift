@@ -8,7 +8,8 @@
 
 import Foundation
 import Alamofire
-//import SwiftyJSON
+import SwiftyJSON
+import JWT
 
 typealias JSONDictionary = [String: Any]
 
@@ -22,7 +23,6 @@ class APIClient {
     #else
     let baseURLString = Host.productURL
     #endif
-    
     
     // POST request
     internal var postRequest : NSMutableURLRequest! {
@@ -70,6 +70,7 @@ class APIClient {
                 switch response.result {
                 case .failure(let error):
                     reject(error)
+                    UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: self.getDisplayMessage(error: error), okTitle: "OK", cancelTitle: nil)
                     
                 case .success(let responseObject):
                     
@@ -81,8 +82,9 @@ class APIClient {
                         
                         print("fail to parser data")
                         let error = NSError(domain: "BackendManager", code: 0,
-                                            userInfo: [NSLocalizedDescriptionKey: Constant.API_MESSAGE.OTHER_ERROR])
+                                            userInfo: [NSLocalizedDescriptionKey: API_MESSAGE.OTHER_ERROR])
                         reject(error)
+                        UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: API_MESSAGE.DATA_FORMART_ERROR, okTitle: "OK", cancelTitle: nil)
                     }
                 }
             }
@@ -106,6 +108,7 @@ class APIClient {
                 case .failure(let error):
                     
                     reject(error)
+                    UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: self.getDisplayMessage(error: error), okTitle: "OK", cancelTitle: nil)
                     
                 case .success(let responseObject):
                     
@@ -117,8 +120,9 @@ class APIClient {
                         
                         print("fail to parser data")
                         let error = NSError(domain: "BackendManager", code: 0,
-                                            userInfo: [NSLocalizedDescriptionKey: Constant.API_MESSAGE.OTHER_ERROR])
+                                            userInfo: [NSLocalizedDescriptionKey: API_MESSAGE.OTHER_ERROR])
                         reject(error)
+                        UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: API_MESSAGE.DATA_FORMART_ERROR, okTitle: "OK", cancelTitle: nil)
                     }
                 }
             }
@@ -134,11 +138,11 @@ class APIClient {
         
         if  err.code == NSURLErrorNotConnectedToInternet {
             // no internet connection
-            errMessage = Constant.API_MESSAGE.NO_INTERNET
+            errMessage = API_MESSAGE.NO_INTERNET
         }
         else {
             // other failures
-            errMessage = Constant.API_MESSAGE.OTHER_ERROR
+            errMessage = API_MESSAGE.OTHER_ERROR
         }
         
         return errMessage
@@ -147,7 +151,7 @@ class APIClient {
     // default error
     public func createUnknowError(forDomain domain: String?) -> NSError {
         
-        return createError(withMessage: Constant.API_MESSAGE.OTHER_ERROR, forDomain: domain ?? "")
+        return createError(withMessage: API_MESSAGE.OTHER_ERROR, forDomain: domain ?? "")
     }
     
     private func createError(withMessage message: String, forDomain domain: String?) -> NSError {

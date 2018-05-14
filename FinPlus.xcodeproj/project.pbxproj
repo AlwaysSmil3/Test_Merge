@@ -9,53 +9,64 @@
 /* Begin PBXBuildFile section */
 		48D46DDE05C608E1D160EC14 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
 		6308DF6520A3FE90001DC320 /* BasePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6308DF6420A3FE90001DC320 /* BasePopup.swift */; };
-		6308DF6620A3FE90001DC320 /* BasePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6308DF6420A3FE90001DC320 /* BasePopup.swift */; };
-		637A907D20A2E21F00CCACA5 /* ExUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DEB20A1829300F2CF5E /* ExUIApplication.swift */; };
-		637A907E20A2E21F00CCACA5 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9E2320A1A4FF00F2CF5E /* Constant.swift */; };
-		637A907F20A2E21F00CCACA5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DDF20A15E5A00F2CF5E /* LoginViewController.swift */; };
-		637A908020A2E21F00CCACA5 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DD420A14B9D00F2CF5E /* DataManager.swift */; };
-		637A908120A2E21F00CCACA5 /* ToastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DF020A189E600F2CF5E /* ToastWindow.swift */; };
-		637A908220A2E21F00CCACA5 /* FinPlus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DB920A1498A00F2CF5E /* FinPlus.xcdatamodeld */; };
-		637A908320A2E21F00CCACA5 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DCF20A14B4600F2CF5E /* EndPoint.swift */; };
-		637A908420A2E21F00CCACA5 /* ExUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DED20A182E900F2CF5E /* ExUIViewController.swift */; };
-		637A908520A2E21F00CCACA5 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DF320A189E600F2CF5E /* Toast.swift */; };
-		637A908620A2E21F00CCACA5 /* ToastCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DF420A189E600F2CF5E /* ToastCenter.swift */; };
-		637A908720A2E21F00CCACA5 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DE720A164E600F2CF5E /* KeychainConfiguration.swift */; };
-		637A908820A2E21F00CCACA5 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DF120A189E600F2CF5E /* ToastView.swift */; };
-		637A908920A2E21F00CCACA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DB220A1498A00F2CF5E /* AppDelegate.swift */; };
-		637A908A20A2E21F00CCACA5 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DE620A164E600F2CF5E /* KeychainPasswordItem.swift */; };
-		637A908B20A2E21F00CCACA5 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DE320A15F6100F2CF5E /* BaseViewController.swift */; };
-		637A908C20A2E21F00CCACA5 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DCD20A14B3800F2CF5E /* APIClient.swift */; };
-		637A908D20A2E21F00CCACA5 /* FinPlusHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DD820A14BD200F2CF5E /* FinPlusHelper.swift */; };
-		637A909120A2E21F00CCACA5 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0C20A18A7500F2CF5E /* OFL.txt */; };
-		637A909220A2E21F00CCACA5 /* Oswald-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0820A18A7500F2CF5E /* Oswald-Bold.ttf */; };
-		637A909320A2E21F00CCACA5 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0420A18A7500F2CF5E /* Roboto-Bold.ttf */; };
-		637A909420A2E21F00CCACA5 /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0E20A18A7500F2CF5E /* Oswald-Light.ttf */; };
-		637A909520A2E21F00CCACA5 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DFB20A18A7500F2CF5E /* Roboto-Medium.ttf */; };
-		637A909620A2E21F00CCACA5 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0220A18A7500F2CF5E /* Roboto-Italic.ttf */; };
-		637A909720A2E21F00CCACA5 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0120A18A7500F2CF5E /* Roboto-LightItalic.ttf */; };
-		637A909820A2E21F00CCACA5 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DFD20A18A7500F2CF5E /* Roboto-Regular.ttf */; };
-		637A909920A2E21F00CCACA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DBE20A1498A00F2CF5E /* LaunchScreen.storyboard */; };
-		637A909A20A2E21F00CCACA5 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DFC20A18A7500F2CF5E /* Roboto-Light.ttf */; };
-		637A909B20A2E21F00CCACA5 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0320A18A7500F2CF5E /* Roboto-BlackItalic.ttf */; };
-		637A909C20A2E21F00CCACA5 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0520A18A7500F2CF5E /* Roboto-Thin.ttf */; };
-		637A909D20A2E21F00CCACA5 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DFE20A18A7500F2CF5E /* Roboto-MediumItalic.ttf */; };
-		637A909E20A2E21F00CCACA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DBC20A1498A00F2CF5E /* Assets.xcassets */; };
-		637A909F20A2E21F00CCACA5 /* Oswald-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0A20A18A7500F2CF5E /* Oswald-Medium.ttf */; };
-		637A90A020A2E21F00CCACA5 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0620A18A7500F2CF5E /* Roboto-Black.ttf */; };
-		637A90A120A2E21F00CCACA5 /* Oswald-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0920A18A7500F2CF5E /* Oswald-SemiBold.ttf */; };
-		637A90A220A2E21F00CCACA5 /* Oswald-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0D20A18A7500F2CF5E /* Oswald-ExtraLight.ttf */; };
-		637A90A320A2E21F00CCACA5 /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0B20A18A7500F2CF5E /* Oswald-Regular.ttf */; };
-		637A90A420A2E21F00CCACA5 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DFF20A18A7500F2CF5E /* Roboto-ThinItalic.ttf */; };
-		637A90A520A2E21F00CCACA5 /* Authen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DDC20A15E3500F2CF5E /* Authen.storyboard */; };
-		637A90A620A2E21F00CCACA5 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0020A18A7500F2CF5E /* Roboto-BoldItalic.ttf */; };
-		637A90A720A2E21F00CCACA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DB620A1498A00F2CF5E /* Main.storyboard */; };
+		633AF97620A9813D00BAE2BB /* ExUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DEB20A1829300F2CF5E /* ExUIApplication.swift */; };
+		633AF97720A9813D00BAE2BB /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9E2320A1A4FF00F2CF5E /* Constant.swift */; };
+		633AF97920A9813D00BAE2BB /* SRMonthPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B320A2FA5F00CCACA5 /* SRMonthPicker.m */; };
+		633AF97A20A9813D00BAE2BB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DD420A14B9D00F2CF5E /* DataManager.swift */; };
+		633AF97B20A9813D00BAE2BB /* ToastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DF020A189E600F2CF5E /* ToastWindow.swift */; };
+		633AF97C20A9813D00BAE2BB /* FinPlus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DB920A1498A00F2CF5E /* FinPlus.xcdatamodeld */; };
+		633AF97D20A9813D00BAE2BB /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DCF20A14B4600F2CF5E /* EndPoint.swift */; };
+		633AF97E20A9813D00BAE2BB /* BasePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6308DF6420A3FE90001DC320 /* BasePopup.swift */; };
+		633AF97F20A9813D00BAE2BB /* ExUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DED20A182E900F2CF5E /* ExUIViewController.swift */; };
+		633AF98020A9813D00BAE2BB /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B520A2FA5F00CCACA5 /* DatePickerDialog.swift */; };
+		633AF98120A9813D00BAE2BB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DF320A189E600F2CF5E /* Toast.swift */; };
+		633AF98220A9813D00BAE2BB /* ToastCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DF420A189E600F2CF5E /* ToastCenter.swift */; };
+		633AF98320A9813D00BAE2BB /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DE720A164E600F2CF5E /* KeychainConfiguration.swift */; };
+		633AF98420A9813D00BAE2BB /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DF120A189E600F2CF5E /* ToastView.swift */; };
+		633AF98520A9813D00BAE2BB /* APIClient+Authen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90AF20A2E52700CCACA5 /* APIClient+Authen.swift */; };
+		633AF98620A9813D00BAE2BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DB220A1498A00F2CF5E /* AppDelegate.swift */; };
+		633AF98720A9813D00BAE2BB /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DE620A164E600F2CF5E /* KeychainPasswordItem.swift */; };
+		633AF98820A9813D00BAE2BB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DE320A15F6100F2CF5E /* BaseViewController.swift */; };
+		633AF98920A9813D00BAE2BB /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DCD20A14B3800F2CF5E /* APIClient.swift */; };
+		633AF98A20A9813D00BAE2BB /* FinPlusHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DD820A14BD200F2CF5E /* FinPlusHelper.swift */; };
+		633AF98F20A9813D00BAE2BB /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0C20A18A7500F2CF5E /* OFL.txt */; };
+		633AF99020A9813D00BAE2BB /* Oswald-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0820A18A7500F2CF5E /* Oswald-Bold.ttf */; };
+		633AF99120A9813D00BAE2BB /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0420A18A7500F2CF5E /* Roboto-Bold.ttf */; };
+		633AF99220A9813D00BAE2BB /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0E20A18A7500F2CF5E /* Oswald-Light.ttf */; };
+		633AF99320A9813D00BAE2BB /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DFB20A18A7500F2CF5E /* Roboto-Medium.ttf */; };
+		633AF99420A9813D00BAE2BB /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0220A18A7500F2CF5E /* Roboto-Italic.ttf */; };
+		633AF99520A9813D00BAE2BB /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0120A18A7500F2CF5E /* Roboto-LightItalic.ttf */; };
+		633AF99620A9813D00BAE2BB /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DFD20A18A7500F2CF5E /* Roboto-Regular.ttf */; };
+		633AF99720A9813D00BAE2BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DBE20A1498A00F2CF5E /* LaunchScreen.storyboard */; };
+		633AF99820A9813D00BAE2BB /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DFC20A18A7500F2CF5E /* Roboto-Light.ttf */; };
+		633AF99920A9813D00BAE2BB /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0320A18A7500F2CF5E /* Roboto-BlackItalic.ttf */; };
+		633AF99A20A9813D00BAE2BB /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0520A18A7500F2CF5E /* Roboto-Thin.ttf */; };
+		633AF99B20A9813D00BAE2BB /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DFE20A18A7500F2CF5E /* Roboto-MediumItalic.ttf */; };
+		633AF99C20A9813D00BAE2BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DBC20A1498A00F2CF5E /* Assets.xcassets */; };
+		633AF99D20A9813D00BAE2BB /* Oswald-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0A20A18A7500F2CF5E /* Oswald-Medium.ttf */; };
+		633AF99E20A9813D00BAE2BB /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0620A18A7500F2CF5E /* Roboto-Black.ttf */; };
+		633AF99F20A9813D00BAE2BB /* Oswald-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0920A18A7500F2CF5E /* Oswald-SemiBold.ttf */; };
+		633AF9A020A9813D00BAE2BB /* Oswald-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0D20A18A7500F2CF5E /* Oswald-ExtraLight.ttf */; };
+		633AF9A120A9813D00BAE2BB /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0B20A18A7500F2CF5E /* Oswald-Regular.ttf */; };
+		633AF9A220A9813D00BAE2BB /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DFF20A18A7500F2CF5E /* Roboto-ThinItalic.ttf */; };
+		633AF9A320A9813D00BAE2BB /* Authen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DDC20A15E3500F2CF5E /* Authen.storyboard */; };
+		633AF9A420A9813D00BAE2BB /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0020A18A7500F2CF5E /* Roboto-BoldItalic.ttf */; };
+		633AF9A520A9813D00BAE2BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DB620A1498A00F2CF5E /* Main.storyboard */; };
+		633AF9AF20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9AE20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift */; };
+		633AF9B020A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9AE20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift */; };
+		633AF9B320A9894500BAE2BB /* VerifyOTPAuthenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9B220A9894500BAE2BB /* VerifyOTPAuthenVC.swift */; };
+		633AF9B420A9894500BAE2BB /* VerifyOTPAuthenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9B220A9894500BAE2BB /* VerifyOTPAuthenVC.swift */; };
+		633AF9B720A98A7D00BAE2BB /* SetPassAuthenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9B620A98A7D00BAE2BB /* SetPassAuthenVC.swift */; };
+		633AF9B820A98A7D00BAE2BB /* SetPassAuthenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9B620A98A7D00BAE2BB /* SetPassAuthenVC.swift */; };
+		633AF9BA20A98F6000BAE2BB /* ChoiceKindUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9B920A98F6000BAE2BB /* ChoiceKindUserVC.swift */; };
+		633AF9BB20A98F6000BAE2BB /* ChoiceKindUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9B920A98F6000BAE2BB /* ChoiceKindUserVC.swift */; };
+		633AF9BE20A9921B00BAE2BB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9BD20A9921B00BAE2BB /* LoginViewController.swift */; };
+		633AF9BF20A9921B00BAE2BB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9BD20A9921B00BAE2BB /* LoginViewController.swift */; };
+		633AF9C120A992B200BAE2BB /* BorrowHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9C020A992B200BAE2BB /* BorrowHomeViewController.swift */; };
+		633AF9C220A992B200BAE2BB /* BorrowHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9C020A992B200BAE2BB /* BorrowHomeViewController.swift */; };
 		637A90B020A2E52700CCACA5 /* APIClient+Authen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90AF20A2E52700CCACA5 /* APIClient+Authen.swift */; };
-		637A90B120A2E52700CCACA5 /* APIClient+Authen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90AF20A2E52700CCACA5 /* APIClient+Authen.swift */; };
 		637A90B620A2FA5F00CCACA5 /* SRMonthPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B320A2FA5F00CCACA5 /* SRMonthPicker.m */; };
-		637A90B720A2FA5F00CCACA5 /* SRMonthPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B320A2FA5F00CCACA5 /* SRMonthPicker.m */; };
 		637A90B820A2FA5F00CCACA5 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B520A2FA5F00CCACA5 /* DatePickerDialog.swift */; };
-		637A90B920A2FA5F00CCACA5 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B520A2FA5F00CCACA5 /* DatePickerDialog.swift */; };
 		639C9DB320A1498A00F2CF5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DB220A1498A00F2CF5E /* AppDelegate.swift */; };
 		639C9DB820A1498A00F2CF5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DB620A1498A00F2CF5E /* Main.storyboard */; };
 		639C9DBB20A1498A00F2CF5E /* FinPlus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DB920A1498A00F2CF5E /* FinPlus.xcdatamodeld */; };
@@ -66,7 +77,6 @@
 		639C9DD520A14B9D00F2CF5E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DD420A14B9D00F2CF5E /* DataManager.swift */; };
 		639C9DD920A14BD200F2CF5E /* FinPlusHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DD820A14BD200F2CF5E /* FinPlusHelper.swift */; };
 		639C9DDD20A15E3500F2CF5E /* Authen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DDC20A15E3500F2CF5E /* Authen.storyboard */; };
-		639C9DE020A15E5A00F2CF5E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DDF20A15E5A00F2CF5E /* LoginViewController.swift */; };
 		639C9DE420A15F6100F2CF5E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DE320A15F6100F2CF5E /* BaseViewController.swift */; };
 		639C9DE820A164E600F2CF5E /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DE620A164E600F2CF5E /* KeychainPasswordItem.swift */; };
 		639C9DE920A164E600F2CF5E /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DE720A164E600F2CF5E /* KeychainConfiguration.swift */; };
@@ -96,15 +106,21 @@
 		639C9E2020A18A7500F2CF5E /* Oswald-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0D20A18A7500F2CF5E /* Oswald-ExtraLight.ttf */; };
 		639C9E2120A18A7500F2CF5E /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0E20A18A7500F2CF5E /* Oswald-Light.ttf */; };
 		639C9E2420A1A4FF00F2CF5E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9E2320A1A4FF00F2CF5E /* Constant.swift */; };
+		ADB81E3CB997BF9C12009966 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633AF97220A96F1B00BAE2BB /* Pods_FinPlus.framework */; };
 		DD471C902E2C45FF6323FC89 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3363FB53E51A4F2B5CB36D0D /* Pods-FinPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus.release.xcconfig"; sourceTree = "<group>"; };
-		42E1D2B82709536A04BF651C /* Pods-FinPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinPlus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus.debug.xcconfig"; sourceTree = "<group>"; };
 		6308DF6420A3FE90001DC320 /* BasePopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePopup.swift; sourceTree = "<group>"; };
-		637A90AD20A2E21F00CCACA5 /* FinPlus_DEV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinPlus_DEV.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		637A90AE20A2E21F00CCACA5 /* FinPlus copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "FinPlus copy-Info.plist"; path = "/Users/caovanhai/Documents/Five9 VietNam/P2P Project/SourceCode/FinPlus/FinPlus copy-Info.plist"; sourceTree = "<absolute>"; };
+		633AF97220A96F1B00BAE2BB /* Pods_FinPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_FinPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		633AF9AB20A9813D00BAE2BB /* FinPlus_DEV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinPlus_DEV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		633AF9AC20A9813E00BAE2BB /* FinPlus copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "FinPlus copy-Info.plist"; path = "/Users/caovanhai/Documents/Five9 VietNam/P2P Project/SourceCode/FinPlus/FinPlus copy-Info.plist"; sourceTree = "<absolute>"; };
+		633AF9AE20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhoneNumberAuthenVC.swift; sourceTree = "<group>"; };
+		633AF9B220A9894500BAE2BB /* VerifyOTPAuthenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPAuthenVC.swift; sourceTree = "<group>"; };
+		633AF9B620A98A7D00BAE2BB /* SetPassAuthenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPassAuthenVC.swift; sourceTree = "<group>"; };
+		633AF9B920A98F6000BAE2BB /* ChoiceKindUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceKindUserVC.swift; sourceTree = "<group>"; };
+		633AF9BD20A9921B00BAE2BB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		633AF9C020A992B200BAE2BB /* BorrowHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowHomeViewController.swift; sourceTree = "<group>"; };
 		637A90AF20A2E52700CCACA5 /* APIClient+Authen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Authen.swift"; sourceTree = "<group>"; };
 		637A90B320A2FA5F00CCACA5 /* SRMonthPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRMonthPicker.m; sourceTree = "<group>"; };
 		637A90B420A2FA5F00CCACA5 /* SRMonthPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRMonthPicker.h; sourceTree = "<group>"; };
@@ -121,7 +137,6 @@
 		639C9DD420A14B9D00F2CF5E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		639C9DD820A14BD200F2CF5E /* FinPlusHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinPlusHelper.swift; sourceTree = "<group>"; };
 		639C9DDC20A15E3500F2CF5E /* Authen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authen.storyboard; sourceTree = "<group>"; };
-		639C9DDF20A15E5A00F2CF5E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		639C9DE120A15F0200F2CF5E /* FinPlus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FinPlus-Bridging-Header.h"; sourceTree = "<group>"; };
 		639C9DE320A15F6100F2CF5E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		639C9DE620A164E600F2CF5E /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
@@ -153,11 +168,13 @@
 		639C9E0D20A18A7500F2CF5E /* Oswald-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-ExtraLight.ttf"; sourceTree = "<group>"; };
 		639C9E0E20A18A7500F2CF5E /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
 		639C9E2320A1A4FF00F2CF5E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		99AC1CB2D251026CD34AB910 /* Pods-FinPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinPlus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus.debug.xcconfig"; sourceTree = "<group>"; };
+		AF35B598B6B30D66806A3592 /* Pods-FinPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus.release.xcconfig"; sourceTree = "<group>"; };
 		D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		637A908E20A2E21F00CCACA5 /* Frameworks */ = {
+		633AF98B20A9813D00BAE2BB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -170,6 +187,7 @@
 			files = (
 				48D46DDE05C608E1D160EC14 /* Pods_FinPlus.framework in Frameworks */,
 				DD471C902E2C45FF6323FC89 /* Pods_FinPlus.framework in Frameworks */,
+				ADB81E3CB997BF9C12009966 /* Pods_FinPlus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +236,7 @@
 		6308DF6D20A45538001DC320 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				633AF9C020A992B200BAE2BB /* BorrowHomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -227,6 +246,39 @@
 			children = (
 			);
 			path = Loan;
+			sourceTree = "<group>";
+		};
+		633AF9AD20A9881300BAE2BB /* PhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				633AF9AE20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift */,
+			);
+			path = PhoneNumber;
+			sourceTree = "<group>";
+		};
+		633AF9B120A988D000BAE2BB /* Verify */ = {
+			isa = PBXGroup;
+			children = (
+				633AF9B220A9894500BAE2BB /* VerifyOTPAuthenVC.swift */,
+			);
+			path = Verify;
+			sourceTree = "<group>";
+		};
+		633AF9B520A989C700BAE2BB /* New */ = {
+			isa = PBXGroup;
+			children = (
+				633AF9B620A98A7D00BAE2BB /* SetPassAuthenVC.swift */,
+				633AF9B920A98F6000BAE2BB /* ChoiceKindUserVC.swift */,
+			);
+			path = New;
+			sourceTree = "<group>";
+		};
+		633AF9BC20A991F600BAE2BB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				633AF9BD20A9921B00BAE2BB /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		637A90B220A2FA5F00CCACA5 /* DatePickerDialog */ = {
@@ -246,7 +298,7 @@
 				639C9DB020A1498A00F2CF5E /* Products */,
 				E0F53D8C4D629943DAA7808E /* Pods */,
 				DBA3031124DA065BB1A383CD /* Frameworks */,
-				637A90AE20A2E21F00CCACA5 /* FinPlus copy-Info.plist */,
+				633AF9AC20A9813E00BAE2BB /* FinPlus copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -254,7 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				639C9DAF20A1498A00F2CF5E /* FinPlus.app */,
-				637A90AD20A2E21F00CCACA5 /* FinPlus_DEV.app */,
+				633AF9AB20A9813D00BAE2BB /* FinPlus_DEV.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -366,7 +418,10 @@
 		639C9DDE20A15E4A00F2CF5E /* Authen */ = {
 			isa = PBXGroup;
 			children = (
-				639C9DDF20A15E5A00F2CF5E /* LoginViewController.swift */,
+				633AF9BC20A991F600BAE2BB /* Login */,
+				633AF9B520A989C700BAE2BB /* New */,
+				633AF9B120A988D000BAE2BB /* Verify */,
+				633AF9AD20A9881300BAE2BB /* PhoneNumber */,
 			);
 			path = Authen;
 			sourceTree = "<group>";
@@ -462,6 +517,7 @@
 		DBA3031124DA065BB1A383CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				633AF97220A96F1B00BAE2BB /* Pods_FinPlus.framework */,
 				D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */,
 			);
 			name = Frameworks;
@@ -470,8 +526,8 @@
 		E0F53D8C4D629943DAA7808E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				42E1D2B82709536A04BF651C /* Pods-FinPlus.debug.xcconfig */,
-				3363FB53E51A4F2B5CB36D0D /* Pods-FinPlus.release.xcconfig */,
+				99AC1CB2D251026CD34AB910 /* Pods-FinPlus.debug.xcconfig */,
+				AF35B598B6B30D66806A3592 /* Pods-FinPlus.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -479,13 +535,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		637A907A20A2E21F00CCACA5 /* FinPlus_DEV */ = {
+		633AF97320A9813D00BAE2BB /* FinPlus_DEV */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 637A90AA20A2E21F00CCACA5 /* Build configuration list for PBXNativeTarget "FinPlus_DEV" */;
+			buildConfigurationList = 633AF9A820A9813D00BAE2BB /* Build configuration list for PBXNativeTarget "FinPlus_DEV" */;
 			buildPhases = (
-				637A907C20A2E21F00CCACA5 /* Sources */,
-				637A908E20A2E21F00CCACA5 /* Frameworks */,
-				637A909020A2E21F00CCACA5 /* Resources */,
+				633AF97520A9813D00BAE2BB /* Sources */,
+				633AF98B20A9813D00BAE2BB /* Frameworks */,
+				633AF98E20A9813D00BAE2BB /* Resources */,
 			);
 			buildRules = (
 			);
@@ -493,7 +549,7 @@
 			);
 			name = FinPlus_DEV;
 			productName = FinPlus;
-			productReference = 637A90AD20A2E21F00CCACA5 /* FinPlus_DEV.app */;
+			productReference = 633AF9AB20A9813D00BAE2BB /* FinPlus_DEV.app */;
 			productType = "com.apple.product-type.application";
 		};
 		639C9DAE20A1498A00F2CF5E /* FinPlus */ = {
@@ -526,7 +582,7 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Cao Van Hai";
 				TargetAttributes = {
-					637A907A20A2E21F00CCACA5 = {
+					633AF97320A9813D00BAE2BB = {
 						ProvisioningStyle = Automatic;
 					};
 					639C9DAE20A1498A00F2CF5E = {
@@ -549,39 +605,39 @@
 			projectRoot = "";
 			targets = (
 				639C9DAE20A1498A00F2CF5E /* FinPlus */,
-				637A907A20A2E21F00CCACA5 /* FinPlus_DEV */,
+				633AF97320A9813D00BAE2BB /* FinPlus_DEV */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		637A909020A2E21F00CCACA5 /* Resources */ = {
+		633AF98E20A9813D00BAE2BB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				637A909120A2E21F00CCACA5 /* OFL.txt in Resources */,
-				637A909220A2E21F00CCACA5 /* Oswald-Bold.ttf in Resources */,
-				637A909320A2E21F00CCACA5 /* Roboto-Bold.ttf in Resources */,
-				637A909420A2E21F00CCACA5 /* Oswald-Light.ttf in Resources */,
-				637A909520A2E21F00CCACA5 /* Roboto-Medium.ttf in Resources */,
-				637A909620A2E21F00CCACA5 /* Roboto-Italic.ttf in Resources */,
-				637A909720A2E21F00CCACA5 /* Roboto-LightItalic.ttf in Resources */,
-				637A909820A2E21F00CCACA5 /* Roboto-Regular.ttf in Resources */,
-				637A909920A2E21F00CCACA5 /* LaunchScreen.storyboard in Resources */,
-				637A909A20A2E21F00CCACA5 /* Roboto-Light.ttf in Resources */,
-				637A909B20A2E21F00CCACA5 /* Roboto-BlackItalic.ttf in Resources */,
-				637A909C20A2E21F00CCACA5 /* Roboto-Thin.ttf in Resources */,
-				637A909D20A2E21F00CCACA5 /* Roboto-MediumItalic.ttf in Resources */,
-				637A909E20A2E21F00CCACA5 /* Assets.xcassets in Resources */,
-				637A909F20A2E21F00CCACA5 /* Oswald-Medium.ttf in Resources */,
-				637A90A020A2E21F00CCACA5 /* Roboto-Black.ttf in Resources */,
-				637A90A120A2E21F00CCACA5 /* Oswald-SemiBold.ttf in Resources */,
-				637A90A220A2E21F00CCACA5 /* Oswald-ExtraLight.ttf in Resources */,
-				637A90A320A2E21F00CCACA5 /* Oswald-Regular.ttf in Resources */,
-				637A90A420A2E21F00CCACA5 /* Roboto-ThinItalic.ttf in Resources */,
-				637A90A520A2E21F00CCACA5 /* Authen.storyboard in Resources */,
-				637A90A620A2E21F00CCACA5 /* Roboto-BoldItalic.ttf in Resources */,
-				637A90A720A2E21F00CCACA5 /* Main.storyboard in Resources */,
+				633AF98F20A9813D00BAE2BB /* OFL.txt in Resources */,
+				633AF99020A9813D00BAE2BB /* Oswald-Bold.ttf in Resources */,
+				633AF99120A9813D00BAE2BB /* Roboto-Bold.ttf in Resources */,
+				633AF99220A9813D00BAE2BB /* Oswald-Light.ttf in Resources */,
+				633AF99320A9813D00BAE2BB /* Roboto-Medium.ttf in Resources */,
+				633AF99420A9813D00BAE2BB /* Roboto-Italic.ttf in Resources */,
+				633AF99520A9813D00BAE2BB /* Roboto-LightItalic.ttf in Resources */,
+				633AF99620A9813D00BAE2BB /* Roboto-Regular.ttf in Resources */,
+				633AF99720A9813D00BAE2BB /* LaunchScreen.storyboard in Resources */,
+				633AF99820A9813D00BAE2BB /* Roboto-Light.ttf in Resources */,
+				633AF99920A9813D00BAE2BB /* Roboto-BlackItalic.ttf in Resources */,
+				633AF99A20A9813D00BAE2BB /* Roboto-Thin.ttf in Resources */,
+				633AF99B20A9813D00BAE2BB /* Roboto-MediumItalic.ttf in Resources */,
+				633AF99C20A9813D00BAE2BB /* Assets.xcassets in Resources */,
+				633AF99D20A9813D00BAE2BB /* Oswald-Medium.ttf in Resources */,
+				633AF99E20A9813D00BAE2BB /* Roboto-Black.ttf in Resources */,
+				633AF99F20A9813D00BAE2BB /* Oswald-SemiBold.ttf in Resources */,
+				633AF9A020A9813D00BAE2BB /* Oswald-ExtraLight.ttf in Resources */,
+				633AF9A120A9813D00BAE2BB /* Oswald-Regular.ttf in Resources */,
+				633AF9A220A9813D00BAE2BB /* Roboto-ThinItalic.ttf in Resources */,
+				633AF9A320A9813D00BAE2BB /* Authen.storyboard in Resources */,
+				633AF9A420A9813D00BAE2BB /* Roboto-BoldItalic.ttf in Resources */,
+				633AF9A520A9813D00BAE2BB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +684,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/IBAnimatable/IBAnimatable.framework",
+				"${BUILT_PRODUCTS_DIR}/JSONWebToken/JWT.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
@@ -642,6 +699,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IBAnimatable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWT.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
@@ -692,31 +750,36 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		637A907C20A2E21F00CCACA5 /* Sources */ = {
+		633AF97520A9813D00BAE2BB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				637A907D20A2E21F00CCACA5 /* ExUIApplication.swift in Sources */,
-				637A907E20A2E21F00CCACA5 /* Constant.swift in Sources */,
-				637A907F20A2E21F00CCACA5 /* LoginViewController.swift in Sources */,
-				637A90B720A2FA5F00CCACA5 /* SRMonthPicker.m in Sources */,
-				637A908020A2E21F00CCACA5 /* DataManager.swift in Sources */,
-				637A908120A2E21F00CCACA5 /* ToastWindow.swift in Sources */,
-				637A908220A2E21F00CCACA5 /* FinPlus.xcdatamodeld in Sources */,
-				637A908320A2E21F00CCACA5 /* EndPoint.swift in Sources */,
-				6308DF6620A3FE90001DC320 /* BasePopup.swift in Sources */,
-				637A908420A2E21F00CCACA5 /* ExUIViewController.swift in Sources */,
-				637A90B920A2FA5F00CCACA5 /* DatePickerDialog.swift in Sources */,
-				637A908520A2E21F00CCACA5 /* Toast.swift in Sources */,
-				637A908620A2E21F00CCACA5 /* ToastCenter.swift in Sources */,
-				637A908720A2E21F00CCACA5 /* KeychainConfiguration.swift in Sources */,
-				637A908820A2E21F00CCACA5 /* ToastView.swift in Sources */,
-				637A90B120A2E52700CCACA5 /* APIClient+Authen.swift in Sources */,
-				637A908920A2E21F00CCACA5 /* AppDelegate.swift in Sources */,
-				637A908A20A2E21F00CCACA5 /* KeychainPasswordItem.swift in Sources */,
-				637A908B20A2E21F00CCACA5 /* BaseViewController.swift in Sources */,
-				637A908C20A2E21F00CCACA5 /* APIClient.swift in Sources */,
-				637A908D20A2E21F00CCACA5 /* FinPlusHelper.swift in Sources */,
+				633AF97620A9813D00BAE2BB /* ExUIApplication.swift in Sources */,
+				633AF97720A9813D00BAE2BB /* Constant.swift in Sources */,
+				633AF97920A9813D00BAE2BB /* SRMonthPicker.m in Sources */,
+				633AF97A20A9813D00BAE2BB /* DataManager.swift in Sources */,
+				633AF9C220A992B200BAE2BB /* BorrowHomeViewController.swift in Sources */,
+				633AF97B20A9813D00BAE2BB /* ToastWindow.swift in Sources */,
+				633AF97C20A9813D00BAE2BB /* FinPlus.xcdatamodeld in Sources */,
+				633AF97D20A9813D00BAE2BB /* EndPoint.swift in Sources */,
+				633AF9B420A9894500BAE2BB /* VerifyOTPAuthenVC.swift in Sources */,
+				633AF9B820A98A7D00BAE2BB /* SetPassAuthenVC.swift in Sources */,
+				633AF97E20A9813D00BAE2BB /* BasePopup.swift in Sources */,
+				633AF97F20A9813D00BAE2BB /* ExUIViewController.swift in Sources */,
+				633AF98020A9813D00BAE2BB /* DatePickerDialog.swift in Sources */,
+				633AF98120A9813D00BAE2BB /* Toast.swift in Sources */,
+				633AF9BF20A9921B00BAE2BB /* LoginViewController.swift in Sources */,
+				633AF98220A9813D00BAE2BB /* ToastCenter.swift in Sources */,
+				633AF98320A9813D00BAE2BB /* KeychainConfiguration.swift in Sources */,
+				633AF98420A9813D00BAE2BB /* ToastView.swift in Sources */,
+				633AF98520A9813D00BAE2BB /* APIClient+Authen.swift in Sources */,
+				633AF9BB20A98F6000BAE2BB /* ChoiceKindUserVC.swift in Sources */,
+				633AF98620A9813D00BAE2BB /* AppDelegate.swift in Sources */,
+				633AF98720A9813D00BAE2BB /* KeychainPasswordItem.swift in Sources */,
+				633AF9B020A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift in Sources */,
+				633AF98820A9813D00BAE2BB /* BaseViewController.swift in Sources */,
+				633AF98920A9813D00BAE2BB /* APIClient.swift in Sources */,
+				633AF98A20A9813D00BAE2BB /* FinPlusHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,22 +789,27 @@
 			files = (
 				639C9DEC20A1829300F2CF5E /* ExUIApplication.swift in Sources */,
 				639C9E2420A1A4FF00F2CF5E /* Constant.swift in Sources */,
-				639C9DE020A15E5A00F2CF5E /* LoginViewController.swift in Sources */,
 				637A90B620A2FA5F00CCACA5 /* SRMonthPicker.m in Sources */,
 				639C9DD520A14B9D00F2CF5E /* DataManager.swift in Sources */,
+				633AF9C120A992B200BAE2BB /* BorrowHomeViewController.swift in Sources */,
 				639C9DF520A189E600F2CF5E /* ToastWindow.swift in Sources */,
 				639C9DBB20A1498A00F2CF5E /* FinPlus.xcdatamodeld in Sources */,
 				639C9DD020A14B4600F2CF5E /* EndPoint.swift in Sources */,
+				633AF9B320A9894500BAE2BB /* VerifyOTPAuthenVC.swift in Sources */,
+				633AF9B720A98A7D00BAE2BB /* SetPassAuthenVC.swift in Sources */,
 				6308DF6520A3FE90001DC320 /* BasePopup.swift in Sources */,
 				639C9DEE20A182E900F2CF5E /* ExUIViewController.swift in Sources */,
 				637A90B820A2FA5F00CCACA5 /* DatePickerDialog.swift in Sources */,
 				639C9DF720A189E600F2CF5E /* Toast.swift in Sources */,
+				633AF9BE20A9921B00BAE2BB /* LoginViewController.swift in Sources */,
 				639C9DF820A189E600F2CF5E /* ToastCenter.swift in Sources */,
 				639C9DE920A164E600F2CF5E /* KeychainConfiguration.swift in Sources */,
 				639C9DF620A189E600F2CF5E /* ToastView.swift in Sources */,
 				637A90B020A2E52700CCACA5 /* APIClient+Authen.swift in Sources */,
+				633AF9BA20A98F6000BAE2BB /* ChoiceKindUserVC.swift in Sources */,
 				639C9DB320A1498A00F2CF5E /* AppDelegate.swift in Sources */,
 				639C9DE820A164E600F2CF5E /* KeychainPasswordItem.swift in Sources */,
+				633AF9AF20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift in Sources */,
 				639C9DE420A15F6100F2CF5E /* BaseViewController.swift in Sources */,
 				639C9DCE20A14B3800F2CF5E /* APIClient.swift in Sources */,
 				639C9DD920A14BD200F2CF5E /* FinPlusHelper.swift in Sources */,
@@ -770,7 +838,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		637A90AB20A2E21F00CCACA5 /* Debug */ = {
+		633AF9A920A9813D00BAE2BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -786,7 +854,7 @@
 			};
 			name = Debug;
 		};
-		637A90AC20A2E21F00CCACA5 /* Release */ = {
+		633AF9AA20A9813D00BAE2BB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -911,7 +979,7 @@
 		};
 		639C9DC520A1498A00F2CF5E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 42E1D2B82709536A04BF651C /* Pods-FinPlus.debug.xcconfig */;
+			baseConfigurationReference = 99AC1CB2D251026CD34AB910 /* Pods-FinPlus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -927,7 +995,7 @@
 		};
 		639C9DC620A1498A00F2CF5E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3363FB53E51A4F2B5CB36D0D /* Pods-FinPlus.release.xcconfig */;
+			baseConfigurationReference = AF35B598B6B30D66806A3592 /* Pods-FinPlus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -944,11 +1012,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		637A90AA20A2E21F00CCACA5 /* Build configuration list for PBXNativeTarget "FinPlus_DEV" */ = {
+		633AF9A820A9813D00BAE2BB /* Build configuration list for PBXNativeTarget "FinPlus_DEV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				637A90AB20A2E21F00CCACA5 /* Debug */,
-				637A90AC20A2E21F00CCACA5 /* Release */,
+				633AF9A920A9813D00BAE2BB /* Debug */,
+				633AF9AA20A9813D00BAE2BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

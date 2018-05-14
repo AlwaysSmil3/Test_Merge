@@ -270,7 +270,7 @@ open class DatePickerDialog: UIView {
     
     /* Helper function: count and return the screen's size */
     func countScreenSize() -> CGSize {
-        let screenWidth = UIScreen.main.applicationFrame.size.width
+        let screenWidth = UIScreen.main.bounds.size.width
         let screenHeight = UIScreen.main.bounds.size.height
         
         return CGSize(width: screenWidth, height: screenHeight)

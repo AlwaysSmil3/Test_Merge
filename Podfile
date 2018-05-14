@@ -19,6 +19,7 @@ pod 'NVActivityIndicatorView'
 pod 'Toast-Swift'
 
 pod 'RealmSwift'
+pod 'JSONWebToken'
 
   # Pods for FinPlus
 
