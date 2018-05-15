@@ -9,61 +9,15 @@
 /* Begin PBXBuildFile section */
 		48D46DDE05C608E1D160EC14 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
 		6308DF6520A3FE90001DC320 /* BasePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6308DF6420A3FE90001DC320 /* BasePopup.swift */; };
-		633AF97620A9813D00BAE2BB /* ExUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DEB20A1829300F2CF5E /* ExUIApplication.swift */; };
-		633AF97720A9813D00BAE2BB /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9E2320A1A4FF00F2CF5E /* Constant.swift */; };
-		633AF97920A9813D00BAE2BB /* SRMonthPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B320A2FA5F00CCACA5 /* SRMonthPicker.m */; };
-		633AF97A20A9813D00BAE2BB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DD420A14B9D00F2CF5E /* DataManager.swift */; };
-		633AF97B20A9813D00BAE2BB /* ToastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DF020A189E600F2CF5E /* ToastWindow.swift */; };
-		633AF97C20A9813D00BAE2BB /* FinPlus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DB920A1498A00F2CF5E /* FinPlus.xcdatamodeld */; };
-		633AF97D20A9813D00BAE2BB /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DCF20A14B4600F2CF5E /* EndPoint.swift */; };
-		633AF97E20A9813D00BAE2BB /* BasePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6308DF6420A3FE90001DC320 /* BasePopup.swift */; };
-		633AF97F20A9813D00BAE2BB /* ExUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DED20A182E900F2CF5E /* ExUIViewController.swift */; };
-		633AF98020A9813D00BAE2BB /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B520A2FA5F00CCACA5 /* DatePickerDialog.swift */; };
-		633AF98120A9813D00BAE2BB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DF320A189E600F2CF5E /* Toast.swift */; };
-		633AF98220A9813D00BAE2BB /* ToastCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DF420A189E600F2CF5E /* ToastCenter.swift */; };
-		633AF98320A9813D00BAE2BB /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DE720A164E600F2CF5E /* KeychainConfiguration.swift */; };
-		633AF98420A9813D00BAE2BB /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DF120A189E600F2CF5E /* ToastView.swift */; };
-		633AF98520A9813D00BAE2BB /* APIClient+Authen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90AF20A2E52700CCACA5 /* APIClient+Authen.swift */; };
-		633AF98620A9813D00BAE2BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DB220A1498A00F2CF5E /* AppDelegate.swift */; };
-		633AF98720A9813D00BAE2BB /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DE620A164E600F2CF5E /* KeychainPasswordItem.swift */; };
-		633AF98820A9813D00BAE2BB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DE320A15F6100F2CF5E /* BaseViewController.swift */; };
-		633AF98920A9813D00BAE2BB /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DCD20A14B3800F2CF5E /* APIClient.swift */; };
-		633AF98A20A9813D00BAE2BB /* FinPlusHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9DD820A14BD200F2CF5E /* FinPlusHelper.swift */; };
-		633AF98F20A9813D00BAE2BB /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0C20A18A7500F2CF5E /* OFL.txt */; };
-		633AF99020A9813D00BAE2BB /* Oswald-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0820A18A7500F2CF5E /* Oswald-Bold.ttf */; };
-		633AF99120A9813D00BAE2BB /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0420A18A7500F2CF5E /* Roboto-Bold.ttf */; };
-		633AF99220A9813D00BAE2BB /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0E20A18A7500F2CF5E /* Oswald-Light.ttf */; };
-		633AF99320A9813D00BAE2BB /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DFB20A18A7500F2CF5E /* Roboto-Medium.ttf */; };
-		633AF99420A9813D00BAE2BB /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0220A18A7500F2CF5E /* Roboto-Italic.ttf */; };
-		633AF99520A9813D00BAE2BB /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0120A18A7500F2CF5E /* Roboto-LightItalic.ttf */; };
-		633AF99620A9813D00BAE2BB /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DFD20A18A7500F2CF5E /* Roboto-Regular.ttf */; };
-		633AF99720A9813D00BAE2BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DBE20A1498A00F2CF5E /* LaunchScreen.storyboard */; };
-		633AF99820A9813D00BAE2BB /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DFC20A18A7500F2CF5E /* Roboto-Light.ttf */; };
-		633AF99920A9813D00BAE2BB /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0320A18A7500F2CF5E /* Roboto-BlackItalic.ttf */; };
-		633AF99A20A9813D00BAE2BB /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0520A18A7500F2CF5E /* Roboto-Thin.ttf */; };
-		633AF99B20A9813D00BAE2BB /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DFE20A18A7500F2CF5E /* Roboto-MediumItalic.ttf */; };
-		633AF99C20A9813D00BAE2BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DBC20A1498A00F2CF5E /* Assets.xcassets */; };
-		633AF99D20A9813D00BAE2BB /* Oswald-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0A20A18A7500F2CF5E /* Oswald-Medium.ttf */; };
-		633AF99E20A9813D00BAE2BB /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0620A18A7500F2CF5E /* Roboto-Black.ttf */; };
-		633AF99F20A9813D00BAE2BB /* Oswald-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0920A18A7500F2CF5E /* Oswald-SemiBold.ttf */; };
-		633AF9A020A9813D00BAE2BB /* Oswald-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0D20A18A7500F2CF5E /* Oswald-ExtraLight.ttf */; };
-		633AF9A120A9813D00BAE2BB /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0B20A18A7500F2CF5E /* Oswald-Regular.ttf */; };
-		633AF9A220A9813D00BAE2BB /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DFF20A18A7500F2CF5E /* Roboto-ThinItalic.ttf */; };
-		633AF9A320A9813D00BAE2BB /* Authen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DDC20A15E3500F2CF5E /* Authen.storyboard */; };
-		633AF9A420A9813D00BAE2BB /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0020A18A7500F2CF5E /* Roboto-BoldItalic.ttf */; };
-		633AF9A520A9813D00BAE2BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639C9DB620A1498A00F2CF5E /* Main.storyboard */; };
+		632FD02120AAC3CC00D9399C /* APIResponseGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */; };
+		632FD02420AADF3C00D9399C /* VerifyAuthenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */; };
+		632FD02620AAE15800D9399C /* ExString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02520AAE15800D9399C /* ExString.swift */; };
 		633AF9AF20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9AE20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift */; };
-		633AF9B020A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9AE20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift */; };
 		633AF9B320A9894500BAE2BB /* VerifyOTPAuthenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9B220A9894500BAE2BB /* VerifyOTPAuthenVC.swift */; };
-		633AF9B420A9894500BAE2BB /* VerifyOTPAuthenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9B220A9894500BAE2BB /* VerifyOTPAuthenVC.swift */; };
 		633AF9B720A98A7D00BAE2BB /* SetPassAuthenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9B620A98A7D00BAE2BB /* SetPassAuthenVC.swift */; };
-		633AF9B820A98A7D00BAE2BB /* SetPassAuthenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9B620A98A7D00BAE2BB /* SetPassAuthenVC.swift */; };
 		633AF9BA20A98F6000BAE2BB /* ChoiceKindUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9B920A98F6000BAE2BB /* ChoiceKindUserVC.swift */; };
-		633AF9BB20A98F6000BAE2BB /* ChoiceKindUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9B920A98F6000BAE2BB /* ChoiceKindUserVC.swift */; };
 		633AF9BE20A9921B00BAE2BB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9BD20A9921B00BAE2BB /* LoginViewController.swift */; };
-		633AF9BF20A9921B00BAE2BB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9BD20A9921B00BAE2BB /* LoginViewController.swift */; };
 		633AF9C120A992B200BAE2BB /* BorrowHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9C020A992B200BAE2BB /* BorrowHomeViewController.swift */; };
-		633AF9C220A992B200BAE2BB /* BorrowHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9C020A992B200BAE2BB /* BorrowHomeViewController.swift */; };
 		637A90B020A2E52700CCACA5 /* APIClient+Authen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90AF20A2E52700CCACA5 /* APIClient+Authen.swift */; };
 		637A90B620A2FA5F00CCACA5 /* SRMonthPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B320A2FA5F00CCACA5 /* SRMonthPicker.m */; };
 		637A90B820A2FA5F00CCACA5 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B520A2FA5F00CCACA5 /* DatePickerDialog.swift */; };
@@ -112,9 +66,10 @@
 
 /* Begin PBXFileReference section */
 		6308DF6420A3FE90001DC320 /* BasePopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePopup.swift; sourceTree = "<group>"; };
+		632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponseGeneral.swift; sourceTree = "<group>"; };
+		632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyAuthenData.swift; sourceTree = "<group>"; };
+		632FD02520AAE15800D9399C /* ExString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExString.swift; sourceTree = "<group>"; };
 		633AF97220A96F1B00BAE2BB /* Pods_FinPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_FinPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		633AF9AB20A9813D00BAE2BB /* FinPlus_DEV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinPlus_DEV.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		633AF9AC20A9813E00BAE2BB /* FinPlus copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "FinPlus copy-Info.plist"; path = "/Users/caovanhai/Documents/Five9 VietNam/P2P Project/SourceCode/FinPlus/FinPlus copy-Info.plist"; sourceTree = "<absolute>"; };
 		633AF9AE20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhoneNumberAuthenVC.swift; sourceTree = "<group>"; };
 		633AF9B220A9894500BAE2BB /* VerifyOTPAuthenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPAuthenVC.swift; sourceTree = "<group>"; };
 		633AF9B620A98A7D00BAE2BB /* SetPassAuthenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPassAuthenVC.swift; sourceTree = "<group>"; };
@@ -174,13 +129,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		633AF98B20A9813D00BAE2BB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		639C9DAC20A1498A00F2CF5E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -248,6 +196,14 @@
 			path = Loan;
 			sourceTree = "<group>";
 		};
+		632FD02220AADF1E00D9399C /* Authen */ = {
+			isa = PBXGroup;
+			children = (
+				632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */,
+			);
+			path = Authen;
+			sourceTree = "<group>";
+		};
 		633AF9AD20A9881300BAE2BB /* PhoneNumber */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,7 +254,6 @@
 				639C9DB020A1498A00F2CF5E /* Products */,
 				E0F53D8C4D629943DAA7808E /* Pods */,
 				DBA3031124DA065BB1A383CD /* Frameworks */,
-				633AF9AC20A9813E00BAE2BB /* FinPlus copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -306,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				639C9DAF20A1498A00F2CF5E /* FinPlus.app */,
-				633AF9AB20A9813D00BAE2BB /* FinPlus_DEV.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -376,6 +330,8 @@
 		639C9DCB20A14A7900F2CF5E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				632FD02220AADF1E00D9399C /* Authen */,
+				632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -448,6 +404,7 @@
 			children = (
 				639C9DEB20A1829300F2CF5E /* ExUIApplication.swift */,
 				639C9DED20A182E900F2CF5E /* ExUIViewController.swift */,
+				632FD02520AAE15800D9399C /* ExString.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -535,23 +492,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		633AF97320A9813D00BAE2BB /* FinPlus_DEV */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 633AF9A820A9813D00BAE2BB /* Build configuration list for PBXNativeTarget "FinPlus_DEV" */;
-			buildPhases = (
-				633AF97520A9813D00BAE2BB /* Sources */,
-				633AF98B20A9813D00BAE2BB /* Frameworks */,
-				633AF98E20A9813D00BAE2BB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = FinPlus_DEV;
-			productName = FinPlus;
-			productReference = 633AF9AB20A9813D00BAE2BB /* FinPlus_DEV.app */;
-			productType = "com.apple.product-type.application";
-		};
 		639C9DAE20A1498A00F2CF5E /* FinPlus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 639C9DC420A1498A00F2CF5E /* Build configuration list for PBXNativeTarget "FinPlus" */;
@@ -582,9 +522,6 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Cao Van Hai";
 				TargetAttributes = {
-					633AF97320A9813D00BAE2BB = {
-						ProvisioningStyle = Automatic;
-					};
 					639C9DAE20A1498A00F2CF5E = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
@@ -605,42 +542,11 @@
 			projectRoot = "";
 			targets = (
 				639C9DAE20A1498A00F2CF5E /* FinPlus */,
-				633AF97320A9813D00BAE2BB /* FinPlus_DEV */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		633AF98E20A9813D00BAE2BB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				633AF98F20A9813D00BAE2BB /* OFL.txt in Resources */,
-				633AF99020A9813D00BAE2BB /* Oswald-Bold.ttf in Resources */,
-				633AF99120A9813D00BAE2BB /* Roboto-Bold.ttf in Resources */,
-				633AF99220A9813D00BAE2BB /* Oswald-Light.ttf in Resources */,
-				633AF99320A9813D00BAE2BB /* Roboto-Medium.ttf in Resources */,
-				633AF99420A9813D00BAE2BB /* Roboto-Italic.ttf in Resources */,
-				633AF99520A9813D00BAE2BB /* Roboto-LightItalic.ttf in Resources */,
-				633AF99620A9813D00BAE2BB /* Roboto-Regular.ttf in Resources */,
-				633AF99720A9813D00BAE2BB /* LaunchScreen.storyboard in Resources */,
-				633AF99820A9813D00BAE2BB /* Roboto-Light.ttf in Resources */,
-				633AF99920A9813D00BAE2BB /* Roboto-BlackItalic.ttf in Resources */,
-				633AF99A20A9813D00BAE2BB /* Roboto-Thin.ttf in Resources */,
-				633AF99B20A9813D00BAE2BB /* Roboto-MediumItalic.ttf in Resources */,
-				633AF99C20A9813D00BAE2BB /* Assets.xcassets in Resources */,
-				633AF99D20A9813D00BAE2BB /* Oswald-Medium.ttf in Resources */,
-				633AF99E20A9813D00BAE2BB /* Roboto-Black.ttf in Resources */,
-				633AF99F20A9813D00BAE2BB /* Oswald-SemiBold.ttf in Resources */,
-				633AF9A020A9813D00BAE2BB /* Oswald-ExtraLight.ttf in Resources */,
-				633AF9A120A9813D00BAE2BB /* Oswald-Regular.ttf in Resources */,
-				633AF9A220A9813D00BAE2BB /* Roboto-ThinItalic.ttf in Resources */,
-				633AF9A320A9813D00BAE2BB /* Authen.storyboard in Resources */,
-				633AF9A420A9813D00BAE2BB /* Roboto-BoldItalic.ttf in Resources */,
-				633AF9A520A9813D00BAE2BB /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		639C9DAD20A1498A00F2CF5E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -750,44 +656,12 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		633AF97520A9813D00BAE2BB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				633AF97620A9813D00BAE2BB /* ExUIApplication.swift in Sources */,
-				633AF97720A9813D00BAE2BB /* Constant.swift in Sources */,
-				633AF97920A9813D00BAE2BB /* SRMonthPicker.m in Sources */,
-				633AF97A20A9813D00BAE2BB /* DataManager.swift in Sources */,
-				633AF9C220A992B200BAE2BB /* BorrowHomeViewController.swift in Sources */,
-				633AF97B20A9813D00BAE2BB /* ToastWindow.swift in Sources */,
-				633AF97C20A9813D00BAE2BB /* FinPlus.xcdatamodeld in Sources */,
-				633AF97D20A9813D00BAE2BB /* EndPoint.swift in Sources */,
-				633AF9B420A9894500BAE2BB /* VerifyOTPAuthenVC.swift in Sources */,
-				633AF9B820A98A7D00BAE2BB /* SetPassAuthenVC.swift in Sources */,
-				633AF97E20A9813D00BAE2BB /* BasePopup.swift in Sources */,
-				633AF97F20A9813D00BAE2BB /* ExUIViewController.swift in Sources */,
-				633AF98020A9813D00BAE2BB /* DatePickerDialog.swift in Sources */,
-				633AF98120A9813D00BAE2BB /* Toast.swift in Sources */,
-				633AF9BF20A9921B00BAE2BB /* LoginViewController.swift in Sources */,
-				633AF98220A9813D00BAE2BB /* ToastCenter.swift in Sources */,
-				633AF98320A9813D00BAE2BB /* KeychainConfiguration.swift in Sources */,
-				633AF98420A9813D00BAE2BB /* ToastView.swift in Sources */,
-				633AF98520A9813D00BAE2BB /* APIClient+Authen.swift in Sources */,
-				633AF9BB20A98F6000BAE2BB /* ChoiceKindUserVC.swift in Sources */,
-				633AF98620A9813D00BAE2BB /* AppDelegate.swift in Sources */,
-				633AF98720A9813D00BAE2BB /* KeychainPasswordItem.swift in Sources */,
-				633AF9B020A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift in Sources */,
-				633AF98820A9813D00BAE2BB /* BaseViewController.swift in Sources */,
-				633AF98920A9813D00BAE2BB /* APIClient.swift in Sources */,
-				633AF98A20A9813D00BAE2BB /* FinPlusHelper.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		639C9DAB20A1498A00F2CF5E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				639C9DEC20A1829300F2CF5E /* ExUIApplication.swift in Sources */,
+				632FD02420AADF3C00D9399C /* VerifyAuthenData.swift in Sources */,
 				639C9E2420A1A4FF00F2CF5E /* Constant.swift in Sources */,
 				637A90B620A2FA5F00CCACA5 /* SRMonthPicker.m in Sources */,
 				639C9DD520A14B9D00F2CF5E /* DataManager.swift in Sources */,
@@ -809,10 +683,12 @@
 				633AF9BA20A98F6000BAE2BB /* ChoiceKindUserVC.swift in Sources */,
 				639C9DB320A1498A00F2CF5E /* AppDelegate.swift in Sources */,
 				639C9DE820A164E600F2CF5E /* KeychainPasswordItem.swift in Sources */,
+				632FD02120AAC3CC00D9399C /* APIResponseGeneral.swift in Sources */,
 				633AF9AF20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift in Sources */,
 				639C9DE420A15F6100F2CF5E /* BaseViewController.swift in Sources */,
 				639C9DCE20A14B3800F2CF5E /* APIClient.swift in Sources */,
 				639C9DD920A14BD200F2CF5E /* FinPlusHelper.swift in Sources */,
+				632FD02620AAE15800D9399C /* ExString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,38 +714,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		633AF9A920A9813D00BAE2BB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "FinPlus copy-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEVELOPMENT\"";
-				PRODUCT_BUNDLE_IDENTIFIER = Com.CaoHai.FinPlus;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/caovanhai/Documents/Five9 VietNam/P2P Project/SourceCode/FinPlus/FinPlus/FinPlus-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		633AF9AA20A9813D00BAE2BB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "FinPlus copy-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEVELOPMENT\"";
-				PRODUCT_BUNDLE_IDENTIFIER = Com.CaoHai.FinPlus;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/caovanhai/Documents/Five9 VietNam/P2P Project/SourceCode/FinPlus/FinPlus/FinPlus-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		639C9DC220A1498A00F2CF5E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -985,7 +829,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FinPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Com.CaoHai.FinPlus;
+				PRODUCT_BUNDLE_IDENTIFIER = Com.Five9.FinPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/caovanhai/Documents/Five9 VietNam/P2P Project/SourceCode/FinPlus/FinPlus/FinPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -1001,7 +845,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FinPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Com.CaoHai.FinPlus;
+				PRODUCT_BUNDLE_IDENTIFIER = Com.Five9.FinPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/caovanhai/Documents/Five9 VietNam/P2P Project/SourceCode/FinPlus/FinPlus/FinPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -1012,15 +856,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		633AF9A820A9813D00BAE2BB /* Build configuration list for PBXNativeTarget "FinPlus_DEV" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				633AF9A920A9813D00BAE2BB /* Debug */,
-				633AF9AA20A9813D00BAE2BB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		639C9DAA20A1498A00F2CF5E /* Build configuration list for PBXProject "FinPlus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

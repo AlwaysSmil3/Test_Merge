@@ -11,6 +11,13 @@ import Foundation
 class ChoiceKindUserVC: BaseViewController {
     
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+    }
+    
+    
     
     
 }

@@ -13,7 +13,7 @@ class DataManager {
     static let shared = DataManager()
     
     
-    
+    var currentAccount: String = ""
     
     
     

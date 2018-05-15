@@ -13,7 +13,6 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
     
     deinit {
@@ -35,4 +34,5 @@ class BaseViewController: UIViewController {
     
     
 }
+
 

@@ -31,6 +31,7 @@ class APIClient {
             let _postRequest = NSMutableURLRequest()
             _postRequest.httpMethod = "POST"
             _postRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            _postRequest.setValue("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", forHTTPHeaderField: "Content-Type")
             _postRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
             return _postRequest
         }
@@ -48,17 +49,39 @@ class APIClient {
         }
     }
     
+    // PUT request
+    internal var putRequest : NSMutableURLRequest! {
+        get {
+            // Init get request
+            let _getRequest = NSMutableURLRequest()
+            _getRequest.httpMethod = "PUT"
+            _getRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            _getRequest.setValue("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", forHTTPHeaderField: "Content-Type")
+            return _getRequest
+        }
+    }
+    
     init() {
         bypassURLAuthentication()
+    }
+    
+    private func hanldeShowLoadingView(isShow: Bool) {
+        if let viewController = UIApplication.shared.topViewController() {
+            viewController.handleLoadingView(isShow: isShow)
+        }
     }
     
     
     // MARK: - Common function
     // Request post
-    public func postRequestWithEndPoint(endPoint: String, params: [String : Any]) -> Promise<JSONDictionary> {
+    public func postRequestWithEndPoint(endPoint: String, params: [String : Any], isShowLoadingView: Bool) -> Promise<JSONDictionary> {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         let mutableURLRequest = self.postRequest!
+        
+        if isShowLoadingView {
+            self.hanldeShowLoadingView(isShow: true)
+        }
         
         return Promise { fullfill, reject in
             mutableURLRequest.url = URL(string: baseURLString + endPoint)
@@ -67,14 +90,24 @@ class APIClient {
             Alamofire.request(mutableURLRequest as URLRequest).responseJSON { (response) in
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 
+                if isShowLoadingView {
+                    self.hanldeShowLoadingView(isShow: false)
+                }
+                
                 switch response.result {
                 case .failure(let error):
                     reject(error)
                     UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: self.getDisplayMessage(error: error), okTitle: "OK", cancelTitle: nil)
                     
                 case .success(let responseObject):
-                    
                     if let responseDataDict = responseObject as? JSONDictionary {
+                        guard let returnCode = responseDataDict[API_RESPONSE_RETURN_CODE] as? Int, returnCode == 1 else {
+                            if let returnMessage = responseDataDict[API_RESPONSE_RETURN_MESSAGE] as? String {
+                                UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
+                            }
+                            
+                            return
+                        }
                         
                         fullfill(responseDataDict)
                     }
