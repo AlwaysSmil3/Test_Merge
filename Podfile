@@ -21,6 +21,9 @@ pod 'Toast-Swift'
 pod 'RealmSwift'
 pod 'JSONWebToken'
 
+pod 'FBSDKCoreKit'
+pod 'FBSDKLoginKit'
+
   # Pods for FinPlus
 
 end

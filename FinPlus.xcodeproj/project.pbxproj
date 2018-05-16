@@ -60,6 +60,7 @@
 		639C9E2020A18A7500F2CF5E /* Oswald-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0D20A18A7500F2CF5E /* Oswald-ExtraLight.ttf */; };
 		639C9E2120A18A7500F2CF5E /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0E20A18A7500F2CF5E /* Oswald-Light.ttf */; };
 		639C9E2420A1A4FF00F2CF5E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9E2320A1A4FF00F2CF5E /* Constant.swift */; };
+		63C5C8E520AC183D00F65068 /* FacebookSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C5C8E420AC183D00F65068 /* FacebookSignInManager.swift */; };
 		ADB81E3CB997BF9C12009966 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633AF97220A96F1B00BAE2BB /* Pods_FinPlus.framework */; };
 		DD471C902E2C45FF6323FC89 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
 /* End PBXBuildFile section */
@@ -123,6 +124,8 @@
 		639C9E0D20A18A7500F2CF5E /* Oswald-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-ExtraLight.ttf"; sourceTree = "<group>"; };
 		639C9E0E20A18A7500F2CF5E /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
 		639C9E2320A1A4FF00F2CF5E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		63C5C8E420AC183D00F65068 /* FacebookSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSignInManager.swift; sourceTree = "<group>"; };
+		63C5C8E620AC26DA00F65068 /* FinPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinPlus.entitlements; sourceTree = "<group>"; };
 		99AC1CB2D251026CD34AB910 /* Pods-FinPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinPlus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus.debug.xcconfig"; sourceTree = "<group>"; };
 		AF35B598B6B30D66806A3592 /* Pods-FinPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus.release.xcconfig"; sourceTree = "<group>"; };
 		D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,13 +223,13 @@
 			path = Verify;
 			sourceTree = "<group>";
 		};
-		633AF9B520A989C700BAE2BB /* New */ = {
+		633AF9B520A989C700BAE2BB /* Info */ = {
 			isa = PBXGroup;
 			children = (
 				633AF9B620A98A7D00BAE2BB /* SetPassAuthenVC.swift */,
 				633AF9B920A98F6000BAE2BB /* ChoiceKindUserVC.swift */,
 			);
-			path = New;
+			path = Info;
 			sourceTree = "<group>";
 		};
 		633AF9BC20A991F600BAE2BB /* Login */ = {
@@ -268,6 +271,7 @@
 		639C9DB120A1498A00F2CF5E /* FinPlus */ = {
 			isa = PBXGroup;
 			children = (
+				63C5C8E620AC26DA00F65068 /* FinPlus.entitlements */,
 				639C9DCB20A14A7900F2CF5E /* Model */,
 				639C9DCA20A14A6D00F2CF5E /* MVVM */,
 				639C9DC920A14A6200F2CF5E /* Utitlities */,
@@ -367,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				639C9DD820A14BD200F2CF5E /* FinPlusHelper.swift */,
+				63C5C8E420AC183D00F65068 /* FacebookSignInManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -375,7 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				633AF9BC20A991F600BAE2BB /* Login */,
-				633AF9B520A989C700BAE2BB /* New */,
+				633AF9B520A989C700BAE2BB /* Info */,
 				633AF9B120A988D000BAE2BB /* Verify */,
 				633AF9AD20A9881300BAE2BB /* PhoneNumber */,
 			);
@@ -525,6 +530,11 @@
 					639C9DAE20A1498A00F2CF5E = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -588,7 +598,10 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/IBAnimatable/IBAnimatable.framework",
 				"${BUILT_PRODUCTS_DIR}/JSONWebToken/JWT.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
@@ -603,7 +616,10 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IBAnimatable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWT.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
@@ -681,6 +697,7 @@
 				639C9DF620A189E600F2CF5E /* ToastView.swift in Sources */,
 				637A90B020A2E52700CCACA5 /* APIClient+Authen.swift in Sources */,
 				633AF9BA20A98F6000BAE2BB /* ChoiceKindUserVC.swift in Sources */,
+				63C5C8E520AC183D00F65068 /* FacebookSignInManager.swift in Sources */,
 				639C9DB320A1498A00F2CF5E /* AppDelegate.swift in Sources */,
 				639C9DE820A164E600F2CF5E /* KeychainPasswordItem.swift in Sources */,
 				632FD02120AAC3CC00D9399C /* APIResponseGeneral.swift in Sources */,
@@ -826,10 +843,13 @@
 			baseConfigurationReference = 99AC1CB2D251026CD34AB910 /* Pods-FinPlus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FinPlus/FinPlus.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M8JT48X2F3;
 				INFOPLIST_FILE = FinPlus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Com.Five9.FinPlus;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Five9.FinPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/caovanhai/Documents/Five9 VietNam/P2P Project/SourceCode/FinPlus/FinPlus/FinPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -842,10 +862,13 @@
 			baseConfigurationReference = AF35B598B6B30D66806A3592 /* Pods-FinPlus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FinPlus/FinPlus.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M8JT48X2F3;
 				INFOPLIST_FILE = FinPlus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Com.Five9.FinPlus;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Five9.FinPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/caovanhai/Documents/Five9 VietNam/P2P Project/SourceCode/FinPlus/FinPlus/FinPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

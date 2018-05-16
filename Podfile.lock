@@ -1,6 +1,16 @@
 PODS:
   - Alamofire (4.6.0)
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
   - DropDown (2.3.1)
+  - FBSDKCoreKit (4.29.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.29.0):
+    - FBSDKCoreKit
   - IBAnimatable (5.0.0)
   - JSONWebToken (2.2.0)
   - Kingfisher (4.6.1)
@@ -31,6 +41,8 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - DropDown
+  - FBSDKCoreKit
+  - FBSDKLoginKit
   - IBAnimatable
   - JSONWebToken
   - Kingfisher
@@ -44,7 +56,10 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   DropDown: 20499c7b2731b0d21609af924e47c7677a2be50d
+  FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
+  FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
   IBAnimatable: aa2286a9cf8fb4ae2e1be85c5287ae56143b024f
   JSONWebToken: 6fae32489632658d563dd6952a5c34020ea813e4
   Kingfisher: 1f9157d9c02b380cbd0b7cc890161195164eb634
@@ -57,6 +72,6 @@ SPEC CHECKSUMS:
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 3eb07fc02b567ce5f00c8f4914896793ab358468
+PODFILE CHECKSUM: eda9e341286aa861ba80873e8d25744cda398fc1
 
 COCOAPODS: 1.3.1
