@@ -8,6 +8,8 @@
 
 import Foundation
 
+import JWT
+
 class EnterPhoneNumberAuthenVC: BaseViewController {
     
     @IBOutlet var tfPhoneNumber: UITextField!
@@ -15,6 +17,24 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.testJWT()
+        
+    }
+    
+    private func testJWT() {
+        
+        let encode = JWT.encode(claims: ["my": "payload"], algorithm: .hs256("11111116".data(using: .utf8)!))
+        
+        print("encode: \(encode)")
+        
+        do {
+            let decode: ClaimSet = try JWT.decode(encode, algorithm: .hs256("11111116".data(using: .utf8)!))
+            print("decoce: \(decode)")
+        } catch let error {
+            print("failue to decode JWT: \(error)")
+        }
         
     }
     
@@ -30,7 +50,7 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
             .then(on: DispatchQueue.main) { model -> Void in
                 if model.returnCode! == 1 {
                     
-                    DataManager.shared.currentAccount == self.tfPhoneNumber.text!
+                    DataManager.shared.currentAccount = self.tfPhoneNumber.text!
                     
                     let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
                     

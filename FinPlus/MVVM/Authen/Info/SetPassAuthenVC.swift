@@ -67,6 +67,8 @@ class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
         
         let choiceKindUser = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "ChoiceKindUserVC") as! ChoiceKindUserVC
         
+        choiceKindUser.pw = self.tfPass.text!
+        
         self.navigationController?.pushViewController(choiceKindUser, animated: true)
         
     }

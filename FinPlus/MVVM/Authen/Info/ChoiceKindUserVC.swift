@@ -8,6 +8,7 @@
 
 import Foundation
 import FBSDKLoginKit
+import JWT
 
 
 class ChoiceKindUserVC: BaseViewController {
@@ -17,35 +18,66 @@ class ChoiceKindUserVC: BaseViewController {
         
     }
     
-    @IBAction func btnGoToFacebookTapped(_ sender: Any) {
-        // Go to Facebook
+    // facebook Info
+    var faceBookInfo: FacebookInfo?
+    
+    var pw: String?
+    
+    // Loại user: Browwer hay Investor, browwer = 0, investor = 1
+    var accountType: Int = 0
+    
+    // Pasre Facebook Data Info
+    private func getFaceBookInfoData(data: FacebookDataType) {
+        var accessToken = ""
+        var fullName = ""
+        var avatar = ""
+        
+        if let picture = data["picture"], let data = picture["data"] as? FacebookDataType, let url = data["url"] as? String {
+            avatar = url
+        }
+        
+        if let name = data["name"] as? String {
+            fullName = name
+        }
         
         if FBSDKAccessToken.current() != nil {
-            
-            print("UserID: " + FBSDKAccessToken.current().userID)
-            print("AppID: " + FBSDKAccessToken.current().appID)
-            print("AccessToken: " + FBSDKAccessToken.current().tokenString)
-            
-            return
+            accessToken = FBSDKAccessToken.current().tokenString
         }
         
-        FacebookSignInManager.basicInfoWithCompletionHandler(self) { (data, error) in
-            if error == nil {
-                print(data)
-                
-                
-                
-            } else {
-                print(error)
-                
-                
-                
-            }
-            
-        }
+        self.faceBookInfo = FacebookInfo(accessToken: accessToken, fullName: fullName, avatar: avatar)
         
     }
     
-    
+    @IBAction func btnGoToFacebookTapped(_ sender: Any) {
+        
+        // Go to Facebook
+        FacebookSignInManager.basicInfoWithCompletionHandler(self) { (data, error) in
+            if error == nil {
+                guard let data = data else { return }
+                self.getFaceBookInfoData(data: data)
+                
+                guard let fbInfo = self.faceBookInfo, let pass = self.pw else { return }
+                
+                APIClient.shared.updateInfoFromFacebook(phoneNumber: DataManager.shared.currentAccount, pass: pass, accountType: self.accountType, accessToken: fbInfo.accessToken, avatar: fbInfo.avatar, displayName: fbInfo.fullName)
+                    .then(on: DispatchQueue.main) { data -> Void in
+                        
+                        DataManager.shared.userID = data.id!
+                        
+                        let homeVC = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "BorrowHomeViewController") as! BorrowHomeViewController
+                        
+                        self.navigationController?.present(homeVC, animated: true, completion: {
+                            
+                        })
+                        
+                    }
+                    .catch { error in
+                        
+                    }
+                
+            } else {
+                print(error!)
+            }
+        }
+    }
     
 }

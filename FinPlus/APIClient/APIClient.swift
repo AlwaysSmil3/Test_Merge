@@ -9,9 +9,14 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-import JWT
 
 typealias JSONDictionary = [String: Any]
+
+enum HTTPMethodType {
+    case POST
+    case PUT
+}
+
 
 class APIClient {
     
@@ -73,11 +78,19 @@ class APIClient {
     
     
     // MARK: - Common function
-    // Request post
-    public func postRequestWithEndPoint(endPoint: String, params: [String : Any], isShowLoadingView: Bool) -> Promise<JSONDictionary> {
+    // Request post, Put
+    public func requestWithEndPoint(endPoint: String, params: [String : Any], isShowLoadingView: Bool, httpType: HTTPMethodType) -> Promise<JSONDictionary> {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        let mutableURLRequest = self.postRequest!
+        var mutableURLRequest = self.postRequest!
+        
+        switch httpType {
+        case .POST:
+            break
+        case .PUT:
+            mutableURLRequest = self.putRequest
+            break
+        }
         
         if isShowLoadingView {
             self.hanldeShowLoadingView(isShow: true)
@@ -125,16 +138,24 @@ class APIClient {
     }
     
     // Request get
-    public func getDataWithEndPoint(host: String? = nil, endPoint: String) -> Promise<JSONDictionary> {
+    public func getDataWithEndPoint(host: String? = nil, endPoint: String, isShowLoadingView: Bool) -> Promise<JSONDictionary> {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         let mutableURLRequest = self.getRequest!
+        
+        if isShowLoadingView {
+            self.hanldeShowLoadingView(isShow: true)
+        }
         
         return Promise { fullfill, reject in
             mutableURLRequest.url = URL(string: baseURLString + endPoint)
             
             Alamofire.request(mutableURLRequest as URLRequest).responseJSON { response in
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                
+                if isShowLoadingView {
+                    self.hanldeShowLoadingView(isShow: false)
+                }
                 
                 switch response.result {
                     
@@ -146,6 +167,13 @@ class APIClient {
                 case .success(let responseObject):
                     
                     if let responseDataDict = responseObject as? JSONDictionary {
+                        guard let returnCode = responseDataDict[API_RESPONSE_RETURN_CODE] as? Int, returnCode == 1 else {
+                            if let returnMessage = responseDataDict[API_RESPONSE_RETURN_MESSAGE] as? String {
+                                UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
+                            }
+                            
+                            return
+                        }
                         
                         fullfill(responseDataDict)
                     }

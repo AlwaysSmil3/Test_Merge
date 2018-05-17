@@ -14,6 +14,7 @@ class DataManager {
     
     
     var currentAccount: String = ""
+    var userID: Int32 = 0
     
     
     

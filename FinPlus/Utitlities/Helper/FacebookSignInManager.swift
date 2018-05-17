@@ -9,6 +9,8 @@
 import Foundation
 import FBSDKLoginKit
 
+typealias FacebookDataType = Dictionary<String, AnyObject>
+
 class FacebookSignInManager: NSObject {
     
     typealias LoginCompletionBlock = (Dictionary<String, AnyObject>?, NSError?) -> Void
@@ -18,7 +20,7 @@ class FacebookSignInManager: NSObject {
         
         //Check internet connection if no internet connection then return
         
-        self.getBaicInfoWithCompletionHandler(fromViewController) { (dataDictionary:Dictionary<String, AnyObject>?, error: NSError?) -> Void in
+        self.getBaicInfoWithCompletionHandler(fromViewController) { (dataDictionary:FacebookDataType?, error: NSError?) -> Void in
             onCompletion(dataDictionary, error)
         }
     }
@@ -39,7 +41,7 @@ class FacebookSignInManager: NSObject {
             FBSDKGraphRequest(graphPath: "/me", parameters: permissionDictionary)
                 .start(completionHandler:  { (connection, result, error) in
                     if error == nil {
-                        onCompletion(result as? Dictionary<String, AnyObject>, nil)
+                        onCompletion(result as? FacebookDataType, nil)
                     } else {
                         onCompletion(nil, error as NSError?)
                     }
@@ -68,14 +70,12 @@ class FacebookSignInManager: NSObject {
                     // Success
                     print("Facebook logged in!")
                     
-                    print(result)
-                    
                     let pictureRequest = FBSDKGraphRequest(graphPath: "me", parameters: permissionDictionary)
                     let _ = pictureRequest?.start(completionHandler: {
                         (connection, result, error) -> Void in
                         
                         if error == nil {
-                            onCompletion(result as? Dictionary<String, AnyObject>, nil)
+                            onCompletion(result as? FacebookDataType, nil)
                         } else {
                             onCompletion(nil, error as NSError?)
                         }

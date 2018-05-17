@@ -10,6 +10,24 @@ import Foundation
 
 class BorrowHomeViewController: BaseViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.getUserInfo()
+    }
+    
+    private func getUserInfo() {
+        
+        APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
+            .then(on: DispatchQueue.main) { model -> Void in
+                
+                
+            }
+            .catch { error in
+                
+            }
+        
+    }
     
     
     

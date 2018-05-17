@@ -20,7 +20,11 @@ enum EndPoint {
     enum Authen {
         static let Authen = "auth"
         static let verifyOTP = "auth/otp"
-        
+
+    }
+    
+    enum User {
+        static let User = "users/"
     }
     
     
