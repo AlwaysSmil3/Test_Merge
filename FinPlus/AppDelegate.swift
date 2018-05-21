@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import RealmSwift
+import Bugsnag
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        // Crash Notification
+        Bugsnag.start(withApiKey: "a15ce5a5aa7960207afaabbfff993a84")
         
         return true
     }

@@ -10,13 +10,21 @@ import Foundation
 import FBSDKLoginKit
 import JWT
 
+// Type User: Investor or Browwer
+enum TypeAccount: Int {
+    case Browwer = 0
+    case Investor
+}
+
 
 class ChoiceKindUserVC: BaseViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
+    
+    @IBOutlet var heightConstraintInfoInvestorView: NSLayoutConstraint!
+    @IBOutlet var infoInvestorView: UIView!
+    
+    @IBOutlet var btnFacebook: UIButton!
+    
     
     // facebook Info
     var faceBookInfo: FacebookInfo?
@@ -24,7 +32,13 @@ class ChoiceKindUserVC: BaseViewController {
     var pw: String?
     
     // Loại user: Browwer hay Investor, browwer = 0, investor = 1
-    var accountType: Int = 0
+    var accountType: TypeAccount = .Browwer
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
     
     // Pasre Facebook Data Info
     private func getFaceBookInfoData(data: FacebookDataType) {
@@ -48,6 +62,35 @@ class ChoiceKindUserVC: BaseViewController {
         
     }
     
+    // MARK Actions
+    
+    @IBAction func btnInvestorSelectedTapped(_ sender: Any) {
+        
+        self.accountType = .Investor
+        
+        UIView.animate(withDuration: 0.5, delay: 0.2, options: .curveEaseOut, animations: {
+            self.heightConstraintInfoInvestorView.constant = 526
+            self.view.layoutIfNeeded()
+        }) { (status) in
+            self.infoInvestorView.isHidden = false
+            self.btnFacebook.isHidden = true
+        }
+    }
+    
+    @IBAction func btnBrowwerSelectedTapped(_ sender: Any) {
+        
+        self.accountType = .Browwer
+        
+        UIView.animate(withDuration: 0.5, delay: 0.2, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            self.heightConstraintInfoInvestorView.constant = 0
+            self.view.layoutIfNeeded()
+        }, completion: { (status) in
+            self.infoInvestorView.isHidden = true
+            self.btnFacebook.isHidden = false
+        })
+        
+    }
+    
     @IBAction func btnGoToFacebookTapped(_ sender: Any) {
         
         // Go to Facebook
@@ -58,7 +101,7 @@ class ChoiceKindUserVC: BaseViewController {
                 
                 guard let fbInfo = self.faceBookInfo, let pass = self.pw else { return }
                 
-                APIClient.shared.updateInfoFromFacebook(phoneNumber: DataManager.shared.currentAccount, pass: pass, accountType: self.accountType, accessToken: fbInfo.accessToken, avatar: fbInfo.avatar, displayName: fbInfo.fullName)
+                APIClient.shared.updateInfoFromFacebook(phoneNumber: DataManager.shared.currentAccount, pass: pass, accountType: self.accountType.rawValue, accessToken: fbInfo.accessToken, avatar: fbInfo.avatar, displayName: fbInfo.fullName)
                     .then(on: DispatchQueue.main) { data -> Void in
                         
                         DataManager.shared.userID = data.id!
@@ -72,7 +115,7 @@ class ChoiceKindUserVC: BaseViewController {
                     }
                     .catch { error in
                         
-                    }
+                }
                 
             } else {
                 print(error!)

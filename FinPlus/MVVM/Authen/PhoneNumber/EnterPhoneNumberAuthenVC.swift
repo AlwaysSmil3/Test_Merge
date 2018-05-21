@@ -9,17 +9,16 @@
 import Foundation
 
 import JWT
+import Bugsnag
 
 class EnterPhoneNumberAuthenVC: BaseViewController {
     
     @IBOutlet var tfPhoneNumber: UITextField!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        self.testJWT()
+
         
     }
     

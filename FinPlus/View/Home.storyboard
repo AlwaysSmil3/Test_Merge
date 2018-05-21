@@ -21,18 +21,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqW-Ig-vD7">
-                                <rect key="frame" x="164" y="232" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqW-Ig-vD7">
+                                <rect key="frame" x="170" y="318.5" width="34" height="30"/>
                                 <state key="normal" title="Loan"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rqW-Ig-vD7" firstAttribute="centerX" secondItem="4qa-z7-OzB" secondAttribute="centerX" id="OUV-Bi-M4q"/>
+                            <constraint firstItem="rqW-Ig-vD7" firstAttribute="centerY" secondItem="4qa-z7-OzB" secondAttribute="centerY" id="xF8-k6-Ihg"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bak-yt-idX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-130" y="143"/>
+        </scene>
+        <!--Investor Home Controller-->
+        <scene sceneID="baU-f7-8K4">
+            <objects>
+                <viewController storyboardIdentifier="InvestorHomeController" id="zxz-FZ-Iat" customClass="InvestorHomeController" customModule="FinPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="R8o-N4-Y6V"/>
+                        <viewControllerLayoutGuide type="bottom" id="vHo-IH-5kC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zbe-rT-dwf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9D-gS-cCX">
+                                <rect key="frame" x="160" y="318.5" width="55" height="30"/>
+                                <state key="normal" title="Investor"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="O9D-gS-cCX" firstAttribute="centerX" secondItem="zbe-rT-dwf" secondAttribute="centerX" id="aYa-fr-WrT"/>
+                            <constraint firstItem="O9D-gS-cCX" firstAttribute="centerY" secondItem="zbe-rT-dwf" secondAttribute="centerY" id="h6r-jf-S1E"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2uS-aE-Spg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="746" y="143"/>
         </scene>
     </scenes>
 </document>

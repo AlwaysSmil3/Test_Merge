@@ -6,6 +6,7 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - Bugsnag (5.15.3)
   - DropDown (2.3.1)
   - FBSDKCoreKit (4.29.0):
     - Bolts (~> 1.7)
@@ -40,6 +41,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - Bugsnag
   - DropDown
   - FBSDKCoreKit
   - FBSDKLoginKit
@@ -57,6 +59,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Bugsnag: 4a85786058d35b84f1b4b5d976b3c7361f863441
   DropDown: 20499c7b2731b0d21609af924e47c7677a2be50d
   FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
   FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
@@ -72,6 +75,6 @@ SPEC CHECKSUMS:
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: eda9e341286aa861ba80873e8d25744cda398fc1
+PODFILE CHECKSUM: 7e7054e6a7cdaf995b5ba6d75c37a3940ea67716
 
 COCOAPODS: 1.3.1

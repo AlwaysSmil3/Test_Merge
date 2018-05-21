@@ -24,6 +24,8 @@ pod 'JSONWebToken'
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
 
+pod 'Bugsnag'
+
   # Pods for FinPlus
 
 end

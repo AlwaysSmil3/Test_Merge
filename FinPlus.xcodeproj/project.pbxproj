@@ -27,6 +27,8 @@
 		633AF9BA20A98F6000BAE2BB /* ChoiceKindUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9B920A98F6000BAE2BB /* ChoiceKindUserVC.swift */; };
 		633AF9BE20A9921B00BAE2BB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9BD20A9921B00BAE2BB /* LoginViewController.swift */; };
 		633AF9C120A992B200BAE2BB /* BorrowHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9C020A992B200BAE2BB /* BorrowHomeViewController.swift */; };
+		6369BBD420AE8AD400E0C435 /* APIClient+Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369BBD320AE8AD400E0C435 /* APIClient+Loan.swift */; };
+		6369BBD620AE91F300E0C435 /* InvestorHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369BBD520AE91F300E0C435 /* InvestorHomeViewController.swift */; };
 		637A90B020A2E52700CCACA5 /* APIClient+Authen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90AF20A2E52700CCACA5 /* APIClient+Authen.swift */; };
 		637A90B620A2FA5F00CCACA5 /* SRMonthPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B320A2FA5F00CCACA5 /* SRMonthPicker.m */; };
 		637A90B820A2FA5F00CCACA5 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B520A2FA5F00CCACA5 /* DatePickerDialog.swift */; };
@@ -95,6 +97,8 @@
 		633AF9B920A98F6000BAE2BB /* ChoiceKindUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceKindUserVC.swift; sourceTree = "<group>"; };
 		633AF9BD20A9921B00BAE2BB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		633AF9C020A992B200BAE2BB /* BorrowHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowHomeViewController.swift; sourceTree = "<group>"; };
+		6369BBD320AE8AD400E0C435 /* APIClient+Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Loan.swift"; sourceTree = "<group>"; };
+		6369BBD520AE91F300E0C435 /* InvestorHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorHomeViewController.swift; sourceTree = "<group>"; };
 		637A90AF20A2E52700CCACA5 /* APIClient+Authen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Authen.swift"; sourceTree = "<group>"; };
 		637A90B320A2FA5F00CCACA5 /* SRMonthPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRMonthPicker.m; sourceTree = "<group>"; };
 		637A90B420A2FA5F00CCACA5 /* SRMonthPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRMonthPicker.h; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 		6308DF6C20A45521001DC320 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				6369BBD520AE91F300E0C435 /* InvestorHomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -387,6 +392,7 @@
 			children = (
 				637A90AF20A2E52700CCACA5 /* APIClient+Authen.swift */,
 				6307D3CC20AD817300055F5C /* APIClient+User.swift */,
+				6369BBD320AE8AD400E0C435 /* APIClient+Loan.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -643,6 +649,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Bugsnag/Bugsnag.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -661,6 +668,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bugsnag.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
@@ -734,9 +742,11 @@
 				639C9DD020A14B4600F2CF5E /* EndPoint.swift in Sources */,
 				633AF9B320A9894500BAE2BB /* VerifyOTPAuthenVC.swift in Sources */,
 				633AF9B720A98A7D00BAE2BB /* SetPassAuthenVC.swift in Sources */,
+				6369BBD420AE8AD400E0C435 /* APIClient+Loan.swift in Sources */,
 				6308DF6520A3FE90001DC320 /* BasePopup.swift in Sources */,
 				639C9DEE20A182E900F2CF5E /* ExUIViewController.swift in Sources */,
 				637A90B820A2FA5F00CCACA5 /* DatePickerDialog.swift in Sources */,
+				6369BBD620AE91F300E0C435 /* InvestorHomeViewController.swift in Sources */,
 				6307D3BB20AD274700055F5C /* UpdateInfoFacebook.swift in Sources */,
 				639C9DF720A189E600F2CF5E /* Toast.swift in Sources */,
 				633AF9BE20A9921B00BAE2BB /* LoginViewController.swift in Sources */,

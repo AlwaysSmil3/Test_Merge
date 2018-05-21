@@ -27,6 +27,13 @@ enum EndPoint {
         static let User = "users/"
     }
     
+    enum Loan {
+        static let Loans = "loans"
+        static let LoanOTP = "loans/otp"
+        static let Loan = "loan"
+        static let LoanCategories = "loan-categories"
+    }
+    
     
     
     
