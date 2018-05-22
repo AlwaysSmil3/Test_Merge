@@ -26,6 +26,8 @@ pod 'FBSDKLoginKit'
 
 pod 'Bugsnag'
 
+#pod 'SVPinView'
+
   # Pods for FinPlus
 
 end

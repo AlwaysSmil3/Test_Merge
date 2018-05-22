@@ -26,6 +26,13 @@
 		6336D5C820B27B7500A6C38A /* LoanFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6336D5C720B27B7500A6C38A /* LoanFirstViewController.swift */; };
 		6336D5CA20B2B43700A6C38A /* LoanPersionalInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6336D5C920B2B43700A6C38A /* LoanPersionalInfoVC.swift */; };
 		6336D5CC20B2B75000A6C38A /* LoanInfoJobVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6336D5CB20B2B75000A6C38A /* LoanInfoJobVC.swift */; };
+		633AE0AA20B3F315007AB0D1 /* LoanWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AE0A920B3F315007AB0D1 /* LoanWalletViewController.swift */; };
+		633AE0AD20B3F430007AB0D1 /* LoanWalletTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AE0AC20B3F430007AB0D1 /* LoanWalletTBCell.swift */; };
+		633AE0B020B40036007AB0D1 /* LoanNationalIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AE0AF20B40036007AB0D1 /* LoanNationalIDViewController.swift */; };
+		633AE0B220B40A36007AB0D1 /* LoanOtherInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AE0B120B40A36007AB0D1 /* LoanOtherInfoVC.swift */; };
+		633AE0B420B40AA1007AB0D1 /* LoanSummaryInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AE0B320B40AA1007AB0D1 /* LoanSummaryInfoVC.swift */; };
+		633AE0B620B428C6007AB0D1 /* Constant+DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AE0B520B428C6007AB0D1 /* Constant+DateFormat.swift */; };
+		633AE0B820B42BAB007AB0D1 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AE0B720B42BAA007AB0D1 /* DateHelper.swift */; };
 		633AF9AF20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9AE20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift */; };
 		633AF9B320A9894500BAE2BB /* VerifyOTPAuthenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9B220A9894500BAE2BB /* VerifyOTPAuthenVC.swift */; };
 		633AF9B720A98A7D00BAE2BB /* SetPassAuthenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9B620A98A7D00BAE2BB /* SetPassAuthenVC.swift */; };
@@ -100,6 +107,13 @@
 		6336D5C720B27B7500A6C38A /* LoanFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanFirstViewController.swift; sourceTree = "<group>"; };
 		6336D5C920B2B43700A6C38A /* LoanPersionalInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanPersionalInfoVC.swift; sourceTree = "<group>"; };
 		6336D5CB20B2B75000A6C38A /* LoanInfoJobVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanInfoJobVC.swift; sourceTree = "<group>"; };
+		633AE0A920B3F315007AB0D1 /* LoanWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanWalletViewController.swift; sourceTree = "<group>"; };
+		633AE0AC20B3F430007AB0D1 /* LoanWalletTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanWalletTBCell.swift; sourceTree = "<group>"; };
+		633AE0AF20B40036007AB0D1 /* LoanNationalIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanNationalIDViewController.swift; sourceTree = "<group>"; };
+		633AE0B120B40A36007AB0D1 /* LoanOtherInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanOtherInfoVC.swift; sourceTree = "<group>"; };
+		633AE0B320B40AA1007AB0D1 /* LoanSummaryInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanSummaryInfoVC.swift; sourceTree = "<group>"; };
+		633AE0B520B428C6007AB0D1 /* Constant+DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant+DateFormat.swift"; sourceTree = "<group>"; };
+		633AE0B720B42BAA007AB0D1 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		633AF97220A96F1B00BAE2BB /* Pods_FinPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_FinPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		633AF9AE20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhoneNumberAuthenVC.swift; sourceTree = "<group>"; };
 		633AF9B220A9894500BAE2BB /* VerifyOTPAuthenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPAuthenVC.swift; sourceTree = "<group>"; };
@@ -249,9 +263,14 @@
 		6308DF6E20A4553E001DC320 /* Loan */ = {
 			isa = PBXGroup;
 			children = (
+				633AE0AB20B3F3D3007AB0D1 /* Cell */,
 				6336D5C720B27B7500A6C38A /* LoanFirstViewController.swift */,
 				6336D5C920B2B43700A6C38A /* LoanPersionalInfoVC.swift */,
 				6336D5CB20B2B75000A6C38A /* LoanInfoJobVC.swift */,
+				633AE0A920B3F315007AB0D1 /* LoanWalletViewController.swift */,
+				633AE0AF20B40036007AB0D1 /* LoanNationalIDViewController.swift */,
+				633AE0B120B40A36007AB0D1 /* LoanOtherInfoVC.swift */,
+				633AE0B320B40AA1007AB0D1 /* LoanSummaryInfoVC.swift */,
 			);
 			path = Loan;
 			sourceTree = "<group>";
@@ -264,6 +283,21 @@
 				6307D3BE20AD2F0500055F5C /* FacebookInfo.swift */,
 			);
 			path = Authen;
+			sourceTree = "<group>";
+		};
+		633AE0AB20B3F3D3007AB0D1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				633AE0AC20B3F430007AB0D1 /* LoanWalletTBCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		633AE0AE20B3FED4007AB0D1 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Wallet;
 			sourceTree = "<group>";
 		};
 		633AF9AD20A9881300BAE2BB /* PhoneNumber */ = {
@@ -332,7 +366,7 @@
 			children = (
 				63C5C8E620AC26DA00F65068 /* FinPlus.entitlements */,
 				639C9DCB20A14A7900F2CF5E /* Model */,
-				639C9DCA20A14A6D00F2CF5E /* MVVM */,
+				639C9DCA20A14A6D00F2CF5E /* Controllers */,
 				639C9DC920A14A6200F2CF5E /* Utitlities */,
 				639C9DC820A14A5900F2CF5E /* APIClient */,
 				639C9DC720A14A3C00F2CF5E /* View */,
@@ -380,16 +414,17 @@
 			path = Utitlities;
 			sourceTree = "<group>";
 		};
-		639C9DCA20A14A6D00F2CF5E /* MVVM */ = {
+		639C9DCA20A14A6D00F2CF5E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				633AE0AE20B3FED4007AB0D1 /* Wallet */,
 				6308DF6B20A45457001DC320 /* Borrower */,
 				6308DF6A20A45426001DC320 /* Invester */,
 				6308DF6820A4535C001DC320 /* Account */,
 				639C9DE220A15F5100F2CF5E /* Base */,
 				639C9DDE20A15E4A00F2CF5E /* Authen */,
 			);
-			path = MVVM;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		639C9DCB20A14A7900F2CF5E /* Model */ = {
@@ -434,6 +469,7 @@
 		639C9DD320A14B8300F2CF5E /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				633AE0B720B42BAA007AB0D1 /* DateHelper.swift */,
 				639C9DD820A14BD200F2CF5E /* FinPlusHelper.swift */,
 				63C5C8E420AC183D00F65068 /* FacebookSignInManager.swift */,
 			);
@@ -536,6 +572,7 @@
 			isa = PBXGroup;
 			children = (
 				639C9E2320A1A4FF00F2CF5E /* Constant.swift */,
+				633AE0B520B428C6007AB0D1 /* Constant+DateFormat.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -753,6 +790,7 @@
 				6307D3CB20AD786300055F5C /* BrowwerResidence.swift in Sources */,
 				639C9DD520A14B9D00F2CF5E /* DataManager.swift in Sources */,
 				6307D3C720AD786300055F5C /* BrowwerWallets.swift in Sources */,
+				633AE0B820B42BAB007AB0D1 /* DateHelper.swift in Sources */,
 				633AF9C120A992B200BAE2BB /* BorrowHomeViewController.swift in Sources */,
 				639C9DF520A189E600F2CF5E /* ToastWindow.swift in Sources */,
 				639C9DBB20A1498A00F2CF5E /* FinPlus.xcdatamodeld in Sources */,
@@ -775,16 +813,22 @@
 				6307D3BF20AD2F0500055F5C /* FacebookInfo.swift in Sources */,
 				639C9DF620A189E600F2CF5E /* ToastView.swift in Sources */,
 				637A90B020A2E52700CCACA5 /* APIClient+Authen.swift in Sources */,
+				633AE0AA20B3F315007AB0D1 /* LoanWalletViewController.swift in Sources */,
 				633AF9BA20A98F6000BAE2BB /* ChoiceKindUserVC.swift in Sources */,
+				633AE0B220B40A36007AB0D1 /* LoanOtherInfoVC.swift in Sources */,
+				633AE0B020B40036007AB0D1 /* LoanNationalIDViewController.swift in Sources */,
 				63C5C8E520AC183D00F65068 /* FacebookSignInManager.swift in Sources */,
 				639C9DB320A1498A00F2CF5E /* AppDelegate.swift in Sources */,
+				633AE0B420B40AA1007AB0D1 /* LoanSummaryInfoVC.swift in Sources */,
 				6307D3C820AD786300055F5C /* BrowwerInfo.swift in Sources */,
+				633AE0AD20B3F430007AB0D1 /* LoanWalletTBCell.swift in Sources */,
 				6307D3CD20AD817300055F5C /* APIClient+User.swift in Sources */,
 				639C9DE820A164E600F2CF5E /* KeychainPasswordItem.swift in Sources */,
 				632FD02120AAC3CC00D9399C /* APIResponseGeneral.swift in Sources */,
 				633AF9AF20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift in Sources */,
 				6336D5C820B27B7500A6C38A /* LoanFirstViewController.swift in Sources */,
 				639C9DE420A15F6100F2CF5E /* BaseViewController.swift in Sources */,
+				633AE0B620B428C6007AB0D1 /* Constant+DateFormat.swift in Sources */,
 				639C9DCE20A14B3800F2CF5E /* APIClient.swift in Sources */,
 				639C9DD920A14BD200F2CF5E /* FinPlusHelper.swift in Sources */,
 				632FD02620AAE15800D9399C /* ExString.swift in Sources */,

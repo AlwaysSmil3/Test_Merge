@@ -1,14 +1,14 @@
 //
-//  LoanInfoJobVC.swift
+//  LoanSummaryInfoVC.swift
 //  FinPlus
 //
-//  Created by Cao Van Hai on 5/21/18.
+//  Created by Cao Van Hai on 5/22/18.
 //  Copyright © 2018 Cao Van Hai. All rights reserved.
 //
 
 import Foundation
 
-class LoanInfoJobVC: BaseViewController {
+class LoanSummaryInfoVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,10 +16,6 @@ class LoanInfoJobVC: BaseViewController {
         
     }
     
-    //MARK: Actions
-    
-    @IBAction func btnContinueTapped(_ sender: Any) {
-    }
     
     
 }

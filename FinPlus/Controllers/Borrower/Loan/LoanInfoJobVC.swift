@@ -1,5 +1,5 @@
 //
-//  LoanPersionalInfoVC.swift
+//  LoanInfoJobVC.swift
 //  FinPlus
 //
 //  Created by Cao Van Hai on 5/21/18.
@@ -8,8 +8,7 @@
 
 import Foundation
 
-
-class LoanPersionalInfoVC: BaseViewController {
+class LoanInfoJobVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,14 +17,12 @@ class LoanPersionalInfoVC: BaseViewController {
     }
     
     //MARK: Actions
-    @IBAction func btnContinueTapped(_ sender: Any) {
-        
-        let loanInfoJobVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanInfoJobVC") as! LoanInfoJobVC
-        
-        self.navigationController?.pushViewController( loanInfoJobVC, animated: true)
-        
-    }
     
+    @IBAction func btnContinueTapped(_ sender: Any) {
+        let loanWalletVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanWalletViewController") as! LoanWalletViewController
+        
+        self.navigationController?.pushViewController(loanWalletVC, animated: true)
+    }
     
     
 }
