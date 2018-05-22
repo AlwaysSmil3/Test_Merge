@@ -21,21 +21,85 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqW-Ig-vD7">
-                                <rect key="frame" x="170" y="318.5" width="34" height="30"/>
-                                <state key="normal" title="Loan"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IrM-N6-DiV">
+                                <rect key="frame" x="16" y="158" width="160" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Vay sinh viên"/>
+                                <connections>
+                                    <action selector="btnLoanTapped:" destination="CVN-wY-tbX" eventType="touchUpInside" id="5Nb-gd-JfU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvk-Ig-QRy">
+                                <rect key="frame" x="201" y="158" width="158" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Vay mua điện thoại"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRB-sa-6xe">
+                                <rect key="frame" x="16" y="206" width="160" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Vay mua xe máy"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLL-SL-uaM">
+                                <rect key="frame" x="201" y="206" width="158" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Vay đám cưới"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRK-wO-ckc">
+                                <rect key="frame" x="201" y="267" width="158" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Vay con nhỏ"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zF-eM-g3F">
+                                <rect key="frame" x="16" y="267" width="160" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Vay bà bầu"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="rqW-Ig-vD7" firstAttribute="centerX" secondItem="4qa-z7-OzB" secondAttribute="centerX" id="OUV-Bi-M4q"/>
-                            <constraint firstItem="rqW-Ig-vD7" firstAttribute="centerY" secondItem="4qa-z7-OzB" secondAttribute="centerY" id="xF8-k6-Ihg"/>
-                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="1PO-t4-hNq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bak-yt-idX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-130" y="143"/>
+            <point key="canvasLocation" x="1062" y="-304"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="X0i-sJ-NpE">
+            <objects>
+                <viewController id="PKj-Cn-AaX" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a9t-1j-V6U"/>
+                        <viewControllerLayoutGuide type="bottom" id="cso-Kg-CoE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zo9-od-cof">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cYd-iF-X3G"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tjg-08-DmB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1062" y="427"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1Cp-zk-OWD">
+            <objects>
+                <viewController id="sHy-LO-gMD" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ygz-lH-9QO"/>
+                        <viewControllerLayoutGuide type="bottom" id="2jt-TU-G8m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5dU-zM-NY2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="F7H-j0-AV1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DBa-9m-HNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1062" y="1137"/>
         </scene>
         <!--Investor Home Controller-->
         <scene sceneID="baU-f7-8K4">
@@ -63,7 +127,83 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2uS-aE-Spg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="746" y="143"/>
+            <point key="canvasLocation" x="2348" y="107.49625187406298"/>
+        </scene>
+        <!--Borrow Tabbar View Controller-->
+        <scene sceneID="zKJ-42-j7I">
+            <objects>
+                <tabBarController storyboardIdentifier="BorrowTabbarViewController" automaticallyAdjustsScrollViewInsets="NO" id="V06-iu-xhq" customClass="BorrowTabbarViewController" customModule="FinPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="n5C-eh-SVj">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="2Wj-j2-BFY" kind="relationship" relationship="viewControllers" id="J6v-GM-T9D"/>
+                        <segue destination="pZZ-j2-EeW" kind="relationship" relationship="viewControllers" id="e0z-2P-WbS"/>
+                        <segue destination="hLS-Hj-8yc" kind="relationship" relationship="viewControllers" id="3hJ-YC-4OE"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="prA-OJ-duo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-430.39999999999998" y="142.1289355322339"/>
+        </scene>
+        <!--Trang chủ-->
+        <scene sceneID="FmO-JR-xhM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Wj-j2-BFY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Trang chủ" id="Wwx-NI-7rY"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jFW-q9-8Ry">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CVN-wY-tbX" kind="relationship" relationship="rootViewController" id="gRb-6F-AaX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="33X-aM-2WD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="296" y="-304.04797601199402"/>
+        </scene>
+        <!--Quản lý khoản vay-->
+        <scene sceneID="vkz-2w-Bjh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pZZ-j2-EeW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Quản lý khoản vay" id="ZFD-ab-hJK"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dtW-99-VoW">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PKj-Cn-AaX" kind="relationship" relationship="rootViewController" id="huz-Ea-8tG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="he5-uy-Pom" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="312" y="433.58320839580216"/>
+        </scene>
+        <!--Tài khoản-->
+        <scene sceneID="tal-99-PKd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hLS-Hj-8yc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Tài khoản" id="Qm6-Ef-XkE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lTi-mk-oNU">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sHy-LO-gMD" kind="relationship" relationship="rootViewController" id="v2i-cJ-Ojk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zlW-k7-X9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305.60000000000002" y="1132.5337331334333"/>
         </scene>
     </scenes>
 </document>

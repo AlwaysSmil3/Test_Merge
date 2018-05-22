@@ -34,10 +34,14 @@ class ChoiceKindUserVC: BaseViewController {
     // Loại user: Browwer hay Investor, browwer = 0, investor = 1
     var accountType: TypeAccount = .Browwer
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.updateViewForBrowwer()
     }
     
     // Pasre Facebook Data Info
@@ -62,6 +66,16 @@ class ChoiceKindUserVC: BaseViewController {
         
     }
     
+    private func updateViewForBrowwer() {
+        UIView.animate(withDuration: 0.5, delay: 0.2, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            self.heightConstraintInfoInvestorView.constant = 0
+            self.view.layoutIfNeeded()
+        }, completion: { (status) in
+            self.infoInvestorView.isHidden = true
+            self.btnFacebook.isHidden = false
+        })
+    }
+    
     // MARK Actions
     
     @IBAction func btnInvestorSelectedTapped(_ sender: Any) {
@@ -81,13 +95,7 @@ class ChoiceKindUserVC: BaseViewController {
         
         self.accountType = .Browwer
         
-        UIView.animate(withDuration: 0.5, delay: 0.2, options: UIViewAnimationOptions.curveEaseIn, animations: {
-            self.heightConstraintInfoInvestorView.constant = 0
-            self.view.layoutIfNeeded()
-        }, completion: { (status) in
-            self.infoInvestorView.isHidden = true
-            self.btnFacebook.isHidden = false
-        })
+        self.updateViewForBrowwer()
         
     }
     
@@ -106,7 +114,7 @@ class ChoiceKindUserVC: BaseViewController {
                         
                         DataManager.shared.userID = data.id!
                         
-                        let homeVC = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "BorrowHomeViewController") as! BorrowHomeViewController
+                        let homeVC = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "BorrowTabbarViewController") as! BorrowTabbarViewController
                         
                         self.navigationController?.present(homeVC, animated: true, completion: {
                             

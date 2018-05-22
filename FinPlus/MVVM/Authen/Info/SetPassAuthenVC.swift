@@ -45,22 +45,22 @@ class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
         }
         
         if self.tfPass.text!.length() < 6 {
-            
+            self.showToastWithMessage(message: "Mật khẩu nhập vào không hợp lệ. Mật khẩu chỉ gồm 6 số, không bao gồm chữ cái và các ký tự khác")
             return
         }
         
         if self.tfRePass.text!.length() == 0 {
-            
+            self.showToastWithMessage(message: "Vui lòng nhập lại mật khẩu")
             return
         }
         
         if self.tfRePass.text!.length() < 6 {
-            
+            self.showToastWithMessage(message: "Mật khẩu xác nhận không hợp lệ. Mật khẩu chỉ gồm 6 số, không bao gồm chữ cái và các ký tự khác")
             return
         }
         
         if !self.tfPass.text!.contains(self.tfRePass.text!) {
-            self.showToastWithMessage(message: "Mật khẩu không giống nhau")
+            self.showToastWithMessage(message: "Mật khẩu và mật khẩu xác nhận không giống nhau. Vui lòng thử lại!")
             
             return
         }

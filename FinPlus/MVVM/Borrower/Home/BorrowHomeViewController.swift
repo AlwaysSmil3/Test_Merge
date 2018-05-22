@@ -13,6 +13,8 @@ class BorrowHomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.isNavigationBarHidden = true
+        
         self.getUserInfo()
     }
     
@@ -28,6 +30,20 @@ class BorrowHomeViewController: BaseViewController {
             }
         
     }
+    
+    //MARK: Actions
+    
+    @IBAction func btnLoanTapped(_ sender: Any) {
+        
+        let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
+        
+        loanFirstVC.hidesBottomBarWhenPushed = true
+        
+        self.navigationController?.pushViewController(loanFirstVC, animated: true)
+        
+        
+    }
+    
     
     
     
