@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Crash Notification
         Bugsnag.start(withApiKey: "a15ce5a5aa7960207afaabbfff993a84")
         
+        // Get Version
+        self.getVersion()
+        
         return true
     }
 
@@ -56,6 +59,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
         
         return handled
+    }
+    
+    //MARK: GetVersion
+    
+    private func getVersion() {
+        
+        APIClient.shared.getVersion()
+            .then(on: DispatchQueue.main) { model -> Void in
+                
+                
+            }
+            .catch { error in
+                
+                
+            }
+        
+        
+        
     }
     
     

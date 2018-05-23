@@ -235,7 +235,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.000.000 VNĐ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNa-N7-EJu">
-                                                                <rect key="frame" x="172" y="342" width="187" height="18"/>
+                                                                <rect key="frame" x="172" y="341.5" width="187" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -569,9 +569,15 @@
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qV-Z3-Qac">
                                                                 <rect key="frame" x="16" y="410" width="343" height="30"/>
+                                                                <connections>
+                                                                    <action selector="btnResidentAddressTapped:" destination="YcM-1g-Ydr" eventType="touchUpInside" id="kkH-nQ-pC0"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5oB-n4-K1V">
                                                                 <rect key="frame" x="16" y="448" width="343" height="30"/>
+                                                                <connections>
+                                                                    <action selector="btnTemporaryAddressTapped:" destination="YcM-1g-Ydr" eventType="touchUpInside" id="Ie2-nM-ygt"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgL-Of-Fqp">
                                                                 <rect key="frame" x="159.5" y="559.5" width="56" height="30"/>
@@ -701,6 +707,8 @@
                     <connections>
                         <outlet property="btnGender" destination="GJz-uY-e8l" id="eEM-ga-vyn"/>
                         <outlet property="btnRelationPhone" destination="R9m-ch-j0I" id="nfS-80-gvq"/>
+                        <outlet property="lblResidentAddress" destination="qGv-Dt-YrU" id="Mrd-MC-tbC"/>
+                        <outlet property="lblTemporaryAddress" destination="6Ho-67-51O" id="6XK-as-Gm5"/>
                         <outlet property="tfBirthDay" destination="2St-Gg-ax0" id="T7Y-Se-OTC"/>
                         <outlet property="tfFullName" destination="SNg-7J-OGP" id="j1Z-YY-cw9"/>
                         <outlet property="tfGender" destination="ZNS-HR-t8K" id="blD-02-Z8W"/>

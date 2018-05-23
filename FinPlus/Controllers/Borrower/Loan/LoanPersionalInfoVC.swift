@@ -29,7 +29,6 @@ enum RelationPhoneNumber: Int {
 
 class LoanPersionalInfoVC: BaseViewController {
     
-
     @IBOutlet var tfFullName: UITextField!
     @IBOutlet var tfGender: UITextField!
     @IBOutlet var btnGender: UIButton!
@@ -41,6 +40,10 @@ class LoanPersionalInfoVC: BaseViewController {
     @IBOutlet var tfBirthDay: UITextField!
     
     @IBOutlet var tfNationalID: UITextField!
+    
+    @IBOutlet var lblResidentAddress: UILabel!
+    @IBOutlet var lblTemporaryAddress: UILabel!
+    
     
     // Dropdown DataSource
     let genderDropdownDataSource = ["Nam", "Nữ"]
@@ -142,9 +145,21 @@ class LoanPersionalInfoVC: BaseViewController {
         
     }
     
+    @IBAction func btnResidentAddressTapped(_ sender: Any) {
+        let firstAddressVC = UIStoryboard(name: "Address", bundle: nil).instantiateViewController(withIdentifier: "AddressFirstViewController") as! AddressFirstViewController
+        firstAddressVC.delegate = self
+        
+        self.navigationController?.pushViewController(firstAddressVC, animated: true)
+    }
     
     
-    
+    @IBAction func btnTemporaryAddressTapped(_ sender: Any) {
+        let firstAddressVC = UIStoryboard(name: "Address", bundle: nil).instantiateViewController(withIdentifier: "AddressFirstViewController") as! AddressFirstViewController
+        firstAddressVC.typeAddress = 1
+        firstAddressVC.delegate = self
+        
+        self.navigationController?.pushViewController(firstAddressVC, animated: true)
+    }
     
     
     @IBAction func btnContinueTapped(_ sender: Any) {
@@ -157,4 +172,16 @@ class LoanPersionalInfoVC: BaseViewController {
     
     
     
+}
+
+
+extension LoanPersionalInfoVC: AddressDelegate {
+    func getAddress(address: Address, type: Int) {
+        let add = address.commune + ", " + address.district + ", " + address.city
+        if type == 0 {
+            self.lblResidentAddress.text = add
+        } else {
+            self.lblTemporaryAddress.text = add
+        }
+    }
 }

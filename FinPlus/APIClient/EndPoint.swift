@@ -34,7 +34,17 @@ enum EndPoint {
         static let LoanCategories = "loan-categories"
     }
     
+    enum Config {
+        static let Configs = "configs"
+        static let Cities = "cities"
+        static let Districts = "districts"
+        static let Communes = "communes"
+    }
     
+    enum Wallet {
+        static let AddWallet = "users:uid/wallets"
+        
+    }
     
     
     
