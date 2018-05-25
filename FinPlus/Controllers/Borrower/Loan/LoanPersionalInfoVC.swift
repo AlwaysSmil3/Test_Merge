@@ -25,8 +25,6 @@ enum RelationPhoneNumber: Int {
 }
 
 
-
-
 class LoanPersionalInfoVC: BaseViewController {
     
     @IBOutlet var tfFullName: UITextField!

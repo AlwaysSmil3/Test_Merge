@@ -41,7 +41,7 @@ extension APIClient {
                     
                     var array: [Model1] = []
                     
-                    if let data = json["data"] as? [JSONDictionary] {
+                    if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
                         for d in data {
                             let model1 = Model1(object: d)
                             array.append(model1)
@@ -113,6 +113,57 @@ extension APIClient {
                     reject(error)
             }
         }
+    }
+    
+    /* GET Lấy danh sách nghề nghiệp
+ 
+     */
+    func getJobs() -> Promise<[Model1]> {
+        return Promise { fullFill, reject in
+            
+            getDataWithEndPoint(endPoint: EndPoint.Config.Job, isShowLoadingView: false)
+                .then { json -> Void in
+                    
+                    var array: [Model1] = []
+                    
+                    if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
+                        for d in data {
+                            let model1 = Model1(object: d)
+                            array.append(model1)
+                        }
+                    }
+                    
+                    fullFill(array)
+                }
+                .catch { error in reject(error)}
+        }
+        
+    }
+    
+    /* GET Lấy danh sách vị trí làm việc
+     
+     */
+    func getPositions() -> Promise<[Model1]> {
+        return Promise { fullFill, reject in
+            
+            getDataWithEndPoint(endPoint: EndPoint.Config.Position, isShowLoadingView: false)
+                .then { json -> Void in
+                    
+                    var array: [Model1] = []
+                    
+                    if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
+                        for d in data {
+                            let model1 = Model1(object: d)
+                            array.append(model1)
+                        }
+                    }
+                    
+                    fullFill(array)
+                }
+                .catch { error in reject(error)}
+        }
+        
+        
     }
     
     

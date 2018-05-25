@@ -16,6 +16,24 @@ class LoanSummaryInfoVC: BaseViewController {
         
     }
     
+    private func loan() {
+        
+        APIClient.shared.loan()
+            .then(on: DispatchQueue.main) { model -> Void in
+                
+                print("\(model)")
+                
+            }
+            .catch { error in }
+        
+        
+    }
+    
+    
+    @IBAction func btnLoanTapped(_ sender: Any) {
+        self.loan()
+    }
+    
     
     
 }

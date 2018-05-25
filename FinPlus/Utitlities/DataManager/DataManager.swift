@@ -16,7 +16,8 @@ class DataManager {
     var currentAccount: String = ""
     var userID: Int32 = 0
     
-    
+    // Info for Loan
+    var loanInfo: LoanInfo = LoanInfo()
     
     
 }

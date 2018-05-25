@@ -39,6 +39,8 @@ enum EndPoint {
         static let Cities = "cities"
         static let Districts = "districts"
         static let Communes = "communes"
+        static let Job = "jobs"
+        static let Position = "positions"
     }
     
     enum Wallet {
