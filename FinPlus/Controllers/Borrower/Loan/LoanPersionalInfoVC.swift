@@ -36,7 +36,6 @@ class LoanPersionalInfoVC: BaseViewController {
     @IBOutlet var btnRelationPhone: UIButton!
     
     @IBOutlet var tfBirthDay: UITextField!
-    
     @IBOutlet var tfNationalID: UITextField!
     
     @IBOutlet var lblResidentAddress: UILabel!
@@ -46,7 +45,6 @@ class LoanPersionalInfoVC: BaseViewController {
     // Dropdown DataSource
     let genderDropdownDataSource = ["Nam", "Nữ"]
     let relationPhoneNumberDropdownDataSource = ["Vợ", "Chồng", "Bố", "Mẹ"]
-    
     
     // Gender
     let genderDropdown = DropDown()
@@ -65,11 +63,14 @@ class LoanPersionalInfoVC: BaseViewController {
         }
     }
     
+    // Address
+    var residentAddress: Address?
+    var temporatyAddress: Address?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setupDropdown()
-        
     }
     
     private func setupDropdown() {
@@ -115,9 +116,22 @@ class LoanPersionalInfoVC: BaseViewController {
             }
         }
         
+    }
+    
+    private func updateDataForLoanAPI(completion: () -> Void) {
         
+        guard let birthDay = self.birthDay, let residentAddr = self.residentAddress, let tempAddr = self.temporatyAddress else { return }
         
+        DataManager.shared.loanInfo.userInfo.fullName = self.tfFullName.text!
+        DataManager.shared.loanInfo.userInfo.gender = "\(self.gender.rawValue)"
+        DataManager.shared.loanInfo.userInfo.birthDay = "\(birthDay.timeIntervalSince1970)"
+        print("\(birthDay.timeIntervalSince1970)")
+        DataManager.shared.loanInfo.userInfo.nationalID = self.tfNationalID.text!
         
+        DataManager.shared.loanInfo.userInfo.residentAddress = residentAddr
+        DataManager.shared.loanInfo.userInfo.temporaryAddress = tempAddr
+        
+        completion()
     }
     
     //MARK: Actions
@@ -162,10 +176,11 @@ class LoanPersionalInfoVC: BaseViewController {
     
     @IBAction func btnContinueTapped(_ sender: Any) {
         
-        let loanInfoJobVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanInfoJobVC") as! LoanInfoJobVC
-        
-        self.navigationController?.pushViewController( loanInfoJobVC, animated: true)
-        
+        self.updateDataForLoanAPI {
+            let loanInfoJobVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanInfoJobVC") as! LoanInfoJobVC
+            
+            self.navigationController?.pushViewController( loanInfoJobVC, animated: true)
+        }
     }
     
     
@@ -178,8 +193,10 @@ extension LoanPersionalInfoVC: AddressDelegate {
         let add = address.commune + ", " + address.district + ", " + address.city
         if type == 0 {
             self.lblResidentAddress.text = add
+            self.residentAddress = address
         } else {
             self.lblTemporaryAddress.text = add
+            self.temporatyAddress = address
         }
     }
 }

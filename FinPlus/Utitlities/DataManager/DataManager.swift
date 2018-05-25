@@ -19,5 +19,8 @@ class DataManager {
     // Info for Loan
     var loanInfo: LoanInfo = LoanInfo()
     
+    // Danh sách các loại khoản vay
+    var loanCategories: [LoanCategories] = []
+    
     
 }

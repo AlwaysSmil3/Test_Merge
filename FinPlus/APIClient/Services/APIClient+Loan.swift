@@ -10,6 +10,32 @@ import Foundation
 
 extension APIClient {
     
+    /* GET Lấy danh sách các loại khoản vay
+     
+     */
+    func getLoanCategories() -> Promise<[LoanCategories]> {
+        
+        return Promise { fullFill, reject in
+            getDataWithEndPoint(endPoint: EndPoint.Loan.LoanCategories, isShowLoadingView: false)
+                .then { json -> Void in
+                    
+                    var array: [LoanCategories] = []
+                    
+                    if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
+                        for d in data {
+                            let loan = LoanCategories(object: d)
+                            array.append(loan)
+                        }
+                    }
+                    
+                    fullFill(array)
+                }
+                .catch { error in reject(error)}
+        }
+        
+        
+    }
+    
     /*
      GET Lấy danh sách khoản vay của người dùng
      
@@ -32,15 +58,12 @@ extension APIClient {
     /* POST Tạo một khoản vay mới
      
      */
-    func loan()  -> Promise<APIResponseGeneral> {
-        
-        let loanInfo = DataManager.shared.loanInfo
-
-        
-        var params: JSONDictionary = [
+    func loan()  -> Promise<LoanResponseModel> {
+        let params: JSONDictionary = [
             "": ""
         ]
         
+        let loanInfo = DataManager.shared.loanInfo
         let loanInfoData = try? JSONEncoder().encode(loanInfo)
         
         var dataAPI = Data()
@@ -48,35 +71,54 @@ extension APIClient {
         if let data = loanInfoData {
             dataAPI = data
             
-            let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
-            if let json = json as? JSONDictionary {
-                params = json
+            let json = try? JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+            if let json = json {
                 print("Person JSON:\n" + String(describing: json) + "\n")
 
             }
         }
         
-        
         let uid = DataManager.shared.userID
-        let endPoint = "\(uid)/" + EndPoint.Loan.Loan
+        let endPoint = "\(uid)/" + EndPoint.Loan.Loans
         
         return Promise { fullFill, reject in
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST, jsonData: dataAPI)
                 .then { json -> Void in
-                    print("\(json)")
-                    let model = APIResponseGeneral(object: json)
-                    fullFill(model)
+                    if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
+                        let model = LoanResponseModel(object: data)
+                        fullFill(model)
+                    }
                 }
                 .catch{ error in
                     reject(error)
             }
         }
+    }
+    
+    /* POST Xác thực khoản vay qua OTP
+ 
+     */
+    
+    func loanVerify(otp: String, loanID: Int32) -> Promise<APIResponseGeneral> {
         
+        let endPoint = "loans/" + "\(loanID)/" + "otp"
+        let params: JSONDictionary = [
+            "otp": otp
+        ]
         
+        return Promise { fullFill, reject in
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
+                .then { json -> Void in
+                    
+                    let model = APIResponseGeneral(object: json)
+                    fullFill(model)
+                    
+                }
+                .catch { error in reject(error)}
+        }
         
         
     }
-    
     
     
     

@@ -37,6 +37,7 @@ class APIClient {
             _postRequest.httpMethod = "POST"
             _postRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             _postRequest.setValue("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", forHTTPHeaderField: "Content-Type")
+            _postRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _postRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
             return _postRequest
         }
@@ -120,6 +121,7 @@ class APIClient {
                     
                 case .success(let responseObject):
                     if let responseDataDict = responseObject as? JSONDictionary {
+                        
                         guard let returnCode = responseDataDict[API_RESPONSE_RETURN_CODE] as? Int, returnCode == 1 else {
                             if let returnMessage = responseDataDict[API_RESPONSE_RETURN_MESSAGE] as? String {
                                 UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)

@@ -11,7 +11,7 @@ import Foundation
 //MARK: Base Host
 enum Host {
     static let alphaURL = ""
-    static let productURL = "https://90d351b2-5f18-441a-9934-c9b078e742e6.mock.pstmn.io/"
+    static let productURL = "https://bca50ea2-6208-4bdb-bd8a-5e34e2bd4281.mock.pstmn.io/"
 }
 
 //MARK: API End Point
@@ -29,7 +29,7 @@ enum EndPoint {
     
     enum Loan {
         static let Loans = "loans"
-        static let LoanOTP = "loans/otp"
+        static let LoanOTP = "loans/:loanId/otp"
         static let Loan = "loan"
         static let LoanCategories = "loan-categories"
     }

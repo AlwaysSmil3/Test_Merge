@@ -164,7 +164,8 @@ open class ToastView: UIView {
 
     let backgroundViewSize = self.backgroundView.frame.size
     x = (width - backgroundViewSize.width) * 0.5
-    y = height - (backgroundViewSize.height + y)
+    //y = height - (backgroundViewSize.height + y)
+    y = 50
     self.frame = CGRect(
       x: x,
       y: y,

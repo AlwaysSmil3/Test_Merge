@@ -45,6 +45,8 @@ class LoanInfoJobVC: BaseViewController {
         }
     }
     
+    var companyAddress: Address?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -95,6 +97,21 @@ class LoanInfoJobVC: BaseViewController {
             .catch { error in }
     }
     
+    private func updateDataForLoanAPI(completion: () -> Void) {
+        guard let addr = self.companyAddress else { return }
+        
+        DataManager.shared.loanInfo.jobInfo.address = addr
+        DataManager.shared.loanInfo.jobInfo.company = self.tfCompanyName.text!
+        DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = self.tfCompanyPhone.text!
+        DataManager.shared.loanInfo.jobInfo.salary = Int32(self.tfSalary.text!) ?? 0
+        
+        DataManager.shared.loanInfo.jobInfo.jobType = self.tfJob.text!
+        DataManager.shared.loanInfo.jobInfo.position = self.tfPosition.text!
+        
+        completion()
+    }
+    
+    
     //MARK: Actions
     @IBAction func btnJobTapped(_ sender: Any) {
         self.jobDropdown.show()
@@ -116,9 +133,13 @@ class LoanInfoJobVC: BaseViewController {
     
     
     @IBAction func btnContinueTapped(_ sender: Any) {
-        let loanWalletVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanWalletViewController") as! LoanWalletViewController
         
-        self.navigationController?.pushViewController(loanWalletVC, animated: true)
+        self.updateDataForLoanAPI {
+            let loanWalletVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanWalletViewController") as! LoanWalletViewController
+            
+            self.navigationController?.pushViewController(loanWalletVC, animated: true)
+        }
+        
     }
     
     
@@ -129,6 +150,7 @@ extension LoanInfoJobVC: AddressDelegate {
     func getAddress(address: Address, type: Int) {
         let addr = address.commune + ", " + address.district + ", " + address.city
         self.lblCompanyAddress.text = addr
+        self.companyAddress = address
     }
     
 }

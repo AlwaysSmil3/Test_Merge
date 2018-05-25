@@ -127,11 +127,17 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1Q-bF-jiO">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="556"/>
                                                         <subviews>
-                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ELd-UQ-9Wk">
+                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="ELd-UQ-9Wk">
                                                                 <rect key="frame" x="14" y="72.5" width="347" height="31"/>
+                                                                <connections>
+                                                                    <action selector="moneySliderValueChaned:" destination="iKw-QS-Z9I" eventType="valueChanged" id="Cmx-5r-pN1"/>
+                                                                </connections>
                                                             </slider>
-                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="dqN-Fd-mh2">
+                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="dqN-Fd-mh2">
                                                                 <rect key="frame" x="14" y="164.5" width="347" height="31"/>
+                                                                <connections>
+                                                                    <action selector="termSliderValueChanged:" destination="iKw-QS-Z9I" eventType="valueChanged" id="bBI-L2-bD1"/>
+                                                                </connections>
                                                             </slider>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số tiền vay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Puc-Pg-gNE">
                                                                 <rect key="frame" x="16" y="26" width="343" height="18"/>
@@ -145,8 +151,8 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 Triệu (VNĐ)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yV-0a-d2U">
-                                                                <rect key="frame" x="283" y="52" width="76" height="15.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 Triệu (VNĐ)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yV-0a-d2U">
+                                                                <rect key="frame" x="276" y="52" width="83" height="15.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -172,7 +178,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.000.000 VNĐ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCc-yh-Ccn">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 VNĐ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCc-yh-Ccn">
                                                                 <rect key="frame" x="172" y="220.5" width="187" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
@@ -216,26 +222,26 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.000.000 VNĐ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ni4-eJ-C4S">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 VNĐ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ni4-eJ-C4S">
                                                                 <rect key="frame" x="172" y="248.5" width="187" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18% năm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chQ-4s-4qW">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0% năm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chQ-4s-4qW">
                                                                 <rect key="frame" x="172" y="276.5" width="187" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.000.000 VNĐ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7g-Cy-xTZ">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 VNĐ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7g-Cy-xTZ">
                                                                 <rect key="frame" x="172" y="304.5" width="187" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.000.000 VNĐ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNa-N7-EJu">
-                                                                <rect key="frame" x="172" y="341.5" width="187" height="18"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 VNĐ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNa-N7-EJu">
+                                                                <rect key="frame" x="172" y="342" width="187" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -339,6 +345,19 @@
                             <constraint firstItem="7AM-KR-2Q6" firstAttribute="leading" secondItem="cBP-LQ-KBv" secondAttribute="leading" id="ilc-uZ-8tg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="amountSlider" destination="ELd-UQ-9Wk" id="CQ0-z3-T58"/>
+                        <outlet property="lblAmountLoan" destination="TCc-yh-Ccn" id="zgi-8v-6Jy"/>
+                        <outlet property="lblInterestRate" destination="chQ-4s-4qW" id="9jF-QN-XJj"/>
+                        <outlet property="lblLoanTerm" destination="ni4-eJ-C4S" id="KEc-ak-1WO"/>
+                        <outlet property="lblMinAmountSlider" destination="kEo-rc-9Gw" id="baT-SR-sxj"/>
+                        <outlet property="lblMinTermSlider" destination="2U1-mi-kDO" id="z3s-wZ-dv7"/>
+                        <outlet property="lblMoneySlider" destination="9yV-0a-d2U" id="dSt-dM-drW"/>
+                        <outlet property="lblTempFee" destination="U7g-Cy-xTZ" id="yy3-UN-4z9"/>
+                        <outlet property="lblTempTotalAmount" destination="JNa-N7-EJu" id="Cda-S3-SdL"/>
+                        <outlet property="lblTermSlider" destination="GUa-KX-vCL" id="GNu-RX-T3A"/>
+                        <outlet property="termSlider" destination="dqN-Fd-mh2" id="hyu-hL-2wh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zF3-RT-F3o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1981,6 +2000,106 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sen-U1-49V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4449" y="385"/>
+        </scene>
+        <!--LoanOTP View Controller-->
+        <scene sceneID="cfi-bK-1nm">
+            <objects>
+                <viewController storyboardIdentifier="LoanOTPViewController" id="A1p-Ya-D3T" customClass="LoanOTPViewController" customModule="FinPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zrn-9X-Ec2"/>
+                        <viewControllerLayoutGuide type="bottom" id="JKd-4E-yeW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VLi-NP-sKD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xnd-sM-hvH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xác nhận" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZS-C0-QgP">
+                                        <rect key="frame" x="40" y="20" width="295" height="44"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPj-YU-fnj" customClass="AnimatableButton" customModule="IBAnimatable">
+                                        <rect key="frame" x="5" y="20" width="99" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="99" id="2UB-kf-6HX"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="6" maxX="0.0" maxY="6"/>
+                                        <state key="normal" image="ic_back"/>
+                                        <connections>
+                                            <action selector="btnBackCurrentClicked:" destination="A1p-Ya-D3T" eventType="touchUpInside" id="uIf-W5-6Vd"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMs-Sj-zGG">
+                                        <rect key="frame" x="271" y="20" width="104" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rba-na-KnU">
+                                                <rect key="frame" x="0.0" y="0.0" width="104" height="44"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                                <state key="normal" title="Trang chủ"/>
+                                                <connections>
+                                                    <action selector="btnBackToRootClicked:" destination="A1p-Ya-D3T" eventType="touchUpInside" id="Jl0-83-joE"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="rba-na-KnU" secondAttribute="bottom" id="1Fn-cu-dNj"/>
+                                            <constraint firstItem="rba-na-KnU" firstAttribute="top" secondItem="yMs-Sj-zGG" secondAttribute="top" id="4jY-lC-8DC"/>
+                                            <constraint firstAttribute="width" constant="104" id="4oI-sw-ZgS"/>
+                                            <constraint firstAttribute="trailing" secondItem="rba-na-KnU" secondAttribute="trailing" id="oGL-GD-kMX"/>
+                                            <constraint firstItem="rba-na-KnU" firstAttribute="leading" secondItem="yMs-Sj-zGG" secondAttribute="leading" id="pCb-qB-MVG"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="OZS-C0-QgP" secondAttribute="bottom" id="0tv-yC-AlD"/>
+                                    <constraint firstAttribute="trailing" secondItem="OZS-C0-QgP" secondAttribute="trailing" constant="40" id="1pE-O8-td2"/>
+                                    <constraint firstItem="yMs-Sj-zGG" firstAttribute="top" secondItem="Xnd-sM-hvH" secondAttribute="top" constant="20" id="BAo-Ir-LNU"/>
+                                    <constraint firstAttribute="height" constant="64" id="Dqy-0s-Daz"/>
+                                    <constraint firstAttribute="trailing" secondItem="yMs-Sj-zGG" secondAttribute="trailing" id="E1b-Tq-R5V"/>
+                                    <constraint firstItem="OZS-C0-QgP" firstAttribute="leading" secondItem="Xnd-sM-hvH" secondAttribute="leading" constant="40" id="Fdb-Jj-SbB"/>
+                                    <constraint firstItem="uPj-YU-fnj" firstAttribute="leading" secondItem="Xnd-sM-hvH" secondAttribute="leading" constant="5" id="In4-oP-gib"/>
+                                    <constraint firstAttribute="bottom" secondItem="yMs-Sj-zGG" secondAttribute="bottom" id="JuI-Ql-tY1"/>
+                                    <constraint firstAttribute="bottom" secondItem="uPj-YU-fnj" secondAttribute="bottom" id="LI3-OQ-rwe"/>
+                                    <constraint firstItem="OZS-C0-QgP" firstAttribute="top" secondItem="Xnd-sM-hvH" secondAttribute="top" constant="20" id="c9c-Tl-3s8"/>
+                                    <constraint firstItem="uPj-YU-fnj" firstAttribute="top" secondItem="Xnd-sM-hvH" secondAttribute="top" constant="20" id="tog-z4-MaH"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nhập mã xác thực" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p6Y-Ec-uXm">
+                                <rect key="frame" x="16" y="115" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdH-df-4ea">
+                                <rect key="frame" x="148" y="176" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Tiếp tục"/>
+                                <connections>
+                                    <action selector="btnContinueTapped:" destination="A1p-Ya-D3T" eventType="touchUpInside" id="ni8-9F-Fmr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Xnd-sM-hvH" firstAttribute="leading" secondItem="VLi-NP-sKD" secondAttribute="leading" id="9Xy-yd-jZr"/>
+                            <constraint firstItem="Xnd-sM-hvH" firstAttribute="top" secondItem="zrn-9X-Ec2" secondAttribute="bottom" constant="-20" id="cJw-wz-Jn1"/>
+                            <constraint firstAttribute="trailing" secondItem="Xnd-sM-hvH" secondAttribute="trailing" id="dXD-NS-04Y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tfOTP" destination="p6Y-Ec-uXm" id="x0c-cw-xza"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fLv-Qe-jx7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5208.8000000000002" y="375.56221889055473"/>
         </scene>
     </scenes>
     <resources>

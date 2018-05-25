@@ -13,20 +13,18 @@ class LoanSummaryInfoVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
     
     private func loan() {
-        
         APIClient.shared.loan()
             .then(on: DispatchQueue.main) { model -> Void in
                 
-                print("\(model)")
+                let otpVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanOTPViewController") as! LoanOTPViewController
+                otpVC.loanResponseModel = model
+                self.navigationController?.pushViewController(otpVC, animated: true)
                 
             }
             .catch { error in }
-        
-        
     }
     
     

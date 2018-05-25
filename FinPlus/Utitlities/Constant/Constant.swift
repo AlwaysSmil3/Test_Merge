@@ -25,6 +25,7 @@ let API_DEVICE_TYPE_OS = 0 // ios 0, android: 1
 
 let MS_TITLE_ALERT = "Thông báo"
 
+let MONEY_TERM_DISPLAY = 1000000
 
 
 
