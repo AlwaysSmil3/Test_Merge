@@ -56,21 +56,17 @@ class LoanFirstViewController: BaseViewController {
         self.lblMinAmountSlider.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY))"
         self.lblMinTermSlider.text = "\(Int(loan.termMin!))"
         
-        
     }
     
     private func updateDataToLoanAPI(completion: () -> Void) {
         guard let loan = self.loanCategory else { return }
         
         DataManager.shared.loanInfo.loanCategoryID = loan.id!
-        
         DataManager.shared.loanInfo.amount = Int32(Int(self.amountSlider.value) * MONEY_TERM_DISPLAY)
         DataManager.shared.loanInfo.term = Int(self.termSlider.value)
         
         completion()
     }
-    
-    
     
     //MARK: Actions
     @IBAction func moneySliderValueChaned(_ sender: Any) {

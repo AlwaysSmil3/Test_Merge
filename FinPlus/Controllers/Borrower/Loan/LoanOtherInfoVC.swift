@@ -9,12 +9,17 @@
 import Foundation
 import Fusuma
 
-class LoanOtherInfoVC: BaseViewController {
+class LoanOtherInfoVC: LoanBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        self.updateDataToServer()
     }
     
     

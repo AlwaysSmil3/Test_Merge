@@ -8,11 +8,17 @@
 
 import Foundation
 
-class LoanSummaryInfoVC: BaseViewController {
+class LoanSummaryInfoVC: LoanBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.updateDataToServer()
     }
     
     private func loan() {

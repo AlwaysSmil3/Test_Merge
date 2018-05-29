@@ -175,13 +175,6 @@ class APIClient {
                 case .success(let responseObject):
                     
                     if let responseDataDict = responseObject as? JSONDictionary {
-//                        guard let returnCode = responseDataDict[API_RESPONSE_RETURN_CODE] as? Int, returnCode == 1 else {
-//                            if let returnMessage = responseDataDict[API_RESPONSE_RETURN_MESSAGE] as? String {
-//                                UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
-//                            }
-//
-//                            return
-//                        }
                         
                         fullfill(responseDataDict)
                     }
@@ -197,6 +190,49 @@ class APIClient {
             }
         }
     }
+    
+    // Upload Media
+    func upload(type: TYPE_UPLOAD_MEDIA_LENDING, typeMedia: String, endPoint: String, imagesData: [Data], parameters: JSONDictionary, onCompletion: ((JSONDictionary?) -> Void)? = nil, onError: ((Error?) -> Void)? = nil){
+        
+        let url = URL(string: baseURLString + endPoint)! /* your API url */
+        
+        let headers: HTTPHeaders = [
+            /* "Authorization": "your_access_token",  in case you need authorization header */
+            "Content-type": "multipart/form-data"
+        ]
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            for (key, value) in parameters {
+                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+            }
+            
+            let name = typeMedia + "_" + type.rawValue
+            let fileName = typeMedia + "_" + type.rawValue + ".png"
+            let mimetype = typeMedia + "/png"
+            
+            for data in imagesData {
+                multipartFormData.append(data, withName: name, fileName: fileName, mimeType: mimetype)
+            }
+            
+        }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { (result) in
+            switch result{
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    print("Succesfully uploaded")
+                    if let err = response.error{
+                        onError?(err)
+                        return
+                    }
+                    onCompletion?(nil)
+                }
+            case .failure(let error):
+                print("Error in upload: \(error.localizedDescription)")
+                onError?(error)
+            }
+        }
+    }
+    
+    
     
     // Display message
     public func getDisplayMessage(error: Error) -> String {

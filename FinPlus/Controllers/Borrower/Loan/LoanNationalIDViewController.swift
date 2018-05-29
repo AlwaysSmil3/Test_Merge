@@ -9,15 +9,31 @@
 import Foundation
 import Fusuma
 
-class LoanNationalIDViewController: BaseViewController {
+enum NATIONALID_TYPE_IMG: Int {
+    case ALL = 0
+    case FRONT
+    case BACK
+}
+
+class LoanNationalIDViewController: LoanBaseViewController {
+    
+    @IBOutlet var imgNationalIDAll: UIImageView!
+    @IBOutlet var imgNationalIDFront: UIImageView!
+    @IBOutlet var imgNationalIDBack: UIImageView!
     
     
+    
+    var type: NATIONALID_TYPE_IMG = .ALL
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        
-        
+        self.updateDataToServer()
     }
     
     private func setupFusuma() {
@@ -32,30 +48,54 @@ class LoanNationalIDViewController: BaseViewController {
         fusumaSavesImage = true
         
         self.present(fusuma, animated: true, completion: nil)
+    }
+    
+    private func uploadData(img: UIImage) {
         
+        let dataImg = UIImagePNGRepresentation(img)
+        
+        guard let data = dataImg else { return }
+        let endPoint = "loans/" + "\(1)/" + "file"
+        
+        self.handleLoadingView(isShow: true)
+        APIClient.shared.upload(type: .NATIONALID_BACK, typeMedia: "image", endPoint: endPoint, imagesData: [data], parameters: ["" : ""], onCompletion: { (response) in
+            self.handleLoadingView(isShow: false)
+            print("Upload \(response)")
+            self.showToastWithMessage(message: "Upload success")
+            
+        }) { (error) in
+            self.handleLoadingView(isShow: false)
+            
+            if let error = error {
+                self.showToastWithMessage(message: error.localizedDescription)
+                print("error \(error.localizedDescription)")
+            }
+        }
     }
     
     
     //MARK: Actions
     
+    @IBAction func btnLoadCMNDImgALLTapped(_ sender: Any) {
+        self.setupFusuma()
+        self.type = .ALL
+    }
+    
     @IBAction func btnLoadCMNDImgFrontTapped(_ sender: Any) {
         self.setupFusuma()
-        
+        self.type = .FRONT
     }
     
-    @IBAction func btnLoadCMNDImgHideTapped(_ sender: Any) {
+    @IBAction func btnLoadCMNDImgBackTapped(_ sender: Any) {
         self.setupFusuma()
-        
+        self.type = .BACK
     }
-    
-    
     
     @IBAction func btnContinueTapped(_ sender: Any) {
         
         let loanOtherInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanOtherInfoVC") as! LoanOtherInfoVC
         
         self.navigationController?.pushViewController(loanOtherInfoVC, animated: true)
-        
         
     }
 }
@@ -65,11 +105,26 @@ extension LoanNationalIDViewController: FusumaDelegate {
     
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
         
+        let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
+        
         switch source {
-            
         case .camera:
             
             print("Image captured from Camera")
+            
+            switch self.type {
+            case .ALL:
+                self.imgNationalIDAll.image = img
+                break
+            case .FRONT:
+                self.imgNationalIDFront.image = img
+                break
+            case .BACK:
+                self.imgNationalIDBack.image = img
+                break
+            }
+            
+            self.uploadData(img: img)
             
         case .library:
             

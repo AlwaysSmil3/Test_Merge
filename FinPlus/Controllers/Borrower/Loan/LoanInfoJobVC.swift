@@ -9,7 +9,7 @@
 import Foundation
 import DropDown
 
-class LoanInfoJobVC: BaseViewController {
+class LoanInfoJobVC: LoanBaseViewController {
     
     
     @IBOutlet var btnPosition: UIButton!
@@ -54,6 +54,12 @@ class LoanInfoJobVC: BaseViewController {
         
         self.getJobs()
         self.getPositions()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.updateDataToServer()
     }
     
     //MARK: Setup Dropdown
@@ -133,7 +139,6 @@ class LoanInfoJobVC: BaseViewController {
     
     
     @IBAction func btnContinueTapped(_ sender: Any) {
-        
         self.updateDataForLoanAPI {
             let loanWalletVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanWalletViewController") as! LoanWalletViewController
             

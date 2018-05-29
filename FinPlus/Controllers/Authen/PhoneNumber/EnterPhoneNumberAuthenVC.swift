@@ -7,9 +7,8 @@
 //
 
 import Foundation
-
 import JWT
-import Bugsnag
+
 
 class EnterPhoneNumberAuthenVC: BaseViewController {
     
@@ -19,6 +18,7 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
         super.viewDidLoad()
         
 
+        
         
     }
     
@@ -36,6 +36,7 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
         }
         
     }
+    
     
     @IBAction func btnContinueTapped(_ sender: Any) {
         

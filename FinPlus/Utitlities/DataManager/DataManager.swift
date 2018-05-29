@@ -12,7 +12,6 @@ class DataManager {
     // Singeton
     static let shared = DataManager()
     
-    
     var currentAccount: String = ""
     var userID: Int32 = 0
     
@@ -21,6 +20,9 @@ class DataManager {
     
     // Danh sách các loại khoản vay
     var loanCategories: [LoanCategories] = []
+    
+    // ID của Loan
+    var loanID: Int32?
     
     
 }

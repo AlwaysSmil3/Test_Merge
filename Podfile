@@ -11,7 +11,7 @@ pod 'SwiftyJSON'
 pod 'PromiseKit'
 pod 'Kingfisher'
 pod 'TPKeyboardAvoiding'
-pod 'OneSignal'
+
 pod 'DropDown'
 
 pod 'Alamofire'
@@ -24,7 +24,7 @@ pod 'JSONWebToken'
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
 
-pod 'Bugsnag'
+pod 'Firebase/Core'
 
 pod 'Fusuma'
 

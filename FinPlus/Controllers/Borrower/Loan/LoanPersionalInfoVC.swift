@@ -25,7 +25,7 @@ enum RelationPhoneNumber: Int {
 }
 
 
-class LoanPersionalInfoVC: BaseViewController {
+class LoanPersionalInfoVC: LoanBaseViewController {
     
     @IBOutlet var tfFullName: UITextField!
     @IBOutlet var tfGender: UITextField!
@@ -71,6 +71,12 @@ class LoanPersionalInfoVC: BaseViewController {
         super.viewDidLoad()
         
         self.setupDropdown()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.updateDataToServer()
     }
     
     private func setupDropdown() {
@@ -147,7 +153,6 @@ class LoanPersionalInfoVC: BaseViewController {
             if let date = date {
                 self.birthDay = date
             }
-            
         }
         
     }

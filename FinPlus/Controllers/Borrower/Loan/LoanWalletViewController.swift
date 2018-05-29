@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LoanWalletViewController: BaseViewController {
+class LoanWalletViewController: LoanBaseViewController {
     
     
     @IBOutlet var walletTBView: UITableView!
@@ -30,6 +30,12 @@ class LoanWalletViewController: BaseViewController {
         self.getWallets()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.updateDataToServer()
+    }
+    
     
     private func getWallets() {
         APIClient.shared.getWallets()
@@ -48,8 +54,6 @@ class LoanWalletViewController: BaseViewController {
         self.navigationController?.pushViewController(addWalletVC, animated: true)
         
     }
-    
-    
     
 }
 

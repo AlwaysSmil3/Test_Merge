@@ -13,6 +13,7 @@ struct LoanInfo: Encodable {
     var loanCategoryID: Int
     var amount: Int32
     var term: Int
+    var status: Int
     
     var userInfo: LoanUserInfo
     var jobInfo: LoanJobInfo
@@ -29,6 +30,7 @@ struct LoanInfo: Encodable {
         self.loanCategoryID = 0
         self.amount = 0
         self.term = 0
+        self.status = 0
         
         self.userInfo = LoanUserInfo()
         self.jobInfo = LoanJobInfo()
@@ -46,6 +48,7 @@ struct LoanInfo: Encodable {
         case loanCategoryId
         case amount
         case term
+        case status
         case userInfo
         case jobInfo
         case walletId
@@ -60,6 +63,7 @@ struct LoanInfo: Encodable {
         try container.encode(loanCategoryID, forKey: .loanCategoryId)
         try container.encode(amount, forKey: .amount)
         try container.encode(term, forKey: .term)
+        try container.encode(status, forKey: .status)
         try container.encode(userInfo, forKey: .userInfo)
         try container.encode(jobInfo, forKey: .jobInfo)
         try container.encode(walletId, forKey: .walletId)

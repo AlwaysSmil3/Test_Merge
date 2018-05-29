@@ -10,7 +10,6 @@ import Foundation
 
 class ManagerWalletVC: BaseViewController {
     
-    
     @IBOutlet var emptyWalletView: UIView!
     @IBOutlet var walletTBView: UITableView!
     

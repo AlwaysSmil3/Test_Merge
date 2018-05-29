@@ -58,7 +58,7 @@ extension APIClient {
     /* POST Tạo một khoản vay mới
      
      */
-    func loan()  -> Promise<LoanResponseModel> {
+    func loan(isShowLoandingView: Bool = true) -> Promise<LoanResponseModel> {
         let params: JSONDictionary = [
             "": ""
         ]
@@ -70,19 +70,18 @@ extension APIClient {
         
         if let data = loanInfoData {
             dataAPI = data
-            
-            let json = try? JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-            if let json = json {
-                print("Person JSON:\n" + String(describing: json) + "\n")
-
-            }
+//            let json = try? JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+//            if let json = json {
+//                print("Person JSON:\n" + String(describing: json) + "\n")
+//
+//            }
         }
         
         let uid = DataManager.shared.userID
         let endPoint = "\(uid)/" + EndPoint.Loan.Loans
         
         return Promise { fullFill, reject in
-            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST, jsonData: dataAPI)
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: isShowLoandingView, httpType: HTTPMethodType.POST, jsonData: dataAPI)
                 .then { json -> Void in
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = LoanResponseModel(object: data)
@@ -112,16 +111,11 @@ extension APIClient {
                     
                     let model = APIResponseGeneral(object: json)
                     fullFill(model)
-                    
                 }
                 .catch { error in reject(error)}
         }
         
-        
     }
-    
-    
-    
     
     
     

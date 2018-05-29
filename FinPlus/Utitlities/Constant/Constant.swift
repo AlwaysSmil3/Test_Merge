@@ -15,6 +15,14 @@ enum API_MESSAGE {
     static let DATA_FORMART_ERROR = "Không xử lý được dữ liệu nhận được"
 }
 
+// Định nghĩa Constant nối vào đuôi media để upload lên server
+enum TYPE_UPLOAD_MEDIA_LENDING: String {
+    case NATIONALID_FRONT = "FRONT"
+    case NATIONALID_BACK = "BACK"
+    case NATIONALID_ALL = "ALL"
+    case OPTIONAL_MEDIA = "OPTIONALMEDIA"
+}
+
 let API_RESPONSE_RETURN_CODE = "returnCode"
 let API_RESPONSE_RETURN_MESSAGE = "returnMsg"
 let API_RESPONSE_RETURN_DATA = "data"
