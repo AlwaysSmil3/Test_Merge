@@ -17,6 +17,7 @@ class BorrowHomeViewController: BaseViewController {
         
         self.getUserInfo()
         self.getLoanCategories()
+        
     }
     
     // Lấy thông tin User
@@ -24,7 +25,7 @@ class BorrowHomeViewController: BaseViewController {
         
         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
             .then(on: DispatchQueue.main) { model -> Void in
-                
+                print("User \(model)")
                 
             }
             .catch { error in }
@@ -36,7 +37,6 @@ class BorrowHomeViewController: BaseViewController {
         
         APIClient.shared.getLoanCategories()
             .then(on: DispatchQueue.main) { model -> Void in
-                print("\(model)")
                 DataManager.shared.loanCategories = model
             }
             .catch { error in }

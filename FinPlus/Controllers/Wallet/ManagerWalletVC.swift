@@ -1,37 +1,38 @@
 //
-//  LoanWalletViewController.swift
+//  ManagerWalletVC.swift
 //  FinPlus
 //
-//  Created by Cao Van Hai on 5/22/18.
+//  Created by Cao Van Hai on 5/28/18.
 //  Copyright © 2018 Cao Van Hai. All rights reserved.
 //
 
 import Foundation
 
-class LoanWalletViewController: BaseViewController {
+class ManagerWalletVC: BaseViewController {
     
     
+    @IBOutlet var emptyWalletView: UIView!
     @IBOutlet var walletTBView: UITableView!
     
     var dataSource: [Wallet] = [] {
         didSet {
             if dataSource.count > 0 {
                 self.walletTBView.reloadData()
+            } else {
+                self.emptyWalletView.isHidden = false
             }
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.walletTBView.tableFooterView = UIView()
+        self.emptyWalletView.isHidden = true
         
         self.getWallets()
     }
     
-    
     private func getWallets() {
+        
         APIClient.shared.getWallets()
             .then { model -> Void in
                 self.dataSource = model
@@ -40,27 +41,26 @@ class LoanWalletViewController: BaseViewController {
             .catch { error in }
     }
     
-    //MARK: Actions
+    //MARK
     
     @IBAction func btnAddWalletTapped(_ sender: Any) {
+        
         let addWalletVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "AddWalletViewController") as! AddWalletViewController
         addWalletVC.delegate = self
         self.navigationController?.pushViewController(addWalletVC, animated: true)
         
     }
     
-    
-    
 }
 
-extension LoanWalletViewController: WalletDataProtocol {
+extension ManagerWalletVC: WalletDataProtocol {
     func getWalletData(wallet: [Wallet]) {
         self.dataSource = wallet
     }
 }
 
 
-extension LoanWalletViewController: UITableViewDelegate, UITableViewDataSource {
+extension ManagerWalletVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataSource.count
@@ -73,7 +73,6 @@ extension LoanWalletViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.lblOwnerName.text = wallet.walletAccountName!
         cell.lblAccountNumber.text = wallet.walletNumber!
-        DataManager.shared.loanInfo.walletId = wallet.id!
         
         return cell
     }
@@ -81,12 +80,13 @@ extension LoanWalletViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
         
-        self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
         
     }
     
     
     
 }
+
+
+

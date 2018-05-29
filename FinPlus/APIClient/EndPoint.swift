@@ -44,7 +44,7 @@ enum EndPoint {
     }
     
     enum Wallet {
-        static let AddWallet = "users:uid/wallets"
+        static let AddWallet = "users/:uid/wallets"
         
     }
     

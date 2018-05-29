@@ -1173,10 +1173,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWE-iq-Nlg">
-                                        <rect key="frame" x="0.0" y="50" width="375" height="553"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="513"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4jR-y9-Bed">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="513"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Itx-F4-a70">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="556"/>
@@ -1274,15 +1274,28 @@
                                             <constraint firstItem="4jR-y9-Bed" firstAttribute="top" secondItem="eWE-iq-Nlg" secondAttribute="top" id="o3d-XM-SnD"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FS1-0D-Gh3">
+                                        <rect key="frame" x="0.0" y="563" width="375" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="q1W-SQ-TLY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                        <state key="normal" title="Thêm tài khoản"/>
+                                        <connections>
+                                            <action selector="btnAddWalletTapped:" destination="UTd-ni-U4O" eventType="touchUpInside" id="Wzk-JK-Tik"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="EYb-RQ-cGx" secondAttribute="trailing" id="1e3-kJ-QWR"/>
                                     <constraint firstItem="EYb-RQ-cGx" firstAttribute="top" secondItem="Fep-er-afv" secondAttribute="top" id="69o-2j-m4S"/>
                                     <constraint firstItem="EYb-RQ-cGx" firstAttribute="leading" secondItem="Fep-er-afv" secondAttribute="leading" id="7di-fW-rdd"/>
-                                    <constraint firstAttribute="bottom" secondItem="eWE-iq-Nlg" secondAttribute="bottom" id="Oz6-Df-wh0"/>
+                                    <constraint firstItem="FS1-0D-Gh3" firstAttribute="leading" secondItem="Fep-er-afv" secondAttribute="leading" id="OKH-gV-pX6"/>
                                     <constraint firstItem="eWE-iq-Nlg" firstAttribute="leading" secondItem="Fep-er-afv" secondAttribute="leading" id="Uig-Cn-rGZ"/>
+                                    <constraint firstItem="FS1-0D-Gh3" firstAttribute="top" secondItem="eWE-iq-Nlg" secondAttribute="bottom" id="ndn-zU-qhQ"/>
                                     <constraint firstAttribute="trailing" secondItem="eWE-iq-Nlg" secondAttribute="trailing" id="oc1-gv-h9A"/>
+                                    <constraint firstAttribute="trailing" secondItem="FS1-0D-Gh3" secondAttribute="trailing" id="tyF-5y-87U"/>
                                     <constraint firstItem="eWE-iq-Nlg" firstAttribute="top" secondItem="EYb-RQ-cGx" secondAttribute="bottom" id="w6j-DW-dMq"/>
                                 </constraints>
                             </view>
@@ -1293,6 +1306,7 @@
                             <constraint firstItem="Fep-er-afv" firstAttribute="top" secondItem="nk9-43-IMi" secondAttribute="bottom" id="G3i-kJ-DdX"/>
                             <constraint firstItem="nk9-43-IMi" firstAttribute="top" secondItem="esQ-WF-eCB" secondAttribute="bottom" constant="-20" id="Mg5-1C-lID"/>
                             <constraint firstItem="nk9-43-IMi" firstAttribute="leading" secondItem="2NO-N1-D49" secondAttribute="leading" id="PWH-N9-t2S"/>
+                            <constraint firstItem="iiP-ge-50B" firstAttribute="top" secondItem="FS1-0D-Gh3" secondAttribute="bottom" id="Toc-Ws-3AM"/>
                             <constraint firstAttribute="bottom" secondItem="Fep-er-afv" secondAttribute="bottom" id="aRa-GY-Qzc"/>
                             <constraint firstAttribute="trailing" secondItem="nk9-43-IMi" secondAttribute="trailing" id="ecK-l2-gLF"/>
                             <constraint firstAttribute="trailing" secondItem="Fep-er-afv" secondAttribute="trailing" id="z8P-dc-YWK"/>
