@@ -1,7 +1,7 @@
 //
 //  BrowwerInfo.swift
 //
-//  Created by Cao Van Hai on 5/17/18
+//  Created by Cao Van Hai on 5/30/18
 //  Copyright (c) . All rights reserved.
 //
 
@@ -18,7 +18,7 @@ public struct BrowwerInfo {
     static let works = "works"
     static let wallets = "wallets"
     static let residence = "residence"
-    static let loans = "loans"
+    static let activeLoan = "activeLoan"
     static let birthday = "birthday"
     static let role = "role"
     static let fullName = "fullName"
@@ -31,11 +31,11 @@ public struct BrowwerInfo {
   // MARK: Properties
   public var phoneNumber: String?
   public var gender: String?
-  public var contacts: [BrowwerContacts]?
+  public var contacts: BrowwerContacts?
   public var works: [BrowwerWorks]?
   public var wallets: [BrowwerWallets]?
   public var residence: BrowwerResidence?
-  public var loans: [Any]?
+  public var activeLoan: BrowwerActiveLoan?
   public var birthday: String?
   public var role: String?
   public var fullName: String?
@@ -59,11 +59,11 @@ public struct BrowwerInfo {
   public init(json: JSON) {
     phoneNumber = json[SerializationKeys.phoneNumber].string ?? ""
     gender = json[SerializationKeys.gender].string ?? ""
-    if let items = json[SerializationKeys.contacts].array { contacts = items.map { BrowwerContacts(json: $0) } }
+    contacts = BrowwerContacts(json: json[SerializationKeys.contacts])
     if let items = json[SerializationKeys.works].array { works = items.map { BrowwerWorks(json: $0) } }
     if let items = json[SerializationKeys.wallets].array { wallets = items.map { BrowwerWallets(json: $0) } }
     residence = BrowwerResidence(json: json[SerializationKeys.residence])
-    if let items = json[SerializationKeys.loans].array { loans = items.map { $0.object} }
+    activeLoan = BrowwerActiveLoan(json: json[SerializationKeys.activeLoan])
     birthday = json[SerializationKeys.birthday].string ?? ""
     role = json[SerializationKeys.role].string ?? ""
     fullName = json[SerializationKeys.fullName].string ?? ""
@@ -80,11 +80,11 @@ public struct BrowwerInfo {
     var dictionary: [String: Any] = [:]
     if let value = phoneNumber { dictionary[SerializationKeys.phoneNumber] = value }
     if let value = gender { dictionary[SerializationKeys.gender] = value }
-    if let value = contacts { dictionary[SerializationKeys.contacts] = value.map { $0.dictionaryRepresentation() } }
+    if let value = contacts { dictionary[SerializationKeys.contacts] = value }
     if let value = works { dictionary[SerializationKeys.works] = value.map { $0.dictionaryRepresentation() } }
     if let value = wallets { dictionary[SerializationKeys.wallets] = value.map { $0.dictionaryRepresentation() } }
     if let value = residence { dictionary[SerializationKeys.residence] = value.dictionaryRepresentation() }
-    if let value = loans { dictionary[SerializationKeys.loans] = value }
+    if let value = activeLoan { dictionary[SerializationKeys.activeLoan] = value.dictionaryRepresentation() }
     if let value = birthday { dictionary[SerializationKeys.birthday] = value }
     if let value = role { dictionary[SerializationKeys.role] = value }
     if let value = fullName { dictionary[SerializationKeys.fullName] = value }

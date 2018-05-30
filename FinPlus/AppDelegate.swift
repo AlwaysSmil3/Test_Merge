@@ -72,12 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
             }
             .catch { error in
-                
-                
             }
-        
-        
-        
     }
     
     

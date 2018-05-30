@@ -1,7 +1,7 @@
 //
 //  BrowwerWallets.swift
 //
-//  Created by Cao Van Hai on 5/17/18
+//  Created by Cao Van Hai on 5/30/18
 //  Copyright (c) . All rights reserved.
 //
 
@@ -35,9 +35,9 @@ public struct BrowwerWallets {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    id = json[SerializationKeys.id].string ?? ""
-    walletType = json[SerializationKeys.walletType].string ?? ""
-    walletNumber = json[SerializationKeys.walletNumber].string ?? ""
+    id = json[SerializationKeys.id].string
+    walletType = json[SerializationKeys.walletType].string
+    walletNumber = json[SerializationKeys.walletNumber].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.

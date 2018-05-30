@@ -10,6 +10,17 @@ import Foundation
 
 class BorrowHomeViewController: BaseViewController {
     
+    @IBOutlet var contentLoanView: UIView!
+    
+    var detailLoanView: BrrowerHome?
+    
+    // Loan status cho các trạng thái của Loan
+    var loanStatus: Int = DataManager.shared.browwerInfo?.activeLoan?.status ?? -1 {
+        didSet {
+            
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,15 +29,43 @@ class BorrowHomeViewController: BaseViewController {
         self.getUserInfo()
         self.getLoanCategories()
         
+        self.setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        
+        if let detailLoanView = self.detailLoanView {
+            detailLoanView.frame.origin = CGPoint(x: 0, y: 0)
+        }
+    }
+    
+    private func setupUI() {
+        self.detailLoanView = BrrowerHome(frame: self.contentLoanView.frame)
+        
     }
     
     // Lấy thông tin User
     private func getUserInfo() {
-        
         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
             .then(on: DispatchQueue.main) { model -> Void in
-                print("User \(model)")
                 
+                DataManager.shared.browwerInfo = model
+                
+                if let loan = model.activeLoan, let status = loan.status {
+                    self.loanStatus = status
+                    self.detailLoanView?.loanInfo = loan
+                    self.contentLoanView.addSubview(self.detailLoanView!)
+                    
+                    if let detailLoanView = self.detailLoanView {
+                        detailLoanView.frame.origin = CGPoint(x: 0, y: 0)
+                    }
+                    
+                }
             }
             .catch { error in }
     }

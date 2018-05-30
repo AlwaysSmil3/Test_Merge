@@ -1,5 +1,5 @@
 //
-//  BrowwerWorks.swift
+//  BrowwerJobInfo.swift
 //
 //  Created by Cao Van Hai on 5/30/18
 //  Copyright (c) . All rights reserved.
@@ -8,27 +8,25 @@
 import Foundation
 import SwiftyJSON
 
-public struct BrowwerWorks {
+public struct BrowwerJobInfo {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
     static let position = "position"
-    static let latitude = "latitude"
-    static let phoneNumber = "phoneNumber"
-    static let level = "level"
+    static let companyPhoneNumber = "companyPhoneNumber"
     static let salary = "salary"
-    static let longitude = "longitude"
     static let company = "company"
+    static let jobType = "jobType"
+    static let address = "address"
   }
 
   // MARK: Properties
   public var position: String?
-  public var latitude: Int?
-  public var phoneNumber: String?
-  public var level: String?
-  public var salary: String?
-  public var longitude: Int?
+  public var companyPhoneNumber: String?
+  public var salary: Int?
   public var company: String?
+  public var jobType: String?
+  public var address: BrowwerAddress?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -44,12 +42,11 @@ public struct BrowwerWorks {
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
     position = json[SerializationKeys.position].string
-    latitude = json[SerializationKeys.latitude].int
-    phoneNumber = json[SerializationKeys.phoneNumber].string
-    level = json[SerializationKeys.level].string
-    salary = json[SerializationKeys.salary].string
-    longitude = json[SerializationKeys.longitude].int
+    companyPhoneNumber = json[SerializationKeys.companyPhoneNumber].string
+    salary = json[SerializationKeys.salary].int
     company = json[SerializationKeys.company].string
+    jobType = json[SerializationKeys.jobType].string
+    address = BrowwerAddress(json: json[SerializationKeys.address])
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -58,12 +55,11 @@ public struct BrowwerWorks {
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
     if let value = position { dictionary[SerializationKeys.position] = value }
-    if let value = latitude { dictionary[SerializationKeys.latitude] = value }
-    if let value = phoneNumber { dictionary[SerializationKeys.phoneNumber] = value }
-    if let value = level { dictionary[SerializationKeys.level] = value }
+    if let value = companyPhoneNumber { dictionary[SerializationKeys.companyPhoneNumber] = value }
     if let value = salary { dictionary[SerializationKeys.salary] = value }
-    if let value = longitude { dictionary[SerializationKeys.longitude] = value }
     if let value = company { dictionary[SerializationKeys.company] = value }
+    if let value = jobType { dictionary[SerializationKeys.jobType] = value }
+    if let value = address { dictionary[SerializationKeys.address] = value.dictionaryRepresentation() }
     return dictionary
   }
 

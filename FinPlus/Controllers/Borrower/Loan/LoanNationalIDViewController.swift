@@ -21,8 +21,6 @@ class LoanNationalIDViewController: LoanBaseViewController {
     @IBOutlet var imgNationalIDFront: UIImageView!
     @IBOutlet var imgNationalIDBack: UIImageView!
     
-    
-    
     var type: NATIONALID_TYPE_IMG = .ALL
     
     override func viewDidLoad() {
@@ -46,7 +44,6 @@ class LoanNationalIDViewController: LoanBaseViewController {
         fusuma.availableModes = [.camera]
 
         fusumaSavesImage = true
-        
         self.present(fusuma, animated: true, completion: nil)
     }
     
@@ -54,8 +51,9 @@ class LoanNationalIDViewController: LoanBaseViewController {
         
         let dataImg = UIImagePNGRepresentation(img)
         
+        let loanID = DataManager.shared.loanID ?? 0
         guard let data = dataImg else { return }
-        let endPoint = "loans/" + "\(1)/" + "file"
+        let endPoint = "loans/" + "\(loanID)/" + "file"
         
         self.handleLoadingView(isShow: true)
         APIClient.shared.upload(type: .NATIONALID_BACK, typeMedia: "image", endPoint: endPoint, imagesData: [data], parameters: ["" : ""], onCompletion: { (response) in
@@ -109,9 +107,7 @@ extension LoanNationalIDViewController: FusumaDelegate {
         
         switch source {
         case .camera:
-            
             print("Image captured from Camera")
-            
             switch self.type {
             case .ALL:
                 self.imgNationalIDAll.image = img
@@ -125,11 +121,11 @@ extension LoanNationalIDViewController: FusumaDelegate {
             }
             
             self.uploadData(img: img)
-            
+            break
         case .library:
             
             print("Image selected from Camera Roll")
-            
+            break
         default:
             
             print("Image selected")

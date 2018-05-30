@@ -16,7 +16,7 @@ struct LoanUserInfo: Encodable {
     var birthDay: String
     var nationalID: String
     
-    var relationships: [RelationShipPhone]
+    var relationships: RelationShipPhone
     var residentAddress: Address
     var temporaryAddress: Address
     
@@ -26,7 +26,7 @@ struct LoanUserInfo: Encodable {
         self.gender = "0"
         self.birthDay = ""
         self.nationalID = ""
-        self.relationships = []
+        self.relationships = RelationShipPhone()
         
         self.residentAddress = Address()
         self.temporaryAddress = Address()
@@ -52,10 +52,6 @@ struct LoanUserInfo: Encodable {
         try container.encode(relationships, forKey: .relationships)
         try container.encode(residentAddress, forKey: .residentAddress)
         try container.encode(temporaryAddress, forKey: .currentAddress)
-        
-        for phone in relationships {
-            
-        }
         
     }
     

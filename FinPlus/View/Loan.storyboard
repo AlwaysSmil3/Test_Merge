@@ -152,7 +152,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 Triệu (VNĐ)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yV-0a-d2U">
-                                                                <rect key="frame" x="273.5" y="52" width="85.5" height="15.5"/>
+                                                                <rect key="frame" x="276" y="52" width="83" height="15.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -164,7 +164,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 ngày" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUa-KX-vCL">
-                                                                <rect key="frame" x="313.5" y="144" width="45.5" height="15.5"/>
+                                                                <rect key="frame" x="312.5" y="144" width="46.5" height="15.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -185,7 +185,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHT-DM-Ilj">
-                                                                <rect key="frame" x="160.5" y="394" width="54" height="30"/>
+                                                                <rect key="frame" x="160" y="393.5" width="55" height="30"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <state key="normal" title="Tiếp tục"/>
                                                                 <connections>
@@ -217,7 +217,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số tiền dự kiến phải trả hàng tháng:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1D-ci-dxu">
-                                                                <rect key="frame" x="16" y="332.5" width="156" height="35.5"/>
+                                                                <rect key="frame" x="16" y="332.5" width="156" height="35"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -241,7 +241,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 VNĐ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNa-N7-EJu">
-                                                                <rect key="frame" x="172" y="341.5" width="187" height="18"/>
+                                                                <rect key="frame" x="172" y="342" width="187" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -563,7 +563,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Địa chỉ nhà thường chú của bạn (*)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGv-Dt-YrU">
-                                                                <rect key="frame" x="16" y="416" width="230.5" height="18"/>
+                                                                <rect key="frame" x="16" y="416" width="235" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -572,7 +572,7 @@
                                                                 <rect key="frame" x="338" y="414" width="21" height="21"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Địa chỉ nhà tạm chú của bạn (*)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ho-67-51O">
-                                                                <rect key="frame" x="16" y="454" width="209" height="18"/>
+                                                                <rect key="frame" x="16" y="454" width="210.5" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -581,7 +581,7 @@
                                                                 <rect key="frame" x="338" y="452" width="21" height="21"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lưu ý rằng. Mọi thông tin liên hệ bạn cung cấp. Chúng tôi chỉ sử dụng khi không thể liên lạc được với bạn khi quá hạn trả nợ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBE-eS-lYR">
-                                                                <rect key="frame" x="16" y="494" width="343" height="46"/>
+                                                                <rect key="frame" x="16" y="494" width="343" height="45.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -599,7 +599,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgL-Of-Fqp">
-                                                                <rect key="frame" x="159.5" y="560" width="56" height="30"/>
+                                                                <rect key="frame" x="159.5" y="559.5" width="56" height="30"/>
                                                                 <state key="normal" title="Tiếp tục"/>
                                                                 <connections>
                                                                     <action selector="btnContinueTapped:" destination="YcM-1g-Ydr" eventType="touchUpInside" id="gWi-qw-uWU"/>
@@ -1491,7 +1491,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZhS-PG-imJ">
-                                                                <rect key="frame" x="160" y="668.5" width="54" height="30"/>
+                                                                <rect key="frame" x="159.5" y="668.5" width="55" height="30"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <state key="normal" title="Tiếp tục"/>
                                                                 <connections>
@@ -1689,7 +1689,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3u0-bA-lk5">
                                         <rect key="frame" x="0.0" y="50" width="375" height="553"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Kc-yw-sbp">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Kc-yw-sbp" customClass="TPKeyboardAvoidingScrollView">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-1s-veA">
@@ -1714,7 +1714,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNs-eO-eYW">
-                                                                <rect key="frame" x="160" y="455" width="54" height="30"/>
+                                                                <rect key="frame" x="159.5" y="455" width="55" height="30"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <state key="normal" title="Tiếp tục"/>
                                                                 <connections>
@@ -1813,6 +1813,10 @@
                             <constraint firstAttribute="bottom" secondItem="DKq-Fn-bt0" secondAttribute="bottom" id="tkB-Fa-IJH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imgOtherInfo" destination="z7o-H0-fhR" id="XXS-yz-XO3"/>
+                        <outlet property="textOtherInfo" destination="x4L-fp-wMp" id="SGa-xk-yaN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYl-hJ-KB0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1905,62 +1909,62 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số điện thoại: xxx" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJJ-lb-qq5">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số điện thoại: x" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJJ-lb-qq5">
                                                                 <rect key="frame" x="16" y="36" width="343" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số tiền đăng ký vay: 1.000.000 VNĐ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evI-Tz-2VR">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số tiền đăng ký vay: 0 VNĐ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evI-Tz-2VR">
                                                                 <rect key="frame" x="16" y="64" width="343" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kỳ hạn vay: 9 tháng" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLW-dV-GTc">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kỳ hạn vay: 0 tháng" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLW-dV-GTc">
                                                                 <rect key="frame" x="16" y="92" width="343" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lãi xuất dự kiến: 18% năm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2r-v8-sSc">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lãi xuất dự kiến: 0% năm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2r-v8-sSc">
                                                                 <rect key="frame" x="16" y="120" width="343" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chi phí dự kiến: 200.000 VNĐ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dn-9w-x90">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chi phí dự kiến: 0 VNĐ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dn-9w-x90">
                                                                 <rect key="frame" x="16" y="148" width="343" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số tiền dự kiến thanh toán hàng tháng: 100.000 VNĐ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lv3-9y-c3Z">
-                                                                <rect key="frame" x="16" y="176" width="343" height="35.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số tiền dự kiến thanh toán hàng tháng: 0 VNĐ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lv3-9y-c3Z">
+                                                                <rect key="frame" x="16" y="176" width="343" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trạng thái: chờ phê duyệt" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="og9-Lo-ClP">
-                                                                <rect key="frame" x="16" y="221.5" width="343" height="18"/>
+                                                                <rect key="frame" x="16" y="204" width="343" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chú ý: Vui lòng bật thông báo để nhận thông tin về lãi suất và kết quả khoản vay của bạn sớm nhất" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPZ-fL-Vmw">
-                                                                <rect key="frame" x="16" y="259.5" width="343" height="35.5"/>
+                                                                <rect key="frame" x="16" y="242" width="343" height="35"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tôi đã đọc và đồng ý với điều khoản Finplus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RbP-Ii-d7B">
-                                                                <rect key="frame" x="16" y="315" width="343" height="18"/>
+                                                                <rect key="frame" x="16" y="297" width="343" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hj1-Fa-Bla">
-                                                                <rect key="frame" x="147.5" y="359" width="79" height="30"/>
+                                                                <rect key="frame" x="144.5" y="341" width="85" height="30"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <state key="normal" title="Gửi đơn vay"/>
                                                                 <connections>
@@ -2044,6 +2048,16 @@
                             <constraint firstItem="Y6W-li-AgB" firstAttribute="top" secondItem="8h7-pb-G88" secondAttribute="bottom" id="miw-dt-nUa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lblAccountName" destination="cHo-JG-mr5" id="D3K-45-nwT"/>
+                        <outlet property="lblAmountLoan" destination="evI-Tz-2VR" id="Ust-NT-KzA"/>
+                        <outlet property="lblPhoneNumber" destination="dJJ-lb-qq5" id="IX8-mV-xFR"/>
+                        <outlet property="lblStatus" destination="og9-Lo-ClP" id="I4J-s2-7M9"/>
+                        <outlet property="lblTempFee" destination="D2r-v8-sSc" id="HTQ-LO-ae7"/>
+                        <outlet property="lblTempPayAMonth" destination="lv3-9y-c3Z" id="ZHS-CT-ijh"/>
+                        <outlet property="lblTempTotalAmount" destination="5dn-9w-x90" id="okO-vW-Ab8"/>
+                        <outlet property="lblTermLoan" destination="NLW-dV-GTc" id="mND-cZ-rED"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sen-U1-49V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

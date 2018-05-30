@@ -10,9 +10,21 @@ import Foundation
 
 class LoanSummaryInfoVC: LoanBaseViewController {
     
+    
+    @IBOutlet var lblAccountName: UILabel!
+    @IBOutlet var lblPhoneNumber: UILabel!
+    @IBOutlet var lblAmountLoan: UILabel!
+    @IBOutlet var lblTermLoan: UILabel!
+    @IBOutlet var lblTempFee: UILabel!
+    @IBOutlet var lblTempTotalAmount: UILabel!
+    @IBOutlet var lblTempPayAMonth: UILabel!
+    @IBOutlet var lblStatus: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.updateUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -20,6 +32,18 @@ class LoanSummaryInfoVC: LoanBaseViewController {
         
         self.updateDataToServer()
     }
+    
+    private func updateUI() {
+        
+        self.lblAccountName.text = "Xin chào, " + DataManager.shared.loanInfo.userInfo.fullName
+        self.lblPhoneNumber.text = "Số điện thoại: " + DataManager.shared.currentAccount
+        
+        self.lblAmountLoan.text = "Số tiền đăng ký vay: " +  FinPlusHelper.formatDisplayCurrency(Double(DataManager.shared.loanInfo.amount)) + " VND"
+        
+        self.lblTermLoan.text = "Kỳ hạn vay: " + "\(DataManager.shared.loanInfo.term)"
+        
+    }
+    
     
     private func loan() {
         APIClient.shared.loan()

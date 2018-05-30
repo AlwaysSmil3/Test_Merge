@@ -125,7 +125,6 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     }
     
     private func updateDataForLoanAPI(completion: () -> Void) {
-        
         guard let birthDay = self.birthDay, let residentAddr = self.residentAddress, let tempAddr = self.temporatyAddress else { return }
         
         DataManager.shared.loanInfo.userInfo.fullName = self.tfFullName.text!
@@ -136,6 +135,9 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         
         DataManager.shared.loanInfo.userInfo.residentAddress = residentAddr
         DataManager.shared.loanInfo.userInfo.temporaryAddress = tempAddr
+        
+        DataManager.shared.loanInfo.userInfo.relationships.phoneNumber = self.tfRelationPhone.text!
+        DataManager.shared.loanInfo.userInfo.relationships.type = self.relationPhoneNumberType.rawValue
         
         completion()
     }

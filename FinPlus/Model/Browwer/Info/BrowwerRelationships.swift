@@ -1,5 +1,5 @@
 //
-//  BrowwerContacts.swift
+//  BrowwerRelationships.swift
 //
 //  Created by Cao Van Hai on 5/30/18
 //  Copyright (c) . All rights reserved.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public struct BrowwerContacts {
+public struct BrowwerRelationships {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
@@ -17,7 +17,7 @@ public struct BrowwerContacts {
   }
 
   // MARK: Properties
-  public var type: String?
+  public var type: Int?
   public var phoneNumber: String?
 
   // MARK: SwiftyJSON Initializers
@@ -33,8 +33,8 @@ public struct BrowwerContacts {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    type = json[SerializationKeys.type].string ?? ""
-    phoneNumber = json[SerializationKeys.phoneNumber].string ?? ""
+    type = json[SerializationKeys.type].int
+    phoneNumber = json[SerializationKeys.phoneNumber].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.

@@ -11,6 +11,10 @@ import Fusuma
 
 class LoanOtherInfoVC: LoanBaseViewController {
     
+    
+    @IBOutlet var textOtherInfo: AnimatableTextView!
+    @IBOutlet var imgOtherInfo: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,15 +36,16 @@ class LoanOtherInfoVC: LoanBaseViewController {
         fusuma.delegate = self
         fusuma.cropHeightRatio = 1.0
         fusuma.allowMultipleSelection = true
-        fusuma.availableModes = [.camera]
+        fusuma.availableModes = [.library]
         
         fusumaSavesImage = true
         
         self.present(fusuma, animated: true, completion: nil)
     }
     
-    //MARK: ACtions
     
+    
+    //MARK: ACtions
     
     @IBAction func btnLoanImgOtherInfoTapped(_ sender: Any) {
         self.setupFusuma()
@@ -48,13 +53,14 @@ class LoanOtherInfoVC: LoanBaseViewController {
     
     @IBAction func btnContinueTapped(_ sender: Any) {
         
+        DataManager.shared.loanInfo.optionalText = self.textOtherInfo.text
+        
         let loanSummaryInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSummaryInfoVC") as! LoanSummaryInfoVC
         
         self.navigationController?.pushViewController(loanSummaryInfoVC, animated: true)
     }
     
-    
-    
+
     
 }
 
@@ -62,7 +68,7 @@ class LoanOtherInfoVC: LoanBaseViewController {
 extension LoanOtherInfoVC: FusumaDelegate {
     
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
-        
+        let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
         switch source {
             
         case .camera:
@@ -88,12 +94,12 @@ extension LoanOtherInfoVC: FusumaDelegate {
         var count: Double = 0
         
         for image in images {
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + (3.0 * count)) {
-                
-                //self.imageView.image = image
-                print("w: \(image.size.width) - h: \(image.size.height)")
-            }
+            let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + (3.0 * count)) {
+//
+//                //self.imageView.image = image
+//                print("w: \(image.size.width) - h: \(image.size.height)")
+//            }
             count += 1
         }
     }

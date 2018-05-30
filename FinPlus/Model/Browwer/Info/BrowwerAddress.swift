@@ -1,5 +1,5 @@
 //
-//  BrowwerResidence.swift
+//  BrowwerAddress.swift
 //
 //  Created by Cao Van Hai on 5/30/18
 //  Copyright (c) . All rights reserved.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public struct BrowwerResidence {
+public struct BrowwerAddress {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
@@ -16,7 +16,7 @@ public struct BrowwerResidence {
     static let city = "city"
     static let latitude = "latitude"
     static let commune = "commune"
-    static let address = "address"
+    static let street = "street"
     static let longitude = "longitude"
     static let zipCode = "zipCode"
   }
@@ -26,7 +26,7 @@ public struct BrowwerResidence {
   public var city: String?
   public var latitude: Int?
   public var commune: String?
-  public var address: String?
+  public var street: String?
   public var longitude: Int?
   public var zipCode: String?
 
@@ -43,13 +43,13 @@ public struct BrowwerResidence {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    district = json[SerializationKeys.district].string
-    city = json[SerializationKeys.city].string
-    latitude = json[SerializationKeys.latitude].int
-    commune = json[SerializationKeys.commune].string
-    address = json[SerializationKeys.address].string
-    longitude = json[SerializationKeys.longitude].int
-    zipCode = json[SerializationKeys.zipCode].string
+    district = json[SerializationKeys.district].string ?? ""
+    city = json[SerializationKeys.city].string ?? ""
+    latitude = json[SerializationKeys.latitude].int ?? 0
+    commune = json[SerializationKeys.commune].string ?? ""
+    street = json[SerializationKeys.street].string ?? ""
+    longitude = json[SerializationKeys.longitude].int ?? 0
+    zipCode = json[SerializationKeys.zipCode].string ?? ""
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -61,7 +61,7 @@ public struct BrowwerResidence {
     if let value = city { dictionary[SerializationKeys.city] = value }
     if let value = latitude { dictionary[SerializationKeys.latitude] = value }
     if let value = commune { dictionary[SerializationKeys.commune] = value }
-    if let value = address { dictionary[SerializationKeys.address] = value }
+    if let value = street { dictionary[SerializationKeys.street] = value }
     if let value = longitude { dictionary[SerializationKeys.longitude] = value }
     if let value = zipCode { dictionary[SerializationKeys.zipCode] = value }
     return dictionary
