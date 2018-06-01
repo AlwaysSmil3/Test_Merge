@@ -8,6 +8,12 @@
 
 import Foundation
 
+protocol BrowwerHomeDelegate {
+    
+    func updateInfo(status: STATUS_LOAN)
+    
+}
+
 class BrrowerHome: UIView {
     
     //DRAFT: 0 # Màn hình H.3
@@ -35,6 +41,11 @@ class BrrowerHome: UIView {
     
     fileprivate var containerView: UIView!
     fileprivate let nibName = "BrrowerHome"
+    
+    //Loan status
+    var loanStatus: STATUS_LOAN = .DRAFT
+    
+    var delegate: BrowwerHomeDelegate?
     
     var loanInfo: BrowwerActiveLoan? {
         didSet {
@@ -79,19 +90,26 @@ class BrrowerHome: UIView {
         switch loan.status! {
         case 0:
             //DRAFT: 0 # Màn hình H.3
+            self.loanStatus = .DRAFT
             
             break
         case 1:
             //"WAITING_FOR_APPROVAL": 1, // H.4
             self.containerView.addSubview(self.viewH4)
+            self.loanStatus = .WAITING_FOR_APPROVAL
+            
             break
         case 2:
             //"PENDING": 2, // H.5
             self.containerView.addSubview(self.viewH5)
+            self.loanStatus = .PENDING
+            
             break
         case 3:
             //"ACCEPTED": 3, // H.6 -> H.9
             self.containerView.addSubview(self.viewH6)
+            self.loanStatus = .ACCEPTED
+            
             break
         default:
             break
@@ -132,8 +150,19 @@ class BrrowerHome: UIView {
             // Số tiền phải trả hàng tháng
             amountPayMounth.text = "x VND"
         }
-
         
+        if let version = DataManager.shared.version {
+            for serviceFee in lblServiceFee {
+                serviceFee.text = FinPlusHelper.formatDisplayCurrency(Double((Int32(version.serviceFee!) * loan.amount!) / 100)) + " VND"
+            }
+        }
+        
+    }
+    
+    //MARK: Actions
+    
+    @IBAction func btnContinueUpdateInfoTapped(_ sender: Any) {
+        delegate?.updateInfo(status: self.loanStatus)
         
     }
     

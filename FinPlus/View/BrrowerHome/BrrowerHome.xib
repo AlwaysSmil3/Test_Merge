@@ -148,6 +148,9 @@
                                     <rect key="frame" x="16" y="231.5" width="168" height="30"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                     <state key="normal" title="Hoàn thiện đăng ký vay"/>
+                                    <connections>
+                                        <action selector="btnContinueUpdateInfoTapped:" destination="-1" eventType="touchUpInside" id="WvJ-iF-OgA"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIW-SD-0Gb">
                                     <rect key="frame" x="192" y="231.5" width="168" height="30"/>
@@ -731,6 +734,9 @@
                                     <rect key="frame" x="16" y="333" width="343" height="30"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                     <state key="normal" title="Xác nhận khoản vay"/>
+                                    <connections>
+                                        <action selector="btnContinueUpdateInfoTapped:" destination="-1" eventType="touchUpInside" id="HEv-qZ-6me"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số tiền phải thanh toán hàng tháng" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vH8-as-aap">
                                     <rect key="frame" x="16" y="215.5" width="166" height="35.5"/>

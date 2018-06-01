@@ -27,5 +27,8 @@ class DataManager {
     // ID của Loan
     var loanID: Int32?
     
+    // Version, config
+    var version: Version?
+    
     
 }

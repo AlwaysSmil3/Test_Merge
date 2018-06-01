@@ -23,6 +23,17 @@ enum TYPE_UPLOAD_MEDIA_LENDING: String {
     case OPTIONAL_MEDIA = "OPTIONALMEDIA"
 }
 
+// Các trạng thái của khoản vay
+enum STATUS_LOAN: Int {
+    case DRAFT = 0 // H3
+    case WAITING_FOR_APPROVAL = 1 // H4
+    case PENDING = 2 // H5
+    case ACCEPTED = 3 // H6
+    case REJECTED = 4 // H13
+    case CANCELED = 5
+    
+}
+
 let API_RESPONSE_RETURN_CODE = "returnCode"
 let API_RESPONSE_RETURN_MESSAGE = "returnMsg"
 let API_RESPONSE_RETURN_DATA = "data"

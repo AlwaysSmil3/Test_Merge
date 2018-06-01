@@ -56,6 +56,8 @@ class LoanFirstViewController: BaseViewController {
         self.lblMinAmountSlider.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY))"
         self.lblMinTermSlider.text = "\(Int(loan.termMin!))"
         
+        self.lblInterestRate.text = "\(loan.interestRate!)% năm"
+        
     }
     
     private func updateDataToLoanAPI(completion: () -> Void) {
@@ -71,11 +73,21 @@ class LoanFirstViewController: BaseViewController {
     //MARK: Actions
     @IBAction func moneySliderValueChaned(_ sender: Any) {
         self.lblMoneySlider.text = "\(Int(self.amountSlider.value))" + " Triệu VND"
+        self.lblAmountLoan.text = "\(Int(self.amountSlider.value))" + " Triệu VND"
+        
+        guard let version = DataManager.shared.version else { return }
+        
+        let fee = Double(Int(self.amountSlider.value) * version.serviceFee! * 1000000 / 100)
+        
+        self.lblTempFee.text = FinPlusHelper.formatDisplayCurrency(fee) + " VND"
+        
+        self.lblTempTotalAmount.text = FinPlusHelper.formatDisplayCurrency(fee + Double(self.amountSlider.value  * 1000000)) + " VND"
         
     }
     
     @IBAction func termSliderValueChanged(_ sender: Any) {
         self.lblTermSlider.text = "\(Int(self.termSlider.value))" + " Ngày"
+        self.lblLoanTerm.text = "\(Int(self.termSlider.value))" + " Ngày"
         
     }
     
