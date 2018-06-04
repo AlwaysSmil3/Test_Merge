@@ -112,7 +112,6 @@ extension BorrowHomeViewController: BrowwerHomeDelegate {
             
         case .ACCEPTED:
             self.acceptedInterestRate()
-            
             break
             
         case .CANCELED:
@@ -126,6 +125,9 @@ extension BorrowHomeViewController: BrowwerHomeDelegate {
             
         case .WAITING_FOR_APPROVAL:
             
+            break
+            
+        case .RAISING_CAPITAL:
             break
 
         }

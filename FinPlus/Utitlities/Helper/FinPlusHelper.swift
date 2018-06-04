@@ -113,6 +113,34 @@ class FinPlusHelper {
     }
     
     
+    /// Lấy lãi xuất từ LoanCategoryID
+    ///
+    /// - Parameter id: <#id description#>
+    /// - Returns: <#return value description#>
+    static func getInterestRateFromLoanCategoryID(id: Int) -> Double? {
+        let cates = DataManager.shared.loanCategories.filter { $0.id == id }
+        guard cates.count >= 1 else { return nil }
+        return cates[0].interestRate!
+    }
+    
+    //MARK: Color Gradient
+    
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - colorBottom: <#colorBottom description#>
+    ///   - colorTop: <#colorTop description#>
+    /// - Returns: <#return value description#>
+    static func setGradientColor(colorBottom: UIColor, colorTop: UIColor, frame: CGRect) -> CAGradientLayer {
+        let gl = CAGradientLayer()
+        gl.colors = [colorTop.cgColor, colorBottom.cgColor]
+        gl.locations = [0.0, 1.0]
+        gl.frame = frame
+        
+        return gl
+    }
+    
+    
     
     
     

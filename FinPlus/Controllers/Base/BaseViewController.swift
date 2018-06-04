@@ -10,8 +10,16 @@ import Foundation
 
 class BaseViewController: UIViewController {
     
+    @IBOutlet var btnContinue: UIButton?
+    @IBOutlet var imgBgBtnContinue: UIImageView?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let btn = self.btnContinue {
+            btn.dropShadow(color: DISABLE_BUTTON_COLOR)
+        }
         
     }
     
@@ -21,6 +29,8 @@ class BaseViewController: UIViewController {
     }
     
     // MARK: - Action
+    
+    
     @IBAction func btnBackCurrentClicked(_ sender: Any) {
         
         _ = self.navigationController?.popViewController(animated: true)

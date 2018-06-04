@@ -25,6 +25,18 @@ class ChoiceKindUserVC: BaseViewController {
     
     @IBOutlet var btnFacebook: UIButton!
     
+    @IBOutlet var browView: UIView!
+    @IBOutlet var imgBgBrow: UIImageView!
+    @IBOutlet var lblBrow1: UILabel!
+    @IBOutlet var lblBrow2: UILabel!
+    @IBOutlet var lblBrow3: UILabel!
+    
+    @IBOutlet var investView: UIView!
+    @IBOutlet var imgBgInvest: UIImageView!
+    @IBOutlet var lblInvest1: UILabel!
+    @IBOutlet var lblInvest2: UILabel!
+    @IBOutlet var lblInvest3: UILabel!
+
     
     // facebook Info
     var faceBookInfo: FacebookInfo?
@@ -32,16 +44,57 @@ class ChoiceKindUserVC: BaseViewController {
     var pw: String?
     
     // Loại user: Browwer hay Investor, browwer = 0, investor = 1
-    var accountType: TypeAccount = .Browwer
+    var accountType: TypeAccount? {
+        didSet {
+            self.updateUIForSelectedType()
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.browView.dropShadow(color: DISABLE_BUTTON_COLOR)
+        self.investView.dropShadow(color: DISABLE_BUTTON_COLOR)
     }
     
     override func viewDidLayoutSubviews() {
-        self.updateViewForBrowwer()
+        
+    }
+    
+    private func updateUIForSelectedType() {
+        
+        guard let type = self.accountType else { return }
+        
+        if type.rawValue == 0 {
+            self.imgBgBrow.image = #imageLiteral(resourceName: "img_bg_growth")
+            self.lblBrow1.textColor = UIColor.white
+            self.lblBrow2.textColor = UIColor.white
+            self.lblBrow3.textColor = UIColor.white
+            self.browView.dropShadow(color: MAIN_COLOR)
+            
+            self.imgBgInvest.image = #imageLiteral(resourceName: "img_bg_growth1")
+            self.lblInvest1.textColor = UIColor(hexString: "#08121E")
+            self.lblInvest2.textColor = UIColor(hexString: "#4D6678")
+            self.lblInvest3.textColor = UIColor(hexString: "#3EAA5F")
+            self.investView.dropShadow(color: DISABLE_BUTTON_COLOR)
+            
+            
+        } else {
+            self.imgBgBrow.image = #imageLiteral(resourceName: "img_bg_growth1")
+            self.lblBrow1.textColor = UIColor(hexString: "#08121E")
+            self.lblBrow2.textColor = UIColor(hexString: "#4D6678")
+            self.lblBrow3.textColor = UIColor(hexString: "#3EAA5F")
+            self.browView.dropShadow(color: DISABLE_BUTTON_COLOR)
+            
+            self.imgBgInvest.image = #imageLiteral(resourceName: "img_bg_growth")
+            self.lblInvest1.textColor = UIColor.white
+            self.lblInvest2.textColor = UIColor.white
+            self.lblInvest3.textColor = UIColor.white
+            self.investView.dropShadow(color: MAIN_COLOR)
+        }
+        
+        
     }
     
     // Pasre Facebook Data Info
@@ -80,23 +133,16 @@ class ChoiceKindUserVC: BaseViewController {
     
     @IBAction func btnInvestorSelectedTapped(_ sender: Any) {
         
+        guard self.accountType != .Investor else { return }
         self.accountType = .Investor
-        
-        UIView.animate(withDuration: 0.5, delay: 0.2, options: .curveEaseOut, animations: {
-            self.heightConstraintInfoInvestorView.constant = 526
-            self.view.layoutIfNeeded()
-        }) { (status) in
-            self.infoInvestorView.isHidden = false
-            self.btnFacebook.isHidden = true
-        }
+
     }
     
     @IBAction func btnBrowwerSelectedTapped(_ sender: Any) {
         
+        guard self.accountType != .Browwer else { return }
         self.accountType = .Browwer
-        
-        self.updateViewForBrowwer()
-        
+    
     }
     
     @IBAction func btnGoToFacebookTapped(_ sender: Any) {
@@ -109,12 +155,12 @@ class ChoiceKindUserVC: BaseViewController {
                 
                 guard let fbInfo = self.faceBookInfo, let pass = self.pw else { return }
                 
-                APIClient.shared.updateInfoFromFacebook(phoneNumber: DataManager.shared.currentAccount, pass: pass, accountType: self.accountType.rawValue, accessToken: fbInfo.accessToken, avatar: fbInfo.avatar, displayName: fbInfo.fullName)
+                APIClient.shared.updateInfoFromFacebook(phoneNumber: DataManager.shared.currentAccount, pass: pass, accountType: self.accountType!.rawValue, accessToken: fbInfo.accessToken, avatar: fbInfo.avatar, displayName: fbInfo.fullName)
                     .then(on: DispatchQueue.main) { data -> Void in
                         
                         DataManager.shared.userID = data.id!
                         
-                        let homeVC = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "BorrowTabbarViewController") as! BorrowTabbarViewController
+                        let homeVC = UIStoryboard(name: "HomeBrowwer", bundle: nil).instantiateViewController(withIdentifier: "BorrowTabbarViewController") as! BorrowTabbarViewController
                         
                         self.navigationController?.present(homeVC, animated: true, completion: {
                             

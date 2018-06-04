@@ -56,9 +56,10 @@ extension APIClient {
     }
     
     /* POST Tạo một khoản vay mới
+     PUT Cập nhật khoản vay
      
      */
-    func loan(isShowLoandingView: Bool = true) -> Promise<LoanResponseModel> {
+    func loan(isShowLoandingView: Bool = true, httpType: HTTPMethodType = .POST) -> Promise<LoanResponseModel> {
         let params: JSONDictionary = [
             "": ""
         ]
@@ -81,7 +82,7 @@ extension APIClient {
         let endPoint = "\(uid)/" + EndPoint.Loan.Loans
         
         return Promise { fullFill, reject in
-            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: isShowLoandingView, httpType: HTTPMethodType.POST, jsonData: dataAPI)
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: isShowLoandingView, httpType: httpType, jsonData: dataAPI)
                 .then { json -> Void in
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = LoanResponseModel(object: data)

@@ -23,7 +23,7 @@ public struct LoanCategories {
   }
 
   // MARK: Properties
-  public var interestRate: Int?
+  public var interestRate: Double?
   public var id: Int?
   public var termMin: Int?
   public var max: Int?
@@ -45,7 +45,7 @@ public struct LoanCategories {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    interestRate = json[SerializationKeys.interestRate].int ?? 0
+    interestRate = json[SerializationKeys.interestRate].double ?? 0.0
     id = json[SerializationKeys.id].int ?? 0
     termMin = json[SerializationKeys.termMin].int ?? 0
     max = json[SerializationKeys.max].int ?? 0

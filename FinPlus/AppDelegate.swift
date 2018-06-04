@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        self.setupStartVC()
+        
         self.registerForRemoteNotifications(application)
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -106,6 +108,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
         
         return handled
+    }
+    
+    //MARK: Setup Start View Controller
+    
+    private func setupStartVC() {
+        
+        guard let _ = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String else {
+            // chưa có account Login
+            let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
+            
+            self.window?.rootViewController = enterPhoneVC
+            
+            return
+        }
+        
+        //Đã có account Login
+        print("account \(userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME))")
+        let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewControllerNavi") as! UINavigationController
+        
+        self.window?.rootViewController = loginVC
+        
+
+        
     }
     
     //MARK: GetVersion

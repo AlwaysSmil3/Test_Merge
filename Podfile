@@ -29,7 +29,7 @@ pod 'Firebase/Messaging'
 
 pod 'Fusuma'
 
-#pod 'SVPinView'
+pod 'PinCodeTextField'
 
   # Pods for FinPlus
 

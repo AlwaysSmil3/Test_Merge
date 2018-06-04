@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ConfirmInterestRateVC: LoanBaseViewController {
+class ConfirmInterestRateVC: BaseViewController {
     
     @IBOutlet var lblAmountLoan: UILabel!
     @IBOutlet var lblTimeLoan: UILabel!
@@ -23,13 +23,50 @@ class ConfirmInterestRateVC: LoanBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.updateUI()
     }
     
+    private func updateUI() {
+        
+        guard let loan = DataManager.shared.browwerInfo?.activeLoan else { return }
+        
+        self.lblAmountLoan.text = FinPlusHelper.formatDisplayCurrency(Double(loan.amount!)) + " VND"
+        self.lblTimeLoan.text = "\(loan.term!) ngày"
+        
+        if let interestRate = FinPlusHelper.getInterestRateFromLoanCategoryID(id: loan.loanCategoryId!) {
+            self.lblInterestRate.text = "\(interestRate)%/Năm"
+        }
+        
+        var serviceFee: Double = 0.0
+        
+        if let version = DataManager.shared.version {
+            serviceFee = Double(loan.amount! * Int32(version.serviceFee!) / 100)
+        }
+        
+        self.lblServiceFee.text = FinPlusHelper.formatDisplayCurrency(serviceFee) + " VND"
+        
+    }
     
+
     @IBAction func btnLoanAcceptTapped(_ sender: Any) {
         
+        DataManager.shared.loanInfo.status = STATUS_LOAN.RAISING_CAPITAL.rawValue
         
-        
+        APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
+            .then(on: DispatchQueue.main) { model -> Void in
+                DataManager.shared.loanID = model.loanId!
+                
+                self.showAlertView(title: MS_TITLE_ALERT, message: "", okTitle: "Trở về trang chủ", cancelTitle: nil, completion: { (status) in
+                    if status {
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
+                })
+            }
+            .catch { error in
+                
+                
+            }
         
     }
     

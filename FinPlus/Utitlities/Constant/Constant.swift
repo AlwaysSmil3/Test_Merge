@@ -31,6 +31,7 @@ enum STATUS_LOAN: Int {
     case ACCEPTED = 3 // H6
     case REJECTED = 4 // H13
     case CANCELED = 5
+    case RAISING_CAPITAL = 7
     
 }
 
@@ -40,13 +41,18 @@ let API_RESPONSE_RETURN_DATA = "data"
 
 let API_DEVICE_TYPE_OS = 0 // ios 0, android: 1
 
-
+//MARK: Colors
+let MAIN_COLOR = UIColor(hexString: "#3BAB63")
+let DISABLE_BUTTON_COLOR = UIColor(hexString: "#B8C9D3")
 
 let MS_TITLE_ALERT = "Thông báo"
 
 let MONEY_TERM_DISPLAY = 1000000
 
+// UserDefault
+let userDefault = UserDefaults.standard
 
+let fUSER_DEFAUT_ACCOUNT_NAME = "USER_DEFAUT_ACCOUNT_NAME"
 
 
 
