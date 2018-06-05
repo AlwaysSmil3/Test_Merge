@@ -141,6 +141,17 @@ class FinPlusHelper {
     }
     
     
+    /// Set Space Display CollectionView similar
+    ///
+    /// - Parameter indexPath: <#indexPath description#>
+    /// - Returns: <#return value description#>
+    class func setCellSizeDisplayFitThird(_ indexPath: IndexPath) -> CGSize {
+        
+        let width = UIScreen.main.bounds.width / 3 - 1
+        
+        return CGSize(width: width, height: width * 4/3)
+    }
+    
     
     
     

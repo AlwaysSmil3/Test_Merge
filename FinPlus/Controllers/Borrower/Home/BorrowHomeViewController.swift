@@ -12,6 +12,8 @@ class BorrowHomeViewController: BaseViewController {
     
     @IBOutlet var contentLoanView: UIView!
     
+    @IBOutlet var mainCollectionView: UICollectionView!
+    
     var detailLoanView: BrrowerHome?
     
     // Loan status cho các trạng thái của Loan
@@ -59,7 +61,7 @@ class BorrowHomeViewController: BaseViewController {
                 if let loan = model.activeLoan, let status = loan.status {
                     self.loanStatus = status
                     self.detailLoanView?.loanInfo = loan
-                    self.contentLoanView.addSubview(self.detailLoanView!)
+                    //self.contentLoanView.addSubview(self.detailLoanView!)
                     
                     if let detailLoanView = self.detailLoanView {
                         detailLoanView.frame.origin = CGPoint(x: 0, y: 0)
@@ -83,22 +85,12 @@ class BorrowHomeViewController: BaseViewController {
     
     
     //MARK: Actions
-    
-    @IBAction func btnLoanTapped(_ sender: Any) {
-        
-        guard DataManager.shared.loanCategories.count > 0 else { return }
-        
-        let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
-        
-        loanFirstVC.hidesBottomBarWhenPushed = true
-        loanFirstVC.loanCategory = DataManager.shared.loanCategories[0]
-        
-        self.navigationController?.pushViewController(loanFirstVC, animated: true)
-        
-    }
+
     
 
 }
+
+//MARK: BrowwerHomeDelegate
 
 extension BorrowHomeViewController: BrowwerHomeDelegate {
     
@@ -153,9 +145,52 @@ extension BorrowHomeViewController: BrowwerHomeDelegate {
         self.navigationController?.pushViewController(loanFirstVC, animated: true)
     
     }
+ 
     
+}
+
+//MARK: UICollectionView Delegate, DataSource
+
+extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return homeBrowModels.count
+    }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Home_Brower_Collection_Cell", for: indexPath) as! HomeBrowerCollectionCell
+        
+        let model = homeBrowModels[indexPath.row]
+        
+        cell.imgIcon.image = model.icon
+        cell.lblName.text = model.name
+        cell.lblDistanceAmount.text = model.distanceAmount
+        
+        return cell
+    }
+    
+    /**
+     * Initial size
+     */
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return FinPlusHelper.setCellSizeDisplayFitThird(indexPath)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        guard DataManager.shared.loanCategories.count > 0 else { return }
+        
+        let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
+        
+        loanFirstVC.hidesBottomBarWhenPushed = true
+        loanFirstVC.loanCategory = DataManager.shared.loanCategories[0]
+        
+        self.navigationController?.pushViewController(loanFirstVC, animated: true)
+    }
     
     
 }

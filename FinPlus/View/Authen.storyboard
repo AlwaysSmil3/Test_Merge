@@ -584,7 +584,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo" translatesAutoresizingMaskIntoConstraints="NO" id="t5d-Pw-Ox0">
-                                <rect key="frame" x="132.5" y="20" width="109" height="14"/>
+                                <rect key="frame" x="132.5" y="40" width="109" height="14"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tạo tài khoản mới" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSX-Wb-EcM">
                                 <rect key="frame" x="32" y="104.5" width="311" height="30.5"/>
@@ -611,22 +611,22 @@
                                         <rect key="frame" x="0.0" y="0.0" width="171.5" height="326"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_growth" translatesAutoresizingMaskIntoConstraints="NO" id="tap-Vo-V7G">
-                                        <rect key="frame" x="57.5" y="56" width="55" height="55"/>
+                                        <rect key="frame" x="57.5" y="52" width="55" height="55"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vay tiền" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RER-Nb-VIk">
-                                        <rect key="frame" x="60" y="158" width="53" height="18"/>
+                                        <rect key="frame" x="59.5" y="154" width="53" height="18"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="15"/>
                                         <color key="textColor" red="0.031372549019607843" green="0.070588235294117646" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vay trực tiếp từ những nhà đầu tư cá nhân trên sàn giao dịch của chúng tôi" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8R-ed-26O">
-                                        <rect key="frame" x="17" y="192" width="137.5" height="38.5"/>
+                                        <rect key="frame" x="17" y="188" width="137.5" height="38.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                         <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHỌN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wco-lm-15A">
-                                        <rect key="frame" x="70" y="289" width="32" height="13"/>
+                                        <rect key="frame" x="70" y="277.5" width="32" height="13"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="11"/>
                                         <color key="textColor" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -650,10 +650,10 @@
                                     <constraint firstItem="Wco-lm-15A" firstAttribute="centerX" secondItem="deL-Ha-jkX" secondAttribute="centerX" id="Ofy-Au-O7P"/>
                                     <constraint firstAttribute="trailing" secondItem="gh8-P0-a9Q" secondAttribute="trailing" id="Sjz-tC-dqc"/>
                                     <constraint firstAttribute="bottom" secondItem="eAF-st-Jub" secondAttribute="bottom" id="Vj1-EJ-NYq"/>
-                                    <constraint firstItem="tap-Vo-V7G" firstAttribute="top" secondItem="deL-Ha-jkX" secondAttribute="top" constant="56" id="WfW-Tb-G8f"/>
+                                    <constraint firstItem="RER-Nb-VIk" firstAttribute="centerY" secondItem="deL-Ha-jkX" secondAttribute="centerY" id="Wit-DM-6Wp"/>
                                     <constraint firstItem="eAF-st-Jub" firstAttribute="top" secondItem="deL-Ha-jkX" secondAttribute="top" id="Y9e-aw-Foo"/>
-                                    <constraint firstAttribute="bottom" secondItem="Wco-lm-15A" secondAttribute="bottom" constant="24" id="Zc2-14-nUq"/>
                                     <constraint firstItem="R8R-ed-26O" firstAttribute="top" secondItem="RER-Nb-VIk" secondAttribute="bottom" constant="16" id="dfC-OU-KSF"/>
+                                    <constraint firstItem="Wco-lm-15A" firstAttribute="top" secondItem="RER-Nb-VIk" secondAttribute="bottom" constant="105" id="esn-mS-n8F"/>
                                     <constraint firstItem="tap-Vo-V7G" firstAttribute="centerX" secondItem="deL-Ha-jkX" secondAttribute="centerX" id="gYH-M4-Hnn"/>
                                     <constraint firstAttribute="trailing" secondItem="R8R-ed-26O" secondAttribute="trailing" constant="17" id="h6P-kJ-Fri"/>
                                     <constraint firstItem="gh8-P0-a9Q" firstAttribute="leading" secondItem="deL-Ha-jkX" secondAttribute="leading" id="jPv-nw-ZfY"/>
@@ -667,22 +667,22 @@
                                         <rect key="frame" x="0.0" y="0.0" width="171.5" height="326"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_growth1" translatesAutoresizingMaskIntoConstraints="NO" id="Gqp-Z0-mu4">
-                                        <rect key="frame" x="58.5" y="55" width="55" height="55"/>
+                                        <rect key="frame" x="58.5" y="52" width="55" height="55"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lựa chọn trong các gói vay được tăng lên từ người vay để đầu tư/ cho vay và nhận được lãi xuất sau đó." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JE0-6c-Fii">
-                                        <rect key="frame" x="17" y="191" width="137.5" height="51.5"/>
+                                        <rect key="frame" x="17" y="188" width="137.5" height="51.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                         <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHỌN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNL-et-QRl">
-                                        <rect key="frame" x="70" y="289" width="32" height="13"/>
+                                        <rect key="frame" x="70" y="277" width="32" height="13"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="11"/>
                                         <color key="textColor" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đầu tư" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuU-Fs-V67">
-                                        <rect key="frame" x="62.5" y="157" width="47" height="18"/>
+                                        <rect key="frame" x="62.5" y="154" width="47" height="18"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="15"/>
                                         <color key="textColor" red="0.031372549019607843" green="0.070588235294117646" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -699,17 +699,17 @@
                                     <constraint firstItem="plc-CA-BBd" firstAttribute="leading" secondItem="6gk-gT-LCB" secondAttribute="leading" id="0aV-mI-t8b"/>
                                     <constraint firstAttribute="trailing" secondItem="plc-CA-BBd" secondAttribute="trailing" id="25G-9Z-rSF"/>
                                     <constraint firstItem="Gqp-Z0-mu4" firstAttribute="centerX" secondItem="6gk-gT-LCB" secondAttribute="centerX" id="Boc-UZ-Wrx"/>
+                                    <constraint firstItem="JuU-Fs-V67" firstAttribute="centerY" secondItem="6gk-gT-LCB" secondAttribute="centerY" id="E7s-W3-23m"/>
                                     <constraint firstItem="UFj-tf-0u3" firstAttribute="leading" secondItem="6gk-gT-LCB" secondAttribute="leading" id="QmQ-3W-H37"/>
                                     <constraint firstItem="JuU-Fs-V67" firstAttribute="top" secondItem="Gqp-Z0-mu4" secondAttribute="bottom" constant="47" id="R7M-xk-L13"/>
-                                    <constraint firstAttribute="bottom" secondItem="rNL-et-QRl" secondAttribute="bottom" constant="24" id="SZ6-UL-t6O"/>
                                     <constraint firstItem="JE0-6c-Fii" firstAttribute="leading" secondItem="6gk-gT-LCB" secondAttribute="leading" constant="17" id="YpU-d3-SMm"/>
-                                    <constraint firstItem="Gqp-Z0-mu4" firstAttribute="top" secondItem="6gk-gT-LCB" secondAttribute="top" constant="55" id="c30-kp-Pso"/>
                                     <constraint firstAttribute="trailing" secondItem="UFj-tf-0u3" secondAttribute="trailing" id="dg9-Sy-MWd"/>
                                     <constraint firstAttribute="bottom" secondItem="plc-CA-BBd" secondAttribute="bottom" id="gOJ-4T-TDj"/>
                                     <constraint firstItem="rNL-et-QRl" firstAttribute="centerX" secondItem="6gk-gT-LCB" secondAttribute="centerX" id="jXd-G1-CxZ"/>
                                     <constraint firstItem="JE0-6c-Fii" firstAttribute="top" secondItem="JuU-Fs-V67" secondAttribute="bottom" constant="16" id="ooT-dK-wfT"/>
                                     <constraint firstAttribute="bottom" secondItem="UFj-tf-0u3" secondAttribute="bottom" id="uLL-jO-mBO"/>
                                     <constraint firstItem="JuU-Fs-V67" firstAttribute="centerX" secondItem="6gk-gT-LCB" secondAttribute="centerX" id="uzT-Nu-Pea"/>
+                                    <constraint firstItem="rNL-et-QRl" firstAttribute="top" secondItem="JuU-Fs-V67" secondAttribute="bottom" constant="105" id="wOy-eo-csK"/>
                                     <constraint firstAttribute="trailing" secondItem="JE0-6c-Fii" secondAttribute="trailing" constant="17" id="wXg-rC-fAm"/>
                                     <constraint firstItem="UFj-tf-0u3" firstAttribute="top" secondItem="6gk-gT-LCB" secondAttribute="top" id="ya6-VJ-d8Z"/>
                                     <constraint firstItem="plc-CA-BBd" firstAttribute="top" secondItem="6gk-gT-LCB" secondAttribute="top" id="zww-0T-x0x"/>
@@ -723,7 +723,7 @@
                             <constraint firstItem="Sp4-rW-jWy" firstAttribute="leading" secondItem="aVo-4d-FUv" secondAttribute="leading" id="9Dh-Dy-WbB"/>
                             <constraint firstItem="6gk-gT-LCB" firstAttribute="leading" secondItem="deL-Ha-jkX" secondAttribute="trailing" constant="8" id="Bzz-CE-Dh9"/>
                             <constraint firstItem="deL-Ha-jkX" firstAttribute="top" secondItem="Sp4-rW-jWy" secondAttribute="bottom" constant="62" id="F5C-k2-l9F"/>
-                            <constraint firstItem="t5d-Pw-Ox0" firstAttribute="top" secondItem="cbV-hc-Ifj" secondAttribute="bottom" id="Kjj-Ca-hdg"/>
+                            <constraint firstItem="t5d-Pw-Ox0" firstAttribute="top" secondItem="cbV-hc-Ifj" secondAttribute="bottom" constant="20" id="Kjj-Ca-hdg"/>
                             <constraint firstAttribute="trailing" secondItem="6gk-gT-LCB" secondAttribute="trailing" constant="12" id="M9h-z3-RxR"/>
                             <constraint firstItem="6gk-gT-LCB" firstAttribute="bottom" secondItem="deL-Ha-jkX" secondAttribute="bottom" id="UyX-5y-vhN"/>
                             <constraint firstItem="Sp4-rW-jWy" firstAttribute="top" secondItem="aVo-4d-FUv" secondAttribute="bottom" constant="16" id="Z7Y-ch-gde"/>

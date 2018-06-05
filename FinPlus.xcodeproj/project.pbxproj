@@ -55,6 +55,8 @@
 		632FD02120AAC3CC00D9399C /* APIResponseGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */; };
 		632FD02420AADF3C00D9399C /* VerifyAuthenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */; };
 		632FD02620AAE15800D9399C /* ExString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02520AAE15800D9399C /* ExString.swift */; };
+		6334891C20C635BA00C95931 /* HomeBrowwer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334891B20C635BA00C95931 /* HomeBrowwer.swift */; };
+		6334891E20C639ED00C95931 /* HomeBrowerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334891D20C639ED00C95931 /* HomeBrowerCollectionCell.swift */; };
 		6336D5C420B272AF00A6C38A /* BorrowTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6336D5C320B272AF00A6C38A /* BorrowTabbarViewController.swift */; };
 		6336D5C620B2750A00A6C38A /* Loan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6336D5C520B2750A00A6C38A /* Loan.storyboard */; };
 		6336D5C820B27B7500A6C38A /* LoanFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6336D5C720B27B7500A6C38A /* LoanFirstViewController.swift */; };
@@ -200,6 +202,8 @@
 		632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponseGeneral.swift; sourceTree = "<group>"; };
 		632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyAuthenData.swift; sourceTree = "<group>"; };
 		632FD02520AAE15800D9399C /* ExString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExString.swift; sourceTree = "<group>"; };
+		6334891B20C635BA00C95931 /* HomeBrowwer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBrowwer.swift; sourceTree = "<group>"; };
+		6334891D20C639ED00C95931 /* HomeBrowerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBrowerCollectionCell.swift; sourceTree = "<group>"; };
 		6336D5C320B272AF00A6C38A /* BorrowTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowTabbarViewController.swift; sourceTree = "<group>"; };
 		6336D5C520B2750A00A6C38A /* Loan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loan.storyboard; sourceTree = "<group>"; };
 		6336D5C720B27B7500A6C38A /* LoanFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanFirstViewController.swift; sourceTree = "<group>"; };
@@ -356,6 +360,7 @@
 		6307D3C020AD783500055F5C /* Browwer */ = {
 			isa = PBXGroup;
 			children = (
+				6334891A20C6352C00C95931 /* Home */,
 				6355FAED20B7EF2800038F5B /* LoanCategories.swift */,
 				6355FAE920B7BEB000038F5B /* LoanResponseModel.swift */,
 				6307D3C120AD784300055F5C /* Info */,
@@ -433,6 +438,7 @@
 				633AF9C020A992B200BAE2BB /* BorrowHomeViewController.swift */,
 				6336D5C320B272AF00A6C38A /* BorrowTabbarViewController.swift */,
 				6338F3D120BE5531005777E2 /* BrrowerHome.swift */,
+				6334891D20C639ED00C95931 /* HomeBrowerCollectionCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -499,6 +505,14 @@
 				6307D3BE20AD2F0500055F5C /* FacebookInfo.swift */,
 			);
 			path = Authen;
+			sourceTree = "<group>";
+		};
+		6334891A20C6352C00C95931 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6334891B20C635BA00C95931 /* HomeBrowwer.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		6338F3CE20BE43DA005777E2 /* BrrowerHome */ = {
@@ -1141,6 +1155,7 @@
 				6357824F20C2330800DE09A0 /* KeychainPasswordItem.swift in Sources */,
 				630467BB20B513FC0069469A /* AddressTBViewController.swift in Sources */,
 				639C9DF620A189E600F2CF5E /* ToastView.swift in Sources */,
+				6334891E20C639ED00C95931 /* HomeBrowerCollectionCell.swift in Sources */,
 				637A90B020A2E52700CCACA5 /* APIClient+Authen.swift in Sources */,
 				633AE0AA20B3F315007AB0D1 /* LoanWalletViewController.swift in Sources */,
 				633AF9BA20A98F6000BAE2BB /* ChoiceKindUserVC.swift in Sources */,
@@ -1157,6 +1172,7 @@
 				6307D3CD20AD817300055F5C /* APIClient+User.swift in Sources */,
 				6338F40320BE602C005777E2 /* BrowwerUserInfo.swift in Sources */,
 				6338F3FC20BE602C005777E2 /* BrowwerContacts.swift in Sources */,
+				6334891C20C635BA00C95931 /* HomeBrowwer.swift in Sources */,
 				630467BF20B526CE0069469A /* APIClient+Wallet.swift in Sources */,
 				6338F3F920BE602C005777E2 /* BrowwerJobInfo.swift in Sources */,
 				632FD02120AAC3CC00D9399C /* APIResponseGeneral.swift in Sources */,

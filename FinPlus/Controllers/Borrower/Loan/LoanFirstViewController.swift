@@ -15,11 +15,12 @@ class LoanFirstViewController: BaseViewController {
     
     @IBOutlet var lblMinAmountSlider: UILabel!
     @IBOutlet var lblMinTermSlider: UILabel!
+    @IBOutlet var lblMaxAmounSlider: UILabel!
+    @IBOutlet var lblMaxTermSlider: UILabel!
     
     @IBOutlet var lblMoneySlider: UILabel!
     @IBOutlet var lblTermSlider: UILabel!
-    @IBOutlet var lblAmountLoan: UILabel!
-    @IBOutlet var lblLoanTerm: UILabel!
+
     @IBOutlet var lblInterestRate: UILabel!
     @IBOutlet var lblTempFee: UILabel!
     @IBOutlet var lblTempTotalAmount: UILabel!
@@ -53,8 +54,8 @@ class LoanFirstViewController: BaseViewController {
         self.lblMoneySlider.text = "\(Int(loan.max!/MONEY_TERM_DISPLAY))" + " Triệu VND"
         self.lblTermSlider.text = "\(Int(loan.termMax!))" + " Ngày"
         
-        self.lblMinAmountSlider.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY))"
-        self.lblMinTermSlider.text = "\(Int(loan.termMin!))"
+        self.lblMinAmountSlider.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY)) TRIỆU"
+        self.lblMinTermSlider.text = "\(Int(loan.termMin!)) NGÀY"
         
         self.lblInterestRate.text = "\(loan.interestRate!)% năm"
         
@@ -73,8 +74,7 @@ class LoanFirstViewController: BaseViewController {
     //MARK: Actions
     @IBAction func moneySliderValueChaned(_ sender: Any) {
         self.lblMoneySlider.text = "\(Int(self.amountSlider.value))" + " Triệu VND"
-        self.lblAmountLoan.text = "\(Int(self.amountSlider.value))" + " Triệu VND"
-        
+
         guard let version = DataManager.shared.version else { return }
         
         let fee = Double(Int(self.amountSlider.value) * version.serviceFee! * 1000000 / 100)
@@ -87,7 +87,7 @@ class LoanFirstViewController: BaseViewController {
     
     @IBAction func termSliderValueChanged(_ sender: Any) {
         self.lblTermSlider.text = "\(Int(self.termSlider.value))" + " Ngày"
-        self.lblLoanTerm.text = "\(Int(self.termSlider.value))" + " Ngày"
+
         
     }
     
@@ -101,6 +101,13 @@ class LoanFirstViewController: BaseViewController {
         
     }
     
+    @IBAction func showInfoFee(_ sender: Any) {
+        self.showToastWithMessage(message: "Lãi xuất vay thực tế sẽ được quyết định vào thời điểm duyệt")
+    }
+    
+    @IBAction func showInfoServiceFee(_ sender: Any) {
+        self.showToastWithMessage(message: "Phí dịch vụ dự kiến")
+    }
     
     
     

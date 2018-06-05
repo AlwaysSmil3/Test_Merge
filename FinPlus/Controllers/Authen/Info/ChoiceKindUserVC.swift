@@ -19,12 +19,6 @@ enum TypeAccount: Int {
 
 class ChoiceKindUserVC: BaseViewController {
     
-    
-    @IBOutlet var heightConstraintInfoInvestorView: NSLayoutConstraint!
-    @IBOutlet var infoInvestorView: UIView!
-    
-    @IBOutlet var btnFacebook: UIButton!
-    
     @IBOutlet var browView: UIView!
     @IBOutlet var imgBgBrow: UIImageView!
     @IBOutlet var lblBrow1: UILabel!
@@ -119,34 +113,7 @@ class ChoiceKindUserVC: BaseViewController {
         
     }
     
-    private func updateViewForBrowwer() {
-        UIView.animate(withDuration: 0.5, delay: 0.2, options: UIViewAnimationOptions.curveEaseIn, animations: {
-            self.heightConstraintInfoInvestorView.constant = 0
-            self.view.layoutIfNeeded()
-        }, completion: { (status) in
-            self.infoInvestorView.isHidden = true
-            self.btnFacebook.isHidden = false
-        })
-    }
-    
-    // MARK Actions
-    
-    @IBAction func btnInvestorSelectedTapped(_ sender: Any) {
-        
-        guard self.accountType != .Investor else { return }
-        self.accountType = .Investor
-
-    }
-    
-    @IBAction func btnBrowwerSelectedTapped(_ sender: Any) {
-        
-        guard self.accountType != .Browwer else { return }
-        self.accountType = .Browwer
-    
-    }
-    
-    @IBAction func btnGoToFacebookTapped(_ sender: Any) {
-        
+    private func facebookSignIn() {
         // Go to Facebook
         FacebookSignInManager.basicInfoWithCompletionHandler(self) { (data, error) in
             if error == nil {
@@ -176,5 +143,32 @@ class ChoiceKindUserVC: BaseViewController {
             }
         }
     }
+    
+    // MARK Actions
+    
+    @IBAction func btnInvestorSelectedTapped(_ sender: Any) {
+        
+        guard self.accountType != .Investor else { return }
+        self.accountType = .Investor
+
+    }
+    
+    @IBAction func btnBrowwerSelectedTapped(_ sender: Any) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.showAlertView(title: MS_TITLE_ALERT, message: "Bạn chắc chắn muốn trở thành người vay tiền?. Chúng tôi cần bạn kết nối với facebook để xác thực thông tin cần thiết cho việc đăng ký làm người vay tiền. Chúng tôi sẽ không dùng các thông tin này cho mục đích nào khác.", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
+                if status {
+                    self.facebookSignIn()
+                }
+                
+            })
+            
+        }
+        
+        guard self.accountType != .Browwer else { return }
+        self.accountType = .Browwer
+    
+    }
+
     
 }
