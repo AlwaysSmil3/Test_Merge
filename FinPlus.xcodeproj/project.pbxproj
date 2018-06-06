@@ -399,13 +399,6 @@
 			path = Popup;
 			sourceTree = "<group>";
 		};
-		6308DF6820A4535C001DC320 /* Account */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Account;
-			sourceTree = "<group>";
-		};
 		6308DF6A20A45426001DC320 /* Invester */ = {
 			isa = PBXGroup;
 			children = (
@@ -684,7 +677,6 @@
 				633AE0AE20B3FED4007AB0D1 /* Wallet */,
 				6308DF6B20A45457001DC320 /* Borrower */,
 				6308DF6A20A45426001DC320 /* Invester */,
-				6308DF6820A4535C001DC320 /* Account */,
 				639C9DE220A15F5100F2CF5E /* Base */,
 				639C9DDE20A15E4A00F2CF5E /* Authen */,
 			);

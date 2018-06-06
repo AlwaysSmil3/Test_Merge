@@ -156,12 +156,14 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         
         let title1 = "Nam"
         let action1 = UIAlertAction(title: title1, style: .default) { (action) in
-
+            self.tfGender.text = title1
+            self.gender = .Male
         }
         
         let title2 = "Nữ"
         let action2 = UIAlertAction(title: title2, style: .default) { (action) in
-            
+            self.tfGender.text = title2
+            self.gender = .Female
         }
         
         filterVC.addAction(cancel)
