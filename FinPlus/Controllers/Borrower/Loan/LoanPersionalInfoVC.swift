@@ -145,7 +145,30 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     //MARK: Actions
     
     @IBAction func btnGenderSelected(_ sender: Any) {
-        self.genderDropdown.show()
+        let filterVC = UIAlertController(title: "Chọn giới tính của bạn", message: nil, preferredStyle: .actionSheet)
+        filterVC.view.tintColor = MAIN_COLOR
+        
+        let cancel = UIAlertAction(title: "Huỷ", style: .cancel) { (action) in
+            
+        }
+        
+        cancel.setValue(UIColor(hexString: "#08121E"), forKey: "titleTextColor")
+        
+        let title1 = "Nam"
+        let action1 = UIAlertAction(title: title1, style: .default) { (action) in
+
+        }
+        
+        let title2 = "Nữ"
+        let action2 = UIAlertAction(title: title2, style: .default) { (action) in
+            
+        }
+        
+        filterVC.addAction(cancel)
+        filterVC.addAction(action1)
+        filterVC.addAction(action2)
+        
+        self.present(filterVC, animated: true, completion: nil)
     }
     
     @IBAction func btnBirthDayTapped(_ sender: Any) {

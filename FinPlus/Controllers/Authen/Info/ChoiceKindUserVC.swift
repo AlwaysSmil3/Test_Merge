@@ -49,7 +49,9 @@ class ChoiceKindUserVC: BaseViewController {
         super.viewDidLoad()
         
         self.browView.dropShadow(color: DISABLE_BUTTON_COLOR)
+        self.browView.layer.cornerRadius = 5
         self.investView.dropShadow(color: DISABLE_BUTTON_COLOR)
+        self.investView.layer.cornerRadius = 5
     }
     
     override func viewDidLayoutSubviews() {
