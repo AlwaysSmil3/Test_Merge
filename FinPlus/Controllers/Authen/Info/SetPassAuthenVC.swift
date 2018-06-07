@@ -47,18 +47,16 @@ class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
         self.tfPass.delegate = self
         self.tfRePass.delegate = self
         
+        self.tfPass.becomeFirstResponder()
+        
     }
     
     private func updateStateBtnContinue() {
         if self.tfPass.text!.length() >= 6 && self.tfRePass.text!.length() >= 6 {
-            self.imgBgBtnContinue!.image = #imageLiteral(resourceName: "bg_button_enable_login")
-            self.btnContinue!.dropShadow(color: MAIN_COLOR)
-            self.btnContinue!.isEnabled = true
+            self.isEnableContinueButton(isEnable: true)
             self.view.endEditing(true)
         } else {
-            self.imgBgBtnContinue!.image = #imageLiteral(resourceName: "bg_button_disable_login")
-            self.btnContinue!.dropShadow(color: DISABLE_BUTTON_COLOR)
-            self.btnContinue!.isEnabled = false
+            self.isEnableContinueButton(isEnable: false)
         }
         
     }

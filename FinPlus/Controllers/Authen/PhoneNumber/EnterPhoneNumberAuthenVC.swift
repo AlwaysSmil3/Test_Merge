@@ -34,13 +34,9 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
     
     @IBAction func tfPhoneNumberEditChanged(_ sender: Any) {
         if self.tfPhoneNumber.text!.length() >= 10 {
-            self.imgBgBtnContinue!.image = #imageLiteral(resourceName: "bg_button_enable_login")
-            self.btnContinue!.dropShadow(color: MAIN_COLOR)
-            self.btnContinue!.isEnabled = true
+            self.isEnableContinueButton(isEnable: true)
         } else {
-            self.imgBgBtnContinue!.image = #imageLiteral(resourceName: "bg_button_disable_login")
-            self.btnContinue!.dropShadow(color: DISABLE_BUTTON_COLOR)
-            self.btnContinue!.isEnabled = false
+            self.isEnableContinueButton(isEnable: false)
         }
     }
     
