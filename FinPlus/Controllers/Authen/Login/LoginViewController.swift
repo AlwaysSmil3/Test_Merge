@@ -31,6 +31,7 @@ class LoginViewController: BaseViewController {
         super.viewDidLoad()
         
         self.tfPass.delegate = self
+        self.tfPass.becomeFirstResponder()
 
         self.updateUI()
     }
@@ -48,14 +49,10 @@ class LoginViewController: BaseViewController {
     
     @IBAction func tfEditChanged(_ sender: Any) {
         if self.tfPass.text!.length() >= 6 {
-            self.imgBgBtnContinue!.image = #imageLiteral(resourceName: "bg_button_enable_login")
-            self.btnContinue!.dropShadow(color: MAIN_COLOR)
-            self.btnContinue!.isEnabled = true
+            self.isEnableContinueButton(isEnable: true)
             self.view.endEditing(true)
         } else {
-            self.imgBgBtnContinue!.image = #imageLiteral(resourceName: "bg_button_disable_login")
-            self.btnContinue!.dropShadow(color: DISABLE_BUTTON_COLOR)
-            self.btnContinue!.isEnabled = false
+            self.isEnableContinueButton(isEnable: true)
         }
     }
     
@@ -73,7 +70,7 @@ class LoginViewController: BaseViewController {
         }
         
         APIClient.shared.authentication(phoneNumber: account, pass: tfPass.text!)
-            .done(on: DispatchQueue.main) { [weak self]model in
+            .done(on: DispatchQueue.main) { [weak self] model in
                 if model.returnCode! == 1 {
                 
                     DataManager.shared.currentAccount = account
@@ -82,7 +79,8 @@ class LoginViewController: BaseViewController {
                     
                     self?.navigationController?.pushViewController(verifyVC, animated: true)
                 }
-        }
+            }
+            .catch { error in }
     }
     
     @IBAction func btnForgotPassTapped(_ sender: Any) {

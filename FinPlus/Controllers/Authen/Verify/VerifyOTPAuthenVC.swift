@@ -38,6 +38,7 @@ class VerifyOTPAuthenVC: BaseViewController {
     private func setupPinView() {
         pinCodeTextField.delegate = self
         pinCodeTextField.keyboardType = .numberPad
+        pinCodeTextField.becomeFirstResponder()
         
         let toolbar = UIToolbar()
         let nextButtonItem = UIBarButtonItem(title: NSLocalizedString("Tiếp theo",

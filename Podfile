@@ -9,14 +9,12 @@ pod 'IBAnimatable', '~> 5.0.0'
 pod 'SwiftyJSON'
 
 pod 'PromiseKit'
-pod 'Kingfisher'
 pod 'TPKeyboardAvoiding'
 
 pod 'DropDown'
 
 pod 'Alamofire'
 pod 'NVActivityIndicatorView'
-pod 'Toast-Swift'
 
 pod 'RealmSwift'
 pod 'JSONWebToken'

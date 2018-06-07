@@ -26,9 +26,8 @@ class LoanOtherInfoVC: LoanBaseViewController {
         self.updateDataToServer()
     }
     
-    
-    //MARK: 
     /*
+    //MARK:
     private func setupFusuma() {
         // Show Fusuma
         let fusuma = FusumaViewController()
@@ -42,8 +41,8 @@ class LoanOtherInfoVC: LoanBaseViewController {
         
         self.present(fusuma, animated: true, completion: nil)
     }
+ 
     */
-    
     
     //MARK: ACtions
     
