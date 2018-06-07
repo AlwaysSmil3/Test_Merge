@@ -5,7 +5,7 @@ target 'FinPlus' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-pod 'IBAnimatable'
+pod 'IBAnimatable', '~> 5.0.0'
 pod 'SwiftyJSON'
 
 pod 'PromiseKit'
@@ -27,7 +27,7 @@ pod 'FBSDKLoginKit'
 pod 'Firebase/Core'
 pod 'Firebase/Messaging'
 
-pod 'Fusuma'
+#pod 'Fusuma'
 
 pod 'PinCodeTextField'
 

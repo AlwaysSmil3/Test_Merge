@@ -47,11 +47,11 @@ class LoanSummaryInfoVC: LoanBaseViewController {
     
     private func loan() {
         APIClient.shared.loan()
-            .then(on: DispatchQueue.main) { model -> Void in
+            .done(on: DispatchQueue.main) { [weak self]model in
                 
                 let otpVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanOTPViewController") as! LoanOTPViewController
                 otpVC.loanResponseModel = model
-                self.navigationController?.pushViewController(otpVC, animated: true)
+                self?.navigationController?.pushViewController(otpVC, animated: true)
                 
             }
             .catch { error in }

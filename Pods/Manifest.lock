@@ -1,73 +1,71 @@
 PODS:
-  - Alamofire (4.6.0)
+  - Alamofire (4.7.2)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
-  - DropDown (2.3.1)
-  - FBSDKCoreKit (4.29.0):
+  - DropDown (2.3.2)
+  - FBSDKCoreKit (4.33.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.29.0):
+  - FBSDKLoginKit (4.33.0):
     - FBSDKCoreKit
-  - Firebase/Core (4.8.1):
-    - FirebaseAnalytics (= 4.0.7)
-    - FirebaseCore (= 4.0.14)
-  - Firebase/Messaging (4.8.1):
-    - Firebase/Core
-    - FirebaseMessaging (= 2.0.8)
-  - FirebaseAnalytics (4.0.7):
-    - FirebaseCore (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - Firebase/Core (5.1.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.0.1)
+  - Firebase/CoreOnly (5.1.0):
+    - FirebaseCore (= 5.0.2)
+  - Firebase/Messaging (5.1.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.0.1)
+  - FirebaseAnalytics (5.0.1):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
-  - FirebaseCore (4.0.14):
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseInstanceID (2.0.8):
-    - FirebaseCore (~> 4.0)
-  - FirebaseMessaging (2.0.8):
-    - FirebaseAnalytics (~> 4.0)
-    - FirebaseCore (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
+  - FirebaseCore (5.0.2):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseInstanceID (3.0.0):
+    - FirebaseCore (~> 5.0)
+  - FirebaseMessaging (3.0.1):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - Protobuf (~> 3.1)
-  - Fusuma (1.2.4)
-  - GoogleToolboxForMac/Defines (2.1.3)
-  - GoogleToolboxForMac/Logger (2.1.3):
-    - GoogleToolboxForMac/Defines (= 2.1.3)
-  - GoogleToolboxForMac/NSData+zlib (2.1.3):
-    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - GoogleToolboxForMac/Logger (2.1.4):
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
   - IBAnimatable (5.0.0)
   - JSONWebToken (2.2.0)
-  - Kingfisher (4.6.1)
+  - Kingfisher (4.8.0)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - NVActivityIndicatorView (4.1.1):
-    - NVActivityIndicatorView/Presenter (= 4.1.1)
-  - NVActivityIndicatorView/Presenter (4.1.1)
+  - NVActivityIndicatorView (4.2.1):
+    - NVActivityIndicatorView/Presenter (= 4.2.1)
+  - NVActivityIndicatorView/Presenter (4.2.1)
   - PinCodeTextField (0.1.0)
-  - PromiseKit (4.5.1):
-    - PromiseKit/Foundation (= 4.5.1)
-    - PromiseKit/QuartzCore (= 4.5.1)
-    - PromiseKit/UIKit (= 4.5.1)
-  - PromiseKit/CorePromise (4.5.1)
-  - PromiseKit/Foundation (4.5.1):
+  - PromiseKit (6.2.8):
+    - PromiseKit/CorePromise (= 6.2.8)
+    - PromiseKit/Foundation (= 6.2.8)
+    - PromiseKit/UIKit (= 6.2.8)
+  - PromiseKit/CorePromise (6.2.8)
+  - PromiseKit/Foundation (6.2.8):
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (4.5.1):
-    - PromiseKit/CorePromise
-  - PromiseKit/UIKit (4.5.1):
+  - PromiseKit/UIKit (6.2.8):
     - PromiseKit/CorePromise
   - Protobuf (3.5.0)
-  - Realm (3.1.0):
-    - Realm/Headers (= 3.1.0)
-  - Realm/Headers (3.1.0)
-  - RealmSwift (3.1.0):
-    - Realm (= 3.1.0)
-  - SwiftyJSON (4.0.0)
+  - Realm (3.6.0):
+    - Realm/Headers (= 3.6.0)
+  - Realm/Headers (3.6.0)
+  - RealmSwift (3.6.0):
+    - Realm (= 3.6.0)
+  - SwiftyJSON (4.1.0)
   - Toast-Swift (3.0.1)
   - TPKeyboardAvoiding (1.3.2)
 
@@ -78,8 +76,7 @@ DEPENDENCIES:
   - FBSDKLoginKit
   - Firebase/Core
   - Firebase/Messaging
-  - Fusuma
-  - IBAnimatable
+  - IBAnimatable (~> 5.0.0)
   - JSONWebToken
   - Kingfisher
   - NVActivityIndicatorView
@@ -90,33 +87,59 @@ DEPENDENCIES:
   - Toast-Swift
   - TPKeyboardAvoiding
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Bolts
+    - DropDown
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - GoogleToolboxForMac
+    - IBAnimatable
+    - JSONWebToken
+    - Kingfisher
+    - nanopb
+    - NVActivityIndicatorView
+    - PinCodeTextField
+    - PromiseKit
+    - Protobuf
+    - Realm
+    - RealmSwift
+    - SwiftyJSON
+    - Toast-Swift
+    - TPKeyboardAvoiding
+
 SPEC CHECKSUMS:
-  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  DropDown: 20499c7b2731b0d21609af924e47c7677a2be50d
-  FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
-  FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
-  Firebase: 2721056b8885eef90233b03f37be64358d35d262
-  FirebaseAnalytics: 617afa8c26b57a0c3f11361b248bc9e17bfd8dfd
-  FirebaseCore: 2e0b98fb2d64ca8140136beff15772bdd14d2dd7
-  FirebaseInstanceID: 81df5805a08001e69138664bdd02c6719a9ac80f
-  FirebaseMessaging: dfdcd307c2382290a1e297a81d0f18370f5b1bcd
-  Fusuma: e85c394878a2e1549c67140ba7c038aff8d7581c
-  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
+  FBSDKCoreKit: 572b047a7e029bc44542bcf8a59414e7ff2b543e
+  FBSDKLoginKit: 88cb456349cfb3b554427ce4f8b43729d85dfb40
+  Firebase: e08fb0795f35707aeb1d8a715c731c45bdf6fd56
+  FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
+  FirebaseCore: b81044df1044c0857a0737c6324678b72d4f7f00
+  FirebaseInstanceID: 83e0040351565df711a5db3d8ebe5ea21aca998a
+  FirebaseMessaging: ec6fde5a77824c6da0218f9ca220feb251aa17d5
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   IBAnimatable: aa2286a9cf8fb4ae2e1be85c5287ae56143b024f
   JSONWebToken: 6fae32489632658d563dd6952a5c34020ea813e4
-  Kingfisher: 1f9157d9c02b380cbd0b7cc890161195164eb634
+  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  NVActivityIndicatorView: 60109b9bf46efc2e71ab81453196ccdfdfeea870
+  NVActivityIndicatorView: 8068ba3ad39cb44cbaab25d89ff2546b3f092681
   PinCodeTextField: a3c39be58bde3ed1d6888d0fb1d88b0a4a2277cc
-  PromiseKit: 445dac9b2c3c3b4b31b5f842bc325700b848a8bd
+  PromiseKit: 6788ce1a0ed5448b83d4aaf56b9fc49fb7647d32
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
-  Realm: 09513d7c054678d65cd02ce09871f805b0d758ac
-  RealmSwift: e868fee9b10e5490ad94b6b6ecd9027944da1824
-  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  Realm: 08b464b462d4f31bbd4ba5f5a1c8722ef0a700b7
+  RealmSwift: 973e1499c44ab571f894c2c908e2db450be280c3
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 36999530f39b0300e1ce5507ce4142d724845e75
+PODFILE CHECKSUM: 947e3a9117391071d42de5276a28436ffa2e2c18
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3

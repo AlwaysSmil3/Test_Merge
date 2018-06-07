@@ -54,12 +54,12 @@ class ConfirmInterestRateVC: BaseViewController {
         DataManager.shared.loanInfo.status = STATUS_LOAN.RAISING_CAPITAL.rawValue
         
         APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
-            .then(on: DispatchQueue.main) { model -> Void in
+            .done(on: DispatchQueue.main) { [weak self]model in
                 DataManager.shared.loanID = model.loanId!
                 
-                self.showAlertView(title: MS_TITLE_ALERT, message: "", okTitle: "Trở về trang chủ", cancelTitle: nil, completion: { (status) in
+                self?.showAlertView(title: MS_TITLE_ALERT, message: "", okTitle: "Trở về trang chủ", cancelTitle: nil, completion: { (status) in
                     if status {
-                        self.navigationController?.popToRootViewController(animated: true)
+                        self?.navigationController?.popToRootViewController(animated: true)
                     }
                 })
             }

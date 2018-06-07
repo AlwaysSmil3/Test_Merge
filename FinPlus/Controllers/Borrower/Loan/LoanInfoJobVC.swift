@@ -89,16 +89,16 @@ class LoanInfoJobVC: LoanBaseViewController {
     //MARK: Get API
     private func getJobs() {
         APIClient.shared.getJobs()
-            .then(on: DispatchQueue.main) { model -> Void in
-                self.jobData = model
+            .done(on: DispatchQueue.main) { [weak self]model in
+                self?.jobData = model
             }
             .catch { error in }
     }
     
     private func getPositions() {
         APIClient.shared.getPositions()
-            .then(on: DispatchQueue.main) { model -> Void in
-                self.positionData = model
+            .done(on: DispatchQueue.main) { [weak self]model in
+                self?.positionData = model
             }
             .catch { error in }
     }

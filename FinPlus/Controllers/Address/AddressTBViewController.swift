@@ -64,18 +64,18 @@ class AddressTBViewController: BaseViewController {
     private func getCities() {
         
         APIClient.shared.getCities()
-            .then(on: DispatchQueue.main) { model -> Void in
+            .done(on: DispatchQueue.main) { [weak self]model in
                 print("city \(model)")
-                self.dataSource = model
+                self?.dataSource = model
             }
             .catch { error in }
     }
     
     private func getDistricts(cityID: Int) {
         APIClient.shared.getDistricts(cityID: cityID)
-            .then(on: DispatchQueue.main) { model -> Void in
+            .done(on: DispatchQueue.main) { [weak self]model in
                 print("Districts\(model)")
-                self.dataSource = model
+                self?.dataSource = model
                 
             }
             .catch{ error in }
@@ -85,9 +85,9 @@ class AddressTBViewController: BaseViewController {
     
     private func getComunes(districtsID: Int) {
         APIClient.shared.getCommunes(districtID: districtsID)
-            .then(on: DispatchQueue.main) { model -> Void in
+            .done(on: DispatchQueue.main) { [weak self]model in
                 print("Commune \(model)")
-                self.dataSource = model
+                self?.dataSource = model
             }
             .catch { error in }
         

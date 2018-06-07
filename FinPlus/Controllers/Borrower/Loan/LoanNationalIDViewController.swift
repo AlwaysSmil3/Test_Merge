@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Fusuma
+//import Fusuma
 
 enum NATIONALID_TYPE_IMG: Int {
     case ALL = 0
@@ -34,6 +34,7 @@ class LoanNationalIDViewController: LoanBaseViewController {
         self.updateDataToServer()
     }
     
+    /*
     private func setupFusuma() {
         // Show Fusuma
         let fusuma = FusumaViewController()
@@ -46,6 +47,7 @@ class LoanNationalIDViewController: LoanBaseViewController {
         fusumaSavesImage = true
         self.present(fusuma, animated: true, completion: nil)
     }
+ */
     
     private func uploadData(img: UIImage) {
         
@@ -75,17 +77,17 @@ class LoanNationalIDViewController: LoanBaseViewController {
     //MARK: Actions
     
     @IBAction func btnLoadCMNDImgALLTapped(_ sender: Any) {
-        self.setupFusuma()
+        //self.setupFusuma()
         self.type = .ALL
     }
     
     @IBAction func btnLoadCMNDImgFrontTapped(_ sender: Any) {
-        self.setupFusuma()
+        //self.setupFusuma()
         self.type = .FRONT
     }
     
     @IBAction func btnLoadCMNDImgBackTapped(_ sender: Any) {
-        self.setupFusuma()
+        //self.setupFusuma()
         self.type = .BACK
     }
     
@@ -98,6 +100,7 @@ class LoanNationalIDViewController: LoanBaseViewController {
     }
 }
 
+/*
 //MARK: Fusuma Delegate
 extension LoanNationalIDViewController: FusumaDelegate {
     
@@ -229,7 +232,7 @@ extension LoanNationalIDViewController: FusumaDelegate {
     
     
 }
-
+*/
 
 
 

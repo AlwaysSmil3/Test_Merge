@@ -141,7 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func getVersion() {
         
         APIClient.shared.getVersion()
-            .then(on: DispatchQueue.main) { model -> Void in
+            .done(on: DispatchQueue.main) { model in
                 print("Version\(model)")
                 DataManager.shared.version = model
             }

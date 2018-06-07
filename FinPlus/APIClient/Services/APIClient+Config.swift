@@ -16,16 +16,15 @@ extension APIClient {
      */
     
     func getVersion() -> Promise<Version> {
-        return Promise { fullFill, reject in
+        return Promise<Version> { seal in
             getDataWithEndPoint(endPoint: EndPoint.Config.Configs, isShowLoadingView: false)
-                .then { json -> Void in
-                    
+                .done { json in
                     let model = Version(object: json)
-                    fullFill(model)
+                    seal.fulfill(model)
                     
                 }
                 .catch { error in
-                    reject(error)
+                    seal.reject(error)
             }
         }
     }
@@ -35,9 +34,9 @@ extension APIClient {
      
      */
     func getCities() -> Promise<[Model1]> {
-        return Promise { fullFill, reject in
+        return Promise<[Model1]> { seal in
             getDataWithEndPoint(endPoint: EndPoint.Config.Cities, isShowLoadingView: false)
-                .then { json -> Void in
+                .done { json in
                     
                     var array: [Model1] = []
                     
@@ -48,10 +47,10 @@ extension APIClient {
                         }
                     }
                     
-                    fullFill(array)
+                    seal.fulfill(array)
                 }
                 .catch { error in
-                    reject(error)
+                    seal.reject(error)
                 }
         }
     }
@@ -61,12 +60,12 @@ extension APIClient {
      
      */
     func getDistricts(cityID: Int) -> Promise<[Model1]> {
-        return Promise { fullFill, reject in
+        return Promise<[Model1]> { seal in
             
             let endPoint = "\(cityID)/" + EndPoint.Config.Districts
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
-                .then { json -> Void in
+                .done { json in
                     
                     var array: [Model1] = []
                     
@@ -77,10 +76,10 @@ extension APIClient {
                         }
                     }
                     
-                    fullFill(array)
+                    seal.fulfill(array)
                 }
                 .catch { error in
-                    reject(error)
+                    seal.reject(error)
             }
         }
     }
@@ -91,12 +90,12 @@ extension APIClient {
      
      */
     func getCommunes(districtID: Int) -> Promise<[Model1]> {
-        return Promise { fullFill, reject in
+        return Promise<[Model1]> { seal in
             
             let endPoint = "\(districtID)/" + EndPoint.Config.Communes
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
-                .then { json -> Void in
+                .done { json in
                     
                     var array: [Model1] = []
                     
@@ -107,10 +106,10 @@ extension APIClient {
                         }
                     }
                     
-                    fullFill(array)
+                    seal.fulfill(array)
                 }
                 .catch { error in
-                    reject(error)
+                    seal.reject(error)
             }
         }
     }
@@ -119,10 +118,10 @@ extension APIClient {
  
      */
     func getJobs() -> Promise<[Model1]> {
-        return Promise { fullFill, reject in
+        return Promise<[Model1]> { seal in
             
             getDataWithEndPoint(endPoint: EndPoint.Config.Job, isShowLoadingView: false)
-                .then { json -> Void in
+                .done { json in
                     
                     var array: [Model1] = []
                     
@@ -133,9 +132,9 @@ extension APIClient {
                         }
                     }
                     
-                    fullFill(array)
+                    seal.fulfill(array)
                 }
-                .catch { error in reject(error)}
+                .catch { error in seal.reject(error)}
         }
         
     }
@@ -144,10 +143,10 @@ extension APIClient {
      
      */
     func getPositions() -> Promise<[Model1]> {
-        return Promise { fullFill, reject in
+        return Promise<[Model1]> { seal in
             
             getDataWithEndPoint(endPoint: EndPoint.Config.Position, isShowLoadingView: false)
-                .then { json -> Void in
+                .done { json in
                     
                     var array: [Model1] = []
                     
@@ -158,9 +157,9 @@ extension APIClient {
                         }
                     }
                     
-                    fullFill(array)
+                    seal.fulfill(array)
                 }
-                .catch { error in reject(error)}
+                .catch { error in seal.reject(error)}
         }
         
         
