@@ -30,7 +30,7 @@ class LoanOTPViewController: BaseViewController {
         }
         
         APIClient.shared.loanVerify(otp: self.tfOTP.text!, loanID: loan.loanId!)
-            .then(on: DispatchQueue.main) { [weak self] model -> Void in
+            .done(on: DispatchQueue.main) { [weak self] model in
                 
                 self?.navigationController?.popToRootViewController(animated: true)
                 self?.showToastWithMessage(message: model.returnMsg!)

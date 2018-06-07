@@ -53,8 +53,13 @@ class BorrowHomeViewController: BaseViewController {
     
     // Lấy thông tin User
     private func getUserInfo() {
+        APIClient.shared.getJobs()
+            .done(on: DispatchQueue.main) { model in
+                
+        }
+        
         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
-            .then(on: DispatchQueue.main) { model -> Void in
+            .done(on: DispatchQueue.main) { model in
                 
                 DataManager.shared.browwerInfo = model
                 
@@ -77,7 +82,7 @@ class BorrowHomeViewController: BaseViewController {
         guard DataManager.shared.loanCategories.count == 0 else { return }
         
         APIClient.shared.getLoanCategories()
-            .then(on: DispatchQueue.main) { model -> Void in
+            .done(on: DispatchQueue.main) { model in
                 DataManager.shared.loanCategories = model
             }
             .catch { error in }

@@ -16,12 +16,12 @@ extension APIClient {
      */
     func getWallets() -> Promise<[Wallet]> {
         
-        return Promise { fullFill, reject in
+        return Promise<[Wallet]> { seal in
             let uID = DataManager.shared.userID
             let endPoint = "users/" + "\(uID)/" + "wallets"
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
-                .then(on: DispatchQueue.main) { json -> Void in
+                .done(on: DispatchQueue.main) { json in
                     var array: [Wallet] = []
                     if let dataArray = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
                         for d in dataArray {
@@ -30,9 +30,9 @@ extension APIClient {
                         }
                     }
                     
-                    fullFill(array)
+                    seal.fulfill(array)
                 }
-                .catch{ error in reject(error) }
+                .catch{ error in seal.reject(error) }
 
         }
         
@@ -43,7 +43,7 @@ extension APIClient {
      */
     func addWallet(walletNumber: String, type: Int) -> Promise<[Wallet]> {
         
-        return Promise { fullFill, reject in
+        return Promise<[Wallet]> { seal in
             
             let uID = DataManager.shared.userID
             let endPoint = "users/" + "\(uID)/" + "wallets"
@@ -54,7 +54,7 @@ extension APIClient {
             ]
             
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
-                .then(on: DispatchQueue.main) { json -> Void in
+                .done(on: DispatchQueue.main) { json in
                     
                     var array: [Wallet] = []
                     if let dataArray = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
@@ -64,9 +64,9 @@ extension APIClient {
                         }
                     }
                     
-                    fullFill(array)
+                    seal.fulfill(array)
                 }
-                .catch { error in reject(error)}
+                .catch { error in seal.reject(error)}
         }
     }
     

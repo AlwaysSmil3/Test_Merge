@@ -15,9 +15,9 @@ extension APIClient {
      */
     func getLoanCategories() -> Promise<[LoanCategories]> {
         
-        return Promise { fullFill, reject in
+        return Promise<[LoanCategories]> { seal in
             getDataWithEndPoint(endPoint: EndPoint.Loan.LoanCategories, isShowLoadingView: false)
-                .then { json -> Void in
+                .done { json in
                     
                     var array: [LoanCategories] = []
                     
@@ -28,9 +28,9 @@ extension APIClient {
                         }
                     }
                     
-                    fullFill(array)
+                    seal.fulfill(array)
                 }
-                .catch { error in reject(error)}
+                .catch { error in seal.reject(error)}
         }
         
         
@@ -41,17 +41,17 @@ extension APIClient {
      
      */
     func getLoans() -> Promise<APIResponseGeneral> {
-        return Promise { fullFill, reject in
+        return Promise<APIResponseGeneral> { seal in
             
             let uid = DataManager.shared.userID
             let endPoint = "\(uid)/" + EndPoint.Loan.Loans
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
-                .then { json -> Void in
+                .done { json in
                     let model = APIResponseGeneral(object: json)
-                    fullFill(model)
+                    seal.fulfill(model)
                 }
-                .catch { error in reject(error)}
+                .catch { error in seal.reject(error)}
         }
     }
     
@@ -81,16 +81,16 @@ extension APIClient {
         let uid = DataManager.shared.userID
         let endPoint = "\(uid)/" + EndPoint.Loan.Loans
         
-        return Promise { fullFill, reject in
+        return Promise<LoanResponseModel> { seal in
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: isShowLoandingView, httpType: httpType, jsonData: dataAPI)
-                .then { json -> Void in
+                .done { json in
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = LoanResponseModel(object: data)
-                        fullFill(model)
+                        seal.fulfill(model)
                     }
                 }
                 .catch{ error in
-                    reject(error)
+                    seal.reject(error)
             }
         }
     }
@@ -106,14 +106,14 @@ extension APIClient {
             "otp": otp
         ]
         
-        return Promise { fullFill, reject in
+        return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
-                .then { json -> Void in
+                .done { json in
                     
                     let model = APIResponseGeneral(object: json)
-                    fullFill(model)
+                    seal.fulfill(model)
                 }
-                .catch { error in reject(error)}
+                .catch { error in seal.reject(error)}
         }
         
     }

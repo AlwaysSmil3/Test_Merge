@@ -15,19 +15,18 @@ extension APIClient {
      */
     func getUserInfo(uId: Int32) -> Promise<BrowwerInfo> {
         
-        return Promise { fullFill, reject in
-            
+        return Promise<BrowwerInfo> { seal in
             let endPoint = EndPoint.User.User + "\(uId)"
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
-                .then { json -> Void in
+                .done { json in
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = BrowwerInfo(object: data)
-                        fullFill(model)
+                        seal.fulfill(model)
                     }
                 }
                 .catch { error in
-                    reject(error)
+                    seal.reject(error)
                 }
             
         }

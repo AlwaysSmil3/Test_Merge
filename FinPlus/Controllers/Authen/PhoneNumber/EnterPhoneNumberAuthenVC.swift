@@ -52,17 +52,19 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
         }
         
         APIClient.shared.authentication(phoneNumber: self.tfPhoneNumber.text!)
-            .then(on: DispatchQueue.main) { model -> Void in
+            .done(on: DispatchQueue.main) { [weak self]model in
                 if model.returnCode! == 1 {
                     
-                    userDefault.set(self.tfPhoneNumber.text!, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+                    guard let strongSelf = self else { return }
+                    
+                    userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
                     userDefault.synchronize()
                     
-                    DataManager.shared.currentAccount = self.tfPhoneNumber.text!
+                    DataManager.shared.currentAccount = strongSelf.tfPhoneNumber.text!
                     
                     let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
                     
-                    self.navigationController?.pushViewController(verifyVC, animated: true)
+                    strongSelf.navigationController?.pushViewController(verifyVC, animated: true)
                 }
             }
     }
