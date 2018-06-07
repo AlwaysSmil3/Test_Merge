@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Fusuma
+//import Fusuma
 
 class LoanOtherInfoVC: LoanBaseViewController {
     
@@ -28,7 +28,7 @@ class LoanOtherInfoVC: LoanBaseViewController {
     
     
     //MARK: 
-    
+    /*
     private func setupFusuma() {
         // Show Fusuma
         let fusuma = FusumaViewController()
@@ -42,13 +42,13 @@ class LoanOtherInfoVC: LoanBaseViewController {
         
         self.present(fusuma, animated: true, completion: nil)
     }
-    
+    */
     
     
     //MARK: ACtions
     
     @IBAction func btnLoanImgOtherInfoTapped(_ sender: Any) {
-        self.setupFusuma()
+        //self.setupFusuma()
     }
     
     @IBAction func btnContinueTapped(_ sender: Any) {
@@ -64,6 +64,7 @@ class LoanOtherInfoVC: LoanBaseViewController {
     
 }
 
+/*
 //MARK: Fusuma Delegate
 extension LoanOtherInfoVC: FusumaDelegate {
     
@@ -182,4 +183,4 @@ extension LoanOtherInfoVC: FusumaDelegate {
     
     
 }
-
+*/

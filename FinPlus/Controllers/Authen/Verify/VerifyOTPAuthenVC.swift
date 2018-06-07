@@ -78,12 +78,12 @@ class VerifyOTPAuthenVC: BaseViewController {
         let phoneNumber = DataManager.shared.currentAccount
         
         APIClient.shared.verifyOTPAuthen(phoneNumber: phoneNumber, otp: self.otp)
-            .then(on: DispatchQueue.main) { model -> Void in
+            .done(on: DispatchQueue.main) { [weak self] model in
                 guard let isNew = model.isNew, isNew else {
                     // Nếu là tài khoản củ sang login
                     let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
                     
-                    self.navigationController?.pushViewController(loginVC, animated: true)
+                    self?.navigationController?.pushViewController(loginVC, animated: true)
                     
                     return
                 }
@@ -91,7 +91,7 @@ class VerifyOTPAuthenVC: BaseViewController {
                 
                 let updatePassVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "SetPassAuthenVC") as! SetPassAuthenVC
                 
-                self.navigationController?.pushViewController(updatePassVC, animated: true)
+                self?.navigationController?.pushViewController(updatePassVC, animated: true)
                 
             }
     }

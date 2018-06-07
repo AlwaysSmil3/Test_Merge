@@ -41,15 +41,14 @@ extension APIClient {
             "password": pass
         ]
         
-        return Promise { fullFill, reject in
+        return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: EndPoint.Authen.Authen, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST)
-                .then { json -> Void in
-                    
+                .done { json in
                     let model = APIResponseGeneral(object: json)
-                    fullFill(model)
+                    seal.fulfill(model)
                 }
                 .catch{ error in
-                    reject(error)
+                    seal.reject(error)
                 }
         }
         
@@ -74,16 +73,16 @@ extension APIClient {
             "otp": otp,
         ]
         
-        return Promise { fullFill, reject in
+        return Promise<VerifyAuthenData> { seal in
             requestWithEndPoint(endPoint: EndPoint.Authen.verifyOTP, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST)
-                .then { json -> Void in
+                .done { json in
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = VerifyAuthenData(object: data)
-                        fullFill(model)
+                        seal.fulfill(model)
                     }
                 }
                 .catch { error in
-                    reject(error)
+                    seal.reject(error)
                 }
         
         }
@@ -128,20 +127,20 @@ extension APIClient {
             "displayName": displayName
         ]
         
-        return Promise { fullFill, reject in
+        return Promise<BrowwerInfo> { seal in
             
             requestWithEndPoint(endPoint: EndPoint.Authen.Authen, params: params, isShowLoadingView: true, httpType: HTTPMethodType.PUT)
-                .then { json -> Void in
+                .done { json in
                     
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = BrowwerInfo(object: data)
-                        fullFill(model)
+                        seal.fulfill(model)
                     }
                     
                 }
-                .catch(execute: { (error) in
-                    reject(error)
-                })
+                .catch { error in
+                    seal.reject(error)
+                }
         }
         
     }

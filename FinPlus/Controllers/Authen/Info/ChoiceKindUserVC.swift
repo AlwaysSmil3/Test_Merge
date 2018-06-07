@@ -125,13 +125,13 @@ class ChoiceKindUserVC: BaseViewController {
                 guard let fbInfo = self.faceBookInfo, let pass = self.pw else { return }
                 
                 APIClient.shared.updateInfoFromFacebook(phoneNumber: DataManager.shared.currentAccount, pass: pass, accountType: self.accountType!.rawValue, accessToken: fbInfo.accessToken, avatar: fbInfo.avatar, displayName: fbInfo.fullName)
-                    .then(on: DispatchQueue.main) { data -> Void in
+                    .done(on: DispatchQueue.main) { [weak self]data in
                         
                         DataManager.shared.userID = data.id!
                         
                         let homeVC = UIStoryboard(name: "HomeBrowwer", bundle: nil).instantiateViewController(withIdentifier: "BorrowTabbarViewController") as! BorrowTabbarViewController
                         
-                        self.navigationController?.present(homeVC, animated: true, completion: {
+                        self?.navigationController?.present(homeVC, animated: true, completion: {
                             
                         })
                         

@@ -55,7 +55,7 @@ class AddWalletViewController: BaseViewController {
         }
         
         APIClient.shared.addWallet(walletNumber: self.tfWalletAccount.text!, type: self.walletType.rawValue)
-            .then() { [weak self] model -> Void in
+            .done() { [weak self] model in
                 
                 self?.delegate?.getWalletData(wallet: model)
                 self?.navigationController?.popViewController(animated: true)

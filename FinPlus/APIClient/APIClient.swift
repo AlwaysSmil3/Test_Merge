@@ -97,7 +97,7 @@ class APIClient {
             self.hanldeShowLoadingView(isShow: true)
         }
         
-        return Promise { fullfill, reject in
+        return Promise<JSONDictionary> { seal in
             mutableURLRequest.url = URL(string: baseURLString + endPoint)
             
             if let data = jsonData {
@@ -116,7 +116,7 @@ class APIClient {
                 
                 switch response.result {
                 case .failure(let error):
-                    reject(error)
+                    seal.reject(error)
                     UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: self.getDisplayMessage(error: error), okTitle: "OK", cancelTitle: nil)
                     
                 case .success(let responseObject):
@@ -130,14 +130,14 @@ class APIClient {
                             return
                         }
                         
-                        fullfill(responseDataDict)
+                        seal.fulfill(responseDataDict)
                     }
                     else {
                         
                         print("fail to parser data")
                         let error = NSError(domain: "BackendManager", code: 0,
                                             userInfo: [NSLocalizedDescriptionKey: API_MESSAGE.OTHER_ERROR])
-                        reject(error)
+                        seal.reject(error)
                         UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: API_MESSAGE.DATA_FORMART_ERROR, okTitle: "OK", cancelTitle: nil)
                     }
                 }
@@ -155,7 +155,7 @@ class APIClient {
             self.hanldeShowLoadingView(isShow: true)
         }
         
-        return Promise { fullfill, reject in
+        return Promise<JSONDictionary> { seal in
             mutableURLRequest.url = URL(string: baseURLString + endPoint)
             
             Alamofire.request(mutableURLRequest as URLRequest).responseJSON { response in
@@ -169,21 +169,21 @@ class APIClient {
                     
                 case .failure(let error):
                     
-                    reject(error)
+                    seal.reject(error)
                     UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: self.getDisplayMessage(error: error), okTitle: "OK", cancelTitle: nil)
                     
                 case .success(let responseObject):
                     
                     if let responseDataDict = responseObject as? JSONDictionary {
                         
-                        fullfill(responseDataDict)
+                        seal.fulfill(responseDataDict)
                     }
                     else {
                         
                         print("fail to parser data")
                         let error = NSError(domain: "BackendManager", code: 0,
                                             userInfo: [NSLocalizedDescriptionKey: API_MESSAGE.OTHER_ERROR])
-                        reject(error)
+                        seal.reject(error)
                         UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: API_MESSAGE.DATA_FORMART_ERROR, okTitle: "OK", cancelTitle: nil)
                     }
                 }

@@ -17,7 +17,7 @@ class LoanBaseViewController: BaseViewController {
     
     func updateDataToServer() {
         APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
-            .then(on: DispatchQueue.main) { model -> Void in
+            .done(on: DispatchQueue.main) { model in
                 DataManager.shared.loanID = model.loanId!
             }
             .catch { error in }

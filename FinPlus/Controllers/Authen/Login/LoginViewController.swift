@@ -73,14 +73,14 @@ class LoginViewController: BaseViewController {
         }
         
         APIClient.shared.authentication(phoneNumber: account, pass: tfPass.text!)
-            .then(on: DispatchQueue.main) { model -> Void in
+            .done(on: DispatchQueue.main) { [weak self]model in
                 if model.returnCode! == 1 {
                 
                     DataManager.shared.currentAccount = account
                     
                     let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
                     
-                    self.navigationController?.pushViewController(verifyVC, animated: true)
+                    self?.navigationController?.pushViewController(verifyVC, animated: true)
                 }
         }
     }

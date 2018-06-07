@@ -33,8 +33,8 @@ class ManagerWalletVC: BaseViewController {
     private func getWallets() {
         
         APIClient.shared.getWallets()
-            .then { model -> Void in
-                self.dataSource = model
+            .done { [weak self]model in
+                self?.dataSource = model
                 
             }
             .catch { error in }
