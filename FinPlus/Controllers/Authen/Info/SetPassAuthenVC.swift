@@ -8,12 +8,17 @@
 
 import Foundation
 
+enum SetPassOrResetPass {
+    case SetPass
+    case ResetPass
+}
 class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
     
-    
-    @IBOutlet var lblHeader: UILabel!
-    @IBOutlet var tfPass: UITextField!
-    @IBOutlet var tfRePass: UITextField!
+    var setPassOrResetPass: SetPassOrResetPass = SetPassOrResetPass.SetPass
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblHeader: UILabel!
+    @IBOutlet weak var tfPass: UITextField!
+    @IBOutlet weak var tfRePass: UITextField!
     
     @IBOutlet var btnHideShowPass: UIButton!
     var isShowPass: Bool = false {
@@ -49,6 +54,18 @@ class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
         
         self.tfPass.becomeFirstResponder()
         
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        switch setPassOrResetPass {
+        case .SetPass:
+            self.lblTitle.text = "Tạo tài khoản mới"
+            self.lblHeader.text = "Xin chào +8498776876, bạn chưa có tài khoản. Vui lòng thiết lập mật khẩu để bắt đầu."
+        default:
+            self.lblTitle.text = "Thiết lập mật khẩu mới"
+            self.lblHeader.text = "Xin chào +8498776876, bạn đã yêu cầu đặt lại mật khẩu. Vui lòng tạo mật khẩu mới."
+        }
     }
     
     private func updateStateBtnContinue() {
@@ -96,38 +113,44 @@ class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
     
     
     @IBAction func btnConfirmTapped(_ sender: Any) {
-        
+        // validate password
         if self.tfPass.text!.length() == 0 {
             self.showToastWithMessage(message: "Vui lòng nhập mật khẩu")
             return
         }
-        
+
         if self.tfPass.text!.length() < 6 {
             self.showToastWithMessage(message: "Mật khẩu nhập vào không hợp lệ. Mật khẩu chỉ gồm 6 số, không bao gồm chữ cái và các ký tự khác")
             return
         }
-        
+
         if self.tfRePass.text!.length() == 0 {
             self.showToastWithMessage(message: "Vui lòng nhập lại mật khẩu")
             return
         }
-        
+
         if self.tfRePass.text!.length() < 6 {
             self.showToastWithMessage(message: "Mật khẩu xác nhận không hợp lệ. Mật khẩu chỉ gồm 6 số, không bao gồm chữ cái và các ký tự khác")
             return
         }
-        
+
         if !self.tfPass.text!.contains(self.tfRePass.text!) {
             self.showToastWithMessage(message: "Mật khẩu Không trùng khớp. Vui lòng thử lại.")
-            
+
             return
         }
         
-        let choiceKindUser = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "ChoiceKindUserVC") as! ChoiceKindUserVC
-        
-        choiceKindUser.pw = self.tfPass.text!
-        
-        self.navigationController?.pushViewController(choiceKindUser, animated: true)
+        switch setPassOrResetPass {
+        case .SetPass:
+            let choiceKindUser = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "ChoiceKindUserVC") as! ChoiceKindUserVC
+
+            choiceKindUser.pw = self.tfPass.text!
+
+            self.navigationController?.pushViewController(choiceKindUser, animated: true)
+        default:
+            print("Reset password")
+        }
+
         
     }
     
