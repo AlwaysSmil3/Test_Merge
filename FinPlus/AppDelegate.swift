@@ -23,7 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //Setup start View Controller
-        self.setupStartVC()
+//        self.setupStartVC()
+        let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+        self.window?.rootViewController = tabbarVC
         
         // Register Notifications
         self.registerForRemoteNotifications(application)

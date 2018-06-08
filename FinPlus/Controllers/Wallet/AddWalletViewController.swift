@@ -2,69 +2,62 @@
 //  AddWalletViewController.swift
 //  FinPlus
 //
-//  Created by Cao Van Hai on 5/28/18.
+//  Created by nghiendv on 08/06/2018.
 //  Copyright © 2018 Cao Van Hai. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import TextFieldEffects
 
-enum WalletType: Int {
-    case Momo = 0
-}
+class AddWalletViewController: UIViewController {
 
-protocol WalletDataProtocol {
-    func getWalletData(wallet: [Wallet])
-}
-
-class AddWalletViewController: BaseViewController {
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var momoBtn: UIButton!
+    @IBOutlet weak var paypalBtn: UIButton!
     
-    @IBOutlet var tfWallet: UITextField!
-    @IBOutlet var btnWalletType: UIButton!
-    @IBOutlet var tfWalletOwnerFullName: UITextField!
-    @IBOutlet var tfWalletAccount: UITextField!
-    @IBOutlet var tfWalletReAccount: UITextField!
+    @IBOutlet weak var nameTextField: HoshiTextField!
+    @IBOutlet weak var accTextField: HoshiTextField!
+    @IBOutlet weak var reAccTextField: HoshiTextField!
     
-    var delegate: WalletDataProtocol?
-    var walletType: WalletType = .Momo
-    
-    
+    var wallet: Wallet!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-    }
-    
-    
-    //MAKR
-    @IBAction func btnAddWalletTapped(_ sender: Any) {
-        
-        if self.tfWalletOwnerFullName.text?.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập tên chủ thẻ")
-            return
-        }
-        
-        if self.tfWalletAccount.text?.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập số tài khoản")
-            return
-        }
-        
-        if self.tfWalletReAccount.text?.length() == 0 {
-            self.showToastWithMessage(message: "Số tài khoản nhập lại không trùng nhau")
-            return
-        }
-        
-        APIClient.shared.addWallet(walletNumber: self.tfWalletAccount.text!, type: self.walletType.rawValue)
-            .done() { [weak self] model in
-                
-                self?.delegate?.getWalletData(wallet: model)
-                self?.navigationController?.popViewController(animated: true)
-            }
-            .catch { error in }
-        
 
+        // Do any additional setup after loading the view.
+        
+        momoBtn.layer.borderWidth = 0.5
+        momoBtn.layer.cornerRadius = 8
+        momoBtn.layer.borderColor = MAIN_COLOR.cgColor
+        momoBtn.setTitle(NSLocalizedString("MOMO_WALLET", comment: ""), for: .normal)
+        
+        paypalBtn.layer.borderWidth = 0.5
+        paypalBtn.layer.cornerRadius = 8
+        paypalBtn.layer.borderColor = MAIN_COLOR.cgColor
+        paypalBtn.setTitle(NSLocalizedString("PAYPAL_ACCOUNT", comment: ""), for: .normal)
+        
+        self.title = "Thêm ví"
+        
+        if ((wallet) != nil)
+        {
+            self.title = "Sửa thông tin ví"
+            nameTextField.text = wallet.walletAccountName
+            accTextField.text = wallet.walletNumber
+            reAccTextField.text = wallet.walletNumber
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func navi_cancel(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
-    
+    @IBAction func navi_save(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+
 }

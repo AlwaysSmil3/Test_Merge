@@ -1,0 +1,36 @@
+/* 
+  Localizable.strings
+  FinPlus
+
+  Created by nghiendv on 08/06/2018.
+  Copyright © 2018 Cao Van Hai. All rights reserved.
+*/
+
+"LOAN" = "Vay tiền";
+"LOAN_MANAGER" = "Quản lý vay";
+"WALLET_MANAGER" = "Quản lý ví";
+"NOTIFICATION" = "Thông báo";
+"BRIEF" = "Hồ sơ";
+
+"ALL_ACCOUNT_CONNECTED" = "Các tài khoản đã liên kết";
+"CREATE_NEW_ACCOUNT" = "Tạo tài khoản mới";
+"MOMO_WALLET" = "Ví MoMo";
+"ADD_NEW_WALLET" = "Thêm tài khoản ví mới";
+"PAYPAL_ACCOUNT" = "Tài khoản PayPal";
+"NO_WALLET" = "Bạn chưa có tài khoản ví nào. Vui lòng ấn nút 'Thêm ví mới' bên dưới để liên kết với các ví mới";
+
+"STATUS" = "Trạng thái";
+"DETAIL_LOAN" = "Chi tiết đơn vay";
+"CURRENT_LOAN" = "Khoản vay hiện tại";
+"END_LOAN" = "Các khoản vay đã kết thúc";
+"NO_LOAN" = "Bạn chưa có khoản vay nào. Vui lòng tạo một đơn vay mới để bắt đầu vay tiền.";
+
+"PHONE" = "Số điện thoại";
+"LOAN_START" = "Ngày vay";
+"LOAN_MONEY" = "Số tiền vay";
+"LOAN_TIME" = "Thời hạn vay";
+"STATUS" = "Trạng thái";
+"RATE" = "Lãi suất";
+"LOAN_FEE" = "Phí dịch vụ";
+"MONEY_MONTH" = "Trả góp hàng tháng";
+"LOAN_DIS" = "Mục đích vay";

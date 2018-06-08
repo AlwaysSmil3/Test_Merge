@@ -49,19 +49,19 @@ class LoanWalletViewController: LoanBaseViewController {
     //MARK: Actions
     
     @IBAction func btnAddWalletTapped(_ sender: Any) {
-        let addWalletVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "AddWalletViewController") as! AddWalletViewController
-        addWalletVC.delegate = self
-        self.navigationController?.pushViewController(addWalletVC, animated: true)
+//        let addWalletVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "AddWalletViewController") as! AddWalletViewController
+//        addWalletVC.delegate = self
+//        self.navigationController?.pushViewController(addWalletVC, animated: true)
         
     }
     
 }
 
-extension LoanWalletViewController: WalletDataProtocol {
-    func getWalletData(wallet: [Wallet]) {
-        self.dataSource = wallet
-    }
-}
+//extension LoanWalletViewController: WalletDataProtocol {
+//    func getWalletData(wallet: [Wallet]) {
+//        self.dataSource = wallet
+//    }
+//}
 
 
 extension LoanWalletViewController: UITableViewDelegate, UITableViewDataSource {
