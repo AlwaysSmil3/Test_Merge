@@ -26,6 +26,19 @@ public struct Wallet {
   public var id: Int32?
   public var walletType: Int?
 
+    // MARK: SwiftyJSON manual
+    /// Initiates the instance based on the object.
+    ///
+    /// - parameter object: The object of either Dictionary or Array kind that was passed.
+    /// - returns: An initialized instance of the class.
+    public init(wID: Int32, wType: Int, wAccountName: String, wName: String, wNumber: String) {
+        walletAccountName = wAccountName
+        walletNumber = wNumber
+        walletName = wName
+        id = wID
+        walletType = wType
+    }
+    
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
   ///
