@@ -151,8 +151,7 @@
 		63FD80C920C0E13D004BD22A /* LoanBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FD80C820C0E13D004BD22A /* LoanBaseViewController.swift */; };
 		63FD80CD20C13C14004BD22A /* HomeInvestor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63FD80CC20C13C14004BD22A /* HomeInvestor.storyboard */; };
 		84C913A720CA21DD00079549 /* OnBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C913A620CA21DD00079549 /* OnBoard.storyboard */; };
-		84C913B720CA608D00079549 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C913B620CA608D00079549 /* TutorialViewController.swift */; };
-		84C913B920CA60A500079549 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C913B820CA60A500079549 /* TutorialPageViewController.swift */; };
+		84C913BB20CDA15A00079549 /* OnBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C913BA20CDA15A00079549 /* OnBoardViewController.swift */; };
 		ADB81E3CB997BF9C12009966 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633AF97220A96F1B00BAE2BB /* Pods_FinPlus.framework */; };
 		DD471C902E2C45FF6323FC89 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
 /* End PBXBuildFile section */
@@ -308,8 +307,7 @@
 		63FD80C820C0E13D004BD22A /* LoanBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanBaseViewController.swift; sourceTree = "<group>"; };
 		63FD80CC20C13C14004BD22A /* HomeInvestor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeInvestor.storyboard; sourceTree = "<group>"; };
 		84C913A620CA21DD00079549 /* OnBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoard.storyboard; sourceTree = "<group>"; };
-		84C913B620CA608D00079549 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
-		84C913B820CA60A500079549 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
+		84C913BA20CDA15A00079549 /* OnBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardViewController.swift; sourceTree = "<group>"; };
 		99AC1CB2D251026CD34AB910 /* Pods-FinPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinPlus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus.debug.xcconfig"; sourceTree = "<group>"; };
 		AF35B598B6B30D66806A3592 /* Pods-FinPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus.release.xcconfig"; sourceTree = "<group>"; };
 		D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -858,8 +856,7 @@
 		84C913A820CA24A900079549 /* OnBoard */ = {
 			isa = PBXGroup;
 			children = (
-				84C913B620CA608D00079549 /* TutorialViewController.swift */,
-				84C913B820CA60A500079549 /* TutorialPageViewController.swift */,
+				84C913BA20CDA15A00079549 /* OnBoardViewController.swift */,
 			);
 			path = OnBoard;
 			sourceTree = "<group>";
@@ -1098,7 +1095,6 @@
 			files = (
 				6338F40120BE602C005777E2 /* BrowwerWorks.swift in Sources */,
 				639C9DEC20A1829300F2CF5E /* ExUIApplication.swift in Sources */,
-				84C913B920CA60A500079549 /* TutorialPageViewController.swift in Sources */,
 				632FD02420AADF3C00D9399C /* VerifyAuthenData.swift in Sources */,
 				639C9E2420A1A4FF00F2CF5E /* Constant.swift in Sources */,
 				635B5E0C20B6B4F900F02132 /* RelationShipPhone.swift in Sources */,
@@ -1158,13 +1154,13 @@
 				630467BD20B524610069469A /* APIClient+Config.swift in Sources */,
 				633AE0B420B40AA1007AB0D1 /* LoanSummaryInfoVC.swift in Sources */,
 				633AE0AD20B3F430007AB0D1 /* LoanWalletTBCell.swift in Sources */,
-				84C913B720CA608D00079549 /* TutorialViewController.swift in Sources */,
 				6307D3CD20AD817300055F5C /* APIClient+User.swift in Sources */,
 				6338F40320BE602C005777E2 /* BrowwerUserInfo.swift in Sources */,
 				6338F3FC20BE602C005777E2 /* BrowwerContacts.swift in Sources */,
 				6334891C20C635BA00C95931 /* HomeBrowwer.swift in Sources */,
 				630467BF20B526CE0069469A /* APIClient+Wallet.swift in Sources */,
 				6338F3F920BE602C005777E2 /* BrowwerJobInfo.swift in Sources */,
+				84C913BB20CDA15A00079549 /* OnBoardViewController.swift in Sources */,
 				632FD02120AAC3CC00D9399C /* APIResponseGeneral.swift in Sources */,
 				630467B620B50B5C0069469A /* AddressFirstViewController.swift in Sources */,
 				635B5E0620B6B3A500F02132 /* LoanInfo.swift in Sources */,
