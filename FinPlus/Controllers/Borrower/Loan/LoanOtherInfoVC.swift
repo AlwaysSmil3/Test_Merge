@@ -11,12 +11,12 @@ import Foundation
 
 class LoanOtherInfoVC: LoanBaseViewController {
     
-    
-    @IBOutlet var textOtherInfo: AnimatableTextView!
-    @IBOutlet var imgOtherInfo: UIImageView!
+    @IBOutlet var mainCollectionView: UICollectionView!
     
     override func viewDidLoad() {
+        self.index = 3
         super.viewDidLoad()
+        
         
     }
     
@@ -52,7 +52,6 @@ class LoanOtherInfoVC: LoanBaseViewController {
     
     @IBAction func btnContinueTapped(_ sender: Any) {
         
-        DataManager.shared.loanInfo.optionalText = self.textOtherInfo.text
         
         let loanSummaryInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSummaryInfoVC") as! LoanSummaryInfoVC
         
@@ -62,6 +61,27 @@ class LoanOtherInfoVC: LoanBaseViewController {
 
     
 }
+
+
+extension LoanOtherInfoVC: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Loan_Other_Info_Collection_Cell", for: indexPath) as! LoanOtherInfoCollectionCell
+        
+        return cell
+    }
+    
+
+    
+    
+}
+
+
 
 /*
 //MARK: Fusuma Delegate

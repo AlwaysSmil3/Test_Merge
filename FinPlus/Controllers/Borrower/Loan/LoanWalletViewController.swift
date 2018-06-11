@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LoanWalletViewController: LoanBaseViewController {
+class LoanWalletViewController: BaseViewController {
     
     
     @IBOutlet var walletTBView: UITableView!
@@ -42,6 +42,15 @@ class LoanWalletViewController: LoanBaseViewController {
             .done { [weak self]model in
                 self?.dataSource = model
                 
+            }
+            .catch { error in }
+    }
+    
+    /// Xong mỗi bước là gửi api put cập nhật dữ liệu cho mỗi bước
+    func updateDataToServer() {
+        APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
+            .done(on: DispatchQueue.main) { model in
+                DataManager.shared.loanID = model.loanId!
             }
             .catch { error in }
     }

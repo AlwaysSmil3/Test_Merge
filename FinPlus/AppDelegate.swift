@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        //Data From Json
+        DataManager.shared.getDataLoanFromJSON()
+        
         //Setup start View Controller
         self.setupStartVC()
 //        let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
