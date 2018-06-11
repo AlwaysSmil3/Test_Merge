@@ -193,6 +193,7 @@
 		E7F51A3620CE6DE700F72682 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F51A3320CE6DE700F72682 /* TutorialPageViewController.swift */; };
 		E7F51A3720CE6DE700F72682 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F51A3420CE6DE700F72682 /* TutorialViewController.swift */; };
 		E7F51A3820CE6DE700F72682 /* OnBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F51A3520CE6DE700F72682 /* OnBoardViewController.swift */; };
+		E7F51A3C20CE708000F72682 /* OnBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F51A3B20CE708000F72682 /* OnBoard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -390,6 +391,7 @@
 		E7F51A3320CE6DE700F72682 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		E7F51A3420CE6DE700F72682 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		E7F51A3520CE6DE700F72682 /* OnBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardViewController.swift; sourceTree = "<group>"; };
+		E7F51A3B20CE708000F72682 /* OnBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -723,6 +725,7 @@
 		639C9DC720A14A3C00F2CF5E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E7F51A3B20CE708000F72682 /* OnBoard.storyboard */,
 				E7F51A1520CE6D1600F72682 /* Loan */,
 				630467B220B5094F0069469A /* Address.storyboard */,
 				639C9DDC20A15E3500F2CF5E /* Authen.storyboard */,
@@ -1146,6 +1149,7 @@
 				E7F51A2120CE6D1600F72682 /* LoanTypeFooterTBView.xib in Resources */,
 				63FD80CD20C13C14004BD22A /* HomeInvestor.storyboard in Resources */,
 				639C9E0F20A18A7500F2CF5E /* Roboto-Medium.ttf in Resources */,
+				E7F51A3C20CE708000F72682 /* OnBoard.storyboard in Resources */,
 				639C9E1620A18A7500F2CF5E /* Roboto-Italic.ttf in Resources */,
 				630BA61620C22A4100880DAE /* SF-Pro-Display-Heavy.otf in Resources */,
 				639C9E1520A18A7500F2CF5E /* Roboto-LightItalic.ttf in Resources */,
