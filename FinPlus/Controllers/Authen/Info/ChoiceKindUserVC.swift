@@ -149,9 +149,15 @@ class ChoiceKindUserVC: BaseViewController {
     // MARK Actions
     
     @IBAction func btnInvestorSelectedTapped(_ sender: Any) {
-        
+
         guard self.accountType != .Investor else { return }
         self.accountType = .Investor
+
+        let homeVC = UIStoryboard(name: "HomeInvestor", bundle: nil).instantiateViewController(withIdentifier: "InvestorTabBarController")
+
+        self.navigationController?.present(homeVC, animated: true, completion: {
+
+        })
 
     }
     
@@ -162,9 +168,7 @@ class ChoiceKindUserVC: BaseViewController {
                 if status {
                     self.facebookSignIn()
                 }
-                
             })
-            
         }
         
         guard self.accountType != .Browwer else { return }
