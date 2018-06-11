@@ -13,6 +13,9 @@ class LoanOtherInfoVC: LoanBaseViewController {
     
     @IBOutlet var mainCollectionView: UICollectionView!
     
+    var dataSourceCollection: [Any] = []
+    var currentSelectedCollection: IndexPath?
+    
     override func viewDidLoad() {
         self.index = 3
         super.viewDidLoad()
@@ -25,24 +28,6 @@ class LoanOtherInfoVC: LoanBaseViewController {
         
         self.updateDataToServer()
     }
-    
-    /*
-    //MARK:
-    private func setupFusuma() {
-        // Show Fusuma
-        let fusuma = FusumaViewController()
-        
-        fusuma.delegate = self
-        fusuma.cropHeightRatio = 1.0
-        fusuma.allowMultipleSelection = true
-        fusuma.availableModes = [.library]
-        
-        fusumaSavesImage = true
-        
-        self.present(fusuma, animated: true, completion: nil)
-    }
- 
-    */
     
     //MARK: ACtions
     
@@ -58,7 +43,19 @@ class LoanOtherInfoVC: LoanBaseViewController {
         self.navigationController?.pushViewController(loanSummaryInfoVC, animated: true)
     }
     
+    func showLibrary() {
+        CameraHandler.shared.showActionSheet(vc: self)
+        CameraHandler.shared.imagePickedBlock = { (image) in
+            let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
+            
+            guard let indexPath = self.currentSelectedCollection else { return }
 
+            if let cell = self.mainCollectionView.cellForItem(at: indexPath) as? LoanOtherInfoVC {
+                
+            }
+        }
+        
+    }
     
 }
 
@@ -66,7 +63,7 @@ class LoanOtherInfoVC: LoanBaseViewController {
 extension LoanOtherInfoVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return self.dataSourceCollection.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -76,130 +73,16 @@ extension LoanOtherInfoVC: UICollectionViewDataSource, UICollectionViewDelegate 
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.currentSelectedCollection = indexPath
+        
+        
+        
+        
+    }
 
     
     
 }
 
 
-
-/*
-//MARK: Fusuma Delegate
-extension LoanOtherInfoVC: FusumaDelegate {
-    
-    func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
-        let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
-        switch source {
-            
-        case .camera:
-            
-            print("Image captured from Camera")
-            
-        case .library:
-            
-            print("Image selected from Camera Roll")
-            
-        default:
-            
-            print("Image selected")
-        }
-        
-        //imageView.image = image
-    }
-    
-    func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
-        
-        print("Number of selection images: \(images.count)")
-        
-        var count: Double = 0
-        
-        for image in images {
-            let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
-//            DispatchQueue.main.asyncAfter(deadline: .now() + (3.0 * count)) {
-//
-//                //self.imageView.image = image
-//                print("w: \(image.size.width) - h: \(image.size.height)")
-//            }
-            count += 1
-        }
-    }
-    
-    func fusumaImageSelected(_ image: UIImage, source: FusumaMode, metaData: ImageMetadata) {
-        
-        print("Image mediatype: \(metaData.mediaType)")
-        print("Source image size: \(metaData.pixelWidth)x\(metaData.pixelHeight)")
-        print("Creation date: \(String(describing: metaData.creationDate))")
-        print("Modification date: \(String(describing: metaData.modificationDate))")
-        print("Video duration: \(metaData.duration)")
-        print("Is favourite: \(metaData.isFavourite)")
-        print("Is hidden: \(metaData.isHidden)")
-        print("Location: \(String(describing: metaData.location))")
-    }
-    
-    func fusumaVideoCompleted(withFileURL fileURL: URL) {
-        
-        print("video completed and output to file: \(fileURL)")
-        //self.fileUrlLabel.text = "file output to: \(fileURL.absoluteString)"
-    }
-    
-    func fusumaDismissedWithImage(_ image: UIImage, source: FusumaMode) {
-        
-        switch source {
-            
-        case .camera:
-            
-            print("Called just after dismissed FusumaViewController using Camera")
-            
-        case .library:
-            
-            print("Called just after dismissed FusumaViewController using Camera Roll")
-            
-        default:
-            
-            print("Called just after dismissed FusumaViewController")
-        }
-    }
-    
-    func fusumaCameraRollUnauthorized() {
-        
-        print("Camera roll unauthorized")
-        
-        let alert = UIAlertController(title: "Access Requested",
-                                      message: "Saving image needs to access your photo album",
-                                      preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Settings", style: .default) { (action) -> Void in
-            
-            if let url = URL(string:UIApplicationOpenSettingsURLString) {
-                
-                UIApplication.shared.openURL(url)
-            }
-        })
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
-            
-        })
-        
-        guard let vc = UIApplication.shared.delegate?.window??.rootViewController,
-            let presented = vc.presentedViewController else {
-                
-                return
-        }
-        
-        presented.present(alert, animated: true, completion: nil)
-    }
-    
-    func fusumaClosed() {
-        
-        print("Called when the FusumaViewController disappeared")
-    }
-    
-    func fusumaWillClosed() {
-        
-        print("Called when the close button is pressed")
-    }
-    
-    
-    
-}
-*/
