@@ -8,14 +8,14 @@
 
 import Foundation
 
-class LoanWalletViewController: LoanBaseViewController {
+class LoanWalletViewController: BaseViewController {
     
     
     @IBOutlet var walletTBView: UITableView!
     
-    var dataSource: [Wallet] = [] {
+    var dataSource1: [Wallet] = [] {
         didSet {
-            if dataSource.count > 0 {
+            if dataSource1.count > 0 {
                 self.walletTBView.reloadData()
             }
         }
@@ -36,11 +36,19 @@ class LoanWalletViewController: LoanBaseViewController {
         self.updateDataToServer()
     }
     
+    func updateDataToServer() {
+        APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
+            .done(on: DispatchQueue.main) { model in
+                DataManager.shared.loanID = model.loanId!
+            }
+            .catch { error in }
+    }
+    
     
     private func getWallets() {
         APIClient.shared.getWallets()
             .done { [weak self]model in
-                self?.dataSource = model
+                self?.dataSource1 = model
                 
             }
             .catch { error in }
@@ -59,38 +67,38 @@ class LoanWalletViewController: LoanBaseViewController {
 
 extension LoanWalletViewController: WalletDataProtocol {
     func getWalletData(wallet: [Wallet]) {
-        self.dataSource = wallet
+        self.dataSource1 = wallet
     }
 }
 
 
 extension LoanWalletViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataSource.count
+        return self.dataSource1.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Loan_Wallet_TB_Cell", for: indexPath) as! LoanWalletTBCell
-        
-        let wallet = self.dataSource[indexPath.row]
-        
+
+        let wallet = self.dataSource1[indexPath.row]
+
         cell.lblOwnerName.text = wallet.walletAccountName!
         cell.lblAccountNumber.text = wallet.walletNumber!
         DataManager.shared.loanInfo.walletId = wallet.id!
-        
+
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
-        
+
         self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
-        
+
     }
-    
-    
-    
+
+
+
 }

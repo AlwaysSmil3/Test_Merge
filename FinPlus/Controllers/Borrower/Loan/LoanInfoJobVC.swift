@@ -11,17 +11,6 @@ import DropDown
 
 class LoanInfoJobVC: LoanBaseViewController {
     
-    
-    @IBOutlet var btnPosition: UIButton!
-    @IBOutlet var tfPosition: UITextField!
-    @IBOutlet var btnJob: UIButton!
-    @IBOutlet var tfJob: UITextField!
-    
-    @IBOutlet var tfCompanyName: UITextField!
-    @IBOutlet var tfSalary: UITextField!
-    @IBOutlet var tfCompanyPhone: UITextField!
-    @IBOutlet var lblCompanyAddress: UILabel!
-    
     var job: Model1?
     var position: Model1?
     
@@ -48,9 +37,10 @@ class LoanInfoJobVC: LoanBaseViewController {
     var companyAddress: Address?
     
     override func viewDidLoad() {
+        self.index = 1
         super.viewDidLoad()
         
-        self.setupDropdown()
+        //self.setupDropdown()
         
         self.getJobs()
         self.getPositions()
@@ -60,29 +50,6 @@ class LoanInfoJobVC: LoanBaseViewController {
         super.viewWillAppear(animated)
         
         self.updateDataToServer()
-    }
-    
-    //MARK: Setup Dropdown
-    
-    private func setupDropdown() {
-        
-        //Job
-        self.jobDropdown.anchorView = self.btnJob
-        self.jobDropdown.dataSource = []
-        
-        self.jobDropdown.selectionAction = { [unowned self] (index: Int, item: String) in
-            self.job = self.jobData[index]
-            self.tfJob.text = item
-        }
-        
-        //Position
-        self.positionDropdown.anchorView = self.btnPosition
-        self.positionDropdown.dataSource = []
-        
-        self.positionDropdown.selectionAction = { [unowned self] (index: Int, item: String) in
-            self.position = self.positionData[index]
-            self.tfPosition.text = item
-        }
     }
 
     
@@ -104,6 +71,7 @@ class LoanInfoJobVC: LoanBaseViewController {
     }
     
     private func updateDataForLoanAPI(completion: () -> Void) {
+        /*
         guard let addr = self.companyAddress else { return }
         
         DataManager.shared.loanInfo.jobInfo.address = addr
@@ -113,6 +81,7 @@ class LoanInfoJobVC: LoanBaseViewController {
         
         DataManager.shared.loanInfo.jobInfo.jobType = self.tfJob.text!
         DataManager.shared.loanInfo.jobInfo.position = self.tfPosition.text!
+        */
         
         completion()
     }
@@ -127,15 +96,7 @@ class LoanInfoJobVC: LoanBaseViewController {
     @IBAction func btnPositionTapped(_ sender: Any) {
         self.positionDropdown.show()
     }
-    
-    
-    @IBAction func btnCompanyAddressTapped(_ sender: Any) {
-        let firstAddressVC = UIStoryboard(name: "Address", bundle: nil).instantiateViewController(withIdentifier: "AddressFirstViewController") as! AddressFirstViewController
-        firstAddressVC.delegate = self
-        
-        self.navigationController?.pushViewController(firstAddressVC, animated: true)
-        
-    }
+
     
     
     @IBAction func btnContinueTapped(_ sender: Any) {
@@ -147,18 +108,8 @@ class LoanInfoJobVC: LoanBaseViewController {
         
     }
     
-    
 }
 
-extension LoanInfoJobVC: AddressDelegate {
-    
-    func getAddress(address: Address, type: Int) {
-        let addr = address.commune + ", " + address.district + ", " + address.city
-        self.lblCompanyAddress.text = addr
-        self.companyAddress = address
-    }
-    
-}
 
 
 

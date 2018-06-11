@@ -9,59 +9,15 @@
 import Foundation
 import DropDown
 
-// Giới tính
-enum Gender: Int {
-    case Male = 0
-    case Female
-}
-
-// Số điện thọai người thân
-enum RelationPhoneNumber: Int {
-    case Wife = 0
-    case Husband
-    case Father
-    case Mother
-
-}
-
-
 class LoanPersionalInfoVC: LoanBaseViewController {
     
-    @IBOutlet var tfFullName: UITextField!
-    @IBOutlet var tfGender: UITextField!
-    @IBOutlet var btnGender: UIButton!
-    
-    @IBOutlet var tfRelationPhoneType: UITextField!
-    @IBOutlet var tfRelationPhone: UITextField!
-    @IBOutlet var btnRelationPhone: UIButton!
-    
-    @IBOutlet var tfBirthDay: UITextField!
-    @IBOutlet var tfNationalID: UITextField!
-    
-    @IBOutlet var lblResidentAddress: UILabel!
-    @IBOutlet var lblTemporaryAddress: UILabel!
-    
-    
     // Dropdown DataSource
-    let genderDropdownDataSource = ["Nam", "Nữ"]
     let relationPhoneNumberDropdownDataSource = ["Vợ", "Chồng", "Bố", "Mẹ"]
     
-    // Gender
-    let genderDropdown = DropDown()
-    var gender: Gender = .Male
     
     //Relationship PhoneNumber
     let relationPhoneNumberDropdown = DropDown()
     var relationPhoneNumberType: RelationPhoneNumber = .Wife
-    
-    //BirthDay
-    var birthDay: Date? {
-        didSet {
-            if let date = self.birthDay {
-                self.tfBirthDay.text = date.toString(.custom(kDisplayFormat))
-            }
-        }
-    }
     
     // Address
     var residentAddress: Address?
@@ -70,7 +26,7 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupDropdown()
+        //self.setupDropdown()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,52 +35,8 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         self.updateDataToServer()
     }
     
-    private func setupDropdown() {
-        
-        // Gender Dropdown
-        self.genderDropdown.anchorView = self.btnGender
-        self.genderDropdown.dataSource = self.genderDropdownDataSource
-        
-        self.genderDropdown.selectionAction = { [unowned self] (index: Int, item: String) in
-            guard self.gender.rawValue != index else { return }
-            self.tfGender.text = self.genderDropdownDataSource[index]
-            if index == 0 {
-                self.gender = .Male
-            } else if index == 1 {
-                self.gender = .Female
-            }
-        }
-        
-        // Relation PhoneNumber Dropdown
-        self.relationPhoneNumberDropdown.anchorView = self.btnRelationPhone
-        self.relationPhoneNumberDropdown.dataSource = self.relationPhoneNumberDropdownDataSource
-        
-        self.relationPhoneNumberDropdown.selectionAction = { [unowned self] (index: Int, item: String) in
-            guard self.relationPhoneNumberType.rawValue != index else { return }
-            self.tfRelationPhoneType.text = self.relationPhoneNumberDropdownDataSource[index]
-            self.tfRelationPhone.placeholder = "Nhập số điện thoại của " + self.relationPhoneNumberDropdownDataSource[index]
-            
-            switch index {
-            case 0:
-                self.relationPhoneNumberType = .Wife
-                break
-            case 1:
-                self.relationPhoneNumberType = .Husband
-                break
-            case 2:
-                self.relationPhoneNumberType = .Father
-                break
-            case 3:
-                self.relationPhoneNumberType = .Mother
-                break
-            default:
-                break
-            }
-        }
-        
-    }
-    
     private func updateDataForLoanAPI(completion: () -> Void) {
+        /*
         guard let birthDay = self.birthDay, let residentAddr = self.residentAddress, let tempAddr = self.temporatyAddress else { return }
         
         DataManager.shared.loanInfo.userInfo.fullName = self.tfFullName.text!
@@ -138,71 +50,15 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         
         DataManager.shared.loanInfo.userInfo.relationships.phoneNumber = self.tfRelationPhone.text!
         DataManager.shared.loanInfo.userInfo.relationships.type = self.relationPhoneNumberType.rawValue
+        */
         
         completion()
     }
     
     //MARK: Actions
-    
-    @IBAction func btnGenderSelected(_ sender: Any) {
-        let filterVC = UIAlertController(title: "Chọn giới tính của bạn", message: nil, preferredStyle: .actionSheet)
-        filterVC.view.tintColor = MAIN_COLOR
-        
-        let cancel = UIAlertAction(title: "Huỷ", style: .cancel) { (action) in
-            
-        }
-        
-        cancel.setValue(UIColor(hexString: "#08121E"), forKey: "titleTextColor")
-        
-        let title1 = "Nam"
-        let action1 = UIAlertAction(title: title1, style: .default) { (action) in
-            self.tfGender.text = title1
-            self.gender = .Male
-        }
-        
-        let title2 = "Nữ"
-        let action2 = UIAlertAction(title: title2, style: .default) { (action) in
-            self.tfGender.text = title2
-            self.gender = .Female
-        }
-        
-        filterVC.addAction(cancel)
-        filterVC.addAction(action1)
-        filterVC.addAction(action2)
-        
-        self.present(filterVC, animated: true, completion: nil)
-    }
-    
-    @IBAction func btnBirthDayTapped(_ sender: Any) {
-        
-        DatePickerDialog().show("Ngày sinh", doneButtonTitle: "Đồng ý", cancelButtonTitle: "Huỷ", defaultDate: Date() , minimumDate: nil, maximumDate: Date(), datePickerMode: UIDatePickerMode.date) { (date) in
-            
-            if let date = date {
-                self.birthDay = date
-            }
-        }
-        
-    }
-    
     @IBAction func btnRelationCallTapped(_ sender: Any) {
         self.relationPhoneNumberDropdown.show()
         
-    }
-    
-    @IBAction func btnResidentAddressTapped(_ sender: Any) {
-        let firstAddressVC = UIStoryboard(name: "Address", bundle: nil).instantiateViewController(withIdentifier: "AddressFirstViewController") as! AddressFirstViewController
-        firstAddressVC.delegate = self
-        
-        self.navigationController?.pushViewController(firstAddressVC, animated: true)
-    }
-    
-    
-    @IBAction func btnTemporaryAddressTapped(_ sender: Any) {
-        let firstAddressVC = UIStoryboard(name: "Address", bundle: nil).instantiateViewController(withIdentifier: "AddressFirstViewController") as! AddressFirstViewController
-        firstAddressVC.typeAddress = 1
-        firstAddressVC.delegate = self
-        
-        self.navigationController?.pushViewController(firstAddressVC, animated: true)
     }
     
     
@@ -220,15 +76,7 @@ class LoanPersionalInfoVC: LoanBaseViewController {
 }
 
 
-extension LoanPersionalInfoVC: AddressDelegate {
-    func getAddress(address: Address, type: Int) {
-        let add = address.commune + ", " + address.district + ", " + address.city
-        if type == 0 {
-            self.lblResidentAddress.text = add
-            self.residentAddress = address
-        } else {
-            self.lblTemporaryAddress.text = add
-            self.temporatyAddress = address
-        }
-    }
-}
+
+
+
+
