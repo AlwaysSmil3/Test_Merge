@@ -35,6 +35,20 @@ enum STATUS_LOAN: Int {
     
 }
 
+
+/// Các kiểu type TB cell from Loan_Builder
+enum DATA_TYPE_TB_CELL {
+    static let TextBox = "text_box"
+    static let DropDown = "dropdown"
+    static let DateTime = "datetime"
+    static let DropdownTexBox = "dropdown_text_box"
+    static let Address = "address"
+    static let Footer = "footer"
+    static let File = "file"
+    static let MultipleFile = "multiple_file"
+    
+}
+
 let API_RESPONSE_RETURN_CODE = "returnCode"
 let API_RESPONSE_RETURN_MESSAGE = "returnMsg"
 let API_RESPONSE_RETURN_DATA = "data"
@@ -45,6 +59,7 @@ let API_DEVICE_TYPE_OS = 0 // ios 0, android: 1
 let MAIN_COLOR = UIColor(hexString: "#3BAB63")
 let BAR_DEFAULT_COLOR = UIColor(hexString: "#c9c9cd")
 let DISABLE_BUTTON_COLOR = UIColor(hexString: "#B8C9D3")
+let TEXT_NORMAL_COLOR = UIColor(hexString: "#4D6678")
 
 let MS_TITLE_ALERT = "Thông báo"
 

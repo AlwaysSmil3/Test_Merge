@@ -74,17 +74,30 @@ class LoginViewController: BaseViewController {
                 if model.returnCode! == 1 {
                 
                     DataManager.shared.currentAccount = account
-                    
-                    let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
-                    
-                    self?.navigationController?.pushViewController(verifyVC, animated: true)
+                    self?.pushToVerifyVC(verifyType: .Login)
+                } else {
+                    var message = "Đăng nhập thất bại. Vui lòng kiểm tra lại."
+                    if let returnMsg = model.returnMsg {
+                        message = returnMsg
+                    }
+                    self?.showGreenBtnMessage(title: "Có lỗi", message: message, okTitle: "Thử lại", cancelTitle: nil)
                 }
             }
             .catch { error in }
     }
     
     @IBAction func btnForgotPassTapped(_ sender: Any) {
-        
+        // show alert confirm
+        self.showGreenBtnMessage(title: "Đặt lại mật khẩu", message: "Mã xác thực sẽ được gửi tới +8498776876 qua tin nhắn SMS sau khi bạn đồng ý. Bạn chắc chắn không?", okTitle: "Đồng ý", cancelTitle: "Hủy bỏ") { (true) in
+            self.pushToVerifyVC(verifyType: .Forgot)
+        }
+    }
+
+    func pushToVerifyVC(verifyType: VerifyType) {
+        self.view.endEditing(true)
+        let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
+        verifyVC.verifyType = verifyType
+        self.navigationController?.pushViewController(verifyVC, animated: true)
     }
 }
 
