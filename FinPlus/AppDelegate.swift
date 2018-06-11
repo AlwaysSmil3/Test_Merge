@@ -22,10 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        
         //Setup start View Controller
-//        self.setupStartVC()
-        let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-        self.window?.rootViewController = tabbarVC
+        self.setupStartVC()
+        //let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+        //self.window?.rootViewController = tabbarVC
         
         // Register Notifications
         self.registerForRemoteNotifications(application)
