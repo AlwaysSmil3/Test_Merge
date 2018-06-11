@@ -62,12 +62,13 @@ class BorrowerTabBarController: UITabBarController {
         
         let swallet = UIStoryboard.init(name: "Wallet", bundle: nil)
         let sLoanManager = UIStoryboard.init(name: "LoanManager", bundle: nil)
+        let sProfile = UIStoryboard.init(name: "Profile", bundle: nil)
         
         let v1 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI")
         let v2 = sLoanManager.instantiateViewController(withIdentifier: "LOAN_MANAGER_NAVI")
         let v3 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI")
         let v4 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI")
-        let v5 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI")
+        let v5 = sProfile.instantiateViewController(withIdentifier: "PROFILE_NAVI")
 
         v1.tabBarItem = UITabBarItem(title: NSLocalizedString("LOAN", comment: ""), image: UIImage(named: "ic_tb_brow1"), selectedImage: UIImage(named: "ic_tb_brow1_selected"))
         v2.tabBarItem = UITabBarItem(title: NSLocalizedString("LOAN_MANAGER", comment: ""), image: UIImage(named: "ic_tb_brow2"), selectedImage: UIImage(named: "ic_tb_brow2_selected"))

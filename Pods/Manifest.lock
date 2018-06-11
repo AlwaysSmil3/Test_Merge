@@ -7,6 +7,7 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
   - DropDown (2.3.2)
+  - FAQView (0.5.0)
   - FBSDKCoreKit (4.33.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.33.0):
@@ -71,6 +72,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - DropDown
+  - FAQView
   - FBSDKCoreKit
   - FBSDKLoginKit
   - Firebase/Core
@@ -90,6 +92,7 @@ SPEC REPOS:
     - Alamofire
     - Bolts
     - DropDown
+    - FAQView
     - FBSDKCoreKit
     - FBSDKLoginKit
     - Firebase
@@ -115,6 +118,7 @@ SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
+  FAQView: 3be1ca502c3ef1f789bd1c1611ec23458f63fad2
   FBSDKCoreKit: 572b047a7e029bc44542bcf8a59414e7ff2b543e
   FBSDKLoginKit: 88cb456349cfb3b554427ce4f8b43729d85dfb40
   Firebase: e08fb0795f35707aeb1d8a715c731c45bdf6fd56
@@ -136,6 +140,6 @@ SPEC CHECKSUMS:
   TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 414cebf9f97de3c34184e214c0c6352ea21e6ffa
+PODFILE CHECKSUM: 13c5f97f87926d6aad98850e6b6d5c46ec6346e6
 
 COCOAPODS: 1.5.2
