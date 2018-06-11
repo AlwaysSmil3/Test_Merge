@@ -24,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Setup start View Controller
         self.setupStartVC()
-        
+//        let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+//        self.window?.rootViewController = tabbarVC
+
         // Register Notifications
         self.registerForRemoteNotifications(application)
         
@@ -117,10 +119,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func setupStartVC() {
         // test
-        let enterPhoneVC = UIStoryboard(name: "OnBoard", bundle: nil).instantiateInitialViewController()
-        self.window?.rootViewController = enterPhoneVC
-
-        return
+//        let enterPhoneVC = UIStoryboard(name: "OnBoard", bundle: nil).instantiateInitialViewController()
+//        self.window?.rootViewController = enterPhoneVC
+//
+//        return
 
         let isFirstLaunch = UserDefaults.isFirstLaunch()
         if isFirstLaunch == true {

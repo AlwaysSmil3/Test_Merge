@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="V06-iu-xhq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -232,7 +232,6 @@
                         <segue destination="2Wj-j2-BFY" kind="relationship" relationship="viewControllers" id="J6v-GM-T9D"/>
                         <segue destination="pZZ-j2-EeW" kind="relationship" relationship="viewControllers" id="e0z-2P-WbS"/>
                         <segue destination="hLS-Hj-8yc" kind="relationship" relationship="viewControllers" id="3hJ-YC-4OE"/>
-                        <segue destination="ima-mH-5Sr" kind="relationship" relationship="viewControllers" id="XfZ-tp-yBT"/>
                         <segue destination="ME7-bl-M5x" kind="relationship" relationship="viewControllers" id="29V-hR-Kg3"/>
                     </connections>
                 </tabBarController>
@@ -294,53 +293,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zlW-k7-X9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="295" y="1156"/>
-        </scene>
-        <!--Root View Controller-->
-        <scene sceneID="29I-gY-lqU">
-            <objects>
-                <tableViewController id="vyL-QV-TBe" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Iy9-PA-5mA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="9zX-FN-Hl2">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9zX-FN-Hl2" id="g01-qg-rcF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="vyL-QV-TBe" id="m00-GY-jki"/>
-                            <outlet property="delegate" destination="vyL-QV-TBe" id="yjg-mO-VQ6"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="v8S-XR-KvQ"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Vk0-Cd-3l8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1062" y="1852"/>
-        </scene>
-        <!--Thông báo-->
-        <scene sceneID="D6X-Qd-1hN">
-            <objects>
-                <navigationController id="ima-mH-5Sr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Thông báo" image="ic_tb_brow5" selectedImage="ic_tb_brow5_selected" id="da9-rN-Puh"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cus-4f-faQ">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="vyL-QV-TBe" kind="relationship" relationship="rootViewController" id="HWy-Df-vQB"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4tW-9G-LaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="294" y="1852"/>
+            <point key="canvasLocation" x="305.60000000000002" y="1132.5337331334333"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="fHA-1S-lbF">
@@ -359,7 +312,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z4F-qu-Vnp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="590" y="2598"/>
+            <point key="canvasLocation" x="1400.8" y="1841.8290854572715"/>
         </scene>
         <!--Hồ sơ-->
         <scene sceneID="R5P-cH-LQX">
@@ -378,7 +331,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MvI-2t-aci" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-535" y="2599"/>
+            <point key="canvasLocation" x="295" y="1816"/>
         </scene>
     </scenes>
     <resources>
@@ -392,7 +345,5 @@
         <image name="ic_tb_brow3_selected" width="24" height="19"/>
         <image name="ic_tb_brow4" width="19" height="20"/>
         <image name="ic_tb_brow4_selected" width="19" height="20"/>
-        <image name="ic_tb_brow5" width="22" height="21"/>
-        <image name="ic_tb_brow5_selected" width="23" height="22"/>
     </resources>
 </document>
