@@ -14,7 +14,8 @@ enum VerifyType {
     case Forgot
 }
 class VerifyOTPAuthenVC: BaseViewController {
-    
+
+    @IBOutlet weak var resendCodeBtn: UIButton!
     @IBOutlet var lblLimitTime: UILabel!
     @IBOutlet var pinCodeTextField: PinCodeTextField!
     var verifyType : VerifyType = .Login
@@ -37,6 +38,14 @@ class VerifyOTPAuthenVC: BaseViewController {
         
         self.timer.invalidate()
     }
+
+    @IBAction func resendCodeBtnAction(_ sender: Any) {
+        // call to resend Code API
+        print("Resend Code API")
+        self.resendCodeBtn.isHidden = true
+        count = 0
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
     
     private func setupPinView() {
         pinCodeTextField.delegate = self
@@ -53,19 +62,22 @@ class VerifyOTPAuthenVC: BaseViewController {
         toolbar.barStyle = .default
         toolbar.sizeToFit()
         pinCodeTextField.inputAccessoryView = toolbar
+        resendCodeBtn.isHidden = true
     }
     
     // Update timer
     @objc func updateTimer() {
         guard count <= 59 else {
             self.timer.invalidate()
-            
+            resendCodeBtn.isHidden = false
             return
         }
         
         if (60 - count) < 15 {
             //Gần hết time đổi màu
             self.lblLimitTime.textColor = UIColor(red: 255/255, green: 81/255, blue: 88/255, alpha: 1)
+        } else {
+            self.lblLimitTime.textColor = TEXT_NORMAL_COLOR
         }
         
         count += 1
@@ -81,10 +93,10 @@ class VerifyOTPAuthenVC: BaseViewController {
         switch verifyType {
         case .Login:
             let phoneNumber = DataManager.shared.currentAccount
-
             APIClient.shared.verifyOTPAuthen(phoneNumber: phoneNumber, otp: self.otp)
                 .done(on: DispatchQueue.main) { [weak self] model in
                     guard let isNew = model.isNew, isNew else {
+                        
                         // Nếu là tài khoản củ sang login
                         let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
 
@@ -99,10 +111,14 @@ class VerifyOTPAuthenVC: BaseViewController {
                     self?.navigationController?.pushViewController(updatePassVC, animated: true)
             }
         default:
-            print("Forgot Verify")
-            let updatePassVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "SetPassAuthenVC") as! SetPassAuthenVC
-            updatePassVC.setPassOrResetPass = .ResetPass
-            self.navigationController?.pushViewController(updatePassVC, animated: true)
+            print("Forgot Password Verify")
+            let phoneNumber = DataManager.shared.currentAccount
+            APIClient.shared.verifyOTPAuthen(phoneNumber: phoneNumber, otp: self.otp)
+                .done(on: DispatchQueue.main) { [weak self] model in
+                    let updatePassVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "SetPassAuthenVC") as! SetPassAuthenVC
+                    updatePassVC.setPassOrResetPass = .ResetPass
+                    self?.navigationController?.pushViewController(updatePassVC, animated: true)
+            }
         }
 
     }
@@ -126,6 +142,8 @@ extension VerifyOTPAuthenVC: PinCodeTextFieldDelegate {
             self.imgBgBtnContinue!.image = #imageLiteral(resourceName: "bg_button_enable_login")
             self.btnContinue!.dropShadow(color: MAIN_COLOR)
             self.btnContinue!.isEnabled = true
+            self.view.endEditing(true)
+            self.btnVerifyTapped(btnContinue!)
         } else {
             self.imgBgBtnContinue!.image = #imageLiteral(resourceName: "bg_button_disable_login")
             self.btnContinue!.dropShadow(color: DISABLE_BUTTON_COLOR)
