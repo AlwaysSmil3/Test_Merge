@@ -9,12 +9,15 @@
 import Foundation
 import PinCodeTextField
 
-
+enum VerifyType {
+    case Login
+    case Forgot
+}
 class VerifyOTPAuthenVC: BaseViewController {
     
     @IBOutlet var lblLimitTime: UILabel!
     @IBOutlet var pinCodeTextField: PinCodeTextField!
-    
+    var verifyType : VerifyType = .Login
     
     var count = 0
     var timer = Timer()
@@ -75,26 +78,33 @@ class VerifyOTPAuthenVC: BaseViewController {
 
     
     @IBAction func btnVerifyTapped(_ sender: Any) {
-        
-        let phoneNumber = DataManager.shared.currentAccount
-        
-        APIClient.shared.verifyOTPAuthen(phoneNumber: phoneNumber, otp: self.otp)
-            .done(on: DispatchQueue.main) { [weak self] model in
-                guard let isNew = model.isNew, isNew else {
-                    // Nếu là tài khoản củ sang login
-                    let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                    
-                    self?.navigationController?.pushViewController(loginVC, animated: true)
-                    
-                    return
-                }
-                // Nếu là tài khoản mới sang cập nhật thông tin(pass, chon là invest hat broww...)
-                
-                let updatePassVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "SetPassAuthenVC") as! SetPassAuthenVC
-                
-                self?.navigationController?.pushViewController(updatePassVC, animated: true)
-                
+        switch verifyType {
+        case .Login:
+            let phoneNumber = DataManager.shared.currentAccount
+
+            APIClient.shared.verifyOTPAuthen(phoneNumber: phoneNumber, otp: self.otp)
+                .done(on: DispatchQueue.main) { [weak self] model in
+                    guard let isNew = model.isNew, isNew else {
+                        // Nếu là tài khoản củ sang login
+                        let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+
+                        self?.navigationController?.pushViewController(loginVC, animated: true)
+
+                        return
+                    }
+                    // Nếu là tài khoản mới sang cập nhật thông tin(pass, chon là invest hat broww...)
+
+                    let updatePassVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "SetPassAuthenVC") as! SetPassAuthenVC
+                    updatePassVC.setPassOrResetPass = .SetPass
+                    self?.navigationController?.pushViewController(updatePassVC, animated: true)
             }
+        default:
+            print("Forgot Verify")
+            let updatePassVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "SetPassAuthenVC") as! SetPassAuthenVC
+            updatePassVC.setPassOrResetPass = .ResetPass
+            self.navigationController?.pushViewController(updatePassVC, animated: true)
+        }
+
     }
     
 }

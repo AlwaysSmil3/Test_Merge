@@ -76,7 +76,7 @@ class LoginViewController: BaseViewController {
                     DataManager.shared.currentAccount = account
                     
                     let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
-                    
+                    verifyVC.verifyType = .Login
                     self?.navigationController?.pushViewController(verifyVC, animated: true)
                 }
             }
@@ -84,7 +84,23 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func btnForgotPassTapped(_ sender: Any) {
-        
+        // show alert confirm
+        let alert = UIAlertController(title: "Đặt lại mật khẩu", message: "Mã xác thực sẽ được gửi tới +8498776876 qua tin nhắn SMS sau khi bạn đồng ý. Bạn chắc chắn không?", preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            cancelAction.setValue(MAIN_COLOR, forKey: "titleTextColor")
+
+        alert.addAction(cancelAction)
+        let acceptAction = UIAlertAction(title: "Đồng ý", style: .default, handler: { action in
+            // push to verify code
+            self.view.endEditing(true)
+            let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
+            verifyVC.verifyType = .Forgot
+            self.navigationController?.pushViewController(verifyVC, animated: true)
+
+        })
+        acceptAction.setValue(MAIN_COLOR, forKey: "titleTextColor")
+        alert.addAction(acceptAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
