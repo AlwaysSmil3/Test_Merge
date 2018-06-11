@@ -24,6 +24,7 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     var temporatyAddress: Address?
     
     override func viewDidLoad() {
+        self.index = 0
         super.viewDidLoad()
         
         //self.setupDropdown()
