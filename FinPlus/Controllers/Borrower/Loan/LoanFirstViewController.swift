@@ -109,6 +109,4 @@ class LoanFirstViewController: BaseViewController {
         self.showToastWithMessage(message: "Phí dịch vụ dự kiến")
     }
     
-    
-    
 }
