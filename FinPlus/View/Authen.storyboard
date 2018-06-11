@@ -239,6 +239,40 @@
                                                         <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60 giây" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHo-y8-NZJ">
+                                                        <rect key="frame" x="32" y="170" width="311" height="20.5"/>
+                                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                                        <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjd-xn-ibq" customClass="PinCodeTextField" customModule="PinCodeTextField">
+                                                        <rect key="frame" x="79" y="214" width="216" height="50"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="7qK-vY-GXS"/>
+                                                            <constraint firstAttribute="width" constant="216" id="P2H-4v-zJF"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="underlineColor">
+                                                                <color key="value" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="characterLimit">
+                                                                <integer key="value" value="6"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="underlineHeight">
+                                                                <real key="value" value="2"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="underlineWidth">
+                                                                <real key="value" value="21"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                                <color key="value" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                                <real key="value" value="34"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcb-Qb-zm0">
                                                         <rect key="frame" x="32" y="288.5" width="311" height="46"/>
                                                         <subviews>
@@ -275,49 +309,27 @@
                                                             <constraint firstAttribute="trailing" secondItem="AvD-8C-7WN" secondAttribute="trailing" id="zxm-9e-02K"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjd-xn-ibq" customClass="PinCodeTextField" customModule="PinCodeTextField">
-                                                        <rect key="frame" x="79.5" y="214.5" width="216" height="50"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="7qK-vY-GXS"/>
-                                                            <constraint firstAttribute="width" constant="216" id="P2H-4v-zJF"/>
-                                                        </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="underlineColor">
-                                                                <color key="value" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="characterLimit">
-                                                                <integer key="value" value="6"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="underlineHeight">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="underlineWidth">
-                                                                <real key="value" value="21"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                                <color key="value" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                                                <real key="value" value="34"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60 giây" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHo-y8-NZJ">
-                                                        <rect key="frame" x="32" y="170" width="311" height="20.5"/>
-                                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
-                                                        <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnw-V3-fgW">
+                                                        <rect key="frame" x="132" y="343" width="111" height="33"/>
+                                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
+                                                        <state key="normal" title="Gửi lại tin nhắn">
+                                                            <color key="titleColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="resendCodeBtnAction:" destination="bTK-Lz-kYc" eventType="touchUpInside" id="ABc-ZT-7l8"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="hcb-Qb-zm0" firstAttribute="top" secondItem="xjd-xn-ibq" secondAttribute="bottom" constant="24" id="2bB-Pm-wqv"/>
                                                     <constraint firstItem="NAe-OX-Fg0" firstAttribute="leading" secondItem="RlW-yj-ABe" secondAttribute="leading" constant="32" id="8Ax-YK-3Go"/>
                                                     <constraint firstItem="JHo-y8-NZJ" firstAttribute="trailing" secondItem="qNd-TF-SJl" secondAttribute="trailing" id="AIm-ud-li7"/>
+                                                    <constraint firstItem="Gnw-V3-fgW" firstAttribute="top" secondItem="hcb-Qb-zm0" secondAttribute="bottom" constant="16" id="Fu1-MD-wHc"/>
                                                     <constraint firstItem="xjd-xn-ibq" firstAttribute="top" secondItem="JHo-y8-NZJ" secondAttribute="bottom" constant="24" id="Iyu-hW-4VV"/>
                                                     <constraint firstItem="xjd-xn-ibq" firstAttribute="centerX" secondItem="RlW-yj-ABe" secondAttribute="centerX" id="VDn-Wq-lTF"/>
                                                     <constraint firstItem="JHo-y8-NZJ" firstAttribute="leading" secondItem="qNd-TF-SJl" secondAttribute="leading" id="VeP-mv-WKx"/>
+                                                    <constraint firstItem="Gnw-V3-fgW" firstAttribute="centerX" secondItem="RlW-yj-ABe" secondAttribute="centerX" id="VoJ-B5-pGZ"/>
                                                     <constraint firstItem="qNd-TF-SJl" firstAttribute="leading" secondItem="NAe-OX-Fg0" secondAttribute="leading" id="VrQ-gY-EVj"/>
                                                     <constraint firstAttribute="trailing" secondItem="NAe-OX-Fg0" secondAttribute="trailing" constant="32" id="YyI-RK-oZb"/>
                                                     <constraint firstItem="hcb-Qb-zm0" firstAttribute="leading" secondItem="qNd-TF-SJl" secondAttribute="leading" id="abI-M6-pcV"/>
@@ -364,6 +376,7 @@
                         <outlet property="imgBgBtnContinue" destination="jAh-Qp-M3K" id="OEx-Fl-jdu"/>
                         <outlet property="lblLimitTime" destination="JHo-y8-NZJ" id="NyN-kt-BTQ"/>
                         <outlet property="pinCodeTextField" destination="xjd-xn-ibq" id="Tz0-SF-kwN"/>
+                        <outlet property="resendCodeBtn" destination="Gnw-V3-fgW" id="f2y-V6-lEd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1NY-nO-jZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -585,7 +598,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo" translatesAutoresizingMaskIntoConstraints="NO" id="t5d-Pw-Ox0">
-                                <rect key="frame" x="132.5" y="40" width="109" height="14"/>
+                                <rect key="frame" x="133" y="40" width="109" height="14"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tạo tài khoản mới" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSX-Wb-EcM">
                                 <rect key="frame" x="32" y="101" width="311" height="31.5"/>
@@ -612,7 +625,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="171.5" height="326"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_growth" translatesAutoresizingMaskIntoConstraints="NO" id="tap-Vo-V7G">
-                                        <rect key="frame" x="57.5" y="52" width="55" height="55"/>
+                                        <rect key="frame" x="58" y="52" width="55" height="55"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vay tiền" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RER-Nb-VIk">
                                         <rect key="frame" x="59" y="154" width="54.5" height="18"/>
@@ -627,7 +640,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHỌN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wco-lm-15A">
-                                        <rect key="frame" x="70" y="277.5" width="32" height="13"/>
+                                        <rect key="frame" x="70.5" y="277.5" width="32" height="13"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="11"/>
                                         <color key="textColor" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -668,7 +681,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="171.5" height="326"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_growth1" translatesAutoresizingMaskIntoConstraints="NO" id="Gqp-Z0-mu4">
-                                        <rect key="frame" x="58.5" y="52" width="55" height="55"/>
+                                        <rect key="frame" x="59" y="52" width="55" height="55"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lựa chọn trong các gói vay được tăng lên từ người vay để đầu tư/ cho vay và nhận được lãi xuất sau đó." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JE0-6c-Fii">
                                         <rect key="frame" x="17" y="188" width="137.5" height="53"/>
@@ -677,13 +690,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHỌN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNL-et-QRl">
-                                        <rect key="frame" x="70" y="277" width="32" height="13"/>
+                                        <rect key="frame" x="70.5" y="277" width="32" height="13"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="11"/>
                                         <color key="textColor" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đầu tư" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuU-Fs-V67">
-                                        <rect key="frame" x="63" y="154" width="46" height="18"/>
+                                        <rect key="frame" x="63.5" y="154" width="46" height="18"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="15"/>
                                         <color key="textColor" red="0.031372549019607843" green="0.070588235294117646" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>

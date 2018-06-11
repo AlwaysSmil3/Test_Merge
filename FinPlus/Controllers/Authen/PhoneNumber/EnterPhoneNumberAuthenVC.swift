@@ -43,10 +43,12 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
     @IBAction func btnContinueTapped(_ sender: Any) {
         
         if self.tfPhoneNumber.text?.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại để tiếp tục")
+            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại để tiếp tục.")
+            return
+        } else if (self.tfPhoneNumber.text?.length())! < 10 {
+            self.showToastWithMessage(message: "Số điện thoại phải chứa 10 hoặc 11 số. Vui lòng kiểm tra lại.")
             return
         }
-        
         APIClient.shared.authentication(phoneNumber: self.tfPhoneNumber.text!)
             .done(on: DispatchQueue.main) { [weak self]model in
                 if model.returnCode! == 1 {

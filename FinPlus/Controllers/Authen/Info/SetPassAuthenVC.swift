@@ -142,18 +142,18 @@ class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
         
         switch setPassOrResetPass {
         case .SetPass:
-            let choiceKindUser = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "ChoiceKindUserVC") as! ChoiceKindUserVC
-
-            choiceKindUser.pw = self.tfPass.text!
-
-            self.navigationController?.pushViewController(choiceKindUser, animated: true)
+            self.pushToChoiceKindUserVC()
         default:
-            print("Reset password")
+            self.showGreenBtnMessage(title: "Thành công", message: "Mật khẩu mới đã được thiết lập thành công", okTitle: "OK", cancelTitle: nil) { (true) in
+                self.pushToChoiceKindUserVC()
+            }
         }
-
-        
     }
-    
-    
-    
+
+    func pushToChoiceKindUserVC() {
+        let choiceKindUser = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "ChoiceKindUserVC") as! ChoiceKindUserVC
+        choiceKindUser.pw = self.tfPass.text!
+        self.navigationController?.pushViewController(choiceKindUser, animated: true)
+    }
+
 }
