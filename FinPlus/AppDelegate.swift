@@ -27,7 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Setup start View Controller
         self.setupStartVC()
-        
+//        let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+//        self.window?.rootViewController = tabbarVC
+
         // Register Notifications
         self.registerForRemoteNotifications(application)
         
@@ -117,26 +119,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //MARK: Setup Start View Controller
-    
-    private func setupStartVC() {
-        
-        guard let _ = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String else {
-            // chưa có account Login
-            let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
-            
-            self.window?.rootViewController = enterPhoneVC
-            
-            return
-        }
-        
-        //Đã có account Login
-        print("account \(userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME))")
-        let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewControllerNavi") as! UINavigationController
-        
-        self.window?.rootViewController = loginVC
-        
 
-        
+    private func setupStartVC() {
+        // test
+//        let enterPhoneVC = UIStoryboard(name: "OnBoard", bundle: nil).instantiateInitialViewController()
+//        self.window?.rootViewController = enterPhoneVC
+//
+//        return
+
+        let isFirstLaunch = UserDefaults.isFirstLaunch()
+        if isFirstLaunch == true {
+            let enterPhoneVC = UIStoryboard(name: "OnBoard", bundle: nil).instantiateInitialViewController()
+            self.window?.rootViewController = enterPhoneVC
+
+            return
+        } else {
+            guard let _ = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String else {
+                // chưa có account Login
+                let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
+
+                self.window?.rootViewController = enterPhoneVC
+
+                return
+            }
+            //Đã có account Login
+            print("account \(userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME))")
+            let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewControllerNavi") as! UINavigationController
+
+            self.window?.rootViewController = loginVC
+        }
     }
     
     //MARK: GetVersion

@@ -13,9 +13,9 @@ class LoanWalletViewController: BaseViewController {
     
     @IBOutlet var walletTBView: UITableView!
     
-    var dataSource1: [Wallet] = [] {
+    var dataSource: [Wallet] = [] {
         didSet {
-            if dataSource1.count > 0 {
+            if dataSource.count > 0 {
                 self.walletTBView.reloadData()
             }
         }
@@ -36,6 +36,17 @@ class LoanWalletViewController: BaseViewController {
         self.updateDataToServer()
     }
     
+    
+    private func getWallets() {
+        APIClient.shared.getWallets()
+            .done { [weak self]model in
+                self?.dataSource = model
+                
+            }
+            .catch { error in }
+    }
+    
+    /// Xong mỗi bước là gửi api put cập nhật dữ liệu cho mỗi bước
     func updateDataToServer() {
         APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
             .done(on: DispatchQueue.main) { model in
@@ -44,61 +55,51 @@ class LoanWalletViewController: BaseViewController {
             .catch { error in }
     }
     
-    
-    private func getWallets() {
-        APIClient.shared.getWallets()
-            .done { [weak self]model in
-                self?.dataSource1 = model
-                
-            }
-            .catch { error in }
-    }
-    
     //MARK: Actions
     
     @IBAction func btnAddWalletTapped(_ sender: Any) {
-        let addWalletVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "AddWalletViewController") as! AddWalletViewController
-        addWalletVC.delegate = self
-        self.navigationController?.pushViewController(addWalletVC, animated: true)
+//        let addWalletVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "AddWalletViewController") as! AddWalletViewController
+//        addWalletVC.delegate = self
+//        self.navigationController?.pushViewController(addWalletVC, animated: true)
         
     }
     
 }
 
-extension LoanWalletViewController: WalletDataProtocol {
-    func getWalletData(wallet: [Wallet]) {
-        self.dataSource1 = wallet
-    }
-}
+//extension LoanWalletViewController: WalletDataProtocol {
+//    func getWalletData(wallet: [Wallet]) {
+//        self.dataSource = wallet
+//    }
+//}
 
 
 extension LoanWalletViewController: UITableViewDelegate, UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataSource1.count
+        return self.dataSource.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Loan_Wallet_TB_Cell", for: indexPath) as! LoanWalletTBCell
-
-        let wallet = self.dataSource1[indexPath.row]
-
+        
+        let wallet = self.dataSource[indexPath.row]
+        
         cell.lblOwnerName.text = wallet.walletAccountName!
         cell.lblAccountNumber.text = wallet.walletNumber!
         DataManager.shared.loanInfo.walletId = wallet.id!
-
+        
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
+        
         let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
-
+        
         self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
-
+        
     }
-
-
-
+    
+    
+    
 }
