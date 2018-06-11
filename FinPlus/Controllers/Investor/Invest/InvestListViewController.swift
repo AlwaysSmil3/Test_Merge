@@ -14,12 +14,26 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var orderByBtn: UIButton!
     @IBOutlet weak var filterByBtn: UIButton!
     @IBOutlet weak var topSegmentControl: UISegmentedControl!
+    var allLoansArray : [BrowwerActiveLoan] = [BrowwerActiveLoan]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UINib(nibName: "InvestTableViewCell", bundle: nil), forCellReuseIdentifier: "InvestTableViewCell")
+        self.getAllLoans()
         // Do any additional setup after loading the view.
+    }
+
+    // Lấy danh sách tất cả các khoản vay
+    private func getAllLoans() {
+        APIClient.shared.getAllLoans()
+            .done(on: DispatchQueue.main) { model in
+                print(model)
+                self.allLoansArray = model
+                self.tableView.reloadData()
+                // let _ : BrowwerActiveLoan = model
+            }
+            .catch { error in }
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,19 +46,24 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return allLoansArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellData : BrowwerActiveLoan = allLoansArray[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "InvestTableViewCell", for: indexPath) as? InvestTableViewCell {
+            cell.nameLb.text = "\(cellData.loanId!)"
+            cell.amountLb.text = "\(cellData.amount!)"
             return cell
         }
         return UITableViewCell()
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cellData : BrowwerActiveLoan = allLoansArray[indexPath.row]
         let investStoryBoard = UIStoryboard(name: "Invest", bundle: nil)
-        let investDetailVC = investStoryBoard.instantiateViewController(withIdentifier: "InvestDetailViewController")
+        let investDetailVC = investStoryBoard.instantiateViewController(withIdentifier: "InvestDetailViewController") as! InvestDetailViewController
+        investDetailVC.investData = cellData
         self.navigationController?.pushViewController(investDetailVC, animated: true)
     }
     

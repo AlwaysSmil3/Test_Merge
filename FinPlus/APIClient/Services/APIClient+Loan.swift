@@ -35,10 +35,34 @@ extension APIClient {
         
         
     }
+
+    /*
+     GET Lấy danh sách tất cả các khoản vay
+    */
+    func getAllLoans() -> Promise<[BrowwerActiveLoan]> {
+        return Promise<[BrowwerActiveLoan]> { seal in
+            let endPoint = EndPoint.Loan.Loans
+
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
+                .done { json in
+                    var array: [BrowwerActiveLoan] = []
+
+                    if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
+                        for d in data {
+                            let model1 = BrowwerActiveLoan(object: d)
+                            array.append(model1)
+                        }
+                    }
+                    seal.fulfill(array)
+
+                }
+                .catch { error in seal.reject(error)}
+        }
+    }
     
     /*
      GET Lấy danh sách khoản vay của người dùng
-     
+        
      */
     func getLoans() -> Promise<APIResponseGeneral> {
         return Promise<APIResponseGeneral> { seal in
