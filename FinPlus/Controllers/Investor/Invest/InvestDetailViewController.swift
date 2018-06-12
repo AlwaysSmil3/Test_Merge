@@ -8,12 +8,15 @@
 
 import UIKit
 
-class InvestDetailViewController: UIViewController {
+class InvestDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var investData : BrowwerActiveLoan!
+    var testData = [""]
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -23,7 +26,17 @@ class InvestDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 0
+    }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
     /*
     // MARK: - Navigation
 
