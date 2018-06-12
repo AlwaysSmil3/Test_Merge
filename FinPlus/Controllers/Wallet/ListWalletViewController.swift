@@ -125,7 +125,9 @@ extension ListWalletViewController: UITableViewDelegate {
                 addNewWallet()
             }
         case .LoanNation:
+            let wallet = self.listWallet[indexPath.row] as! Wallet
             let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
+            DataManager.shared.loanInfo.walletId = wallet.id!
             self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
         }
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -148,17 +148,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVJ-AL-lgG">
-                                <rect key="frame" x="16" y="332" width="343" height="44"/>
-                                <color key="backgroundColor" red="0.0" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="uQ1-7a-wtR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <state key="normal" title="Tính lịch trả nợ">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số tiền vay" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C2e-oJ-xq5" customClass="HoshiTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="16" y="40" width="343" height="56"/>
                                 <constraints>
@@ -166,7 +155,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="name"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                         <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -182,6 +171,24 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x1000đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIf-0f-mpn">
+                                <rect key="frame" x="348.5" y="69" width="10.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tháng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzm-PJ-Arh">
+                                <rect key="frame" x="315" y="141" width="44" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%/năm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUl-Rs-LVE">
+                                <rect key="frame" x="306" y="213" width="53" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Thời hạn vay" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pkw-9Z-wFe" customClass="HoshiTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="16" y="112" width="343" height="56"/>
                                 <constraints>
@@ -189,7 +196,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="name"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                         <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -212,7 +219,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" textContentType="name"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                         <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -250,39 +257,47 @@
                                         <real key="value" value="0.80000000000000004"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="showDateDialog" destination="3e2-A4-gmy" eventType="touchDown" id="Mbe-Kt-aiX"/>
+                                    <outlet property="delegate" destination="3e2-A4-gmy" id="EQR-hd-ujT"/>
+                                </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIf-0f-mpn">
-                                <rect key="frame" x="348.5" y="69" width="10.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tháng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzm-PJ-Arh">
-                                <rect key="frame" x="315" y="141" width="44" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%/năm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUl-Rs-LVE">
-                                <rect key="frame" x="306" y="213" width="53" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVJ-AL-lgG">
+                                <rect key="frame" x="16" y="332" width="343" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="uQ1-7a-wtR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Tính lịch trả nợ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="calculateWithSender:" destination="3e2-A4-gmy" eventType="touchUpInside" id="2rT-rR-1We"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VNR-ug-Vfc" customClass="SpreadsheetView" customModule="SpreadsheetView">
+                                <rect key="frame" x="0.0" y="396" width="375" height="271"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kYr-B5-qWM" firstAttribute="leading" secondItem="fyj-lc-04U" secondAttribute="leading" constant="16" id="3Bb-S5-Wc3"/>
                             <constraint firstItem="OUl-Rs-LVE" firstAttribute="bottom" secondItem="Ugi-g7-b5m" secondAttribute="bottom" constant="-6" id="7YX-Bm-0Qk"/>
+                            <constraint firstItem="VNR-ug-Vfc" firstAttribute="leading" secondItem="fyj-lc-04U" secondAttribute="leading" id="7Yb-5u-AbX"/>
                             <constraint firstItem="mzm-PJ-Arh" firstAttribute="bottom" secondItem="Pkw-9Z-wFe" secondAttribute="bottom" constant="-6" id="Arg-xN-wgP"/>
+                            <constraint firstItem="VNR-ug-Vfc" firstAttribute="top" secondItem="ZVJ-AL-lgG" secondAttribute="bottom" constant="20" id="BRd-L6-obq"/>
                             <constraint firstItem="mIf-0f-mpn" firstAttribute="trailing" secondItem="C2e-oJ-xq5" secondAttribute="trailing" id="Br4-6Y-ks7"/>
+                            <constraint firstItem="C2e-oJ-xq5" firstAttribute="top" secondItem="fyj-lc-04U" secondAttribute="top" constant="20" id="DCQ-0E-35J"/>
                             <constraint firstItem="Pkw-9Z-wFe" firstAttribute="top" secondItem="C2e-oJ-xq5" secondAttribute="bottom" constant="16" id="KHA-hI-C3Q"/>
                             <constraint firstItem="fyj-lc-04U" firstAttribute="trailing" secondItem="Ugi-g7-b5m" secondAttribute="trailing" constant="16" id="MBZ-LY-Kdi"/>
-                            <constraint firstItem="C2e-oJ-xq5" firstAttribute="top" secondItem="fyj-lc-04U" secondAttribute="top" constant="20" id="MI8-At-MN9"/>
                             <constraint firstItem="kYr-B5-qWM" firstAttribute="top" secondItem="Ugi-g7-b5m" secondAttribute="bottom" constant="16" id="Nsf-mK-BWe"/>
                             <constraint firstItem="Ugi-g7-b5m" firstAttribute="top" secondItem="Pkw-9Z-wFe" secondAttribute="bottom" constant="16" id="Q7T-JP-qlU"/>
+                            <constraint firstItem="VNR-ug-Vfc" firstAttribute="trailing" secondItem="fyj-lc-04U" secondAttribute="trailing" id="Rgr-Xv-S3N"/>
                             <constraint firstItem="fyj-lc-04U" firstAttribute="trailing" secondItem="Pkw-9Z-wFe" secondAttribute="trailing" constant="16" id="Wk3-Hu-kaN"/>
                             <constraint firstItem="Pkw-9Z-wFe" firstAttribute="leading" secondItem="fyj-lc-04U" secondAttribute="leading" constant="16" id="X0S-HS-dGk"/>
+                            <constraint firstItem="VNR-ug-Vfc" firstAttribute="bottom" secondItem="fyj-lc-04U" secondAttribute="bottom" id="eru-qp-J66"/>
                             <constraint firstItem="fyj-lc-04U" firstAttribute="trailing" secondItem="kYr-B5-qWM" secondAttribute="trailing" constant="16" id="fdu-0e-peH"/>
                             <constraint firstItem="mzm-PJ-Arh" firstAttribute="trailing" secondItem="Pkw-9Z-wFe" secondAttribute="trailing" id="gNK-3n-Er8"/>
                             <constraint firstItem="ZVJ-AL-lgG" firstAttribute="top" secondItem="kYr-B5-qWM" secondAttribute="bottom" constant="20" id="hls-CY-VlM"/>
@@ -304,6 +319,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="calBtn" destination="ZVJ-AL-lgG" id="gUt-jF-8nk"/>
+                        <outlet property="dateTextField" destination="kYr-B5-qWM" id="8BK-vg-3T9"/>
+                        <outlet property="moneyTextField" destination="C2e-oJ-xq5" id="sac-EV-eS1"/>
+                        <outlet property="monthTextField" destination="Pkw-9Z-wFe" id="0tJ-Jr-rfb"/>
+                        <outlet property="rateTextField" destination="Ugi-g7-b5m" id="Fu3-oC-yv4"/>
+                        <outlet property="spreadsheetView" destination="VNR-ug-Vfc" id="lHK-DU-79W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cuE-lA-hMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

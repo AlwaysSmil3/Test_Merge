@@ -106,21 +106,27 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch indexPath.row {
         case 0:
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "CHANG_PASSWORD") as! ChangePWViewController
+            vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         case 1:
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "CALCULATE_PAY") as! CalPayViewController
+            vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         case 2:
             sendEmail()
         case 3:
-            self.navigationController?.pushViewController((self.storyboard?.instantiateViewController(withIdentifier: "FAQ"))!, animated: true)
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "FAQ") as! FAQViewController
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
         case 4:
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "WEBVIEW") as! WebViewViewController
             vc.webViewType = .termView
+            vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         case 5:
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "WEBVIEW") as! WebViewViewController
             vc.webViewType = .aboutView
+            vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
             
         default: break
