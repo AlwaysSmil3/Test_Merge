@@ -150,6 +150,10 @@
 		63FD80C920C0E13D004BD22A /* LoanBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FD80C820C0E13D004BD22A /* LoanBaseViewController.swift */; };
 		63FD80CD20C13C14004BD22A /* HomeInvestor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63FD80CC20C13C14004BD22A /* HomeInvestor.storyboard */; };
 		84CBBE4020CE74BE0058C834 /* OnBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CBBE3F20CE74BE0058C834 /* OnBoard.storyboard */; };
+		84CBBE4D20CF82A40058C834 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CBBE4C20CF82A40058C834 /* Notification.storyboard */; };
+		84CBBE5220CF83AA0058C834 /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CBBE5120CF83AA0058C834 /* NotificationListViewController.swift */; };
+		84CBBE5620CF85610058C834 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CBBE5420CF85610058C834 /* NotificationTableViewCell.swift */; };
+		84CBBE5720CF85610058C834 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CBBE5520CF85610058C834 /* NotificationTableViewCell.xib */; };
 		ADB81E3CB997BF9C12009966 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633AF97220A96F1B00BAE2BB /* Pods_FinPlus.framework */; };
 		DD471C902E2C45FF6323FC89 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
 		E772D76920CA7694001F0B8E /* LoanManager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E772D76820CA7694001F0B8E /* LoanManager.storyboard */; };
@@ -347,6 +351,10 @@
 		63FD80C820C0E13D004BD22A /* LoanBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanBaseViewController.swift; sourceTree = "<group>"; };
 		63FD80CC20C13C14004BD22A /* HomeInvestor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeInvestor.storyboard; sourceTree = "<group>"; };
 		84CBBE3F20CE74BE0058C834 /* OnBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoard.storyboard; sourceTree = "<group>"; };
+		84CBBE4C20CF82A40058C834 /* Notification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
+		84CBBE5120CF83AA0058C834 /* NotificationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewController.swift; sourceTree = "<group>"; };
+		84CBBE5420CF85610058C834 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		84CBBE5520CF85610058C834 /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
 		99AC1CB2D251026CD34AB910 /* Pods-FinPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinPlus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus.debug.xcconfig"; sourceTree = "<group>"; };
 		AF35B598B6B30D66806A3592 /* Pods-FinPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus.release.xcconfig"; sourceTree = "<group>"; };
 		D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -747,6 +755,7 @@
 				E772D76820CA7694001F0B8E /* LoanManager.storyboard */,
 				6374FC4520BBA1C100E4BC38 /* Wallet.storyboard */,
 				E7F519EF20CE159300F72682 /* Profile.storyboard */,
+				84CBBE4C20CF82A40058C834 /* Notification.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -778,6 +787,7 @@
 		639C9DCA20A14A6D00F2CF5E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				84CBBE4E20CF834A0058C834 /* Notification */,
 				E7F51A3220CE6DE700F72682 /* OnBoard */,
 				E7F519F120CE15BE00F72682 /* Profile */,
 				E772D76A20CA76DC001F0B8E /* LoanManager */,
@@ -955,6 +965,24 @@
 				63F0CC5520C00B1D0065E3BD /* ConfirmInterestRateVC.swift */,
 			);
 			path = ConfirmInterestRate;
+			sourceTree = "<group>";
+		};
+		84CBBE4E20CF834A0058C834 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				84CBBE5320CF852B0058C834 /* Cells */,
+				84CBBE5120CF83AA0058C834 /* NotificationListViewController.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		84CBBE5320CF852B0058C834 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				84CBBE5420CF85610058C834 /* NotificationTableViewCell.swift */,
+				84CBBE5520CF85610058C834 /* NotificationTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		DBA3031124DA065BB1A383CD /* Frameworks */ = {
@@ -1159,6 +1187,8 @@
 				639C9E2120A18A7500F2CF5E /* Oswald-Light.ttf in Resources */,
 				E7F51A2120CE6D1600F72682 /* LoanTypeFooterTBView.xib in Resources */,
 				63FD80CD20C13C14004BD22A /* HomeInvestor.storyboard in Resources */,
+				84CBBE5720CF85610058C834 /* NotificationTableViewCell.xib in Resources */,
+				84CBBE4D20CF82A40058C834 /* Notification.storyboard in Resources */,
 				639C9E0F20A18A7500F2CF5E /* Roboto-Medium.ttf in Resources */,
 				84CBBE4020CE74BE0058C834 /* OnBoard.storyboard in Resources */,
 				639C9E1620A18A7500F2CF5E /* Roboto-Italic.ttf in Resources */,
@@ -1355,6 +1385,7 @@
 				639C9DF720A189E600F2CF5E /* Toast.swift in Sources */,
 				6355FAEE20B7EF2800038F5B /* LoanCategories.swift in Sources */,
 				E7F51A2E20CE6D3F00F72682 /* LoanTypeTextFieldTBCell.swift in Sources */,
+				84CBBE5220CF83AA0058C834 /* NotificationListViewController.swift in Sources */,
 				E7F51A2F20CE6D3F00F72682 /* LoanTypeDropdownTBCell.swift in Sources */,
 				E7F51A2A20CE6D3F00F72682 /* LoanTypeFooterTBView.swift in Sources */,
 				630467B920B50BDD0069469A /* AddressFirstTBCell.swift in Sources */,
@@ -1362,6 +1393,7 @@
 				639C9DF820A189E600F2CF5E /* ToastCenter.swift in Sources */,
 				6307D3BF20AD2F0500055F5C /* FacebookInfo.swift in Sources */,
 				6357824F20C2330800DE09A0 /* KeychainPasswordItem.swift in Sources */,
+				84CBBE5620CF85610058C834 /* NotificationTableViewCell.swift in Sources */,
 				630467BB20B513FC0069469A /* AddressTBViewController.swift in Sources */,
 				639C9DF620A189E600F2CF5E /* ToastView.swift in Sources */,
 				6334891E20C639ED00C95931 /* HomeBrowerCollectionCell.swift in Sources */,
