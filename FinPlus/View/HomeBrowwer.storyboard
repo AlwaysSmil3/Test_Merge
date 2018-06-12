@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="V06-iu-xhq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="V06-iu-xhq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -34,10 +34,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyd-9q-JpW">
-                                <rect key="frame" x="0.0" y="254" width="375" height="364"/>
+                                <rect key="frame" x="0.0" y="254" width="375" height="413"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2du-Ad-GeN">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="364"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="413"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="940-SB-Qga">
                                             <size key="itemSize" width="116" height="156"/>
@@ -229,7 +229,6 @@
                         <color key="selectedImageTintColor" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="2Wj-j2-BFY" kind="relationship" relationship="viewControllers" id="J6v-GM-T9D"/>
                         <segue destination="pZZ-j2-EeW" kind="relationship" relationship="viewControllers" id="e0z-2P-WbS"/>
                         <segue destination="hLS-Hj-8yc" kind="relationship" relationship="viewControllers" id="3hJ-YC-4OE"/>
                         <segue destination="ME7-bl-M5x" kind="relationship" relationship="viewControllers" id="29V-hR-Kg3"/>
@@ -242,7 +241,7 @@
         <!--Vay tiền-->
         <scene sceneID="FmO-JR-xhM">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="2Wj-j2-BFY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="BorrowHomeViewControllerNav" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="2Wj-j2-BFY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Vay tiền" image="ic_tb_brow1" selectedImage="ic_tb_brow1_selected" id="Wwx-NI-7rY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jFW-q9-8Ry">

@@ -48,9 +48,9 @@ class ChoiceKindUserVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.browView.dropShadow(color: DISABLE_BUTTON_COLOR)
+        self.browView.dropShadow(color: DROP_SHADOW_COLOR)
         self.browView.layer.cornerRadius = 5
-        self.investView.dropShadow(color: DISABLE_BUTTON_COLOR)
+        self.investView.dropShadow(color: DROP_SHADOW_COLOR)
         self.investView.layer.cornerRadius = 5
     }
     
@@ -73,7 +73,7 @@ class ChoiceKindUserVC: BaseViewController {
             self.lblInvest1.textColor = UIColor(hexString: "#08121E")
             self.lblInvest2.textColor = UIColor(hexString: "#4D6678")
             self.lblInvest3.textColor = UIColor(hexString: "#3EAA5F")
-            self.investView.dropShadow(color: DISABLE_BUTTON_COLOR)
+            self.investView.dropShadow(color: DROP_SHADOW_COLOR)
             
             
         } else {
@@ -81,7 +81,7 @@ class ChoiceKindUserVC: BaseViewController {
             self.lblBrow1.textColor = UIColor(hexString: "#08121E")
             self.lblBrow2.textColor = UIColor(hexString: "#4D6678")
             self.lblBrow3.textColor = UIColor(hexString: "#3EAA5F")
-            self.browView.dropShadow(color: DISABLE_BUTTON_COLOR)
+            self.browView.dropShadow(color: DROP_SHADOW_COLOR)
             
             self.imgBgInvest.image = #imageLiteral(resourceName: "img_bg_growth")
             self.lblInvest1.textColor = UIColor.white
@@ -129,9 +129,11 @@ class ChoiceKindUserVC: BaseViewController {
                         
                         DataManager.shared.userID = data.id!
                         
-                        let homeVC = UIStoryboard(name: "HomeBrowwer", bundle: nil).instantiateViewController(withIdentifier: "BorrowTabbarViewController") as! BorrowTabbarViewController
+                        //let homeVC = UIStoryboard(name: "HomeBrowwer", bundle: nil).instantiateViewController(withIdentifier: "BorrowTabbarViewController") as! BorrowTabbarViewController
                         
-                        self?.navigationController?.present(homeVC, animated: true, completion: {
+                        let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+                        
+                        self?.navigationController?.present(tabbarVC, animated: true, completion: {
                             
                         })
                         

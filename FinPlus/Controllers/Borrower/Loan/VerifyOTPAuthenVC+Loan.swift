@@ -15,9 +15,8 @@ extension VerifyOTPAuthenVC {
         guard let loan = self.loanResponseModel else { return }
         APIClient.shared.loanVerify(otp: self.otp, loanID: loan.loanId!)
             .done(on: DispatchQueue.main) { [weak self] model in
-                
-                self?.navigationController?.popToRootViewController(animated: true)
-                self?.showToastWithMessage(message: model.returnMsg!)
+                let successVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSendSuccessVC") as! LoanSendSuccessVC
+                self?.navigationController?.pushViewController(successVC, animated: true)
                 
             }
             .catch { error in }

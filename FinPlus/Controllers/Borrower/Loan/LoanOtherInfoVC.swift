@@ -7,7 +7,7 @@
 //
 
 import Foundation
-//import Fusuma
+
 
 class LoanOtherInfoVC: LoanBaseViewController {
     
