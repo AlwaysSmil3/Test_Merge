@@ -39,20 +39,20 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3B-ge-FQm">
-                        <rect key="frame" x="357" y="8" width="0.0" height="25"/>
+                        <rect key="frame" x="373" y="8" width="0.0" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xjm-jd-tau">
-                        <rect key="frame" x="357" y="41" width="0.0" height="24.5"/>
+                        <rect key="frame" x="373" y="41" width="0.0" height="24.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3JO-ax-7Cz">
-                        <rect key="frame" x="365" y="8" width="46" height="57.5"/>
-                        <state key="normal" title="Button"/>
+                        <rect key="frame" x="381" y="8" width="30" height="57.5"/>
+                        <state key="normal" title="+"/>
                     </button>
                 </subviews>
                 <constraints>

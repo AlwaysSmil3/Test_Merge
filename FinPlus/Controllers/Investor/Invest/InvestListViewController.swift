@@ -52,8 +52,14 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellData : BrowwerActiveLoan = allLoansArray[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "InvestTableViewCell", for: indexPath) as? InvestTableViewCell {
-            cell.nameLb.text = "\(cellData.loanId!)"
-            cell.amountLb.text = "\(cellData.amount!)"
+            cell.investImg.image = #imageLiteral(resourceName: "ic_tb_brow4")
+            cell.nameLb.text = "Gói vay bà bầu"
+            cell.amountLb.text = "10.000.000 VND"
+            cell.exporeTimeLb.text = "3 tháng"
+            cell.alreadyAmountLb.text = "Đã huy động: 80%"
+            
+//            cell.nameLb.text = "\(cellData.loanId!)"
+//            cell.amountLb.text = "\(cellData.amount!)"
             return cell
         }
         return UITableViewCell()

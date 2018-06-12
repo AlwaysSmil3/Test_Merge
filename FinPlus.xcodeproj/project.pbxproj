@@ -156,6 +156,11 @@
 		84CBBE3920CE5FE40058C834 /* InvestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CBBE3720CE5FE40058C834 /* InvestTableViewCell.xib */; };
 		84CBBE3B20CE646B0058C834 /* InvestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CBBE3A20CE646B0058C834 /* InvestDetailViewController.swift */; };
 		84CBBE3E20CE6CF00058C834 /* APIClient+Invest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CBBE3D20CE6CF00058C834 /* APIClient+Invest.swift */; };
+		84CBBE4420CF742D0058C834 /* InvestDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CBBE4220CF742D0058C834 /* InvestDetailTableViewCell.swift */; };
+		84CBBE4520CF742D0058C834 /* InvestDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CBBE4320CF742D0058C834 /* InvestDetailTableViewCell.xib */; };
+		84CBBE4820CF74460058C834 /* DebtScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CBBE4620CF74460058C834 /* DebtScheduleTableViewCell.swift */; };
+		84CBBE4920CF74460058C834 /* DebtScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CBBE4720CF74460058C834 /* DebtScheduleTableViewCell.xib */; };
+		84CBBE4B20CF77490058C834 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CBBE4A20CF77490058C834 /* UITableView+Extensions.swift */; };
 		ADB81E3CB997BF9C12009966 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633AF97220A96F1B00BAE2BB /* Pods_FinPlus.framework */; };
 		DD471C902E2C45FF6323FC89 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
 		E772D76920CA7694001F0B8E /* LoanManager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E772D76820CA7694001F0B8E /* LoanManager.storyboard */; };
@@ -329,6 +334,11 @@
 		84CBBE3720CE5FE40058C834 /* InvestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestTableViewCell.xib; sourceTree = "<group>"; };
 		84CBBE3A20CE646B0058C834 /* InvestDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestDetailViewController.swift; sourceTree = "<group>"; };
 		84CBBE3D20CE6CF00058C834 /* APIClient+Invest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Invest.swift"; sourceTree = "<group>"; };
+		84CBBE4220CF742D0058C834 /* InvestDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestDetailTableViewCell.swift; sourceTree = "<group>"; };
+		84CBBE4320CF742D0058C834 /* InvestDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestDetailTableViewCell.xib; sourceTree = "<group>"; };
+		84CBBE4620CF74460058C834 /* DebtScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		84CBBE4720CF74460058C834 /* DebtScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebtScheduleTableViewCell.xib; sourceTree = "<group>"; };
+		84CBBE4A20CF77490058C834 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		99AC1CB2D251026CD34AB910 /* Pods-FinPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinPlus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus.debug.xcconfig"; sourceTree = "<group>"; };
 		AF35B598B6B30D66806A3592 /* Pods-FinPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus.release.xcconfig"; sourceTree = "<group>"; };
 		D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -809,6 +819,7 @@
 		639C9DEA20A1827800F2CF5E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				84CBBE4A20CF77490058C834 /* UITableView+Extensions.swift */,
 				639C9DEB20A1829300F2CF5E /* ExUIApplication.swift */,
 				639C9DED20A182E900F2CF5E /* ExUIViewController.swift */,
 				632FD02520AAE15800D9399C /* ExString.swift */,
@@ -915,6 +926,7 @@
 		84CBBE3320CE5D8B0058C834 /* Invest */ = {
 			isa = PBXGroup;
 			children = (
+				84CBBE4120CF74060058C834 /* Cells */,
 				84CBBE3420CE5DA80058C834 /* InvestListViewController.swift */,
 				84CBBE3620CE5FE40058C834 /* InvestTableViewCell.swift */,
 				84CBBE3720CE5FE40058C834 /* InvestTableViewCell.xib */,
@@ -929,6 +941,17 @@
 				84CBBE3D20CE6CF00058C834 /* APIClient+Invest.swift */,
 			);
 			path = Investor;
+			sourceTree = "<group>";
+		};
+		84CBBE4120CF74060058C834 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				84CBBE4220CF742D0058C834 /* InvestDetailTableViewCell.swift */,
+				84CBBE4320CF742D0058C834 /* InvestDetailTableViewCell.xib */,
+				84CBBE4620CF74460058C834 /* DebtScheduleTableViewCell.swift */,
+				84CBBE4720CF74460058C834 /* DebtScheduleTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		DBA3031124DA065BB1A383CD /* Frameworks */ = {
@@ -1096,10 +1119,12 @@
 				6374FC4620BBA1C100E4BC38 /* Wallet.storyboard in Resources */,
 				630BA61B20C22A4100880DAE /* SF-Pro-Display-MediumItalic.otf in Resources */,
 				639C9E1A20A18A7500F2CF5E /* Roboto-Black.ttf in Resources */,
+				84CBBE4920CF74460058C834 /* DebtScheduleTableViewCell.xib in Resources */,
 				639C9E1C20A18A7500F2CF5E /* Oswald-SemiBold.ttf in Resources */,
 				630BA60F20C22A4100880DAE /* SF-Pro-Text-Heavy.otf in Resources */,
 				6336D5C620B2750A00A6C38A /* Loan.storyboard in Resources */,
 				630BA61720C22A4100880DAE /* SF-Pro-Text-Light.otf in Resources */,
+				84CBBE4520CF742D0058C834 /* InvestDetailTableViewCell.xib in Resources */,
 				639C9E2020A18A7500F2CF5E /* Oswald-ExtraLight.ttf in Resources */,
 				639C9E1E20A18A7500F2CF5E /* Oswald-Regular.ttf in Resources */,
 				630BA62520C22A4100880DAE /* SF-Pro-Text-HeavyItalic.otf in Resources */,
@@ -1202,6 +1227,7 @@
 				635B5E0C20B6B4F900F02132 /* RelationShipPhone.swift in Sources */,
 				6338F40420BE602C005777E2 /* BrowwerWallets.swift in Sources */,
 				6336D5CA20B2B43700A6C38A /* LoanPersionalInfoVC.swift in Sources */,
+				84CBBE4820CF74460058C834 /* DebtScheduleTableViewCell.swift in Sources */,
 				84CBBE3B20CE646B0058C834 /* InvestDetailViewController.swift in Sources */,
 				637A90B620A2FA5F00CCACA5 /* SRMonthPicker.m in Sources */,
 				639C9DD520A14B9D00F2CF5E /* DataManager.swift in Sources */,
@@ -1211,6 +1237,7 @@
 				639C9DF520A189E600F2CF5E /* ToastWindow.swift in Sources */,
 				639C9DBB20A1498A00F2CF5E /* FinPlus.xcdatamodeld in Sources */,
 				6355FAEC20B7C1FB00038F5B /* LoanOTPViewController.swift in Sources */,
+				84CBBE4420CF742D0058C834 /* InvestDetailTableViewCell.swift in Sources */,
 				630467C220B547500069469A /* Version.swift in Sources */,
 				6357825420C2888300DE09A0 /* ExUIView.swift in Sources */,
 				639C9DD020A14B4600F2CF5E /* EndPoint.swift in Sources */,
@@ -1243,6 +1270,7 @@
 				639C9DF820A189E600F2CF5E /* ToastCenter.swift in Sources */,
 				6307D3BF20AD2F0500055F5C /* FacebookInfo.swift in Sources */,
 				6357824F20C2330800DE09A0 /* KeychainPasswordItem.swift in Sources */,
+				84CBBE4B20CF77490058C834 /* UITableView+Extensions.swift in Sources */,
 				630467BB20B513FC0069469A /* AddressTBViewController.swift in Sources */,
 				639C9DF620A189E600F2CF5E /* ToastView.swift in Sources */,
 				6334891E20C639ED00C95931 /* HomeBrowerCollectionCell.swift in Sources */,
