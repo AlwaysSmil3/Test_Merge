@@ -8,8 +8,9 @@
 
 import UIKit
 import Foundation
-import TextFieldEffects
 import SpreadsheetView
+
+let SHORT_TYPE:Float = 1000
 
 class CalPayViewController: UIViewController, SpreadsheetViewDataSource, SpreadsheetViewDelegate, UITextFieldDelegate {
     
@@ -74,8 +75,26 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         DatePickerDialog().show("Ngày giải ngân", doneButtonTitle: "Đồng ý", cancelButtonTitle: "Huỷ", defaultDate: Date() , minimumDate: Date(), maximumDate: nil, datePickerMode: UIDatePickerMode.date) { (date) in
             if let date = date {
                 self.currentDate = date
+                self.dateFormatter.dateFormat = "dd/MM/YYYY"
                 self.dateTextField.text = self.dateFormatter.string(from: self.currentDate)
             }
+        }
+    }
+    
+    func convertNumberFormat(text: String) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = "."
+        
+        let noneText = text.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
+        if(noneText.count > 0) {
+            let number = Int(noneText)
+            let formattedString = formatter.string(from: NSNumber(value: number! > 0 ? number! : 0))
+            return formattedString!
+        }
+        else
+        {
+            return ""
         }
     }
     
@@ -84,7 +103,7 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         self.view.endEditing(true)
         self.months.removeAllObjects()
         self.data.removeAllObjects()
-        
+        dateFormatter.dateFormat = "dd/MM/YY"
         if (self.moneyTextField.text?.count)! < 4 {
             showAlertView(title: "Lỗi", message: "Số tiền không được nhỏ hơn 1000000", okTitle: "Đồng ý", cancelTitle: nil)
             return
@@ -98,7 +117,7 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
             return
         }
 
-        let money = Float(self.moneyTextField.text!)!*1000
+        let money = Float(self.moneyTextField.text!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: ""))!
         let monthCount = Int(self.monthTextField.text!)
         let rate = Float(self.rateTextField.text!)!*money/Float(monthCount!*100)
         let monthPay = money/Float(monthCount!)
@@ -110,7 +129,8 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
             let futureDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)
             months.add(dateFormatter.string(from: futureDate!))
         }
-        data.addObjects(from:[monthPay.description, rate.description, (monthPay + rate).description])
+        
+        data.addObjects(from:[ convertNumberFormat(text: String(format: "%.0f", monthPay/SHORT_TYPE)), convertNumberFormat(text: String(format: "%.0f", rate/SHORT_TYPE)), convertNumberFormat(text: String(format: "%.0f", (monthPay + rate)/SHORT_TYPE))])
         
         self.spreadsheetView.reloadData()
         
@@ -119,6 +139,10 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         spreadsheetView.flashScrollIndicators()
+    }
+    
+    @IBAction func textFieldDidChange(_ textField: UITextField) {
+        textField.text = convertNumberFormat(text: textField.text!)
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -171,11 +195,11 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
             return cell
         } else if case (1...(titles.count - 2), 1...(months.count)) = (indexPath.column, indexPath.row) {
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MoneyCell.self), for: indexPath) as! MoneyCell
-            cell.label.text = data[indexPath.column - 1] as? String
+            cell.label.text = (data[indexPath.column - 1] as? String)! + "K"
             return cell
         } else if case ((titles.count - 1), 1...(months.count)) = (indexPath.column, indexPath.row) {
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: PayCell.self), for: indexPath) as! PayCell
-            cell.label.text = data[indexPath.column - 1] as? String
+            cell.label.text = (data[indexPath.column - 1] as? String)! + "K"
             return cell
         }
         return nil

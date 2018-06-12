@@ -42,6 +42,12 @@ class LoanTypePhoneRelationTBCell: UITableViewCell {
     @IBAction func btnDropdownTapped(_ sender: Any) {
         print("16666666656")
         
+        guard let field_ = self.field, let data = field_.data else { return }
+        let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
+        popup.setDataSource(data: data)
+        
+        popup.show()
+        
     }
     
     
