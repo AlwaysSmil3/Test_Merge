@@ -28,6 +28,10 @@ class WebViewViewController: UIViewController, UIWebViewDelegate {
         default:
             self.title = NSLocalizedString("ABOUT_FINSMART", comment: "")
         }
+        
+        let url = URL(string: "http://five9.vn/about-us")
+        let requestObj = URLRequest(url: url!)
+        self.webView.loadRequest(requestObj)
     }
 
     override func didReceiveMemoryWarning() {
