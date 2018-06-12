@@ -8,7 +8,6 @@
 
 import UIKit
 import Foundation
-import TextFieldEffects
 import SpreadsheetView
 
 let SHORT_TYPE:Float = 1000

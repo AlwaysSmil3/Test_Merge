@@ -149,7 +149,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số tiền vay" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C2e-oJ-xq5" customClass="HoshiTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số tiền vay" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C2e-oJ-xq5" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
                                 <rect key="frame" x="16" y="40" width="343" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="dwd-zk-9VC"/>
@@ -187,7 +187,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Thời hạn vay" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pkw-9Z-wFe" customClass="HoshiTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Thời hạn vay" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pkw-9Z-wFe" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
                                 <rect key="frame" x="16" y="112" width="343" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="0jE-T9-4aP"/>
@@ -210,7 +210,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lãi suất" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ugi-g7-b5m" customClass="HoshiTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lãi suất" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ugi-g7-b5m" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
                                 <rect key="frame" x="16" y="184" width="343" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="azo-4C-gmP"/>
@@ -239,7 +239,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày giải ngân" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kYr-B5-qWM" customClass="HoshiTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày giải ngân" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kYr-B5-qWM" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
                                 <rect key="frame" x="16" y="256" width="343" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="CQe-I2-brh"/>
@@ -344,7 +344,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu hiện tại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g04-yg-0e1" customClass="HoshiTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu hiện tại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g04-yg-0e1" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
                                 <rect key="frame" x="16" y="40" width="343" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="pMY-IM-eJc"/>
@@ -380,7 +380,7 @@
                                     <action selector="showCurrentPass_actionWithSender:" destination="2e1-RA-zVJ" eventType="touchUpInside" id="dlX-kX-bBp"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu mới" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bzj-Cy-mnS" customClass="HoshiTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu mới" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bzj-Cy-mnS" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
                                 <rect key="frame" x="16" y="112" width="343" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="92L-x5-G1m"/>
@@ -416,7 +416,7 @@
                                     <action selector="showNewPass_actionWithSender:" destination="2e1-RA-zVJ" eventType="touchUpInside" id="qjl-Az-WcY"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Xác nhận mật khẩu mới" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HRv-qK-CWI" customClass="HoshiTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Xác nhận mật khẩu mới" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HRv-qK-CWI" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
                                 <rect key="frame" x="16" y="184" width="343" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="i1g-P7-r0G"/>
