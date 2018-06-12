@@ -344,15 +344,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu hiện tại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g04-yg-0e1" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="16" y="37" width="343" height="56"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu hiện tại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g04-yg-0e1" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="16" y="40" width="343" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="pMY-IM-eJc"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="uNl-ox-iOJ"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="name"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                         <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -368,7 +368,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvc-zb-Xr9">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvc-zb-Xr9">
                                 <rect key="frame" x="331" y="62" width="28" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tvc-zb-Xr9" secondAttribute="height" multiplier="1:1" id="B8A-vD-aRB"/>
@@ -376,6 +376,9 @@
                                 </constraints>
                                 <state key="normal" image="ic_show_pass"/>
                                 <state key="selected" image="ic_hide_pass"/>
+                                <connections>
+                                    <action selector="showCurrentPass_actionWithSender:" destination="2e1-RA-zVJ" eventType="touchUpInside" id="dlX-kX-bBp"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu mới" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bzj-Cy-mnS" customClass="HoshiTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="16" y="112" width="343" height="56"/>
@@ -385,7 +388,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="name"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                         <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -409,6 +412,9 @@
                                 </constraints>
                                 <state key="normal" image="ic_show_pass"/>
                                 <state key="selected" image="ic_hide_pass"/>
+                                <connections>
+                                    <action selector="showNewPass_actionWithSender:" destination="2e1-RA-zVJ" eventType="touchUpInside" id="qjl-Az-WcY"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Xác nhận mật khẩu mới" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HRv-qK-CWI" customClass="HoshiTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="16" y="184" width="343" height="56"/>
@@ -418,7 +424,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="name"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                         <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -442,6 +448,9 @@
                                 </constraints>
                                 <state key="normal" image="ic_show_pass"/>
                                 <state key="selected" image="ic_hide_pass"/>
+                                <connections>
+                                    <action selector="showRenewPass_actionWithSender:" destination="2e1-RA-zVJ" eventType="touchUpInside" id="Vqz-zu-kZh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -473,8 +482,19 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Lưu" id="LhL-7C-Xy4">
                             <color key="tintColor" red="0.0" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="navi_saveWithSender:" destination="2e1-RA-zVJ" id="o0M-yg-AVM"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="currentPass" destination="g04-yg-0e1" id="rfW-CD-2bM"/>
+                        <outlet property="newPass" destination="Bzj-Cy-mnS" id="bsO-VU-stv"/>
+                        <outlet property="renewPass" destination="HRv-qK-CWI" id="g9m-8d-A5G"/>
+                        <outlet property="showCurrentPassBtn" destination="tvc-zb-Xr9" id="4ja-3v-Omy"/>
+                        <outlet property="showNewPassBtn" destination="hL3-ZE-X3E" id="nXy-9E-u4w"/>
+                        <outlet property="showRenewPassBtn" destination="u84-GM-MZL" id="485-if-wrc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g24-yG-j3U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
