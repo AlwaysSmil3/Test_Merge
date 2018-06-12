@@ -17,8 +17,8 @@ public struct APIResponseGeneral {
   }
 
   // MARK: Properties
-  public var returnMsg: String?
-  public var returnCode: Int?
+    public var returnMsg: String?
+    public var returnCode: Int?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.

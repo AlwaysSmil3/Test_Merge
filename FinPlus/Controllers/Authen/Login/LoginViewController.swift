@@ -71,17 +71,21 @@ class LoginViewController: BaseViewController {
         
         APIClient.shared.authentication(phoneNumber: account, pass: tfPass.text!)
             .done(on: DispatchQueue.main) { [weak self] model in
-                if model.returnCode! == 1 {
-                
+//                if model.returnCode! == 1 {
+                if let data = model["data"] as? [String : String] {
+                    if let token = data["token"] {
+                        userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
+                    }
+                }
                     DataManager.shared.currentAccount = account
                     self?.pushToVerifyVC(verifyType: .Login)
-                } else {
-                    var message = "Đăng nhập thất bại. Vui lòng kiểm tra lại."
-                    if let returnMsg = model.returnMsg {
-                        message = returnMsg
-                    }
-                    self?.showGreenBtnMessage(title: "Có lỗi", message: message, okTitle: "Thử lại", cancelTitle: nil)
-                }
+//                } else {
+//                    var message = "Đăng nhập thất bại. Vui lòng kiểm tra lại."
+//                    if let returnMsg = model.returnMsg {
+//                        message = returnMsg
+//                    }
+//                    self?.showGreenBtnMessage(title: "Có lỗi", message: message, okTitle: "Thử lại", cancelTitle: nil)
+//                }
             }
             .catch { error in }
     }

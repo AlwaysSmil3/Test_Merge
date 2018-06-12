@@ -151,10 +151,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func getVersion() {
         
-        APIClient.shared.getVersion()
+        APIClient.shared.getConfigs()
             .done(on: DispatchQueue.main) { model in
                 print("Version\(model)")
-                DataManager.shared.version = model
+//                DataManager.shared.version = model
+                DataManager.shared.config = model
             }
             .catch { error in
             }
