@@ -80,8 +80,6 @@ class LoanBaseViewController: BaseViewController {
         self.setupMainTBView()
     }
     
-    
-    
     /// Setup cho tableView
     func setupMainTBView() {
         guard let tableView = self.mainTBView else { return }
@@ -280,9 +278,9 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             //Chức vụ
             //Nghề nghiệp
             if model.title == "Nghề nghiệp" {
-                
+                //Xử lý trong cell
             } else if model.title == "Cấp bậc" {
-                
+                //Xử lý trong cell
             } else if model.title == "Giới tính" {
                 self.selectedGender()
             }
@@ -292,7 +290,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             self.showDateDialog()
             break
         case DATA_TYPE_TB_CELL.DropdownTexBox:
-            
+            //Xử lý trong cell
             break
         case DATA_TYPE_TB_CELL.Address:
             self.gotoAddressVC()

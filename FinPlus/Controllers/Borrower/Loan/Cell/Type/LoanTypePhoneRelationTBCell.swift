@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LoanTypePhoneRelationTBCell: UITableViewCell {
+class LoanTypePhoneRelationTBCell: UITableViewCell, DataSelectedFromPopupProtocol {
     
     @IBOutlet var lblTitle: UILabel?
     @IBOutlet var tfValue: UITextField?
@@ -45,12 +45,19 @@ class LoanTypePhoneRelationTBCell: UITableViewCell {
         guard let field_ = self.field, let data = field_.data else { return }
         let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
         popup.setDataSource(data: data)
+        popup.delegate = self
         
         popup.show()
         
     }
     
-    
+    //MARK: Data Selected
+    func dataSelected(data: LoanBuilderData) {
+        self.lblTypeRelation?.text = data.title!
+        self.tfValue?.placeholder = "Số điện thoại của " + data.title!
+    }
     
     
 }
+
+

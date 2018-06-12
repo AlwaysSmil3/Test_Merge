@@ -10,6 +10,8 @@ import Foundation
 
 class LoanFirstViewController: BaseViewController {
     
+    @IBOutlet var lblCategoriesName: UILabel!
+    
     @IBOutlet var amountSlider: UISlider!
     @IBOutlet var termSlider: UISlider!
     
@@ -27,10 +29,19 @@ class LoanFirstViewController: BaseViewController {
     
     var loanCategory: LoanCategories?
     
+    var listDataCategoriesForPopup: [LoanBuilderData] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setupInit()
+        
+        for cate in DataManager.shared.loanCategories {
+            var loan = LoanBuilderData(object: NSObject())
+            loan.id = cate.id!
+            loan.title = cate.title!
+            self.listDataCategoriesForPopup.append(loan)
+        }
         
     }
     
@@ -72,6 +83,16 @@ class LoanFirstViewController: BaseViewController {
     }
     
     //MARK: Actions
+    
+    @IBAction func btnListCategoriesShow(_ sender: Any) {
+        let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
+        popup.setDataSource(data: listDataCategoriesForPopup)
+        popup.delegate = self
+        
+        popup.show()
+    }
+    
+    
     @IBAction func moneySliderValueChaned(_ sender: Any) {
         self.lblMoneySlider.text = "\(Int(self.amountSlider.value))" + " Triệu VND"
 
@@ -109,4 +130,10 @@ class LoanFirstViewController: BaseViewController {
         self.showToastWithMessage(message: "Phí dịch vụ dự kiến")
     }
     
+}
+
+extension LoanFirstViewController: DataSelectedFromPopupProtocol {
+    func dataSelected(data: LoanBuilderData) {
+        self.lblCategoriesName.text = data.title!
+    }
 }

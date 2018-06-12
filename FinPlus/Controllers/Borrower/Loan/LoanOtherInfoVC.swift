@@ -26,7 +26,9 @@ class LoanOtherInfoVC: LoanBaseViewController {
         self.index = 3
         super.viewDidLoad()
         
-        
+        if let bottomView = self.bottomScrollView {
+            bottomView.setContentOffset(CGPoint(x: 100, y: 0), animated: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
