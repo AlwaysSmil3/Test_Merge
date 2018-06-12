@@ -15,21 +15,21 @@ class LoanInfoJobVC: LoanBaseViewController {
     var position: Model1?
     
     // Job
-    let jobDropdown = DropDown()
+ 
     var jobData: [Model1] = [] {
         didSet {
             if jobData.count > 0 {
-                self.jobDropdown.dataSource = jobData.map { $0.name! }
+                
             }
         }
     }
     
     // Postion
-    let positionDropdown = DropDown()
+
     var positionData: [Model1] = [] {
         didSet {
             if positionData.count > 0 {
-                self.positionDropdown.dataSource = positionData.map { $0.name! }
+                
             }
         }
     }
@@ -86,14 +86,6 @@ class LoanInfoJobVC: LoanBaseViewController {
     
     
     //MARK: Actions
-    @IBAction func btnJobTapped(_ sender: Any) {
-        self.jobDropdown.show()
-    }
-    
-    
-    @IBAction func btnPositionTapped(_ sender: Any) {
-        self.positionDropdown.show()
-    }
 
     @IBAction func btnContinueTapped(_ sender: Any) {
         self.updateDataForLoanAPI {

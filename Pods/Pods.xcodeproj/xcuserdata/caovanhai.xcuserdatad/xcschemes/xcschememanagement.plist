@@ -16,7 +16,7 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>14</integer>
+			<integer>13</integer>
 		</dict>
 		<key>DropDown.xcscheme</key>
 		<dict>
@@ -28,7 +28,7 @@
 		<key>FAQView.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>13</integer>
+			<integer>14</integer>
 		</dict>
 		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>

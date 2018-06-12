@@ -27,7 +27,6 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         self.index = 0
         super.viewDidLoad()
         
-        //self.setupDropdown()
     }
     
     override func viewWillAppear(_ animated: Bool) {
