@@ -27,6 +27,7 @@ pod 'Firebase/Messaging'
 
 #pod 'Fusuma'
 pod 'FAQView'
+pod 'SpreadsheetView'
 pod 'TextFieldEffects'
 pod 'PinCodeTextField'
 

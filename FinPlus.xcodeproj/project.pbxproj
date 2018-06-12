@@ -169,6 +169,7 @@
 		E774D30B20CA2F7B00F7696D /* ListWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774D30A20CA2F7B00F7696D /* ListWalletViewController.swift */; };
 		E774D31120CA398300F7696D /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774D30F20CA398300F7696D /* WalletTableViewCell.swift */; };
 		E774D31220CA398300F7696D /* WalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E774D31020CA398300F7696D /* WalletTableViewCell.xib */; };
+		E7BC256F20CF8096001FF0F4 /* SpreadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC256E20CF8095001FF0F4 /* SpreadCell.swift */; };
 		E7F519F020CE159300F72682 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F519EF20CE159300F72682 /* Profile.storyboard */; };
 		E7F519F520CE167F00F72682 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F519F420CE167F00F72682 /* ProfileViewController.swift */; };
 		E7F519F820CE176700F72682 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F519F620CE176700F72682 /* ProfileHeaderView.swift */; };
@@ -372,6 +373,7 @@
 		E774D30A20CA2F7B00F7696D /* ListWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWalletViewController.swift; sourceTree = "<group>"; };
 		E774D30F20CA398300F7696D /* WalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewCell.swift; sourceTree = "<group>"; };
 		E774D31020CA398300F7696D /* WalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletTableViewCell.xib; sourceTree = "<group>"; };
+		E7BC256E20CF8095001FF0F4 /* SpreadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpreadCell.swift; sourceTree = "<group>"; };
 		E7F519EF20CE159300F72682 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		E7F519F420CE167F00F72682 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E7F519F620CE176700F72682 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -1015,6 +1017,7 @@
 		E774D30E20CA395C00F7696D /* SubItems */ = {
 			isa = PBXGroup;
 			children = (
+				E7BC256E20CF8095001FF0F4 /* SpreadCell.swift */,
 				E774D30F20CA398300F7696D /* WalletTableViewCell.swift */,
 				E774D31020CA398300F7696D /* WalletTableViewCell.xib */,
 				E772D77120CA7C86001F0B8E /* LoanTableViewCell.swift */,
@@ -1348,6 +1351,7 @@
 				639C9DF520A189E600F2CF5E /* ToastWindow.swift in Sources */,
 				E7F51A2C20CE6D3F00F72682 /* LoanTypeAddressTBCell.swift in Sources */,
 				639C9DBB20A1498A00F2CF5E /* FinPlus.xcdatamodeld in Sources */,
+				E7BC256F20CF8096001FF0F4 /* SpreadCell.swift in Sources */,
 				6355FAEC20B7C1FB00038F5B /* VerifyOTPAuthenVC+Loan.swift in Sources */,
 				630467C220B547500069469A /* Version.swift in Sources */,
 				6357825420C2888300DE09A0 /* ExUIView.swift in Sources */,
@@ -1590,11 +1594,11 @@
 				CODE_SIGN_ENTITLEMENTS = FinPlus/FinPlus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GW5ZT78MWC;
+				DEVELOPMENT_TEAM = 2S3D35A37D;
 				INFOPLIST_FILE = FinPlus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.taxi.finplus;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.finplus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1612,11 +1616,11 @@
 				CODE_SIGN_ENTITLEMENTS = FinPlus/FinPlus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GW5ZT78MWC;
+				DEVELOPMENT_TEAM = 2S3D35A37D;
 				INFOPLIST_FILE = FinPlus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.taxi.finplus;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.finplus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
