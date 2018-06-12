@@ -102,6 +102,7 @@ class LoanInfoJobVC: LoanBaseViewController {
     @IBAction func btnContinueTapped(_ sender: Any) {
         self.updateDataForLoanAPI {
             let loanWalletVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "LIST_WALLET") as! ListWalletViewController
+            loanWalletVC.walletAction = .LoanNation
             
             self.navigationController?.pushViewController(loanWalletVC, animated: true)
         }

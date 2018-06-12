@@ -13,7 +13,13 @@ class LoanOtherInfoVC: LoanBaseViewController {
     
     @IBOutlet var mainCollectionView: UICollectionView!
     
-    var dataSourceCollection: [Any] = []
+    //Các dữ liệu khác image, video,...
+    var dataSourceCollection: [Any] = [] {
+        didSet {
+            self.mainCollectionView.reloadData()
+        }
+    }
+    
     var currentSelectedCollection: IndexPath?
     
     override func viewDidLoad() {
@@ -30,14 +36,8 @@ class LoanOtherInfoVC: LoanBaseViewController {
     }
     
     //MARK: ACtions
-    
-    @IBAction func btnLoanImgOtherInfoTapped(_ sender: Any) {
-        //self.setupFusuma()
-    }
-    
+
     @IBAction func btnContinueTapped(_ sender: Any) {
-        
-        
         let loanSummaryInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSummaryInfoVC") as! LoanSummaryInfoVC
         
         self.navigationController?.pushViewController(loanSummaryInfoVC, animated: true)
@@ -48,11 +48,8 @@ class LoanOtherInfoVC: LoanBaseViewController {
         CameraHandler.shared.imagePickedBlock = { (image) in
             let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
             
-            guard let indexPath = self.currentSelectedCollection else { return }
-
-            if let cell = self.mainCollectionView.cellForItem(at: indexPath) as? LoanOtherInfoVC {
-                
-            }
+            self.dataSourceCollection.append(img)
+            
         }
         
     }
@@ -70,18 +67,38 @@ extension LoanOtherInfoVC: UICollectionViewDataSource, UICollectionViewDelegate 
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Loan_Other_Info_Collection_Cell", for: indexPath) as! LoanOtherInfoCollectionCell
         
+        guard indexPath.row < self.dataSourceCollection.count else {
+            cell.imgValue.image = #imageLiteral(resourceName: "ic_loan_rectangle1")
+            cell.imgAdd.isHidden = false
+            
+            return cell
+        }
+        
+        if let data = self.dataSourceCollection[indexPath.row] as? UIImage {
+            cell.imgValue.image = data
+            cell.imgAdd.isHidden = true
+        }
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.currentSelectedCollection = indexPath
         
-        
-        
+        self.showLibrary()
         
     }
 
+}
+
+//MARK: UICollection View Delegate Flow Layout
+extension LoanOtherInfoVC: UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width = (BOUND_SCREEN.size.width - 32) / 3
+        return CGSize(width: width, height: width)
+    }
     
 }
 

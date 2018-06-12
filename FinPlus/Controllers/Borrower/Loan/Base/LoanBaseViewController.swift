@@ -45,6 +45,8 @@ class LoanBaseViewController: BaseViewController {
     
     //Table View For data from LoanBuilder
     @IBOutlet var mainTBView: TPKeyboardAvoidingTableView?
+    @IBOutlet var bottomScrollView: UIScrollView?
+    
     //DataSource cho main tablview, dữ liệu tuỳ theo index màn hình
     var dataSource: LoanBuilderBase?
     
@@ -294,7 +296,6 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             break
         case DATA_TYPE_TB_CELL.Address:
             self.gotoAddressVC()
-            
             break
         case DATA_TYPE_TB_CELL.File:
             self.selectedFile()
