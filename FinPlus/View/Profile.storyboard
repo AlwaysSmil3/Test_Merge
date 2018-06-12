@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -170,8 +171,11 @@
                                         <real key="value" value="0.80000000000000004"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="textFieldDidChange:" destination="3e2-A4-gmy" eventType="editingChanged" id="FUF-Os-Prv"/>
+                                </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x1000đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIf-0f-mpn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIf-0f-mpn">
                                 <rect key="frame" x="348.5" y="69" width="10.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -179,12 +183,6 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tháng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzm-PJ-Arh">
                                 <rect key="frame" x="315" y="141" width="44" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%/năm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUl-Rs-LVE">
-                                <rect key="frame" x="306" y="213" width="53" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -235,6 +233,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%/năm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUl-Rs-LVE">
+                                <rect key="frame" x="306.5" y="213" width="52.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày giải ngân" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kYr-B5-qWM" customClass="HoshiTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="16" y="256" width="343" height="56"/>
                                 <constraints>
@@ -339,24 +343,147 @@
                     <view key="view" contentMode="scaleToFill" id="kU4-5B-DSu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu hiện tại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g04-yg-0e1" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="16" y="37" width="343" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="pMY-IM-eJc"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="uNl-ox-iOJ"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                        <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvc-zb-Xr9">
+                                <rect key="frame" x="331" y="62" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="tvc-zb-Xr9" secondAttribute="height" multiplier="1:1" id="B8A-vD-aRB"/>
+                                    <constraint firstAttribute="height" constant="28" id="Scb-Cj-oEW"/>
+                                </constraints>
+                                <state key="normal" image="ic_show_pass"/>
+                                <state key="selected" image="ic_hide_pass"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu mới" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bzj-Cy-mnS" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="16" y="112" width="343" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="92L-x5-G1m"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="leh-2w-miZ"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                        <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hL3-ZE-X3E">
+                                <rect key="frame" x="331" y="134" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="lZo-ho-S0t"/>
+                                    <constraint firstAttribute="width" secondItem="hL3-ZE-X3E" secondAttribute="height" multiplier="1:1" id="t3d-Ua-ooy"/>
+                                </constraints>
+                                <state key="normal" image="ic_show_pass"/>
+                                <state key="selected" image="ic_hide_pass"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Xác nhận mật khẩu mới" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HRv-qK-CWI" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="16" y="184" width="343" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="i1g-P7-r0G"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="zdh-zp-jNI"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                        <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u84-GM-MZL">
+                                <rect key="frame" x="331" y="206" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="u84-GM-MZL" secondAttribute="height" multiplier="1:1" id="Ucq-bb-8BP"/>
+                                    <constraint firstAttribute="height" constant="28" id="Zth-rZ-Y4f"/>
+                                </constraints>
+                                <state key="normal" image="ic_show_pass"/>
+                                <state key="selected" image="ic_hide_pass"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="g04-yg-0e1" firstAttribute="top" secondItem="9i6-er-pVY" secondAttribute="top" constant="20" id="DJV-PW-fAU"/>
+                            <constraint firstItem="9i6-er-pVY" firstAttribute="trailing" secondItem="g04-yg-0e1" secondAttribute="trailing" constant="16" id="Ier-1d-p2O"/>
+                            <constraint firstItem="HRv-qK-CWI" firstAttribute="leading" secondItem="9i6-er-pVY" secondAttribute="leading" constant="16" id="KJE-ck-dFa"/>
+                            <constraint firstItem="9i6-er-pVY" firstAttribute="trailing" secondItem="Bzj-Cy-mnS" secondAttribute="trailing" constant="16" id="OGo-fo-ZhW"/>
+                            <constraint firstItem="tvc-zb-Xr9" firstAttribute="bottom" secondItem="g04-yg-0e1" secondAttribute="bottom" constant="-6" id="Obj-8C-sU0"/>
+                            <constraint firstItem="HRv-qK-CWI" firstAttribute="top" secondItem="Bzj-Cy-mnS" secondAttribute="bottom" constant="16" id="T8F-U6-a45"/>
+                            <constraint firstItem="u84-GM-MZL" firstAttribute="trailing" secondItem="HRv-qK-CWI" secondAttribute="trailing" id="TVZ-fo-DXs"/>
+                            <constraint firstItem="9i6-er-pVY" firstAttribute="trailing" secondItem="HRv-qK-CWI" secondAttribute="trailing" constant="16" id="Utf-67-61i"/>
+                            <constraint firstItem="g04-yg-0e1" firstAttribute="leading" secondItem="9i6-er-pVY" secondAttribute="leading" constant="16" id="eHh-c7-Etp"/>
+                            <constraint firstItem="Bzj-Cy-mnS" firstAttribute="top" secondItem="g04-yg-0e1" secondAttribute="bottom" constant="16" id="n8B-rf-Hp8"/>
+                            <constraint firstItem="Bzj-Cy-mnS" firstAttribute="leading" secondItem="9i6-er-pVY" secondAttribute="leading" constant="16" id="oey-T7-GrQ"/>
+                            <constraint firstItem="hL3-ZE-X3E" firstAttribute="bottom" secondItem="Bzj-Cy-mnS" secondAttribute="bottom" constant="-6" id="qrP-T2-dj3"/>
+                            <constraint firstItem="hL3-ZE-X3E" firstAttribute="trailing" secondItem="Bzj-Cy-mnS" secondAttribute="trailing" id="tH2-n7-hBj"/>
+                            <constraint firstItem="tvc-zb-Xr9" firstAttribute="trailing" secondItem="g04-yg-0e1" secondAttribute="trailing" id="uwn-RJ-GwZ"/>
+                            <constraint firstItem="u84-GM-MZL" firstAttribute="bottom" secondItem="HRv-qK-CWI" secondAttribute="bottom" constant="-6" id="vkj-2z-bOw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="9i6-er-pVY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Gns-rS-DT9">
-                        <barButtonItem key="leftBarButtonItem" image="ic_back" id="xI7-kO-bMB">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <barButtonItem key="leftBarButtonItem" title="Hủy" id="xI7-kO-bMB">
+                            <color key="tintColor" red="0.0" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="navi_backWithSender:" destination="2e1-RA-zVJ" id="Vbf-Lg-VFD"/>
                             </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Lưu" id="LhL-7C-Xy4">
+                            <color key="tintColor" red="0.0" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g24-yG-j3U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3479" y="152"/>
+            <point key="canvasLocation" x="3477.5999999999999" y="151.57421289355324"/>
         </scene>
     </scenes>
     <resources>
         <image name="ic_back" width="20" height="18"/>
+        <image name="ic_hide_pass" width="16" height="12"/>
+        <image name="ic_show_pass" width="16" height="10"/>
     </resources>
 </document>
