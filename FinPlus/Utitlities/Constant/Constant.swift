@@ -61,6 +61,8 @@ let BAR_DEFAULT_COLOR = UIColor(hexString: "#c9c9cd")
 let DISABLE_BUTTON_COLOR = UIColor(hexString: "#B8C9D3")
 let TEXT_NORMAL_COLOR = UIColor(hexString: "#4D6678")
 
+let DROP_SHADOW_COLOR = UIColor(hexString: "#00142a")
+
 //MARK: Font
 let FONT_CAPTION = UIFont(name: "SFProDisplay-Semibold", size: 11) ?? UIFont.systemFont(ofSize: 11)
 
