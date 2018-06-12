@@ -129,8 +129,6 @@ class ChoiceKindUserVC: BaseViewController {
                         
                         DataManager.shared.userID = data.id!
                         
-                        //let homeVC = UIStoryboard(name: "HomeBrowwer", bundle: nil).instantiateViewController(withIdentifier: "BorrowTabbarViewController") as! BorrowTabbarViewController
-                        
                         let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
                         
                         self?.navigationController?.present(tabbarVC, animated: true, completion: {
