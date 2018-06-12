@@ -61,9 +61,13 @@ let BAR_DEFAULT_COLOR = UIColor(hexString: "#c9c9cd")
 let DISABLE_BUTTON_COLOR = UIColor(hexString: "#B8C9D3")
 let TEXT_NORMAL_COLOR = UIColor(hexString: "#4D6678")
 
+//MARK: Font
+let FONT_CAPTION = UIFont(name: "SFProDisplay-Semibold", size: 11) ?? UIFont.systemFont(ofSize: 11)
+
 let MS_TITLE_ALERT = "Thông báo"
 
 let MONEY_TERM_DISPLAY = 1000000
+let BOUND_SCREEN = UIScreen.main.bounds
 
 // UserDefault
 let userDefault = UserDefaults.standard

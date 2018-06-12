@@ -79,7 +79,7 @@ extension APIClient {
         }
         
         let uid = DataManager.shared.userID
-        let endPoint = "\(uid)/" + EndPoint.Loan.Loans
+        let endPoint = "users/" + "\(uid)/" + EndPoint.Loan.Loans
         
         return Promise<LoanResponseModel> { seal in
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: isShowLoandingView, httpType: httpType, jsonData: dataAPI)

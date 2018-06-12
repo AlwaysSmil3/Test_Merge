@@ -153,6 +153,24 @@ class FinPlusHelper {
     }
     
     
+    /// set caption text cho loan
+    ///
+    /// - Parameter text: <#text description#>
+    /// - Returns: <#return value description#>
+    class func setAttributeTextForLoan(text: String) -> NSMutableAttributedString {
+        let input = text + " "
+        let font = FONT_CAPTION
+        
+        let attribute = [ NSAttributedStringKey.font: font,NSAttributedStringKey.foregroundColor:TEXT_NORMAL_COLOR]
+        let attribute1 = [ NSAttributedStringKey.font: font,NSAttributedStringKey.foregroundColor:UIColor.red]
+        let end = NSAttributedString(string: "*", attributes: attribute1)
+        let attrString = NSMutableAttributedString(string: input, attributes: attribute)
+        attrString.append(end)
+        
+        return attrString
+    }
+ 
+    
     
     
     

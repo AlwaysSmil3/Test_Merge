@@ -69,6 +69,9 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99w-Y4-pda">
                         <rect key="frame" x="16" y="42" width="96" height="34"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <connections>
+                            <action selector="btnDropdownTapped:" destination="HL0-UQ-BcS" eventType="touchUpInside" id="AN6-sC-4u4"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lp4-po-fRK">
                         <rect key="frame" x="99" y="53" width="13" height="31.5"/>

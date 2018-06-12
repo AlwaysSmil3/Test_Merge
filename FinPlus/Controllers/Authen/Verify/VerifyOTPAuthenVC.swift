@@ -11,6 +11,7 @@ import PinCodeTextField
 
 enum VerifyType {
     case Login
+    case Loan
     case Forgot
 }
 class VerifyOTPAuthenVC: BaseViewController {
@@ -23,6 +24,9 @@ class VerifyOTPAuthenVC: BaseViewController {
     var count = 0
     var timer = Timer()
     var otp: String = ""
+    
+    //Cho Tạo Loan
+    var loanResponseModel: LoanResponseModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +91,7 @@ class VerifyOTPAuthenVC: BaseViewController {
     @objc private func pinCodeNextAction() {
         print("next tapped")
     }
-
+    
     
     @IBAction func btnVerifyTapped(_ sender: Any) {
         switch verifyType {
@@ -110,6 +114,13 @@ class VerifyOTPAuthenVC: BaseViewController {
                     updatePassVC.setPassOrResetPass = .SetPass
                     self?.navigationController?.pushViewController(updatePassVC, animated: true)
             }
+                .catch { error in}
+            break
+            
+        case .Loan:
+            self.verifyOTPLoan()
+        
+            break
         default:
             print("Forgot Password Verify")
             let phoneNumber = DataManager.shared.currentAccount
@@ -119,6 +130,7 @@ class VerifyOTPAuthenVC: BaseViewController {
                     updatePassVC.setPassOrResetPass = .ResetPass
                     self?.navigationController?.pushViewController(updatePassVC, animated: true)
             }
+            .catch { error in}
         }
 
     }

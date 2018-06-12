@@ -14,6 +14,11 @@ class LoanTypeFileTBCell: UITableViewCell {
     @IBOutlet var imgValue: UIImageView?
     @IBOutlet var imgAdd: UIImageView?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.lblTitle?.font = FONT_CAPTION
+    }
+    
     var field: LoanBuilderFields? {
         didSet {
             guard let field_ = self.field else { return }

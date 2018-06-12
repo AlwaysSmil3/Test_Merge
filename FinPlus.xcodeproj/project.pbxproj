@@ -77,7 +77,6 @@
 		6338F40320BE602C005777E2 /* BrowwerUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6338F3F720BE602C005777E2 /* BrowwerUserInfo.swift */; };
 		6338F40420BE602C005777E2 /* BrowwerWallets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6338F3F820BE602C005777E2 /* BrowwerWallets.swift */; };
 		6339D24B20BCF312008B40F8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6339D24A20BCF312008B40F8 /* GoogleService-Info.plist */; };
-		633AE0AA20B3F315007AB0D1 /* LoanWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AE0A920B3F315007AB0D1 /* LoanWalletViewController.swift */; };
 		633AE0AD20B3F430007AB0D1 /* LoanWalletTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AE0AC20B3F430007AB0D1 /* LoanWalletTBCell.swift */; };
 		633AE0B020B40036007AB0D1 /* LoanNationalIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AE0AF20B40036007AB0D1 /* LoanNationalIDViewController.swift */; };
 		633AE0B220B40A36007AB0D1 /* LoanOtherInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AE0B120B40A36007AB0D1 /* LoanOtherInfoVC.swift */; };
@@ -91,7 +90,7 @@
 		633AF9BE20A9921B00BAE2BB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9BD20A9921B00BAE2BB /* LoginViewController.swift */; };
 		633AF9C120A992B200BAE2BB /* BorrowHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9C020A992B200BAE2BB /* BorrowHomeViewController.swift */; };
 		6355FAEA20B7BEB100038F5B /* LoanResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355FAE920B7BEB000038F5B /* LoanResponseModel.swift */; };
-		6355FAEC20B7C1FB00038F5B /* LoanOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355FAEB20B7C1FB00038F5B /* LoanOTPViewController.swift */; };
+		6355FAEC20B7C1FB00038F5B /* VerifyOTPAuthenVC+Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355FAEB20B7C1FB00038F5B /* VerifyOTPAuthenVC+Loan.swift */; };
 		6355FAEE20B7EF2800038F5B /* LoanCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355FAED20B7EF2800038F5B /* LoanCategories.swift */; };
 		6357824E20C2330800DE09A0 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357824C20C2330800DE09A0 /* KeychainConfiguration.swift */; };
 		6357824F20C2330800DE09A0 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357824D20C2330800DE09A0 /* KeychainPasswordItem.swift */; };
@@ -267,7 +266,6 @@
 		6338F3F720BE602C005777E2 /* BrowwerUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowwerUserInfo.swift; sourceTree = "<group>"; };
 		6338F3F820BE602C005777E2 /* BrowwerWallets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowwerWallets.swift; sourceTree = "<group>"; };
 		6339D24A20BCF312008B40F8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		633AE0A920B3F315007AB0D1 /* LoanWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanWalletViewController.swift; sourceTree = "<group>"; };
 		633AE0AC20B3F430007AB0D1 /* LoanWalletTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanWalletTBCell.swift; sourceTree = "<group>"; };
 		633AE0AF20B40036007AB0D1 /* LoanNationalIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanNationalIDViewController.swift; sourceTree = "<group>"; };
 		633AE0B120B40A36007AB0D1 /* LoanOtherInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanOtherInfoVC.swift; sourceTree = "<group>"; };
@@ -282,7 +280,7 @@
 		633AF9BD20A9921B00BAE2BB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		633AF9C020A992B200BAE2BB /* BorrowHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowHomeViewController.swift; sourceTree = "<group>"; };
 		6355FAE920B7BEB000038F5B /* LoanResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanResponseModel.swift; sourceTree = "<group>"; };
-		6355FAEB20B7C1FB00038F5B /* LoanOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanOTPViewController.swift; sourceTree = "<group>"; };
+		6355FAEB20B7C1FB00038F5B /* VerifyOTPAuthenVC+Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerifyOTPAuthenVC+Loan.swift"; sourceTree = "<group>"; };
 		6355FAED20B7EF2800038F5B /* LoanCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanCategories.swift; sourceTree = "<group>"; };
 		6357824C20C2330800DE09A0 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainConfiguration.swift; sourceTree = "<group>"; };
 		6357824D20C2330800DE09A0 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
@@ -532,11 +530,10 @@
 				6336D5C720B27B7500A6C38A /* LoanFirstViewController.swift */,
 				6336D5C920B2B43700A6C38A /* LoanPersionalInfoVC.swift */,
 				6336D5CB20B2B75000A6C38A /* LoanInfoJobVC.swift */,
-				633AE0A920B3F315007AB0D1 /* LoanWalletViewController.swift */,
 				633AE0AF20B40036007AB0D1 /* LoanNationalIDViewController.swift */,
 				633AE0B120B40A36007AB0D1 /* LoanOtherInfoVC.swift */,
 				633AE0B320B40AA1007AB0D1 /* LoanSummaryInfoVC.swift */,
-				6355FAEB20B7C1FB00038F5B /* LoanOTPViewController.swift */,
+				6355FAEB20B7C1FB00038F5B /* VerifyOTPAuthenVC+Loan.swift */,
 			);
 			path = Loan;
 			sourceTree = "<group>";
@@ -1310,7 +1307,7 @@
 				639C9DF520A189E600F2CF5E /* ToastWindow.swift in Sources */,
 				E7F51A2C20CE6D3F00F72682 /* LoanTypeAddressTBCell.swift in Sources */,
 				639C9DBB20A1498A00F2CF5E /* FinPlus.xcdatamodeld in Sources */,
-				6355FAEC20B7C1FB00038F5B /* LoanOTPViewController.swift in Sources */,
+				6355FAEC20B7C1FB00038F5B /* VerifyOTPAuthenVC+Loan.swift in Sources */,
 				630467C220B547500069469A /* Version.swift in Sources */,
 				6357825420C2888300DE09A0 /* ExUIView.swift in Sources */,
 				639C9DD020A14B4600F2CF5E /* EndPoint.swift in Sources */,
@@ -1359,7 +1356,6 @@
 				E772D76C20CA76F6001F0B8E /* ListLoanViewController.swift in Sources */,
 				637A90B020A2E52700CCACA5 /* APIClient+Authen.swift in Sources */,
 				E772D77720CA8A46001F0B8E /* DoubleTextTableViewCell.swift in Sources */,
-				633AE0AA20B3F315007AB0D1 /* LoanWalletViewController.swift in Sources */,
 				E7F51A3820CE6DE700F72682 /* OnBoardViewController.swift in Sources */,
 				633AF9BA20A98F6000BAE2BB /* ChoiceKindUserVC.swift in Sources */,
 				635B5E0820B6B3D800F02132 /* LoanUserInfo.swift in Sources */,
@@ -1550,7 +1546,7 @@
 				CODE_SIGN_ENTITLEMENTS = FinPlus/FinPlus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2S3D35A37D;
+				DEVELOPMENT_TEAM = GW5ZT78MWC;
 				INFOPLIST_FILE = FinPlus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1572,7 +1568,7 @@
 				CODE_SIGN_ENTITLEMENTS = FinPlus/FinPlus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2S3D35A37D;
+				DEVELOPMENT_TEAM = GW5ZT78MWC;
 				INFOPLIST_FILE = FinPlus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
