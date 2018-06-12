@@ -17,8 +17,8 @@ class LoanNationalIDViewController: LoanBaseViewController {
         super.viewDidLoad()
     
         if let bottomView = self.bottomScrollView {
-            let bottomOffset: CGPoint = CGPoint(x: 0, y: bottomView.contentSize.height - bottomView.bounds.size.height)
-            bottomView.setContentOffset(bottomOffset, animated: true)
+            
+            bottomView.setContentOffset(CGPoint(x: 100, y: 0), animated: true)
         }
     }
     

@@ -150,7 +150,7 @@
                                                                     <constraint firstAttribute="height" constant="1" id="nIM-dI-A08"/>
                                                                 </constraints>
                                                             </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vay cho sinh viên" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Og5-0H-BcY">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vay cho sinh viên" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Og5-0H-BcY">
                                                                 <rect key="frame" x="220.5" y="24" width="122.5" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                                 <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
@@ -301,6 +301,12 @@
                                                                     <action selector="showInfoServiceFee:" destination="iKw-QS-Z9I" eventType="touchUpInside" id="sh8-g5-yvg"/>
                                                                 </connections>
                                                             </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mrz-W4-uFO">
+                                                                <rect key="frame" x="16" y="19" width="343" height="30"/>
+                                                                <connections>
+                                                                    <action selector="btnListCategoriesShow:" destination="iKw-QS-Z9I" eventType="touchUpInside" id="0IM-ZF-hD7"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -331,6 +337,7 @@
                                                             <constraint firstItem="6mn-F6-a4F" firstAttribute="leading" secondItem="Og5-0H-BcY" secondAttribute="trailing" constant="8" id="LDi-gI-fpZ"/>
                                                             <constraint firstItem="Q9g-DB-Kdb" firstAttribute="top" secondItem="aBh-VA-gIl" secondAttribute="bottom" constant="16" id="Lau-p9-cro"/>
                                                             <constraint firstItem="R1b-FN-b5R" firstAttribute="top" secondItem="ag6-DH-F3M" secondAttribute="bottom" constant="16" id="Lcs-MV-5u0"/>
+                                                            <constraint firstItem="Q9g-DB-Kdb" firstAttribute="leading" secondItem="Mrz-W4-uFO" secondAttribute="leading" id="MGE-54-a71"/>
                                                             <constraint firstItem="4Zx-nD-No8" firstAttribute="top" secondItem="ULe-Vo-VnA" secondAttribute="bottom" constant="16" id="MeX-Ug-cUQ"/>
                                                             <constraint firstItem="ULe-Vo-VnA" firstAttribute="leading" secondItem="R1b-FN-b5R" secondAttribute="leading" id="NKA-gk-TCi"/>
                                                             <constraint firstAttribute="trailing" secondItem="Q9g-DB-Kdb" secondAttribute="trailing" constant="16" id="PqR-Kg-Yqh"/>
@@ -367,8 +374,11 @@
                                                             <constraint firstItem="cU2-FB-6X7" firstAttribute="top" secondItem="yhH-ic-4pr" secondAttribute="bottom" constant="16" id="pDs-6I-6We"/>
                                                             <constraint firstItem="Xw9-rX-nHa" firstAttribute="top" secondItem="Lg3-1Q-ADa" secondAttribute="bottom" constant="8" id="pFi-Ps-IGD"/>
                                                             <constraint firstItem="63Q-rJ-cWq" firstAttribute="centerY" secondItem="VaD-OT-06j" secondAttribute="centerY" id="qOi-Op-cfj"/>
+                                                            <constraint firstItem="Og5-0H-BcY" firstAttribute="centerY" secondItem="Mrz-W4-uFO" secondAttribute="centerY" id="quD-a1-5he"/>
                                                             <constraint firstItem="ULe-Vo-VnA" firstAttribute="top" secondItem="R1b-FN-b5R" secondAttribute="bottom" constant="16" id="rGX-mV-VAe"/>
                                                             <constraint firstItem="9yV-0a-d2U" firstAttribute="trailing" secondItem="Puc-Pg-gNE" secondAttribute="trailing" id="tJc-3k-ivc"/>
+                                                            <constraint firstItem="Q9g-DB-Kdb" firstAttribute="trailing" secondItem="Mrz-W4-uFO" secondAttribute="trailing" id="uW0-4R-ggX"/>
+                                                            <constraint firstItem="Og5-0H-BcY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aBh-VA-gIl" secondAttribute="trailing" constant="8" id="v8A-hU-QgH"/>
                                                             <constraint firstItem="eNp-G9-cel" firstAttribute="centerX" secondItem="eey-sE-88Q" secondAttribute="centerX" id="vcl-VG-N8V"/>
                                                             <constraint firstItem="Pu4-5d-90d" firstAttribute="leading" secondItem="hbT-WT-5p9" secondAttribute="leading" id="xGb-aL-7Jm"/>
                                                             <constraint firstItem="Lg3-1Q-ADa" firstAttribute="leading" secondItem="4Zx-nD-No8" secondAttribute="leading" id="xvT-GP-eFJ"/>
@@ -527,6 +537,7 @@
                     </view>
                     <connections>
                         <outlet property="amountSlider" destination="ELd-UQ-9Wk" id="CQ0-z3-T58"/>
+                        <outlet property="lblCategoriesName" destination="Og5-0H-BcY" id="kgT-vr-ckP"/>
                         <outlet property="lblInterestRate" destination="6oP-Za-zo3" id="ldL-Mj-bN6"/>
                         <outlet property="lblMaxAmounSlider" destination="skB-Mw-d2D" id="5rH-Oz-Ur9"/>
                         <outlet property="lblMaxTermSlider" destination="63Q-rJ-cWq" id="dkc-xX-uNR"/>
@@ -541,7 +552,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zF3-RT-F3o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="273" y="949"/>
+            <point key="canvasLocation" x="272.80000000000001" y="948.57571214392806"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5Bq-a7-0zE">

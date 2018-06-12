@@ -9,16 +9,10 @@
 import Foundation
 
 
-class LoanTypeDropdownTBCell: UITableViewCell {
-    
+class LoanTypeDropdownTBCell: UITableViewCell, DataSelectedFromPopupProtocol {
     
     @IBOutlet var lblTitle: UILabel?
     @IBOutlet var lblValue: UILabel?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.lblTitle?.font = FONT_CAPTION
-    }
     
     var field: LoanBuilderFields? {
         didSet {
@@ -37,6 +31,33 @@ class LoanTypeDropdownTBCell: UITableViewCell {
             }
             
         }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.lblTitle?.font = FONT_CAPTION
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        guard selected else { return }
+        guard let field_ = self.field, let data = field_.data else { return }
+        
+        if field_.title == "Nghề nghiệp" || field_.title == "Cấp bậc" {
+            let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
+            popup.setDataSource(data: data)
+            popup.delegate = self
+            
+            popup.show()
+        }
+        
+    }
+    
+    
+    //MARK: Data Selected
+    func dataSelected(data: LoanBuilderData) {
+        self.lblValue?.text = data.title
     }
     
     
