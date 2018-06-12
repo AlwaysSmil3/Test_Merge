@@ -30,7 +30,7 @@ extension APIClient {
      Optional: Mật khẩu của người dùng
 
      */
-    func authentication(phoneNumber: String, pass: String = "") -> Promise<APIResponseGeneral> {
+    func authentication(phoneNumber: String, pass: String = "") -> Promise<JSONDictionary> {
         
         let id = UUID().uuidString
         
@@ -41,11 +41,12 @@ extension APIClient {
             "password": pass
         ]
         
-        return Promise<APIResponseGeneral> { seal in
+        return Promise<JSONDictionary> { seal in
             requestWithEndPoint(endPoint: EndPoint.Authen.Authen, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST)
                 .done { json in
-                    let model = APIResponseGeneral(object: json)
-                    seal.fulfill(model)
+                    //let model = APIResponseGeneral(object: json)
+                    
+                    seal.fulfill(json)
                 }
                 .catch{ error in
                     seal.reject(error)

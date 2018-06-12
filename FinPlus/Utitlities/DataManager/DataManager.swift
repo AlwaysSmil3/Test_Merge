@@ -29,6 +29,8 @@ class DataManager {
     
     // Version, config
     var version: Version?
+
+    var config: Config?
     
     var loanBuilder: [LoanBuilderBase] = []
     

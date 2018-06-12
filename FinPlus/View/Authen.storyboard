@@ -310,7 +310,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnw-V3-fgW">
-                                                        <rect key="frame" x="132" y="343" width="111" height="33"/>
+                                                        <rect key="frame" x="132" y="350.5" width="111" height="33"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
                                                         <state key="normal" title="Gửi lại tin nhắn">
                                                             <color key="titleColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>

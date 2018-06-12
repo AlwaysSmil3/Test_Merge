@@ -75,6 +75,7 @@ let BOUND_SCREEN = UIScreen.main.bounds
 let userDefault = UserDefaults.standard
 
 let fUSER_DEFAUT_ACCOUNT_NAME = "USER_DEFAUT_ACCOUNT_NAME"
+let fUSER_DEFAUT_TOKEN = "USER_DEFAUT_TOKEN"
 
 
 
