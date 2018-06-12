@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FAQView
 
 class FAQViewController: UIViewController {
     
