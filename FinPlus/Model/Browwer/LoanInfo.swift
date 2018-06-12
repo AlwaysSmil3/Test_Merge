@@ -14,11 +14,14 @@ struct LoanInfo: Encodable {
     var amount: Int32
     var term: Int
     var status: Int
+    var currentStep: Int
     
     var userInfo: LoanUserInfo
     var jobInfo: LoanJobInfo
     
     var walletId: Int32
+    
+    var nationalIdAllImg: String
     var nationalIdFrontImg: String
     var nationalIdBackImg: String
     
@@ -31,11 +34,14 @@ struct LoanInfo: Encodable {
         self.amount = 0
         self.term = 0
         self.status = 0
+        self.currentStep = 0
         
         self.userInfo = LoanUserInfo()
         self.jobInfo = LoanJobInfo()
         
         self.walletId = 0
+        
+        self.nationalIdAllImg = ""
         self.nationalIdFrontImg = ""
         self.nationalIdBackImg = ""
         
@@ -49,9 +55,11 @@ struct LoanInfo: Encodable {
         case amount
         case term
         case status
+        case currentStep
         case userInfo
         case jobInfo
         case walletId
+        case nationalIdAllImg
         case nationalIdFrontImg
         case nationalIdBackImg
         case optionalText
@@ -64,9 +72,11 @@ struct LoanInfo: Encodable {
         try container.encode(amount, forKey: .amount)
         try container.encode(term, forKey: .term)
         try container.encode(status, forKey: .status)
+        try container.encode(currentStep, forKey: .currentStep)
         try container.encode(userInfo, forKey: .userInfo)
         try container.encode(jobInfo, forKey: .jobInfo)
         try container.encode(walletId, forKey: .walletId)
+        try container.encode(nationalIdAllImg, forKey: .nationalIdAllImg)
         try container.encode(nationalIdFrontImg, forKey: .nationalIdFrontImg)
         try container.encode(nationalIdBackImg, forKey: .nationalIdBackImg)
         try container.encode(optionalText, forKey: .optionalText)

@@ -57,6 +57,7 @@ class BorrowHomeViewController: BaseViewController {
             .done(on: DispatchQueue.main) { model in
                 
         }
+            .catch { error in}
         
         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
             .done(on: DispatchQueue.main) { model in

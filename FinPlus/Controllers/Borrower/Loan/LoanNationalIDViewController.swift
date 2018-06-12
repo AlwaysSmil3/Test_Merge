@@ -16,6 +16,10 @@ class LoanNationalIDViewController: LoanBaseViewController {
         self.index = 2
         super.viewDidLoad()
     
+        if let bottomView = self.bottomScrollView {
+            let bottomOffset: CGPoint = CGPoint(x: 0, y: bottomView.contentSize.height - bottomView.bounds.size.height)
+            bottomView.setContentOffset(bottomOffset, animated: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,11 +52,7 @@ class LoanNationalIDViewController: LoanBaseViewController {
         }
     }
 
-    
-    
     //MARK: Actions
-    
-
     
     @IBAction func btnContinueTapped(_ sender: Any) {
         
