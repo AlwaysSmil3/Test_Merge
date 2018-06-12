@@ -40,7 +40,6 @@ class LoanInfoJobVC: LoanBaseViewController {
         self.index = 1
         super.viewDidLoad()
         
-        //self.setupDropdown()
         
         self.getJobs()
         self.getPositions()
@@ -51,7 +50,6 @@ class LoanInfoJobVC: LoanBaseViewController {
         
         self.updateDataToServer()
     }
-
     
     //MARK: Get API
     private func getJobs() {
@@ -97,8 +95,6 @@ class LoanInfoJobVC: LoanBaseViewController {
         self.positionDropdown.show()
     }
 
-    
-    
     @IBAction func btnContinueTapped(_ sender: Any) {
         self.updateDataForLoanAPI {
             let loanWalletVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "LIST_WALLET") as! ListWalletViewController

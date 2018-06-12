@@ -52,6 +52,7 @@
 		630BA62820C22A4100880DAE /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 630BA60A20C22A4100880DAE /* SF-Pro-Text-Medium.otf */; };
 		630BA62920C22A4100880DAE /* SF-Pro-Display-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 630BA60B20C22A4100880DAE /* SF-Pro-Display-BoldItalic.otf */; };
 		630BA62A20C22A4100880DAE /* SF-Pro-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 630BA60C20C22A4100880DAE /* SF-Pro-Text-SemiboldItalic.otf */; };
+		630D983F20CF6BEB00994D81 /* LoanSendSuccessVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D983E20CF6BEB00994D81 /* LoanSendSuccessVC.swift */; };
 		632FD02120AAC3CC00D9399C /* APIResponseGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */; };
 		632FD02420AADF3C00D9399C /* VerifyAuthenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */; };
 		632FD02620AAE15800D9399C /* ExString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02520AAE15800D9399C /* ExString.swift */; };
@@ -241,6 +242,7 @@
 		630BA60A20C22A4100880DAE /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		630BA60B20C22A4100880DAE /* SF-Pro-Display-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BoldItalic.otf"; sourceTree = "<group>"; };
 		630BA60C20C22A4100880DAE /* SF-Pro-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		630D983E20CF6BEB00994D81 /* LoanSendSuccessVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanSendSuccessVC.swift; sourceTree = "<group>"; };
 		632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponseGeneral.swift; sourceTree = "<group>"; };
 		632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyAuthenData.swift; sourceTree = "<group>"; };
 		632FD02520AAE15800D9399C /* ExString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExString.swift; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 		6308DF6E20A4553E001DC320 /* Loan */ = {
 			isa = PBXGroup;
 			children = (
+				630D983D20CF6B8600994D81 /* Success */,
 				63EFBD9620C01441001381A9 /* Base */,
 				633AE0AB20B3F3D3007AB0D1 /* Cell */,
 				6336D5C720B27B7500A6C38A /* LoanFirstViewController.swift */,
@@ -573,6 +576,14 @@
 				630BA60C20C22A4100880DAE /* SF-Pro-Text-SemiboldItalic.otf */,
 			);
 			path = "SF Pro";
+			sourceTree = "<group>";
+		};
+		630D983D20CF6B8600994D81 /* Success */ = {
+			isa = PBXGroup;
+			children = (
+				630D983E20CF6BEB00994D81 /* LoanSendSuccessVC.swift */,
+			);
+			path = Success;
 			sourceTree = "<group>";
 		};
 		632FD02220AADF1E00D9399C /* Authen */ = {
@@ -1336,6 +1347,7 @@
 				E772D76E20CA770F001F0B8E /* LoanDetailViewController.swift in Sources */,
 				6357824E20C2330800DE09A0 /* KeychainConfiguration.swift in Sources */,
 				6338F3FB20BE602C005777E2 /* BrowwerAddress.swift in Sources */,
+				630D983F20CF6BEB00994D81 /* LoanSendSuccessVC.swift in Sources */,
 				6307D3BB20AD274700055F5C /* UpdateInfoFacebook.swift in Sources */,
 				6338F40220BE602C005777E2 /* BrowwerActiveLoan.swift in Sources */,
 				6338F40020BE602C005777E2 /* BrowwerResidentAddress.swift in Sources */,
