@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import Foundation
 import TextFieldEffects
 import SpreadsheetView
 
-class CalPayViewController: UIViewController, SpreadsheetViewDataSource, SpreadsheetViewDelegate {
+class CalPayViewController: UIViewController, SpreadsheetViewDataSource, SpreadsheetViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var moneyTextField: HoshiTextField!
     @IBOutlet weak var monthTextField: HoshiTextField!
@@ -19,7 +20,6 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
     @IBOutlet weak var calBtn: UIButton!
     @IBOutlet weak var spreadsheetView: SpreadsheetView!
     
-//    let months: NSMutableArray = []
 //    let data = [
 //        ["123.000", "123.000", "123.000", "123.000"],
 //        ["123", "123", "123", "123", "123"],
@@ -28,8 +28,11 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
     
     let titles = ["Kỳ trả nợ", "Tiền gốc", "Tiền lãi", "Tiền gốc + lãi"]
     var months: NSMutableArray = []
-    var data: NSMutableArray = [[]]
-
+    var data: NSMutableArray = []
+    
+    var currentDate: Date = Date()
+    let dateFormatter = DateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,6 +41,11 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         
         self.calBtn.layer.cornerRadius = 4
         
+        // Setting DateFormatter
+        dateFormatter.dateFormat = "dd/MM/YYYY"
+        dateTextField.text = dateFormatter.string(from: currentDate)
+        
+        // TableView Custom
         spreadsheetView.dataSource = self
         spreadsheetView.delegate = self
         
@@ -62,23 +70,63 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func showDateDialog(sender: UIButton) {
-        DatePickerDialog().show("Ngày sinh", doneButtonTitle: "Đồng ý", cancelButtonTitle: "Huỷ", defaultDate: Date() , minimumDate: nil, maximumDate: Date(), datePickerMode: UIDatePickerMode.date) { (date) in
-    
+    @IBAction func showDateDialog() {
+        DatePickerDialog().show("Ngày giải ngân", doneButtonTitle: "Đồng ý", cancelButtonTitle: "Huỷ", defaultDate: Date() , minimumDate: Date(), maximumDate: nil, datePickerMode: UIDatePickerMode.date) { (date) in
             if let date = date {
-                
+                self.currentDate = date
+                self.dateTextField.text = self.dateFormatter.string(from: self.currentDate)
             }
         }
     }
     
     @IBAction func calculate(sender: UIButton) {
-        let cal = NSCalendar.current
-        let date = cal.date(byAdding: .month, value: 1, to: Date())
+
+        self.view.endEditing(true)
+        self.months.removeAllObjects()
+        self.data.removeAllObjects()
+        
+        if (self.moneyTextField.text?.count)! < 4 {
+            showAlertView(title: "Lỗi", message: "Số tiền không được nhỏ hơn 1000000", okTitle: "Đồng ý", cancelTitle: nil)
+            return
+        }
+        else if ((self.monthTextField.text?.count)! < 1 || Int(self.monthTextField.text!)! < 1) {
+            showAlertView(title: "Lỗi", message: "Thời hạn vay phải lớn hơn 1 tháng", okTitle: "Đồng ý", cancelTitle: nil)
+            return
+        }
+        else if ((self.rateTextField.text?.count)! < 1 ||  Float(self.rateTextField.text!)! <= 0) {
+            showAlertView(title: "Lỗi", message: "Lãi suất phải lớn hơn 0", okTitle: "Đồng ý", cancelTitle: nil)
+            return
+        }
+
+        let money = Float(self.moneyTextField.text!)!*1000
+        let monthCount = Int(self.monthTextField.text!)
+        let rate = Float(self.rateTextField.text!)!*money/Float(monthCount!*100)
+        let monthPay = money/Float(monthCount!)
+        
+        var dateComponent = DateComponents()
+        for i in 1...(monthCount!)
+        {
+            dateComponent.month = i
+            let futureDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+            months.add(dateFormatter.string(from: futureDate!))
+        }
+        data.addObjects(from:[monthPay.description, rate.description, (monthPay + rate).description])
+        
+        self.spreadsheetView.reloadData()
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         spreadsheetView.flashScrollIndicators()
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == self.dateTextField {
+            return false
+        }
+        
+        return true
     }
 
     // MARK: DataSource
@@ -119,15 +167,15 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
             return cell
         } else if case (0, 1...(months.count)) = (indexPath.column, indexPath.row) {
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MonthCell.self), for: indexPath) as! MonthCell
-            cell.label.text = months[indexPath.column]
+            cell.label.text = months[indexPath.row - 1] as? String
             return cell
         } else if case (1...(titles.count - 2), 1...(months.count)) = (indexPath.column, indexPath.row) {
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MoneyCell.self), for: indexPath) as! MoneyCell
-            cell.label.text = data[indexPath.column - 1][indexPath.row - 1]
+            cell.label.text = data[indexPath.column - 1] as? String
             return cell
         } else if case ((titles.count - 1), 1...(months.count)) = (indexPath.column, indexPath.row) {
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: PayCell.self), for: indexPath) as! PayCell
-            cell.label.text = data[indexPath.column - 1][indexPath.row - 1]
+            cell.label.text = data[indexPath.column - 1] as? String
             return cell
         }
         return nil
