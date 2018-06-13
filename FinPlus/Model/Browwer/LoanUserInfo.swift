@@ -23,7 +23,7 @@ struct LoanUserInfo: Encodable {
     init() {
         
         self.fullName = ""
-        self.gender = "0"
+        self.gender = ""
         self.birthDay = ""
         self.nationalID = ""
         self.relationships = RelationShipPhone()

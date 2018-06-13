@@ -34,10 +34,11 @@ enum RelationPhoneNumber: Int {
 }
 
 // Các kiểu chụp CMND
-enum NATIONALID_TYPE_IMG: Int {
+enum FILE_TYPE_IMG: Int {
     case ALL = 0 // Cầm CMND trước mặt chụp cả mặt
     case FRONT
     case BACK
+    case Optional
 }
 
 
@@ -56,23 +57,30 @@ class LoanBaseViewController: BaseViewController {
     //BirthDay
     var birthDay: Date? {
         didSet {
-            if let date = self.birthDay {
-                let date = date.toString(.custom(kDisplayFormat))
+            if let date1 = self.birthDay {
+                let date = date1.toString(.custom(kDisplayFormat))
                 
                 guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
                 self.mainTBView?.deselectRow(at: indexPath, animated: true)
                 if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeDropdownTBCell {
                     cell.field?.selectorTitle = date
+                    
+                    DataManager.shared.loanInfo.userInfo.birthDay = "\(date1.timeIntervalSince1970)"
                 }
             }
         }
     }
     
     //Giới tính
-    var gender: Gender?
+    var gender: Gender? {
+        didSet {
+            guard let g = self.gender else { return }
+            DataManager.shared.loanInfo.userInfo.gender = "\(g.rawValue)"
+        }
+    }
     
-    // Kiểu chụp CMND
-    var typeImgNationID: NATIONALID_TYPE_IMG?
+    // Kiểu File Img
+    var typeImgFile: FILE_TYPE_IMG?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,6 +136,10 @@ class LoanBaseViewController: BaseViewController {
         let firstAddressVC = UIStoryboard(name: "Address", bundle: nil).instantiateViewController(withIdentifier: "AddressFirstViewController") as! AddressFirstViewController
         firstAddressVC.delegate = self
         
+        if let indexPath = self.mainTBView?.indexPathForSelectedRow {
+            firstAddressVC.titleTypeAddress = self.dataSource?.fields?[indexPath.row].title ?? ""
+        }
+        
         self.navigationController?.pushViewController(firstAddressVC, animated: true)
     }
     
@@ -169,29 +181,79 @@ class LoanBaseViewController: BaseViewController {
         self.present(filterVC, animated: true, completion: nil)
     }
     
-    //Chọn nghề nghiệp
-    func selectedJob() {
-        
-        
-    }
-    
-    //Chọn cấp bậc
-    func selectedPosition() {
-        
-        
-    }
-    
     //Chọn ảnh
     func selectedFile() {
         CameraHandler.shared.showCamera(vc: self)
         CameraHandler.shared.imagePickedBlock = { (image) in
             let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
             
+            self.uploadData(img: img)
+            
             guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
             self.mainTBView?.deselectRow(at: indexPath, animated: true)
             if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeFileTBCell {
                 cell.imgValue?.image = img
                 cell.imgAdd?.isHidden = true
+            }
+        }
+    }
+    
+    //Upload Data Image
+    func uploadData(img: UIImage) {
+        
+        guard let type = self.typeImgFile else { return }
+        
+        let dataImg = UIImagePNGRepresentation(img)
+        
+        let loanID = DataManager.shared.loanID ?? 0
+        guard let data = dataImg else { return }
+        let endPoint = "loans/" + "\(loanID)/" + "file"
+        
+        self.handleLoadingView(isShow: true)
+        APIClient.shared.upload(type: type, typeMedia: "image", endPoint: endPoint, imagesData: [data], parameters: ["" : ""], onCompletion: { (response) in
+            self.handleLoadingView(isShow: false)
+            print("Upload \(String(describing: response))")
+            self.showToastWithMessage(message: "Upload thành công")
+            
+            guard let res = response, let data = res["data"] as? [JSONDictionary], data.count > 0 else { return }
+            
+            switch type {
+            case .ALL:
+                
+                if let url = data[0]["url"] as? String {
+                    DataManager.shared.loanInfo.nationalIdAllImg = url
+                }
+                
+                break
+            case .BACK:
+                if let url = data[0]["url"] as? String {
+                    DataManager.shared.loanInfo.nationalIdBackImg = url
+                }
+                
+                break
+            case .FRONT:
+                if let url = data[0]["url"] as? String {
+                    DataManager.shared.loanInfo.nationalIdFrontImg = url
+                }
+                
+                break
+            case .Optional:
+                DataManager.shared.loanInfo.optionalMedia.removeAll()
+                for d in data {
+                    if let url = d["url"] as? String {
+                        DataManager.shared.loanInfo.optionalMedia.append(url)
+                    }
+                }
+                
+                break
+            }
+            
+        }) { (error) in
+            self.handleLoadingView(isShow: false)
+            
+            if let error = error {
+                self.showToastWithMessage(message: error.localizedDescription)
+                print("error \(error.localizedDescription)")
             }
         }
     }
@@ -296,6 +358,17 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             self.gotoAddressVC()
             break
         case DATA_TYPE_TB_CELL.File:
+            
+            if model.title!.contains("Ảnh bạn đang cầm CMND") {
+                self.typeImgFile = .ALL
+            } else if model.title!.contains("Ảnh mặt trước CMND") {
+                self.typeImgFile = .FRONT
+            } else if model.title!.contains("Ảnh mặt sau CMND") {
+                self.typeImgFile = .BACK
+            } else {
+                self.typeImgFile = .Optional
+            }
+            
             self.selectedFile()
             
             break
@@ -314,13 +387,21 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: Address Delegate
 extension LoanBaseViewController: AddressDelegate {
-    func getAddress(address: Address, type: Int) {
+    func getAddress(address: Address, type: Int, title: String) {
         let add = address.commune + ", " + address.district + ", " + address.city
         
         guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
         self.mainTBView?.deselectRow(at: indexPath, animated: true)
         if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeAddressTBCell {
             cell.field?.placeholder = add
+        }
+        
+        if title.contains("thường trú") {
+            DataManager.shared.loanInfo.userInfo.residentAddress = address
+        } else if title.contains("tạm trú") {
+            DataManager.shared.loanInfo.userInfo.temporaryAddress = address
+        } else if title.contains("cơ quan") {
+            DataManager.shared.loanInfo.jobInfo.address = address
         }
         
     }

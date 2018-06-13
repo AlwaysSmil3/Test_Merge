@@ -58,6 +58,15 @@ class LoanTypeDropdownTBCell: UITableViewCell, DataSelectedFromPopupProtocol {
     //MARK: Data Selected
     func dataSelected(data: LoanBuilderData) {
         self.lblValue?.text = data.title
+        
+        guard let field_ = self.field else { return }
+        
+        if field_.title == "Nghề nghiệp" {
+            DataManager.shared.loanInfo.jobInfo.jobType = data.title!
+        } else if field_.title == "Cấp bậc" {
+            DataManager.shared.loanInfo.jobInfo.position = data.title!
+        }
+        
     }
     
     
