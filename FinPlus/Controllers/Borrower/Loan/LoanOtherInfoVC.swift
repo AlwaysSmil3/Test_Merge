@@ -40,6 +40,18 @@ class LoanOtherInfoVC: LoanBaseViewController {
     //MARK: ACtions
 
     @IBAction func btnContinueTapped(_ sender: Any) {
+        
+        if DataManager.shared.loanInfo.optionalText.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng nhập lương tháng của bạn")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.optionalMedia.count == 0 {
+            self.showToastWithMessage(message: "Vui lòng tải ảnh bảng lương/ chấm công của bạn")
+            return
+        }
+        
+        
         let loanSummaryInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSummaryInfoVC") as! LoanSummaryInfoVC
         
         self.navigationController?.pushViewController(loanSummaryInfoVC, animated: true)
@@ -51,6 +63,8 @@ class LoanOtherInfoVC: LoanBaseViewController {
             let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
             
             self.dataSourceCollection.append(img)
+            
+            self.uploadData(img: img)
             
         }
         
@@ -86,7 +100,7 @@ extension LoanOtherInfoVC: UICollectionViewDataSource, UICollectionViewDelegate 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.currentSelectedCollection = indexPath
-        
+        self.typeImgFile = .Optional
         self.showLibrary()
         
     }

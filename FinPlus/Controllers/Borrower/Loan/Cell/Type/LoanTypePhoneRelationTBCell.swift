@@ -17,6 +17,8 @@ class LoanTypePhoneRelationTBCell: UITableViewCell, DataSelectedFromPopupProtoco
     override func awakeFromNib() {
         super.awakeFromNib()
         self.lblTitle?.font = FONT_CAPTION
+        
+        
     }
     
     var field: LoanBuilderFields? {
@@ -40,23 +42,26 @@ class LoanTypePhoneRelationTBCell: UITableViewCell, DataSelectedFromPopupProtoco
     
     
     @IBAction func btnDropdownTapped(_ sender: Any) {
-        print("16666666656")
-        
         guard let field_ = self.field, let data = field_.data else { return }
         let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
         popup.setDataSource(data: data)
         popup.delegate = self
         
         popup.show()
-        
     }
     
     //MARK: Data Selected
     func dataSelected(data: LoanBuilderData) {
         self.lblTypeRelation?.text = data.title!
         self.tfValue?.placeholder = "Số điện thoại của " + data.title!
+        DataManager.shared.loanInfo.userInfo.relationships.type = data.id!
     }
     
+    @IBAction func tfEditEnd(_ sender: Any) {
+        if let value = self.tfValue?.text {
+            DataManager.shared.loanInfo.userInfo.relationships.phoneNumber = value
+        }
+    }
     
 }
 
