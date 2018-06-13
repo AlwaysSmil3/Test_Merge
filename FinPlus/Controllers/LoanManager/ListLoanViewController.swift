@@ -21,15 +21,15 @@ class ListLoanViewController: UIViewController {
             "title" : "CURRENT_LOAN",
             "sub_array" : [
                 [
-                    "PHONE" : "0986632888",
-                    "LOAN_START" : "8/5/2018",
-                    "LOAN_MONEY" : "2.000.000đ",
-                    "LOAN_TIME" : "12 tháng",
-                    "STATUS" : 1,
-                    "RATE" : "10%/năm",
-                    "LOAN_FEE" : "200.000đ",
-                    "MONEY_MONTH" : "180.000đ",
-                    "LOAN_DIS" : "Vay mua điện thoại",
+                    "1PHONE" : "0986632888",
+                    "2LOAN_START" : "8/5/2018",
+                    "3LOAN_MONEY" : "2.000.000đ",
+                    "4LOAN_TIME" : "12 tháng",
+                    "5STATUS" : 1,
+                    "6RATE" : "10%/năm",
+                    "7LOAN_FEE" : "200.000đ",
+                    "8MONEY_MONTH" : "180.000đ",
+                    "9LOAN_DIS" : "Vay mua điện thoại",
                 ],
             ]
         ],
@@ -37,26 +37,26 @@ class ListLoanViewController: UIViewController {
             "title" : "END_LOAN",
             "sub_array" : [
                 [
-                    "PHONE" : "0986632888",
-                    "LOAN_START" : "8/5/2018",
-                    "LOAN_MONEY" : "2.000.000đ",
-                    "LOAN_TIME" : "12 tháng",
-                    "STATUS" : 0,
-                    "RATE" : "10%/năm",
-                    "LOAN_FEE" : "200.000đ",
-                    "MONEY_MONTH" : "180.000đ",
-                    "LOAN_DIS" : "Vay mua điện thoại",
+                    "1PHONE" : "0986632888",
+                    "2LOAN_START" : "8/5/2018",
+                    "3LOAN_MONEY" : "2.000.000đ",
+                    "4LOAN_TIME" : "12 tháng",
+                    "5STATUS" : 0,
+                    "6RATE" : "10%/năm",
+                    "7LOAN_FEE" : "200.000đ",
+                    "8MONEY_MONTH" : "180.000đ",
+                    "9LOAN_DIS" : "Vay mua điện thoại",
                 ],
                 [
-                    "PHONE" : "0986632888",
-                    "LOAN_START" : "8/5/2018",
-                    "LOAN_MONEY" : "2.000.000đ",
-                    "LOAN_TIME" : "12 tháng",
-                    "STATUS" : 0,
-                    "RATE" : "10%/năm",
-                    "LOAN_FEE" : "200.000đ",
-                    "MONEY_MONTH" : "180.000đ",
-                    "LOAN_DIS" : "Vay mua điện thoại",
+                    "1PHONE" : "0986632888",
+                    "2LOAN_START" : "8/5/2018",
+                    "3LOAN_MONEY" : "2.000.000đ",
+                    "4LOAN_TIME" : "12 tháng",
+                    "5STATUS" : 0,
+                    "6RATE" : "10%/năm",
+                    "7LOAN_FEE" : "200.000đ",
+                    "8MONEY_MONTH" : "180.000đ",
+                    "9LOAN_DIS" : "Vay mua điện thoại",
                 ],
             ]
         ]
@@ -144,10 +144,10 @@ extension ListLoanViewController: UITableViewDataSource {
             cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? LoanTableViewCell
         }
         
-        cell?.dateLabel.text = item["LOAN_START"] as? String
+        cell?.dateLabel.text = item["2LOAN_START"] as? String
         cell?.statusLabel.text = NSLocalizedString("STATUS", comment: "")
         
-        if ((item["STATUS"] as? Int) == 0) {
+        if ((item["5STATUS"] as? Int) == 0) {
             cell?.statusValueLabel.text = "Đã kết thúc"
             cell?.statusValueLabel.textColor = .black
         }
@@ -157,8 +157,8 @@ extension ListLoanViewController: UITableViewDataSource {
             cell?.statusValueLabel.textColor = MAIN_COLOR
         }
         
-        cell?.moneyLabel.text = item["LOAN_MONEY"] as? String
-        cell?.disLabel.text = (item["LOAN_START"] as? String)! + " - " + (item["LOAN_DIS"] as? String)!
+        cell?.moneyLabel.text = item["3LOAN_MONEY"] as? String
+        cell?.disLabel.text = (item["4LOAN_TIME"] as? String)! + " - " + (item["9LOAN_DIS"] as? String)!
         
         return cell!
     }

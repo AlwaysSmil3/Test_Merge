@@ -16,6 +16,8 @@ class LoanDetailViewController: UIViewController {
     var detailLoan: NSDictionary!
     let cellIdentifier = "cell"
     
+    private var arrayKey:NSArray!
+    
     @IBAction func navi_back(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -24,7 +26,7 @@ class LoanDetailViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
+        self.arrayKey = detailLoan.allKeys.sorted(by: { ($0 as! String) < ($1 as! String) }) as NSArray
         self.title = NSLocalizedString("DETAIL_LOAN", comment: "")
         
         let cellNib = UINib(nibName: "DoubleTextTableViewCell", bundle: nil)
@@ -45,7 +47,7 @@ class LoanDetailViewController: UIViewController {
 extension LoanDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return detailLoan.allKeys.count
+        return arrayKey.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -59,7 +61,7 @@ extension LoanDetailViewController: UITableViewDelegate {
 extension LoanDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let key = detailLoan.allKeys[indexPath.row] as! String
+        let key = arrayKey[indexPath.row] as! String
         
         var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DoubleTextTableViewCell
         if cell == nil {
@@ -67,7 +69,7 @@ extension LoanDetailViewController: UITableViewDataSource {
             cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DoubleTextTableViewCell
         }
         
-        cell?.nameLabel.text = NSLocalizedString(key, comment: "")
+        cell?.nameLabel.text = NSLocalizedString(key.components(separatedBy: CharacterSet.decimalDigits).joined(), comment: "")
         cell?.desLabel.text = detailLoan[key] as? String
         
         return cell!
