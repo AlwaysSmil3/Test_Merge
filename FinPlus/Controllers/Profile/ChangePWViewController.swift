@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChangePWViewController: UIViewController {
+class ChangePWViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var currentPass: HoshiTextField!
     @IBOutlet weak var showCurrentPassBtn: UIButton!
@@ -27,6 +27,18 @@ class ChangePWViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Giới hạn ký tự nhập vào
+        let maxLength = 6
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        
+        if newString.length > maxLength { return false }
+        
+        return true
     }
     
     @IBAction func navi_back(sender: UIButton) {
