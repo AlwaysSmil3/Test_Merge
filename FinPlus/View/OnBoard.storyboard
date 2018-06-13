@@ -54,7 +54,7 @@
                                             <color key="titleColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="skipBtn:" destination="MHC-OZ-y6A" eventType="touchUpInside" id="u02-0v-yy7"/>
+                                            <action selector="skipBtnAction:" destination="MHC-OZ-y6A" eventType="touchUpInside" id="mRZ-XM-7t8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -239,6 +239,7 @@
                         <outlet property="nextBtn" destination="4Li-yr-SdD" id="0Pc-ZC-EcK"/>
                         <outlet property="pageControl" destination="xDR-kr-64G" id="nxE-De-WD5"/>
                         <outlet property="scrollView" destination="RpL-mH-GPw" id="4OJ-G8-Ndo"/>
+                        <outlet property="skipBtn" destination="pZs-h6-MCo" id="kqC-28-KH6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vhj-km-DS5" userLabel="First Responder" sceneMemberID="firstResponder"/>
