@@ -19,6 +19,8 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+
         self.tableView.register(UINib(nibName: "InvestTableViewCell", bundle: nil), forCellReuseIdentifier: "InvestTableViewCell")
         self.getAllLoans()
         // Do any additional setup after loading the view.

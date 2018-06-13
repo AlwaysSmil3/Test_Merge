@@ -926,11 +926,9 @@
 		84CBBE3320CE5D8B0058C834 /* Invest */ = {
 			isa = PBXGroup;
 			children = (
-				84CBBE4120CF74060058C834 /* Cells */,
 				84CBBE3420CE5DA80058C834 /* InvestListViewController.swift */,
-				84CBBE3620CE5FE40058C834 /* InvestTableViewCell.swift */,
-				84CBBE3720CE5FE40058C834 /* InvestTableViewCell.xib */,
 				84CBBE3A20CE646B0058C834 /* InvestDetailViewController.swift */,
+				84CBBE4120CF74060058C834 /* Cells */,
 			);
 			path = Invest;
 			sourceTree = "<group>";
@@ -946,6 +944,8 @@
 		84CBBE4120CF74060058C834 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				84CBBE3620CE5FE40058C834 /* InvestTableViewCell.swift */,
+				84CBBE3720CE5FE40058C834 /* InvestTableViewCell.xib */,
 				84CBBE4220CF742D0058C834 /* InvestDetailTableViewCell.swift */,
 				84CBBE4320CF742D0058C834 /* InvestDetailTableViewCell.xib */,
 				84CBBE4620CF74460058C834 /* DebtScheduleTableViewCell.swift */,
