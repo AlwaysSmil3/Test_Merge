@@ -1,7 +1,8 @@
-
 [{
- "title": "Thông tin cá nhân",
- "fields": [{
+    "index": 2,
+    "title": "Thông tin cá nhân",
+    "fields": [
+        {
             "id": 1,
             "index": 1,
             "type":"text_box",
@@ -10,8 +11,8 @@
             "placeholder": "Nhập họ và tên của bạn",
             "multiple_line": false,
             "keyboard": "default"
-            },
-            {
+        },
+        {
             "id": 2,
             "index": 2,
             "type":"dropdown",
@@ -20,16 +21,16 @@
             "placeholder": "Giới tính của bạn",
             "selector_title": "Chọn giới tính của bạn",
             "data": [{
-                     "id": 1,
-                     "title": "Nam"
-                     },
-                     {
-                     "id": 2,
-                     "title": "Nữ"
-                     }
-                     ]
-            },
-            {
+                    "id": 1,
+                    "title": "Nam"
+                },
+                {
+                    "id": 2,
+                    "title": "Nữ"
+                }
+            ]
+        },
+        {
             "id": 3,
             "index": 3,
             "type":"datetime",
@@ -39,8 +40,8 @@
             "is_required": true,
             "placeholder": "Ngày sinh của bạn",
             "selector_title": "Chọn ngày sinh của bạn"
-            },
-            {
+        },
+        {
             "id": 4,
             "index": 4,
             "type":"text_box",
@@ -49,8 +50,8 @@
             "placeholder": "Số CMTND của bạn",
             "multiple_line": false,
             "keyboard": "numeric"
-            },
-            {
+        },
+        {
             "id": 5,
             "index": 5,
             "type":"dropdown_text_box",
@@ -61,50 +62,51 @@
             "multiple_line": false,
             "keyboard": "default",
             "data": [{
-                     "id": 1,
-                     "title": "Vợ"
-                     },
-                     {
-                     "id": 2,
-                     "title": "Chồng"
-                     },
-                     {
-                     "id": 3,
-                     "title": "Bố"
-                     },
-                     {
-                     "id": 4,
-                     "title": "Mẹ"
-                     }
-                     ]
-            },
-            {
+                    "id": 1,
+                    "title": "Vợ"
+                },
+                {
+                    "id": 2,
+                    "title": "Chồng"
+                },
+                {
+                    "id": 3,
+                    "title": "Bố"
+                },
+                {
+                    "id": 4,
+                    "title": "Mẹ"
+                }
+            ]
+        },
+        {
             "id": 6,
             "index": 6,
             "type":"address",
             "title": "Địa chỉ nhà thường trú",
             "is_required": true,
             "placeholder": "Nhấn để chọn địa chỉ"
-            },
-            {
+        },
+        {
             "id": 7,
             "index": 7,
             "type":"address",
             "title": "Địa chỉ nhà tạm trú",
             "is_required": true,
             "placeholder": "Nhấn để chọn địa chỉ"
-            },
-            {
+        },
+        {
             "id": 8,
             "index": 8,
             "type":"footer",
             "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn hỗ trợ"
-            }
-            ]
- },
- {
- "title": "Nghề Nghiệp",
- "fields": [{
+        }
+    ]
+},
+{
+    "index": 3,
+    "title": "Nghề Nghiệp",
+    "fields": [{
             "id": 1,
             "index": 1,
             "type":"dropdown",
@@ -113,16 +115,16 @@
             "placeholder": "Nghề nghiệp của bạn",
             "selector_title": "Chọn nghề nghiệp của bạn",
             "data": [{
-                     "id": 1,
-                     "title": "Ngân Hàng"
-                     },
-                     {
-                     "id": 2,
-                     "title": "Sinh Viên"
-                     }
-                     ]
-            },
-            {
+                    "id": 1,
+                    "title": "Ngân Hàng"
+                },
+                {
+                    "id": 2,
+                    "title": "Sinh Viên"
+                }
+            ]
+        },
+        {
             "id": 2,
             "index": 2,
             "type":"dropdown",
@@ -131,16 +133,16 @@
             "placeholder": "Cấp bậc trong cơ quan",
             "selector_title": "Chọn cấp bậc trong cơ quan",
             "data": [{
-                     "id": 1,
-                     "title": "Nhân viên"
-                     },
-                     {
-                     "id": 2,
-                     "title": "Trưởng phòng"
-                     }
-                     ]
-            },
-            {
+                    "id": 1,
+                    "title": "Nhân viên"
+                },
+                {
+                    "id": 2,
+                    "title": "Trưởng phòng"
+                }
+            ]
+        },
+        {
             "id": 3,
             "index": 3,
             "type":"text_box",
@@ -149,8 +151,8 @@
             "placeholder": "Tên cơ quan/công ty bạn đang làm",
             "multiple_line": false,
             "keyboard": "default"
-            },
-            {
+        },
+        {
             "id": 4,
             "index": 4,
             "type":"text_box",
@@ -160,16 +162,16 @@
             "multiple_line": false,
             "keyboard": "money",
             "suffix": "đ"
-            },
-            {
+        },
+        {
             "id": 5,
             "index": 5,
             "type":"address",
             "title": "Địa chỉ cơ quan",
             "is_required": true,
             "placeholder": "Nhấn để chọn địa chỉ"
-            },
-            {
+        },
+        {
             "id": 6,
             "index": 6,
             "type":"text_box",
@@ -178,43 +180,43 @@
             "placeholder": "Số điện thoại cơ quan của bạn",
             "multiple_line": false,
             "keyboard": "phone_pad"
-            },
-            {
+        },
+        {
             "id": 7,
             "index": 7,
             "type":"footer",
             "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn hỗ trợ"
-            }
-            ]
- },
- {
- "title": "Nhân Thân",
- "fields": [{
+        }
+    ]
+},
+{
+    "title": "Nhân Thân",
+    "fields": [{
             "id": 1,
             "index": 1,
             "type":"file",
             "title": "Ảnh bạn đang cầm CMND",
             "description": "Nhấn để chụp hình bạn cầm chứng minh thư trước ngực. Yêu cầu rõ nét và chụp trực tiếp từ camera."
-            },
-            {
+        },
+        {
             "id": 2,
             "index": 2,
             "type":"file",
             "title": "Ảnh mặt trước CMND",
             "description": "Nhấn để chụp hình ảnh mặt trước của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
-            },
-            {
+        },
+        {
             "id": 3,
             "index": 3,
             "type":"file",
             "title": "Ảnh mặt sau CMND",
             "description": "Nhấn để chụp hình ảnh mặt sau của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
-            }
-            ]
- },
- {
- "title": "Thông Tin Bổ Sung",
- "fields": [{
+        }
+    ]
+},
+{
+    "title": "Thông Tin Bổ Sung",
+    "fields": [{
             "id": 1,
             "index": 1,
             "type":"text_box",
@@ -223,8 +225,21 @@
             "multiple_line": false,
             "keyboard": "money",
             "suffix": "đ"
-            }
-            
-            ]
- }
- ]
+        },
+        {
+            "id": 2,
+            "index": 2,
+            "type":"multiple_file",
+            "title": "Ảnh bảng lương/chấm công của bạn"
+        },
+        {
+            "id": 3,
+            "index": 3,
+            "type":"range",
+            "title": "Số năm làm việc",
+            "min_value":0,
+            "max_value":10
+        }
+    ]
+}
+]

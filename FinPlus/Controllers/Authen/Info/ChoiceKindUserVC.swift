@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import FBSDKLoginKit
 import JWT
 
 // Type User: Investor or Browwer
@@ -89,61 +88,6 @@ class ChoiceKindUserVC: BaseViewController {
             self.lblInvest3.textColor = UIColor.white
             self.investView.dropShadow(color: MAIN_COLOR)
         }
-        
-        
-    }
-    
-    // Pasre Facebook Data Info
-    private func getFaceBookInfoData(data: FacebookDataType) {
-        var accessToken = ""
-        var fullName = ""
-        var avatar = ""
-        
-        if let picture = data["picture"], let data = picture["data"] as? FacebookDataType, let url = data["url"] as? String {
-            avatar = url
-        }
-        
-        if let name = data["name"] as? String {
-            fullName = name
-        }
-        
-        if FBSDKAccessToken.current() != nil {
-            accessToken = FBSDKAccessToken.current().tokenString
-        }
-        
-        self.faceBookInfo = FacebookInfo(accessToken: accessToken, fullName: fullName, avatar: avatar)
-        
-    }
-    
-    private func facebookSignIn() {
-        // Go to Facebook
-        FacebookSignInManager.basicInfoWithCompletionHandler(self) { (data, error) in
-            if error == nil {
-                guard let data = data else { return }
-                self.getFaceBookInfoData(data: data)
-                
-                guard let fbInfo = self.faceBookInfo, let pass = self.pw else { return }
-                
-                APIClient.shared.updateInfoFromFacebook(phoneNumber: DataManager.shared.currentAccount, pass: pass, accountType: self.accountType!.rawValue, accessToken: fbInfo.accessToken, avatar: fbInfo.avatar, displayName: fbInfo.fullName)
-                    .done(on: DispatchQueue.main) { [weak self]data in
-                        
-                        DataManager.shared.userID = data.id!
-                        
-                        let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-                        
-                        self?.navigationController?.present(tabbarVC, animated: true, completion: {
-                            
-                        })
-                        
-                    }
-                    .catch { error in
-                        
-                }
-                
-            } else {
-                print(error!)
-            }
-        }
     }
     
     // MARK Actions
@@ -157,10 +101,19 @@ class ChoiceKindUserVC: BaseViewController {
     
     @IBAction func btnBrowwerSelectedTapped(_ sender: Any) {
         
+        if self.accountType == nil {
+            self.accountType = .Browwer
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.showAlertView(title: MS_TITLE_ALERT, message: "Bạn chắc chắn muốn trở thành người vay tiền?. Chúng tôi cần bạn kết nối với facebook để xác thực thông tin cần thiết cho việc đăng ký làm người vay tiền. Chúng tôi sẽ không dùng các thông tin này cho mục đích nào khác.", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
+            self.showAlertView(title: MS_TITLE_ALERT, message: "Bạn chắc chắn muốn trở thành người vay tiền?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
                 if status {
-                    self.facebookSignIn()
+                    let verifyFBVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyFacebookVC") as! VerifyFacebookVC
+                    
+                    verifyFBVC.pw = self.pw
+                    verifyFBVC.accountType = self.accountType
+                    
+                    self.navigationController?.pushViewController(verifyFBVC, animated: true)
                 }
                 
             })
