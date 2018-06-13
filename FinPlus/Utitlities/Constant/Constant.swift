@@ -73,9 +73,10 @@ let BOUND_SCREEN = UIScreen.main.bounds
 
 // UserDefault
 let userDefault = UserDefaults.standard
-
+var systemConfig : Config?
 let fUSER_DEFAUT_ACCOUNT_NAME = "USER_DEFAUT_ACCOUNT_NAME"
 let fUSER_DEFAUT_TOKEN = "USER_DEFAUT_TOKEN"
+//let fSYSTEM_CONFIG = "SYSTEM_CONFIG"
 
 
 
