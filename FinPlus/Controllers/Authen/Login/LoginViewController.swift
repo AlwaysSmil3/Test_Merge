@@ -70,14 +70,34 @@ class LoginViewController: BaseViewController {
         
         APIClient.shared.authentication(phoneNumber: account, pass: tfPass.text!)
             .done(on: DispatchQueue.main) { [weak self] model in
-                if let data = model["data"] as? [String : String] {
-                    if let token = data["token"] {
-                        userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
+                switch model.returnCode {
+                case 2:
+                    // show messsage, Ok -> verify OTP
+                    if let returnMessage = model.returnMsg {
+                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil, completion: { (true) in
+                            self?.pushToVerifyVC(verifyType: .Login)
+                        })
+                    }
+                    break
+                case 1:
+                    DataManager.shared.currentAccount = account
+                    // save token
+                    if let data = model.data {
+                        if let token = data.token {
+                            userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
+                        }
+                    }
+                    // get config
+                    self?.getConfig()
+                    break
+                default :
+                    if let returnMessage = model.returnMsg {
+                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
+//                        UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
                     }
                 }
-                DataManager.shared.currentAccount = account
-                // get config
-                self?.getConfig()
+
+
 
             }
             .catch { error in }

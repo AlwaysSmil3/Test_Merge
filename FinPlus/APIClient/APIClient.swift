@@ -122,13 +122,13 @@ class APIClient {
                 case .success(let responseObject):
                     if let responseDataDict = responseObject as? JSONDictionary {
                         
-                        guard let returnCode = responseDataDict[API_RESPONSE_RETURN_CODE] as? Int, returnCode == 1 else {
-                            if let returnMessage = responseDataDict[API_RESPONSE_RETURN_MESSAGE] as? String {
-                                UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
-                            }
-                            
-                            return
-                        }
+//                        guard let returnCode = responseDataDict[API_RESPONSE_RETURN_CODE] as? Int, returnCode == 1 else {
+//                            if let returnMessage = responseDataDict[API_RESPONSE_RETURN_MESSAGE] as? String {
+//                                UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
+//                            }
+//                            
+//                            return
+//                        }
                         
                         seal.fulfill(responseDataDict)
                     }

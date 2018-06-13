@@ -51,23 +51,40 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
         }
         APIClient.shared.authentication(phoneNumber: self.tfPhoneNumber.text!)
             .done(on: DispatchQueue.main) { [weak self]model in
-                    print(model)
-                if let data = model["data"] as? [String : String] {
-                    if let token = data["token"] {
-                        userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
+                switch model.returnCode {
+                case 2:
+                    // show messsage, Ok -> verify OTP
+                    if let returnMessage = model.returnMsg {
+                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil, completion: { (true) in
+                            self?.pushToVerifyVC(verifyType: .Login)
+                        })
+                    }
+                    break
+                case 1:
+                    guard let strongSelf = self else { return }
+                    DataManager.shared.currentAccount = strongSelf.tfPhoneNumber.text!
+                    // save token
+                    if let data = model.data {
+                        if let token = data.token {
+                            userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
+                        }
+                    }
+                    // get config
+                    strongSelf.getConfig()
+                    break
+                default :
+                    if let returnMessage = model.returnMsg {
+                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
+//                        UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
                     }
                 }
-
-                guard let strongSelf = self else { return }
-
-                userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
-                userDefault.synchronize()
-
-                DataManager.shared.currentAccount = strongSelf.tfPhoneNumber.text!
-                strongSelf.getConfig()
-//                let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
+//                guard let strongSelf = self else { return }
 //
-//                strongSelf.navigationController?.pushViewController(verifyVC, animated: true)
+//                userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+//                userDefault.synchronize()
+//
+//                DataManager.shared.currentAccount = strongSelf.tfPhoneNumber.text!
+//                strongSelf.getConfig()
             }.catch { error in
                 print(error)
         }
