@@ -93,17 +93,12 @@ class LoginViewController: BaseViewController {
     @IBAction func btnForgotPassTapped(_ sender: Any) {
         // show alert confirm
         if let account = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String {
-//            self.showGreenBtnMessage(title: "Đặt lại mật khẩu", message: "Mã xác thực sẽ được gửi tới \(account) qua tin nhắn SMS sau khi bạn đồng ý. Bạn chắc chắn không?", okTitle: "Đồng ý", cancelTitle: "Hủy bỏ") { (true) in
-//                self.pushToVerifyVC(verifyType: .Forgot)
-//            }
-
-            self.showAlertView(title: "123", message: "321", okTitle: "ok", cancelTitle: "cancel") { (true) in
-                print("111")
-            }
+            self.self.showGreenBtnMessage(title: "Đặt lại mật khẩu", message: "Mã xác thực sẽ được gửi tới \(account) qua tin nhắn SMS sau khi bạn đồng ý. Bạn chắc chắn không?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
+                if (status) {
+                    self.pushToVerifyVC(verifyType: .Forgot)
+                }
+            })
         }
-//        self.showGreenBtnMessage(title: "Đặt lại mật khẩu", message: "Mã xác thực sẽ được gửi tới +8498776876 qua tin nhắn SMS sau khi bạn đồng ý. Bạn chắc chắn không?", okTitle: "Đồng ý", cancelTitle: "Hủy bỏ") { (true) in
-//            self.pushToVerifyVC(verifyType: .Forgot)
-//        }
     }
 
     func pushToVerifyVC(verifyType: VerifyType) {
