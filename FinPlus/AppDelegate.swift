@@ -120,30 +120,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //MARK: Setup Start View Controller
     
     private func setupStartVC() {
+        let isFirstLaunch = UserDefaults.isFirstLaunch()
+        if isFirstLaunch == true {
+            let enterPhoneVC = UIStoryboard(name: "OnBoard", bundle: nil).instantiateInitialViewController()
+            self.window?.rootViewController = enterPhoneVC
 
-        let enterPhoneVC = UIStoryboard(name: "OnBoard", bundle: nil).instantiateInitialViewController()
-        print(enterPhoneVC)
-        
-        self.window?.rootViewController = enterPhoneVC
+            return
+        } else {
+            guard let _ = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String else {
+                // chưa có account Login
+                let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
 
-        return
-        
-//        guard let _ = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String else {
-//            // chưa có account Login
-//            let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
-//
-//            self.window?.rootViewController = enterPhoneVC
-//
-//            return
-//        }
+                self.window?.rootViewController = enterPhoneVC
 
-        //Đã có account Login
-//        print("account \(userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME))")
-//        let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewControllerNavi") as! UINavigationController
-//
-//        self.window?.rootViewController = loginVC
+                return
+            }
+            //Đã có account Login
+            print("account \(userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME))")
+            let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewControllerNavi") as! UINavigationController
 
-
+            self.window?.rootViewController = loginVC
+        }
         
     }
     

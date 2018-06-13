@@ -10,12 +10,13 @@ import UIKit
 
 class OnBoardViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBOutlet weak var skipBtn: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var nextBtn: UIButton!
     let totalPage = 3
 
-    @IBAction func skipBtn(_ sender: Any) {
+    @IBAction func skipBtnAction(_ sender: Any) {
         guard let _ = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String else {
             // chưa có account Login
             let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
@@ -34,7 +35,7 @@ class OnBoardViewController: UIViewController, UIScrollViewDelegate {
             let nextIndex = currentIndex + 1
             scrollView.scrollRectToVisible(CGRect(x: CGFloat(nextIndex) * scrollView.frame.width, y: scrollView.frame.origin.y, width: scrollView.frame.width, height: scrollView.frame.height), animated: true)
         } else {
-            skipBtn(nextBtn)
+            skipBtnAction(skipBtn)
         }
     }
 
@@ -52,8 +53,10 @@ class OnBoardViewController: UIViewController, UIScrollViewDelegate {
         pageControl.currentPage = getCurrentScrollViewIndex()
         if getCurrentScrollViewIndex() + 1 == totalPage {
             nextBtn.setTitle("BẮT ĐẦU", for: UIControlState.normal)
+            skipBtn.isHidden = true
         } else {
             nextBtn.setTitle("TIẾP", for: UIControlState.normal)
+            skipBtn.isHidden = false
         }
     }
 

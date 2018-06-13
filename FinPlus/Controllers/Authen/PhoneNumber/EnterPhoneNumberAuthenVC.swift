@@ -64,13 +64,32 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
                 userDefault.synchronize()
 
                 DataManager.shared.currentAccount = strongSelf.tfPhoneNumber.text!
-
-                let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
-
-                strongSelf.navigationController?.pushViewController(verifyVC, animated: true)
+                strongSelf.getConfig()
+//                let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
+//
+//                strongSelf.navigationController?.pushViewController(verifyVC, animated: true)
             }.catch { error in
                 print(error)
         }
+    }
+    func getConfig() {
+        APIClient.shared.getConfigs().done(on: DispatchQueue.main) { [weak self] model in
+            systemConfig = model
+            guard let strongSelf = self else { return }
+
+            //            userDefault.set(model, forKey: fSYSTEM_CONFIG)
+            strongSelf.pushToVerifyVC(verifyType: .Login)
+            }
+            .catch({ (error) in
+                print(error)
+            })
+    }
+
+    func pushToVerifyVC(verifyType: VerifyType) {
+        self.view.endEditing(true)
+        let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
+        verifyVC.verifyType = verifyType
+        self.navigationController?.pushViewController(verifyVC, animated: true)
     }
     
 }
