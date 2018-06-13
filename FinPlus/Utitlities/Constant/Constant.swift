@@ -35,6 +35,20 @@ enum STATUS_LOAN: Int {
     
 }
 
+
+/// Các kiểu type TB cell from Loan_Builder
+enum DATA_TYPE_TB_CELL {
+    static let TextBox = "text_box"
+    static let DropDown = "dropdown"
+    static let DateTime = "datetime"
+    static let DropdownTexBox = "dropdown_text_box"
+    static let Address = "address"
+    static let Footer = "footer"
+    static let File = "file"
+    static let MultipleFile = "multiple_file"
+    
+}
+
 let API_RESPONSE_RETURN_CODE = "returnCode"
 let API_RESPONSE_RETURN_MESSAGE = "returnMsg"
 let API_RESPONSE_RETURN_DATA = "data"
@@ -47,14 +61,22 @@ let BAR_DEFAULT_COLOR = UIColor(hexString: "#c9c9cd")
 let DISABLE_BUTTON_COLOR = UIColor(hexString: "#B8C9D3")
 let TEXT_NORMAL_COLOR = UIColor(hexString: "#4D6678")
 
+let DROP_SHADOW_COLOR = UIColor(hexString: "#00142a")
+
+//MARK: Font
+let FONT_CAPTION = UIFont(name: "SFProDisplay-Semibold", size: 11) ?? UIFont.systemFont(ofSize: 11)
+
 let MS_TITLE_ALERT = "Thông báo"
 
 let MONEY_TERM_DISPLAY = 1000000
+let BOUND_SCREEN = UIScreen.main.bounds
 
 // UserDefault
 let userDefault = UserDefaults.standard
-
+var systemConfig : Config?
 let fUSER_DEFAUT_ACCOUNT_NAME = "USER_DEFAUT_ACCOUNT_NAME"
+let fUSER_DEFAUT_TOKEN = "USER_DEFAUT_TOKEN"
+//let fSYSTEM_CONFIG = "SYSTEM_CONFIG"
 
 
 

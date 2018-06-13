@@ -60,19 +60,22 @@ class BorrowerTabBarController: UITabBarController {
         
         super.viewDidLoad()
         
+        let sHome = UIStoryboard(name: "HomeBrowwer", bundle: nil)
         let swallet = UIStoryboard.init(name: "Wallet", bundle: nil)
         let sLoanManager = UIStoryboard.init(name: "LoanManager", bundle: nil)
+        let sNotification = UIStoryboard.init(name: "Notification", bundle: nil)
+        let sProfile = UIStoryboard.init(name: "Profile", bundle: nil)
         
-        let v1 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI")
+        let v1 = sHome.instantiateViewController(withIdentifier: "BorrowHomeViewControllerNav")
         let v2 = sLoanManager.instantiateViewController(withIdentifier: "LOAN_MANAGER_NAVI")
         let v3 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI")
-        let v4 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI")
-        let v5 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI")
+        let v4 = sNotification.instantiateViewController(withIdentifier: "NOTIFICATION_NAVI")
+        let v5 = sProfile.instantiateViewController(withIdentifier: "PROFILE_NAVI")
 
-        v1.tabBarItem = UITabBarItem(title: NSLocalizedString("LOAN", comment: ""), image: UIImage(named: "ic_tb_brow1"), selectedImage: UIImage(named: "ic_tb_brow1_selected"))
+        v1.tabBarItem = UITabBarItem(title: NSLocalizedString("LOAN", comment: ""), image: #imageLiteral(resourceName: "ic_tb_brow1"), selectedImage: #imageLiteral(resourceName: "ic_tb_brow1_selected"))
         v2.tabBarItem = UITabBarItem(title: NSLocalizedString("LOAN_MANAGER", comment: ""), image: UIImage(named: "ic_tb_brow2"), selectedImage: UIImage(named: "ic_tb_brow2_selected"))
         v3.tabBarItem = UITabBarItem(title: NSLocalizedString("WALLET_MANAGER", comment: ""), image: UIImage(named: "ic_tb_brow3"), selectedImage: UIImage(named: "ic_tb_brow3_selected"))
-        v4.tabBarItem = UITabBarItem(title: NSLocalizedString("NOTIFICATION", comment: ""), image: UIImage(named: "ic_tb_brow4"), selectedImage: UIImage(named: "ic_tb_brow4_selected"))
+        v4.tabBarItem = UITabBarItem(title: NSLocalizedString("NOTIFICATION", comment: ""), image: UIImage(named: "ic_tb_brow5"), selectedImage: UIImage(named: "ic_tb_brow5_selected"))
         v5.tabBarItem = UITabBarItem(title: NSLocalizedString("BRIEF", comment: ""), image: UIImage(named: "ic_tb_brow4"), selectedImage: UIImage(named: "ic_tb_brow4_selected"))
         
         self.viewControllers = [v1, v2, v3, v4, v5]

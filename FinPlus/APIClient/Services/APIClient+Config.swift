@@ -15,11 +15,11 @@ extension APIClient {
      
      */
     
-    func getVersion() -> Promise<Version> {
-        return Promise<Version> { seal in
+    func getConfigs() -> Promise<Config> {
+        return Promise<Config> { seal in
             getDataWithEndPoint(endPoint: EndPoint.Config.Configs, isShowLoadingView: false)
                 .done { json in
-                    let model = Version(object: json)
+                    let model = Config(object: json)
                     seal.fulfill(model)
                     
                 }

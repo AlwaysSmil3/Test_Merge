@@ -34,3 +34,12 @@
 "LOAN_FEE" = "Phí dịch vụ";
 "MONEY_MONTH" = "Trả góp hàng tháng";
 "LOAN_DIS" = "Mục đích vay";
+
+
+"CHANG_PASSWORD" = "Đổi mật khẩu";
+"CALCULATE_PAY" = "Tính toán lịch trả nợ";
+"SUPPORT_FROM_FINSMART" = "Hỗ trợ từ FinSmart";
+"FAQ" = "Các câu hỏi thường gặp";
+"TERMS_OF_USE" = "Điều khoản sử dụng";
+"ABOUT_FINSMART" = "Về FinsSmart";
+"LOGOUT" = "Đăng xuất";

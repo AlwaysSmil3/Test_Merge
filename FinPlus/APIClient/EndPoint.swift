@@ -11,7 +11,9 @@ import Foundation
 //MARK: Base Host
 enum Host {
     static let alphaURL = ""
+    // mock
     static let productURL = "https://b10644cc-7d66-4541-aa97-770206b05b43.mock.pstmn.io/"
+ //   static let productURL = "http://192.168.104.70:31018/"
 }
 
 //MARK: API End Point

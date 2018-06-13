@@ -122,13 +122,13 @@ class APIClient {
                 case .success(let responseObject):
                     if let responseDataDict = responseObject as? JSONDictionary {
                         
-                        guard let returnCode = responseDataDict[API_RESPONSE_RETURN_CODE] as? Int, returnCode == 1 else {
-                            if let returnMessage = responseDataDict[API_RESPONSE_RETURN_MESSAGE] as? String {
-                                UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
-                            }
-                            
-                            return
-                        }
+//                        guard let returnCode = responseDataDict[API_RESPONSE_RETURN_CODE] as? Int, returnCode == 1 else {
+//                            if let returnMessage = responseDataDict[API_RESPONSE_RETURN_MESSAGE] as? String {
+//                                UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
+//                            }
+//                            
+//                            return
+//                        }
                         
                         seal.fulfill(responseDataDict)
                     }
@@ -192,7 +192,7 @@ class APIClient {
     }
     
     // Upload Media
-    func upload(type: TYPE_UPLOAD_MEDIA_LENDING, typeMedia: String, endPoint: String, imagesData: [Data], parameters: JSONDictionary, onCompletion: ((JSONDictionary?) -> Void)? = nil, onError: ((Error?) -> Void)? = nil){
+    func upload(type: FILE_TYPE_IMG, typeMedia: String, endPoint: String, imagesData: [Data], parameters: JSONDictionary, onCompletion: ((JSONDictionary?) -> Void)? = nil, onError: ((Error?) -> Void)? = nil){
         
         let url = URL(string: baseURLString + endPoint)! /* your API url */
         
@@ -206,8 +206,26 @@ class APIClient {
                 multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
             }
             
-            let name = typeMedia + "_" + type.rawValue
-            let fileName = typeMedia + "_" + type.rawValue + ".png"
+            var typeExpand: TYPE_UPLOAD_MEDIA_LENDING
+            
+            switch type {
+            case .ALL:
+                typeExpand = .NATIONALID_ALL
+                break
+            case .BACK:
+                typeExpand = .NATIONALID_BACK
+                break
+            case .FRONT:
+                typeExpand = .NATIONALID_FRONT
+                break
+            case .Optional:
+                typeExpand = .OPTIONAL_MEDIA
+                break
+                
+            }
+            
+            let name = typeMedia + "_" + typeExpand.rawValue
+            let fileName = typeMedia + "_" + typeExpand.rawValue + ".png"
             let mimetype = typeMedia + "/png"
             
             for data in imagesData {
@@ -215,15 +233,23 @@ class APIClient {
             }
             
         }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { (result) in
-            switch result{
+            switch result {
             case .success(let upload, _, _):
                 upload.responseJSON { response in
                     print("Succesfully uploaded")
-                    if let err = response.error{
-                        onError?(err)
-                        return
+
+                    switch response.result {
+                    case .success(let responseObject):
+                        if let responseDict = responseObject as? JSONDictionary {
+                            onCompletion?(responseDict)
+                        }
+                        break
+                        
+                    case .failure(let error):
+                        onError?(error)
+                        break
                     }
-                    onCompletion?(nil)
+                    
                 }
             case .failure(let error):
                 print("Error in upload: \(error.localizedDescription)")

@@ -21,12 +21,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // Get Loan Data from Json
+        DataManager.shared.getDataLoanFromJSON()
         
         //Setup start View Controller
-//        self.setupStartVC()
-        let tabbarVC = InvestorTabBarController(nibName: nil, bundle: nil)
-        self.window?.rootViewController = tabbarVC
+        self.setupStartVC()
+//        let tabbarVC = InvestorTabBarController(nibName: nil, bundle: nil)
+//        self.window?.rootViewController = tabbarVC
 
+        //let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+        //self.window?.rootViewController = tabbarVC
+        
         // Register Notifications
         self.registerForRemoteNotifications(application)
         
@@ -116,14 +121,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //MARK: Setup Start View Controller
-
+    
     private func setupStartVC() {
-        // test
-//        let enterPhoneVC = UIStoryboard(name: "OnBoard", bundle: nil).instantiateInitialViewController()
-//        self.window?.rootViewController = enterPhoneVC
-//
-//        return
-
         let isFirstLaunch = UserDefaults.isFirstLaunch()
         if isFirstLaunch == true {
             let enterPhoneVC = UIStoryboard(name: "OnBoard", bundle: nil).instantiateInitialViewController()
@@ -145,16 +144,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             self.window?.rootViewController = loginVC
         }
+        
     }
     
     //MARK: GetVersion
     
     private func getVersion() {
         
-        APIClient.shared.getVersion()
+        APIClient.shared.getConfigs()
             .done(on: DispatchQueue.main) { model in
                 print("Version\(model)")
-                DataManager.shared.version = model
+//                DataManager.shared.version = model
+                DataManager.shared.config = model
             }
             .catch { error in
             }

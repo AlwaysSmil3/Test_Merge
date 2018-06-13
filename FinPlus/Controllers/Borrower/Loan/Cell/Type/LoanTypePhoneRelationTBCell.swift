@@ -1,0 +1,68 @@
+//
+//  LoanTypeRelationPhoneTBCell.swift
+//  FinPlus
+//
+//  Created by Cao Van Hai on 6/8/18.
+//  Copyright © 2018 Cao Van Hai. All rights reserved.
+//
+
+import Foundation
+
+class LoanTypePhoneRelationTBCell: UITableViewCell, DataSelectedFromPopupProtocol {
+    
+    @IBOutlet var lblTitle: UILabel?
+    @IBOutlet var tfValue: UITextField?
+    @IBOutlet var lblTypeRelation: UITextField?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.lblTitle?.font = FONT_CAPTION
+        
+        
+    }
+    
+    var field: LoanBuilderFields? {
+        didSet {
+            guard let field_ = self.field else { return }
+            
+            if let title = field_.title {
+                if field_.isRequired! {
+                    self.lblTitle?.attributedText = FinPlusHelper.setAttributeTextForLoan(text: title)
+                } else {
+                    self.lblTitle?.text = title
+                }
+            }
+            
+            if let value = field_.placeholder {
+                self.tfValue?.placeholder = value
+            }
+            
+        }
+    }
+    
+    
+    @IBAction func btnDropdownTapped(_ sender: Any) {
+        guard let field_ = self.field, let data = field_.data else { return }
+        let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
+        popup.setDataSource(data: data)
+        popup.delegate = self
+        
+        popup.show()
+    }
+    
+    //MARK: Data Selected
+    func dataSelected(data: LoanBuilderData) {
+        self.lblTypeRelation?.text = data.title!
+        self.tfValue?.placeholder = "Số điện thoại của " + data.title!
+        DataManager.shared.loanInfo.userInfo.relationships.type = data.id!
+    }
+    
+    @IBAction func tfEditEnd(_ sender: Any) {
+        if let value = self.tfValue?.text {
+            DataManager.shared.loanInfo.userInfo.relationships.phoneNumber = value
+        }
+    }
+    
+}
+
+

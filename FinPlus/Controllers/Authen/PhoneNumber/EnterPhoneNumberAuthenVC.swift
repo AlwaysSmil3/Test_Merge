@@ -51,20 +51,62 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
         }
         APIClient.shared.authentication(phoneNumber: self.tfPhoneNumber.text!)
             .done(on: DispatchQueue.main) { [weak self]model in
-                if model.returnCode! == 1 {
-                    
+                switch model.returnCode {
+                case 2:
+                    // show messsage, Ok -> verify OTP
+                    if let returnMessage = model.returnMsg {
+                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil, completion: { (true) in
+                            self?.pushToVerifyVC(verifyType: .Login)
+                        })
+                    }
+                    break
+                case 1:
                     guard let strongSelf = self else { return }
-                    
-                    userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
-                    userDefault.synchronize()
-                    
                     DataManager.shared.currentAccount = strongSelf.tfPhoneNumber.text!
-                    
-                    let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
-                    
-                    strongSelf.navigationController?.pushViewController(verifyVC, animated: true)
+                    // save token
+                    if let data = model.data {
+                        if let token = data.token {
+                            userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
+                        }
+                    }
+                    // get config
+                    strongSelf.getConfig()
+                    break
+                default :
+                    if let returnMessage = model.returnMsg {
+                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
+//                        UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
+                    }
                 }
+//                guard let strongSelf = self else { return }
+//
+//                userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+//                userDefault.synchronize()
+//
+//                DataManager.shared.currentAccount = strongSelf.tfPhoneNumber.text!
+//                strongSelf.getConfig()
+            }.catch { error in
+                print(error)
+        }
+    }
+    func getConfig() {
+        APIClient.shared.getConfigs().done(on: DispatchQueue.main) { [weak self] model in
+            systemConfig = model
+            guard let strongSelf = self else { return }
+
+            //            userDefault.set(model, forKey: fSYSTEM_CONFIG)
+            strongSelf.pushToVerifyVC(verifyType: .Login)
             }
+            .catch({ (error) in
+                print(error)
+            })
+    }
+
+    func pushToVerifyVC(verifyType: VerifyType) {
+        self.view.endEditing(true)
+        let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
+        verifyVC.verifyType = verifyType
+        self.navigationController?.pushViewController(verifyVC, animated: true)
     }
     
 }

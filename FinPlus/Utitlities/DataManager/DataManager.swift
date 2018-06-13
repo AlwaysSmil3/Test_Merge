@@ -29,6 +29,32 @@ class DataManager {
     
     // Version, config
     var version: Version?
+
+    var config: Config?
+    
+    var loanBuilder: [LoanBuilderBase] = []
+    
+    
+    /// Get Data from JSON
+    func getDataLoanFromJSON() {
+        if let path = Bundle.main.path(forResource: "LoanBuilder", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? [Any] {
+                    // do stuff
+                    
+                    jsonResult.forEach({ (data) in
+                        let toll = LoanBuilderBase(object: data)
+                        self.loanBuilder.append(toll)
+                    })
+
+                }
+            } catch {
+                // handle error
+            }
+        }
+    }
     
     
 }

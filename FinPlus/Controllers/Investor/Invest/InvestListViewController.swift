@@ -68,6 +68,7 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let cellData : BrowwerActiveLoan = allLoansArray[indexPath.row]
         let investStoryBoard = UIStoryboard(name: "Invest", bundle: nil)
         let investDetailVC = investStoryBoard.instantiateViewController(withIdentifier: "InvestDetailViewController") as! InvestDetailViewController

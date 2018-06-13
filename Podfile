@@ -27,7 +27,7 @@ pod 'Firebase/Messaging'
 
 #pod 'Fusuma'
 
-pod 'TextFieldEffects'
+pod 'SpreadsheetView'
 pod 'PinCodeTextField'
 
   # Pods for FinPlus

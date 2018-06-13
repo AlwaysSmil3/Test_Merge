@@ -9,14 +9,14 @@
 import Foundation
 
 protocol AddressDelegate {
-    func getAddress(address: Address, type: Int)
+    func getAddress(address: Address, type: Int, title: String)
 }
 
 class AddressFirstViewController: BaseViewController {
     
     var delegate: AddressDelegate?
     
-    let dataSource = ["Tỉnh/ Thành phố", "Quận/ Huyện", "Xã/ Phường ", "Mã bưu điện", "Địa chỉ nhà"]
+    var dataSource : [LoanBuilderFields] = []
     
     var cityModel: Model1?
     var districtModel: Model1?
@@ -24,13 +24,66 @@ class AddressFirstViewController: BaseViewController {
     
     var typeAddress: Int = 0
     
-    @IBOutlet var mainTableView: UITableView!
+    //Title trong fields LoanBuider
+    var titleTypeAddress: String = ""
+    
+    @IBOutlet var mainTableView: TPKeyboardAvoidingTableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.mainTableView.tableFooterView = UIView()
+        self.initData()
+        self.setupMainTBView()
+    }
     
+    private func initData() {
+        
+        var data1 = LoanBuilderFields(object: NSObject())
+        data1.title = "Tỉnh/Thành phố"
+        data1.placeholder = "Nhấn để chọn"
+        data1.selectorTitle = "Nhấn để chọn"
+        data1.type = DATA_TYPE_TB_CELL.DropDown
+        
+        self.dataSource.append(data1)
+        
+        var data2 = LoanBuilderFields(object: NSObject())
+        data2.title = "Quận/Huyện"
+        data2.placeholder = "Nhấn để chọn"
+        data2.selectorTitle = "Nhấn để chọn"
+        data2.type = DATA_TYPE_TB_CELL.DropDown
+        
+        self.dataSource.append(data2)
+        
+        var data3 = LoanBuilderFields(object: NSObject())
+        data3.title = "Phường/Xã/Thị trấn"
+        data3.placeholder = "Nhấn để chọn"
+        data3.selectorTitle = "Nhấn để chọn"
+        data3.type = DATA_TYPE_TB_CELL.DropDown
+        
+        self.dataSource.append(data3)
+        
+        var data4 = LoanBuilderFields(object: NSObject())
+        data4.title = "Địa chỉ"
+        data4.placeholder = "Nhập số nhà, đường, xóm, thôn,..."
+        data4.type = DATA_TYPE_TB_CELL.TextBox
+        
+        self.dataSource.append(data4)
+        
+    }
+    
+    /// Setup cho tableView
+    func setupMainTBView() {
+        
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
+        
+        mainTableView.register(UINib(nibName: "LoanTypeDropdownTBCell", bundle: nil), forCellReuseIdentifier: "Loan_Type_Dropdown_TB_Cell")
+        mainTableView.register(UINib(nibName: "LoanTypeTextFieldTBCell", bundle: nil), forCellReuseIdentifier: "Loan_Type_TextField_TB_Cell")
+        
+        mainTableView.rowHeight = UITableViewAutomaticDimension
+        mainTableView.separatorColor = UIColor.clear
+        mainTableView.tableFooterView = UIView()
+        
     }
     
     //MARK: Actions
@@ -43,7 +96,7 @@ class AddressFirstViewController: BaseViewController {
         let address = Address(city: cityModel_.name!, district: districtModel_.name!, commune: communeModel_.name!, street: "", zipCode: "", long: 0.0, lat: 0.0)
         
         
-        self.delegate?.getAddress(address: address, type: self.typeAddress)
+        self.delegate?.getAddress(address: address, type: self.typeAddress, title: self.titleTypeAddress)
         self.navigationController?.popViewController(animated: true)
         
     }
@@ -57,23 +110,37 @@ extension AddressFirstViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Address_First_TB_Cell", for: indexPath) as! AddressFirstTBCell
+
+        let model = dataSource[indexPath.row]
         
-        cell.lblTitleCell.text = dataSource[indexPath.row]
-        
-        if let cityModel = self.cityModel, indexPath.row == 0 {
-            cell.lblTitleCell.text = cityModel.name!
+        switch model.type! {
+        case DATA_TYPE_TB_CELL.TextBox:
+            let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.TextField, for: indexPath) as! LoanTypeTextFieldTBCell
+            cell.field = model
+            return cell
+            
+        case DATA_TYPE_TB_CELL.DropDown:
+            let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.DropDown, for: indexPath) as! LoanTypeDropdownTBCell
+            cell.field = model
+            
+            if let cityModel = self.cityModel, indexPath.row == 0 {
+                cell.lblValue?.text = cityModel.name!
+            }
+            
+            if let districtModel = self.districtModel, indexPath.row == 1 {
+                cell.lblValue?.text = districtModel.name!
+            }
+            
+            if let communeModel = self.communeModel, indexPath.row == 2 {
+                cell.lblValue?.text = communeModel.name!
+            }
+            
+            return cell
+        default:
+            return UITableViewCell()
+            
         }
         
-        if let districtModel = self.districtModel, indexPath.row == 1 {
-            cell.lblTitleCell.text = districtModel.name!
-        }
-        
-        if let communeModel = self.communeModel, indexPath.row == 2 {
-            cell.lblTitleCell.text = communeModel.name!
-        }
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -122,7 +189,7 @@ extension AddressFirstViewController: UITableViewDelegate, UITableViewDataSource
         case 3:
             
             break
-
+            
         default:
             break
         }

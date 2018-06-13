@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum WalletAction {
+    case WalletDetail
+    case LoanNation
+}
+
 class ListWalletViewController: UIViewController {
 
     // MARK: - Outlet
@@ -15,6 +20,7 @@ class ListWalletViewController: UIViewController {
     @IBOutlet weak var noWalletLabel: UILabel!
     @IBOutlet weak var addBtn: UIButton!
     
+    var walletAction: WalletAction = .WalletDetail
     let cellIdentifier = "cell"
     private var listWallet: NSMutableArray = [
         Wallet(wID: 0, wType: 0, wAccountName: "MoMo", wName: "Nguyen Van A", wNumber: "9888GH87UYY7"),
@@ -109,12 +115,20 @@ extension ListWalletViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        switch indexPath.section {
-        case 0:
-            editWallet(index: indexPath.row)
-            
-        default:
-            addNewWallet()
+        switch walletAction {
+        case .WalletDetail:
+            switch indexPath.section {
+            case 0:
+                editWallet(index: indexPath.row)
+                
+            default:
+                addNewWallet()
+            }
+        case .LoanNation:
+            let wallet = self.listWallet[indexPath.row] as! Wallet
+            let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
+            DataManager.shared.loanInfo.walletId = wallet.id!
+            self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
         }
     }
     

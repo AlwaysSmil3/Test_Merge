@@ -29,7 +29,6 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tfPass.delegate = self
         self.tfPass.becomeFirstResponder()
 
@@ -71,25 +70,58 @@ class LoginViewController: BaseViewController {
         
         APIClient.shared.authentication(phoneNumber: account, pass: tfPass.text!)
             .done(on: DispatchQueue.main) { [weak self] model in
-                if model.returnCode! == 1 {
-                
-                    DataManager.shared.currentAccount = account
-                    self?.pushToVerifyVC(verifyType: .Login)
-                } else {
-                    var message = "Đăng nhập thất bại. Vui lòng kiểm tra lại."
-                    if let returnMsg = model.returnMsg {
-                        message = returnMsg
+                switch model.returnCode {
+                case 2:
+                    // show messsage, Ok -> verify OTP
+                    if let returnMessage = model.returnMsg {
+                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil, completion: { (true) in
+                            self?.pushToVerifyVC(verifyType: .Login)
+                        })
                     }
-                    self?.showGreenBtnMessage(title: "Có lỗi", message: message, okTitle: "Thử lại", cancelTitle: nil)
+                    break
+                case 1:
+                    DataManager.shared.currentAccount = account
+                    // save token
+                    if let data = model.data {
+                        if let token = data.token {
+                            userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
+                        }
+                    }
+                    // get config
+                    self?.getConfig()
+                    break
+                default :
+                    if let returnMessage = model.returnMsg {
+                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
+//                        UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
+                    }
                 }
+
+
+
             }
             .catch { error in }
+    }
+
+    func getConfig() {
+        APIClient.shared.getConfigs().done(on: DispatchQueue.main) { [weak self] model in
+            systemConfig = model
+//            userDefault.set(model, forKey: fSYSTEM_CONFIG)
+            self?.pushToVerifyVC(verifyType: .Login)
+            }
+            .catch({ (error) in
+                print(error)
+            })
     }
     
     @IBAction func btnForgotPassTapped(_ sender: Any) {
         // show alert confirm
-        self.showGreenBtnMessage(title: "Đặt lại mật khẩu", message: "Mã xác thực sẽ được gửi tới +8498776876 qua tin nhắn SMS sau khi bạn đồng ý. Bạn chắc chắn không?", okTitle: "Đồng ý", cancelTitle: "Hủy bỏ") { (true) in
-            self.pushToVerifyVC(verifyType: .Forgot)
+        if let account = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String {
+            self.self.showGreenBtnMessage(title: "Đặt lại mật khẩu", message: "Mã xác thực sẽ được gửi tới \(account) qua tin nhắn SMS sau khi bạn đồng ý. Bạn chắc chắn không?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
+                if (status) {
+                    self.pushToVerifyVC(verifyType: .Forgot)
+                }
+            })
         }
     }
 

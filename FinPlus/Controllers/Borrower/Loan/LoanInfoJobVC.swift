@@ -11,36 +11,25 @@ import DropDown
 
 class LoanInfoJobVC: LoanBaseViewController {
     
-    
-    @IBOutlet var btnPosition: UIButton!
-    @IBOutlet var tfPosition: UITextField!
-    @IBOutlet var btnJob: UIButton!
-    @IBOutlet var tfJob: UITextField!
-    
-    @IBOutlet var tfCompanyName: UITextField!
-    @IBOutlet var tfSalary: UITextField!
-    @IBOutlet var tfCompanyPhone: UITextField!
-    @IBOutlet var lblCompanyAddress: UILabel!
-    
     var job: Model1?
     var position: Model1?
     
     // Job
-    let jobDropdown = DropDown()
+ 
     var jobData: [Model1] = [] {
         didSet {
             if jobData.count > 0 {
-                self.jobDropdown.dataSource = jobData.map { $0.name! }
+                
             }
         }
     }
     
     // Postion
-    let positionDropdown = DropDown()
+
     var positionData: [Model1] = [] {
         didSet {
             if positionData.count > 0 {
-                self.positionDropdown.dataSource = positionData.map { $0.name! }
+                
             }
         }
     }
@@ -48,9 +37,9 @@ class LoanInfoJobVC: LoanBaseViewController {
     var companyAddress: Address?
     
     override func viewDidLoad() {
+        self.index = 1
         super.viewDidLoad()
         
-        self.setupDropdown()
         
         self.getJobs()
         self.getPositions()
@@ -61,30 +50,6 @@ class LoanInfoJobVC: LoanBaseViewController {
         
         self.updateDataToServer()
     }
-    
-    //MARK: Setup Dropdown
-    
-    private func setupDropdown() {
-        
-        //Job
-        self.jobDropdown.anchorView = self.btnJob
-        self.jobDropdown.dataSource = []
-        
-        self.jobDropdown.selectionAction = { [unowned self] (index: Int, item: String) in
-            self.job = self.jobData[index]
-            self.tfJob.text = item
-        }
-        
-        //Position
-        self.positionDropdown.anchorView = self.btnPosition
-        self.positionDropdown.dataSource = []
-        
-        self.positionDropdown.selectionAction = { [unowned self] (index: Int, item: String) in
-            self.position = self.positionData[index]
-            self.tfPosition.text = item
-        }
-    }
-
     
     //MARK: Get API
     private func getJobs() {
@@ -104,6 +69,7 @@ class LoanInfoJobVC: LoanBaseViewController {
     }
     
     private func updateDataForLoanAPI(completion: () -> Void) {
+        /*
         guard let addr = self.companyAddress else { return }
         
         DataManager.shared.loanInfo.jobInfo.address = addr
@@ -113,52 +79,57 @@ class LoanInfoJobVC: LoanBaseViewController {
         
         DataManager.shared.loanInfo.jobInfo.jobType = self.tfJob.text!
         DataManager.shared.loanInfo.jobInfo.position = self.tfPosition.text!
+        */
+        
+        if DataManager.shared.loanInfo.jobInfo.jobType.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng chọn nghề nghiệp")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.jobInfo.position.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng chọn cấp bậc")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.jobInfo.company.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng nhập tên cơ quan")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.jobInfo.salary == 0 {
+            self.showToastWithMessage(message: "Vui lòng nhập thu nhập hàng tháng")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.jobInfo.address.city.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng chọn địa chỉ cơ quan")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.jobInfo.companyPhoneNumber.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại cơ quan")
+            return
+        }
         
         completion()
     }
     
     
     //MARK: Actions
-    @IBAction func btnJobTapped(_ sender: Any) {
-        self.jobDropdown.show()
-    }
-    
-    
-    @IBAction func btnPositionTapped(_ sender: Any) {
-        self.positionDropdown.show()
-    }
-    
-    
-    @IBAction func btnCompanyAddressTapped(_ sender: Any) {
-        let firstAddressVC = UIStoryboard(name: "Address", bundle: nil).instantiateViewController(withIdentifier: "AddressFirstViewController") as! AddressFirstViewController
-        firstAddressVC.delegate = self
-        
-        self.navigationController?.pushViewController(firstAddressVC, animated: true)
-        
-    }
-    
-    
+
     @IBAction func btnContinueTapped(_ sender: Any) {
+        self.view.endEditing(true)
         self.updateDataForLoanAPI {
-            let loanWalletVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanWalletViewController") as! LoanWalletViewController
+            let loanWalletVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "LIST_WALLET") as! ListWalletViewController
+            loanWalletVC.walletAction = .LoanNation
             
             self.navigationController?.pushViewController(loanWalletVC, animated: true)
         }
         
     }
     
-    
 }
 
-extension LoanInfoJobVC: AddressDelegate {
-    
-    func getAddress(address: Address, type: Int) {
-        let addr = address.commune + ", " + address.district + ", " + address.city
-        self.lblCompanyAddress.text = addr
-        self.companyAddress = address
-    }
-    
-}
 
 
 
