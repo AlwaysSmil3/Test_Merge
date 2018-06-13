@@ -29,7 +29,6 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tfPass.delegate = self
         self.tfPass.becomeFirstResponder()
 
@@ -71,23 +70,28 @@ class LoginViewController: BaseViewController {
         
         APIClient.shared.authentication(phoneNumber: account, pass: tfPass.text!)
             .done(on: DispatchQueue.main) { [weak self] model in
-//                if model.returnCode! == 1 {
                 if let data = model["data"] as? [String : String] {
                     if let token = data["token"] {
                         userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
                     }
                 }
-                    DataManager.shared.currentAccount = account
-                    self?.pushToVerifyVC(verifyType: .Login)
-//                } else {
-//                    var message = "Đăng nhập thất bại. Vui lòng kiểm tra lại."
-//                    if let returnMsg = model.returnMsg {
-//                        message = returnMsg
-//                    }
-//                    self?.showGreenBtnMessage(title: "Có lỗi", message: message, okTitle: "Thử lại", cancelTitle: nil)
-//                }
+                DataManager.shared.currentAccount = account
+                // get config
+                self?.getConfig()
+
             }
             .catch { error in }
+    }
+
+    func getConfig() {
+        APIClient.shared.getConfigs().done(on: DispatchQueue.main) { [weak self] model in
+            systemConfig = model
+//            userDefault.set(model, forKey: fSYSTEM_CONFIG)
+            self?.pushToVerifyVC(verifyType: .Login)
+            }
+            .catch({ (error) in
+                print(error)
+            })
     }
     
     @IBAction func btnForgotPassTapped(_ sender: Any) {

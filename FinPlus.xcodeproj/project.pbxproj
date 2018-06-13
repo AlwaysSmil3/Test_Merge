@@ -158,6 +158,8 @@
 		84CBBE5220CF83AA0058C834 /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CBBE5120CF83AA0058C834 /* NotificationListViewController.swift */; };
 		84CBBE5620CF85610058C834 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CBBE5420CF85610058C834 /* NotificationTableViewCell.swift */; };
 		84CBBE5720CF85610058C834 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CBBE5520CF85610058C834 /* NotificationTableViewCell.xib */; };
+		84D73FFE20D0BC5600770FB5 /* Faq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D73FFC20D0BC5600770FB5 /* Faq.swift */; };
+		84D73FFF20D0BC5600770FB5 /* LoanStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D73FFD20D0BC5600770FB5 /* LoanStatus.swift */; };
 		ADB81E3CB997BF9C12009966 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633AF97220A96F1B00BAE2BB /* Pods_FinPlus.framework */; };
 		DD471C902E2C45FF6323FC89 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
 		E772D76920CA7694001F0B8E /* LoanManager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E772D76820CA7694001F0B8E /* LoanManager.storyboard */; };
@@ -380,6 +382,8 @@
 		84CBBE5120CF83AA0058C834 /* NotificationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewController.swift; sourceTree = "<group>"; };
 		84CBBE5420CF85610058C834 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		84CBBE5520CF85610058C834 /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
+		84D73FFC20D0BC5600770FB5 /* Faq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Faq.swift; sourceTree = "<group>"; };
+		84D73FFD20D0BC5600770FB5 /* LoanStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanStatus.swift; sourceTree = "<group>"; };
 		99AC1CB2D251026CD34AB910 /* Pods-FinPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinPlus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus.debug.xcconfig"; sourceTree = "<group>"; };
 		AF35B598B6B30D66806A3592 /* Pods-FinPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus.release.xcconfig"; sourceTree = "<group>"; };
 		D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -481,6 +485,8 @@
 		630467C020B5474F0069469A /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				84D73FFC20D0BC5600770FB5 /* Faq.swift */,
+				84D73FFD20D0BC5600770FB5 /* LoanStatus.swift */,
 				630467C120B5474F0069469A /* Version.swift */,
 				849A336F20CFD0CB000D886D /* Config.swift */,
 			);
@@ -1481,6 +1487,7 @@
 				E7BC259420CFDACA001FF0F4 /* AkiraTextField.swift in Sources */,
 				6357825420C2888300DE09A0 /* ExUIView.swift in Sources */,
 				639C9DD020A14B4600F2CF5E /* EndPoint.swift in Sources */,
+				84D73FFE20D0BC5600770FB5 /* Faq.swift in Sources */,
 				E7F519F520CE167F00F72682 /* ProfileViewController.swift in Sources */,
 				633AF9B320A9894500BAE2BB /* VerifyOTPAuthenVC.swift in Sources */,
 				E7BC258820CFDACA001FF0F4 /* FAQView.swift in Sources */,
@@ -1573,6 +1580,7 @@
 				63FD80C920C0E13D004BD22A /* LoanBaseViewController.swift in Sources */,
 				E7BC259520CFDACA001FF0F4 /* IsaoTextField.swift in Sources */,
 				630467C720B56DD40069469A /* Address.swift in Sources */,
+				84D73FFF20D0BC5600770FB5 /* LoanStatus.swift in Sources */,
 				633AE0B620B428C6007AB0D1 /* Constant+DateFormat.swift in Sources */,
 				6338F3FA20BE602C005777E2 /* BrowwerCurrentAddress.swift in Sources */,
 				6355FAEA20B7BEB100038F5B /* LoanResponseModel.swift in Sources */,
