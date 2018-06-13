@@ -27,34 +27,26 @@ class LoanNationalIDViewController: LoanBaseViewController {
         
         self.updateDataToServer()
     }
-    
-    private func uploadData(img: UIImage) {
-        
-        let dataImg = UIImagePNGRepresentation(img)
-        
-        let loanID = DataManager.shared.loanID ?? 0
-        guard let data = dataImg else { return }
-        let endPoint = "loans/" + "\(loanID)/" + "file"
-        
-        self.handleLoadingView(isShow: true)
-        APIClient.shared.upload(type: .NATIONALID_BACK, typeMedia: "image", endPoint: endPoint, imagesData: [data], parameters: ["" : ""], onCompletion: { (response) in
-            self.handleLoadingView(isShow: false)
-            print("Upload \(response)")
-            self.showToastWithMessage(message: "Upload success")
-            
-        }) { (error) in
-            self.handleLoadingView(isShow: false)
-            
-            if let error = error {
-                self.showToastWithMessage(message: error.localizedDescription)
-                print("error \(error.localizedDescription)")
-            }
-        }
-    }
 
     //MARK: Actions
     
     @IBAction func btnContinueTapped(_ sender: Any) {
+        
+        if DataManager.shared.loanInfo.nationalIdAllImg.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng chụp ảnh bạn đang cầm CMND mặt trước")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.nationalIdFrontImg.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng chụp ảnh CMND mặt trước")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.nationalIdBackImg.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng chụp ảnh CMND mặt sau")
+            return
+        }
+        
         
         let loanOtherInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanOtherInfoVC") as! LoanOtherInfoVC
         

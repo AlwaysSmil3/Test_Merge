@@ -52,6 +52,47 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         DataManager.shared.loanInfo.userInfo.relationships.type = self.relationPhoneNumberType.rawValue
         */
         
+        
+        if DataManager.shared.loanInfo.userInfo.fullName.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng nhập tên")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.gender.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng chọn giới tính")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.birthDay.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng chọn ngày sinh")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.nationalID.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng nhập số chứng minh nhân dân")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.relationships.phoneNumber.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại người thân")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.residentAddress.city.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng chọn địa chỉ thường chú")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.temporaryAddress.city.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng chọn địa chỉ tạm chú")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.gender.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng chọn địa chỉ tạm chú")
+            return
+        }
+        
         completion()
     }
     
@@ -63,6 +104,8 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     
     
     @IBAction func btnContinueTapped(_ sender: Any) {
+        
+        self.view.endEditing(true)
         
         self.updateDataForLoanAPI {
             let loanInfoJobVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanInfoJobVC") as! LoanInfoJobVC

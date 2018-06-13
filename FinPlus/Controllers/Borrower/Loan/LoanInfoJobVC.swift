@@ -81,6 +81,36 @@ class LoanInfoJobVC: LoanBaseViewController {
         DataManager.shared.loanInfo.jobInfo.position = self.tfPosition.text!
         */
         
+        if DataManager.shared.loanInfo.jobInfo.jobType.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng chọn nghề nghiệp")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.jobInfo.position.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng chọn cấp bậc")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.jobInfo.company.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng nhập tên cơ quan")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.jobInfo.salary == 0 {
+            self.showToastWithMessage(message: "Vui lòng nhập thu nhập hàng tháng")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.jobInfo.address.city.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng chọn địa chỉ cơ quan")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.jobInfo.companyPhoneNumber.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại cơ quan")
+            return
+        }
+        
         completion()
     }
     
@@ -88,6 +118,7 @@ class LoanInfoJobVC: LoanBaseViewController {
     //MARK: Actions
 
     @IBAction func btnContinueTapped(_ sender: Any) {
+        self.view.endEditing(true)
         self.updateDataForLoanAPI {
             let loanWalletVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "LIST_WALLET") as! ListWalletViewController
             loanWalletVC.walletAction = .LoanNation

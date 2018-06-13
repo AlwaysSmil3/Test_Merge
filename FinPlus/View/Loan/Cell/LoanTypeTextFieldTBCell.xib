@@ -60,6 +60,9 @@
                         <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                         <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <action selector="tfEditEnd:" destination="x8t-Xj-0Yt" eventType="editingDidEnd" id="ox1-OB-9Ny"/>
+                        </connections>
                     </textField>
                 </subviews>
                 <constraints>
