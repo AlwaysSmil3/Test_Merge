@@ -13,6 +13,33 @@ class BaseViewController: UIViewController {
     @IBOutlet var btnContinue: UIButton?
     @IBOutlet var imgBgBtnContinue: UIImageView?
     
+    func setupTitleView(title: String, subTitle: String) {
+        let topText = NSLocalizedString(title, comment: "")
+        let bottomText = NSLocalizedString(subTitle, comment: "")
+        
+        let titleParameters = [NSAttributedStringKey.foregroundColor: UIColor(hexString: "#08121E"),
+                               NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 17)]
+        let subtitleParameters = [NSAttributedStringKey.foregroundColor : UIColor(hexString: "#4D6678"),
+                                  NSAttributedStringKey.font : UIFont.systemFont(ofSize: 11)]
+        
+        let title:NSMutableAttributedString = NSMutableAttributedString(string: topText, attributes: titleParameters)
+        let subtitle:NSAttributedString = NSAttributedString(string: bottomText, attributes: subtitleParameters)
+        
+        title.append(NSAttributedString(string: "\n"))
+        title.append(subtitle)
+        
+        let size = title.size()
+        
+        let width = size.width
+        guard let height = navigationController?.navigationBar.frame.size.height else {return}
+        
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        titleLabel.attributedText = title
+        titleLabel.numberOfLines = 0
+        titleLabel.textAlignment = .center
+        
+        self.navigationItem.titleView = titleLabel
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
