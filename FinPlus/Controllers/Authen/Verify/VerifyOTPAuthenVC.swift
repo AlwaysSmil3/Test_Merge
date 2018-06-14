@@ -106,30 +106,41 @@ class VerifyOTPAuthenVC: BaseViewController {
             }
             APIClient.shared.verifyOTPAuthen(phoneNumber: phoneNumber, otp: self.otp)
                 .done(on: DispatchQueue.main) { [weak self] model in
-                    guard let isNew = model.isNew, isNew else {
+                    if model.returnCode != 1 {
+                        self?.otp = ""
                         
-                        // Nếu là tài khoản củ sang login
-                        if self?.isExisted == true {
-                            // save account
-                            if self?.account != "" {
-                                userDefault.set(self?.account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
-                                DataManager.shared.currentAccount = (self?.account)!
+                        // show alert
+                        if let returnMessage = model.returnMsg {
+                            self?.showGreenBtnMessage(title: "Verify OTP Failed", message: returnMessage, okTitle: "OK", cancelTitle: nil)
+                        }
+
+                    } else {
+                        guard let isNew = model.data?.isNew, isNew else {
+
+                            // Nếu là tài khoản củ sang login
+                            if self?.isExisted == true {
+                                // save account
+                                if self?.account != "" {
+                                    userDefault.set(self?.account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+                                    DataManager.shared.currentAccount = (self?.account)!
+                                }
+                                // push to choice view
+                                self?.pushToChoiceKindUserVC()
+                                return
                             }
-                            // push to choice view
-                            self?.pushToChoiceKindUserVC()
+                            let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+
+                            self?.navigationController?.pushViewController(loginVC, animated: true)
+
                             return
                         }
-                        let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                        // Nếu là tài khoản mới sang cập nhật thông tin(pass, chon là invest hat broww...)
 
-                        self?.navigationController?.pushViewController(loginVC, animated: true)
-
-                        return
+                        let updatePassVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "SetPassAuthenVC") as! SetPassAuthenVC
+                        updatePassVC.setPassOrResetPass = .SetPass
+                        self?.navigationController?.pushViewController(updatePassVC, animated: true)
                     }
-                    // Nếu là tài khoản mới sang cập nhật thông tin(pass, chon là invest hat broww...)
 
-                    let updatePassVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "SetPassAuthenVC") as! SetPassAuthenVC
-                    updatePassVC.setPassOrResetPass = .SetPass
-                    self?.navigationController?.pushViewController(updatePassVC, animated: true)
             }
                 .catch { error in}
             break

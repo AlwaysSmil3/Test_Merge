@@ -56,8 +56,10 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
                     // account exist -> push to login
                     userDefault.set(self?.tfPhoneNumber.text, forKey: fNEW_ACCOUNT_NAME)
                     if let returnMessage = model.returnMsg {
-                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil, completion: { (true) in
-                            self?.pushToLoginVC()
+                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: "Hủy bỏ", completion: { (status) in
+                            if status {
+                                self?.pushToLoginVC()
+                            }
                         })
                     }
                     break

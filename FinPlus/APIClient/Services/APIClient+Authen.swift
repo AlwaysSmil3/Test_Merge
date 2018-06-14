@@ -66,20 +66,18 @@ extension APIClient {
      
      Mã OTP 6 số
      */
-    func verifyOTPAuthen(phoneNumber: String, otp: String) -> Promise<VerifyAuthenData> {
+    func verifyOTPAuthen(phoneNumber: String, otp: String) -> Promise<OTP> {
         
         let params: JSONDictionary = [
             "phoneNumber": phoneNumber,
             "otp": otp,
         ]
         
-        return Promise<VerifyAuthenData> { seal in
+        return Promise<OTP> { seal in
             requestWithEndPoint(endPoint: EndPoint.Authen.verifyOTP, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST)
                 .done { json in
-                    if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
-                        let model = VerifyAuthenData(object: data)
-                        seal.fulfill(model)
-                    }
+                    let model = OTP(object: json)
+                    seal.fulfill(model)
                 }
                 .catch { error in
                     seal.reject(error)
