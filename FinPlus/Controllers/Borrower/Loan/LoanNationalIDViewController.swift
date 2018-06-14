@@ -15,9 +15,10 @@ class LoanNationalIDViewController: LoanBaseViewController {
     override func viewDidLoad() {
         self.index = 2
         super.viewDidLoad()
+        
+        self.updateDataToServer()
     
         if let bottomView = self.bottomScrollView {
-            
             bottomView.setContentOffset(CGPoint(x: 100, y: 0), animated: true)
         }
     }
@@ -25,13 +26,13 @@ class LoanNationalIDViewController: LoanBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.updateDataToServer()
     }
 
     //MARK: Actions
     
     @IBAction func btnContinueTapped(_ sender: Any) {
         
+        /*
         if DataManager.shared.loanInfo.nationalIdAllImg.length() == 0 {
             self.showToastWithMessage(message: "Vui lòng chụp ảnh bạn đang cầm CMND mặt trước")
             return
@@ -46,7 +47,7 @@ class LoanNationalIDViewController: LoanBaseViewController {
             self.showToastWithMessage(message: "Vui lòng chụp ảnh CMND mặt sau")
             return
         }
-        
+        */
         
         let loanOtherInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanOtherInfoVC") as! LoanOtherInfoVC
         
