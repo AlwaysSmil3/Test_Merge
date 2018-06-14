@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Setup start View Controller
         self.setupStartVC()
+//        let tabbarVC = InvestorTabBarController(nibName: nil, bundle: nil)
+//        self.window?.rootViewController = tabbarVC
+
         //let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
         //self.window?.rootViewController = tabbarVC
         
@@ -37,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // Get Version
-        self.getVersion()
+        // self.getVersion()
         
         // Init FireBase
         FirebaseApp.configure()

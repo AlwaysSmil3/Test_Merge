@@ -18,6 +18,11 @@ enum Host {
 
 //MARK: API End Point
 enum EndPoint {
+
+    // for investor
+    enum Invest {
+        static let Invests = ""
+    }
     
     enum Authen {
         static let Authen = "auth"

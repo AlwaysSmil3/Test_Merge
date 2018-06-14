@@ -38,8 +38,9 @@ class LoginViewController: BaseViewController {
     private func updateUI() {
         if let account = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String {
             self.lblHeaderAccount.text = "Xin chào \(account), Vui lòng nhập mật khẩu của bạn để tiếp tục."
+        } else if let account = userDefault.value(forKey: fNEW_ACCOUNT_NAME) as? String {
+            self.lblHeaderAccount.text = "Xin chào \(account), Vui lòng nhập mật khẩu của bạn để tiếp tục."
         }
-        
     }
     
     
@@ -61,8 +62,18 @@ class LoginViewController: BaseViewController {
     
     @IBAction func btnLoginTapped(_ sender: Any) {
         
-        guard let account = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String else { return }
-        
+//        guard let account = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String else {
+//
+//            return
+//
+//        }
+        var account = ""
+        if let temp = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String {
+            account = temp
+        } else if let temp = userDefault.value(forKey: fNEW_ACCOUNT_NAME) as? String {
+            account = temp
+        }
+
         if self.tfPass.text?.length() == 0 {
             self.showToastWithMessage(message: "Vui lòng nhập mật khẩu để tiếp tục")
             return
@@ -71,15 +82,21 @@ class LoginViewController: BaseViewController {
         APIClient.shared.authentication(phoneNumber: account, pass: tfPass.text!)
             .done(on: DispatchQueue.main) { [weak self] model in
                 switch model.returnCode {
+                case 3:
+                    if let returnMessage = model.returnMsg {
+                        self?.showGreenBtnMessage(title: "Something when wrong", message: "system message \(returnMessage)", okTitle: nil, cancelTitle: "OK")
+                    }
+                    break
                 case 2:
                     // show messsage, Ok -> verify OTP
                     if let returnMessage = model.returnMsg {
                         self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil, completion: { (true) in
-                            self?.pushToVerifyVC(verifyType: .Login)
+                            self?.pushToVerifyVC(verifyType: .Login, isExisted : true, account : account)
                         })
                     }
                     break
                 case 1:
+                    userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
                     DataManager.shared.currentAccount = account
                     // save token
                     if let data = model.data {
@@ -88,7 +105,9 @@ class LoginViewController: BaseViewController {
                         }
                     }
                     // get config
-                    self?.getConfig()
+//                    self?.getConfig()
+                    self?.pushToVerifyVC(verifyType: .Login, isExisted: false, account: "")
+
                     break
                 default :
                     if let returnMessage = model.returnMsg {
@@ -96,9 +115,6 @@ class LoginViewController: BaseViewController {
 //                        UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
                     }
                 }
-
-
-
             }
             .catch { error in }
     }
@@ -107,7 +123,7 @@ class LoginViewController: BaseViewController {
         APIClient.shared.getConfigs().done(on: DispatchQueue.main) { [weak self] model in
             systemConfig = model
 //            userDefault.set(model, forKey: fSYSTEM_CONFIG)
-            self?.pushToVerifyVC(verifyType: .Login)
+            self?.pushToVerifyVC(verifyType: .Login, isExisted: false, account: "")
             }
             .catch({ (error) in
                 print(error)
@@ -119,16 +135,18 @@ class LoginViewController: BaseViewController {
         if let account = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String {
             self.self.showGreenBtnMessage(title: "Đặt lại mật khẩu", message: "Mã xác thực sẽ được gửi tới \(account) qua tin nhắn SMS sau khi bạn đồng ý. Bạn chắc chắn không?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
                 if (status) {
-                    self.pushToVerifyVC(verifyType: .Forgot)
+                    self.pushToVerifyVC(verifyType: .Forgot, isExisted: false, account: "")
                 }
             })
         }
     }
 
-    func pushToVerifyVC(verifyType: VerifyType) {
+    func pushToVerifyVC(verifyType: VerifyType, isExisted : Bool, account: String) {
         self.view.endEditing(true)
         let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
         verifyVC.verifyType = verifyType
+        verifyVC.isExisted = isExisted
+        verifyVC.account = account
         self.navigationController?.pushViewController(verifyVC, animated: true)
     }
 }

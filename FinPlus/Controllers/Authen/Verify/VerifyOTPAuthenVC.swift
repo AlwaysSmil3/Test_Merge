@@ -20,7 +20,8 @@ class VerifyOTPAuthenVC: BaseViewController {
     @IBOutlet var lblLimitTime: UILabel!
     @IBOutlet var pinCodeTextField: PinCodeTextField!
     var verifyType : VerifyType = .Login
-    
+    var account = ""
+    var isExisted = false
     var count = 0
     var timer = Timer()
     var otp: String = ""
@@ -46,6 +47,7 @@ class VerifyOTPAuthenVC: BaseViewController {
     @IBAction func resendCodeBtnAction(_ sender: Any) {
         // call to resend Code API
         print("Resend Code API")
+        self.otp = ""
         self.resendCodeBtn.isHidden = true
         count = 0
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
@@ -96,12 +98,27 @@ class VerifyOTPAuthenVC: BaseViewController {
     @IBAction func btnVerifyTapped(_ sender: Any) {
         switch verifyType {
         case .Login:
-            let phoneNumber = DataManager.shared.currentAccount
+            var phoneNumber = ""
+            if DataManager.shared.currentAccount != "" {
+                phoneNumber = DataManager.shared.currentAccount
+            } else if let phone = userDefault.value(forKey: fNEW_ACCOUNT_NAME) as? String {
+                phoneNumber = phone
+            }
             APIClient.shared.verifyOTPAuthen(phoneNumber: phoneNumber, otp: self.otp)
                 .done(on: DispatchQueue.main) { [weak self] model in
                     guard let isNew = model.isNew, isNew else {
                         
                         // Nếu là tài khoản củ sang login
+                        if self?.isExisted == true {
+                            // save account
+                            if self?.account != "" {
+                                userDefault.set(self?.account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+                                DataManager.shared.currentAccount = (self?.account)!
+                            }
+                            // push to choice view
+                            self?.pushToChoiceKindUserVC()
+                            return
+                        }
                         let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
 
                         self?.navigationController?.pushViewController(loginVC, animated: true)
@@ -133,6 +150,11 @@ class VerifyOTPAuthenVC: BaseViewController {
             .catch { error in}
         }
 
+    }
+    func pushToChoiceKindUserVC() {
+        let choiceKindUser = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "ChoiceKindUserVC") as! ChoiceKindUserVC
+//        choiceKindUser.pw = self.tfPass.text!
+        self.navigationController?.pushViewController(choiceKindUser, animated: true)
     }
     
 }
