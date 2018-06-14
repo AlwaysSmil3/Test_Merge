@@ -15,12 +15,25 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         self.index = 0
         super.viewDidLoad()
         
-        self.updateDataToServer()
+//        self.navigationController?.isNavigationBarHidden = false
+//        
+//        self.setupTitleView(title: "Test", subTitle: "test")
+        
+        self.createLoan()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+    }
+    
+    //Buoc dau tạo loan
+    private func createLoan() {
+        APIClient.shared.loan(isShowLoandingView: false, httpType: .POST)
+            .done(on: DispatchQueue.global()) { model in
+                DataManager.shared.loanID = model.loanId!
+            }
+            .catch { error in }
     }
     
     private func updateDataForLoanAPI(completion: () -> Void) {

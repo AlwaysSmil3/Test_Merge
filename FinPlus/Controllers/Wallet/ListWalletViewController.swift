@@ -50,6 +50,14 @@ class ListWalletViewController: UIViewController {
         self.addBtn.isHidden = self.listWallet.count > 0
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let ishidden = self.navigationController?.isNavigationBarHidden, ishidden {
+            self.navigationController?.isNavigationBarHidden = false
+        }
+    }
+    
     @objc func cell_action(sender: UIButton) {
         
         let alert = UIAlertController(title: "", message: "Lựa chọn", preferredStyle: .actionSheet)

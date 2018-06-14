@@ -11,7 +11,6 @@ import Foundation
 
 class LoanNationalIDViewController: LoanBaseViewController {
     
-    
     override func viewDidLoad() {
         self.index = 2
         super.viewDidLoad()
@@ -25,6 +24,10 @@ class LoanNationalIDViewController: LoanBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
+            self.navigationController?.isNavigationBarHidden = true
+        }
         
     }
 

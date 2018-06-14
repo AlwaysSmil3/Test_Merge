@@ -95,15 +95,14 @@ extension APIClient {
         
         if let data = loanInfoData {
             dataAPI = data
-//            let json = try? JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-//            if let json = json {
-//                print("Person JSON:\n" + String(describing: json) + "\n")
-//
-//            }
         }
         
         let uid = DataManager.shared.userID
-        let endPoint = "users/" + "\(uid)/" + EndPoint.Loan.Loans
+        var endPoint = "users/" + "\(uid)/" + EndPoint.Loan.Loans
+        
+        if httpType == .PUT {
+            endPoint = "loans/" + "\(DataManager.shared.loanID ?? 0)"
+        }
         
         return Promise<LoanResponseModel> { seal in
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: isShowLoandingView, httpType: httpType, jsonData: dataAPI)

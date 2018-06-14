@@ -226,12 +226,14 @@
             "keyboard": "money",
             "suffix": "đ"
         },
+            
         {
             "id": 2,
             "index": 2,
             "type":"multiple_file",
             "title": "Ảnh bảng lương/chấm công của bạn"
         }
+    
     ]
 }
 ]
