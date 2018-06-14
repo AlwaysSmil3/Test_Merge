@@ -52,6 +52,15 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
         APIClient.shared.authentication(phoneNumber: self.tfPhoneNumber.text!)
             .done(on: DispatchQueue.main) { [weak self]model in
                 switch model.returnCode {
+                case 3:
+                    // account exist -> push to login
+                    userDefault.set(self?.tfPhoneNumber.text, forKey: fNEW_ACCOUNT_NAME)
+                    if let returnMessage = model.returnMsg {
+                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil, completion: { (true) in
+                            self?.pushToLoginVC()
+                        })
+                    }
+                    break
                 case 2:
                     // show messsage, Ok -> verify OTP
                     if let returnMessage = model.returnMsg {
@@ -107,6 +116,13 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
         let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
         verifyVC.verifyType = verifyType
         self.navigationController?.pushViewController(verifyVC, animated: true)
+    }
+
+    func pushToLoginVC() {
+        self.view.endEditing(true)
+        let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+
+        self.navigationController?.pushViewController(loginVC, animated: true)
     }
     
 }

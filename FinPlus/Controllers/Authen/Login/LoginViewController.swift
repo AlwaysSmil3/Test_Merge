@@ -71,6 +71,11 @@ class LoginViewController: BaseViewController {
         APIClient.shared.authentication(phoneNumber: account, pass: tfPass.text!)
             .done(on: DispatchQueue.main) { [weak self] model in
                 switch model.returnCode {
+                case 3:
+                    if let returnMessage = model.returnMsg {
+                        self?.showGreenBtnMessage(title: "Something when wrong", message: "system message \(returnMessage)", okTitle: nil, cancelTitle: "OK")
+                    }
+                    break
                 case 2:
                     // show messsage, Ok -> verify OTP
                     if let returnMessage = model.returnMsg {
@@ -97,9 +102,6 @@ class LoginViewController: BaseViewController {
 //                        UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
                     }
                 }
-
-
-
             }
             .catch { error in }
     }
