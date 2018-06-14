@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // Get Version
-        self.getVersion()
+        // self.getVersion()
         
         // Init FireBase
         FirebaseApp.configure()

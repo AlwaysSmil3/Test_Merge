@@ -79,7 +79,9 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
                         }
                     }
                     // get config
-                    strongSelf.getConfig()
+//                    strongSelf.getConfig()
+                    userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fNEW_ACCOUNT_NAME)
+                    strongSelf.pushToVerifyVC(verifyType: .Login)
                     break
                 default :
                     if let returnMessage = model.returnMsg {
@@ -87,13 +89,6 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
 //                        UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
                     }
                 }
-//                guard let strongSelf = self else { return }
-//
-//                userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
-//                userDefault.synchronize()
-//
-//                DataManager.shared.currentAccount = strongSelf.tfPhoneNumber.text!
-//                strongSelf.getConfig()
             }.catch { error in
                 print(error)
         }
