@@ -15,6 +15,10 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         self.index = 0
         super.viewDidLoad()
         
+//        self.navigationController?.isNavigationBarHidden = false
+//        
+//        self.setupTitleView(title: "Test", subTitle: "test")
+        
         self.createLoan()
     }
     
