@@ -43,6 +43,8 @@ class LoanOtherInfoVC: LoanBaseViewController {
 
     @IBAction func btnContinueTapped(_ sender: Any) {
         
+        self.view.endEditing(true)
+        
         if DataManager.shared.loanInfo.optionalText.length() == 0 {
             self.showToastWithMessage(message: "Vui lòng nhập lương tháng của bạn")
             return

@@ -83,6 +83,7 @@ class BorrowHomeViewController: BaseViewController {
         
         APIClient.shared.getLoanCategories()
             .done(on: DispatchQueue.main) { model in
+                print(model)
                 DataManager.shared.loanCategories = model
             }
             .catch { error in }

@@ -307,6 +307,16 @@
                                                                     <action selector="btnListCategoriesShow:" destination="iKw-QS-Z9I" eventType="touchUpInside" id="0IM-ZF-hD7"/>
                                                                 </connections>
                                                             </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXC-YK-PlF">
+                                                                <rect key="frame" x="16" y="487.5" width="97" height="26"/>
+                                                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                                                <state key="normal" title="Tính toán lịch trả nợ ▸">
+                                                                    <color key="titleColor" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="btnGotoCaculatoFee:" destination="iKw-QS-Z9I" eventType="touchUpInside" id="RcT-oQ-yp1"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -359,6 +369,7 @@
                                                             <constraint firstItem="ELd-UQ-9Wk" firstAttribute="leading" secondItem="Puc-Pg-gNE" secondAttribute="leading" id="adb-lc-fzr"/>
                                                             <constraint firstItem="O5a-OV-xow" firstAttribute="top" secondItem="ULe-Vo-VnA" secondAttribute="top" id="cod-RT-bmS"/>
                                                             <constraint firstItem="6oP-Za-zo3" firstAttribute="centerY" secondItem="ag6-DH-F3M" secondAttribute="centerY" id="cx4-ab-haQ"/>
+                                                            <constraint firstItem="gXC-YK-PlF" firstAttribute="top" secondItem="Xw9-rX-nHa" secondAttribute="bottom" id="cyW-LB-DIV"/>
                                                             <constraint firstItem="hbT-WT-5p9" firstAttribute="leading" secondItem="cU2-FB-6X7" secondAttribute="leading" id="eYH-eI-IDU"/>
                                                             <constraint firstItem="Q9g-DB-Kdb" firstAttribute="leading" secondItem="W1Q-bF-jiO" secondAttribute="leading" constant="16" id="gtl-Jh-97C"/>
                                                             <constraint firstItem="Pu4-5d-90d" firstAttribute="top" secondItem="syZ-mG-CQB" secondAttribute="bottom" constant="8" id="gwb-Cd-QZx"/>
@@ -382,6 +393,7 @@
                                                             <constraint firstItem="eNp-G9-cel" firstAttribute="centerX" secondItem="eey-sE-88Q" secondAttribute="centerX" id="vcl-VG-N8V"/>
                                                             <constraint firstItem="Pu4-5d-90d" firstAttribute="leading" secondItem="hbT-WT-5p9" secondAttribute="leading" id="xGb-aL-7Jm"/>
                                                             <constraint firstItem="Lg3-1Q-ADa" firstAttribute="leading" secondItem="4Zx-nD-No8" secondAttribute="leading" id="xvT-GP-eFJ"/>
+                                                            <constraint firstItem="gXC-YK-PlF" firstAttribute="leading" secondItem="Xw9-rX-nHa" secondAttribute="leading" id="yhZ-0T-Z0O"/>
                                                             <constraint firstAttribute="trailing" secondItem="Puc-Pg-gNE" secondAttribute="trailing" constant="16" id="yvc-yN-k71"/>
                                                             <constraint firstItem="4Zx-nD-No8" firstAttribute="leading" secondItem="R1b-FN-b5R" secondAttribute="leading" id="zky-Jd-nsV"/>
                                                         </constraints>

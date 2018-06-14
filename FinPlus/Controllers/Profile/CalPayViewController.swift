@@ -36,6 +36,10 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let ishidden = self.navigationController?.isNavigationBarHidden, ishidden {
+            self.navigationController?.isNavigationBarHidden = false
+        }
 
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("CALCULATE_PAY", comment: "")

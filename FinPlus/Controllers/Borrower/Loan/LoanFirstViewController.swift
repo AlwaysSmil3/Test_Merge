@@ -48,6 +48,10 @@ class LoanFirstViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
+            self.navigationController?.isNavigationBarHidden = true
+        }
+        
     }
     
     private func setupInit() {
@@ -83,6 +87,14 @@ class LoanFirstViewController: BaseViewController {
     }
     
     //MARK: Actions
+    
+    @IBAction func btnGotoCaculatoFee(_ sender: Any) {
+        let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "CALCULATE_PAY") as! CalPayViewController
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
     
     @IBAction func btnListCategoriesShow(_ sender: Any) {
         let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
@@ -127,7 +139,7 @@ class LoanFirstViewController: BaseViewController {
     }
     
     @IBAction func showInfoServiceFee(_ sender: Any) {
-        self.showToastWithMessage(message: "Phí dịch vụ dự kiến")
+        self.showToastWithMessage(message: "Khoản phí được thu khi khoản vay được giải ngân thành công")
     }
     
 }

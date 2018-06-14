@@ -226,6 +226,7 @@
             "keyboard": "money",
             "suffix": "đ"
         },
+            
         {
             "id": 2,
             "index": 2,
@@ -240,6 +241,7 @@
             "min_value":0,
             "max_value":10
         }
+    
     ]
 }
 ]
