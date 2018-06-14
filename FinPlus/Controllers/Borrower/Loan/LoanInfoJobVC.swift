@@ -11,76 +11,22 @@ import DropDown
 
 class LoanInfoJobVC: LoanBaseViewController {
     
-    var job: Model1?
-    var position: Model1?
-    
-    // Job
- 
-    var jobData: [Model1] = [] {
-        didSet {
-            if jobData.count > 0 {
-                
-            }
-        }
-    }
-    
-    // Postion
-
-    var positionData: [Model1] = [] {
-        didSet {
-            if positionData.count > 0 {
-                
-            }
-        }
-    }
-    
-    var companyAddress: Address?
-    
     override func viewDidLoad() {
         self.index = 1
         super.viewDidLoad()
         
-        
-        self.getJobs()
-        self.getPositions()
+        self.updateDataToServer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.updateDataToServer()
     }
     
     //MARK: Get API
-    private func getJobs() {
-        APIClient.shared.getJobs()
-            .done(on: DispatchQueue.main) { [weak self]model in
-                self?.jobData = model
-            }
-            .catch { error in }
-    }
-    
-    private func getPositions() {
-        APIClient.shared.getPositions()
-            .done(on: DispatchQueue.main) { [weak self]model in
-                self?.positionData = model
-            }
-            .catch { error in }
-    }
     
     private func updateDataForLoanAPI(completion: () -> Void) {
-        /*
-        guard let addr = self.companyAddress else { return }
-        
-        DataManager.shared.loanInfo.jobInfo.address = addr
-        DataManager.shared.loanInfo.jobInfo.company = self.tfCompanyName.text!
-        DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = self.tfCompanyPhone.text!
-        DataManager.shared.loanInfo.jobInfo.salary = Int32(self.tfSalary.text!) ?? 0
-        
-        DataManager.shared.loanInfo.jobInfo.jobType = self.tfJob.text!
-        DataManager.shared.loanInfo.jobInfo.position = self.tfPosition.text!
-        */
-        
+
         if DataManager.shared.loanInfo.jobInfo.jobType.length() == 0 {
             self.showToastWithMessage(message: "Vui lòng chọn nghề nghiệp")
             return
@@ -92,22 +38,22 @@ class LoanInfoJobVC: LoanBaseViewController {
         }
         
         if DataManager.shared.loanInfo.jobInfo.company.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập tên cơ quan")
+            self.showToastWithMessage(message: "Vui lòng nhập tên cơ quan để tiếp tục.")
             return
         }
         
         if DataManager.shared.loanInfo.jobInfo.salary == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập thu nhập hàng tháng")
+            self.showToastWithMessage(message: "Vui lòng nhập mức thu nhập hàng tháng để tiếp tục.")
             return
         }
         
         if DataManager.shared.loanInfo.jobInfo.address.city.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng chọn địa chỉ cơ quan")
+            self.showToastWithMessage(message: "Vui lòng chọn địa chỉ cơ quan.")
             return
         }
         
         if DataManager.shared.loanInfo.jobInfo.companyPhoneNumber.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại cơ quan")
+            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại cơ quan.")
             return
         }
         

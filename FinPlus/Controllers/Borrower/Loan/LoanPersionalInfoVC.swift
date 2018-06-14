@@ -11,97 +11,59 @@ import DropDown
 
 class LoanPersionalInfoVC: LoanBaseViewController {
     
-    // Dropdown DataSource
-    let relationPhoneNumberDropdownDataSource = ["Vợ", "Chồng", "Bố", "Mẹ"]
-    
-    
-    //Relationship PhoneNumber
-    let relationPhoneNumberDropdown = DropDown()
-    var relationPhoneNumberType: RelationPhoneNumber = .Wife
-    
-    // Address
-    var residentAddress: Address?
-    var temporatyAddress: Address?
-    
     override func viewDidLoad() {
         self.index = 0
         super.viewDidLoad()
         
+        self.updateDataToServer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.updateDataToServer()
     }
     
     private func updateDataForLoanAPI(completion: () -> Void) {
-        /*
-        guard let birthDay = self.birthDay, let residentAddr = self.residentAddress, let tempAddr = self.temporatyAddress else { return }
-        
-        DataManager.shared.loanInfo.userInfo.fullName = self.tfFullName.text!
-        DataManager.shared.loanInfo.userInfo.gender = "\(self.gender.rawValue)"
-        DataManager.shared.loanInfo.userInfo.birthDay = "\(birthDay.timeIntervalSince1970)"
-        print("\(birthDay.timeIntervalSince1970)")
-        DataManager.shared.loanInfo.userInfo.nationalID = self.tfNationalID.text!
-        
-        DataManager.shared.loanInfo.userInfo.residentAddress = residentAddr
-        DataManager.shared.loanInfo.userInfo.temporaryAddress = tempAddr
-        
-        DataManager.shared.loanInfo.userInfo.relationships.phoneNumber = self.tfRelationPhone.text!
-        DataManager.shared.loanInfo.userInfo.relationships.type = self.relationPhoneNumberType.rawValue
-        */
         
         
         if DataManager.shared.loanInfo.userInfo.fullName.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập tên")
+            self.showToastWithMessage(message: "Vui lòng nhập họ và tên của bạn để tiếp tục.")
             return
         }
         
         if DataManager.shared.loanInfo.userInfo.gender.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng chọn giới tính")
+            self.showToastWithMessage(message: "Vui lòng chọn giới tính.")
             return
         }
         
         if DataManager.shared.loanInfo.userInfo.birthDay.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng chọn ngày sinh")
+            self.showToastWithMessage(message: "Vui lòng chọn ngày sinh.")
             return
         }
         
         if DataManager.shared.loanInfo.userInfo.nationalID.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập số chứng minh nhân dân")
+            self.showToastWithMessage(message: "Vui lòng nhập số chứng minh nhân dân của bạn để tiếp tục.")
             return
         }
         
         if DataManager.shared.loanInfo.userInfo.relationships.phoneNumber.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại người thân")
+            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại người thân để tiếp tục.")
             return
         }
         
         if DataManager.shared.loanInfo.userInfo.residentAddress.city.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng chọn địa chỉ thường chú")
+            self.showToastWithMessage(message: "Vui lòng nhập địa chỉ thường trú của bạn để tiếp tục.")
             return
         }
         
         if DataManager.shared.loanInfo.userInfo.temporaryAddress.city.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng chọn địa chỉ tạm chú")
+            self.showToastWithMessage(message: "Vui lòng nhập địa chỉ tạm trú của bạn để tiếp tục.")
             return
         }
         
-        if DataManager.shared.loanInfo.userInfo.gender.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng chọn địa chỉ tạm chú")
-            return
-        }
         
         completion()
     }
-    
-    //MARK: Actions
-    @IBAction func btnRelationCallTapped(_ sender: Any) {
-        self.relationPhoneNumberDropdown.show()
-        
-    }
-    
     
     @IBAction func btnContinueTapped(_ sender: Any) {
         

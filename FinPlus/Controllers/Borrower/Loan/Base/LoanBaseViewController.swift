@@ -124,7 +124,7 @@ class LoanBaseViewController: BaseViewController {
     /// Xong mỗi bước là gửi api put cập nhật dữ liệu cho mỗi bước
     func updateDataToServer() {
         APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
-            .done(on: DispatchQueue.main) { model in
+            .done(on: DispatchQueue.global()) { model in
                 DataManager.shared.loanID = model.loanId!
             }
             .catch { error in }

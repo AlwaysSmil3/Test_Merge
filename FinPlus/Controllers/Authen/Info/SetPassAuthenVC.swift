@@ -162,6 +162,7 @@ class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
         // success -> save phone
         if let newPhone = userDefault.value(forKey: fNEW_ACCOUNT_NAME) as? String {
             userDefault.set(newPhone, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+            DataManager.shared.currentAccount = newPhone
         }
     }
 

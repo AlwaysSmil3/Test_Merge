@@ -10,8 +10,10 @@ import Foundation
 
 class BorrowHomeViewController: BaseViewController {
     
-    @IBOutlet var contentLoanView: UIView!
     
+    @IBOutlet var lblTitle: UILabel!
+    
+    @IBOutlet var contentLoanView: UIView!
     @IBOutlet var mainCollectionView: UICollectionView!
     
     var detailLoanView: BrrowerHome?
@@ -53,16 +55,13 @@ class BorrowHomeViewController: BaseViewController {
     
     // Lấy thông tin User
     private func getUserInfo() {
-        APIClient.shared.getJobs()
-            .done(on: DispatchQueue.main) { model in
-                
-        }
-            .catch { error in}
         
         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
             .done(on: DispatchQueue.main) { model in
                 
                 DataManager.shared.browwerInfo = model
+                
+                self.lblTitle.text = "Xin chào " + model.fullName! + "!"
                 
                 if let loan = model.activeLoan, let status = loan.status {
                     self.loanStatus = status
