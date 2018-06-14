@@ -13,7 +13,7 @@ enum SetPassOrResetPass {
     case ResetPass
 }
 class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
-    
+    var phone : String!
     var setPassOrResetPass: SetPassOrResetPass = SetPassOrResetPass.SetPass
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblHeader: UILabel!
@@ -61,16 +61,14 @@ class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
         switch setPassOrResetPass {
         case .SetPass:
             self.lblTitle.text = "Tạo tài khoản mới"
-            if let account = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String {
+            if let account = userDefault.value(forKey: fNEW_ACCOUNT_NAME) as? String {
                 self.lblHeader.text = "Xin chào \(account), bạn chưa có tài khoản. Vui lòng thiết lập mật khẩu để bắt đầu."
             }
-//            self.lblHeader.text = "Xin chào +8498776876, bạn chưa có tài khoản. Vui lòng thiết lập mật khẩu để bắt đầu."
         default:
             self.lblTitle.text = "Thiết lập mật khẩu mới"
             if let account = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String {
                 self.lblHeader.text = "Xin chào \(account), bạn đã yêu cầu đặt lại mật khẩu. Vui lòng tạo mật khẩu mới."
             }
-//            self.lblHeader.text = "Xin chào +8498776876, bạn đã yêu cầu đặt lại mật khẩu. Vui lòng tạo mật khẩu mới."
         }
     }
     
@@ -148,12 +146,30 @@ class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
         
         switch setPassOrResetPass {
         case .SetPass:
+            self.setNewPasswordAPI(newPassword: self.tfPass.text!)
             self.pushToChoiceKindUserVC()
         default:
+            self.resetPasswordAPI(newPassword: self.tfPass.text!)
             self.showGreenBtnMessage(title: "Thành công", message: "Mật khẩu mới đã được thiết lập thành công", okTitle: "OK", cancelTitle: nil) { (true) in
                 self.pushToChoiceKindUserVC()
             }
         }
+    }
+
+    func setNewPasswordAPI(newPassword: String) {
+        // call to set new password API (update user data)
+
+        // success -> save phone
+        if let newPhone = userDefault.value(forKey: fNEW_ACCOUNT_NAME) as? String {
+            userDefault.set(newPhone, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+        }
+    }
+
+    func resetPasswordAPI(newPassword: String) {
+        // call to reset password API (update user data)
+
+        // sucess -> save phone
+        userDefault.set(DataManager.shared.currentAccount, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
     }
 
     func pushToChoiceKindUserVC() {

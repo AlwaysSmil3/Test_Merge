@@ -80,6 +80,7 @@ class LoginViewController: BaseViewController {
                     }
                     break
                 case 1:
+                    userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
                     DataManager.shared.currentAccount = account
                     // save token
                     if let data = model.data {

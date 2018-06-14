@@ -94,7 +94,7 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
             systemConfig = model
             guard let strongSelf = self else { return }
 
-            //            userDefault.set(model, forKey: fSYSTEM_CONFIG)
+            userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fNEW_ACCOUNT_NAME)
             strongSelf.pushToVerifyVC(verifyType: .Login)
             }
             .catch({ (error) in
