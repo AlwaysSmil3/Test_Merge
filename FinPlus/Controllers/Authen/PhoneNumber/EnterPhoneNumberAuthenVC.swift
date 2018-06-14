@@ -52,6 +52,15 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
         APIClient.shared.authentication(phoneNumber: self.tfPhoneNumber.text!)
             .done(on: DispatchQueue.main) { [weak self]model in
                 switch model.returnCode {
+                case 3:
+                    // account exist -> push to login
+                    userDefault.set(self?.tfPhoneNumber.text, forKey: fNEW_ACCOUNT_NAME)
+                    if let returnMessage = model.returnMsg {
+                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil, completion: { (true) in
+                            self?.pushToLoginVC()
+                        })
+                    }
+                    break
                 case 2:
                     // show messsage, Ok -> verify OTP
                     if let returnMessage = model.returnMsg {
@@ -70,7 +79,9 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
                         }
                     }
                     // get config
-                    strongSelf.getConfig()
+//                    strongSelf.getConfig()
+                    userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fNEW_ACCOUNT_NAME)
+                    strongSelf.pushToVerifyVC(verifyType: .Login)
                     break
                 default :
                     if let returnMessage = model.returnMsg {
@@ -78,13 +89,6 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
 //                        UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
                     }
                 }
-//                guard let strongSelf = self else { return }
-//
-//                userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
-//                userDefault.synchronize()
-//
-//                DataManager.shared.currentAccount = strongSelf.tfPhoneNumber.text!
-//                strongSelf.getConfig()
             }.catch { error in
                 print(error)
         }
@@ -94,7 +98,7 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
             systemConfig = model
             guard let strongSelf = self else { return }
 
-            //            userDefault.set(model, forKey: fSYSTEM_CONFIG)
+            userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fNEW_ACCOUNT_NAME)
             strongSelf.pushToVerifyVC(verifyType: .Login)
             }
             .catch({ (error) in
@@ -107,6 +111,13 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
         let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
         verifyVC.verifyType = verifyType
         self.navigationController?.pushViewController(verifyVC, animated: true)
+    }
+
+    func pushToLoginVC() {
+        self.view.endEditing(true)
+        let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+
+        self.navigationController?.pushViewController(loginVC, animated: true)
     }
     
 }
