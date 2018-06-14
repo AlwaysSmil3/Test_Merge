@@ -103,7 +103,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo" translatesAutoresizingMaskIntoConstraints="NO" id="HUN-oQ-EZk">
                                 <rect key="frame" x="133" y="40" width="109" height="14"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xin chào A!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmO-Vt-JFL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xin chào A!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jmO-Vt-JFL">
                                 <rect key="frame" x="32" y="92" width="311" height="31.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="26"/>
                                 <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
@@ -144,6 +144,7 @@
                     <navigationItem key="navigationItem" id="1PO-t4-hNq"/>
                     <connections>
                         <outlet property="contentLoanView" destination="gyd-9q-JpW" id="eNo-jS-Jfl"/>
+                        <outlet property="lblTitle" destination="jmO-Vt-JFL" id="XIs-3H-kR0"/>
                         <outlet property="mainCollectionView" destination="2du-Ad-GeN" id="t2u-XP-XXC"/>
                     </connections>
                 </viewController>

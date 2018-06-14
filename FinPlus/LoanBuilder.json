@@ -231,14 +231,6 @@
             "index": 2,
             "type":"multiple_file",
             "title": "Ảnh bảng lương/chấm công của bạn"
-        },
-        {
-            "id": 3,
-            "index": 3,
-            "type":"range",
-            "title": "Số năm làm việc",
-            "min_value":0,
-            "max_value":10
         }
     ]
 }
