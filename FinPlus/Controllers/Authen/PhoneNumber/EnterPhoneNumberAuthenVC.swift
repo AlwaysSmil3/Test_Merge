@@ -51,28 +51,17 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
         }
         APIClient.shared.authentication(phoneNumber: self.tfPhoneNumber.text!)
             .done(on: DispatchQueue.main) { [weak self]model in
+                guard let strongSelf = self else { return }
                 switch model.returnCode {
-                case 3:
-                    // account exist -> push to login
-                    userDefault.set(self?.tfPhoneNumber.text, forKey: fNEW_ACCOUNT_NAME)
+                case 0:
+                    // code 0.
                     if let returnMessage = model.returnMsg {
-                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: "Hủy bỏ", completion: { (status) in
-                            if status {
-                                self?.pushToLoginVC()
-                            }
-                        })
+                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
+                        return
                     }
                     break
-                case 2:
-                    // show messsage, Ok -> verify OTP
-                    if let returnMessage = model.returnMsg {
-                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil, completion: { (true) in
-                            self?.pushToVerifyVC(verifyType: .Login)
-                        })
-                    }
-                    break
-                case 1:
-                    guard let strongSelf = self else { return }
+                default :
+                    // new account
                     DataManager.shared.currentAccount = strongSelf.tfPhoneNumber.text!
                     // save token
                     if let data = model.data {
@@ -81,16 +70,12 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
                         }
                     }
                     // get config
-//                    strongSelf.getConfig()
+                    // strongSelf.getConfig()
                     userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fNEW_ACCOUNT_NAME)
-                    strongSelf.pushToVerifyVC(verifyType: .Login)
                     break
-                default :
-                    if let returnMessage = model.returnMsg {
-                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
-//                        UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
-                    }
                 }
+
+                strongSelf.pushToVerifyVC(verifyType: .Login)
             }.catch { error in
                 print(error)
         }
@@ -99,7 +84,6 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
         APIClient.shared.getConfigs().done(on: DispatchQueue.main) { [weak self] model in
             systemConfig = model
             guard let strongSelf = self else { return }
-
             userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fNEW_ACCOUNT_NAME)
             strongSelf.pushToVerifyVC(verifyType: .Login)
             }

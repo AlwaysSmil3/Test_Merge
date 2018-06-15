@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+enum UserType {
+    case Investor
+    case Borrwer
+}
 class LoginViewController: BaseViewController {
     
     @IBOutlet var lblHeaderAccount: UILabel!
@@ -61,12 +65,6 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func btnLoginTapped(_ sender: Any) {
-        
-//        guard let account = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String else {
-//
-//            return
-//
-//        }
         var account = ""
         if let temp = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String {
             account = temp
@@ -81,19 +79,15 @@ class LoginViewController: BaseViewController {
         
         APIClient.shared.authentication(phoneNumber: account, pass: tfPass.text!)
             .done(on: DispatchQueue.main) { [weak self] model in
+                // go to choice VC of back to enter phone number
                 switch model.returnCode {
                 case 3:
-                    if let returnMessage = model.returnMsg {
-                        self?.showGreenBtnMessage(title: "Something when wrong", message: "system message \(returnMessage)", okTitle: nil, cancelTitle: "OK")
-                    }
-                    break
-                case 2:
-                    // show messsage, Ok -> verify OTP
-                    if let returnMessage = model.returnMsg {
-                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil, completion: { (true) in
-                            self?.pushToVerifyVC(verifyType: .Login, isExisted : true, account : account)
-                        })
-                    }
+                    // đang đăng nhập trên 1 thiết bị khác -> push home investor or borrwer
+                    userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+                    DataManager.shared.currentAccount = account
+                    // check user type: investor or borrwer
+                    // push to home viewcontroller
+                    self?.pushToHomeVC(userType: .Investor)
                     break
                 case 1:
                     userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
@@ -106,28 +100,38 @@ class LoginViewController: BaseViewController {
                     }
                     // get config
 //                    self?.getConfig()
-                    self?.pushToVerifyVC(verifyType: .Login, isExisted: false, account: "")
-
+                    // push to choice viewcontroller
+                    self?.pushToChoiceKindUserVC()
                     break
                 default :
                     if let returnMessage = model.returnMsg {
                         self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
-//                        UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
+                        return
                     }
                 }
             }
             .catch { error in }
     }
 
+    func pushToHomeVC(userType: UserType) {
+        print("Push to user home viewcontroller")
+    }
+
     func getConfig() {
         APIClient.shared.getConfigs().done(on: DispatchQueue.main) { [weak self] model in
             systemConfig = model
 //            userDefault.set(model, forKey: fSYSTEM_CONFIG)
-            self?.pushToVerifyVC(verifyType: .Login, isExisted: false, account: "")
+            // self?.pushToVerifyVC(verifyType: .Login, isExisted: false, account: "")
             }
             .catch({ (error) in
                 print(error)
             })
+    }
+
+    func pushToChoiceKindUserVC() {
+        let choiceKindUser = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "ChoiceKindUserVC") as! ChoiceKindUserVC
+            choiceKindUser.pw = self.tfPass.text!
+        self.navigationController?.pushViewController(choiceKindUser, animated: true)
     }
     
     @IBAction func btnForgotPassTapped(_ sender: Any) {
@@ -145,10 +149,15 @@ class LoginViewController: BaseViewController {
         self.view.endEditing(true)
         let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
         verifyVC.verifyType = verifyType
-        verifyVC.isExisted = isExisted
         verifyVC.account = account
-        verifyVC.pass = self.tfPass?.text ?? ""
         self.navigationController?.pushViewController(verifyVC, animated: true)
+    }
+
+    func pushToPhoneVC() {
+        self.view.endEditing(true)
+        let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
+
+        self.present(enterPhoneVC, animated: true, completion: nil)
     }
 }
 
