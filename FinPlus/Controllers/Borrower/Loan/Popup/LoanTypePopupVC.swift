@@ -16,7 +16,12 @@ protocol DataSelectedFromPopupProtocol {
 
 class LoanTypePopupVC: BasePopup {
     
+    @IBOutlet var lblTitle: UILabel!
+    @IBOutlet var mainTBView: UITableView?
+    
     var delegate: DataSelectedFromPopupProtocol?
+    
+    
     
     //Dữ liệu đầu vào
     private var dataSource: [LoanBuilderData] = [] {
@@ -25,7 +30,6 @@ class LoanTypePopupVC: BasePopup {
         }
     }
     
-    
     /// Cell đang chọn
     private var currentIndex: Int? {
         didSet {
@@ -33,12 +37,16 @@ class LoanTypePopupVC: BasePopup {
         }
     }
     
-    @IBOutlet var mainTBView: UITableView?
+    var titleString: String = "Thông báo"
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.mainTBView?.tableFooterView = UIView()
+        self.mainTBView?.separatorColor = UIColor.clear
+        
+        self.lblTitle?.text = titleString
         
     }
     
@@ -77,11 +85,11 @@ extension LoanTypePopupVC: UITableViewDelegate, UITableViewDataSource {
         cell.lblValue?.text = self.dataSource[indexPath.row].title!
         
         guard let i = self.currentIndex, i == indexPath.row else {
-            cell.lblValue?.textColor = TEXT_NORMAL_COLOR
+            cell.imgIcon?.image = #imageLiteral(resourceName: "ic_radio_off")
             return cell
         }
         
-        cell.lblValue?.textColor = MAIN_COLOR
+        cell.imgIcon?.image = #imageLiteral(resourceName: "ic_radio_on")
         
         return cell
     }

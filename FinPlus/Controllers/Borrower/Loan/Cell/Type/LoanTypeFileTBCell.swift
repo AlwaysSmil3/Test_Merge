@@ -13,6 +13,7 @@ class LoanTypeFileTBCell: UITableViewCell {
     @IBOutlet var lblTitle: UILabel?
     @IBOutlet var imgValue: UIImageView?
     @IBOutlet var imgAdd: UIImageView?
+    @IBOutlet var lblDescription: UILabel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +28,9 @@ class LoanTypeFileTBCell: UITableViewCell {
                 self.lblTitle?.text = title
             }
             
+            if let desc = field_.descriptionValue {
+                self.lblDescription?.text = desc
+            }
             
         }
     }
