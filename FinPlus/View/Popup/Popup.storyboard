@@ -225,13 +225,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lãi xuất vay 18%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fhJ-lp-gSF">
-                                                            <rect key="frame" x="91" y="15" width="209" height="21"/>
+                                                            <rect key="frame" x="91" y="15" width="208" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wNA-5s-xAY">
-                                                            <rect key="frame" x="23" y="50.5" width="277" height="1"/>
+                                                            <rect key="frame" x="23" y="50.5" width="276" height="1"/>
                                                             <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="rkD-g7-GVg"/>
@@ -239,11 +239,11 @@
                                                         </view>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="fhJ-lp-gSF" secondAttribute="trailing" constant="16" id="079-kw-x5E"/>
                                                         <constraint firstItem="efk-fN-ikr" firstAttribute="centerY" secondItem="Ksu-Vj-fmH" secondAttribute="centerY" id="15i-jp-jKu"/>
                                                         <constraint firstItem="fhJ-lp-gSF" firstAttribute="leading" secondItem="efk-fN-ikr" secondAttribute="trailing" constant="8" id="8iN-OD-fah"/>
                                                         <constraint firstItem="fhJ-lp-gSF" firstAttribute="trailing" secondItem="wNA-5s-xAY" secondAttribute="trailing" id="AGX-Bm-u8N"/>
                                                         <constraint firstItem="fhJ-lp-gSF" firstAttribute="centerY" secondItem="efk-fN-ikr" secondAttribute="centerY" id="QrY-qS-w4O"/>
-                                                        <constraint firstItem="fhJ-lp-gSF" firstAttribute="trailing" secondItem="Ksu-Vj-fmH" secondAttribute="trailingMargin" id="bEb-Yi-kZH"/>
                                                         <constraint firstAttribute="bottom" secondItem="wNA-5s-xAY" secondAttribute="bottom" id="gl9-Zb-sK1"/>
                                                         <constraint firstItem="wNA-5s-xAY" firstAttribute="leading" secondItem="efk-fN-ikr" secondAttribute="leading" id="lN6-pd-VBF"/>
                                                         <constraint firstItem="efk-fN-ikr" firstAttribute="leading" secondItem="Ksu-Vj-fmH" secondAttribute="leadingMargin" constant="8" id="q1X-8i-qhE"/>
