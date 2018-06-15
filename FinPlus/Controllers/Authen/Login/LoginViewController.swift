@@ -147,6 +147,7 @@ class LoginViewController: BaseViewController {
         verifyVC.verifyType = verifyType
         verifyVC.isExisted = isExisted
         verifyVC.account = account
+        verifyVC.pass = self.tfPass?.text ?? ""
         self.navigationController?.pushViewController(verifyVC, animated: true)
     }
 }
