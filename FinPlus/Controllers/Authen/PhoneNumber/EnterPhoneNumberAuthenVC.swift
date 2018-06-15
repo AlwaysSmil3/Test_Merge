@@ -53,16 +53,14 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
             .done(on: DispatchQueue.main) { [weak self]model in
                 guard let strongSelf = self else { return }
                 switch model.returnCode {
-                // alway push to verify viewcontroller
-                case 2:
-                    // old account
-//                    if let returnMessage = model.returnMsg {
-//                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil, completion: { (true) in
-//                            self?.pushToVerifyVC(verifyType: .Login)
-//                        })
-//                    }
+                case 0:
+                    // code 0.
+                    if let returnMessage = model.returnMsg {
+                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
+                        return
+                    }
                     break
-                case 1:
+                default :
                     // new account
                     DataManager.shared.currentAccount = strongSelf.tfPhoneNumber.text!
                     // save token
@@ -72,16 +70,9 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
                         }
                     }
                     // get config
-//                    strongSelf.getConfig()
+                    // strongSelf.getConfig()
                     userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fNEW_ACCOUNT_NAME)
-                    strongSelf.pushToVerifyVC(verifyType: .Login)
                     break
-                default :
-                    // code 0.
-                    if let returnMessage = model.returnMsg {
-                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
-                        return
-                    }
                 }
 
                 strongSelf.pushToVerifyVC(verifyType: .Login)
@@ -93,7 +84,6 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
         APIClient.shared.getConfigs().done(on: DispatchQueue.main) { [weak self] model in
             systemConfig = model
             guard let strongSelf = self else { return }
-
             userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fNEW_ACCOUNT_NAME)
             strongSelf.pushToVerifyVC(verifyType: .Login)
             }
