@@ -135,7 +135,10 @@ class LoanFirstViewController: BaseViewController {
     }
     
     @IBAction func showInfoFee(_ sender: Any) {
-        self.showToastWithMessage(message: "Lãi xuất vay thực tế sẽ được quyết định vào thời điểm duyệt")
+        let interestRateVC = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "InfoInterestRatePopupVC") as! InfoInterestRatePopupVC
+        
+        interestRateVC.titleString = "Thông tin lãi xuất"
+        interestRateVC.show()
     }
     
     @IBAction func showInfoServiceFee(_ sender: Any) {
