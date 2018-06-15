@@ -21,7 +21,6 @@ class VerifyOTPAuthenVC: BaseViewController {
     @IBOutlet var pinCodeTextField: PinCodeTextField!
     var verifyType : VerifyType = .Login
     var account = ""
-    var isExisted = false
     var count = 0
     var timer = Timer()
     var otp: String = ""
@@ -108,39 +107,24 @@ class VerifyOTPAuthenVC: BaseViewController {
                 .done(on: DispatchQueue.main) { [weak self] model in
                     if model.returnCode != 1 {
                         self?.otp = ""
-                        
                         // show alert
                         if let returnMessage = model.returnMsg {
                             self?.showGreenBtnMessage(title: "Verify OTP Failed", message: returnMessage, okTitle: "OK", cancelTitle: nil)
-                        }
-
-                    } else {
-                        guard let isNew = model.data?.isNew, isNew else {
-
-                            // Nếu là tài khoản củ sang login
-                            if self?.isExisted == true {
-                                // save account
-                                if self?.account != "" {
-                                    userDefault.set(self?.account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
-                                    DataManager.shared.currentAccount = (self?.account)!
-                                }
-                                // push to choice view
-                                self?.pushToChoiceKindUserVC()
-                                return
-                            }
-                            let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-
-                            self?.navigationController?.pushViewController(loginVC, animated: true)
-
                             return
                         }
-                        // Nếu là tài khoản mới sang cập nhật thông tin(pass, chon là invest hat broww...)
-
-                        let updatePassVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "SetPassAuthenVC") as! SetPassAuthenVC
-                        updatePassVC.setPassOrResetPass = .SetPass
-                        self?.navigationController?.pushViewController(updatePassVC, animated: true)
+                    } else {
+                        guard let isNew = model.data?.isNew, isNew else {
+                            // Nếu là tài khoản cũ -> sang login
+                            // save account
+                            if self?.account != "" {
+                                userDefault.set(self?.account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+                                DataManager.shared.currentAccount = (self?.account)!
+                            }
+                            self?.pushToLoginVC()
+                            return
+                        }
+                        self?.pushToSetPassword()
                     }
-
             }
                 .catch { error in}
             break
@@ -162,12 +146,16 @@ class VerifyOTPAuthenVC: BaseViewController {
         }
 
     }
-    func pushToChoiceKindUserVC() {
-        let choiceKindUser = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "ChoiceKindUserVC") as! ChoiceKindUserVC
-//        choiceKindUser.pw = self.tfPass.text!
-        self.navigationController?.pushViewController(choiceKindUser, animated: true)
+    func pushToLoginVC() {
+        let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        self.navigationController?.pushViewController(loginVC, animated: true)
     }
-    
+    func pushToSetPassword() {
+        let updatePassVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "SetPassAuthenVC") as! SetPassAuthenVC
+        updatePassVC.setPassOrResetPass = .SetPass
+        self.navigationController?.pushViewController(updatePassVC, animated: true)
+    }
+
 }
 
 extension VerifyOTPAuthenVC: PinCodeTextFieldDelegate {
