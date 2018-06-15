@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+enum UserType {
+    case Investor
+    case Borrwer
+}
 class LoginViewController: BaseViewController {
     
     @IBOutlet var lblHeaderAccount: UILabel!
@@ -78,15 +82,12 @@ class LoginViewController: BaseViewController {
                 // go to choice VC of back to enter phone number
                 switch model.returnCode {
                 case 3:
-                    // đang đăng nhập trên 1 thiết bị khác -> push to enter phone
-                    DataManager.shared.currentAccount = ""
-                    userDefault.set("", forKey: fNEW_ACCOUNT_NAME)
-                    userDefault.set("", forKey: fUSER_DEFAUT_ACCOUNT_NAME)
-                    if let returnMessage = model.returnMsg {
-                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil, completion: { (true) in
-                            self?.pushToPhoneVC()
-                        })
-                    }
+                    // đang đăng nhập trên 1 thiết bị khác -> push home investor or borrwer
+                    userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+                    DataManager.shared.currentAccount = account
+                    // check user type: investor or borrwer
+                    // push to home viewcontroller
+                    self?.pushToHomeVC(userType: .Investor)
                     break
                 case 1:
                     userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
@@ -110,6 +111,10 @@ class LoginViewController: BaseViewController {
                 }
             }
             .catch { error in }
+    }
+
+    func pushToHomeVC(userType: UserType) {
+        print("Push to user home viewcontroller")
     }
 
     func getConfig() {

@@ -35,8 +35,6 @@ class APIClient {
             // Init post request
             let _postRequest = NSMutableURLRequest()
             _postRequest.httpMethod = "POST"
-            _postRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            _postRequest.setValue("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", forHTTPHeaderField: "Content-Type")
             _postRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _postRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
             return _postRequest
@@ -49,8 +47,10 @@ class APIClient {
             // Init get request
             let _getRequest = NSMutableURLRequest()
             _getRequest.httpMethod = "GET"
-            _getRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            _getRequest.setValue("application/json, text/javascript, */*; q=0.01", forHTTPHeaderField: "Accept")
+//            _getRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+//            _getRequest.setValue("application/json, text/javascript, */*; q=0.01", forHTTPHeaderField: "Accept")
+            _getRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            _getRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
             return _getRequest
         }
     }
@@ -59,11 +59,11 @@ class APIClient {
     internal var putRequest : NSMutableURLRequest! {
         get {
             // Init get request
-            let _getRequest = NSMutableURLRequest()
-            _getRequest.httpMethod = "PUT"
-            _getRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            _getRequest.setValue("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", forHTTPHeaderField: "Content-Type")
-            return _getRequest
+            let _putRequest = NSMutableURLRequest()
+            _putRequest.httpMethod = "PUT"
+            _putRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            _putRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
+            return _putRequest
         }
     }
     
@@ -74,6 +74,16 @@ class APIClient {
     private func hanldeShowLoadingView(isShow: Bool) {
         if let viewController = UIApplication.shared.topViewController() {
             viewController.handleLoadingView(isShow: isShow)
+        }
+    }
+    
+    
+    /// Show alert Messeage
+    ///
+    /// - Parameter json: <#json description#>
+    func showErrorMessage(json: JSONDictionary) {
+        if let returnMess = json[API_RESPONSE_RETURN_MESSAGE] as? String {
+            UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMess, okTitle: "OK", cancelTitle: nil)
         }
     }
     

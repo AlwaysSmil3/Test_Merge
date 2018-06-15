@@ -34,7 +34,7 @@ class ChoiceKindUserVC: BaseViewController {
     // facebook Info
     var faceBookInfo: FacebookInfo?
     
-    var pw: String?
+    var pw: String = ""
     
     // Loại user: Browwer hay Investor, browwer = 0, investor = 1
     var accountType: TypeAccount? {
