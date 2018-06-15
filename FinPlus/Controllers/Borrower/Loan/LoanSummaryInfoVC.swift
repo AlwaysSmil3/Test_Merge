@@ -60,7 +60,16 @@ class LoanSummaryInfoVC: LoanBaseViewController {
     
     
     @IBAction func btnLoanTapped(_ sender: Any) {
-        self.loan()
+        
+        let messeage = "Mã xác thực sẽ được gửi tới " + DataManager.shared.currentAccount + " qua tin nhắn SMS sau khi bạn đồng ý. Bạn có chắc chắn không?"
+        
+        self.showAlertView(title: "Gửi đơn vay", message: messeage, okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ") { (status) in
+            
+            if status {
+                self.loan()
+            }
+        }
+        
     }
     
     
