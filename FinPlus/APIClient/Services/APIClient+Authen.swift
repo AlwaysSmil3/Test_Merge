@@ -132,6 +132,11 @@ extension APIClient {
             requestWithEndPoint(endPoint: EndPoint.Authen.Authen, params: params, isShowLoadingView: true, httpType: HTTPMethodType.PUT)
                 .done { json in
                     
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode == 1 else {
+                        self.showErrorMessage(json: json)
+                        return
+                    }
+                    
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = BrowwerInfo(object: data)
                         seal.fulfill(model)

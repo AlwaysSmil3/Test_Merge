@@ -26,6 +26,8 @@ class VerifyOTPAuthenVC: BaseViewController {
     var timer = Timer()
     var otp: String = ""
     
+    var pass: String = ""
+    
     //Cho Tạo Loan
     var loanResponseModel: LoanResponseModel?
     
@@ -153,7 +155,7 @@ class VerifyOTPAuthenVC: BaseViewController {
     }
     func pushToChoiceKindUserVC() {
         let choiceKindUser = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "ChoiceKindUserVC") as! ChoiceKindUserVC
-//        choiceKindUser.pw = self.tfPass.text!
+        choiceKindUser.pw = self.pass
         self.navigationController?.pushViewController(choiceKindUser, animated: true)
     }
     
