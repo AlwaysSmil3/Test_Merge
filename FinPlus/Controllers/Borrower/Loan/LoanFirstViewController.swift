@@ -66,8 +66,8 @@ class LoanFirstViewController: BaseViewController {
         self.termSlider.maximumValue = Float(loan.termMax!)
         self.termSlider.value = Float(loan.termMin!)
         
-        self.lblMoneySlider.text = "\(Int(loan.max!/MONEY_TERM_DISPLAY))" + " Triệu VND"
-        self.lblTermSlider.text = "\(Int(loan.termMax!))" + " Ngày"
+        self.lblMoneySlider.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY))" + " Triệu VND"
+        self.lblTermSlider.text = "\(Int(loan.termMin!))" + " Ngày"
         
         self.lblMinAmountSlider.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY)) TRIỆU"
         self.lblMinTermSlider.text = "\(Int(loan.termMin!)) NGÀY"
