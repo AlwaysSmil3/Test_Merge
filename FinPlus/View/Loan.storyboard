@@ -2317,31 +2317,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gửi đơn vay thành công!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hUI-yM-oQU">
-                                <rect key="frame" x="16" y="112" width="343" height="32"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_bg_verify_fb" translatesAutoresizingMaskIntoConstraints="NO" id="g2O-yu-bxu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gửi đơn vay thành công!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hUI-yM-oQU">
+                                <rect key="frame" x="32" y="112" width="311" height="32"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="26"/>
-                                <color key="textColor" red="0.031372549019607843" green="0.070588235294117646" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vv-LJ-Yww">
-                                <rect key="frame" x="16" y="160" width="343" height="72"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vv-LJ-Yww">
+                                <rect key="frame" x="32" y="160" width="311" height="72"/>
                                 <string key="text">Đơn vay của bạn đã được gửi đi thành công. Hệ thống sẽ tiến hành phê duyệt và đưa ra mức lãi suất, khoản thanh toán phù hợp nhất với bạn. Hãy bật thông báo để nhận kết quả sớm nhất!</string>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
-                                <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJo-Nm-bh4">
-                                <rect key="frame" x="16" y="264" width="343" height="46"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJo-Nm-bh4" customClass="AnimatableView" customModule="IBAnimatable">
+                                <rect key="frame" x="32" y="264" width="311" height="46"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_button_enable_login" translatesAutoresizingMaskIntoConstraints="NO" id="kzg-57-X7l">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="46"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9n-Yy-Mnd">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="46"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="46"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
-                                        <state key="normal" title="Về trang chủ">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="OK, về trang chủ">
+                                            <color key="titleColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2353,29 +2353,20 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="12n-gh-VnL"/>
                                     <constraint firstAttribute="trailing" secondItem="H9n-Yy-Mnd" secondAttribute="trailing" id="3uO-ma-2Q8"/>
-                                    <constraint firstItem="kzg-57-X7l" firstAttribute="top" secondItem="GJo-Nm-bh4" secondAttribute="top" id="BeS-FM-FkG"/>
                                     <constraint firstItem="H9n-Yy-Mnd" firstAttribute="top" secondItem="GJo-Nm-bh4" secondAttribute="top" id="Fkf-S1-bTo"/>
-                                    <constraint firstItem="kzg-57-X7l" firstAttribute="leading" secondItem="GJo-Nm-bh4" secondAttribute="leading" id="NiW-9v-8xH"/>
                                     <constraint firstAttribute="bottom" secondItem="H9n-Yy-Mnd" secondAttribute="bottom" id="ZkK-Fd-0tL"/>
-                                    <constraint firstAttribute="trailing" secondItem="kzg-57-X7l" secondAttribute="trailing" id="gch-Mf-VJN"/>
-                                    <constraint firstAttribute="bottom" secondItem="kzg-57-X7l" secondAttribute="bottom" id="pue-Lt-MVj"/>
                                     <constraint firstItem="H9n-Yy-Mnd" firstAttribute="leading" secondItem="GJo-Nm-bh4" secondAttribute="leading" id="tMi-xy-qae"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fme-WN-AXb">
-                                <rect key="frame" x="135" y="326" width="105" height="33"/>
-                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
-                                <state key="normal" title="Bật thông báo">
-                                    <color key="titleColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnEnableNotificationTapped:" destination="f3g-t4-IvH" eventType="touchUpInside" id="xmf-vW-wsW"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -2384,12 +2375,14 @@
                             <constraint firstItem="GJo-Nm-bh4" firstAttribute="centerX" secondItem="3Eh-90-WVL" secondAttribute="centerX" id="FyT-Qc-Nlw"/>
                             <constraint firstItem="9Vv-LJ-Yww" firstAttribute="centerX" secondItem="3Eh-90-WVL" secondAttribute="centerX" id="NBb-iO-J6e"/>
                             <constraint firstItem="9Vv-LJ-Yww" firstAttribute="top" secondItem="hUI-yM-oQU" secondAttribute="bottom" constant="16" id="U2B-oz-Mal"/>
-                            <constraint firstItem="hUI-yM-oQU" firstAttribute="leading" secondItem="3Eh-90-WVL" secondAttribute="leading" constant="16" id="WUl-1c-3Rf"/>
-                            <constraint firstItem="Fme-WN-AXb" firstAttribute="top" secondItem="GJo-Nm-bh4" secondAttribute="bottom" constant="16" id="WkW-Ny-aYp"/>
+                            <constraint firstItem="hUI-yM-oQU" firstAttribute="leading" secondItem="3Eh-90-WVL" secondAttribute="leading" constant="32" id="WUl-1c-3Rf"/>
+                            <constraint firstAttribute="trailing" secondItem="g2O-yu-bxu" secondAttribute="trailing" id="XaZ-Dv-N7e"/>
                             <constraint firstItem="GJo-Nm-bh4" firstAttribute="top" secondItem="9Vv-LJ-Yww" secondAttribute="bottom" constant="32" id="aow-YU-ndz"/>
                             <constraint firstItem="GJo-Nm-bh4" firstAttribute="leading" secondItem="9Vv-LJ-Yww" secondAttribute="leading" id="hss-MC-T1w"/>
+                            <constraint firstItem="g2O-yu-bxu" firstAttribute="top" secondItem="3Eh-90-WVL" secondAttribute="top" id="itj-ma-8Xc"/>
                             <constraint firstItem="hUI-yM-oQU" firstAttribute="top" secondItem="17G-Jn-lMb" secondAttribute="bottom" constant="92" id="kKd-KT-dnm"/>
-                            <constraint firstItem="Fme-WN-AXb" firstAttribute="centerX" secondItem="3Eh-90-WVL" secondAttribute="centerX" id="s6A-y3-zYT"/>
+                            <constraint firstItem="g2O-yu-bxu" firstAttribute="leading" secondItem="3Eh-90-WVL" secondAttribute="leading" id="m3f-og-6cp"/>
+                            <constraint firstAttribute="bottom" secondItem="g2O-yu-bxu" secondAttribute="bottom" id="u9V-G7-oDY"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -3684,7 +3677,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg_button_enable_login" width="311" height="44"/>
         <image name="ic_back" width="20" height="18"/>
         <image name="ic_disclosureIndicator1" width="8" height="13"/>
         <image name="ic_disclosureIndicator2" width="5" height="7"/>
@@ -3692,5 +3684,6 @@
         <image name="ic_loan_add" width="18" height="18"/>
         <image name="ic_loan_rectangle1" width="102" height="102"/>
         <image name="ic_questInfo" width="8" height="9"/>
+        <image name="img_bg_verify_fb" width="375" height="667"/>
     </resources>
 </document>
