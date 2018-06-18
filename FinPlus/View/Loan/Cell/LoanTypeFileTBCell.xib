@@ -11,6 +11,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
         <array key="SF-Pro-Display-Semibold.otf">
             <string>SFProDisplay-Semibold</string>
         </array>
@@ -40,6 +43,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loan_add" translatesAutoresizingMaskIntoConstraints="NO" id="sr0-wS-eg9">
                                 <rect key="frame" x="162.5" y="72" width="18" height="18"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chụp ảnh" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hn5-En-wPs">
+                                <rect key="frame" x="32" y="132.5" width="279" height="13.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.55686274509803924" green="0.63921568627450975" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -47,8 +56,11 @@
                             <constraint firstAttribute="width" secondItem="mZ4-jl-d8H" secondAttribute="height" multiplier="343:162" id="BCp-gz-24i"/>
                             <constraint firstItem="sr0-wS-eg9" firstAttribute="centerX" secondItem="mZ4-jl-d8H" secondAttribute="centerX" id="DGv-lo-SkT"/>
                             <constraint firstItem="hmx-QV-WET" firstAttribute="top" secondItem="mZ4-jl-d8H" secondAttribute="top" id="Msp-3E-mgo"/>
+                            <constraint firstItem="Hn5-En-wPs" firstAttribute="bottom" secondItem="hmx-QV-WET" secondAttribute="bottom" constant="-16" id="RyM-QJ-pDu"/>
                             <constraint firstItem="hmx-QV-WET" firstAttribute="leading" secondItem="mZ4-jl-d8H" secondAttribute="leading" id="TXs-0y-OEr"/>
                             <constraint firstAttribute="trailing" secondItem="hmx-QV-WET" secondAttribute="trailing" id="Vtl-D1-Fvc"/>
+                            <constraint firstItem="Hn5-En-wPs" firstAttribute="leading" secondItem="hmx-QV-WET" secondAttribute="leading" constant="32" id="efa-PL-sCb"/>
+                            <constraint firstItem="Hn5-En-wPs" firstAttribute="trailing" secondItem="hmx-QV-WET" secondAttribute="trailing" constant="-32" id="i8X-51-XFv"/>
                             <constraint firstAttribute="bottom" secondItem="hmx-QV-WET" secondAttribute="bottom" id="lSF-0b-Sj0"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -71,6 +83,7 @@
             <connections>
                 <outlet property="imgAdd" destination="sr0-wS-eg9" id="6Hf-1T-hAr"/>
                 <outlet property="imgValue" destination="hmx-QV-WET" id="0cz-H7-GPa"/>
+                <outlet property="lblDescription" destination="Hn5-En-wPs" id="exB-dK-j5W"/>
                 <outlet property="lblTitle" destination="Pfx-cb-lHr" id="toH-d7-o55"/>
             </connections>
             <point key="canvasLocation" x="65.5" y="-14"/>

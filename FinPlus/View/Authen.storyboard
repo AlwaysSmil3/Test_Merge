@@ -39,13 +39,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QuV-6P-ZyN">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w5x-uE-VxW">
-                                                <rect key="frame" x="32" y="298.5" width="311" height="1"/>
-                                                <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="Kcn-qe-GBK"/>
-                                                </constraints>
-                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhập số điện thoại" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIA-4W-VZA">
                                                 <rect key="frame" x="32" y="125" width="311" height="31.5"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="26"/>
@@ -53,13 +46,29 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vui lòng nhập số điện thoại của bạn để đăng ký mới hoặc đăng nhập nếu bạn đã có tài khoản" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mS8-di-apd">
-                                                <rect key="frame" x="32" y="172.5" width="311" height="61"/>
+                                                <rect key="frame" x="32" y="172" width="311" height="61"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w5x-uE-VxW">
+                                                <rect key="frame" x="32" y="297.5" width="311" height="1"/>
+                                                <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="Kcn-qe-GBK"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+84" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oe6-ZR-NGF">
+                                                <rect key="frame" x="32" y="273" width="40" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="y5d-JY-NLS"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập số điện thoại của bạn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LA6-pE-cup" customClass="AnimatableTextField" customModule="IBAnimatable">
-                                                <rect key="frame" x="32" y="273.5" width="311" height="21"/>
+                                                <rect key="frame" x="80" y="273" width="263" height="21"/>
                                                 <color key="textColor" red="0.031372549019607843" green="0.070588235294117646" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -68,7 +77,7 @@
                                                 </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eBy-V8-v74">
-                                                <rect key="frame" x="32" y="335.5" width="311" height="46"/>
+                                                <rect key="frame" x="32" y="334.5" width="311" height="46"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_button_disable_login" translatesAutoresizingMaskIntoConstraints="NO" id="1QY-9T-iAF">
                                                         <rect key="frame" x="0.0" y="0.0" width="311" height="46"/>
@@ -104,7 +113,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bằng cách ấn nút 'Tiếp tục' ở trên, tôi đã hiểu và đồng ý với điều khoản sử dụng của Finsmart " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ada-Jv-fAp">
-                                                <rect key="frame" x="32" y="397.5" width="311" height="26.5"/>
+                                                <rect key="frame" x="32" y="396.5" width="311" height="26.5"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -113,23 +122,26 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="w5x-uE-VxW" firstAttribute="trailing" secondItem="LA6-pE-cup" secondAttribute="trailing" id="2j9-XT-nA4"/>
+                                            <constraint firstItem="LA6-pE-cup" firstAttribute="leading" secondItem="Oe6-ZR-NGF" secondAttribute="trailing" constant="8" id="3Qg-lm-IQv"/>
                                             <constraint firstItem="mIA-4W-VZA" firstAttribute="top" secondItem="QuV-6P-ZyN" secondAttribute="top" constant="125" id="5Li-8l-dtB"/>
+                                            <constraint firstItem="w5x-uE-VxW" firstAttribute="leading" secondItem="QuV-6P-ZyN" secondAttribute="leading" constant="32" id="7hW-nP-qqP"/>
                                             <constraint firstItem="ada-Jv-fAp" firstAttribute="trailing" secondItem="eBy-V8-v74" secondAttribute="trailing" id="BLU-fI-EF4"/>
-                                            <constraint firstItem="eBy-V8-v74" firstAttribute="leading" secondItem="w5x-uE-VxW" secondAttribute="leading" id="DIn-w4-RGL"/>
-                                            <constraint firstItem="eBy-V8-v74" firstAttribute="trailing" secondItem="w5x-uE-VxW" secondAttribute="trailing" id="EBv-yF-89b"/>
+                                            <constraint firstItem="Oe6-ZR-NGF" firstAttribute="leading" secondItem="QuV-6P-ZyN" secondAttribute="leading" constant="32" id="G7Z-Bj-bRz"/>
                                             <constraint firstAttribute="trailing" secondItem="mIA-4W-VZA" secondAttribute="trailing" constant="32" id="GI7-aT-1qT"/>
                                             <constraint firstItem="ada-Jv-fAp" firstAttribute="leading" secondItem="eBy-V8-v74" secondAttribute="leading" id="NUH-Rh-hex"/>
                                             <constraint firstItem="LA6-pE-cup" firstAttribute="top" secondItem="mS8-di-apd" secondAttribute="bottom" constant="40" id="RnR-9y-HB0"/>
                                             <constraint firstItem="w5x-uE-VxW" firstAttribute="top" secondItem="LA6-pE-cup" secondAttribute="bottom" constant="4" id="Rt9-SS-m9Q"/>
                                             <constraint firstItem="ada-Jv-fAp" firstAttribute="top" secondItem="eBy-V8-v74" secondAttribute="bottom" constant="16" id="TOn-o4-FRQ"/>
-                                            <constraint firstItem="LA6-pE-cup" firstAttribute="leading" secondItem="mS8-di-apd" secondAttribute="leading" id="Zjk-kc-4KB"/>
                                             <constraint firstItem="LA6-pE-cup" firstAttribute="trailing" secondItem="mS8-di-apd" secondAttribute="trailing" id="bGP-zE-ZSS"/>
+                                            <constraint firstItem="Oe6-ZR-NGF" firstAttribute="top" secondItem="mS8-di-apd" secondAttribute="bottom" constant="40" id="c2a-d1-cHa"/>
                                             <constraint firstItem="mS8-di-apd" firstAttribute="top" secondItem="mIA-4W-VZA" secondAttribute="bottom" constant="16" id="crc-7c-56V"/>
                                             <constraint firstItem="mS8-di-apd" firstAttribute="trailing" secondItem="mIA-4W-VZA" secondAttribute="trailing" id="f3Q-tv-hMb"/>
                                             <constraint firstItem="mS8-di-apd" firstAttribute="leading" secondItem="mIA-4W-VZA" secondAttribute="leading" id="g8o-BF-KPv"/>
+                                            <constraint firstItem="w5x-uE-VxW" firstAttribute="top" secondItem="Oe6-ZR-NGF" secondAttribute="bottom" constant="4" id="oqe-dS-m88"/>
                                             <constraint firstItem="eBy-V8-v74" firstAttribute="top" secondItem="w5x-uE-VxW" secondAttribute="bottom" constant="36" id="ow8-dv-fNZ"/>
                                             <constraint firstItem="mIA-4W-VZA" firstAttribute="leading" secondItem="QuV-6P-ZyN" secondAttribute="leading" constant="32" id="pVp-vs-z6R"/>
-                                            <constraint firstItem="w5x-uE-VxW" firstAttribute="leading" secondItem="LA6-pE-cup" secondAttribute="leading" id="yYb-oe-elw"/>
+                                            <constraint firstItem="eBy-V8-v74" firstAttribute="leading" secondItem="QuV-6P-ZyN" secondAttribute="leading" constant="32" id="sWk-Up-GXG"/>
+                                            <constraint firstAttribute="trailing" secondItem="eBy-V8-v74" secondAttribute="trailing" constant="32" id="z11-my-gBu"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -373,6 +385,7 @@
                     </view>
                     <connections>
                         <outlet property="btnContinue" destination="AvD-8C-7WN" id="Mj0-td-dNj"/>
+                        <outlet property="descriptionLb" destination="qNd-TF-SJl" id="cg6-z3-1Tn"/>
                         <outlet property="imgBgBtnContinue" destination="jAh-Qp-M3K" id="OEx-Fl-jdu"/>
                         <outlet property="lblLimitTime" destination="JHo-y8-NZJ" id="NyN-kt-BTQ"/>
                         <outlet property="pinCodeTextField" destination="xjd-xn-ibq" id="Tz0-SF-kwN"/>
@@ -600,7 +613,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo" translatesAutoresizingMaskIntoConstraints="NO" id="t5d-Pw-Ox0">
                                 <rect key="frame" x="133" y="40" width="109" height="14"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tạo tài khoản mới" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSX-Wb-EcM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xin chào!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSX-Wb-EcM">
                                 <rect key="frame" x="32" y="101" width="311" height="31.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="26"/>
                                 <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
@@ -683,7 +696,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_growth1" translatesAutoresizingMaskIntoConstraints="NO" id="Gqp-Z0-mu4">
                                         <rect key="frame" x="58.5" y="52" width="55" height="55"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lựa chọn trong các gói vay được tăng lên từ người vay để đầu tư/ cho vay và nhận được lãi xuất sau đó." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JE0-6c-Fii">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lựa chọn trong các gói vay được đăng lên từ người vay để đầu tư/ cho vay và nhận được lãi xuất sau đó." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JE0-6c-Fii">
                                         <rect key="frame" x="17" y="188" width="137.5" height="53"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                         <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>

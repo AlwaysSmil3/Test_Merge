@@ -151,7 +151,7 @@ class BrrowerHome: UIView {
             amountPayMounth.text = "x VND"
         }
         
-        if let version = DataManager.shared.version {
+        if let version = DataManager.shared.config {
             for serviceFee in lblServiceFee {
                 serviceFee.text = FinPlusHelper.formatDisplayCurrency(Double((Int32(version.serviceFee!) * loan.amount!) / 100)) + " VND"
             }

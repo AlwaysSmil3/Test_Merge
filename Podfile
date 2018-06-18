@@ -16,7 +16,7 @@ pod 'DropDown'
 pod 'Alamofire'
 pod 'NVActivityIndicatorView'
 
-pod 'RealmSwift'
+pod 'SDWebImage', '~> 4.0'
 pod 'JSONWebToken'
 
 pod 'FBSDKCoreKit'

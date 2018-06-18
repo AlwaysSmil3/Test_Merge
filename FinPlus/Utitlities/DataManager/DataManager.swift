@@ -28,10 +28,12 @@ class DataManager {
     var loanID: Int32?
     
     // Version, config
-    var version: Version?
-
     var config: Config?
     
+    // Cần cập nhật data khi có thay đổi version ở api Config
+    var isUpdateFromConfig: Bool = true
+    
+    //Data from LoanBuilder json
     var loanBuilder: [LoanBuilderBase] = []
     
     

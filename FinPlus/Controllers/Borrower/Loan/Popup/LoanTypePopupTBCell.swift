@@ -11,7 +11,10 @@ import Foundation
 class LoanTypePopupTBCell: UITableViewCell {
     
     @IBOutlet var lblValue: UILabel!
+    @IBOutlet var lblSubTitle: UILabel!
+    @IBOutlet var imgIcon: UIImageView!
     
+
 }
 
 

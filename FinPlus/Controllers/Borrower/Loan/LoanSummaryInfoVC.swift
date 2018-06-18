@@ -8,40 +8,34 @@
 
 import Foundation
 
-class LoanSummaryInfoVC: LoanBaseViewController {
+class LoanSummaryInfoVC: BaseViewController {
     
+    @IBOutlet var mainTBView: UITableView!
     
-    @IBOutlet var lblAccountName: UILabel!
-    @IBOutlet var lblPhoneNumber: UILabel!
-    @IBOutlet var lblAmountLoan: UILabel!
-    @IBOutlet var lblTermLoan: UILabel!
-    @IBOutlet var lblTempFee: UILabel!
-    @IBOutlet var lblTempTotalAmount: UILabel!
-    @IBOutlet var lblTempPayAMonth: UILabel!
-    @IBOutlet var lblStatus: UILabel!
-    
+    var dataSource: [LoanSummaryModel] = [
+        LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount),
+        LoanSummaryModel(name: "Ngày tạo đơn", value: "Date"),
+        LoanSummaryModel(name: "Số tiền vay", value: FinPlusHelper.formatDisplayCurrency(Double(DataManager.shared.loanInfo.amount)) + "đ"),
+        LoanSummaryModel(name: "Kỳ hạn vay", value: "\(DataManager.shared.loanInfo.term)"),
+        LoanSummaryModel(name: "Lãi xuất dự kiến", value: ""),
+        LoanSummaryModel(name: "Phí dịch vụ", value: ""),
+        LoanSummaryModel(name: "Trả góp dự kiến hàng tháng", value: ""),
+        LoanSummaryModel(name: "Mục đích vay", value: ""),
+        
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.updateUI()
+        self.mainTBView.separatorColor = UIColor.clear
+        self.mainTBView.tableFooterView = UIView()
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.updateDataToServer()
-    }
-    
-    private func updateUI() {
-        
-        self.lblAccountName.text = "Xin chào, " + DataManager.shared.loanInfo.userInfo.fullName
-        self.lblPhoneNumber.text = "Số điện thoại: " + DataManager.shared.currentAccount
-        
-        self.lblAmountLoan.text = "Số tiền đăng ký vay: " +  FinPlusHelper.formatDisplayCurrency(Double(DataManager.shared.loanInfo.amount)) + " VND"
-        
-        self.lblTermLoan.text = "Kỳ hạn vay: " + "\(DataManager.shared.loanInfo.term)"
-        
+
     }
     
     
@@ -60,9 +54,39 @@ class LoanSummaryInfoVC: LoanBaseViewController {
     
     
     @IBAction func btnLoanTapped(_ sender: Any) {
-        self.loan()
+        
+        let messeage = "Mã xác thực sẽ được gửi tới " + DataManager.shared.currentAccount + " qua tin nhắn SMS sau khi bạn đồng ý. Bạn có chắc chắn không?"
+        
+        self.showAlertView(title: "Gửi đơn vay", message: messeage, okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ") { (status) in
+            
+            if status {
+                self.loan()
+            }
+        }
+        
+    }
+    
+}
+
+extension LoanSummaryInfoVC: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.dataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Loan_Type_Popup_TB_Cell", for: indexPath) as! LoanTypePopupTBCell
+        
+        let model = self.dataSource[indexPath.row]
+        
+        cell.lblValue.text = model.name
+        cell.lblSubTitle.text = model.value
+        
+        return cell
     }
     
     
     
 }
+
+

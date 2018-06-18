@@ -25,7 +25,7 @@ class AddressTBViewController: BaseViewController {
     var delegate: AddressModelDelegate?
     
     var type: TypeAddressTBView = .City
-    var id: Int?
+    var id: Int16?
     
     var dataSource: [Model1] = [] {
         didSet {
@@ -71,7 +71,7 @@ class AddressTBViewController: BaseViewController {
             .catch { error in }
     }
     
-    private func getDistricts(cityID: Int) {
+    private func getDistricts(cityID: Int16) {
         APIClient.shared.getDistricts(cityID: cityID)
             .done(on: DispatchQueue.main) { [weak self]model in
                 print("Districts\(model)")
@@ -83,7 +83,7 @@ class AddressTBViewController: BaseViewController {
         
     }
     
-    private func getComunes(districtsID: Int) {
+    private func getComunes(districtsID: Int16) {
         APIClient.shared.getCommunes(districtID: districtsID)
             .done(on: DispatchQueue.main) { [weak self]model in
                 print("Commune \(model)")

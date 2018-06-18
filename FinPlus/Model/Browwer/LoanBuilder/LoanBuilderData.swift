@@ -17,7 +17,7 @@ public struct LoanBuilderData {
   }
 
   // MARK: Properties
-  public var id: Int?
+  public var id: Int16?
   public var title: String?
 
   // MARK: SwiftyJSON Initializers
@@ -33,7 +33,7 @@ public struct LoanBuilderData {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    id = json[SerializationKeys.id].int ?? 0
+    id = json[SerializationKeys.id].int16 ?? 0
     title = json[SerializationKeys.title].string ?? ""
   }
 
