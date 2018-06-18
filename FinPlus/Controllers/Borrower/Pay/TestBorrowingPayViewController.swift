@@ -60,6 +60,10 @@ public struct BorrowingData {
 
 class TestBorrowingPayViewController: UIViewController {
 
+    @IBAction func showPayHistoryVC(_ sender: Any) {
+        let payHistoryVC = TestPayHistoryViewController(nibName: "TestPayHistoryViewController", bundle: nil)
+        self.present(payHistoryVC, animated: true, completion: nil)
+    }
     enum Cell {
         case InfoCell
         case PayTypeCell
@@ -125,12 +129,12 @@ class TestBorrowingPayViewController: UIViewController {
         let payType1 = PayType(id: 1, typeTitle: "Phai tra thang nay", expireDate: Date(), originAmount: 1000000, interestAmount: 500000, sumAmount: 20000000)
         let payType2 = PayType(id: 2, typeTitle: "Tra thang sau", expireDate: Date(), originAmount: 4000000, interestAmount: 600000, sumAmount: 90000000)
         let payAll = PayAllBefore(id: 1, typeTitle: "Tra tat ca luon", originAmount: 3000000, interestAmount: 100000, feeToPayBefore: 2000000, sumAmount: 7000000)
-        let wallet1 = Wallet(wID: 1, wType: 2, wAccountName: "0987654231234", wName: "MoMo", wNumber: "10231231")
+        let wallet1 = Wallet(wID: 1, wType: 1, wAccountName: "0987654231234", wName: "MoMo", wNumber: "10231231")
         let wallet2 = Wallet(wID: 1, wType: 2, wAccountName: "0987654231234", wName: "PayPal", wNumber: "10231232")
-        let wallet3 = Wallet(wID: 1, wType: 2, wAccountName: "0987654231234", wName: "Wallet3", wNumber: "10231233")
+//        let wallet3 = Wallet(wID: 1, wType: 2, wAccountName: "0987654231234", wName: "Wallet3", wNumber: "10231233")
 
         let payTypeArray = [payType1, payType2]
-        let walletArray = [wallet1, wallet2, wallet3]
+        let walletArray = [wallet1, wallet2]
         borrowingPay = BorrowingData(basicInfo: infoData, payType: payTypeArray, payAll: payAll, walletList: walletArray)
 
         configureTableView()
@@ -213,11 +217,11 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             cell.tableData = cellData.data as! BorrowingInfoBasicData
             cell.tableView.layer.cornerRadius = 5
             cell.tableView.layer.borderWidth = 1
-            cell.tableView.layer.borderColor = UIColor.lightGray.cgColor
+            cell.tableView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
         } else if let cell = cell as? PayTypeTableViewCell {
             cell.containView.layer.borderWidth = 1
             cell.containView.layer.cornerRadius = 5
-            cell.containView.layer.borderColor = UIColor.lightGray.cgColor
+            cell.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
             cell.selectImg.image = #imageLiteral(resourceName: "cellSelectImg")
             let data = cellData.data as! PayType
             cell.titleLb.text = "Thanh toán tháng này"
@@ -236,7 +240,7 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             cell.selectionStyle = .none
             cell.containView.layer.borderWidth = 1
             cell.containView.layer.cornerRadius = 5
-            cell.containView.layer.borderColor = UIColor.lightGray.cgColor
+            cell.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
             cell.selectImg.image = #imageLiteral(resourceName: "cellSelectImg")
             let data = cellData.data as! PayAllBefore
             cell.titleLb.text = "Thanh toán trước toàn bộ"
@@ -255,8 +259,13 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             cell.selectImg.image = #imageLiteral(resourceName: "cellSelectImg")
             cell.containView.layer.borderWidth = 1
             cell.containView.layer.cornerRadius = 5
-            cell.containView.layer.borderColor = UIColor.lightGray.cgColor
+            cell.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
             let data = cellData.data as! Wallet
+            if data.walletType == 1 {
+                cell.walletImg.image = #imageLiteral(resourceName: "momo")
+            } else {
+                cell.walletImg.image = #imageLiteral(resourceName: "paypal")
+            }
             cell.walletNameLb.text = data.walletName
             cell.accountNumberLb.text = data.walletNumber
             if let selected = self.walletSelected {
@@ -268,7 +277,7 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
         } else if let cell = cell as? AddNewWalletTableViewCell {
             cell.containView.layer.borderWidth = 1
             cell.containView.layer.cornerRadius = 5
-            cell.containView.layer.borderColor = UIColor.lightGray.cgColor
+            cell.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
             cell.selectionStyle = .none
 
         }

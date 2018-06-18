@@ -124,7 +124,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupStartVC() {
         // lionel fix to test
-//        let testBorrowingPayVC = TestBorrowingPayViewController(nibName: "TestBorrowingPayViewController", bundle: nil) as! TestBorrowingPayViewController
+//        let testBorrowingPayVC = TestBorrowingPayViewController(nibName: "TestBorrowingPayViewController", bundle: nil)
 //        self.window?.rootViewController = testBorrowingPayVC
 //        return
         // end

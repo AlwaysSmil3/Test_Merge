@@ -22,18 +22,32 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="sh9-mu-YYs">
-                    <rect key="frame" x="8" y="28" width="359" height="631"/>
+                    <rect key="frame" x="8" y="28" width="359" height="575"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLx-6X-dxj">
+                    <rect key="frame" x="32" y="611" width="311" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="oHK-YD-N7P"/>
+                    </constraints>
+                    <state key="normal" title="Lịch sử thanh toán"/>
+                    <connections>
+                        <action selector="showPayHistoryVC:" destination="-1" eventType="touchUpInside" id="PqR-Vd-cph"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="sh9-mu-YYs" secondAttribute="bottom" constant="8" id="Drv-a5-Bql"/>
+                <constraint firstItem="KLx-6X-dxj" firstAttribute="top" secondItem="sh9-mu-YYs" secondAttribute="bottom" constant="8" id="HnM-Zp-fIf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sh9-mu-YYs" secondAttribute="trailing" constant="8" id="JMq-au-jqa"/>
                 <constraint firstItem="sh9-mu-YYs" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="Rmb-UE-Pwq"/>
                 <constraint firstItem="sh9-mu-YYs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="df1-gY-8yK"/>
+                <constraint firstItem="KLx-6X-dxj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="eK6-PE-TZU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="KLx-6X-dxj" secondAttribute="bottom" constant="16" id="pQl-Cp-FIn"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KLx-6X-dxj" secondAttribute="trailing" constant="32" id="t4R-LK-ZSh"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="84.5" y="125.5"/>
         </view>
     </objects>
 </document>
