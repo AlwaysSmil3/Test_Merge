@@ -56,11 +56,6 @@ class LoanInfoJobVC: LoanBaseViewController {
             return
         }
         
-        if DataManager.shared.loanInfo.jobInfo.companyPhoneNumber.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại cơ quan.")
-            return
-        }
-        
         completion()
     }
     

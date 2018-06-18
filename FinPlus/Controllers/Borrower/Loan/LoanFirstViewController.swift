@@ -66,8 +66,8 @@ class LoanFirstViewController: BaseViewController {
         self.termSlider.maximumValue = Float(loan.termMax!)
         self.termSlider.value = Float(loan.termMin!)
         
-        self.lblMoneySlider.text = "\(Int(loan.max!/MONEY_TERM_DISPLAY))" + " Triệu VND"
-        self.lblTermSlider.text = "\(Int(loan.termMax!))" + " Ngày"
+        self.lblMoneySlider.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY))" + " Triệu VND"
+        self.lblTermSlider.text = "\(Int(loan.termMin!))" + " Ngày"
         
         self.lblMinAmountSlider.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY)) TRIỆU"
         self.lblMinTermSlider.text = "\(Int(loan.termMin!)) NGÀY"
@@ -135,7 +135,10 @@ class LoanFirstViewController: BaseViewController {
     }
     
     @IBAction func showInfoFee(_ sender: Any) {
-        self.showToastWithMessage(message: "Lãi xuất vay thực tế sẽ được quyết định vào thời điểm duyệt")
+        let interestRateVC = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "InfoInterestRatePopupVC") as! InfoInterestRatePopupVC
+        
+        interestRateVC.titleString = "Thông tin lãi xuất"
+        interestRateVC.show()
     }
     
     @IBAction func showInfoServiceFee(_ sender: Any) {

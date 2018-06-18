@@ -194,6 +194,7 @@ class LoanBaseViewController: BaseViewController {
             if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeFileTBCell {
                 cell.imgValue?.image = img
                 cell.imgAdd?.isHidden = true
+                cell.lblDescription?.isHidden = true
             }
         }
     }
