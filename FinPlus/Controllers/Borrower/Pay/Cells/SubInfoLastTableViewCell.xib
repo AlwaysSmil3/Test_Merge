@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Semibold.otf">
+            <string>SFProDisplay-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="KGk-i7-Jjw" customClass="SubInfoLastTableViewCell" customModule="FinPlus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="343" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày thanh toán tiếp theo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D53-tu-l5k">
+                        <rect key="frame" x="8" y="16" width="183" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="2Vt-K2-bYI"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15/8/2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1S-uz-Eau">
+                        <rect key="frame" x="253.5" y="16" width="81" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="ikx-gV-zoV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
+                        <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chú ý: Đơn vay này còn 5 ngày nữa đến ngày thanh toán tiếp theo Chú ý: Đơn vay này còn 5 ngày nữa đến ngày thanh toán tiếp theo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ds-Ub-wnT">
+                        <rect key="frame" x="8" y="45" width="327" height="38.5"/>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                        <color key="textColor" red="0.55686274509803924" green="0.63921568627450975" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="w1S-uz-Eau" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="AQU-MI-HDe"/>
+                    <constraint firstItem="6Ds-Ub-wnT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="AcR-f0-Cc5"/>
+                    <constraint firstAttribute="trailing" secondItem="w1S-uz-Eau" secondAttribute="trailing" constant="8" id="Bsa-XL-PnJ"/>
+                    <constraint firstItem="D53-tu-l5k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="KAP-yo-aEq"/>
+                    <constraint firstAttribute="bottom" secondItem="6Ds-Ub-wnT" secondAttribute="bottom" constant="16" id="YRr-mz-XOy"/>
+                    <constraint firstAttribute="trailing" secondItem="6Ds-Ub-wnT" secondAttribute="trailing" constant="8" id="bcj-df-zq1"/>
+                    <constraint firstItem="6Ds-Ub-wnT" firstAttribute="top" secondItem="D53-tu-l5k" secondAttribute="bottom" constant="8" id="fUi-Hz-iXz"/>
+                    <constraint firstItem="D53-tu-l5k" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="jTc-NS-3qf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="detailLb" destination="6Ds-Ub-wnT" id="Igh-5C-sX3"/>
+                <outlet property="titleLb" destination="D53-tu-l5k" id="stS-lF-p30"/>
+                <outlet property="valueLb" destination="w1S-uz-Eau" id="txO-7F-Z5v"/>
+            </connections>
+            <point key="canvasLocation" x="44" y="110"/>
+        </tableViewCell>
+    </objects>
+</document>
