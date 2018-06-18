@@ -60,13 +60,18 @@ class BorrowerTabBarController: UITabBarController {
         
         super.viewDidLoad()
         
-        let sHome = UIStoryboard(name: "HomeBrowwer", bundle: nil)
+        let sHome = UIStoryboard(name: "Loan", bundle: nil)
         let swallet = UIStoryboard.init(name: "Wallet", bundle: nil)
         let sLoanManager = UIStoryboard.init(name: "LoanManager", bundle: nil)
         let sNotification = UIStoryboard.init(name: "Notification", bundle: nil)
         let sProfile = UIStoryboard.init(name: "Profile", bundle: nil)
         
-        let v1 = sHome.instantiateViewController(withIdentifier: "BorrowHomeViewControllerNav")
+//        let v1 = sHome.instantiateViewController(withIdentifier: "BorrowHomeViewControllerNav")
+        let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
+        object_setClass(v1, LoanStatusViewController.self)
+//        return (vc as! LoanStatusViewController)
+        
+//        let v1 = LoanStatusViewController() sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
         let v2 = sLoanManager.instantiateViewController(withIdentifier: "LOAN_MANAGER_NAVI")
         let v3 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI")
         let v4 = sNotification.instantiateViewController(withIdentifier: "NOTIFICATION_NAVI")
