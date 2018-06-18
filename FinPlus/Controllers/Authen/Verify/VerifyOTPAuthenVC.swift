@@ -16,6 +16,7 @@ enum VerifyType {
 }
 class VerifyOTPAuthenVC: BaseViewController {
 
+    @IBOutlet weak var descriptionLb: UILabel!
     @IBOutlet weak var resendCodeBtn: UIButton!
     @IBOutlet var lblLimitTime: UILabel!
     @IBOutlet var pinCodeTextField: PinCodeTextField!
@@ -30,7 +31,16 @@ class VerifyOTPAuthenVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        switch verifyType {
+        case .Login:
+            self.descriptionLb.text = "Hãy điền 6 số được gửi kèm tin nhắn được gửi vào số điện thoại của bạn. Thời gian còn lại:"
+            break
+        case .Forgot :
+            self.descriptionLb.text = "Vui lòng nhập mã xác thực gồm 6 chữ số đã được gửi đến số điện thoại của bạn. Thời gian còn lại:"
+            break
+        default:
+            break
+        }
         self.setupPinView()
         
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
