@@ -39,7 +39,7 @@ public struct BrowwerActiveLoan {
   public var loanId: Int32?
   public var optionalText: String?
   public var userInfo: BrowwerUserInfo?
-  public var loanCategoryId: Int?
+  public var loanCategoryId: Int16?
     public var createdTime: String?
 
   // MARK: SwiftyJSON Initializers
@@ -66,7 +66,7 @@ public struct BrowwerActiveLoan {
     loanId = json[SerializationKeys.loanId].int32 ?? 0
     optionalText = json[SerializationKeys.optionalText].string ?? ""
     userInfo = BrowwerUserInfo(json: json[SerializationKeys.userInfo])
-    loanCategoryId = json[SerializationKeys.loanCategoryId].int ?? 0
+    loanCategoryId = json[SerializationKeys.loanCategoryId].int16 ?? 0
     createdTime = json[SerializationKeys.createdTime].string ?? ""
   }
 

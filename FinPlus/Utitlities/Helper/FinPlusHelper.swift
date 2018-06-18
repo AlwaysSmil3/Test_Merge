@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class FinPlusHelper {
     
@@ -117,7 +118,7 @@ class FinPlusHelper {
     ///
     /// - Parameter id: <#id description#>
     /// - Returns: <#return value description#>
-    static func getInterestRateFromLoanCategoryID(id: Int) -> Double? {
+    static func getInterestRateFromLoanCategoryID(id: Int16) -> Double? {
         let cates = DataManager.shared.loanCategories.filter { $0.id == id }
         guard cates.count >= 1 else { return nil }
         return cates[0].interestRate!
@@ -149,7 +150,7 @@ class FinPlusHelper {
         
         let width = UIScreen.main.bounds.width / 3 - 1
         
-        return CGSize(width: width, height: width * 4/3)
+        return CGSize(width: width, height: width * 6/5)
     }
     
     
@@ -170,7 +171,45 @@ class FinPlusHelper {
         return attrString
     }
  
+    // CoreData
+    // MARK: - Helper Methods
     
+    class func createRecordForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObject? {
+        // Helpers
+        var result: NSManagedObject? = nil
+        
+        // Create Entity Description
+        let entityDescription = NSEntityDescription.entity(forEntityName: entity, in: managedObjectContext)
+        
+        if let entityDescription = entityDescription {
+            // Create Managed Object
+            result = NSManagedObject(entity: entityDescription, insertInto: managedObjectContext)
+        }
+        
+        return result
+    }
+    
+    class func fetchRecordsForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> [NSManagedObject] {
+        // Create Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        
+        // Helpers
+        var result = [NSManagedObject]()
+        
+        do {
+            // Execute Fetch Request
+            let records = try managedObjectContext.fetch(fetchRequest)
+            
+            if let records = records as? [NSManagedObject] {
+                result = records
+            }
+            
+        } catch {
+            print("Unable to fetch managed objects for entity \(entity).")
+        }
+        
+        return result
+    }
     
     
     

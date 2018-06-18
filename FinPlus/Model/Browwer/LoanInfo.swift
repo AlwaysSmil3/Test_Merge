@@ -10,7 +10,7 @@ import Foundation
 
 struct LoanInfo: Encodable {
     
-    var loanCategoryID: Int
+    var loanCategoryID: Int16
     var amount: Int32
     var term: Int
     var status: Int

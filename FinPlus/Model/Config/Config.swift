@@ -41,12 +41,12 @@ public struct Config {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    about = json[SerializationKeys.about].string
-    version = json[SerializationKeys.version].string
+    about = json[SerializationKeys.about].string ?? ""
+    version = json[SerializationKeys.version].string ?? ""
     loanStatus = LoanStatus(json: json[SerializationKeys.loanStatus])
-    policy = json[SerializationKeys.policy].string
+    policy = json[SerializationKeys.policy].string ?? ""
     if let items = json[SerializationKeys.faq].array { faq = items.map { Faq(json: $0) } }
-    serviceFee = json[SerializationKeys.serviceFee].int
+    serviceFee = json[SerializationKeys.serviceFee].int ?? 0
   }
 
   /// Generates description of the object in the form of a NSDictionary.

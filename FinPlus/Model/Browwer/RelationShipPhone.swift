@@ -10,7 +10,7 @@ import Foundation
 
 struct RelationShipPhone: Encodable {
     
-    var type: Int
+    var type: Int16
     var phoneNumber: String
     
     init() {

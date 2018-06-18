@@ -14,8 +14,7 @@ class LoanTypePopupTBCell: UITableViewCell {
     @IBOutlet var lblSubTitle: UILabel!
     @IBOutlet var imgIcon: UIImageView!
     
-    
-    
+
 }
 
 
