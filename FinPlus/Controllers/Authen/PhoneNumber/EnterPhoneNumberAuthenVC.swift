@@ -112,7 +112,7 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
 extension EnterPhoneNumberAuthenVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Giới hạn ký tự nhập vào
-        let maxLength = 12
+        let maxLength = 11
         let currentString: NSString = textField.text! as NSString
         let newString: NSString =
             currentString.replacingCharacters(in: range, with: string) as NSString
