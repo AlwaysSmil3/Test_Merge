@@ -40,7 +40,7 @@ class ConfirmInterestRateVC: BaseViewController {
         
         var serviceFee: Double = 0.0
         
-        if let version = DataManager.shared.version {
+        if let version = DataManager.shared.config {
             serviceFee = Double(loan.amount! * Int32(version.serviceFee!) / 100)
         }
         

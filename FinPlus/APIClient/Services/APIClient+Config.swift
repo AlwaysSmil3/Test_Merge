@@ -59,7 +59,7 @@ extension APIClient {
      GET Lấy danh sách quận/huyện
      
      */
-    func getDistricts(cityID: Int) -> Promise<[Model1]> {
+    func getDistricts(cityID: Int16) -> Promise<[Model1]> {
         return Promise<[Model1]> { seal in
             
             let endPoint = "\(cityID)/" + EndPoint.Config.Districts
@@ -89,7 +89,7 @@ extension APIClient {
      GET Lấy danh sách xã/phường
      
      */
-    func getCommunes(districtID: Int) -> Promise<[Model1]> {
+    func getCommunes(districtID: Int16) -> Promise<[Model1]> {
         return Promise<[Model1]> { seal in
             
             let endPoint = "\(districtID)/" + EndPoint.Config.Communes

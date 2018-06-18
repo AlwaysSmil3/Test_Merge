@@ -17,7 +17,7 @@ public struct Model1 {
   }
 
   // MARK: Properties
-  public var id: Int?
+  public var id: Int16?
   public var name: String?
 
   // MARK: SwiftyJSON Initializers
@@ -33,7 +33,7 @@ public struct Model1 {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    id = json[SerializationKeys.id].int ?? 0
+    id = json[SerializationKeys.id].int16 ?? 0
     name = json[SerializationKeys.name].string ?? ""
   }
 

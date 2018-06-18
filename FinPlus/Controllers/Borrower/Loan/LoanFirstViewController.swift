@@ -58,6 +58,8 @@ class LoanFirstViewController: BaseViewController {
         
         guard let loan = self.loanCategory else { return }
         
+        self.lblCategoriesName.text = loan.title!
+        
         self.amountSlider.minimumValue = Float(loan.min!/MONEY_TERM_DISPLAY)
         self.amountSlider.maximumValue = Float(loan.max!/MONEY_TERM_DISPLAY)
         self.amountSlider.value = Float(loan.min!/MONEY_TERM_DISPLAY)
@@ -80,7 +82,7 @@ class LoanFirstViewController: BaseViewController {
         guard let loan = self.loanCategory else { return }
         
         DataManager.shared.loanInfo.loanCategoryID = loan.id!
-        DataManager.shared.loanInfo.amount = Int32(Int(self.amountSlider.value) * MONEY_TERM_DISPLAY)
+        DataManager.shared.loanInfo.amount = Int32(Int32(self.amountSlider.value) * MONEY_TERM_DISPLAY)
         DataManager.shared.loanInfo.term = Int(self.termSlider.value)
         
         completion()
@@ -108,7 +110,7 @@ class LoanFirstViewController: BaseViewController {
     @IBAction func moneySliderValueChaned(_ sender: Any) {
         self.lblMoneySlider.text = "\(Int(self.amountSlider.value))" + " Triệu VND"
 
-        guard let version = DataManager.shared.version else { return }
+        guard let version = DataManager.shared.config else { return }
         
         let fee = Double(Int(self.amountSlider.value) * version.serviceFee! * 1000000 / 100)
         
