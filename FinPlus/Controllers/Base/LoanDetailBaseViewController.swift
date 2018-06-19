@@ -14,11 +14,14 @@ class LoanDetailBaseViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var desLabel: UILabel?
     @IBOutlet weak var topButton: UIButton?
+    @IBOutlet weak var bottomButton: UIButton?
     @IBOutlet weak var tableView: UITableView?
     
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint?
+    
     @IBOutlet weak var ButtonToTitleConstraint: NSLayoutConstraint?
     @IBOutlet weak var tableToButtonConstraint: NSLayoutConstraint?
+    @IBOutlet weak var tableToBottomButtonConstraint: NSLayoutConstraint?
     @IBOutlet weak var tableToDesConstraint: NSLayoutConstraint?
     @IBOutlet weak var tableToTitleConstraint: NSLayoutConstraint?
     @IBOutlet weak var containerView: UIView?
@@ -41,34 +44,45 @@ class LoanDetailBaseViewController: UIViewController {
         self.borderView.layer.cornerRadius = 8
         self.borderView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
         
+        self.tableToDesConstraint?.isActive = false
+//        self.tableToTitleConstraint?.isActive = false
         self.ButtonToTitleConstraint?.isActive = false
         self.tableToButtonConstraint?.isActive = false
-        self.tableToTitleConstraint?.isActive = false
-        self.tableToDesConstraint?.isActive = false
+        self.tableToBottomButtonConstraint?.isActive = false
         
-        if (self.desLabel?.isHidden)!
+        if ((self.bottomButton?.isHidden)! == false || (self.topButton?.isHidden)! == false || (self.desLabel?.isHidden)! == false)
+        {
+            self.tableToTitleConstraint?.isActive = false
+        }
+        
+        if (self.bottomButton?.isHidden)!
         {
             if (self.topButton?.isHidden)!
             {
-                self.tableToTitleConstraint?.isActive = true
+                if (self.desLabel?.isHidden)!
+                {
+                    self.tableToTitleConstraint?.isActive = true
+                }
+                else
+                {
+                    self.tableToDesConstraint?.isActive = true
+                }
             }
             else
             {
-                self.ButtonToTitleConstraint?.isActive = true
                 self.tableToButtonConstraint?.isActive = true
+                
+                if (self.desLabel?.isHidden)!
+                {
+                    self.ButtonToTitleConstraint?.isActive = true
+                }
             }
-            
         }
         else
         {
-            if (self.topButton?.isHidden)!
-            {
-                self.tableToDesConstraint?.isActive = true
-            }
-            else
-            {
-                self.tableToButtonConstraint?.isActive = true
-            }
+            self.topButton?.isHidden = false
+            self.desLabel?.isHidden = false
+            self.tableToBottomButtonConstraint?.isActive = true
         }
         
         self.view.layoutIfNeeded()
