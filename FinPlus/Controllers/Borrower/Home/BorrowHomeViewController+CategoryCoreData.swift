@@ -16,7 +16,6 @@ extension BorrowHomeViewController {
         
         guard DataManager.shared.isUpdateFromConfig else { return }
         //Có thay đổi cần cập nhật lại dữ liệu
-        guard DataManager.shared.loanCategories.count == 0 else { return }
         
         APIClient.shared.getLoanCategories()
             .done(on: DispatchQueue.main) { model in

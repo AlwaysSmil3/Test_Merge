@@ -22,7 +22,6 @@ class LoanTypePopupVC: BasePopup {
     var delegate: DataSelectedFromPopupProtocol?
     
     
-    
     //Dữ liệu đầu vào
     private var dataSource: [LoanBuilderData] = [] {
         didSet {

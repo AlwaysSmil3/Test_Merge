@@ -168,6 +168,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if version == model.version! {
                     //Không cần thay đổi dữ liệu local
                     DataManager.shared.isUpdateFromConfig = false
+                } else {
+                    userDefault.set(model.version!, forKey: fVERSION_CONFIG)
+                    userDefault.synchronize()
                 }
                 
             }

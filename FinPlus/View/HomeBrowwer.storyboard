@@ -223,10 +223,10 @@
             </objects>
             <point key="canvasLocation" x="2348" y="107.49625187406298"/>
         </scene>
-        <!--Borrow Tabbar View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="zKJ-42-j7I">
             <objects>
-                <tabBarController storyboardIdentifier="BorrowTabbarViewController" automaticallyAdjustsScrollViewInsets="NO" id="V06-iu-xhq" customClass="BorrowTabbarViewController" customModule="FinPlus" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="V06-iu-xhq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="n5C-eh-SVj">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
