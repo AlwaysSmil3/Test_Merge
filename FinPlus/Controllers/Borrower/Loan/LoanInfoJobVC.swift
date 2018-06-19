@@ -55,7 +55,8 @@ class LoanInfoJobVC: LoanBaseViewController {
             self.showToastWithMessage(message: "Vui lòng chọn địa chỉ cơ quan.")
             return
         }
-        */
+ */
+        
         completion()
     }
     

@@ -16,6 +16,8 @@ class LoanTypeOptionalMediaTBCell: UITableViewCell {
     
     var currentSelectedCollection: IndexPath?
     
+    var field: LoanBuilderFields?
+    
     //Các dữ liệu khác image, video,...
     var dataSourceCollection: [Any] = [] {
         didSet {
