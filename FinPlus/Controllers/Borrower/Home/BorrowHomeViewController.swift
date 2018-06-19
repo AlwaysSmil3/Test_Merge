@@ -45,7 +45,6 @@ class BorrowHomeViewController: BaseViewController {
             self.mainCollectionView.reloadData()
         }
         
-        //self.getUserInfo()
         self.getLoanCategories()
         
         self.setupUI()
@@ -56,39 +55,9 @@ class BorrowHomeViewController: BaseViewController {
         
     }
     
-    override func viewDidLayoutSubviews() {
-        if let detailLoanView = self.detailLoanView {
-            detailLoanView.frame.origin = CGPoint(x: 0, y: 0)
-        }
-    }
-    
     private func setupUI() {
-        self.detailLoanView = BrrowerHome(frame: self.contentLoanView.frame)
-        self.detailLoanView?.delegate = self
-    }
-    
-    // Lấy thông tin User
-    private func getUserInfo() {
-        
-        APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
-            .done(on: DispatchQueue.main) { model in
-                
-                DataManager.shared.browwerInfo = model
-                
-                self.lblTitle.text = "Xin chào " + model.fullName! + "!"
-                
-                if let loan = model.activeLoan, let status = loan.status {
-                    self.loanStatus = status
-                    self.detailLoanView?.loanInfo = loan
-                    //self.contentLoanView.addSubview(self.detailLoanView!)
-                    
-                    if let detailLoanView = self.detailLoanView {
-                        detailLoanView.frame.origin = CGPoint(x: 0, y: 0)
-                    }
-                    
-                }
-            }
-            .catch { error in }
+        guard let brow = DataManager.shared.browwerInfo else { return }
+        self.lblTitle.text = "Xin chào " + brow.fullName! + "!"
     }
     
     
