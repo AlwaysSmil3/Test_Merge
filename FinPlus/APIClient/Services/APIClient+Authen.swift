@@ -32,10 +32,7 @@ extension APIClient {
      */
     func authentication(phoneNumber: String, pass: String = "") -> Promise<AuthenticationBase> {
         
-        //ID Device
         let id = UIDevice.current.identifierForVendor!.uuidString
-        
-        print(id)
         
         let params: JSONDictionary = [
             "phoneNumber": phoneNumber,
