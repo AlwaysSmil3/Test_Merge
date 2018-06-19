@@ -319,6 +319,12 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             
             return cell
             
+        case DATA_TYPE_TB_CELL.MultipleFile:
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.OptionalMedia, for: indexPath) as! LoanTypeOptionalMediaTBCell
+            cell.field = model
+            return cell
+            
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.TextField, for: indexPath) as! LoanTypeTextFieldTBCell
             
@@ -375,6 +381,11 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             self.selectedFile()
             
             break
+            
+        case DATA_TYPE_TB_CELL.MultipleFile:
+            
+            break
+            
         case DATA_TYPE_TB_CELL.Footer:
             
             break

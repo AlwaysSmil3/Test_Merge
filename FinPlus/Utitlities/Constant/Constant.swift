@@ -46,6 +46,7 @@ enum DATA_TYPE_TB_CELL {
     static let Footer = "footer"
     static let File = "file"
     static let MultipleFile = "multiple_file"
+
     
 }
 
