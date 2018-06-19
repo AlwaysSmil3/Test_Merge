@@ -45,7 +45,6 @@ class BorrowHomeViewController: BaseViewController {
             self.mainCollectionView.reloadData()
         }
         
-        //self.getUserInfo()
         self.getLoanCategories()
         
         self.setupUI()
