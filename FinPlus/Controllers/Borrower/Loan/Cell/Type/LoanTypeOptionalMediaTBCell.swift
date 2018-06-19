@@ -10,7 +10,11 @@ import Foundation
 
 class LoanTypeOptionalMediaTBCell: UITableViewCell {
     
+    
+    @IBOutlet var lblTitle: UILabel!
     @IBOutlet var mainCollectionView: UICollectionView!
+    
+    var currentSelectedCollection: IndexPath?
     
     //Các dữ liệu khác image, video,...
     var dataSourceCollection: [Any] = [] {
@@ -18,6 +22,17 @@ class LoanTypeOptionalMediaTBCell: UITableViewCell {
             self.mainCollectionView.reloadData()
         }
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.mainCollectionView.delegate = self
+        self.mainCollectionView.dataSource = self
+        self.mainCollectionView.register(UINib(nibName: "LoanOtherInfoCollectionCell", bundle: nil), forCellWithReuseIdentifier: "Loan_Other_Info_Collection_Cell")
+        
+    }
+    
+
     
     
     func showLibrary() {

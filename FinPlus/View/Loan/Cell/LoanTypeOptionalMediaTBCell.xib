@@ -29,10 +29,10 @@
                         <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="c2h-Uh-Jsa">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="c2h-Uh-Jsa">
                         <rect key="frame" x="16" y="37.5" width="343" height="113"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sqr-Gn-nk4">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="Sqr-Gn-nk4">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -50,6 +50,10 @@
                     <constraint firstItem="c2h-Uh-Jsa" firstAttribute="leading" secondItem="UYu-NT-frW" secondAttribute="leading" id="ygx-U0-mrK"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lblTitle" destination="UYu-NT-frW" id="TBc-Ml-FbV"/>
+                <outlet property="mainCollectionView" destination="c2h-Uh-Jsa" id="ggt-HS-YXR"/>
+            </connections>
             <point key="canvasLocation" x="-113.5" y="-86.5"/>
         </tableViewCell>
     </objects>

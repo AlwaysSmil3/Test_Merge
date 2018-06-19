@@ -16,6 +16,7 @@ enum Loan_Identifier_TB_Cell {
     static let PhoneRelation = "Loan_Type_Phone_Relation_TB_Cell"
     static let Footer = "Loan_Type_Footer_TB_View"
     static let File = "Loan_Type_File_TB_Cell"
+    static let OptionalMedia = "Loan_Type_Optional_Media_TB_Cell"
 }
 
 // Giới tính
@@ -103,6 +104,7 @@ class LoanBaseViewController: BaseViewController {
         tableView.register(UINib(nibName: "LoanTypePhoneRelationTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.PhoneRelation)
         tableView.register(UINib(nibName: "LoanTypeFooterTBView", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.Footer)
         tableView.register(UINib(nibName: "LoanTypeFileTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.File)
+        tableView.register(UINib(nibName: "LoanTypeOptionalMediaTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.OptionalMedia)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorColor = UIColor.clear
