@@ -123,6 +123,8 @@ class VerifyOTPAuthenVC: BaseViewController {
                             return
                         }
                     } else {
+                        print(model.data?.isNew)
+                        
                         guard let isNew = model.data?.isNew, isNew else {
                             // Nếu là tài khoản cũ -> sang login
                             // save account
