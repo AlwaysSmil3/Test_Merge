@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Semibold.otf">
+            <string>SFProDisplay-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Loan_Type_Optional_Media_TB_Cell" rowHeight="159" id="gaL-TN-4X1" customClass="LoanTypeOptionalMediaTBCell" customModule="FinPlus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gaL-TN-4X1" id="GOh-9W-PhE">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="158.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ảnh bảng lương" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYu-NT-frW">
+                        <rect key="frame" x="16" y="16" width="343" height="13.5"/>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="11"/>
+                        <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="c2h-Uh-Jsa">
+                        <rect key="frame" x="16" y="37.5" width="343" height="113"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sqr-Gn-nk4">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="c2h-Uh-Jsa" secondAttribute="bottom" constant="8" id="5GX-eN-0Xh"/>
+                    <constraint firstItem="c2h-Uh-Jsa" firstAttribute="top" secondItem="UYu-NT-frW" secondAttribute="bottom" constant="8" id="NKc-Sp-i9i"/>
+                    <constraint firstItem="UYu-NT-frW" firstAttribute="leading" secondItem="GOh-9W-PhE" secondAttribute="leading" constant="16" id="Op3-8D-hgC"/>
+                    <constraint firstAttribute="trailing" secondItem="UYu-NT-frW" secondAttribute="trailing" constant="16" id="RkV-56-fMU"/>
+                    <constraint firstItem="UYu-NT-frW" firstAttribute="top" secondItem="GOh-9W-PhE" secondAttribute="top" constant="16" id="cJW-ny-mAO"/>
+                    <constraint firstItem="c2h-Uh-Jsa" firstAttribute="trailing" secondItem="UYu-NT-frW" secondAttribute="trailing" id="lkq-Rb-19P"/>
+                    <constraint firstItem="c2h-Uh-Jsa" firstAttribute="leading" secondItem="UYu-NT-frW" secondAttribute="leading" id="ygx-U0-mrK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-113.5" y="-86.5"/>
+        </tableViewCell>
+    </objects>
+</document>

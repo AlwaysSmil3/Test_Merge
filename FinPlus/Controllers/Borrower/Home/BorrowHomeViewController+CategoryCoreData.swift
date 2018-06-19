@@ -14,7 +14,7 @@ extension BorrowHomeViewController {
     // Lấy danh sách các loại khoản vay
     func getLoanCategories() {
         
-        guard DataManager.shared.isUpdateFromConfig else { return }
+        guard DataManager.shared.isUpdateFromConfig || DataManager.shared.loanCategories.count == 0 else { return }
         //Có thay đổi cần cập nhật lại dữ liệu
         
         APIClient.shared.getLoanCategories()

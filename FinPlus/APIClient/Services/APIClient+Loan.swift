@@ -16,7 +16,7 @@ extension APIClient {
     func getLoanCategories() -> Promise<[LoanCategories]> {
         
         return Promise<[LoanCategories]> { seal in
-            getDataWithEndPoint(endPoint: EndPoint.Loan.LoanCategories, isShowLoadingView: false)
+            getDataWithEndPoint(host: "http://192.168.104.70:31007/", endPoint: EndPoint.Loan.LoanCategories, isShowLoadingView: false)
                 .done { json in
                     
                     var array: [LoanCategories] = []
@@ -43,7 +43,7 @@ extension APIClient {
         return Promise<[BrowwerActiveLoan]> { seal in
             let endPoint = EndPoint.Loan.Loans
 
-            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
+            getDataWithEndPoint(host: "http://192.168.104.70:31007/", endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
                     var array: [BrowwerActiveLoan] = []
 
@@ -70,7 +70,7 @@ extension APIClient {
             let uid = DataManager.shared.userID
             let endPoint = "\(uid)/" + EndPoint.Loan.Loans
             
-            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
+            getDataWithEndPoint(host: "http://192.168.104.70:31007/", endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
                     let model = APIResponseGeneral(object: json)
                     seal.fulfill(model)
@@ -105,7 +105,7 @@ extension APIClient {
         }
         
         return Promise<LoanResponseModel> { seal in
-            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: isShowLoandingView, httpType: httpType, jsonData: dataAPI)
+            requestWithEndPoint(host: "http://192.168.104.70:31007/", endPoint: endPoint, params: params, isShowLoadingView: isShowLoandingView, httpType: httpType, jsonData: dataAPI)
                 .done { json in
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = LoanResponseModel(object: data)
@@ -130,7 +130,7 @@ extension APIClient {
         ]
         
         return Promise<APIResponseGeneral> { seal in
-            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
+            requestWithEndPoint(host: "http://192.168.104.70:31007/", endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
                 .done { json in
                     
                     let model = APIResponseGeneral(object: json)
