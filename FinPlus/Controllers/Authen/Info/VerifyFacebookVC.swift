@@ -60,11 +60,18 @@ class VerifyFacebookVC: BaseViewController {
                         
                         DataManager.shared.userID = data.id!
                         
-                        let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-                        
-                        self?.navigationController?.present(tabbarVC, animated: true, completion: {
-                            
-                        })
+                        APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
+                            .done(on: DispatchQueue.main) { model in
+                                
+                                DataManager.shared.browwerInfo = model
+                                
+                                let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+                                
+                                self?.navigationController?.present(tabbarVC, animated: true, completion: {
+                                    
+                                })
+                            }
+                            .catch { error in }
                         
                     }
                     .catch { error in

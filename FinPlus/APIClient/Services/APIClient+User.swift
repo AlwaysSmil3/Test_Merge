@@ -18,7 +18,7 @@ extension APIClient {
         return Promise<BrowwerInfo> { seal in
             let endPoint = EndPoint.User.User + "\(uId)"
             
-            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
                 .done { json in
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = BrowwerInfo(object: data)
