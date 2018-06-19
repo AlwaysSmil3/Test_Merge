@@ -60,6 +60,7 @@ class VerifyFacebookVC: BaseViewController {
                         
                         DataManager.shared.userID = data.id!
                         
+                        //Lay thong tin nguoi dung
                         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
                             .done(on: DispatchQueue.main) { model in
                                 
