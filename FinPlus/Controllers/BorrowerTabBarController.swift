@@ -70,10 +70,8 @@ class BorrowerTabBarController: UITabBarController {
         let v11 = sHomeBrowwer.instantiateViewController(withIdentifier: "BorrowHomeViewControllerNav")
         
         let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
-        //object_setClass(v1, LoanStatusViewController.self)
-//        return (vc as! LoanStatusViewController)
-        
-//        let v1 = LoanStatusViewController() sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
+        object_setClass(v1, LoanStatusViewController.self)
+
         let v2 = sLoanManager.instantiateViewController(withIdentifier: "LOAN_MANAGER_NAVI")
         let v3 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI")
         let v4 = sNotification.instantiateViewController(withIdentifier: "NOTIFICATION_NAVI")
@@ -84,9 +82,6 @@ class BorrowerTabBarController: UITabBarController {
         v3.tabBarItem = UITabBarItem(title: NSLocalizedString("WALLET_MANAGER", comment: ""), image: UIImage(named: "ic_tb_brow3"), selectedImage: UIImage(named: "ic_tb_brow3_selected"))
         v4.tabBarItem = UITabBarItem(title: NSLocalizedString("NOTIFICATION", comment: ""), image: UIImage(named: "ic_tb_brow5"), selectedImage: UIImage(named: "ic_tb_brow5_selected"))
         v5.tabBarItem = UITabBarItem(title: NSLocalizedString("BRIEF", comment: ""), image: UIImage(named: "ic_tb_brow4"), selectedImage: UIImage(named: "ic_tb_brow4_selected"))
-        
-        //Chưa có Khoản vay
-        self.viewControllers = [v11, v2, v3, v4, v5]
         
         /*
  
@@ -99,7 +94,11 @@ class BorrowerTabBarController: UITabBarController {
             //Co khoản vay
             self.viewControllers = [v1, v2, v3, v4, v5]
         }
-        
+        else
+        {
+            //Chưa có Khoản vay
+            self.viewControllers = [v11, v2, v3, v4, v5]
+        }
         
 //        for vc in self.viewControllers! {
 //            self.formatTabBarItem(tabBarItem: vc.tabBarItem)
