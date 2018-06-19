@@ -12,7 +12,7 @@ public struct AuthenticationData {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
-    static let token = "token"
+    static let token = "accessToken"
   }
 
   // MARK: Properties

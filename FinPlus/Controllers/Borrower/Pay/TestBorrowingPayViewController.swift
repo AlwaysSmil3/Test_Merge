@@ -85,7 +85,7 @@ class TestBorrowingPayViewController: UIViewController {
             case .AddNewWalletCell:
                 return AddNewWalletTableViewCell.self
             case .PayBtnCell:
-                return UITableViewCell.self
+                return PayBtnTableViewCell.self
             default:
                 return UITableViewCell.self
             }
@@ -150,6 +150,7 @@ class TestBorrowingPayViewController: UIViewController {
         tableView.registerNibCell(type: PayAllTableViewCell.self)
         tableView.registerNibCell(type: BankAccountTableViewCell.self)
         tableView.registerNibCell(type: AddNewWalletTableViewCell.self)
+        tableView.registerNibCell(type: PayBtnTableViewCell.self)
     }
 
     func updateData() {
@@ -193,10 +194,18 @@ class TestBorrowingPayViewController: UIViewController {
 
         sectionWalletData.cells.append(cellAddWallet)
 
+        let cellPayBtn = CellData(cellType: .PayBtnCell, data: "", cellHeight: 60)
+        sectionWalletData.cells.append(cellPayBtn)
+        
+
         self.sections.append(sectionBasicData)
         self.sections.append(sectionPayTypeData)
         self.sections.append(sectionWalletData)
         tableView.reloadData()
+    }
+
+    @objc func payBtnAction() {
+        print("pay btn action")
     }
 
 }
@@ -280,10 +289,17 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             cell.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
             cell.selectionStyle = .none
 
+        } else if let cell = cell as? PayBtnTableViewCell {
+            cell.selectionStyle = .none
+            cell.payBtn.addTarget(self, action:#selector(payBtnAction), for: .touchUpInside)
+
         }
 
         return cell ?? UITableViewCell()
     }
+
+
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellData = sections[indexPath.section].cells[indexPath.row]
         return cellData.cellHeight
