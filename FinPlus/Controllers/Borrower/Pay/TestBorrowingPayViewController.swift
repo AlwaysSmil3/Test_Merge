@@ -307,6 +307,7 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             // push to add new wallet
         }
         tableView.reloadData()
+//        tableView.reloadSections(IndexSet(integer: indexPath.section), with: UITableViewRowAnimation.automatic)
     }
 
     /*
