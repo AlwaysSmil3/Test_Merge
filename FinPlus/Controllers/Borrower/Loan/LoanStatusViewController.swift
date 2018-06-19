@@ -72,6 +72,17 @@ class LoanStatusViewController: LoanDetailBaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        UIView.animate(withDuration: 0, animations: {
+            self.tableView?.layoutIfNeeded()
+        }) { (complete) in
+            // Edit heightOfTableViewConstraint's constant to update height of table view
+            self.tableViewHeightConstraint?.constant = (self.tableView?.visibleCells[0].frame.height)!*10
+        }
+    }
 
 }
 
@@ -102,16 +113,6 @@ extension LoanStatusViewController: UITableViewDataSource {
         
         cell?.nameLabel.text = "\(indexPath.row)"
         cell?.desLabel.text = "aaaaaqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        
-        if (indexPath.row == 0)
-        {
-            UIView.animate(withDuration: 0, animations: {
-                self.tableView?.layoutIfNeeded()
-            }) { (complete) in
-                // Edit heightOfTableViewConstraint's constant to update height of table view
-                self.tableViewHeightConstraint?.constant = (self.tableView?.visibleCells[0].frame.height)!*CGFloat(tableView.numberOfRows(inSection: indexPath.section))
-            }
-        }
         
         if indexPath.row == (tableView.numberOfRows(inSection: indexPath.section) - 1) {
             //End of loading all Visible cells
