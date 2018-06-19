@@ -1,9 +1,10 @@
 [{
     "index": 2,
     "title": "Thông tin cá nhân",
+    "id":"userInfo",
     "fields": [
         {
-            "id": 1,
+            "id": "fullName",
             "index": 1,
             "type":"text_box",
             "title": "Họ và tên",
@@ -13,7 +14,7 @@
             "keyboard": "default"
         },
         {
-            "id": 2,
+            "id": "gender",
             "index": 2,
             "type":"dropdown",
             "title": "Giới tính",
@@ -21,17 +22,17 @@
             "placeholder": "Giới tính của bạn",
             "selector_title": "Chọn giới tính của bạn",
             "data": [{
-                    "id": 1,
+                    "id": 0,
                     "title": "Nam"
                 },
                 {
-                    "id": 2,
+                    "id": 1,
                     "title": "Nữ"
                 }
             ]
         },
         {
-            "id": 3,
+            "id": "birthday",
             "index": 3,
             "type":"datetime",
             "show_data": true,
@@ -42,7 +43,7 @@
             "selector_title": "Chọn ngày sinh của bạn"
         },
         {
-            "id": 4,
+            "id": "nationalId",
             "index": 4,
             "type":"text_box",
             "title": "Số chứng minh thư",
@@ -52,7 +53,7 @@
             "keyboard": "numeric"
         },
         {
-            "id": 5,
+            "id": "relationships",
             "index": 5,
             "type":"dropdown_text_box",
             "title": "Số điện thoại liên lạc của người thân",
@@ -62,25 +63,25 @@
             "multiple_line": false,
             "keyboard": "default",
             "data": [{
-                    "id": 1,
+                    "id": 0,
                     "title": "Vợ"
                 },
                 {
-                    "id": 2,
+                    "id": 1,
                     "title": "Chồng"
                 },
                 {
-                    "id": 3,
+                    "id": 2,
                     "title": "Bố"
                 },
                 {
-                    "id": 4,
+                    "id": 3,
                     "title": "Mẹ"
                 }
             ]
         },
         {
-            "id": 6,
+            "id": "residentAddress",
             "index": 6,
             "type":"address",
             "title": "Địa chỉ nhà thường trú",
@@ -88,7 +89,7 @@
             "placeholder": "Nhấn để chọn địa chỉ"
         },
         {
-            "id": 7,
+            "id": "currentAddress",
             "index": 7,
             "type":"address",
             "title": "Địa chỉ nhà tạm trú",
@@ -96,18 +97,19 @@
             "placeholder": "Nhấn để chọn địa chỉ"
         },
         {
-            "id": 8,
+            "id": "footer",
             "index": 8,
             "type":"footer",
-            "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ"
+            "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
         }
     ]
 },
 {
     "index": 3,
     "title": "Nghề Nghiệp",
+    "id":"jobInfo",
     "fields": [{
-            "id": 1,
+            "id": "jobType",
             "index": 1,
             "type":"dropdown",
             "title": "Nghề nghiệp",
@@ -115,17 +117,17 @@
             "placeholder": "Nghề nghiệp của bạn",
             "selector_title": "Chọn nghề nghiệp của bạn",
             "data": [{
-                    "id": 1,
+                    "id": 0,
                     "title": "Ngân Hàng"
                 },
                 {
-                    "id": 2,
+                    "id": 1,
                     "title": "Sinh Viên"
                 }
             ]
         },
         {
-            "id": 2,
+            "id": "position",
             "index": 2,
             "type":"dropdown",
             "title": "Cấp bậc",
@@ -133,17 +135,17 @@
             "placeholder": "Cấp bậc trong cơ quan",
             "selector_title": "Chọn cấp bậc trong cơ quan",
             "data": [{
-                    "id": 1,
+                    "id": 0,
                     "title": "Nhân viên"
                 },
                 {
-                    "id": 2,
+                    "id": 1,
                     "title": "Trưởng phòng"
                 }
             ]
         },
         {
-            "id": 3,
+            "id": "company",
             "index": 3,
             "type":"text_box",
             "title": "Tên cơ quan",
@@ -153,7 +155,7 @@
             "keyboard": "default"
         },
         {
-            "id": 4,
+            "id": "salary",
             "index": 4,
             "type":"text_box",
             "title": "Thu nhập hàng tháng",
@@ -164,7 +166,7 @@
             "suffix": "đ"
         },
         {
-            "id": 5,
+            "id": "address",
             "index": 5,
             "type":"address",
             "title": "Địa chỉ cơ quan",
@@ -172,7 +174,7 @@
             "placeholder": "Nhấn để chọn địa chỉ"
         },
         {
-            "id": 6,
+            "id": "companyPhoneNumber",
             "index": 6,
             "type":"text_box",
             "title": "SĐT cơ quan",
@@ -182,31 +184,32 @@
             "keyboard": "phone_pad"
         },
         {
-            "id": 7,
+            "id": "footer",
             "index": 7,
             "type":"footer",
-            "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ"
+            "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn hỗ trợ"
         }
     ]
 },
 {
     "title": "Nhân Thân",
+    "id": null,
     "fields": [{
-            "id": 1,
+            "id": "nationalIdAllImg",
             "index": 1,
             "type":"file",
             "title": "Ảnh bạn đang cầm CMND",
             "description": "Nhấn để chụp hình bạn cầm chứng minh thư trước ngực. Yêu cầu rõ nét và chụp trực tiếp từ camera."
         },
         {
-            "id": 2,
+            "id": "nationalIdFrontImg",
             "index": 2,
             "type":"file",
             "title": "Ảnh mặt trước CMND",
             "description": "Nhấn để chụp hình ảnh mặt trước của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
         },
         {
-            "id": 3,
+            "id": "nationalIdBackImg",
             "index": 3,
             "type":"file",
             "title": "Ảnh mặt sau CMND",
@@ -216,8 +219,9 @@
 },
 {
     "title": "Thông Tin Bổ Sung",
+    "id": null,
     "fields": [{
-            "id": 1,
+            "id": "optionalText",
             "index": 1,
             "type":"text_box",
             "title": "Lương hàng tháng của bạn",
@@ -226,14 +230,12 @@
             "keyboard": "money",
             "suffix": "đ"
         },
-            
         {
-            "id": 2,
+            "id": "optionalMedia",
             "index": 2,
             "type":"multiple_file",
             "title": "Ảnh bảng lương/chấm công của bạn"
         }
-    
     ]
 }
 ]
