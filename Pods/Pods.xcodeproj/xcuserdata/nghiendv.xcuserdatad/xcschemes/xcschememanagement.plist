@@ -123,6 +123,11 @@
 			<key>orderHint</key>
 			<integer>17</integer>
 		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>22</integer>
+		</dict>
 		<key>SpreadsheetView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
