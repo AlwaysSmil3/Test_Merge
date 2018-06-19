@@ -23,13 +23,16 @@ class ChoiceKindUserVC: BaseViewController {
     @IBOutlet var lblBrow1: UILabel!
     @IBOutlet var lblBrow2: UILabel!
     @IBOutlet var lblBrow3: UILabel!
+    @IBOutlet var imgGrowth: UIImageView!
+    
     
     @IBOutlet var investView: UIView!
     @IBOutlet var imgBgInvest: UIImageView!
     @IBOutlet var lblInvest1: UILabel!
     @IBOutlet var lblInvest2: UILabel!
     @IBOutlet var lblInvest3: UILabel!
-
+    @IBOutlet var imgGrowth1: UIImageView!
+    
     
     // facebook Info
     var faceBookInfo: FacebookInfo?
@@ -51,6 +54,9 @@ class ChoiceKindUserVC: BaseViewController {
         self.browView.layer.cornerRadius = 5
         self.investView.dropShadow(color: DROP_SHADOW_COLOR)
         self.investView.layer.cornerRadius = 5
+        
+        self.imgGrowth1.tintColor = UIColor.black
+        self.imgGrowth.tintColor = UIColor.black
     }
     
     override func viewDidLayoutSubviews() {
@@ -67,13 +73,14 @@ class ChoiceKindUserVC: BaseViewController {
             self.lblBrow2.textColor = UIColor.white
             self.lblBrow3.textColor = UIColor.white
             self.browView.dropShadow(color: MAIN_COLOR)
+            self.imgGrowth.tintColor = UIColor.white
             
             self.imgBgInvest.image = #imageLiteral(resourceName: "img_bg_growth1")
             self.lblInvest1.textColor = UIColor(hexString: "#08121E")
             self.lblInvest2.textColor = UIColor(hexString: "#4D6678")
             self.lblInvest3.textColor = UIColor(hexString: "#3EAA5F")
             self.investView.dropShadow(color: DROP_SHADOW_COLOR)
-            
+            self.imgGrowth1.tintColor = UIColor.black
             
         } else {
             self.imgBgBrow.image = #imageLiteral(resourceName: "img_bg_growth1")
@@ -81,12 +88,14 @@ class ChoiceKindUserVC: BaseViewController {
             self.lblBrow2.textColor = UIColor(hexString: "#4D6678")
             self.lblBrow3.textColor = UIColor(hexString: "#3EAA5F")
             self.browView.dropShadow(color: DROP_SHADOW_COLOR)
+            self.imgGrowth.tintColor = UIColor.black
             
             self.imgBgInvest.image = #imageLiteral(resourceName: "img_bg_growth")
             self.lblInvest1.textColor = UIColor.white
             self.lblInvest2.textColor = UIColor.white
             self.lblInvest3.textColor = UIColor.white
             self.investView.dropShadow(color: MAIN_COLOR)
+            self.imgGrowth1.tintColor = UIColor.white
         }
     }
     
@@ -94,13 +103,18 @@ class ChoiceKindUserVC: BaseViewController {
     
     @IBAction func btnInvestorSelectedTapped(_ sender: Any) {
 
-        guard self.accountType != .Investor else { return }
-        self.accountType = .Investor
+        if self.accountType != .Investor {
+            self.accountType = .Investor
+        }
 
-        let homeVC = UIStoryboard(name: "HomeInvestor", bundle: nil).instantiateViewController(withIdentifier: "InvestorTabBarController")
-
-        self.navigationController?.present(homeVC, animated: true, completion: {
-
+        self.showAlertView(title: MS_TITLE_ALERT, message: "Bạn chắc chắn muốn trở thành nhà đầu tư?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
+            if status {
+                let homeVC = UIStoryboard(name: "HomeInvestor", bundle: nil).instantiateViewController(withIdentifier: "InvestorTabBarController")
+                
+                self.navigationController?.present(homeVC, animated: true, completion: {
+                    
+                })
+            }
         })
 
     }

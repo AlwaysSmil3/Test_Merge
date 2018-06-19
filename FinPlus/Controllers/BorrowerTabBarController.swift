@@ -60,13 +60,15 @@ class BorrowerTabBarController: UITabBarController {
         
         super.viewDidLoad()
         
+        let sHomeBrowwer = UIStoryboard(name: "HomeBrowwer", bundle: nil)
         let sHome = UIStoryboard(name: "Loan", bundle: nil)
         let swallet = UIStoryboard.init(name: "Wallet", bundle: nil)
         let sLoanManager = UIStoryboard.init(name: "LoanManager", bundle: nil)
         let sNotification = UIStoryboard.init(name: "Notification", bundle: nil)
         let sProfile = UIStoryboard.init(name: "Profile", bundle: nil)
         
-//        let v1 = sHome.instantiateViewController(withIdentifier: "BorrowHomeViewControllerNav")
+        let v11 = sHomeBrowwer.instantiateViewController(withIdentifier: "BorrowHomeViewControllerNav")
+        
         let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
         object_setClass(v1, LoanStatusViewController.self)
 //        return (vc as! LoanStatusViewController)
@@ -83,7 +85,13 @@ class BorrowerTabBarController: UITabBarController {
         v4.tabBarItem = UITabBarItem(title: NSLocalizedString("NOTIFICATION", comment: ""), image: UIImage(named: "ic_tb_brow5"), selectedImage: UIImage(named: "ic_tb_brow5_selected"))
         v5.tabBarItem = UITabBarItem(title: NSLocalizedString("BRIEF", comment: ""), image: UIImage(named: "ic_tb_brow4"), selectedImage: UIImage(named: "ic_tb_brow4_selected"))
         
-        self.viewControllers = [v1, v2, v3, v4, v5]
+        //Chưa có Khoản vay
+        self.viewControllers = [v11, v2, v3, v4, v5]
+        if let loanID = DataManager.shared.browwerInfo?.activeLoan?.loanId, loanID > 0 {
+            //Co khoản vay
+            self.viewControllers = [v1, v2, v3, v4, v5]
+        }
+        
         
 //        for vc in self.viewControllers! {
 //            self.formatTabBarItem(tabBarItem: vc.tabBarItem)
