@@ -27,6 +27,7 @@ class LoanDetailBaseViewController: UIViewController {
     @IBOutlet weak var containerView: UIView?
     
     let cellIdentifier = "cell"
+    var activeLoan: BrowwerActiveLoan?
     
     override func viewDidLoad() {
         super.viewDidLoad()
