@@ -37,7 +37,7 @@ public struct LoanBuilderFields {
   public var showData: Bool? = false
   public var type: String?
   public var index: Int?
-  public var id: Int?
+  public var id: String?
   public var isRequired: Bool? = false
   public var title: String?
   public var placeholder: String?
@@ -65,7 +65,7 @@ public struct LoanBuilderFields {
     showData = json[SerializationKeys.showData].boolValue
     type = json[SerializationKeys.type].string
     index = json[SerializationKeys.index].int
-    id = json[SerializationKeys.id].int
+    id = json[SerializationKeys.id].string
     isRequired = json[SerializationKeys.isRequired].boolValue
     title = json[SerializationKeys.title].string
     placeholder = json[SerializationKeys.placeholder].string

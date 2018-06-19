@@ -40,13 +40,13 @@ class BorrowHomeViewController: BaseViewController {
         
         self.navigationController?.isNavigationBarHidden = true
         
-        //Lấy data Local
+//        //Lấy data Local
         self.fetchCoreData {
             self.mainCollectionView.reloadData()
         }
-        
+
         self.getLoanCategories()
-        
+
         self.setupUI()
     }
     

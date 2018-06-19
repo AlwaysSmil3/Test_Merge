@@ -70,7 +70,7 @@ class BorrowerTabBarController: UITabBarController {
         let v11 = sHomeBrowwer.instantiateViewController(withIdentifier: "BorrowHomeViewControllerNav")
         
         let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
-        object_setClass(v1, LoanStatusViewController.self)
+        //object_setClass(v1, LoanStatusViewController.self)
 //        return (vc as! LoanStatusViewController)
         
 //        let v1 = LoanStatusViewController() sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
@@ -87,6 +87,14 @@ class BorrowerTabBarController: UITabBarController {
         
         //Chưa có Khoản vay
         self.viewControllers = [v11, v2, v3, v4, v5]
+        
+        /*
+ 
+         
+        */
+        DataManager.shared.browwerInfo?.activeLoan?.status = 3
+        DataManager.shared.browwerInfo?.activeLoan?.loanId = 6
+        
         if let loanID = DataManager.shared.browwerInfo?.activeLoan?.loanId, loanID > 0 {
             //Co khoản vay
             self.viewControllers = [v1, v2, v3, v4, v5]

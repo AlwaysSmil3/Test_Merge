@@ -90,7 +90,7 @@ class APIClient {
     
     // MARK: - Common function
     // Request post, Put
-    public func requestWithEndPoint(endPoint: String, params: [String : Any], isShowLoadingView: Bool, httpType: HTTPMethodType, jsonData: Data? = nil) -> Promise<JSONDictionary> {
+    public func requestWithEndPoint(host: String? = nil, endPoint: String, params: [String : Any], isShowLoadingView: Bool, httpType: HTTPMethodType, jsonData: Data? = nil) -> Promise<JSONDictionary> {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         var mutableURLRequest = self.postRequest!
@@ -107,8 +107,13 @@ class APIClient {
             self.hanldeShowLoadingView(isShow: true)
         }
         
+        var baseURL = self.baseURLString
+        if let host_ = host {
+            baseURL = host_
+        }
+        
         return Promise<JSONDictionary> { seal in
-            mutableURLRequest.url = URL(string: baseURLString + endPoint)
+            mutableURLRequest.url = URL(string: baseURL + endPoint)
             
             if let data = jsonData {
                 mutableURLRequest.httpBody = data
@@ -165,8 +170,13 @@ class APIClient {
             self.hanldeShowLoadingView(isShow: true)
         }
         
+        var baseURL = self.baseURLString
+        if let host_ = host {
+            baseURL = host_
+        }
+        
         return Promise<JSONDictionary> { seal in
-            mutableURLRequest.url = URL(string: baseURLString + endPoint)
+            mutableURLRequest.url = URL(string: baseURL + endPoint)
             
             Alamofire.request(mutableURLRequest as URLRequest).responseJSON { response in
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
