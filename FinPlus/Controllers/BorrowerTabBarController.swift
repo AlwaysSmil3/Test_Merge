@@ -88,12 +88,13 @@ class BorrowerTabBarController: UITabBarController {
         //Chưa có Khoản vay
         self.viewControllers = [v11, v2, v3, v4, v5]
         
+        //Thay doi fix du lieu theo trạng thái cần thiết
         /*
- 
+         DataManager.shared.browwerInfo?.activeLoan?.status = 3
+         DataManager.shared.browwerInfo?.activeLoan?.loanId = 6
          
         */
-        DataManager.shared.browwerInfo?.activeLoan?.status = 3
-        DataManager.shared.browwerInfo?.activeLoan?.loanId = 6
+        
         
         if let loanID = DataManager.shared.browwerInfo?.activeLoan?.loanId, loanID > 0 {
             //Co khoản vay
