@@ -770,6 +770,8 @@
                         <outlet property="browView" destination="deL-Ha-jkX" id="T8s-L0-RoU"/>
                         <outlet property="imgBgBrow" destination="gh8-P0-a9Q" id="m9q-Gd-h3a"/>
                         <outlet property="imgBgInvest" destination="plc-CA-BBd" id="KiI-q5-0q2"/>
+                        <outlet property="imgGrowth" destination="tap-Vo-V7G" id="eNN-57-5oh"/>
+                        <outlet property="imgGrowth1" destination="Gqp-Z0-mu4" id="xy0-pv-KPo"/>
                         <outlet property="investView" destination="6gk-gT-LCB" id="c1N-JL-GDR"/>
                         <outlet property="lblBrow1" destination="RER-Nb-VIk" id="PKU-0H-Lat"/>
                         <outlet property="lblBrow2" destination="R8R-ed-26O" id="XNh-nW-M1A"/>

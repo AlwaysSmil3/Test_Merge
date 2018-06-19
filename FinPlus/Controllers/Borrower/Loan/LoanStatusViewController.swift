@@ -42,8 +42,9 @@ class LoanStatusViewController: LoanDetailBaseViewController {
     
     override func viewDidLoad() {
         
-//        self.desLabel?.isHidden = true
+        self.desLabel?.isHidden = true
 //        self.topButton?.isHidden = true
+//        self.bottomButton?.isHidden = true
         
         super.viewDidLoad()
 
@@ -55,6 +56,11 @@ class LoanStatusViewController: LoanDetailBaseViewController {
         self.topButton?.setTitle(NSLocalizedString("Bổ sung thông tin", comment: ""), for: .normal)
         self.topButton?.layer.cornerRadius = 8
         self.topButton?.tintColor = .white
+        
+        self.bottomButton?.backgroundColor = MAIN_COLOR
+        self.bottomButton?.setTitle(NSLocalizedString("Bổ sung thông tin", comment: ""), for: .normal)
+        self.bottomButton?.layer.cornerRadius = 8
+        self.bottomButton?.tintColor = .white
         
         // Do any additional setup after loading the view.
 //        self.arrayKey = detailLoan.allKeys as NSArray

@@ -161,6 +161,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 guard let version = userDefault.value(forKey: fVERSION_CONFIG) as? String else {
                     userDefault.set(model.version!, forKey: fVERSION_CONFIG)
+                    userDefault.synchronize()
                     return
                 }
                 
