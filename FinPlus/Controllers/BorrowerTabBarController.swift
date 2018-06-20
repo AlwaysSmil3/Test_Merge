@@ -69,7 +69,7 @@ class BorrowerTabBarController: UITabBarController {
         
         let v11 = sHomeBrowwer.instantiateViewController(withIdentifier: "BorrowHomeViewControllerNav")
         
-        let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
+        let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE_NAVI")
 
         let v2 = sLoanManager.instantiateViewController(withIdentifier: "LOAN_MANAGER_NAVI")
         let v3 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI")
@@ -95,7 +95,7 @@ class BorrowerTabBarController: UITabBarController {
             "loanCategoryId": 1,
             "amount": 1111,
             "term": 20,
-            "status": 7,
+            "status": 5,
             "intRate": 5,
             "grade": "A",
             "userInfo": [
