@@ -118,6 +118,7 @@
                 <outlet property="lblTitle" destination="0Mx-C7-Jx0" id="a3D-kw-gHc"/>
                 <outlet property="lblTypeRelation" destination="sSF-MI-4hL" id="BeD-l8-plU"/>
                 <outlet property="tfValue" destination="ilP-IN-1V1" id="8w4-z6-gVz"/>
+                <outlet property="underLine" destination="wic-hD-39T" id="YAg-R0-dH1"/>
             </connections>
             <point key="canvasLocation" x="-23.5" y="-57.5"/>
         </tableViewCell>

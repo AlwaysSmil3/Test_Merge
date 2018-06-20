@@ -84,6 +84,7 @@
                 <outlet property="lblDOptional" destination="xJ3-s9-kQN" id="bpk-wl-U5s"/>
                 <outlet property="lblTitle" destination="Hgg-Re-9FG" id="Ahh-S6-EuX"/>
                 <outlet property="tfValue" destination="uud-ht-yHM" id="TYx-M6-7NN"/>
+                <outlet property="underLine" destination="C1d-55-ycZ" id="cNx-3c-5BV"/>
             </connections>
             <point key="canvasLocation" x="-117" y="-50"/>
         </tableViewCell>

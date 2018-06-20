@@ -8,9 +8,9 @@
 
 import Foundation
 
-class LoanTypeFileTBCell: UITableViewCell {
+class LoanTypeFileTBCell: LoanTypeBaseTBCell {
     
-    @IBOutlet var lblTitle: UILabel?
+
     @IBOutlet var imgValue: UIImageView?
     @IBOutlet var imgAdd: UIImageView?
     @IBOutlet var lblDescription: UILabel?
