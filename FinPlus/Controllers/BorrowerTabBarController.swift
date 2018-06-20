@@ -95,7 +95,7 @@ class BorrowerTabBarController: UITabBarController {
             "loanCategoryId": 1,
             "amount": 1111,
             "term": 20,
-            "status": 5,
+            "status": 9,
             "intRate": 5,
             "grade": "A",
             "userInfo": [

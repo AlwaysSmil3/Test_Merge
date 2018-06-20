@@ -101,8 +101,14 @@ extension BorrowHomeViewController: BrowwerHomeDelegate {
             
         case .COMPLETED:
             break
+            
+        case .PAY_TEST_STATUS:
+            self.updateInfoNeed()
+            break
 
         }
+
+
  
     }
     

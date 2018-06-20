@@ -33,7 +33,7 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
     //MARK: Actions
     
     @IBAction func tfPhoneNumberEditChanged(_ sender: Any) {
-        if self.tfPhoneNumber.text!.length() >= 10 {
+        if self.tfPhoneNumber.text!.length() >= 9 {
             self.isEnableContinueButton(isEnable: true)
         } else {
             self.isEnableContinueButton(isEnable: false)
@@ -41,15 +41,21 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
     }
     
     @IBAction func btnContinueTapped(_ sender: Any) {
-        
+        var phone = self.tfPhoneNumber.text
+        if (phone?.hasPrefix("0"))! {
+
+        } else {
+            phone = "0" + phone!
+        }
+
         if self.tfPhoneNumber.text?.length() == 0 {
             self.showToastWithMessage(message: "Vui lòng nhập số điện thoại để tiếp tục.")
             return
-        } else if (self.tfPhoneNumber.text?.length())! < 10 {
+        } else if (phone?.length())! < 10 {
             self.showToastWithMessage(message: "Số điện thoại phải chứa 10 hoặc 11 số. Vui lòng kiểm tra lại.")
             return
         }
-        APIClient.shared.authentication(phoneNumber: self.tfPhoneNumber.text!)
+        APIClient.shared.authentication(phoneNumber: phone!)
             .done(on: DispatchQueue.main) { [weak self]model in
                 guard let strongSelf = self else { return }
                 switch model.returnCode {
@@ -62,7 +68,7 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
                     break
                 default :
                     // new account
-                    DataManager.shared.currentAccount = strongSelf.tfPhoneNumber.text!
+                    DataManager.shared.currentAccount = phone!
                     // save token
                     if let data = model.data {
                         if let token = data.token {
@@ -71,7 +77,7 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
                     }
                     // get config
                     // strongSelf.getConfig()
-                    userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fNEW_ACCOUNT_NAME)
+                    userDefault.set(phone, forKey: fNEW_ACCOUNT_NAME)
                     break
                 }
 
