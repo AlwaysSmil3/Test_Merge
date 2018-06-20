@@ -98,6 +98,9 @@ extension BorrowHomeViewController: BrowwerHomeDelegate {
             
         case .RAISING_CAPITAL:
             break
+            
+        case .COMPLETED:
+            break
 
         }
  
