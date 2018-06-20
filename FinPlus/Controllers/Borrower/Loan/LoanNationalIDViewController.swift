@@ -35,7 +35,7 @@ class LoanNationalIDViewController: LoanBaseViewController {
     
     @IBAction func btnContinueTapped(_ sender: Any) {
         
-        
+        /*
         if DataManager.shared.loanInfo.nationalIdAllImg.length() == 0 {
             self.showToastWithMessage(message: "Vui lòng chụp ảnh bạn đang cầm CMND mặt trước")
             return
@@ -50,7 +50,7 @@ class LoanNationalIDViewController: LoanBaseViewController {
             self.showToastWithMessage(message: "Vui lòng chụp ảnh CMND mặt sau")
             return
         }
-        
+        */
         
         let loanOtherInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanOtherInfoVC") as! LoanOtherInfoVC
         
