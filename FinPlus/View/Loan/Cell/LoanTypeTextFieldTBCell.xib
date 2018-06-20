@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hgg-Re-9FG">
-                        <rect key="frame" x="16" y="15" width="58.5" height="17"/>
+                        <rect key="frame" x="16" y="15" width="58.5" height="13.5"/>
                         <attributedString key="attributedText">
                             <fragment content="Họ và tên ">
                                 <attributes>
@@ -43,7 +43,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1d-55-ycZ">
-                        <rect key="frame" x="16" y="65" width="343" height="1"/>
+                        <rect key="frame" x="16" y="68.5" width="343" height="1"/>
                         <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="zjw-0B-kVE"/>
@@ -56,7 +56,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập họ và tên của bạn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uud-ht-yHM">
-                        <rect key="frame" x="16" y="38" width="331" height="21"/>
+                        <rect key="frame" x="16" y="34.5" width="331" height="28"/>
                         <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                         <textInputTraits key="textInputTraits"/>
@@ -64,17 +64,26 @@
                             <action selector="tfEditEnd:" destination="x8t-Xj-0Yt" eventType="editingDidEnd" id="ox1-OB-9Ny"/>
                         </connections>
                     </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyb-8s-rYH">
+                        <rect key="frame" x="16" y="73.5" width="343" height="7"/>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                        <color key="textColor" red="0.85490196078431369" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="C1d-55-ycZ" secondAttribute="bottom" constant="4" id="0sJ-7e-wQJ"/>
                     <constraint firstItem="xJ3-s9-kQN" firstAttribute="leading" secondItem="uud-ht-yHM" secondAttribute="trailing" constant="2" id="3eF-og-HnA"/>
+                    <constraint firstItem="Uyb-8s-rYH" firstAttribute="trailing" secondItem="C1d-55-ycZ" secondAttribute="trailing" id="4iz-tT-GbL"/>
                     <constraint firstItem="C1d-55-ycZ" firstAttribute="top" secondItem="uud-ht-yHM" secondAttribute="bottom" constant="6" id="5Zp-B8-Ap1"/>
+                    <constraint firstItem="Uyb-8s-rYH" firstAttribute="leading" secondItem="C1d-55-ycZ" secondAttribute="leading" id="EHe-ig-IjV"/>
                     <constraint firstItem="uud-ht-yHM" firstAttribute="centerY" secondItem="Rk2-93-ZEj" secondAttribute="centerY" constant="8" id="ILX-oY-3ng"/>
                     <constraint firstItem="xJ3-s9-kQN" firstAttribute="centerY" secondItem="uud-ht-yHM" secondAttribute="centerY" id="NPQ-oc-PZx"/>
                     <constraint firstItem="C1d-55-ycZ" firstAttribute="leading" secondItem="uud-ht-yHM" secondAttribute="leading" id="RoS-wW-FuR"/>
                     <constraint firstItem="Hgg-Re-9FG" firstAttribute="top" secondItem="Rk2-93-ZEj" secondAttribute="topMargin" constant="4" id="bl6-VY-lf6"/>
                     <constraint firstItem="uud-ht-yHM" firstAttribute="top" secondItem="Hgg-Re-9FG" secondAttribute="bottom" constant="6" id="fxu-7n-m3Y"/>
                     <constraint firstAttribute="trailing" secondItem="C1d-55-ycZ" secondAttribute="trailing" constant="16" id="jgn-1T-3ia"/>
+                    <constraint firstAttribute="bottom" secondItem="Uyb-8s-rYH" secondAttribute="bottom" id="rJf-jn-ITv"/>
+                    <constraint firstItem="Uyb-8s-rYH" firstAttribute="top" secondItem="C1d-55-ycZ" secondAttribute="bottom" constant="4" id="rWY-Qe-wjb"/>
                     <constraint firstItem="C1d-55-ycZ" firstAttribute="leading" secondItem="Rk2-93-ZEj" secondAttribute="leading" constant="16" id="tID-sX-AwQ"/>
                     <constraint firstItem="xJ3-s9-kQN" firstAttribute="trailing" secondItem="C1d-55-ycZ" secondAttribute="trailing" id="y6b-kc-6Dd"/>
                     <constraint firstItem="uud-ht-yHM" firstAttribute="leading" secondItem="Hgg-Re-9FG" secondAttribute="leading" id="zRd-Ex-GvI"/>
@@ -82,6 +91,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="lblDOptional" destination="xJ3-s9-kQN" id="bpk-wl-U5s"/>
+                <outlet property="lblDescriptionNeedUpdate" destination="Uyb-8s-rYH" id="txO-Xj-YrM"/>
                 <outlet property="lblTitle" destination="Hgg-Re-9FG" id="Ahh-S6-EuX"/>
                 <outlet property="tfValue" destination="uud-ht-yHM" id="TYx-M6-7NN"/>
                 <outlet property="underLine" destination="C1d-55-ycZ" id="cNx-3c-5BV"/>
