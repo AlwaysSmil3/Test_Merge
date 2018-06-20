@@ -56,6 +56,7 @@ class LoanTypeTextFieldTBCell: UITableViewCell {
         guard let field_ = self.field, let id = field_.id else { return }
         guard let parent = self.parent else {
             if id.contains("optionalText") {
+                //thông tin khác
                 DataManager.shared.loanInfo.optionalText = self.tfValue?.text ?? ""
             }
             
