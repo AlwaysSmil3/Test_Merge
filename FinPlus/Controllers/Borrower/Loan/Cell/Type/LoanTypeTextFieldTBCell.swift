@@ -19,6 +19,8 @@ class LoanTypeTextFieldTBCell: UITableViewCell {
         self.lblTitle?.font = FONT_CAPTION
     }
     
+    var parent: String?
+    
     var field: LoanBuilderFields? {
         didSet {
             guard let field_ = self.field else { return }
@@ -30,9 +32,10 @@ class LoanTypeTextFieldTBCell: UITableViewCell {
                     self.lblTitle?.text = title
                 }
                 
-                if title.contains("chứng minh thư") || title.contains("Thu nhập hàng tháng") || title.contains("Lương hàng tháng của bạn") || title.contains("SĐT cơ quan") {
+                if let id = field_.id, id.contains("nationalId") || id.contains("salary") || id.contains("companyPhoneNumber") {
                     self.tfValue?.keyboardType = .numberPad
                 }
+                
             }
             
             if let value = field_.placeholder {
@@ -49,30 +52,37 @@ class LoanTypeTextFieldTBCell: UITableViewCell {
     }
     
     @IBAction func tfEditEnd(_ sender: Any) {
-        guard let field_ = self.field, let title = field_.title else { return }
         
-        if title.contains("Họ và tên") {
-            DataManager.shared.loanInfo.userInfo.fullName = self.tfValue?.text ?? ""
-        }
-        else if title.contains("chứng minh thư") {
-            DataManager.shared.loanInfo.userInfo.nationalID = self.tfValue?.text ?? ""
-        }
-        
-        else if title.contains("Tên cơ quan") {
-            DataManager.shared.loanInfo.jobInfo.company = self.tfValue?.text ?? ""
-        }
+        guard let field_ = self.field, let id = field_.id else { return }
+        guard let parent = self.parent else {
+            if id.contains("optionalText") {
+                //thông tin khác
+                DataManager.shared.loanInfo.optionalText = self.tfValue?.text ?? ""
+            }
             
-        else if title.contains("Thu nhập hàng tháng") {
-            DataManager.shared.loanInfo.jobInfo.salary = Int32(self.tfValue?.text ?? "") ?? 0
+            return
         }
         
-        else if title.contains("SĐT cơ quan") {
-            DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = self.tfValue?.text ?? ""
+        if parent.contains("userInfo") {
+            // thông tin user
+            if id.contains("fullName") {
+                DataManager.shared.loanInfo.userInfo.fullName = self.tfValue?.text ?? ""
+            } else if id.contains("nationalId") {
+                DataManager.shared.loanInfo.userInfo.nationalID = self.tfValue?.text ?? ""
+            }
+            
+        } else if parent.contains("jobInfo") {
+            // Thông tin nghề nghiêp
+            if id.contains("company") {
+                DataManager.shared.loanInfo.jobInfo.company = self.tfValue?.text ?? ""
+            }  else if id.contains("salary") {
+                DataManager.shared.loanInfo.jobInfo.salary = Int32(self.tfValue?.text ?? "") ?? 0
+            } else if id.contains("companyPhoneNumber") {
+                DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = self.tfValue?.text ?? ""
+            }
+            
         }
         
-        else if title.contains("Lương hàng tháng của bạn") {
-            DataManager.shared.loanInfo.optionalText = self.tfValue?.text ?? ""
-        }
     }
     
     

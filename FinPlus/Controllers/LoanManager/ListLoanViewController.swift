@@ -36,7 +36,7 @@ class ListLoanViewController: UIViewController {
                     "2LOAN_START" : "8/5/2018",
                     "3LOAN_MONEY" : "12.000.000đ",
                     "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 8,
+                    "5STATUS" : 9,
                     "6RATE" : "10%/năm",
                     "7LOAN_FEE" : "500.000đ",
                     "8MONEY_MONTH" : "280.000đ",
@@ -123,22 +123,11 @@ extension ListLoanViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sectionItem = listLoan[indexPath.section] as! NSDictionary
         let item = (sectionItem["sub_array"] as! NSArray)[indexPath.row] as! NSDictionary
-        if (item["5STATUS"] as? Int) == 8 {
-            let detailLoan = [
-                "1PHONE" : "0986632888",
-                "2LOAN_START" : "8/5/2018",
-                "3LOAN_MONEY" : "2.000.000đ",
-                "4LOAN_TIME" : "12 tháng",
-                "5STATUS" : 8,
-                "6RATE" : "10%/năm",
-                "7LOAN_FEE" : "200.000đ",
-                "8MONEY_MONTH" : "180.000đ",
-                "9LOAN_DIS" : "Vay mua điện thoại",
-                ] as NSDictionary
+        if (item["5STATUS"] as? Int) == 9 {
+//            let detailLoan = 
             let sHome = UIStoryboard(name: "Loan", bundle: nil)
             let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
-            object_setClass(v1, LoanStatusViewController.self)
-            if let loanStatusVC = v1 as? LoanStatusViewController {
+            if let loanStatusVC = v1 as? LoanStateViewController {
 //                loanStatusVC.detailLoan = detailLoan
                 self.navigationController?.pushViewController(v1, animated: true)
             }
@@ -147,7 +136,6 @@ extension ListLoanViewController: UITableViewDelegate {
 
             let sectionItem = listLoan[indexPath.section] as! NSDictionary
             let item = (sectionItem["sub_array"] as! NSArray)[indexPath.row] as! NSDictionary
-
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL") as! LoanDetailViewController
             vc.detailLoan = item
             vc.hidesBottomBarWhenPushed = true

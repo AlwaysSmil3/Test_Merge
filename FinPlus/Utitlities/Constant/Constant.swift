@@ -32,8 +32,10 @@ enum STATUS_LOAN: Int {
     case REJECTED = 5 // H13
     case CANCELED = 6
     case RAISING_CAPITAL = 7
-    case PAY_TEST_STATUS = 8
+    case COMPLETED = 8 // H3
     
+    case PAY_TEST_STATUS = 9
+
 }
 
 
@@ -47,6 +49,7 @@ enum DATA_TYPE_TB_CELL {
     static let Footer = "footer"
     static let File = "file"
     static let MultipleFile = "multiple_file"
+
     
 }
 
