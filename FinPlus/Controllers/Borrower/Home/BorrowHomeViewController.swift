@@ -75,31 +75,28 @@ extension BorrowHomeViewController: BrowwerHomeDelegate {
         guard DataManager.shared.loanCategories.count > 0 else { return }
         
         switch status {
-        case .DRAFT:
-            self.updateInfoNeed()
-            break
-            
-        case .ACCEPTED:
-            self.acceptedInterestRate()
-            break
-            
-        case .CANCELED:
-            
-            break
-        case .PENDING:
-            break
-            
-        case .REJECTED:
-            break
-            
-        case .WAITING_FOR_APPROVAL:
-            
-            break
-            
-        case .RAISING_CAPITAL:
-            break
-
+            case .DRAFT:
+                self.updateInfoNeed()
+                break
+            case .ACCEPTED:
+                self.acceptedInterestRate()
+                break
+            case .CANCELED:
+                break
+            case .PENDING:
+                break
+            case .REJECTED:
+                break
+            case .WAITING_FOR_APPROVAL:
+                break
+            case .RAISING_CAPITAL:
+                break
+            case .PAY_TEST_STATUS:
+                self.updateInfoNeed()
+                break
         }
+
+
  
     }
     

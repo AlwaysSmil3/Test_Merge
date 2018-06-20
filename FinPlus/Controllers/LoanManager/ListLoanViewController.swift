@@ -31,6 +31,18 @@ class ListLoanViewController: UIViewController {
                     "8MONEY_MONTH" : "180.000đ",
                     "9LOAN_DIS" : "Vay mua điện thoại",
                 ],
+                [
+                    "1PHONE" : "01656229145",
+                    "2LOAN_START" : "8/5/2018",
+                    "3LOAN_MONEY" : "12.000.000đ",
+                    "4LOAN_TIME" : "12 tháng",
+                    "5STATUS" : 8,
+                    "6RATE" : "10%/năm",
+                    "7LOAN_FEE" : "500.000đ",
+                    "8MONEY_MONTH" : "280.000đ",
+                    "9LOAN_DIS" : "Vay mua điện thoại",
+                    ],
+                
             ]
         ],
         [
@@ -109,21 +121,48 @@ extension ListLoanViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-        
         let sectionItem = listLoan[indexPath.section] as! NSDictionary
         let item = (sectionItem["sub_array"] as! NSArray)[indexPath.row] as! NSDictionary
-        
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL") as! LoanDetailViewController
-        vc.detailLoan = item
-        vc.hidesBottomBarWhenPushed = true
-        let sHome = UIStoryboard(name: "Loan", bundle: nil)
-        let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
-        object_setClass(v1, LoanStatusViewController.self)
+        if (item["5STATUS"] as? Int) == 8 {
+            let detailLoan = [
+                "1PHONE" : "0986632888",
+                "2LOAN_START" : "8/5/2018",
+                "3LOAN_MONEY" : "2.000.000đ",
+                "4LOAN_TIME" : "12 tháng",
+                "5STATUS" : 8,
+                "6RATE" : "10%/năm",
+                "7LOAN_FEE" : "200.000đ",
+                "8MONEY_MONTH" : "180.000đ",
+                "9LOAN_DIS" : "Vay mua điện thoại",
+                ] as NSDictionary
+            let sHome = UIStoryboard(name: "Loan", bundle: nil)
+            let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
+            object_setClass(v1, LoanStatusViewController.self)
+            if let loanStatusVC = v1 as? LoanStatusViewController {
+//                loanStatusVC.detailLoan = detailLoan
+                self.navigationController?.pushViewController(v1, animated: true)
+            }
+        } else {
+            tableView.deselectRow(at: indexPath, animated: true)
 
-        self.navigationController?.pushViewController(v1, animated: true)
-    
+            let sectionItem = listLoan[indexPath.section] as! NSDictionary
+            let item = (sectionItem["sub_array"] as! NSArray)[indexPath.row] as! NSDictionary
+
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL") as! LoanDetailViewController
+            vc.detailLoan = item
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+
+        }
+
+
+
+//
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+        print("123")
     }
     
 }
@@ -153,9 +192,10 @@ extension ListLoanViewController: UITableViewDataSource {
         if ((item["5STATUS"] as? Int) == 0) {
             cell?.statusValueLabel.text = "Đã kết thúc"
             cell?.statusValueLabel.textColor = .black
-        }
-        else
-        {
+        } else if (item["5STATUS"] as? Int) == 8 {
+            cell?.statusValueLabel.text = "Cần thanh toán"
+            cell?.statusValueLabel.textColor = MAIN_COLOR
+        } else {
             cell?.statusValueLabel.text = "Đang vay"
             cell?.statusValueLabel.textColor = MAIN_COLOR
         }

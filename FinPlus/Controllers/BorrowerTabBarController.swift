@@ -70,7 +70,7 @@ class BorrowerTabBarController: UITabBarController {
         let v11 = sHomeBrowwer.instantiateViewController(withIdentifier: "BorrowHomeViewControllerNav")
         
         let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
-        object_setClass(v1, LoanStatusViewController.self)
+
 
         let v2 = sLoanManager.instantiateViewController(withIdentifier: "LOAN_MANAGER_NAVI")
         let v3 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI")
@@ -83,15 +83,20 @@ class BorrowerTabBarController: UITabBarController {
         v4.tabBarItem = UITabBarItem(title: NSLocalizedString("NOTIFICATION", comment: ""), image: UIImage(named: "ic_tb_brow5"), selectedImage: UIImage(named: "ic_tb_brow5_selected"))
         v5.tabBarItem = UITabBarItem(title: NSLocalizedString("BRIEF", comment: ""), image: UIImage(named: "ic_tb_brow4"), selectedImage: UIImage(named: "ic_tb_brow4_selected"))
         
+        //Thay doi fix du lieu theo trạng thái cần thiết
         /*
- 
          
-        */
-        DataManager.shared.browwerInfo?.activeLoan?.status = 3
-        DataManager.shared.browwerInfo?.activeLoan?.loanId = 6
+         DataManager.shared.browwerInfo?.activeLoan?.status = 3
+         DataManager.shared.browwerInfo?.activeLoan?.loanId = 6
+         
+         */
+//        DataManager.shared.browwerInfo?.activeLoan?.status = 3
+//        DataManager.shared.browwerInfo?.activeLoan?.loanId = 6
+
         
         if let loanID = DataManager.shared.browwerInfo?.activeLoan?.loanId, loanID > 0 {
             //Co khoản vay
+            object_setClass(v1, LoanStatusViewController.self)
             self.viewControllers = [v1, v2, v3, v4, v5]
         }
         else
@@ -99,6 +104,7 @@ class BorrowerTabBarController: UITabBarController {
             //Chưa có Khoản vay
             self.viewControllers = [v11, v2, v3, v4, v5]
         }
+        
         
 //        for vc in self.viewControllers! {
 //            self.formatTabBarItem(tabBarItem: vc.tabBarItem)

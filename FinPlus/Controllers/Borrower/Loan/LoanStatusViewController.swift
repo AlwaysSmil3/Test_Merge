@@ -42,9 +42,10 @@ class LoanStatusViewController: LoanDetailBaseViewController {
     }
     
     override func viewDidLoad() {
-        
-        let id = DataManager.shared.browwerInfo?.activeLoan?.status
-        
+        super.viewDidLoad()
+        var id = DataManager.shared.browwerInfo?.activeLoan?.status
+        // VuThanhDo fix to test
+        id = STATUS_LOAN.PAY_TEST_STATUS.rawValue
         switch(id) {
             case STATUS_LOAN.DRAFT.rawValue:
                 
@@ -117,11 +118,34 @@ class LoanStatusViewController: LoanDetailBaseViewController {
             
                 self.titleLabel?.text = NSLocalizedString("FinSmart đang huy động cho khoản vay của bạn.", comment: "")
                 self.desLabel?.text = NSLocalizedString("Xin vui lòng chờ, khoản vay của bạn đang được huy động vốn từ các nhà đầu tư.", comment: "")
+        case STATUS_LOAN.PAY_TEST_STATUS.rawValue:
+            self.topButton?.isHidden = false
+            self.bottomButton?.isHidden = false
+            self.topButton?.setTitle(NSLocalizedString("Thanh toán", comment: ""), for: .normal)
+            self.bottomButton?.setTitle(NSLocalizedString("Lịch sử thanh toán", comment: ""), for: .normal)
+            self.topButton?.layer.cornerRadius = 5
+            self.topButton?.setTitleColor(UIColor.white, for: .normal)
+            self.topButton?.backgroundColor = UIColor(hexString: "#3BAB63")
+
+            self.bottomButton?.layer.cornerRadius = 5
+            self.bottomButton?.layer.borderWidth = 1
+            self.bottomButton?.layer.borderColor = UIColor(hexString: "#3EAA5F").cgColor
+            self.bottomButton?.setTitleColor(UIColor(hexString: "#3EAA5F"), for: .normal)
+            self.bottomButton?.backgroundColor = UIColor.clear
+
+
+            self.titleLabel?.text = NSLocalizedString("Xin chào Minh, bạn đang vay 2.000.000đ.", comment: "")
+            self.desLabel?.text = NSLocalizedString("Bạn cần thanh toán 125.000đ trong tháng này. Hãy thanh toán trước ngày: 20/6/2018.", comment: "")
+            self.topButton?.isUserInteractionEnabled = true
+            self.bottomButton?.isUserInteractionEnabled = true
+            self.topButton?.addTarget(self, action: #selector(pushToPayViewController), for: .touchUpInside)
+            self.bottomButton?.addTarget(self, action: #selector(pushToPayHistoryVC), for: .touchUpInside)
             default:
                 break
         }
+
+
         
-        super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 //        self.titleLabel?.text = NSLocalizedString("Đơn vay của bạn chưa được hoàn thiện.", comment: "")
@@ -141,6 +165,16 @@ class LoanStatusViewController: LoanDetailBaseViewController {
 //        self.arrayKey = detailLoan.allKeys as NSArray
         self.title = NSLocalizedString("DETAIL_LOAN", comment: "")
         
+    }
+
+    @objc func pushToPayViewController() {
+        let payVC = TestBorrowingPayViewController(nibName: "TestBorrowingPayViewController", bundle: nil)
+        self.navigationController?.pushViewController(payVC, animated: true)
+    }
+
+    @objc func pushToPayHistoryVC() {
+        let payHistoryVC = TestPayHistoryViewController(nibName: "TestPayHistoryViewController", bundle: nil)
+        self.navigationController?.pushViewController(payHistoryVC, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

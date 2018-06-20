@@ -108,13 +108,13 @@ class LoginViewController: BaseViewController {
                         self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
                         return
                     } else {
-                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Lỗi không xác định.", okTitle: "OK", cancelTitle: nil)
+                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: API_MESSAGE.OTHER_ERROR, okTitle: "OK", cancelTitle: nil)
                     }
                 }
             }
             .catch {
                 error in
-                self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Lỗi không xác định.", okTitle: "OK", cancelTitle: nil)
+                self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: API_MESSAGE.OTHER_ERROR, okTitle: "OK", cancelTitle: nil)
         }
     }
 
