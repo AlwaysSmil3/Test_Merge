@@ -18,6 +18,7 @@ class LoanTypeFileTBCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.lblTitle?.font = FONT_CAPTION
+        self.imgValue?.layer.cornerRadius = 3
     }
     
     var field: LoanBuilderFields? {
