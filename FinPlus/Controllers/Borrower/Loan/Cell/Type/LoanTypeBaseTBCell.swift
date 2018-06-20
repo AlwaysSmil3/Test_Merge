@@ -19,6 +19,7 @@ class LoanTypeBaseTBCell: UITableViewCell {
         didSet {
             if let isNeed = self.isNeedUpdate, isNeed {
                 //self.lblTitle?.textColor = UIColor(hexString: "#DA3535")
+                self.lblDescriptionNeedUpdate?.text = "Số chứng minh thư không hợp lệ"
                 self.underLine?.backgroundColor = UIColor(hexString: "#DA3535")
             } else {
                 self.lblTitle?.textColor = TEXT_NORMAL_COLOR
