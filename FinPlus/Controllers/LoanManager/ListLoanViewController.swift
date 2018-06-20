@@ -128,7 +128,7 @@ extension ListLoanViewController: UITableViewDelegate {
             let sHome = UIStoryboard(name: "Loan", bundle: nil)
             let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
             if let loanStatusVC = v1 as? LoanStateViewController {
-//                loanStatusVC.detailLoan = detailLoan
+                loanStatusVC.loadStatusId = 9
                 self.navigationController?.pushViewController(v1, animated: true)
             }
         } else {
@@ -180,7 +180,7 @@ extension ListLoanViewController: UITableViewDataSource {
         if ((item["5STATUS"] as? Int) == 0) {
             cell?.statusValueLabel.text = "Đã kết thúc"
             cell?.statusValueLabel.textColor = .black
-        } else if (item["5STATUS"] as? Int) == 8 {
+        } else if (item["5STATUS"] as? Int) == 9 {
             cell?.statusValueLabel.text = "Cần thanh toán"
             cell?.statusValueLabel.textColor = MAIN_COLOR
         } else {

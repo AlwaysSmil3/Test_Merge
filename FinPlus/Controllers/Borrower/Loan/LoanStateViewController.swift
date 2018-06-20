@@ -33,7 +33,7 @@ class LoanStateViewController: UIViewController {
     private var arrayKey: NSArray!
     
     var activeLoan: BrowwerActiveLoan?
-    
+    var loadStatusId : Int = 0
     @IBAction func navi_back() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -45,7 +45,7 @@ class LoanStateViewController: UIViewController {
         
         let id = activeLoan?.status
         
-        switch(id) {
+        switch(loadStatusId) {
         case STATUS_LOAN.DRAFT.rawValue:
             
             headerData = [
