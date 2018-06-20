@@ -38,7 +38,7 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     
     private func updateDataForLoanAPI(completion: () -> Void) {
         
-        /*
+        
         if DataManager.shared.loanInfo.userInfo.fullName.length() == 0 {
             self.showToastWithMessage(message: "Vui lòng nhập họ và tên của bạn để tiếp tục.")
             return
@@ -73,7 +73,7 @@ class LoanPersionalInfoVC: LoanBaseViewController {
             self.showToastWithMessage(message: "Vui lòng nhập địa chỉ tạm trú của bạn để tiếp tục.")
             return
         }
-        */
+        
         
         completion()
     }
