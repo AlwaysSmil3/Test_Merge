@@ -107,10 +107,15 @@ class LoginViewController: BaseViewController {
                     if let returnMessage = model.returnMsg {
                         self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
                         return
+                    } else {
+                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Lỗi không xác định.", okTitle: "OK", cancelTitle: nil)
                     }
                 }
             }
-            .catch { error in }
+            .catch {
+                error in
+                self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Lỗi không xác định.", okTitle: "OK", cancelTitle: nil)
+        }
     }
 
     func pushToHomeVC(userType: UserType) {

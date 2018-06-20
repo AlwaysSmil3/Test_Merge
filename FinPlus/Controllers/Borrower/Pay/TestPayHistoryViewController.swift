@@ -65,11 +65,6 @@ class TestPayHistoryViewController: UIViewController, UITableViewDataSource, UIT
         self.tableView.reloadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -83,66 +78,7 @@ class TestPayHistoryViewController: UIViewController, UITableViewDataSource, UIT
 
         let cell = tableView.dequeueReusableNibCell(type: PayHistoryTableViewCell.self)
         if let cell = cell {
-            cell.timeLb.text = "Đợt \(cellData.time)"
-            cell.payDateLb.text = "\(cellData.payDate)"
-            cell.amountLb.text = "\(cellData.amount)"
-            cell.mainBackgroundView.layer.cornerRadius = 5
-            cell.mainBackgroundView.layer.borderWidth = 1
-            cell.imgBackgroundView.layer.cornerRadius = 15
-            cell.imgBackgroundView.layer.borderWidth = 1
-
-            // set theme cell
-            switch cellData.status {
-            case .NotYet:
-                cell.statusDesLb.text = "Chưa đến lượt"
-                cell.statusDesLb.textColor = UIColor.black
-                cell.timeLb.textColor = UIColor.black
-                cell.payDateLb.textColor = UIColor.black
-                cell.amountLb.textColor = UIColor(hexString: "#4D6678")
-                cell.mainBackgroundView.backgroundColor = UIColor.init(hexString: "#F1F5F8")
-                cell.imgBackgroundView.backgroundColor = UIColor.init(hexString: "#F1F5F8")
-                cell.statusImg.image = #imageLiteral(resourceName: "notYet")
-                cell.imgBackgroundView.layer.borderColor = UIColor.init(hexString: "#F1F5F8").cgColor
-                cell.mainBackgroundView.layer.borderColor = UIColor.init(hexString: "#F1F5F8").cgColor
-
-            case .NeedToPay:
-                cell.statusDesLb.text = "Cần thanh toán"
-                cell.statusDesLb.textColor = UIColor.black
-                cell.timeLb.textColor = UIColor.black
-                cell.payDateLb.textColor = UIColor.black
-                cell.amountLb.textColor = UIColor(hexString: "#3EAA5F")
-                cell.mainBackgroundView.layer.borderColor = UIColor(hexString: "#3EAA5F").cgColor
-                cell.mainBackgroundView.backgroundColor = UIColor.clear
-                cell.imgBackgroundView.backgroundColor = UIColor.clear
-                cell.imgBackgroundView.layer.borderColor = UIColor(hexString: "#3EAA5F").cgColor
-                cell.mainBackgroundView.layer.borderColor = UIColor.init(hexString: "#3EAA5F").cgColor
-                cell.statusImg.image = #imageLiteral(resourceName: "needToPay")
-            case .NeedToPayNow:
-                cell.statusDesLb.text = "Cần thanh toán ngay"
-                cell.statusDesLb.textColor = UIColor.black
-                cell.timeLb.textColor = UIColor.black
-                cell.payDateLb.textColor = UIColor.black
-                cell.amountLb.textColor = UIColor(hexString: "#DA3535")
-                cell.mainBackgroundView.layer.borderColor = UIColor(hexString: "#DA3535").cgColor
-                cell.mainBackgroundView.backgroundColor = UIColor.clear
-                cell.imgBackgroundView.backgroundColor = UIColor.clear
-                cell.imgBackgroundView.layer.borderColor = UIColor(hexString: "#DA3535").cgColor
-                cell.statusImg.image = #imageLiteral(resourceName: "needToPayNow")
-            default:
-                // paid
-                cell.statusDesLb.text = "Đã thanh toán"
-                cell.statusDesLb.textColor = UIColor.white
-                cell.timeLb.textColor = UIColor.white
-                cell.payDateLb.textColor = UIColor.white
-                cell.amountLb.textColor = UIColor.white
-                cell.mainBackgroundView.backgroundColor = UIColor(hexString: "#94D4AB")
-                cell.imgBackgroundView.backgroundColor = UIColor(hexString: "#94D4AB")
-                cell.mainBackgroundView.layer.borderColor = UIColor(hexString: "#94D4AB").cgColor
-                cell.imgBackgroundView.layer.borderColor = UIColor(hexString: "#94D4AB").cgColor
-                cell.statusImg.image = #imageLiteral(resourceName: "paid")
-
-            }
-
+            cell.displayCell(cellData: cellData)
         }
 
         return cell ?? UITableViewCell()
