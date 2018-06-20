@@ -32,7 +32,7 @@ enum STATUS_LOAN: Int {
     case REJECTED = 5 // H13
     case CANCELED = 6
     case RAISING_CAPITAL = 7
-    
+    case COMPLETED = 8 // H3
 }
 
 

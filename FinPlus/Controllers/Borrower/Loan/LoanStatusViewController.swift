@@ -10,17 +10,6 @@ import UIKit
 
 class LoanStatusViewController: LoanDetailBaseViewController {
     
-//    init() {
-//        let storyboard = UIStoryboard(name: "HomeBrowwer", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
-//        object_setClass(vc, LoanStatusViewController.self)
-//        return (LoanStatusViewController *)vc
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     var detailLoan = [
         "1PHONE" : "0986632888",
         "2LOAN_START" : "8/5/2018",
@@ -35,11 +24,11 @@ class LoanStatusViewController: LoanDetailBaseViewController {
     
     
     private var arrayKey:NSArray!
-    var activeLoan: BrowwerActiveLoan?
+//    var activeLoan: BrowwerActiveLoan?
     
-    @IBAction func navi_back(sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
+//    @IBAction func navi_back(sender: UIButton) {
+//        self.navigationController?.popViewController(animated: true)
+//    }
     
     override func viewDidLoad() {
         
@@ -61,9 +50,11 @@ class LoanStatusViewController: LoanDetailBaseViewController {
                 self.topButton?.layer.borderColor = MAIN_COLOR.cgColor
             
             case STATUS_LOAN.WAITING_FOR_APPROVAL.rawValue:
+                
                 self.desLabel?.isHidden = true
                 self.topButton?.isHidden = true
                 self.bottomButton?.isHidden = true
+            
             case STATUS_LOAN.PENDING.rawValue:
                 
                 self.bottomButton?.isHidden = true
@@ -122,20 +113,6 @@ class LoanStatusViewController: LoanDetailBaseViewController {
         }
         
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-//        self.titleLabel?.text = NSLocalizedString("Đơn vay của bạn chưa được hoàn thiện.", comment: "")
-//        self.desLabel?.text = NSLocalizedString("Để được duyệt, hãy bổ sung các thông tin sau:\n• Số chứng minh thư.\n• Ảnh chứng minh thư.\n• Bảng lương.", comment: "")
-//
-//        self.topButton?.backgroundColor = MAIN_COLOR
-//        self.topButton?.setTitle(NSLocalizedString("Bổ sung thông tin", comment: ""), for: .normal)
-//        self.topButton?.layer.cornerRadius = 8
-//        self.topButton?.tintColor = .white
-//        
-//        self.bottomButton?.backgroundColor = MAIN_COLOR
-//        self.bottomButton?.setTitle(NSLocalizedString("Bổ sung thông tin", comment: ""), for: .normal)
-//        self.bottomButton?.layer.cornerRadius = 8
-//        self.bottomButton?.tintColor = .white
         
         // Do any additional setup after loading the view.
 //        self.arrayKey = detailLoan.allKeys as NSArray
@@ -159,26 +136,19 @@ class LoanStatusViewController: LoanDetailBaseViewController {
         }
     }
 
-}
-
-extension LoanStatusViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
     
-}
-
-extension LoanStatusViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let key = arrayKey[indexPath.row] as! String
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DoubleTextTableViewCell
         if cell == nil {
@@ -186,8 +156,35 @@ extension LoanStatusViewController: UITableViewDataSource {
             cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DoubleTextTableViewCell
         }
         
-        cell?.nameLabel.text = "\(indexPath.row)"
-        cell?.desLabel.text = "aaaaaqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        switch indexPath.row {
+        case 0:
+            cell?.nameLabel.text = NSLocalizedString("PHONE", comment: "")
+            cell?.desLabel.text = "0986632888"
+        case 1:
+            cell?.nameLabel.text = NSLocalizedString("LOAN_START", comment: "")
+            cell?.desLabel.text = "8/5/2018"
+        case 2:
+            cell?.nameLabel.text = NSLocalizedString("LOAN_MONEY", comment: "")
+            cell?.desLabel.text = "2.000.000đ"
+        case 3:
+            cell?.nameLabel.text = NSLocalizedString("LOAN_TIME", comment: "")
+            cell?.desLabel.text = "12 tháng"
+        case 4:
+            cell?.nameLabel.text = NSLocalizedString("STATUS", comment: "")
+            cell?.desLabel.text = ""
+        case 5:
+            cell?.nameLabel.text = NSLocalizedString("RATE", comment: "")
+            cell?.desLabel.text = "10%/năm"
+        case 6:
+            cell?.nameLabel.text = NSLocalizedString("LOAN_FEE", comment: "")
+            cell?.desLabel.text = "200.000đ"
+        case 7:
+            cell?.nameLabel.text = NSLocalizedString("MONEY_MONTH", comment: "")
+            cell?.desLabel.text = "180.000đ"
+        default:
+            cell?.nameLabel.text = NSLocalizedString("LOAN_DIS", comment: "")
+            cell?.desLabel.text = "Vay mua điện thoại"
+        }
         
         if indexPath.row == (tableView.numberOfRows(inSection: indexPath.section) - 1) {
             //End of loading all Visible cells

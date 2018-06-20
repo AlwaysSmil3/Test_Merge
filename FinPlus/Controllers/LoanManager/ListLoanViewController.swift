@@ -120,7 +120,6 @@ extension ListLoanViewController: UITableViewDelegate {
         vc.hidesBottomBarWhenPushed = true
         let sHome = UIStoryboard(name: "Loan", bundle: nil)
         let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
-        object_setClass(v1, LoanStatusViewController.self)
 
         self.navigationController?.pushViewController(v1, animated: true)
     
