@@ -9,9 +9,9 @@
 import Foundation
 
 
-class LoanTypeDropdownTBCell: UITableViewCell, DataSelectedFromPopupProtocol {
+class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol {
     
-    @IBOutlet var lblTitle: UILabel?
+
     @IBOutlet var lblValue: UILabel?
     
     var field: LoanBuilderFields? {
@@ -42,9 +42,9 @@ class LoanTypeDropdownTBCell: UITableViewCell, DataSelectedFromPopupProtocol {
         super.setSelected(selected, animated: animated)
         
         guard selected else { return }
-        guard let field_ = self.field, let data = field_.data else { return }
+        guard let field_ = self.field, let data = field_.data, let id = field_.id else { return }
         
-        if field_.title == "Nghề nghiệp" || field_.title == "Cấp bậc" {
+        if id.contains("position") || id.contains("jobType") {
             let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
             popup.setDataSource(data: data)
             popup.delegate = self
@@ -59,11 +59,11 @@ class LoanTypeDropdownTBCell: UITableViewCell, DataSelectedFromPopupProtocol {
     func dataSelected(data: LoanBuilderData) {
         self.lblValue?.text = data.title
         
-        guard let field_ = self.field else { return }
+        guard let field_ = self.field, let id = field_.id else { return }
         
-        if field_.title == "Nghề nghiệp" {
+        if id.contains("jobType") {
             DataManager.shared.loanInfo.jobInfo.jobType = data.title!
-        } else if field_.title == "Cấp bậc" {
+        } else if id.contains("position") {
             DataManager.shared.loanInfo.jobInfo.position = data.title!
         }
         

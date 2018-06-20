@@ -8,15 +8,16 @@
 
 import Foundation
 
-class LoanTypeTextFieldTBCell: UITableViewCell {
+class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell {
     
-    @IBOutlet var lblTitle: UILabel?
+
     @IBOutlet var tfValue: UITextField?
     @IBOutlet var lblDOptional: UILabel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.lblTitle?.font = FONT_CAPTION
+        self.tfValue?.delegate = self
     }
     
     var parent: String?
@@ -32,10 +33,12 @@ class LoanTypeTextFieldTBCell: UITableViewCell {
                     self.lblTitle?.text = title
                 }
                 
-                if let id = field_.id, id.contains("nationalId") || id.contains("salary") || id.contains("companyPhoneNumber") {
-                    self.tfValue?.keyboardType = .numberPad
-                }
+            }
+            
+            if let id = field_.id, id.contains("nationalId") || id.contains("salary") || id.contains("companyPhoneNumber") {
+                self.tfValue?.keyboardType = .numberPad
                 
+                self.isNeedUpdate = true
             }
             
             if let value = field_.placeholder {
@@ -86,6 +89,21 @@ class LoanTypeTextFieldTBCell: UITableViewCell {
     }
     
     
-    
 }
+
+//MARK: TextField Delegate
+extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Giới hạn ký tự nhập vào
+        let maxLength = 100
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        
+        if newString.length > maxLength { return false }
+        
+        return true
+    }
+}
+
 

@@ -8,10 +8,8 @@
 
 import Foundation
 
-class LoanTypeOptionalMediaTBCell: UITableViewCell {
+class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     
-    
-    @IBOutlet var lblTitle: UILabel?
     @IBOutlet var mainCollectionView: UICollectionView?
     
     var currentSelectedCollection: IndexPath?
@@ -28,7 +26,6 @@ class LoanTypeOptionalMediaTBCell: UITableViewCell {
                     self.lblTitle?.text = title
                 }
             }
-            
         }
     }
     
@@ -50,9 +47,6 @@ class LoanTypeOptionalMediaTBCell: UITableViewCell {
         self.mainCollectionView?.register(UINib(nibName: "LoanOtherInfoCollectionCell", bundle: nil), forCellWithReuseIdentifier: "Loan_Other_Info_Collection_Cell")
         
     }
-    
-
-    
     
     func showLibrary() {
         CameraHandler.shared.showActionSheet(vc: UIApplication.shared.topViewController()!)

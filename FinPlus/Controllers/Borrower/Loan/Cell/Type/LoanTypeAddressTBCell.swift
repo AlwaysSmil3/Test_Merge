@@ -8,9 +8,8 @@
 
 import Foundation
 
-class LoanTypeAddressTBCell: UITableViewCell {
+class LoanTypeAddressTBCell: LoanTypeBaseTBCell {
     
-    @IBOutlet var lblTitle: UILabel?
     @IBOutlet var lblValue: UILabel?
     
     override func awakeFromNib() {
