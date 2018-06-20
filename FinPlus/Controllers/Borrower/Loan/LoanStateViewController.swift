@@ -164,12 +164,12 @@ class LoanStateViewController: UIViewController {
             headerData = [
                 [
                     "type": HeaderCellType.TextType,
-                    "text": "Rất tiếc, yêu cầu vay của bạn đã bị từ chối.",
+                    "text": "Xin chào Minh, bạn đang vay 2.000.000đ.",
                     "subType": TextCellType.TitleType,
                     ],
                 [
                     "type": HeaderCellType.TextType,
-                    "text": "Yêu cầu vay của bạn đã bị từ chối. Vui lòng tạo một đơn vay mới và thứ lại!",
+                    "text": "Bạn cần thanh toán 125.000đ trong tháng này. Hãy thanh toán trước ngày: 20/6/2018.",
                     "subType": TextCellType.DesType,
                     ],
                 [
