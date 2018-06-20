@@ -95,7 +95,7 @@ class BorrowerTabBarController: UITabBarController {
             "loanCategoryId": 1,
             "amount": 1111,
             "term": 20,
-            "status": 5,
+            "status": 9,
             "intRate": 5,
             "grade": "A",
             "userInfo": [
@@ -152,12 +152,12 @@ class BorrowerTabBarController: UITabBarController {
             ],
             "createdAt": "2018-06-08T02:07:45+00:00"
             ] as [String : Any]
-        
-        DataManager.shared.browwerInfo?.activeLoan = BrowwerActiveLoan(object: json)
-        
-        if let loanID = DataManager.shared.browwerInfo?.activeLoan?.loanId, loanID > 0 {
+        let activeLoan = BrowwerActiveLoan(object: json)
+        if let loanID = activeLoan.loanId, loanID > 0 {
             //Co khoản vay
-            self.viewControllers = [v1, v2, v3, v4, v5]
+            let loanState = (v1 as! UINavigationController).topViewController as! LoanStateViewController
+            loanState.activeLoan = activeLoan
+            self.viewControllers = [loanState, v2, v3, v4, v5]
         } else {
             //Chưa có Khoản vay
             self.viewControllers = [v11, v2, v3, v4, v5]

@@ -43,7 +43,7 @@ class LoanStateViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        let id = DataManager.shared.browwerInfo?.activeLoan?.status
+        let id = activeLoan?.status
         
         switch(id) {
         case STATUS_LOAN.DRAFT.rawValue:
@@ -159,6 +159,32 @@ class LoanStateViewController: UIViewController {
                     "subType": TextCellType.DesType,
                 ],
             ]
+
+        case STATUS_LOAN.PAY_TEST_STATUS.rawValue :
+            headerData = [
+                [
+                    "type": HeaderCellType.TextType,
+                    "text": "Xin chào Minh, bạn đang vay 2.000.000đ.",
+                    "subType": TextCellType.TitleType,
+                    ],
+                [
+                    "type": HeaderCellType.TextType,
+                    "text": "Bạn cần thanh toán 125.000đ trong tháng này. Hãy thanh toán trước ngày: 20/6/2018.",
+                    "subType": TextCellType.DesType,
+                    ],
+                [
+                    "type": HeaderCellType.ButtonType,
+                    "text": "Thanh toán",
+                    "subType": ButtonCellType.FillType,
+                    "target": "pushToPayViewController"
+                    ],
+                [
+                    "type": HeaderCellType.ButtonType,
+                    "text": "Lịch sử thanh toán",
+                    "subType": ButtonCellType.NullType,
+                    "target": "pushToPayHistoryVC"
+                    ],
+            ]
             
         default:
             break
@@ -190,6 +216,16 @@ class LoanStateViewController: UIViewController {
         
         self.navigationItem.titleView = UIImageView(image: UIImage(named: "ic_logo"))
     }
+
+    @IBAction func pushToPayViewController() {
+        let payVC = TestBorrowingPayViewController(nibName: "TestBorrowingPayViewController", bundle: nil)
+        self.navigationController?.pushViewController(payVC, animated: true)
+    }
+
+    @IBAction func pushToPayHistoryVC() {
+        let payHistoryVC = TestPayHistoryViewController(nibName: "TestPayHistoryViewController", bundle: nil)
+        self.navigationController?.pushViewController(payHistoryVC, animated: true)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -199,19 +235,19 @@ class LoanStateViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        if (headerData.count > 0)
-        {
-            UIView.animate(withDuration: 0, animations: {
-                self.headerTableView?.layoutIfNeeded()
-            }) { (complete) in
-                // Edit heightOfTableViewConstraint's constant to update height of table view
-                self.headerTableViewHeightConstraint?.constant = (self.headerTableView?.visibleCells[0].frame.height)!*CGFloat(self.headerData.count)
-            }
-        }
-        else
-        {
-            self.headerTableViewHeightConstraint?.constant = 0
-        }
+//        if (headerData.count > 0)
+//        {
+//            UIView.animate(withDuration: 0, animations: {
+//                self.headerTableView?.layoutIfNeeded()
+//            }) { (complete) in
+//                // Edit heightOfTableViewConstraint's constant to update height of table view
+//                self.headerTableViewHeightConstraint?.constant = (self.headerTableView?.visibleCells[0].frame.height)!*CGFloat(self.headerData.count)
+//            }
+//        }
+//        else
+//        {
+//            self.headerTableViewHeightConstraint?.constant = 0
+//        }
         
         UIView.animate(withDuration: 0, animations: {
             self.dataTableView?.layoutIfNeeded()

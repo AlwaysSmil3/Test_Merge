@@ -33,6 +33,9 @@ enum STATUS_LOAN: Int {
     case CANCELED = 6
     case RAISING_CAPITAL = 7
     case COMPLETED = 8 // H3
+    
+    case PAY_TEST_STATUS = 9
+
 }
 
 
