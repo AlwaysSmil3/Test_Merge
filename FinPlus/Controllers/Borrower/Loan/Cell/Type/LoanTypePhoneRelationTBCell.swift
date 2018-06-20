@@ -8,9 +8,9 @@
 
 import Foundation
 
-class LoanTypePhoneRelationTBCell: UITableViewCell, DataSelectedFromPopupProtocol {
+class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol {
     
-    @IBOutlet var lblTitle: UILabel?
+
     @IBOutlet var tfValue: UITextField?
     @IBOutlet var lblTypeRelation: UITextField?
     

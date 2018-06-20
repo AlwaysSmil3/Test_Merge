@@ -29,6 +29,14 @@ class InfoInterestRatePopupVC: BasePopup {
         self.hide()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch: UITouch? = touches.first
+        
+        if touch?.view == self.view {
+            self.hide()
+        }
+    }
+    
     
 }
 

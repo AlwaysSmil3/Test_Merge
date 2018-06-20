@@ -80,6 +80,7 @@
             <connections>
                 <outlet property="lblTitle" destination="HrX-Ve-BAd" id="XEw-VZ-9Ob"/>
                 <outlet property="lblValue" destination="kMp-1e-hIE" id="tbK-G3-jfO"/>
+                <outlet property="underLine" destination="A3t-Xp-inc" id="3NQ-vN-5rv"/>
             </connections>
             <point key="canvasLocation" x="26.5" y="-22.5"/>
         </tableViewCell>
