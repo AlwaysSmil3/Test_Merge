@@ -69,7 +69,7 @@ class BorrowerTabBarController: UITabBarController {
         
         let v11 = sHomeBrowwer.instantiateViewController(withIdentifier: "BorrowHomeViewControllerNav")
         
-        let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
+        let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE_NAVI")
 
         let v2 = sLoanManager.instantiateViewController(withIdentifier: "LOAN_MANAGER_NAVI")
         let v3 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI")
@@ -89,13 +89,74 @@ class BorrowerTabBarController: UITabBarController {
          DataManager.shared.browwerInfo?.activeLoan?.loanId = 6
          
          */
-//        DataManager.shared.browwerInfo?.activeLoan?.status = 3
-//        DataManager.shared.browwerInfo?.activeLoan?.loanId = 6
         
+        let json = [
+            "loanId": 1,
+            "loanCategoryId": 1,
+            "amount": 1111,
+            "term": 20,
+            "status": 5,
+            "intRate": 5,
+            "grade": "A",
+            "userInfo": [
+                "fullName": "Nguyen V A",
+                "gender": "0",
+                "birthday": "2018-06-08T02:07:45+00:00",
+                "nationalId": "1355xxxxx",
+                "relationships": [
+                    "type": 0,
+                    "phoneNumber": "09xxxxx"
+                ],
+                "residentAddress": [
+                    "city": "",
+                    "district": "",
+                    "commune": "",
+                    "street": "",
+                    "zipCode": "",
+                    "longitude": 0,
+                    "latitude": 0
+                ],
+                "currentAddress": [
+                    "city": "",
+                    "district": "",
+                    "commune": "",
+                    "street": "",
+                    "zipCode": "",
+                    "longitude": 0,
+                    "latitude": 0
+                ]
+            ],
+            "jobInfo": [
+                "jobType": "",
+                "position": "",
+                "company": "",
+                "salary": 10000000,
+                "companyPhoneNumber": "",
+                "address": [
+                    "city": "",
+                    "district": "",
+                    "commune": "",
+                    "street": "",
+                    "zipCode": "",
+                    "longitude": 0,
+                    "latitude": 0
+                ]
+            ],
+            "walletId": 1,
+            "nationalIdFrontImg": "",
+            "nationalIdBackImg": "",
+            "optionalText": "Free text input",
+            "optionalMedia": [
+            "Media URL",
+            "Media URL"
+            ],
+            "createdAt": "2018-06-08T02:07:45+00:00"
+            ] as [String : Any]
+        
+        DataManager.shared.browwerInfo?.activeLoan = BrowwerActiveLoan(object: json)
         
         if let loanID = DataManager.shared.browwerInfo?.activeLoan?.loanId, loanID > 0 {
             //Co khoản vay
-            object_setClass(v1, LoanStatusViewController.self)
             self.viewControllers = [v1, v2, v3, v4, v5]
         } else {
             //Chưa có Khoản vay
