@@ -284,6 +284,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         case DATA_TYPE_TB_CELL.TextBox:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.TextField, for: indexPath) as! LoanTypeTextFieldTBCell
             cell.field = model
+            cell.parent = data.id
             return cell
             
         case DATA_TYPE_TB_CELL.DropDown:
