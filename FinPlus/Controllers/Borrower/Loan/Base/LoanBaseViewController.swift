@@ -406,7 +406,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: Address Delegate
 extension LoanBaseViewController: AddressDelegate {
     func getAddress(address: Address, type: Int, title: String) {
-        let add = address.commune + ", " + address.district + ", " + address.city
+        let add = address.street + ", " + address.commune + ", " + address.district + ", " + address.city
         
         guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
         self.mainTBView?.deselectRow(at: indexPath, animated: true)
