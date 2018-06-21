@@ -35,6 +35,26 @@ enum STATUS_LOAN: Int {
     case COMPLETED = 8 // H3
     
     case PAY_TEST_STATUS = 9
+    
+    
+//    case DRAFT = 1 // Khoản vay chưa hoàn thiện(Đang ở trạng thái client tạo đơn vay)
+//    case SALE_REVIEW = 2 // Đợi sales duyệt (Chờ sales review đơn vay đầy đủ & hợp lệ)
+//    case SALE_PENDING = 3 // Y/c bổ sung thông tin từ sales
+//    case RISK_REVIEW = 4 // Thẩm định viên duyệt
+//    case RISK_PENDING = 5 // Y/c bổ sung thông tin từ thẩm định viên
+//    case REJECTED = 6 // Bị từ chối
+//    case INTEREST_CONFIRM = 7 // Chờ xác nhận lãi suất
+//    case INTEREST_CONFIRM_EXPIRED = 8 // Quá hạn xác nhận lãi suất
+//    case RAISING_CAPITAL = 9 // Lên chợ và đang huy động vốn
+//    case PARTIAL_FILLED = 10 // Huy động được 1 phần
+//    case FILLED = 11 // Đơn vay
+//    case CONTRACT_READY = 12 // Chờ ký hợp đồng
+//    case EXPIRED = 13 // Đơn vay quá hạn huy động
+//    case CONTRACT_SIGNED = 14 // Đã ký hợp đồng
+//    case DISBURSAL = 15 // Đã giải ngân
+//    case OVERDUE_DEPT = 16 // Nợ quá hạn (Thông tin có nợ bổ sung nợ quá hạn bao nhiêu ngày)
+//    case TIMELY_DEPT = 17 // Nợ đúng hạn
+//    case CANCELED = 18 // Đã hủy
 
 }
 

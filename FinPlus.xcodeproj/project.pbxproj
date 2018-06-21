@@ -213,6 +213,10 @@
 		E75B706720DA39CC007D158D /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B706520DA39CC007D158D /* ButtonTableViewCell.swift */; };
 		E75B706820DA39CC007D158D /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E75B706620DA39CC007D158D /* ButtonTableViewCell.xib */; };
 		E75B706A20DA4644007D158D /* LoanStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B706920DA4644007D158D /* LoanStateViewController.swift */; };
+		E76AF6AB20DB4F7700C71305 /* FooterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76AF6A920DB4F7700C71305 /* FooterButtonView.swift */; };
+		E76AF6AC20DB4F7700C71305 /* FooterButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E76AF6AA20DB4F7700C71305 /* FooterButtonView.xib */; };
+		E76AF6AE20DB8E2600C71305 /* SignContractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76AF6AD20DB8E2600C71305 /* SignContractViewController.swift */; };
+		E76AF6B020DB8E4100C71305 /* ContractSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76AF6AF20DB8E4100C71305 /* ContractSuccessViewController.swift */; };
 		E772D76920CA7694001F0B8E /* LoanManager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E772D76820CA7694001F0B8E /* LoanManager.storyboard */; };
 		E772D76C20CA76F6001F0B8E /* ListLoanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772D76B20CA76F6001F0B8E /* ListLoanViewController.swift */; };
 		E772D76E20CA770F001F0B8E /* LoanDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772D76D20CA770F001F0B8E /* LoanDetailViewController.swift */; };
@@ -490,6 +494,10 @@
 		E75B706520DA39CC007D158D /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		E75B706620DA39CC007D158D /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
 		E75B706920DA4644007D158D /* LoanStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanStateViewController.swift; sourceTree = "<group>"; };
+		E76AF6A920DB4F7700C71305 /* FooterButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterButtonView.swift; sourceTree = "<group>"; };
+		E76AF6AA20DB4F7700C71305 /* FooterButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterButtonView.xib; sourceTree = "<group>"; };
+		E76AF6AD20DB8E2600C71305 /* SignContractViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignContractViewController.swift; sourceTree = "<group>"; };
+		E76AF6AF20DB8E4100C71305 /* ContractSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractSuccessViewController.swift; sourceTree = "<group>"; };
 		E772D76820CA7694001F0B8E /* LoanManager.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoanManager.storyboard; sourceTree = "<group>"; };
 		E772D76B20CA76F6001F0B8E /* ListLoanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLoanViewController.swift; sourceTree = "<group>"; };
 		E772D76D20CA770F001F0B8E /* LoanDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanDetailViewController.swift; sourceTree = "<group>"; };
@@ -703,6 +711,8 @@
 				633AE0B320B40AA1007AB0D1 /* LoanSummaryInfoVC.swift */,
 				6355FAEB20B7C1FB00038F5B /* VerifyOTPAuthenVC+Loan.swift */,
 				E75B706920DA4644007D158D /* LoanStateViewController.swift */,
+				E76AF6AD20DB8E2600C71305 /* SignContractViewController.swift */,
+				E76AF6AF20DB8E4100C71305 /* ContractSuccessViewController.swift */,
 			);
 			path = Loan;
 			sourceTree = "<group>";
@@ -1288,6 +1298,8 @@
 				E75B705E20DA3963007D158D /* TitleTableViewCell.xib */,
 				E75B706520DA39CC007D158D /* ButtonTableViewCell.swift */,
 				E75B706620DA39CC007D158D /* ButtonTableViewCell.xib */,
+				E76AF6A920DB4F7700C71305 /* FooterButtonView.swift */,
+				E76AF6AA20DB4F7700C71305 /* FooterButtonView.xib */,
 			);
 			path = SubItems;
 			sourceTree = "<group>";
@@ -1515,6 +1527,7 @@
 				630BA61320C22A4100880DAE /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				E7F519F020CE159300F72682 /* Profile.storyboard in Resources */,
 				84114BDA20D79A6F005026DF /* TestPayHistoryViewController.xib in Resources */,
+				E76AF6AC20DB4F7700C71305 /* FooterButtonView.xib in Resources */,
 				639C9E2120A18A7500F2CF5E /* Oswald-Light.ttf in Resources */,
 				E7F51A2120CE6D1600F72682 /* LoanTypeFooterTBView.xib in Resources */,
 				63FD80CD20C13C14004BD22A /* HomeInvestor.storyboard in Resources */,
@@ -1744,6 +1757,7 @@
 				E7F51A0B20CE6CC800F72682 /* LoanOtherInfoCollectionCell.swift in Sources */,
 				639C9DEE20A182E900F2CF5E /* ExUIViewController.swift in Sources */,
 				637A90B820A2FA5F00CCACA5 /* DatePickerDialog.swift in Sources */,
+				E76AF6B020DB8E4100C71305 /* ContractSuccessViewController.swift in Sources */,
 				6338F3FD20BE602C005777E2 /* BrowwerRelationships.swift in Sources */,
 				6369BBD620AE91F300E0C435 /* InvestorHomeViewController.swift in Sources */,
 				84114BD320D79464005026DF /* BankAccountTableViewCell.swift in Sources */,
@@ -1765,6 +1779,7 @@
 				6334B60B20DA3E8F009960A5 /* LoanTypeBaseTBCell.swift in Sources */,
 				6355FAEE20B7EF2800038F5B /* LoanCategories.swift in Sources */,
 				E7F51A2E20CE6D3F00F72682 /* LoanTypeTextFieldTBCell.swift in Sources */,
+				E76AF6AB20DB4F7700C71305 /* FooterButtonView.swift in Sources */,
 				84CBBE5220CF83AA0058C834 /* NotificationListViewController.swift in Sources */,
 				84114BCD20D79464005026DF /* SubInfoTableViewCell.swift in Sources */,
 				E75B705F20DA3963007D158D /* TitleTableViewCell.swift in Sources */,
@@ -1786,6 +1801,7 @@
 				638DDC9A20D78CD900CB927D /* Constant+CoreData.swift in Sources */,
 				637A90B020A2E52700CCACA5 /* APIClient+Authen.swift in Sources */,
 				E772D77720CA8A46001F0B8E /* DoubleTextTableViewCell.swift in Sources */,
+				E76AF6AE20DB8E2600C71305 /* SignContractViewController.swift in Sources */,
 				6397B1B820CFB436009BAF33 /* LoanTypePopupTBCell.swift in Sources */,
 				E7F51A3820CE6DE700F72682 /* OnBoardViewController.swift in Sources */,
 				633AF9BA20A98F6000BAE2BB /* ChoiceKindUserVC.swift in Sources */,

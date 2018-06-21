@@ -189,7 +189,7 @@ extension ListLoanViewController: UITableViewDataSource {
         }
         
         cell?.moneyLabel.text = item["3LOAN_MONEY"] as? String
-        cell?.disLabel.text = (item["4LOAN_TIME"] as? String)! + " - " + (item["9LOAN_DIS"] as? String)!
+        cell?.disLabel.text = "Thời hạn " + (item["4LOAN_TIME"] as? String)! + " - " + (item["9LOAN_DIS"] as? String)!
         
         return cell!
     }
