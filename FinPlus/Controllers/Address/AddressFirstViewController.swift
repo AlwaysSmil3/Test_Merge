@@ -21,6 +21,8 @@ class AddressFirstViewController: BaseViewController {
     var cityModel: Model1?
     var districtModel: Model1?
     var communeModel: Model1?
+    //Số nhà, thôn, xóm,....
+    var numberHouse: String?
     
     var typeAddress: Int = 0
     
@@ -90,10 +92,16 @@ class AddressFirstViewController: BaseViewController {
     @IBAction func btnSaveTapped(_ sender: Any) {
         
         guard let cityModel_ = self.cityModel, let districtModel_ = self.districtModel, let communeModel_ = self.communeModel else {
+            self.showToastWithMessage(message: "Vui lòng chọn Tỉnh,Thành phố; Quân, Huyện; Phường, xã, thị trấn")
+            return
+        }
+        let indexPath = IndexPath(row: 3, section: 0)
+        guard let cell = self.mainTableView.cellForRow(at: indexPath) as? LoanTypeTextFieldTBCell, let street = cell.tfValue?.text, street.length() > 0 else {
+            self.showToastWithMessage(message: "Vui lòng nhập số nhà, đường, thôn, xóm...")
             return
         }
         
-        let address = Address(city: cityModel_.name!, district: districtModel_.name!, commune: communeModel_.name!, street: "", zipCode: "", long: 0.0, lat: 0.0)
+        let address = Address(city: cityModel_.name!, district: districtModel_.name!, commune: communeModel_.name!, street: street, zipCode: "", long: 0.0, lat: 0.0)
         
         
         self.delegate?.getAddress(address: address, type: self.typeAddress, title: self.titleTypeAddress)
