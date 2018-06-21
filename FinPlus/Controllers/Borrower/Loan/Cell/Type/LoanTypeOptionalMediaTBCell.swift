@@ -55,7 +55,6 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
 
             self.uploadData(img: img)
         }
-        
     }
     
     //Upload Data Image
@@ -70,10 +69,10 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         APIClient.shared.upload(type: self.typeImgFile, typeMedia: "image", endPoint: endPoint, imagesData: [data], parameters: ["" : ""], onCompletion: { (response) in
             UIApplication.shared.topViewController()!.handleLoadingView(isShow: false)
             print("Upload \(String(describing: response))")
-            UIApplication.shared.topViewController()!.showToastWithMessage(message: "Upload thành công")
             
             guard let res = response, let data = res["data"] as? [JSONDictionary], data.count > 0 else { return }
-
+            UIApplication.shared.topViewController()!.showToastWithMessage(message: "Upload thành công")
+            
             self.dataSourceCollection.append(img)
             //DataManager.shared.loanInfo.optionalMedia.removeAll()
             for d in data {
@@ -81,8 +80,6 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
                     DataManager.shared.loanInfo.optionalMedia.append(url)
                 }
             }
-            
-
             
         }) { (error) in
             UIApplication.shared.topViewController()!.handleLoadingView(isShow: false)

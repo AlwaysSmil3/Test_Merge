@@ -63,7 +63,6 @@ class VerifyFacebookVC: BaseViewController {
                         //Lay thong tin nguoi dung
                         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
                             .done(on: DispatchQueue.main) { model in
-                                
                                 DataManager.shared.browwerInfo = model
                                 
                                 let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)

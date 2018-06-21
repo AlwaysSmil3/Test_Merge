@@ -214,7 +214,7 @@ class APIClient {
     // Upload Media
     func upload(type: FILE_TYPE_IMG, typeMedia: String, endPoint: String, imagesData: [Data], parameters: JSONDictionary, onCompletion: ((JSONDictionary?) -> Void)? = nil, onError: ((Error?) -> Void)? = nil){
         
-        let url = URL(string: baseURLString + endPoint)! /* your API url */
+        let url = URL(string: hostLoan + endPoint)! /* your API url */
         
         let headers: HTTPHeaders = [
             /* "Authorization": "your_access_token",  in case you need authorization header */

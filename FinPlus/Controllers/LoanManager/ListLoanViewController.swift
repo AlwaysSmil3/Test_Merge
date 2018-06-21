@@ -124,28 +124,23 @@ extension ListLoanViewController: UITableViewDelegate {
         let sectionItem = listLoan[indexPath.section] as! NSDictionary
         let item = (sectionItem["sub_array"] as! NSArray)[indexPath.row] as! NSDictionary
         if (item["5STATUS"] as? Int) == 9 {
-//            let detailLoan = 
+            // fixed to test borrowing pay viewcontroller
             let sHome = UIStoryboard(name: "Loan", bundle: nil)
             let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
             if let loanStatusVC = v1 as? LoanStateViewController {
-//                loanStatusVC.detailLoan = detailLoan
+                loanStatusVC.activeLoanId = 9
                 self.navigationController?.pushViewController(v1, animated: true)
             }
         } else {
+            // will use LoanStateViewController replace LoanDetailViewController
             tableView.deselectRow(at: indexPath, animated: true)
-
             let sectionItem = listLoan[indexPath.section] as! NSDictionary
             let item = (sectionItem["sub_array"] as! NSArray)[indexPath.row] as! NSDictionary
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL") as! LoanDetailViewController
             vc.detailLoan = item
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
-
         }
-
-
-
-//
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -159,7 +154,7 @@ extension ListLoanViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionItem = listLoan[section] as! NSDictionary
-        
+
         return NSLocalizedString((sectionItem["title"] as? String)!, comment: "")
     }
     
@@ -180,7 +175,7 @@ extension ListLoanViewController: UITableViewDataSource {
         if ((item["5STATUS"] as? Int) == 0) {
             cell?.statusValueLabel.text = "Đã kết thúc"
             cell?.statusValueLabel.textColor = .black
-        } else if (item["5STATUS"] as? Int) == 8 {
+        } else if (item["5STATUS"] as? Int) == 9 {
             cell?.statusValueLabel.text = "Cần thanh toán"
             cell?.statusValueLabel.textColor = MAIN_COLOR
         } else {

@@ -38,7 +38,7 @@ class LoanStateViewController: UIViewController {
     
     var hiddenBack = false
     var activeLoan: BrowwerActiveLoan?
-    var activeLoanId = 0
+    var activeLoanId: Int = 0
     
     @IBAction func navi_back() {
         self.navigationController?.popViewController(animated: true)
@@ -49,8 +49,10 @@ class LoanStateViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        let id = activeLoan?.status
+        var id = activeLoan?.status
         var isEnableFooterView = false
+        
+        id = activeLoanId
         
         if (hiddenBack)
         {
@@ -64,7 +66,7 @@ class LoanStateViewController: UIViewController {
         self.btnBottomView.layer.cornerRadius = 8
         self.btnBottomView.layer.masksToBounds = true
         
-        switch(activeLoanId) {
+        switch(id) {
         case STATUS_LOAN.DRAFT.rawValue:
             
             headerData = [
@@ -204,8 +206,6 @@ class LoanStateViewController: UIViewController {
                     "target": "pushToPayHistoryVC"
                     ],
             ]
-            
-            isEnableFooterView = true
             
         case 10:
             self.btnBottomView.setTitle("Ký hợp đồng để giải ngân", for: .normal)

@@ -11,7 +11,11 @@ import UIKit
 class BorrowingPayInfoTableViewCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    var tableData : BorrowingInfoBasicData!
+    var tableData : BorrowingInfoBasicData! {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +24,9 @@ class BorrowingPayInfoTableViewCell: UITableViewCell, UITableViewDataSource, UIT
         self.tableView.registerNibCell(type: SubInfoTableViewCell.self)
         self.tableView.registerNibCell(type: SubInfoLastTableViewCell.self)
         self.tableView.allowsSelection = false
+        self.tableView.layer.cornerRadius = 5
+        self.tableView.layer.borderWidth = 1
+        self.tableView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
         // update data
         // Initialization code
     }

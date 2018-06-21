@@ -86,8 +86,6 @@ class TestBorrowingPayViewController: UIViewController {
                 return AddNewWalletTableViewCell.self
             case .PayBtnCell:
                 return PayBtnTableViewCell.self
-            default:
-                return UITableViewCell.self
             }
         }
     }
@@ -125,19 +123,8 @@ class TestBorrowingPayViewController: UIViewController {
     var walletSelected : Wallet!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let infoData = BorrowingInfoBasicData(contractCode: "AABBCC", loanMoney: 100000000, expireAmountTime: 12, inerestPerMonth: 2000000, numberOfMonthPaid: 2, nextDayHaveToPaid: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)
-        let payType1 = PayType(id: 1, typeTitle: "Phai tra thang nay", expireDate: Date(), originAmount: 1000000, interestAmount: 500000, sumAmount: 20000000)
-        let payType2 = PayType(id: 2, typeTitle: "Tra thang sau", expireDate: Date(), originAmount: 4000000, interestAmount: 600000, sumAmount: 90000000)
-        let payAll = PayAllBefore(id: 1, typeTitle: "Tra tat ca luon", originAmount: 3000000, interestAmount: 100000, feeToPayBefore: 2000000, sumAmount: 7000000)
-        let wallet1 = Wallet(wID: 1, wType: 1, wAccountName: "0987654231234", wName: "MoMo", wNumber: "10231231")
-        let wallet2 = Wallet(wID: 1, wType: 2, wAccountName: "0987654231234", wName: "PayPal", wNumber: "10231232")
-//        let wallet3 = Wallet(wID: 1, wType: 2, wAccountName: "0987654231234", wName: "Wallet3", wNumber: "10231233")
-
-        let payTypeArray = [payType1, payType2]
-        let walletArray = [wallet1, wallet2]
-        borrowingPay = BorrowingData(basicInfo: infoData, payType: payTypeArray, payAll: payAll, walletList: walletArray)
-
         configureTableView()
+        // update data
         updateData()
         // Do any additional setup after loading the view.
     }
@@ -154,6 +141,18 @@ class TestBorrowingPayViewController: UIViewController {
     }
 
     func updateData() {
+        let infoData = BorrowingInfoBasicData(contractCode: "AABBCC", loanMoney: 100000000, expireAmountTime: 12, inerestPerMonth: 2000000, numberOfMonthPaid: 2, nextDayHaveToPaid: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)
+        let payType1 = PayType(id: 1, typeTitle: "Phai tra thang nay", expireDate: Date(), originAmount: 1000000, interestAmount: 500000, sumAmount: 20000000)
+        let payType2 = PayType(id: 2, typeTitle: "Tra thang sau", expireDate: Date(), originAmount: 4000000, interestAmount: 600000, sumAmount: 90000000)
+        let payAll = PayAllBefore(id: 1, typeTitle: "Tra tat ca luon", originAmount: 3000000, interestAmount: 100000, feeToPayBefore: 2000000, sumAmount: 7000000)
+        let wallet1 = Wallet(wID: 1, wType: 1, wAccountName: "0987654231234", wName: "MoMo", wNumber: "10231231")
+        let wallet2 = Wallet(wID: 1, wType: 2, wAccountName: "0987654231234", wName: "PayPal", wNumber: "10231232")
+        //        let wallet3 = Wallet(wID: 1, wType: 2, wAccountName: "0987654231234", wName: "Wallet3", wNumber: "10231233")
+
+        let payTypeArray = [payType1, payType2]
+        let walletArray = [wallet1, wallet2]
+        borrowingPay = BorrowingData(basicInfo: infoData, payType: payTypeArray, payAll: payAll, walletList: walletArray)
+
         self.sections.removeAll()
         let sectionBasicData = SectionData()
         sectionBasicData.title = "Thông tin khoản vay"
@@ -191,12 +190,10 @@ class TestBorrowingPayViewController: UIViewController {
         }
 
         let cellAddWallet = CellData(cellType: .AddNewWalletCell, data: "", cellHeight: 60)
-
         sectionWalletData.cells.append(cellAddWallet)
 
         let cellPayBtn = CellData(cellType: .PayBtnCell, data: "", cellHeight: 60)
         sectionWalletData.cells.append(cellPayBtn)
-        
 
         self.sections.append(sectionBasicData)
         self.sections.append(sectionPayTypeData)
@@ -224,81 +221,56 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
         let cell = tableView.dequeueReusableNibCell(type: cellData.cellType.cellType)
         if let cell = cell as? BorrowingPayInfoTableViewCell {
             cell.tableData = cellData.data as! BorrowingInfoBasicData
-            cell.tableView.layer.cornerRadius = 5
-            cell.tableView.layer.borderWidth = 1
-            cell.tableView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+            
         } else if let cell = cell as? PayTypeTableViewCell {
-            cell.containView.layer.borderWidth = 1
-            cell.containView.layer.cornerRadius = 5
-            cell.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
-            cell.selectImg.image = #imageLiteral(resourceName: "cellSelectImg")
             let data = cellData.data as! PayType
-            cell.titleLb.text = "Thanh toán tháng này"
-            cell.dateLb.text = "Hạn: \(data.expireDate)"
-            cell.originMoneyLb.text = "Tiền gốc: \(data.originAmount)"
-            cell.interestMoneyLb.text = "Tiền lãi: \(data.interestAmount)"
-            cell.borrowingLb.text = "\(data.sumAmount)"
-            cell.selectionStyle = .none
             if let selected = self.payTypeSelected {
                 if selected.id == data.id {
-                    cell.containView.layer.borderColor = MAIN_COLOR.cgColor
-                    cell.selectImg.image = #imageLiteral(resourceName: "cellSelectedImg")
+                    cell.isSelectedCell = true
+                } else {
+                    cell.isSelectedCell = false
                 }
+            } else {
+                cell.isSelectedCell = false
             }
+            cell.cellData = data
+            cell.updateCellView()
+
         } else if let cell = cell as? PayAllTableViewCell {
-            cell.selectionStyle = .none
-            cell.containView.layer.borderWidth = 1
-            cell.containView.layer.cornerRadius = 5
-            cell.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
-            cell.selectImg.image = #imageLiteral(resourceName: "cellSelectImg")
             let data = cellData.data as! PayAllBefore
-            cell.titleLb.text = "Thanh toán trước toàn bộ"
-            cell.originMoneyLb.text = "Tiền gốc: \(data.originAmount)"
-            cell.interestMoneyLb.text = "Tiền lãi: \(data.interestAmount)"
-            cell.feeReturnBeforeDueDateLb.text = "Phí trả nợ trước hạn: \(data.feeToPayBefore)"
-            cell.borrowingLb.text = "\(data.sumAmount)"
             if let selected = self.payAllSelected {
                 if selected.id == data.id {
-                    cell.containView.layer.borderColor = MAIN_COLOR.cgColor
-                    cell.selectImg.image = #imageLiteral(resourceName: "cellSelectedImg")
+                    cell.isSelectedCell = true
+                } else {
+                    cell.isSelectedCell = false
                 }
-            }
-        } else if let cell = cell as? BankAccountTableViewCell {
-            cell.selectionStyle = .none
-            cell.selectImg.image = #imageLiteral(resourceName: "cellSelectImg")
-            cell.containView.layer.borderWidth = 1
-            cell.containView.layer.cornerRadius = 5
-            cell.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
-            let data = cellData.data as! Wallet
-            if data.walletType == 1 {
-                cell.walletImg.image = #imageLiteral(resourceName: "momo")
             } else {
-                cell.walletImg.image = #imageLiteral(resourceName: "paypal")
+                cell.isSelectedCell = false
             }
-            cell.walletNameLb.text = data.walletName
-            cell.accountNumberLb.text = data.walletNumber
+            cell.cellData = data
+            cell.updateCellView()
+
+        } else if let cell = cell as? BankAccountTableViewCell {
+            let data = cellData.data as! Wallet
             if let selected = self.walletSelected {
                 if selected.walletNumber == data.walletNumber {
-                    cell.containView.layer.borderColor = MAIN_COLOR.cgColor
-                    cell.selectImg.image = #imageLiteral(resourceName: "cellSelectedImg")
+                    cell.isSelectedCell = true
+                } else {
+                    cell.isSelectedCell = false
                 }
             }
+            cell.cellData = data
+            cell.updateCellView()
+
         } else if let cell = cell as? AddNewWalletTableViewCell {
-            cell.containView.layer.borderWidth = 1
-            cell.containView.layer.cornerRadius = 5
-            cell.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
-            cell.selectionStyle = .none
-
+            // add taget for cell
+            cell.updateCellView()
         } else if let cell = cell as? PayBtnTableViewCell {
-            cell.selectionStyle = .none
             cell.payBtn.addTarget(self, action:#selector(payBtnAction), for: .touchUpInside)
-
         }
 
         return cell ?? UITableViewCell()
     }
-
-
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellData = sections[indexPath.section].cells[indexPath.row]
@@ -309,41 +281,23 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
         let cellData = sections[indexPath.section].cells[indexPath.row]
 
         let cell = tableView.cellForRow(at: indexPath)
-        if let cell = cell as? PayTypeTableViewCell {
+        if let _ = cell as? PayTypeTableViewCell {
             self.payTypeSelected = cellData.data as! PayType
             payAllSelected = nil
 
-        } else if let cell = cell as? PayAllTableViewCell {
+        } else if let _ = cell as? PayAllTableViewCell {
             self.payAllSelected = cellData.data as! PayAllBefore
             self.payTypeSelected = nil
 
-        } else if let cell = cell as? BankAccountTableViewCell {
+        } else if let _ = cell as? BankAccountTableViewCell {
             self.walletSelected = cellData.data as! Wallet
-        } else if let cell = cell as? AddNewWalletTableViewCell {
+
+        } else if let _ = cell as? AddNewWalletTableViewCell {
             // push to add new wallet
         }
         tableView.reloadData()
 //        tableView.reloadSections(IndexSet(integer: indexPath.section), with: UITableViewRowAnimation.automatic)
     }
-
-    /*
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        if let cell = cell as? PayTypeTableViewCell {
-            cell.selectImg.image = #imageLiteral(resourceName: "cellSelectImg")
-            cell.containView.layer.borderColor = UIColor.lightGray.cgColor
-
-        } else if let cell = cell as? PayAllTableViewCell {
-            cell.selectImg.image = #imageLiteral(resourceName: "cellSelectImg")
-            cell.containView.layer.borderColor = UIColor.lightGray.cgColor
-
-        } else if let cell = cell as? BankAccountTableViewCell {
-            cell.selectImg.image = #imageLiteral(resourceName: "cellSelectImg")
-            cell.containView.layer.borderColor = UIColor.lightGray.cgColor
-        }
-    }
- */
-
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section].title

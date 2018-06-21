@@ -18,16 +18,25 @@ class LoanTypeBaseTBCell: UITableViewCell {
     var isNeedUpdate: Bool? {
         didSet {
             if let isNeed = self.isNeedUpdate, isNeed {
-                //self.lblTitle?.textColor = UIColor(hexString: "#DA3535")
-                self.lblDescriptionNeedUpdate?.text = "Số chứng minh thư không hợp lệ"
                 self.underLine?.backgroundColor = UIColor(hexString: "#DA3535")
             } else {
-                self.lblTitle?.textColor = TEXT_NORMAL_COLOR
                 self.underLine?.backgroundColor = UIColor(hexString: "#E3EBF0")
+                self.lblDescriptionNeedUpdate?.text = ""
             }
         }
     }
     
+    
+    /// Khi server trả về thông tin cần cập nhật
+    ///
+    /// - Parameter pre: <#pre description#>
+    func updateInfoFalse(pre: String) {
+        guard let id = DataManager.shared.browwerInfo?.activeLoan?.loanId, id > 0 else {
+            return
+        }
+        self.isNeedUpdate = true
+        self.lblDescriptionNeedUpdate?.text = pre + " không hợp lệ"
+    }
     
     
     
