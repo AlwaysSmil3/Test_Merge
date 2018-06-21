@@ -91,7 +91,7 @@ class BorrowerTabBarController: UITabBarController {
          */
         
         let json = [
-            "loanId": 0,
+            "loanId": 1,
             "loanCategoryId": 1,
             "amount": 1111,
             "term": 20,
@@ -152,12 +152,15 @@ class BorrowerTabBarController: UITabBarController {
             ],
             "createdAt": "2018-06-08T02:07:45+00:00"
             ] as [String : Any]
+        
         let activeLoan = BrowwerActiveLoan(object: json)
+        
         if let loanID = activeLoan.loanId, loanID > 0 {
             //Co khoản vay
             let loanState = (v1 as! UINavigationController).topViewController as! LoanStateViewController
-            loanState.activeLoan = activeLoan
-            self.viewControllers = [loanState, v2, v3, v4, v5]
+            loanState.activeLoanId = 10
+            loanState.hiddenBack = true
+            self.viewControllers = [v1, v2, v3, v4, v5]
         } else {
             //Chưa có Khoản vay
             self.viewControllers = [v11, v2, v3, v4, v5]
