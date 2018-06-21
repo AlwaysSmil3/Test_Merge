@@ -17,11 +17,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Loan_Type_Dropdown_TB_Cell" rowHeight="93" id="8f7-c9-4SL" customClass="LoanTypeDropdownTBCell" customModule="FinPlus" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Loan_Type_Dropdown_TB_Cell" rowHeight="76" id="8f7-c9-4SL" customClass="LoanTypeDropdownTBCell" customModule="FinPlus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8f7-c9-4SL" id="MCO-6H-uu1">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="92.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="75.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cm4-Yn-afR">
@@ -43,46 +43,56 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kht-Ze-UTs">
-                        <rect key="frame" x="346" y="37.5" width="13" height="31.5"/>
+                        <rect key="frame" x="346" y="30.5" width="13" height="31.5"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="26"/>
                         <color key="textColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBZ-oa-SfG">
-                        <rect key="frame" x="16" y="77" width="343" height="1"/>
+                        <rect key="frame" x="16" y="62.5" width="343" height="1"/>
                         <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="Obk-xW-184"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giới tính của bạn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gej-ii-9cr">
-                        <rect key="frame" x="16" y="34.5" width="118.5" height="36.5"/>
+                        <rect key="frame" x="16" y="34.5" width="118.5" height="22"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                         <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JU-vc-CTJ">
+                        <rect key="frame" x="16" y="67.5" width="343" height="0.0"/>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                        <color key="textColor" red="0.85490196078431369" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Gej-ii-9cr" firstAttribute="top" secondItem="Cm4-Yn-afR" secondAttribute="bottom" constant="6" id="01S-TC-H9L"/>
                     <constraint firstItem="kht-Ze-UTs" firstAttribute="centerY" secondItem="Gej-ii-9cr" secondAttribute="centerY" id="38n-63-bY7"/>
+                    <constraint firstItem="sBZ-oa-SfG" firstAttribute="trailing" secondItem="8JU-vc-CTJ" secondAttribute="trailing" id="5M7-8a-TRl"/>
                     <constraint firstItem="sBZ-oa-SfG" firstAttribute="top" secondItem="Gej-ii-9cr" secondAttribute="bottom" constant="6" id="7WW-El-Y5v"/>
                     <constraint firstItem="kht-Ze-UTs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Gej-ii-9cr" secondAttribute="trailing" constant="8" id="7lp-rf-ogu"/>
+                    <constraint firstAttribute="bottom" secondItem="8JU-vc-CTJ" secondAttribute="bottom" constant="8" id="D9a-LY-lZM"/>
                     <constraint firstItem="sBZ-oa-SfG" firstAttribute="trailing" secondItem="Cm4-Yn-afR" secondAttribute="trailing" id="DTx-UV-QYS"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="sBZ-oa-SfG" secondAttribute="bottom" constant="4" id="hDe-kp-sqv"/>
+                    <constraint firstItem="8JU-vc-CTJ" firstAttribute="leading" secondItem="sBZ-oa-SfG" secondAttribute="leading" id="FC3-p5-MEb"/>
                     <constraint firstItem="kht-Ze-UTs" firstAttribute="trailing" secondItem="Cm4-Yn-afR" secondAttribute="trailing" id="hRl-hn-Mqu"/>
                     <constraint firstItem="sBZ-oa-SfG" firstAttribute="leading" secondItem="Cm4-Yn-afR" secondAttribute="leading" id="lLS-pJ-2jn"/>
                     <constraint firstItem="Gej-ii-9cr" firstAttribute="leading" secondItem="Cm4-Yn-afR" secondAttribute="leading" id="nY3-xK-7bW"/>
                     <constraint firstItem="Cm4-Yn-afR" firstAttribute="leading" secondItem="MCO-6H-uu1" secondAttribute="leading" constant="16" id="u60-9c-ULI"/>
                     <constraint firstAttribute="trailing" secondItem="Cm4-Yn-afR" secondAttribute="trailing" constant="16" id="uGR-Az-wrc"/>
                     <constraint firstItem="Cm4-Yn-afR" firstAttribute="top" secondItem="MCO-6H-uu1" secondAttribute="topMargin" constant="4" id="vrk-cp-L5O"/>
+                    <constraint firstItem="8JU-vc-CTJ" firstAttribute="top" secondItem="sBZ-oa-SfG" secondAttribute="bottom" constant="4" id="yW6-WI-CbD"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="lblDescriptionNeedUpdate" destination="8JU-vc-CTJ" id="AXY-Io-YRj"/>
                 <outlet property="lblTitle" destination="Cm4-Yn-afR" id="SJU-fz-ueD"/>
                 <outlet property="lblValue" destination="Gej-ii-9cr" id="A5U-gp-YQq"/>
                 <outlet property="underLine" destination="sBZ-oa-SfG" id="4uf-HY-4mK"/>
             </connections>
-            <point key="canvasLocation" x="-184.5" y="14.5"/>
+            <point key="canvasLocation" x="-184.5" y="6"/>
         </tableViewCell>
     </objects>
 </document>

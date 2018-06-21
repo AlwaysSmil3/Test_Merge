@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol {
+class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol, LoanTypeTBCellProtocol {
     
 
     @IBOutlet var tfValue: UITextField?
@@ -17,7 +17,6 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProt
     override func awakeFromNib() {
         super.awakeFromNib()
         self.lblTitle?.font = FONT_CAPTION
-        
         
     }
     
@@ -37,7 +36,9 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProt
                 self.tfValue?.placeholder = value
             }
             
+            self.getData()
         }
+    
     }
     
     
@@ -62,6 +63,18 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProt
             DataManager.shared.loanInfo.userInfo.relationships.phoneNumber = value
         }
     }
+    
+    func getData() {
+        if DataManager.shared.browwerInfo?.activeLoan?.userInfo?.relationships?.phoneNumber != nil {
+            self.tfValue?.text = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.relationships?.phoneNumber
+        }else {
+            //Cap nhat thong tin thieu
+            guard let field_ = self.field, let title = field_.title else { return }
+            self.updateInfoFalse(pre: title)
+            
+        }
+    }
+    
     
 }
 

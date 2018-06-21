@@ -33,8 +33,8 @@ public struct BrowwerContacts {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    type = json[SerializationKeys.type].string ?? ""
-    phoneNumber = json[SerializationKeys.phoneNumber].string ?? ""
+    type = json[SerializationKeys.type].string
+    phoneNumber = json[SerializationKeys.phoneNumber].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
