@@ -124,7 +124,7 @@ extension ListLoanViewController: UITableViewDelegate {
         let sectionItem = listLoan[indexPath.section] as! NSDictionary
         let item = (sectionItem["sub_array"] as! NSArray)[indexPath.row] as! NSDictionary
         if (item["5STATUS"] as? Int) == 9 {
-//            let detailLoan = 
+            // fixed to test borrowing pay viewcontroller
             let sHome = UIStoryboard(name: "Loan", bundle: nil)
             let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
             if let loanStatusVC = v1 as? LoanStateViewController {
@@ -132,20 +132,15 @@ extension ListLoanViewController: UITableViewDelegate {
                 self.navigationController?.pushViewController(v1, animated: true)
             }
         } else {
+            // will use LoanStateViewController replace LoanDetailViewController
             tableView.deselectRow(at: indexPath, animated: true)
-
             let sectionItem = listLoan[indexPath.section] as! NSDictionary
             let item = (sectionItem["sub_array"] as! NSArray)[indexPath.row] as! NSDictionary
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL") as! LoanDetailViewController
             vc.detailLoan = item
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
-
         }
-
-
-
-//
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -159,7 +154,7 @@ extension ListLoanViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionItem = listLoan[section] as! NSDictionary
-        
+
         return NSLocalizedString((sectionItem["title"] as? String)!, comment: "")
     }
     
