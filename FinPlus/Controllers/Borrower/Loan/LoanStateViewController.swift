@@ -33,6 +33,7 @@ class LoanStateViewController: UIViewController {
     private var arrayKey: NSArray!
     
     var activeLoan: BrowwerActiveLoan?
+    // fixed to test borrowing pay case
     var loadStatusId : Int = 0
     @IBAction func navi_back() {
         self.navigationController?.popViewController(animated: true)
@@ -43,9 +44,11 @@ class LoanStateViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        let id = activeLoan?.status
-        
-        switch(loadStatusId) {
+        var id = activeLoan?.status
+        // fixed to test borrowing pay case
+        id = loadStatusId
+
+        switch(id) {
         case STATUS_LOAN.DRAFT.rawValue:
             
             headerData = [

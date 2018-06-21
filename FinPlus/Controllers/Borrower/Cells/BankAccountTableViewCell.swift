@@ -15,9 +15,31 @@ class BankAccountTableViewCell: UITableViewCell {
     @IBOutlet weak var accountNumberLb: UILabel!
     @IBOutlet weak var walletNameLb: UILabel!
     @IBOutlet weak var walletImg: UIImageView!
+    var cellData : Wallet!
+    var isSelectedCell = false
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.selectionStyle = .none
+        self.containView.layer.borderWidth = 1
+        self.containView.layer.cornerRadius = 5
+    }
+
+    func updateCellView() {
+        if cellData.walletType == 1 {
+            self.walletImg.image = #imageLiteral(resourceName: "momo")
+        } else {
+            self.walletImg.image = #imageLiteral(resourceName: "paypal")
+        }
+        self.walletNameLb.text = cellData.walletName
+        self.accountNumberLb.text = cellData.walletNumber
+        if isSelectedCell == true {
+            self.containView.layer.borderColor = MAIN_COLOR.cgColor
+            self.selectImg.image = #imageLiteral(resourceName: "cellSelectedImg")
+        } else {
+            self.selectImg.image = #imageLiteral(resourceName: "cellSelectImg")
+            self.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

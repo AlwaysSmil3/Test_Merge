@@ -13,7 +13,16 @@ class AddNewWalletTableViewCell: UITableViewCell {
     @IBOutlet weak var containView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.containView.layer.borderWidth = 1
+        self.containView.layer.cornerRadius = 5
+        self.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        self.selectionStyle = .none
+
         // Initialization code
+    }
+
+    func updateCellView() {
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
