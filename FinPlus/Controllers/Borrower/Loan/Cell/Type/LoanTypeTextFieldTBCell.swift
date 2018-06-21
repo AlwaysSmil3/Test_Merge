@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell {
+class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
 
     @IBOutlet var tfValue: UITextField?
@@ -18,6 +18,8 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell {
         super.awakeFromNib()
         self.lblTitle?.font = FONT_CAPTION
         self.tfValue?.delegate = self
+        
+        
     }
     
     var parent: String?
@@ -37,8 +39,6 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell {
             
             if let id = field_.id, id.contains("nationalId") || id.contains("salary") || id.contains("companyPhoneNumber") {
                 self.tfValue?.keyboardType = .numberPad
-                
-                self.isNeedUpdate = true
             }
             
             if let value = field_.placeholder {
@@ -51,6 +51,8 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell {
                 self.lblDOptional?.isHidden = true
             }
             
+            self.getData()
+            
         }
     }
     
@@ -62,7 +64,6 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell {
                 //thông tin khác
                 DataManager.shared.loanInfo.optionalText = self.tfValue?.text ?? ""
             }
-            
             return
         }
         
@@ -83,10 +84,89 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell {
             } else if id.contains("companyPhoneNumber") {
                 DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = self.tfValue?.text ?? ""
             }
+        }
+    }
+    
+    func getData() {
+        guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
+        guard let parent = self.parent else {
+            if id.contains("optionalText") {
+                //thông tin khác
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.optionalText {
+                    self.tfValue?.text = data
+                    DataManager.shared.loanInfo.optionalText = data
+                } else {
+                    //Cap nhat thong tin thieu
+                    self.updateInfoFalse(pre: title)
+                    
+                }
+            }
             
+            return
+        }
+        
+        if parent.contains("userInfo") {
+            // thông tin user
+            if id.contains("fullName") {
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.fullName {
+                    self.tfValue?.text = data
+                    DataManager.shared.loanInfo.userInfo.fullName = data
+                } else {
+                    //Cap nhat thong tin thieu
+                    self.updateInfoFalse(pre: title)
+                    
+                }
+                
+            } else if id.contains("nationalId") {
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.nationalId {
+                    self.tfValue?.text = data
+                    DataManager.shared.loanInfo.userInfo.nationalID = data
+                } else {
+                    //Cap nhat thong tin thieu
+                    self.updateInfoFalse(pre: title)
+                    
+                }
+            }
+            
+        } else if parent.contains("jobInfo") {
+            // Thông tin nghề nghiêp
+            if id.contains("company") {
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.company {
+                    self.tfValue?.text = data
+                    DataManager.shared.loanInfo.jobInfo.company = data
+                } else {
+                    //Cap nhat thong tin thieu
+                    self.updateInfoFalse(pre: title)
+                    
+                }
+                
+            }  else if id.contains("salary") {
+                
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.salary {
+                    self.tfValue?.text = "\(data)"
+                    DataManager.shared.loanInfo.jobInfo.salary = Int32(data)
+                } else {
+                    //Cap nhat thong tin thieu
+                    self.updateInfoFalse(pre: title)
+                    
+                }
+                
+            } else if id.contains("companyPhoneNumber") {
+                
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.companyPhoneNumber {
+                    self.tfValue?.text = data
+                    DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = data
+                } else {
+                    //Cap nhat thong tin thieu
+                    self.updateInfoFalse(pre: title)
+                    
+                }
+            }
         }
         
     }
+    
+    
     
     
 }

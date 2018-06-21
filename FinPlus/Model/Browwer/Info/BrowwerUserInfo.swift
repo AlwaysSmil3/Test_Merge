@@ -22,7 +22,7 @@ public struct BrowwerUserInfo {
   }
 
   // MARK: Properties
-  public var relationships: [BrowwerRelationships]?
+  public var relationships: BrowwerRelationships?
   public var fullName: String?
   public var residentAddress: BrowwerResidentAddress?
   public var currentAddress: BrowwerCurrentAddress?
@@ -43,7 +43,7 @@ public struct BrowwerUserInfo {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    if let items = json[SerializationKeys.relationships].array { relationships = items.map { BrowwerRelationships(json: $0) } }
+    relationships = BrowwerRelationships(json: json[SerializationKeys.relationships])
     fullName = json[SerializationKeys.fullName].string
     residentAddress = BrowwerResidentAddress(json: json[SerializationKeys.residentAddress])
     currentAddress = BrowwerCurrentAddress(json: json[SerializationKeys.currentAddress])
@@ -57,7 +57,7 @@ public struct BrowwerUserInfo {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
-    if let value = relationships { dictionary[SerializationKeys.relationships] = value.map { $0.dictionaryRepresentation() } }
+    if let value = relationships { dictionary[SerializationKeys.relationships] = value}
     if let value = fullName { dictionary[SerializationKeys.fullName] = value }
     if let value = residentAddress { dictionary[SerializationKeys.residentAddress] = value.dictionaryRepresentation() }
     if let value = currentAddress { dictionary[SerializationKeys.currentAddress] = value.dictionaryRepresentation() }
