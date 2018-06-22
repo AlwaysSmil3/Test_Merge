@@ -128,7 +128,7 @@ extension ListLoanViewController: UITableViewDelegate {
             let sHome = UIStoryboard(name: "Loan", bundle: nil)
             let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
             if let loanStatusVC = v1 as? LoanStateViewController {
-                loanStatusVC.loadStatusId = 9
+                loanStatusVC.activeLoanId = 9
                 self.navigationController?.pushViewController(v1, animated: true)
             }
         } else {
@@ -184,7 +184,7 @@ extension ListLoanViewController: UITableViewDataSource {
         }
         
         cell?.moneyLabel.text = item["3LOAN_MONEY"] as? String
-        cell?.disLabel.text = (item["4LOAN_TIME"] as? String)! + " - " + (item["9LOAN_DIS"] as? String)!
+        cell?.disLabel.text = "Thời hạn " + (item["4LOAN_TIME"] as? String)! + " - " + (item["9LOAN_DIS"] as? String)!
         
         return cell!
     }

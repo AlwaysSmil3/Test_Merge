@@ -21,6 +21,10 @@ class LoanStateViewController: UIViewController {
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var dataTableView: UITableView?
     
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var btnBottomView: UIButton!
+    @IBOutlet weak var labelBottomView: UILabel!
+    
     @IBOutlet weak var dataTableViewHeightConstraint: NSLayoutConstraint?
     @IBOutlet weak var headerTableViewHeightConstraint: NSLayoutConstraint?
     
@@ -32,9 +36,10 @@ class LoanStateViewController: UIViewController {
     private var headerData: NSArray = []
     private var arrayKey: NSArray!
     
+    var hiddenBack = false
     var activeLoan: BrowwerActiveLoan?
-    // fixed to test borrowing pay case
-    var loadStatusId : Int = 0
+    var activeLoanId: Int = 0
+    
     @IBAction func navi_back() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -45,9 +50,22 @@ class LoanStateViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         var id = activeLoan?.status
-        // fixed to test borrowing pay case
-        id = loadStatusId
-
+        var isEnableFooterView = false
+        
+        id = activeLoanId
+        
+        if (hiddenBack)
+        {
+            self.navigationItem.leftBarButtonItem = nil
+        }
+        
+        self.btnBottomView.setBackgroundColor(color: MAIN_COLOR, forState: .normal)
+        self.btnBottomView.setBackgroundColor(color: UIColor(hexString: "#4D6678"), forState: .focused)
+        self.btnBottomView?.backgroundColor = MAIN_COLOR
+        self.btnBottomView?.tintColor = .white
+        self.btnBottomView.layer.cornerRadius = 8
+        self.btnBottomView.layer.masksToBounds = true
+        
         switch(id) {
         case STATUS_LOAN.DRAFT.rawValue:
             
@@ -189,7 +207,23 @@ class LoanStateViewController: UIViewController {
                     ],
             ]
             
+        case 10:
+            self.btnBottomView.setTitle("Ký hợp đồng để giải ngân", for: .normal)
+            self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.signContract), for: .touchUpInside)
+            self.labelBottomView.text = "Khoản vay của bạn đã được huy động đủ số tiền. Chỉ còn một bước ký hợp đồng để nhận tiền."
+            isEnableFooterView = true
+            
+        case 11:
+            self.btnBottomView.setTitle("Ký hợp đồng để giải ngân", for: .normal)
+            self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.confirmSignContract), for: .touchUpInside)
+            self.labelBottomView.text = "Không, tiếp tục huy động"
+            self.labelBottomView.font = UIFont.boldSystemFont(ofSize: 17)
+            self.labelBottomView.textAlignment = .center
+            self.labelBottomView.textColor = UIColor(hexString: "#4D6678")
+            isEnableFooterView = true
+            
         default:
+            
             break
         }
         
@@ -204,11 +238,16 @@ class LoanStateViewController: UIViewController {
         self.headerTableView?.rowHeight = UITableViewAutomaticDimension
         self.headerTableView?.alwaysBounceVertical = false;
         
-        
         let cellNib = UINib(nibName: "DoubleTextTableViewCell", bundle: nil)
         self.dataTableView?.register(cellNib, forCellReuseIdentifier: cellIdentifier)
         
-        self.dataTableView?.tableFooterView = UIView()
+        if (!isEnableFooterView)
+        {
+            self.bottomView.isHidden = true
+            NSLayoutConstraint(item: bottomView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0).isActive = true
+        }
+        
+        self.dataTableView?.tableHeaderView = UIView()
         self.dataTableView?.estimatedRowHeight = 44
         self.dataTableView?.rowHeight = UITableViewAutomaticDimension
         self.dataTableView?.alwaysBounceVertical = false;
@@ -218,6 +257,8 @@ class LoanStateViewController: UIViewController {
         self.borderView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
         
         self.navigationItem.titleView = UIImageView(image: UIImage(named: "ic_logo"))
+        
+        self.view.layoutIfNeeded()
     }
 
     @IBAction func pushToPayViewController() {
@@ -238,19 +279,19 @@ class LoanStateViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-//        if (headerData.count > 0)
-//        {
+        if (headerData.count > 0)
+        {
 //            UIView.animate(withDuration: 0, animations: {
 //                self.headerTableView?.layoutIfNeeded()
 //            }) { (complete) in
 //                // Edit heightOfTableViewConstraint's constant to update height of table view
 //                self.headerTableViewHeightConstraint?.constant = (self.headerTableView?.visibleCells[0].frame.height)!*CGFloat(self.headerData.count)
 //            }
-//        }
-//        else
-//        {
-//            self.headerTableViewHeightConstraint?.constant = 0
-//        }
+        }
+        else
+        {
+            self.headerTableViewHeightConstraint?.constant = 0
+        }
         
         UIView.animate(withDuration: 0, animations: {
             self.dataTableView?.layoutIfNeeded()
@@ -294,6 +335,20 @@ class LoanStateViewController: UIViewController {
                 self.dataTableViewHeightConstraint?.constant = heightOfTableView
             }
         }
+    }
+    
+    @IBAction func signContract()
+    {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
+        vc.activeLoanId = 11
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func confirmSignContract()
+    {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SIGN")
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
 }
