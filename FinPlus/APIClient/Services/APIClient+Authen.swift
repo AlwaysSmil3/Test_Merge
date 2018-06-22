@@ -163,11 +163,11 @@ extension APIClient {
      */
     func logOut() -> Promise<APIResponseGeneral> {
         
-        let token = userDefault.value(forKey: fUSER_DEFAUT_TOKEN) ?? ""
+        let token = DataManager.shared.pushNotificationToken ?? ""
         
         let params: JSONDictionary = [
             "token": token
-            ]
+        ]
         
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: EndPoint.Authen.Logout, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST)

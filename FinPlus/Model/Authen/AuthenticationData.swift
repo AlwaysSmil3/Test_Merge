@@ -1,7 +1,7 @@
 //
 //  AuthenticationData.swift
 //
-//  Created by Lionel Vũ Thành Đô on 6/13/18
+//  Created by Cao Van Hai on 6/22/18
 //  Copyright (c) . All rights reserved.
 //
 
@@ -12,11 +12,33 @@ public struct AuthenticationData {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
-    static let token = "accessToken"
+    static let uuidDevice = "uuidDevice"
+    static let email = "email"
+    static let id = "id"
+    static let phoneNumber = "phoneNumber"
+    static let accessToken = "accessToken"
+    static let deviceType = "deviceType"
+    static let avatar = "avatar"
+    static let fullname = "fullname"
+    static let gender = "gender"
+    static let displayName = "displayName"
+    static let birthday = "birthday"
+    static let nationalId = "nationalId"
   }
 
   // MARK: Properties
-  public var token: String?
+  public var uuidDevice: String?
+  public var email: String?
+  public var id: Int32?
+  public var phoneNumber: String?
+  public var accessToken: String?
+  public var deviceType: String?
+  public var avatar: String?
+  public var fullname: String?
+  public var gender: String?
+  public var displayName: String?
+  public var birthday: String?
+  public var nationalId: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -31,7 +53,18 @@ public struct AuthenticationData {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    token = json[SerializationKeys.token].string
+    uuidDevice = json[SerializationKeys.uuidDevice].string
+    email = json[SerializationKeys.email].string
+    id = json[SerializationKeys.id].int32
+    phoneNumber = json[SerializationKeys.phoneNumber].string
+    accessToken = json[SerializationKeys.accessToken].string
+    deviceType = json[SerializationKeys.deviceType].string
+    avatar = json[SerializationKeys.avatar].string
+    fullname = json[SerializationKeys.fullname].string
+    gender = json[SerializationKeys.gender].string
+    displayName = json[SerializationKeys.displayName].string
+    birthday = json[SerializationKeys.birthday].string
+    nationalId = json[SerializationKeys.nationalId].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -39,7 +72,18 @@ public struct AuthenticationData {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
-    if let value = token { dictionary[SerializationKeys.token] = value }
+    if let value = uuidDevice { dictionary[SerializationKeys.uuidDevice] = value }
+    if let value = email { dictionary[SerializationKeys.email] = value }
+    if let value = id { dictionary[SerializationKeys.id] = value }
+    if let value = phoneNumber { dictionary[SerializationKeys.phoneNumber] = value }
+    if let value = accessToken { dictionary[SerializationKeys.accessToken] = value }
+    if let value = deviceType { dictionary[SerializationKeys.deviceType] = value }
+    if let value = avatar { dictionary[SerializationKeys.avatar] = value }
+    if let value = fullname { dictionary[SerializationKeys.fullname] = value }
+    if let value = gender { dictionary[SerializationKeys.gender] = value }
+    if let value = displayName { dictionary[SerializationKeys.displayName] = value }
+    if let value = birthday { dictionary[SerializationKeys.birthday] = value }
+    if let value = nationalId { dictionary[SerializationKeys.nationalId] = value }
     return dictionary
   }
 

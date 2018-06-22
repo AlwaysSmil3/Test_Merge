@@ -58,6 +58,9 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
         APIClient.shared.authentication(phoneNumber: phone!)
             .done(on: DispatchQueue.main) { [weak self]model in
                 guard let strongSelf = self else { return }
+                
+                DataManager.shared.userID = model.data?.id ?? 0
+                
                 switch model.returnCode {
                 case 0:
                     // code 0.
@@ -71,10 +74,12 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
                     DataManager.shared.currentAccount = phone!
                     // save token
                     if let data = model.data {
-                        if let token = data.token {
+                        if let token = data.accessToken {
                             userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
                         }
                     }
+                    //Cap nhat push notification token
+                    DataManager.shared.updatePushNotificationToken()
                     // get config
                     // strongSelf.getConfig()
                     userDefault.set(phone, forKey: fNEW_ACCOUNT_NAME)
