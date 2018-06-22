@@ -79,33 +79,48 @@ extension BorrowHomeViewController: BrowwerHomeDelegate {
             self.updateInfoNeed()
             break
             
-        case .ACCEPTED:
+        case .INTEREST_CONFIRM:
             self.acceptedInterestRate()
-            break
-            
-        case .CANCELED:
-            
-            break
-        case .PENDING:
             break
             
         case .REJECTED:
             break
             
-        case .WAITING_FOR_APPROVAL:
+        case .CONTRACT_READY:
             
             break
             
         case .RAISING_CAPITAL:
             break
             
-        case .COMPLETED:
-            break
-            
-        case .PAY_TEST_STATUS:
+        case .CANCELED:
             self.updateInfoNeed()
             break
 
+        case .SALE_REVIEW:
+            break
+        case .SALE_PENDING:
+            break
+        case .RISK_REVIEW:
+            break
+        case .RISK_PENDING:
+            break
+        case .INTEREST_CONFIRM_EXPIRED:
+            break
+        case .PARTIAL_FILLED:
+            break
+        case .FILLED:
+            break
+        case .EXPIRED:
+            break
+        case .CONTRACT_SIGNED:
+            break
+        case .DISBURSAL:
+            break
+        case .OVERDUE_DEPT:
+            break
+        case .TIMELY_DEPT:
+            break
         }
 
 

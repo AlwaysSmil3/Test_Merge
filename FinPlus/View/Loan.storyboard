@@ -705,6 +705,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="option_icon" id="oKW-vd-oiK">
                             <color key="tintColor" red="0.0" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="navi_option" destination="rUb-RP-HhK" id="3Ru-r8-2bG"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -779,10 +782,10 @@
             </objects>
             <point key="canvasLocation" x="1886" y="1672"/>
         </scene>
-        <!--Contract Success View Controller-->
+        <!--Confirm Rate Success View Controller-->
         <scene sceneID="tLs-Fd-1Ud">
             <objects>
-                <viewController storyboardIdentifier="CONTRACT_SUCCCESS" id="dBR-PB-zRA" customClass="ContractSuccessViewController" customModule="FinPlus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CONFIRM_RATE_SUCCESS" id="dBR-PB-zRA" customClass="ConfirmRateSuccessViewController" customModule="FinPlus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WOu-J9-S3p"/>
                         <viewControllerLayoutGuide type="bottom" id="azy-Iy-XFj"/>
@@ -791,43 +794,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ký hợp đồng thành công" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FiK-nR-C8i">
-                                <rect key="frame" x="32" y="131" width="311" height="31.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xác nhận lãi suất thành công!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FiK-nR-C8i">
+                                <rect key="frame" x="32" y="131" width="311" height="62.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0e-9u-INd">
-                                <rect key="frame" x="32" y="178" width="311" height="72"/>
-                                <string key="text">Chúc mừng bạn đã ký hợp đồng thành công. Khoản vay sẽ được giải ngân vào tài khoản của bạn trong vòng 8 giờ làm việc. Cảm ơn bạn!</string>
+                                <rect key="frame" x="32" y="209.5" width="311" height="90"/>
+                                <string key="text">Đơn vay của bạn đã sẵn sàng trên sàn giao dịch và bắt đầu huy động vốn từ các nhà đầu tư. Vui lòng kiểm tra các thông báo từ FinSmart để cập nhật tình hình sớm nhất về khoản vay này.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6Z-dh-8K4">
-                                <rect key="frame" x="32" y="282" width="311" height="44"/>
+                                <rect key="frame" x="32" y="331.5" width="311" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="KaD-V4-mCJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="Về trang chủ">
+                                <state key="normal" title="OK, về trang chủ">
                                     <color key="titleColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="comHome:" destination="dBR-PB-zRA" eventType="touchUpInside" id="m1g-BU-S4b"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPd-MY-P9P">
-                                <rect key="frame" x="16" y="342" width="343" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="8dM-69-KGR"/>
-                                </constraints>
-                                <state key="normal" title="Xem lại hợp đồng">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="reviewContract:" destination="dBR-PB-zRA" eventType="touchUpInside" id="UKA-Dw-Wyi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -835,21 +826,17 @@
                         <constraints>
                             <constraint firstItem="b0e-9u-INd" firstAttribute="leading" secondItem="qyO-Ah-fmk" secondAttribute="leading" constant="32" id="Cfb-fF-I9U"/>
                             <constraint firstItem="b0e-9u-INd" firstAttribute="top" secondItem="FiK-nR-C8i" secondAttribute="bottom" constant="16" id="Ft8-FR-uLo"/>
-                            <constraint firstAttribute="trailing" secondItem="VPd-MY-P9P" secondAttribute="trailing" constant="16" id="KVs-o2-jiE"/>
                             <constraint firstItem="FiK-nR-C8i" firstAttribute="top" secondItem="WOu-J9-S3p" secondAttribute="bottom" constant="111" id="WlZ-pa-ShM"/>
                             <constraint firstItem="FiK-nR-C8i" firstAttribute="leading" secondItem="qyO-Ah-fmk" secondAttribute="leading" constant="32" id="bIJ-ks-L8W"/>
                             <constraint firstAttribute="trailing" secondItem="b0e-9u-INd" secondAttribute="trailing" constant="32" id="fKb-xk-Dji"/>
                             <constraint firstAttribute="trailing" secondItem="FiK-nR-C8i" secondAttribute="trailing" constant="32" id="fWw-m3-7IU"/>
-                            <constraint firstItem="VPd-MY-P9P" firstAttribute="top" secondItem="W6Z-dh-8K4" secondAttribute="bottom" constant="16" id="gLF-Ea-Zob"/>
                             <constraint firstItem="W6Z-dh-8K4" firstAttribute="leading" secondItem="qyO-Ah-fmk" secondAttribute="leading" constant="32" id="hwz-ob-PlA"/>
-                            <constraint firstItem="VPd-MY-P9P" firstAttribute="leading" secondItem="qyO-Ah-fmk" secondAttribute="leading" constant="16" id="jTX-SD-q9h"/>
                             <constraint firstItem="W6Z-dh-8K4" firstAttribute="top" secondItem="b0e-9u-INd" secondAttribute="bottom" constant="32" id="m2Y-sE-fts"/>
                             <constraint firstAttribute="trailing" secondItem="W6Z-dh-8K4" secondAttribute="trailing" constant="32" id="p0v-gb-1x5"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="btnComeHome" destination="W6Z-dh-8K4" id="11a-af-O31"/>
-                        <outlet property="btnReviewContract" destination="VPd-MY-P9P" id="ldd-9W-E6J"/>
                         <outlet property="desLabel" destination="b0e-9u-INd" id="yat-xj-Dsx"/>
                         <outlet property="titleLabel" destination="FiK-nR-C8i" id="102-PL-Lm3"/>
                     </connections>
@@ -3875,6 +3862,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5JB-9F-7d7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3392.8000000000002" y="949.47526236881572"/>
+        </scene>
+        <!--Contract Success View Controller-->
+        <scene sceneID="Rr6-WY-alE">
+            <objects>
+                <viewController storyboardIdentifier="CONTRACT_SUCCESS" id="ted-tk-Xpq" customClass="ContractSuccessViewController" customModule="FinPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mP2-gO-c8y"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dnh-IZ-5Vz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FgS-zb-rrj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ký hợp đồng thành công" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0KA-68-Whg">
+                                <rect key="frame" x="32" y="131" width="311" height="31.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ID8-CN-Bm6">
+                                <rect key="frame" x="32" y="178" width="311" height="72"/>
+                                <string key="text">Chúc mừng bạn đã ký hợp đồng thành công. Khoản vay sẽ được giải ngân vào tài khoản của bạn trong vòng 8 giờ làm việc. Cảm ơn bạn!</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4g-UR-yFM">
+                                <rect key="frame" x="32" y="282" width="311" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="iIi-Aq-O34"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Về trang chủ">
+                                    <color key="titleColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="comHome:" destination="ted-tk-Xpq" eventType="touchUpInside" id="QJB-E7-tbI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irz-yT-8hJ">
+                                <rect key="frame" x="16" y="342" width="343" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="obi-7j-p4G"/>
+                                </constraints>
+                                <state key="normal" title="Xem lại hợp đồng">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="reviewContract:" destination="ted-tk-Xpq" eventType="touchUpInside" id="Bot-he-RSU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="irz-yT-8hJ" firstAttribute="leading" secondItem="FgS-zb-rrj" secondAttribute="leading" constant="16" id="2Lh-8O-oJr"/>
+                            <constraint firstItem="ID8-CN-Bm6" firstAttribute="top" secondItem="0KA-68-Whg" secondAttribute="bottom" constant="16" id="CT0-fv-PNo"/>
+                            <constraint firstItem="irz-yT-8hJ" firstAttribute="top" secondItem="R4g-UR-yFM" secondAttribute="bottom" constant="16" id="DUv-h9-Rxr"/>
+                            <constraint firstItem="ID8-CN-Bm6" firstAttribute="leading" secondItem="FgS-zb-rrj" secondAttribute="leading" constant="32" id="HHg-47-pWQ"/>
+                            <constraint firstAttribute="trailing" secondItem="irz-yT-8hJ" secondAttribute="trailing" constant="16" id="Mli-e8-AVP"/>
+                            <constraint firstItem="0KA-68-Whg" firstAttribute="leading" secondItem="FgS-zb-rrj" secondAttribute="leading" constant="32" id="WhJ-Nq-D62"/>
+                            <constraint firstAttribute="trailing" secondItem="0KA-68-Whg" secondAttribute="trailing" constant="32" id="cyI-SU-hEe"/>
+                            <constraint firstAttribute="trailing" secondItem="ID8-CN-Bm6" secondAttribute="trailing" constant="32" id="kHV-VL-Udg"/>
+                            <constraint firstItem="0KA-68-Whg" firstAttribute="top" secondItem="mP2-gO-c8y" secondAttribute="bottom" constant="111" id="p3d-N7-KK0"/>
+                            <constraint firstAttribute="trailing" secondItem="R4g-UR-yFM" secondAttribute="trailing" constant="32" id="pmK-cu-GtR"/>
+                            <constraint firstItem="R4g-UR-yFM" firstAttribute="leading" secondItem="FgS-zb-rrj" secondAttribute="leading" constant="32" id="wGp-7d-MSx"/>
+                            <constraint firstItem="R4g-UR-yFM" firstAttribute="top" secondItem="ID8-CN-Bm6" secondAttribute="bottom" constant="32" id="xww-oy-aEU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnComeHome" destination="R4g-UR-yFM" id="E5q-si-FAp"/>
+                        <outlet property="btnReviewContract" destination="irz-yT-8hJ" id="Qfb-OB-FM0"/>
+                        <outlet property="desLabel" destination="ID8-CN-Bm6" id="kFO-xR-wHx"/>
+                        <outlet property="titleLabel" destination="0KA-68-Whg" id="eVB-WX-0dj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uan-KV-COe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3393" y="1672"/>
         </scene>
     </scenes>
     <resources>

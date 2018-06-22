@@ -19,29 +19,6 @@ enum Loan_Identifier_TB_Cell {
     static let OptionalMedia = "Loan_Type_Optional_Media_TB_Cell"
 }
 
-// Giới tính
-enum Gender: Int {
-    case Male = 0
-    case Female
-}
-
-// Số điện thọai người thân
-enum RelationPhoneNumber: Int {
-    case Wife = 0
-    case Husband
-    case Father
-    case Mother
-    
-}
-
-// Các kiểu chụp CMND
-enum FILE_TYPE_IMG: Int {
-    case ALL = 0 // Cầm CMND trước mặt chụp cả mặt
-    case FRONT
-    case BACK
-    case Optional
-}
-
 
 class LoanBaseViewController: BaseViewController {
     
