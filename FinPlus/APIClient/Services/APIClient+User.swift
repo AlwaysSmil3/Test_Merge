@@ -20,6 +20,7 @@ extension APIClient {
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
                 .done { json in
+                    print(json)
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = BrowwerInfo(object: data)
                         seal.fulfill(model)
@@ -28,6 +29,49 @@ extension APIClient {
                 .catch { error in
                     seal.reject(error)
                 }
+            
+        }
+        
+    }
+    
+    /*
+     
+     PUT [Done] Cập push notification token
+     HEADERS
+     Content-Type
+     application/json
+     PATH VARIABLES
+     uid
+     
+     Mã khách hàng của Fin+
+     BODY
+     
+     {
+     "token":"xxxxxxxxxxxxxxxxxxxxxxx"
+     }
+     
+
+     */
+    func pushNotificationToken() -> Promise<APIResponseGeneral> {
+        let token = DataManager.shared.pushNotificationToken ?? ""
+        
+        let params: JSONDictionary = [
+            "token": token
+        ]
+        
+        return Promise<APIResponseGeneral> { seal in
+            
+            let uID = DataManager.shared.userID
+            let endPoint = "users/" + "\(uID)" + "/push-token"
+            
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: false, httpType: HTTPMethodType.PUT)
+                .done { json in
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in
+                    seal.reject(error)
+            }
             
         }
         

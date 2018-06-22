@@ -106,7 +106,7 @@
 },
 {
     "index": 3,
-    "title": "Nghề Nghiệp",
+    "title": "Thông tin nghề nghiệp",
     "id":"jobInfo",
     "fields": [{
             "id": "jobType",
@@ -131,7 +131,7 @@
             "index": 2,
             "type":"dropdown",
             "title": "Cấp bậc",
-            "is_required": true,
+            "is_required": false,
             "placeholder": "Cấp bậc trong cơ quan",
             "selector_title": "Chọn cấp bậc trong cơ quan",
             "data": [{
@@ -178,7 +178,7 @@
             "index": 6,
             "type":"text_box",
             "title": "SĐT cơ quan",
-            "is_required": true,
+            "is_required": false,
             "placeholder": "Số điện thoại cơ quan của bạn",
             "multiple_line": false,
             "keyboard": "phone_pad"
@@ -187,7 +187,7 @@
             "id": "footer",
             "index": 7,
             "type":"footer",
-            "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn hỗ trợ"
+            "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
         }
     ]
 },

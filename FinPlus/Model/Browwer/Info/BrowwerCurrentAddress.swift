@@ -43,13 +43,13 @@ public struct BrowwerCurrentAddress {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    district = json[SerializationKeys.district].string ?? ""
-    city = json[SerializationKeys.city].string ?? ""
-    latitude = json[SerializationKeys.latitude].int ?? 0
-    commune = json[SerializationKeys.commune].string ?? ""
-    street = json[SerializationKeys.street].string ?? ""
-    longitude = json[SerializationKeys.longitude].int ?? 0
-    zipCode = json[SerializationKeys.zipCode].string ?? ""
+    district = json[SerializationKeys.district].string
+    city = json[SerializationKeys.city].string
+    latitude = json[SerializationKeys.latitude].int
+    commune = json[SerializationKeys.commune].string
+    street = json[SerializationKeys.street].string
+    longitude = json[SerializationKeys.longitude].int
+    zipCode = json[SerializationKeys.zipCode].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.

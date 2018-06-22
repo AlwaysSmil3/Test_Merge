@@ -148,6 +148,41 @@ extension APIClient {
         
     }
     
+    /*
+     POST [Done] Đăng xuất ứng dụng điện thoại
+     HEADERS
+     Content-Type
+     application/json
+     BODY
+     
+     {
+     "token": "xxxxxxxxxxxxxx"
+     }
+     
+
+     */
+    func logOut() -> Promise<APIResponseGeneral> {
+        
+        let token = DataManager.shared.pushNotificationToken ?? ""
+        
+        let params: JSONDictionary = [
+            "token": token
+        ]
+        
+        return Promise<APIResponseGeneral> { seal in
+            requestWithEndPoint(endPoint: EndPoint.Authen.Logout, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST)
+                .done { json in
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in
+                    seal.reject(error)
+            }
+            
+        }
+    }
+    
+    
     
     
     

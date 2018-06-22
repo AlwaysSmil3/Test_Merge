@@ -19,6 +19,8 @@ class LoanPersionalInfoVC: LoanBaseViewController {
 //        
 //        self.setupTitleView(title: "Test", subTitle: "test")
         
+        self.currentStep = 1
+        
         self.createLoan()
     }
     

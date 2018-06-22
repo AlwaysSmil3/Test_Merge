@@ -69,14 +69,15 @@ class BorrowerTabBarController: UITabBarController {
         
         let v11 = sHomeBrowwer.instantiateViewController(withIdentifier: "BorrowHomeViewControllerNav")
         
-        let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE_NAVI")
+//        let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE_NAVI")
+        let v1 = sLoanManager.instantiateViewController(withIdentifier: "LOAN_MANAGER_NAVI")
 
         let v2 = sLoanManager.instantiateViewController(withIdentifier: "LOAN_MANAGER_NAVI")
         let v3 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI")
         let v4 = sNotification.instantiateViewController(withIdentifier: "NOTIFICATION_NAVI")
         let v5 = sProfile.instantiateViewController(withIdentifier: "PROFILE_NAVI")
 
-        v1.tabBarItem = UITabBarItem(title: NSLocalizedString("LOAN", comment: ""), image: #imageLiteral(resourceName: "ic_tb_brow1"), selectedImage: #imageLiteral(resourceName: "ic_tb_brow1_selected"))
+        v1.tabBarItem = UITabBarItem(title: NSLocalizedString("LOAN", comment: ""), image: UIImage(named: "ic_tb_brow1"), selectedImage: UIImage(named: "ic_tb_brow1_selected"))
         v2.tabBarItem = UITabBarItem(title: NSLocalizedString("LOAN_MANAGER", comment: ""), image: UIImage(named: "ic_tb_brow2"), selectedImage: UIImage(named: "ic_tb_brow2_selected"))
         v3.tabBarItem = UITabBarItem(title: NSLocalizedString("WALLET_MANAGER", comment: ""), image: UIImage(named: "ic_tb_brow3"), selectedImage: UIImage(named: "ic_tb_brow3_selected"))
         v4.tabBarItem = UITabBarItem(title: NSLocalizedString("NOTIFICATION", comment: ""), image: UIImage(named: "ic_tb_brow5"), selectedImage: UIImage(named: "ic_tb_brow5_selected"))
@@ -152,17 +153,20 @@ class BorrowerTabBarController: UITabBarController {
             ],
             "createdAt": "2018-06-08T02:07:45+00:00"
             ] as [String : Any]
+        
         let activeLoan = BrowwerActiveLoan(object: json)
+
         if let loanID = activeLoan.loanId, loanID > 0 {
             //Co khoản vay
-            let loanState = (v1 as! UINavigationController).topViewController as! LoanStateViewController
-            loanState.activeLoan = activeLoan
-            self.viewControllers = [loanState, v2, v3, v4, v5]
+//            let loanState = (v1 as! UINavigationController).topViewController as! LoanStateViewController
+//            loanState.activeLoanId = 10
+//            loanState.hiddenBack = true
+            self.viewControllers = [v1, v2, v3, v4, v5]
         } else {
             //Chưa có Khoản vay
             self.viewControllers = [v11, v2, v3, v4, v5]
         }
-        
+    
         
 //        for vc in self.viewControllers! {
 //            self.formatTabBarItem(tabBarItem: vc.tabBarItem)

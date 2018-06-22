@@ -15,6 +15,7 @@ class LoanNationalIDViewController: LoanBaseViewController {
         self.index = 2
         super.viewDidLoad()
         
+        self.currentStep = 3
         self.updateDataToServer()
     
         if let bottomView = self.bottomScrollView {

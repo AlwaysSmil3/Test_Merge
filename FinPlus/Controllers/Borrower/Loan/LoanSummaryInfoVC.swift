@@ -30,7 +30,7 @@ class LoanSummaryInfoVC: BaseViewController {
         self.mainTBView.separatorColor = UIColor.clear
         self.mainTBView.tableFooterView = UIView()
 
-        
+        DataManager.shared.loanInfo.currentStep = 6
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,16 +40,18 @@ class LoanSummaryInfoVC: BaseViewController {
     
     
     private func loan() {
-        APIClient.shared.loan()
-            .done(on: DispatchQueue.main) { [weak self] model in
+
+        APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
+            .done(on: DispatchQueue.global()) { [weak self] model in
+                DataManager.shared.loanID = model.loanId!
                 
                 let otpVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
                 otpVC.loanResponseModel = model
                 otpVC.verifyType = .Loan
                 self?.navigationController?.pushViewController(otpVC, animated: true)
-                
             }
             .catch { error in }
+        
     }
     
     

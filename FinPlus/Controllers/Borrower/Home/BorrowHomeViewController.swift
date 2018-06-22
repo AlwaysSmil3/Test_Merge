@@ -18,7 +18,6 @@ class BorrowHomeViewController: BaseViewController {
     @IBOutlet var contentLoanView: UIView!
     @IBOutlet var mainCollectionView: UICollectionView!
     
-    var detailLoanView: BrrowerHome?
     
     // Loan status cho các trạng thái của Loan
     var loanStatus: Int = DataManager.shared.browwerInfo?.activeLoan?.status ?? -1 {
@@ -67,73 +66,6 @@ class BorrowHomeViewController: BaseViewController {
 
 }
 
-//MARK: BrowwerHomeDelegate
-
-extension BorrowHomeViewController: BrowwerHomeDelegate {
-    
-    func updateInfo(status: STATUS_LOAN) {
-        guard DataManager.shared.loanCategories.count > 0 else { return }
-        
-        switch status {
-        case .DRAFT:
-            self.updateInfoNeed()
-            break
-            
-        case .ACCEPTED:
-            self.acceptedInterestRate()
-            break
-            
-        case .CANCELED:
-            
-            break
-        case .PENDING:
-            break
-            
-        case .REJECTED:
-            break
-            
-        case .WAITING_FOR_APPROVAL:
-            
-            break
-            
-        case .RAISING_CAPITAL:
-            break
-            
-        case .COMPLETED:
-            break
-            
-        case .PAY_TEST_STATUS:
-            self.updateInfoNeed()
-            break
-
-        }
-
-
- 
-    }
-    
-    
-    func updateInfoNeed() {
-        let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
-        
-        loanFirstVC.hidesBottomBarWhenPushed = true
-        loanFirstVC.loanCategory = DataManager.shared.loanCategories[0]
-        
-        self.navigationController?.pushViewController(loanFirstVC, animated: true)
-    }
-    
-    
-    func acceptedInterestRate() {
-        let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "ConfirmInterestRateVC") as! ConfirmInterestRateVC
-        
-        loanFirstVC.hidesBottomBarWhenPushed = true
-        
-        self.navigationController?.pushViewController(loanFirstVC, animated: true)
-    
-    }
- 
-    
-}
 
 //MARK: UICollectionView Delegate, DataSource
 

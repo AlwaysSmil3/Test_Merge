@@ -29,22 +29,22 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ảnh bạn đang cầm CMND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfx-cb-lHr">
-                        <rect key="frame" x="16" y="15" width="343" height="12"/>
+                        <rect key="frame" x="16" y="15" width="343" height="6.5"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="11"/>
                         <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mZ4-jl-d8H" customClass="AnimatableView" customModule="IBAnimatable">
-                        <rect key="frame" x="16" y="35" width="343" height="162"/>
+                        <rect key="frame" x="16" y="29.5" width="343" height="162"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loan_rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="hmx-QV-WET">
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="162"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loan_add" translatesAutoresizingMaskIntoConstraints="NO" id="sr0-wS-eg9">
-                                <rect key="frame" x="162.5" y="72" width="18" height="18"/>
+                                <rect key="frame" x="163" y="72" width="18" height="18"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chụp ảnh" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hn5-En-wPs">
-                                <rect key="frame" x="32" y="132.5" width="279" height="13.5"/>
+                                <rect key="frame" x="32" y="133" width="279" height="13"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                 <color key="textColor" red="0.55686274509803924" green="0.63921568627450975" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -52,6 +52,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Hn5-En-wPs" firstAttribute="top" secondItem="sr0-wS-eg9" secondAttribute="bottom" constant="43" id="3FV-e5-xHY"/>
                             <constraint firstItem="sr0-wS-eg9" firstAttribute="centerY" secondItem="mZ4-jl-d8H" secondAttribute="centerY" id="4nQ-q7-nin"/>
                             <constraint firstAttribute="width" secondItem="mZ4-jl-d8H" secondAttribute="height" multiplier="343:162" id="BCp-gz-24i"/>
                             <constraint firstItem="sr0-wS-eg9" firstAttribute="centerX" secondItem="mZ4-jl-d8H" secondAttribute="centerX" id="DGv-lo-SkT"/>
@@ -69,21 +70,34 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4W-e9-Efo">
+                        <rect key="frame" x="16" y="195.5" width="343" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="QDv-Zy-aFv"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                        <color key="textColor" red="0.85490196078431369" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="mZ4-jl-d8H" firstAttribute="leading" secondItem="Pfx-cb-lHr" secondAttribute="leading" id="53B-WJ-eQ7"/>
+                    <constraint firstItem="u4W-e9-Efo" firstAttribute="top" secondItem="mZ4-jl-d8H" secondAttribute="bottom" constant="4" id="8dq-pl-8yj"/>
+                    <constraint firstItem="u4W-e9-Efo" firstAttribute="trailing" secondItem="mZ4-jl-d8H" secondAttribute="trailing" id="G80-UT-d6Y"/>
                     <constraint firstAttribute="trailing" secondItem="mZ4-jl-d8H" secondAttribute="trailing" constant="16" id="H8t-Ev-qVi"/>
                     <constraint firstItem="mZ4-jl-d8H" firstAttribute="top" secondItem="Pfx-cb-lHr" secondAttribute="bottom" constant="8" id="I1P-UU-mTH"/>
                     <constraint firstItem="Pfx-cb-lHr" firstAttribute="top" secondItem="8jm-pa-aoh" secondAttribute="topMargin" constant="4" id="Jpu-1c-Npd"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="mZ4-jl-d8H" secondAttribute="bottom" constant="4" id="brx-Li-zSn"/>
+                    <constraint firstAttribute="bottom" secondItem="u4W-e9-Efo" secondAttribute="bottom" constant="4" id="Rpz-OX-clo"/>
                     <constraint firstItem="mZ4-jl-d8H" firstAttribute="trailing" secondItem="Pfx-cb-lHr" secondAttribute="trailing" id="h3Z-qo-rCu"/>
                     <constraint firstItem="mZ4-jl-d8H" firstAttribute="leading" secondItem="8jm-pa-aoh" secondAttribute="leading" constant="16" id="mbF-0e-XV9"/>
+                    <constraint firstItem="u4W-e9-Efo" firstAttribute="leading" secondItem="mZ4-jl-d8H" secondAttribute="leading" id="wL8-Vx-jOI"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="imgAdd" destination="sr0-wS-eg9" id="6Hf-1T-hAr"/>
                 <outlet property="imgValue" destination="hmx-QV-WET" id="0cz-H7-GPa"/>
                 <outlet property="lblDescription" destination="Hn5-En-wPs" id="exB-dK-j5W"/>
+                <outlet property="lblDescriptionNeedUpdate" destination="u4W-e9-Efo" id="sOK-wa-X9l"/>
                 <outlet property="lblTitle" destination="Pfx-cb-lHr" id="toH-d7-o55"/>
             </connections>
             <point key="canvasLocation" x="65.5" y="-14"/>

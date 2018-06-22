@@ -17,6 +17,7 @@ public struct BrowwerActiveLoan {
     static let status = "status"
     static let nationalIdBackImg = "nationalIdBackImg"
     static let nationalIdFrontImg = "nationalIdFrontImg"
+    static let nationalIdAllImg = "nationalIdAllImg"
     static let jobInfo = "jobInfo"
     static let term = "term"
     static let amount = "amount"
@@ -33,6 +34,7 @@ public struct BrowwerActiveLoan {
   public var status: Int?
   public var nationalIdBackImg: String?
   public var nationalIdFrontImg: String?
+    public var nationalIdAllImg: String?
   public var jobInfo: BrowwerJobInfo?
   public var term: Int?
   public var amount: Int32?
@@ -55,19 +57,20 @@ public struct BrowwerActiveLoan {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    walletId = json[SerializationKeys.walletId].int ?? 0
+    walletId = json[SerializationKeys.walletId].int
     if let items = json[SerializationKeys.optionalMedia].array { optionalMedia = items.map { $0.stringValue } }
-    status = json[SerializationKeys.status].int ?? 0
-    nationalIdBackImg = json[SerializationKeys.nationalIdBackImg].string ?? ""
-    nationalIdFrontImg = json[SerializationKeys.nationalIdFrontImg].string ?? ""
+    status = json[SerializationKeys.status].int
+    nationalIdBackImg = json[SerializationKeys.nationalIdBackImg].string
+    nationalIdFrontImg = json[SerializationKeys.nationalIdFrontImg].string
+    nationalIdAllImg = json[SerializationKeys.nationalIdAllImg].string
     jobInfo = BrowwerJobInfo(json: json[SerializationKeys.jobInfo])
-    term = json[SerializationKeys.term].int ?? 0
-    amount = json[SerializationKeys.amount].int32 ?? 0
-    loanId = json[SerializationKeys.loanId].int32 ?? 0
-    optionalText = json[SerializationKeys.optionalText].string ?? ""
+    term = json[SerializationKeys.term].int
+    amount = json[SerializationKeys.amount].int32
+    loanId = json[SerializationKeys.loanId].int32
+    optionalText = json[SerializationKeys.optionalText].string
     userInfo = BrowwerUserInfo(json: json[SerializationKeys.userInfo])
-    loanCategoryId = json[SerializationKeys.loanCategoryId].int16 ?? 0
-    createdTime = json[SerializationKeys.createdTime].string ?? ""
+    loanCategoryId = json[SerializationKeys.loanCategoryId].int16
+    createdTime = json[SerializationKeys.createdTime].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -80,6 +83,7 @@ public struct BrowwerActiveLoan {
     if let value = status { dictionary[SerializationKeys.status] = value }
     if let value = nationalIdBackImg { dictionary[SerializationKeys.nationalIdBackImg] = value }
     if let value = nationalIdFrontImg { dictionary[SerializationKeys.nationalIdFrontImg] = value }
+    if let value = nationalIdAllImg { dictionary[SerializationKeys.nationalIdAllImg] = value }
     if let value = jobInfo { dictionary[SerializationKeys.jobInfo] = value.dictionaryRepresentation() }
     if let value = term { dictionary[SerializationKeys.term] = value }
     if let value = amount { dictionary[SerializationKeys.amount] = value }
