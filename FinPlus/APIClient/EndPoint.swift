@@ -32,11 +32,13 @@ enum EndPoint {
     enum Authen {
         static let Authen = "auth"
         static let verifyOTP = "auth/otp"
-
+        static let Logout = "logout"
+        
     }
     
     enum User {
         static let User = "users/"
+        static let PushToken = "users/uid/push-token"
     }
     
     enum Loan {

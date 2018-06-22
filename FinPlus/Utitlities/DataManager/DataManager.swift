@@ -15,6 +15,9 @@ class DataManager {
     var currentAccount: String = ""
     var userID: Int32 = 0
     
+    //Push Notification Token
+    var pushNotificationToken: String?
+    
     // User info
     var browwerInfo: BrowwerInfo?
     
@@ -57,6 +60,33 @@ class DataManager {
             }
         }
     }
+    
+    //Xoa du lieu khi logout
+    func clearData(completion: () -> Void) {
+        
+        self.browwerInfo = nil
+        self.currentAccount = ""
+        self.loanID = nil
+        self.loanInfo = LoanInfo()
+        self.userID = 0
+        userDefault.set(nil, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+        userDefault.set(nil, forKey: fUSER_DEFAUT_TOKEN)
+        
+        completion()
+    }
+    
+    //Cập nhật push Notification Token
+    func updatePushNotificationToken() {
+        APIClient.shared.pushNotificationToken()
+            .done(on: DispatchQueue.main) { model in
+                print("update fcm token to server")
+            }
+            .catch { error in}
+        
+    }
+    
+    
+    
     
     
 }
