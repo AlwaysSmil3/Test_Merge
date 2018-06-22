@@ -129,6 +129,24 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
             
+        case 6:
+            //LogOut
+            self.showAlertView(title: "Đăng xuất", message: "Bạn có chắc chắn muốn đăng xuất", okTitle: "Đồng ý", cancelTitle: "Huỷ") { (status) in
+                
+                if status {
+                    
+                    
+                    
+                    
+                    
+                }
+                
+            }
+            
+            
+            
+            break
+            
         default: break
             
         }
