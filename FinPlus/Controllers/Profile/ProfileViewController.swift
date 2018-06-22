@@ -131,13 +131,31 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         case 6:
             //LogOut
-            self.showAlertView(title: "Đăng xuất", message: "Bạn có chắc chắn muốn đăng xuất", okTitle: "Đồng ý", cancelTitle: "Huỷ") { (status) in
+            self.showAlertView(title: "Đăng xuất", message: "Bạn có chắc chắn muốn đăng xuất tài khoản này?", okTitle: "Đồng ý", cancelTitle: "Huỷ") { (status) in
                 
                 if status {
                     
-                    
-                    
-                    
+                    APIClient.shared.logOut()
+                        .done(on: DispatchQueue.main) { [weak self] model in
+                            
+                            guard let reponseCode = model.returnCode, reponseCode > 0 else {
+                                self?.showToastWithMessage(message: model.returnMsg!)
+                                return
+                            }
+                            
+                            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {
+                                return
+                            }
+                            
+                            //Clear Data and Login
+                            DataManager.shared.clearData {
+                                let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
+                                
+                                window.rootViewController = enterPhoneVC
+                            }
+                            
+                    }
+                        .catch { error in}
                     
                 }
                 

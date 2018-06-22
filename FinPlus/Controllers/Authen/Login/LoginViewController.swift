@@ -80,6 +80,9 @@ class LoginViewController: BaseViewController {
         APIClient.shared.authentication(phoneNumber: account, pass: tfPass.text!)
             .done(on: DispatchQueue.main) { [weak self] model in
                 // go to choice VC of back to enter phone number
+                
+                DataManager.shared.userID = model.data?.id ?? 0
+                
                 switch model.returnCode {
                 case 3:
                     // đang đăng nhập trên 1 thiết bị khác -> push home investor or borrwer
@@ -88,16 +91,22 @@ class LoginViewController: BaseViewController {
                     // check user type: investor or borrwer
                     // push to home viewcontroller
                     self?.pushToHomeVC(userType: .Investor)
+                    
+                    //Cap nhat push notification token
+                    DataManager.shared.updatePushNotificationToken()
+                    
                     break
                 case 1:
                     userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
                     DataManager.shared.currentAccount = account
                     // save token
                     if let data = model.data {
-                        if let token = data.token {
+                        if let token = data.accessToken {
                             userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
                         }
                     }
+                    //Cap nhat push notification token
+                    DataManager.shared.updatePushNotificationToken()
                     // get config
 //                    self?.getConfig()
                     // push to choice viewcontroller

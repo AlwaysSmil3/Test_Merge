@@ -34,6 +34,49 @@ extension APIClient {
         
     }
     
+    /*
+     
+     PUT [Done] Cập push notification token
+     HEADERS
+     Content-Type
+     application/json
+     PATH VARIABLES
+     uid
+     
+     Mã khách hàng của Fin+
+     BODY
+     
+     {
+     "token":"xxxxxxxxxxxxxxxxxxxxxxx"
+     }
+     
+
+     */
+    func pushNotificationToken() -> Promise<APIResponseGeneral> {
+        let token = DataManager.shared.pushNotificationToken ?? ""
+        
+        let params: JSONDictionary = [
+            "token": token
+        ]
+        
+        return Promise<APIResponseGeneral> { seal in
+            
+            let uID = DataManager.shared.userID
+            let endPoint = "users/" + "\(uID)" + "/push-token"
+            
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: false, httpType: HTTPMethodType.PUT)
+                .done { json in
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in
+                    seal.reject(error)
+            }
+            
+        }
+        
+    }
+    
     
     
 }
