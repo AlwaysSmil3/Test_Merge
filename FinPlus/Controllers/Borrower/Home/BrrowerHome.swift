@@ -96,19 +96,19 @@ class BrrowerHome: UIView {
         case 1:
             //"WAITING_FOR_APPROVAL": 1, // H.4
             self.containerView.addSubview(self.viewH4)
-            self.loanStatus = .WAITING_FOR_APPROVAL
+            self.loanStatus = .SALE_REVIEW
             
             break
         case 2:
             //"PENDING": 2, // H.5
             self.containerView.addSubview(self.viewH5)
-            self.loanStatus = .PENDING
+            self.loanStatus = .SALE_PENDING
             
             break
         case 3:
             //"ACCEPTED": 3, // H.6 -> H.9
             self.containerView.addSubview(self.viewH6)
-            self.loanStatus = .ACCEPTED
+            self.loanStatus = .INTEREST_CONFIRM
             
             break
         default:
