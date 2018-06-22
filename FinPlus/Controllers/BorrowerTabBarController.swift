@@ -91,7 +91,7 @@ class BorrowerTabBarController: UITabBarController {
          */
         
         let json = [
-            "loanId": 1,
+            "loanId": 0,
             "loanCategoryId": 1,
             "amount": 1111,
             "term": 20,
