@@ -32,6 +32,13 @@ class LoanBaseViewController: BaseViewController {
     //Màn hình hay bước trong Loan
     var index: Int = 0
     
+    //Cho body api
+    var currentStep: Int = 0 {
+        didSet {
+            DataManager.shared.loanInfo.currentStep = self.currentStep
+        }
+    }
+    
     //BirthDay
     var birthDay: Date? {
         didSet {
@@ -42,8 +49,9 @@ class LoanBaseViewController: BaseViewController {
                 self.mainTBView?.deselectRow(at: indexPath, animated: true)
                 if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeDropdownTBCell {
                     cell.field?.selectorTitle = date
-                    
-                    DataManager.shared.loanInfo.userInfo.birthDay = "\(date1.timeIntervalSince1970)"
+                    //DateTime ISO 8601
+                    let timeISO8601 = date1.toString(.iso8601(ISO8601Format.DateTimeSec))
+                    DataManager.shared.loanInfo.userInfo.birthDay = timeISO8601
                 }
             }
         }
