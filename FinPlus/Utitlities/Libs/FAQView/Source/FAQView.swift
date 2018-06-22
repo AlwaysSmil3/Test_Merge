@@ -49,36 +49,6 @@ public class FAQView: UIView {
     }
   }
   
-  public var titleLabelTextColor: UIColor! {
-    get {
-      return configuration.titleTextColor
-    }
-    set(value) {
-      configuration.titleTextColor = value
-      titleLabel.textColor = configuration.titleTextColor
-    }
-  }
-  
-  public var titleLabelTextFont: UIFont! {
-    get {
-      return configuration.titleTextFont
-    }
-    set(value) {
-      configuration.titleTextFont = value
-      titleLabel.font = configuration.titleTextFont
-    }
-  }
-  
-  public var titleLabelBackgroundColor: UIColor! {
-    get {
-      return configuration.titleLabelBackgroundColor
-    }
-    set(value) {
-      configuration.titleLabelBackgroundColor = value
-      titleLabel.backgroundColor = configuration.titleLabelBackgroundColor
-    }
-  }
-  
   public var viewBackgroundColor: UIColor! {
     get {
       return configuration.viewBackgroundColor
@@ -137,14 +107,6 @@ public class FAQView: UIView {
     tableview.tableFooterView = UIView()
     return tableview
   }()
-  
-  var titleLabel: UILabel = {
-    let label = UILabel()
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.numberOfLines = 0
-    label.textAlignment = .center
-    return label
-  }()
 
   var expandedCells = [CellOperation]()
   var configuration = FAQConfiguration()
@@ -152,15 +114,13 @@ public class FAQView: UIView {
   
   // MARK: Initialization
   
-  public init(frame: CGRect,title: String = "Top Queries", items: [FAQItem]) {
+  public init(frame: CGRect, items: [FAQItem]) {
     self.items = items
     super.init(frame: frame)
     expandedCells = Array(repeating: CellOperation.collapsed, count: items.count)
-    setupTitleView(title: title)
     setupTableView()
     setupView()
     self.addSubview(tableView)
-    self.addSubview(titleLabel)
     addConstraintsForTableViewAndTitleLabel()
   }
   
@@ -190,13 +150,6 @@ public class FAQView: UIView {
 
   // MARK: Private Methods
   
-  private func setupTitleView(title: String) {
-    self.titleLabel.textColor = configuration.titleTextColor
-    self.titleLabel.font = configuration.titleTextFont
-    self.titleLabel.backgroundColor = configuration.titleLabelBackgroundColor
-    self.titleLabel.text = title
-  }
-  
   private func setupTableView() {
     self.tableView.register(FAQViewCell.self, forCellReuseIdentifier: "cell")
     self.tableView.dataSource = self
@@ -208,17 +161,11 @@ public class FAQView: UIView {
   }
   
   private func addConstraintsForTableViewAndTitleLabel() {
-    
-    let titleLabelTrailing = NSLayoutConstraint(item: titleLabel, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailingMargin, multiplier: 1, constant: 0)
-    let titleLabelLeading = NSLayoutConstraint(item: titleLabel, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leadingMargin, multiplier: 1, constant: 0)
-    let titleLabelTop = NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .topMargin, multiplier: 1, constant: 20)
-    
-    
     let tableViewTrailing = NSLayoutConstraint(item: tableView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailingMargin, multiplier: 1, constant: 0)
     let tableViewLeading = NSLayoutConstraint(item: tableView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leadingMargin, multiplier: 1, constant: 0)
-    let tableViewTop = NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 15)
+    let tableViewTop = NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .topMargin, multiplier: 1, constant: 0)
     let tableViewBottom = NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottomMargin, multiplier: 1, constant: 0)
-    NSLayoutConstraint.activate([tableViewTrailing, tableViewLeading, tableViewTop, tableViewBottom, titleLabelLeading, titleLabelTrailing, titleLabelTop])
+    NSLayoutConstraint.activate([tableViewTrailing, tableViewLeading, tableViewTop, tableViewBottom])
   }
   
 }
@@ -273,7 +220,15 @@ extension FAQView: UITableViewDelegate, UITableViewDataSource {
   
   public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 1))
-    headerView.backgroundColor = configuration.separatorColor
+    if (section == 0)
+    {
+        headerView.backgroundColor = .clear
+    }
+    else
+    {
+        headerView.backgroundColor = configuration.separatorColor
+    }
+    
     return headerView
   }
 }

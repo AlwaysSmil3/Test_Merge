@@ -54,7 +54,7 @@ class SignContractViewController: UIViewController, UIWebViewDelegate {
     }
     
     @IBAction func sign_contract(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SUCCCESS")
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SUCCESS")
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }

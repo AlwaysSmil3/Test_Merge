@@ -39,10 +39,7 @@ class LoanStateViewController: UIViewController {
     var hiddenBack = false
     var activeLoan: BrowwerActiveLoan?
     var activeLoanId: Int = 0
-    
-    @IBAction func navi_back() {
-        self.navigationController?.popViewController(animated: true)
-    }
+    var bottomId = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,7 +80,7 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
             
-        case STATUS_LOAN.WAITING_FOR_APPROVAL.rawValue:
+        case STATUS_LOAN.SALE_REVIEW.rawValue, STATUS_LOAN.RISK_REVIEW.rawValue:
             
             headerData = [
                 [
@@ -93,7 +90,7 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
             
-        case STATUS_LOAN.PENDING.rawValue:
+        case STATUS_LOAN.SALE_PENDING.rawValue, STATUS_LOAN.RISK_PENDING.rawValue:
             
             headerData = [
                 [
@@ -114,7 +111,7 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
             
-        case STATUS_LOAN.ACCEPTED.rawValue:
+        case STATUS_LOAN.INTEREST_CONFIRM.rawValue, STATUS_LOAN.INTEREST_CONFIRM_EXPIRED.rawValue:
             
             headerData = [
                 [
@@ -131,7 +128,7 @@ class LoanStateViewController: UIViewController {
                     "type": HeaderCellType.ButtonType,
                     "text": "Xác nhận lãi suất",
                     "subType": ButtonCellType.FillType,
-                    "target": ""
+                    "target": "confirm_rate_success"
                 ],
             ]
             
@@ -180,50 +177,119 @@ class LoanStateViewController: UIViewController {
                     "subType": TextCellType.DesType,
                 ],
             ]
-
-        case STATUS_LOAN.PAY_TEST_STATUS.rawValue :
+            
+        case STATUS_LOAN.PARTIAL_FILLED.rawValue:
+            
             headerData = [
                 [
                     "type": HeaderCellType.TextType,
-                    "text": "Xin chào Minh, bạn đang vay 2.000.000đ.",
+                    "text": "Bạn đã huy động được 1.500.000đ trong vòng 2 ngày.",
                     "subType": TextCellType.TitleType,
                     ],
                 [
                     "type": HeaderCellType.TextType,
-                    "text": "Bạn cần thanh toán 125.000đ trong tháng này. Hãy thanh toán trước ngày: 20/6/2018.",
+                    "text": "Bạn có thể tiếp tục huy động để có đủ số tiền vay hoặc ấn \"Giải ngân sớm\" để nhận ngay số tiền đã huy động được.",
                     "subType": TextCellType.DesType,
                     ],
                 [
                     "type": HeaderCellType.ButtonType,
-                    "text": "Thanh toán",
-                    "subType": ButtonCellType.FillType,
-                    "target": "pushToPayViewController"
+                    "text": "Giải ngân sớm",
+                    "subType": ButtonCellType.NullType,
+                    "target": "disburse_soon"
+                ],
+            ]
+
+        case STATUS_LOAN.FILLED.rawValue :
+            headerData = [
+                [
+                    "type": HeaderCellType.TextType,
+                    "text": "Chúc mừng Minh, khoản vay của bạn đã được huy động đủ.",
+                    "subType": TextCellType.TitleType,
+                    ],
+                [
+                    "type": HeaderCellType.TextType,
+                    "text": "Hãy ấn nút 'Giải ngân' để ký hợp đồng và lấy tiền ngay.",
+                    "subType": TextCellType.DesType,
                     ],
                 [
                     "type": HeaderCellType.ButtonType,
-                    "text": "Lịch sử thanh toán",
+                    "text": "Giải ngân",
                     "subType": ButtonCellType.NullType,
-                    "target": "pushToPayHistoryVC"
+                    "target": "signContract"
+                ],
+            ]
+            
+        case STATUS_LOAN.EXPIRED.rawValue :
+            headerData = [
+                [
+                    "type": HeaderCellType.TextType,
+                    "text": "Đã hết thời gian huy động. Số tiền huy động được: 1.500.000đ",
+                    "subType": TextCellType.TitleType,
+                    ],
+                [
+                    "type": HeaderCellType.TextType,
+                    "text": "Khoản vay của bạn đã hết thời gian huy động. Bạn có thể giải ngân số tiền huy động được.",
+                    "subType": TextCellType.DesType,
+                    ],
+                [
+                    "type": HeaderCellType.ButtonType,
+                    "text": "Giải ngân",
+                    "subType": ButtonCellType.NullType,
+                    "target": "disburse_expỉed"
+                ],
+            ]
+            
+        case STATUS_LOAN.CONTRACT_SIGNED.rawValue :
+            headerData = [
+                [
+                    "type": HeaderCellType.TextType,
+                    "text": "Ký hợp đồng thành công! Bạn sẽ nhận tiền trong vòng 8 giờ làm việc.",
+                    "subType": TextCellType.TitleType,
                     ],
             ]
             
-        case 10:
+        default:
+            
+            break
+        }
+        
+        switch bottomId {
+            
+        case 1:
+            self.btnBottomView.setTitle("Ký hợp đồng để giải ngân", for: .normal)
+            self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.confirmSignContract), for: .touchUpInside)
+            
+            self.labelBottomView.text = "Không, tiếp tục huy động"
+            self.labelBottomView.isUserInteractionEnabled = true
+            self.labelBottomView.font = UIFont.boldSystemFont(ofSize: 17)
+            self.labelBottomView.textAlignment = .center
+            self.labelBottomView.textColor = UIColor(hexString: "#4D6678")
+            
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(navi_back))
+            tapGestureRecognizer.numberOfTapsRequired = 1
+            self.labelBottomView.addGestureRecognizer(tapGestureRecognizer)
+            
+            isEnableFooterView = true
+            
+        case 2:
             self.btnBottomView.setTitle("Ký hợp đồng để giải ngân", for: .normal)
             self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.signContract), for: .touchUpInside)
             self.labelBottomView.text = "Khoản vay của bạn đã được huy động đủ số tiền. Chỉ còn một bước ký hợp đồng để nhận tiền."
             isEnableFooterView = true
             
-        case 11:
+        case 3:
             self.btnBottomView.setTitle("Ký hợp đồng để giải ngân", for: .normal)
-            self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.confirmSignContract), for: .touchUpInside)
-            self.labelBottomView.text = "Không, tiếp tục huy động"
-            self.labelBottomView.font = UIFont.boldSystemFont(ofSize: 17)
-            self.labelBottomView.textAlignment = .center
-            self.labelBottomView.textColor = UIColor(hexString: "#4D6678")
+            self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.signContract), for: .touchUpInside)
+            self.labelBottomView.text = "Nếu bạn đồng ý vay với số tiền huy động được. Vui lòng tiến hành ký hợp đồng để giải ngân."
+            isEnableFooterView = true
+            
+        case 4:
+            self.btnBottomView.setTitle("Xác nhận", for: .normal)
+            self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.signContract), for: .touchUpInside)
+            self.labelBottomView.text = "Tiền phí sẽ được trừ ngay sau khi giải ngân tiền vay."
             isEnableFooterView = true
             
         default:
-            
             break
         }
         
@@ -261,16 +327,6 @@ class LoanStateViewController: UIViewController {
         self.view.layoutIfNeeded()
     }
 
-    @IBAction func pushToPayViewController() {
-        let payVC = TestBorrowingPayViewController(nibName: "TestBorrowingPayViewController", bundle: nil)
-        self.navigationController?.pushViewController(payVC, animated: true)
-    }
-
-    @IBAction func pushToPayHistoryVC() {
-        let payHistoryVC = TestPayHistoryViewController(nibName: "TestPayHistoryViewController", bundle: nil)
-        self.navigationController?.pushViewController(payHistoryVC, animated: true)
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -337,18 +393,105 @@ class LoanStateViewController: UIViewController {
         }
     }
     
-    @IBAction func signContract()
+    // MARK: Action
+    
+    @IBAction func navi_back() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func navi_option() {
+        
+        let alert = UIAlertController(title: "", message: "Lựa chọn", preferredStyle: .actionSheet)
+        
+        switch activeLoanId {
+        case 1:
+            alert.addAction(UIAlertAction(title: "Xóa đơn vay", style: .destructive , handler:{ (UIAlertAction)in
+
+            }))
+            
+        case 2:
+            alert.addAction(UIAlertAction(title: "Chỉnh sửa đơn vay", style: .default , handler:{ (UIAlertAction)in
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Hủy yêu cầu", style: .destructive , handler:{ (UIAlertAction)in
+                
+            }))
+            
+        case 14:
+            alert.addAction(UIAlertAction(title: "Xem hợp đồng", style: .default , handler:{ (UIAlertAction)in
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SIGN") as! SignContractViewController
+                vc.isSigned = true
+                self.navigationController?.isNavigationBarHidden = false
+                self.navigationController?.pushViewController(vc, animated: true)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Hủy đơn vay", style: .destructive , handler:{ (UIAlertAction)in
+            
+            }))
+        
+        default:
+            break
+        }
+        
+        alert.addAction(UIAlertAction(title: "Hủy", style: .cancel, handler:{ (UIAlertAction)in
+            print("User click Dismiss button")
+        }))
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+    }
+    
+    // Xác nhận lãi suất
+    @IBAction func confirm_rate_success()
+    {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONFIRM_RATE_SUCCESS")
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    // Giải ngân sớm
+    @IBAction func disburse_soon()
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
-        vc.activeLoanId = 11
+        vc.activeLoanId = 1
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    // Giải ngân khi quá hạn huy động vốn
+    @IBAction func disburse_expỉed()
+    {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
+        vc.bottomId = 3
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // Ký hợp đồng
+    @IBAction func signContract()
+    {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
+        vc.bottomId = 1
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // Xác nhận ký hợp đồng
     @IBAction func confirmSignContract()
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SIGN")
         self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    @IBAction func pushToPayViewController() {
+        let payVC = TestBorrowingPayViewController(nibName: "TestBorrowingPayViewController", bundle: nil)
+        self.navigationController?.pushViewController(payVC, animated: true)
+    }
+    
+    @IBAction func pushToPayHistoryVC() {
+        let payHistoryVC = TestPayHistoryViewController(nibName: "TestPayHistoryViewController", bundle: nil)
+        self.navigationController?.pushViewController(payHistoryVC, animated: true)
     }
     
 }
@@ -439,12 +582,15 @@ extension LoanStateViewController: UITableViewDataSource {
             case 2:
                 cell?.nameLabel.text = NSLocalizedString("LOAN_MONEY", comment: "")
                 cell?.desLabel.text = "2.000.000đ"
+                cell?.desLabel.font = UIFont.boldSystemFont(ofSize: (cell?.desLabel.font.pointSize)!)
             case 3:
                 cell?.nameLabel.text = NSLocalizedString("LOAN_TIME", comment: "")
                 cell?.desLabel.text = "12 tháng"
+                cell?.desLabel.font = UIFont.boldSystemFont(ofSize: (cell?.desLabel.font.pointSize)!)
             case 4:
                 cell?.nameLabel.text = NSLocalizedString("STATUS", comment: "")
-                cell?.desLabel.text = "Chưa hoàn thiện"
+                cell?.desLabel.text = getState(type: activeLoanId)
+                cell?.desLabel.textColor = getColorText(type: activeLoanId)
             case 5:
                 cell?.nameLabel.text = NSLocalizedString("RATE", comment: "")
                 cell?.desLabel.text = "10%/năm"
@@ -454,6 +600,7 @@ extension LoanStateViewController: UITableViewDataSource {
             case 7:
                 cell?.nameLabel.text = NSLocalizedString("MONEY_MONTH", comment: "")
                 cell?.desLabel.text = "180.000đ"
+                cell?.desLabel.font = UIFont.boldSystemFont(ofSize: (cell?.desLabel.font.pointSize)!)
             default:
                 cell?.nameLabel.text = NSLocalizedString("LOAN_DIS", comment: "")
                 cell?.desLabel.text = "Vay mua điện thoại"
