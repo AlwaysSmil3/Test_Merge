@@ -15,6 +15,7 @@ class LoanInfoJobVC: LoanBaseViewController {
         self.index = 1
         super.viewDidLoad()
         
+        self.currentStep = 2
         self.updateDataToServer()
     }
     
