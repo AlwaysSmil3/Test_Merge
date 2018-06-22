@@ -130,8 +130,10 @@ func getState(type: Int) -> String {
     switch type {
     case 1:
         return "Chưa hoàn thiện"
-    case 2, 3, 4, 5:
+    case 2, 4:
         return "Chờ phê duyệt"
+    case 3, 5:
+        return "Cần bổ sung thông tin"
     case 6:
         return "Đơn vay bị từ chối"
     case 7:
@@ -165,9 +167,9 @@ func getState(type: Int) -> String {
 
 func getColorText(type: Int) -> UIColor {
     switch type {
-    case 1, 2, 3, 4, 5:
+    case 1, 3, 5:
         return UIColor(hexString: "#ED8A17")
-    case 7, 9, 10, 11, 12, 14, 15, 17:
+    case 2, 4, 7, 9, 10, 11, 12, 14, 15, 17:
         return UIColor(hexString: "#3EAA5F")
     case 6, 8, 13, 16, 18:
         return UIColor(hexString: "#DA3535")
