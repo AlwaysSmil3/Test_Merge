@@ -86,7 +86,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="6fc-Gu-2Cn">
                         <barButtonItem key="leftBarButtonItem" image="ic_back" id="2zC-Xe-80m">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="navi_backWithSender:" destination="SWf-te-Oes" id="30e-g1-hyG"/>
                             </connections>
@@ -127,7 +126,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="bK1-0Q-Cyx">
                         <barButtonItem key="leftBarButtonItem" image="ic_back" id="7VV-8H-Z0f">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="navi_backWithSender:" destination="Rb0-Hp-gWo" id="bYJ-qZ-AeC"/>
                             </connections>
@@ -317,7 +315,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="DNM-ix-Rsw">
                         <barButtonItem key="leftBarButtonItem" image="ic_back" id="CGE-Ba-TQb">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="navi_backWithSender:" destination="3e2-A4-gmy" id="kNx-N3-Doh"/>
                             </connections>
