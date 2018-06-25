@@ -84,7 +84,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="vh1-os-igC">
                         <barButtonItem key="leftBarButtonItem" image="ic_back" id="yTF-lX-VB5">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="navi_backWithSender:" destination="egq-u3-j2r" id="tBX-eq-06V"/>
                             </connections>
