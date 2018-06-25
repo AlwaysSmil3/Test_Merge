@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Bold.otf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InvestorSignUpRejectedViewController" customModule="FinPlus" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="investor_signup_rejected_bg" translatesAutoresizingMaskIntoConstraints="NO" id="ewt-4e-oK2">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hồ sơ bị từ chối" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fy-Et-Usx">
+                    <rect key="frame" x="32" y="178" width="311" height="31.5"/>
+                    <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="26"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SsX-Na-nZQ">
+                    <rect key="frame" x="32" y="311.5" width="311" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="2q0-Cn-Kmn"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
+                    <state key="normal" title="Cập nhật lại hồ sơ">
+                        <color key="titleColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="updateProfileBtnAction:" destination="-1" eventType="touchUpInside" id="tqv-GP-r5B"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfY-7R-rmh">
+                    <rect key="frame" x="32" y="225.5" width="311" height="54"/>
+                    <string key="text">Hồ sơ của bạn bị từ chối với lý do: “Địa chỉ nhà không hợp lệ”. Vui lòng cập nhật lại thông tin và gửi lại để chúng tôi phê duyệt. Cám ơn bạn.</string>
+                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
+                    <color key="textColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="zfY-7R-rmh" firstAttribute="top" secondItem="0Fy-Et-Usx" secondAttribute="bottom" constant="16" id="9tw-iG-uM5"/>
+                <constraint firstItem="zfY-7R-rmh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="AXw-La-WsC"/>
+                <constraint firstItem="SsX-Na-nZQ" firstAttribute="top" secondItem="zfY-7R-rmh" secondAttribute="bottom" constant="32" id="G6x-3P-mnU"/>
+                <constraint firstItem="ewt-4e-oK2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HY5-C5-Odh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0Fy-Et-Usx" secondAttribute="trailing" constant="32" id="PF7-Qn-Jot"/>
+                <constraint firstItem="0Fy-Et-Usx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="R5v-j6-VJr"/>
+                <constraint firstItem="SsX-Na-nZQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="XHs-Og-PfQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zfY-7R-rmh" secondAttribute="trailing" constant="32" id="b5x-Cb-eOV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ewt-4e-oK2" secondAttribute="trailing" id="dsB-eA-Nai"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ewt-4e-oK2" secondAttribute="bottom" id="hyt-LP-t4Z"/>
+                <constraint firstItem="ewt-4e-oK2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kLO-MC-eqB"/>
+                <constraint firstItem="SsX-Na-nZQ" firstAttribute="top" secondItem="zfY-7R-rmh" secondAttribute="bottom" constant="32" id="ldf-tP-33H"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SsX-Na-nZQ" secondAttribute="trailing" constant="32" id="nRr-O0-qoy"/>
+                <constraint firstItem="SsX-Na-nZQ" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="tL9-OL-lT1"/>
+                <constraint firstItem="zfY-7R-rmh" firstAttribute="top" secondItem="0Fy-Et-Usx" secondAttribute="bottom" constant="16" id="uQ4-Sa-mBB"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="81.5" y="146.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="investor_signup_rejected_bg" width="375" height="667"/>
+    </resources>
+</document>

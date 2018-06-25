@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Bold.otf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Semibold.otf">
+            <string>SFProDisplay-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InvestorSignupEnableNotiViewController" customModule="FinPlus" customModuleProvider="target">
+            <connections>
+                <outlet property="dissmissBtn" destination="rIM-nh-pXN" id="bPl-4i-sf0"/>
+                <outlet property="showNotiSettingBtn" destination="8yj-D3-4vL" id="y3g-aC-ThR"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIM-nh-pXN">
+                    <rect key="frame" x="16" y="36" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="WB0-1N-T50"/>
+                        <constraint firstAttribute="height" constant="40" id="yV8-4S-bFy"/>
+                    </constraints>
+                    <state key="normal" image="dismiss_img">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="dissmissAction:" destination="-1" eventType="touchUpInside" id="4mK-1a-4qu"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bật thông báo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yj-D3-4vL">
+                    <rect key="frame" x="133.5" y="46.5" width="108" height="20"/>
+                    <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6eB-97-ojs">
+                    <rect key="frame" x="32" y="82.5" width="311" height="504.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jsQ-ak-cSA">
+                            <rect key="frame" x="0.0" y="8" width="311" height="54"/>
+                            <string key="text">Cách bật thông báo: Sau khi ấn nút bên dưới, bạn sẽ được chuyển đến màn hình Cài Đặt của iOS. Từ đây hãy làm theo các bước như sau:</string>
+                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
+                            <color key="textColor" red="0.8901960784313725" green="0.92156862745098034" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bước 1: Chọn mục thông báo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esk-la-8y3">
+                            <rect key="frame" x="0.0" y="70" width="311" height="13.5"/>
+                            <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="11"/>
+                            <color key="textColor" red="0.55686274509803924" green="0.63921568627450975" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enable_noti_text" translatesAutoresizingMaskIntoConstraints="NO" id="KnI-V6-5p6">
+                            <rect key="frame" x="0.0" y="91" width="311" height="180"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="KnI-V6-5p6" secondAttribute="height" multiplier="311:180" id="bRg-3Z-nyQ"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bước 2: Chọn “Cho Phép thông báo”" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrk-Uw-oFO">
+                            <rect key="frame" x="9" y="287" width="293" height="13.5"/>
+                            <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="11"/>
+                            <color key="textColor" red="0.5568627451" green="0.63921568630000003" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enable_noti_text" translatesAutoresizingMaskIntoConstraints="NO" id="WuL-mT-Uen">
+                            <rect key="frame" x="0.0" y="308" width="311" height="180"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="WuL-mT-Uen" secondAttribute="height" multiplier="311:180" id="gL2-oy-iSb"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="esk-la-8y3" firstAttribute="top" secondItem="jsQ-ak-cSA" secondAttribute="bottom" constant="8" id="1OJ-d8-A55"/>
+                        <constraint firstAttribute="trailing" secondItem="esk-la-8y3" secondAttribute="trailing" id="5Ev-ez-2Fg"/>
+                        <constraint firstAttribute="trailing" secondItem="jsQ-ak-cSA" secondAttribute="trailing" id="9nz-jl-mAb"/>
+                        <constraint firstItem="KnI-V6-5p6" firstAttribute="top" secondItem="esk-la-8y3" secondAttribute="bottom" constant="8" id="BZf-mT-iba"/>
+                        <constraint firstItem="jsQ-ak-cSA" firstAttribute="top" secondItem="6eB-97-ojs" secondAttribute="top" constant="8" id="BcU-VI-E5N"/>
+                        <constraint firstItem="jsQ-ak-cSA" firstAttribute="leading" secondItem="6eB-97-ojs" secondAttribute="leading" id="I3s-Ov-Y8i"/>
+                        <constraint firstAttribute="trailing" secondItem="Wrk-Uw-oFO" secondAttribute="trailing" constant="9" id="O39-ia-Zbk"/>
+                        <constraint firstItem="esk-la-8y3" firstAttribute="leading" secondItem="6eB-97-ojs" secondAttribute="leading" id="RxC-UY-9QX"/>
+                        <constraint firstItem="WuL-mT-Uen" firstAttribute="top" secondItem="Wrk-Uw-oFO" secondAttribute="bottom" constant="8" id="VAN-zE-fOv"/>
+                        <constraint firstAttribute="trailing" secondItem="KnI-V6-5p6" secondAttribute="trailing" id="VTd-57-sa6"/>
+                        <constraint firstAttribute="trailing" secondItem="WuL-mT-Uen" secondAttribute="trailing" id="Xxv-om-2Mu"/>
+                        <constraint firstItem="Wrk-Uw-oFO" firstAttribute="leading" secondItem="6eB-97-ojs" secondAttribute="leading" constant="9" id="r0s-lW-Jff"/>
+                        <constraint firstItem="WuL-mT-Uen" firstAttribute="leading" secondItem="6eB-97-ojs" secondAttribute="leading" id="rgp-Yv-bny"/>
+                        <constraint firstItem="KnI-V6-5p6" firstAttribute="leading" secondItem="6eB-97-ojs" secondAttribute="leading" id="tQz-dS-1Sp"/>
+                        <constraint firstItem="Wrk-Uw-oFO" firstAttribute="top" secondItem="KnI-V6-5p6" secondAttribute="bottom" constant="16" id="yUK-x4-PFU"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vbm-uY-SJC">
+                    <rect key="frame" x="32" y="603" width="311" height="44"/>
+                    <color key="backgroundColor" red="0.23137254900000001" green="0.6705882353" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="M5V-eX-E04"/>
+                    </constraints>
+                    <state key="normal" title="Mở Cài đặt">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="showNotiSettingAction:" destination="-1" eventType="touchUpInside" id="vwm-tG-N0Q"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="rIM-nh-pXN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="4gW-co-IIf"/>
+                <constraint firstItem="Vbm-uY-SJC" firstAttribute="top" secondItem="6eB-97-ojs" secondAttribute="bottom" constant="16" id="Cot-OJ-9RM"/>
+                <constraint firstItem="6eB-97-ojs" firstAttribute="top" secondItem="8yj-D3-4vL" secondAttribute="bottom" constant="16" id="TbG-l3-YwS"/>
+                <constraint firstItem="Vbm-uY-SJC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="XOo-53-3w3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vbm-uY-SJC" secondAttribute="trailing" constant="32" id="eWL-mv-raF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Vbm-uY-SJC" secondAttribute="bottom" constant="20" id="rxF-47-64Q"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6eB-97-ojs" secondAttribute="trailing" constant="32" id="sS2-1b-5a7"/>
+                <constraint firstItem="6eB-97-ojs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="uGa-jb-cqI"/>
+                <constraint firstItem="rIM-nh-pXN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="w0k-ZZ-plD"/>
+                <constraint firstItem="8yj-D3-4vL" firstAttribute="centerY" secondItem="rIM-nh-pXN" secondAttribute="centerY" id="whk-KX-VM6"/>
+                <constraint firstItem="8yj-D3-4vL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="x3G-RE-Ql3"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="dismiss_img" width="16" height="16"/>
+        <image name="enable_noti_text" width="311" height="180"/>
+    </resources>
+</document>
