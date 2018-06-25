@@ -121,6 +121,8 @@ extension BorrowHomeViewController: BrowwerHomeDelegate {
             break
         case .TIMELY_DEPT:
             break
+        case .OTHER:
+            break
         }
 
 

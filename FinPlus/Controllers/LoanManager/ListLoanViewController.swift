@@ -356,10 +356,12 @@ extension ListLoanViewController: UITableViewDataSource {
             cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? LoanTableViewCell
         }
         
+        let state = item["5STATUS"] as? Int
+        
         cell?.dateLabel.text = item["2LOAN_START"] as? String
         cell?.statusLabel.text = NSLocalizedString("STATUS", comment: "")
-        cell?.statusValueLabel.text = getState(type: (item["5STATUS"] as? Int)!)
-        cell?.statusValueLabel.textColor = getColorText(type: (item["5STATUS"] as? Int)!)
+        cell?.statusValueLabel.text = getState(type: STATUS_LOAN(rawValue: state!)!)
+        cell?.statusValueLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: state!)!)
         
 //        if ((item["5STATUS"] as? Int) == 0) {
 //            cell?.statusValueLabel.text = "Đã kết thúc"

@@ -13,6 +13,14 @@ enum HeaderCellType {
     case ButtonType
 }
 
+// Bottom State
+enum BOTTOM_STATE: Int {
+    case DISBURSEMENT_SOON = 1 // Giải ngân sớm
+    case DISBURSEMENT_ONTIME = 2 // Giải ngân đúng hạn
+    case SIGN_CONTRACT = 3 // Ký hợp đồng
+    case CONFIRM_SIGN_CONTRACT = 4 // Xác nhận ký hợp đồng
+}
+
 class LoanStateViewController: UIViewController {
     
     @IBOutlet weak var containerView: UIView?
@@ -63,8 +71,8 @@ class LoanStateViewController: UIViewController {
         self.btnBottomView.layer.cornerRadius = 8
         self.btnBottomView.layer.masksToBounds = true
         
-        switch(id) {
-        case STATUS_LOAN.DRAFT.rawValue:
+        switch(STATUS_LOAN(rawValue: id!)) {
+        case .DRAFT?:
             
             headerData = [
                 [
@@ -80,7 +88,7 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
             
-        case STATUS_LOAN.SALE_REVIEW.rawValue, STATUS_LOAN.RISK_REVIEW.rawValue:
+        case .SALE_REVIEW?, .RISK_REVIEW?:
             
             headerData = [
                 [
@@ -90,7 +98,7 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
             
-        case STATUS_LOAN.SALE_PENDING.rawValue, STATUS_LOAN.RISK_PENDING.rawValue:
+        case .SALE_PENDING?, .RISK_PENDING?:
             
             headerData = [
                 [
@@ -111,7 +119,7 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
             
-        case STATUS_LOAN.INTEREST_CONFIRM.rawValue, STATUS_LOAN.INTEREST_CONFIRM_EXPIRED.rawValue:
+        case .INTEREST_CONFIRM?, .INTEREST_CONFIRM_EXPIRED?:
             
             headerData = [
                 [
@@ -132,7 +140,7 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
             
-        case STATUS_LOAN.REJECTED.rawValue:
+        case .REJECTED?:
             
             headerData = [
                 [
@@ -153,7 +161,7 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
             
-        case STATUS_LOAN.CANCELED.rawValue:
+        case .CANCELED?:
             
             headerData = [
                 [
@@ -163,7 +171,7 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
             
-        case STATUS_LOAN.RAISING_CAPITAL.rawValue:
+        case .RAISING_CAPITAL?:
             
             headerData = [
                 [
@@ -178,7 +186,7 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
             
-        case STATUS_LOAN.PARTIAL_FILLED.rawValue:
+        case .PARTIAL_FILLED?:
             
             headerData = [
                 [
@@ -199,7 +207,7 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
 
-        case STATUS_LOAN.FILLED.rawValue :
+        case .FILLED? :
             headerData = [
                 [
                     "type": HeaderCellType.TextType,
@@ -219,7 +227,7 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
             
-        case STATUS_LOAN.EXPIRED.rawValue :
+        case .EXPIRED? :
             headerData = [
                 [
                     "type": HeaderCellType.TextType,
@@ -239,7 +247,7 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
             
-        case STATUS_LOAN.CONTRACT_SIGNED.rawValue :
+        case .CONTRACT_SIGNED? :
             headerData = [
                 [
                     "type": HeaderCellType.TextType,
@@ -253,9 +261,9 @@ class LoanStateViewController: UIViewController {
             break
         }
         
-        switch bottomId {
+        switch BOTTOM_STATE(rawValue: bottomId) {
             
-        case 1:
+        case .DISBURSEMENT_SOON?:
             self.btnBottomView.setTitle("Ký hợp đồng để giải ngân", for: .normal)
             self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.confirmSignContract), for: .touchUpInside)
             
@@ -271,19 +279,19 @@ class LoanStateViewController: UIViewController {
             
             isEnableFooterView = true
             
-        case 2:
+        case .DISBURSEMENT_ONTIME?:
             self.btnBottomView.setTitle("Ký hợp đồng để giải ngân", for: .normal)
             self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.signContract), for: .touchUpInside)
             self.labelBottomView.text = "Khoản vay của bạn đã được huy động đủ số tiền. Chỉ còn một bước ký hợp đồng để nhận tiền."
             isEnableFooterView = true
             
-        case 3:
+        case .SIGN_CONTRACT?:
             self.btnBottomView.setTitle("Ký hợp đồng để giải ngân", for: .normal)
             self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.signContract), for: .touchUpInside)
             self.labelBottomView.text = "Nếu bạn đồng ý vay với số tiền huy động được. Vui lòng tiến hành ký hợp đồng để giải ngân."
             isEnableFooterView = true
             
-        case 4:
+        case .CONFIRM_SIGN_CONTRACT?:
             self.btnBottomView.setTitle("Xác nhận", for: .normal)
             self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.signContract), for: .touchUpInside)
             self.labelBottomView.text = "Tiền phí sẽ được trừ ngay sau khi giải ngân tiền vay."
@@ -589,8 +597,8 @@ extension LoanStateViewController: UITableViewDataSource {
                 cell?.desLabel.font = UIFont.boldSystemFont(ofSize: (cell?.desLabel.font.pointSize)!)
             case 4:
                 cell?.nameLabel.text = NSLocalizedString("STATUS", comment: "")
-                cell?.desLabel.text = getState(type: activeLoanId)
-                cell?.desLabel.textColor = getColorText(type: activeLoanId)
+                cell?.desLabel.text = getState(type: STATUS_LOAN(rawValue: activeLoanId)!)
+                cell?.desLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: activeLoanId)!)
             case 5:
                 cell?.nameLabel.text = NSLocalizedString("RATE", comment: "")
                 cell?.desLabel.text = "10%/năm"
