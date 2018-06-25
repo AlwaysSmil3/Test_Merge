@@ -11,7 +11,8 @@ import FBSDKCoreKit
 import Firebase
 import UserNotifications
 import CoreData
-
+import Fabric
+import Crashlytics
 
 
 @UIApplicationMain
@@ -20,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        Fabric.with([Crashlytics.self])
+        
         // Override point for customization after application launch.
         // Get Loan Data from Json
         DataManager.shared.getDataLoanFromJSON()
