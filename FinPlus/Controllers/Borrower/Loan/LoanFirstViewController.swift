@@ -8,6 +8,12 @@
 
 import Foundation
 
+/*
+ Với khoản vay sinh viên chỉ cho vay 10-20-30 ngày nhé. Không phỉa từ 10-30 đâu.
+ Các khoản khác 1-12 tháng. Không chia theo ngày
+
+ */
+
 class LoanFirstViewController: BaseViewController {
     
     @IBOutlet var lblCategoriesName: UILabel!
@@ -27,7 +33,11 @@ class LoanFirstViewController: BaseViewController {
     @IBOutlet var lblTempFee: UILabel!
     @IBOutlet var lblTempTotalAmount: UILabel!
     
-    var loanCategory: LoanCategories?
+    var loanCategory: LoanCategories? {
+        didSet {
+            self.setupInit()
+        }
+    }
     
     var listDataCategoriesForPopup: [LoanBuilderData] = []
     
@@ -55,27 +65,42 @@ class LoanFirstViewController: BaseViewController {
     }
     
     private func setupInit() {
-        
         guard let loan = self.loanCategory else { return }
+        self.lblCategoriesName?.text = loan.title!
         
-        self.lblCategoriesName.text = loan.title!
+        self.updateTearmSlider(loan: loan)
+        self.updateAmountSlider(loan: loan)
+
+        self.lblInterestRate?.text = "\(loan.interestRate!)% năm"
+        self.lblTempTotalAmount?.text = "0 đ"
+    }
+    
+    
+    /// Update Tearm Slider for Loan
+    ///
+    /// - Parameter loan: <#loan description#>
+    private func updateTearmSlider(loan: LoanCategories) {
+        self.termSlider?.minimumValue = Float(loan.termMin!)
+        self.termSlider?.maximumValue = Float(loan.termMax!)
+        self.termSlider?.value = Float(loan.termMin!)
         
-        self.amountSlider.minimumValue = Float(loan.min!/MONEY_TERM_DISPLAY)
-        self.amountSlider.maximumValue = Float(loan.max!/MONEY_TERM_DISPLAY)
-        self.amountSlider.value = Float(loan.min!/MONEY_TERM_DISPLAY)
+        self.lblTermSlider?.text = "\(Int(loan.termMin!))" + " Ngày"
+        self.lblMinTermSlider?.text = "\(Int(loan.termMin!)) NGÀY"
+        self.lblMaxTermSlider?.text = "\(Int(loan.termMax!)) NGÀY"
+    }
+    
+    
+    /// Update Amount Slider For Loan
+    ///
+    /// - Parameter loan: <#loan description#>
+    private func updateAmountSlider(loan: LoanCategories) {
+        self.amountSlider?.minimumValue = Float(loan.min!/MONEY_TERM_DISPLAY)
+        self.amountSlider?.maximumValue = Float(loan.max!/MONEY_TERM_DISPLAY)
+        self.amountSlider?.value = Float(loan.min!/MONEY_TERM_DISPLAY)
         
-        self.termSlider.minimumValue = Float(loan.termMin!)
-        self.termSlider.maximumValue = Float(loan.termMax!)
-        self.termSlider.value = Float(loan.termMin!)
-        
-        self.lblMoneySlider.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY))" + " Triệu VND"
-        self.lblTermSlider.text = "\(Int(loan.termMin!))" + " Ngày"
-        
-        self.lblMinAmountSlider.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY)) TRIỆU"
-        self.lblMinTermSlider.text = "\(Int(loan.termMin!)) NGÀY"
-        
-        self.lblInterestRate.text = "\(loan.interestRate!)% năm"
-        
+        self.lblMoneySlider?.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY))" + " Triệu VND"
+        self.lblMinAmountSlider?.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY)) TRIỆU"
+        self.lblMaxAmounSlider?.text = "\(Int(loan.max!/MONEY_TERM_DISPLAY)) TRIỆU"
     }
     
     private func updateDataToLoanAPI(completion: () -> Void) {
@@ -113,16 +138,26 @@ class LoanFirstViewController: BaseViewController {
         guard let version = DataManager.shared.config else { return }
         
         let fee = Double(Int(self.amountSlider.value) * version.serviceFee! * 1000000 / 100)
-        
         self.lblTempFee.text = FinPlusHelper.formatDisplayCurrency(fee) + " VND"
         
-        self.lblTempTotalAmount.text = FinPlusHelper.formatDisplayCurrency(fee + Double(self.amountSlider.value  * 1000000)) + " VND"
+        let amountInt = Int(self.amountSlider.value) / Int(self.amountSlider.minimumValue) * 1000000
+        var amountDouble = Double(amountInt) + fee
+        
+        if self.termSlider.value > 30 {
+            amountDouble = amountDouble / Double(Int(self.termSlider.value / 30))
+        }
+        
+        self.lblTempTotalAmount.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + " VND"
         
     }
     
     @IBAction func termSliderValueChanged(_ sender: Any) {
-        self.lblTermSlider.text = "\(Int(self.termSlider.value))" + " Ngày"
-
+        guard let loan = self.loanCategory else { return }
+        if loan.id == Loan_Student_Category_ID {
+            self.lblTermSlider.text = "\(Int(self.termSlider.value / 10) * 10)" + " Ngày"
+        } else {
+            self.lblTermSlider.text = "\(Int(self.termSlider.value / 30) * 30)" + " Ngày"
+        }
         
     }
     
@@ -151,6 +186,7 @@ class LoanFirstViewController: BaseViewController {
 
 extension LoanFirstViewController: DataSelectedFromPopupProtocol {
     func dataSelected(data: LoanBuilderData) {
-        self.lblCategoriesName.text = data.title!
+        DataManager.shared.loanInfo.loanCategoryID = data.id!
+        self.loanCategory = DataManager.shared.getCurrentCategory()
     }
 }

@@ -86,6 +86,18 @@ class DataManager {
     }
     
     
+    /// Get Category hiện tại
+    ///
+    /// - Returns: <#return value description#>
+    func getCurrentCategory() -> LoanCategories? {
+        let id = self.loanInfo.loanCategoryID
+        let cates = self.loanCategories.filter{ $0.id == id }
+        
+        guard cates.count > 0 else { return nil }
+        return cates[0]
+    }
+    
+    
     
     
     

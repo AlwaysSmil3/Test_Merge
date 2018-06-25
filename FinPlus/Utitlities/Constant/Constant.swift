@@ -58,8 +58,8 @@ enum STATUS_LOAN: Int {
 //
 //    case PAY_TEST_STATUS = 9
     
-    
-    case DRAFT = 1 // Khoản vay chưa hoàn thiện(Đang ở trạng thái client tạo đơn vay)
+    case OTHER = 0
+    case DRAFT = 1 // Khoản vay chưa hoàn thiện (Đang ở trạng thái client tạo đơn vay)
     case SALE_REVIEW = 2 // Đợi sales duyệt (Chờ sales review đơn vay đầy đủ & hợp lệ)
     case SALE_PENDING = 3 // Y/c bổ sung thông tin từ sales
     case RISK_REVIEW = 4 // Thẩm định viên duyệt
@@ -69,7 +69,7 @@ enum STATUS_LOAN: Int {
     case INTEREST_CONFIRM_EXPIRED = 8 // Quá hạn xác nhận lãi suất
     case RAISING_CAPITAL = 9 // Lên chợ và đang huy động vốn
     case PARTIAL_FILLED = 10 // Huy động được 1 phần
-    case FILLED = 11 // Đơn vay
+    case FILLED = 11 // Huy động vốn được 100%
     case CONTRACT_READY = 12 // Chờ ký hợp đồng
     case EXPIRED = 13 // Đơn vay quá hạn huy động
     case CONTRACT_SIGNED = 14 // Đã ký hợp đồng
@@ -77,7 +77,7 @@ enum STATUS_LOAN: Int {
     case OVERDUE_DEPT = 16 // Nợ quá hạn (Thông tin có nợ bổ sung nợ quá hạn bao nhiêu ngày)
     case TIMELY_DEPT = 17 // Nợ đúng hạn
     case CANCELED = 18 // Đã hủy
-
+    case EXPIRED_NOT_ENOUGH = 19 // Đã hủy
 }
 
 
@@ -94,6 +94,9 @@ enum DATA_TYPE_TB_CELL {
 
     
 }
+
+//Category ID
+let Loan_Student_Category_ID: Int16 = 1 // Id cua vay sinh vien
 
 let API_RESPONSE_RETURN_CODE = "returnCode"
 let API_RESPONSE_RETURN_MESSAGE = "returnMsg"
@@ -162,55 +165,57 @@ let fUSER_DEFAUT_TOKEN = "USER_DEFAUT_TOKEN"
 //let fSYSTEM_CONFIG = "SYSTEM_CONFIG"
 let fVERSION_CONFIG = "VERSION_CONFIG"
 
-func getState(type: Int) -> String {
+func getState(type: STATUS_LOAN) -> String {
     switch type {
-    case 1:
+    case .DRAFT:
         return "Chưa hoàn thiện"
-    case 2, 4:
+    case .SALE_REVIEW, .SALE_PENDING, .RISK_REVIEW:
         return "Chờ phê duyệt"
-    case 3, 5:
+    case .RISK_PENDING:
         return "Cần bổ sung thông tin"
-    case 6:
+    case .REJECTED:
         return "Đơn vay bị từ chối"
-    case 7:
+    case .INTEREST_CONFIRM:
         return "Chờ xác nhận lãi suất"
-    case 8:
+    case .INTEREST_CONFIRM_EXPIRED:
         return "Quá hạn xác nhận lãi suất"
-    case 9:
+    case .RAISING_CAPITAL:
         return "Đang huy động"
-    case 10:
+    case .PARTIAL_FILLED:
         return "Huy động được một phần"
-    case 11:
+    case .FILLED:
         return "Đã huy động đủ 100%"
-    case 12:
+    case .CONTRACT_READY:
         return "Chờ ký hợp đồng"
-    case 13:
-        return "Quá hạn duy động"
-    case 14:
+    case .EXPIRED:
+        return "Quá hạn huy động"
+    case .CONTRACT_SIGNED:
         return "Đã ký hợp đồng"
-    case 15:
+    case .DISBURSAL:
         return "Đã giải ngân"
-    case 16:
-        return "Nợ  quá hạn"
-    case 17:
+    case .OVERDUE_DEPT:
+        return "Nợ quá hạn"
+    case .TIMELY_DEPT:
         return "Nợ đúng hạn"
-    case 18:
+    case .CANCELED:
         return "Đã hủy"
+    case .EXPIRED_NOT_ENOUGH:
+        return "Quá hạn nhưng không huy động đủ tiền"
     default:
-        return ""
+        return "Hoàn thành"
     }
 }
 
-func getColorText(type: Int) -> UIColor {
+func getColorText(type: STATUS_LOAN) -> UIColor {
     switch type {
-    case 1, 3, 5:
-        return UIColor(hexString: "#ED8A17")
-    case 2, 4, 7, 9, 10, 11, 12, 14, 15, 17:
-        return UIColor(hexString: "#3EAA5F")
-    case 6, 8, 13, 16, 18:
-        return UIColor(hexString: "#DA3535")
+    case .DRAFT, .RISK_PENDING:
+        return UIColor(hexString: "#ED8A17") // Da cam
+    case .SALE_PENDING, .SALE_REVIEW, .RISK_REVIEW, .INTEREST_CONFIRM, .RAISING_CAPITAL, .PARTIAL_FILLED, .FILLED, .CONTRACT_READY, .CONTRACT_SIGNED, .DISBURSAL, .TIMELY_DEPT:
+        return UIColor(hexString: "#3EAA5F") // Xanh
+    case .REJECTED, .INTEREST_CONFIRM_EXPIRED, .EXPIRED, .OVERDUE_DEPT, .CANCELED, .EXPIRED_NOT_ENOUGH:
+        return UIColor(hexString: "#DA3535") // Đỏ
     default:
-        return UIColor(hexString: "#4D6678")
+        return UIColor(hexString: "#4D6678") // Xám lông chuột
     }
 }
 

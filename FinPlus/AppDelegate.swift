@@ -11,7 +11,8 @@ import FBSDKCoreKit
 import Firebase
 import UserNotifications
 import CoreData
-
+import Fabric
+import Crashlytics
 
 
 @UIApplicationMain
@@ -20,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        Fabric.with([Crashlytics.self])
+        
         // Override point for customization after application launch.
         // Get Loan Data from Json
         DataManager.shared.getDataLoanFromJSON()
@@ -69,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    // Get Token for remote Notification
+    // Get Token for remote Notification (sử dụng fireBase thì k chạy vào đây, lấy token ở fireBase)
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().apnsToken = deviceToken
         
