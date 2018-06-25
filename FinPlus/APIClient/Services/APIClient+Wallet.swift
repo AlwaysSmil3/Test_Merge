@@ -14,18 +14,18 @@ extension APIClient {
     /* GET Lấy danh sách ví theo tài khoản người dùng
      
      */
-    func getWallets() -> Promise<[Wallet]> {
+    func getWallets() -> Promise<[AccountBank]> {
         
-        return Promise<[Wallet]> { seal in
+        return Promise<[AccountBank]> { seal in
             let uID = DataManager.shared.userID
             let endPoint = "users/" + "\(uID)/" + "wallets"
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
                 .done(on: DispatchQueue.main) { json in
-                    var array: [Wallet] = []
+                    var array: [AccountBank] = []
                     if let dataArray = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
                         for d in dataArray {
-                            let wal = Wallet(object: d)
+                            let wal = AccountBank(object: d)
                             array.append(wal)
                         }
                     }
@@ -41,9 +41,9 @@ extension APIClient {
     /* POST Thêm ví vào tài khoản người dùng
  
      */
-    func addWallet(walletNumber: String, type: Int) -> Promise<[Wallet]> {
+    func addWallet(walletNumber: String, type: Int) -> Promise<[AccountBank]> {
         
-        return Promise<[Wallet]> { seal in
+        return Promise<[AccountBank]> { seal in
             
             let uID = DataManager.shared.userID
             let endPoint = "users/" + "\(uID)/" + "wallets"
@@ -56,10 +56,10 @@ extension APIClient {
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
                 .done(on: DispatchQueue.main) { json in
                     
-                    var array: [Wallet] = []
+                    var array: [AccountBank] = []
                     if let dataArray = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
                         for d in dataArray {
-                            let wal = Wallet(object: d)
+                            let wal = AccountBank(object: d)
                             array.append(wal)
                         }
                     }

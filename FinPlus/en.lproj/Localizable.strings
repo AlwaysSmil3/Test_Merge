@@ -8,16 +8,16 @@
 
 "LOAN" = "Vay tiền";
 "LOAN_MANAGER" = "Quản lý vay";
-"WALLET_MANAGER" = "Quản lý ví";
+"ACCOUNT_BANK_MANAGER" = "Tài khoản";
 "NOTIFICATION" = "Thông báo";
 "BRIEF" = "Hồ sơ";
 
 "ALL_ACCOUNT_CONNECTED" = "Các tài khoản đã liên kết";
 "CREATE_NEW_ACCOUNT" = "Tạo tài khoản mới";
 "MOMO_WALLET" = "Ví MoMo";
-"ADD_NEW_WALLET" = "Thêm tài khoản ví mới";
+"ADD_NEW_WALLET" = "Thêm tài khoản mới";
 "PAYPAL_ACCOUNT" = "Tài khoản PayPal";
-"NO_WALLET" = "Bạn chưa có tài khoản ví nào. Vui lòng ấn nút 'Thêm ví mới' bên dưới để liên kết với các ví mới";
+"NO_ACCOUNT_BANK" = "Bạn chưa có tài khoản ngân hàng nào. Vui lòng ấn nút 'Thêm tài khoản ngân hàng' bên dưới để liên kết với các ví mới";
 
 "STATUS" = "Trạng thái";
 "DETAIL_LOAN" = "Chi tiết đơn vay";
