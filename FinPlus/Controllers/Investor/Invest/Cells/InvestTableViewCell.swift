@@ -32,12 +32,12 @@ class InvestTableViewCell: UITableViewCell {
         formatter.locale = Locale.current // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
         formatter.numberStyle = .currency
         if let formattedTipAmount = formatter.string(from: cellData.amount as NSNumber) {
-            amountLb.text = "\(formattedTipAmount)"
+            amountLb.text = formattedTipAmount
         } else {
-            amountLb.text = "\(cellData.amount)"
+            amountLb.text = cellData.amount.toString()
         }
-        alreadyAmountLb.text = "Đã huy động: \(cellData.alreadyAmount)%"
-        exporeTimeLb.text = "Lãi suất \(cellData.interestRate)%/năm - \(cellData.dueMonth) tháng"
+        alreadyAmountLb.text = "Đã huy động: " + cellData.alreadyAmount.toString() + "%"
+        exporeTimeLb.text = "Lãi suất " + cellData.interestRate.toString() + "%/năm - \(cellData.dueMonth) tháng"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -33,19 +33,19 @@ class InvestDetailSecondTableViewCell: UITableViewCell {
             formatter.locale = Locale.current // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
             formatter.numberStyle = .currency
             if let formattedTipAmount = formatter.string(from: cellData.amount as NSNumber) {
-                amountLb.text = "\(formattedTipAmount)"
+                amountLb.text = formattedTipAmount
             } else {
-                amountLb.text = "\(cellData.amount)"
+                amountLb.text = cellData.amount.toString()
             }
 
-            alreadyAmountPercentLb.text = "\(cellData.alreadyAmount)%"
+            alreadyAmountPercentLb.text = cellData.alreadyAmount.toString() + "%"
             let avaiableAmount = cellData.amount - (cellData.alreadyAmount / 100 * cellData.amount)
             if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
-                amountAvaiableInvestLb.text = "\(formattedTipAmount)"
+                amountAvaiableInvestLb.text = formattedTipAmount
             } else {
-                amountAvaiableInvestLb.text = "\(avaiableAmount)"
+                amountAvaiableInvestLb.text = avaiableAmount.toString()
             }
-            interestLb.text = "\(cellData.interestRate)%/năm"
+            interestLb.text = cellData.interestRate.toString() + "%/năm"
             borrowerLb.text = "Vu Thanh Do"
             reliabilityLb.text = cellData.reliability.title
             loanTypeLb.text = cellData.name

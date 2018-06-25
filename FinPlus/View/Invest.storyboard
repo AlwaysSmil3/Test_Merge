@@ -94,7 +94,7 @@ Hãy chọn 1 trong những khoản vay để đầu tư</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f24-mA-b8D">
-                                <rect key="frame" x="16" y="598" width="343" height="45"/>
+                                <rect key="frame" x="16" y="606" width="343" height="45"/>
                                 <color key="backgroundColor" red="0.23137254901960785" green="0.6705882352941176" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="x4f-AY-XJS"/>
@@ -108,20 +108,23 @@ Hãy chọn 1 trong những khoản vay để đầu tư</string>
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="regisBtnAction:" destination="UrX-gk-p1j" eventType="touchUpInside" id="OxB-F2-Wfe"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dVf-dv-wkA">
-                                <rect key="frame" x="8" y="28" width="359" height="562"/>
+                                <rect key="frame" x="16" y="28" width="343" height="562"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dVf-dv-wkA" firstAttribute="top" secondItem="WY8-Zr-kjW" secondAttribute="top" constant="8" id="AuW-pM-Lgf"/>
-                            <constraint firstItem="f24-mA-b8D" firstAttribute="top" secondItem="dVf-dv-wkA" secondAttribute="bottom" constant="8" id="FJ0-KL-8RH"/>
-                            <constraint firstItem="dVf-dv-wkA" firstAttribute="leading" secondItem="WY8-Zr-kjW" secondAttribute="leading" constant="8" id="Pxs-9I-z4S"/>
+                            <constraint firstItem="f24-mA-b8D" firstAttribute="top" secondItem="dVf-dv-wkA" secondAttribute="bottom" constant="16" id="FJ0-KL-8RH"/>
+                            <constraint firstItem="dVf-dv-wkA" firstAttribute="leading" secondItem="WY8-Zr-kjW" secondAttribute="leading" constant="16" id="Pxs-9I-z4S"/>
                             <constraint firstItem="WY8-Zr-kjW" firstAttribute="trailing" secondItem="f24-mA-b8D" secondAttribute="trailing" constant="16" id="hCP-9N-HqW"/>
-                            <constraint firstItem="WY8-Zr-kjW" firstAttribute="bottom" secondItem="f24-mA-b8D" secondAttribute="bottom" constant="24" id="pVM-n5-Ly1"/>
-                            <constraint firstItem="WY8-Zr-kjW" firstAttribute="trailing" secondItem="dVf-dv-wkA" secondAttribute="trailing" constant="8" id="t1g-pW-mOg"/>
+                            <constraint firstItem="WY8-Zr-kjW" firstAttribute="bottom" secondItem="f24-mA-b8D" secondAttribute="bottom" constant="16" id="pVM-n5-Ly1"/>
+                            <constraint firstItem="WY8-Zr-kjW" firstAttribute="trailing" secondItem="dVf-dv-wkA" secondAttribute="trailing" constant="16" id="t1g-pW-mOg"/>
                             <constraint firstItem="f24-mA-b8D" firstAttribute="leading" secondItem="WY8-Zr-kjW" secondAttribute="leading" constant="16" id="xuR-Tm-OP9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WY8-Zr-kjW"/>

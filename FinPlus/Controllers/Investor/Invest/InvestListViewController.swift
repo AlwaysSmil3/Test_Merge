@@ -64,6 +64,7 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
     var allLoansArray : [DemoLoanModel] = [DemoLoanModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Đầu tư"
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
