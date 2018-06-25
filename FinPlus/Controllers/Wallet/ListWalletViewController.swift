@@ -33,7 +33,7 @@ class ListWalletViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 
-        self.title = NSLocalizedString("ACCOUNT_BANK_MANAGER", comment: "")
+        self.title = NSLocalizedString("ACCOUNT_MANAGER", comment: "")
         
         self.noWalletLabel.text = NSLocalizedString("NO_ACCOUNT_BANK", comment: "")
         
@@ -56,6 +56,10 @@ class ListWalletViewController: UIViewController {
         if let ishidden = self.navigationController?.isNavigationBarHidden, ishidden {
             self.navigationController?.isNavigationBarHidden = false
         }
+    }
+    
+    @IBAction func navi_back(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func cell_action(sender: UIButton) {
