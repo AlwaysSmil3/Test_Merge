@@ -271,13 +271,13 @@ class LoanStateViewController: UIViewController {
                     "type": HeaderCellType.ButtonType,
                     "text": "Thanh toán",
                     "subType": ButtonCellType.FillType,
-                    "target": ""
+                    "target": "pushToPayViewController"
                 ],
                 [
                     "type": HeaderCellType.ButtonType,
                     "text": "Lịch sử thanh toán",
                     "subType": ButtonCellType.NullType,
-                    "target": ""
+                    "target": "pushToPayHistoryVC"
                 ],
             ]
         case .OVERDUE_DEPT?:
@@ -296,13 +296,13 @@ class LoanStateViewController: UIViewController {
                     "type": HeaderCellType.ButtonType,
                     "text": "Thanh toán ngay",
                     "subType": ButtonCellType.FillType,
-                    "target": ""
+                    "target": "pushToPayViewController"
                 ],
                 [
                     "type": HeaderCellType.ButtonType,
                     "text": "Lịch sử thanh toán",
                     "subType": ButtonCellType.NullType,
-                    "target": ""
+                    "target": "pushToPayHistoryVC"
                 ],
             ]
         case .EXPIRED_NOT_ENOUGH?:

@@ -27,9 +27,9 @@ class BankAccountTableViewCell: UITableViewCell {
 
     func updateCellView() {
         if cellData.bankType == 1 {
-            self.walletImg.image = #imageLiteral(resourceName: "momo")
+            self.walletImg.image = #imageLiteral(resourceName: "vcb")
         } else {
-            self.walletImg.image = #imageLiteral(resourceName: "paypal")
+            self.walletImg.image = #imageLiteral(resourceName: "tech")
         }
         self.walletNameLb.text = cellData.bankName
         self.accountNumberLb.text = cellData.accountBankNumber

@@ -11,16 +11,15 @@ import UIKit
 class BudgetAwardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var budgetAwardBtn: UIButton!
-    var bankList : [Wallet] = [Wallet]()
-    var bankSelected: Wallet!
+    var bankList : [AccountBank] = [AccountBank]()
+    var bankSelected: AccountBank!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let wallet1 = Wallet(wID: 1, wType: 1, wAccountName: "0987654231234", wName: "MoMo", wNumber: "10231231")
-        let wallet2 = Wallet(wID: 1, wType: 2, wAccountName: "0987654231234", wName: "PayPal", wNumber: "10231232")
-        //        let wallet3 = Wallet(wID: 1, wType: 2, wAccountName: "0987654231234", wName: "Wallet3", wNumber: "10231233")
+        let accountBank1 = AccountBank(wID: 1, wType: 1, wAccountName: "0987654231234", wBankName: "VietComBank", wNumber: "10231231", wDistrict: "Cau Giay")
+        let accountBank2 = AccountBank(wID: 2, wType: 2, wAccountName: "0123456789", wBankName: "TechComBank", wNumber: "0987654421", wDistrict: "Dong Da")
 
-        bankList.append(wallet1)
-        bankList.append(wallet2)
+        bankList.append(accountBank1)
+        bankList.append(accountBank2)
         configureTableView()
 
         // Do any additional setup after loading the view.
@@ -51,7 +50,7 @@ class BudgetAwardsViewController: UIViewController, UITableViewDataSource, UITab
             if let cell = tableView.dequeueReusableNibCell(type: BankAccountTableViewCell.self) {
                 cell.cellData = bankList[indexPath.row]
                 if (bankSelected) != nil {
-                    if cell.cellData.walletNumber == self.bankSelected.walletNumber {
+                    if cell.cellData.accountBankNumber == self.bankSelected.accountBankNumber {
                         cell.isSelectedCell = true
                     } else {
                         cell.isSelectedCell = false
