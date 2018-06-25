@@ -29,7 +29,7 @@
                         <rect key="frame" x="12" y="4" width="319" height="118"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanh toán tháng này" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhg-Sg-hAX">
-                                <rect key="frame" x="16" y="15" width="270" height="21"/>
+                                <rect key="frame" x="16" y="15" width="271" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="6uQ-Yl-g8w"/>
                                 </constraints>
@@ -37,8 +37,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellSelectImg" translatesAutoresizingMaskIntoConstraints="NO" id="IXQ-Kc-S13">
-                                <rect key="frame" x="294" y="17" width="17" height="17"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_radio_off" translatesAutoresizingMaskIntoConstraints="NO" id="IXQ-Kc-S13">
+                                <rect key="frame" x="295" y="17.5" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="IXQ-Kc-S13" secondAttribute="height" multiplier="1:1" id="Nng-Kg-Isc"/>
                                 </constraints>
@@ -129,6 +129,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="cellSelectImg" width="16" height="17"/>
+        <image name="ic_radio_off" width="16" height="16"/>
     </resources>
 </document>

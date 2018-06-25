@@ -143,13 +143,13 @@ class TestBorrowingPayViewController: UIViewController {
     func updateData() {
         let infoData = BorrowingInfoBasicData(contractCode: "AABBCC", loanMoney: 100000000, expireAmountTime: 12, inerestPerMonth: 2000000, numberOfMonthPaid: 2, nextDayHaveToPaid: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)
         let payType1 = PayType(id: 1, typeTitle: "Phai tra thang nay", expireDate: Date(), originAmount: 1000000, interestAmount: 500000, sumAmount: 20000000)
-        let payType2 = PayType(id: 2, typeTitle: "Tra thang sau", expireDate: Date(), originAmount: 4000000, interestAmount: 600000, sumAmount: 90000000)
+        // let payType2 = PayType(id: 2, typeTitle: "Tra thang sau", expireDate: Date(), originAmount: 4000000, interestAmount: 600000, sumAmount: 90000000)
         let payAll = PayAllBefore(id: 1, typeTitle: "Tra tat ca luon", originAmount: 3000000, interestAmount: 100000, feeToPayBefore: 2000000, sumAmount: 7000000)
         let wallet1 = AccountBank(wID: 1, wType: 1, wAccountName: "0987654231234", wBankName: "vcb", wNumber: "10231231", wDistrict: "Hà Nội")
         let wallet2 = AccountBank(wID: 1, wType: 2, wAccountName: "0987654231234", wBankName: "viettin", wNumber: "10231232", wDistrict: "Hà Nội")
         //        let wallet3 = Wallet(wID: 1, wType: 2, wAccountName: "0987654231234", wName: "Wallet3", wNumber: "10231233")
 
-        let payTypeArray = [payType1, payType2]
+        let payTypeArray = [payType1]
         let walletArray = [wallet1, wallet2]
         borrowingPay = BorrowingData(basicInfo: infoData, payType: payTypeArray, payAll: payAll, walletList: walletArray)
 
