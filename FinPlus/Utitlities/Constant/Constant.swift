@@ -95,6 +95,9 @@ enum DATA_TYPE_TB_CELL {
     
 }
 
+//Category ID
+let Loan_Student_Category_ID: Int16 = 1 // Id cua vay sinh vien
+
 let API_RESPONSE_RETURN_CODE = "returnCode"
 let API_RESPONSE_RETURN_MESSAGE = "returnMsg"
 let API_RESPONSE_RETURN_DATA = "data"
