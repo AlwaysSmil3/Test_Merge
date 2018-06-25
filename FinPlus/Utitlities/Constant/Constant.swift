@@ -59,7 +59,7 @@ enum STATUS_LOAN: Int {
 //    case PAY_TEST_STATUS = 9
     
     case OTHER = 0
-    case DRAFT = 1 // Khoản vay chưa hoàn thiện(Đang ở trạng thái client tạo đơn vay)
+    case DRAFT = 1 // Khoản vay chưa hoàn thiện (Đang ở trạng thái client tạo đơn vay)
     case SALE_REVIEW = 2 // Đợi sales duyệt (Chờ sales review đơn vay đầy đủ & hợp lệ)
     case SALE_PENDING = 3 // Y/c bổ sung thông tin từ sales
     case RISK_REVIEW = 4 // Thẩm định viên duyệt
@@ -69,7 +69,7 @@ enum STATUS_LOAN: Int {
     case INTEREST_CONFIRM_EXPIRED = 8 // Quá hạn xác nhận lãi suất
     case RAISING_CAPITAL = 9 // Lên chợ và đang huy động vốn
     case PARTIAL_FILLED = 10 // Huy động được 1 phần
-    case FILLED = 11 // Đơn vay
+    case FILLED = 11 // Huy động vốn được 100%
     case CONTRACT_READY = 12 // Chờ ký hợp đồng
     case EXPIRED = 13 // Đơn vay quá hạn huy động
     case CONTRACT_SIGNED = 14 // Đã ký hợp đồng
@@ -77,7 +77,7 @@ enum STATUS_LOAN: Int {
     case OVERDUE_DEPT = 16 // Nợ quá hạn (Thông tin có nợ bổ sung nợ quá hạn bao nhiêu ngày)
     case TIMELY_DEPT = 17 // Nợ đúng hạn
     case CANCELED = 18 // Đã hủy
-
+    case EXPIRED_NOT_ENOUGH = 19 // Đã hủy
 }
 
 
@@ -199,6 +199,8 @@ func getState(type: STATUS_LOAN) -> String {
         return "Nợ đúng hạn"
     case .CANCELED:
         return "Đã hủy"
+    case .EXPIRED_NOT_ENOUGH:
+        return "Quá hạn nhưng không huy động đủ tiền"
     default:
         return "Hoàn thành"
     }
@@ -206,11 +208,11 @@ func getState(type: STATUS_LOAN) -> String {
 
 func getColorText(type: STATUS_LOAN) -> UIColor {
     switch type {
-    case .DRAFT, .SALE_PENDING, .RISK_PENDING:
+    case .DRAFT, .RISK_PENDING:
         return UIColor(hexString: "#ED8A17") // Da cam
-    case .SALE_REVIEW, .RISK_REVIEW, .INTEREST_CONFIRM, .RAISING_CAPITAL, .PARTIAL_FILLED, .FILLED, .CONTRACT_READY, .CONTRACT_SIGNED, .DISBURSAL, .TIMELY_DEPT:
+    case .SALE_PENDING, .SALE_REVIEW, .RISK_REVIEW, .INTEREST_CONFIRM, .RAISING_CAPITAL, .PARTIAL_FILLED, .FILLED, .CONTRACT_READY, .CONTRACT_SIGNED, .DISBURSAL, .TIMELY_DEPT:
         return UIColor(hexString: "#3EAA5F") // Xanh
-    case .REJECTED, .INTEREST_CONFIRM_EXPIRED, .EXPIRED, .OVERDUE_DEPT, .CANCELED:
+    case .REJECTED, .INTEREST_CONFIRM_EXPIRED, .EXPIRED, .OVERDUE_DEPT, .CANCELED, .EXPIRED_NOT_ENOUGH:
         return UIColor(hexString: "#DA3535") // Đỏ
     default:
         return UIColor(hexString: "#4D6678") // Xám lông chuột

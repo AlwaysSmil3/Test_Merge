@@ -229,6 +229,17 @@ class ListLoanViewController: UIViewController {
                     "8MONEY_MONTH" : "280.000đ",
                     "9LOAN_DIS" : "Vay mua điện thoại",
                     ],
+                [
+                    "1PHONE" : "01656229145",
+                    "2LOAN_START" : "8/5/2018",
+                    "3LOAN_MONEY" : "12.000.000đ",
+                    "4LOAN_TIME" : "12 tháng",
+                    "5STATUS" : 19,
+                    "6RATE" : "10%/năm",
+                    "7LOAN_FEE" : "500.000đ",
+                    "8MONEY_MONTH" : "280.000đ",
+                    "9LOAN_DIS" : "Vay mua điện thoại",
+                    ],
             ]
         ],
         [

@@ -18,7 +18,7 @@ enum BOTTOM_STATE: Int {
     case DISBURSEMENT_SOON = 1 // Giải ngân sớm
     case DISBURSEMENT_ONTIME = 2 // Giải ngân đúng hạn
     case SIGN_CONTRACT = 3 // Ký hợp đồng
-    case CONFIRM_SIGN_CONTRACT = 4 // Xác nhận ký hợp đồng
+    case CONFIRM_RATE = 4 // Xác nhận ký hợp đồng
 }
 
 class LoanStateViewController: UIViewController {
@@ -47,7 +47,7 @@ class LoanStateViewController: UIViewController {
     var hiddenBack = false
     var activeLoan: BrowwerActiveLoan?
     var activeLoanId: Int = 0
-    var bottomId = 0
+    var bottom_state: BOTTOM_STATE!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +88,7 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
             
-        case .SALE_REVIEW?, .RISK_REVIEW?:
+        case .SALE_REVIEW?, .SALE_PENDING?, .RISK_REVIEW?:
             
             headerData = [
                 [
@@ -98,7 +98,7 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
             
-        case .SALE_PENDING?, .RISK_PENDING?:
+        case .RISK_PENDING?:
             
             headerData = [
                 [
@@ -136,7 +136,7 @@ class LoanStateViewController: UIViewController {
                     "type": HeaderCellType.ButtonType,
                     "text": "Xác nhận lãi suất",
                     "subType": ButtonCellType.FillType,
-                    "target": "confirm_rate_success"
+                    "target": "confirm_rate"
                 ],
             ]
             
@@ -207,7 +207,7 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
 
-        case .FILLED? :
+        case .FILLED?, .CONTRACT_READY? :
             headerData = [
                 [
                     "type": HeaderCellType.TextType,
@@ -247,13 +247,82 @@ class LoanStateViewController: UIViewController {
                 ],
             ]
             
-        case .CONTRACT_SIGNED? :
+        case .CONTRACT_SIGNED?, .DISBURSAL?:
             headerData = [
                 [
                     "type": HeaderCellType.TextType,
-                    "text": "Ký hợp đồng thành công! Bạn sẽ nhận tiền trong vòng 8 giờ làm việc.",
+                    "text": "Ký hợp đồng thành công. Bạn sẽ nhận tiền trong thời gian sớm nhất.",
                     "subType": TextCellType.TitleType,
                     ],
+            ]
+        case .TIMELY_DEPT?:
+            headerData = [
+                [
+                    "type": HeaderCellType.TextType,
+                    "text": "Xin chào Minh, bạn đang vay 2.000.000đ.",
+                    "subType": TextCellType.TitleType,
+                ],
+                [
+                    "type": HeaderCellType.TextType,
+                    "text": "Bạn cần thanh toán 125.000đ trong tháng này. Hãy thanh toán trước ngày: 20/6/2018.",
+                    "subType": TextCellType.DesType,
+                ],
+                [
+                    "type": HeaderCellType.ButtonType,
+                    "text": "Thanh toán",
+                    "subType": ButtonCellType.FillType,
+                    "target": ""
+                ],
+                [
+                    "type": HeaderCellType.ButtonType,
+                    "text": "Lịch sử thanh toán",
+                    "subType": ButtonCellType.NullType,
+                    "target": ""
+                ],
+            ]
+        case .OVERDUE_DEPT?:
+            headerData = [
+                [
+                    "type": HeaderCellType.TextType,
+                    "text": "Xin chào Minh, bạn đang vay 2.000.000đ.",
+                    "subType": TextCellType.TitleType,
+                    ],
+                [
+                    "type": HeaderCellType.TextType,
+                    "text": "Bạn đã quá hạn thanh toán 5 ngày",
+                    "subType": TextCellType.DesType,
+                    ],
+                [
+                    "type": HeaderCellType.ButtonType,
+                    "text": "Thanh toán ngay",
+                    "subType": ButtonCellType.FillType,
+                    "target": ""
+                ],
+                [
+                    "type": HeaderCellType.ButtonType,
+                    "text": "Lịch sử thanh toán",
+                    "subType": ButtonCellType.NullType,
+                    "target": ""
+                ],
+            ]
+        case .EXPIRED_NOT_ENOUGH?:
+            headerData = [
+                [
+                    "type": HeaderCellType.TextType,
+                    "text": "Đã hết thời gian huy động nhưng chưa đủ số tiền để giải ngân.",
+                    "subType": TextCellType.TitleType,
+                    ],
+                [
+                    "type": HeaderCellType.TextType,
+                    "text": "Khoản vay của bạn đã hết thời gian huy động nhưng không đủ để được giải ngân",
+                    "subType": TextCellType.DesType,
+                    ],
+                [
+                    "type": HeaderCellType.ButtonType,
+                    "text": "Tạo đơn vay mới",
+                    "subType": ButtonCellType.NullType,
+                    "target": ""
+                ],
             ]
             
         default:
@@ -261,9 +330,9 @@ class LoanStateViewController: UIViewController {
             break
         }
         
-        switch BOTTOM_STATE(rawValue: bottomId) {
+        switch bottom_state {
             
-        case .DISBURSEMENT_SOON?:
+        case .DISBURSEMENT_SOON:
             self.btnBottomView.setTitle("Ký hợp đồng để giải ngân", for: .normal)
             self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.confirmSignContract), for: .touchUpInside)
             
@@ -279,21 +348,21 @@ class LoanStateViewController: UIViewController {
             
             isEnableFooterView = true
             
-        case .DISBURSEMENT_ONTIME?:
+        case .DISBURSEMENT_ONTIME:
             self.btnBottomView.setTitle("Ký hợp đồng để giải ngân", for: .normal)
-            self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.signContract), for: .touchUpInside)
+            self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.confirmSignContract), for: .touchUpInside)
             self.labelBottomView.text = "Khoản vay của bạn đã được huy động đủ số tiền. Chỉ còn một bước ký hợp đồng để nhận tiền."
             isEnableFooterView = true
             
-        case .SIGN_CONTRACT?:
+        case .SIGN_CONTRACT:
             self.btnBottomView.setTitle("Ký hợp đồng để giải ngân", for: .normal)
-            self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.signContract), for: .touchUpInside)
+            self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.confirmSignContract), for: .touchUpInside)
             self.labelBottomView.text = "Nếu bạn đồng ý vay với số tiền huy động được. Vui lòng tiến hành ký hợp đồng để giải ngân."
             isEnableFooterView = true
             
-        case .CONFIRM_SIGN_CONTRACT?:
+        case .CONFIRM_RATE:
             self.btnBottomView.setTitle("Xác nhận", for: .normal)
-            self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.signContract), for: .touchUpInside)
+            self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.confirm_rate_success), for: .touchUpInside)
             self.labelBottomView.text = "Tiền phí sẽ được trừ ngay sau khi giải ngân tiền vay."
             isEnableFooterView = true
             
@@ -452,9 +521,19 @@ class LoanStateViewController: UIViewController {
     }
     
     // Xác nhận lãi suất
+    
+    @IBAction func confirm_rate()
+    {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
+        vc.bottom_state = .CONFIRM_RATE
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @IBAction func confirm_rate_success()
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONFIRM_RATE_SUCCESS")
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
@@ -462,7 +541,7 @@ class LoanStateViewController: UIViewController {
     @IBAction func disburse_soon()
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
-        vc.activeLoanId = 1
+        vc.bottom_state = .DISBURSEMENT_SOON
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -471,7 +550,7 @@ class LoanStateViewController: UIViewController {
     @IBAction func disburse_expỉed()
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
-        vc.bottomId = 3
+        vc.bottom_state = .DISBURSEMENT_ONTIME
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -480,7 +559,7 @@ class LoanStateViewController: UIViewController {
     @IBAction func signContract()
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
-        vc.bottomId = 1
+        vc.bottom_state = .SIGN_CONTRACT
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
