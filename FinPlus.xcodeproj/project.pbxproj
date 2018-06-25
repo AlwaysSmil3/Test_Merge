@@ -104,7 +104,7 @@
 		6369BBD420AE8AD400E0C435 /* APIClient+Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369BBD320AE8AD400E0C435 /* APIClient+Loan.swift */; };
 		6369BBD620AE91F300E0C435 /* InvestorHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369BBD520AE91F300E0C435 /* InvestorHomeViewController.swift */; };
 		6374FC4620BBA1C100E4BC38 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6374FC4520BBA1C100E4BC38 /* Wallet.storyboard */; };
-		6374FC4F20BBC3E200E4BC38 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374FC4E20BBC3E200E4BC38 /* Wallet.swift */; };
+		6374FC4F20BBC3E200E4BC38 /* AccountBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374FC4E20BBC3E200E4BC38 /* AccountBank.swift */; };
 		637A90B020A2E52700CCACA5 /* APIClient+Authen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90AF20A2E52700CCACA5 /* APIClient+Authen.swift */; };
 		637A90B620A2FA5F00CCACA5 /* SRMonthPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B320A2FA5F00CCACA5 /* SRMonthPicker.m */; };
 		637A90B820A2FA5F00CCACA5 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B520A2FA5F00CCACA5 /* DatePickerDialog.swift */; };
@@ -392,7 +392,7 @@
 		6369BBD320AE8AD400E0C435 /* APIClient+Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Loan.swift"; sourceTree = "<group>"; };
 		6369BBD520AE91F300E0C435 /* InvestorHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorHomeViewController.swift; sourceTree = "<group>"; };
 		6374FC4520BBA1C100E4BC38 /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
-		6374FC4E20BBC3E200E4BC38 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		6374FC4E20BBC3E200E4BC38 /* AccountBank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountBank.swift; sourceTree = "<group>"; };
 		637A90AF20A2E52700CCACA5 /* APIClient+Authen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Authen.swift"; sourceTree = "<group>"; };
 		637A90B320A2FA5F00CCACA5 /* SRMonthPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRMonthPicker.m; sourceTree = "<group>"; };
 		637A90B420A2FA5F00CCACA5 /* SRMonthPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRMonthPicker.h; sourceTree = "<group>"; };
@@ -885,7 +885,7 @@
 		6374FC4B20BBC1EE00E4BC38 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
-				6374FC4E20BBC3E200E4BC38 /* Wallet.swift */,
+				6374FC4E20BBC3E200E4BC38 /* AccountBank.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -1925,7 +1925,7 @@
 				84114BCC20D79464005026DF /* PayAllTableViewCell.swift in Sources */,
 				635B5E0620B6B3A500F02132 /* LoanInfo.swift in Sources */,
 				633AF9AF20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift in Sources */,
-				6374FC4F20BBC3E200E4BC38 /* Wallet.swift in Sources */,
+				6374FC4F20BBC3E200E4BC38 /* AccountBank.swift in Sources */,
 				E774D30320CA28F000F7696D /* BorrowerTabBarController.swift in Sources */,
 				6336D5C820B27B7500A6C38A /* LoanFirstViewController.swift in Sources */,
 				639C9DE420A15F6100F2CF5E /* BaseViewController.swift in Sources */,

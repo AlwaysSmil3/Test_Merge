@@ -15,7 +15,7 @@ class BankAccountTableViewCell: UITableViewCell {
     @IBOutlet weak var accountNumberLb: UILabel!
     @IBOutlet weak var walletNameLb: UILabel!
     @IBOutlet weak var walletImg: UIImageView!
-    var cellData : Wallet!
+    var cellData : AccountBank!
     var isSelectedCell = false
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,13 +26,13 @@ class BankAccountTableViewCell: UITableViewCell {
     }
 
     func updateCellView() {
-        if cellData.walletType == 1 {
+        if cellData.bankType == 1 {
             self.walletImg.image = #imageLiteral(resourceName: "momo")
         } else {
             self.walletImg.image = #imageLiteral(resourceName: "paypal")
         }
-        self.walletNameLb.text = cellData.walletName
-        self.accountNumberLb.text = cellData.walletNumber
+        self.walletNameLb.text = cellData.bankName
+        self.accountNumberLb.text = cellData.accountBankNumber
         if isSelectedCell == true {
             self.containView.layer.borderColor = MAIN_COLOR.cgColor
             self.selectImg.image = #imageLiteral(resourceName: "ic_radio_on")

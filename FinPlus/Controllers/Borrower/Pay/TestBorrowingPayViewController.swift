@@ -55,7 +55,7 @@ public struct BorrowingData {
     public var basicInfo : BorrowingInfoBasicData?
     public var payType : [PayType]?
     public var payAll : PayAllBefore?
-    public var walletList : [Wallet]?
+    public var walletList : [AccountBank]?
 }
 
 class TestBorrowingPayViewController: UIViewController {
@@ -120,7 +120,7 @@ class TestBorrowingPayViewController: UIViewController {
     var borrowingPay : BorrowingData!
     var payTypeSelected : PayType!
     var payAllSelected : PayAllBefore!
-    var walletSelected : Wallet!
+    var walletSelected : AccountBank!
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -145,8 +145,8 @@ class TestBorrowingPayViewController: UIViewController {
         let payType1 = PayType(id: 1, typeTitle: "Phai tra thang nay", expireDate: Date(), originAmount: 1000000, interestAmount: 500000, sumAmount: 20000000)
         let payType2 = PayType(id: 2, typeTitle: "Tra thang sau", expireDate: Date(), originAmount: 4000000, interestAmount: 600000, sumAmount: 90000000)
         let payAll = PayAllBefore(id: 1, typeTitle: "Tra tat ca luon", originAmount: 3000000, interestAmount: 100000, feeToPayBefore: 2000000, sumAmount: 7000000)
-        let wallet1 = Wallet(wID: 1, wType: 1, wAccountName: "0987654231234", wName: "MoMo", wNumber: "10231231")
-        let wallet2 = Wallet(wID: 1, wType: 2, wAccountName: "0987654231234", wName: "PayPal", wNumber: "10231232")
+        let wallet1 = AccountBank(wID: 1, wType: 1, wAccountName: "0987654231234", wBankName: "vcb", wNumber: "10231231", wDistrict: "Hà Nội")
+        let wallet2 = AccountBank(wID: 1, wType: 2, wAccountName: "0987654231234", wBankName: "viettin", wNumber: "10231232", wDistrict: "Hà Nội")
         //        let wallet3 = Wallet(wID: 1, wType: 2, wAccountName: "0987654231234", wName: "Wallet3", wNumber: "10231233")
 
         let payTypeArray = [payType1, payType2]
@@ -251,9 +251,9 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             cell.updateCellView()
 
         } else if let cell = cell as? BankAccountTableViewCell {
-            let data = cellData.data as! Wallet
+            let data = cellData.data as! AccountBank
             if let selected = self.walletSelected {
-                if selected.walletNumber == data.walletNumber {
+                if selected.accountBankNumber == data.accountBankNumber {
                     cell.isSelectedCell = true
                 } else {
                     cell.isSelectedCell = false
@@ -290,7 +290,7 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             self.payTypeSelected = nil
 
         } else if let _ = cell as? BankAccountTableViewCell {
-            self.walletSelected = cellData.data as! Wallet
+            self.walletSelected = cellData.data as! AccountBank
 
         } else if let _ = cell as? AddNewWalletTableViewCell {
             // push to add new wallet
