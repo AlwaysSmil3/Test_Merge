@@ -6,7 +6,10 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - Crashlytics (3.10.2):
+    - Fabric (~> 1.7.7)
   - DropDown (2.3.2)
+  - Fabric (1.7.7)
   - FBSDKCoreKit (4.33.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.33.0):
@@ -68,7 +71,9 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - Crashlytics
   - DropDown
+  - Fabric
   - FBSDKCoreKit
   - FBSDKLoginKit
   - Firebase/Core
@@ -87,7 +92,9 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Bolts
+    - Crashlytics
     - DropDown
+    - Fabric
     - FBSDKCoreKit
     - FBSDKLoginKit
     - Firebase
@@ -111,7 +118,9 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Crashlytics: 0360624eea1c978a743feddb2fb1ef8b37fb7a0d
   DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
+  Fabric: bda89e242bce1b7b8ab264248cf3407774ce0095
   FBSDKCoreKit: 572b047a7e029bc44542bcf8a59414e7ff2b543e
   FBSDKLoginKit: 88cb456349cfb3b554427ce4f8b43729d85dfb40
   Firebase: e08fb0795f35707aeb1d8a715c731c45bdf6fd56
@@ -132,6 +141,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: f928b83fccc30fe0ccb2fdedd583e5d250ed410b
+PODFILE CHECKSUM: 988c9e39607d273592f637a48d30ad1c13ece01a
 
 COCOAPODS: 1.5.3

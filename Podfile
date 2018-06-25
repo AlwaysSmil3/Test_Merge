@@ -29,6 +29,9 @@ pod 'Firebase/Messaging'
 pod 'SpreadsheetView'
 pod 'PinCodeTextField'
 
+pod 'Fabric'
+pod 'Crashlytics'
+
   # Pods for FinPlus
 
 end
