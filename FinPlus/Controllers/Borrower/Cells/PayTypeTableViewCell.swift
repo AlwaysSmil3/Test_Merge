@@ -31,16 +31,16 @@ class PayTypeTableViewCell: UITableViewCell {
     func updateCellView() {
         if let cellData = cellData {
             self.titleLb.text = "Thanh toán tháng này"
-            self.dateLb.text = "Hạn: \(cellData.expireDate)"
+            self.dateLb.text = "Hạn: \(Date().convertDateToDisplayFormat(cellData.expireDate))"
             self.originMoneyLb.text = "Tiền gốc: \(cellData.originAmount)"
             self.interestMoneyLb.text = "Tiền lãi: \(cellData.interestAmount)"
             self.borrowingLb.text = "\(cellData.sumAmount)"
             if isSelectedCell == true {
                 self.containView.layer.borderColor = MAIN_COLOR.cgColor
-                self.selectImg.image = #imageLiteral(resourceName: "cellSelectedImg")
+                self.selectImg.image = #imageLiteral(resourceName: "ic_radio_on")
             } else {
                 self.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
-                self.selectImg.image = #imageLiteral(resourceName: "cellSelectImg")
+                self.selectImg.image = #imageLiteral(resourceName: "ic_radio_off")
             }
         }
     }

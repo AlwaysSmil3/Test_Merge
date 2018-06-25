@@ -36,10 +36,10 @@ class PayAllTableViewCell: UITableViewCell {
             self.borrowingLb.text = "\(cellData.sumAmount)"
             if isSelectedCell == true {
                 self.containView.layer.borderColor = MAIN_COLOR.cgColor
-                self.selectImg.image = #imageLiteral(resourceName: "cellSelectedImg")
+                self.selectImg.image = #imageLiteral(resourceName: "ic_radio_on")
             } else {
                 self.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
-                self.selectImg.image = #imageLiteral(resourceName: "cellSelectImg")
+                self.selectImg.image = #imageLiteral(resourceName: "ic_radio_off")
 
             }
         }
