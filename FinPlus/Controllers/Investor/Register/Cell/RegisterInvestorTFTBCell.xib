@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Register_Investor_TF_TB_Cell" rowHeight="94" id="Snu-GR-HbO" customClass="RegisterInvestorTFTBCell" customModule="FinPlus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="94"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Snu-GR-HbO" id="sCs-I1-mDX">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="93.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDa-or-or2">
+                        <rect key="frame" x="16" y="78" width="343" height="1"/>
+                        <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="ACF-JU-b2C"/>
+                        </constraints>
+                    </view>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập họ và tên của bạn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9vF-bO-VXb">
+                        <rect key="frame" x="16" y="34" width="343" height="38"/>
+                        <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVy-IN-Uvr">
+                        <rect key="frame" x="16" y="15" width="58.5" height="13.5"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Họ và tên ">
+                                <attributes>
+                                    <color key="NSColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
+                                </attributes>
+                            </fragment>
+                            <fragment content="*">
+                                <attributes>
+                                    <color key="NSColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="bDa-or-or2" secondAttribute="trailing" constant="16" id="0SO-w5-8U3"/>
+                    <constraint firstItem="9vF-bO-VXb" firstAttribute="leading" secondItem="LVy-IN-Uvr" secondAttribute="leading" id="G2P-lO-hq1"/>
+                    <constraint firstItem="bDa-or-or2" firstAttribute="leading" secondItem="9vF-bO-VXb" secondAttribute="leading" id="Ion-Xa-emo"/>
+                    <constraint firstItem="bDa-or-or2" firstAttribute="leading" secondItem="sCs-I1-mDX" secondAttribute="leading" constant="16" id="Xpw-JE-FPZ"/>
+                    <constraint firstItem="bDa-or-or2" firstAttribute="top" secondItem="9vF-bO-VXb" secondAttribute="bottom" constant="6" id="ZgV-nW-ROt"/>
+                    <constraint firstItem="bDa-or-or2" firstAttribute="trailing" secondItem="9vF-bO-VXb" secondAttribute="trailing" id="bDf-65-1G6"/>
+                    <constraint firstItem="9vF-bO-VXb" firstAttribute="top" secondItem="LVy-IN-Uvr" secondAttribute="bottom" constant="6" id="kqa-b1-LeV"/>
+                    <constraint firstItem="LVy-IN-Uvr" firstAttribute="top" secondItem="sCs-I1-mDX" secondAttribute="topMargin" constant="4" id="oBc-B8-8Wf"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="bDa-or-or2" secondAttribute="bottom" constant="4" id="zhj-N6-ErE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="4.5" y="-146"/>
+        </tableViewCell>
+    </objects>
+</document>

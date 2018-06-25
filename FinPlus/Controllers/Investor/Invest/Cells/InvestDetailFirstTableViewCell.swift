@@ -12,6 +12,7 @@ import QuartzCore
 class InvestDetailFirstTableViewCell: UITableViewCell {
     var cellData : DemoLoanModel!
 
+    @IBOutlet weak var alreadyAmountCircleProgressView: UICircularProgressRingView!
     @IBOutlet weak var realibilityCircleLb: UILabel!
     @IBOutlet weak var realibilityNameLb: UILabel!
     @IBOutlet weak var realibilityDesLb: UILabel!
@@ -53,23 +54,40 @@ class InvestDetailFirstTableViewCell: UITableViewCell {
             self.loanTypeNameLb.text = cellData.name
             self.loanExpireMonth.text = "Thời hạn \(cellData.dueMonth) tháng"
             // third block
-            self.interestCircleLb.text = "\(cellData.interestRate)\n/năm"
+        // add attribute string
+            let interestCircleStr = cellData.interestRate.toString() + "\n%/năm"
+        let myRange = NSRange(location: interestCircleStr.length() - 5, length: 5)
+        var myMutableString = NSMutableAttributedString()
+        myMutableString = NSMutableAttributedString(string: interestCircleStr)
+        myMutableString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "SF Pro Display", size: 8)!, range: myRange)
+        self.interestCircleLb.attributedText = myMutableString
+//            self.interestCircleLb.text = "\(cellData.interestRate)\n/năm"
             self.interestNameLb.text = "Lãi suất thấp/cao"
-            self.interestDes.text = "\(cellData.interestRate)/năm, trả góp hàng tháng"
+            self.interestDes.text = cellData.interestRate.toString() + "/năm, trả góp hàng tháng"
             // last block
-            self.alreadyProgress.text = "\(cellData.alreadyAmount)%"
+        let alreadyStr = cellData.alreadyAmount.toString() + "%"
+        let range2 = NSRange(location: alreadyStr.length() - 1, length: 1)
+        var alreadyMutableStr = NSMutableAttributedString()
+        alreadyMutableStr = NSMutableAttributedString(string: alreadyStr)
+        alreadyMutableStr.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "SF Pro Display", size: 11)!, range: range2)
+            self.alreadyProgress.attributedText = alreadyMutableStr
             self.alreadyNameLb.text = "Đã huy động"
             var avaiableAmountStr = ""
             let avaiableAmount = cellData.amount - (cellData.alreadyAmount / 100 * cellData.amount)
+        alreadyAmountCircleProgressView.innerRingColor =  cellData.reliability.color
+        alreadyAmountCircleProgressView.minValue = 0
+        alreadyAmountCircleProgressView.maxValue = 100
+//        alreadyAmountCircleProgressView
+        alreadyAmountCircleProgressView.value = CGFloat(cellData.alreadyAmount)
             let formatter = NumberFormatter()
             formatter.locale = Locale.current
             formatter.numberStyle = .currency
             if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
-                avaiableAmountStr = "\(formattedTipAmount)"
+                avaiableAmountStr = formattedTipAmount
             } else {
-                avaiableAmountStr = "\(avaiableAmount)"
+                avaiableAmountStr = avaiableAmount.toString()
             }
-            self.alreadyDesLb.text = "Đã huy động \(cellData.alreadyAmount)%, còn lại \(avaiableAmountStr)"
+            self.alreadyDesLb.text = "Đã huy động " + cellData.alreadyAmount.toString() + "%, còn lại " +  avaiableAmountStr
             
 //        }
 

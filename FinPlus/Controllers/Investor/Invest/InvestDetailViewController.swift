@@ -19,6 +19,7 @@ class InvestDetailViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Chi tiết khoản vay"
         configTableView()
         updateData()
         // Do any additional setup after loading the view.
@@ -33,6 +34,10 @@ class InvestDetailViewController: UIViewController, UITableViewDelegate, UITable
 
     }
 
+    @IBAction func regisBtnAction(_ sender: Any) {
+        let regisVC = RegisInvestViewController(nibName: "RegisInvestViewController", bundle: nil)
+        self.navigationController?.pushViewController(regisVC, animated: true)
+    }
     func updateData() {
 
         self.tableView.reloadData()
@@ -52,17 +57,20 @@ class InvestDetailViewController: UIViewController, UITableViewDelegate, UITable
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableNibCell(type: InvestDetailFirstTableViewCell.self) as! InvestDetailFirstTableViewCell
-            cell.cellData = self.investData
-            cell.updateCellView()
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableNibCell(type: InvestDetailSecondTableViewCell.self) as! InvestDetailSecondTableViewCell
-            cell.cellData = self.investData
-            cell.updateCellView()
-            return cell 
-        }
+            if let cell = tableView.dequeueReusableNibCell(type: InvestDetailFirstTableViewCell.self) {
+                cell.cellData = self.investData
+                cell.updateCellView()
+                return cell
+            }
 
+        } else {
+            if let cell = tableView.dequeueReusableNibCell(type: InvestDetailSecondTableViewCell.self) {
+                cell.cellData = self.investData
+                cell.updateCellView()
+                return cell
+            }
+        }
+        return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
          if indexPath.row == 0 {

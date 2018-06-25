@@ -13,6 +13,7 @@ enum VerifyType {
     case Login
     case Loan
     case Forgot
+    case RegisInvest
 }
 class VerifyOTPAuthenVC: BaseViewController {
 
@@ -144,6 +145,15 @@ class VerifyOTPAuthenVC: BaseViewController {
         case .Loan:
             self.verifyOTPLoan()
         
+            break
+        case .RegisInvest:
+            print("Register Inves")
+            // call to api check OTP
+            // success
+            // push delegate to invest register to Budget Awards
+            let budgetAwardsVC = BudgetAwardsViewController(nibName: "BudgetAwardsViewController", bundle: nil)
+//            self.present(budgetAwardsVC, animated: true, completion: nil)
+            self.navigationController?.pushViewController(budgetAwardsVC, animated: true)
             break
         default:
             print("Forgot Password Verify")

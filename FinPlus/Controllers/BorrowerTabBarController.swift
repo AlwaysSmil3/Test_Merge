@@ -156,6 +156,7 @@ class BorrowerTabBarController: UITabBarController {
         
         let activeLoan = BrowwerActiveLoan(object: json)
 
+        DataManager.shared.browwerInfo?.activeLoan?.loanId = 0
         if let loanID = activeLoan.loanId, loanID > 0 {
             //Co khoản vay
 //            let loanState = (v1 as! UINavigationController).topViewController as! LoanStateViewController
