@@ -11,38 +11,60 @@ import UIKit
 class AddWalletViewController: UIViewController {
 
     @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var momoBtn: UIButton!
-    @IBOutlet weak var paypalBtn: UIButton!
+    @IBOutlet weak var vcbBtn: UIButton!
+    @IBOutlet weak var viettinBtn: UIButton!
+    @IBOutlet weak var techBtn: UIButton!
+    @IBOutlet weak var agriBtn: UIButton!
     
     @IBOutlet weak var nameTextField: HoshiTextField!
     @IBOutlet weak var accTextField: HoshiTextField!
     @IBOutlet weak var reAccTextField: HoshiTextField!
     
-    var wallet: Wallet!
+    var wallet: AccountBank!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        momoBtn.layer.borderWidth = 0.5
-        momoBtn.layer.cornerRadius = 8
-        momoBtn.layer.borderColor = MAIN_COLOR.cgColor
-        momoBtn.setTitle(NSLocalizedString("MOMO_WALLET", comment: ""), for: .normal)
+        vcbBtn.layer.borderWidth = 0.5
+        vcbBtn.layer.cornerRadius = 8
+        vcbBtn.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        vcbBtn.setTitle(NSLocalizedString("Vietcombank", comment: ""), for: .normal)
         
-        paypalBtn.layer.borderWidth = 0.5
-        paypalBtn.layer.cornerRadius = 8
-        paypalBtn.layer.borderColor = MAIN_COLOR.cgColor
-        paypalBtn.setTitle(NSLocalizedString("PAYPAL_ACCOUNT", comment: ""), for: .normal)
+        viettinBtn.layer.borderWidth = 0.5
+        viettinBtn.layer.cornerRadius = 8
+        viettinBtn.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        viettinBtn.setTitle(NSLocalizedString("Viettinbank", comment: ""), for: .normal)
         
-        self.title = "Thêm ví"
+        techBtn.layer.borderWidth = 0.5
+        techBtn.layer.cornerRadius = 8
+        techBtn.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        techBtn.setTitle(NSLocalizedString("Techcombank", comment: ""), for: .normal)
+        
+        agriBtn.layer.borderWidth = 0.5
+        agriBtn.layer.cornerRadius = 8
+        agriBtn.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        agriBtn.setTitle(NSLocalizedString("Agribank", comment: ""), for: .normal)
+        
+        self.title = "Thêm tài khoản ngân hàng"
         
         if ((wallet) != nil)
         {
-            self.title = "Sửa thông tin ví"
-            nameTextField.text = wallet.walletAccountName
-            accTextField.text = wallet.walletNumber
-            reAccTextField.text = wallet.walletNumber
+            self.title = "Sửa tài khoản ngân hàng"
+            nameTextField.text = wallet.accountBankName
+            accTextField.text = wallet.accountBankNumber
+            reAccTextField.text = wallet.district
+            
+            switch(BankName(rawValue: wallet.bankType!))
+            {
+            case .Vietcombank?: setBorderColor(button: vcbBtn, isSelect: true)
+            case .Viettinbank?: setBorderColor(button: viettinBtn, isSelect: true)
+            case .Techcombank?: setBorderColor(button: techBtn, isSelect: true)
+            case .Agribank?: setBorderColor(button: agriBtn, isSelect: true)
+            case .none:
+                break
+            }
         }
     }
 
@@ -57,6 +79,51 @@ class AddWalletViewController: UIViewController {
     
     @IBAction func navi_save(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func vcbBtn_selected(sender: UIButton)
+    {
+        setBorderColor(button: vcbBtn, isSelect: true)
+        setBorderColor(button: viettinBtn, isSelect: false)
+        setBorderColor(button: techBtn, isSelect: false)
+        setBorderColor(button: agriBtn, isSelect: false)
+    }
+    
+    @IBAction func viettinBtn_selected(sender: UIButton)
+    {
+        setBorderColor(button: vcbBtn, isSelect: false)
+        setBorderColor(button: viettinBtn, isSelect: true)
+        setBorderColor(button: techBtn, isSelect: false)
+        setBorderColor(button: agriBtn, isSelect: false)
+    }
+    
+    @IBAction func techBtn_selected(sender: UIButton)
+    {
+        setBorderColor(button: vcbBtn, isSelect: false)
+        setBorderColor(button: viettinBtn, isSelect: false)
+        setBorderColor(button: techBtn, isSelect: true)
+        setBorderColor(button: agriBtn, isSelect: false)
+    }
+    
+    @IBAction func agriBtn_selected(sender: UIButton)
+    {
+        setBorderColor(button: vcbBtn, isSelect: false)
+        setBorderColor(button: viettinBtn, isSelect: false)
+        setBorderColor(button: techBtn, isSelect: false)
+        setBorderColor(button: agriBtn, isSelect: true)
+    }
+    
+    func setBorderColor(button: UIButton, isSelect: Bool) {
+        if (isSelect)
+        {
+            button.layer.borderColor = MAIN_COLOR.cgColor
+            button.isSelected = true
+        }
+        else
+        {
+            button.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+            button.isSelected = false
+        }
     }
 
 }

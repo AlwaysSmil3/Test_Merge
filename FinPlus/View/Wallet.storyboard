@@ -51,7 +51,7 @@
                                     <constraint firstAttribute="height" constant="44" id="qc0-4a-m5o"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                <state key="normal" title="+ Thêm tài khoản ví mới">
+                                <state key="normal" title="+ Thêm tài khoản ngân hàng">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -105,8 +105,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loại ví điện tử" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2P-Aa-tNu">
-                                <rect key="frame" x="16" y="50" width="95.5" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chọn ngân hàng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2P-Aa-tNu">
+                                <rect key="frame" x="16" y="50" width="113" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -117,19 +117,27 @@
                                     <constraint firstAttribute="height" constant="56" id="6KT-5A-MeV"/>
                                 </constraints>
                                 <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Button" image="momo">
+                                <state key="normal" title="Button" image="vcb">
                                     <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <state key="selected" image="vcb_selected"/>
+                                <connections>
+                                    <action selector="vcbBtn_selectedWithSender:" destination="71L-If-6xU" eventType="touchUpInside" id="Ing-tG-yoP"/>
+                                </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zh-RN-5h5">
-                                <rect key="frame" x="195" y="84" width="163.5" height="56"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zh-RN-5h5">
+                                <rect key="frame" x="195.5" y="84" width="163.5" height="56"/>
                                 <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Button" image="paypal">
+                                <state key="normal" title="Button" image="viettin">
                                     <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <state key="selected" image="viettin_selected"/>
+                                <connections>
+                                    <action selector="viettinBtn_selectedWithSender:" destination="71L-If-6xU" eventType="touchUpInside" id="zV3-Kp-dH3"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Họ và tên chủ tài khoản" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zvR-gs-xF6" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
-                                <rect key="frame" x="16" y="160" width="343" height="56"/>
+                                <rect key="frame" x="16" y="228" width="343" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="aCA-1h-vj7"/>
                                 </constraints>
@@ -152,7 +160,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập số tài khoản" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ebh-KD-dJm" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
-                                <rect key="frame" x="16" y="236" width="343" height="56"/>
+                                <rect key="frame" x="16" y="304" width="343" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="cEj-Rf-l1A"/>
                                 </constraints>
@@ -174,8 +182,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập lại số tài khoản" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0RP-5F-WYW" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
-                                <rect key="frame" x="16" y="312" width="343" height="56"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tỉnh" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0RP-5F-WYW" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
+                                <rect key="frame" x="16" y="380" width="343" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="mkf-WN-gV0"/>
                                 </constraints>
@@ -197,36 +205,59 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số tài khoản MoMo được tìm thấy trong app MoMo bằng cách vào Thêm &gt; Hồ sơ &gt; Số tài khoản" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOP-fH-4Sa">
-                                <rect key="frame" x="16" y="378" width="343" height="26.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6V-kP-aeH">
+                                <rect key="frame" x="16" y="156" width="163.5" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="njj-FX-9r3"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Button" image="tech">
+                                    <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="selected" image="tech_selected"/>
+                                <connections>
+                                    <action selector="techBtn_selectedWithSender:" destination="71L-If-6xU" eventType="touchUpInside" id="YgI-Ci-8Qg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emo-6F-Mif">
+                                <rect key="frame" x="195.5" y="156" width="163.5" height="56"/>
+                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Button" image="agri">
+                                    <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="selected" image="agri_selected"/>
+                                <connections>
+                                    <action selector="agriBtn_selectedWithSender:" destination="71L-If-6xU" eventType="touchUpInside" id="CgN-Cu-IcX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ebh-KD-dJm" firstAttribute="trailing" secondItem="dZL-cX-lcz" secondAttribute="trailingMargin" id="49j-Av-5lD"/>
+                            <constraint firstItem="emo-6F-Mif" firstAttribute="leading" secondItem="u6V-kP-aeH" secondAttribute="trailing" constant="16" id="4H9-f3-0b5"/>
+                            <constraint firstItem="zvR-gs-xF6" firstAttribute="top" secondItem="u6V-kP-aeH" secondAttribute="bottom" constant="16" id="4rT-JC-2aT"/>
                             <constraint firstItem="W2P-Aa-tNu" firstAttribute="top" secondItem="UVM-Ce-V3Z" secondAttribute="bottom" constant="30" id="7Xz-Bl-OcF"/>
                             <constraint firstItem="9zh-RN-5h5" firstAttribute="centerY" secondItem="JxF-EE-TNJ" secondAttribute="centerY" id="8Mh-1s-Ocv"/>
                             <constraint firstItem="JxF-EE-TNJ" firstAttribute="leading" secondItem="dZL-cX-lcz" secondAttribute="leadingMargin" id="AzQ-fu-n1g"/>
                             <constraint firstItem="JxF-EE-TNJ" firstAttribute="top" secondItem="W2P-Aa-tNu" secondAttribute="bottom" constant="16" id="EcB-tL-LXA"/>
-                            <constraint firstItem="GOP-fH-4Sa" firstAttribute="top" secondItem="0RP-5F-WYW" secondAttribute="bottom" constant="10" id="H7Q-CS-qTl"/>
+                            <constraint firstItem="emo-6F-Mif" firstAttribute="height" secondItem="u6V-kP-aeH" secondAttribute="height" id="KHr-J0-67A"/>
                             <constraint firstItem="ebh-KD-dJm" firstAttribute="leading" secondItem="dZL-cX-lcz" secondAttribute="leadingMargin" id="KUA-PV-IqC"/>
-                            <constraint firstItem="zvR-gs-xF6" firstAttribute="top" secondItem="JxF-EE-TNJ" secondAttribute="bottom" constant="20" id="TSf-wg-8Jl"/>
+                            <constraint firstItem="u6V-kP-aeH" firstAttribute="top" secondItem="JxF-EE-TNJ" secondAttribute="bottom" constant="16" id="Qxm-am-Cwf"/>
                             <constraint firstItem="0RP-5F-WYW" firstAttribute="trailing" secondItem="dZL-cX-lcz" secondAttribute="trailingMargin" id="TrA-Ks-8L7"/>
                             <constraint firstItem="ebh-KD-dJm" firstAttribute="top" secondItem="zvR-gs-xF6" secondAttribute="bottom" constant="20" id="XQr-Eg-Sh2"/>
                             <constraint firstItem="zvR-gs-xF6" firstAttribute="leading" secondItem="dZL-cX-lcz" secondAttribute="leadingMargin" id="Xen-Jg-qZ4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9zh-RN-5h5" secondAttribute="trailing" id="a9f-pN-zIz"/>
+                            <constraint firstItem="emo-6F-Mif" firstAttribute="leading" secondItem="9zh-RN-5h5" secondAttribute="leading" id="aRh-Aj-EUY"/>
+                            <constraint firstItem="emo-6F-Mif" firstAttribute="width" secondItem="u6V-kP-aeH" secondAttribute="width" id="aak-81-bWV"/>
+                            <constraint firstItem="emo-6F-Mif" firstAttribute="centerY" secondItem="u6V-kP-aeH" secondAttribute="centerY" id="acY-T7-l6a"/>
                             <constraint firstItem="9zh-RN-5h5" firstAttribute="width" secondItem="JxF-EE-TNJ" secondAttribute="width" id="eXf-dh-aYO"/>
                             <constraint firstItem="0RP-5F-WYW" firstAttribute="top" secondItem="ebh-KD-dJm" secondAttribute="bottom" constant="20" id="fCC-94-9XM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="GOP-fH-4Sa" secondAttribute="trailing" id="lJN-eg-wzl"/>
                             <constraint firstItem="W2P-Aa-tNu" firstAttribute="leading" secondItem="dZL-cX-lcz" secondAttribute="leadingMargin" id="mKb-RR-m1f"/>
                             <constraint firstItem="0RP-5F-WYW" firstAttribute="leading" secondItem="dZL-cX-lcz" secondAttribute="leadingMargin" id="mvw-4R-9zs"/>
+                            <constraint firstItem="u6V-kP-aeH" firstAttribute="leading" secondItem="JxF-EE-TNJ" secondAttribute="leading" id="qJS-tz-L7k"/>
                             <constraint firstItem="9zh-RN-5h5" firstAttribute="leading" secondItem="JxF-EE-TNJ" secondAttribute="trailing" constant="16" id="wxu-sl-Mil"/>
                             <constraint firstItem="9zh-RN-5h5" firstAttribute="height" secondItem="JxF-EE-TNJ" secondAttribute="height" id="z18-Qc-7pm"/>
                             <constraint firstItem="zvR-gs-xF6" firstAttribute="trailing" secondItem="dZL-cX-lcz" secondAttribute="trailingMargin" id="zC5-SY-0av"/>
-                            <constraint firstItem="GOP-fH-4Sa" firstAttribute="leading" secondItem="dZL-cX-lcz" secondAttribute="leadingMargin" id="zxT-7g-A9j"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5Ia-My-PbB">
@@ -245,11 +276,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="accTextField" destination="ebh-KD-dJm" id="4Vt-4K-sdW"/>
-                        <outlet property="momoBtn" destination="JxF-EE-TNJ" id="ea5-Ql-JBm"/>
+                        <outlet property="agriBtn" destination="emo-6F-Mif" id="er2-PN-8rU"/>
                         <outlet property="nameTextField" destination="zvR-gs-xF6" id="Wry-78-ODV"/>
-                        <outlet property="paypalBtn" destination="9zh-RN-5h5" id="hyD-zd-npx"/>
                         <outlet property="reAccTextField" destination="0RP-5F-WYW" id="3ug-54-G3F"/>
+                        <outlet property="techBtn" destination="u6V-kP-aeH" id="SCo-PO-Uf9"/>
                         <outlet property="typeLabel" destination="W2P-Aa-tNu" id="8qa-vT-CVG"/>
+                        <outlet property="vcbBtn" destination="JxF-EE-TNJ" id="npR-5T-p4w"/>
+                        <outlet property="viettinBtn" destination="9zh-RN-5h5" id="JuF-ay-bL5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uDr-ZR-twG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -258,7 +291,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="momo" width="30" height="30"/>
-        <image name="paypal" width="29" height="28"/>
+        <image name="agri" width="25" height="25"/>
+        <image name="agri_selected" width="25" height="25"/>
+        <image name="tech" width="25" height="16"/>
+        <image name="tech_selected" width="25" height="16"/>
+        <image name="vcb" width="24" height="24"/>
+        <image name="vcb_selected" width="24" height="24"/>
+        <image name="viettin" width="25" height="25"/>
+        <image name="viettin_selected" width="25" height="25"/>
     </resources>
 </document>
