@@ -12,6 +12,7 @@ import QuartzCore
 class InvestDetailFirstTableViewCell: UITableViewCell {
     var cellData : DemoLoanModel!
 
+    @IBOutlet weak var alreadyAmountCircleProgressView: UICircularProgressRingView!
     @IBOutlet weak var realibilityCircleLb: UILabel!
     @IBOutlet weak var realibilityNameLb: UILabel!
     @IBOutlet weak var realibilityDesLb: UILabel!
@@ -73,6 +74,11 @@ class InvestDetailFirstTableViewCell: UITableViewCell {
             self.alreadyNameLb.text = "Đã huy động"
             var avaiableAmountStr = ""
             let avaiableAmount = cellData.amount - (cellData.alreadyAmount / 100 * cellData.amount)
+        alreadyAmountCircleProgressView.innerRingColor =  cellData.reliability.color
+        alreadyAmountCircleProgressView.minValue = 0
+        alreadyAmountCircleProgressView.maxValue = 100
+//        alreadyAmountCircleProgressView
+        alreadyAmountCircleProgressView.value = CGFloat(cellData.alreadyAmount)
             let formatter = NumberFormatter()
             formatter.locale = Locale.current
             formatter.numberStyle = .currency
