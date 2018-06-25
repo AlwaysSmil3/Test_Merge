@@ -79,7 +79,7 @@ class BorrowerTabBarController: UITabBarController {
 
         v1.tabBarItem = UITabBarItem(title: NSLocalizedString("LOAN", comment: ""), image: UIImage(named: "ic_tb_brow1"), selectedImage: UIImage(named: "ic_tb_brow1_selected"))
         v2.tabBarItem = UITabBarItem(title: NSLocalizedString("LOAN_MANAGER", comment: ""), image: UIImage(named: "ic_tb_brow2"), selectedImage: UIImage(named: "ic_tb_brow2_selected"))
-        v3.tabBarItem = UITabBarItem(title: NSLocalizedString("WALLET_MANAGER", comment: ""), image: UIImage(named: "ic_tb_brow3"), selectedImage: UIImage(named: "ic_tb_brow3_selected"))
+        v3.tabBarItem = UITabBarItem(title: NSLocalizedString("ACCOUNT_BANK_MANAGER", comment: ""), image: UIImage(named: "ic_tb_brow3"), selectedImage: UIImage(named: "ic_tb_brow3_selected"))
         v4.tabBarItem = UITabBarItem(title: NSLocalizedString("NOTIFICATION", comment: ""), image: UIImage(named: "ic_tb_brow5"), selectedImage: UIImage(named: "ic_tb_brow5_selected"))
         v5.tabBarItem = UITabBarItem(title: NSLocalizedString("BRIEF", comment: ""), image: UIImage(named: "ic_tb_brow4"), selectedImage: UIImage(named: "ic_tb_brow4_selected"))
         
@@ -156,6 +156,7 @@ class BorrowerTabBarController: UITabBarController {
         
         let activeLoan = BrowwerActiveLoan(object: json)
 
+        DataManager.shared.browwerInfo?.activeLoan?.loanId = 0
         if let loanID = activeLoan.loanId, loanID > 0 {
             //Co khoản vay
 //            let loanState = (v1 as! UINavigationController).topViewController as! LoanStateViewController

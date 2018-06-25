@@ -23,9 +23,9 @@ class ListWalletViewController: UIViewController {
     var walletAction: WalletAction = .WalletDetail
     let cellIdentifier = "cell"
     private var listWallet: NSMutableArray = [
-        Wallet(wID: 0, wType: 0, wAccountName: "MoMo", wName: "Nguyen Van A", wNumber: "9888GH87UYY7"),
-        Wallet(wID: 0, wType: 0, wAccountName: "MoMo", wName: "Nguyen Van A", wNumber: "9888GH87UYY7"),
-        Wallet(wID: 0, wType: 0, wAccountName: "MoMo", wName: "Nguyen Van A", wNumber: "9888GH87UYY7"),
+        AccountBank(wID: 0, wType: 1, wAccountName: "Nguyen Van A", wBankName: "Vietcombank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội"),
+        AccountBank(wID: 0, wType: 2, wAccountName: "Nguyen Van B", wBankName: "Viettinbank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội"),
+        AccountBank(wID: 0, wType: 3, wAccountName: "Nguyen Van C", wBankName: "Techcombank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội"),
     ]
     
     override func viewDidLoad() {
@@ -33,9 +33,9 @@ class ListWalletViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 
-        self.title = NSLocalizedString("WALLET_MANAGER", comment: "")
+        self.title = NSLocalizedString("ACCOUNT_BANK_MANAGER", comment: "")
         
-        self.noWalletLabel.text = NSLocalizedString("NO_WALLET", comment: "")
+        self.noWalletLabel.text = NSLocalizedString("NO_ACCOUNT_BANK", comment: "")
         
         self.addBtn.layer.borderWidth = 1
         self.addBtn.layer.cornerRadius = 8
@@ -62,11 +62,11 @@ class ListWalletViewController: UIViewController {
         
         let alert = UIAlertController(title: "", message: "Lựa chọn", preferredStyle: .actionSheet)
         
-        alert.addAction(UIAlertAction(title: "Sửa thông tin tài khoản ví", style: .default , handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Sửa thông tin tài khoản", style: .default , handler:{ (UIAlertAction)in
             self.editWallet(index: sender.tag)
         }))
         
-        alert.addAction(UIAlertAction(title: "Xóa tài khoản ví", style: .destructive , handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Xóa tài khoản", style: .destructive , handler:{ (UIAlertAction)in
             self.listWallet.removeObject(at: sender.tag)
             self.tableview.reloadData()
             self.tableview.isHidden = self.listWallet.count < 1
@@ -97,7 +97,7 @@ class ListWalletViewController: UIViewController {
     
     func editWallet(index: Int) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ADD_WALLET") as! AddWalletViewController
-        vc.wallet = self.listWallet[index] as! Wallet
+        vc.wallet = self.listWallet[index] as! AccountBank
         vc.hidesBottomBarWhenPushed = true
         
         self.navigationController?.pushViewController(vc, animated: true)
@@ -133,7 +133,7 @@ extension ListWalletViewController: UITableViewDelegate {
                 addNewWallet()
             }
         case .LoanNation:
-            let wallet = self.listWallet[indexPath.row] as! Wallet
+            let wallet = self.listWallet[indexPath.row] as! AccountBank
             let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
             DataManager.shared.loanInfo.walletId = wallet.id!
             self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
@@ -157,7 +157,7 @@ extension ListWalletViewController: UITableViewDataSource {
         
         switch indexPath.section {
         case 0:
-            let item = listWallet[indexPath.row] as! Wallet
+            let item = listWallet[indexPath.row] as! AccountBank
             
             var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? WalletTableViewCell
             if cell == nil {
@@ -166,9 +166,18 @@ extension ListWalletViewController: UITableViewDataSource {
             }
             
             cell?.tag = indexPath.row
-            cell?.avatar.image = UIImage(named: item.walletType == 0 ? "momo" : "paypal")
-            cell?.nameLabel.text = item.walletName
-            cell?.desLabel.text = item.walletNumber
+            
+            switch(BankName(rawValue: item.bankType!))
+            {
+                case .Vietcombank?: cell?.avatar.image = UIImage(named: "vcb_selected")
+                case .Viettinbank?: cell?.avatar.image = UIImage(named: "viettin_selected")
+                case .Techcombank?: cell?.avatar.image = UIImage(named: "tech_selected")
+                case .Agribank?: cell?.avatar.image = UIImage(named: "agri_selected")
+                case .none:
+                    break
+            }
+            cell?.nameLabel.text = item.bankName
+            cell?.desLabel.text = item.accountBankNumber
             cell?.optionBtn.addTarget(self, action: #selector(self.cell_action(sender:)), for: .touchUpInside)
             
             return cell!
