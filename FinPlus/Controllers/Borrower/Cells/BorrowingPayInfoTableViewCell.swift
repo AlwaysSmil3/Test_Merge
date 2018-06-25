@@ -48,7 +48,8 @@ class BorrowingPayInfoTableViewCell: UITableViewCell, UITableViewDataSource, UIT
         if indexPath.row + 1 == 6 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubInfoLastTableViewCell", for: indexPath) as! SubInfoLastTableViewCell
             cell.titleLb.text = "Ngày thanh toán tiếp theo"
-            cell.valueLb.text = tableData.nextDayHaveToPaid.toString()
+            let dateStr = Date().convertDateToDisplayFormat(tableData.nextDayHaveToPaid)
+            cell.valueLb.text = dateStr
             let numberOfDay = 5
             cell.detailLb.text = "Chú ý: Đơn vay này còn \(numberOfDay) ngày nữa đến ngày thanh toán tiếp theo"
             return cell
@@ -76,6 +77,7 @@ class BorrowingPayInfoTableViewCell: UITableViewCell, UITableViewDataSource, UIT
         }
 
     }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row + 1 == 6 {
             return 100

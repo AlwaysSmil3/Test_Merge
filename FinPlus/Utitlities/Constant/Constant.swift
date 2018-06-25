@@ -95,6 +95,9 @@ enum DATA_TYPE_TB_CELL {
     
 }
 
+//Category ID
+let Loan_Student_Category_ID: Int16 = 1 // Id cua vay sinh vien
+
 let API_RESPONSE_RETURN_CODE = "returnCode"
 let API_RESPONSE_RETURN_MESSAGE = "returnMsg"
 let API_RESPONSE_RETURN_DATA = "data"
@@ -108,6 +111,42 @@ let DISABLE_BUTTON_COLOR = UIColor(hexString: "#B8C9D3")
 let TEXT_NORMAL_COLOR = UIColor(hexString: "#4D6678")
 
 let DROP_SHADOW_COLOR = UIColor(hexString: "#00142a")
+
+// Investor color
+// 1. ColorChart
+let POSITIVE1_COLOR = UIColor(hexString: "#218043")
+let POSITIVE2_COLOR = UIColor(hexString: "#3EAA5F")
+let POSITIVE3_COLOR = UIColor(hexString: "#5DC181")
+let POSITIVE4_COLOR = UIColor(hexString: "#94D4AB")
+let POSITIVE5_COLOR = UIColor(hexString: "#B8E6C8")
+
+let NAGATIVE1_COLOR = UIColor(hexString: "#FFD39F")
+let NAGATIVE2_COLOR = UIColor(hexString: "#FFBB6B")
+let NAGATIVE3_COLOR = UIColor(hexString: "#ED8A17")
+let NAGATIVE4_COLOR = UIColor(hexString: "#EB712D")
+let NAGATIVE5_COLOR = UIColor(hexString: "#DA3535")
+
+// 2. Light Theme Color
+let LIGHT_NAVI_COLOR = UIColor(hexString: "#F1F5F8").withAlphaComponent(0.75)
+let LIGHT_BACKGROUND_COLOR = UIColor(hexString: "#F7F7F7")
+let LIGHT_FOREGROUND_COLOR = UIColor(hexString: "#E3EBF0")
+let LIGHT_BODY_TEXT_COLOR = UIColor(hexString: "#08121E")
+let LIGHT_DESCRIPTION_COLOR = UIColor(hexString: "#4D6678")
+let LIGHT_SUBTEXT_COLOR = UIColor(hexString: "#8EA3AF")
+let LIGHT_PLACEHOLDER_COLOR = UIColor(hexString: "#B8C9D3")
+let LIGHT_BORDER_AND_LINE_COLOR = UIColor(hexString: "#E3EBF0")
+
+// 2. Dark Theme Color
+let DARK_NAVI_COLOR = UIColor(hexString: "#070809").withAlphaComponent(0.75)
+let DARK_BACKGROUND_COLOR = UIColor(hexString: "#171B1E")
+let DARK_FOREGROUND_COLOR = UIColor(hexString: "#111416")
+let DARK_BODY_TEXT_COLOR = UIColor(hexString: "#D7D7D7")
+let DARK_DESCRIPTION_COLOR = UIColor(hexString: "#757E87")
+let DARK_SUBTEXT_COLOR = UIColor(hexString: "#54595D")
+let DARK_PLACEHOLDER_COLOR = UIColor(hexString: "#34393D")
+let DARK_BORDER_AND_LINE_COLOR = UIColor(hexString: "#1E2428")
+
+
 
 //MARK: Font
 let FONT_CAPTION = UIFont(name: "SFProDisplay-Semibold", size: 11) ?? UIFont.systemFont(ofSize: 11)

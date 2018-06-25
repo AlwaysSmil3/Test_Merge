@@ -820,6 +820,16 @@ public extension Date {
     func toString() -> String {
         return self.toString(.short, timeStyle: .short, doesRelativeDateFormatting: false)
     }
+    /**
+     A string representation using input format.
+     */
+    func convertDateToDisplayFormat(_ date: Date) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = kDisplayFormat
+        return dateFormatter.string(from: date)
+
+    }
     
     /**
     A string representation based on a format.

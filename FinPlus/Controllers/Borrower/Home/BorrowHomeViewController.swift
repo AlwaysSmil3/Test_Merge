@@ -18,7 +18,6 @@ class BorrowHomeViewController: BaseViewController {
     @IBOutlet var contentLoanView: UIView!
     @IBOutlet var mainCollectionView: UICollectionView!
     
-    var detailLoanView: BrrowerHome?
     
     // Loan status cho các trạng thái của Loan
     var loanStatus: Int = DataManager.shared.browwerInfo?.activeLoan?.status ?? -1 {
@@ -57,7 +56,7 @@ class BorrowHomeViewController: BaseViewController {
     
     private func setupUI() {
         guard let brow = DataManager.shared.browwerInfo else { return }
-        self.lblTitle.text = "Xin chào " + brow.fullName! + "!"
+        self.lblTitle.text = "Xin chào " + (brow.fullName ?? "") + "!"
     }
     
     
@@ -67,90 +66,6 @@ class BorrowHomeViewController: BaseViewController {
 
 }
 
-//MARK: BrowwerHomeDelegate
-
-extension BorrowHomeViewController: BrowwerHomeDelegate {
-    
-    func updateInfo(status: STATUS_LOAN) {
-        guard DataManager.shared.loanCategories.count > 0 else { return }
-        
-        switch status {
-        case .DRAFT:
-            self.updateInfoNeed()
-            break
-            
-        case .INTEREST_CONFIRM:
-            self.acceptedInterestRate()
-            break
-            
-        case .REJECTED:
-            break
-            
-        case .CONTRACT_READY:
-            
-            break
-            
-        case .RAISING_CAPITAL:
-            break
-            
-        case .CANCELED:
-            self.updateInfoNeed()
-            break
-
-        case .SALE_REVIEW:
-            break
-        case .SALE_PENDING:
-            break
-        case .RISK_REVIEW:
-            break
-        case .RISK_PENDING:
-            break
-        case .INTEREST_CONFIRM_EXPIRED:
-            break
-        case .PARTIAL_FILLED:
-            break
-        case .FILLED:
-            break
-        case .EXPIRED:
-            break
-        case .CONTRACT_SIGNED:
-            break
-        case .DISBURSAL:
-            break
-        case .OVERDUE_DEPT:
-            break
-        case .TIMELY_DEPT:
-            break
-        case .OTHER:
-            break
-        }
-
-
- 
-    }
-    
-    
-    func updateInfoNeed() {
-        let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
-        
-        loanFirstVC.hidesBottomBarWhenPushed = true
-        loanFirstVC.loanCategory = DataManager.shared.loanCategories[0]
-        
-        self.navigationController?.pushViewController(loanFirstVC, animated: true)
-    }
-    
-    
-    func acceptedInterestRate() {
-        let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "ConfirmInterestRateVC") as! ConfirmInterestRateVC
-        
-        loanFirstVC.hidesBottomBarWhenPushed = true
-        
-        self.navigationController?.pushViewController(loanFirstVC, animated: true)
-    
-    }
- 
-    
-}
 
 //MARK: UICollectionView Delegate, DataSource
 

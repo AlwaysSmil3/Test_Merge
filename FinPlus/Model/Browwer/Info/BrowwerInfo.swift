@@ -26,6 +26,7 @@ public struct BrowwerInfo {
     static let cic = "cic"
     static let displayName = "displayName"
     static let nationalId = "nationalId"
+    static let createdAt = "createdAt"
   }
 
   // MARK: Properties
@@ -43,6 +44,7 @@ public struct BrowwerInfo {
   public var cic: String?
   public var displayName: String?
   public var nationalId: String?
+    public var createdAt: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -57,20 +59,21 @@ public struct BrowwerInfo {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    phoneNumber = json[SerializationKeys.phoneNumber].string ?? ""
-    gender = json[SerializationKeys.gender].string ?? ""
+    phoneNumber = json[SerializationKeys.phoneNumber].string
+    gender = json[SerializationKeys.gender].string
     contacts = BrowwerContacts(json: json[SerializationKeys.contacts])
     if let items = json[SerializationKeys.works].array { works = items.map { BrowwerWorks(json: $0) } }
     if let items = json[SerializationKeys.wallets].array { wallets = items.map { BrowwerWallets(json: $0) } }
     residence = BrowwerResidence(json: json[SerializationKeys.residence])
     activeLoan = BrowwerActiveLoan(json: json[SerializationKeys.activeLoan])
-    birthday = json[SerializationKeys.birthday].string ?? ""
-    role = json[SerializationKeys.role].string ?? ""
-    fullName = json[SerializationKeys.fullName].string ?? ""
-    id = json[SerializationKeys.id].int32 ?? 0
-    cic = json[SerializationKeys.cic].string ?? ""
-    displayName = json[SerializationKeys.displayName].string ?? ""
-    nationalId = json[SerializationKeys.nationalId].string ?? ""
+    birthday = json[SerializationKeys.birthday].string
+    role = json[SerializationKeys.role].string
+    fullName = json[SerializationKeys.fullName].string
+    id = json[SerializationKeys.id].int32
+    cic = json[SerializationKeys.cic].string
+    displayName = json[SerializationKeys.displayName].string
+    nationalId = json[SerializationKeys.nationalId].string
+    createdAt = json[SerializationKeys.createdAt].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -92,6 +95,7 @@ public struct BrowwerInfo {
     if let value = cic { dictionary[SerializationKeys.cic] = value }
     if let value = displayName { dictionary[SerializationKeys.displayName] = value }
     if let value = nationalId { dictionary[SerializationKeys.nationalId] = value }
+    if let value = createdAt { dictionary[SerializationKeys.createdAt] = value }
     return dictionary
   }
 

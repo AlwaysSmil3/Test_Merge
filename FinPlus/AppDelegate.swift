@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    // Get Token for remote Notification
+    // Get Token for remote Notification (sử dụng fireBase thì k chạy vào đây, lấy token ở fireBase)
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().apnsToken = deviceToken
         
