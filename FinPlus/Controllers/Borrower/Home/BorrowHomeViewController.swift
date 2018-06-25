@@ -56,7 +56,7 @@ class BorrowHomeViewController: BaseViewController {
     
     private func setupUI() {
         guard let brow = DataManager.shared.browwerInfo else { return }
-        self.lblTitle.text = "Xin chào " + brow.fullName! + "!"
+        self.lblTitle.text = "Xin chào " + (brow.fullName ?? "") + "!"
     }
     
     
