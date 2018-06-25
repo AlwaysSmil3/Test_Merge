@@ -229,6 +229,17 @@ class ListLoanViewController: UIViewController {
                     "8MONEY_MONTH" : "280.000đ",
                     "9LOAN_DIS" : "Vay mua điện thoại",
                     ],
+                [
+                    "1PHONE" : "01656229145",
+                    "2LOAN_START" : "8/5/2018",
+                    "3LOAN_MONEY" : "12.000.000đ",
+                    "4LOAN_TIME" : "12 tháng",
+                    "5STATUS" : 19,
+                    "6RATE" : "10%/năm",
+                    "7LOAN_FEE" : "500.000đ",
+                    "8MONEY_MONTH" : "280.000đ",
+                    "9LOAN_DIS" : "Vay mua điện thoại",
+                    ],
             ]
         ],
         [
@@ -356,10 +367,12 @@ extension ListLoanViewController: UITableViewDataSource {
             cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? LoanTableViewCell
         }
         
+        let state = item["5STATUS"] as? Int
+        
         cell?.dateLabel.text = item["2LOAN_START"] as? String
         cell?.statusLabel.text = NSLocalizedString("STATUS", comment: "")
-        cell?.statusValueLabel.text = getState(type: (item["5STATUS"] as? Int)!)
-        cell?.statusValueLabel.textColor = getColorText(type: (item["5STATUS"] as? Int)!)
+        cell?.statusValueLabel.text = getState(type: STATUS_LOAN(rawValue: state!)!)
+        cell?.statusValueLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: state!)!)
         
 //        if ((item["5STATUS"] as? Int) == 0) {
 //            cell?.statusValueLabel.text = "Đã kết thúc"
