@@ -49,7 +49,7 @@ class AddWalletViewController: UIViewController {
         
         self.title = "Thêm tài khoản ngân hàng"
         
-        if ((wallet) != nil)
+        if (wallet != nil)
         {
             self.title = "Sửa tài khoản ngân hàng"
             nameTextField.text = wallet.accountBankName
@@ -65,6 +65,10 @@ class AddWalletViewController: UIViewController {
             case .none:
                 break
             }
+        }
+        else
+        {
+            self.vcbBtn_selected(sender: self.vcbBtn)
         }
     }
 
@@ -116,6 +120,7 @@ class AddWalletViewController: UIViewController {
     func setBorderColor(button: UIButton, isSelect: Bool) {
         if (isSelect)
         {
+            self.nameTextField.placeholder = "Họ và tên tài khoản \(button.title(for: .normal) ?? "")"
             button.layer.borderColor = MAIN_COLOR.cgColor
             button.isSelected = true
         }
