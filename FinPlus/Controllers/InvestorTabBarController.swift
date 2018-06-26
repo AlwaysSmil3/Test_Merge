@@ -43,36 +43,72 @@ class InvestorTabBarController: UITabBarController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: ModeNotificationIdentifier), object: nil, queue: nil, using: { (notification) in
+            self.setupMode()
+        })
 
         let investStoryboard = UIStoryboard.init(name: "Invest", bundle: nil)
+        let sProfile = UIStoryboard.init(name: "Profile", bundle: nil)
 
         let v1 = investStoryboard.instantiateViewController(withIdentifier: "INVEST_NAVI")
         let v2 = investStoryboard.instantiateViewController(withIdentifier: "INVEST_NAVI")
         let v3 = investStoryboard.instantiateViewController(withIdentifier: "INVEST_NAVI")
         let v4 = investStoryboard.instantiateViewController(withIdentifier: "INVEST_NAVI")
-
+        
+        let v5 = sProfile.instantiateViewController(withIdentifier: "PROFILE_NAVI")  as! UINavigationController
+        let vc = v5.topViewController as! ProfileViewController
+        vc.isInvestor = true
+        
         v1.tabBarItem = UITabBarItem(title: NSLocalizedString("LOAN", comment: ""), image: UIImage(named: "ic_tb_brow1"), selectedImage: UIImage(named: "ic_tb_brow1_selected"))
         v2.tabBarItem = UITabBarItem(title: NSLocalizedString("LOAN_MANAGER", comment: ""), image: UIImage(named: "ic_tb_brow2"), selectedImage: UIImage(named: "ic_tb_brow2_selected"))
-        v3.tabBarItem = UITabBarItem(title: NSLocalizedString("WALLET_MANAGER", comment: ""), image: UIImage(named: "ic_tb_brow3"), selectedImage: UIImage(named: "ic_tb_brow3_selected"))
+        v3.tabBarItem = UITabBarItem(title: NSLocalizedString("ACCOUNT_MANAGER", comment: ""), image: UIImage(named: "ic_tb_brow3"), selectedImage: UIImage(named: "ic_tb_brow3_selected"))
         v4.tabBarItem = UITabBarItem(title: NSLocalizedString("NOTIFICATION", comment: ""), image: UIImage(named: "ic_tb_brow4"), selectedImage: UIImage(named: "ic_tb_brow4_selected"))
+        v5.tabBarItem = UITabBarItem(title: NSLocalizedString("BRIEF", comment: ""), image: UIImage(named: "ic_tb_brow4"), selectedImage: UIImage(named: "ic_tb_brow4_selected"))
 
-        self.viewControllers = [v1, v2, v3, v4]
+        self.viewControllers = [v1, v2, v3, v4, v5]
 
         //        for vc in self.viewControllers! {
         //            self.formatTabBarItem(tabBarItem: vc.tabBarItem)
         //        }
+        
         self.onTopIndicator = true
         self.indicatorColor = .clear
+        self.tabBar.isTranslucent = false
         self.tabBar.tintColor = MAIN_COLOR
-
-        if #available(iOS 10.0, *) {
-            self.tabBar.unselectedItemTintColor = BAR_DEFAULT_COLOR
-        } else {
-            // Fallback on earlier versions
+        
+        setupMode()
+    }
+    
+    func setupMode() {
+        let mode = UserDefaults.standard.bool(forKey: APP_MODE)
+        
+        if (mode)
+        {
+            if #available(iOS 10.0, *) {
+                self.tabBar.unselectedItemTintColor = DARK_MODE_MAIN_TEXT_COLOR
+            } else {
+                // Fallback on earlier versions
+            }
+            
+            self.tabBar.backgroundColor = DARK_MODE_BACKGROUND_COLOR
+            self.tabBar.barTintColor = DARK_MODE_BACKGROUND_COLOR
+            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:DARK_MODE_MAIN_TEXT_COLOR], for: .normal)
+            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:MAIN_COLOR], for: .selected)
         }
-        self.tabBar.backgroundColor = .white
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:BAR_DEFAULT_COLOR], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:MAIN_COLOR], for: .selected)
+        else
+        {
+            if #available(iOS 10.0, *) {
+                self.tabBar.unselectedItemTintColor = BAR_DEFAULT_COLOR
+            } else {
+                // Fallback on earlier versions
+            }
+            
+            self.tabBar.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
+            self.tabBar.barTintColor = LIGHT_MODE_BACKGROUND_COLOR
+            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:LIGHT_MODE_MAIN_TEXT_COLOR], for: .normal)
+            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:MAIN_COLOR], for: .selected)
+        }
     }
 
     func formatTabBarItem(tabBarItem: UITabBarItem){

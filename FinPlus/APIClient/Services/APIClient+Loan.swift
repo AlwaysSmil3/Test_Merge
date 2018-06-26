@@ -8,8 +8,8 @@
 
 import Foundation
 
-//let hostLoan = "http://192.168.104.70:31007/"//Loan Service
-let hostLoan = "https://b10644cc-7d66-4541-aa97-770206b05b43.mock.pstmn.io/" //Mock
+let hostLoan = "http://192.168.104.70:31007/"//Loan Service
+//let hostLoan = "https://b10644cc-7d66-4541-aa97-770206b05b43.mock.pstmn.io/" //Mock
 
 extension APIClient {
     

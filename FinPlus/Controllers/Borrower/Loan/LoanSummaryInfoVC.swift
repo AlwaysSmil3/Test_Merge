@@ -33,7 +33,7 @@ class LoanSummaryInfoVC: BaseViewController {
         self.mainTBView.tableFooterView = UIView()
         self.mainTBView.allowsSelection = false
 
-        DataManager.shared.loanInfo.currentStep = 6
+        DataManager.shared.loanInfo.currentStep = 5
         
         self.setupData()
     }
@@ -72,7 +72,7 @@ class LoanSummaryInfoVC: BaseViewController {
     
     private func loan() {
         APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
-            .done(on: DispatchQueue.global()) { [weak self] model in
+            .done(on: DispatchQueue.main) { [weak self] model in
                 DataManager.shared.loanID = model.loanId!
                 
                 let otpVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC

@@ -43,11 +43,16 @@ class InfoInterestRatePopupVC: BasePopup {
 extension InfoInterestRatePopupVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return DataManager.shared.listRateInfo.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Loan_Type_Popup_TB_Cell", for: indexPath) as! LoanTypePopupTBCell
+        
+        let rate = DataManager.shared.listRateInfo[indexPath.row]
+        
+        cell.lblValue?.text = rate.name!
+        cell.lblSubTitle?.text = "Lãi xuất vay \(rate.rate!)%"
         
         return cell
     }
