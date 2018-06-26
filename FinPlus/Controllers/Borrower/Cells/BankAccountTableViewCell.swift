@@ -36,9 +36,19 @@ class BankAccountTableViewCell: UITableViewCell {
         if isSelectedCell == true {
             self.containView.layer.borderColor = MAIN_COLOR.cgColor
             self.selectImg.image = #imageLiteral(resourceName: "ic_radio_on")
+            if cellData.bankType == 1 {
+                self.walletImg.image = #imageLiteral(resourceName: "vcb_selected")
+            } else {
+                self.walletImg.image = #imageLiteral(resourceName: "tech_selected")
+            }
         } else {
             self.selectImg.image = #imageLiteral(resourceName: "ic_radio_off")
             self.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+            if cellData.bankType == 1 {
+                self.walletImg.image = #imageLiteral(resourceName: "vcb")
+            } else {
+                self.walletImg.image = #imageLiteral(resourceName: "tech")
+            }
         }
     }
 
