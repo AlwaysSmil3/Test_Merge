@@ -68,6 +68,10 @@
                     <constraint firstAttribute="bottomMargin" secondItem="bDa-or-or2" secondAttribute="bottom" constant="4" id="zhj-N6-ErE"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lblTitle" destination="LVy-IN-Uvr" id="2ar-eB-qnE"/>
+                <outlet property="tfValue" destination="9vF-bO-VXb" id="V8F-AL-ecL"/>
+            </connections>
             <point key="canvasLocation" x="4.5" y="-146"/>
         </tableViewCell>
     </objects>

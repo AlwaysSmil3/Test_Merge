@@ -109,11 +109,18 @@ class ChoiceKindUserVC: BaseViewController {
 
         self.showAlertView(title: MS_TITLE_ALERT, message: "Bạn chắc chắn muốn trở thành nhà đầu tư?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
             if status {
-                let homeVC = UIStoryboard(name: "HomeInvestor", bundle: nil).instantiateViewController(withIdentifier: "InvestorTabBarController")
+//                let homeVC = UIStoryboard(name: "HomeInvestor", bundle: nil).instantiateViewController(withIdentifier: "InvestorTabBarController")
+//
+//                self.navigationController?.present(homeVC, animated: true, completion: {
+//
+//                })
                 
-                self.navigationController?.present(homeVC, animated: true, completion: {
-                    
-                })
+                let registerInvestor = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "RegisterInvestorVC") as! RegisterInvestorVC
+                registerInvestor.pw = self.pw
+                registerInvestor.accountType = self.accountType
+                
+                self.navigationController?.pushViewController(registerInvestor, animated: true)
+                
             }
         })
 

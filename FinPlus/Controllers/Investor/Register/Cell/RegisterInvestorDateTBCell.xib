@@ -30,8 +30,8 @@
                         <color key="textColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giới tính của bạn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzH-lJ-tZj">
-                        <rect key="frame" x="16" y="35" width="118.5" height="67"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày sinh của bạn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzH-lJ-tZj">
+                        <rect key="frame" x="16" y="35" width="131" height="67"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                         <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -46,16 +46,18 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QH-nB-az0">
                         <rect key="frame" x="16" y="15" width="343" height="13.5"/>
                         <attributedString key="attributedText">
-                            <fragment content="Giới tính ">
+                            <fragment content="Ngày sinh ">
                                 <attributes>
                                     <color key="NSColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                     <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
                             <fragment content="*">
                                 <attributes>
                                     <color key="NSColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
                         </attributedString>
@@ -77,6 +79,10 @@
                     <constraint firstItem="xMR-1G-NZY" firstAttribute="trailing" secondItem="4QH-nB-az0" secondAttribute="trailing" id="x4J-0b-OnM"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lblTitle" destination="4QH-nB-az0" id="Tk4-RR-fgt"/>
+                <outlet property="lblValue" destination="uzH-lJ-tZj" id="i3v-g3-Vcp"/>
+            </connections>
             <point key="canvasLocation" x="15.5" y="-18"/>
         </tableViewCell>
     </objects>

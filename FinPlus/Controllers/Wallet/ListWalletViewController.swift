@@ -11,6 +11,12 @@ import UIKit
 enum WalletAction {
     case WalletDetail
     case LoanNation
+    case RegisterInvestor
+}
+
+//CaoHai tra ve du lieu bank khi chon bank
+protocol BankDataDelegate {
+    func getBankAccountData(bank: AccountBank)
 }
 
 class ListWalletViewController: UIViewController {
@@ -23,10 +29,13 @@ class ListWalletViewController: UIViewController {
     var walletAction: WalletAction = .WalletDetail
     let cellIdentifier = "cell"
     private var listWallet: NSMutableArray = [
-        AccountBank(wID: 0, wType: 1, wAccountName: "Nguyen Van A", wBankName: "Vietcombank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội"),
-        AccountBank(wID: 0, wType: 2, wAccountName: "Nguyen Van B", wBankName: "Viettinbank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội"),
-        AccountBank(wID: 0, wType: 3, wAccountName: "Nguyen Van C", wBankName: "Techcombank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội"),
+        AccountBank(wID: 0, wType: 1, wAccountName: "Nguyen Van A", wBankName: "Vietcombank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "vcb_selected")),
+        AccountBank(wID: 0, wType: 2, wAccountName: "Nguyen Van B", wBankName: "Viettinbank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "viettin_selected")),
+        AccountBank(wID: 0, wType: 3, wAccountName: "Nguyen Van C", wBankName: "Techcombank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "tech_selected")),
     ]
+    
+    //CaoHai tra ve du lieu bank khi chon bank
+    var delegate: BankDataDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,7 +150,17 @@ extension ListWalletViewController: UITableViewDelegate {
             let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
             DataManager.shared.loanInfo.walletId = wallet.id!
             self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
+            
+        case .RegisterInvestor:
+            //Cho đăng ký làm nhà đầu tư
+            guard let bank = self.listWallet[indexPath.row] as? AccountBank else { return }
+            self.delegate?.getBankAccountData(bank: bank)
+            self.navigationController?.popViewController(animated: true)
+            break
         }
+        
+        
+        
     }
     
 }

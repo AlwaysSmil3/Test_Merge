@@ -6,10 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
         <array key="SF-Pro-Display-Semibold.otf">
             <string>SFProDisplay-Semibold</string>
         </array>
@@ -32,9 +36,34 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZc-af-Eqy" customClass="AnimatableView" customModule="IBAnimatable">
                         <rect key="frame" x="16" y="67" width="343" height="56"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_wallet" translatesAutoresizingMaskIntoConstraints="NO" id="FeJ-zM-aIh">
+                                <rect key="frame" x="11" y="8" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="QJn-9C-bZP"/>
+                                    <constraint firstAttribute="width" secondItem="FeJ-zM-aIh" secondAttribute="height" multiplier="1:1" id="d8v-Js-dTp"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thêm tài khoản ngân hàng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6u-md-0ZX">
+                                <rect key="frame" x="59" y="18" width="188.5" height="21"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                <color key="textColor" red="0.031372549019607843" green="0.070588235294117646" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_disclosureIndicator1" translatesAutoresizingMaskIntoConstraints="NO" id="LQ7-OW-Alm">
+                                <rect key="frame" x="327" y="22" width="8" height="13"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="FeJ-zM-aIh" firstAttribute="centerY" secondItem="kZc-af-Eqy" secondAttribute="centerY" id="BSX-g4-1NC"/>
+                            <constraint firstItem="LQ7-OW-Alm" firstAttribute="centerY" secondItem="B6u-md-0ZX" secondAttribute="centerY" id="HjS-W9-NFd"/>
                             <constraint firstAttribute="height" constant="56" id="MhM-gE-bOV"/>
+                            <constraint firstItem="FeJ-zM-aIh" firstAttribute="leading" secondItem="kZc-af-Eqy" secondAttribute="leading" constant="11" id="Mvr-6Y-o8q"/>
+                            <constraint firstAttribute="trailing" secondItem="LQ7-OW-Alm" secondAttribute="trailing" constant="8" id="RZh-o7-svM"/>
+                            <constraint firstItem="B6u-md-0ZX" firstAttribute="leading" secondItem="FeJ-zM-aIh" secondAttribute="trailing" constant="8" id="Vlh-rl-jhX"/>
+                            <constraint firstItem="LQ7-OW-Alm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="B6u-md-0ZX" secondAttribute="trailing" id="p0z-aU-Glg"/>
+                            <constraint firstItem="B6u-md-0ZX" firstAttribute="centerY" secondItem="kZc-af-Eqy" secondAttribute="centerY" id="qaP-TQ-UjI"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -59,7 +88,17 @@
                     <constraint firstItem="kZc-af-Eqy" firstAttribute="leading" secondItem="J4i-EX-6v4" secondAttribute="leading" constant="16" id="lbK-zl-xq9"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="icDisclosure" destination="LQ7-OW-Alm" id="jC0-Qj-NSo"/>
+                <outlet property="imgIcon" destination="FeJ-zM-aIh" id="2I1-1c-AzI"/>
+                <outlet property="lblTitle" destination="eCV-D5-5NF" id="s4c-XY-Ql4"/>
+                <outlet property="lblValue" destination="B6u-md-0ZX" id="Ebi-ZJ-TOX"/>
+            </connections>
             <point key="canvasLocation" x="170.5" y="16"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="add_wallet" width="30" height="30"/>
+        <image name="ic_disclosureIndicator1" width="8" height="13"/>
+    </resources>
 </document>
