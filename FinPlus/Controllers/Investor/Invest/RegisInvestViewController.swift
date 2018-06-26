@@ -8,10 +8,11 @@
 
 import UIKit
 
-class RegisInvestViewController: UIViewController, UITextViewDelegate {
+class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelectedFromPopupProtocol {
 
     @IBOutlet weak var acceptTv: UITextView!
     var isAcceptPolicy = false
+    var investDetail : DemoLoanModel!
     // @IBOutlet weak var acceptPolicyLb: UILabel!
     @IBOutlet weak var acceptPolicyBtn: UIButton!
     @IBOutlet weak var containView: UIView!
@@ -45,6 +46,23 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate {
         // acceptPolicyLb.attributedText = myMutableString
 
         // Do any additional setup after loading the view.
+    }
+
+    @IBAction func btnDropdownTapped(_ sender: Any) {
+//        guard let field_ = self.field, let data = field_.data else { return }
+        let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
+//        popup.setDataSource(data: data)
+        popup.delegate = self
+
+        popup.show()
+    }
+
+    //MARK: Data Selected
+    func dataSelected(data: LoanBuilderData) {
+
+//        self.lblTypeRelation?.text = data.title!
+//        self.tfValue?.placeholder = "Số điện thoại của " + data.title!
+//        DataManager.shared.loanInfo.userInfo.relationships.type = data.id!
     }
 
     @available(iOS 10.0, *)

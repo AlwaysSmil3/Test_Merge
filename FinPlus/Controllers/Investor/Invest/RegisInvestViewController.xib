@@ -48,7 +48,23 @@
                     <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4.000.000đ (4 note)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CeA-rb-mZa">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_down_green" translatesAutoresizingMaskIntoConstraints="NO" id="8HB-Pa-Lw1">
+                    <rect key="frame" x="355" y="59" width="12" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="12" id="5z8-vx-jsO"/>
+                        <constraint firstAttribute="height" constant="16" id="spO-Du-SPD"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNF-BW-RbN">
+                    <rect key="frame" x="16" y="57" width="351" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="4g6-iD-SCJ"/>
+                    </constraints>
+                    <connections>
+                        <action selector="btnDropdownTapped:" destination="-1" eventType="touchUpInside" id="d9z-No-Pbz"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4.000.000đ (4 note)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CeA-rb-mZa">
                     <rect key="frame" x="16" y="57" width="331" height="21"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
@@ -61,13 +77,6 @@
                         <constraint firstAttribute="height" constant="1" id="CWH-yn-pz8"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_down_green" translatesAutoresizingMaskIntoConstraints="NO" id="8HB-Pa-Lw1">
-                    <rect key="frame" x="355" y="59.5" width="12" height="16"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="12" id="5z8-vx-jsO"/>
-                        <constraint firstAttribute="height" constant="16" id="spO-Du-SPD"/>
-                    </constraints>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chi tiết đầu tư" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2al-8p-NQl">
                     <rect key="frame" x="16" y="103" width="351" height="13"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="11"/>
@@ -328,6 +337,7 @@
                 <constraint firstItem="AfG-yb-gKl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="8OV-ON-HKf"/>
                 <constraint firstItem="9pg-6O-vAX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ALF-7V-Wg1"/>
                 <constraint firstItem="QjJ-3Z-nQK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="CAM-nF-qPY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xNF-BW-RbN" secondAttribute="trailing" constant="8" id="DHm-wo-2iu"/>
                 <constraint firstItem="smo-4R-ILO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="GC4-Mf-9hz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2al-8p-NQl" secondAttribute="trailing" constant="8" id="HYy-dP-FTs"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9pg-6O-vAX" secondAttribute="trailing" constant="16" id="HyU-xw-doX"/>
@@ -335,6 +345,8 @@
                 <constraint firstItem="QjJ-3Z-nQK" firstAttribute="top" secondItem="2al-8p-NQl" secondAttribute="bottom" constant="8" id="JZk-zA-ykz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MgM-2f-74Y" secondAttribute="trailing" constant="8" id="KV3-Xm-qeL"/>
                 <constraint firstItem="CeA-rb-mZa" firstAttribute="top" secondItem="MgM-2f-74Y" secondAttribute="bottom" constant="8" id="MJE-58-snt"/>
+                <constraint firstItem="xNF-BW-RbN" firstAttribute="top" secondItem="MgM-2f-74Y" secondAttribute="bottom" constant="8" id="Tm4-2p-zYk"/>
+                <constraint firstItem="xNF-BW-RbN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="WwO-z9-O88"/>
                 <constraint firstItem="qIa-WN-Kpn" firstAttribute="top" secondItem="QjJ-3Z-nQK" secondAttribute="bottom" constant="10" id="d9B-Rx-EfC"/>
                 <constraint firstItem="MgM-2f-74Y" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="dZb-qL-5iI"/>
                 <constraint firstItem="CeA-rb-mZa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="hDX-hm-PIX"/>
