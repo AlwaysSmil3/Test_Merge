@@ -9,6 +9,10 @@
 import Foundation
 import FBSDKLoginKit
 
+protocol FacebookInfoDelegate {
+    func getFacebookInfo(info: FacebookInfo)
+}
+
 class VerifyFacebookVC: BaseViewController {
     
     // facebook Info
@@ -23,6 +27,8 @@ class VerifyFacebookVC: BaseViewController {
         super.viewDidLoad()
         
     }
+    
+    var delegate: FacebookInfoDelegate?
     
     // Pasre Facebook Data Info
     private func getFaceBookInfoData(data: FacebookDataType) {
@@ -52,6 +58,13 @@ class VerifyFacebookVC: BaseViewController {
             if error == nil {
                 guard let data = data else { return }
                 self.getFaceBookInfoData(data: data)
+                
+                if let type = self.accountType, type.rawValue == 1, let info = self.faceBookInfo {
+                    //Investor
+                    self.delegate?.getFacebookInfo(info: info)
+                    self.navigationController?.popViewController(animated: true)
+                    return
+                }
                 
                 guard let fbInfo = self.faceBookInfo, let pass = self.pw else { return }
                 

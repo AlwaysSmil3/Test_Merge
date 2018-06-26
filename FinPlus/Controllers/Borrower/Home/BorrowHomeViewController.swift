@@ -81,7 +81,8 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
         
         let model = DataManager.shared.loanCategories[indexPath.row]
         
-        let url = URL(string: model.imageUrl!)
+        let urlString = hostLoan + model.imageUrl!
+        let url = URL(string: urlString)
         cell.imgIcon.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic_homeBrower_group1"))
         cell.lblName.text = model.title!
         cell.lblDistanceAmount.text = "\(model.min! / MONEY_TERM_DISPLAY)-\(model.max! / MONEY_TERM_DISPLAY) triệu"
