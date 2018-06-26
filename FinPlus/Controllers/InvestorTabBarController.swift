@@ -93,8 +93,8 @@ class InvestorTabBarController: UITabBarController {
             
             self.tabBar.backgroundColor = DARK_MODE_BACKGROUND_COLOR
             self.tabBar.barTintColor = DARK_MODE_BACKGROUND_COLOR
-            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:DARK_MODE_MAIN_TEXT_COLOR], for: .normal)
-            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:MAIN_COLOR], for: .selected)
+            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:DARK_MODE_MAIN_TEXT_COLOR, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 11)], for: .normal)
+            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:MAIN_COLOR, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 11)], for: .selected)
         }
         else
         {
@@ -106,8 +106,8 @@ class InvestorTabBarController: UITabBarController {
             
             self.tabBar.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
             self.tabBar.barTintColor = LIGHT_MODE_BACKGROUND_COLOR
-            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:LIGHT_MODE_MAIN_TEXT_COLOR], for: .normal)
-            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:MAIN_COLOR], for: .selected)
+            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:LIGHT_MODE_MAIN_TEXT_COLOR, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 11)], for: .normal)
+            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:MAIN_COLOR, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 11)], for: .selected)
         }
     }
 
