@@ -46,7 +46,7 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         
         if id.contains("residentAddress") {
             if let add = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.residentAddress, let city = add.city, let district = add.district, let commune = add.commune {
-                let addr = String(format: "%@ , %@, %@", [commune, district, city])
+                let addr = String(format: "%@ , %@, %@", commune, district, city)
                 self.lblValue?.text = addr
                 let address = Address(city: city, district: district, commune: commune, street: "", zipCode: "", long: 0, lat: 0)
                 DataManager.shared.loanInfo.userInfo.residentAddress = address
@@ -58,7 +58,7 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             
         } else if id.contains("currentAddress") {
             if let add = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.currentAddress, let city = add.city, let district = add.district, let commune = add.commune {
-                let addr = String(format: "%@ , %@, %@", [commune, district, city])
+                let addr = String(format: "%@ , %@, %@", commune, district, city)
                 self.lblValue?.text = addr
                 let address = Address(city: city, district: district, commune: commune, street: "", zipCode: "", long: 0, lat: 0)
                 DataManager.shared.loanInfo.userInfo.temporaryAddress = address
@@ -70,7 +70,7 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             
         } else if id.contains("address") {
             if let add = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.address, let city = add.city, let district = add.district, let commune = add.commune {
-                let addr = String(format: "%@ , %@, %@", [commune, district, city])
+                let addr = String(format: "%@ , %@, %@", commune, district, city)
                 self.lblValue?.text = addr
                 let address = Address(city: city, district: district, commune: commune, street: "", zipCode: "", long: 0, lat: 0)
                 DataManager.shared.loanInfo.jobInfo.address = address

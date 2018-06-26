@@ -34,19 +34,21 @@ public struct AccountBank {
   public var id: Int32?
   public var bankType: Int?
   public var district: String?
+    public var icon: UIImage?
 
     // MARK: SwiftyJSON manual
     /// Initiates the instance based on the object.
     ///
     /// - parameter object: The object of either Dictionary or Array kind that was passed.
     /// - returns: An initialized instance of the class.
-    public init(wID: Int32, wType: Int, wAccountName: String, wBankName: String, wNumber: String, wDistrict: String) {
+    public init(wID: Int32, wType: Int, wAccountName: String, wBankName: String, wNumber: String, wDistrict: String , wIcon: UIImage? = nil) {
         accountBankName = wAccountName
         accountBankNumber = wNumber
         bankName = wBankName
         id = wID
         bankType = wType
         district = wDistrict
+        icon = wIcon
     }
     
   // MARK: SwiftyJSON Initializers

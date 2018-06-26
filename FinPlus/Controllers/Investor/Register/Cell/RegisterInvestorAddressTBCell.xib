@@ -43,7 +43,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4i-LF-oaH">
                         <rect key="frame" x="16" y="15" width="343" height="13.5"/>
                         <attributedString key="attributedText">
-                            <fragment content="Địa chỉ nhà thường chú ">
+                            <fragment content="Địa chỉ nhà ">
                                 <attributes>
                                     <color key="NSColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                     <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
@@ -76,6 +76,10 @@
                     <constraint firstItem="wsT-8W-IC7" firstAttribute="trailing" secondItem="E4i-LF-oaH" secondAttribute="trailing" id="yKW-yo-iGD"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lblTitle" destination="E4i-LF-oaH" id="3p3-gU-Wmr"/>
+                <outlet property="lblValue" destination="VsI-0R-LRn" id="DTm-jA-CB1"/>
+            </connections>
             <point key="canvasLocation" x="-72.5" y="-22.5"/>
         </tableViewCell>
     </objects>

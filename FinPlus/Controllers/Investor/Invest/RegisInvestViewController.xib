@@ -25,7 +25,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisInvestViewController" customModule="FinPlus" customModuleProvider="target">
             <connections>
                 <outlet property="acceptPolicyBtn" destination="AfG-yb-gKl" id="k8p-Hd-wts"/>
-                <outlet property="acceptPolicyLb" destination="Orv-P8-BxH" id="1P3-N2-88S"/>
+                <outlet property="acceptTv" destination="qIa-WN-Kpn" id="SJG-xh-6t3"/>
                 <outlet property="amountTf" destination="CeA-rb-mZa" id="nF4-FC-utH"/>
                 <outlet property="containView" destination="QjJ-3Z-nQK" id="J6M-Uj-IA0"/>
                 <outlet property="interestAmount" destination="6dt-TC-Det" id="CL0-dD-8SN"/>
@@ -281,22 +281,26 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfG-yb-gKl">
-                    <rect key="frame" x="16" y="400" width="14" height="14"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Tôi đã hiểu và đồng ý với hợp đồng đầu tư." translatesAutoresizingMaskIntoConstraints="NO" id="qIa-WN-Kpn">
+                    <rect key="frame" x="30" y="394" width="337" height="20"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="14" id="WQr-bf-BDX"/>
-                        <constraint firstAttribute="height" constant="14" id="ygq-Ia-WEQ"/>
+                        <constraint firstAttribute="height" constant="20" id="bhX-Zp-U0J"/>
                     </constraints>
+                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfG-yb-gKl">
+                    <rect key="frame" x="8" y="392" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="WQr-bf-BDX"/>
+                        <constraint firstAttribute="height" constant="30" id="ygq-Ia-WEQ"/>
+                    </constraints>
+                    <state key="normal" image="ic_accept_policy"/>
                     <connections>
                         <action selector="acceptPolicyBtnAction:" destination="-1" eventType="touchUpInside" id="nmA-YW-zPD"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tôi đã hiểu và đồng ý với hợp đồng đầu tư." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Orv-P8-BxH">
-                    <rect key="frame" x="38" y="398" width="329" height="18"/>
-                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smo-4R-ILO">
                     <rect key="frame" x="16" y="432" width="343" height="44"/>
                     <color key="backgroundColor" red="0.23137254901960785" green="0.6705882352941176" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
@@ -321,25 +325,25 @@
             <constraints>
                 <constraint firstItem="8HB-Pa-Lw1" firstAttribute="centerY" secondItem="CeA-rb-mZa" secondAttribute="centerY" id="3OZ-I9-9cA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="smo-4R-ILO" secondAttribute="trailing" constant="16" id="7kn-yi-FR3"/>
-                <constraint firstItem="AfG-yb-gKl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="8OV-ON-HKf"/>
+                <constraint firstItem="AfG-yb-gKl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="8OV-ON-HKf"/>
                 <constraint firstItem="9pg-6O-vAX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ALF-7V-Wg1"/>
                 <constraint firstItem="QjJ-3Z-nQK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="CAM-nF-qPY"/>
                 <constraint firstItem="smo-4R-ILO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="GC4-Mf-9hz"/>
-                <constraint firstItem="smo-4R-ILO" firstAttribute="top" secondItem="Orv-P8-BxH" secondAttribute="bottom" constant="16" id="H29-NT-c7q"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2al-8p-NQl" secondAttribute="trailing" constant="8" id="HYy-dP-FTs"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9pg-6O-vAX" secondAttribute="trailing" constant="16" id="HyU-xw-doX"/>
-                <constraint firstItem="Orv-P8-BxH" firstAttribute="top" secondItem="QjJ-3Z-nQK" secondAttribute="bottom" constant="14" id="IbW-eu-fRN"/>
                 <constraint firstItem="2al-8p-NQl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="IsI-ij-ac8"/>
                 <constraint firstItem="QjJ-3Z-nQK" firstAttribute="top" secondItem="2al-8p-NQl" secondAttribute="bottom" constant="8" id="JZk-zA-ykz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MgM-2f-74Y" secondAttribute="trailing" constant="8" id="KV3-Xm-qeL"/>
                 <constraint firstItem="CeA-rb-mZa" firstAttribute="top" secondItem="MgM-2f-74Y" secondAttribute="bottom" constant="8" id="MJE-58-snt"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Orv-P8-BxH" secondAttribute="trailing" constant="8" id="Shp-Uk-PkS"/>
+                <constraint firstItem="qIa-WN-Kpn" firstAttribute="top" secondItem="QjJ-3Z-nQK" secondAttribute="bottom" constant="10" id="d9B-Rx-EfC"/>
                 <constraint firstItem="MgM-2f-74Y" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="dZb-qL-5iI"/>
                 <constraint firstItem="CeA-rb-mZa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="hDX-hm-PIX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qIa-WN-Kpn" secondAttribute="trailing" constant="8" id="hIh-g4-SN8"/>
                 <constraint firstItem="8HB-Pa-Lw1" firstAttribute="leading" secondItem="CeA-rb-mZa" secondAttribute="trailing" constant="8" id="mfR-CY-RAU"/>
-                <constraint firstItem="AfG-yb-gKl" firstAttribute="top" secondItem="QjJ-3Z-nQK" secondAttribute="bottom" constant="16" id="oLd-Gw-Rez"/>
+                <constraint firstItem="smo-4R-ILO" firstAttribute="top" secondItem="AfG-yb-gKl" secondAttribute="bottom" constant="10" id="nWQ-Ba-Y59"/>
+                <constraint firstItem="AfG-yb-gKl" firstAttribute="top" secondItem="QjJ-3Z-nQK" secondAttribute="bottom" constant="8" id="oLd-Gw-Rez"/>
                 <constraint firstItem="MgM-2f-74Y" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="p6V-iK-omT"/>
-                <constraint firstItem="Orv-P8-BxH" firstAttribute="leading" secondItem="AfG-yb-gKl" secondAttribute="trailing" constant="8" id="pu1-kC-Xte"/>
+                <constraint firstItem="qIa-WN-Kpn" firstAttribute="leading" secondItem="AfG-yb-gKl" secondAttribute="trailing" constant="-8" id="uJf-oP-hIh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QjJ-3Z-nQK" secondAttribute="trailing" constant="16" id="vLJ-Nu-MrZ"/>
                 <constraint firstItem="9pg-6O-vAX" firstAttribute="top" secondItem="CeA-rb-mZa" secondAttribute="bottom" constant="8" id="vMR-jH-IDF"/>
                 <constraint firstItem="2al-8p-NQl" firstAttribute="top" secondItem="9pg-6O-vAX" secondAttribute="bottom" constant="16" id="wwJ-A1-iON"/>
@@ -350,6 +354,7 @@
         </view>
     </objects>
     <resources>
+        <image name="ic_accept_policy" width="14" height="14"/>
         <image name="ic_down_green" width="8" height="5"/>
     </resources>
 </document>

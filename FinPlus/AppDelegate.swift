@@ -128,8 +128,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupStartVC() {
         // lionel fix to test
-//        let testBorrowingPayVC = TestBorrowingPayViewController(nibName: "TestBorrowingPayViewController", bundle: nil)
-//        self.window?.rootViewController = testBorrowingPayVC
+//        let investorWaitingVC = InvestorSignupWaitingViewController(nibName: "InvestorSignupWaitingViewController", bundle: nil)
+//        self.window?.rootViewController = investorWaitingVC
 //        return
         // end
         let isFirstLaunch = UserDefaults.isFirstLaunch()
