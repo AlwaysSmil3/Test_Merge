@@ -33,7 +33,7 @@ class LoanSummaryInfoVC: BaseViewController {
         self.mainTBView.tableFooterView = UIView()
         self.mainTBView.allowsSelection = false
 
-        DataManager.shared.loanInfo.currentStep = 6
+        DataManager.shared.loanInfo.currentStep = 5
         
         self.setupData()
     }

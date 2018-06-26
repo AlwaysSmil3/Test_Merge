@@ -56,6 +56,7 @@
 		632FD02120AAC3CC00D9399C /* APIResponseGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */; };
 		632FD02420AADF3C00D9399C /* VerifyAuthenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */; };
 		632FD02620AAE15800D9399C /* ExString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02520AAE15800D9399C /* ExString.swift */; };
+		633415B220E1D6E8004B95C0 /* RateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633415B120E1D6E8004B95C0 /* RateInfo.swift */; };
 		6334891C20C635BA00C95931 /* HomeBrowwer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334891B20C635BA00C95931 /* HomeBrowwer.swift */; };
 		6334891E20C639ED00C95931 /* HomeBrowerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334891D20C639ED00C95931 /* HomeBrowerCollectionCell.swift */; };
 		6334B60B20DA3E8F009960A5 /* LoanTypeBaseTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334B60A20DA3E8E009960A5 /* LoanTypeBaseTBCell.swift */; };
@@ -364,6 +365,7 @@
 		632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponseGeneral.swift; sourceTree = "<group>"; };
 		632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyAuthenData.swift; sourceTree = "<group>"; };
 		632FD02520AAE15800D9399C /* ExString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExString.swift; sourceTree = "<group>"; };
+		633415B120E1D6E8004B95C0 /* RateInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateInfo.swift; sourceTree = "<group>"; };
 		6334891B20C635BA00C95931 /* HomeBrowwer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBrowwer.swift; sourceTree = "<group>"; };
 		6334891D20C639ED00C95931 /* HomeBrowerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBrowerCollectionCell.swift; sourceTree = "<group>"; };
 		6334B60A20DA3E8E009960A5 /* LoanTypeBaseTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanTypeBaseTBCell.swift; sourceTree = "<group>"; };
@@ -667,6 +669,7 @@
 		630467C020B5474F0069469A /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				633415B120E1D6E8004B95C0 /* RateInfo.swift */,
 				84D73FFC20D0BC5600770FB5 /* Faq.swift */,
 				84D73FFD20D0BC5600770FB5 /* LoanStatus.swift */,
 				630467C120B5474F0069469A /* Version.swift */,
@@ -1921,6 +1924,7 @@
 				635B5E0A20B6B3E800F02132 /* LoanJobInfo.swift in Sources */,
 				E7F51A0920CE5AA700F72682 /* ChangePWViewController.swift in Sources */,
 				84114BD920D79A6F005026DF /* TestPayHistoryViewController.swift in Sources */,
+				633415B220E1D6E8004B95C0 /* RateInfo.swift in Sources */,
 				E7BC259320CFDACA001FF0F4 /* KaedeTextField.swift in Sources */,
 				6387D11B20D9008F008AC08C /* LoanTypeOptionalMediaTBCell.swift in Sources */,
 				633AF9B720A98A7D00BAE2BB /* SetPassAuthenVC.swift in Sources */,

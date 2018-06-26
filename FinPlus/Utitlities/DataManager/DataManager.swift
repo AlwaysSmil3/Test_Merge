@@ -39,6 +39,9 @@ class DataManager {
     //Data from LoanBuilder json
     var loanBuilder: [LoanBuilderBase] = []
     
+    //List Lãi xuất dự kiến
+    var listRateInfo: [RateInfo] = []
+    
     
     /// Get Data from JSON
     func getDataLoanFromJSON() {
