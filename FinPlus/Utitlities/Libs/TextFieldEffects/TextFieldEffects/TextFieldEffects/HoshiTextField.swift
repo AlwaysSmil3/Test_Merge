@@ -24,6 +24,26 @@ import UIKit
     }
     
     /**
+     disable animation
+     */
+    
+    @IBInspectable dynamic open var disableEffect: Bool = true {
+        didSet {
+            updatePlaceholder()
+        }
+    }
+    
+    /**
+     headerText
+     */
+    
+    @IBInspectable dynamic open var headerText: String? {
+        didSet {
+            updatePlaceholder()
+        }
+    }
+    
+    /**
      The color of the border when it has content.
      
      This property applies a color to the lower edge of the control. The default value for this property is a clear color.
@@ -69,7 +89,7 @@ import UIKit
         }
     }
     
-    private let borderThickness: (active: CGFloat, inactive: CGFloat) = (active: 0.8, inactive: 0.5)
+    private let borderThickness: (active: CGFloat, inactive: CGFloat) = (active: 2, inactive: 0.5)
     private let placeholderInsets = CGPoint(x: 0, y: 6)
     private let textFieldInsets = CGPoint(x: 0, y: 12)
     private let inactiveBorderLayer = CALayer()
@@ -93,7 +113,7 @@ import UIKit
     }
     
     override open func animateViewsForTextEntry() {
-        if text!.isEmpty {
+        if text!.isEmpty && !self.disableEffect {
             UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .beginFromCurrentState, animations: ({
                 self.placeholderLabel.frame.origin = CGPoint(x: 10, y: self.placeholderLabel.frame.origin.y)
                 self.placeholderLabel.alpha = 0
@@ -136,7 +156,7 @@ import UIKit
     }
     
     private func updatePlaceholder() {
-        placeholderLabel.text = placeholder
+        placeholderLabel.text = self.disableEffect ? headerText : placeholder
         placeholderLabel.textColor = placeholderColor
         placeholderLabel.sizeToFit()
         layoutPlaceholderInTextRect()
@@ -170,13 +190,24 @@ import UIKit
         default:
             break
         }
-        placeholderLabel.frame = CGRect(x: originX, y: textRect.height/2,
-            width: placeholderLabel.bounds.width, height: placeholderLabel.bounds.height)
+        
+        placeholderLabel.frame = CGRect(x: originX, y: textRect.height/2, width: placeholderLabel.bounds.width, height: placeholderLabel.bounds.height)
         activePlaceholderPoint = CGPoint(x: placeholderLabel.frame.origin.x, y: placeholderLabel.frame.origin.y - placeholderLabel.frame.size.height - placeholderInsets.y)
-
+        
+        if (self.disableEffect)
+        {
+            placeholderLabel.frame.origin = activePlaceholderPoint
+        }
     }
     
     // MARK: - Overrides
+    
+    override open func drawPlaceholder(in rect: CGRect) {
+        // Don't draw any placeholders
+        if self.disableEffect {
+            super.drawPlaceholder(in: rect)
+        }
+    }
     
     override open func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.offsetBy(dx: textFieldInsets.x, dy: textFieldInsets.y)
