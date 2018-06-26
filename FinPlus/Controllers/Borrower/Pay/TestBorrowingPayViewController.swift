@@ -10,9 +10,9 @@ import UIKit
 
 public struct BorrowingInfoBasicData {
     public var contractCode: String!
-    public var loanMoney : Double = 0
+    public var loanMoney : Float = 0
     public var expireAmountTime : Int = 0
-    public var inerestPerMonth : Double = 0
+    public var inerestPerMonth : Float = 0
     public var numberOfMonthPaid : Int = 0
     public var nextDayHaveToPaid : Date
 }
@@ -21,10 +21,10 @@ public class PayType {
     public var id : Int = 0
     public var typeTitle : String!
     public var expireDate : Date
-    public var originAmount : Double = 0
-    public var interestAmount : Double = 0
-    public var sumAmount : Double = 0
-    init(id: Int, typeTitle: String, expireDate: Date, originAmount: Double, interestAmount: Double, sumAmount: Double) {
+    public var originAmount : Float = 0
+    public var interestAmount : Float = 0
+    public var sumAmount : Float = 0
+    init(id: Int, typeTitle: String, expireDate: Date, originAmount: Float, interestAmount: Float, sumAmount: Float) {
         self.id = id
         self.typeTitle = typeTitle
         self.expireDate = expireDate
@@ -37,11 +37,11 @@ public class PayType {
 public class PayAllBefore {
     public var id : Int = 0
     public var typeTitle : String = ""
-    public var originAmount : Double = 0
-    public var interestAmount : Double = 0
-    public var feeToPayBefore : Double = 0
-    public var sumAmount : Double = 0
-    init(id: Int, typeTitle: String, originAmount: Double, interestAmount: Double, feeToPayBefore: Double, sumAmount: Double) {
+    public var originAmount : Float = 0
+    public var interestAmount : Float = 0
+    public var feeToPayBefore : Float = 0
+    public var sumAmount : Float = 0
+    init(id: Int, typeTitle: String, originAmount: Float, interestAmount: Float, feeToPayBefore: Float, sumAmount: Float) {
         self.id = id
         self.typeTitle = typeTitle
         self.originAmount = originAmount
