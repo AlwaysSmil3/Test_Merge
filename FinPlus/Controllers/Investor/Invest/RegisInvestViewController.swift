@@ -23,6 +23,7 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
     @IBOutlet weak var interestLb: UILabel!
     @IBOutlet weak var sumAmountLb: UILabel!
     @IBOutlet weak var amountTf: UITextField!
+    let unit : Int = 1000000
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Đăng ký đầu tư"
@@ -42,7 +43,17 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
         acceptTv.delegate = self
         acceptTv.isSelectable = true
         acceptTv.isEditable = false
-
+        let avaiableAmount = investDetail.amount - (investDetail.alreadyAmount / 100 * investDetail.amount)
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        var avaiableAmountStr = ""
+        if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
+            avaiableAmountStr = formattedTipAmount
+        } else {
+            avaiableAmountStr = avaiableAmount.toString()
+        }
+        self.amountTf.text = avaiableAmountStr
         // acceptPolicyLb.attributedText = myMutableString
 
         // Do any additional setup after loading the view.
@@ -51,18 +62,48 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
     @IBAction func btnDropdownTapped(_ sender: Any) {
 //        guard let field_ = self.field, let data = field_.data else { return }
         let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
-//        popup.setDataSource(data: data)
-        popup.delegate = self
+        popup.titleString = "Số tiền đầu tư"
+        let avaiableAmount = investDetail.amount - (investDetail.alreadyAmount / 100 * investDetail.amount)
 
+        if Int(avaiableAmount) > unit {
+            let maxUnit = Int(avaiableAmount) / unit
+            if maxUnit > 0 {
+                var sourceArray = [LoanBuilderData]()
+                for index in 1...maxUnit {
+                    let avaiableAmount = index * unit
+                    let formatter = NumberFormatter()
+                    formatter.locale = Locale.current
+                    formatter.numberStyle = .currency
+                    var avaiableAmountStr = ""
+                    if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
+                        avaiableAmountStr = formattedTipAmount
+                    } else {
+                        avaiableAmountStr = "\(avaiableAmount)"
+                    }
+                    let sourceItem = ["id" : index, "title": avaiableAmountStr] as [String : Any]
+                    let item : LoanBuilderData = LoanBuilderData(object: sourceItem)
+                    sourceArray.append(item)
+                }
+                popup.setDataSource(data: sourceArray)
+            }
+        }
+        popup.delegate = self
         popup.show()
     }
 
     //MARK: Data Selected
     func dataSelected(data: LoanBuilderData) {
-
-//        self.lblTypeRelation?.text = data.title!
-//        self.tfValue?.placeholder = "Số điện thoại của " + data.title!
-//        DataManager.shared.loanInfo.userInfo.relationships.type = data.id!
+        let avaiableAmount = unit * Int(data.id!)
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        var avaiableAmountStr = ""
+        if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
+            avaiableAmountStr = formattedTipAmount
+        } else {
+            avaiableAmountStr = "\(avaiableAmount)"
+        }
+        self.amountTf.text = avaiableAmountStr
     }
 
     @available(iOS 10.0, *)

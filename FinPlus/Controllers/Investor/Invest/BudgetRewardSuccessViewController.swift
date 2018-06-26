@@ -16,7 +16,7 @@ class BudgetRewardSuccessViewController: UIViewController {
         backToHomeBtn.layer.cornerRadius = 5
         backToHomeBtn.layer.borderWidth = 1
         backToHomeBtn.layer.borderColor = UIColor(hexString: "#3EAA5F").cgColor
-
+        self.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
     }
 

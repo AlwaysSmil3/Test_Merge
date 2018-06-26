@@ -312,12 +312,11 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smo-4R-ILO">
                     <rect key="frame" x="16" y="432" width="343" height="44"/>
-                    <color key="backgroundColor" red="0.23137254901960785" green="0.6705882352941176" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="Jy9-KT-faB"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
-                    <state key="normal" title="Ký hợp đồng">
+                    <state key="normal" title="Ký hợp đồng" backgroundImage="bg_button_enable_login">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -366,6 +365,7 @@
         </view>
     </objects>
     <resources>
+        <image name="bg_button_enable_login" width="311" height="44"/>
         <image name="ic_accept_policy" width="14" height="14"/>
         <image name="ic_down_green" width="8" height="5"/>
     </resources>

@@ -95,12 +95,11 @@ Hãy chọn 1 trong những khoản vay để đầu tư</string>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f24-mA-b8D">
                                 <rect key="frame" x="16" y="606" width="343" height="45"/>
-                                <color key="backgroundColor" red="0.23137254901960785" green="0.6705882352941176" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="x4f-AY-XJS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
-                                <state key="normal" title="Đăng ký cho vay">
+                                <state key="normal" title="Đăng ký cho vay" backgroundImage="bg_button_enable_login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -138,4 +137,7 @@ Hãy chọn 1 trong những khoản vay để đầu tư</string>
             <point key="canvasLocation" x="616.79999999999995" y="207.34632683658174"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bg_button_enable_login" width="311" height="44"/>
+    </resources>
 </document>

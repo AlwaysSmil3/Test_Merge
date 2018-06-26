@@ -22,6 +22,7 @@
             <connections>
                 <outlet property="budgetAwardBtn" destination="jst-Lc-HVy" id="Knq-r9-t4y"/>
                 <outlet property="tableView" destination="Fme-Qq-QcS" id="4ei-r4-vTc"/>
+                <outlet property="titleLb" destination="INh-bu-LNm" id="YjV-Lf-BZM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -54,12 +55,11 @@
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jst-Lc-HVy">
                     <rect key="frame" x="16" y="603" width="343" height="44"/>
-                    <color key="backgroundColor" red="0.23137254900000001" green="0.6705882353" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="tox-Ps-PCN"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
-                    <state key="normal" title="Giải ngân">
+                    <state key="normal" title="Giải ngân" backgroundImage="bg_button_enable_login">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -91,4 +91,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
+    <resources>
+        <image name="bg_button_enable_login" width="311" height="44"/>
+    </resources>
 </document>
