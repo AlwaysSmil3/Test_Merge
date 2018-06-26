@@ -35,16 +35,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9wI-Lj-OBd">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="8" y="80" width="359" height="579"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="9wI-Lj-OBd" firstAttribute="top" secondItem="79d-nS-mEb" secondAttribute="top" id="2pW-R4-Pw0"/>
-                            <constraint firstItem="79d-nS-mEb" firstAttribute="trailing" secondItem="9wI-Lj-OBd" secondAttribute="trailing" id="Sk6-yo-la6"/>
-                            <constraint firstItem="9wI-Lj-OBd" firstAttribute="leading" secondItem="79d-nS-mEb" secondAttribute="leading" id="bYy-Et-jri"/>
-                            <constraint firstItem="79d-nS-mEb" firstAttribute="bottom" secondItem="9wI-Lj-OBd" secondAttribute="bottom" id="nyM-zM-wyI"/>
+                            <constraint firstItem="9wI-Lj-OBd" firstAttribute="top" secondItem="79d-nS-mEb" secondAttribute="top" constant="16" id="2pW-R4-Pw0"/>
+                            <constraint firstItem="79d-nS-mEb" firstAttribute="trailing" secondItem="9wI-Lj-OBd" secondAttribute="trailing" constant="8" id="Sk6-yo-la6"/>
+                            <constraint firstItem="9wI-Lj-OBd" firstAttribute="leading" secondItem="79d-nS-mEb" secondAttribute="leading" constant="8" id="bYy-Et-jri"/>
+                            <constraint firstItem="79d-nS-mEb" firstAttribute="bottom" secondItem="9wI-Lj-OBd" secondAttribute="bottom" constant="8" id="nyM-zM-wyI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="79d-nS-mEb"/>
                     </view>

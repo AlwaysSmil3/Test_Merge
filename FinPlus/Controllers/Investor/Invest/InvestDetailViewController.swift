@@ -36,6 +36,7 @@ class InvestDetailViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBAction func regisBtnAction(_ sender: Any) {
         let regisVC = RegisInvestViewController(nibName: "RegisInvestViewController", bundle: nil)
+        regisVC.investDetail = investData
         self.navigationController?.pushViewController(regisVC, animated: true)
     }
     func updateData() {
