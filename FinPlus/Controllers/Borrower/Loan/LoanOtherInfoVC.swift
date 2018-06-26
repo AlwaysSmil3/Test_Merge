@@ -18,7 +18,7 @@ class LoanOtherInfoVC: LoanBaseViewController {
         self.index = 3
         super.viewDidLoad()
         
-        self.currentStep = 5
+        self.currentStep = 4
         self.updateDataToServer()
         
         if let bottomView = self.bottomScrollView {
