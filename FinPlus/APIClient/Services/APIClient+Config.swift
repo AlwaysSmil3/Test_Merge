@@ -19,6 +19,16 @@ extension APIClient {
         return Promise<Config> { seal in
             getDataWithEndPoint(host: hostLoan, endPoint: EndPoint.Config.Configs, isShowLoadingView: false)
                 .done { json in
+                    
+                    //Tỷ giá lãi xuất
+                    if DataManager.shared.listRateInfo.count == 0, let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary, let listRate = data["rateInfo"] as? [JSONDictionary] {
+                        for d in listRate {
+                            let rate = RateInfo(object: d)
+                            DataManager.shared.listRateInfo.append(rate)
+                        }
+                    }
+                    
+                    
                     let model = Config(object: json)
                     seal.fulfill(model)
                     

@@ -39,7 +39,6 @@ class AddressTBViewController: BaseViewController {
         self.mainTBView.tableFooterView = UIView()
         
         self.getData()
-        
     }
     
     private func getData() {
@@ -62,9 +61,9 @@ class AddressTBViewController: BaseViewController {
     }
     
     private func getCities() {
-        
         APIClient.shared.getCities()
             .done(on: DispatchQueue.main) { [weak self]model in
+                guard model.count > 0 else { return }
                 self?.dataSource = model
             }
             .catch { error in }
@@ -73,6 +72,7 @@ class AddressTBViewController: BaseViewController {
     private func getDistricts(cityID: Int16) {
         APIClient.shared.getDistricts(cityID: cityID)
             .done(on: DispatchQueue.main) { [weak self]model in
+                guard model.count > 0 else { return }
                 self?.dataSource = model
                 
             }
@@ -84,6 +84,7 @@ class AddressTBViewController: BaseViewController {
     private func getComunes(districtsID: Int16) {
         APIClient.shared.getCommunes(districtID: districtsID)
             .done(on: DispatchQueue.main) { [weak self]model in
+                guard model.count > 0 else { return }
                 self?.dataSource = model
             }
             .catch { error in }
