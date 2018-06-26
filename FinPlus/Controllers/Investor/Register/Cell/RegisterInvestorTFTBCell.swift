@@ -10,8 +10,19 @@ import Foundation
 
 class RegisterInvestorTFTBCell: UITableViewCell {
     
+    @IBOutlet var lblTitle: UILabel?
     
+    @IBOutlet var tfValue: UITextField?
     
+    var dataRes: InvestorRegister? {
+        didSet {
+            guard let data = self.dataRes, let title = data.title, let place = data.placeHolder else { return }
+            
+            self.lblTitle?.attributedText = FinPlusHelper.setAttributeTextForLoan(text: title)
+            self.tfValue?.placeholder = place
+            
+        }
+    }
     
     
 }
