@@ -62,7 +62,13 @@ class InvestDetailFirstTableViewCell: UITableViewCell {
         myMutableString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "SF Pro Display", size: 8)!, range: myRange)
         self.interestCircleLb.attributedText = myMutableString
 //            self.interestCircleLb.text = "\(cellData.interestRate)\n/năm"
-            self.interestNameLb.text = "Lãi suất thấp/cao"
+        switch cellData.reliability {
+        case .positive1, .positive2, .positive3, .positive4:
+            self.interestNameLb.text = "Lãi suất thấp"
+        default:
+            self.interestNameLb.text = "Lãi suất cao"
+        }
+//            self.interestNameLb.text = "Lãi suất thấp/cao"
             self.interestDes.text = cellData.interestRate.toString() + "/năm, trả góp hàng tháng"
             // last block
         let alreadyStr = cellData.alreadyAmount.toString() + "%"
@@ -77,8 +83,8 @@ class InvestDetailFirstTableViewCell: UITableViewCell {
         alreadyAmountCircleProgressView.innerRingColor =  cellData.reliability.color
         alreadyAmountCircleProgressView.minValue = 0
         alreadyAmountCircleProgressView.maxValue = 100
-//        alreadyAmountCircleProgressView
         alreadyAmountCircleProgressView.value = CGFloat(cellData.alreadyAmount)
+        alreadyAmountCircleProgressView.font = UIFont(name: "SFProDisplay-Semibold", size: 17)!
             let formatter = NumberFormatter()
             formatter.locale = Locale.current
             formatter.numberStyle = .currency
