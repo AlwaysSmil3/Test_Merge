@@ -128,9 +128,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupStartVC() {
         // lionel fix to test
-        let investorWaitingVC = InvestorSignupWaitingViewController(nibName: "InvestorSignupWaitingViewController", bundle: nil)
-        self.window?.rootViewController = investorWaitingVC
-        return
+//        let investorWaitingVC = InvestorSignupWaitingViewController(nibName: "InvestorSignupWaitingViewController", bundle: nil)
+//        self.window?.rootViewController = investorWaitingVC
+//        return
         // end
         let isFirstLaunch = UserDefaults.isFirstLaunch()
         if isFirstLaunch == true {

@@ -209,6 +209,8 @@
 		84647A8B20E0F4C50053DD0D /* InvestorSignUpRejectedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84647A8920E0F4C50053DD0D /* InvestorSignUpRejectedViewController.xib */; };
 		84647A8E20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84647A8C20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.swift */; };
 		84647A8F20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84647A8D20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.xib */; };
+		8467326320E1F4D70011C576 /* InvestContractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8467326120E1F4D70011C576 /* InvestContractViewController.swift */; };
+		8467326420E1F4D70011C576 /* InvestContractViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8467326220E1F4D70011C576 /* InvestContractViewController.xib */; };
 		849A337020CFD0CB000D886D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A336F20CFD0CB000D886D /* Config.swift */; };
 		84A2A79A20D9049A00083CA8 /* PayBtnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A79820D9047D00083CA8 /* PayBtnTableViewCell.swift */; };
 		84A2A79B20D9049A00083CA8 /* PayBtnTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A2A79920D9049900083CA8 /* PayBtnTableViewCell.xib */; };
@@ -519,6 +521,8 @@
 		84647A8920E0F4C50053DD0D /* InvestorSignUpRejectedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestorSignUpRejectedViewController.xib; sourceTree = "<group>"; };
 		84647A8C20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorSignupEnableNotiViewController.swift; sourceTree = "<group>"; };
 		84647A8D20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestorSignupEnableNotiViewController.xib; sourceTree = "<group>"; };
+		8467326120E1F4D70011C576 /* InvestContractViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestContractViewController.swift; sourceTree = "<group>"; };
+		8467326220E1F4D70011C576 /* InvestContractViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestContractViewController.xib; sourceTree = "<group>"; };
 		849A336F20CFD0CB000D886D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		84A2A79820D9047D00083CA8 /* PayBtnTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayBtnTableViewCell.swift; sourceTree = "<group>"; };
 		84A2A79920D9049900083CA8 /* PayBtnTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayBtnTableViewCell.xib; sourceTree = "<group>"; };
@@ -1329,6 +1333,8 @@
 				84A4791820E091E000F83AF4 /* BudgetAwardsViewController.xib */,
 				84A4791B20E09AE200F83AF4 /* BudgetRewardSuccessViewController.swift */,
 				84A4791C20E09AE200F83AF4 /* BudgetRewardSuccessViewController.xib */,
+				8467326120E1F4D70011C576 /* InvestContractViewController.swift */,
+				8467326220E1F4D70011C576 /* InvestContractViewController.xib */,
 			);
 			path = Invest;
 			sourceTree = "<group>";
@@ -1669,6 +1675,7 @@
 				639C9E1120A18A7500F2CF5E /* Roboto-Regular.ttf in Resources */,
 				630BA61E20C22A4100880DAE /* SF-Pro-Display-UltralightItalic.otf in Resources */,
 				84114BD020D79464005026DF /* BankAccountTableViewCell.xib in Resources */,
+				8467326420E1F4D70011C576 /* InvestContractViewController.xib in Resources */,
 				630BA60E20C22A4100880DAE /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
 				639C9DC020A1498A00F2CF5E /* LaunchScreen.storyboard in Resources */,
 				630BA62920C22A4100880DAE /* SF-Pro-Display-BoldItalic.otf in Resources */,
@@ -1967,6 +1974,7 @@
 				842D38DC20D25914004E2B36 /* OTP.swift in Sources */,
 				633AE0B020B40036007AB0D1 /* LoanNationalIDViewController.swift in Sources */,
 				63C5C8E520AC183D00F65068 /* FacebookSignInManager.swift in Sources */,
+				8467326320E1F4D70011C576 /* InvestContractViewController.swift in Sources */,
 				639C9DB320A1498A00F2CF5E /* AppDelegate.swift in Sources */,
 				6397B1B920CFB436009BAF33 /* LoanTypePopupVC.swift in Sources */,
 				E7F51A3620CE6DE700F72682 /* TutorialPageViewController.swift in Sources */,
