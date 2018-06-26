@@ -82,7 +82,13 @@
                             <constraint firstItem="24l-Wz-1SQ" firstAttribute="centerX" secondItem="I1u-1r-uff" secondAttribute="centerX" id="wnf-dX-Jqc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="vh1-os-igC"/>
+                    <navigationItem key="navigationItem" id="vh1-os-igC">
+                        <barButtonItem key="leftBarButtonItem" image="ic_back" id="yTF-lX-VB5">
+                            <connections>
+                                <action selector="navi_backWithSender:" destination="egq-u3-j2r" id="tBX-eq-06V"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addBtn" destination="DxA-1t-Zf1" id="Ehl-Yc-74L"/>
                         <outlet property="noWalletLabel" destination="24l-Wz-1SQ" id="3Cj-fA-WA0"/>
@@ -293,6 +299,7 @@
     <resources>
         <image name="agri" width="25" height="25"/>
         <image name="agri_selected" width="25" height="25"/>
+        <image name="ic_back" width="20" height="18"/>
         <image name="tech" width="25" height="16"/>
         <image name="tech_selected" width="25" height="16"/>
         <image name="vcb" width="24" height="24"/>
