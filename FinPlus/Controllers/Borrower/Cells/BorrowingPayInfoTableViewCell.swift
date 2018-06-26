@@ -61,13 +61,30 @@ class BorrowingPayInfoTableViewCell: UITableViewCell, UITableViewDataSource, UIT
                 cell.valueLb.text = tableData.contractCode
             case 1:
                 cell.titleLb.text = "Số tiền vay"
-                cell.valueLb.text = "\(tableData.loanMoney)"
+                let formatter = NumberFormatter()
+                formatter.locale = Locale.current
+                formatter.numberStyle = .currency
+                if let formattedTipAmount = formatter.string(from: tableData.loanMoney as NSNumber) {
+                    cell.valueLb.text = formattedTipAmount
+                } else {
+                    cell.valueLb.text = tableData.loanMoney.toString()
+                }
+
+                // cell.valueLb.text = "\(tableData.loanMoney)"
             case 2:
                 cell.titleLb.text = "Thời hạn vay được duyệt"
                 cell.valueLb.text = "\(tableData.expireAmountTime)"
             case 3:
                 cell.titleLb.text = "Trả góp hàng tháng"
-                cell.valueLb.text = "\(tableData.inerestPerMonth)"
+                let formatter = NumberFormatter()
+                formatter.locale = Locale.current
+                formatter.numberStyle = .currency
+                if let formattedTipAmount = formatter.string(from: tableData.inerestPerMonth as NSNumber) {
+                    cell.valueLb.text = formattedTipAmount
+                } else {
+                    cell.valueLb.text = tableData.inerestPerMonth.toString()
+                }
+                // cell.valueLb.text = "\(tableData.inerestPerMonth)"
             default :
                 cell.titleLb.text = "Số tháng đã thanh toán"
                 cell.valueLb.text = "\(tableData.numberOfMonthPaid)"

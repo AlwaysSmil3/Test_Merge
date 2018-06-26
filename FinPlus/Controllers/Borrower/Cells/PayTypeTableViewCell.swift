@@ -32,9 +32,32 @@ class PayTypeTableViewCell: UITableViewCell {
         if let cellData = cellData {
             self.titleLb.text = "Thanh toán tháng này"
             self.dateLb.text = "Hạn: \(Date().convertDateToDisplayFormat(cellData.expireDate))"
-            self.originMoneyLb.text = "Tiền gốc: \(cellData.originAmount)"
-            self.interestMoneyLb.text = "Tiền lãi: \(cellData.interestAmount)"
-            self.borrowingLb.text = "\(cellData.sumAmount)"
+
+            let formatter = NumberFormatter()
+            formatter.locale = Locale.current
+            formatter.numberStyle = .currency
+            if let formattedTipAmount = formatter.string(from: cellData.originAmount as NSNumber) {
+                self.originMoneyLb.text = formattedTipAmount
+            } else {
+                self.originMoneyLb.text = cellData.originAmount.toString()
+            }
+
+            if let formattedTipAmount = formatter.string(from: cellData.interestAmount as NSNumber) {
+                self.interestMoneyLb.text = formattedTipAmount
+            } else {
+                self.interestMoneyLb.text = cellData.interestAmount.toString()
+            }
+
+
+            if let formattedTipAmount = formatter.string(from: cellData.sumAmount as NSNumber) {
+                self.borrowingLb.text = formattedTipAmount
+            } else {
+                self.borrowingLb.text = cellData.sumAmount.toString()
+            }
+
+//            self.originMoneyLb.text = "Tiền gốc: \(cellData.originAmount)"
+//            self.interestMoneyLb.text = "Tiền lãi: \(cellData.interestAmount)"
+//            self.borrowingLb.text = "\(cellData.sumAmount)"
             if isSelectedCell == true {
                 self.containView.layer.borderColor = MAIN_COLOR.cgColor
                 self.selectImg.image = #imageLiteral(resourceName: "ic_radio_on")

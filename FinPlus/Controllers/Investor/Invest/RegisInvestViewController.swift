@@ -24,6 +24,7 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
     @IBOutlet weak var sumAmountLb: UILabel!
     @IBOutlet weak var amountTf: UITextField!
     let unit : Int = 1000000
+    var budgetSelected : Float = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Đăng ký đầu tư"
@@ -93,15 +94,15 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
 
     //MARK: Data Selected
     func dataSelected(data: LoanBuilderData) {
-        let avaiableAmount = unit * Int(data.id!)
+        budgetSelected = Float(unit * Int(data.id!))
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
         formatter.numberStyle = .currency
         var avaiableAmountStr = ""
-        if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
+        if let formattedTipAmount = formatter.string(from: budgetSelected as NSNumber) {
             avaiableAmountStr = formattedTipAmount
         } else {
-            avaiableAmountStr = "\(avaiableAmount)"
+            avaiableAmountStr = budgetSelected.toString()
         }
         self.amountTf.text = avaiableAmountStr
     }
@@ -137,6 +138,8 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
 
     func pushToBudgetAwardsVC() {
         let budgetAwardsVC = BudgetAwardsViewController(nibName: "BudgetAwardsViewController", bundle: nil)
+        budgetAwardsVC.budgetAward = budgetSelected
+
         self.navigationController?.pushViewController(budgetAwardsVC, animated: true)
     }
     
