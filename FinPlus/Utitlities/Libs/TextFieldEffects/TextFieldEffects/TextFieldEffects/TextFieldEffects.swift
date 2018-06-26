@@ -86,10 +86,6 @@ open class TextFieldEffects : UITextField {
 		drawViewsForRect(rect)
     }
     
-    override open func drawPlaceholder(in rect: CGRect) {
-        // Don't draw any placeholders
-    }
-    
     override open var text: String? {
         didSet {
             if let text = text, text.isNotEmpty {
