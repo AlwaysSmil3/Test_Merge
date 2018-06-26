@@ -182,8 +182,8 @@ class BorrowerTabBarController: UITabBarController {
             // Fallback on earlier versions
         }
         self.tabBar.backgroundColor = .white
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:BAR_DEFAULT_COLOR], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:MAIN_COLOR], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:BAR_DEFAULT_COLOR, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 11)], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:MAIN_COLOR, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 11)], for: .selected)
     }
     
     func formatTabBarItem(tabBarItem: UITabBarItem){
