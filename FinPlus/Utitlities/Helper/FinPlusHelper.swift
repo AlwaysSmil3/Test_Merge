@@ -224,7 +224,7 @@ class FinPlusHelper {
         var count = 0
         for str in arrayString {
             
-            if count == arrayString.count + 1 {
+            if count == arrayString.count {
                 result.append(str)
                 return result
             }
