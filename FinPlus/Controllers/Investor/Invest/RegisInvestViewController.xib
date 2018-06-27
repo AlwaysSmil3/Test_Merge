@@ -29,11 +29,18 @@
                 <outlet property="amountTf" destination="CeA-rb-mZa" id="nF4-FC-utH"/>
                 <outlet property="containView" destination="QjJ-3Z-nQK" id="J6M-Uj-IA0"/>
                 <outlet property="interestAmount" destination="6dt-TC-Det" id="CL0-dD-8SN"/>
+                <outlet property="interestAmountTitleLb" destination="rcb-Wc-idD" id="dgz-kg-yTh"/>
                 <outlet property="interestLb" destination="XeZ-mA-nz6" id="gvb-qB-kgC"/>
+                <outlet property="interestTitleLb" destination="dZW-6y-6kd" id="0Ud-Dc-20h"/>
+                <outlet property="investAmountTitleLb" destination="MgM-2f-74Y" id="YGu-rC-5fn"/>
+                <outlet property="investDetailTitleLb" destination="2al-8p-NQl" id="aEN-LV-vKi"/>
                 <outlet property="regisBtn" destination="smo-4R-ILO" id="Ota-U8-T9D"/>
                 <outlet property="serviceFeeLb" destination="ZKd-JO-DmL" id="Ugn-BM-7NF"/>
+                <outlet property="serviceFeeTitleLb" destination="KSI-qb-IFl" id="Elv-tF-Wsy"/>
                 <outlet property="sumAmountLb" destination="0Nz-zV-xSa" id="Wor-N5-GYF"/>
+                <outlet property="sumAmountTitleLb" destination="nzs-3t-jla" id="ilL-6g-FGF"/>
                 <outlet property="timeLb" destination="OIr-BW-RK4" id="4b0-18-XfB"/>
+                <outlet property="timeTitleLb" destination="uaK-gm-J71" id="xFD-fq-EBq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -109,7 +116,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="zqC-W5-U0Z" firstAttribute="leading" secondItem="FvD-q6-lJS" secondAttribute="leading" constant="8" id="0bA-o1-g31"/>
                                 <constraint firstAttribute="bottom" secondItem="zqC-W5-U0Z" secondAttribute="bottom" id="6dq-mY-4Mq"/>
@@ -143,7 +150,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="Sbz-I2-Vyf" secondAttribute="trailing" constant="8" id="0BF-vR-p2p"/>
                                 <constraint firstAttribute="bottom" secondItem="Sbz-I2-Vyf" secondAttribute="bottom" id="1eL-ss-hjM"/>
@@ -177,7 +184,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="FT3-lh-S3O" secondAttribute="trailing" constant="8" id="APL-nD-Lfs"/>
                                 <constraint firstAttribute="bottom" secondItem="FT3-lh-S3O" secondAttribute="bottom" id="L2z-3c-GhP"/>
@@ -211,7 +218,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="Ksj-bT-meh" secondAttribute="bottom" id="Gr3-LK-uNw"/>
                                 <constraint firstItem="ZKd-JO-DmL" firstAttribute="centerY" secondItem="Bfy-Bj-Bji" secondAttribute="centerY" id="Mx9-NW-mYp"/>
@@ -245,7 +252,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="OIr-BW-RK4" secondAttribute="trailing" constant="8" id="1i1-kx-XSO"/>
                                 <constraint firstItem="OIr-BW-RK4" firstAttribute="centerY" secondItem="g6f-Jf-394" secondAttribute="centerY" id="8bt-mb-20h"/>
@@ -292,7 +299,7 @@
                 </view>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Tôi đã hiểu và đồng ý với hợp đồng đầu tư." translatesAutoresizingMaskIntoConstraints="NO" id="qIa-WN-Kpn">
                     <rect key="frame" x="30" y="394" width="337" height="20"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="bhX-Zp-U0J"/>
                     </constraints>

@@ -82,7 +82,6 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
         super.viewWillAppear(animated)
         // check mode and change
         self.mode = UserDefaults.standard.bool(forKey: APP_MODE)
-
         setupMode()
     }
 
@@ -156,30 +155,8 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     func setupMode() {
-
-//        let header: ProfileHeaderView = Bundle.main.loadNibNamed("ProfileHeaderView", owner: nil, options: nil)![0] as! ProfileHeaderView
-//        header.usernameLabel.text = "+84988xxxxxx"
-//        header.phoneLabel.text = "+84988xxxxxx"
-//        header.avatarBtn.setBackgroundImage(UIImage(named: "avatar_default"), for: .normal)
-//        header.delegate = self
-
         if (self.mode)
         {
-            // dark mode
-//            UIApplication
-//            header.avatarBtn.tintColor = DARK_MODE_MAIN_TEXT_COLOR
-//            header.usernameLabel.textColor = DARK_MODE_MAIN_TEXT_COLOR
-//            header.phoneLabel.textColor = DARK_MODE_SUB_TEXT_COLOR
-//
-//            self.tableView.tableHeaderView = header
-//            self.tableView.tableFooterView = UIView()
-//
-//            let cellNib = UINib(nibName: "ProfileTableViewCell", bundle: nil)
-//            self.tableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
-//
-//            self.tableView.estimatedRowHeight = 44
-//            self.tableView.rowHeight = UITableViewAutomaticDimension
-//
             self.tableView.backgroundColor = DARK_MODE_BACKGROUND_COLOR
             self.view.backgroundColor = DARK_MODE_BACKGROUND_COLOR
             self.titleLb.textColor = DARK_BODY_TEXT_COLOR
@@ -192,19 +169,6 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
         }
         else
         {
-//            header.avatarBtn.tintColor = LIGHT_MODE_MAIN_TEXT_COLOR
-//            header.usernameLabel.textColor = LIGHT_MODE_MAIN_TEXT_COLOR
-//            header.phoneLabel.textColor = LIGHT_MODE_SUB_TEXT_COLOR
-//
-//            self.tableView.tableHeaderView = header
-//            self.tableView.tableFooterView = UIView()
-//
-//            let cellNib = UINib(nibName: "ProfileTableViewCell", bundle: nil)
-//            self.tableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
-
-//            self.tableView.estimatedRowHeight = 44
-//            self.tableView.rowHeight = UITableViewAutomaticDimension
-
             self.tableView.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
             self.view.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
             self.titleLb.textColor = LIGHT_BODY_TEXT_COLOR

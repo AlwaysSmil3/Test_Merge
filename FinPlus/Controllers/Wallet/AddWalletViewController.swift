@@ -30,22 +30,35 @@ class AddWalletViewController: UIViewController {
         vcbBtn.layer.borderWidth = 0.5
         vcbBtn.layer.cornerRadius = 8
         vcbBtn.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        vcbBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         vcbBtn.setTitle(NSLocalizedString("Vietcombank", comment: ""), for: .normal)
         
         viettinBtn.layer.borderWidth = 0.5
         viettinBtn.layer.cornerRadius = 8
         viettinBtn.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        viettinBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         viettinBtn.setTitle(NSLocalizedString("Viettinbank", comment: ""), for: .normal)
         
         techBtn.layer.borderWidth = 0.5
         techBtn.layer.cornerRadius = 8
         techBtn.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        techBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         techBtn.setTitle(NSLocalizedString("Techcombank", comment: ""), for: .normal)
         
         agriBtn.layer.borderWidth = 0.5
         agriBtn.layer.cornerRadius = 8
         agriBtn.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        agriBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         agriBtn.setTitle(NSLocalizedString("Agribank", comment: ""), for: .normal)
+        
+        nameTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        nameTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
+        
+        accTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        accTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
+        
+        reAccTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        reAccTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
         
         self.title = "Thêm tài khoản ngân hàng"
         

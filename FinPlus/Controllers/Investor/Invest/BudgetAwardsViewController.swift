@@ -11,10 +11,13 @@ import UIKit
 class BudgetAwardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var budgetAwardBtn: UIButton!
+
+    @IBOutlet weak var headerLb: UILabel!
     @IBOutlet weak var titleLb: UILabel!
     var bankList : [AccountBank] = [AccountBank]()
     var bankSelected: AccountBank!
     var budgetAward : Float = 4000000
+    var mode = false
     override func viewDidLoad() {
         super.viewDidLoad()
         let accountBank1 = AccountBank(wID: 1, wType: 1, wAccountName: "0987654231234", wBankName: "VietComBank", wNumber: "10231231", wDistrict: "Cau Giay")
@@ -43,6 +46,27 @@ class BudgetAwardsViewController: UIViewController, UITableViewDataSource, UITab
         configureTableView()
 
         // Do any additional setup after loading the view.
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.mode = UserDefaults.standard.bool(forKey: APP_MODE)
+        setupMode()
+    }
+
+    func setupMode() {
+        if (self.mode) {
+            self.view.backgroundColor = DARK_BACKGROUND_COLOR
+            self.headerLb.textColor = DARK_BODY_TEXT_COLOR
+            self.titleLb.textColor = DARK_SUBTEXT_COLOR
+            self.tableView.backgroundColor = DARK_BACKGROUND_COLOR
+        } else {
+            self.view.backgroundColor = LIGHT_BACKGROUND_COLOR
+            self.headerLb.textColor = LIGHT_BODY_TEXT_COLOR
+            self.titleLb.textColor = LIGHT_SUBTEXT_COLOR
+            self.tableView.backgroundColor = LIGHT_BACKGROUND_COLOR
+        }
+        tableView.reloadData()
     }
 
     func configureTableView() {
@@ -83,6 +107,7 @@ class BudgetAwardsViewController: UIViewController, UITableViewDataSource, UITab
             }
         } else {
             if let cell = tableView.dequeueReusableNibCell(type: AddNewWalletTableViewCell.self) {
+                cell.updateCellView()
                 return cell
             }
         }

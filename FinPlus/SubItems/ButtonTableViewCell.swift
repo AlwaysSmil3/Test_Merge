@@ -37,6 +37,7 @@ class ButtonTableViewCell: UITableViewCell {
         
         self.button?.layer.cornerRadius = 8
         self.button?.layer.masksToBounds = true
+        self.button.titleLabel?.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)
     }
     override func awakeFromNib() {
         super.awakeFromNib()

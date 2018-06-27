@@ -153,14 +153,16 @@ let DARK_BORDER_AND_LINE_COLOR = UIColor(hexString: "#1E2428")
 //MARK: Font
 let FONT_CAPTION = UIFont(name: "SFProDisplay-Semibold", size: 11) ?? UIFont.systemFont(ofSize: 11)
 
-let FONT_FAMILY_BOLD = "SF-Pro-Display-Bold"
-let FONT_FAMILY_SEMIBOLD = "SF-Pro-Display-Semibold"
-let FONT_FAMILY_REGULAR = "SF-Pro-Display-Regular"
+let FONT_FAMILY_BOLD = "SFProDisplay-Bold"
+let FONT_FAMILY_SEMIBOLD = "SFProDisplay-Semibold"
+let FONT_FAMILY_REGULAR = "SFProDisplay-Regular"
 
-let FONT_SIZE_LARGE = 34
-let FONT_SIZE_BIG = 26
-let FONT_SIZE_NORMAL = 17
-let FONT_SIZE_SMALL = 11
+let FONT_SIZE_LARGE : CGFloat = 34
+let FONT_SIZE_BIG : CGFloat = 26
+let FONT_SIZE_SEMIBIG : CGFloat = 22
+let FONT_SIZE_NORMAL : CGFloat = 17
+let FONT_SIZE_SEMIMALL : CGFloat = 15
+let FONT_SIZE_SMALL : CGFloat = 11
 
 let MS_TITLE_ALERT = "Thông báo"
 

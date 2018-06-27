@@ -24,7 +24,10 @@ class WalletTableViewCell: UITableViewCell {
         self.borderView.layer.cornerRadius = 8
         
         self.nameLabel.textColor = UIColor(hexString: "#08121E")
+        self.nameLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        
         self.desLabel.textColor = UIColor(hexString: "#4D6678")
+        self.desLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
