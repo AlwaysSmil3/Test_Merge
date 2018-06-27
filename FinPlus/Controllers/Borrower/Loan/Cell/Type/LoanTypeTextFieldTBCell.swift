@@ -79,13 +79,13 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             
         } else if parent.contains("jobInfo") {
             // Thông tin nghề nghiêp
-            if id.contains("company") {
+            if id == "company" {
                 DataManager.shared.loanInfo.jobInfo.company = self.tfValue?.text ?? ""
-            }  else if id.contains("salary") {
+            }  else if id == "salary" {
                 let tempAmount1 = self.tfValue?.text?.replacingOccurrences(of: ",", with: "") ?? ""
                 let tempAmount2 = tempAmount1.replacingOccurrences(of: ".", with: "")
                 DataManager.shared.loanInfo.jobInfo.salary = Int32(tempAmount2) ?? 0
-            } else if id.contains("companyPhoneNumber") {
+            } else if id == "companyPhoneNumber"  {
                 DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = self.tfValue?.text ?? ""
             }
         }
@@ -134,7 +134,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             
         } else if parent.contains("jobInfo") {
             // Thông tin nghề nghiêp
-            if id.contains("company") {
+            if id == "company" {
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.company {
                     self.tfValue?.text = data
                     DataManager.shared.loanInfo.jobInfo.company = data
@@ -144,7 +144,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     
                 }
                 
-            }  else if id.contains("salary") {
+            }  else if id == "salary" {
                 
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.salary {
                     self.tfValue?.text = "\(data)"
@@ -155,7 +155,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     
                 }
                 
-            } else if id.contains("companyPhoneNumber") {
+            } else if id == "companyPhoneNumber" {
                 
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.companyPhoneNumber {
                     self.tfValue?.text = data

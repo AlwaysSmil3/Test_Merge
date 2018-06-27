@@ -171,20 +171,6 @@ class LoanFirstViewController: BaseViewController {
             self.amountSlider.setValue(fixed, animated: true)
         }
         self.updateTotalAmountMounth()
-//        guard let version = DataManager.shared.config else { return }
-//
-//        let fee = Double(Int(self.amountSlider.value) * version.serviceFee! * 1000000 / 100)
-//        self.lblTempFee.text = FinPlusHelper.formatDisplayCurrency(fee) + " VND"
-//
-//        let amountInt = Int(self.amountSlider.value) / Int(self.amountSlider.minimumValue) * 1000000
-//        var amountDouble = Double(amountInt) + fee
-//
-//        if self.termSlider.value > 30 {
-//            amountDouble = amountDouble / Double(Int(self.termSlider.value / 30))
-//        }
-//
-//        self.lblTempTotalAmount.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + " VND"
-        
     }
     
     @IBAction func termSliderValueChanged(_ sender: Any) {
@@ -202,6 +188,7 @@ class LoanFirstViewController: BaseViewController {
         self.updateTotalAmountMounth()
     }
     
+    //Update số tiền trả góp hàng tháng
     private func updateTotalAmountMounth() {
         guard let version = DataManager.shared.config else { return }
         
