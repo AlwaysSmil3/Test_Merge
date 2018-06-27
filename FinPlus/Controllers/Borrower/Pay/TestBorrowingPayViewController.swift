@@ -128,7 +128,16 @@ class TestBorrowingPayViewController: UIViewController {
         updateData()
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.navigationController?.isNavigationBarHidden == false {
+            self.navigationController?.isNavigationBarHidden = true
+        }
+    }
 
+    @IBAction func backAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
