@@ -21,8 +21,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BudgetAwardsViewController" customModule="FinPlus" customModuleProvider="target">
             <connections>
                 <outlet property="budgetAwardBtn" destination="jst-Lc-HVy" id="Knq-r9-t4y"/>
+                <outlet property="headerLb" destination="qjh-Ey-yzf" id="C30-0h-Is2"/>
                 <outlet property="tableView" destination="Fme-Qq-QcS" id="4ei-r4-vTc"/>
-                <outlet property="titleLb" destination="INh-bu-LNm" id="YjV-Lf-BZM"/>
+                <outlet property="titleLb" destination="INh-bu-LNm" id="8Zj-wn-5mK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -51,7 +52,7 @@
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fme-Qq-QcS">
                     <rect key="frame" x="16" y="262" width="343" height="333"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jst-Lc-HVy">
                     <rect key="frame" x="16" y="603" width="343" height="44"/>

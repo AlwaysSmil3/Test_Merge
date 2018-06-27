@@ -21,6 +21,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BudgetRewardSuccessViewController" customModule="FinPlus" customModuleProvider="target">
             <connections>
                 <outlet property="backToHomeBtn" destination="Vkr-VZ-nJ9" id="kSm-U7-rgI"/>
+                <outlet property="headerLb" destination="uXe-fk-no4" id="6c1-Jy-LWM"/>
+                <outlet property="titleLb" destination="PrV-cV-0ns" id="hIG-rY-g9j"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
