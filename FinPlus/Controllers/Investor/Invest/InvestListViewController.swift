@@ -60,8 +60,11 @@ public enum LoanReliability : Int {
 
 class InvestListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var subTitleLb: UILabel!
+    @IBOutlet weak var titleLb: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var allLoansArray : [DemoLoanModel] = [DemoLoanModel]()
+    var mode = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Đầu tư"
@@ -73,6 +76,14 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
         //self.getAllLoans()
         updateData()
         // Do any additional setup after loading the view.
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // check mode and change
+        self.mode = UserDefaults.standard.bool(forKey: APP_MODE)
+
+        setupMode()
     }
 
     func updateData() {
@@ -143,7 +154,70 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
-    
+
+    func setupMode() {
+
+//        let header: ProfileHeaderView = Bundle.main.loadNibNamed("ProfileHeaderView", owner: nil, options: nil)![0] as! ProfileHeaderView
+//        header.usernameLabel.text = "+84988xxxxxx"
+//        header.phoneLabel.text = "+84988xxxxxx"
+//        header.avatarBtn.setBackgroundImage(UIImage(named: "avatar_default"), for: .normal)
+//        header.delegate = self
+
+        if (self.mode)
+        {
+            // dark mode
+//            UIApplication
+//            header.avatarBtn.tintColor = DARK_MODE_MAIN_TEXT_COLOR
+//            header.usernameLabel.textColor = DARK_MODE_MAIN_TEXT_COLOR
+//            header.phoneLabel.textColor = DARK_MODE_SUB_TEXT_COLOR
+//
+//            self.tableView.tableHeaderView = header
+//            self.tableView.tableFooterView = UIView()
+//
+//            let cellNib = UINib(nibName: "ProfileTableViewCell", bundle: nil)
+//            self.tableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
+//
+//            self.tableView.estimatedRowHeight = 44
+//            self.tableView.rowHeight = UITableViewAutomaticDimension
+//
+            self.tableView.backgroundColor = DARK_MODE_BACKGROUND_COLOR
+            self.view.backgroundColor = DARK_MODE_BACKGROUND_COLOR
+            self.titleLb.textColor = DARK_BODY_TEXT_COLOR
+            self.subTitleLb.textColor = DARK_SUBTEXT_COLOR
+
+            self.navigationController?.navigationBar.isTranslucent = false
+            self.navigationController?.navigationBar.barTintColor = DARK_MODE_NAVI_COLOR
+            self.navigationController?.navigationBar.tintColor = DARK_MODE_MAIN_TEXT_COLOR
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: DARK_MODE_MAIN_TEXT_COLOR]
+        }
+        else
+        {
+//            header.avatarBtn.tintColor = LIGHT_MODE_MAIN_TEXT_COLOR
+//            header.usernameLabel.textColor = LIGHT_MODE_MAIN_TEXT_COLOR
+//            header.phoneLabel.textColor = LIGHT_MODE_SUB_TEXT_COLOR
+//
+//            self.tableView.tableHeaderView = header
+//            self.tableView.tableFooterView = UIView()
+//
+//            let cellNib = UINib(nibName: "ProfileTableViewCell", bundle: nil)
+//            self.tableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
+
+//            self.tableView.estimatedRowHeight = 44
+//            self.tableView.rowHeight = UITableViewAutomaticDimension
+
+            self.tableView.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
+            self.view.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
+            self.titleLb.textColor = LIGHT_BODY_TEXT_COLOR
+            self.subTitleLb.textColor = LIGHT_SUBTEXT_COLOR
+
+            self.navigationController?.navigationBar.isTranslucent = false
+            self.navigationController?.navigationBar.barTintColor = LIGHT_MODE_NAVI_COLOR
+            self.navigationController?.navigationBar.tintColor = LIGHT_MODE_MAIN_TEXT_COLOR
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: LIGHT_MODE_MAIN_TEXT_COLOR]
+        }
+
+        self.tableView.reloadData()
+    }
 
     /*
     // MARK: - Navigation

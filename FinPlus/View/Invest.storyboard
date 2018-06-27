@@ -78,7 +78,9 @@ Hãy chọn 1 trong những khoản vay để đầu tư</string>
                     </view>
                     <navigationItem key="navigationItem" title="Đầu tư" id="6Qf-pQ-Kci"/>
                     <connections>
+                        <outlet property="subTitleLb" destination="Adz-tH-6gb" id="UC7-ql-wfR"/>
                         <outlet property="tableView" destination="e2Z-Aw-Ec3" id="QdB-Ii-5Nc"/>
+                        <outlet property="titleLb" destination="hF3-bs-Pbh" id="UnS-fz-fgU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcS-Tn-fpR" userLabel="First Responder" sceneMemberID="firstResponder"/>
