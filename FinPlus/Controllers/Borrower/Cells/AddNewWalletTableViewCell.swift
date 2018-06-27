@@ -10,6 +10,7 @@ import UIKit
 
 class AddNewWalletTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLb: UILabel!
     @IBOutlet weak var containView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +23,11 @@ class AddNewWalletTableViewCell: UITableViewCell {
     }
 
     func updateCellView() {
-        
+        if (UserDefaults.standard.bool(forKey: APP_MODE)) {
+            self.titleLb.textColor = DARK_SUBTEXT_COLOR
+        } else {
+            self.titleLb.textColor = LIGHT_BODY_TEXT_COLOR
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

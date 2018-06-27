@@ -10,10 +10,18 @@ import UIKit
 
 class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelectedFromPopupProtocol {
 
+    // title outlet
+    @IBOutlet weak var timeTitleLb: UILabel!
+    @IBOutlet weak var serviceFeeTitleLb: UILabel!
+    @IBOutlet weak var interestAmountTitleLb: UILabel!
+    @IBOutlet weak var interestTitleLb: UILabel!
+    @IBOutlet weak var sumAmountTitleLb: UILabel!
+    @IBOutlet weak var investAmountTitleLb: UILabel!
+    @IBOutlet weak var investDetailTitleLb: UILabel!
     @IBOutlet weak var acceptTv: UITextView!
     var isAcceptPolicy = false
     var investDetail : DemoLoanModel!
-    // @IBOutlet weak var acceptPolicyLb: UILabel!
+    var mode = false
     @IBOutlet weak var acceptPolicyBtn: UIButton!
     @IBOutlet weak var containView: UIView!
     @IBOutlet weak var regisBtn: UIButton!
@@ -55,9 +63,79 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
             avaiableAmountStr = avaiableAmount.toString()
         }
         self.amountTf.text = avaiableAmountStr
-        // acceptPolicyLb.attributedText = myMutableString
-
         // Do any additional setup after loading the view.
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.mode = UserDefaults.standard.bool(forKey: APP_MODE)
+        setupMode()
+    }
+
+    func setupMode() {
+        if (self.mode) {
+            self.view.backgroundColor = DARK_BACKGROUND_COLOR
+            // policy text
+//            let myRange = NSRange(location: 25, length: 17)
+            let policyStr : String = "Tôi đã hiểu và đồng ý với hợp đồng đầu tư."
+            var myMutableString = NSMutableAttributedString()
+            myMutableString = NSMutableAttributedString(string: policyStr)
+            let myRange = (myMutableString.string as NSString).range(of: "Tôi đã hiểu và đồng ý với")
+            myMutableString.addAttribute(
+                NSAttributedStringKey.link,
+                value: "more://",
+                range: (myMutableString.string as NSString).range(of: "hợp đồng đầu tư."))
+            myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: DARK_BODY_TEXT_COLOR, range: myRange)
+            UITextView.appearance().linkTextAttributes = [ NSAttributedStringKey.foregroundColor.rawValue: UIColor(hexString: "3BAB63")]
+
+            acceptTv.attributedText = myMutableString
+
+            self.investAmountTitleLb.textColor = DARK_SUBTEXT_COLOR
+            self.amountTf.textColor = DARK_BODY_TEXT_COLOR
+            self.investDetailTitleLb.textColor = DARK_SUBTEXT_COLOR
+            self.containView.backgroundColor = DARK_FOREGROUND_COLOR
+            self.sumAmountTitleLb.textColor = DARK_BODY_TEXT_COLOR
+            self.sumAmountLb.textColor = DARK_SUBTEXT_COLOR
+            self.interestTitleLb.textColor = DARK_BODY_TEXT_COLOR
+            self.interestLb.textColor = DARK_SUBTEXT_COLOR
+            self.interestAmountTitleLb.textColor = DARK_BODY_TEXT_COLOR
+            self.interestAmount.textColor = DARK_SUBTEXT_COLOR
+            self.serviceFeeTitleLb.textColor = DARK_BODY_TEXT_COLOR
+            self.serviceFeeLb.textColor = DARK_SUBTEXT_COLOR
+            self.timeTitleLb.textColor = DARK_BODY_TEXT_COLOR
+            self.timeLb.textColor = DARK_SUBTEXT_COLOR
+
+        } else {
+            self.view.backgroundColor = LIGHT_BACKGROUND_COLOR
+
+            let policyStr : String = "Tôi đã hiểu và đồng ý với hợp đồng đầu tư."
+
+            var myMutableString = NSMutableAttributedString()
+            myMutableString = NSMutableAttributedString(string: policyStr)
+            let myRange = (myMutableString.string as NSString).range(of: "Tôi đã hiểu và đồng ý với")
+            myMutableString.addAttribute(
+                NSAttributedStringKey.link,
+                value: "more://",
+                range: (myMutableString.string as NSString).range(of: "hợp đồng đầu tư."))
+            myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: LIGHT_BODY_TEXT_COLOR, range: myRange)
+            UITextView.appearance().linkTextAttributes = [ NSAttributedStringKey.foregroundColor.rawValue: UIColor(hexString: "3BAB63")]
+
+            acceptTv.attributedText = myMutableString
+            self.investAmountTitleLb.textColor = LIGHT_SUBTEXT_COLOR
+            self.amountTf.textColor = LIGHT_BODY_TEXT_COLOR
+            self.investDetailTitleLb.textColor = LIGHT_SUBTEXT_COLOR
+            self.containView.backgroundColor = LIGHT_FOREGROUND_COLOR
+            self.sumAmountTitleLb.textColor = LIGHT_BODY_TEXT_COLOR
+            self.sumAmountLb.textColor = LIGHT_SUBTEXT_COLOR
+            self.interestTitleLb.textColor = LIGHT_BODY_TEXT_COLOR
+            self.interestLb.textColor = LIGHT_SUBTEXT_COLOR
+            self.interestAmountTitleLb.textColor = LIGHT_BODY_TEXT_COLOR
+            self.interestAmount.textColor = LIGHT_SUBTEXT_COLOR
+            self.serviceFeeTitleLb.textColor = LIGHT_BODY_TEXT_COLOR
+            self.serviceFeeLb.textColor = LIGHT_SUBTEXT_COLOR
+            self.timeTitleLb.textColor = LIGHT_BODY_TEXT_COLOR
+            self.timeLb.textColor = LIGHT_SUBTEXT_COLOR
+        }
     }
 
     @IBAction func btnDropdownTapped(_ sender: Any) {
