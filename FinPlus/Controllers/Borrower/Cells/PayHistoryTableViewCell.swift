@@ -30,7 +30,15 @@ class PayHistoryTableViewCell: UITableViewCell {
     func displayCell(cellData: PayHistoryItem) {
         timeLb.text = "Đợt \(cellData.time)"
         payDateLb.text = "\(cellData.payDate)"
-        amountLb.text = "\(cellData.amount)"
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        if let formattedTipAmount = formatter.string(from: cellData.amount as NSNumber) {
+            amountLb.text = formattedTipAmount
+        } else {
+            amountLb.text = cellData.amount.toString()
+        }
+//        amountLb.text = "\(cellData.amount)"
 
         // set theme cell
         switch cellData.status {

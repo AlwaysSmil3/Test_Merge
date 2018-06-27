@@ -18,8 +18,8 @@ public class PayHistoryItem {
     var time: Int
     var payDate : Date
     var status: PayHistoryItemStatus
-    var amount: Double
-    init(time: Int, payDate: Date, status: PayHistoryItemStatus, amount: Double) {
+    var amount: Float
+    init(time: Int, payDate: Date, status: PayHistoryItemStatus, amount: Float) {
         self.time = time
         self.payDate = payDate
         self.status = status
@@ -38,6 +38,16 @@ class TestPayHistoryViewController: UIViewController, UITableViewDataSource, UIT
         tableView.registerNibCell(type: PayHistoryTableViewCell.self)
         self.updateData()
         // Do any additional setup after loading the view.
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.navigationController?.isNavigationBarHidden == false {
+            self.navigationController?.isNavigationBarHidden = true
+        }
+    }
+    @IBAction func backBtnAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 
     func updateData() {

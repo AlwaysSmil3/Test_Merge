@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Bold.otf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TestBorrowingPayViewController" customModule="FinPlus" customModuleProvider="target">
             <connections>
@@ -21,20 +26,68 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpv-BG-FD7">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanh toán" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJv-UM-Quc">
+                            <rect key="frame" x="40" y="30" width="295" height="20"/>
+                            <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
+                            <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGn-D8-iK8" customClass="AnimatableButton" customModule="IBAnimatable">
+                            <rect key="frame" x="5" y="20" width="99" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="99" id="SVm-Ol-7gW"/>
+                            </constraints>
+                            <inset key="contentEdgeInsets" minX="10" minY="6" maxX="0.0" maxY="6"/>
+                            <state key="normal" image="ic_back"/>
+                            <connections>
+                                <action selector="backAction:" destination="-1" eventType="touchUpInside" id="B8i-7L-ZbK"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ur-T6-f4c">
+                            <rect key="frame" x="289" y="16" width="86" height="48"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="86" id="sep-55-XXA"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="9Ur-T6-f4c" firstAttribute="top" secondItem="cpv-BG-FD7" secondAttribute="top" constant="16" id="4e7-TA-nJn"/>
+                        <constraint firstAttribute="trailing" secondItem="bJv-UM-Quc" secondAttribute="trailing" constant="40" id="D7y-Ao-EVP"/>
+                        <constraint firstAttribute="bottom" secondItem="mGn-D8-iK8" secondAttribute="bottom" id="Qxt-do-rU4"/>
+                        <constraint firstItem="mGn-D8-iK8" firstAttribute="leading" secondItem="cpv-BG-FD7" secondAttribute="leading" constant="5" id="Zhy-rt-x8Z"/>
+                        <constraint firstAttribute="height" constant="64" id="ZtB-Ap-Q65"/>
+                        <constraint firstItem="mGn-D8-iK8" firstAttribute="top" secondItem="cpv-BG-FD7" secondAttribute="top" constant="20" id="eDm-ci-oCu"/>
+                        <constraint firstAttribute="bottom" secondItem="9Ur-T6-f4c" secondAttribute="bottom" id="ew8-Ck-dj6"/>
+                        <constraint firstAttribute="trailing" secondItem="9Ur-T6-f4c" secondAttribute="trailing" id="gjP-5j-Xub"/>
+                        <constraint firstItem="bJv-UM-Quc" firstAttribute="top" secondItem="cpv-BG-FD7" secondAttribute="top" constant="30" id="v5n-G5-tK8"/>
+                        <constraint firstItem="bJv-UM-Quc" firstAttribute="leading" secondItem="cpv-BG-FD7" secondAttribute="leading" constant="40" id="zQj-C6-5Iv"/>
+                    </constraints>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="sh9-mu-YYs">
-                    <rect key="frame" x="8" y="28" width="359" height="631"/>
+                    <rect key="frame" x="8" y="64" width="359" height="595"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="cpv-BG-FD7" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="4Sp-SE-9ww"/>
+                <constraint firstItem="cpv-BG-FD7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="CcN-Ih-44d"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sh9-mu-YYs" secondAttribute="trailing" constant="8" id="JMq-au-jqa"/>
-                <constraint firstItem="sh9-mu-YYs" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="Rmb-UE-Pwq"/>
                 <constraint firstItem="sh9-mu-YYs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="df1-gY-8yK"/>
+                <constraint firstItem="cpv-BG-FD7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qgW-Cq-YgB"/>
+                <constraint firstItem="sh9-mu-YYs" firstAttribute="top" secondItem="cpv-BG-FD7" secondAttribute="bottom" id="tPo-nE-dS6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="sh9-mu-YYs" secondAttribute="bottom" constant="8" id="ybi-xO-u1d"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="84.5" y="125.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_back" width="20" height="18"/>
+    </resources>
 </document>
