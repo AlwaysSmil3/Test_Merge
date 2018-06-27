@@ -32,6 +32,7 @@ class LoanFirstViewController: BaseViewController {
     @IBOutlet var lblInterestRate: UILabel!
     @IBOutlet var lblTempFee: UILabel!
     @IBOutlet var lblTempTotalAmount: UILabel!
+    @IBOutlet var lblLeftTempTotalAmount: UILabel!
     
     var loanCategory: LoanCategories? {
         didSet {
@@ -94,10 +95,14 @@ class LoanFirstViewController: BaseViewController {
             self.lblTermSlider?.text = "\(Int(loan.termMin!))" + " Ngày"
             self.lblMinTermSlider?.text = "\(Int(loan.termMin!)) NGÀY"
             self.lblMaxTermSlider?.text = "\(Int(loan.termMax!)) NGÀY"
+            
+            self.lblLeftTempTotalAmount?.text = "Thanh toán dự kiến"
         } else {
             self.lblTermSlider?.text = "\(Int(loan.termMin! / 30))" + " Tháng"
             self.lblMinTermSlider?.text = "\(Int(loan.termMin! / 30)) THÁNG"
             self.lblMaxTermSlider?.text = "\(Int(loan.termMax! / 30)) THÁNG"
+            
+            self.lblLeftTempTotalAmount?.text = "Trả góp dự kiến hàng tháng"
         }
     }
     

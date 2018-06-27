@@ -19,12 +19,14 @@ protocol BankDataDelegate {
     func getBankAccountData(bank: AccountBank)
 }
 
-class ListWalletViewController: UIViewController {
+class ListWalletViewController: BaseViewController {
 
     // MARK: - Outlet
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var noWalletLabel: UILabel!
     @IBOutlet weak var addBtn: UIButton!
+    
+    @IBOutlet var bottomView: UIView!
     
     var walletAction: WalletAction = .WalletDetail
     let cellIdentifier = "cell"
@@ -41,6 +43,15 @@ class ListWalletViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        if self.walletAction == .LoanNation {
+            self.setupTitleView(title: "Tạo yêu cầu vay", subTitle: "Bước 4: Tài khoản ngân hàng")
+            self.navigationController?.navigationBar.shadowImage = UIImage()
+            self.bottomView.isHidden = false
+            DataManager.shared.loanInfo.currentStep = 3
+            self.updateDataToServer()
+        }
+        
 
         self.title = NSLocalizedString("ACCOUNT_MANAGER", comment: "")
         
@@ -66,6 +77,15 @@ class ListWalletViewController: UIViewController {
         if let ishidden = self.navigationController?.isNavigationBarHidden, ishidden {
             self.navigationController?.isNavigationBarHidden = false
         }
+    }
+    
+    /// Cho Loan - Xong mỗi bước là gửi api put cập nhật dữ liệu cho mỗi bước
+    func updateDataToServer() {
+        APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
+            .done(on: DispatchQueue.global()) { model in
+                DataManager.shared.loanID = model.loanId!
+            }
+            .catch { error in }
     }
     
     @IBAction func navi_back(sender: UIButton) {
@@ -137,28 +157,32 @@ extension ListWalletViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        switch walletAction {
-        case .WalletDetail:
-            switch indexPath.section {
-            case 0:
+        switch indexPath.section {
+        case 0:
+            switch walletAction {
+            case .WalletDetail:
                 editWallet(index: indexPath.row)
-                
-            default:
-                addNewWallet()
+                break
+            case .LoanNation:
+                let wallet = self.listWallet[indexPath.row] as! AccountBank
+                let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
+                DataManager.shared.loanInfo.walletId = wallet.id!
+                DataManager.shared.loanInfo.bankId = Int(wallet.id!)
+                self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
+                break
+            case .RegisterInvestor:
+                //Cho đăng ký làm nhà đầu tư
+                guard let bank = self.listWallet[indexPath.row] as? AccountBank else { return }
+                self.delegate?.getBankAccountData(bank: bank)
+                self.navigationController?.popViewController(animated: true)
+                break
             }
-        case .LoanNation:
-            let wallet = self.listWallet[indexPath.row] as! AccountBank
-            let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
-            DataManager.shared.loanInfo.walletId = wallet.id!
-            self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
             
-        case .RegisterInvestor:
-            //Cho đăng ký làm nhà đầu tư
-            guard let bank = self.listWallet[indexPath.row] as? AccountBank else { return }
-            self.delegate?.getBankAccountData(bank: bank)
-            self.navigationController?.popViewController(animated: true)
-            break
+        default:
+            addNewWallet()
         }
+        
+        
         
         
         
