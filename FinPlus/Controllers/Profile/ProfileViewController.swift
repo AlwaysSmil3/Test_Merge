@@ -12,8 +12,7 @@ import MessageUI
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    var isInvestor = false
-    
+
     let cellIdentifier = "cell"
     let headerIdentifier = "header"
     
@@ -84,7 +83,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         ]
     
     var data: NSArray!
+    
     var mode = false
+    var isInvestor = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,7 +102,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewWillAppear(animated)
         
         self.navigationController?.isNavigationBarHidden = true
+        
         self.mode = UserDefaults.standard.bool(forKey: APP_MODE)
+        self.isInvestor = UserDefaults.standard.bool(forKey: IS_INVESTOR)
         
         setupMode()
     }
@@ -124,7 +127,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         header.avatarBtn.setBackgroundImage(UIImage(named: "avatar_default"), for: .normal)
         header.delegate = self
         
-        if (self.mode)
+        if (self.mode && self.isInvestor)
         {
             header.avatarBtn.tintColor = DARK_MODE_MAIN_TEXT_COLOR
             header.usernameLabel.textColor = DARK_MODE_MAIN_TEXT_COLOR
@@ -196,7 +199,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.nameLabel.text = NSLocalizedString((item["name"] as? String)!, comment: "")
         cell.desLabel.text = ""
         
-        if (self.mode)
+        if (self.mode && self.isInvestor)
         {
             cell.nameLabel.textColor = DARK_MODE_MAIN_TEXT_COLOR
             cell.desLabel.textColor = DARK_MODE_SUB_TEXT_COLOR
@@ -209,7 +212,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if (self.isInvestor && indexPath.row == 2)
         {
-            cell.desLabel.text = UserDefaults.standard.bool(forKey: APP_MODE) ? NSLocalizedString("DARK_MODE", comment: "") : NSLocalizedString("LIGHT_MODE", comment: "")
+            cell.desLabel.text = self.mode ? NSLocalizedString("DARK_MODE", comment: "") : NSLocalizedString("LIGHT_MODE", comment: "")
         }
         
         return cell

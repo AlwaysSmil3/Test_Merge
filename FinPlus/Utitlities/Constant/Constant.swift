@@ -96,6 +96,7 @@ enum DATA_TYPE_TB_CELL {
 }
 
 let APP_MODE = "APP_MODE"
+let IS_INVESTOR = "IS_INVESTOR"
 
 //Category ID
 let Loan_Student_Category_ID: Int16 = 1 // Id cua vay sinh vien

@@ -55,7 +55,7 @@ class BankAccountTableViewCell: UITableViewCell {
     }
 
     func updateCellMode() {
-        if (UserDefaults.standard.bool(forKey: APP_MODE)) {
+        if (UserDefaults.standard.bool(forKey: APP_MODE) && UserDefaults.standard.bool(forKey: IS_INVESTOR)) {
             self.walletNameLb.textColor = DARK_BODY_TEXT_COLOR
             self.accountNumberLb.textColor = DARK_SUBTEXT_COLOR
         } else {

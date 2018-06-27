@@ -23,7 +23,7 @@ class AddNewWalletTableViewCell: UITableViewCell {
     }
 
     func updateCellView() {
-        if (UserDefaults.standard.bool(forKey: APP_MODE)) {
+        if (UserDefaults.standard.bool(forKey: APP_MODE) && UserDefaults.standard.bool(forKey: IS_INVESTOR)) {
             self.titleLb.textColor = DARK_SUBTEXT_COLOR
         } else {
             self.titleLb.textColor = LIGHT_BODY_TEXT_COLOR
