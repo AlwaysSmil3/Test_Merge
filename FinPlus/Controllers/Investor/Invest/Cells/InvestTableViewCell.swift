@@ -11,6 +11,7 @@ import UIKit
 class InvestTableViewCell: UITableViewCell {
     @IBOutlet weak var amountLb: UILabel!
     @IBOutlet weak var nameLb: UILabel!
+    @IBOutlet weak var nextImg: UIImageView!
 
     @IBOutlet weak var reliabilityLb: UILabel!
     @IBOutlet weak var alreadyAmountLb: UILabel!
@@ -53,6 +54,7 @@ class InvestTableViewCell: UITableViewCell {
             self.exporeTimeLb.textColor = DARK_BODY_TEXT_COLOR
             self.alreadyAmountLb.textColor = DARK_SUBTEXT_COLOR
             self.amountLb.textColor = DARK_BODY_TEXT_COLOR
+            nextImg.image = #imageLiteral(resourceName: "ic_right_dark")
         }
         else
         {
@@ -62,6 +64,7 @@ class InvestTableViewCell: UITableViewCell {
             self.exporeTimeLb.textColor = LIGHT_BODY_TEXT_COLOR
             self.alreadyAmountLb.textColor = LIGHT_SUBTEXT_COLOR
             self.amountLb.textColor = LIGHT_BODY_TEXT_COLOR
+            nextImg.image = #imageLiteral(resourceName: "ic_right")
         }
     }
 
