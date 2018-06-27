@@ -244,12 +244,13 @@ class APIClient {
                 
             }
             
-            let name = typeMedia + "_" + typeExpand.rawValue
+            //let name = typeMedia + "_" + typeExpand.rawValue
             let fileName = typeMedia + "_" + typeExpand.rawValue + ".png"
             let mimetype = typeMedia + "/png"
             
             for data in imagesData {
-                multipartFormData.append(data, withName: name, fileName: fileName, mimeType: mimetype)
+                multipartFormData.append(data, withName: "files", fileName: fileName, mimeType: mimetype)
+                
             }
             
         }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { (result) in

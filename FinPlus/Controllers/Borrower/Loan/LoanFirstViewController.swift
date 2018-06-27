@@ -190,15 +190,18 @@ class LoanFirstViewController: BaseViewController {
     
     //Update số tiền trả góp hàng tháng
     private func updateTotalAmountMounth() {
-        guard let version = DataManager.shared.config else { return }
+        guard let version = DataManager.shared.config, let loan = self.loanCategory else { return }
         
         let fee = Double(Int(self.amountSlider.value) * version.serviceFee! * 1000000 / 100)
         self.lblTempFee.text = FinPlusHelper.formatDisplayCurrency(fee) + " VND"
         let amountInt = Int(self.amountSlider.value) / Int(self.amountSlider.minimumValue) * 1000000
-        var amountDouble = Double(amountInt) + fee
+        var amountDouble = Double(amountInt)
         
-        if self.termSlider.value > 30 {
-            amountDouble = amountDouble / Double(Int(self.termSlider.value / 30))
+        if loan.id == Loan_Student_Category_ID {
+            amountDouble = amountDouble * (loan.interestRate! / 100) + amountDouble
+        } else {
+            let term = self.termSlider.value
+            amountDouble = (amountDouble * (loan.interestRate! / 100) + amountDouble) / Double(Int(term / 30))
         }
         
         self.lblTempTotalAmount.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + " VND"
