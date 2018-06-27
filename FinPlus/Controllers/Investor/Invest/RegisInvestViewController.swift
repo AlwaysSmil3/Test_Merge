@@ -74,6 +74,10 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
 
     func setupMode() {
         if (self.mode) {
+            self.navigationController?.navigationBar.isTranslucent = false
+            self.navigationController?.navigationBar.barTintColor = DARK_MODE_NAVI_COLOR
+            self.navigationController?.navigationBar.tintColor = DARK_BODY_TEXT_COLOR
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: DARK_BODY_TEXT_COLOR]
             self.view.backgroundColor = DARK_BACKGROUND_COLOR
             // policy text
 //            let myRange = NSRange(location: 25, length: 17)
@@ -93,7 +97,7 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
             self.investAmountTitleLb.textColor = DARK_SUBTEXT_COLOR
             self.amountTf.textColor = DARK_BODY_TEXT_COLOR
             self.investDetailTitleLb.textColor = DARK_SUBTEXT_COLOR
-            self.containView.backgroundColor = DARK_FOREGROUND_COLOR
+            self.containView.backgroundColor = DARK_BACKGROUND_COLOR
             self.sumAmountTitleLb.textColor = DARK_BODY_TEXT_COLOR
             self.sumAmountLb.textColor = DARK_SUBTEXT_COLOR
             self.interestTitleLb.textColor = DARK_BODY_TEXT_COLOR
@@ -106,6 +110,10 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
             self.timeLb.textColor = DARK_SUBTEXT_COLOR
 
         } else {
+            self.navigationController?.navigationBar.isTranslucent = false
+            self.navigationController?.navigationBar.barTintColor = LIGHT_MODE_NAVI_COLOR
+            self.navigationController?.navigationBar.tintColor = LIGHT_BODY_TEXT_COLOR
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: LIGHT_BODY_TEXT_COLOR]
             self.view.backgroundColor = LIGHT_BACKGROUND_COLOR
 
             let policyStr : String = "Tôi đã hiểu và đồng ý với hợp đồng đầu tư."
@@ -124,7 +132,7 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
             self.investAmountTitleLb.textColor = LIGHT_SUBTEXT_COLOR
             self.amountTf.textColor = LIGHT_BODY_TEXT_COLOR
             self.investDetailTitleLb.textColor = LIGHT_SUBTEXT_COLOR
-            self.containView.backgroundColor = LIGHT_FOREGROUND_COLOR
+            self.containView.backgroundColor = LIGHT_BACKGROUND_COLOR
             self.sumAmountTitleLb.textColor = LIGHT_BODY_TEXT_COLOR
             self.sumAmountLb.textColor = LIGHT_SUBTEXT_COLOR
             self.interestTitleLb.textColor = LIGHT_BODY_TEXT_COLOR
