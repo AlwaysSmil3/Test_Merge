@@ -66,10 +66,13 @@ class LoanStateViewController: UIViewController {
         
         self.btnBottomView.setBackgroundColor(color: MAIN_COLOR, forState: .normal)
         self.btnBottomView.setBackgroundColor(color: UIColor(hexString: "#4D6678"), forState: .focused)
+        self.btnBottomView.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         self.btnBottomView?.backgroundColor = MAIN_COLOR
         self.btnBottomView?.tintColor = .white
         self.btnBottomView.layer.cornerRadius = 8
         self.btnBottomView.layer.masksToBounds = true
+        
+        self.labelBottomView.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_SMALL)
         
         switch(STATUS_LOAN(rawValue: id!)) {
         case .DRAFT?:
@@ -338,7 +341,7 @@ class LoanStateViewController: UIViewController {
             
             self.labelBottomView.text = "Không, tiếp tục huy động"
             self.labelBottomView.isUserInteractionEnabled = true
-            self.labelBottomView.font = UIFont.boldSystemFont(ofSize: 17)
+            self.labelBottomView.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
             self.labelBottomView.textAlignment = .center
             self.labelBottomView.textColor = UIColor(hexString: "#4D6678")
             
@@ -669,11 +672,11 @@ extension LoanStateViewController: UITableViewDataSource {
             case 2:
                 cell?.nameLabel.text = NSLocalizedString("LOAN_MONEY", comment: "")
                 cell?.desLabel.text = "2.000.000đ"
-                cell?.desLabel.font = UIFont.boldSystemFont(ofSize: (cell?.desLabel.font.pointSize)!)
+                cell?.desLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
             case 3:
                 cell?.nameLabel.text = NSLocalizedString("LOAN_TIME", comment: "")
                 cell?.desLabel.text = "12 tháng"
-                cell?.desLabel.font = UIFont.boldSystemFont(ofSize: (cell?.desLabel.font.pointSize)!)
+                cell?.desLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
             case 4:
                 cell?.nameLabel.text = NSLocalizedString("STATUS", comment: "")
                 cell?.desLabel.text = getState(type: STATUS_LOAN(rawValue: activeLoanId)!)
@@ -687,7 +690,7 @@ extension LoanStateViewController: UITableViewDataSource {
             case 7:
                 cell?.nameLabel.text = NSLocalizedString("MONEY_MONTH", comment: "")
                 cell?.desLabel.text = "180.000đ"
-                cell?.desLabel.font = UIFont.boldSystemFont(ofSize: (cell?.desLabel.font.pointSize)!)
+                cell?.desLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
             default:
                 cell?.nameLabel.text = NSLocalizedString("LOAN_DIS", comment: "")
                 cell?.desLabel.text = "Vay mua điện thoại"

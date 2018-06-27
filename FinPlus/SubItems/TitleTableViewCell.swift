@@ -27,12 +27,12 @@ class TitleTableViewCell: UITableViewCell {
         self.textCellType = type
         
         if textCellType == .TitleType {
-            label.font = UIFont.boldSystemFont(ofSize: 26)
+            label.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_BIG)
             label.textColor = .black
         }
         else
         {
-            label.font = UIFont.boldSystemFont(ofSize: 15)
+            label.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_SEMIMALL)
             label.textColor = UIColor(hexString: "#4D6678")
         }
     }

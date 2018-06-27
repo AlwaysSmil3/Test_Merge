@@ -22,6 +22,11 @@ class ContractSuccessViewController: UIViewController {
         
         self.btnComeHome.layer.cornerRadius = 8
         self.btnComeHome.layer.masksToBounds = true
+        self.btnComeHome.titleLabel?.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)
+        
+        self.titleLabel.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_BIG)
+        self.desLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_SEMIMALL)
+        self.btnReviewContract.titleLabel?.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
     }
 
     override func didReceiveMemoryWarning() {

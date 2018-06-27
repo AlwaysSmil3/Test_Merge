@@ -343,8 +343,11 @@
                     <connections>
                         <outlet property="calBtn" destination="ZVJ-AL-lgG" id="gUt-jF-8nk"/>
                         <outlet property="dateTextField" destination="kYr-B5-qWM" id="8BK-vg-3T9"/>
+                        <outlet property="moneyLabel" destination="mIf-0f-mpn" id="kE8-44-O4H"/>
                         <outlet property="moneyTextField" destination="C2e-oJ-xq5" id="sac-EV-eS1"/>
+                        <outlet property="monthLabel" destination="mzm-PJ-Arh" id="bMK-jE-OWF"/>
                         <outlet property="monthTextField" destination="Pkw-9Z-wFe" id="0tJ-Jr-rfb"/>
+                        <outlet property="rateLabel" destination="OUl-Rs-LVE" id="40d-oP-SXq"/>
                         <outlet property="rateTextField" destination="Ugi-g7-b5m" id="Fu3-oC-yv4"/>
                         <outlet property="spreadsheetView" destination="VNR-ug-Vfc" id="lHK-DU-79W"/>
                     </connections>

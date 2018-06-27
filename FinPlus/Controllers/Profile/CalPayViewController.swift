@@ -14,8 +14,11 @@ let SHORT_TYPE:Float = 1000
 
 class CalPayViewController: UIViewController, SpreadsheetViewDataSource, SpreadsheetViewDelegate, UITextFieldDelegate {
     
+    @IBOutlet weak var moneyLabel: UILabel!
     @IBOutlet weak var moneyTextField: HoshiTextField!
+    @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var monthTextField: HoshiTextField!
+    @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var rateTextField: HoshiTextField!
     @IBOutlet weak var dateTextField: HoshiTextField!
     @IBOutlet weak var calBtn: UIButton!
@@ -49,6 +52,24 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         // Setting DateFormatter
         dateFormatter.dateFormat = "dd/MM/YYYY"
         dateTextField.text = dateFormatter.string(from: currentDate)
+        
+        // Setup Font
+        moneyLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        moneyTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        moneyTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
+        
+        monthLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        monthTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        monthTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
+        
+        rateLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        rateTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        rateTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
+        
+        dateTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        dateTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
+        
+        calBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)
         
         // TableView Custom
         spreadsheetView.dataSource = self
