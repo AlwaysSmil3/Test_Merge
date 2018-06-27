@@ -24,6 +24,12 @@ class LoanTableViewCell: UITableViewCell {
         self.borderView.layer.borderWidth = 0.5
         self.borderView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
         self.borderView.layer.cornerRadius = 8
+        
+        dateLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
+        moneyLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
+        statusLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        statusValueLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        disLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_SEMIMALL)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

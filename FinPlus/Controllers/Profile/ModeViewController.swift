@@ -18,7 +18,8 @@ class ModeViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("APP_MODE", comment: "")
-        modeSwitch.isOn = UserDefaults.standard.bool(forKey: APP_MODE)
+        self.modeSwitch.isOn = UserDefaults.standard.bool(forKey: APP_MODE)
+        self.modeLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         
         setupMode(mode: UserDefaults.standard.bool(forKey: APP_MODE))
     }
@@ -49,7 +50,7 @@ class ModeViewController: UIViewController {
             self.navigationController?.navigationBar.isTranslucent = false
             self.navigationController?.navigationBar.barTintColor = DARK_MODE_NAVI_COLOR
             self.navigationController?.navigationBar.tintColor = DARK_MODE_MAIN_TEXT_COLOR
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: DARK_MODE_MAIN_TEXT_COLOR]
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: DARK_MODE_MAIN_TEXT_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)]
         }
         else
         {
@@ -59,7 +60,7 @@ class ModeViewController: UIViewController {
             self.navigationController?.navigationBar.isTranslucent = false
             self.navigationController?.navigationBar.barTintColor = LIGHT_MODE_NAVI_COLOR
             self.navigationController?.navigationBar.tintColor = LIGHT_MODE_MAIN_TEXT_COLOR
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: LIGHT_MODE_MAIN_TEXT_COLOR]
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: LIGHT_MODE_MAIN_TEXT_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)]
         }
     }
     

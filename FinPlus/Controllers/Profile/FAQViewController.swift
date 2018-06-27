@@ -25,10 +25,11 @@ class FAQViewController: UIViewController {
         faqView.layer.borderColor = UIColor.gray.cgColor
         faqView.layer.borderWidth = 1
         faqView.layer.cornerRadius = 8
-        faqView.questionTextFont = UIFont.systemFont(ofSize: 17)
-        faqView.answerTextFont = UIFont.systemFont(ofSize: 15)
+        faqView.questionTextFont = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        faqView.answerTextFont = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_SEMIMALL)
         faqView.questionTextColor = UIColor(hexString: "#08121E")
         faqView.answerTextColor = UIColor(hexString: "#4D6678")
+        faqView.separatorColor = UIColor(hexString: "#DFE3ED")
         faqView.translatesAutoresizingMaskIntoConstraints = false
         faqViewContainer.addSubview(faqView)
         addFaqViewConstraints()
