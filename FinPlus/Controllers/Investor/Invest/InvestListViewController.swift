@@ -164,8 +164,8 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
 
             self.navigationController?.navigationBar.isTranslucent = false
             self.navigationController?.navigationBar.barTintColor = DARK_MODE_NAVI_COLOR
-            self.navigationController?.navigationBar.tintColor = DARK_MODE_MAIN_TEXT_COLOR
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: DARK_MODE_MAIN_TEXT_COLOR]
+            self.navigationController?.navigationBar.tintColor = DARK_BODY_TEXT_COLOR
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: DARK_BODY_TEXT_COLOR]
         }
         else
         {
@@ -176,8 +176,8 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
 
             self.navigationController?.navigationBar.isTranslucent = false
             self.navigationController?.navigationBar.barTintColor = LIGHT_MODE_NAVI_COLOR
-            self.navigationController?.navigationBar.tintColor = LIGHT_MODE_MAIN_TEXT_COLOR
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: LIGHT_MODE_MAIN_TEXT_COLOR]
+            self.navigationController?.navigationBar.tintColor = LIGHT_BODY_TEXT_COLOR
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: LIGHT_BODY_TEXT_COLOR]
         }
 
         self.tableView.reloadData()

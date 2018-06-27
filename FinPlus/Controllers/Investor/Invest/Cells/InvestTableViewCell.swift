@@ -48,7 +48,7 @@ class InvestTableViewCell: UITableViewCell {
         mode = UserDefaults.standard.bool(forKey: APP_MODE)
         if (mode)
         {
-            self.contentView.backgroundColor = DARK_BACKGROUND_COLOR
+            self.contentView.backgroundColor = DARK_MODE_BACKGROUND_COLOR
             self.nameLb.textColor = DARK_BODY_TEXT_COLOR
             self.reliabilityLb.textColor = UIColor.white
             self.exporeTimeLb.textColor = DARK_BODY_TEXT_COLOR
@@ -58,7 +58,7 @@ class InvestTableViewCell: UITableViewCell {
         }
         else
         {
-            self.contentView.backgroundColor = LIGHT_BACKGROUND_COLOR
+            self.contentView.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
             self.nameLb.textColor = LIGHT_BODY_TEXT_COLOR
             self.reliabilityLb.textColor = UIColor.black
             self.exporeTimeLb.textColor = LIGHT_BODY_TEXT_COLOR
