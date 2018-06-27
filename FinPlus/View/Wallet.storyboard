@@ -9,6 +9,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Bold.otf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="ygc-gV-xwL">
@@ -66,20 +71,130 @@
                                     <outlet property="delegate" destination="egq-u3-j2r" id="l8w-7e-gHU"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Whj-Oy-eL8">
+                                <rect key="frame" x="0.0" y="631" width="375" height="36"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQl-UW-ZhV">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NEK-vA-J99">
+                                                <rect key="frame" x="0.0" y="0.0" width="456" height="36"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KHOẢN VAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Is-CA-CnZ">
+                                                        <rect key="frame" x="12" y="12" width="62" height="13"/>
+                                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="11"/>
+                                                        <color key="textColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_disclosureIndicator2" translatesAutoresizingMaskIntoConstraints="NO" id="AjX-1N-KKj">
+                                                        <rect key="frame" x="80" y="15.5" width="5" height="7"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CÁ NHÂN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIJ-SJ-hnh">
+                                                        <rect key="frame" x="91" y="12" width="49" height="13"/>
+                                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="11"/>
+                                                        <color key="textColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_disclosureIndicator2" translatesAutoresizingMaskIntoConstraints="NO" id="GGS-aO-SyJ">
+                                                        <rect key="frame" x="146" y="15.5" width="5" height="7"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NGHỀ NGHIỆP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaE-Qj-Y3T">
+                                                        <rect key="frame" x="157" y="12" width="72.5" height="13"/>
+                                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="11"/>
+                                                        <color key="textColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_disclosureIndicator2" translatesAutoresizingMaskIntoConstraints="NO" id="oSR-mF-nS0">
+                                                        <rect key="frame" x="235.5" y="15.5" width="5" height="7"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tài khoản" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVh-vI-uJ2">
+                                                        <rect key="frame" x="246.5" y="12" width="48" height="13"/>
+                                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="11"/>
+                                                        <color key="textColor" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_disclosureIndicator2" translatesAutoresizingMaskIntoConstraints="NO" id="3qa-R3-PK1">
+                                                        <rect key="frame" x="300.5" y="15.5" width="5" height="7"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NHÂN THÂN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjJ-fW-xFm">
+                                                        <rect key="frame" x="311.5" y="12" width="64" height="13"/>
+                                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="11"/>
+                                                        <color key="textColor" red="0.5568627451" green="0.63921568630000003" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_disclosureIndicator3" translatesAutoresizingMaskIntoConstraints="NO" id="2zV-io-dGa">
+                                                        <rect key="frame" x="381.5" y="15.5" width="5" height="7"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BỔ SUNG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W78-bn-dhN">
+                                                        <rect key="frame" x="392.5" y="12" width="48.5" height="13"/>
+                                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="11"/>
+                                                        <color key="textColor" red="0.5568627451" green="0.63921568630000003" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="rVh-vI-uJ2" firstAttribute="centerY" secondItem="eaE-Qj-Y3T" secondAttribute="centerY" id="2PN-Gg-hwF"/>
+                                                    <constraint firstItem="rVh-vI-uJ2" firstAttribute="leading" secondItem="oSR-mF-nS0" secondAttribute="trailing" constant="6" id="30g-AA-i5S"/>
+                                                    <constraint firstItem="oSR-mF-nS0" firstAttribute="centerY" secondItem="eaE-Qj-Y3T" secondAttribute="centerY" id="3Uy-bb-Zr8"/>
+                                                    <constraint firstItem="gjJ-fW-xFm" firstAttribute="leading" secondItem="3qa-R3-PK1" secondAttribute="trailing" constant="6" id="4Dw-m5-4i5"/>
+                                                    <constraint firstItem="MIJ-SJ-hnh" firstAttribute="leading" secondItem="AjX-1N-KKj" secondAttribute="trailing" constant="6" id="8mV-cX-3XF"/>
+                                                    <constraint firstItem="2zV-io-dGa" firstAttribute="leading" secondItem="gjJ-fW-xFm" secondAttribute="trailing" constant="6" id="Aa3-8k-M50"/>
+                                                    <constraint firstItem="AjX-1N-KKj" firstAttribute="centerY" secondItem="2Is-CA-CnZ" secondAttribute="centerY" id="BgB-Hu-Nte"/>
+                                                    <constraint firstItem="gjJ-fW-xFm" firstAttribute="centerY" secondItem="rVh-vI-uJ2" secondAttribute="centerY" id="MHD-uw-BkY"/>
+                                                    <constraint firstItem="W78-bn-dhN" firstAttribute="leading" secondItem="2zV-io-dGa" secondAttribute="trailing" constant="6" id="Ok4-q7-0jr"/>
+                                                    <constraint firstItem="eaE-Qj-Y3T" firstAttribute="leading" secondItem="GGS-aO-SyJ" secondAttribute="trailing" constant="6" id="Qq7-PE-gAf"/>
+                                                    <constraint firstItem="MIJ-SJ-hnh" firstAttribute="centerY" secondItem="2Is-CA-CnZ" secondAttribute="centerY" id="WEf-3s-ZcU"/>
+                                                    <constraint firstItem="GGS-aO-SyJ" firstAttribute="leading" secondItem="MIJ-SJ-hnh" secondAttribute="trailing" constant="6" id="YC2-qP-csQ"/>
+                                                    <constraint firstItem="3qa-R3-PK1" firstAttribute="leading" secondItem="rVh-vI-uJ2" secondAttribute="trailing" constant="6" id="YYC-07-tY2"/>
+                                                    <constraint firstAttribute="width" constant="456" id="adf-Xa-qxz"/>
+                                                    <constraint firstItem="2Is-CA-CnZ" firstAttribute="centerY" secondItem="NEK-vA-J99" secondAttribute="centerY" id="bKG-1t-25z"/>
+                                                    <constraint firstItem="2zV-io-dGa" firstAttribute="centerY" secondItem="gjJ-fW-xFm" secondAttribute="centerY" id="bzM-nJ-14r"/>
+                                                    <constraint firstItem="3qa-R3-PK1" firstAttribute="centerY" secondItem="rVh-vI-uJ2" secondAttribute="centerY" id="cDK-kj-NsA"/>
+                                                    <constraint firstItem="oSR-mF-nS0" firstAttribute="leading" secondItem="eaE-Qj-Y3T" secondAttribute="trailing" constant="6" id="dqj-Nl-0PT"/>
+                                                    <constraint firstItem="W78-bn-dhN" firstAttribute="centerY" secondItem="gjJ-fW-xFm" secondAttribute="centerY" id="etm-VV-6Uq"/>
+                                                    <constraint firstItem="AjX-1N-KKj" firstAttribute="leading" secondItem="2Is-CA-CnZ" secondAttribute="trailing" constant="6" id="ifR-hh-blK"/>
+                                                    <constraint firstItem="GGS-aO-SyJ" firstAttribute="centerY" secondItem="MIJ-SJ-hnh" secondAttribute="centerY" id="iwC-mh-jXH"/>
+                                                    <constraint firstItem="eaE-Qj-Y3T" firstAttribute="centerY" secondItem="MIJ-SJ-hnh" secondAttribute="centerY" id="jVF-XJ-yyU"/>
+                                                    <constraint firstItem="2Is-CA-CnZ" firstAttribute="leading" secondItem="NEK-vA-J99" secondAttribute="leading" constant="12" id="nYB-Ma-pAy"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="NEK-vA-J99" firstAttribute="leading" secondItem="NQl-UW-ZhV" secondAttribute="leading" id="5CQ-C3-FRB"/>
+                                            <constraint firstAttribute="bottom" secondItem="NEK-vA-J99" secondAttribute="bottom" id="BLC-as-ldX"/>
+                                            <constraint firstAttribute="trailing" secondItem="NEK-vA-J99" secondAttribute="trailing" id="Uws-bt-wXF"/>
+                                            <constraint firstItem="NEK-vA-J99" firstAttribute="top" secondItem="NQl-UW-ZhV" secondAttribute="top" id="rvm-WF-7mo"/>
+                                        </constraints>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="NQl-UW-ZhV" secondAttribute="trailing" id="4fI-m2-bct"/>
+                                    <constraint firstItem="NEK-vA-J99" firstAttribute="height" secondItem="Whj-Oy-eL8" secondAttribute="height" id="BWR-cb-TTM"/>
+                                    <constraint firstAttribute="bottom" secondItem="NQl-UW-ZhV" secondAttribute="bottom" id="SmO-gj-id1"/>
+                                    <constraint firstItem="NQl-UW-ZhV" firstAttribute="top" secondItem="Whj-Oy-eL8" secondAttribute="top" id="iSO-c9-YWE"/>
+                                    <constraint firstAttribute="height" constant="36" id="khD-o1-wzs"/>
+                                    <constraint firstItem="NQl-UW-ZhV" firstAttribute="leading" secondItem="Whj-Oy-eL8" secondAttribute="leading" id="yV0-Ka-8pK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="24l-Wz-1SQ" firstAttribute="centerY" secondItem="I1u-1r-uff" secondAttribute="centerY" id="4dV-zu-wLC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DxA-1t-Zf1" secondAttribute="trailing" id="8UD-sW-NOr"/>
                             <constraint firstAttribute="trailing" secondItem="A1B-jr-6bw" secondAttribute="trailing" id="9Wa-Sc-LaG"/>
+                            <constraint firstAttribute="trailing" secondItem="Whj-Oy-eL8" secondAttribute="trailing" id="Dgb-1j-aI7"/>
                             <constraint firstItem="l4s-vS-cBs" firstAttribute="top" secondItem="DxA-1t-Zf1" secondAttribute="bottom" constant="20" id="HUz-86-54r"/>
                             <constraint firstItem="l4s-vS-cBs" firstAttribute="top" secondItem="A1B-jr-6bw" secondAttribute="bottom" id="JtT-jz-UH5"/>
                             <constraint firstItem="A1B-jr-6bw" firstAttribute="top" secondItem="YeS-49-7xM" secondAttribute="bottom" id="LBN-pv-l2d"/>
                             <constraint firstItem="DxA-1t-Zf1" firstAttribute="leading" secondItem="I1u-1r-uff" secondAttribute="leadingMargin" id="Sxa-FH-pLW"/>
                             <constraint firstItem="24l-Wz-1SQ" firstAttribute="leading" secondItem="I1u-1r-uff" secondAttribute="leadingMargin" constant="30" id="Xjr-xU-UZK"/>
                             <constraint firstItem="A1B-jr-6bw" firstAttribute="leading" secondItem="I1u-1r-uff" secondAttribute="leading" id="jru-6p-D17"/>
+                            <constraint firstItem="Whj-Oy-eL8" firstAttribute="leading" secondItem="I1u-1r-uff" secondAttribute="leading" id="ljz-8R-XhI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="24l-Wz-1SQ" secondAttribute="trailing" constant="30" id="nlg-f5-hPo"/>
                             <constraint firstItem="24l-Wz-1SQ" firstAttribute="centerX" secondItem="I1u-1r-uff" secondAttribute="centerX" id="wnf-dX-Jqc"/>
+                            <constraint firstAttribute="bottom" secondItem="Whj-Oy-eL8" secondAttribute="bottom" id="zQh-bN-b7c"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vh1-os-igC">
@@ -91,6 +206,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addBtn" destination="DxA-1t-Zf1" id="Ehl-Yc-74L"/>
+                        <outlet property="bottomView" destination="Whj-Oy-eL8" id="BMQ-c5-SY4"/>
                         <outlet property="noWalletLabel" destination="24l-Wz-1SQ" id="3Cj-fA-WA0"/>
                         <outlet property="tableview" destination="A1B-jr-6bw" id="05p-lQ-OpT"/>
                     </connections>
@@ -315,6 +431,8 @@
         <image name="agri" width="25" height="25"/>
         <image name="agri_selected" width="25" height="25"/>
         <image name="ic_back" width="20" height="18"/>
+        <image name="ic_disclosureIndicator2" width="5" height="7"/>
+        <image name="ic_disclosureIndicator3" width="5" height="7"/>
         <image name="tech" width="25" height="16"/>
         <image name="tech_selected" width="25" height="16"/>
         <image name="vcb" width="24" height="24"/>

@@ -92,17 +92,10 @@ class RegisterInvestorVC: BaseViewController {
     }
     
     @IBAction func continueBtnTapped(_ sender: Any) {
-        
-        let homeVC = UIStoryboard(name: "HomeInvestor", bundle: nil).instantiateViewController(withIdentifier: "InvestorTabBarController")
-        
-        self.navigationController?.present(homeVC, animated: true, completion: {
-            
-        })
-        
+        let investorWaitingVC = InvestorSignupWaitingViewController(nibName: "InvestorSignupWaitingViewController", bundle: nil)
+        self.navigationController?.present(investorWaitingVC, animated: true, completion: nil)
     }
-    
-    
-    
+
 }
 
 extension RegisterInvestorVC: UITableViewDelegate, UITableViewDataSource {

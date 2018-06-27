@@ -29,6 +29,7 @@ class InvestDetailViewController: UIViewController, UITableViewDelegate, UITable
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
         self.mode = UserDefaults.standard.bool(forKey: APP_MODE)
         setupMode()
     }
@@ -36,9 +37,17 @@ class InvestDetailViewController: UIViewController, UITableViewDelegate, UITable
     func setupMode() {
         if (self.mode)
         {
+            self.navigationController?.navigationBar.isTranslucent = false
+            self.navigationController?.navigationBar.barTintColor = DARK_MODE_NAVI_COLOR
+            self.navigationController?.navigationBar.tintColor = DARK_BODY_TEXT_COLOR
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: DARK_BODY_TEXT_COLOR]
             self.view.backgroundColor = DARK_BACKGROUND_COLOR
             self.tableView.backgroundColor = DARK_FOREGROUND_COLOR
         } else {
+            self.navigationController?.navigationBar.isTranslucent = false
+            self.navigationController?.navigationBar.barTintColor = LIGHT_MODE_NAVI_COLOR
+            self.navigationController?.navigationBar.tintColor = LIGHT_BODY_TEXT_COLOR
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: LIGHT_BODY_TEXT_COLOR]
             self.view.backgroundColor = LIGHT_BACKGROUND_COLOR
             self.tableView.backgroundColor = LIGHT_BACKGROUND_COLOR
         }
