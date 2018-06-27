@@ -119,6 +119,10 @@ class ChoiceKindUserVC: BaseViewController {
                 registerInvestor.pw = self.pw
                 registerInvestor.accountType = self.accountType
                 
+                // Setting App Type
+                userDefault.set(true, forKey: IS_INVESTOR)
+                userDefault.synchronize()
+                
                 self.navigationController?.pushViewController(registerInvestor, animated: true)
                 
             }
@@ -139,6 +143,10 @@ class ChoiceKindUserVC: BaseViewController {
                     
                     verifyFBVC.pw = self.pw
                     verifyFBVC.accountType = self.accountType
+                    
+                    // Setting App Type
+                    userDefault.set(false, forKey: IS_INVESTOR)
+                    userDefault.synchronize()
                     
                     self.navigationController?.pushViewController(verifyFBVC, animated: true)
                 }

@@ -73,14 +73,14 @@ class InvestDetailSecondTableViewCell: UITableViewCell {
             dueMonthTitleLb.textColor = DARK_BODY_TEXT_COLOR
 
             self.contentView.backgroundColor = DARK_FOREGROUND_COLOR
-            amountLb.textColor = DARK_BODY_TEXT_COLOR
-            alreadyAmountPercentLb.textColor = DARK_BODY_TEXT_COLOR
-            amountAvaiableInvestLb.textColor = DARK_BODY_TEXT_COLOR
-            interestLb.textColor = DARK_BODY_TEXT_COLOR
-            borrowerLb.textColor = DARK_BODY_TEXT_COLOR
-            reliabilityLb.textColor = DARK_BODY_TEXT_COLOR
-            loanTypeLb.textColor = DARK_BODY_TEXT_COLOR
-            dueMonthLb.textColor = DARK_BODY_TEXT_COLOR
+            amountLb.textColor = DARK_SUBTEXT_COLOR
+            alreadyAmountPercentLb.textColor = DARK_SUBTEXT_COLOR
+            amountAvaiableInvestLb.textColor = DARK_SUBTEXT_COLOR
+            interestLb.textColor = DARK_SUBTEXT_COLOR
+            borrowerLb.textColor = DARK_SUBTEXT_COLOR
+            reliabilityLb.textColor = DARK_SUBTEXT_COLOR
+            loanTypeLb.textColor = DARK_SUBTEXT_COLOR
+            dueMonthLb.textColor = DARK_SUBTEXT_COLOR
 
         } else {
             self.contentView.backgroundColor = LIGHT_BACKGROUND_COLOR
@@ -93,14 +93,14 @@ class InvestDetailSecondTableViewCell: UITableViewCell {
             loanTypeTitleLb.textColor = LIGHT_BODY_TEXT_COLOR
             dueMonthTitleLb.textColor = LIGHT_BODY_TEXT_COLOR
 
-            amountLb.textColor = LIGHT_BODY_TEXT_COLOR
-            alreadyAmountPercentLb.textColor = LIGHT_BODY_TEXT_COLOR
-            amountAvaiableInvestLb.textColor = LIGHT_BODY_TEXT_COLOR
-            interestLb.textColor = LIGHT_BODY_TEXT_COLOR
-            borrowerLb.textColor = LIGHT_BODY_TEXT_COLOR
-            reliabilityLb.textColor = LIGHT_BODY_TEXT_COLOR
-            loanTypeLb.textColor = LIGHT_BODY_TEXT_COLOR
-            dueMonthLb.textColor = LIGHT_BODY_TEXT_COLOR
+            amountLb.textColor = LIGHT_SUBTEXT_COLOR
+            alreadyAmountPercentLb.textColor = LIGHT_SUBTEXT_COLOR
+            amountAvaiableInvestLb.textColor = LIGHT_SUBTEXT_COLOR
+            interestLb.textColor = LIGHT_SUBTEXT_COLOR
+            borrowerLb.textColor = LIGHT_SUBTEXT_COLOR
+            reliabilityLb.textColor = LIGHT_SUBTEXT_COLOR
+            loanTypeLb.textColor = LIGHT_SUBTEXT_COLOR
+            dueMonthLb.textColor = LIGHT_SUBTEXT_COLOR
 
         }
     }

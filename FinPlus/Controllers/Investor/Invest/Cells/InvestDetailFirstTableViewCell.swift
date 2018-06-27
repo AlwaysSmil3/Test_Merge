@@ -108,9 +108,9 @@ class InvestDetailFirstTableViewCell: UITableViewCell {
             self.interestNameLb.textColor = DARK_BODY_TEXT_COLOR
             self.interestDes.textColor = DARK_SUBTEXT_COLOR
             // last block
-            self.alreadyNameLb.textColor = DARK_SUBTEXT_COLOR
+            self.alreadyNameLb.textColor = DARK_BODY_TEXT_COLOR
             self.alreadyDesLb.textColor = DARK_SUBTEXT_COLOR
-            alreadyAmountCircleProgressView.fontColor = DARK_SUBTEXT_COLOR
+            alreadyAmountCircleProgressView.fontColor = DARK_BODY_TEXT_COLOR
         } else {
             self.contentView.backgroundColor = LIGHT_BACKGROUND_COLOR
             // first block
@@ -123,9 +123,9 @@ class InvestDetailFirstTableViewCell: UITableViewCell {
             self.interestNameLb.textColor = LIGHT_BODY_TEXT_COLOR
             self.interestDes.textColor = LIGHT_SUBTEXT_COLOR
             // last block
-            self.alreadyNameLb.textColor = LIGHT_SUBTEXT_COLOR
+            self.alreadyNameLb.textColor = LIGHT_BODY_TEXT_COLOR
             self.alreadyDesLb.textColor = LIGHT_SUBTEXT_COLOR
-            alreadyAmountCircleProgressView.fontColor = LIGHT_SUBTEXT_COLOR
+            alreadyAmountCircleProgressView.fontColor = LIGHT_BODY_TEXT_COLOR
         }
     }
 

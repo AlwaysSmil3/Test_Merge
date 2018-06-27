@@ -28,27 +28,27 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cng-13-MJN">
-                        <rect key="frame" x="8" y="2" width="334" height="127.5"/>
+                        <rect key="frame" x="8" y="4" width="334" height="123.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6w-Z3-KPZ">
-                                <rect key="frame" x="16" y="12" width="304" height="22"/>
+                                <rect key="frame" x="16" y="16" width="304" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="Jh2-1r-PdA"/>
+                                    <constraint firstAttribute="height" constant="21" id="Jh2-1r-PdA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
                                 <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lit-gU-Ltf">
-                                <rect key="frame" x="16" y="34" width="304" height="63.5"/>
+                                <rect key="frame" x="16" y="41" width="304" height="43.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                 <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ay3-tD-Ug6">
-                                <rect key="frame" x="16" y="97.5" width="304" height="18"/>
+                                <rect key="frame" x="16" y="92.5" width="304" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="0lE-Le-CcF"/>
+                                    <constraint firstAttribute="height" constant="15" id="0lE-Le-CcF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                 <color key="textColor" red="0.55686274509803924" green="0.63921568627450975" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
@@ -58,12 +58,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Lit-gU-Ltf" secondAttribute="trailing" constant="14" id="1Xn-Ll-0zF"/>
-                            <constraint firstItem="ay3-tD-Ug6" firstAttribute="top" secondItem="Lit-gU-Ltf" secondAttribute="bottom" id="5Uo-h6-aDg"/>
+                            <constraint firstItem="ay3-tD-Ug6" firstAttribute="top" secondItem="Lit-gU-Ltf" secondAttribute="bottom" constant="8" id="5Uo-h6-aDg"/>
                             <constraint firstItem="Lit-gU-Ltf" firstAttribute="leading" secondItem="Cng-13-MJN" secondAttribute="leading" constant="16" id="K33-MR-rvG"/>
-                            <constraint firstAttribute="bottom" secondItem="ay3-tD-Ug6" secondAttribute="bottom" constant="12" id="N4b-24-CU3"/>
+                            <constraint firstAttribute="bottom" secondItem="ay3-tD-Ug6" secondAttribute="bottom" constant="16" id="N4b-24-CU3"/>
                             <constraint firstAttribute="trailing" secondItem="z6w-Z3-KPZ" secondAttribute="trailing" constant="14" id="P6j-HJ-bVE"/>
-                            <constraint firstItem="z6w-Z3-KPZ" firstAttribute="top" secondItem="Cng-13-MJN" secondAttribute="top" constant="12" id="PWU-XM-3ul"/>
-                            <constraint firstItem="Lit-gU-Ltf" firstAttribute="top" secondItem="z6w-Z3-KPZ" secondAttribute="bottom" id="TOK-9u-HRO"/>
+                            <constraint firstItem="z6w-Z3-KPZ" firstAttribute="top" secondItem="Cng-13-MJN" secondAttribute="top" constant="16" id="PWU-XM-3ul"/>
+                            <constraint firstItem="Lit-gU-Ltf" firstAttribute="top" secondItem="z6w-Z3-KPZ" secondAttribute="bottom" constant="4" id="TOK-9u-HRO"/>
                             <constraint firstAttribute="trailing" secondItem="ay3-tD-Ug6" secondAttribute="trailing" constant="14" id="UG0-Ri-83c"/>
                             <constraint firstItem="z6w-Z3-KPZ" firstAttribute="leading" secondItem="Cng-13-MJN" secondAttribute="leading" constant="16" id="aGK-NK-4mE"/>
                             <constraint firstItem="ay3-tD-Ug6" firstAttribute="leading" secondItem="Cng-13-MJN" secondAttribute="leading" constant="16" id="bQn-e4-Y1S"/>
@@ -71,8 +71,8 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="Cng-13-MJN" secondAttribute="bottom" constant="2" id="07m-pO-z0O"/>
-                    <constraint firstItem="Cng-13-MJN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="2WG-p7-N2d"/>
+                    <constraint firstAttribute="bottom" secondItem="Cng-13-MJN" secondAttribute="bottom" constant="4" id="07m-pO-z0O"/>
+                    <constraint firstItem="Cng-13-MJN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="2WG-p7-N2d"/>
                     <constraint firstItem="Cng-13-MJN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="v9G-3k-RzC"/>
                     <constraint firstAttribute="trailing" secondItem="Cng-13-MJN" secondAttribute="trailing" constant="8" id="vZu-0J-qsy"/>
                 </constraints>

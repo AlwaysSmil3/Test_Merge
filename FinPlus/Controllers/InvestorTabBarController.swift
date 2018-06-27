@@ -22,6 +22,8 @@ class InvestorTabBarController: UITabBarController {
     @IBInspectable var onTopIndicator: Bool = true
 
 
+    var mode = false
+    
     //MARK:- View Controller Life Cycle
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -38,6 +40,11 @@ class InvestorTabBarController: UITabBarController {
         //                                                         size: imageSize,
         //                                                         onTop: onTopIndicator)
         //        self.tabBar.selectionIndicatorImage = indicatorImage
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.mode = UserDefaults.standard.bool(forKey: APP_MODE)
     }
 
     override func viewDidLoad() {
@@ -76,7 +83,6 @@ class InvestorTabBarController: UITabBarController {
         self.indicatorColor = .clear
         self.tabBar.isTranslucent = false
         self.tabBar.tintColor = MAIN_COLOR
-        let mode = UserDefaults.standard.bool(forKey: APP_MODE)
         
         UIApplication.shared.statusBarStyle = mode ? .lightContent : .default
         
@@ -90,7 +96,6 @@ class InvestorTabBarController: UITabBarController {
     }
     
     func setupMode() {
-        let mode = UserDefaults.standard.bool(forKey: APP_MODE)
         
         if (mode)
         {

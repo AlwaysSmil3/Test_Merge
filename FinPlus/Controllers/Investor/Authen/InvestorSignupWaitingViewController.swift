@@ -18,7 +18,14 @@ class InvestorSignupWaitingViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
+    @IBAction func nextToTabbarAction(_ sender: Any) {
+        let homeVC = UIStoryboard(name: "HomeInvestor", bundle: nil).instantiateViewController(withIdentifier: "InvestorTabBarController")
+        self.present(homeVC, animated: true, completion: nil)
+//        self.navigationController?.present(homeVC, animated: true, completion: {
+//
+//        })
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
