@@ -18,9 +18,9 @@ class BaseViewController: UIViewController {
         let bottomText = NSLocalizedString(subTitle, comment: "")
         
         let titleParameters = [NSAttributedStringKey.foregroundColor: UIColor(hexString: "#08121E"),
-                               NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 17)]
+                               NSAttributedStringKey.font : UIFont(name: FONT_FAMILY_BOLD, size: 17)]
         let subtitleParameters = [NSAttributedStringKey.foregroundColor : UIColor(hexString: "#4D6678"),
-                                  NSAttributedStringKey.font : UIFont.systemFont(ofSize: 11)]
+                                  NSAttributedStringKey.font : UIFont(name: FONT_FAMILY_REGULAR, size: 11)]
         
         let title:NSMutableAttributedString = NSMutableAttributedString(string: topText, attributes: titleParameters)
         let subtitle:NSAttributedString = NSAttributedString(string: bottomText, attributes: subtitleParameters)
