@@ -37,15 +37,15 @@ class PayTypeTableViewCell: UITableViewCell {
             formatter.locale = Locale.current
             formatter.numberStyle = .currency
             if let formattedTipAmount = formatter.string(from: cellData.originAmount as NSNumber) {
-                self.originMoneyLb.text = formattedTipAmount
+                self.originMoneyLb.text = "Tiền gốc: " + formattedTipAmount
             } else {
-                self.originMoneyLb.text = cellData.originAmount.toString()
+                self.originMoneyLb.text = "Tiền gốc: " + cellData.originAmount.toString()
             }
 
             if let formattedTipAmount = formatter.string(from: cellData.interestAmount as NSNumber) {
-                self.interestMoneyLb.text = formattedTipAmount
+                self.interestMoneyLb.text = "Tiền lãi: " + formattedTipAmount
             } else {
-                self.interestMoneyLb.text = cellData.interestAmount.toString()
+                self.interestMoneyLb.text = "Tiền lãi: " +  cellData.interestAmount.toString()
             }
 
 
@@ -55,9 +55,6 @@ class PayTypeTableViewCell: UITableViewCell {
                 self.borrowingLb.text = cellData.sumAmount.toString()
             }
 
-//            self.originMoneyLb.text = "Tiền gốc: \(cellData.originAmount)"
-//            self.interestMoneyLb.text = "Tiền lãi: \(cellData.interestAmount)"
-//            self.borrowingLb.text = "\(cellData.sumAmount)"
             if isSelectedCell == true {
                 self.containView.layer.borderColor = MAIN_COLOR.cgColor
                 self.selectImg.image = #imageLiteral(resourceName: "ic_radio_on")
