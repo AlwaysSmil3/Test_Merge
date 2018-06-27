@@ -18,6 +18,9 @@ class ProfileTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         icon.tintColor = MAIN_COLOR
+        
+        nameLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        desLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

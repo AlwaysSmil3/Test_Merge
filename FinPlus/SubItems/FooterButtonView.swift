@@ -21,6 +21,7 @@ class FooterButtonView: UITableViewHeaderFooterView {
         self.button.setBackgroundColor(color: UIColor(hexString: "#4D6678"), forState: .focused)
         self.button?.backgroundColor = MAIN_COLOR
         self.button?.tintColor = .white
+        self.button.titleLabel?.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)
     }
     
 }

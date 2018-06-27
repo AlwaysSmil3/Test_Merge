@@ -22,6 +22,15 @@ class ChangePWViewController: UIViewController, UITextFieldDelegate {
 
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("CHANG_PASSWORD", comment: "")
+        
+        currentPass.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        currentPass.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
+        
+        newPass.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        newPass.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
+        
+        renewPass.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        renewPass.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
     }
 
     override func didReceiveMemoryWarning() {

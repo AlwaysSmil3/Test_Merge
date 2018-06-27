@@ -25,6 +25,9 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         // Initialization code
         self.avatarBtn.layer.cornerRadius = self.avatarBtn.frame.size.width/2
         self.avatarBtn.layer.masksToBounds = true
+        
+        usernameLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_SEMIBIG)
+        phoneLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
     }
     
     //

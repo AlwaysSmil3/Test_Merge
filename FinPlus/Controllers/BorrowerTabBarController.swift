@@ -182,8 +182,15 @@ class BorrowerTabBarController: UITabBarController {
             // Fallback on earlier versions
         }
         self.tabBar.backgroundColor = .white
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:BAR_DEFAULT_COLOR, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 11)], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:MAIN_COLOR, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 11)], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:BAR_DEFAULT_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_SMALL)], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:MAIN_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_SMALL)], for: .selected)
+        
+        UIApplication.shared.statusBarStyle = .default
+        let attributes = [NSAttributedStringKey.foregroundColor: LIGHT_MODE_MAIN_TEXT_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL) as Any]
+        UINavigationBar.appearance().titleTextAttributes = attributes
+        UINavigationBar.appearance().barTintColor = LIGHT_MODE_NAVI_COLOR
+        UINavigationBar.appearance().tintColor = LIGHT_MODE_MAIN_TEXT_COLOR
+        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .normal)
     }
     
     func formatTabBarItem(tabBarItem: UITabBarItem){

@@ -37,6 +37,7 @@ class SignContractViewController: UIViewController, UIWebViewDelegate {
             self.btnSign.layer.masksToBounds = true
         }
         
+        self.btnSign.titleLabel?.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)
         self.title = NSLocalizedString("Hợp đồng vay", comment: "")
         let url = URL(string: "http://five9.vn/about-us")
         let requestObj = URLRequest(url: url!)
