@@ -54,7 +54,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="GG2-HF-VUk" firstAttribute="centerY" secondItem="0tc-8i-wTl" secondAttribute="centerY" id="2xe-ea-d9q"/>
                                     <constraint firstAttribute="trailing" secondItem="ViL-gT-Uh9" secondAttribute="trailing" constant="8" id="3dT-2b-aZO"/>
@@ -88,7 +88,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="acr-V5-zvo" secondAttribute="bottom" id="4Cr-xP-oKm"/>
                                     <constraint firstItem="E8e-As-ebs" firstAttribute="leading" secondItem="TY5-F3-fag" secondAttribute="leading" constant="8" id="4TB-7T-3jJ"/>
@@ -122,7 +122,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="CgT-q1-n1Z" firstAttribute="leading" secondItem="AaZ-ju-QfJ" secondAttribute="leading" constant="8" id="2NL-ve-FGx"/>
                                     <constraint firstAttribute="bottom" secondItem="CgT-q1-n1Z" secondAttribute="bottom" id="Hb5-vc-vNa"/>
@@ -156,7 +156,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="fdq-xa-IBH" firstAttribute="leading" secondItem="7HH-Sc-84H" secondAttribute="leading" constant="8" id="3N5-LP-h43"/>
                                     <constraint firstAttribute="trailing" secondItem="fdq-xa-IBH" secondAttribute="trailing" constant="8" id="5Kx-sz-vbu"/>
@@ -190,7 +190,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="3Q9-rB-zV3" firstAttribute="centerY" secondItem="ucX-qV-wDj" secondAttribute="centerY" id="IuH-ct-Uko"/>
                                     <constraint firstItem="aGa-H2-cOQ" firstAttribute="leading" secondItem="ucX-qV-wDj" secondAttribute="leading" constant="8" id="MX9-QV-2I3"/>
@@ -224,7 +224,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="V6F-AI-Uy0" secondAttribute="trailing" constant="8" id="1YC-ud-VaQ"/>
                                     <constraint firstItem="V6F-AI-Uy0" firstAttribute="leading" secondItem="zmS-aX-nxU" secondAttribute="leading" constant="8" id="B0z-Mi-Z1h"/>
@@ -258,7 +258,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="TIl-XF-IHV" firstAttribute="leading" secondItem="Pqi-m0-rcc" secondAttribute="leading" constant="8" id="3Kr-Av-sLq"/>
                                     <constraint firstItem="mDb-32-awg" firstAttribute="centerY" secondItem="Pqi-m0-rcc" secondAttribute="centerY" id="4if-8I-ZDZ"/>
@@ -285,7 +285,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="hIa-I4-Mon" firstAttribute="leading" secondItem="RfB-61-vqN" secondAttribute="leading" constant="8" id="Ws0-1h-bn2"/>
                                     <constraint firstAttribute="trailing" secondItem="nyi-2f-vci" secondAttribute="trailing" constant="8" id="f41-Md-gPH"/>
@@ -294,7 +294,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0tc-8i-wTl" firstAttribute="height" secondItem="H0g-75-42x" secondAttribute="height" multiplier="1/8" id="0CU-UV-LEi"/>
                             <constraint firstItem="RfB-61-vqN" firstAttribute="top" secondItem="Pqi-m0-rcc" secondAttribute="bottom" id="0Zn-y4-TPS"/>
@@ -341,14 +341,22 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="alreadyAmountPercentLb" destination="Da1-ZT-JqW" id="KT4-lA-lm7"/>
+                <outlet property="alreadyAmountPercentTitleLb" destination="E8e-As-ebs" id="Ipx-um-A4h"/>
                 <outlet property="amountAvaiableInvestLb" destination="Axs-qf-DB1" id="iL3-iD-BuB"/>
+                <outlet property="amountAvaiableInvestTitleLb" destination="0Nt-t7-48P" id="nzr-cS-Wfz"/>
                 <outlet property="amountLb" destination="GG2-HF-VUk" id="9b2-1S-rgn"/>
+                <outlet property="amountTitleLb" destination="ydI-L5-JVE" id="B4Z-uL-LD9"/>
                 <outlet property="borderView" destination="H0g-75-42x" id="4rk-04-S9v"/>
                 <outlet property="borrowerLb" destination="3Q9-rB-zV3" id="JLM-md-pJ3"/>
+                <outlet property="borrowerTitleLb" destination="aGa-H2-cOQ" id="ycj-7t-f1p"/>
                 <outlet property="dueMonthLb" destination="nyi-2f-vci" id="kba-Np-Pyj"/>
+                <outlet property="dueMonthTitleLb" destination="hIa-I4-Mon" id="cve-X8-WYj"/>
                 <outlet property="interestLb" destination="aaw-9K-Hva" id="npR-on-vg5"/>
+                <outlet property="interestTitleLb" destination="7FC-D5-dhS" id="RB2-oR-Ig6"/>
                 <outlet property="loanTypeLb" destination="mDb-32-awg" id="iZu-4z-FVC"/>
+                <outlet property="loanTypeTitleLb" destination="EHr-T6-tbb" id="t0m-8v-geJ"/>
                 <outlet property="reliabilityLb" destination="bOU-GY-FQO" id="AHU-A2-6ht"/>
+                <outlet property="reliabilityTitleLb" destination="Z8h-Rr-Gto" id="NEH-WR-8e3"/>
             </connections>
             <point key="canvasLocation" x="32.5" y="103"/>
         </tableViewCell>

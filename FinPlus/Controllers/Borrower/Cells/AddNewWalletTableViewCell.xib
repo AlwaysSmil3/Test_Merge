@@ -47,7 +47,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kLv-Ip-NEI" firstAttribute="centerY" secondItem="ixQ-Id-zls" secondAttribute="centerY" id="2tA-K4-MWX"/>
                             <constraint firstItem="kLv-Ip-NEI" firstAttribute="width" secondItem="kLv-Ip-NEI" secondAttribute="height" multiplier="1:1" id="8Sv-Tl-EoV"/>
@@ -60,6 +60,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="ixQ-Id-zls" secondAttribute="bottom" constant="4" id="jdJ-0F-xuX"/>
                     <constraint firstItem="ixQ-Id-zls" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="kvP-Vi-tpk"/>
@@ -67,9 +68,11 @@
                     <constraint firstItem="ixQ-Id-zls" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="xsI-ZQ-CTQ"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="containView" destination="ixQ-Id-zls" id="tFr-QB-OdF"/>
+                <outlet property="titleLb" destination="fJ8-p2-L0E" id="f8S-bq-tbC"/>
             </connections>
         </tableViewCell>
     </objects>

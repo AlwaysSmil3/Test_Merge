@@ -50,6 +50,19 @@ class BankAccountTableViewCell: UITableViewCell {
                 self.walletImg.image = #imageLiteral(resourceName: "tech")
             }
         }
+        // update cell mode
+        self.updateCellMode()
+    }
+
+    func updateCellMode() {
+        if (UserDefaults.standard.bool(forKey: APP_MODE)) {
+            self.walletNameLb.textColor = DARK_BODY_TEXT_COLOR
+            self.accountNumberLb.textColor = DARK_SUBTEXT_COLOR
+        } else {
+            self.walletNameLb.textColor = LIGHT_BODY_TEXT_COLOR
+            self.accountNumberLb.textColor = LIGHT_SUBTEXT_COLOR
+        }
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

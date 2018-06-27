@@ -16,13 +16,33 @@ class InvestDetailViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
     }
+    var mode = false
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Chi tiết khoản vay"
         configTableView()
         updateData()
+
         // Do any additional setup after loading the view.
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.mode = UserDefaults.standard.bool(forKey: APP_MODE)
+        setupMode()
+    }
+
+    func setupMode() {
+        if (self.mode)
+        {
+            self.view.backgroundColor = DARK_BACKGROUND_COLOR
+            self.tableView.backgroundColor = DARK_FOREGROUND_COLOR
+        } else {
+            self.view.backgroundColor = LIGHT_BACKGROUND_COLOR
+            self.tableView.backgroundColor = LIGHT_BACKGROUND_COLOR
+        }
+        tableView.reloadData()
     }
 
     func configTableView() {
