@@ -219,8 +219,24 @@ class FinPlusHelper {
     class func addCharactorToString(input: String) -> String {
         var result = ""
         
+        let arrayString = input.components(separatedBy: " ")
         
-        
+        var count = 0
+        for str in arrayString {
+            
+            if count == arrayString.count + 1 {
+                result.append(str)
+                return result
+            }
+            
+            if count == 2 {
+                result.append("\n\(str) ")
+            } else {
+                result.append("\(str) ")
+            }
+            
+           count = count + 1
+        }
         
         return result
     }
