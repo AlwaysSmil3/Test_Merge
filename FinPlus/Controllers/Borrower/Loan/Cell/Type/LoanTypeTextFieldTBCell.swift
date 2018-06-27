@@ -269,7 +269,7 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
         if parent.contains("userInfo") {
             // thông tin user
             if id.contains("fullName") {
-                maxLength = 30
+                maxLength = 50
             } else if id.contains("nationalId") {
                 maxLength = 15
             }

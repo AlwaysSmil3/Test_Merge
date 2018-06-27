@@ -170,20 +170,20 @@ class LoanFirstViewController: BaseViewController {
             let fixed = roundf(Float(Int(slider.value)))
             self.amountSlider.setValue(fixed, animated: true)
         }
-        
-        guard let version = DataManager.shared.config else { return }
-        
-        let fee = Double(Int(self.amountSlider.value) * version.serviceFee! * 1000000 / 100)
-        self.lblTempFee.text = FinPlusHelper.formatDisplayCurrency(fee) + " VND"
-        
-        let amountInt = Int(self.amountSlider.value) / Int(self.amountSlider.minimumValue) * 1000000
-        var amountDouble = Double(amountInt) + fee
-        
-        if self.termSlider.value > 30 {
-            amountDouble = amountDouble / Double(Int(self.termSlider.value / 30))
-        }
-        
-        self.lblTempTotalAmount.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + " VND"
+        self.updateTotalAmountMounth()
+//        guard let version = DataManager.shared.config else { return }
+//
+//        let fee = Double(Int(self.amountSlider.value) * version.serviceFee! * 1000000 / 100)
+//        self.lblTempFee.text = FinPlusHelper.formatDisplayCurrency(fee) + " VND"
+//
+//        let amountInt = Int(self.amountSlider.value) / Int(self.amountSlider.minimumValue) * 1000000
+//        var amountDouble = Double(amountInt) + fee
+//
+//        if self.termSlider.value > 30 {
+//            amountDouble = amountDouble / Double(Int(self.termSlider.value / 30))
+//        }
+//
+//        self.lblTempTotalAmount.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + " VND"
         
     }
     
@@ -199,7 +199,22 @@ class LoanFirstViewController: BaseViewController {
             self.termSlider.setValue(fixed, animated: true)
             self.lblTermSlider.text = "\(Int(self.termSlider.value / 30))" + " Tháng"
         }
+        self.updateTotalAmountMounth()
+    }
+    
+    private func updateTotalAmountMounth() {
+        guard let version = DataManager.shared.config else { return }
         
+        let fee = Double(Int(self.amountSlider.value) * version.serviceFee! * 1000000 / 100)
+        self.lblTempFee.text = FinPlusHelper.formatDisplayCurrency(fee) + " VND"
+        let amountInt = Int(self.amountSlider.value) / Int(self.amountSlider.minimumValue) * 1000000
+        var amountDouble = Double(amountInt) + fee
+        
+        if self.termSlider.value > 30 {
+            amountDouble = amountDouble / Double(Int(self.termSlider.value / 30))
+        }
+        
+        self.lblTempTotalAmount.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + " VND"
     }
     
     @IBAction func btnContinueTapped(_ sender: Any) {
