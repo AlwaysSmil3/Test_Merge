@@ -73,7 +73,9 @@ class BorrowerTabBarController: UITabBarController {
         let v1 = sLoanManager.instantiateViewController(withIdentifier: "LOAN_MANAGER_NAVI")
 
         let v2 = sLoanManager.instantiateViewController(withIdentifier: "LOAN_MANAGER_NAVI")
-        let v3 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI")
+        let v3 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI") as! UINavigationController
+        v3.topViewController?.navigationItem.leftBarButtonItem = nil
+        
         let v4 = sNotification.instantiateViewController(withIdentifier: "NOTIFICATION_NAVI")
         let v5 = sProfile.instantiateViewController(withIdentifier: "PROFILE_NAVI")
 
