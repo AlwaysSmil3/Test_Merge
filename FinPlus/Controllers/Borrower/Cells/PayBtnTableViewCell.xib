@@ -26,9 +26,8 @@
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94Y-Va-KMn">
                         <rect key="frame" x="32" y="8" width="279" height="43.5"/>
-                        <color key="backgroundColor" red="0.23137254901960785" green="0.6705882352941176" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
-                        <state key="normal" title="Thanh toán">
+                        <state key="normal" title="Thanh toán" backgroundImage="bg_button_enable_login">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <userDefinedRuntimeAttributes>
@@ -51,4 +50,7 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="bg_button_enable_login" width="311" height="44"/>
+    </resources>
 </document>

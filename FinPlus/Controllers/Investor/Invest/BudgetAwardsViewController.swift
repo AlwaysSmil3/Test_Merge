@@ -11,12 +11,32 @@ import UIKit
 class BudgetAwardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var budgetAwardBtn: UIButton!
+    @IBOutlet weak var titleLb: UILabel!
     var bankList : [AccountBank] = [AccountBank]()
     var bankSelected: AccountBank!
+    var budgetAward : Float = 4000000
     override func viewDidLoad() {
         super.viewDidLoad()
         let accountBank1 = AccountBank(wID: 1, wType: 1, wAccountName: "0987654231234", wBankName: "VietComBank", wNumber: "10231231", wDistrict: "Cau Giay")
         let accountBank2 = AccountBank(wID: 2, wType: 2, wAccountName: "0123456789", wBankName: "TechComBank", wNumber: "0987654421", wDistrict: "Dong Da")
+        var avaiableAmountStr = ""
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        if let formattedTipAmount = formatter.string(from: budgetAward as NSNumber) {
+            avaiableAmountStr = formattedTipAmount
+        } else {
+            avaiableAmountStr = budgetAward.toString()
+        }
+
+        let policyStr : String = "Vui lòng giải ngân số tiền " + avaiableAmountStr + " để hoàn tất quá trình đầu tư."
+        var myMutableString = NSMutableAttributedString()
+        myMutableString = NSMutableAttributedString(string: policyStr)
+
+        myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(hexString: "3BAB63"), range: (myMutableString.string as NSString).range(of: avaiableAmountStr))
+
+        self.titleLb.attributedText = myMutableString
+        self.navigationController?.navigationBar.isHidden = true
 
         bankList.append(accountBank1)
         bankList.append(accountBank2)

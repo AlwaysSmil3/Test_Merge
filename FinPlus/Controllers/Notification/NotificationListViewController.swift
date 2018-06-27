@@ -10,8 +10,8 @@ import UIKit
 
 class NotificationListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var notificationList = [
-        ["title" : "Bạn đã nhận được tiền từ nhà đầu tư", "content" : "Xin chào Minh, bạn đã nhận được 2.000.000đ từ nhà đầu tư.", "time" : "12/02/2018 10:00:00"],
-        ["title" : "Yêu cầu xác nhận lãi suất", "content" : "Đơn vay của bạn đã được gửi đi thành công. Hệ thống sẽ tiến hành phê duyệt và đưa ra mức lãi suất, khoản thanh toán phù hợp nhất với bạn.", "time" : "12/02/2018 10:00:00"]]
+        ["title" : "Bạn đã nhận được tiền từ nhà đầu tư", "content" : "Xin chào Minh, bạn đã nhận được 2.000.000đ từ nhà đầu tư.", "time" : "12/02/2018"],
+        ["title" : "Yêu cầu xác nhận lãi suất", "content" : "Đơn vay của bạn đã được gửi đi thành công. Hệ thống sẽ tiến hành phê duyệt và đưa ra mức lãi suất, khoản thanh toán phù hợp nhất với bạn.", "time" : "12/02/2018"]]
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +60,8 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         if let cell = tableView.cellForRow(at: indexPath) as? NotificationTableViewCell {
             cell.containView.layer.borderColor = MAIN_COLOR.cgColor
             cell.timeLb.textColor = MAIN_COLOR
+            cell.titleLb.textColor = UIColor(hexString: "#08121E")
+            cell.contentLb.textColor = UIColor(hexString: "#08121E")
         }
 
     }
@@ -67,7 +69,9 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? NotificationTableViewCell {
             cell.containView.layer.borderColor = UIColor.lightGray.cgColor
-            cell.timeLb.textColor = UIColor.darkGray
+            cell.timeLb.textColor = UIColor(hexString: "#8EA3AF")
+            cell.titleLb.textColor = UIColor(hexString: "#4D6678")
+            cell.contentLb.textColor = UIColor(hexString: "#4D6678")
         }
     }
 

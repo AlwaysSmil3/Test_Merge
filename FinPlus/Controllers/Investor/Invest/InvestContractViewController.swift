@@ -1,29 +1,24 @@
 //
-//  BudgetRewardSuccessViewController.swift
+//  InvestContractViewController.swift
 //  FinPlus
 //
-//  Created by Lionel Vũ Thành Đô on 6/25/18.
+//  Created by Lionel Vũ Thành Đô on 6/26/18.
 //  Copyright © 2018 Cao Van Hai. All rights reserved.
 //
 
 import UIKit
 
-class BudgetRewardSuccessViewController: UIViewController {
+class InvestContractViewController: UIViewController {
 
-    @IBOutlet weak var backToHomeBtn: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        backToHomeBtn.layer.cornerRadius = 5
-        backToHomeBtn.layer.borderWidth = 1
-        backToHomeBtn.layer.borderColor = UIColor(hexString: "#3EAA5F").cgColor
-        self.navigationController?.navigationBar.isHidden = true
+        self.title = "Hợp đồng vay"
+        self.tableView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func backToHomeAction(_ sender: Any) {
-//        self.dismiss(animated: true, completion: nil)
-        self.navigationController?.popToRootViewController(animated: true)
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

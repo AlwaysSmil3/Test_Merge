@@ -1,5 +1,5 @@
 //
-//  BudgetRewardSuccessViewController.swift
+//  InvestorSignUpRejectedViewController.swift
 //  FinPlus
 //
 //  Created by Lionel Vũ Thành Đô on 6/25/18.
@@ -8,21 +8,19 @@
 
 import UIKit
 
-class BudgetRewardSuccessViewController: UIViewController {
+class InvestorSignUpRejectedViewController: UIViewController {
 
-    @IBOutlet weak var backToHomeBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        backToHomeBtn.layer.cornerRadius = 5
-        backToHomeBtn.layer.borderWidth = 1
-        backToHomeBtn.layer.borderColor = UIColor(hexString: "#3EAA5F").cgColor
-        self.navigationController?.navigationBar.isHidden = true
+
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func backToHomeAction(_ sender: Any) {
-//        self.dismiss(animated: true, completion: nil)
-        self.navigationController?.popToRootViewController(animated: true)
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    @IBAction func updateProfileBtnAction(_ sender: Any) {
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
