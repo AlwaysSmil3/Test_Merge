@@ -42,6 +42,14 @@ class DataManager {
     //List Lãi xuất dự kiến
     var listRateInfo: [RateInfo] = []
     
+    //Category đang chọn hiện tại
+    var currentIndexCategoriesSelectedPopup: Int?
+    //So dien thoai nguoi than
+    var currentIndexRelationPhoneSelectedPopup: Int?
+    //Job hien tai dang chon
+    var currentIndexJobSelectedPopup: Int?
+    //Job Position hien tai dang chon
+    var currentIndexJobPositionSelectedPopup: Int?
     
     /// Get Data from JSON
     func getDataLoanFromJSON() {

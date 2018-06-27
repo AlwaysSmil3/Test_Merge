@@ -12,5 +12,10 @@ class LoanTypeFooterTBView: UITableViewCell {
     
     @IBOutlet var lblDesciption: UILabel?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.selectionStyle = .none
+    }
     
 }

@@ -37,7 +37,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 
             }
             
-            if let id = field_.id, id.contains("nationalId") || id.contains("salary") || id.contains("companyPhoneNumber") {
+            if let id = field_.id, id.contains("nationalId") || id.contains("salary") || id.contains("companyPhoneNumber") || id.contains("optionalText") {
                 self.tfValue?.keyboardType = .numberPad
             }
             
@@ -62,7 +62,9 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         guard let parent = self.parent else {
             if id.contains("optionalText") {
                 //thông tin khác
-                DataManager.shared.loanInfo.optionalText = self.tfValue?.text ?? ""
+                let tempAmount1 = self.tfValue?.text?.replacingOccurrences(of: ",", with: "") ?? ""
+                let tempAmount2 = tempAmount1.replacingOccurrences(of: ".", with: "")
+                DataManager.shared.loanInfo.optionalText = tempAmount2
             }
             return
         }
@@ -80,7 +82,9 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             if id.contains("company") {
                 DataManager.shared.loanInfo.jobInfo.company = self.tfValue?.text ?? ""
             }  else if id.contains("salary") {
-                DataManager.shared.loanInfo.jobInfo.salary = Int32(self.tfValue?.text ?? "") ?? 0
+                let tempAmount1 = self.tfValue?.text?.replacingOccurrences(of: ",", with: "") ?? ""
+                let tempAmount2 = tempAmount1.replacingOccurrences(of: ".", with: "")
+                DataManager.shared.loanInfo.jobInfo.salary = Int32(tempAmount2) ?? 0
             } else if id.contains("companyPhoneNumber") {
                 DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = self.tfValue?.text ?? ""
             }
@@ -175,14 +179,112 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
 extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Giới hạn ký tự nhập vào
-        let maxLength = 100
+        let maxLength = self.getMaxLength()
         let currentString: NSString = textField.text! as NSString
         let newString: NSString =
             currentString.replacingCharacters(in: range, with: string) as NSString
         
         if newString.length > maxLength { return false }
         
+        if let field_ = self.field, let id = field_.id {
+            
+            var bool = false
+            if let parent = self.parent, parent.contains("jobInfo") ,id.contains("salary") {
+                bool = true
+            }
+            
+            if bool || id.contains("optionalText") {
+                return self.formatTFSalary(textField, shouldChangeCharactersIn: range, replacementString: string)
+            }
+        }
+        
+        self.updateCurrentAmount(textField: textField)
+        
         return true
+    }
+    
+    fileprivate func formatTFSalary(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Uses the number format corresponding to your Locale
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.locale = Locale.current
+        formatter.maximumFractionDigits = 0
+        
+        
+        // Uses the grouping separator corresponding to your Locale
+        // e.g. "," in the US, a space in France, and so on
+        if let groupingSeparator = formatter.groupingSeparator {
+            
+            if string == groupingSeparator {
+                self.updateCurrentAmount(textField: textField)
+                return true
+            }
+            
+            if let textWithoutGroupingSeparator = textField.text?.replacingOccurrences(of: groupingSeparator, with: "") {
+                var totalTextWithoutGroupingSeparators = textWithoutGroupingSeparator + string
+                if string == "" { // pressed Backspace key
+                    totalTextWithoutGroupingSeparators.characters.removeLast()
+                }
+                if let numberWithoutGroupingSeparator = formatter.number(from: totalTextWithoutGroupingSeparators),
+                    let formattedText = formatter.string(from: numberWithoutGroupingSeparator) {
+                    textField.text = formattedText
+                    self.updateCurrentAmount(textField: textField)
+                    
+                    return false
+                }
+            }
+        }
+        
+        return true
+    }
+    
+    fileprivate func updateCurrentAmount(textField: UITextField) {
+        let tempAmount1 = textField.text?.replacingOccurrences(of: ",", with: "") ?? ""
+        let tempAmount2 = tempAmount1.replacingOccurrences(of: ".", with: "")
+        
+        if let field_ = self.field, let id = field_.id {
+            if let parent = self.parent, parent.contains("jobInfo") ,id.contains("salary") {
+                DataManager.shared.loanInfo.jobInfo.salary = Int32(tempAmount2) ?? 0
+                return
+            }
+            
+            if id.contains("optionalText") {
+                DataManager.shared.loanInfo.optionalText = tempAmount2
+            }
+        }
+
+    }
+    
+    fileprivate func getMaxLength() -> Int {
+        var maxLength = 100
+        guard let field_ = self.field, let id = field_.id else { return maxLength }
+        guard let parent = self.parent else {
+            if id.contains("optionalText") {
+                maxLength = 13
+            }
+            
+            return maxLength
+        }
+        
+        if parent.contains("userInfo") {
+            // thông tin user
+            if id.contains("fullName") {
+                maxLength = 30
+            } else if id.contains("nationalId") {
+                maxLength = 15
+            }
+            
+        } else if parent.contains("jobInfo") {
+            // Thông tin nghề nghiêp
+            if id.contains("salary") {
+                maxLength = 13
+            } else if id.contains("companyPhoneNumber") {
+                maxLength = 11
+            }
+        }
+        
+        
+        return maxLength
     }
 }
 

@@ -95,6 +95,7 @@ class LoanBaseViewController: BaseViewController {
         tableView.separatorColor = UIColor.clear
         tableView.tableFooterView = UIView()
         
+        
     }
     
     

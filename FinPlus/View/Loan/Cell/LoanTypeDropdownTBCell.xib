@@ -24,7 +24,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="75.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cm4-Yn-afR">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cm4-Yn-afR">
                         <rect key="frame" x="16" y="15" width="343" height="13.5"/>
                         <attributedString key="attributedText">
                             <fragment content="Giới tính ">
@@ -56,7 +56,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giới tính của bạn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gej-ii-9cr">
-                        <rect key="frame" x="16" y="34.5" width="118.5" height="22"/>
+                        <rect key="frame" x="16" y="36.5" width="118.5" height="18"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                         <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -69,10 +69,10 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Gej-ii-9cr" firstAttribute="top" secondItem="Cm4-Yn-afR" secondAttribute="bottom" constant="6" id="01S-TC-H9L"/>
+                    <constraint firstItem="Gej-ii-9cr" firstAttribute="top" secondItem="Cm4-Yn-afR" secondAttribute="bottom" constant="8" id="01S-TC-H9L"/>
                     <constraint firstItem="kht-Ze-UTs" firstAttribute="centerY" secondItem="Gej-ii-9cr" secondAttribute="centerY" id="38n-63-bY7"/>
                     <constraint firstItem="sBZ-oa-SfG" firstAttribute="trailing" secondItem="8JU-vc-CTJ" secondAttribute="trailing" id="5M7-8a-TRl"/>
-                    <constraint firstItem="sBZ-oa-SfG" firstAttribute="top" secondItem="Gej-ii-9cr" secondAttribute="bottom" constant="6" id="7WW-El-Y5v"/>
+                    <constraint firstItem="sBZ-oa-SfG" firstAttribute="top" secondItem="Gej-ii-9cr" secondAttribute="bottom" constant="8" id="7WW-El-Y5v"/>
                     <constraint firstItem="kht-Ze-UTs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Gej-ii-9cr" secondAttribute="trailing" constant="8" id="7lp-rf-ogu"/>
                     <constraint firstAttribute="bottom" secondItem="8JU-vc-CTJ" secondAttribute="bottom" constant="8" id="D9a-LY-lZM"/>
                     <constraint firstItem="sBZ-oa-SfG" firstAttribute="trailing" secondItem="Cm4-Yn-afR" secondAttribute="trailing" id="DTx-UV-QYS"/>
