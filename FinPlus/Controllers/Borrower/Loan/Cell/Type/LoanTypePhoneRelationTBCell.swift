@@ -17,7 +17,7 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProt
     override func awakeFromNib() {
         super.awakeFromNib()
         self.lblTitle?.font = FONT_CAPTION
-        
+        self.tfValue?.delegate = self
     }
     
     var field: LoanBuilderFields? {
@@ -45,7 +45,7 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProt
     @IBAction func btnDropdownTapped(_ sender: Any) {
         guard let field_ = self.field, let data = field_.data else { return }
         let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
-        popup.setDataSource(data: data)
+        popup.setDataSource(data: data, type: .RelationShipPhone)
         popup.delegate = self
         
         popup.show()
@@ -73,6 +73,23 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProt
             self.updateInfoFalse(pre: title)
             
         }
+    }
+    
+    
+}
+
+//MARK: TextField Delegate
+extension LoanTypePhoneRelationTBCell: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Giới hạn ký tự nhập vào
+        let maxLength = 11
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        
+        if newString.length > maxLength { return false }
+        
+        return true
     }
     
     

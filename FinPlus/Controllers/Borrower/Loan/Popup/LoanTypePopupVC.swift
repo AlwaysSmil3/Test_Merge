@@ -14,6 +14,13 @@ protocol DataSelectedFromPopupProtocol {
     func dataSelected(data: LoanBuilderData)
 }
 
+enum TypePopup: Int {
+    case Categories = 0 // list Category
+    case RelationShipPhone // Số điện thoại nguoi than
+    case Job // Công việc
+    case JobPosition // chức vụ
+}
+
 class LoanTypePopupVC: BasePopup {
     
     @IBOutlet var lblTitle: UILabel!
@@ -36,6 +43,9 @@ class LoanTypePopupVC: BasePopup {
         }
     }
     
+    //Loại popup
+    var type: TypePopup?
+    
     var titleString: String = "Thông báo"
 
     
@@ -47,21 +57,74 @@ class LoanTypePopupVC: BasePopup {
         
         self.lblTitle?.text = titleString
         
+        self.updateSelected()
+        
     }
     
     
     /// set DataSource for tableView
     ///
     /// - Parameter data: <#data description#>
-    func setDataSource(data: [LoanBuilderData]) {
+    func setDataSource(data: [LoanBuilderData], type: TypePopup? = nil) {
+        if let type_ = type {
+            self.type = type_
+        }
         self.dataSource = data
     }
+    
+    
+    /// Update index hiện tại đang chọn
+    func updateSelected() {
+        guard let type_ = self.type else { return }
+        switch type_ {
+        case .Categories:
+            if let current = DataManager.shared.currentIndexCategoriesSelectedPopup {
+                self.currentIndex = current
+            }
+            break
+        case .RelationShipPhone:
+            if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup {
+                self.currentIndex = current
+            }
+            break
+            
+        case .Job:
+            if let current = DataManager.shared.currentIndexJobSelectedPopup {
+                self.currentIndex = current
+            }
+            break
+        case .JobPosition:
+            if let current = DataManager.shared.currentIndexJobPositionSelectedPopup {
+                self.currentIndex = current
+            }
+            break
+            
+        }
+        
+    }
+    
     
     @IBAction func btnOkTapped(_ sender: Any) {
         guard let index = self.currentIndex else { return }
         
         self.hide {
             self.delegate?.dataSelected(data: self.dataSource[index])
+            
+            guard let type_ = self.type else { return }
+            switch type_ {
+            case .Categories:
+                DataManager.shared.currentIndexCategoriesSelectedPopup = self.currentIndex
+                break
+            case .RelationShipPhone:
+                DataManager.shared.currentIndexRelationPhoneSelectedPopup = self.currentIndex
+                break
+            case .Job:
+                DataManager.shared.currentIndexJobSelectedPopup = self.currentIndex
+                break
+            case .JobPosition:
+                DataManager.shared.currentIndexJobPositionSelectedPopup = self.currentIndex
+                break
+            }
         }
     }
     

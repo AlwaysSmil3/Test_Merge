@@ -46,6 +46,11 @@ class LoanFirstViewController: BaseViewController {
         
         self.setupInit()
         
+        self.termSlider?.setThumbImage(#imageLiteral(resourceName: "ic_elipse_slider"), for: UIControlState.normal)
+        self.amountSlider?.setThumbImage(#imageLiteral(resourceName: "ic_elipse_slider"), for: UIControlState.normal)
+        self.termSlider?.setThumbImage(#imageLiteral(resourceName: "ic_elipse_slider"), for: UIControlState.highlighted)
+        self.amountSlider?.setThumbImage(#imageLiteral(resourceName: "ic_elipse_slider"), for: UIControlState.highlighted)
+        
         for cate in DataManager.shared.loanCategories {
             var loan = LoanBuilderData(object: NSObject())
             loan.id = cate.id!
@@ -72,7 +77,7 @@ class LoanFirstViewController: BaseViewController {
         self.updateAmountSlider(loan: loan)
 
         self.lblInterestRate?.text = "\(loan.interestRate!)% năm"
-        self.lblTempTotalAmount?.text = "0 đ"
+        self.lblTempTotalAmount?.text = "0 VND"
     }
     
     
@@ -84,9 +89,16 @@ class LoanFirstViewController: BaseViewController {
         self.termSlider?.maximumValue = Float(loan.termMax!)
         self.termSlider?.value = Float(loan.termMin!)
         
-        self.lblTermSlider?.text = "\(Int(loan.termMin!))" + " Ngày"
-        self.lblMinTermSlider?.text = "\(Int(loan.termMin!)) NGÀY"
-        self.lblMaxTermSlider?.text = "\(Int(loan.termMax!)) NGÀY"
+        
+        if loan.id == Loan_Student_Category_ID {
+            self.lblTermSlider?.text = "\(Int(loan.termMin!))" + " Ngày"
+            self.lblMinTermSlider?.text = "\(Int(loan.termMin!)) NGÀY"
+            self.lblMaxTermSlider?.text = "\(Int(loan.termMax!)) NGÀY"
+        } else {
+            self.lblTermSlider?.text = "\(Int(loan.termMin! / 30))" + " Tháng"
+            self.lblMinTermSlider?.text = "\(Int(loan.termMin! / 30)) THÁNG"
+            self.lblMaxTermSlider?.text = "\(Int(loan.termMax! / 30)) THÁNG"
+        }
     }
     
     
@@ -98,9 +110,22 @@ class LoanFirstViewController: BaseViewController {
         self.amountSlider?.maximumValue = Float(loan.max!/MONEY_TERM_DISPLAY)
         self.amountSlider?.value = Float(loan.min!/MONEY_TERM_DISPLAY)
         
+        self.updateServiceFee(loan: loan)
+        
         self.lblMoneySlider?.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY))" + " Triệu VND"
         self.lblMinAmountSlider?.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY)) TRIỆU"
         self.lblMaxAmounSlider?.text = "\(Int(loan.max!/MONEY_TERM_DISPLAY)) TRIỆU"
+    }
+    
+    
+    /// Update Service Fee
+    ///
+    /// - Parameter loan: <#loan description#>
+    private func updateServiceFee(loan: LoanCategories) {
+        if let config = DataManager.shared.config {
+            let fee = Int(loan.min!) * config.serviceFee! / 100
+            self.lblTempFee?.text = FinPlusHelper.formatDisplayCurrency(Double(fee)) + " VND"
+        }
     }
     
     private func updateDataToLoanAPI(completion: () -> Void) {
@@ -108,7 +133,13 @@ class LoanFirstViewController: BaseViewController {
         
         DataManager.shared.loanInfo.loanCategoryID = loan.id!
         DataManager.shared.loanInfo.amount = Int32(Int32(self.amountSlider.value) * MONEY_TERM_DISPLAY)
-        DataManager.shared.loanInfo.term = Int(self.termSlider.value)
+        
+        if loan.id == Loan_Student_Category_ID {
+            DataManager.shared.loanInfo.term = Int(self.termSlider.value / 10) * 10
+        } else {
+            DataManager.shared.loanInfo.term = Int(self.termSlider.value / 30) * 30
+        }
+        print("term Slider \(DataManager.shared.loanInfo.term)")
         
         completion()
     }
@@ -122,10 +153,9 @@ class LoanFirstViewController: BaseViewController {
         
     }
     
-    
     @IBAction func btnListCategoriesShow(_ sender: Any) {
         let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
-        popup.setDataSource(data: listDataCategoriesForPopup)
+        popup.setDataSource(data: listDataCategoriesForPopup, type: .Categories)
         popup.delegate = self
         
         popup.show()
@@ -134,12 +164,49 @@ class LoanFirstViewController: BaseViewController {
     
     @IBAction func moneySliderValueChaned(_ sender: Any) {
         self.lblMoneySlider.text = "\(Int(self.amountSlider.value))" + " Triệu VND"
-
+        
+        //Cho set step
+        if let slider = sender as? UISlider {
+            let fixed = roundf(Float(Int(slider.value)))
+            self.amountSlider.setValue(fixed, animated: true)
+        }
+        self.updateTotalAmountMounth()
+//        guard let version = DataManager.shared.config else { return }
+//
+//        let fee = Double(Int(self.amountSlider.value) * version.serviceFee! * 1000000 / 100)
+//        self.lblTempFee.text = FinPlusHelper.formatDisplayCurrency(fee) + " VND"
+//
+//        let amountInt = Int(self.amountSlider.value) / Int(self.amountSlider.minimumValue) * 1000000
+//        var amountDouble = Double(amountInt) + fee
+//
+//        if self.termSlider.value > 30 {
+//            amountDouble = amountDouble / Double(Int(self.termSlider.value / 30))
+//        }
+//
+//        self.lblTempTotalAmount.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + " VND"
+        
+    }
+    
+    @IBAction func termSliderValueChanged(_ sender: Any) {
+        guard let loan = self.loanCategory, let slider = sender as? UISlider else { return }
+        //Cho set step
+        if loan.id == Loan_Student_Category_ID {
+            let fixed = roundf(slider.value / 10.0) * 10.0
+            self.termSlider.setValue(fixed, animated: true)
+            self.lblTermSlider.text = "\(Int(self.termSlider.value / 10) * 10)" + " Ngày"
+        } else {
+            let fixed = roundf(slider.value / 30.0) * 30.0
+            self.termSlider.setValue(fixed, animated: true)
+            self.lblTermSlider.text = "\(Int(self.termSlider.value / 30))" + " Tháng"
+        }
+        self.updateTotalAmountMounth()
+    }
+    
+    private func updateTotalAmountMounth() {
         guard let version = DataManager.shared.config else { return }
         
         let fee = Double(Int(self.amountSlider.value) * version.serviceFee! * 1000000 / 100)
         self.lblTempFee.text = FinPlusHelper.formatDisplayCurrency(fee) + " VND"
-        
         let amountInt = Int(self.amountSlider.value) / Int(self.amountSlider.minimumValue) * 1000000
         var amountDouble = Double(amountInt) + fee
         
@@ -148,17 +215,6 @@ class LoanFirstViewController: BaseViewController {
         }
         
         self.lblTempTotalAmount.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + " VND"
-        
-    }
-    
-    @IBAction func termSliderValueChanged(_ sender: Any) {
-        guard let loan = self.loanCategory else { return }
-        if loan.id == Loan_Student_Category_ID {
-            self.lblTermSlider.text = "\(Int(self.termSlider.value / 10) * 10)" + " Ngày"
-        } else {
-            self.lblTermSlider.text = "\(Int(self.termSlider.value / 30) * 30)" + " Ngày"
-        }
-        
     }
     
     @IBAction func btnContinueTapped(_ sender: Any) {

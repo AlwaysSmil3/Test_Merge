@@ -14,6 +14,12 @@ class LoanTypeBaseTBCell: UITableViewCell {
     @IBOutlet var underLine: UIView?
     @IBOutlet var lblDescriptionNeedUpdate: UILabel?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.selectionStyle = .none
+    }
+    
     //Khi thông tin k hợp lệ cần sữa đổi
     var isNeedUpdate: Bool? {
         didSet {

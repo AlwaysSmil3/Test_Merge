@@ -108,6 +108,7 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
         
         loanFirstVC.hidesBottomBarWhenPushed = true
         loanFirstVC.loanCategory = DataManager.shared.loanCategories[indexPath.row]
+        DataManager.shared.currentIndexCategoriesSelectedPopup = indexPath.row
         
         self.navigationController?.pushViewController(loanFirstVC, animated: true)
     }
