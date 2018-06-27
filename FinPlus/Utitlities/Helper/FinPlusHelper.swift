@@ -212,6 +212,20 @@ class FinPlusHelper {
     }
     
     
+    /// <#Description#>
+    ///
+    /// - Parameter input: <#input description#>
+    /// - Returns: <#return value description#>
+    class func addCharactorToString(input: String) -> String {
+        var result = ""
+        
+        
+        
+        
+        return result
+    }
+    
+    
     
 }
 

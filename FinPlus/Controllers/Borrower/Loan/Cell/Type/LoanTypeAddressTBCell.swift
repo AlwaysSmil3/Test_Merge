@@ -15,7 +15,7 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.lblTitle?.font = FONT_CAPTION
-    
+        
     }
     
     var field: LoanBuilderFields? {

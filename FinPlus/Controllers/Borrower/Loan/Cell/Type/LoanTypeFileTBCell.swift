@@ -46,9 +46,11 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     func getData() {
         guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
         if id.contains("nationalIdAllImg") {
-            if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdAllImg {
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdAllImg, data.length() > 0 {
                 self.imgValue?.sd_setImage(with: URL(string: data), completed: nil)
                 DataManager.shared.loanInfo.nationalIdAllImg = data
+                self.imgAdd?.isHidden = true
+                self.lblDescription?.isHidden = true
             } else {
                 //Cap nhat thong tin thieu
                 self.updateInfoFalse(pre: title)
@@ -56,9 +58,11 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
         } else if id.contains("nationalIdFrontImg") {
-            if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdFrontImg {
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdFrontImg, data.length() > 0 {
                 self.imgValue?.sd_setImage(with: URL(string: data), completed: nil)
                 DataManager.shared.loanInfo.nationalIdFrontImg = data
+                self.imgAdd?.isHidden = true
+                self.lblDescription?.isHidden = true
             } else {
                 //Cap nhat thong tin thieu
                 self.updateInfoFalse(pre: title)
@@ -66,9 +70,11 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
         } else if id.contains("nationalIdBackImg") {
-            if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdBackImg {
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdBackImg, data.length() > 0 {
                 self.imgValue?.sd_setImage(with: URL(string: data), completed: nil)
                 DataManager.shared.loanInfo.nationalIdBackImg = data
+                self.imgAdd?.isHidden = true
+                self.lblDescription?.isHidden = true
             } else {
                 //Cap nhat thong tin thieu
                 self.updateInfoFalse(pre: title)

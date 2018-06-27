@@ -26,11 +26,13 @@ extension APIClient {
                             let rate = RateInfo(object: d)
                             DataManager.shared.listRateInfo.append(rate)
                         }
+                        
                     }
                     
-                    
-                    let model = Config(object: json)
-                    seal.fulfill(model)
+                    if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
+                        let model = Config(object: data)
+                        seal.fulfill(model)
+                    }
                     
                 }
                 .catch { error in

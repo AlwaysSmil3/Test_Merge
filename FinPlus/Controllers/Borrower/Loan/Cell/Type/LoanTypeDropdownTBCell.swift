@@ -49,7 +49,12 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
         
         if id.contains("position") || id.contains("jobType") {
             let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
-            popup.setDataSource(data: data)
+            
+            if id.contains("position") {
+                popup.setDataSource(data: data, type: .JobPosition)
+            } else {
+                popup.setDataSource(data: data, type: .Job)
+            }
             popup.delegate = self
             
             popup.show()

@@ -34,7 +34,7 @@
                         </connections>
                     </textField>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Người thân" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sSF-MI-4hL">
-                        <rect key="frame" x="16" y="39.5" width="96" height="58"/>
+                        <rect key="frame" x="16" y="41.5" width="96" height="54"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="96" id="gqO-DH-eQx"/>
                         </constraints>
@@ -70,7 +70,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99w-Y4-pda">
-                        <rect key="frame" x="16" y="39.5" width="96" height="34"/>
+                        <rect key="frame" x="16" y="41.5" width="96" height="34"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <connections>
                             <action selector="btnDropdownTapped:" destination="HL0-UQ-BcS" eventType="touchUpInside" id="AN6-sC-4u4"/>
@@ -98,7 +98,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="mh5-QE-Ub6" firstAttribute="leading" secondItem="sSF-MI-4hL" secondAttribute="leading" id="4oP-j7-i5c"/>
-                    <constraint firstItem="sSF-MI-4hL" firstAttribute="top" secondItem="0Mx-C7-Jx0" secondAttribute="bottom" constant="6" id="5EV-BA-ynd"/>
+                    <constraint firstItem="sSF-MI-4hL" firstAttribute="top" secondItem="0Mx-C7-Jx0" secondAttribute="bottom" constant="8" id="5EV-BA-ynd"/>
                     <constraint firstItem="99w-Y4-pda" firstAttribute="trailing" secondItem="sSF-MI-4hL" secondAttribute="trailing" id="9d0-0e-z9i"/>
                     <constraint firstItem="mh5-QE-Ub6" firstAttribute="trailing" secondItem="sSF-MI-4hL" secondAttribute="trailing" id="CLy-F7-ie1"/>
                     <constraint firstItem="ilP-IN-1V1" firstAttribute="centerY" secondItem="sSF-MI-4hL" secondAttribute="centerY" id="I9t-kL-B1N"/>
@@ -114,7 +114,7 @@
                     <constraint firstAttribute="trailing" secondItem="0Mx-C7-Jx0" secondAttribute="trailing" constant="16" id="iQU-r6-r3l"/>
                     <constraint firstItem="99w-Y4-pda" firstAttribute="leading" secondItem="sSF-MI-4hL" secondAttribute="leading" id="khE-zf-8HQ"/>
                     <constraint firstItem="0Mx-C7-Jx0" firstAttribute="leading" secondItem="vlS-F5-oeS" secondAttribute="leading" constant="16" id="kxe-4d-YEU"/>
-                    <constraint firstItem="mh5-QE-Ub6" firstAttribute="top" secondItem="sSF-MI-4hL" secondAttribute="bottom" constant="6" id="mWw-kn-sWG"/>
+                    <constraint firstItem="mh5-QE-Ub6" firstAttribute="top" secondItem="sSF-MI-4hL" secondAttribute="bottom" constant="8" id="mWw-kn-sWG"/>
                     <constraint firstItem="jWU-Gy-3vA" firstAttribute="leading" secondItem="0Mx-C7-Jx0" secondAttribute="leading" id="p60-3H-XcB"/>
                     <constraint firstItem="wic-hD-39T" firstAttribute="trailing" secondItem="ilP-IN-1V1" secondAttribute="trailing" id="pDi-dH-Ry2"/>
                     <constraint firstItem="99w-Y4-pda" firstAttribute="top" secondItem="sSF-MI-4hL" secondAttribute="top" id="pgC-go-t74"/>
