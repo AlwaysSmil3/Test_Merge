@@ -83,7 +83,8 @@ class InvestDetailSecondTableViewCell: UITableViewCell {
             dueMonthLb.textColor = DARK_SUBTEXT_COLOR
 
         } else {
-            self.contentView.backgroundColor = LIGHT_BACKGROUND_COLOR
+//            self.contentView.backgroundColor = LIGHT_BACKGROUND_COLOR
+            self.contentView.backgroundColor = UIColor.white
             amountTitleLb.textColor = LIGHT_BODY_TEXT_COLOR
             alreadyAmountPercentTitleLb.textColor = LIGHT_BODY_TEXT_COLOR
             amountAvaiableInvestTitleLb.textColor = LIGHT_BODY_TEXT_COLOR
