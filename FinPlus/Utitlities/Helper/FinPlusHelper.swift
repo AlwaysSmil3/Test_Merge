@@ -150,7 +150,7 @@ class FinPlusHelper {
         
         let width = UIScreen.main.bounds.width / 3 - 1
         
-        return CGSize(width: width, height: width * 6/5)
+        return CGSize(width: width, height: 144)
     }
     
     
@@ -240,6 +240,26 @@ class FinPlusHelper {
         
         return result
     }
+    
+    
+    /// Tinh số tiền phải trả hàng tháng
+    ///
+    /// - Parameters:
+    ///   - mounth: <#mounth description#>
+    ///   - term: <#term description#>
+    ///   - rate: <#rate description#>
+    class func CalculateMoneyPayMonth(month: Double, term: Double, rate: Double) -> Double {
+        
+        var value = term
+        if value < 1 {
+            value = 1
+        }
+        
+        let amount = (month + term * month * rate/(100*12)) / value
+        
+        return amount
+    }
+    
     
     
     

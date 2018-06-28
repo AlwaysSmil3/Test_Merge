@@ -73,7 +73,7 @@ class BorrowingPayInfoTableViewCell: UITableViewCell, UITableViewDataSource, UIT
                 // cell.valueLb.text = "\(tableData.loanMoney)"
             case 2:
                 cell.titleLb.text = "Thời hạn vay được duyệt"
-                cell.valueLb.text = "\(tableData.expireAmountTime)"
+                cell.valueLb.text = "\(tableData.expireAmountTime) tháng"
             case 3:
                 cell.titleLb.text = "Trả góp hàng tháng"
                 let formatter = NumberFormatter()
@@ -87,7 +87,7 @@ class BorrowingPayInfoTableViewCell: UITableViewCell, UITableViewDataSource, UIT
                 // cell.valueLb.text = "\(tableData.inerestPerMonth)"
             default :
                 cell.titleLb.text = "Số tháng đã thanh toán"
-                cell.valueLb.text = "\(tableData.numberOfMonthPaid)"
+                cell.valueLb.text = "\(tableData.numberOfMonthPaid) tháng"
             }
             
             return cell

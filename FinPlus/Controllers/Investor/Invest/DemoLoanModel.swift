@@ -9,6 +9,7 @@
 import UIKit
 
 class DemoLoanModel: NSObject {
+    var id : Int!
     var reliability : LoanReliability
     var name : String!
     var interestRate : Float = 0
@@ -16,7 +17,8 @@ class DemoLoanModel: NSObject {
     var alreadyAmount : Float = 0
     var dueMonth : Int = 0
 
-    init(reliability: LoanReliability, name: String, interestRate: Float, amount: Float, alreadyAmount: Float, dueMonth: Int) {
+    init(id: Int, reliability: LoanReliability, name: String, interestRate: Float, amount: Float, alreadyAmount: Float, dueMonth: Int) {
+        self.id = id
         self.reliability = reliability
         self.name = name
         self.interestRate = interestRate

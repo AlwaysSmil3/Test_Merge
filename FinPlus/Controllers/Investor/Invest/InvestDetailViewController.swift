@@ -48,8 +48,10 @@ class InvestDetailViewController: UIViewController, UITableViewDelegate, UITable
             self.navigationController?.navigationBar.barTintColor = LIGHT_MODE_NAVI_COLOR
             self.navigationController?.navigationBar.tintColor = LIGHT_BODY_TEXT_COLOR
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: LIGHT_BODY_TEXT_COLOR]
-            self.view.backgroundColor = LIGHT_BACKGROUND_COLOR
-            self.tableView.backgroundColor = LIGHT_BACKGROUND_COLOR
+//            self.view.backgroundColor = LIGHT_BACKGROUND_COLOR
+//            self.tableView.backgroundColor = LIGHT_BACKGROUND_COLOR
+            self.view.backgroundColor = UIColor.white
+            self.tableView.backgroundColor = UIColor.white
         }
         tableView.reloadData()
     }

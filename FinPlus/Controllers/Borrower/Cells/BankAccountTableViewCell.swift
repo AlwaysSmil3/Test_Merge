@@ -31,6 +31,7 @@ class BankAccountTableViewCell: UITableViewCell {
         } else {
             self.walletImg.image = #imageLiteral(resourceName: "tech")
         }
+        
         self.walletNameLb.text = cellData.bankName
         self.accountNumberLb.text = cellData.accountBankNumber
         if isSelectedCell == true {
