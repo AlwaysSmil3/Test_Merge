@@ -49,7 +49,7 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     }
     
     func showLibrary() {
-        CameraHandler.shared.showActionSheet(vc: UIApplication.shared.topViewController()!)
+        CameraHandler.shared.showCamera(vc: UIApplication.shared.topViewController()!)
         CameraHandler.shared.imagePickedBlock = { (image) in
             let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
 
