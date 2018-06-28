@@ -117,7 +117,9 @@ class LoanFirstViewController: BaseViewController {
         
         self.updateServiceFee(loan: loan)
         
-        self.lblMoneySlider?.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY))" + " Triệu đ"
+        let amountDouble = Double(loan.min!)
+        self.lblMoneySlider?.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ"
+        //self.lblMoneySlider?.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY))" + " Triệu"
         self.lblMinAmountSlider?.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY)) TRIỆU"
         self.lblMaxAmounSlider?.text = "\(Int(loan.max!/MONEY_TERM_DISPLAY)) TRIỆU"
     }
@@ -160,6 +162,7 @@ class LoanFirstViewController: BaseViewController {
     @IBAction func btnListCategoriesShow(_ sender: Any) {
         let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
         popup.setDataSource(data: listDataCategoriesForPopup, type: .Categories)
+        popup.titleString = "Mục đích vay"
         popup.delegate = self
         
         popup.show()
@@ -167,7 +170,10 @@ class LoanFirstViewController: BaseViewController {
     
     
     @IBAction func moneySliderValueChaned(_ sender: Any) {
-        self.lblMoneySlider.text = "\(Int(self.amountSlider.value))" + " Triệu đ"
+        //self.lblMoneySlider.text = "\(Int(self.amountSlider.value))" + " Triệu"
+        let amountInt = Int(self.amountSlider.value) / Int(self.amountSlider.minimumValue) * 1000000
+        let amountDouble = Double(amountInt)
+        self.lblMoneySlider.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ"
         
         //Cho set step
         if let slider = sender as? UISlider {

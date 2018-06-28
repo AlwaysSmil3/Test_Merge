@@ -29,13 +29,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chọn tài khoản ngân hàng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCV-D5-5NF">
-                        <rect key="frame" x="16" y="15" width="343" height="44"/>
+                        <rect key="frame" x="16" y="17" width="343" height="40"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="11"/>
                         <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZc-af-Eqy" customClass="AnimatableView" customModule="IBAnimatable">
-                        <rect key="frame" x="16" y="67" width="343" height="56"/>
+                        <rect key="frame" x="16" y="65" width="343" height="56"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_wallet" translatesAutoresizingMaskIntoConstraints="NO" id="FeJ-zM-aIh">
                                 <rect key="frame" x="11" y="8" width="40" height="40"/>
@@ -82,8 +82,8 @@
                     <constraint firstItem="kZc-af-Eqy" firstAttribute="top" secondItem="eCV-D5-5NF" secondAttribute="bottom" constant="8" id="2eU-EA-Qdb"/>
                     <constraint firstItem="kZc-af-Eqy" firstAttribute="trailing" secondItem="eCV-D5-5NF" secondAttribute="trailing" id="4nw-qR-cgC"/>
                     <constraint firstItem="kZc-af-Eqy" firstAttribute="leading" secondItem="eCV-D5-5NF" secondAttribute="leading" id="91v-Dt-ThB"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="kZc-af-Eqy" secondAttribute="bottom" constant="4" id="CMc-H8-nPS"/>
-                    <constraint firstItem="eCV-D5-5NF" firstAttribute="top" secondItem="J4i-EX-6v4" secondAttribute="topMargin" constant="4" id="Ddw-bd-LcG"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="kZc-af-Eqy" secondAttribute="bottom" constant="6" id="CMc-H8-nPS"/>
+                    <constraint firstItem="eCV-D5-5NF" firstAttribute="top" secondItem="J4i-EX-6v4" secondAttribute="topMargin" constant="6" id="Ddw-bd-LcG"/>
                     <constraint firstAttribute="trailing" secondItem="kZc-af-Eqy" secondAttribute="trailing" constant="16" id="gjg-3k-pAi"/>
                     <constraint firstItem="kZc-af-Eqy" firstAttribute="leading" secondItem="J4i-EX-6v4" secondAttribute="leading" constant="16" id="lbK-zl-xq9"/>
                 </constraints>

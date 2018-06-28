@@ -1159,10 +1159,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1p7-WN-ZOS">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="595"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nZh-So-6Dd" customClass="TPKeyboardAvoidingTableView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="595"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="dataSource" destination="Sbg-lL-tQG" id="ezu-QU-ydS"/>
@@ -1183,7 +1183,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="1p7-WN-ZOS" secondAttribute="trailing" id="7Qx-Wr-dVH"/>
                             <constraint firstItem="QL4-PU-hc4" firstAttribute="top" secondItem="e4B-Zw-4ed" secondAttribute="bottom" constant="-20" id="91M-OJ-c7u"/>
-                            <constraint firstItem="1p7-WN-ZOS" firstAttribute="top" secondItem="QL4-PU-hc4" secondAttribute="bottom" id="KvY-u9-W3j"/>
+                            <constraint firstItem="1p7-WN-ZOS" firstAttribute="top" secondItem="QL4-PU-hc4" secondAttribute="bottom" constant="8" id="KvY-u9-W3j"/>
                             <constraint firstItem="1p7-WN-ZOS" firstAttribute="leading" secondItem="MCy-Ye-bdH" secondAttribute="leading" id="QsN-6w-qCH"/>
                             <constraint firstItem="QL4-PU-hc4" firstAttribute="leading" secondItem="MCy-Ye-bdH" secondAttribute="leading" id="jqy-pi-NJD"/>
                             <constraint firstItem="W1M-Sc-g0A" firstAttribute="top" secondItem="1p7-WN-ZOS" secondAttribute="bottom" id="n3O-E3-6Vj"/>
