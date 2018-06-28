@@ -14,8 +14,9 @@
 "NOTIFICATION" = "Thông báo";
 "BRIEF" = "Hồ sơ";
 
+"CHOOSE_ACCOUNT" = "Chọn tài khoản để nhận tiền";
 "ALL_ACCOUNT_CONNECTED" = "Các tài khoản đã liên kết";
-"CREATE_NEW_ACCOUNT" = "Tạo tài khoản mới";
+"CREATE_NEW_ACCOUNT" = "Thêm tài khoản mới";
 "MOMO_WALLET" = "Ví MoMo";
 "ADD_NEW_WALLET" = "Thêm tài khoản mới";
 "PAYPAL_ACCOUNT" = "Tài khoản PayPal";

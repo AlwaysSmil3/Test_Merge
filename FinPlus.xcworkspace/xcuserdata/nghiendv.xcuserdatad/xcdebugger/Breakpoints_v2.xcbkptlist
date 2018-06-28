@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FinPlus/Controllers/Borrower/Loan/ContractSuccessViewController.swift"
-            timestampString = "551851819.029181"
+            filePath = "FinPlus/Controllers/Profile/ProfileViewController.swift"
+            timestampString = "551861866.222626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "setupMode()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
