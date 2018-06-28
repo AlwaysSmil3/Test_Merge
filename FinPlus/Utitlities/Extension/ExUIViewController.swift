@@ -51,7 +51,7 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
-    func showGreenBtnMessage (title: String, message: String, okTitle: String?, cancelTitle: String?, completion:((_ isPressedOK: Bool) -> Swift.Void)? = nil) {
+    func showGreenBtnMessage(title: String, message: String, okTitle: String?, cancelTitle: String?, completion:((_ isPressedOK: Bool) -> Swift.Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         if (okTitle != nil) {
             let okAction = UIAlertAction(title: okTitle, style: .default, handler: { (result: UIAlertAction) in

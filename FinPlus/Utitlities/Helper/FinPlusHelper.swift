@@ -150,7 +150,7 @@ class FinPlusHelper {
         
         let width = UIScreen.main.bounds.width / 3 - 1
         
-        return CGSize(width: width, height: width * 6/5)
+        return CGSize(width: width, height: 144)
     }
     
     

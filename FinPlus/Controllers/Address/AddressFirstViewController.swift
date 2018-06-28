@@ -27,12 +27,16 @@ class AddressFirstViewController: BaseViewController {
     var typeAddress: Int = 0
     
     //Title trong fields LoanBuider
-    var titleTypeAddress: String = ""
+    //var titleTypeAddress: String = ""
+    var titleString: String = "Địa chỉ"
     
+    @IBOutlet var lblTitleHeader: UILabel!
     @IBOutlet var mainTableView: TPKeyboardAvoidingTableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.lblTitleHeader.text = self.titleString
         
         self.initData()
         self.setupMainTBView()
@@ -104,7 +108,7 @@ class AddressFirstViewController: BaseViewController {
         let address = Address(city: cityModel_.name!, district: districtModel_.name!, commune: communeModel_.name!, street: street, zipCode: "", long: 0.0, lat: 0.0)
         
         
-        self.delegate?.getAddress(address: address, type: self.typeAddress, title: self.titleTypeAddress)
+        self.delegate?.getAddress(address: address, type: self.typeAddress, title: self.titleString)
         self.navigationController?.popViewController(animated: true)
         
     }

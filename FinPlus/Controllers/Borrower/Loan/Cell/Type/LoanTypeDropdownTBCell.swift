@@ -26,7 +26,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 }
             }
             
-            if let value = field_.selectorTitle {
+            if let value = field_.placeholder {
                 self.lblValue?.text = value
             }
             
