@@ -234,4 +234,25 @@ func getColorText(type: STATUS_LOAN) -> UIColor {
 }
 
 
+//Check run máy ảo hay deivce
+struct Platform {
+    
+    static let isSimulator: Bool = {
+        
+        var isSim = false
+        
+        #if arch(i386) || arch(x86_64)
+        
+        isSim = true
+        
+        #endif
+        
+        return isSim
+        
+    }()
+    
+}
+
+
+
 
