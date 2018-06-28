@@ -280,6 +280,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             
         case DATA_TYPE_TB_CELL.DateTime:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.DropDown, for: indexPath) as! LoanTypeDropdownTBCell
+            
             cell.field = model
             return cell
             

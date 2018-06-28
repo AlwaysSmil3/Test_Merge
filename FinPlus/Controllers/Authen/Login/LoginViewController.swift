@@ -123,17 +123,32 @@ class LoginViewController: BaseViewController {
                         if let token = data.accessToken {
                             userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
                         }
-                        if let accountType = data.accountType {
-                            if accountType == "BORROWER" {
-                                self?.pushToHomeVC(userType: .Borrower)
-                            } else if accountType == "INVESTOR" {
-                                self?.pushToHomeVC(userType: .Investor)
-                            } else {
-                                self?.pushToChoiceKindUserVC()
+                        
+                        //Lay thong tin nguoi dung
+                        APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
+                            .done(on: DispatchQueue.main) { model in
+                                DataManager.shared.browwerInfo = model
+                            
+                                let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+
+                                self?.navigationController?.present(tabbarVC, animated: true, completion: {
+
+                                })
                             }
-                        } else {
-                            self?.pushToChoiceKindUserVC()
-                        }
+                            .catch { error in }
+                        
+                        
+//                        if let accountType = data.accountType {
+//                            if accountType == "BORROWER" {
+//                                self?.pushToHomeVC(userType: .Borrower)
+//                            } else if accountType == "INVESTOR" {
+//                                self?.pushToHomeVC(userType: .Investor)
+//                            } else {
+//                                self?.pushToChoiceKindUserVC()
+//                            }
+//                        } else {
+//                            self?.pushToChoiceKindUserVC()
+//                        }
                     } else {
                         self?.pushToChoiceKindUserVC()
                     }
