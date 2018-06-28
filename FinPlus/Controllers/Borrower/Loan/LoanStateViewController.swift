@@ -226,7 +226,7 @@ class LoanStateViewController: UIViewController {
                     "type": HeaderCellType.ButtonType,
                     "text": "Giải ngân",
                     "subType": ButtonCellType.FillType,
-                    "target": "signContract"
+                    "target": "disburse_expỉed"
                 ],
             ]
             
