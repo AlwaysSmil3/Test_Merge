@@ -43,7 +43,7 @@ class LoanOtherInfoVC: LoanBaseViewController {
             return
         }
         
-        if Platform.isSimulator {
+        if !Platform.isSimulator {
             if DataManager.shared.loanInfo.optionalMedia.count == 0 {
                 self.showToastWithMessage(message: "Vui lòng tải ảnh bảng lương/ chấm công của bạn")
                 return

@@ -36,7 +36,7 @@ class LoanNationalIDViewController: LoanBaseViewController {
     
     @IBAction func btnContinueTapped(_ sender: Any) {
         
-        if Platform.isSimulator {
+        if !Platform.isSimulator {
             if DataManager.shared.loanInfo.nationalIdAllImg.length() == 0 {
                 self.showToastWithMessage(message: "Vui lòng chụp ảnh bạn đang cầm CMND mặt trước")
                 return
