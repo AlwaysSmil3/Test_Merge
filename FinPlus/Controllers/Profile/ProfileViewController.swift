@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import SDWebImage
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate {
     
@@ -122,9 +123,16 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func setupMode() {
         
         let header: ProfileHeaderView = Bundle.main.loadNibNamed("ProfileHeaderView", owner: nil, options: nil)![0] as! ProfileHeaderView
-        header.usernameLabel.text = "+84988xxxxxx"
-        header.phoneLabel.text = "+84988xxxxxx"
-        header.avatarBtn.setBackgroundImage(UIImage(named: "avatar_default"), for: .normal)
+        
+        if let info = DataManager.shared.browwerInfo {
+            header.usernameLabel.text = info.fullName ?? ""
+            header.phoneLabel.text = info.phoneNumber ?? ""
+            header.avatarBtn.sd_setImage(with: URL(string: info.avatar ?? ""), for: .normal, completed: nil)
+        }
+        
+//        header.usernameLabel.text = "+84988xxxxxx"
+//        header.phoneLabel.text = "+84988xxxxxx"
+//        header.avatarBtn.setBackgroundImage(UIImage(named: "avatar_default"), for: .normal)
         header.delegate = self
         
         if (self.mode && self.isInvestor)

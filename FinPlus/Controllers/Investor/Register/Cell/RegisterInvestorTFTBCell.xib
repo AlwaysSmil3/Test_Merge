@@ -25,20 +25,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDa-or-or2">
-                        <rect key="frame" x="16" y="78" width="343" height="1"/>
+                        <rect key="frame" x="16" y="76" width="343" height="1"/>
                         <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="ACF-JU-b2C"/>
                         </constraints>
                     </view>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập họ và tên của bạn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9vF-bO-VXb">
-                        <rect key="frame" x="16" y="34" width="343" height="38"/>
+                        <rect key="frame" x="16" y="38.5" width="343" height="31.5"/>
                         <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVy-IN-Uvr">
-                        <rect key="frame" x="16" y="15" width="58.5" height="13.5"/>
+                        <rect key="frame" x="16" y="17" width="58.5" height="13.5"/>
                         <attributedString key="attributedText">
                             <fragment content="Họ và tên ">
                                 <attributes>
@@ -63,9 +63,9 @@
                     <constraint firstItem="bDa-or-or2" firstAttribute="leading" secondItem="sCs-I1-mDX" secondAttribute="leading" constant="16" id="Xpw-JE-FPZ"/>
                     <constraint firstItem="bDa-or-or2" firstAttribute="top" secondItem="9vF-bO-VXb" secondAttribute="bottom" constant="6" id="ZgV-nW-ROt"/>
                     <constraint firstItem="bDa-or-or2" firstAttribute="trailing" secondItem="9vF-bO-VXb" secondAttribute="trailing" id="bDf-65-1G6"/>
-                    <constraint firstItem="9vF-bO-VXb" firstAttribute="top" secondItem="LVy-IN-Uvr" secondAttribute="bottom" constant="6" id="kqa-b1-LeV"/>
-                    <constraint firstItem="LVy-IN-Uvr" firstAttribute="top" secondItem="sCs-I1-mDX" secondAttribute="topMargin" constant="4" id="oBc-B8-8Wf"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="bDa-or-or2" secondAttribute="bottom" constant="4" id="zhj-N6-ErE"/>
+                    <constraint firstItem="9vF-bO-VXb" firstAttribute="top" secondItem="LVy-IN-Uvr" secondAttribute="bottom" constant="8" id="kqa-b1-LeV"/>
+                    <constraint firstItem="LVy-IN-Uvr" firstAttribute="top" secondItem="sCs-I1-mDX" secondAttribute="topMargin" constant="6" id="oBc-B8-8Wf"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="bDa-or-or2" secondAttribute="bottom" constant="6" id="zhj-N6-ErE"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

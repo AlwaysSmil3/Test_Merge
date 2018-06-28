@@ -25,26 +25,26 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMR-1G-NZY">
-                        <rect key="frame" x="346" y="53" width="13" height="31.5"/>
+                        <rect key="frame" x="346" y="54" width="13" height="31.5"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="26"/>
                         <color key="textColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày sinh của bạn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzH-lJ-tZj">
-                        <rect key="frame" x="16" y="35" width="131" height="67"/>
+                        <rect key="frame" x="16" y="38.5" width="131" height="61.5"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                         <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uR9-WI-3fG">
-                        <rect key="frame" x="16" y="108" width="343" height="1"/>
+                        <rect key="frame" x="16" y="106" width="343" height="1"/>
                         <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="5mh-nH-Aha"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QH-nB-az0">
-                        <rect key="frame" x="16" y="15" width="343" height="13.5"/>
+                        <rect key="frame" x="16" y="17" width="343" height="13.5"/>
                         <attributedString key="attributedText">
                             <fragment content="Ngày sinh ">
                                 <attributes>
@@ -65,14 +65,14 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="4QH-nB-az0" firstAttribute="top" secondItem="dZw-1i-nJG" secondAttribute="topMargin" constant="4" id="3Dc-nx-anr"/>
-                    <constraint firstItem="uzH-lJ-tZj" firstAttribute="top" secondItem="4QH-nB-az0" secondAttribute="bottom" constant="6" id="6WO-Fu-Vk9"/>
+                    <constraint firstItem="4QH-nB-az0" firstAttribute="top" secondItem="dZw-1i-nJG" secondAttribute="topMargin" constant="6" id="3Dc-nx-anr"/>
+                    <constraint firstItem="uzH-lJ-tZj" firstAttribute="top" secondItem="4QH-nB-az0" secondAttribute="bottom" constant="8" id="6WO-Fu-Vk9"/>
                     <constraint firstItem="uzH-lJ-tZj" firstAttribute="leading" secondItem="4QH-nB-az0" secondAttribute="leading" id="9Gy-Rh-CMs"/>
                     <constraint firstItem="uR9-WI-3fG" firstAttribute="leading" secondItem="4QH-nB-az0" secondAttribute="leading" id="Gsf-Mf-jfL"/>
                     <constraint firstItem="xMR-1G-NZY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uzH-lJ-tZj" secondAttribute="trailing" constant="8" id="Imb-X0-Mz1"/>
                     <constraint firstItem="uR9-WI-3fG" firstAttribute="leading" secondItem="dZw-1i-nJG" secondAttribute="leading" constant="16" id="JH3-qI-qhs"/>
                     <constraint firstAttribute="trailing" secondItem="uR9-WI-3fG" secondAttribute="trailing" constant="16" id="USg-M2-Xu8"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="uR9-WI-3fG" secondAttribute="bottom" constant="4" id="Y8K-oW-NuQ"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="uR9-WI-3fG" secondAttribute="bottom" constant="6" id="Y8K-oW-NuQ"/>
                     <constraint firstItem="uR9-WI-3fG" firstAttribute="top" secondItem="uzH-lJ-tZj" secondAttribute="bottom" constant="6" id="bSy-4x-VQm"/>
                     <constraint firstItem="uR9-WI-3fG" firstAttribute="trailing" secondItem="4QH-nB-az0" secondAttribute="trailing" id="doO-pg-bmc"/>
                     <constraint firstItem="xMR-1G-NZY" firstAttribute="centerY" secondItem="uzH-lJ-tZj" secondAttribute="centerY" id="rag-7h-qCc"/>
