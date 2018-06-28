@@ -179,16 +179,16 @@ class BorrowerTabBarController: UITabBarController {
         self.tabBar.tintColor = MAIN_COLOR
         
         if #available(iOS 10.0, *) {
-            self.tabBar.unselectedItemTintColor = BAR_DEFAULT_COLOR
+            self.tabBar.unselectedItemTintColor = LIGHT_MODE_SUB_TEXT_COLOR
         } else {
             // Fallback on earlier versions
         }
         self.tabBar.backgroundColor = .white
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:BAR_DEFAULT_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_SMALL)], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:LIGHT_MODE_SUB_TEXT_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_SMALL)], for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:MAIN_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_SMALL)], for: .selected)
         
         UIApplication.shared.statusBarStyle = .default
-        let attributes = [NSAttributedStringKey.foregroundColor: LIGHT_MODE_MAIN_TEXT_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL) as Any]
+        let attributes = [NSAttributedStringKey.foregroundColor: LIGHT_MODE_MAIN_TEXT_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL) as Any]
         UINavigationBar.appearance().titleTextAttributes = attributes
         UINavigationBar.appearance().barTintColor = LIGHT_MODE_NAVI_COLOR
         UINavigationBar.appearance().tintColor = LIGHT_MODE_MAIN_TEXT_COLOR
