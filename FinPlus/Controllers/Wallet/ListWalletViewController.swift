@@ -48,7 +48,7 @@ class ListWalletViewController: BaseViewController {
             self.setupTitleView(title: "Tạo yêu cầu vay", subTitle: "Bước 4: Tài khoản ngân hàng")
             self.navigationController?.navigationBar.shadowImage = UIImage()
             self.bottomView.isHidden = false
-            DataManager.shared.loanInfo.currentStep = 3
+            DataManager.shared.loanInfo.currentStep = 2
             self.updateDataToServer()
         }
         

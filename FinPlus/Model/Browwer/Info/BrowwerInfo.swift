@@ -27,6 +27,11 @@ public struct BrowwerInfo {
     static let displayName = "displayName"
     static let nationalId = "nationalId"
     static let createdAt = "createdAt"
+    
+    static let email = "email"
+    static let uuidDevice = "uuidDevice"
+    static let token = "token"
+    static let avatar = "avatar"
   }
 
   // MARK: Properties
@@ -45,6 +50,10 @@ public struct BrowwerInfo {
   public var displayName: String?
   public var nationalId: String?
     public var createdAt: String?
+    public var email: String?
+    public var token: String?
+    public var uuidDevice: String?
+    public var avatar: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -74,6 +83,11 @@ public struct BrowwerInfo {
     displayName = json[SerializationKeys.displayName].string
     nationalId = json[SerializationKeys.nationalId].string
     createdAt = json[SerializationKeys.createdAt].string
+    
+    email = json[SerializationKeys.email].string
+    token = json[SerializationKeys.token].string
+    uuidDevice = json[SerializationKeys.uuidDevice].string
+    avatar = json[SerializationKeys.avatar].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -96,6 +110,10 @@ public struct BrowwerInfo {
     if let value = displayName { dictionary[SerializationKeys.displayName] = value }
     if let value = nationalId { dictionary[SerializationKeys.nationalId] = value }
     if let value = createdAt { dictionary[SerializationKeys.createdAt] = value }
+    if let value = email { dictionary[SerializationKeys.createdAt] = value }
+    if let value = token { dictionary[SerializationKeys.token] = value }
+    if let value = uuidDevice { dictionary[SerializationKeys.uuidDevice] = value }
+    if let value = avatar { dictionary[SerializationKeys.avatar] = value }
     return dictionary
   }
 

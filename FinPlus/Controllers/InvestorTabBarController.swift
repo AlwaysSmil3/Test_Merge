@@ -86,7 +86,7 @@ class InvestorTabBarController: UITabBarController {
         
         UIApplication.shared.statusBarStyle = mode ? .lightContent : .default
         
-        let attributes = [NSAttributedStringKey.foregroundColor: mode ? DARK_MODE_MAIN_TEXT_COLOR : LIGHT_MODE_MAIN_TEXT_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL) as Any]
+        let attributes = [NSAttributedStringKey.foregroundColor: mode ? DARK_MODE_MAIN_TEXT_COLOR : LIGHT_MODE_MAIN_TEXT_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL) as Any]
         UINavigationBar.appearance().titleTextAttributes = attributes
         UINavigationBar.appearance().barTintColor = mode ? DARK_MODE_NAVI_COLOR : LIGHT_MODE_NAVI_COLOR
         UINavigationBar.appearance().tintColor = mode ? DARK_MODE_MAIN_TEXT_COLOR : LIGHT_MODE_MAIN_TEXT_COLOR

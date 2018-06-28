@@ -78,6 +78,8 @@ class VerifyFacebookVC: BaseViewController {
                             .done(on: DispatchQueue.main) { model in
                                 DataManager.shared.browwerInfo = model
                                 
+                                print("avatar \(model.avatar)")
+                                
                                 let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
                                 
                                 self?.navigationController?.present(tabbarVC, animated: true, completion: {

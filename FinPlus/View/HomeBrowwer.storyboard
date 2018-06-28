@@ -35,10 +35,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyd-9q-JpW">
-                                <rect key="frame" x="0.0" y="254" width="375" height="413"/>
+                                <rect key="frame" x="0.0" y="244" width="375" height="423"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2du-Ad-GeN">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="413"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="423"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="940-SB-Qga">
                                             <size key="itemSize" width="116" height="156"/>
@@ -55,9 +55,9 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_homeBrower_group1" translatesAutoresizingMaskIntoConstraints="NO" id="baj-6x-eUZ">
-                                                            <rect key="frame" x="33" y="24" width="50" height="50"/>
+                                                            <rect key="frame" x="30" y="18" width="56" height="56"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="50" id="P6c-EJ-66U"/>
+                                                                <constraint firstAttribute="width" constant="56" id="P6c-EJ-66U"/>
                                                                 <constraint firstAttribute="width" secondItem="baj-6x-eUZ" secondAttribute="height" multiplier="1:1" id="RLp-yl-lYf"/>
                                                             </constraints>
                                                         </imageView>
@@ -82,7 +82,7 @@
                                                     <constraint firstItem="EID-Nx-Q4l" firstAttribute="centerX" secondItem="sRt-5m-lMl" secondAttribute="centerX" id="TVe-Od-SHl"/>
                                                     <constraint firstItem="EID-Nx-Q4l" firstAttribute="leading" secondItem="sRt-5m-lMl" secondAttribute="leading" constant="8" id="WNP-lt-MsZ"/>
                                                     <constraint firstItem="m6D-E5-kMG" firstAttribute="top" secondItem="EID-Nx-Q4l" secondAttribute="bottom" constant="4" id="fuA-RG-zu1"/>
-                                                    <constraint firstItem="baj-6x-eUZ" firstAttribute="top" secondItem="sRt-5m-lMl" secondAttribute="topMargin" constant="16" id="gJ5-gp-mYy"/>
+                                                    <constraint firstItem="baj-6x-eUZ" firstAttribute="top" secondItem="sRt-5m-lMl" secondAttribute="topMargin" constant="10" id="gJ5-gp-mYy"/>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="imgIcon" destination="baj-6x-eUZ" id="MAY-wi-UkV"/>
@@ -109,19 +109,19 @@
                                 <rect key="frame" x="133" y="40" width="109" height="14"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xin chào A!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jmO-Vt-JFL">
-                                <rect key="frame" x="32" y="92" width="311" height="31.5"/>
+                                <rect key="frame" x="32" y="90" width="311" height="31.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="26"/>
                                 <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bạn muốn vay tiền để làm gì?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8G-aZ-aJV">
-                                <rect key="frame" x="32" y="123" width="311" height="62.5"/>
+                                <rect key="frame" x="32" y="121" width="311" height="62.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="26"/>
                                 <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hãy chọn cho mình một khoản vay phù hợp trong danh sách dưới đây." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFT-UJ-rkR">
-                                <rect key="frame" x="32" y="202" width="311" height="36"/>
+                                <rect key="frame" x="32" y="200" width="311" height="36"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -134,8 +134,8 @@
                             <constraint firstItem="QFT-UJ-rkR" firstAttribute="top" secondItem="r8G-aZ-aJV" secondAttribute="bottom" constant="16" id="2PA-Ca-RMv"/>
                             <constraint firstItem="QFT-UJ-rkR" firstAttribute="trailing" secondItem="r8G-aZ-aJV" secondAttribute="trailing" id="63g-hQ-HX9"/>
                             <constraint firstItem="QFT-UJ-rkR" firstAttribute="leading" secondItem="r8G-aZ-aJV" secondAttribute="leading" id="8FH-Au-jD1"/>
-                            <constraint firstItem="gyd-9q-JpW" firstAttribute="top" secondItem="QFT-UJ-rkR" secondAttribute="bottom" constant="16" id="AtJ-7S-YwQ"/>
-                            <constraint firstItem="jmO-Vt-JFL" firstAttribute="top" secondItem="HUN-oQ-EZk" secondAttribute="bottom" constant="38" id="B7j-Yk-Ofl"/>
+                            <constraint firstItem="gyd-9q-JpW" firstAttribute="top" secondItem="QFT-UJ-rkR" secondAttribute="bottom" constant="8" id="AtJ-7S-YwQ"/>
+                            <constraint firstItem="jmO-Vt-JFL" firstAttribute="top" secondItem="HUN-oQ-EZk" secondAttribute="bottom" constant="36" id="B7j-Yk-Ofl"/>
                             <constraint firstAttribute="trailing" secondItem="gyd-9q-JpW" secondAttribute="trailing" id="PWY-aH-LZ8"/>
                             <constraint firstItem="jmO-Vt-JFL" firstAttribute="leading" secondItem="4qa-z7-OzB" secondAttribute="leading" constant="32" id="QuZ-ov-8S9"/>
                             <constraint firstItem="r8G-aZ-aJV" firstAttribute="top" secondItem="jmO-Vt-JFL" secondAttribute="bottom" id="cBh-or-z4n"/>

@@ -102,7 +102,11 @@ import UIKit
         let frame = CGRect(origin: CGPoint.zero, size: CGSize(width: rect.size.width, height: rect.size.height))
         
         placeholderLabel.frame = frame.insetBy(dx: placeholderInsets.x, dy: placeholderInsets.y)
-        placeholderLabel.font = placeholderFontFromFont(font!)
+        
+        if (!self.disableEffect)
+        {
+            placeholderLabel.font = placeholderFontFromFont(font!)
+        }
         
         updateBorder()
         updatePlaceholder()
