@@ -87,14 +87,14 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
 
     func updateData() {
         // fixed data to test UI
-        let loan1 = DemoLoanModel(reliability: .positive1, name: "Vay cho sinh viên", interestRate: 20, amount: 5000000, alreadyAmount: 0, dueMonth: 6)
-        let loan2 = DemoLoanModel(reliability: .positive2, name: "Vay mua điện thoại", interestRate: 22, amount: 12000000, alreadyAmount: 75, dueMonth: 12)
-        let loan3 = DemoLoanModel(reliability: .positive3, name: "Vay mua xe máy", interestRate: 22, amount: 12000000, alreadyAmount: 50, dueMonth: 12)
-        let loan4 = DemoLoanModel(reliability: .positive4, name: "Vay mua điện thoại", interestRate: 25, amount: 12000000, alreadyAmount: 45, dueMonth: 6)
-        let loan5 = DemoLoanModel(reliability: .nagative1, name: "Vay mua điện thoại", interestRate: 28, amount: 12000000, alreadyAmount: 30, dueMonth: 12)
-        let loan6 = DemoLoanModel(reliability: .nagative2, name: "Vay mua điện thoại", interestRate: 30, amount: 12000000, alreadyAmount: 15, dueMonth: 6)
-        let loan7 = DemoLoanModel(reliability: .nagative3, name: "Vay mua điện thoại", interestRate: 35, amount: 12000000, alreadyAmount: 90, dueMonth: 6)
-        let loan8 = DemoLoanModel(reliability: .nagative4, name: "Vay mua điện thoại", interestRate: 40, amount: 12000000, alreadyAmount: 80, dueMonth: 12)
+        let loan1 = DemoLoanModel(id: 1, reliability: .positive1, name: "Vay cho sinh viên", interestRate: 20, amount: 5000000, alreadyAmount: 0, dueMonth: 6)
+        let loan2 = DemoLoanModel(id: 2, reliability: .positive2, name: "Vay mua điện thoại", interestRate: 22, amount: 12000000, alreadyAmount: 75, dueMonth: 12)
+        let loan3 = DemoLoanModel(id: 3, reliability: .positive3, name: "Vay mua xe máy", interestRate: 22, amount: 12000000, alreadyAmount: 50, dueMonth: 12)
+        let loan4 = DemoLoanModel(id: 4, reliability: .positive4, name: "Vay mua điện thoại", interestRate: 25, amount: 12000000, alreadyAmount: 45, dueMonth: 6)
+        let loan5 = DemoLoanModel(id: 5, reliability: .nagative1, name: "Vay mua điện thoại", interestRate: 28, amount: 12000000, alreadyAmount: 30, dueMonth: 12)
+        let loan6 = DemoLoanModel(id: 6, reliability: .nagative2, name: "Vay mua điện thoại", interestRate: 30, amount: 12000000, alreadyAmount: 15, dueMonth: 6)
+        let loan7 = DemoLoanModel(id: 7, reliability: .nagative3, name: "Vay mua điện thoại", interestRate: 35, amount: 12000000, alreadyAmount: 90, dueMonth: 6)
+        let loan8 = DemoLoanModel(id: 8, reliability: .nagative4, name: "Vay mua điện thoại", interestRate: 40, amount: 12000000, alreadyAmount: 80, dueMonth: 12)
         self.allLoansArray.append(loan1)
         self.allLoansArray.append(loan2)
         self.allLoansArray.append(loan3)
