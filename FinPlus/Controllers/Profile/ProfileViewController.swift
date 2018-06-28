@@ -91,7 +91,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.title = "Setting"
+        self.title = NSLocalizedString("BRIEF", comment: "")
         
         self.data = self.isInvestor ? self.data_investor as NSArray : self.data_borrower as NSArray
         
