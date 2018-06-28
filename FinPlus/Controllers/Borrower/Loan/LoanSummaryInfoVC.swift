@@ -57,13 +57,13 @@ class LoanSummaryInfoVC: BaseViewController {
         var labelStudentLoan = ""
         var amountDouble = Double(DataManager.shared.loanInfo.amount)
         
+        let term = DataManager.shared.loanInfo.term
+        amountDouble = FinPlusHelper.CalculateMoneyPayMonth(month: amountDouble, term: Double(term/30), rate: cate.interestRate!)
+        
         if cate.id == Loan_Student_Category_ID {
             labelStudentLoan = "Thanh toán dự kiến"
-            amountDouble = amountDouble * (cate.interestRate! / 100) + amountDouble
         } else {
             labelStudentLoan = "Trả góp dự kiến hàng tháng"
-            let term = DataManager.shared.loanInfo.term
-            amountDouble = (amountDouble * (cate.interestRate! / 100) + amountDouble) / Double(Int(term / 30))
         }
 
         

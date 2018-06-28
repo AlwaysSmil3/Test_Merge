@@ -242,6 +242,26 @@ class FinPlusHelper {
     }
     
     
+    /// Tinh số tiền phải trả hàng tháng
+    ///
+    /// - Parameters:
+    ///   - mounth: <#mounth description#>
+    ///   - term: <#term description#>
+    ///   - rate: <#rate description#>
+    class func CalculateMoneyPayMonth(month: Double, term: Double, rate: Double) -> Double {
+        
+        var value = term
+        if value < 1 {
+            value = 1
+        }
+        
+        let amount = (month + term * month * rate/(100*12)) / value
+        
+        return amount
+    }
+    
+    
+    
     
 }
 

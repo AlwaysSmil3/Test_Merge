@@ -201,12 +201,8 @@ class LoanFirstViewController: BaseViewController {
         let amountInt = Int(self.amountSlider.value) / Int(self.amountSlider.minimumValue) * 1000000
         var amountDouble = Double(amountInt)
         
-        if loan.id == Loan_Student_Category_ID {
-            amountDouble = amountDouble * (loan.interestRate! / 100) + amountDouble
-        } else {
-            let term = self.termSlider.value
-            amountDouble = (amountDouble * (loan.interestRate! / 100) + amountDouble) / Double(Int(term / 30))
-        }
+        let term = self.termSlider.value
+        amountDouble = FinPlusHelper.CalculateMoneyPayMonth(month: amountDouble, term: Double(term/30), rate: loan.interestRate!)
         
         self.lblTempTotalAmount.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ"
     }
