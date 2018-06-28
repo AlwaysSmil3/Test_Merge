@@ -120,13 +120,10 @@ class LoanBaseViewController: BaseViewController {
     
     
     /// Sang màn chọn địa chỉ
-    func gotoAddressVC() {
+    func gotoAddressVC(title: String) {
         let firstAddressVC = UIStoryboard(name: "Address", bundle: nil).instantiateViewController(withIdentifier: "AddressFirstViewController") as! AddressFirstViewController
         firstAddressVC.delegate = self
-        
-        if let indexPath = self.mainTBView?.indexPathForSelectedRow {
-            firstAddressVC.titleTypeAddress = self.dataSource?.fields?[indexPath.row].title ?? ""
-        }
+        firstAddressVC.titleString = title
         
         self.navigationController?.pushViewController(firstAddressVC, animated: true)
     }
@@ -147,7 +144,7 @@ class LoanBaseViewController: BaseViewController {
             guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
             self.mainTBView?.deselectRow(at: indexPath, animated: true)
             if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeDropdownTBCell {
-                cell.field?.selectorTitle = title1
+                cell.field?.placeholder = title1
                 self.gender = .Male
             }
         }
@@ -157,7 +154,7 @@ class LoanBaseViewController: BaseViewController {
             guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
             self.mainTBView?.deselectRow(at: indexPath, animated: true)
             if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeDropdownTBCell {
-                cell.field?.selectorTitle = title2
+                cell.field?.placeholder = title2
                 self.gender = .Female
             }
         }
@@ -354,7 +351,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             //Xử lý trong cell
             break
         case DATA_TYPE_TB_CELL.Address:
-            self.gotoAddressVC()
+            self.gotoAddressVC(title: model.title!)
             break
         case DATA_TYPE_TB_CELL.File:
             

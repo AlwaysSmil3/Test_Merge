@@ -51,6 +51,8 @@ class DataManager {
     //Job Position hien tai dang chon
     var currentIndexJobPositionSelectedPopup: Int?
     
+    
+    
     /// Get Data from JSON
     func getDataLoanFromJSON() {
         if let path = Bundle.main.path(forResource: "LoanBuilder", ofType: "json") {

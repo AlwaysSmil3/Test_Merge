@@ -107,7 +107,7 @@ class ChoiceKindUserVC: BaseViewController {
             self.accountType = .Investor
         }
 
-        self.showAlertView(title: MS_TITLE_ALERT, message: "Bạn chắc chắn muốn trở thành nhà đầu tư?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
+        self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Bạn chắc chắn muốn trở thành nhà đầu tư?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
             if status {
 //                let homeVC = UIStoryboard(name: "HomeInvestor", bundle: nil).instantiateViewController(withIdentifier: "InvestorTabBarController")
 //
@@ -137,7 +137,7 @@ class ChoiceKindUserVC: BaseViewController {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.showAlertView(title: MS_TITLE_ALERT, message: "Bạn chắc chắn muốn trở thành người vay tiền?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
+            self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Bạn chắc chắn muốn trở thành người vay tiền?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
                 if status {
                     let verifyFBVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyFacebookVC") as! VerifyFacebookVC
                     
