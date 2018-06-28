@@ -96,7 +96,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         guard let parent = self.parent else {
             if id.contains("optionalText") {
                 //thông tin khác
-                if let data = DataManager.shared.browwerInfo?.activeLoan?.optionalText {
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.optionalText, data.length() > 0 {
                     self.tfValue?.text = data
                     DataManager.shared.loanInfo.optionalText = data
                 } else {
@@ -112,7 +112,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         if parent.contains("userInfo") {
             // thông tin user
             if id.contains("fullName") {
-                if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.fullName {
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.fullName, data.length() > 0 {
                     self.tfValue?.text = data
                     DataManager.shared.loanInfo.userInfo.fullName = data
                 } else {
@@ -122,7 +122,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 }
                 
             } else if id.contains("nationalId") {
-                if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.nationalId {
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.nationalId, data.length() > 0 {
                     self.tfValue?.text = data
                     DataManager.shared.loanInfo.userInfo.nationalID = data
                 } else {
@@ -135,7 +135,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         } else if parent.contains("jobInfo") {
             // Thông tin nghề nghiêp
             if id == "company" {
-                if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.company {
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.company, data.length() > 0 {
                     self.tfValue?.text = data
                     DataManager.shared.loanInfo.jobInfo.company = data
                 } else {
@@ -145,8 +145,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 }
                 
             }  else if id == "salary" {
-                
-                if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.salary {
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.salary, data > 0 {
                     self.tfValue?.text = "\(data)"
                     DataManager.shared.loanInfo.jobInfo.salary = Int32(data)
                 } else {
@@ -157,7 +156,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 
             } else if id == "companyPhoneNumber" {
                 
-                if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.companyPhoneNumber {
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.companyPhoneNumber , data.length() > 0 {
                     self.tfValue?.text = data
                     DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = data
                 } else {

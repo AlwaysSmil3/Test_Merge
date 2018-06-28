@@ -25,16 +25,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhấn để chọn địa chỉ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VsI-0R-LRn">
-                        <rect key="frame" x="16" y="34" width="149.5" height="83"/>
+                        <rect key="frame" x="16" y="36.5" width="149.5" height="78.5"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                         <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_disclosureIndicator1" translatesAutoresizingMaskIntoConstraints="NO" id="fTy-rD-ESS">
-                        <rect key="frame" x="351" y="69.5" width="8" height="13"/>
+                        <rect key="frame" x="351" y="70" width="8" height="13"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wsT-8W-IC7">
-                        <rect key="frame" x="16" y="123" width="343" height="1"/>
+                        <rect key="frame" x="16" y="121" width="343" height="1"/>
                         <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="2s0-UZ-m26"/>
@@ -64,12 +64,12 @@
                 <constraints>
                     <constraint firstItem="fTy-rD-ESS" firstAttribute="trailing" secondItem="E4i-LF-oaH" secondAttribute="trailing" id="6on-pT-9aq"/>
                     <constraint firstItem="wsT-8W-IC7" firstAttribute="leading" secondItem="v09-sf-VG3" secondAttribute="leading" constant="16" id="Ac6-xv-VGf"/>
-                    <constraint firstItem="VsI-0R-LRn" firstAttribute="top" secondItem="E4i-LF-oaH" secondAttribute="bottom" constant="6" id="Cg4-Yf-eyV"/>
+                    <constraint firstItem="VsI-0R-LRn" firstAttribute="top" secondItem="E4i-LF-oaH" secondAttribute="bottom" constant="8" id="Cg4-Yf-eyV"/>
                     <constraint firstItem="wsT-8W-IC7" firstAttribute="leading" secondItem="E4i-LF-oaH" secondAttribute="leading" id="DXV-2I-tQE"/>
                     <constraint firstAttribute="trailing" secondItem="wsT-8W-IC7" secondAttribute="trailing" constant="16" id="KDs-Cx-B2T"/>
                     <constraint firstItem="wsT-8W-IC7" firstAttribute="top" secondItem="VsI-0R-LRn" secondAttribute="bottom" constant="6" id="Plg-LX-lxF"/>
                     <constraint firstItem="fTy-rD-ESS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VsI-0R-LRn" secondAttribute="trailing" constant="8" id="Wwv-8N-tDl"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="wsT-8W-IC7" secondAttribute="bottom" constant="4" id="agl-e5-Mcx"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="wsT-8W-IC7" secondAttribute="bottom" constant="6" id="agl-e5-Mcx"/>
                     <constraint firstItem="VsI-0R-LRn" firstAttribute="leading" secondItem="E4i-LF-oaH" secondAttribute="leading" id="gII-Oc-TRe"/>
                     <constraint firstItem="fTy-rD-ESS" firstAttribute="centerY" secondItem="VsI-0R-LRn" secondAttribute="centerY" id="rVx-bJ-V5n"/>
                     <constraint firstItem="E4i-LF-oaH" firstAttribute="top" secondItem="v09-sf-VG3" secondAttribute="topMargin" constant="4" id="t1F-Wk-yvx"/>
