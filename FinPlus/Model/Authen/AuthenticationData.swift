@@ -20,6 +20,7 @@ public struct AuthenticationData {
     static let deviceType = "deviceType"
     static let avatar = "avatar"
     static let fullname = "fullname"
+    static let accountType = "accountType"
     static let gender = "gender"
     static let displayName = "displayName"
     static let birthday = "birthday"
@@ -35,6 +36,7 @@ public struct AuthenticationData {
   public var deviceType: String?
   public var avatar: String?
   public var fullname: String?
+    public var accountType: String?
   public var gender: String?
   public var displayName: String?
   public var birthday: String?
@@ -61,6 +63,7 @@ public struct AuthenticationData {
     deviceType = json[SerializationKeys.deviceType].string
     avatar = json[SerializationKeys.avatar].string
     fullname = json[SerializationKeys.fullname].string
+    accountType = json[SerializationKeys.accountType].string
     gender = json[SerializationKeys.gender].string
     displayName = json[SerializationKeys.displayName].string
     birthday = json[SerializationKeys.birthday].string
@@ -80,6 +83,7 @@ public struct AuthenticationData {
     if let value = deviceType { dictionary[SerializationKeys.deviceType] = value }
     if let value = avatar { dictionary[SerializationKeys.avatar] = value }
     if let value = fullname { dictionary[SerializationKeys.fullname] = value }
+    if let value = accountType { dictionary[SerializationKeys.accountType] = value }
     if let value = gender { dictionary[SerializationKeys.gender] = value }
     if let value = displayName { dictionary[SerializationKeys.displayName] = value }
     if let value = birthday { dictionary[SerializationKeys.birthday] = value }
