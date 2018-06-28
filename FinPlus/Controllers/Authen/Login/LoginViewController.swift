@@ -10,8 +10,9 @@ import Foundation
 import UIKit
 
 enum UserType {
+    case None
     case Investor
-    case Borrwer
+    case Borrower
 }
 class LoginViewController: BaseViewController {
     
@@ -88,15 +89,33 @@ class LoginViewController: BaseViewController {
                     // đang đăng nhập trên 1 thiết bị khác -> push home investor or borrwer
                     userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
                     DataManager.shared.currentAccount = account
+                    DataManager.shared.updatePushNotificationToken()
+                    if let data = model.data {
+                        if let token = data.accessToken {
+                            userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
+                        }
+                        if let accountType = data.accountType {
+                            if accountType == "BORROWER" {
+                                self?.pushToHomeVC(userType: .Borrower)
+                            } else if accountType == "INVESTOR" {
+                                self?.pushToHomeVC(userType: .Investor)
+                            } else {
+                                self?.pushToChoiceKindUserVC()
+                            }
+                        } else {
+                            self?.pushToChoiceKindUserVC()
+                        }
+                    } else {
+                        self?.pushToChoiceKindUserVC()
+                    }
                     // check user type: investor or borrwer
                     // push to home viewcontroller
-                    self?.pushToHomeVC(userType: .Investor)
-                    
+
                     //Cap nhat push notification token
-                    DataManager.shared.updatePushNotificationToken()
-                    
+
                     break
                 case 1:
+                    DataManager.shared.updatePushNotificationToken()
                     userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
                     DataManager.shared.currentAccount = account
                     // save token
@@ -104,13 +123,26 @@ class LoginViewController: BaseViewController {
                         if let token = data.accessToken {
                             userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
                         }
+                        if let accountType = data.accountType {
+                            if accountType == "BORROWER" {
+                                self?.pushToHomeVC(userType: .Borrower)
+                            } else if accountType == "INVESTOR" {
+                                self?.pushToHomeVC(userType: .Investor)
+                            } else {
+                                self?.pushToChoiceKindUserVC()
+                            }
+                        } else {
+                            self?.pushToChoiceKindUserVC()
+                        }
+                    } else {
+                        self?.pushToChoiceKindUserVC()
                     }
                     //Cap nhat push notification token
-                    DataManager.shared.updatePushNotificationToken()
                     // get config
 //                    self?.getConfig()
                     // push to choice viewcontroller
-                    self?.pushToChoiceKindUserVC()
+
+//                    self?.pushToChoiceKindUserVC()
                     break
                 default :
                     if let returnMessage = model.returnMsg {
@@ -129,6 +161,22 @@ class LoginViewController: BaseViewController {
 
     func pushToHomeVC(userType: UserType) {
         print("Push to user home viewcontroller")
+        switch userType {
+        case .Borrower:
+            let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+
+            self.navigationController?.present(tabbarVC, animated: true, completion: {
+
+            })
+        case .Investor:
+            let tabbarVC = InvestorTabBarController(nibName: nil, bundle: nil)
+
+            self.navigationController?.present(tabbarVC, animated: true, completion: {
+
+            })
+        default:
+            break
+        }
     }
 
     func getConfig() {
