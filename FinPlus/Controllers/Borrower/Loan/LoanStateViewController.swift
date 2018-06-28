@@ -225,7 +225,7 @@ class LoanStateViewController: UIViewController {
                 [
                     "type": HeaderCellType.ButtonType,
                     "text": "Giải ngân",
-                    "subType": ButtonCellType.NullType,
+                    "subType": ButtonCellType.FillType,
                     "target": "signContract"
                 ],
             ]
@@ -245,7 +245,7 @@ class LoanStateViewController: UIViewController {
                 [
                     "type": HeaderCellType.ButtonType,
                     "text": "Giải ngân",
-                    "subType": ButtonCellType.NullType,
+                    "subType": ButtonCellType.FillType,
                     "target": "disburse_expỉed"
                 ],
             ]
