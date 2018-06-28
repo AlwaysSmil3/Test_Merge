@@ -82,7 +82,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
         guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
         
         if id.contains("jobType") {
-            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.jobType {
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.jobType, data.length() > 0 {
                 self.lblValue?.text = data
                 DataManager.shared.loanInfo.jobInfo.jobType = data
             } else {
@@ -90,7 +90,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 self.updateInfoFalse(pre: title)
             }
         } else if id.contains("position") {
-            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.position {
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.position, data.length() > 0 {
                 self.lblValue?.text = data
                 DataManager.shared.loanInfo.jobInfo.position = data
             } else {
