@@ -17,6 +17,7 @@ extension LoanStateViewController {
         guard DataManager.shared.loanCategories.count > 0 else { return }
         guard let info = DataManager.shared.browwerInfo else { return }
         
+        
         DataManager.shared.mapDataBrowwerAndLoan()
         
         let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
