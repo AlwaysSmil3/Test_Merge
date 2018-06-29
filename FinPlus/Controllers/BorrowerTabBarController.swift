@@ -69,8 +69,8 @@ class BorrowerTabBarController: UITabBarController {
         
         let v11 = sHomeBrowwer.instantiateViewController(withIdentifier: "BorrowHomeViewControllerNav")
         
-//        let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE_NAVI")
-        let v1 = sLoanManager.instantiateViewController(withIdentifier: "LOAN_MANAGER_NAVI")
+        let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE_NAVI")
+//        let v1 = sLoanManager.instantiateViewController(withIdentifier: "LOAN_MANAGER_NAVI")
 
         let v2 = sLoanManager.instantiateViewController(withIdentifier: "LOAN_MANAGER_NAVI")
         let v3 = swallet.instantiateViewController(withIdentifier: "WALLET_NAVI") as! UINavigationController
@@ -84,86 +84,12 @@ class BorrowerTabBarController: UITabBarController {
         v3.tabBarItem = UITabBarItem(title: NSLocalizedString("ACCOUNT_MANAGER", comment: ""), image: UIImage(named: "ic_tb_brow3"), selectedImage: UIImage(named: "ic_tb_brow3_selected"))
         v4.tabBarItem = UITabBarItem(title: NSLocalizedString("NOTIFICATION", comment: ""), image: UIImage(named: "ic_tb_brow5"), selectedImage: UIImage(named: "ic_tb_brow5_selected"))
         v5.tabBarItem = UITabBarItem(title: NSLocalizedString("BRIEF", comment: ""), image: UIImage(named: "ic_tb_brow4"), selectedImage: UIImage(named: "ic_tb_brow4_selected"))
-        
-        //Thay doi fix du lieu theo trạng thái cần thiết
-        /*
-         
-         DataManager.shared.browwerInfo?.activeLoan?.status = 3
-         DataManager.shared.browwerInfo?.activeLoan?.loanId = 6
-         
-         */
-        
-        let json = [
-            "loanId": 0,
-            "loanCategoryId": 1,
-            "amount": 1111,
-            "term": 20,
-            "status": 9,
-            "intRate": 5,
-            "grade": "A",
-            "userInfo": [
-                "fullName": "Nguyen V A",
-                "gender": "0",
-                "birthday": "2018-06-08T02:07:45+00:00",
-                "nationalId": "1355xxxxx",
-                "relationships": [
-                    "type": 0,
-                    "phoneNumber": "09xxxxx"
-                ],
-                "residentAddress": [
-                    "city": "",
-                    "district": "",
-                    "commune": "",
-                    "street": "",
-                    "zipCode": "",
-                    "longitude": 0,
-                    "latitude": 0
-                ],
-                "currentAddress": [
-                    "city": "",
-                    "district": "",
-                    "commune": "",
-                    "street": "",
-                    "zipCode": "",
-                    "longitude": 0,
-                    "latitude": 0
-                ]
-            ],
-            "jobInfo": [
-                "jobType": "",
-                "position": "",
-                "company": "",
-                "salary": 10000000,
-                "companyPhoneNumber": "",
-                "address": [
-                    "city": "",
-                    "district": "",
-                    "commune": "",
-                    "street": "",
-                    "zipCode": "",
-                    "longitude": 0,
-                    "latitude": 0
-                ]
-            ],
-            "walletId": 1,
-            "nationalIdFrontImg": "",
-            "nationalIdBackImg": "",
-            "optionalText": "Free text input",
-            "optionalMedia": [
-            "Media URL",
-            "Media URL"
-            ],
-            "createdAt": "2018-06-08T02:07:45+00:00"
-            ] as [String : Any]
-        
-        let activeLoan = BrowwerActiveLoan(object: json)
-
-        DataManager.shared.browwerInfo?.activeLoan?.loanId = 0
-        if let loanID = activeLoan.loanId, loanID > 0 {
+ 
+        if let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let loanID = activeLoan.loanId, loanID > 0 {
             //Co khoản vay
-//            let loanState = (v1 as! UINavigationController).topViewController as! LoanStateViewController
-//            loanState.activeLoanId = 10
-//            loanState.hiddenBack = true
+            let loanState = (v1 as! UINavigationController).topViewController as! LoanStateViewController
+            loanState.activeLoan = activeLoan
+            loanState.hiddenBack = true
             self.viewControllers = [v1, v2, v3, v4, v5]
         } else {
             //Chưa có Khoản vay
