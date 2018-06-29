@@ -15,6 +15,7 @@ class SignContractViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var borderView: UIView!
     
     var isSigned = false
+    var activeLoan: BrowwerActiveLoan?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,9 @@ class SignContractViewController: UIViewController, UIWebViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
+        
         super.viewWillAppear(animated)
         
         let htmlPath = Bundle.main.path(forResource: "hop-dong", ofType: "html")!
@@ -70,9 +74,32 @@ class SignContractViewController: UIViewController, UIWebViewDelegate {
     }
     
     @IBAction func sign_contract(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SUCCESS")
-        self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.pushViewController(vc!, animated: true)
+        self.sendOTP()
+    }
+    
+    func sendOTP() {
+        
+        self.handleLoadingView(isShow: true)
+        
+        APIClient.shared.getOTPContract(loanID: (self.activeLoan?.loanId)!)
+        .done(on: DispatchQueue.main) { model in
+            self.handleLoadingView(isShow: false)
+            
+            let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
+            verifyVC.verifyType = .SignContract
+            verifyVC.loanResponseModel?.loanId = self.activeLoan?.loanId
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.pushViewController(verifyVC, animated: true)
+        }
+        .catch { error in
+            self.handleLoadingView(isShow: false)
+            self.showAlertView(title: "Có lỗi", message: "Đã có lỗi trong quá trình gửi mã xác thực. Vui lòng thử lại.", okTitle: "Thử lại", cancelTitle: "Hủy", completion: { (okAction) in
+                if (okAction)
+                {
+                    self.sendOTP()
+                }
+            })
+        }
     }
     
     /*
