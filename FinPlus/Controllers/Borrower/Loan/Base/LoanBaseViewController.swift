@@ -398,12 +398,6 @@ extension LoanBaseViewController: AddressDelegate {
     func getAddress(address: Address, type: Int, title: String) {
         let add = address.street + ", " + address.commune + ", " + address.district + ", " + address.city
         
-        guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
-        self.mainTBView?.deselectRow(at: indexPath, animated: true)
-        if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeAddressTBCell {
-            cell.field?.placeholder = add
-        }
-        
         if title.contains("thường trú") {
             DataManager.shared.loanInfo.userInfo.residentAddress = address
         } else if title.contains("tạm trú") {
@@ -411,6 +405,14 @@ extension LoanBaseViewController: AddressDelegate {
         } else if title.contains("cơ quan") {
             DataManager.shared.loanInfo.jobInfo.address = address
         }
+        
+        guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
+        self.mainTBView?.deselectRow(at: indexPath, animated: true)
+        
+        if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeAddressTBCell {
+            cell.field?.placeholder = add
+        }
+        
         
     }
 }
