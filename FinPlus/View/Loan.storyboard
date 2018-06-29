@@ -2417,10 +2417,10 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="595"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMc-ta-e0p" customClass="AnimatableView" customModule="IBAnimatable">
-                                        <rect key="frame" x="16" y="0.0" width="343" height="424.5"/>
+                                        <rect key="frame" x="16" y="0.0" width="343" height="431.5"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bl8-XE-G8X">
-                                                <rect key="frame" x="5" y="0.0" width="333" height="424.5"/>
+                                                <rect key="frame" x="5" y="0.0" width="333" height="431.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Loan_Type_Popup_TB_Cell" id="w4i-bW-OD2" customClass="LoanTypePopupTBCell" customModule="FinPlus" customModuleProvider="target">
@@ -2496,7 +2496,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SuF-pF-JOP">
-                                        <rect key="frame" x="16" y="440.5" width="343" height="46"/>
+                                        <rect key="frame" x="16" y="447.5" width="343" height="46"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_button_enable_login" translatesAutoresizingMaskIntoConstraints="NO" id="t8c-9v-hIv">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="46"/>
@@ -2531,25 +2531,29 @@
                                             <constraint firstItem="BVR-K9-4Xf" firstAttribute="leading" secondItem="SuF-pF-JOP" secondAttribute="leading" id="yUG-ER-u2C"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bằng cách ấn nút 'Gửi đơn vay' ở trên, tôi đã hiểu và đồng ý với điều khoản sử dụng của FinSmart " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1v-a5-fuz">
-                                        <rect key="frame" x="16" y="502.5" width="343" height="26.5"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Bằng cách ấn nút 'Gửi đơn vay' ở trên, tôi đã hiểu và đồng ý với điều khoản sử dụng của Finsmart" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6Br-cG-CBf">
+                                        <rect key="frame" x="16" y="501" width="343" height="68"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="68" id="id4-ek-AzW"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
-                                        <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="H1v-a5-fuz" firstAttribute="top" secondItem="SuF-pF-JOP" secondAttribute="bottom" constant="16" id="8Az-Nw-oPl"/>
-                                    <constraint firstItem="H1v-a5-fuz" firstAttribute="leading" secondItem="SuF-pF-JOP" secondAttribute="leading" id="EVd-Fq-yKR"/>
                                     <constraint firstItem="SuF-pF-JOP" firstAttribute="trailing" secondItem="KMc-ta-e0p" secondAttribute="trailing" id="JEN-DU-HIj"/>
+                                    <constraint firstAttribute="bottom" secondItem="6Br-cG-CBf" secondAttribute="bottom" constant="26" id="U0x-41-d7h"/>
                                     <constraint firstItem="KMc-ta-e0p" firstAttribute="top" secondItem="Y6W-li-AgB" secondAttribute="top" id="WO6-DW-Jdx"/>
-                                    <constraint firstItem="H1v-a5-fuz" firstAttribute="trailing" secondItem="SuF-pF-JOP" secondAttribute="trailing" id="Y9E-N4-Ast"/>
+                                    <constraint firstItem="6Br-cG-CBf" firstAttribute="leading" secondItem="SuF-pF-JOP" secondAttribute="leading" id="XMZ-0j-PnW"/>
+                                    <constraint firstItem="6Br-cG-CBf" firstAttribute="top" secondItem="SuF-pF-JOP" secondAttribute="bottom" constant="8" id="a0f-Gc-24W"/>
                                     <constraint firstItem="SuF-pF-JOP" firstAttribute="top" secondItem="KMc-ta-e0p" secondAttribute="bottom" constant="16" id="ilV-im-hdb"/>
                                     <constraint firstItem="KMc-ta-e0p" firstAttribute="leading" secondItem="Y6W-li-AgB" secondAttribute="leading" constant="16" id="lI1-xA-fLZ"/>
                                     <constraint firstItem="SuF-pF-JOP" firstAttribute="leading" secondItem="KMc-ta-e0p" secondAttribute="leading" id="t5g-G5-NnJ"/>
+                                    <constraint firstItem="6Br-cG-CBf" firstAttribute="trailing" secondItem="SuF-pF-JOP" secondAttribute="trailing" id="tdg-ug-XDR"/>
                                     <constraint firstAttribute="trailing" secondItem="KMc-ta-e0p" secondAttribute="trailing" constant="16" id="tlB-Xk-S1q"/>
-                                    <constraint firstAttribute="bottom" secondItem="H1v-a5-fuz" secondAttribute="bottom" constant="66" id="zlC-PM-Kbd"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2565,12 +2569,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="footerTextView" destination="6Br-cG-CBf" id="NGi-Yj-CyX"/>
                         <outlet property="mainTBView" destination="bl8-XE-G8X" id="37k-9q-iDN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sen-U1-49V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4082" y="949"/>
+            <point key="canvasLocation" x="4080.8000000000002" y="948.57571214392806"/>
         </scene>
         <!--Loan Send SuccessVC-->
         <scene sceneID="KqJ-hC-rSx">

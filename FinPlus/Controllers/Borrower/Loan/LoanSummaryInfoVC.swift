@@ -11,6 +11,7 @@ import Foundation
 class LoanSummaryInfoVC: BaseViewController {
     
     @IBOutlet var mainTBView: UITableView!
+    @IBOutlet var footerTextView: UITextView!
     
     let currentCategory: LoanCategories? = DataManager.shared.getCurrentCategory()
     
@@ -35,12 +36,22 @@ class LoanSummaryInfoVC: BaseViewController {
 
         DataManager.shared.loanInfo.currentStep = 5
         
+        self.footerTextView.delegate = self
+        self.footerTextView.isSelectable = true
+        self.footerTextView.isEditable = false
+        
         self.setupData()
+        self.setupTextView()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
+        if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
+            self.navigationController?.isNavigationBarHidden = true
+        }
+        
     }
     
     private func setupData() {
@@ -82,6 +93,32 @@ class LoanSummaryInfoVC: BaseViewController {
     }
     
     
+    /// Set link cho UITextView
+    private func setupTextView() {
+        
+        let policyStr : String = "Bằng cách ấn nút gửi 'Gửi đơn vay' ở trên tôi đã hiểu và đồng ý với điều khoản sử dụng"
+        
+        var myMutableString = NSMutableAttributedString()
+        myMutableString = NSMutableAttributedString(string: policyStr, attributes: [ NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: 11)!,NSAttributedStringKey.foregroundColor:TEXT_NORMAL_COLOR])
+        let myRange = (myMutableString.string as NSString).range(of: "Bằng cách ấn nút gửi 'Gửi đơn vay' ở trên tôi đã hiểu và đồng ý với ")
+        myMutableString.addAttribute(
+            NSAttributedStringKey.link,
+            value: "more://",
+            range: (myMutableString.string as NSString).range(of: "điều khoản sử dụng"))
+        myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(hexString: "#4D6678"), range: myRange)
+        
+        let string2 = NSMutableAttributedString(string: " của FinSmart", attributes: [ NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: 11)!,NSAttributedStringKey.foregroundColor:TEXT_NORMAL_COLOR])
+
+        myMutableString.append(string2)
+        
+        
+        UITextView.appearance().linkTextAttributes = [ NSAttributedStringKey.foregroundColor.rawValue: UIColor(hexString: "#3EAA5F")]
+        
+        self.footerTextView.attributedText = myMutableString
+        
+    }
+    
+    
     private func loan() {
         APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
             .done(on: DispatchQueue.main) { [weak self] model in
@@ -112,6 +149,22 @@ class LoanSummaryInfoVC: BaseViewController {
     
 }
 
+extension LoanSummaryInfoVC: UITextViewDelegate {
+    @available(iOS 10.0, *)
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        if URL.scheme == "more" {
+            let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "WEBVIEW") as! WebViewViewController
+            vc.webViewType = .aboutView
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+            return false
+        }
+        else {
+            return true
+        }
+    }
+}
+
 extension LoanSummaryInfoVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -134,8 +187,6 @@ extension LoanSummaryInfoVC: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-    
-    
     
 }
 

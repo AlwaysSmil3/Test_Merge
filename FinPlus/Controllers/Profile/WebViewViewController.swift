@@ -33,6 +33,14 @@ class WebViewViewController: UIViewController, UIWebViewDelegate {
         let requestObj = URLRequest(url: url!)
         self.webView.loadRequest(requestObj)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let ishidden = self.navigationController?.isNavigationBarHidden, ishidden {
+            self.navigationController?.isNavigationBarHidden = false
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
