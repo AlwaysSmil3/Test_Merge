@@ -22,7 +22,7 @@ extension LoanStateViewController {
         loanFirstVC.hidesBottomBarWhenPushed = true
         loanFirstVC.loanCategory = DataManager.shared.loanCategories[0]
         DataManager.shared.currentIndexCategoriesSelectedPopup = 0
-        
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(loanFirstVC, animated: true)
     }
     

@@ -98,9 +98,9 @@ class LoanStateViewController: UIViewController {
         
         switch(STATUS_LOAN(rawValue: id!)) {
         case .DRAFT?:
-            if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
-                self.navigationController?.isNavigationBarHidden = true
-            }
+//            if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
+//                self.navigationController?.isNavigationBarHidden = true
+//            }
             
             headerData = [
                 [
