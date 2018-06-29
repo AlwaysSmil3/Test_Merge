@@ -146,6 +146,7 @@ class TestBorrowingPayViewController: UIViewController {
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.registerNibCell(type: BorrowingPayInfoTableViewCell.self)
         tableView.registerNibCell(type: PayTypeTableViewCell.self)
         tableView.registerNibCell(type: PayAllTableViewCell.self)
@@ -220,6 +221,11 @@ class TestBorrowingPayViewController: UIViewController {
 }
 
 extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cellData = sections[indexPath.section].cells[indexPath.row]
+        return cellData.cellHeight
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
@@ -308,7 +314,8 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             // push to add new wallet
         }
         tableView.reloadData()
-//        tableView.reloadSections(IndexSet(integer: indexPath.section), with: UITableViewRowAnimation.automatic)
+//        tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+//        tableView.reloadSections(IndexSet(integer: indexPath.section), with: UITableViewRowAnimation.none)
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
