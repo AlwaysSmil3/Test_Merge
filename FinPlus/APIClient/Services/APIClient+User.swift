@@ -23,6 +23,11 @@ extension APIClient {
                     print(json)
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = BrowwerInfo(object: data)
+                        
+                        if let activeLoan = data["activeLoan"] as? JSONDictionary, let missingData = activeLoan["missingData"] {
+                            DataManager.shared.missingLoanData = BrowwerActiveLoan(object: missingData)
+                        }
+                        
                         seal.fulfill(model)
                     }
                 }

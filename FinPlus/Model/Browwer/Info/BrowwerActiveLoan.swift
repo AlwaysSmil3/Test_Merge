@@ -27,6 +27,10 @@ public struct BrowwerActiveLoan {
     static let loanCategoryId = "loanCategoryId"
     static let loanCategory = "loanCategory"
     static let createdTime = "createdTime"
+    
+    static let bankId = "bankId"
+    static let currentStep = "currentStep"
+    
   }
 
   // MARK: Properties
@@ -45,6 +49,10 @@ public struct BrowwerActiveLoan {
   public var loanCategoryId: Int16?
   public var loanCategory: LoanCategories?
   public var createdTime: String?
+    
+    public var bankId: Int?
+    public var currentStep: Int?
+    
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -74,6 +82,9 @@ public struct BrowwerActiveLoan {
     loanCategoryId = json[SerializationKeys.loanCategoryId].int16
     loanCategory = LoanCategories(json: json[SerializationKeys.loanCategory])
     createdTime = json[SerializationKeys.createdTime].string
+    
+    bankId = json[SerializationKeys.bankId].int
+    currentStep = json[SerializationKeys.currentStep].int
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -96,6 +107,9 @@ public struct BrowwerActiveLoan {
     if let value = loanCategoryId { dictionary[SerializationKeys.loanCategoryId] = value }
     if let value = loanCategory { dictionary[SerializationKeys.loanCategory] = value.dictionaryRepresentation() }
     if let value = createdTime { dictionary[SerializationKeys.createdTime] = value }
+    if let value = bankId { dictionary[SerializationKeys.bankId] = value }
+    if let value = currentStep { dictionary[SerializationKeys.currentStep] = value}
+    
     return dictionary
   }
 

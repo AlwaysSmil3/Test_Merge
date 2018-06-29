@@ -21,7 +21,7 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         
         self.currentStep = 0
         
-        if DataManager.shared.browwerInfo?.activeLoan == nil {
+        if let info = DataManager.shared.browwerInfo?.activeLoan,  let loanId = info.loanId, loanId > 0 {
             //chua có thì tạo
             self.createLoan()
         } else {
