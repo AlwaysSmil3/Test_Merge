@@ -223,6 +223,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.desLabel.text = self.mode ? NSLocalizedString("DARK_MODE", comment: "") : NSLocalizedString("LIGHT_MODE", comment: "")
         }
         
+        if (indexPath.row + 1 == self.data.count)
+        {
+            cell.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0)
+        }
+        
         return cell
     }
     

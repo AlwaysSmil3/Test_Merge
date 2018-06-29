@@ -107,20 +107,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVG-v6-aiy">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Rb0-Hp-gWo" id="s80-bH-5hM"/>
-                                </connections>
-                            </webView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-QI-K7r">
+                                <rect key="frame" x="16" y="28" width="343" height="616"/>
+                                <subviews>
+                                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVG-v6-aiy">
+                                        <rect key="frame" x="16" y="24" width="311" height="581"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Rb0-Hp-gWo" id="s80-bH-5hM"/>
+                                        </connections>
+                                    </webView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="UVG-v6-aiy" secondAttribute="bottom" constant="11" id="6Cj-Zx-IWR"/>
+                                    <constraint firstItem="UVG-v6-aiy" firstAttribute="top" secondItem="y3t-QI-K7r" secondAttribute="top" constant="24" id="DDB-iK-U5j"/>
+                                    <constraint firstItem="UVG-v6-aiy" firstAttribute="leading" secondItem="y3t-QI-K7r" secondAttribute="leading" constant="16" id="fRj-GS-GAe"/>
+                                    <constraint firstAttribute="trailing" secondItem="UVG-v6-aiy" secondAttribute="trailing" constant="16" id="t3d-gp-QHv"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="UVG-v6-aiy" firstAttribute="leading" secondItem="Elu-K3-LDv" secondAttribute="leading" id="Pf6-5g-fnD"/>
-                            <constraint firstItem="Elu-K3-LDv" firstAttribute="trailing" secondItem="UVG-v6-aiy" secondAttribute="trailing" id="RUJ-Ro-gBJ"/>
-                            <constraint firstItem="Elu-K3-LDv" firstAttribute="bottom" secondItem="UVG-v6-aiy" secondAttribute="bottom" id="eoX-X4-PFb"/>
-                            <constraint firstItem="UVG-v6-aiy" firstAttribute="top" secondItem="Elu-K3-LDv" secondAttribute="top" id="gsu-6u-AwI"/>
+                            <constraint firstItem="y3t-QI-K7r" firstAttribute="top" secondItem="Elu-K3-LDv" secondAttribute="top" constant="8" id="308-Xy-GIu"/>
+                            <constraint firstItem="y3t-QI-K7r" firstAttribute="leading" secondItem="Elu-K3-LDv" secondAttribute="leading" constant="16" id="8h6-BZ-9fQ"/>
+                            <constraint firstItem="Elu-K3-LDv" firstAttribute="trailing" secondItem="y3t-QI-K7r" secondAttribute="trailing" constant="16" id="LZC-Ml-Ab4"/>
+                            <constraint firstItem="Elu-K3-LDv" firstAttribute="bottom" secondItem="y3t-QI-K7r" secondAttribute="bottom" constant="23" id="nVp-pY-q6x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Elu-K3-LDv"/>
                     </view>
@@ -132,6 +144,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="borderView" destination="y3t-QI-K7r" id="gS8-Fl-cnS"/>
                         <outlet property="webView" destination="UVG-v6-aiy" id="6SU-rf-cM1"/>
                     </connections>
                 </viewController>

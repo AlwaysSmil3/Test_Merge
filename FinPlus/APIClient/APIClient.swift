@@ -15,6 +15,7 @@ typealias JSONDictionary = [String: Any]
 enum HTTPMethodType {
     case POST
     case PUT
+    case DELETE
 }
 
 
@@ -28,6 +29,18 @@ class APIClient {
     #else
     let baseURLString = Host.productURL
     #endif
+    
+    // DELETE request
+    internal var deleteRequest : NSMutableURLRequest! {
+        get {
+            // Init delete request
+            let _deleteRequest = NSMutableURLRequest()
+            _deleteRequest.httpMethod = "DELETE"
+            _deleteRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            _deleteRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
+            return _deleteRequest
+        }
+    }
     
     // POST request
     internal var postRequest : NSMutableURLRequest! {
@@ -96,6 +109,8 @@ class APIClient {
         var mutableURLRequest = self.postRequest!
         
         switch httpType {
+        case .DELETE:
+            break
         case .POST:
             break
         case .PUT:
