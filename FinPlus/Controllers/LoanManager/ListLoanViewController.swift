@@ -16,266 +16,13 @@ class ListLoanViewController: UIViewController {
     @IBOutlet weak var addBtn: UIButton!
     
     let cellIdentifier = "cell"
-    private var listLoan: NSMutableArray = [
-        [
-            "title" : "CURRENT_LOAN",
-            "sub_array" : [
-                [
-                    "1PHONE" : "0986632888",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "2.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 0,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "200.000đ",
-                    "8MONEY_MONTH" : "180.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 1,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 2,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 3,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 4,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 5,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 6,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 7,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 8,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 9,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 10,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 11,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 12,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 13,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 14,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 15,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 16,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 17,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 18,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-                [
-                    "1PHONE" : "01656229145",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "12.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 19,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "500.000đ",
-                    "8MONEY_MONTH" : "280.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                    ],
-            ]
-        ],
-        [
-            "title" : "END_LOAN",
-            "sub_array" : [
-                [
-                    "1PHONE" : "0986632888",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "2.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 0,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "200.000đ",
-                    "8MONEY_MONTH" : "180.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                ],
-                [
-                    "1PHONE" : "0986632888",
-                    "2LOAN_START" : "8/5/2018",
-                    "3LOAN_MONEY" : "2.000.000đ",
-                    "4LOAN_TIME" : "12 tháng",
-                    "5STATUS" : 0,
-                    "6RATE" : "10%/năm",
-                    "7LOAN_FEE" : "200.000đ",
-                    "8MONEY_MONTH" : "180.000đ",
-                    "9LOAN_DIS" : "Vay mua điện thoại",
-                ],
-            ]
-        ]
-    ]
+    private var listLoan: NSArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
+
         self.title = NSLocalizedString("LOAN_MANAGER", comment: "")
         
         self.noWalletLabel.text = NSLocalizedString("NO_LOAN", comment: "")
@@ -305,8 +52,8 @@ class ListLoanViewController: UIViewController {
             .done(on: DispatchQueue.main) { model in
                 // print(model)
                 //                self.allLoansArray = model
-                NSLog("List loan: %d", model.count)
-//                self.tableView.reloadData()
+                self.listLoan = model as NSArray
+                self.tableview.reloadData()
                 // let _ : BrowwerActiveLoan = model
             }
             .catch { error in }
@@ -322,58 +69,44 @@ class ListLoanViewController: UIViewController {
 
 extension ListLoanViewController: UITableViewDelegate {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return listLoan.count
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return listLoan.count
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionItem = listLoan[section] as! NSDictionary
-        return (sectionItem["sub_array"] as! NSArray).count
+        return self.listLoan.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let sectionItem = listLoan[indexPath.section] as! NSDictionary
+        
         tableView.deselectRow(at: indexPath, animated: true)
-        let item = (sectionItem["sub_array"] as! NSArray)[indexPath.row] as! NSDictionary
-//        if (item["5STATUS"] as? Int) == 9 {
-            // fixed to test borrowing pay viewcontroller
-            let sHome = UIStoryboard(name: "Loan", bundle: nil)
-            let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
-            if let loanStatusVC = v1 as? LoanStateViewController {
-                loanStatusVC.activeLoanId = (item["5STATUS"] as? Int)!
-                self.navigationController?.pushViewController(v1, animated: true)
-            }
-//        } else {
-//            // will use LoanStateViewController replace LoanDetailViewController
-//            tableView.deselectRow(at: indexPath, animated: true)
-//            let sectionItem = listLoan[indexPath.section] as! NSDictionary
-//            let item = (sectionItem["sub_array"] as! NSArray)[indexPath.row] as! NSDictionary
-//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL") as! LoanDetailViewController
-//            vc.detailLoan = item
-//            vc.hidesBottomBarWhenPushed = true
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
+        let item = self.listLoan[indexPath.row] as! BrowwerActiveLoan
+
+        let sHome = UIStoryboard(name: "Loan", bundle: nil)
+        let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
+        if let loanStatusVC = v1 as? LoanStateViewController {
+            loanStatusVC.activeLoan = item
+            self.navigationController?.pushViewController(v1, animated: true)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
-        print("123")
     }
     
 }
 
 extension ListLoanViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sectionItem = listLoan[section] as! NSDictionary
-
-        return NSLocalizedString((sectionItem["title"] as? String)!, comment: "")
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        let sectionItem = listLoan[section] as! NSDictionary
+//
+//        return NSLocalizedString((sectionItem["title"] as? String)!, comment: "")
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let sectionItem = listLoan[indexPath.section] as! NSDictionary
-        let item = (sectionItem["sub_array"] as! NSArray)[indexPath.row] as! NSDictionary
+        let item = self.listLoan[indexPath.row] as! BrowwerActiveLoan
         
         var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? LoanTableViewCell
         if cell == nil {
@@ -381,26 +114,14 @@ extension ListLoanViewController: UITableViewDataSource {
             cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? LoanTableViewCell
         }
         
-        let state = item["5STATUS"] as? Int
+        let state = item.status
         
-        cell?.dateLabel.text = item["2LOAN_START"] as? String
+        cell?.dateLabel.text = item.createdTime
         cell?.statusLabel.text = NSLocalizedString("STATUS", comment: "")
         cell?.statusValueLabel.text = getState(type: STATUS_LOAN(rawValue: state!)!)
         cell?.statusValueLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: state!)!)
-        
-//        if ((item["5STATUS"] as? Int) == 0) {
-//            cell?.statusValueLabel.text = "Đã kết thúc"
-//            cell?.statusValueLabel.textColor = .black
-//        } else if (item["5STATUS"] as? Int) == 9 {
-//            cell?.statusValueLabel.text = "Cần thanh toán"
-//            cell?.statusValueLabel.textColor = MAIN_COLOR
-//        } else {
-//            cell?.statusValueLabel.text = "Đang vay"
-//            cell?.statusValueLabel.textColor = MAIN_COLOR
-//        }
-        
-        cell?.moneyLabel.text = item["3LOAN_MONEY"] as? String
-        cell?.disLabel.text = "Thời hạn " + (item["4LOAN_TIME"] as? String)! + " - " + (item["9LOAN_DIS"] as? String)!
+        cell?.moneyLabel.text = "\(String(describing: item.amount))"
+        cell?.disLabel.text = "Thời hạn: \(String(describing: item.term)) - \(String(describing: item.loanCategory?.title))"
         
         return cell!
     }

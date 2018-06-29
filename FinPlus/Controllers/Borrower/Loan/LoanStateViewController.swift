@@ -47,7 +47,6 @@ class LoanStateViewController: UIViewController {
     
     var hiddenBack = false
     var activeLoan: BrowwerActiveLoan?
-    var activeLoanId: Int = 0
     var bottom_state: BOTTOM_STATE!
     var userInfo: BrowwerInfo!
     
@@ -72,14 +71,9 @@ class LoanStateViewController: UIViewController {
             }
         }
         
-        var id = activeLoan?.status
+        let id = activeLoan?.status
         var isEnableFooterView = false
         self.userInfo = DataManager.shared.browwerInfo
-        
-        if self.activeLoan == nil && self.activeLoanId > 0
-        {
-            id = activeLoanId
-        }
         
         if (hiddenBack)
         {
@@ -512,7 +506,7 @@ class LoanStateViewController: UIViewController {
         
         let alert = UIAlertController(title: "", message: "Lựa chọn", preferredStyle: .actionSheet)
         
-        switch activeLoanId {
+        switch activeLoan?.status {
         case 1:
             alert.addAction(UIAlertAction(title: "Xóa đơn vay", style: .destructive , handler:{ (UIAlertAction)in
 
@@ -722,8 +716,8 @@ extension LoanStateViewController: UITableViewDataSource {
                 cell?.desLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
             case 4:
                 cell?.nameLabel.text = NSLocalizedString("STATUS", comment: "")
-                cell?.desLabel.text = getState(type: STATUS_LOAN(rawValue: activeLoanId)!)
-                cell?.desLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: activeLoanId)!)
+                cell?.desLabel.text = getState(type: STATUS_LOAN(rawValue: (activeLoan?.status)!)!)
+                cell?.desLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: (activeLoan?.status)!)!)
             case 5:
                 cell?.nameLabel.text = NSLocalizedString("RATE", comment: "")
                 cell?.desLabel.text = "10%/năm"
