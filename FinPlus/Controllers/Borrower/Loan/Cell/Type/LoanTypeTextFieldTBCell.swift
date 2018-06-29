@@ -96,9 +96,18 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         guard let parent = self.parent else {
             if id.contains("optionalText") {
                 //thông tin khác
+                var value = ""
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.optionalText, data.length() > 0 {
-                    self.tfValue?.text = data
-                    DataManager.shared.loanInfo.optionalText = data
+                    value = data
+                }
+                
+                if DataManager.shared.loanInfo.optionalText.length() > 0 {
+                    value = DataManager.shared.loanInfo.optionalText
+                }
+                
+                if value.length() > 0 {
+                    self.tfValue?.text = value
+                    DataManager.shared.loanInfo.optionalText = value
                 } else {
                     //Cap nhat thong tin thieu
                     self.updateInfoFalse(pre: title)
@@ -112,9 +121,18 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         if parent.contains("userInfo") {
             // thông tin user
             if id.contains("fullName") {
+                var value = ""
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.fullName, data.length() > 0 {
-                    self.tfValue?.text = data
-                    DataManager.shared.loanInfo.userInfo.fullName = data
+                    value = data
+                }
+                
+                if DataManager.shared.loanInfo.userInfo.fullName.length() > 0 {
+                    value = DataManager.shared.loanInfo.userInfo.fullName
+                }
+                
+                if value.length() > 0 {
+                    self.tfValue?.text = value
+                    DataManager.shared.loanInfo.userInfo.fullName = value
                 } else {
                     //Cap nhat thong tin thieu
                     self.updateInfoFalse(pre: title)
@@ -122,9 +140,18 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 }
                 
             } else if id.contains("nationalId") {
+                var value = ""
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.nationalId, data.length() > 0 {
-                    self.tfValue?.text = data
-                    DataManager.shared.loanInfo.userInfo.nationalID = data
+                    value = data
+                }
+                
+                if DataManager.shared.loanInfo.userInfo.nationalID.length() > 0 {
+                    value = DataManager.shared.loanInfo.userInfo.nationalID
+                }
+                
+                if value.length() > 0 {
+                    self.tfValue?.text = value
+                    DataManager.shared.loanInfo.userInfo.nationalID = value
                 } else {
                     //Cap nhat thong tin thieu
                     self.updateInfoFalse(pre: title)
@@ -135,9 +162,19 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         } else if parent.contains("jobInfo") {
             // Thông tin nghề nghiêp
             if id == "company" {
+                
+                var value = ""
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.company, data.length() > 0 {
-                    self.tfValue?.text = data
-                    DataManager.shared.loanInfo.jobInfo.company = data
+                    value = data
+                }
+                
+                if DataManager.shared.loanInfo.jobInfo.company.length() > 0 {
+                    value = DataManager.shared.loanInfo.jobInfo.company
+                }
+                
+                if value.length() > 0 {
+                    self.tfValue?.text = value
+                    DataManager.shared.loanInfo.jobInfo.company = value
                 } else {
                     //Cap nhat thong tin thieu
                     self.updateInfoFalse(pre: title)
@@ -145,9 +182,19 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 }
                 
             }  else if id == "salary" {
+                
+                var value: Int32 = 0
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.salary, data > 0 {
-                    self.tfValue?.text = "\(data)"
-                    DataManager.shared.loanInfo.jobInfo.salary = Int32(data)
+                    value = Int32(data)
+                }
+                
+                if DataManager.shared.loanInfo.jobInfo.salary > 0 {
+                    value = DataManager.shared.loanInfo.jobInfo.salary
+                }
+                
+                if value > 0 {
+                    self.tfValue?.text = "\(value)"
+                    DataManager.shared.loanInfo.jobInfo.salary = Int32(value)
                 } else {
                     //Cap nhat thong tin thieu
                     self.updateInfoFalse(pre: title)
@@ -156,9 +203,18 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 
             } else if id == "companyPhoneNumber" {
                 
+                var value = ""
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.companyPhoneNumber , data.length() > 0 {
-                    self.tfValue?.text = data
-                    DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = data
+                    value = data
+                }
+                
+                if DataManager.shared.loanInfo.jobInfo.companyPhoneNumber.length() > 0 {
+                    value = DataManager.shared.loanInfo.jobInfo.companyPhoneNumber
+                }
+                
+                if value.length() > 0 {
+                    self.tfValue?.text = value
+                    DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = value
                 } else {
                     //Cap nhat thong tin thieu
                     self.updateInfoFalse(pre: title)

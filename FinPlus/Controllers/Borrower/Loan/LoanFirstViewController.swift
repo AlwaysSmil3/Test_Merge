@@ -46,6 +46,7 @@ class LoanFirstViewController: BaseViewController {
         super.viewDidLoad()
         
         self.setupInit()
+        self.updateData()
         
         self.termSlider?.setThumbImage(#imageLiteral(resourceName: "ic_elipse_slider"), for: UIControlState.normal)
         self.amountSlider?.setThumbImage(#imageLiteral(resourceName: "ic_elipse_slider"), for: UIControlState.normal)
@@ -70,6 +71,59 @@ class LoanFirstViewController: BaseViewController {
         
     }
     
+    
+    /// Update data khi đã tạo 1 loan
+    private func updateData() {
+        var term: Float = 0
+        var amount: Double = 0
+        var cateID: Int16 = 0
+        
+        if let loan = DataManager.shared.browwerInfo?.activeLoan, let term_ = loan.term, term_ > 0 {
+            term = Float(term_)
+        }
+        
+        if let loan = DataManager.shared.browwerInfo?.activeLoan, let amount_ = loan.amount, amount_ > 0 {
+            amount = Double(amount_)
+        }
+        
+        if let loan = DataManager.shared.browwerInfo?.activeLoan, let cateId_ = loan.loanCategoryId, cateId_ > 0 {
+            cateID = cateId_
+        }
+        
+        if DataManager.shared.loanInfo.term > 0 {
+            term = Float(DataManager.shared.loanInfo.term)
+        }
+        
+        if DataManager.shared.loanInfo.amount > 0 {
+            amount = Double(DataManager.shared.loanInfo.amount)
+        }
+        
+        if DataManager.shared.loanInfo.loanCategoryID > 0 {
+            cateID = DataManager.shared.loanInfo.loanCategoryID
+        }
+        
+        if cateID > 0 {
+            DataManager.shared.loanInfo.loanCategoryID = cateID
+        }
+        
+        guard let cate = DataManager.shared.getCurrentCategory() else { return }
+        
+        self.loanCategory = cate
+        //self.lblCategoriesName?.text = cate.title!
+        
+        if term > 0 {
+            DataManager.shared.loanInfo.term = Int(term)
+            self.updateTearmSlider(loan: cate, value: term)
+        }
+        
+        if amount > 0 {
+            DataManager.shared.loanInfo.amount = Int32(amount)
+            self.updateAmountSlider(loan: cate, value: Float(amount))
+        }
+        
+        self.updateTotalAmountMounth()
+    }
+    
     private func setupInit() {
         guard let loan = self.loanCategory else { return }
         self.lblCategoriesName?.text = loan.title!
@@ -85,20 +139,32 @@ class LoanFirstViewController: BaseViewController {
     /// Update Tearm Slider for Loan
     ///
     /// - Parameter loan: <#loan description#>
-    private func updateTearmSlider(loan: LoanCategories) {
+    private func updateTearmSlider(loan: LoanCategories, value: Float? = nil) {
         self.termSlider?.minimumValue = Float(loan.termMin!)
         self.termSlider?.maximumValue = Float(loan.termMax!)
         self.termSlider?.value = Float(loan.termMin!)
         
+        if let value_ = value {
+            self.termSlider?.value = value_
+        }
+        
         
         if loan.id == Loan_Student_Category_ID {
             self.lblTermSlider?.text = "\(Int(loan.termMin!))" + " Ngày"
+            if let value_ = value {
+                self.lblTermSlider?.text = "\(Int(value_))" + " Ngày"
+            }
+            
             self.lblMinTermSlider?.text = "\(Int(loan.termMin!)) NGÀY"
             self.lblMaxTermSlider?.text = "\(Int(loan.termMax!)) NGÀY"
             
             self.lblLeftTempTotalAmount?.text = "Thanh toán dự kiến"
         } else {
             self.lblTermSlider?.text = "\(Int(loan.termMin! / 30))" + " Tháng"
+            if let value_ = value {
+                self.lblTermSlider?.text = "\(Int(value_ / 30))" + " Tháng"
+            }
+            
             self.lblMinTermSlider?.text = "\(Int(loan.termMin! / 30)) THÁNG"
             self.lblMaxTermSlider?.text = "\(Int(loan.termMax! / 30)) THÁNG"
             
@@ -110,16 +176,21 @@ class LoanFirstViewController: BaseViewController {
     /// Update Amount Slider For Loan
     ///
     /// - Parameter loan: <#loan description#>
-    private func updateAmountSlider(loan: LoanCategories) {
+    private func updateAmountSlider(loan: LoanCategories, value: Float? = nil) {
         self.amountSlider?.minimumValue = Float(loan.min!/MONEY_TERM_DISPLAY)
         self.amountSlider?.maximumValue = Float(loan.max!/MONEY_TERM_DISPLAY)
         self.amountSlider?.value = Float(loan.min!/MONEY_TERM_DISPLAY)
         
         self.updateServiceFee(loan: loan)
         
-        let amountDouble = Double(loan.min!)
+         var amountDouble = Double(loan.min!)
+        if let value_ = value {
+            self.amountSlider?.value = Float(Int32(value_) / MONEY_TERM_DISPLAY)
+            amountDouble = Double(value_)
+        }
+        
         self.lblMoneySlider?.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ"
-        //self.lblMoneySlider?.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY))" + " Triệu"
+        
         self.lblMinAmountSlider?.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY)) TRIỆU"
         self.lblMaxAmounSlider?.text = "\(Int(loan.max!/MONEY_TERM_DISPLAY)) TRIỆU"
     }

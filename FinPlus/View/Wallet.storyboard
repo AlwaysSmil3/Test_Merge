@@ -398,13 +398,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5Ia-My-PbB">
-                        <barButtonItem key="leftBarButtonItem" title="Hủy" id="exK-B4-094">
-                            <color key="tintColor" red="0.0" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <barButtonItem key="leftBarButtonItem" image="ic_close" id="exK-B4-094">
                             <connections>
                                 <action selector="navi_cancelWithSender:" destination="71L-If-6xU" id="16H-R2-Vwg"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Lưu" id="84J-9Q-Veo">
+                        <barButtonItem key="rightBarButtonItem" title="Thêm" id="84J-9Q-Veo">
                             <color key="tintColor" red="0.0" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="navi_saveWithSender:" destination="71L-If-6xU" id="bqz-NW-4zT"/>
@@ -414,8 +413,10 @@
                     <connections>
                         <outlet property="accTextField" destination="ebh-KD-dJm" id="4Vt-4K-sdW"/>
                         <outlet property="agriBtn" destination="emo-6F-Mif" id="er2-PN-8rU"/>
+                        <outlet property="leftBarBtn" destination="exK-B4-094" id="WQl-BI-Bns"/>
                         <outlet property="nameTextField" destination="zvR-gs-xF6" id="Wry-78-ODV"/>
                         <outlet property="reAccTextField" destination="0RP-5F-WYW" id="3ug-54-G3F"/>
+                        <outlet property="rightBarBtn" destination="84J-9Q-Veo" id="EXE-87-Mh5"/>
                         <outlet property="techBtn" destination="u6V-kP-aeH" id="SCo-PO-Uf9"/>
                         <outlet property="typeLabel" destination="W2P-Aa-tNu" id="8qa-vT-CVG"/>
                         <outlet property="vcbBtn" destination="JxF-EE-TNJ" id="npR-5T-p4w"/>
@@ -431,6 +432,7 @@
         <image name="agri" width="25" height="25"/>
         <image name="agri_selected" width="25" height="25"/>
         <image name="ic_back" width="20" height="18"/>
+        <image name="ic_close" width="16" height="16"/>
         <image name="ic_disclosureIndicator2" width="5" height="7"/>
         <image name="ic_disclosureIndicator3" width="5" height="7"/>
         <image name="tech" width="25" height="16"/>

@@ -14,8 +14,9 @@
 "NOTIFICATION" = "Thông báo";
 "BRIEF" = "Hồ sơ";
 
+"CHOOSE_ACCOUNT" = "Chọn tài khoản để nhận tiền";
 "ALL_ACCOUNT_CONNECTED" = "Các tài khoản đã liên kết";
-"CREATE_NEW_ACCOUNT" = "Tạo tài khoản mới";
+"CREATE_NEW_ACCOUNT" = "Thêm tài khoản mới";
 "MOMO_WALLET" = "Ví MoMo";
 "ADD_NEW_WALLET" = "Thêm tài khoản mới";
 "PAYPAL_ACCOUNT" = "Tài khoản PayPal";
@@ -45,5 +46,5 @@
 "SUPPORT_FROM_FINSMART" = "Hỗ trợ từ FinSmart";
 "FAQ" = "Các câu hỏi thường gặp";
 "TERMS_OF_USE" = "Điều khoản sử dụng";
-"ABOUT_FINSMART" = "Về FinsSmart";
+"ABOUT_FINSMART" = "Về FinSmart";
 "LOGOUT" = "Đăng xuất";

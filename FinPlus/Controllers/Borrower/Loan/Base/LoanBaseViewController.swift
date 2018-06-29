@@ -48,7 +48,7 @@ class LoanBaseViewController: BaseViewController {
                 guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
                 self.mainTBView?.deselectRow(at: indexPath, animated: true)
                 if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeDropdownTBCell {
-                    cell.field?.selectorTitle = date
+                    cell.field?.placeholder = date
                     //DateTime ISO 8601
                     let timeISO8601 = date1.toString(.iso8601(ISO8601Format.DateTimeSec))
                     DataManager.shared.loanInfo.userInfo.birthDay = timeISO8601
@@ -280,6 +280,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             
         case DATA_TYPE_TB_CELL.DateTime:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.DropDown, for: indexPath) as! LoanTypeDropdownTBCell
+            
             cell.field = model
             return cell
             
@@ -335,11 +336,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             //Giới tính
             //Chức vụ
             //Nghề nghiệp
-            if model.title == "Nghề nghiệp" {
-                //Xử lý trong cell
-            } else if model.title == "Cấp bậc" {
-                //Xử lý trong cell
-            } else if model.title == "Giới tính" {
+            if model.id == "gender" {
                 self.selectedGender()
             }
             
@@ -355,11 +352,11 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             break
         case DATA_TYPE_TB_CELL.File:
             
-            if model.title!.contains("Ảnh bạn đang cầm CMND") {
+            if model.id!.contains("nationalIdAllImg") {
                 self.typeImgFile = .ALL
-            } else if model.title!.contains("Ảnh mặt trước CMND") {
+            } else if model.id!.contains("nationalIdFrontImg") {
                 self.typeImgFile = .FRONT
-            } else if model.title!.contains("Ảnh mặt sau CMND") {
+            } else if model.id!.contains("nationalIdBackImg") {
                 self.typeImgFile = .BACK
             } else {
                 self.typeImgFile = .Optional

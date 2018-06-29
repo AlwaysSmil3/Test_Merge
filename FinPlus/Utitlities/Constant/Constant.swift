@@ -17,8 +17,8 @@ enum API_MESSAGE {
 
 // Giới tính
 enum Gender: Int {
-    case Male = 0
-    case Female = 1
+    case Male = 1
+    case Female = 2
 }
 
 // Số điện thọai người thân
@@ -232,6 +232,27 @@ func getColorText(type: STATUS_LOAN) -> UIColor {
         return UIColor(hexString: "#4D6678") // Xám lông chuột
     }
 }
+
+
+//Check run máy ảo hay deivce
+struct Platform {
+    
+    static let isSimulator: Bool = {
+        
+        var isSim = false
+        
+        #if arch(i386) || arch(x86_64)
+        
+        isSim = true
+        
+        #endif
+        
+        return isSim
+        
+    }()
+    
+}
+
 
 
 

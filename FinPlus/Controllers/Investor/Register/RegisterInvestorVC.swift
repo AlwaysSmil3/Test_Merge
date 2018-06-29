@@ -40,7 +40,7 @@ class RegisterInvestorVC: BaseViewController {
     var pw: String?
     
     var dataSource: [InvestorRegister] = [
-        InvestorRegister(title: "Họ và tên", value: "", icon: nil, placeHolder: "Họ và tên cuả bạn"),
+        InvestorRegister(title: "Họ và tên", value: "", icon: nil, placeHolder: "Họ và tên của bạn"),
         InvestorRegister(title: "Ngày sinh", value: "Ngày sinh của bạn", icon: nil, placeHolder: ""),
         InvestorRegister(title: "Số chứng minh thư", value: "", icon: nil, placeHolder: "Số CMTND của bạn"),
         InvestorRegister(title: "Địa chỉ email", value: "", icon: nil, placeHolder: "Địa chỉ email của bạn"),

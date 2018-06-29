@@ -20,6 +20,9 @@ class AddWalletViewController: UIViewController {
     @IBOutlet weak var accTextField: HoshiTextField!
     @IBOutlet weak var reAccTextField: HoshiTextField!
     
+    @IBOutlet weak var leftBarBtn: UIBarButtonItem!
+    @IBOutlet weak var rightBarBtn: UIBarButtonItem!
+    
     var wallet: AccountBank!
     
     override func viewDidLoad() {
@@ -64,6 +67,7 @@ class AddWalletViewController: UIViewController {
         
         if (wallet != nil)
         {
+            self.rightBarBtn.title = "Lưu"
             self.title = "Sửa tài khoản ngân hàng"
             nameTextField.text = wallet.accountBankName
             accTextField.text = wallet.accountBankNumber

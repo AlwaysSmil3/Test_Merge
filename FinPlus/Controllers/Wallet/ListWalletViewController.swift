@@ -195,7 +195,14 @@ extension ListWalletViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return NSLocalizedString("ALL_ACCOUNT_CONNECTED", comment: "")
+            if (self.walletAction == .LoanNation)
+            {
+                return NSLocalizedString("CHOOSE_ACCOUNT", comment: "")
+            }
+            else
+            {
+                return NSLocalizedString("ALL_ACCOUNT_CONNECTED", comment: "")
+            }
         default:
             return NSLocalizedString("CREATE_NEW_ACCOUNT", comment: "")
         }
