@@ -49,9 +49,8 @@
                                 <color key="textColor" red="0.55686274509803924" green="0.63921568627450975" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="AUJ-sf-U6A">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="AUJ-sf-U6A">
                                 <rect key="frame" x="153" y="62" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" red="0.5568627451" green="0.63921568630000003" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                         </subviews>
@@ -61,6 +60,8 @@
                             <constraint firstItem="sr0-wS-eg9" firstAttribute="centerY" secondItem="mZ4-jl-d8H" secondAttribute="centerY" id="4nQ-q7-nin"/>
                             <constraint firstAttribute="width" secondItem="mZ4-jl-d8H" secondAttribute="height" multiplier="343:162" id="BCp-gz-24i"/>
                             <constraint firstItem="sr0-wS-eg9" firstAttribute="centerX" secondItem="mZ4-jl-d8H" secondAttribute="centerX" id="DGv-lo-SkT"/>
+                            <constraint firstItem="AUJ-sf-U6A" firstAttribute="centerX" secondItem="mZ4-jl-d8H" secondAttribute="centerX" id="GQX-GG-8xY"/>
+                            <constraint firstItem="AUJ-sf-U6A" firstAttribute="centerY" secondItem="mZ4-jl-d8H" secondAttribute="centerY" id="HJo-aT-LQI"/>
                             <constraint firstItem="hmx-QV-WET" firstAttribute="top" secondItem="mZ4-jl-d8H" secondAttribute="top" id="Msp-3E-mgo"/>
                             <constraint firstItem="Hn5-En-wPs" firstAttribute="bottom" secondItem="hmx-QV-WET" secondAttribute="bottom" constant="-16" id="RyM-QJ-pDu"/>
                             <constraint firstItem="hmx-QV-WET" firstAttribute="leading" secondItem="mZ4-jl-d8H" secondAttribute="leading" id="TXs-0y-OEr"/>
