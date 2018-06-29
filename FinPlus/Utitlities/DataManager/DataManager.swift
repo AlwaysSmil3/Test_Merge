@@ -223,8 +223,6 @@ class DataManager {
             missingList.append("optionalText")
         }
         
-        
-        
         return missingList
     }
     
