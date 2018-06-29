@@ -234,9 +234,7 @@ class DataManager {
     /// - Parameter key: <#key description#>
     /// - Returns: <#return value description#>
     func checkFieldIsMissing(key: String) -> Bool {
-        
         guard let list = self.listKeyMissingLoan else { return false }
-        
         let listFields = list.filter { $0 == key }
         
         if listFields.count > 0 {
