@@ -740,10 +740,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4m7-cG-G5S">
-                                <rect key="frame" x="16" y="36" width="343" height="555"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KFw-E3-TfL">
+                                <rect key="frame" x="16" y="28" width="343" height="563"/>
+                                <subviews>
+                                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4m7-cG-G5S">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="563"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </webView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="4m7-cG-G5S" firstAttribute="leading" secondItem="KFw-E3-TfL" secondAttribute="leading" id="2xc-D1-13u"/>
+                                    <constraint firstItem="4m7-cG-G5S" firstAttribute="top" secondItem="KFw-E3-TfL" secondAttribute="top" id="dMC-pr-nMb"/>
+                                    <constraint firstAttribute="bottom" secondItem="4m7-cG-G5S" secondAttribute="bottom" id="uUr-O1-gDV"/>
+                                    <constraint firstAttribute="trailing" secondItem="4m7-cG-G5S" secondAttribute="trailing" id="wO8-fi-lwT"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VI7-wy-yAF">
                                 <rect key="frame" x="16" y="607" width="343" height="44"/>
                                 <constraints>
@@ -758,13 +770,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="KFw-E3-TfL" secondAttribute="trailing" constant="16" id="EtQ-Nr-wcp"/>
                             <constraint firstAttribute="trailing" secondItem="VI7-wy-yAF" secondAttribute="trailing" constant="16" id="UXa-U8-7pD"/>
                             <constraint firstItem="lTc-cq-Rz3" firstAttribute="top" secondItem="VI7-wy-yAF" secondAttribute="bottom" constant="16" id="WI4-e8-HWT"/>
-                            <constraint firstItem="VI7-wy-yAF" firstAttribute="top" secondItem="4m7-cG-G5S" secondAttribute="bottom" constant="16" id="X44-EJ-j3W"/>
-                            <constraint firstItem="4m7-cG-G5S" firstAttribute="leading" secondItem="vva-Nl-3vh" secondAttribute="leading" constant="16" id="XC7-Qb-JLQ"/>
+                            <constraint firstItem="KFw-E3-TfL" firstAttribute="leading" secondItem="vva-Nl-3vh" secondAttribute="leading" constant="16" id="aCX-QC-EPQ"/>
                             <constraint firstItem="VI7-wy-yAF" firstAttribute="leading" secondItem="vva-Nl-3vh" secondAttribute="leading" constant="16" id="dot-ho-2ld"/>
-                            <constraint firstItem="4m7-cG-G5S" firstAttribute="top" secondItem="SBM-Uu-qsu" secondAttribute="bottom" constant="16" id="rJe-T4-X2b"/>
-                            <constraint firstAttribute="trailing" secondItem="4m7-cG-G5S" secondAttribute="trailing" constant="16" id="xHi-6e-PVt"/>
+                            <constraint firstItem="VI7-wy-yAF" firstAttribute="top" secondItem="KFw-E3-TfL" secondAttribute="bottom" constant="16" id="mTM-dc-G0w"/>
+                            <constraint firstItem="KFw-E3-TfL" firstAttribute="top" secondItem="SBM-Uu-qsu" secondAttribute="bottom" constant="8" id="u2u-F5-F5Z"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eO3-cL-G0m">
@@ -776,6 +788,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="borderView" destination="KFw-E3-TfL" id="FQB-7d-wiy"/>
                         <outlet property="btnSign" destination="VI7-wy-yAF" id="WNm-WE-5aW"/>
                         <outlet property="webView" destination="4m7-cG-G5S" id="qJK-e9-7F5"/>
                     </connections>

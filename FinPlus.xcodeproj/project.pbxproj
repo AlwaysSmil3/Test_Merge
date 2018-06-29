@@ -278,6 +278,9 @@
 		E774D30B20CA2F7B00F7696D /* ListWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774D30A20CA2F7B00F7696D /* ListWalletViewController.swift */; };
 		E774D31120CA398300F7696D /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774D30F20CA398300F7696D /* WalletTableViewCell.swift */; };
 		E774D31220CA398300F7696D /* WalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E774D31020CA398300F7696D /* WalletTableViewCell.xib */; };
+		E7A4A0A420E6321600B5F7ED /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = E7A4A0A220E6321500B5F7ED /* about.html */; };
+		E7A4A0A520E6321600B5F7ED /* terms-and-conditions.html in Resources */ = {isa = PBXBuildFile; fileRef = E7A4A0A320E6321500B5F7ED /* terms-and-conditions.html */; };
+		E7A4A0A720E65B9500B5F7ED /* hop-dong.html in Resources */ = {isa = PBXBuildFile; fileRef = E7A4A0A620E65B9400B5F7ED /* hop-dong.html */; };
 		E7BC256F20CF8096001FF0F4 /* SpreadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC256E20CF8095001FF0F4 /* SpreadCell.swift */; };
 		E7BC258620CFDACA001FF0F4 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E7BC257120CFDACA001FF0F4 /* LICENSE */; };
 		E7BC258720CFDACA001FF0F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7BC257420CFDACA001FF0F4 /* Assets.xcassets */; };
@@ -608,6 +611,9 @@
 		E774D30A20CA2F7B00F7696D /* ListWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWalletViewController.swift; sourceTree = "<group>"; };
 		E774D30F20CA398300F7696D /* WalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewCell.swift; sourceTree = "<group>"; };
 		E774D31020CA398300F7696D /* WalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletTableViewCell.xib; sourceTree = "<group>"; };
+		E7A4A0A220E6321500B5F7ED /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		E7A4A0A320E6321500B5F7ED /* terms-and-conditions.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "terms-and-conditions.html"; sourceTree = "<group>"; };
+		E7A4A0A620E65B9400B5F7ED /* hop-dong.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "hop-dong.html"; sourceTree = "<group>"; };
 		E7BC256E20CF8095001FF0F4 /* SpreadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpreadCell.swift; sourceTree = "<group>"; };
 		E7BC257120CFDACA001FF0F4 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E7BC257420CFDACA001FF0F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1033,23 +1039,24 @@
 		639C9DB120A1498A00F2CF5E /* FinPlus */ = {
 			isa = PBXGroup;
 			children = (
-				63B833C920CE79C400416596 /* LoanBuilder.json */,
-				E774D30E20CA395C00F7696D /* SubItems */,
-				6339D24A20BCF312008B40F8 /* GoogleService-Info.plist */,
-				63C5C8E620AC26DA00F65068 /* FinPlus.entitlements */,
-				639C9DCB20A14A7900F2CF5E /* Model */,
-				639C9DCA20A14A6D00F2CF5E /* Controllers */,
-				639C9DC920A14A6200F2CF5E /* Utitlities */,
 				639C9DC820A14A5900F2CF5E /* APIClient */,
-				639C9DC720A14A3C00F2CF5E /* View */,
 				639C9DB220A1498A00F2CF5E /* AppDelegate.swift */,
-				639C9DB620A1498A00F2CF5E /* Main.storyboard */,
 				639C9DBC20A1498A00F2CF5E /* Assets.xcassets */,
-				639C9DBE20A1498A00F2CF5E /* LaunchScreen.storyboard */,
-				639C9DC120A1498A00F2CF5E /* Info.plist */,
-				639C9DB920A1498A00F2CF5E /* FinPlus.xcdatamodeld */,
+				639C9DCA20A14A6D00F2CF5E /* Controllers */,
 				639C9DE120A15F0200F2CF5E /* FinPlus-Bridging-Header.h */,
+				63C5C8E620AC26DA00F65068 /* FinPlus.entitlements */,
+				639C9DB920A1498A00F2CF5E /* FinPlus.xcdatamodeld */,
+				6339D24A20BCF312008B40F8 /* GoogleService-Info.plist */,
+				639C9DC120A1498A00F2CF5E /* Info.plist */,
+				639C9DBE20A1498A00F2CF5E /* LaunchScreen.storyboard */,
+				63B833C920CE79C400416596 /* LoanBuilder.json */,
 				E774D30820CA2C6400F7696D /* Localizable.strings */,
+				639C9DB620A1498A00F2CF5E /* Main.storyboard */,
+				639C9DCB20A14A7900F2CF5E /* Model */,
+				E7A4A0A120E6321500B5F7ED /* Resources */,
+				E774D30E20CA395C00F7696D /* SubItems */,
+				639C9DC920A14A6200F2CF5E /* Utitlities */,
+				639C9DC720A14A3C00F2CF5E /* View */,
 			);
 			path = FinPlus;
 			sourceTree = "<group>";
@@ -1494,6 +1501,16 @@
 			path = SubItems;
 			sourceTree = "<group>";
 		};
+		E7A4A0A120E6321500B5F7ED /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E7A4A0A620E65B9400B5F7ED /* hop-dong.html */,
+				E7A4A0A220E6321500B5F7ED /* about.html */,
+				E7A4A0A320E6321500B5F7ED /* terms-and-conditions.html */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E7BC257020CFDACA001FF0F4 /* FAQView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1728,6 +1745,7 @@
 				84647A8F20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.xib in Resources */,
 				639C9E2120A18A7500F2CF5E /* Oswald-Light.ttf in Resources */,
 				E7F51A2120CE6D1600F72682 /* LoanTypeFooterTBView.xib in Resources */,
+				E7A4A0A520E6321600B5F7ED /* terms-and-conditions.html in Resources */,
 				63FD80CD20C13C14004BD22A /* HomeInvestor.storyboard in Resources */,
 				84CBBE5720CF85610058C834 /* NotificationTableViewCell.xib in Resources */,
 				84CBBE4D20CF82A40058C834 /* Notification.storyboard in Resources */,
@@ -1737,6 +1755,7 @@
 				84A4791E20E09AE200F83AF4 /* BudgetRewardSuccessViewController.xib in Resources */,
 				84B7B34A20D12F4E006CADA1 /* InvestDetailTableViewCell.xib in Resources */,
 				630BA61620C22A4100880DAE /* SF-Pro-Display-Heavy.otf in Resources */,
+				E7A4A0A420E6321600B5F7ED /* about.html in Resources */,
 				639C9E1520A18A7500F2CF5E /* Roboto-LightItalic.ttf in Resources */,
 				8456CBD720DCDFC400160B84 /* InvestDetailSecondTableViewCell.xib in Resources */,
 				630BA61F20C22A4100880DAE /* SF-Pro-Display-LightItalic.otf in Resources */,
@@ -1811,6 +1830,7 @@
 				630BA61A20C22A4100880DAE /* SF-Pro-Text-Bold.otf in Resources */,
 				639C9E1320A18A7500F2CF5E /* Roboto-ThinItalic.ttf in Resources */,
 				639C9DDD20A15E3500F2CF5E /* Authen.storyboard in Resources */,
+				E7A4A0A720E65B9500B5F7ED /* hop-dong.html in Resources */,
 				E7BC258A20CFDACA001FF0F4 /* LICENSE in Resources */,
 				84114BD420D79464005026DF /* AddNewWalletTableViewCell.xib in Resources */,
 				84B7B33D20D12F2A006CADA1 /* Invest.storyboard in Resources */,

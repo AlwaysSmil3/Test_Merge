@@ -145,7 +145,21 @@ extension APIClient {
         
     }
     
-    
+    func delLoan(loanID: Int32) -> Promise<APIResponseGeneral> {
+        
+        let endPoint = "loans/" + "\(loanID)/"
+        
+        return Promise<APIResponseGeneral> { seal in
+            requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: [:], isShowLoadingView: true, httpType: .DELETE)
+                .done { json in
+                    
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in seal.reject(error)}
+        }
+        
+    }
     
     
     
