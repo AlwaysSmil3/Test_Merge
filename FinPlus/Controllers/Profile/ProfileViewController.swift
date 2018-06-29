@@ -125,7 +125,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         let header: ProfileHeaderView = Bundle.main.loadNibNamed("ProfileHeaderView", owner: nil, options: nil)![0] as! ProfileHeaderView
         
         if let info = DataManager.shared.browwerInfo {
-            header.usernameLabel.text = info.fullName ?? ""
+            header.usernameLabel.text = info.fullName ?? info.displayName
             header.phoneLabel.text = info.phoneNumber ?? ""
             header.avatarBtn.sd_setImage(with: URL(string: info.avatar ?? ""), for: .normal, completed: nil)
         }

@@ -49,6 +49,7 @@ class LoanStateViewController: UIViewController {
     var activeLoan: BrowwerActiveLoan?
     var activeLoanId: Int = 0
     var bottom_state: BOTTOM_STATE!
+    var userInfo: BrowwerInfo!
     
     // CoreData
     var managedContext: NSManagedObjectContext? {
@@ -73,6 +74,7 @@ class LoanStateViewController: UIViewController {
         
         var id = activeLoan?.status
         var isEnableFooterView = false
+        self.userInfo = DataManager.shared.browwerInfo
         
         if self.activeLoan == nil && self.activeLoanId > 0
         {
@@ -96,9 +98,9 @@ class LoanStateViewController: UIViewController {
         
         switch(STATUS_LOAN(rawValue: id!)) {
         case .DRAFT?:
-            if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
-                self.navigationController?.isNavigationBarHidden = true
-            }
+//            if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
+//                self.navigationController?.isNavigationBarHidden = true
+//            }
             
             headerData = [
                 [
@@ -153,7 +155,7 @@ class LoanStateViewController: UIViewController {
             headerData = [
                 [
                     "type": HeaderCellType.TextType,
-                    "text": "Chúc mừng Minh, đơn vay của bạn được duyệt với lãi suất 10%/năm.",
+                    "text": "Chúc mừng \(String(describing: self.userInfo.fullName)), đơn vay của bạn được duyệt với lãi suất 10%/năm.",
                     "subType": TextCellType.TitleType,
                 ],
                 [
@@ -240,7 +242,7 @@ class LoanStateViewController: UIViewController {
             headerData = [
                 [
                     "type": HeaderCellType.TextType,
-                    "text": "Chúc mừng Minh, khoản vay của bạn đã được huy động đủ.",
+                    "text": "Chúc mừng \(String(describing: self.userInfo.fullName)), khoản vay của bạn đã được huy động đủ.",
                     "subType": TextCellType.TitleType,
                     ],
                 [
@@ -288,7 +290,7 @@ class LoanStateViewController: UIViewController {
             headerData = [
                 [
                     "type": HeaderCellType.TextType,
-                    "text": "Xin chào Minh, bạn đang vay 2.000.000đ.",
+                    "text": "Xin chào \(String(describing: self.userInfo.fullName)), bạn đang vay 2.000.000đ.",
                     "subType": TextCellType.TitleType,
                 ],
                 [
@@ -313,17 +315,18 @@ class LoanStateViewController: UIViewController {
             headerData = [
                 [
                     "type": HeaderCellType.TextType,
-                    "text": "Xin chào Minh, bạn đang vay 2.000.000đ.",
+                    "text": "Khoản vay của bạn đang quá hạn 2 ngày.",
                     "subType": TextCellType.TitleType,
                     ],
                 [
                     "type": HeaderCellType.TextType,
-                    "text": "Bạn đã quá hạn thanh toán 5 ngày",
+                    "text": "Bạn cần thanh toán 125.000đ ngay nếu không sẽ chịu phạt theo như hợp đồng.",
+                    "attributed": NSAttributedString(string: "chịu phạt theo như hợp đồng", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!]),
                     "subType": TextCellType.DesType,
                     ],
                 [
                     "type": HeaderCellType.ButtonType,
-                    "text": "Thanh toán ngay",
+                    "text": "Thanh toán",
                     "subType": ButtonCellType.FillType,
                     "target": "pushToPayViewController"
                 ],
@@ -648,8 +651,21 @@ extension LoanStateViewController: UITableViewDataSource {
                     cell = tableView.dequeueReusableCell(withIdentifier: textIdentifier) as? TitleTableViewCell
                 }
                 
+                let desText = item["text"] as? String
+                
                 cell?.setTextCellType(type: item["subType"] as! TextCellType)
-                cell?.label.text = item["text"] as? String
+                cell?.label.text = desText
+                
+                if let attributed = item["attributed"] as? NSAttributedString
+                {
+                    let oldAttributed = NSMutableAttributedString(attributedString: (cell?.label.attributedText)!)
+
+                    if let range = desText?.range(of: attributed.string)  {
+                        oldAttributed.addAttributes(attributed.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, attributed.length)), range: NSRange(range, in: desText!))
+                    }
+                    
+                    cell?.label.attributedText = oldAttributed
+                }
                 
                 if indexPath.row == (headerData.count - 1) {
                     updateConstrainTable(tableView: self.headerTableView!)

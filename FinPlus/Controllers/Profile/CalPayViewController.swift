@@ -144,7 +144,7 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
 
         let money = Float(self.moneyTextField.text!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: ""))!
         let monthCount = Int(self.monthTextField.text!)
-        let rate = Float(self.rateTextField.text!)!*money/Float(monthCount!*100)
+        let rate = Float(self.rateTextField.text!)!*money/Float(12*100)
         let monthPay = money/Float(monthCount!)
         
         var dateComponent = DateComponents()

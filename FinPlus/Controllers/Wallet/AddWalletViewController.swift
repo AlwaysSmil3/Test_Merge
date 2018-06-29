@@ -30,6 +30,8 @@ class AddWalletViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        self.rightBarBtn.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : MAIN_COLOR], for: .normal)
+        
         vcbBtn.layer.borderWidth = 0.5
         vcbBtn.layer.cornerRadius = 8
         vcbBtn.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor

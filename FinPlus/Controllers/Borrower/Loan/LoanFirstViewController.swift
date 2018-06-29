@@ -63,12 +63,18 @@ class LoanFirstViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
             self.navigationController?.isNavigationBarHidden = true
         }
         
+        super.viewWillAppear(animated)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+        super.viewWillDisappear(animated)
     }
     
     
