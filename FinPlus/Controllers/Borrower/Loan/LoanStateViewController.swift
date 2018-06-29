@@ -63,6 +63,7 @@ class LoanStateViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         //Lấy data Local
         if let context = self.managedContext {
