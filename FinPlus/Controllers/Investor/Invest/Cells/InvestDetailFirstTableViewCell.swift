@@ -57,6 +57,7 @@ class InvestDetailFirstTableViewCell: UITableViewCell {
         // first block
         self.realibilityCircleLb.layer.cornerRadius = 22
         self.interestCircleLb.layer.cornerRadius = 22
+
         self.realibilityCircleLb.text = cellData.grade ?? "A1"
 
         var reliType : LoanReliability!
@@ -121,7 +122,7 @@ class InvestDetailFirstTableViewCell: UITableViewCell {
         // third block
         // add attribute string
         var rate = 0
-        if let temp = cellData.intRate {
+        if let temp = cellData.inRate {
             rate = temp
         }
         let interestCircleStr = "\(rate)" + "\n%/năm"

@@ -78,7 +78,7 @@ class InvestTableViewCell: UITableViewCell {
             termStr = "\(cellData.term!/30) tháng"
         }
         var rate = 0
-        if let temp = cellData.intRate {
+        if let temp = cellData.inRate {
             rate = temp
         }
         exporeTimeLb.text = "Lãi suất " + "\(rate)" + "%/năm - " + termStr

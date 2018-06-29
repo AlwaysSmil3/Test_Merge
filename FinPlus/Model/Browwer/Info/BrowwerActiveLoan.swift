@@ -20,8 +20,6 @@ public struct BrowwerActiveLoan {
     static let nationalIdAllImg = "nationalIdAllImg"
     static let jobInfo = "jobInfo"
     static let term = "term"
-    static let intRate = "intRate"
-    static let grade = "grade"
     static let amount = "amount"
     static let loanId = "loanId"
     static let optionalText = "optionalText"
@@ -44,8 +42,6 @@ public struct BrowwerActiveLoan {
   public var nationalIdAllImg: String?
   public var jobInfo: BrowwerJobInfo?
   public var term: Int?
-    public var intRate: Int?
-    public var grade: String?
   public var amount: Int32?
   public var loanId: Int32?
   public var optionalText: String?
@@ -79,8 +75,6 @@ public struct BrowwerActiveLoan {
     nationalIdAllImg = json[SerializationKeys.nationalIdAllImg].string
     jobInfo = BrowwerJobInfo(json: json[SerializationKeys.jobInfo])
     term = json[SerializationKeys.term].int
-    intRate = json[SerializationKeys.intRate].int
-    grade = json[SerializationKeys.grade].string
     amount = json[SerializationKeys.amount].int32
     loanId = json[SerializationKeys.loanId].int32
     optionalText = json[SerializationKeys.optionalText].string

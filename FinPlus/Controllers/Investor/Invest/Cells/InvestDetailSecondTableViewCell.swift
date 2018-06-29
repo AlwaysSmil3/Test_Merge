@@ -56,7 +56,7 @@ class InvestDetailSecondTableViewCell: UITableViewCell {
 //            amountAvaiableInvestLb.text = avaiableAmount.toString()
 //        }
         var rate = 0
-        if let temp = cellData.intRate {
+        if let temp = cellData.inRate {
             rate = temp
         }
         interestLb.text = "\(rate)" + "%/năm"
