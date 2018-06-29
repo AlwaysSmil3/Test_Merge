@@ -51,7 +51,11 @@ class DataManager {
     //Job Position hien tai dang chon
     var currentIndexJobPositionSelectedPopup: Int?
     
+    //Các trường không hợp lệ của loan
+    var missingLoanData: BrowwerActiveLoan?
     
+    //List Key missing Loan Data
+    var listKeyMissingLoan: [String]?
     
     /// Get Data from JSON
     func getDataLoanFromJSON() {
@@ -109,6 +113,211 @@ class DataManager {
         guard cates.count > 0 else { return nil }
         return cates[0]
     }
+    
+    
+    /// <#Description#>
+    func mapDataBrowwerAndLoan() {
+        
+        guard let brow = self.browwerInfo, let activeLoan = brow.activeLoan,let loanId = activeLoan.loanId, loanId > 0 else { return }
+        
+        if let cateID = activeLoan.loanCategoryId, cateID > 0 {
+            DataManager.shared.loanInfo.loanCategoryID = cateID
+            self.currentIndexCategoriesSelectedPopup = Int(cateID) - 1
+        }
+        
+        if let loanId = activeLoan.loanId, loanId > 0 {
+            DataManager.shared.loanID = loanId
+        }
+        
+        if let term = activeLoan.term, term > 0 {
+            DataManager.shared.loanInfo.term = term
+        }
+        
+        if let amount = activeLoan.amount, amount > 0 {
+            DataManager.shared.loanInfo.amount = amount
+        }
+        
+        if let userInfo = activeLoan.userInfo {
+            //Thong tin user
+            if let fullName = userInfo.fullName {
+                DataManager.shared.loanInfo.userInfo.fullName = fullName
+            }
+            
+            if let gender = userInfo.gender {
+                DataManager.shared.loanInfo.userInfo.gender = gender
+            }
+            
+            if let birthDay = userInfo.birthday {
+                DataManager.shared.loanInfo.userInfo.birthDay = birthDay
+            }
+            
+            if let nationID = userInfo.nationalId {
+                DataManager.shared.loanInfo.userInfo.nationalID = nationID
+            }
+            
+            if let add = userInfo.residentAddress, let city = add.city, let dis = add.district, let commue = add.commune, let street = add.street {
+                DataManager.shared.loanInfo.userInfo.residentAddress = Address(city: city, district: dis, commune: commue, street: street, zipCode: "", long: 0, lat: 0)
+            }
+            
+            if let add = userInfo.currentAddress, let city = add.city, let dis = add.district, let commue = add.commune, let street = add.street {
+                DataManager.shared.loanInfo.userInfo.temporaryAddress = Address(city: city, district: dis, commune: commue, street: street, zipCode: "", long: 0, lat: 0)
+            }
+            
+            
+        }
+        
+        if let jobInfo = activeLoan.jobInfo {
+            //Thong tin Job
+            if let jobType = jobInfo.jobType {
+                DataManager.shared.loanInfo.jobInfo.jobType = jobType
+            }
+            
+            if let position = jobInfo.position {
+                DataManager.shared.loanInfo.jobInfo.position = position
+            }
+            
+            if let company = jobInfo.company {
+                DataManager.shared.loanInfo.jobInfo.company = company
+            }
+            
+            if let salary = jobInfo.salary {
+                DataManager.shared.loanInfo.jobInfo.salary = Int32(salary)
+            }
+            
+            if let phone = jobInfo.companyPhoneNumber {
+                DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = phone
+            }
+            
+            if let add = jobInfo.address, let city = add.city, let dis = add.district, let commue = add.commune, let street = add.street {
+                DataManager.shared.loanInfo.jobInfo.address = Address(city: city, district: dis, commune: commue, street: street, zipCode: "", long: 0, lat: 0)
+            }
+            
+        }
+        
+        if let url = activeLoan.nationalIdAllImg {
+            DataManager.shared.loanInfo.nationalIdAllImg = url
+        }
+        
+        if let url = activeLoan.nationalIdFrontImg {
+            DataManager.shared.loanInfo.nationalIdFrontImg = url
+        }
+        
+        if let url = activeLoan.nationalIdBackImg {
+            DataManager.shared.loanInfo.nationalIdBackImg = url
+        }
+        
+        if let text = activeLoan.optionalText {
+            DataManager.shared.loanInfo.optionalText = text
+        }
+        
+        
+    }
+    
+    
+    func getListMissingKeyData() -> [String]? {
+        guard let miss = self.missingLoanData else { return nil }
+        
+        var missingList : [String] = []
+        
+        if let userInfo = miss.userInfo {
+            //Thong tin UserInfo
+            if let fullName = userInfo.fullName, fullName.length() > 0 {
+                missingList.append("fullName")
+            }
+            
+            if let gender = userInfo.gender, gender.length() > 0 {
+                missingList.append("gender")
+            }
+            
+            if let birthday = userInfo.birthday, birthday.length() > 0 {
+                missingList.append("birthday")
+            }
+            
+            if let nationalId = userInfo.nationalId, nationalId.length() > 0 {
+                missingList.append("nationalId")
+            }
+            
+            if let phone = userInfo.relationships?.phoneNumber, phone.length() > 0 {
+                missingList.append("phoneNumber")
+            }
+            
+            if let _ = userInfo.residentAddress {
+                missingList.append("residentAddress")
+            }
+            
+            if let _ = userInfo.currentAddress {
+                missingList.append("currentAddress")
+            }
+            
+        }
+        
+        if let jobInfo = miss.jobInfo {
+            //Thong tin JobInfo
+            if let _ = jobInfo.jobType {
+                missingList.append("jobType")
+            }
+            
+            if let _ = jobInfo.position {
+                missingList.append("position")
+            }
+            
+            if let _ = jobInfo.company {
+                missingList.append("company")
+            }
+            
+            if let sa = jobInfo.salary, sa > 0 {
+                missingList.append("salary")
+            }
+            
+            if let _ = jobInfo.companyPhoneNumber {
+                missingList.append("companyPhoneNumber")
+            }
+            
+            if let _ = jobInfo.address {
+                missingList.append("address")
+            }
+            
+            
+            
+            
+        }
+        
+        if let _ = miss.nationalIdAllImg {
+            missingList.append("nationalIdAllImg")
+        }
+        
+        if let _ = miss.nationalIdFrontImg {
+            missingList.append("nationalIdFrontImg")
+        }
+        
+        if let _ = miss.nationalIdBackImg {
+            missingList.append("nationalIdBackImg")
+        }
+        
+        if let _ = miss.optionalText {
+            missingList.append("optionalText")
+        }
+        
+        return missingList
+    }
+    
+    
+    /// check field missing in list Missing
+    ///
+    /// - Parameter key: <#key description#>
+    /// - Returns: <#return value description#>
+    func checkFieldIsMissing(key: String) -> Bool {
+        guard let list = self.listKeyMissingLoan else { return false }
+        let listFields = list.filter { $0 == key }
+        
+        if listFields.count > 0 {
+            return true
+        }
+        
+        return false
+    }
+    
+    
     
     
     

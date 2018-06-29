@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 enum HeaderCellType {
     case TextType
@@ -46,18 +47,36 @@ class LoanStateViewController: UIViewController {
     
     var hiddenBack = false
     var activeLoan: BrowwerActiveLoan?
-    var activeLoanId: Int = 0
     var bottom_state: BOTTOM_STATE!
+    var userInfo: BrowwerInfo!
+    
+    // CoreData
+    var managedContext: NSManagedObjectContext? {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
+        
+        return appDelegate.managedObjectContext
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        var id = activeLoan?.status
+        //Lấy data Local
+        if let context = self.managedContext {
+            FinPlusHelper.fetchCoreData(context: context) {
+                
+            }
+        }
+        //Map DataLoan
+        DataManager.shared.mapDataBrowwerAndLoan()
+        
+        let id = activeLoan?.status
         var isEnableFooterView = false
-        
-        id = activeLoanId
+        self.userInfo = DataManager.shared.browwerInfo
         
         if (hiddenBack)
         {
@@ -87,7 +106,7 @@ class LoanStateViewController: UIViewController {
                     "type": HeaderCellType.ButtonType,
                     "text": "Hoàn thiện đơn",
                     "subType": ButtonCellType.NullType,
-                    "target": ""
+                    "target": "update_loan"
                 ],
             ]
             
@@ -102,6 +121,9 @@ class LoanStateViewController: UIViewController {
             ]
             
         case .RISK_PENDING?:
+            if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
+                self.navigationController?.isNavigationBarHidden = true
+            }
             
             headerData = [
                 [
@@ -127,7 +149,7 @@ class LoanStateViewController: UIViewController {
             headerData = [
                 [
                     "type": HeaderCellType.TextType,
-                    "text": "Chúc mừng Minh, đơn vay của bạn được duyệt với lãi suất 10%/năm.",
+                    "text": "Chúc mừng \(String(describing: self.userInfo.fullName)), đơn vay của bạn được duyệt với lãi suất 10%/năm.",
                     "subType": TextCellType.TitleType,
                 ],
                 [
@@ -214,7 +236,7 @@ class LoanStateViewController: UIViewController {
             headerData = [
                 [
                     "type": HeaderCellType.TextType,
-                    "text": "Chúc mừng Minh, khoản vay của bạn đã được huy động đủ.",
+                    "text": "Chúc mừng \(String(describing: self.userInfo.fullName)), khoản vay của bạn đã được huy động đủ.",
                     "subType": TextCellType.TitleType,
                     ],
                 [
@@ -262,7 +284,7 @@ class LoanStateViewController: UIViewController {
             headerData = [
                 [
                     "type": HeaderCellType.TextType,
-                    "text": "Xin chào Minh, bạn đang vay 2.000.000đ.",
+                    "text": "Xin chào \(String(describing: self.userInfo.fullName)), bạn đang vay 2.000.000đ.",
                     "subType": TextCellType.TitleType,
                 ],
                 [
@@ -287,17 +309,18 @@ class LoanStateViewController: UIViewController {
             headerData = [
                 [
                     "type": HeaderCellType.TextType,
-                    "text": "Xin chào Minh, bạn đang vay 2.000.000đ.",
+                    "text": "Khoản vay của bạn đang quá hạn 2 ngày.",
                     "subType": TextCellType.TitleType,
                     ],
                 [
                     "type": HeaderCellType.TextType,
-                    "text": "Bạn đã quá hạn thanh toán 5 ngày",
+                    "text": "Bạn cần thanh toán 125.000đ ngay nếu không sẽ chịu phạt theo như hợp đồng.",
+                    "attributed": NSAttributedString(string: "chịu phạt theo như hợp đồng", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!]),
                     "subType": TextCellType.DesType,
                     ],
                 [
                     "type": HeaderCellType.ButtonType,
-                    "text": "Thanh toán ngay",
+                    "text": "Thanh toán",
                     "subType": ButtonCellType.FillType,
                     "target": "pushToPayViewController"
                 ],
@@ -400,11 +423,16 @@ class LoanStateViewController: UIViewController {
         
         self.borderView.layer.borderWidth = 0.5
         self.borderView.layer.cornerRadius = 8
-        self.borderView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        self.borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         
         self.navigationItem.titleView = UIImageView(image: UIImage(named: "ic_logo"))
         
         self.view.layoutIfNeeded()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+        super.viewWillDisappear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -483,13 +511,29 @@ class LoanStateViewController: UIViewController {
         
         let alert = UIAlertController(title: "", message: "Lựa chọn", preferredStyle: .actionSheet)
         
-        switch activeLoanId {
-        case 1:
+        switch (STATUS_LOAN(rawValue: (activeLoan?.status!)!)) {
+        case .DRAFT?:
             alert.addAction(UIAlertAction(title: "Xóa đơn vay", style: .destructive , handler:{ (UIAlertAction)in
-
+                self.showAlertView(title: "Xóa đơn vay", message: "Bạn có chắc chắn muốn xóa đơn vay chưa hoàn thiện này?", okTitle: "Xóa", cancelTitle: "Không", completion: { (okAction) in
+                    if (okAction)
+                    {
+                        APIClient.shared.delLoan(loanID: (self.activeLoan?.loanId)!)
+                        .done(on: DispatchQueue.main) { model in
+                            self.handleLoadingView(isShow: false)
+                            self.showAlertView(title: "", message: "Đơn vay của bạn đã được xóa. Bạn có thể tạo một đơn mới.", okTitle: "ok", cancelTitle: nil, completion: { (okAction) in
+                                self.tabBarController?.selectedIndex = 0
+                            })
+                        }
+                        .catch { error in
+                            self.handleLoadingView(isShow: false)
+                            self.showAlertView(title: "Có lỗi", message: "Đã có lỗi trong quá trình xóa đơn vay. Vui lòng thử lại.", okTitle: "ok", cancelTitle: nil, completion: { (okAction) in
+                            })
+                        }
+                    }
+                })
             }))
             
-        case 2:
+        case .RISK_PENDING?:
             alert.addAction(UIAlertAction(title: "Chỉnh sửa đơn vay", style: .default , handler:{ (UIAlertAction)in
                 
             }))
@@ -498,10 +542,11 @@ class LoanStateViewController: UIViewController {
                 
             }))
             
-        case 14:
+        case .CONTRACT_SIGNED?:
             alert.addAction(UIAlertAction(title: "Xem hợp đồng", style: .default , handler:{ (UIAlertAction)in
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SIGN") as! SignContractViewController
                 vc.isSigned = true
+                vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.isNavigationBarHidden = false
                 self.navigationController?.pushViewController(vc, animated: true)
             }))
@@ -523,6 +568,7 @@ class LoanStateViewController: UIViewController {
         })
     }
     
+
     // Xác nhận lãi suất
     
     @IBAction func confirm_rate()
@@ -621,8 +667,21 @@ extension LoanStateViewController: UITableViewDataSource {
                     cell = tableView.dequeueReusableCell(withIdentifier: textIdentifier) as? TitleTableViewCell
                 }
                 
+                let desText = item["text"] as? String
+                
                 cell?.setTextCellType(type: item["subType"] as! TextCellType)
-                cell?.label.text = item["text"] as? String
+                cell?.label.text = desText
+                
+                if let attributed = item["attributed"] as? NSAttributedString
+                {
+                    let oldAttributed = NSMutableAttributedString(attributedString: (cell?.label.attributedText)!)
+
+                    if let range = desText?.range(of: attributed.string)  {
+                        oldAttributed.addAttributes(attributed.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, attributed.length)), range: NSRange(range, in: desText!))
+                    }
+                    
+                    cell?.label.attributedText = oldAttributed
+                }
                 
                 if indexPath.row == (headerData.count - 1) {
                     updateConstrainTable(tableView: self.headerTableView!)
@@ -679,8 +738,8 @@ extension LoanStateViewController: UITableViewDataSource {
                 cell?.desLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
             case 4:
                 cell?.nameLabel.text = NSLocalizedString("STATUS", comment: "")
-                cell?.desLabel.text = getState(type: STATUS_LOAN(rawValue: activeLoanId)!)
-                cell?.desLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: activeLoanId)!)
+                cell?.desLabel.text = getState(type: STATUS_LOAN(rawValue: (activeLoan?.status)!)!)
+                cell?.desLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: (activeLoan?.status)!)!)
             case 5:
                 cell?.nameLabel.text = NSLocalizedString("RATE", comment: "")
                 cell?.desLabel.text = "10%/năm"

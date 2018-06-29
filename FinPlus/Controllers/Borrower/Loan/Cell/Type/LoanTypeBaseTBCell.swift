@@ -26,7 +26,7 @@ class LoanTypeBaseTBCell: UITableViewCell {
             if let isNeed = self.isNeedUpdate, isNeed {
                 self.underLine?.backgroundColor = UIColor(hexString: "#DA3535")
             } else {
-                self.underLine?.backgroundColor = UIColor(hexString: "#E3EBF0")
+                self.underLine?.backgroundColor = LIGHT_MODE_BORDER_COLOR
                 self.lblDescriptionNeedUpdate?.text = ""
             }
         }
@@ -37,11 +37,11 @@ class LoanTypeBaseTBCell: UITableViewCell {
     ///
     /// - Parameter pre: <#pre description#>
     func updateInfoFalse(pre: String) {
-        guard let id = DataManager.shared.browwerInfo?.activeLoan?.loanId, id > 0 else {
-            return
-        }
-        self.isNeedUpdate = true
-        self.lblDescriptionNeedUpdate?.text = pre + " không hợp lệ"
+//        guard let id = DataManager.shared.browwerInfo?.activeLoan?.loanId, id > 0 else {
+//            return
+//        }
+//        self.isNeedUpdate = true
+//        self.lblDescriptionNeedUpdate?.text = pre + " không hợp lệ"
     }
     
     

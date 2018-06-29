@@ -106,7 +106,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 }
                 
                 if value.length() > 0 {
-                    self.tfValue?.text = value
+                    self.tfValue?.text = FinPlusHelper.formatDisplayCurrency(Double(value) ?? 0)
                     DataManager.shared.loanInfo.optionalText = value
                 } else {
                     //Cap nhat thong tin thieu
@@ -193,7 +193,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 }
                 
                 if value > 0 {
-                    self.tfValue?.text = "\(value)"
+                    self.tfValue?.text = FinPlusHelper.formatDisplayCurrency(Double(value))
                     DataManager.shared.loanInfo.jobInfo.salary = Int32(value)
                 } else {
                     //Cap nhat thong tin thieu

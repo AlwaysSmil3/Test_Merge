@@ -27,7 +27,12 @@ public struct BrowwerActiveLoan {
     static let optionalText = "optionalText"
     static let userInfo = "userInfo"
     static let loanCategoryId = "loanCategoryId"
-    static let createdTime = "createdTime"
+    static let loanCategory = "loanCategory"
+    static let createdTime = "createdAt"
+    
+    static let inRate = "inRate"
+    static let score = "score"
+    static let grade = "grade"
   }
 
   // MARK: Properties
@@ -36,7 +41,7 @@ public struct BrowwerActiveLoan {
   public var status: Int?
   public var nationalIdBackImg: String?
   public var nationalIdFrontImg: String?
-    public var nationalIdAllImg: String?
+  public var nationalIdAllImg: String?
   public var jobInfo: BrowwerJobInfo?
   public var term: Int?
     public var intRate: Int?
@@ -46,7 +51,12 @@ public struct BrowwerActiveLoan {
   public var optionalText: String?
   public var userInfo: BrowwerUserInfo?
   public var loanCategoryId: Int16?
-    public var createdTime: String?
+  public var loanCategory: LoanCategories?
+  public var createdTime: String?
+    
+    public var inRate: Int?
+    public var score: String?
+    public var grade: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -76,7 +86,11 @@ public struct BrowwerActiveLoan {
     optionalText = json[SerializationKeys.optionalText].string
     userInfo = BrowwerUserInfo(json: json[SerializationKeys.userInfo])
     loanCategoryId = json[SerializationKeys.loanCategoryId].int16
+    loanCategory = LoanCategories(json: json[SerializationKeys.loanCategory])
     createdTime = json[SerializationKeys.createdTime].string
+    inRate = json[SerializationKeys.inRate].int
+    score = json[SerializationKeys.score].string
+    grade = json[SerializationKeys.grade].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -97,7 +111,11 @@ public struct BrowwerActiveLoan {
     if let value = optionalText { dictionary[SerializationKeys.optionalText] = value }
     if let value = userInfo { dictionary[SerializationKeys.userInfo] = value.dictionaryRepresentation() }
     if let value = loanCategoryId { dictionary[SerializationKeys.loanCategoryId] = value }
+    if let value = loanCategory { dictionary[SerializationKeys.loanCategory] = value.dictionaryRepresentation() }
     if let value = createdTime { dictionary[SerializationKeys.createdTime] = value }
+    if let value = inRate { dictionary[SerializationKeys.inRate] = value }
+    if let value = score { dictionary[SerializationKeys.score] = value }
+    if let value = grade { dictionary[SerializationKeys.grade] = value }
     return dictionary
   }
 

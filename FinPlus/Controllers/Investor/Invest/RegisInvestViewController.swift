@@ -36,7 +36,7 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Đăng ký đầu tư"
-        containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        containView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         let myRange = NSRange(location: 25, length: 17)
         let policyStr : String = "Tôi đã hiểu và đồng ý với hợp đồng đầu tư."
         var myMutableString = NSMutableAttributedString()

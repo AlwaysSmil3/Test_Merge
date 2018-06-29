@@ -125,7 +125,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         let header: ProfileHeaderView = Bundle.main.loadNibNamed("ProfileHeaderView", owner: nil, options: nil)![0] as! ProfileHeaderView
         
         if let info = DataManager.shared.browwerInfo {
-            header.usernameLabel.text = info.fullName ?? ""
+            header.usernameLabel.text = info.fullName ?? info.displayName
             header.phoneLabel.text = info.phoneNumber ?? ""
             header.avatarBtn.sd_setImage(with: URL(string: info.avatar ?? ""), for: .normal, completed: nil)
         }
@@ -221,6 +221,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if (self.isInvestor && indexPath.row == 2)
         {
             cell.desLabel.text = self.mode ? NSLocalizedString("DARK_MODE", comment: "") : NSLocalizedString("LIGHT_MODE", comment: "")
+        }
+        
+        if (indexPath.row + 1 == self.data.count)
+        {
+            cell.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0)
         }
         
         return cell

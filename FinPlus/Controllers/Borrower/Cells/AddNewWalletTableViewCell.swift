@@ -16,7 +16,7 @@ class AddNewWalletTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.containView.layer.borderWidth = 1
         self.containView.layer.cornerRadius = 5
-        self.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        self.containView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         self.selectionStyle = .none
 
         // Initialization code

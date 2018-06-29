@@ -10,14 +10,23 @@ import UIKit
 
 class SignContractViewController: UIViewController, UIWebViewDelegate {
 
-    var isSigned = false
-    @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var btnSign: UIButton!
+    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var borderView: UIView!
+    
+    var isSigned = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.borderView.layer.borderWidth = 0.5
+        self.borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
+        self.borderView.layer.cornerRadius = 8
+        
+        self.webView.scrollView.showsVerticalScrollIndicator = false;
+        self.webView.scrollView.showsHorizontalScrollIndicator = false;
         
         if (isSigned)
         {
@@ -39,9 +48,15 @@ class SignContractViewController: UIViewController, UIWebViewDelegate {
         
         self.btnSign.titleLabel?.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)
         self.title = NSLocalizedString("Hợp đồng vay", comment: "")
-        let url = URL(string: "http://five9.vn/about-us")
-        let requestObj = URLRequest(url: url!)
-        self.webView.loadRequest(requestObj)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let htmlPath = Bundle.main.path(forResource: "hop-dong", ofType: "html")!
+        let url = URL(fileURLWithPath: htmlPath)
+        let request = URLRequest(url: url)
+        self.webView.loadRequest(request)
     }
 
     override func didReceiveMemoryWarning() {
