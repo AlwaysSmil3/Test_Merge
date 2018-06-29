@@ -136,6 +136,81 @@ class DataManager {
         if let amount = activeLoan.amount, amount > 0 {
             DataManager.shared.loanInfo.amount = amount
         }
+        
+        if let userInfo = activeLoan.userInfo {
+            //Thong tin user
+            if let fullName = userInfo.fullName {
+                DataManager.shared.loanInfo.userInfo.fullName = fullName
+            }
+            
+            if let gender = userInfo.gender {
+                DataManager.shared.loanInfo.userInfo.gender = gender
+            }
+            
+            if let birthDay = userInfo.birthday {
+                DataManager.shared.loanInfo.userInfo.birthDay = birthDay
+            }
+            
+            if let nationID = userInfo.nationalId {
+                DataManager.shared.loanInfo.userInfo.nationalID = nationID
+            }
+            
+            if let add = userInfo.residentAddress, let city = add.city, let dis = add.district, let commue = add.commune, let street = add.street {
+                DataManager.shared.loanInfo.userInfo.residentAddress = Address(city: city, district: dis, commune: commue, street: street, zipCode: "", long: 0, lat: 0)
+            }
+            
+            if let add = userInfo.currentAddress, let city = add.city, let dis = add.district, let commue = add.commune, let street = add.street {
+                DataManager.shared.loanInfo.userInfo.temporaryAddress = Address(city: city, district: dis, commune: commue, street: street, zipCode: "", long: 0, lat: 0)
+            }
+            
+            
+        }
+        
+        if let jobInfo = activeLoan.jobInfo {
+            //Thong tin Job
+            if let jobType = jobInfo.jobType {
+                DataManager.shared.loanInfo.jobInfo.jobType = jobType
+            }
+            
+            if let position = jobInfo.position {
+                DataManager.shared.loanInfo.jobInfo.position = position
+            }
+            
+            if let company = jobInfo.company {
+                DataManager.shared.loanInfo.jobInfo.company = company
+            }
+            
+            if let salary = jobInfo.salary {
+                DataManager.shared.loanInfo.jobInfo.salary = Int32(salary)
+            }
+            
+            if let phone = jobInfo.companyPhoneNumber {
+                DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = phone
+            }
+            
+            if let add = jobInfo.address, let city = add.city, let dis = add.district, let commue = add.commune, let street = add.street {
+                DataManager.shared.loanInfo.jobInfo.address = Address(city: city, district: dis, commune: commue, street: street, zipCode: "", long: 0, lat: 0)
+            }
+            
+        }
+        
+        if let url = activeLoan.nationalIdAllImg {
+            DataManager.shared.loanInfo.nationalIdAllImg = url
+        }
+        
+        if let url = activeLoan.nationalIdFrontImg {
+            DataManager.shared.loanInfo.nationalIdFrontImg = url
+        }
+        
+        if let url = activeLoan.nationalIdBackImg {
+            DataManager.shared.loanInfo.nationalIdBackImg = url
+        }
+        
+        if let text = activeLoan.optionalText {
+            DataManager.shared.loanInfo.optionalText = text
+        }
+        
+        
     }
     
     
