@@ -64,12 +64,14 @@ class LoanStateViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        //        //Lấy data Local
+        //Lấy data Local
         if let context = self.managedContext {
             FinPlusHelper.fetchCoreData(context: context) {
                 
             }
         }
+        //Map DataLoan
+        DataManager.shared.mapDataBrowwerAndLoan()
         
         let id = activeLoan?.status
         var isEnableFooterView = false
@@ -425,6 +427,11 @@ class LoanStateViewController: UIViewController {
         self.navigationItem.titleView = UIImageView(image: UIImage(named: "ic_logo"))
         
         self.view.layoutIfNeeded()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+        super.viewWillDisappear(animated)
     }
 
     override func didReceiveMemoryWarning() {

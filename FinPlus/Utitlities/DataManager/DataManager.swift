@@ -51,7 +51,11 @@ class DataManager {
     //Job Position hien tai dang chon
     var currentIndexJobPositionSelectedPopup: Int?
     
+    //Các trường không hợp lệ của loan
+    var missingLoanData: BrowwerActiveLoan?
     
+    //List Key missing Loan Data
+    var listKeyMissingLoan: [String]?
     
     /// Get Data from JSON
     func getDataLoanFromJSON() {
@@ -109,6 +113,138 @@ class DataManager {
         guard cates.count > 0 else { return nil }
         return cates[0]
     }
+    
+    
+    /// <#Description#>
+    func mapDataBrowwerAndLoan() {
+        
+        guard let brow = self.browwerInfo, let activeLoan = brow.activeLoan,let loanId = activeLoan.loanId, loanId > 0 else { return }
+        
+        if let cateID = activeLoan.loanCategoryId, cateID > 0 {
+            DataManager.shared.loanInfo.loanCategoryID = cateID
+            self.currentIndexCategoriesSelectedPopup = Int(cateID) - 1
+        }
+        
+        if let loanId = activeLoan.loanId, loanId > 0 {
+            DataManager.shared.loanID = loanId
+        }
+        
+        if let term = activeLoan.term, term > 0 {
+            DataManager.shared.loanInfo.term = term
+        }
+        
+        if let amount = activeLoan.amount, amount > 0 {
+            DataManager.shared.loanInfo.amount = amount
+        }
+    }
+    
+    
+    func getListMissingKeyData() -> [String]? {
+        guard let miss = self.missingLoanData else { return nil }
+        
+        var missingList : [String] = []
+        
+        if let userInfo = miss.userInfo {
+            //Thong tin UserInfo
+            if let fullName = userInfo.fullName, fullName.length() > 0 {
+                missingList.append("fullName")
+            }
+            
+            if let gender = userInfo.gender, gender.length() > 0 {
+                missingList.append("gender")
+            }
+            
+            if let birthday = userInfo.birthday, birthday.length() > 0 {
+                missingList.append("birthday")
+            }
+            
+            if let nationalId = userInfo.nationalId, nationalId.length() > 0 {
+                missingList.append("nationalId")
+            }
+            
+            if let phone = userInfo.relationships?.phoneNumber, phone.length() > 0 {
+                missingList.append("phoneNumber")
+            }
+            
+            if let _ = userInfo.residentAddress {
+                missingList.append("residentAddress")
+            }
+            
+            if let _ = userInfo.currentAddress {
+                missingList.append("currentAddress")
+            }
+            
+        }
+        
+        if let jobInfo = miss.jobInfo {
+            //Thong tin JobInfo
+            if let _ = jobInfo.jobType {
+                missingList.append("jobType")
+            }
+            
+            if let _ = jobInfo.position {
+                missingList.append("position")
+            }
+            
+            if let _ = jobInfo.company {
+                missingList.append("company")
+            }
+            
+            if let sa = jobInfo.salary, sa > 0 {
+                missingList.append("salary")
+            }
+            
+            if let _ = jobInfo.companyPhoneNumber {
+                missingList.append("companyPhoneNumber")
+            }
+            
+            if let _ = jobInfo.address {
+                missingList.append("address")
+            }
+            
+            
+            
+            
+        }
+        
+        if let _ = miss.nationalIdAllImg {
+            missingList.append("nationalIdAllImg")
+        }
+        
+        if let _ = miss.nationalIdFrontImg {
+            missingList.append("nationalIdFrontImg")
+        }
+        
+        if let _ = miss.nationalIdBackImg {
+            missingList.append("nationalIdBackImg")
+        }
+        
+        if let _ = miss.optionalText {
+            missingList.append("optionalText")
+        }
+        
+        
+        
+        return missingList
+    }
+    
+    
+    /// check field missing in list Missing
+    ///
+    /// - Parameter key: <#key description#>
+    /// - Returns: <#return value description#>
+    func checkFieldIsMissing(key: String) -> Bool {
+        guard let list = self.listKeyMissingLoan else { return false }
+        let listFields = list.filter { $0 == key }
+        
+        if listFields.count > 0 {
+            return true
+        }
+        
+        return false
+    }
+    
+    
     
     
     

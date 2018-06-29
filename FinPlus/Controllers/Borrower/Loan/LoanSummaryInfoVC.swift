@@ -120,7 +120,7 @@ class LoanSummaryInfoVC: BaseViewController {
     
     
     private func loan() {
-        APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
+        APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
             .done(on: DispatchQueue.main) { [weak self] model in
                 DataManager.shared.loanID = model.loanId!
                 
