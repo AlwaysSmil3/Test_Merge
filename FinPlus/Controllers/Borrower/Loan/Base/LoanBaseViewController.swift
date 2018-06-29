@@ -336,11 +336,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             //Giới tính
             //Chức vụ
             //Nghề nghiệp
-            if model.title == "Nghề nghiệp" {
-                //Xử lý trong cell
-            } else if model.title == "Cấp bậc" {
-                //Xử lý trong cell
-            } else if model.title == "Giới tính" {
+            if model.id == "gender" {
                 self.selectedGender()
             }
             
@@ -356,11 +352,11 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             break
         case DATA_TYPE_TB_CELL.File:
             
-            if model.title!.contains("Ảnh bạn đang cầm CMND") {
+            if model.id!.contains("nationalIdAllImg") {
                 self.typeImgFile = .ALL
-            } else if model.title!.contains("Ảnh mặt trước CMND") {
+            } else if model.id!.contains("nationalIdFrontImg") {
                 self.typeImgFile = .FRONT
-            } else if model.title!.contains("Ảnh mặt sau CMND") {
+            } else if model.id!.contains("nationalIdBackImg") {
                 self.typeImgFile = .BACK
             } else {
                 self.typeImgFile = .Optional

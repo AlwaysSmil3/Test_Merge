@@ -45,10 +45,22 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
         
         if id.contains("residentAddress") {
-            if let add = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.residentAddress, let city = add.city, let district = add.district, let commune = add.commune {
-                let addr = String(format: "%@ , %@, %@", commune, district, city)
-                self.lblValue?.text = addr
-                let address = Address(city: city, district: district, commune: commune, street: "", zipCode: "", long: 0, lat: 0)
+            var value = ""
+            var addressTemp: Address?
+            if let add = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.residentAddress, let city = add.city, let district = add.district, let commune = add.commune, let street = add.street, city.length() > 0 {
+                value = String(format: "%@ , %@, %@, %@",street, commune, district, city)
+                addressTemp = Address(city: city, district: district, commune: commune, street: street, zipCode: "", long: 0, lat: 0)
+            }
+            
+            if DataManager.shared.loanInfo.userInfo.residentAddress.city.length() > 0 {
+                let add = DataManager.shared.loanInfo.userInfo.residentAddress
+                addressTemp = Address(city: add.city, district: add.district, commune: add.commune, street: add.street, zipCode: "", long: 0, lat: 0)
+                value = String(format: "%@ , %@, %@, %@",
+                               add.street, add.commune, add.district, add.city)
+            }
+            
+            if value.length() > 0, let address = addressTemp {
+                self.lblValue?.text = value
                 DataManager.shared.loanInfo.userInfo.residentAddress = address
             } else {
                 //Cap nhat thong tin thieu
@@ -57,10 +69,22 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
         } else if id.contains("currentAddress") {
-            if let add = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.currentAddress, let city = add.city, let district = add.district, let commune = add.commune {
-                let addr = String(format: "%@ , %@, %@", commune, district, city)
-                self.lblValue?.text = addr
-                let address = Address(city: city, district: district, commune: commune, street: "", zipCode: "", long: 0, lat: 0)
+            var value = ""
+            var addressTemp: Address?
+            if let add = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.currentAddress, let city = add.city, let district = add.district, let commune = add.commune, let street = add.street, city.length() > 0 {
+                value = String(format: "%@ , %@, %@, %@",street, commune, district, city)
+                addressTemp = Address(city: city, district: district, commune: commune, street: street, zipCode: "", long: 0, lat: 0)
+            }
+            
+            if DataManager.shared.loanInfo.userInfo.temporaryAddress.city.length() > 0 {
+                let add = DataManager.shared.loanInfo.userInfo.temporaryAddress
+                addressTemp = Address(city: add.city, district: add.district, commune: add.commune, street: add.street, zipCode: "", long: 0, lat: 0)
+                value = String(format: "%@ , %@, %@, %@",
+                               add.street, add.commune, add.district, add.city)
+            }
+            
+            if value.length() > 0, let address = addressTemp {
+                self.lblValue?.text = value
                 DataManager.shared.loanInfo.userInfo.temporaryAddress = address
             } else {
                 //Cap nhat thong tin thieu
@@ -69,10 +93,22 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
         } else if id.contains("address") {
-            if let add = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.address, let city = add.city, let district = add.district, let commune = add.commune {
-                let addr = String(format: "%@ , %@, %@", commune, district, city)
-                self.lblValue?.text = addr
-                let address = Address(city: city, district: district, commune: commune, street: "", zipCode: "", long: 0, lat: 0)
+            var value = ""
+            var addressTemp: Address?
+            if let add = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.address, let city = add.city, let district = add.district, let commune = add.commune, let street = add.street, city.length() > 0 {
+                value = String(format: "%@ , %@, %@, %@",street, commune, district, city)
+                addressTemp = Address(city: city, district: district, commune: commune, street: street, zipCode: "", long: 0, lat: 0)
+            }
+            
+            if DataManager.shared.loanInfo.jobInfo.address.city.length() > 0 {
+                let add = DataManager.shared.loanInfo.jobInfo.address
+                addressTemp = Address(city: add.city, district: add.district, commune: add.commune, street: add.street, zipCode: "", long: 0, lat: 0)
+                value = String(format: "%@ , %@, %@, %@",
+                               add.street, add.commune, add.district, add.city)
+            }
+            
+            if value.length() > 0, let address = addressTemp {
+                self.lblValue?.text = value
                 DataManager.shared.loanInfo.jobInfo.address = address
             } else {
                 //Cap nhat thong tin thieu

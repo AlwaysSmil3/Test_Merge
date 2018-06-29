@@ -17,8 +17,8 @@ enum API_MESSAGE {
 
 // Giới tính
 enum Gender: Int {
-    case Male = 0
-    case Female = 1
+    case Male = 1
+    case Female = 2
 }
 
 // Số điện thọai người thân
