@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 enum HeaderCellType {
     case TextType
@@ -49,15 +50,34 @@ class LoanStateViewController: UIViewController {
     var activeLoanId: Int = 0
     var bottom_state: BOTTOM_STATE!
     
+    // CoreData
+    var managedContext: NSManagedObjectContext? {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
+        
+        return appDelegate.managedObjectContext
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         
+        //        //Lấy data Local
+        if let context = self.managedContext {
+            FinPlusHelper.fetchCoreData(context: context) {
+                
+            }
+        }
+        
         var id = activeLoan?.status
         var isEnableFooterView = false
         
-        id = activeLoanId
+        if self.activeLoan == nil && self.activeLoanId > 0
+        {
+            id = activeLoanId
+        }
         
         if (hiddenBack)
         {
@@ -76,6 +96,9 @@ class LoanStateViewController: UIViewController {
         
         switch(STATUS_LOAN(rawValue: id!)) {
         case .DRAFT?:
+            if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
+                self.navigationController?.isNavigationBarHidden = true
+            }
             
             headerData = [
                 [
@@ -87,7 +110,7 @@ class LoanStateViewController: UIViewController {
                     "type": HeaderCellType.ButtonType,
                     "text": "Hoàn thiện đơn",
                     "subType": ButtonCellType.NullType,
-                    "target": ""
+                    "target": "update_loan"
                 ],
             ]
             
@@ -102,6 +125,9 @@ class LoanStateViewController: UIViewController {
             ]
             
         case .RISK_PENDING?:
+            if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
+                self.navigationController?.isNavigationBarHidden = true
+            }
             
             headerData = [
                 [
@@ -523,6 +549,7 @@ class LoanStateViewController: UIViewController {
         })
     }
     
+
     // Xác nhận lãi suất
     
     @IBAction func confirm_rate()

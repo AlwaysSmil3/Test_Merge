@@ -37,11 +37,11 @@ class LoanTypeBaseTBCell: UITableViewCell {
     ///
     /// - Parameter pre: <#pre description#>
     func updateInfoFalse(pre: String) {
-        guard let id = DataManager.shared.browwerInfo?.activeLoan?.loanId, id > 0 else {
-            return
-        }
-        self.isNeedUpdate = true
-        self.lblDescriptionNeedUpdate?.text = pre + " không hợp lệ"
+//        guard let id = DataManager.shared.browwerInfo?.activeLoan?.loanId, id > 0 else {
+//            return
+//        }
+//        self.isNeedUpdate = true
+//        self.lblDescriptionNeedUpdate?.text = pre + " không hợp lệ"
     }
     
     

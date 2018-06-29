@@ -58,11 +58,11 @@ enum STATUS_LOAN: Int {
 //
 //    case PAY_TEST_STATUS = 9
     
-    case OTHER = 0
-    case DRAFT = 1 // Khoản vay chưa hoàn thiện (Đang ở trạng thái client tạo đơn vay)
-    case SALE_REVIEW = 2 // Đợi sales duyệt (Chờ sales review đơn vay đầy đủ & hợp lệ)
-    case SALE_PENDING = 3 // Y/c bổ sung thông tin từ sales
-    case RISK_REVIEW = 4 // Thẩm định viên duyệt
+    case OTHER = -1
+    case DRAFT = 0 // Khoản vay chưa hoàn thiện (Đang ở trạng thái client tạo đơn vay)
+    case SALE_REVIEW = 1 // Đợi sales duyệt (Chờ sales review đơn vay đầy đủ & hợp lệ)
+    case SALE_PENDING = 2 // Y/c bổ sung thông tin từ sales
+    case RISK_REVIEW = 3 // Thẩm định viên duyệt
     case RISK_PENDING = 5 // Y/c bổ sung thông tin từ thẩm định viên
     case REJECTED = 6 // Bị từ chối
     case INTEREST_CONFIRM = 7 // Chờ xác nhận lãi suất
