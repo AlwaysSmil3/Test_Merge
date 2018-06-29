@@ -13,8 +13,8 @@ enum Host {
     static let alphaURL = ""
     // mock
 #if DEBUG
-    static let productURL = "http://192.168.104.70:31018/"
-    //static let productURL = "https://90f21a30-3a49-4afb-9df9-378245f98be5.mock.pstmn.io/"
+//    static let productURL = "http://192.168.104.70:31018/"
+    static let productURL = "https://90f21a30-3a49-4afb-9df9-378245f98be5.mock.pstmn.io/"
     //static let productURL = "http://192.168.104.70:31007/" //Cho Loan Service
     //static let productURL = "https://b10644cc-7d66-4541-aa97-770206b05b43.mock.pstmn.io/"
 #else
@@ -44,6 +44,7 @@ enum EndPoint {
     
     enum Loan {
         static let Loans = "loans"
+        static let InvesableLoans = "loans?page=1&limit=50&sort=status.asc&filter=status.8,9"
         static let LoanOTP = "loans/:loanId/otp"
         static let Loan = "loan"
         static let LoanCategories = "loan-categories"

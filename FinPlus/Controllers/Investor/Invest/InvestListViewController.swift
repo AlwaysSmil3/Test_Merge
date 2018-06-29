@@ -9,63 +9,52 @@
 import UIKit
 import CoreData
 
-public enum LoanReliability : Int {
-    case positive1 = 1
-    case positive2 = 2
-    case positive3 = 3
-    case positive4 = 4
-    case nagative1 = 5
-    case nagative2 = 6
-    case nagative3 = 7
-    case nagative4 = 8
-    var title : String {
-        switch self {
-        case .positive1:
-            return "A"
-        case .positive2:
-            return "B"
-        case .positive3:
-            return "C"
-        case .positive4:
-            return "D"
-        case .nagative1:
-            return "E"
-        case .nagative2:
-            return "F"
-        case .nagative3:
-                return "G"
-        case .nagative4:
-            return "H"
-        }
-    }
+public enum LoanReliability : String {
+    
+    case A1 = "A1"
+    case A2 = "A2"
+    case A3 = "A3"
+    case B1 = "B1"
+    case B2 = "B2"
+    case B3 = "B3"
+    case C1 = "C1"
+    case C2 = "C2"
+    case C3 = "C3"
+    case D = "D"
+
     var color : UIColor {
         switch self {
-        case .positive1:
+        case .A1:
             return POSITIVE1_COLOR
-        case .positive2:
+        case .A2:
             return POSITIVE2_COLOR
-        case .positive3:
+        case .A3:
             return POSITIVE3_COLOR
-        case .positive4:
+        case .B1:
             return POSITIVE4_COLOR
-        case .nagative1:
+        case .B2:
+            return POSITIVE5_COLOR
+        case .B3:
             return NAGATIVE1_COLOR
-        case .nagative2:
+        case .C1:
             return NAGATIVE2_COLOR
-        case .nagative3:
+        case .C2:
             return NAGATIVE3_COLOR
-        case .nagative4:
+        case .C3:
             return NAGATIVE4_COLOR
+        case .D:
+            return NAGATIVE5_COLOR
         }
     }
 }
 
 class InvestListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    var loanCategories : [LoanCategories] = [LoanCategories]()
     @IBOutlet weak var subTitleLb: UILabel!
     @IBOutlet weak var titleLb: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    var allLoansArray : [DemoLoanModel] = [DemoLoanModel]()
+    var allLoansDemoArray : [DemoLoanModel] = [DemoLoanModel]()
+    var allLoansArray : [BrowwerActiveLoan] = [BrowwerActiveLoan]()
     var mode = false
     // CoreData
     var managedContext: NSManagedObjectContext? {
@@ -78,6 +67,21 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getLoanCategories()
+        self.fetchCoreData {
+            self.loanCategories = DataManager.shared.loanCategories
+//            DataManager.shared.loanCate
+//            if loanCategories.count > 0 {
+//                for loanCategoryDetail in loanCategories {
+//                    if (loanCategoryDetail.id! == cellData.id) {
+//                        if let imageUrl = loanCategoryDetail.imageUrl {
+//                            let urlString = hostLoan + imageUrl
+//                            let url = URL(string: urlString)
+//                            self.loanTypeImg.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic_homeBrower_group1"))
+//                        }
+//                    }
+//                }
+//            }
+        }
         self.title = "Đầu tư"
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -87,6 +91,46 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
         //self.getAllLoans()
         updateData()
         // Do any additional setup after loading the view.
+    }
+
+    func fetchCoreData(completion: () -> Void) {
+        guard let context = self.managedContext else { return }
+        //Lay list entity
+        let list = FinPlusHelper.fetchRecordsForEntity("LoanCategory", inManagedObjectContext: context)
+        guard list.count > 0 else { return }
+        DataManager.shared.loanCategories.removeAll()
+        for entity in list {
+            var loan = LoanCategories(object: NSObject())
+            if let title = entity.value(forKey: CDLoanCategoryTitle) as? String {
+                loan.title = title
+            }
+            if let desc = entity.value(forKey: CDLoanCategoryDescription) as? String {
+                loan.descriptionValue = desc
+            }
+            if let id = entity.value(forKey: CDLoanCategoryID) as? Int16 {
+                loan.id = id
+            }
+            if let max = entity.value(forKey: CDLoanCategoryMax) as? Int32 {
+                loan.max = max
+            }
+            if let min = entity.value(forKey: CDLoanCategoryMin) as? Int32 {
+                loan.min = min
+            }
+            if let termMax = entity.value(forKey: CDLoanCategoryTermMax) as? Int16 {
+                loan.termMax = termMax
+            }
+            if let termMin = entity.value(forKey: CDLoanCategoryTermMin) as? Int16 {
+                loan.termMin = termMin
+            }
+            if let interestRate = entity.value(forKey: CDLoanCategoryInterestRate) as? Double {
+                loan.interestRate = interestRate
+            }
+            if let url = entity.value(forKey: CDLoanCategoryImageURL) as? String {
+                loan.imageUrl = url
+            }
+            DataManager.shared.loanCategories.append(loan)
+        }
+        completion()
     }
 
 
@@ -148,7 +192,7 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
         if self.navigationController?.isNavigationBarHidden == false {
             self.navigationController?.isNavigationBarHidden = true
         }
-        self.getAllLoans()
+        self.getInvesableLoans()
         self.mode = UserDefaults.standard.bool(forKey: APP_MODE)
         setupMode()
     }
@@ -160,29 +204,34 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
 
     func updateData() {
         // fixed data to test UI
-        let loan1 = DemoLoanModel(id: 1, reliability: .positive1, name: "Vay cho sinh viên", interestRate: 20, amount: 5000000, alreadyAmount: 0, dueMonth: 6)
-        let loan2 = DemoLoanModel(id: 2, reliability: .positive2, name: "Vay mua điện thoại", interestRate: 22, amount: 12000000, alreadyAmount: 75, dueMonth: 12)
-        let loan3 = DemoLoanModel(id: 3, reliability: .positive3, name: "Vay mua xe máy", interestRate: 22, amount: 12000000, alreadyAmount: 50, dueMonth: 12)
-        let loan4 = DemoLoanModel(id: 4, reliability: .positive4, name: "Vay mua điện thoại", interestRate: 25, amount: 12000000, alreadyAmount: 45, dueMonth: 6)
-        let loan5 = DemoLoanModel(id: 5, reliability: .nagative1, name: "Vay mua điện thoại", interestRate: 28, amount: 12000000, alreadyAmount: 30, dueMonth: 12)
-        let loan6 = DemoLoanModel(id: 6, reliability: .nagative2, name: "Vay mua điện thoại", interestRate: 30, amount: 12000000, alreadyAmount: 15, dueMonth: 6)
-        let loan7 = DemoLoanModel(id: 7, reliability: .nagative3, name: "Vay mua điện thoại", interestRate: 35, amount: 12000000, alreadyAmount: 90, dueMonth: 6)
-        let loan8 = DemoLoanModel(id: 8, reliability: .nagative4, name: "Vay mua điện thoại", interestRate: 40, amount: 12000000, alreadyAmount: 80, dueMonth: 12)
-        self.allLoansArray.append(loan1)
-        self.allLoansArray.append(loan2)
-        self.allLoansArray.append(loan3)
-        self.allLoansArray.append(loan4)
-        self.allLoansArray.append(loan5)
-        self.allLoansArray.append(loan6)
-        self.allLoansArray.append(loan7)
-        self.allLoansArray.append(loan8)
+        let loan1 = DemoLoanModel(id: 1, reliability: .A1, name: "Vay cho sinh viên", interestRate: 20, amount: 5000000, alreadyAmount: 0, dueMonth: 6)
+        let loan2 = DemoLoanModel(id: 2, reliability: .A2, name: "Vay mua điện thoại", interestRate: 22, amount: 12000000, alreadyAmount: 75, dueMonth: 12)
+        let loan3 = DemoLoanModel(id: 3, reliability: .A3, name: "Vay mua xe máy", interestRate: 22, amount: 12000000, alreadyAmount: 50, dueMonth: 12)
+        let loan4 = DemoLoanModel(id: 4, reliability: .B1, name: "Vay mua điện thoại", interestRate: 25, amount: 12000000, alreadyAmount: 45, dueMonth: 6)
+        let loan5 = DemoLoanModel(id: 5, reliability: .B2, name: "Vay mua điện thoại", interestRate: 28, amount: 12000000, alreadyAmount: 30, dueMonth: 12)
+        let loan6 = DemoLoanModel(id: 6, reliability: .B3, name: "Vay mua điện thoại", interestRate: 30, amount: 12000000, alreadyAmount: 15, dueMonth: 6)
+        let loan7 = DemoLoanModel(id: 7, reliability: .C1, name: "Vay mua điện thoại", interestRate: 35, amount: 12000000, alreadyAmount: 90, dueMonth: 6)
+        let loan8 = DemoLoanModel(id: 8, reliability: .C2, name: "Vay mua điện thoại", interestRate: 40, amount: 12000000, alreadyAmount: 80, dueMonth: 12)
+        let loan9 = DemoLoanModel(id: 8, reliability: .C3, name: "Vay mua điện thoại", interestRate: 40, amount: 12000000, alreadyAmount: 80, dueMonth: 12)
+        let loan10 = DemoLoanModel(id: 8, reliability: .D, name: "Vay mua điện thoại", interestRate: 40, amount: 12000000, alreadyAmount: 80, dueMonth: 12)
+        self.allLoansDemoArray.append(loan1)
+        self.allLoansDemoArray.append(loan2)
+        self.allLoansDemoArray.append(loan3)
+        self.allLoansDemoArray.append(loan4)
+        self.allLoansDemoArray.append(loan5)
+        self.allLoansDemoArray.append(loan6)
+        self.allLoansDemoArray.append(loan7)
+        self.allLoansDemoArray.append(loan8)
+        self.allLoansDemoArray.append(loan9)
+        self.allLoansDemoArray.append(loan10)
     }
 
     // Lấy danh sách tất cả các khoản vay
-    private func getAllLoans() {
-        APIClient.shared.getAllLoans()
+    private func getInvesableLoans() {
+        APIClient.shared.getInvesableLoans()
             .done(on: DispatchQueue.main) { model in
                  print(model)
+                self.allLoansArray = model
 //                self.allLoansArray = model
                 self.tableView.reloadData()
                 // let _ : BrowwerActiveLoan = model
@@ -208,6 +257,7 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
 
         if let cell = tableView.dequeueReusableCell(withIdentifier: "InvestTableViewCell", for: indexPath) as? InvestTableViewCell {
             cell.cellData = cellData
+            cell.loanCategories = self.loanCategories
             cell.updateCellView()
             return cell
         }
@@ -220,7 +270,19 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
         let investStoryBoard = UIStoryboard(name: "Invest", bundle: nil)
         let investDetailVC = investStoryBoard.instantiateViewController(withIdentifier: "InvestDetailViewController") as! InvestDetailViewController
         investDetailVC.investData = cellData
-        self.navigationController?.pushViewController(investDetailVC, animated: true)
+        if self.loanCategories.count == 0 {
+            self.fetchCoreData {
+                investDetailVC.loanCategories = self.loanCategories
+                self.navigationController?.pushViewController(investDetailVC, animated: true)
+
+            }
+        } else {
+            investDetailVC.loanCategories = self.loanCategories
+            self.navigationController?.pushViewController(investDetailVC, animated: true)
+        }
+//        print(self.loanCategories.count)
+//        investDetailVC.loanCategories = self.loanCategories
+//        self.navigationController?.pushViewController(investDetailVC, animated: true)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

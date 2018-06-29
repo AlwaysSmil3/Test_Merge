@@ -63,6 +63,35 @@ extension APIClient {
                 .catch { error in seal.reject(error)}
         }
     }
+
+    /*
+     GET Lấy danh sách các khoản vay có thể đầu tư
+     */
+    func getInvesableLoans() -> Promise<[BrowwerActiveLoan]> {
+        return Promise<[BrowwerActiveLoan]> { seal in
+            let endPoint = EndPoint.Loan.InvesableLoans
+
+            getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: false)
+                .done { json in
+                    var array: [BrowwerActiveLoan] = []
+                    print(endPoint)
+                    print("jsondata: \(json)")
+                    if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
+                        for d in data {
+                            let model1 = BrowwerActiveLoan(object: d)
+                            array.append(model1)
+                        }
+                    } else if let data = json[API_RESPONSE_RETURN_DATA] as? [BrowwerActiveLoan] {
+                        print("123")
+                    } else {
+                        print(json[API_RESPONSE_RETURN_DATA].self)
+                    }
+                    seal.fulfill(array)
+
+                }
+                .catch { error in seal.reject(error)}
+        }
+    }
     
     /*
      GET Lấy danh sách khoản vay của người dùng

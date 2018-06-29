@@ -97,12 +97,15 @@ class LoginViewController: BaseViewController {
                         if let accountType = data.accountType {
                             if accountType == "BORROWER" {
                                 self?.accountType = .Borrower
-//                                self?.pushToHomeVC(userType: .Borrower)
                             } else if accountType == "INVESTOR" {
                                 self?.accountType = .Investor
-//                                self?.pushToHomeVC(userType: .Investor)
                             }
                         }
+                    }
+                    if self?.accountType == .Investor {
+                        UserDefaults.standard.set(true, forKey: IS_INVESTOR)
+                    } else {
+                        UserDefaults.standard.set(false, forKey: IS_INVESTOR)
                     }
                     // check user type: investor or borrwer
                     // push to home viewcontroller
@@ -124,14 +127,18 @@ class LoginViewController: BaseViewController {
                         if let accountType = data.accountType {
                             if accountType == "BORROWER" {
                                 self?.accountType = .Borrower
-//                                self?.pushToHomeVC(userType: .Borrower)
                             } else if accountType == "INVESTOR" {
                                 self?.accountType = .Investor
-//                                self?.pushToHomeVC(userType: .Investor)
                             }
                         }
-                        // fix to test investor
-//                        self?.accountType = .None
+                        if self?.accountType == .Investor {
+                            UserDefaults.standard.set(true, forKey: IS_INVESTOR)
+                        } else {
+                            UserDefaults.standard.set(false, forKey: IS_INVESTOR)
+                        }
+                        // fix to test
+                        self?.accountType = .None
+                        
                     }
 
                     //Cap nhat push notification token

@@ -20,7 +20,7 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
     @IBOutlet weak var investDetailTitleLb: UILabel!
     @IBOutlet weak var acceptTv: UITextView!
     var isAcceptPolicy = false
-    var investDetail : DemoLoanModel!
+    var investDetail : BrowwerActiveLoan!
     var mode = false
     @IBOutlet weak var acceptPolicyBtn: UIButton!
     @IBOutlet weak var containView: UIView!
@@ -52,7 +52,13 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
         acceptTv.delegate = self
         acceptTv.isSelectable = true
         acceptTv.isEditable = false
-        let avaiableAmount = investDetail.amount - (investDetail.alreadyAmount / 100 * investDetail.amount)
+        var avaiableAmount = 0
+        if let temp = investDetail.amount {
+            avaiableAmount = Int(temp)
+        }
+
+
+//        let avaiableAmount = investDetail.amount - (investDetail.alreadyAmount / 100 * investDetail.amount)
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
         formatter.numberStyle = .currency
@@ -60,7 +66,7 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
         if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
             avaiableAmountStr = formattedTipAmount
         } else {
-            avaiableAmountStr = avaiableAmount.toString()
+            avaiableAmountStr = "\(avaiableAmount)"
         }
         self.amountTf.text = avaiableAmountStr
         // Do any additional setup after loading the view.
@@ -150,7 +156,11 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
 //        guard let field_ = self.field, let data = field_.data else { return }
         let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
         popup.titleString = "Số tiền đầu tư"
-        let avaiableAmount = investDetail.amount - (investDetail.alreadyAmount / 100 * investDetail.amount)
+        var avaiableAmount = 0
+        if let temp = investDetail.amount {
+            avaiableAmount = Int(temp)
+        }
+//        let avaiableAmount = investDetail.amount - (investDetail.alreadyAmount / 100 * investDetail.amount)
 
         if Int(avaiableAmount) > unit {
             let maxUnit = Int(avaiableAmount) / unit
