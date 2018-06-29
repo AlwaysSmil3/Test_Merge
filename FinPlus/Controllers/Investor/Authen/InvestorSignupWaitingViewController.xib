@@ -34,20 +34,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vaz-x0-aSA">
-                    <rect key="frame" x="32" y="207.5" width="311" height="72"/>
+                    <rect key="frame" x="32" y="158" width="311" height="72"/>
                     <string key="text">Hồ sơ của bạn sẽ được quản trị viên của chúng tôi phê duyệt trong vòng 24h. Xin vui lòng chờ và bật thông báo để biết được thông tin sớm nhất. Cám ơn bạn.</string>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
                     <color key="textColor" red="0.8901960784313725" green="0.92156862745098034" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hồ sơ đang chờ duyệt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ev7-1f-9C2">
-                    <rect key="frame" x="32" y="160" width="311" height="31.5"/>
+                    <rect key="frame" x="32" y="110.5" width="311" height="31.5"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="26"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kal-i0-zl8">
-                    <rect key="frame" x="32" y="311" width="311" height="44"/>
+                    <rect key="frame" x="32" y="261.5" width="311" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="sOP-Oc-AFw"/>
@@ -66,7 +66,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTE-iq-WhC">
-                    <rect key="frame" x="32" y="363" width="311" height="44"/>
+                    <rect key="frame" x="32" y="313.5" width="311" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="Gjt-An-57z"/>
                     </constraints>
@@ -90,7 +90,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXa-XO-KOR">
-                    <rect key="frame" x="32" y="415" width="311" height="44"/>
+                    <rect key="frame" x="32" y="365.5" width="311" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="fha-hB-rnh"/>
                     </constraints>
@@ -114,7 +114,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNm-Bb-Keo">
-                    <rect key="frame" x="32" y="467" width="311" height="44"/>
+                    <rect key="frame" x="32" y="417.5" width="311" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="lZw-vW-X1m"/>
                     </constraints>
@@ -149,7 +149,7 @@
                 <constraint firstItem="kal-i0-zl8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="Chc-HE-hga"/>
                 <constraint firstItem="bXa-XO-KOR" firstAttribute="top" secondItem="yTE-iq-WhC" secondAttribute="bottom" constant="8" id="EXS-p7-9m3"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DNm-Bb-Keo" secondAttribute="trailing" constant="32" id="HRf-TZ-d4x"/>
-                <constraint firstItem="kal-i0-zl8" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="MmR-7T-7Yn"/>
+                <constraint firstItem="kal-i0-zl8" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-50" id="MmR-7T-7Yn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bXa-XO-KOR" secondAttribute="trailing" constant="32" id="a1x-hy-HDB"/>
                 <constraint firstItem="DNm-Bb-Keo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="bIg-nr-vHw"/>
                 <constraint firstItem="DNm-Bb-Keo" firstAttribute="top" secondItem="bXa-XO-KOR" secondAttribute="bottom" constant="8" id="bhL-Sz-1rQ"/>
