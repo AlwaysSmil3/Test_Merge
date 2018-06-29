@@ -65,12 +65,14 @@ class LoanStateViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        //        //Lấy data Local
+        //Lấy data Local
         if let context = self.managedContext {
             FinPlusHelper.fetchCoreData(context: context) {
                 
             }
         }
+        //Map DataLoan
+        DataManager.shared.mapDataBrowwerAndLoan()
         
         var id = activeLoan?.status
         var isEnableFooterView = false

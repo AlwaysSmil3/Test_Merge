@@ -31,9 +31,9 @@ class ListWalletViewController: BaseViewController {
     var walletAction: WalletAction = .WalletDetail
     let cellIdentifier = "cell"
     private var listWallet: NSMutableArray = [
-        AccountBank(wID: 0, wType: 1, wAccountName: "Nguyen Van A", wBankName: "Vietcombank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "vcb_selected")),
-        AccountBank(wID: 0, wType: 2, wAccountName: "Nguyen Van B", wBankName: "Viettinbank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "viettin_selected")),
-        AccountBank(wID: 0, wType: 3, wAccountName: "Nguyen Van C", wBankName: "Techcombank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "tech_selected")),
+        AccountBank(wID: 1, wType: 1, wAccountName: "Nguyen Van A", wBankName: "Vietcombank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "vcb_selected")),
+        AccountBank(wID: 2, wType: 2, wAccountName: "Nguyen Van B", wBankName: "Viettinbank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "viettin_selected")),
+        AccountBank(wID: 3, wType: 3, wAccountName: "Nguyen Van C", wBankName: "Techcombank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "tech_selected")),
     ]
     
     //CaoHai tra ve du lieu bank khi chon bank
@@ -168,6 +168,7 @@ extension ListWalletViewController: UITableViewDelegate {
                 let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
                 DataManager.shared.loanInfo.walletId = wallet.id!
                 DataManager.shared.loanInfo.bankId = Int(wallet.id!)
+                self.navigationController?.isNavigationBarHidden = true
                 self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
                 break
             case .RegisterInvestor:
