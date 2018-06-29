@@ -22,8 +22,11 @@ class SignContractViewController: UIViewController, UIWebViewDelegate {
         // Do any additional setup after loading the view.
         
         self.borderView.layer.borderWidth = 0.5
-        self.borderView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        self.borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         self.borderView.layer.cornerRadius = 8
+        
+        self.webView.scrollView.showsVerticalScrollIndicator = false;
+        self.webView.scrollView.showsHorizontalScrollIndicator = false;
         
         if (isSigned)
         {

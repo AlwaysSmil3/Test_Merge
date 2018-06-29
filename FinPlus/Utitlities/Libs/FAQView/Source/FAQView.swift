@@ -393,7 +393,7 @@ class FAQViewCell: UITableViewCell {
     self.answerTextView.textColor = configuration.answerTextColor
     self.questionLabel.font = configuration.questionTextFont
     self.answerTextView.font = configuration.answerTextFont
-    self.indicatorImageView.tintColor = configuration.separatorColor
+    self.indicatorImageView.tintColor = configuration.questionTextColor
     if let dataDetectorTypes = configuration.dataDetectorTypes {
       self.answerTextView.dataDetectorTypes = dataDetectorTypes
     }

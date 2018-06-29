@@ -33,10 +33,10 @@ class FAQViewController: UIViewController {
         {
             self.view.backgroundColor = DARK_MODE_BACKGROUND_COLOR
             faqView.backgroundColor = DARK_MODE_BACKGROUND_COLOR
-            faqView.layer.borderColor = DARK_MODE_SUB_TEXT_COLOR.cgColor
+            faqView.layer.borderColor = DARK_MODE_BORDER_COLOR.cgColor
             faqView.questionTextColor = DARK_MODE_MAIN_TEXT_COLOR
             faqView.answerTextColor = DARK_MODE_SUB_TEXT_COLOR
-            faqView.separatorColor = DARK_MODE_SUB_TEXT_COLOR
+            faqView.separatorColor = DARK_MODE_BORDER_COLOR
             faqView.viewBackgroundColor = DARK_MODE_BACKGROUND_COLOR
             faqView.cellBackgroundColor = DARK_MODE_BACKGROUND_COLOR
             faqView.tableView.backgroundColor = DARK_MODE_BACKGROUND_COLOR
@@ -46,10 +46,10 @@ class FAQViewController: UIViewController {
         {
             self.view.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
             faqView.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
-            faqView.layer.borderColor = LIGHT_MODE_SUB_TEXT_COLOR.cgColor
+            faqView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
             faqView.questionTextColor = LIGHT_MODE_MAIN_TEXT_COLOR
             faqView.answerTextColor = LIGHT_MODE_SUB_TEXT_COLOR
-            faqView.separatorColor = LIGHT_MODE_SUB_TEXT_COLOR
+            faqView.separatorColor = LIGHT_MODE_BORDER_COLOR
             faqView.viewBackgroundColor = LIGHT_MODE_BACKGROUND_COLOR
             faqView.cellBackgroundColor = LIGHT_MODE_BACKGROUND_COLOR
             faqView.tableView.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR

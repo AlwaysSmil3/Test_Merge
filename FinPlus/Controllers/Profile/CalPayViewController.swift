@@ -76,7 +76,7 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         spreadsheetView.delegate = self
         
         spreadsheetView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        spreadsheetView.backgroundColor = UIColor(hexString: "#E3EBF0")
+        spreadsheetView.backgroundColor = LIGHT_MODE_BORDER_COLOR
         spreadsheetView.intercellSpacing = CGSize(width: 0, height: 1)
         spreadsheetView.gridStyle = .none
         

@@ -34,25 +34,25 @@ class AddWalletViewController: UIViewController {
         
         vcbBtn.layer.borderWidth = 0.5
         vcbBtn.layer.cornerRadius = 8
-        vcbBtn.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        vcbBtn.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         vcbBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         vcbBtn.setTitle(NSLocalizedString("Vietcombank", comment: ""), for: .normal)
         
         viettinBtn.layer.borderWidth = 0.5
         viettinBtn.layer.cornerRadius = 8
-        viettinBtn.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        viettinBtn.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         viettinBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         viettinBtn.setTitle(NSLocalizedString("Viettinbank", comment: ""), for: .normal)
         
         techBtn.layer.borderWidth = 0.5
         techBtn.layer.cornerRadius = 8
-        techBtn.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        techBtn.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         techBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         techBtn.setTitle(NSLocalizedString("Techcombank", comment: ""), for: .normal)
         
         agriBtn.layer.borderWidth = 0.5
         agriBtn.layer.cornerRadius = 8
-        agriBtn.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        agriBtn.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         agriBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         agriBtn.setTitle(NSLocalizedString("Agribank", comment: ""), for: .normal)
         
@@ -145,7 +145,7 @@ class AddWalletViewController: UIViewController {
         }
         else
         {
-            button.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+            button.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
             button.isSelected = false
         }
     }

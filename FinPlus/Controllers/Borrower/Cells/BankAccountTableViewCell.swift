@@ -44,7 +44,7 @@ class BankAccountTableViewCell: UITableViewCell {
             }
         } else {
             self.selectImg.image = #imageLiteral(resourceName: "ic_radio_off")
-            self.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+            self.containView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
             if cellData.bankType == 1 {
                 self.walletImg.image = #imageLiteral(resourceName: "vcb")
             } else {

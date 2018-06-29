@@ -26,7 +26,7 @@ class LoanTypeBaseTBCell: UITableViewCell {
             if let isNeed = self.isNeedUpdate, isNeed {
                 self.underLine?.backgroundColor = UIColor(hexString: "#DA3535")
             } else {
-                self.underLine?.backgroundColor = UIColor(hexString: "#E3EBF0")
+                self.underLine?.backgroundColor = LIGHT_MODE_BORDER_COLOR
                 self.lblDescriptionNeedUpdate?.text = ""
             }
         }

@@ -14,7 +14,7 @@ class InvestContractViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Hợp đồng vay"
-        self.tableView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        self.tableView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
 
         // Do any additional setup after loading the view.
     }
