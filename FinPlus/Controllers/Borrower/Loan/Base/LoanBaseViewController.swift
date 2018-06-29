@@ -174,13 +174,6 @@ class LoanBaseViewController: BaseViewController {
             
             self.uploadData(img: img)
             
-            guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
-            self.mainTBView?.deselectRow(at: indexPath, animated: true)
-            if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeFileTBCell {
-                cell.imgValue?.image = img
-                cell.imgAdd?.isHidden = true
-                cell.lblDescription?.isHidden = true
-            }
         }
     }
     
@@ -195,13 +188,30 @@ class LoanBaseViewController: BaseViewController {
         guard let data = dataImg else { return }
         let endPoint = "loans/" + "\(loanID)/" + "file"
         
-        self.handleLoadingView(isShow: true)
+        guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
+        self.mainTBView?.deselectRow(at: indexPath, animated: true)
+        guard let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeFileTBCell else {
+            return
+        }
+        cell.activityIndicator.startAnimating()
+
         APIClient.shared.upload(type: type, typeMedia: "image", endPoint: endPoint, imagesData: [data], parameters: ["" : ""], onCompletion: { (response) in
-            self.handleLoadingView(isShow: false)
+
+            cell.activityIndicator.stopAnimating()
             print("Upload \(String(describing: response))")
+            
+            guard let res = response, let data = res["data"] as? [JSONDictionary], data.count > 0 else {
+                if let re = response, let message = re[API_RESPONSE_RETURN_MESSAGE] as? String {
+                    self.showToastWithMessage(message: message)
+                }
+                
+                return
+            }
             self.showToastWithMessage(message: "Upload thành công")
             
-            guard let res = response, let data = res["data"] as? [JSONDictionary], data.count > 0 else { return }
+            cell.imgValue?.image = img
+            cell.imgAdd?.isHidden = true
+            cell.lblDescription?.isHidden = true
             
             switch type {
             case .ALL:
