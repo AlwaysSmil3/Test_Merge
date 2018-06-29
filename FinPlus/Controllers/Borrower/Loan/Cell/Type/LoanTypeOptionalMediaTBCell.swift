@@ -70,7 +70,13 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
             UIApplication.shared.topViewController()!.handleLoadingView(isShow: false)
             print("Upload \(String(describing: response))")
             
-            guard let res = response, let data = res["data"] as? [JSONDictionary], data.count > 0 else { return }
+            guard let res = response, let data = res["data"] as? [JSONDictionary], data.count > 0 else {
+                if let re = response, let message = re[API_RESPONSE_RETURN_MESSAGE] as? String {
+                    UIApplication.shared.topViewController()!.showToastWithMessage(message: message)
+                }
+                
+                return
+            }
             UIApplication.shared.topViewController()!.showToastWithMessage(message: "Upload thành công")
             
             self.dataSourceCollection.append(img)
