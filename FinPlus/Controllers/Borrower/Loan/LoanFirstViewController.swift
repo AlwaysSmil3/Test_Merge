@@ -72,11 +72,6 @@ class LoanFirstViewController: BaseViewController {
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = false
-        super.viewWillDisappear(animated)
-    }
-    
     
     /// Update data khi đã tạo 1 loan
     private func updateData() {

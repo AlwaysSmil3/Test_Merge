@@ -435,6 +435,11 @@ class LoanStateViewController: UIViewController {
         
         self.view.layoutIfNeeded()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+        super.viewWillDisappear(animated)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
