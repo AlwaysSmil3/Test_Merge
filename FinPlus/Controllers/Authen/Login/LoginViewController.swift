@@ -130,7 +130,10 @@ class LoginViewController: BaseViewController {
 //                                self?.pushToHomeVC(userType: .Investor)
                             }
                         }
+                        // fix to test investor
+//                        self?.accountType = .None
                     }
+
                     //Cap nhat push notification token
                     // get config
 //                    self?.getConfig()

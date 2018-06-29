@@ -156,15 +156,61 @@ Hãy chọn 1 trong những khoản vay để đầu tư</string>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dVf-dv-wkA">
-                                <rect key="frame" x="16" y="28" width="343" height="562"/>
+                                <rect key="frame" x="16" y="64" width="343" height="526"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5X3-aX-yqA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZh-jj-f9y">
+                                        <rect key="frame" x="281" y="8" width="86" height="48"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="86" id="Rnl-Sh-UJT"/>
+                                            <constraint firstAttribute="height" constant="48" id="yrB-ac-W6e"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCd-du-20d" customClass="AnimatableButton" customModule="IBAnimatable">
+                                        <rect key="frame" x="8" y="16" width="99" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="ADf-cV-UWK"/>
+                                            <constraint firstAttribute="width" constant="99" id="gB2-rt-cLF"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="6" maxX="0.0" maxY="6"/>
+                                        <state key="normal" image="ic_back"/>
+                                        <connections>
+                                            <action selector="backAction:" destination="UrX-gk-p1j" eventType="touchUpInside" id="LEr-sl-Ht9"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chi tiết khoản vay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjp-nu-F2j">
+                                        <rect key="frame" x="115" y="8" width="158" height="48"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="LZh-jj-f9y" firstAttribute="leading" secondItem="hjp-nu-F2j" secondAttribute="trailing" constant="8" id="0Yl-ur-Ioy"/>
+                                    <constraint firstItem="LZh-jj-f9y" firstAttribute="centerY" secondItem="5X3-aX-yqA" secondAttribute="centerY" id="Hv3-ik-IgK"/>
+                                    <constraint firstItem="hjp-nu-F2j" firstAttribute="top" secondItem="5X3-aX-yqA" secondAttribute="top" constant="16" id="IEq-eb-dbp"/>
+                                    <constraint firstItem="YCd-du-20d" firstAttribute="leading" secondItem="5X3-aX-yqA" secondAttribute="leading" constant="8" id="cOw-BW-23p"/>
+                                    <constraint firstItem="hjp-nu-F2j" firstAttribute="leading" secondItem="YCd-du-20d" secondAttribute="trailing" constant="8" id="eHj-ty-LGh"/>
+                                    <constraint firstAttribute="bottom" secondItem="YCd-du-20d" secondAttribute="bottom" constant="4" id="k1S-tq-AlY"/>
+                                    <constraint firstAttribute="height" constant="64" id="lqM-bQ-DWW"/>
+                                    <constraint firstAttribute="bottom" secondItem="hjp-nu-F2j" secondAttribute="bottom" constant="8" id="qNa-g1-bfk"/>
+                                    <constraint firstAttribute="trailing" secondItem="LZh-jj-f9y" secondAttribute="trailing" constant="8" id="z4P-KS-5ko"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dVf-dv-wkA" firstAttribute="top" secondItem="WY8-Zr-kjW" secondAttribute="top" constant="8" id="AuW-pM-Lgf"/>
+                            <constraint firstItem="5X3-aX-yqA" firstAttribute="leading" secondItem="WY8-Zr-kjW" secondAttribute="leading" id="4Dw-vm-Elf"/>
                             <constraint firstItem="f24-mA-b8D" firstAttribute="top" secondItem="dVf-dv-wkA" secondAttribute="bottom" constant="16" id="FJ0-KL-8RH"/>
+                            <constraint firstItem="5X3-aX-yqA" firstAttribute="trailing" secondItem="WY8-Zr-kjW" secondAttribute="trailing" id="P0n-o1-PP5"/>
                             <constraint firstItem="dVf-dv-wkA" firstAttribute="leading" secondItem="WY8-Zr-kjW" secondAttribute="leading" constant="16" id="Pxs-9I-z4S"/>
+                            <constraint firstItem="5X3-aX-yqA" firstAttribute="top" secondItem="S9g-O8-aqy" secondAttribute="top" id="djR-lg-JfT"/>
+                            <constraint firstItem="dVf-dv-wkA" firstAttribute="top" secondItem="5X3-aX-yqA" secondAttribute="bottom" id="gus-fm-LYU"/>
                             <constraint firstItem="WY8-Zr-kjW" firstAttribute="trailing" secondItem="f24-mA-b8D" secondAttribute="trailing" constant="16" id="hCP-9N-HqW"/>
                             <constraint firstItem="WY8-Zr-kjW" firstAttribute="bottom" secondItem="f24-mA-b8D" secondAttribute="bottom" constant="16" id="pVM-n5-Ly1"/>
                             <constraint firstItem="WY8-Zr-kjW" firstAttribute="trailing" secondItem="dVf-dv-wkA" secondAttribute="trailing" constant="16" id="t1g-pW-mOg"/>
@@ -183,6 +229,7 @@ Hãy chọn 1 trong những khoản vay để đầu tư</string>
     </scenes>
     <resources>
         <image name="bg_button_enable_login" width="311" height="44"/>
+        <image name="ic_back" width="20" height="18"/>
         <image name="ic_down_green" width="8" height="5"/>
         <image name="ic_logo" width="109" height="14"/>
     </resources>

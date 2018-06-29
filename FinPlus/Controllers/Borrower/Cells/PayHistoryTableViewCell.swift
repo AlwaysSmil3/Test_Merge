@@ -57,7 +57,7 @@ class PayHistoryTableViewCell: UITableViewCell {
     }
 
     func notYetCellView() {
-        statusDesLb.text = "Chưa đến lượt"
+        statusDesLb.text = "Chưa đến đợt"
         statusDesLb.textColor = UIColor.black
         timeLb.textColor = UIColor.black
         payDateLb.textColor = UIColor.black

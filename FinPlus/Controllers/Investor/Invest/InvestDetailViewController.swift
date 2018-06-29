@@ -26,6 +26,9 @@ class InvestDetailViewController: UIViewController, UITableViewDelegate, UITable
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func backAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
