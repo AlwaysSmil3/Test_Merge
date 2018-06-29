@@ -153,6 +153,11 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
         setupMode()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+
     func updateData() {
         // fixed data to test UI
         let loan1 = DemoLoanModel(id: 1, reliability: .positive1, name: "Vay cho sinh viên", interestRate: 20, amount: 5000000, alreadyAmount: 0, dueMonth: 6)

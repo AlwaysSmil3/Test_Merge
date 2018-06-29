@@ -63,9 +63,29 @@
                     <color key="textColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D83-mU-GZr">
+                    <rect key="frame" x="32" y="363" width="311" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="3PA-Nk-KF0"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
+                    <state key="normal" title="Back">
+                        <color key="titleColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="backAction:" destination="-1" eventType="touchUpInside" id="afP-HX-kh5"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="D83-mU-GZr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="0OA-1z-zxO"/>
                 <constraint firstItem="zfY-7R-rmh" firstAttribute="top" secondItem="0Fy-Et-Usx" secondAttribute="bottom" constant="16" id="9tw-iG-uM5"/>
                 <constraint firstItem="zfY-7R-rmh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="AXw-La-WsC"/>
                 <constraint firstItem="SsX-Na-nZQ" firstAttribute="top" secondItem="zfY-7R-rmh" secondAttribute="bottom" constant="32" id="G6x-3P-mnU"/>
@@ -73,8 +93,10 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0Fy-Et-Usx" secondAttribute="trailing" constant="32" id="PF7-Qn-Jot"/>
                 <constraint firstItem="0Fy-Et-Usx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="R5v-j6-VJr"/>
                 <constraint firstItem="SsX-Na-nZQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="XHs-Og-PfQ"/>
+                <constraint firstItem="D83-mU-GZr" firstAttribute="top" secondItem="SsX-Na-nZQ" secondAttribute="bottom" constant="8" id="ZQa-o7-B4B"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zfY-7R-rmh" secondAttribute="trailing" constant="32" id="b5x-Cb-eOV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ewt-4e-oK2" secondAttribute="trailing" id="dsB-eA-Nai"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="D83-mU-GZr" secondAttribute="trailing" constant="32" id="dwv-fK-MaH"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ewt-4e-oK2" secondAttribute="bottom" id="hyt-LP-t4Z"/>
                 <constraint firstItem="ewt-4e-oK2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kLO-MC-eqB"/>
                 <constraint firstItem="SsX-Na-nZQ" firstAttribute="top" secondItem="zfY-7R-rmh" secondAttribute="bottom" constant="32" id="ldf-tP-33H"/>

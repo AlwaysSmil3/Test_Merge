@@ -20,6 +20,10 @@ class InvestorSignUpRejectedViewController: UIViewController {
         return .lightContent
     }
 
+    @IBAction func backAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+//        self.navigationController?.popViewController(animated: true)
+    }
     @IBAction func updateProfileBtnAction(_ sender: Any) {
     }
     override func didReceiveMemoryWarning() {
