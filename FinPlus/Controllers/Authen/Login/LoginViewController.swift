@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum UserType {
+enum AccountType {
     case None
     case Investor
     case Borrower
@@ -18,7 +18,7 @@ class LoginViewController: BaseViewController {
     
     @IBOutlet var lblHeaderAccount: UILabel!
     @IBOutlet var tfPass: UITextField!
-    
+    var accountType : AccountType = .None
     @IBOutlet var btnHideShowPass: UIButton!
     var isShowPass: Bool = false {
         didSet {
@@ -96,68 +96,51 @@ class LoginViewController: BaseViewController {
                         }
                         if let accountType = data.accountType {
                             if accountType == "BORROWER" {
-                                self?.pushToHomeVC(userType: .Borrower)
+                                self?.accountType = .Borrower
+//                                self?.pushToHomeVC(userType: .Borrower)
                             } else if accountType == "INVESTOR" {
-                                self?.pushToHomeVC(userType: .Investor)
-                            } else {
-                                self?.pushToChoiceKindUserVC()
+                                self?.accountType = .Investor
+//                                self?.pushToHomeVC(userType: .Investor)
                             }
-                        } else {
-                            self?.pushToChoiceKindUserVC()
                         }
-                    } else {
-                        self?.pushToChoiceKindUserVC()
                     }
                     // check user type: investor or borrwer
                     // push to home viewcontroller
 
                     //Cap nhat push notification token
-
+                    self?.getUserInfo()
                     break
                 case 1:
                     DataManager.shared.updatePushNotificationToken()
                     userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
                     DataManager.shared.currentAccount = account
+
+
                     // save token
                     if let data = model.data {
                         if let token = data.accessToken {
                             userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
                         }
-                        
-                        //Lay thong tin nguoi dung
-                        APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
-                            .done(on: DispatchQueue.main) { model in
-                                DataManager.shared.browwerInfo = model
-                            
-                                let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-
-                                self?.navigationController?.present(tabbarVC, animated: true, completion: {
-
-                                })
-                            }
-                            .catch { error in }
-                        
-                        
-//                        if let accountType = data.accountType {
-//                            if accountType == "BORROWER" {
+                        if let accountType = data.accountType {
+                            if accountType == "BORROWER" {
+                                self?.accountType = .Borrower
 //                                self?.pushToHomeVC(userType: .Borrower)
-//                            } else if accountType == "INVESTOR" {
+                            } else if accountType == "INVESTOR" {
+                                self?.accountType = .Investor
 //                                self?.pushToHomeVC(userType: .Investor)
-//                            } else {
-//                                self?.pushToChoiceKindUserVC()
-//                            }
-//                        } else {
-//                            self?.pushToChoiceKindUserVC()
-//                        }
-                    } else {
-                        self?.pushToChoiceKindUserVC()
+                            }
+                        }
+                        // fix to test investor
+//                        self?.accountType = .None
                     }
+
                     //Cap nhat push notification token
                     // get config
 //                    self?.getConfig()
                     // push to choice viewcontroller
 
 //                    self?.pushToChoiceKindUserVC()
+                    self?.getUserInfo()
                     break
                 default :
                     if let returnMessage = model.returnMsg {
@@ -174,9 +157,22 @@ class LoginViewController: BaseViewController {
         }
     }
 
-    func pushToHomeVC(userType: UserType) {
+    func getUserInfo() {
+        //Lay thong tin nguoi dung
+        APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
+            .done(on: DispatchQueue.main) { model in
+                DataManager.shared.browwerInfo = model
+                self.pushToHomeVC(accountType: self.accountType)
+
+            }
+            .catch { error in
+                self.pushToHomeVC(accountType: self.accountType)
+        }
+    }
+
+    func pushToHomeVC(accountType: AccountType) {
         print("Push to user home viewcontroller")
-        switch userType {
+        switch accountType {
         case .Borrower:
             let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
 
@@ -190,7 +186,7 @@ class LoginViewController: BaseViewController {
 
             })
         default:
-            break
+            self.pushToChoiceKindUserVC()
         }
     }
 

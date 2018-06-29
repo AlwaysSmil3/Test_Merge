@@ -74,7 +74,7 @@ extension BorrowHomeViewController {
         }
     }
     
-    
+    /*
     /// Lấy dữ liệu từ CoreData
     ///
     /// - Parameter completion: <#completion description#>
@@ -126,7 +126,7 @@ extension BorrowHomeViewController {
         completion()
         
     }
-    
+    */
     
     
     

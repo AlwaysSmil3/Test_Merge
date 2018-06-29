@@ -9,10 +9,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Bold.otf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InvestContractViewController" customModule="FinPlus" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="IFv-zN-H2M" id="leK-ug-Qfv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,27 +25,66 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IFv-zN-H2M">
-                    <rect key="frame" x="16" y="40" width="343" height="611"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ER0-4Q-VT5">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hợp đồng vay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msD-SL-zgY">
+                            <rect key="frame" x="40" y="30" width="295" height="20"/>
+                            <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
+                            <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K3l-1I-KZv" customClass="AnimatableButton" customModule="IBAnimatable">
+                            <rect key="frame" x="5" y="30" width="99" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="99" id="UKC-Ge-W9u"/>
+                            </constraints>
+                            <inset key="contentEdgeInsets" minX="10" minY="6" maxX="0.0" maxY="6"/>
+                            <state key="normal" image="ic_back"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="msD-SL-zgY" firstAttribute="top" secondItem="ER0-4Q-VT5" secondAttribute="top" constant="30" id="3y7-oG-1t3"/>
+                        <constraint firstItem="K3l-1I-KZv" firstAttribute="leading" secondItem="ER0-4Q-VT5" secondAttribute="leading" constant="5" id="83v-l8-ywa"/>
+                        <constraint firstItem="msD-SL-zgY" firstAttribute="leading" secondItem="ER0-4Q-VT5" secondAttribute="leading" constant="40" id="ApZ-BJ-KFe"/>
+                        <constraint firstAttribute="height" constant="64" id="PUi-bh-4SO"/>
+                        <constraint firstAttribute="bottom" secondItem="K3l-1I-KZv" secondAttribute="bottom" id="hDz-mE-8Vv"/>
+                        <constraint firstAttribute="trailing" secondItem="msD-SL-zgY" secondAttribute="trailing" constant="40" id="ta4-t0-dat"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iGi-ut-t4T">
+                    <rect key="frame" x="16" y="72" width="343" height="571"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QqM-S4-t6S">
+                            <rect key="frame" x="51" y="25" width="240" height="310"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="5"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                            <integer key="value" value="1"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </tableView>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="QqM-S4-t6S" secondAttribute="bottom" constant="21" id="DGO-2G-V9W"/>
+                        <constraint firstAttribute="trailing" secondItem="QqM-S4-t6S" secondAttribute="trailing" constant="16" id="Km3-A1-jYX"/>
+                        <constraint firstItem="QqM-S4-t6S" firstAttribute="leading" secondItem="iGi-ut-t4T" secondAttribute="leading" constant="16" id="O7G-dD-PYS"/>
+                        <constraint firstItem="QqM-S4-t6S" firstAttribute="top" secondItem="iGi-ut-t4T" secondAttribute="top" constant="24" id="sSh-34-cCP"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="IFv-zN-H2M" secondAttribute="bottom" constant="16" id="YpC-9c-ET4"/>
-                <constraint firstItem="IFv-zN-H2M" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="da6-26-rHn"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IFv-zN-H2M" secondAttribute="trailing" constant="16" id="jYO-3Z-tGq"/>
-                <constraint firstItem="IFv-zN-H2M" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="quX-pz-RFs"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="iGi-ut-t4T" secondAttribute="bottom" constant="24" id="1I0-fb-yPj"/>
+                <constraint firstItem="ER0-4Q-VT5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="AXn-1v-Y9s"/>
+                <constraint firstItem="ER0-4Q-VT5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="NF0-Br-wYB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iGi-ut-t4T" secondAttribute="trailing" constant="16" id="Tbx-eV-0jg"/>
+                <constraint firstItem="iGi-ut-t4T" firstAttribute="top" secondItem="ER0-4Q-VT5" secondAttribute="bottom" constant="8" id="Upv-R9-DZ6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ER0-4Q-VT5" secondAttribute="trailing" id="c7z-Sp-Y4T"/>
+                <constraint firstItem="iGi-ut-t4T" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="iv1-Vg-5rn"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="47" y="103"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_back" width="20" height="18"/>
+    </resources>
 </document>

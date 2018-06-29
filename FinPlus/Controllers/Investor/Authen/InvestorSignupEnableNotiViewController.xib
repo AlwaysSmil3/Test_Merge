@@ -81,7 +81,7 @@
                             <color key="textColor" red="0.5568627451" green="0.63921568630000003" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enable_noti_text" translatesAutoresizingMaskIntoConstraints="NO" id="WuL-mT-Uen">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enable_noti_switch" translatesAutoresizingMaskIntoConstraints="NO" id="WuL-mT-Uen">
                             <rect key="frame" x="0.0" y="308" width="311" height="180"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="WuL-mT-Uen" secondAttribute="height" multiplier="311:180" id="gL2-oy-iSb"/>
@@ -112,6 +112,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="M5V-eX-E04"/>
                     </constraints>
+                    <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
                     <state key="normal" title="Mở Cài đặt" backgroundImage="bg_button_enable_login">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -145,6 +146,7 @@
     <resources>
         <image name="bg_button_enable_login" width="311" height="44"/>
         <image name="dismiss_img" width="16" height="16"/>
+        <image name="enable_noti_switch" width="311" height="180"/>
         <image name="enable_noti_text" width="311" height="180"/>
     </resources>
 </document>
