@@ -46,6 +46,7 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     func getData() {
         guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
         if id.contains("nationalIdAllImg") {
+            
             if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdAllImg, data.length() > 0 {
                 self.imgValue?.sd_setImage(with: URL(string: data), completed: nil)
                 DataManager.shared.loanInfo.nationalIdAllImg = data

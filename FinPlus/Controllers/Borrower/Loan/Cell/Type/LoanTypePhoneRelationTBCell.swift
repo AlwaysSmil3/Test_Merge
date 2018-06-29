@@ -65,8 +65,19 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProt
     }
     
     func getData() {
+        
+        var value = ""
         if let phone = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.relationships?.phoneNumber, phone.length() > 0 {
-            self.tfValue?.text = phone
+            value = phone
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.relationships.phoneNumber.length() > 0 {
+            value = DataManager.shared.loanInfo.userInfo.relationships.phoneNumber
+        }
+        
+        if value.length() > 0 {
+            DataManager.shared.loanInfo.userInfo.relationships.phoneNumber = value
+            self.tfValue?.text = value
         }else {
             //Cap nhat thong tin thieu
             guard let field_ = self.field, let title = field_.title else { return }
