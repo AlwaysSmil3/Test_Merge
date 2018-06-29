@@ -84,7 +84,7 @@ class LoanStateViewController: UIViewController {
         
         self.btnBottomView.setBackgroundColor(color: MAIN_COLOR, forState: .normal)
         self.btnBottomView.setBackgroundColor(color: UIColor(hexString: "#4D6678"), forState: .focused)
-        self.btnBottomView.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        self.btnBottomView.titleLabel?.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)
         self.btnBottomView?.backgroundColor = MAIN_COLOR
         self.btnBottomView?.tintColor = .white
         self.btnBottomView.layer.cornerRadius = 8
@@ -92,267 +92,270 @@ class LoanStateViewController: UIViewController {
         
         self.labelBottomView.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_SMALL)
         
-        switch(STATUS_LOAN(rawValue: id!)) {
-        case .DRAFT?:
-            
-            headerData = [
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Đơn vay của bạn chưa được hoàn thiện.",
-                    "subType": TextCellType.TitleType,
-                ],
-                [
-                    "type": HeaderCellType.ButtonType,
-                    "text": "Hoàn thiện đơn",
-                    "subType": ButtonCellType.NullType,
-                    "target": "update_loan"
-                ],
-            ]
-            
-        case .SALE_REVIEW?, .SALE_PENDING?, .RISK_REVIEW?:
-            
-            headerData = [
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Đơn vay của bạn đang chờ duyệt.",
-                    "subType": TextCellType.TitleType,
-                ],
-            ]
-            
-        case .RISK_PENDING?:
-            if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
-                self.navigationController?.isNavigationBarHidden = true
-            }
-            
-            headerData = [
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Đơn vay của bạn cần được bổ sung thông tin.",
-                    "subType": TextCellType.TitleType,
-                ],
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Để được duyệt, hãy bổ sung các thông tin sau:\n• Số chứng minh thư.\n• Ảnh chứng minh thư.\n• Bảng lương.",
-                    "subType": TextCellType.DesType,
-                ],
-                [
-                    "type": HeaderCellType.ButtonType,
-                    "text": "Bổ sung thông tin",
-                    "subType": ButtonCellType.FillType,
-                    "target": ""
-                ],
-            ]
-            
-        case .INTEREST_CONFIRM?, .INTEREST_CONFIRM_EXPIRED?:
-            
-            headerData = [
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Chúc mừng \(String(describing: self.userInfo.fullName)), đơn vay của bạn được duyệt với lãi suất 10%/năm.",
-                    "subType": TextCellType.TitleType,
-                ],
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Hãy ấn 'Xác nhận lãi suất' để bắt đầu huy động tiền từ các nhà đầu tư.",
-                    "subType": TextCellType.DesType,
-                ],
-                [
-                    "type": HeaderCellType.ButtonType,
-                    "text": "Xác nhận lãi suất",
-                    "subType": ButtonCellType.FillType,
-                    "target": "confirm_rate"
-                ],
-            ]
-            
-        case .REJECTED?:
-            
-            headerData = [
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Rất tiếc, yêu cầu vay của bạn đã bị từ chối.",
-                    "subType": TextCellType.TitleType,
-                ],
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Yêu cầu vay của bạn đã bị từ chối. Vui lòng tạo một đơn vay mới và thứ lại!",
-                    "subType": TextCellType.DesType,
-                ],
-                [
-                    "type": HeaderCellType.ButtonType,
-                    "text": "Tạo đơn vay mới",
-                    "subType": ButtonCellType.NullType,
-                    "target": "navi_back"
-                ],
-            ]
-            
-        case .CANCELED?:
-            
-            headerData = [
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Bạn đã hủy đơn vay này.",
-                    "subType": TextCellType.TitleType,
-                ],
-            ]
-            
-        case .RAISING_CAPITAL?:
-            
-            headerData = [
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "FinSmart đang huy động cho khoản vay của bạn.",
-                    "subType": TextCellType.TitleType,
-                ],
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Xin vui lòng chờ, khoản vay của bạn đang được huy động vốn từ các nhà đầu tư.",
-                    "subType": TextCellType.DesType,
-                ],
-            ]
-            
-        case .PARTIAL_FILLED?:
-            
-            headerData = [
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Bạn đã huy động được 1.500.000đ trong vòng 2 ngày.",
-                    "subType": TextCellType.TitleType,
+        if (bottom_state == nil)
+        {
+            switch(STATUS_LOAN(rawValue: id!)) {
+            case .DRAFT?:
+                
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Đơn vay của bạn chưa được hoàn thiện.",
+                        "subType": TextCellType.TitleType,
                     ],
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Bạn có thể tiếp tục huy động để có đủ số tiền vay hoặc ấn \"Giải ngân sớm\" để nhận ngay số tiền đã huy động được.",
-                    "subType": TextCellType.DesType,
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Hoàn thiện đơn",
+                        "subType": ButtonCellType.NullType,
+                        "target": "update_loan"
                     ],
-                [
-                    "type": HeaderCellType.ButtonType,
-                    "text": "Giải ngân sớm",
-                    "subType": ButtonCellType.NullType,
-                    "target": "disburse_soon"
-                ],
-            ]
+                ]
+                
+            case .SALE_REVIEW?, .SALE_PENDING?, .RISK_REVIEW?:
+                
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Đơn vay của bạn đang chờ duyệt.",
+                        "subType": TextCellType.TitleType,
+                    ],
+                ]
+                
+            case .RISK_PENDING?:
+                if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
+                    self.navigationController?.isNavigationBarHidden = true
+                }
+                
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Đơn vay của bạn cần được bổ sung thông tin.",
+                        "subType": TextCellType.TitleType,
+                    ],
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Để được duyệt, hãy bổ sung các thông tin sau:\n• Số chứng minh thư.\n• Ảnh chứng minh thư.\n• Bảng lương.",
+                        "subType": TextCellType.DesType,
+                    ],
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Bổ sung thông tin",
+                        "subType": ButtonCellType.FillType,
+                        "target": ""
+                    ],
+                ]
+                
+            case .INTEREST_CONFIRM?, .INTEREST_CONFIRM_EXPIRED?:
+                
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Chúc mừng \(self.userInfo.fullName!), đơn vay của bạn được duyệt với lãi suất 10%/năm.",
+                        "subType": TextCellType.TitleType,
+                    ],
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Hãy ấn 'Xác nhận lãi suất' để bắt đầu huy động tiền từ các nhà đầu tư.",
+                        "subType": TextCellType.DesType,
+                    ],
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Xác nhận lãi suất",
+                        "subType": ButtonCellType.FillType,
+                        "target": "confirm_rate"
+                    ],
+                ]
+                
+            case .REJECTED?:
+                
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Rất tiếc, yêu cầu vay của bạn đã bị từ chối.",
+                        "subType": TextCellType.TitleType,
+                    ],
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Yêu cầu vay của bạn đã bị từ chối. Vui lòng tạo một đơn vay mới và thứ lại!",
+                        "subType": TextCellType.DesType,
+                    ],
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Tạo đơn vay mới",
+                        "subType": ButtonCellType.NullType,
+                        "target": "navi_back"
+                    ],
+                ]
+                
+            case .CANCELED?:
+                
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Bạn đã hủy đơn vay này.",
+                        "subType": TextCellType.TitleType,
+                    ],
+                ]
+                
+            case .RAISING_CAPITAL?:
+                
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "FinSmart đang huy động cho khoản vay của bạn.",
+                        "subType": TextCellType.TitleType,
+                    ],
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Xin vui lòng chờ, khoản vay của bạn đang được huy động vốn từ các nhà đầu tư.",
+                        "subType": TextCellType.DesType,
+                    ],
+                ]
+                
+            case .PARTIAL_FILLED?:
+                
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Bạn đã huy động được 1.500.000đ trong vòng 2 ngày.",
+                        "subType": TextCellType.TitleType,
+                        ],
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Bạn có thể tiếp tục huy động để có đủ số tiền vay hoặc ấn \"Giải ngân sớm\" để nhận ngay số tiền đã huy động được.",
+                        "subType": TextCellType.DesType,
+                        ],
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Giải ngân sớm",
+                        "subType": ButtonCellType.NullType,
+                        "target": "disburse_soon"
+                    ],
+                ]
 
-        case .FILLED?, .CONTRACT_READY? :
-            headerData = [
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Chúc mừng \(String(describing: self.userInfo.fullName)), khoản vay của bạn đã được huy động đủ.",
-                    "subType": TextCellType.TitleType,
+            case .FILLED?, .CONTRACT_READY? :
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Chúc mừng \(self.userInfo.fullName!), khoản vay của bạn đã được huy động đủ.",
+                        "subType": TextCellType.TitleType,
+                        ],
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Hãy ấn nút 'Giải ngân' để ký hợp đồng và lấy tiền ngay.",
+                        "subType": TextCellType.DesType,
+                        ],
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Giải ngân",
+                        "subType": ButtonCellType.FillType,
+                        "target": "disburse_expỉed"
                     ],
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Hãy ấn nút 'Giải ngân' để ký hợp đồng và lấy tiền ngay.",
-                    "subType": TextCellType.DesType,
+                ]
+                
+            case .EXPIRED? :
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Đã hết thời gian huy động. Số tiền huy động được: 1.500.000đ",
+                        "subType": TextCellType.TitleType,
+                        ],
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Khoản vay của bạn đã hết thời gian huy động. Bạn có thể giải ngân số tiền huy động được.",
+                        "subType": TextCellType.DesType,
+                        ],
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Giải ngân",
+                        "subType": ButtonCellType.FillType,
+                        "target": "disburse_expỉed"
                     ],
-                [
-                    "type": HeaderCellType.ButtonType,
-                    "text": "Giải ngân",
-                    "subType": ButtonCellType.FillType,
-                    "target": "disburse_expỉed"
-                ],
-            ]
-            
-        case .EXPIRED? :
-            headerData = [
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Đã hết thời gian huy động. Số tiền huy động được: 1.500.000đ",
-                    "subType": TextCellType.TitleType,
+                ]
+                
+            case .CONTRACT_SIGNED?, .DISBURSAL?:
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Ký hợp đồng thành công. Bạn sẽ nhận tiền trong thời gian sớm nhất.",
+                        "subType": TextCellType.TitleType,
+                        ],
+                ]
+            case .TIMELY_DEPT?:
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Xin chào \(self.userInfo.fullName!), bạn đang vay 2.000.000đ.",
+                        "subType": TextCellType.TitleType,
                     ],
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Khoản vay của bạn đã hết thời gian huy động. Bạn có thể giải ngân số tiền huy động được.",
-                    "subType": TextCellType.DesType,
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Bạn cần thanh toán 125.000đ trong tháng này. Hãy thanh toán trước ngày: 20/6/2018.",
+                        "subType": TextCellType.DesType,
                     ],
-                [
-                    "type": HeaderCellType.ButtonType,
-                    "text": "Giải ngân",
-                    "subType": ButtonCellType.FillType,
-                    "target": "disburse_expỉed"
-                ],
-            ]
-            
-        case .CONTRACT_SIGNED?, .DISBURSAL?:
-            headerData = [
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Ký hợp đồng thành công. Bạn sẽ nhận tiền trong thời gian sớm nhất.",
-                    "subType": TextCellType.TitleType,
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Thanh toán",
+                        "subType": ButtonCellType.FillType,
+                        "target": "pushToPayViewController"
                     ],
-            ]
-        case .TIMELY_DEPT?:
-            headerData = [
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Xin chào \(String(describing: self.userInfo.fullName)), bạn đang vay 2.000.000đ.",
-                    "subType": TextCellType.TitleType,
-                ],
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Bạn cần thanh toán 125.000đ trong tháng này. Hãy thanh toán trước ngày: 20/6/2018.",
-                    "subType": TextCellType.DesType,
-                ],
-                [
-                    "type": HeaderCellType.ButtonType,
-                    "text": "Thanh toán",
-                    "subType": ButtonCellType.FillType,
-                    "target": "pushToPayViewController"
-                ],
-                [
-                    "type": HeaderCellType.ButtonType,
-                    "text": "Lịch sử thanh toán",
-                    "subType": ButtonCellType.NullType,
-                    "target": "pushToPayHistoryVC"
-                ],
-            ]
-        case .OVERDUE_DEPT?:
-            headerData = [
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Khoản vay của bạn đang quá hạn 2 ngày.",
-                    "subType": TextCellType.TitleType,
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Lịch sử thanh toán",
+                        "subType": ButtonCellType.NullType,
+                        "target": "pushToPayHistoryVC"
                     ],
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Bạn cần thanh toán 125.000đ ngay nếu không sẽ chịu phạt theo như hợp đồng.",
-                    "attributed": NSAttributedString(string: "chịu phạt theo như hợp đồng", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!]),
-                    "subType": TextCellType.DesType,
+                ]
+            case .OVERDUE_DEPT?:
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Khoản vay của bạn đang quá hạn 2 ngày.",
+                        "subType": TextCellType.TitleType,
+                        ],
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Bạn cần thanh toán 125.000đ ngay nếu không sẽ chịu phạt theo như hợp đồng.",
+                        "attributed": NSAttributedString(string: "chịu phạt theo như hợp đồng", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!]),
+                        "subType": TextCellType.DesType,
+                        ],
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Thanh toán",
+                        "subType": ButtonCellType.FillType,
+                        "target": "pushToPayViewController"
                     ],
-                [
-                    "type": HeaderCellType.ButtonType,
-                    "text": "Thanh toán",
-                    "subType": ButtonCellType.FillType,
-                    "target": "pushToPayViewController"
-                ],
-                [
-                    "type": HeaderCellType.ButtonType,
-                    "text": "Lịch sử thanh toán",
-                    "subType": ButtonCellType.NullType,
-                    "target": "pushToPayHistoryVC"
-                ],
-            ]
-        case .EXPIRED_NOT_ENOUGH?:
-            headerData = [
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Đã hết thời gian huy động nhưng chưa đủ số tiền để giải ngân.",
-                    "subType": TextCellType.TitleType,
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Lịch sử thanh toán",
+                        "subType": ButtonCellType.NullType,
+                        "target": "pushToPayHistoryVC"
                     ],
-                [
-                    "type": HeaderCellType.TextType,
-                    "text": "Khoản vay của bạn đã hết thời gian huy động nhưng không đủ để được giải ngân",
-                    "subType": TextCellType.DesType,
+                ]
+            case .EXPIRED_NOT_ENOUGH?:
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Đã hết thời gian huy động nhưng chưa đủ số tiền để giải ngân.",
+                        "subType": TextCellType.TitleType,
+                        ],
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Khoản vay của bạn đã hết thời gian huy động nhưng không đủ để được giải ngân",
+                        "subType": TextCellType.DesType,
+                        ],
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Tạo đơn vay mới",
+                        "subType": ButtonCellType.NullType,
+                        "target": ""
                     ],
-                [
-                    "type": HeaderCellType.ButtonType,
-                    "text": "Tạo đơn vay mới",
-                    "subType": ButtonCellType.NullType,
-                    "target": ""
-                ],
-            ]
-            
-        default:
-            
-            break
+                ]
+                
+            default:
+                
+                break
+            }
         }
         
         switch bottom_state {
@@ -516,18 +519,7 @@ class LoanStateViewController: UIViewController {
                 self.showAlertView(title: "Xóa đơn vay", message: "Bạn có chắc chắn muốn xóa đơn vay chưa hoàn thiện này?", okTitle: "Xóa", cancelTitle: "Không", completion: { (okAction) in
                     if (okAction)
                     {
-                        APIClient.shared.delLoan(loanID: (self.activeLoan?.loanId)!)
-                        .done(on: DispatchQueue.main) { model in
-                            self.handleLoadingView(isShow: false)
-                            self.showAlertView(title: "", message: "Đơn vay của bạn đã được xóa. Bạn có thể tạo một đơn mới.", okTitle: "ok", cancelTitle: nil, completion: { (okAction) in
-                                self.tabBarController?.selectedIndex = 0
-                            })
-                        }
-                        .catch { error in
-                            self.handleLoadingView(isShow: false)
-                            self.showAlertView(title: "Có lỗi", message: "Đã có lỗi trong quá trình xóa đơn vay. Vui lòng thử lại.", okTitle: "ok", cancelTitle: nil, completion: { (okAction) in
-                            })
-                        }
+                        self.delLoan()
                     }
                 })
             }))
@@ -567,13 +559,12 @@ class LoanStateViewController: UIViewController {
         })
     }
     
-
     // Xác nhận lãi suất
-    
     @IBAction func confirm_rate()
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
         vc.bottom_state = .CONFIRM_RATE
+        vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -590,6 +581,7 @@ class LoanStateViewController: UIViewController {
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
         vc.bottom_state = .DISBURSEMENT_SOON
+        vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -599,6 +591,7 @@ class LoanStateViewController: UIViewController {
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
         vc.bottom_state = .DISBURSEMENT_ONTIME
+        vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -608,6 +601,7 @@ class LoanStateViewController: UIViewController {
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
         vc.bottom_state = .SIGN_CONTRACT
+        vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -615,8 +609,9 @@ class LoanStateViewController: UIViewController {
     // Xác nhận ký hợp đồng
     @IBAction func confirmSignContract()
     {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SIGN")
-        self.navigationController?.pushViewController(vc!, animated: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SIGN") as! SignContractViewController
+        vc.activeLoan = self.activeLoan
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func pushToPayViewController() {
@@ -628,6 +623,36 @@ class LoanStateViewController: UIViewController {
         let payHistoryVC = TestPayHistoryViewController(nibName: "TestPayHistoryViewController", bundle: nil)
         self.navigationController?.pushViewController(payHistoryVC, animated: true)
     }
+    
+    // MARK: func
+    
+    // Xóa đơn vay
+    func delLoan() {
+        
+        self.handleLoadingView(isShow: true)
+        
+        APIClient.shared.delLoan(loanID: (self.activeLoan?.loanId)!)
+            .done(on: DispatchQueue.main) { model in
+                
+                self.handleLoadingView(isShow: false)
+                
+                self.showAlertView(title: "", message: "Đơn vay của bạn đã được xóa. Bạn có thể tạo một đơn mới.", okTitle: "ok", cancelTitle: nil, completion: { (okAction) in
+                    self.tabBarController?.selectedIndex = 0
+                })
+            }
+            .catch { error in
+                
+                self.handleLoadingView(isShow: false)
+                
+                self.showAlertView(title: "Có lỗi", message: "Đã có lỗi trong quá trình xóa đơn vay. Vui lòng thử lại.", okTitle: "Thử lại", cancelTitle: "Hủy", completion: { (okAction) in
+                    if (okAction)
+                    {
+                        self.delLoan()
+                    }
+                })
+        }
+    }
+
     
 }
 

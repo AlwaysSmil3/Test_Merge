@@ -14,6 +14,7 @@ enum VerifyType {
     case Loan
     case Forgot
     case RegisInvest
+    case SignContract
 }
 class VerifyOTPAuthenVC: BaseViewController {
 
@@ -142,6 +143,10 @@ class VerifyOTPAuthenVC: BaseViewController {
                 .catch { error in}
             break
             
+        case .SignContract:
+            verifyOTPSignContract()
+            
+            break
         case .Loan:
             self.verifyOTPLoan()
         
@@ -168,6 +173,19 @@ class VerifyOTPAuthenVC: BaseViewController {
         }
 
     }
+    
+    //MARK: Verify sign contract
+    func verifyOTPSignContract() {
+        guard let loan = self.loanResponseModel else { return }
+        APIClient.shared.signContract(otp: self.otp, loanID: loan.loanId!)
+        .done(on: DispatchQueue.main) { [weak self] model in
+            let vc = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "CONTRACT_SUCCESS")
+            self?.navigationController?.isNavigationBarHidden = true
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
+        .catch { error in }
+    }
+    
     func pushToLoginVC() {
         let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         self.navigationController?.pushViewController(loginVC, animated: true)

@@ -161,6 +161,38 @@ extension APIClient {
         
     }
     
+    func getOTPContract(loanID: Int32) -> Promise<APIResponseGeneral> {
+        
+        let endPoint = "loans/" + "\(loanID)/contract"
+        
+        return Promise<APIResponseGeneral> { seal in
+            getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: false)
+                .done { json in
+                    
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in seal.reject(error)}
+        }
+        
+    }
     
+    func signContract(otp: String, loanID: Int32) -> Promise<APIResponseGeneral> {
+
+        let endPoint = "loans/" + "\(loanID)/contract/otp"
+        let params: JSONDictionary = [
+            "otp": otp
+        ]
+        return Promise<APIResponseGeneral> { seal in
+            requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
+                .done { json in
+                    
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in seal.reject(error)}
+        }
+        
+    }
     
 }
