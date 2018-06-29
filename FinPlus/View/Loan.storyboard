@@ -600,7 +600,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HbK-eb-prb">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="579.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="587.5"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="us7-Ig-gfT">
                                                 <rect key="frame" x="16" y="8" width="343" height="213"/>
@@ -614,7 +614,7 @@
                                                 </connections>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1Y-1Q-c89">
-                                                <rect key="frame" x="16" y="229" width="343" height="245"/>
+                                                <rect key="frame" x="16" y="237" width="343" height="245"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dJK-3Y-XWu">
                                                         <rect key="frame" x="0.0" y="0.0" width="327" height="245"/>
@@ -637,7 +637,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eat-XC-Btv">
-                                                <rect key="frame" x="16" y="490" width="343" height="89.5"/>
+                                                <rect key="frame" x="16" y="498" width="343" height="89.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7g-vZ-KNF">
                                                         <rect key="frame" x="0.0" y="60" width="343" height="13.5"/>
@@ -672,8 +672,8 @@
                                             <constraint firstAttribute="trailing" secondItem="g1Y-1Q-c89" secondAttribute="trailing" constant="16" id="5rt-hH-RJy"/>
                                             <constraint firstAttribute="trailing" secondItem="Eat-XC-Btv" secondAttribute="trailing" constant="16" id="Dbr-NU-q2d"/>
                                             <constraint firstItem="g1Y-1Q-c89" firstAttribute="leading" secondItem="HbK-eb-prb" secondAttribute="leading" constant="16" id="KHc-T1-Dey"/>
-                                            <constraint firstItem="g1Y-1Q-c89" firstAttribute="top" secondItem="us7-Ig-gfT" secondAttribute="bottom" constant="8" id="KNt-HO-Udm"/>
-                                            <constraint firstItem="g1Y-1Q-c89" firstAttribute="top" secondItem="us7-Ig-gfT" secondAttribute="bottom" constant="8" id="rsw-2o-5oH"/>
+                                            <constraint firstItem="g1Y-1Q-c89" firstAttribute="top" secondItem="us7-Ig-gfT" secondAttribute="bottom" constant="16" id="KNt-HO-Udm"/>
+                                            <constraint firstItem="g1Y-1Q-c89" firstAttribute="top" secondItem="us7-Ig-gfT" secondAttribute="bottom" constant="16" id="rsw-2o-5oH"/>
                                             <constraint firstItem="Eat-XC-Btv" firstAttribute="leading" secondItem="HbK-eb-prb" secondAttribute="leading" constant="16" id="usb-5A-8fH"/>
                                             <constraint firstAttribute="bottom" secondItem="Eat-XC-Btv" secondAttribute="bottom" id="vsr-ab-gKn"/>
                                             <constraint firstAttribute="trailing" secondItem="us7-Ig-gfT" secondAttribute="trailing" constant="16" id="xar-eF-zoE"/>

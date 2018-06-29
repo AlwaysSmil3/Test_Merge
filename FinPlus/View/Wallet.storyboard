@@ -50,7 +50,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DxA-1t-Zf1">
-                                <rect key="frame" x="16" y="603" width="343" height="44"/>
+                                <rect key="frame" x="16" y="568" width="343" height="44"/>
                                 <color key="backgroundColor" red="0.0" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="qc0-4a-m5o"/>
@@ -185,7 +185,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="DxA-1t-Zf1" secondAttribute="trailing" id="8UD-sW-NOr"/>
                             <constraint firstAttribute="trailing" secondItem="A1B-jr-6bw" secondAttribute="trailing" id="9Wa-Sc-LaG"/>
                             <constraint firstAttribute="trailing" secondItem="Whj-Oy-eL8" secondAttribute="trailing" id="Dgb-1j-aI7"/>
-                            <constraint firstItem="l4s-vS-cBs" firstAttribute="top" secondItem="DxA-1t-Zf1" secondAttribute="bottom" constant="20" id="HUz-86-54r"/>
+                            <constraint firstItem="l4s-vS-cBs" firstAttribute="top" secondItem="DxA-1t-Zf1" secondAttribute="bottom" constant="55" id="HUz-86-54r"/>
                             <constraint firstItem="l4s-vS-cBs" firstAttribute="top" secondItem="A1B-jr-6bw" secondAttribute="bottom" id="JtT-jz-UH5"/>
                             <constraint firstItem="A1B-jr-6bw" firstAttribute="top" secondItem="YeS-49-7xM" secondAttribute="bottom" id="LBN-pv-l2d"/>
                             <constraint firstItem="DxA-1t-Zf1" firstAttribute="leading" secondItem="I1u-1r-uff" secondAttribute="leadingMargin" id="Sxa-FH-pLW"/>
