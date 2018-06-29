@@ -97,6 +97,16 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 //Cap nhat thong tin thieu
                 self.updateInfoFalse(pre: title)
             }
+        } else if id.contains("birthday") {
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.birthday, data.length() > 0 {
+                let date1 = Date.init(fromString: data, format: DateFormat.custom("yyyy-MM-dd HH:mm:ssZ"))
+                
+                let date = date1.toString(.custom(kDisplayFormat))
+                //DateTime ISO 8601
+                let timeISO8601 = date1.toString(.iso8601(ISO8601Format.DateTimeSec))
+                DataManager.shared.loanInfo.userInfo.birthDay = timeISO8601
+                self.lblValue?.text = date
+            }
         }
         
     }
