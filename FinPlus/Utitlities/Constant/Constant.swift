@@ -63,21 +63,22 @@ enum STATUS_LOAN: Int {
     case SALE_REVIEW = 1 // Đợi sales duyệt (Chờ sales review đơn vay đầy đủ & hợp lệ)
     case SALE_PENDING = 2 // Y/c bổ sung thông tin từ sales
     case RISK_REVIEW = 3 // Thẩm định viên duyệt
-    case RISK_PENDING = 5 // Y/c bổ sung thông tin từ thẩm định viên
-    case REJECTED = 6 // Bị từ chối
-    case INTEREST_CONFIRM = 7 // Chờ xác nhận lãi suất
-    case INTEREST_CONFIRM_EXPIRED = 8 // Quá hạn xác nhận lãi suất
-    case RAISING_CAPITAL = 9 // Lên chợ và đang huy động vốn
-    case PARTIAL_FILLED = 10 // Huy động được 1 phần
-    case FILLED = 11 // Huy động vốn được 100%
-    case CONTRACT_READY = 12 // Chờ ký hợp đồng
-    case EXPIRED = 13 // Đơn vay quá hạn huy động
-    case CONTRACT_SIGNED = 14 // Đã ký hợp đồng
-    case DISBURSAL = 15 // Đã giải ngân
-    case OVERDUE_DEPT = 16 // Nợ quá hạn (Thông tin có nợ bổ sung nợ quá hạn bao nhiêu ngày)
-    case TIMELY_DEPT = 17 // Nợ đúng hạn
-    case CANCELED = 18 // Đã hủy
-    case EXPIRED_NOT_ENOUGH = 19 // Đã hủy
+    case RISK_PENDING = 4 // Y/c bổ sung thông tin từ thẩm định viên
+    case REJECTED = 5 // Bị từ chối
+    case INTEREST_CONFIRM = 6 // Chờ xác nhận lãi suất
+    case INTEREST_CONFIRM_EXPIRED = 7 // Quá hạn xác nhận lãi suất
+    case RAISING_CAPITAL = 8 // Lên chợ và đang huy động vốn
+    case PARTIAL_FILLED = 9 // Huy động được 1 phần
+    case FILLED = 10 // Huy động vốn được 100%
+    case CONTRACT_READY = 11 // Chờ ký hợp đồng
+    case EXPIRED = 12 // Đơn vay quá hạn huy động
+    case CONTRACT_SIGNED = 13 // Đã ký hợp đồng
+    case DISBURSAL = 14 // Đã giải ngân
+    case OVERDUE_DEPT = 15 // Nợ quá hạn (Thông tin có nợ bổ sung nợ quá hạn bao nhiêu ngày)
+    case TIMELY_DEPT = 16 // Nợ đúng hạn
+    case CANCELED = 17 // Đã hủy
+    case EXPIRED_NOT_ENOUGH = 18 // Đã hủy
+    case COMPLETED = 19 // Đã hoàn thành
 }
 
 

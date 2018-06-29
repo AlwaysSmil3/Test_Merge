@@ -43,7 +43,7 @@ enum EndPoint {
     }
     
     enum Loan {
-        static let Loans = "loans?page=0&limit=50&sort=status.asc&filter=status.2"
+        static let Loans = "loans?page=1&limit=50&sort=status.asc"
         static let LoanOTP = "loans/:loanId/otp"
         static let Loan = "loan"
         static let LoanCategories = "loan-categories"
