@@ -14,6 +14,8 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     @IBOutlet var imgValue: UIImageView?
     @IBOutlet var imgAdd: UIImageView?
     @IBOutlet var lblDescription: UILabel?
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

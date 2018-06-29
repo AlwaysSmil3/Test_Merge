@@ -49,6 +49,11 @@
                                 <color key="textColor" red="0.55686274509803924" green="0.63921568627450975" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="AUJ-sf-U6A">
+                                <rect key="frame" x="153" y="62" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.5568627451" green="0.63921568630000003" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -94,6 +99,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="activityIndicator" destination="AUJ-sf-U6A" id="1RP-Q0-Xpg"/>
                 <outlet property="imgAdd" destination="sr0-wS-eg9" id="6Hf-1T-hAr"/>
                 <outlet property="imgValue" destination="hmx-QV-WET" id="0cz-H7-GPa"/>
                 <outlet property="lblDescription" destination="Hn5-En-wPs" id="exB-dK-j5W"/>
