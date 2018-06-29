@@ -111,6 +111,40 @@ class DataManager {
     }
     
     
+    /// <#Description#>
+    func mapDataBrowwerAndLoan() {
+        
+        guard let brow = self.browwerInfo, let activeLoan = brow.activeLoan,let loanId = activeLoan.loanId, loanId > 0 else { return }
+        
+        if let cateID = activeLoan.loanCategoryId, cateID > 0 {
+            DataManager.shared.loanInfo.loanCategoryID = cateID
+            self.currentIndexCategoriesSelectedPopup = Int(cateID) - 1
+        }
+        
+        if let loanId = activeLoan.loanId, loanId > 0 {
+            DataManager.shared.loanID = loanId
+        }
+        
+        if let term = activeLoan.term, term > 0 {
+            DataManager.shared.loanInfo.term = term
+        }
+        
+        if let amount = activeLoan.amount, amount > 0 {
+            DataManager.shared.loanInfo.amount = amount
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
     
     
     

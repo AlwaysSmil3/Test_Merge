@@ -21,7 +21,14 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         
         self.currentStep = 0
         
-        self.createLoan()
+        if DataManager.shared.browwerInfo?.activeLoan == nil {
+            //chua có thì tạo
+            self.createLoan()
+        } else {
+            //Cập nhật
+            self.updateDataToServer()
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
