@@ -85,7 +85,7 @@ class BasePopup : BaseViewController {
     func hide() {
         
         centerView.animationType = .zoom(way: .out)
-        centerView.duration = 0.5
+        centerView.duration = 0.2
         
         centerView.animate(.zoom(way: .out))
             .completion({
@@ -98,7 +98,7 @@ class BasePopup : BaseViewController {
     // hide with completion handle
     func hide(competionHandle: @escaping () -> Void) {
         centerView.animationType = .zoom(way: .out)
-        centerView.duration = 0.5
+        centerView.duration = 0.2
         
         centerView.animate(.zoom(way: .out))
             .completion({

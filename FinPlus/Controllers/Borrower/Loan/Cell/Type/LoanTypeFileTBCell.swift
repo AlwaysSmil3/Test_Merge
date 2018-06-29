@@ -50,7 +50,7 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         if id.contains("nationalIdAllImg") {
             
             if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdAllImg, data.length() > 0 {
-                self.imgValue?.sd_setImage(with: URL(string: data), completed: nil)
+                self.imgValue?.sd_setImage(with: URL(string: hostLoan + data), completed: nil)
                 DataManager.shared.loanInfo.nationalIdAllImg = data
                 self.imgAdd?.isHidden = true
                 self.lblDescription?.isHidden = true
@@ -62,7 +62,7 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             
         } else if id.contains("nationalIdFrontImg") {
             if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdFrontImg, data.length() > 0 {
-                self.imgValue?.sd_setImage(with: URL(string: data), completed: nil)
+                self.imgValue?.sd_setImage(with: URL(string: hostLoan + data), completed: nil)
                 DataManager.shared.loanInfo.nationalIdFrontImg = data
                 self.imgAdd?.isHidden = true
                 self.lblDescription?.isHidden = true
@@ -74,7 +74,7 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             
         } else if id.contains("nationalIdBackImg") {
             if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdBackImg, data.length() > 0 {
-                self.imgValue?.sd_setImage(with: URL(string: data), completed: nil)
+                self.imgValue?.sd_setImage(with: URL(string: hostLoan + data), completed: nil)
                 DataManager.shared.loanInfo.nationalIdBackImg = data
                 self.imgAdd?.isHidden = true
                 self.lblDescription?.isHidden = true
