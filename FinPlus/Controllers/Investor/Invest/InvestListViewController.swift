@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+
 public enum LoanReliability : Int {
     case positive1 = 1
     case positive2 = 2
@@ -65,8 +67,17 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var tableView: UITableView!
     var allLoansArray : [DemoLoanModel] = [DemoLoanModel]()
     var mode = false
+    // CoreData
+    var managedContext: NSManagedObjectContext? {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
+
+        return appDelegate.managedObjectContext
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getLoanCategories()
         self.title = "Đầu tư"
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -78,9 +89,66 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
         // Do any additional setup after loading the view.
     }
 
+
+    // Lấy danh sách các loại khoản vay
+    func getLoanCategories() {
+        guard DataManager.shared.isUpdateFromConfig || DataManager.shared.loanCategories.count == 0 else { return }
+        //Có thay đổi cần cập nhật lại dữ liệu
+        APIClient.shared.getLoanCategories()
+            .done(on: DispatchQueue.main) { model in
+                print(model)
+                DataManager.shared.loanCategories = model
+                // self.mainCollectionView.reloadData()
+                self.updateCoreData()
+            }
+            .catch { error in }
+    }
+
+    func updateCoreData() {
+        guard let context = self.managedContext else { return }
+        //Lay list entity
+        let list = FinPlusHelper.fetchRecordsForEntity("LoanCategory", inManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(forEntityName: "LoanCategory", in: context)
+        if list.count > 0 {
+            //Xoa dữ liệu hiện tại
+            for i in list {
+                context.delete(i)
+            }
+            do {
+                try context.save()
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        // Cập nhật dữ liệu mới
+        for data in DataManager.shared.loanCategories {
+            let categoryEntity = NSManagedObject(entity: entity!, insertInto: self.managedContext)
+            categoryEntity.setValue(data.id, forKey: CDLoanCategoryID)
+            categoryEntity.setValue(data.title, forKey: CDLoanCategoryTitle)
+            categoryEntity.setValue(data.descriptionValue, forKey: CDLoanCategoryDescription)
+            categoryEntity.setValue(data.min, forKey: CDLoanCategoryMin)
+            categoryEntity.setValue(data.max, forKey: CDLoanCategoryMax)
+            categoryEntity.setValue(data.termMin, forKey: CDLoanCategoryTermMin)
+            categoryEntity.setValue(data.termMax, forKey: CDLoanCategoryTermMax)
+            categoryEntity.setValue(data.interestRate, forKey: CDLoanCategoryInterestRate)
+            categoryEntity.setValue(data.imageUrl, forKey: CDLoanCategoryImageURL)
+            do {
+                try context.save()
+            } catch let error as NSError {
+                print(error)
+            }
+
+        }
+    }
+
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // check mode and change
+        if self.navigationController?.isNavigationBarHidden == false {
+            self.navigationController?.isNavigationBarHidden = true
+        }
+        self.getAllLoans()
         self.mode = UserDefaults.standard.bool(forKey: APP_MODE)
         setupMode()
     }
@@ -109,7 +177,7 @@ class InvestListViewController: UIViewController, UITableViewDataSource, UITable
     private func getAllLoans() {
         APIClient.shared.getAllLoans()
             .done(on: DispatchQueue.main) { model in
-                // print(model)
+                 print(model)
 //                self.allLoansArray = model
                 self.tableView.reloadData()
                 // let _ : BrowwerActiveLoan = model
