@@ -28,6 +28,7 @@ class LoanDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.arrayKey = detailLoan.allKeys.sorted(by: { ($0 as! String) < ($1 as! String) }) as NSArray
         self.title = NSLocalizedString("DETAIL_LOAN", comment: "")
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         let cellNib = UINib(nibName: "DoubleTextTableViewCell", bundle: nil)
         self.tableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)

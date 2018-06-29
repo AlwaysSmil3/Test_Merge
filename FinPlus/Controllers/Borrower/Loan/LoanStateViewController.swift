@@ -92,9 +92,6 @@ class LoanStateViewController: UIViewController {
         
         switch(STATUS_LOAN(rawValue: id!)) {
         case .DRAFT?:
-//            if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
-//                self.navigationController?.isNavigationBarHidden = true
-//            }
             
             headerData = [
                 [
@@ -506,13 +503,29 @@ class LoanStateViewController: UIViewController {
         
         let alert = UIAlertController(title: "", message: "Lựa chọn", preferredStyle: .actionSheet)
         
-        switch activeLoan?.status {
-        case 1:
+        switch (STATUS_LOAN(rawValue: (activeLoan?.status!)!)) {
+        case .DRAFT?:
             alert.addAction(UIAlertAction(title: "Xóa đơn vay", style: .destructive , handler:{ (UIAlertAction)in
-
+                self.showAlertView(title: "Xóa đơn vay", message: "Bạn có chắc chắn muốn xóa đơn vay chưa hoàn thiện này?", okTitle: "Xóa", cancelTitle: "Không", completion: { (okAction) in
+                    if (okAction)
+                    {
+                        APIClient.shared.delLoan(loanID: (self.activeLoan?.loanId)!)
+                        .done(on: DispatchQueue.main) { model in
+                            self.handleLoadingView(isShow: false)
+                            self.showAlertView(title: "", message: "Đơn vay của bạn đã được xóa. Bạn có thể tạo một đơn mới.", okTitle: "ok", cancelTitle: nil, completion: { (okAction) in
+                                self.tabBarController?.selectedIndex = 0
+                            })
+                        }
+                        .catch { error in
+                            self.handleLoadingView(isShow: false)
+                            self.showAlertView(title: "Có lỗi", message: "Đã có lỗi trong quá trình xóa đơn vay. Vui lòng thử lại.", okTitle: "ok", cancelTitle: nil, completion: { (okAction) in
+                            })
+                        }
+                    }
+                })
             }))
             
-        case 2:
+        case .RISK_PENDING?:
             alert.addAction(UIAlertAction(title: "Chỉnh sửa đơn vay", style: .default , handler:{ (UIAlertAction)in
                 
             }))
@@ -521,10 +534,11 @@ class LoanStateViewController: UIViewController {
                 
             }))
             
-        case 14:
+        case .CONTRACT_SIGNED?:
             alert.addAction(UIAlertAction(title: "Xem hợp đồng", style: .default , handler:{ (UIAlertAction)in
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SIGN") as! SignContractViewController
                 vc.isSigned = true
+                vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.isNavigationBarHidden = false
                 self.navigationController?.pushViewController(vc, animated: true)
             }))

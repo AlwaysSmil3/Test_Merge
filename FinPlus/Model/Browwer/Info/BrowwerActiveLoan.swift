@@ -26,7 +26,7 @@ public struct BrowwerActiveLoan {
     static let userInfo = "userInfo"
     static let loanCategoryId = "loanCategoryId"
     static let loanCategory = "loanCategory"
-    static let createdTime = "createdTime"
+    static let createdTime = "createdAt"
   }
 
   // MARK: Properties
