@@ -291,11 +291,25 @@ class ListLoanViewController: UIViewController {
         self.tableview.isHidden = self.listLoan.count < 1
         self.noWalletLabel.isHidden = self.listLoan.count > 0
         self.addBtn.isHidden = self.listLoan.count > 0
+        
+        self.getAllLoans()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func getAllLoans() {
+        APIClient.shared.getAllLoans()
+            .done(on: DispatchQueue.main) { model in
+                // print(model)
+                //                self.allLoansArray = model
+                NSLog("List loan: %d", model.count)
+//                self.tableView.reloadData()
+                // let _ : BrowwerActiveLoan = model
+            }
+            .catch { error in }
     }
     
     @IBAction func addNewWallet(_ sender: Any) {
