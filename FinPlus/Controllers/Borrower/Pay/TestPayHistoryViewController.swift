@@ -46,6 +46,12 @@ class TestPayHistoryViewController: UIViewController, UITableViewDataSource, UIT
             self.navigationController?.isNavigationBarHidden = true
         }
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+
     @IBAction func backBtnAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
