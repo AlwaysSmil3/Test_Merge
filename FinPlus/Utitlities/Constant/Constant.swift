@@ -133,12 +133,12 @@ let NAGATIVE5_COLOR = UIColor(hexString: "#DA3535")
 // 2. Light Theme Color
 let LIGHT_NAVI_COLOR = UIColor(hexString: "#F1F5F8").withAlphaComponent(0.75)
 let LIGHT_BACKGROUND_COLOR = UIColor(hexString: "#F7F7F7")
-let LIGHT_FOREGROUND_COLOR = UIColor(hexString: "#E3EBF0")
+let LIGHT_FOREGROUND_COLOR = LIGHT_MODE_BORDER_COLOR
 let LIGHT_BODY_TEXT_COLOR = UIColor(hexString: "#08121E")
 let LIGHT_DESCRIPTION_COLOR = UIColor(hexString: "#4D6678")
 let LIGHT_SUBTEXT_COLOR = UIColor(hexString: "#8EA3AF")
 let LIGHT_PLACEHOLDER_COLOR = UIColor(hexString: "#B8C9D3")
-let LIGHT_BORDER_AND_LINE_COLOR = UIColor(hexString: "#E3EBF0")
+let LIGHT_BORDER_AND_LINE_COLOR = LIGHT_MODE_BORDER_COLOR
 
 // 2. Dark Theme Color
 let DARK_NAVI_COLOR = UIColor(hexString: "#070809").withAlphaComponent(0.75)

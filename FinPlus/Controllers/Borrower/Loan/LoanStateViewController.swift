@@ -422,7 +422,7 @@ class LoanStateViewController: UIViewController {
         
         self.borderView.layer.borderWidth = 0.5
         self.borderView.layer.cornerRadius = 8
-        self.borderView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        self.borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         
         self.navigationItem.titleView = UIImageView(image: UIImage(named: "ic_logo"))
         

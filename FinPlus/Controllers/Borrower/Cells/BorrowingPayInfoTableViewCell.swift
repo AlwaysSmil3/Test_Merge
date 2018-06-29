@@ -26,7 +26,7 @@ class BorrowingPayInfoTableViewCell: UITableViewCell, UITableViewDataSource, UIT
         self.tableView.allowsSelection = false
         self.tableView.layer.cornerRadius = 5
         self.tableView.layer.borderWidth = 1
-        self.tableView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        self.tableView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         // update data
         // Initialization code
     }

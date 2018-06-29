@@ -32,7 +32,7 @@ class InvestDetailSecondTableViewCell: UITableViewCell {
         // Initialization code
         borderView.layer.cornerRadius = 5
         borderView.layer.borderWidth = 1
-        borderView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+        borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
     }
 
     func updateCellView() {

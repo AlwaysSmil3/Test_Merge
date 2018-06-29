@@ -63,7 +63,7 @@ class PayAllTableViewCell: UITableViewCell {
                 self.containView.layer.borderColor = MAIN_COLOR.cgColor
                 self.selectImg.image = #imageLiteral(resourceName: "ic_radio_on")
             } else {
-                self.containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
+                self.containView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
                 self.selectImg.image = #imageLiteral(resourceName: "ic_radio_off")
 
             }
