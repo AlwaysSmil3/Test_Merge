@@ -48,7 +48,7 @@ class ListLoanViewController: UIViewController {
         
         self.handleLoadingView(isShow: true)
         
-        APIClient.shared.getUserLoans()
+        APIClient.shared.getAllLoans()
             .done(on: DispatchQueue.main) { model in
                 
                 self.handleLoadingView(isShow: false)
