@@ -12,5 +12,5 @@ struct LoanSummaryModel {
     
     var name: String
     var value: String
-    
+    var attributed: NSAttributedString?
 }
