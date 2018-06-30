@@ -111,6 +111,21 @@ extension APIClient {
         return Promise<LoanResponseModel> { seal in
             requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: isShowLoandingView, httpType: httpType, jsonData: dataAPI)
                 .done { json in
+                    
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+                        if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
+                                if status {
+            UIApplication.shared.topViewController()?.navigationController?.popViewController(animated: true)
+                                }
+                                
+                                
+                            })
+                        }
+                        
+                        return
+                    }
+                    
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = LoanResponseModel(object: data)
                         seal.fulfill(model)

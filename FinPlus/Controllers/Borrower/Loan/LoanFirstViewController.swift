@@ -286,11 +286,26 @@ class LoanFirstViewController: BaseViewController {
     }
     
     @IBAction func btnContinueTapped(_ sender: Any) {
-        
         self.updateDataToLoanAPI {
-            let loanPersionalInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanPersionalInfoVC") as! LoanPersionalInfoVC
+            if let info = DataManager.shared.browwerInfo?.activeLoan,  let loanId = info.loanId, loanId > 0 {
+                //Cập nhật
+                let loanPersionalInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanPersionalInfoVC") as! LoanPersionalInfoVC
+                
+                self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
+            } else {
+                //chua có thì tạo
+                APIClient.shared.loan(isShowLoandingView: true, httpType: .POST)
+                    .done(on: DispatchQueue.main) { model in
+                        DataManager.shared.loanID = model.loanId!
+                        
+                        let loanPersionalInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanPersionalInfoVC") as! LoanPersionalInfoVC
+                        
+                        self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
+                    }
+                    .catch { error in }
+            }
             
-            self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
+            
         }
         
     }

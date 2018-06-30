@@ -62,10 +62,6 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             if value.length() > 0, let address = addressTemp {
                 self.lblValue?.text = value
                 DataManager.shared.loanInfo.userInfo.residentAddress = address
-            } else {
-                //Cap nhat thong tin thieu
-                self.updateInfoFalse(pre: title)
-                
             }
             
         } else if id.contains("currentAddress") {
@@ -86,10 +82,6 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             if value.length() > 0, let address = addressTemp {
                 self.lblValue?.text = value
                 DataManager.shared.loanInfo.userInfo.temporaryAddress = address
-            } else {
-                //Cap nhat thong tin thieu
-                self.updateInfoFalse(pre: title)
-                
             }
             
         } else if id.contains("address") {
@@ -110,10 +102,6 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             if value.length() > 0, let address = addressTemp {
                 self.lblValue?.text = value
                 DataManager.shared.loanInfo.jobInfo.address = address
-            } else {
-                //Cap nhat thong tin thieu
-                self.updateInfoFalse(pre: title)
-                
             }
             
         }
