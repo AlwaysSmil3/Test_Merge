@@ -70,7 +70,7 @@ public struct AccountBank {
     id = json[SerializationKeys.id].int32 ?? 0
     district = json[SerializationKeys.district].string ?? ""
     
-    if bankName == "Vietcombank" {
+    if bankName == "Vietcombank" || bankName == "VCB" {
         bankType = 1
     }
     else if bankName == "Viettinbank" {

@@ -68,16 +68,23 @@ extension APIClient {
      GET Lấy danh sách khoản vay của người dùng
         
      */
-    func getLoans() -> Promise<APIResponseGeneral> {
-        return Promise<APIResponseGeneral> { seal in
+    func getUserLoans() -> Promise<[BrowwerActiveLoan]> {
+        return Promise<[BrowwerActiveLoan]> { seal in
             
             let uid = DataManager.shared.userID
             let endPoint = "\(uid)/" + EndPoint.Loan.Loans
             
             getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
-                    let model = APIResponseGeneral(object: json)
-                    seal.fulfill(model)
+                    var array: [BrowwerActiveLoan] = []
+                    
+                    if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
+                        for d in data {
+                            let model1 = BrowwerActiveLoan(object: d)
+                            array.append(model1)
+                        }
+                    }
+                    seal.fulfill(array)
                 }
                 .catch { error in seal.reject(error)}
         }

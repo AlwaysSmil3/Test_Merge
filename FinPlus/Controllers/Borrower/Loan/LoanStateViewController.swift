@@ -103,7 +103,7 @@ class LoanStateViewController: UIViewController {
                         "type": HeaderCellType.TextType,
                         "text": "Đơn vay của bạn chưa được hoàn thiện.",
                         "subType": TextCellType.TitleType,
-                    ],
+                        ],
                     [
                         "type": HeaderCellType.ButtonType,
                         "text": "Hoàn thiện đơn",
@@ -119,7 +119,7 @@ class LoanStateViewController: UIViewController {
                         "type": HeaderCellType.TextType,
                         "text": "Đơn vay của bạn đang chờ duyệt.",
                         "subType": TextCellType.TitleType,
-                    ],
+                        ],
                 ]
                 
             case .RISK_PENDING?:
@@ -132,12 +132,12 @@ class LoanStateViewController: UIViewController {
                         "type": HeaderCellType.TextType,
                         "text": "Đơn vay của bạn cần được bổ sung thông tin.",
                         "subType": TextCellType.TitleType,
-                    ],
+                        ],
                     [
                         "type": HeaderCellType.TextType,
                         "text": "Để được duyệt, hãy bổ sung các thông tin sau:\n• Số chứng minh thư.\n• Ảnh chứng minh thư.\n• Bảng lương.",
                         "subType": TextCellType.DesType,
-                    ],
+                        ],
                     [
                         "type": HeaderCellType.ButtonType,
                         "text": "Bổ sung thông tin",
@@ -153,12 +153,12 @@ class LoanStateViewController: UIViewController {
                         "type": HeaderCellType.TextType,
                         "text": "Chúc mừng \(self.userInfo.fullName!), đơn vay của bạn được duyệt với lãi suất 10%/năm.",
                         "subType": TextCellType.TitleType,
-                    ],
+                        ],
                     [
                         "type": HeaderCellType.TextType,
                         "text": "Hãy ấn 'Xác nhận lãi suất' để bắt đầu huy động tiền từ các nhà đầu tư.",
                         "subType": TextCellType.DesType,
-                    ],
+                        ],
                     [
                         "type": HeaderCellType.ButtonType,
                         "text": "Xác nhận lãi suất",
@@ -174,12 +174,12 @@ class LoanStateViewController: UIViewController {
                         "type": HeaderCellType.TextType,
                         "text": "Rất tiếc, yêu cầu vay của bạn đã bị từ chối.",
                         "subType": TextCellType.TitleType,
-                    ],
+                        ],
                     [
                         "type": HeaderCellType.TextType,
                         "text": "Yêu cầu vay của bạn đã bị từ chối. Vui lòng tạo một đơn vay mới và thứ lại!",
                         "subType": TextCellType.DesType,
-                    ],
+                        ],
                     [
                         "type": HeaderCellType.ButtonType,
                         "text": "Tạo đơn vay mới",
@@ -195,7 +195,7 @@ class LoanStateViewController: UIViewController {
                         "type": HeaderCellType.TextType,
                         "text": "Bạn đã hủy đơn vay này.",
                         "subType": TextCellType.TitleType,
-                    ],
+                        ],
                 ]
                 
             case .RAISING_CAPITAL?:
@@ -205,12 +205,12 @@ class LoanStateViewController: UIViewController {
                         "type": HeaderCellType.TextType,
                         "text": "FinSmart đang huy động cho khoản vay của bạn.",
                         "subType": TextCellType.TitleType,
-                    ],
+                        ],
                     [
                         "type": HeaderCellType.TextType,
                         "text": "Xin vui lòng chờ, khoản vay của bạn đang được huy động vốn từ các nhà đầu tư.",
                         "subType": TextCellType.DesType,
-                    ],
+                        ],
                 ]
                 
             case .PARTIAL_FILLED?:
@@ -233,7 +233,7 @@ class LoanStateViewController: UIViewController {
                         "target": "disburse_soon"
                     ],
                 ]
-
+                
             case .FILLED?, .CONTRACT_READY? :
                 headerData = [
                     [
@@ -288,12 +288,12 @@ class LoanStateViewController: UIViewController {
                         "type": HeaderCellType.TextType,
                         "text": "Xin chào \(self.userInfo.fullName!), bạn đang vay 2.000.000đ.",
                         "subType": TextCellType.TitleType,
-                    ],
+                        ],
                     [
                         "type": HeaderCellType.TextType,
                         "text": "Bạn cần thanh toán 125.000đ trong tháng này. Hãy thanh toán trước ngày: 20/6/2018.",
                         "subType": TextCellType.DesType,
-                    ],
+                        ],
                     [
                         "type": HeaderCellType.ButtonType,
                         "text": "Thanh toán",
@@ -437,7 +437,7 @@ class LoanStateViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         super.viewWillDisappear(animated)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -448,12 +448,12 @@ class LoanStateViewController: UIViewController {
         
         if (headerData.count > 0)
         {
-//            UIView.animate(withDuration: 0, animations: {
-//                self.headerTableView?.layoutIfNeeded()
-//            }) { (complete) in
-//                // Edit heightOfTableViewConstraint's constant to update height of table view
-//                self.headerTableViewHeightConstraint?.constant = (self.headerTableView?.visibleCells[0].frame.height)!*CGFloat(self.headerData.count)
-//            }
+            //            UIView.animate(withDuration: 0, animations: {
+            //                self.headerTableView?.layoutIfNeeded()
+            //            }) { (complete) in
+            //                // Edit heightOfTableViewConstraint's constant to update height of table view
+            //                self.headerTableViewHeightConstraint?.constant = (self.headerTableView?.visibleCells[0].frame.height)!*CGFloat(self.headerData.count)
+            //            }
         }
         else
         {
@@ -482,7 +482,7 @@ class LoanStateViewController: UIViewController {
                     heightOfTableView += cell.frame.height
                 }
                 // Edit heightOfTableViewConstraint's constant to update height of table view
-
+                
                 self.headerTableViewHeightConstraint?.constant = heightOfTableView
             }
         }
@@ -498,7 +498,7 @@ class LoanStateViewController: UIViewController {
                     heightOfTableView += cell.frame.height
                 }
                 // Edit heightOfTableViewConstraint's constant to update height of table view
-
+                
                 self.dataTableViewHeightConstraint?.constant = heightOfTableView
             }
         }
@@ -544,9 +544,9 @@ class LoanStateViewController: UIViewController {
             }))
             
             alert.addAction(UIAlertAction(title: "Hủy đơn vay", style: .destructive , handler:{ (UIAlertAction)in
-            
+                
             }))
-        
+            
         default:
             break
         }
@@ -637,15 +637,17 @@ class LoanStateViewController: UIViewController {
                 
                 self.handleLoadingView(isShow: false)
                 
-                self.showAlertView(title: "", message: "Đơn vay của bạn đã được xóa. Bạn có thể tạo một đơn mới.", okTitle: "ok", cancelTitle: nil, completion: { (okAction) in
-                    self.tabBarController?.selectedIndex = 0
+                self.showGreenBtnMessage(title: "", message: "Đơn vay của bạn đã được xóa. Bạn có thể tạo một đơn mới.", okTitle: "ok", cancelTitle: nil, completion: { (okAction) in
+                    self.moveHome()
+                    
+                    
                 })
             }
             .catch { error in
                 
                 self.handleLoadingView(isShow: false)
                 
-                self.showAlertView(title: "Có lỗi", message: "Đã có lỗi trong quá trình xóa đơn vay. Vui lòng thử lại.", okTitle: "Thử lại", cancelTitle: "Hủy", completion: { (okAction) in
+                self.showGreenBtnMessage(title: "Có lỗi", message: "Đã có lỗi trong quá trình xóa đơn vay. Vui lòng thử lại.", okTitle: "Thử lại", cancelTitle: "Hủy", completion: { (okAction) in
                     if (okAction)
                     {
                         self.delLoan()
@@ -653,7 +655,24 @@ class LoanStateViewController: UIViewController {
                 })
         }
     }
-
+    
+    private func moveHome() {
+        //Lay thong tin nguoi dung
+        APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
+            .done(on: DispatchQueue.main) { model in
+                DataManager.shared.browwerInfo = model
+                
+                let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+                if let window = UIApplication.shared.delegate?.window, let win = window {
+                    win.rootViewController = tabbarVC
+                }
+                
+            }
+            .catch { error in
+                
+        }
+    }
+    
     
 }
 
@@ -700,7 +719,7 @@ extension LoanStateViewController: UITableViewDataSource {
                 if let attributed = item["attributed"] as? NSAttributedString
                 {
                     let oldAttributed = NSMutableAttributedString(attributedString: (cell?.label.attributedText)!)
-
+                    
                     if let range = desText?.range(of: attributed.string)  {
                         oldAttributed.addAttributes(attributed.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, attributed.length)), range: NSRange(range, in: desText!))
                     }
