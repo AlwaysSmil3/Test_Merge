@@ -33,7 +33,7 @@ class LoanSendSuccessVC: BaseViewController {
                 if let info = DataManager.shared.browwerInfo?.activeLoan,  let loanId = info.loanId, loanId > 0 {
                     let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
                     if let window = UIApplication.shared.delegate?.window, let win = window {
-                        win.window?.rootViewController = tabbarVC
+                        win.rootViewController = tabbarVC
                     }
                 } else {
                     self.navigationController?.popToRootViewController(animated: true)

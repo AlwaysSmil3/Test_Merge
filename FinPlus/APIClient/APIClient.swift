@@ -110,6 +110,7 @@ class APIClient {
         
         switch httpType {
         case .DELETE:
+            mutableURLRequest = self.deleteRequest
             break
         case .POST:
             break
