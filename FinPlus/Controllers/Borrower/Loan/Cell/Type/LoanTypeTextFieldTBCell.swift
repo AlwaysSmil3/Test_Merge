@@ -96,6 +96,12 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         guard let parent = self.parent else {
             if id.contains("optionalText") {
                 //thông tin khác
+                if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
+                    //Cap nhat thong tin khong hop le
+                    self.updateInfoFalse(pre: title)
+                }
+                
+                
                 var value = ""
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.optionalText, data.length() > 0 {
                     value = data
@@ -108,10 +114,6 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 if value.length() > 0 {
                     self.tfValue?.text = FinPlusHelper.formatDisplayCurrency(Double(value) ?? 0)
                     DataManager.shared.loanInfo.optionalText = value
-                } else {
-                    //Cap nhat thong tin thieu
-                    self.updateInfoFalse(pre: title)
-                    
                 }
             }
             
@@ -121,6 +123,11 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         if parent.contains("userInfo") {
             // thông tin user
             if id.contains("fullName") {
+                if DataManager.shared.checkFieldIsMissing(key: "fullName") {
+                    //Cap nhat thong tin khong hop le
+                    self.updateInfoFalse(pre: title)
+                }
+                
                 var value = ""
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.fullName, data.length() > 0 {
                     value = data
@@ -133,13 +140,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 if value.length() > 0 {
                     self.tfValue?.text = value
                     DataManager.shared.loanInfo.userInfo.fullName = value
-                } else {
-                    //Cap nhat thong tin thieu
-                    self.updateInfoFalse(pre: title)
-                    
                 }
                 
             } else if id.contains("nationalId") {
+                if DataManager.shared.checkFieldIsMissing(key: "nationalId") {
+                    //Cap nhat thong tin khong hop le
+                    self.updateInfoFalse(pre: title)
+                }
+                
                 var value = ""
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.nationalId, data.length() > 0 {
                     value = data
@@ -152,16 +160,16 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 if value.length() > 0 {
                     self.tfValue?.text = value
                     DataManager.shared.loanInfo.userInfo.nationalID = value
-                } else {
-                    //Cap nhat thong tin thieu
-                    self.updateInfoFalse(pre: title)
-                    
                 }
             }
             
         } else if parent.contains("jobInfo") {
             // Thông tin nghề nghiêp
             if id == "company" {
+                if DataManager.shared.checkFieldIsMissing(key: "company") {
+                    //Cap nhat thong tin khong hop le
+                    self.updateInfoFalse(pre: title)
+                }
                 
                 var value = ""
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.company, data.length() > 0 {
@@ -175,13 +183,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 if value.length() > 0 {
                     self.tfValue?.text = value
                     DataManager.shared.loanInfo.jobInfo.company = value
-                } else {
-                    //Cap nhat thong tin thieu
-                    self.updateInfoFalse(pre: title)
-                    
                 }
                 
             }  else if id == "salary" {
+                
+                if DataManager.shared.checkFieldIsMissing(key: "salary") {
+                    //Cap nhat thong tin khong hop le
+                    self.updateInfoFalse(pre: title)
+                }
                 
                 var value: Int32 = 0
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.salary, data > 0 {
@@ -195,13 +204,13 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 if value > 0 {
                     self.tfValue?.text = FinPlusHelper.formatDisplayCurrency(Double(value))
                     DataManager.shared.loanInfo.jobInfo.salary = Int32(value)
-                } else {
-                    //Cap nhat thong tin thieu
-                    self.updateInfoFalse(pre: title)
-                    
                 }
                 
             } else if id == "companyPhoneNumber" {
+                if DataManager.shared.checkFieldIsMissing(key: "companyPhoneNumber") {
+                    //Cap nhat thong tin khong hop le
+                    self.updateInfoFalse(pre: title)
+                }
                 
                 var value = ""
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.companyPhoneNumber , data.length() > 0 {
@@ -215,10 +224,6 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 if value.length() > 0 {
                     self.tfValue?.text = value
                     DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = value
-                } else {
-                    //Cap nhat thong tin thieu
-                    self.updateInfoFalse(pre: title)
-                    
                 }
             }
         }

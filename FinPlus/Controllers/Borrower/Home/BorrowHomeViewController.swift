@@ -18,6 +18,7 @@ class BorrowHomeViewController: BaseViewController {
     @IBOutlet var contentLoanView: UIView!
     @IBOutlet var mainCollectionView: UICollectionView!
     
+    @IBOutlet var headerView: UIView!
     
     // Loan status cho các trạng thái của Loan
     var loanStatus: Int = DataManager.shared.browwerInfo?.activeLoan?.status ?? -1 {
@@ -45,11 +46,13 @@ class BorrowHomeViewController: BaseViewController {
                 self.mainCollectionView.reloadData()
             }
         }
-        
 
         self.getLoanCategories()
 
         self.setupUI()
+        
+        //Map DataLoan
+        DataManager.shared.mapDataBrowwerAndLoan()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -2634,7 +2634,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="btnBackToRootClicked:" destination="f3g-t4-IvH" eventType="touchUpInside" id="kGf-Ga-y0F"/>
+                                            <action selector="btnGoHomeTapped:" destination="f3g-t4-IvH" eventType="touchUpInside" id="GSd-N3-wWg"/>
                                         </connections>
                                     </button>
                                 </subviews>

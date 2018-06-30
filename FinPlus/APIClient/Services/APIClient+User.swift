@@ -24,7 +24,7 @@ extension APIClient {
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = BrowwerInfo(object: data)
                         
-                        if let activeLoan = data["activeLoan"] as? JSONDictionary, let missingData = activeLoan["missingData"] {
+                        if let activeLoan = data["activeLoan"] as? JSONDictionary, let missingData = activeLoan["missingData"] as? JSONDictionary {
                             DataManager.shared.missingLoanData = BrowwerActiveLoan(object: missingData)
                         }
                         

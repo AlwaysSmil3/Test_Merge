@@ -52,10 +52,18 @@ class DataManager {
     var currentIndexJobPositionSelectedPopup: Int?
     
     //Các trường không hợp lệ của loan
-    var missingLoanData: BrowwerActiveLoan?
+    var missingLoanData: BrowwerActiveLoan? {
+        didSet {
+            self.updateListMissingKeyData()
+        }
+    }
+    
     
     //List Key missing Loan Data
-    var listKeyMissingLoan: [String]?
+    var listKeyMissingLoanKey: [String]?
+    
+    //List Title missing Loan Data
+    var listKeyMissingLoanTitle: [String]?
     
     /// Get Data from JSON
     func getDataLoanFromJSON() {
@@ -210,43 +218,52 @@ class DataManager {
             DataManager.shared.loanInfo.optionalText = text
         }
         
+        if let optionMedia = activeLoan.optionalMedia {
+            for i in optionMedia {
+                DataManager.shared.loanInfo.optionalMedia.append(i)
+            }
+            
+        }
+        
         
     }
     
-    
-    func getListMissingKeyData() -> [String]? {
-        guard let miss = self.missingLoanData else { return nil }
+    //Update Các thông tin không hợp lệ
+    func updateListMissingKeyData() {
+        guard let miss = self.missingLoanData else { return }
         
-        var missingList : [String] = []
+        var missingListKey : [String] = []
+        var missingListTitle : [String] = []
         
         if let userInfo = miss.userInfo {
             //Thong tin UserInfo
             if let fullName = userInfo.fullName, fullName.length() > 0 {
-                missingList.append("fullName")
+                missingListKey.append("fullName")
+                missingListTitle.append("")
             }
             
             if let gender = userInfo.gender, gender.length() > 0 {
-                missingList.append("gender")
+                missingListKey.append("gender")
             }
             
             if let birthday = userInfo.birthday, birthday.length() > 0 {
-                missingList.append("birthday")
+                missingListKey.append("birthday")
             }
             
             if let nationalId = userInfo.nationalId, nationalId.length() > 0 {
-                missingList.append("nationalId")
+                missingListKey.append("nationalId")
             }
             
             if let phone = userInfo.relationships?.phoneNumber, phone.length() > 0 {
-                missingList.append("phoneNumber")
+                missingListKey.append("phoneNumber")
             }
             
             if let _ = userInfo.residentAddress {
-                missingList.append("residentAddress")
+                missingListKey.append("residentAddress")
             }
             
             if let _ = userInfo.currentAddress {
-                missingList.append("currentAddress")
+                missingListKey.append("currentAddress")
             }
             
         }
@@ -254,51 +271,48 @@ class DataManager {
         if let jobInfo = miss.jobInfo {
             //Thong tin JobInfo
             if let _ = jobInfo.jobType {
-                missingList.append("jobType")
+                missingListKey.append("jobType")
             }
             
             if let _ = jobInfo.position {
-                missingList.append("position")
+                missingListKey.append("position")
             }
             
             if let _ = jobInfo.company {
-                missingList.append("company")
+                missingListKey.append("company")
             }
             
             if let sa = jobInfo.salary, sa > 0 {
-                missingList.append("salary")
+                missingListKey.append("salary")
             }
             
             if let _ = jobInfo.companyPhoneNumber {
-                missingList.append("companyPhoneNumber")
+                missingListKey.append("companyPhoneNumber")
             }
             
             if let _ = jobInfo.address {
-                missingList.append("address")
+                missingListKey.append("address")
             }
-            
-            
-            
             
         }
         
         if let _ = miss.nationalIdAllImg {
-            missingList.append("nationalIdAllImg")
+            missingListKey.append("nationalIdAllImg")
         }
         
         if let _ = miss.nationalIdFrontImg {
-            missingList.append("nationalIdFrontImg")
+            missingListKey.append("nationalIdFrontImg")
         }
         
         if let _ = miss.nationalIdBackImg {
-            missingList.append("nationalIdBackImg")
+            missingListKey.append("nationalIdBackImg")
         }
         
         if let _ = miss.optionalText {
-            missingList.append("optionalText")
+            missingListKey.append("optionalText")
         }
         
-        return missingList
+        self.listKeyMissingLoanKey = missingListKey
     }
     
     
@@ -307,7 +321,7 @@ class DataManager {
     /// - Parameter key: <#key description#>
     /// - Returns: <#return value description#>
     func checkFieldIsMissing(key: String) -> Bool {
-        guard let list = self.listKeyMissingLoan else { return false }
+        guard let list = self.listKeyMissingLoanKey else { return false }
         let listFields = list.filter { $0 == key }
         
         if listFields.count > 0 {
