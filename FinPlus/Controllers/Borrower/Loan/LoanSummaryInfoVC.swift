@@ -16,14 +16,14 @@ class LoanSummaryInfoVC: BaseViewController {
     let currentCategory: LoanCategories? = DataManager.shared.getCurrentCategory()
     
     var dataSource: [LoanSummaryModel] = [
-        LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount),
-        LoanSummaryModel(name: "Ngày tạo đơn", value: "Date"),
-        LoanSummaryModel(name: "Số tiền vay", value: FinPlusHelper.formatDisplayCurrency(Double(DataManager.shared.loanInfo.amount)) + "đ"),
-        LoanSummaryModel(name: "Kỳ hạn vay", value: "\(DataManager.shared.loanInfo.term) Ngày"),
-        LoanSummaryModel(name: "Lãi xuất dự kiến", value: ""),
-        LoanSummaryModel(name: "Phí dịch vụ", value: ""),
-        LoanSummaryModel(name: "Trả góp dự kiến hàng tháng", value: ""),
-        LoanSummaryModel(name: "Mục đích vay", value: ""),
+        LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
+        LoanSummaryModel(name: "Ngày tạo đơn", value: "Date", attributed: nil),
+        LoanSummaryModel(name: "Số tiền vay", value: FinPlusHelper.formatDisplayCurrency(Double(DataManager.shared.loanInfo.amount)) + "đ", attributed: nil),
+        LoanSummaryModel(name: "Kỳ hạn vay", value: "\(DataManager.shared.loanInfo.term) Ngày", attributed: nil),
+        LoanSummaryModel(name: "Lãi xuất dự kiến", value: "", attributed: nil),
+        LoanSummaryModel(name: "Phí dịch vụ", value: "", attributed: nil),
+        LoanSummaryModel(name: "Trả góp dự kiến hàng tháng", value: "", attributed: nil),
+        LoanSummaryModel(name: "Mục đích vay", value: "", attributed: nil),
         
     ]
     
@@ -78,15 +78,14 @@ class LoanSummaryInfoVC: BaseViewController {
         amountDouble = FinPlusHelper.CalculateMoneyPayMonth(month: amountDouble, term: Double(term/30), rate: cate.interestRate!)
         
         dataSource = [
-        LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount),
-        LoanSummaryModel(name: "Ngày tạo đơn", value: date),
-        LoanSummaryModel(name: "Số tiền vay", value: FinPlusHelper.formatDisplayCurrency(Double(DataManager.shared.loanInfo.amount)) + "đ"),
-        LoanSummaryModel(name: "Kỳ hạn vay", value: "\(DataManager.shared.loanInfo.term) Ngày"),
-        LoanSummaryModel(name: "Lãi xuất dự kiến", value: "\(Int(cate.interestRate!))% năm"),
-        LoanSummaryModel(name: "Phí dịch vụ", value: feeStr),
-        LoanSummaryModel(name: labelStudentLoan, value: FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ"),
-        LoanSummaryModel(name: "Mục đích vay", value: cate.title!)
-        
+            LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
+            LoanSummaryModel(name: "Ngày tạo đơn", value: date, attributed: nil),
+            LoanSummaryModel(name: "Số tiền vay", value: FinPlusHelper.formatDisplayCurrency(Double(DataManager.shared.loanInfo.amount)) + "đ", attributed: nil),
+            LoanSummaryModel(name: "Kỳ hạn vay", value: "\(DataManager.shared.loanInfo.term) Ngày", attributed: nil),
+            LoanSummaryModel(name: "Lãi xuất dự kiến", value: "\(Int(cate.interestRate!))% năm", attributed: nil),
+            LoanSummaryModel(name: "Phí dịch vụ", value: feeStr, attributed: nil),
+            LoanSummaryModel(name: labelStudentLoan, value: FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ", attributed: nil),
+            LoanSummaryModel(name: "Mục đích vay", value: cate.title!, attributed: nil)
         ]
         
         

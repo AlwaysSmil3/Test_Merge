@@ -46,6 +46,7 @@ class LoanStateViewController: UIViewController {
     private var arrayKey: NSArray!
     
     var hiddenBack = false
+    var dataSource: [LoanSummaryModel] = []
     var activeLoan: BrowwerActiveLoan?
     var bottom_state: BOTTOM_STATE!
     var userInfo: BrowwerInfo!
@@ -92,6 +93,17 @@ class LoanStateViewController: UIViewController {
         self.btnBottomView.layer.masksToBounds = true
         
         self.labelBottomView.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_SMALL)
+        
+        dataSource = [
+            LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
+            LoanSummaryModel(name: "Ngày tạo đơn", value: "Date", attributed: NSAttributedString(string: "Date", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                LoanSummaryModel(name: "Số tiền vay", value: FinPlusHelper.formatDisplayCurrency(Double((self.activeLoan?.amount)!)) + "đ", attributed: nil),
+                LoanSummaryModel(name: "Kỳ hạn vay", value: "\((self.activeLoan?.term)!) Ngày", attributed: nil),
+                LoanSummaryModel(name: "Lãi xuất dự kiến", value: "123", attributed: nil),
+                LoanSummaryModel(name: "Phí dịch vụ", value: "123", attributed: nil),
+                LoanSummaryModel(name: "Trả góp dự kiến hàng tháng", value: "11", attributed: nil),
+                LoanSummaryModel(name: "Mục đích vay", value: "asdasdasdas", attributed: nil),
+            ]
         
         if (bottom_state == nil)
         {
@@ -683,7 +695,7 @@ extension LoanStateViewController: UITableViewDelegate {
             return headerData.count
         }
         
-        return 9
+        return self.dataSource.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -759,45 +771,54 @@ extension LoanStateViewController: UITableViewDataSource {
         }
         else
         {
+            let item = self.dataSource[indexPath.row]
             var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DoubleTextTableViewCell
             if cell == nil {
                 tableView.register(UINib(nibName: "DoubleTextTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
                 cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DoubleTextTableViewCell
             }
             
-            switch indexPath.row {
-            case 0:
-                cell?.nameLabel.text = NSLocalizedString("PHONE", comment: "")
-                cell?.desLabel.text = "0986632888"
-            case 1:
-                cell?.nameLabel.text = NSLocalizedString("LOAN_START", comment: "")
-                cell?.desLabel.text = "8/5/2018"
-            case 2:
-                cell?.nameLabel.text = NSLocalizedString("LOAN_MONEY", comment: "")
-                cell?.desLabel.text = "2.000.000đ"
-                cell?.desLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
-            case 3:
-                cell?.nameLabel.text = NSLocalizedString("LOAN_TIME", comment: "")
-                cell?.desLabel.text = "12 tháng"
-                cell?.desLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
-            case 4:
-                cell?.nameLabel.text = NSLocalizedString("STATUS", comment: "")
-                cell?.desLabel.text = getState(type: STATUS_LOAN(rawValue: (activeLoan?.status)!)!)
-                cell?.desLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: (activeLoan?.status)!)!)
-            case 5:
-                cell?.nameLabel.text = NSLocalizedString("RATE", comment: "")
-                cell?.desLabel.text = "10%/năm"
-            case 6:
-                cell?.nameLabel.text = NSLocalizedString("LOAN_FEE", comment: "")
-                cell?.desLabel.text = "200.000đ"
-            case 7:
-                cell?.nameLabel.text = NSLocalizedString("MONEY_MONTH", comment: "")
-                cell?.desLabel.text = "180.000đ"
-                cell?.desLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
-            default:
-                cell?.nameLabel.text = NSLocalizedString("LOAN_DIS", comment: "")
-                cell?.desLabel.text = "Vay mua điện thoại"
+            cell?.nameLabel.text = NSLocalizedString(item.name, comment: "")
+            cell?.desLabel.text = item.value
+            
+            if (item.attributed != nil)
+            {
+                cell?.desLabel.attributedText = item.attributed!
             }
+            
+//            switch indexPath.row {
+//            case 0:
+//                cell?.nameLabel.text = NSLocalizedString("PHONE", comment: "")
+//                cell?.desLabel.text = "0986632888"
+//            case 1:
+//                cell?.nameLabel.text = NSLocalizedString("LOAN_START", comment: "")
+//                cell?.desLabel.text = "8/5/2018"
+//            case 2:
+//                cell?.nameLabel.text = NSLocalizedString("LOAN_MONEY", comment: "")
+//                cell?.desLabel.text = "2.000.000đ"
+//                cell?.desLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
+//            case 3:
+//                cell?.nameLabel.text = NSLocalizedString("LOAN_TIME", comment: "")
+//                cell?.desLabel.text = "12 tháng"
+//                cell?.desLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
+//            case 4:
+//                cell?.nameLabel.text = NSLocalizedString("STATUS", comment: "")
+//                cell?.desLabel.text = getState(type: STATUS_LOAN(rawValue: (activeLoan?.status)!)!)
+//                cell?.desLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: (activeLoan?.status)!)!)
+//            case 5:
+//                cell?.nameLabel.text = NSLocalizedString("RATE", comment: "")
+//                cell?.desLabel.text = "10%/năm"
+//            case 6:
+//                cell?.nameLabel.text = NSLocalizedString("LOAN_FEE", comment: "")
+//                cell?.desLabel.text = "200.000đ"
+//            case 7:
+//                cell?.nameLabel.text = NSLocalizedString("MONEY_MONTH", comment: "")
+//                cell?.desLabel.text = "180.000đ"
+//                cell?.desLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_NORMAL)
+//            default:
+//                cell?.nameLabel.text = NSLocalizedString("LOAN_DIS", comment: "")
+//                cell?.desLabel.text = "Vay mua điện thoại"
+//            }
             
             if indexPath.row == 8 {
                 updateConstrainTable(tableView: self.dataTableView!)
