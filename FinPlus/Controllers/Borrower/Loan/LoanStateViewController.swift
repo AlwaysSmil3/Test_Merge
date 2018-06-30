@@ -391,7 +391,7 @@ class LoanStateViewController: UIViewController {
             
         case .CONFIRM_RATE:
             self.btnBottomView.setTitle("Xác nhận", for: .normal)
-            self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.confirm_rate_success), for: .touchUpInside)
+            self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.confirmRate), for: .touchUpInside)
             self.labelBottomView.text = "Tiền phí sẽ được trừ ngay sau khi giải ngân tiền vay."
             isEnableFooterView = true
             
@@ -626,6 +626,20 @@ class LoanStateViewController: UIViewController {
     }
     
     // MARK: func
+    
+    @objc func confirmRate() {
+        //Goi api thanh cong xong -> confirm_rate_success
+        DataManager.shared.loanInfo.status = STATUS_LOAN.RAISING_CAPITAL.rawValue
+        
+        APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
+            .done(on: DispatchQueue.main) { model in
+                DataManager.shared.loanID = model.loanId!
+                
+                self.confirm_rate_success()
+            }
+            .catch { error in }
+        
+    }
     
     // Xóa đơn vay
     func delLoan() {
