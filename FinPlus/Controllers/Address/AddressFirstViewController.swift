@@ -18,9 +18,21 @@ class AddressFirstViewController: BaseViewController {
     
     var dataSource : [LoanBuilderFields] = []
     
-    var cityModel: Model1?
-    var districtModel: Model1?
+    var cityModel: Model1? {
+        didSet {
+            
+        }
+    }
+    
+    var districtModel: Model1? {
+        didSet {
+            
+        }
+    }
+    
+    
     var communeModel: Model1?
+    
     //Số nhà, thôn, xóm,....
     var numberHouse: String?
     
