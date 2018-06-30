@@ -174,12 +174,12 @@ extension APIClient {
                 }
                 .catch { error in seal.reject(error)}
         }
-        
+
     }
     
     func signContract(otp: String, loanID: Int32) -> Promise<APIResponseGeneral> {
 
-        let endPoint = "loans/" + "\(loanID)/contract/otp"
+        let endPoint = "loans/" + "\(loanID)/contract"
         let params: JSONDictionary = [
             "otp": otp
         ]

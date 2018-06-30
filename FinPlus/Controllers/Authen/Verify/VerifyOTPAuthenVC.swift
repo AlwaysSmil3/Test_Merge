@@ -22,7 +22,9 @@ class VerifyOTPAuthenVC: BaseViewController {
     @IBOutlet weak var resendCodeBtn: UIButton!
     @IBOutlet var lblLimitTime: UILabel!
     @IBOutlet var pinCodeTextField: PinCodeTextField!
-    var verifyType : VerifyType = .Login
+    var verifyType: VerifyType = .Login
+    
+    var loanId: Int32!
     var account = ""
     var count = 0
     var timer = Timer()
@@ -176,8 +178,8 @@ class VerifyOTPAuthenVC: BaseViewController {
     
     //MARK: Verify sign contract
     func verifyOTPSignContract() {
-        guard let loan = self.loanResponseModel else { return }
-        APIClient.shared.signContract(otp: self.otp, loanID: loan.loanId!)
+        guard let loanId = self.loanId else { return }
+        APIClient.shared.signContract(otp: self.otp, loanID: loanId)
         .done(on: DispatchQueue.main) { [weak self] model in
             let vc = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "CONTRACT_SUCCESS")
             self?.navigationController?.isNavigationBarHidden = true

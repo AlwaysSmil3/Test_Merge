@@ -87,7 +87,7 @@ class SignContractViewController: UIViewController, UIWebViewDelegate {
             
             let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
             verifyVC.verifyType = .SignContract
-            verifyVC.loanResponseModel?.loanId = self.activeLoan?.loanId
+            verifyVC.loanId = self.activeLoan?.loanId
             self.navigationController?.isNavigationBarHidden = true
             self.navigationController?.pushViewController(verifyVC, animated: true)
         }
