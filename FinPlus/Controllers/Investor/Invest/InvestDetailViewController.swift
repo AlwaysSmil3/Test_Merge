@@ -9,7 +9,8 @@
 import UIKit
 
 class InvestDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var investData : DemoLoanModel! {
+    var loanCategories : [LoanCategories] = [LoanCategories]()
+    var investData : BrowwerActiveLoan! {
         didSet {
             if let tableView = self.tableView {
                 tableView.reloadData()
@@ -26,13 +27,19 @@ class InvestDetailViewController: UIViewController, UITableViewDelegate, UITable
 
         // Do any additional setup after loading the view.
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = true
         self.mode = UserDefaults.standard.bool(forKey: APP_MODE)
         setupMode()
     }
@@ -94,6 +101,8 @@ class InvestDetailViewController: UIViewController, UITableViewDelegate, UITable
         if indexPath.row == 0 {
             if let cell = tableView.dequeueReusableNibCell(type: InvestDetailFirstTableViewCell.self) {
                 cell.cellData = self.investData
+                print(self.loanCategories.count)
+                cell.loanCategories = self.loanCategories
                 cell.updateCellView()
                 return cell
             }
@@ -101,6 +110,7 @@ class InvestDetailViewController: UIViewController, UITableViewDelegate, UITable
         } else {
             if let cell = tableView.dequeueReusableNibCell(type: InvestDetailSecondTableViewCell.self) {
                 cell.cellData = self.investData
+                cell.loanCategories = self.loanCategories
                 cell.updateCellView()
                 return cell
             }

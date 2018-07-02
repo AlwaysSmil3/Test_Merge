@@ -21,6 +21,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InvestorSignupWaitingViewController" customModule="FinPlus" customModuleProvider="target">
             <connections>
                 <outlet property="editProfileBtn" destination="yTE-iq-WhC" id="6pl-dB-LAd"/>
+                <outlet property="nextToTabbarBtn" destination="DNm-Bb-Keo" id="PXI-CG-oUI"/>
+                <outlet property="showRejectBtn" destination="bXa-XO-KOR" id="RkQ-b3-PVm"/>
                 <outlet property="turnOnNotiBtn" destination="kal-i0-zl8" id="g29-Ld-S5o"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

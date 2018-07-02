@@ -31,7 +31,7 @@ public struct BrowwerActiveLoan {
     static let inRate = "inRate"
     static let score = "score"
     static let grade = "grade"
-    
+
     static let funded = "funded"
     static let contractId = "contractId"
     static let paidMonth = "paidMonth"
@@ -55,10 +55,10 @@ public struct BrowwerActiveLoan {
   public var loanCategory: LoanCategories?
   public var createdTime: String?
     
-    public var inRate: Int?
+    public var inRate: Float?
     public var score: String?
     public var grade: String?
-    public var funded: Int32?
+    public var funded: Float?
     public var contractId: Int32?
     public var paidMonth: Int?
 
@@ -90,11 +90,11 @@ public struct BrowwerActiveLoan {
     loanCategoryId = json[SerializationKeys.loanCategoryId].int16
     loanCategory = LoanCategories(json: json[SerializationKeys.loanCategory])
     createdTime = json[SerializationKeys.createdTime].string
-    inRate = json[SerializationKeys.inRate].int
+    inRate = json[SerializationKeys.inRate].float
     score = json[SerializationKeys.score].string
     grade = json[SerializationKeys.grade].string
-    
-    funded = json[SerializationKeys.funded].int32
+
+    funded = json[SerializationKeys.funded].float
     contractId = json[SerializationKeys.contractId].int32
     paidMonth = json[SerializationKeys.paidMonth].int
     

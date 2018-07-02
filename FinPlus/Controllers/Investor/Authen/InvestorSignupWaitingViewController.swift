@@ -10,11 +10,15 @@ import UIKit
 
 class InvestorSignupWaitingViewController: UIViewController {
 
+    @IBOutlet weak var nextToTabbarBtn: UIButton!
+    @IBOutlet weak var showRejectBtn: UIButton!
     @IBOutlet weak var editProfileBtn: UIButton!
     @IBOutlet weak var turnOnNotiBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         editProfileBtn.layer.borderColor = UIColor.white.cgColor
+        showRejectBtn.layer.borderColor = UIColor.white.cgColor
+        nextToTabbarBtn.layer.borderColor = UIColor.white.cgColor
 
         // Do any additional setup after loading the view.
     }

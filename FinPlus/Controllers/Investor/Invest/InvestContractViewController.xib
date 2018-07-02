@@ -41,6 +41,9 @@
                             </constraints>
                             <inset key="contentEdgeInsets" minX="10" minY="6" maxX="0.0" maxY="6"/>
                             <state key="normal" image="ic_back"/>
+                            <connections>
+                                <action selector="backAction:" destination="-1" eventType="touchUpInside" id="dPi-Ft-X6L"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
