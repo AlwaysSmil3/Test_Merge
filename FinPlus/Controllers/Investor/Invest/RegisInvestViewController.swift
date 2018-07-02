@@ -279,15 +279,31 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
             self.showGreenBtnMessage(title: "Error", message: "You must read and accept with contract before sign.", okTitle: "Ok", cancelTitle: nil)
             return
         }
-        let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
-        verifyVC.verifyType = .RegisInvest
-        self.navigationController?.pushViewController(verifyVC, animated: true)
+        // call to invest api
+        let note = self.budgetSelected / Float(unit)
+        APIClient.shared.investLoan(loanId: investDetail.loanId!, investorId: DataManager.shared.userID, notes: Int32(note))
+            .done(on: DispatchQueue.main) { model in
+                if let returnCode = model.returnCode, returnCode == 1 {
+                    let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
+                    verifyVC.verifyType = .RegisInvest
+                    verifyVC.loanId = self.investDetail.loanId
+                    verifyVC.noteId = model.data?.noteId!
+                    self.navigationController?.pushViewController(verifyVC, animated: true)
+                } else {
+                    if let returnMsg = model.returnMsg, returnMsg != "" {
+                        self.showGreenBtnMessage(title: "Đầu tư thất bại", message: returnMsg, okTitle: "Ok", cancelTitle: nil)
+                    } else {
+                        self.showGreenBtnMessage(title: "Đầu tư thất bại", message: "Lỗi không xác định", okTitle: "Ok", cancelTitle: nil)
+                    }
+                }
+            }
+            .catch { error in
+        }
     }
 
     func pushToBudgetAwardsVC() {
         let budgetAwardsVC = BudgetAwardsViewController(nibName: "BudgetAwardsViewController", bundle: nil)
         budgetAwardsVC.budgetAward = budgetSelected
-
         self.navigationController?.pushViewController(budgetAwardsVC, animated: true)
     }
     
