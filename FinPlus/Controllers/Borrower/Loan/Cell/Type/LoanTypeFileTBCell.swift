@@ -54,10 +54,6 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 DataManager.shared.loanInfo.nationalIdAllImg = data
                 self.imgAdd?.isHidden = true
                 self.lblDescription?.isHidden = true
-            } else {
-                //Cap nhat thong tin thieu
-                self.updateInfoFalse(pre: title)
-                
             }
             
         } else if id.contains("nationalIdFrontImg") {
@@ -66,10 +62,6 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 DataManager.shared.loanInfo.nationalIdFrontImg = data
                 self.imgAdd?.isHidden = true
                 self.lblDescription?.isHidden = true
-            } else {
-                //Cap nhat thong tin thieu
-                self.updateInfoFalse(pre: title)
-                
             }
             
         } else if id.contains("nationalIdBackImg") {
@@ -78,10 +70,6 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 DataManager.shared.loanInfo.nationalIdBackImg = data
                 self.imgAdd?.isHidden = true
                 self.lblDescription?.isHidden = true
-            } else {
-                //Cap nhat thong tin thieu
-                self.updateInfoFalse(pre: title)
-                
             }
             
         }

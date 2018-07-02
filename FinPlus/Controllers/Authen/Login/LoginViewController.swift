@@ -130,8 +130,10 @@ class LoginViewController: BaseViewController {
 //                                self?.pushToHomeVC(userType: .Investor)
                             }
                         }
+                        
+                        
                         // fix to test investor
-//                        self?.accountType = .None
+                        //self?.accountType = .None
                     }
 
                     //Cap nhat push notification token
@@ -183,7 +185,7 @@ class LoginViewController: BaseViewController {
             let tabbarVC = InvestorTabBarController(nibName: nil, bundle: nil)
 
             self.navigationController?.present(tabbarVC, animated: true, completion: {
-
+                
             })
         default:
             self.pushToChoiceKindUserVC()

@@ -24,7 +24,7 @@ extension APIClient {
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = BrowwerInfo(object: data)
                         
-                        if let activeLoan = data["activeLoan"] as? JSONDictionary, let missingData = activeLoan["missingData"] {
+                        if let activeLoan = data["activeLoan"] as? JSONDictionary, let missingData = activeLoan["missingData"] as? JSONDictionary {
                             DataManager.shared.missingLoanData = BrowwerActiveLoan(object: missingData)
                         }
                         
@@ -82,6 +82,72 @@ extension APIClient {
         
     }
     
+    /* Lấy danh sách tài khoản ngân hàng
+     
+     */
+    func getListBank(uId: Int32) -> Promise<[AccountBank]> {
+        
+        return Promise<[AccountBank]> { seal in
+            let endPoint = EndPoint.User.User + "\(uId)/bank-account"
+            
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
+                .done { json in
+
+                        var array: [AccountBank] = []
+                        
+                        if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
+                            
+                            for d in data {
+                                let model1 = AccountBank(object: d)
+                                array.append(model1)
+                            }
+                            
+                        }
+                        
+                        seal.fulfill(array)
+            
+                }
+                .catch { error in
+                    seal.reject(error)
+            }
+            
+        }
+    }
     
+    /* Thêm tài khoản ngân hàng
+     
+     */
+    func addNewBank(uId: Int32, params: JSONDictionary) -> Promise<APIResponseGeneral> {
+        
+        let endPoint = EndPoint.User.User + "\(uId)/bank-account"
+
+        return Promise<APIResponseGeneral> { seal in
+            requestWithEndPoint(host: Host.productURL, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
+                .done { json in
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+
+                }
+                .catch { error in seal.reject(error)}
+        }
+    }
+    
+    /* Xóa tài khoản ngân hàng
+     
+     */
+    func delBank(uId: Int32, params: JSONDictionary) -> Promise<APIResponseGeneral> {
+        
+        let endPoint = EndPoint.User.User + "\(uId)/bank-account"
+        
+        return Promise<APIResponseGeneral> { seal in
+            requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .DELETE)
+                .done { json in
+                    
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in seal.reject(error)}
+        }
+    }
     
 }

@@ -96,12 +96,71 @@ class AddWalletViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func addNewBank() {
+        
+        if ((self.nameTextField.text?.length())! < 1)
+        {
+            self.showAlertView(title: "Thông báo", message: "Bạn chưa điền thông tin họ và tên", okTitle: "Đồng ý", cancelTitle: nil)
+            self.nameTextField.becomeFirstResponder()
+            return
+        }
+        
+        if ((self.accTextField.text?.length())! < 1)
+        {
+            self.showAlertView(title: "Thông báo", message: "Bạn chưa điền số tài khoản", okTitle: "Đồng ý", cancelTitle: nil)
+            self.accTextField.becomeFirstResponder()
+            return
+        }
+        
+        if (((self.reAccTextField.text?.length())! < 1))
+        {
+            self.showAlertView(title: "Thông báo", message: "Bạn chưa điền thông tin Tỉnh", okTitle: "Đồng ý", cancelTitle: nil)
+            self.reAccTextField.becomeFirstResponder()
+            return
+        }
+        
+        var bankName = ""
+        
+        if self.vcbBtn.isSelected {
+            bankName = "Vietcombank"
+        }
+        else if self.viettinBtn.isSelected {
+            bankName = "Viettinbank"
+        }
+        else if self.techBtn.isSelected {
+            bankName = "Techcombank"
+        }
+        else if self.agriBtn.isSelected {
+            bankName = "Agribank"
+        }
+        
+        let params: JSONDictionary = [
+            "type": bankName,
+            "accountHolder": self.nameTextField.text!,
+            "accountNumber": self.accTextField.text!,
+            "branch": self.reAccTextField.text!
+        ]
+        
+        APIClient.shared.addNewBank(uId: DataManager.shared.userID, params: params)
+            .done(on: DispatchQueue.main) { model in
+                
+                guard let code = model.returnCode, code > 0 else {
+                    self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg ?? "Thêm ngân hàng thất bại", okTitle: "OK", cancelTitle: nil)
+                    return
+                }
+                
+                self.navigationController?.popViewController(animated: true)
+            }
+            .catch { error in
+        }
+    }
+    
     @IBAction func navi_cancel(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func navi_save(sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        self.addNewBank()
     }
     
     @IBAction func vcbBtn_selected(sender: UIButton)

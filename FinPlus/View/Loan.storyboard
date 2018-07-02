@@ -116,14 +116,6 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1Q-bF-jiO">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="556"/>
                                                         <subviews>
-                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="ELd-UQ-9Wk">
-                                                                <rect key="frame" x="14" y="105" width="347" height="31"/>
-                                                                <color key="tintColor" red="0.23137254901960785" green="0.6705882352941176" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <color key="thumbTintColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <connections>
-                                                                    <action selector="moneySliderValueChaned:" destination="iKw-QS-Z9I" eventType="valueChanged" id="Cmx-5r-pN1"/>
-                                                                </connections>
-                                                            </slider>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số tiền vay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Puc-Pg-gNE">
                                                                 <rect key="frame" x="16" y="77" width="343" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
@@ -177,14 +169,6 @@
                                                                     <constraint firstAttribute="height" constant="1" id="mPo-mn-pbx"/>
                                                                 </constraints>
                                                             </view>
-                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="Pu4-5d-90d">
-                                                                <rect key="frame" x="14" y="213.5" width="347" height="31"/>
-                                                                <color key="tintColor" red="0.23137254901960785" green="0.6705882352941176" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <color key="thumbTintColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <connections>
-                                                                    <action selector="termSliderValueChanged:" destination="iKw-QS-Z9I" eventType="valueChanged" id="Hl6-mk-hri"/>
-                                                                </connections>
-                                                            </slider>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kỳ hạn vay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbT-WT-5p9">
                                                                 <rect key="frame" x="16" y="185" width="343" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
@@ -192,70 +176,70 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 ngày" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syZ-mG-CQB">
-                                                                <rect key="frame" x="297.5" y="185" width="61.5" height="20"/>
+                                                                <rect key="frame" x="297.5" y="185.5" width="61.5" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
                                                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 NGÀY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaD-OT-06j">
-                                                                <rect key="frame" x="16" y="247.5" width="42" height="13"/>
+                                                                <rect key="frame" x="16" y="245.5" width="42" height="13"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 NGÀY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63Q-rJ-cWq">
-                                                                <rect key="frame" x="315" y="247.5" width="44" height="13"/>
+                                                                <rect key="frame" x="315" y="245.5" width="44" height="13"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gmv-is-5m0">
-                                                                <rect key="frame" x="16" y="276" width="343" height="1"/>
+                                                                <rect key="frame" x="16" y="274" width="343" height="1"/>
                                                                 <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="LlZ-fc-ZSx"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lãi xuất dự kiến" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ag6-DH-F3M">
-                                                                <rect key="frame" x="16" y="293" width="111" height="20"/>
+                                                                <rect key="frame" x="16" y="291" width="111" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                                 <color key="textColor" red="0.031372549019607843" green="0.070588235294117646" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18%/năm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oP-Za-zo3">
-                                                                <rect key="frame" x="292" y="293" width="67" height="20"/>
+                                                                <rect key="frame" x="292" y="291" width="67" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                                 <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1b-FN-b5R">
-                                                                <rect key="frame" x="16" y="329" width="343" height="1"/>
+                                                                <rect key="frame" x="16" y="327" width="343" height="1"/>
                                                                 <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="3bu-lZ-N2i"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phí dịch vụ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULe-Vo-VnA">
-                                                                <rect key="frame" x="16" y="346" width="77.5" height="20"/>
+                                                                <rect key="frame" x="16" y="344" width="77.5" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                                 <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhh-0G-UGH">
-                                                                <rect key="frame" x="339" y="346" width="20" height="20"/>
+                                                                <rect key="frame" x="339" y="344" width="20" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Zx-nD-No8">
-                                                                <rect key="frame" x="16" y="382" width="343" height="1"/>
+                                                                <rect key="frame" x="16" y="380" width="343" height="1"/>
                                                                 <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="ZIT-Gg-sBO"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trả góp dự kiến hàng tháng" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lg3-1Q-ADa">
-                                                                <rect key="frame" x="16" y="399" width="156" height="41"/>
+                                                                <rect key="frame" x="16" y="397" width="156" height="41"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="156" id="OlQ-Zm-QT0"/>
                                                                 </constraints>
@@ -264,26 +248,26 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.000.000 đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Shx-s2-nPh">
-                                                                <rect key="frame" x="262" y="409.5" width="97" height="20"/>
+                                                                <rect key="frame" x="262" y="407.5" width="97" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
                                                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xw9-rX-nHa">
-                                                                <rect key="frame" x="16" y="448" width="233" height="53"/>
+                                                                <rect key="frame" x="16" y="446" width="233" height="53"/>
                                                                 <string key="text">Kết quả tính toán chỉ mang tính chất tham khảo. Khoản thanh toán thực tế có thể điều chỉnh và có thể được đưa ra sau khi khoản vay của bạn được phê duyệt.</string>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                                                 <color key="textColor" red="0.55686274509803924" green="0.63921568627450975" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_questInfo" translatesAutoresizingMaskIntoConstraints="NO" id="eNp-G9-cel">
-                                                                <rect key="frame" x="132" y="293" width="8" height="9"/>
+                                                                <rect key="frame" x="132" y="291" width="8" height="9"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_questInfo" translatesAutoresizingMaskIntoConstraints="NO" id="O5a-OV-xow">
-                                                                <rect key="frame" x="98.5" y="346" width="8" height="9"/>
+                                                                <rect key="frame" x="98.5" y="344" width="8" height="9"/>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eey-sE-88Q">
-                                                                <rect key="frame" x="113" y="282" width="46" height="30"/>
+                                                                <rect key="frame" x="113" y="280" width="46" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="46" id="R8d-MD-pt3"/>
                                                                     <constraint firstAttribute="height" constant="30" id="VFl-lq-Ql2"/>
@@ -293,7 +277,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNz-IP-fs2">
-                                                                <rect key="frame" x="79.5" y="335.5" width="46" height="30"/>
+                                                                <rect key="frame" x="79.5" y="333.5" width="46" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="46" id="IlN-i0-3uH"/>
                                                                     <constraint firstAttribute="height" constant="30" id="dA1-aD-et5"/>
@@ -309,7 +293,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXC-YK-PlF">
-                                                                <rect key="frame" x="16" y="501" width="97" height="26"/>
+                                                                <rect key="frame" x="16" y="499" width="97" height="26"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                                                 <state key="normal" title="Tính toán lịch trả nợ ▸">
                                                                     <color key="titleColor" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
@@ -318,23 +302,93 @@
                                                                     <action selector="btnGotoCaculatoFee:" destination="iKw-QS-Z9I" eventType="touchUpInside" id="RcT-oQ-yp1"/>
                                                                 </connections>
                                                             </button>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPf-c6-T5S" customClass="VSSlider" customModule="FinPlus" customModuleProvider="target">
+                                                                <rect key="frame" x="16" y="105" width="343" height="30"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="tintColor" red="0.23137254900000001" green="0.6705882353" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="30" id="eGj-vF-kCI"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="thumbImage" value="ic_elipse_slider"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                        <real key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                                        <real key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                                        <real key="value" value="15"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="increment">
+                                                                        <real key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="maximumTrackTintColor">
+                                                                        <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="markWidth">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
+                                                                        <real key="value" value="4"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="trackExtendsUnderThumb" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="vertical" value="NO"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="moneySliderValueChaned:" destination="iKw-QS-Z9I" eventType="valueChanged" id="llh-yk-rzF"/>
+                                                                </connections>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZP-n4-S6m" customClass="VSSlider" customModule="FinPlus" customModuleProvider="target">
+                                                                <rect key="frame" x="16" y="212" width="343" height="30"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="tintColor" red="0.23137254900000001" green="0.6705882353" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                                        <real key="value" value="30"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="increment">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
+                                                                        <real key="value" value="4"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="markWidth">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="maximumTrackTintColor">
+                                                                        <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="thumbImage" value="ic_elipse_slider"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="trackExtendsUnderThumb" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="vertical" value="NO"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="termSliderValueChanged:" destination="iKw-QS-Z9I" eventType="valueChanged" id="tVB-ZB-Jh8"/>
+                                                                </connections>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="556" id="0FV-9O-rcE"/>
                                                             <constraint firstAttribute="trailing" secondItem="6mn-F6-a4F" secondAttribute="trailing" constant="16" id="0ls-Hk-s3i"/>
-                                                            <constraint firstItem="VaD-OT-06j" firstAttribute="leading" secondItem="Pu4-5d-90d" secondAttribute="leading" id="1IA-ZM-Avm"/>
                                                             <constraint firstItem="eNp-G9-cel" firstAttribute="leading" secondItem="ag6-DH-F3M" secondAttribute="trailing" constant="5" id="2W6-6Y-kIc"/>
+                                                            <constraint firstItem="EZP-n4-S6m" firstAttribute="height" secondItem="kPf-c6-T5S" secondAttribute="height" id="4PE-XS-dU7"/>
                                                             <constraint firstItem="Xw9-rX-nHa" firstAttribute="trailing" secondItem="4Zx-nD-No8" secondAttribute="trailing" constant="-110" id="4Qw-pv-uH5"/>
-                                                            <constraint firstItem="Pu4-5d-90d" firstAttribute="trailing" secondItem="hbT-WT-5p9" secondAttribute="trailing" id="6ZL-TI-grD"/>
+                                                            <constraint firstItem="kPf-c6-T5S" firstAttribute="trailing" secondItem="Q9g-DB-Kdb" secondAttribute="trailing" id="5uo-zK-dKF"/>
+                                                            <constraint firstItem="cU2-FB-6X7" firstAttribute="leading" secondItem="Q9g-DB-Kdb" secondAttribute="leading" id="7CO-50-tK6"/>
                                                             <constraint firstItem="eNp-G9-cel" firstAttribute="top" secondItem="ag6-DH-F3M" secondAttribute="top" id="7Ch-4a-qz1"/>
                                                             <constraint firstItem="Xw9-rX-nHa" firstAttribute="leading" secondItem="Lg3-1Q-ADa" secondAttribute="leading" id="8kq-qD-uEX"/>
-                                                            <constraint firstItem="yhH-ic-4pr" firstAttribute="leading" secondItem="ELd-UQ-9Wk" secondAttribute="leading" id="BVh-fs-kTw"/>
+                                                            <constraint firstItem="skB-Mw-d2D" firstAttribute="trailing" secondItem="9yV-0a-d2U" secondAttribute="trailing" id="B1Y-la-Gx4"/>
                                                             <constraint firstItem="ag6-DH-F3M" firstAttribute="top" secondItem="Gmv-is-5m0" secondAttribute="bottom" constant="16" id="D0t-wM-QQY"/>
                                                             <constraint firstItem="Shx-s2-nPh" firstAttribute="centerY" secondItem="Lg3-1Q-ADa" secondAttribute="centerY" id="D4x-Gl-wnG"/>
-                                                            <constraint firstItem="Gmv-is-5m0" firstAttribute="leading" secondItem="Pu4-5d-90d" secondAttribute="leading" id="DUC-qM-AyK"/>
                                                             <constraint firstItem="ag6-DH-F3M" firstAttribute="leading" secondItem="Gmv-is-5m0" secondAttribute="leading" id="EfA-5U-Fod"/>
-                                                            <constraint firstItem="VaD-OT-06j" firstAttribute="top" secondItem="Pu4-5d-90d" secondAttribute="bottom" constant="4" id="FPL-gO-g4K"/>
                                                             <constraint firstItem="syZ-mG-CQB" firstAttribute="centerY" secondItem="hbT-WT-5p9" secondAttribute="centerY" id="GDO-CU-vOA"/>
                                                             <constraint firstItem="9yV-0a-d2U" firstAttribute="centerY" secondItem="Puc-Pg-gNE" secondAttribute="centerY" id="GEy-T2-knk"/>
                                                             <constraint firstItem="syZ-mG-CQB" firstAttribute="trailing" secondItem="hbT-WT-5p9" secondAttribute="trailing" id="GFP-kZ-uqt"/>
@@ -342,49 +396,51 @@
                                                             <constraint firstItem="hbT-WT-5p9" firstAttribute="top" secondItem="cU2-FB-6X7" secondAttribute="bottom" constant="16" id="Gl5-i6-WoF"/>
                                                             <constraint firstItem="hbT-WT-5p9" firstAttribute="trailing" secondItem="cU2-FB-6X7" secondAttribute="trailing" id="I5p-Dr-Ncc"/>
                                                             <constraint firstItem="R1b-FN-b5R" firstAttribute="leading" secondItem="Gmv-is-5m0" secondAttribute="leading" id="J8X-gl-P4l"/>
+                                                            <constraint firstItem="kPf-c6-T5S" firstAttribute="top" secondItem="Puc-Pg-gNE" secondAttribute="bottom" constant="8" id="JH5-Vk-HoQ"/>
                                                             <constraint firstItem="skB-Mw-d2D" firstAttribute="centerY" secondItem="yhH-ic-4pr" secondAttribute="centerY" id="JHh-IO-Tkb"/>
-                                                            <constraint firstItem="63Q-rJ-cWq" firstAttribute="trailing" secondItem="Pu4-5d-90d" secondAttribute="trailing" id="Jlq-BA-hRB"/>
+                                                            <constraint firstItem="VaD-OT-06j" firstAttribute="top" secondItem="EZP-n4-S6m" secondAttribute="bottom" constant="4" id="JgP-Za-QxU"/>
                                                             <constraint firstItem="R1b-FN-b5R" firstAttribute="trailing" secondItem="Gmv-is-5m0" secondAttribute="trailing" id="KjV-6v-jiJ"/>
                                                             <constraint firstItem="6mn-F6-a4F" firstAttribute="leading" secondItem="Og5-0H-BcY" secondAttribute="trailing" constant="8" id="LDi-gI-fpZ"/>
                                                             <constraint firstItem="Q9g-DB-Kdb" firstAttribute="top" secondItem="aBh-VA-gIl" secondAttribute="bottom" constant="16" id="Lau-p9-cro"/>
                                                             <constraint firstItem="R1b-FN-b5R" firstAttribute="top" secondItem="ag6-DH-F3M" secondAttribute="bottom" constant="16" id="Lcs-MV-5u0"/>
+                                                            <constraint firstItem="yhH-ic-4pr" firstAttribute="leading" secondItem="Puc-Pg-gNE" secondAttribute="leading" id="MA0-7p-fmy"/>
                                                             <constraint firstItem="Q9g-DB-Kdb" firstAttribute="leading" secondItem="Mrz-W4-uFO" secondAttribute="leading" id="MGE-54-a71"/>
                                                             <constraint firstItem="4Zx-nD-No8" firstAttribute="top" secondItem="ULe-Vo-VnA" secondAttribute="bottom" constant="16" id="MeX-Ug-cUQ"/>
                                                             <constraint firstItem="ULe-Vo-VnA" firstAttribute="leading" secondItem="R1b-FN-b5R" secondAttribute="leading" id="NKA-gk-TCi"/>
                                                             <constraint firstAttribute="trailing" secondItem="Q9g-DB-Kdb" secondAttribute="trailing" constant="16" id="PqR-Kg-Yqh"/>
                                                             <constraint firstItem="fhh-0G-UGH" firstAttribute="trailing" secondItem="R1b-FN-b5R" secondAttribute="trailing" id="Qf6-dk-dLy"/>
-                                                            <constraint firstItem="ELd-UQ-9Wk" firstAttribute="trailing" secondItem="Puc-Pg-gNE" secondAttribute="trailing" id="QqE-tq-yL8"/>
+                                                            <constraint firstItem="EZP-n4-S6m" firstAttribute="trailing" secondItem="Q9g-DB-Kdb" secondAttribute="trailing" id="Qr6-wS-wo8"/>
                                                             <constraint firstItem="O5a-OV-xow" firstAttribute="leading" secondItem="ULe-Vo-VnA" secondAttribute="trailing" constant="5" id="Qzn-ME-jTE"/>
+                                                            <constraint firstItem="kPf-c6-T5S" firstAttribute="leading" secondItem="Q9g-DB-Kdb" secondAttribute="leading" id="R1Z-W2-Bo9"/>
                                                             <constraint firstItem="fhh-0G-UGH" firstAttribute="centerY" secondItem="ULe-Vo-VnA" secondAttribute="centerY" id="RVb-TM-fsJ"/>
                                                             <constraint firstItem="Puc-Pg-gNE" firstAttribute="leading" secondItem="W1Q-bF-jiO" secondAttribute="leading" constant="16" id="TOd-bO-dH9"/>
                                                             <constraint firstItem="4Zx-nD-No8" firstAttribute="trailing" secondItem="R1b-FN-b5R" secondAttribute="trailing" id="Twm-d7-1pT"/>
                                                             <constraint firstItem="6oP-Za-zo3" firstAttribute="trailing" secondItem="Gmv-is-5m0" secondAttribute="trailing" id="U9I-J7-edN"/>
                                                             <constraint firstItem="aBh-VA-gIl" firstAttribute="top" secondItem="W1Q-bF-jiO" secondAttribute="top" constant="24" id="VRX-kF-LOR"/>
+                                                            <constraint firstItem="63Q-rJ-cWq" firstAttribute="trailing" secondItem="syZ-mG-CQB" secondAttribute="trailing" id="W6j-73-eQG"/>
                                                             <constraint firstItem="Puc-Pg-gNE" firstAttribute="top" secondItem="Q9g-DB-Kdb" secondAttribute="bottom" constant="16" id="WVQ-j6-Kjf"/>
-                                                            <constraint firstItem="cU2-FB-6X7" firstAttribute="leading" secondItem="ELd-UQ-9Wk" secondAttribute="leading" id="XLP-T8-CqM"/>
                                                             <constraint firstItem="Og5-0H-BcY" firstAttribute="centerY" secondItem="aBh-VA-gIl" secondAttribute="centerY" id="Yuy-cr-uJe"/>
-                                                            <constraint firstItem="cU2-FB-6X7" firstAttribute="trailing" secondItem="ELd-UQ-9Wk" secondAttribute="trailing" id="ZSd-bX-x0Q"/>
                                                             <constraint firstItem="Gmv-is-5m0" firstAttribute="top" secondItem="VaD-OT-06j" secondAttribute="bottom" constant="16" id="ZWP-Wf-otB"/>
-                                                            <constraint firstItem="ELd-UQ-9Wk" firstAttribute="top" secondItem="9yV-0a-d2U" secondAttribute="bottom" constant="8" id="a7G-sB-lgb"/>
-                                                            <constraint firstItem="yhH-ic-4pr" firstAttribute="top" secondItem="ELd-UQ-9Wk" secondAttribute="bottom" constant="4" id="aM7-xh-kxf"/>
-                                                            <constraint firstItem="ELd-UQ-9Wk" firstAttribute="leading" secondItem="Puc-Pg-gNE" secondAttribute="leading" id="adb-lc-fzr"/>
                                                             <constraint firstItem="O5a-OV-xow" firstAttribute="top" secondItem="ULe-Vo-VnA" secondAttribute="top" id="cod-RT-bmS"/>
                                                             <constraint firstItem="6oP-Za-zo3" firstAttribute="centerY" secondItem="ag6-DH-F3M" secondAttribute="centerY" id="cx4-ab-haQ"/>
                                                             <constraint firstItem="gXC-YK-PlF" firstAttribute="top" secondItem="Xw9-rX-nHa" secondAttribute="bottom" id="cyW-LB-DIV"/>
+                                                            <constraint firstItem="VaD-OT-06j" firstAttribute="leading" secondItem="hbT-WT-5p9" secondAttribute="leading" id="dDB-Sn-5Nf"/>
+                                                            <constraint firstItem="yhH-ic-4pr" firstAttribute="top" secondItem="kPf-c6-T5S" secondAttribute="bottom" constant="4" id="dDU-PJ-enA"/>
                                                             <constraint firstItem="hbT-WT-5p9" firstAttribute="leading" secondItem="cU2-FB-6X7" secondAttribute="leading" id="eYH-eI-IDU"/>
+                                                            <constraint firstItem="cU2-FB-6X7" firstAttribute="trailing" secondItem="Q9g-DB-Kdb" secondAttribute="trailing" id="gfe-wn-sea"/>
                                                             <constraint firstItem="Q9g-DB-Kdb" firstAttribute="leading" secondItem="W1Q-bF-jiO" secondAttribute="leading" constant="16" id="gtl-Jh-97C"/>
-                                                            <constraint firstItem="Pu4-5d-90d" firstAttribute="top" secondItem="syZ-mG-CQB" secondAttribute="bottom" constant="8" id="gwb-Cd-QZx"/>
                                                             <constraint firstItem="Lg3-1Q-ADa" firstAttribute="top" secondItem="4Zx-nD-No8" secondAttribute="bottom" constant="16" id="h4m-x1-NbM"/>
                                                             <constraint firstItem="6mn-F6-a4F" firstAttribute="centerY" secondItem="aBh-VA-gIl" secondAttribute="centerY" id="hDO-XS-Wk9"/>
-                                                            <constraint firstItem="Gmv-is-5m0" firstAttribute="trailing" secondItem="Pu4-5d-90d" secondAttribute="trailing" id="i7g-Jl-fhP"/>
+                                                            <constraint firstItem="EZP-n4-S6m" firstAttribute="leading" secondItem="Q9g-DB-Kdb" secondAttribute="leading" id="hLB-rb-uSN"/>
                                                             <constraint firstItem="aBh-VA-gIl" firstAttribute="leading" secondItem="W1Q-bF-jiO" secondAttribute="leading" constant="16" id="iob-MX-lSv"/>
-                                                            <constraint firstItem="skB-Mw-d2D" firstAttribute="trailing" secondItem="ELd-UQ-9Wk" secondAttribute="trailing" id="kNc-V1-eGe"/>
                                                             <constraint firstItem="O5a-OV-xow" firstAttribute="centerX" secondItem="XNz-IP-fs2" secondAttribute="centerX" id="mcM-kZ-Pm6"/>
                                                             <constraint firstItem="Xw9-rX-nHa" firstAttribute="leading" secondItem="4Zx-nD-No8" secondAttribute="leading" id="nbI-7k-WML"/>
                                                             <constraint firstItem="eNp-G9-cel" firstAttribute="centerY" secondItem="eey-sE-88Q" secondAttribute="centerY" id="o8e-8m-bXU"/>
+                                                            <constraint firstItem="Gmv-is-5m0" firstAttribute="leading" secondItem="cU2-FB-6X7" secondAttribute="leading" id="o9C-Ej-wTp"/>
                                                             <constraint firstItem="Shx-s2-nPh" firstAttribute="trailing" secondItem="4Zx-nD-No8" secondAttribute="trailing" id="oyF-kY-sY5"/>
                                                             <constraint firstItem="cU2-FB-6X7" firstAttribute="top" secondItem="yhH-ic-4pr" secondAttribute="bottom" constant="16" id="pDs-6I-6We"/>
                                                             <constraint firstItem="Xw9-rX-nHa" firstAttribute="top" secondItem="Lg3-1Q-ADa" secondAttribute="bottom" constant="8" id="pFi-Ps-IGD"/>
+                                                            <constraint firstItem="Gmv-is-5m0" firstAttribute="trailing" secondItem="cU2-FB-6X7" secondAttribute="trailing" id="pkQ-iO-Kfq"/>
                                                             <constraint firstItem="63Q-rJ-cWq" firstAttribute="centerY" secondItem="VaD-OT-06j" secondAttribute="centerY" id="qOi-Op-cfj"/>
                                                             <constraint firstItem="Og5-0H-BcY" firstAttribute="centerY" secondItem="Mrz-W4-uFO" secondAttribute="centerY" id="quD-a1-5he"/>
                                                             <constraint firstItem="ULe-Vo-VnA" firstAttribute="top" secondItem="R1b-FN-b5R" secondAttribute="bottom" constant="16" id="rGX-mV-VAe"/>
@@ -392,7 +448,7 @@
                                                             <constraint firstItem="Q9g-DB-Kdb" firstAttribute="trailing" secondItem="Mrz-W4-uFO" secondAttribute="trailing" id="uW0-4R-ggX"/>
                                                             <constraint firstItem="Og5-0H-BcY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aBh-VA-gIl" secondAttribute="trailing" constant="8" id="v8A-hU-QgH"/>
                                                             <constraint firstItem="eNp-G9-cel" firstAttribute="centerX" secondItem="eey-sE-88Q" secondAttribute="centerX" id="vcl-VG-N8V"/>
-                                                            <constraint firstItem="Pu4-5d-90d" firstAttribute="leading" secondItem="hbT-WT-5p9" secondAttribute="leading" id="xGb-aL-7Jm"/>
+                                                            <constraint firstItem="EZP-n4-S6m" firstAttribute="top" secondItem="hbT-WT-5p9" secondAttribute="bottom" constant="7" id="xOr-n3-90O"/>
                                                             <constraint firstItem="Lg3-1Q-ADa" firstAttribute="leading" secondItem="4Zx-nD-No8" secondAttribute="leading" id="xvT-GP-eFJ"/>
                                                             <constraint firstItem="gXC-YK-PlF" firstAttribute="leading" secondItem="Xw9-rX-nHa" secondAttribute="leading" id="yhZ-0T-Z0O"/>
                                                             <constraint firstAttribute="trailing" secondItem="Puc-Pg-gNE" secondAttribute="trailing" constant="16" id="yvc-yN-k71"/>
@@ -549,7 +605,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="amountSlider" destination="ELd-UQ-9Wk" id="CQ0-z3-T58"/>
+                        <outlet property="amountSlider" destination="kPf-c6-T5S" id="P9G-2z-cbu"/>
                         <outlet property="lblCategoriesName" destination="Og5-0H-BcY" id="kgT-vr-ckP"/>
                         <outlet property="lblInterestRate" destination="6oP-Za-zo3" id="ldL-Mj-bN6"/>
                         <outlet property="lblLeftTempTotalAmount" destination="Lg3-1Q-ADa" id="Cdj-EN-IGK"/>
@@ -561,7 +617,7 @@
                         <outlet property="lblTempFee" destination="fhh-0G-UGH" id="WfY-OE-4i4"/>
                         <outlet property="lblTempTotalAmount" destination="Shx-s2-nPh" id="bH9-s0-fOI"/>
                         <outlet property="lblTermSlider" destination="syZ-mG-CQB" id="oZj-e9-jCR"/>
-                        <outlet property="termSlider" destination="Pu4-5d-90d" id="Wbs-i9-xwd"/>
+                        <outlet property="termSlider" destination="EZP-n4-S6m" id="9C3-6m-QwC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zF3-RT-F3o" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2451,7 +2507,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số điện thọai" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucb-XD-4MV">
-                                                                    <rect key="frame" x="16" y="15.5" width="136" height="20.5"/>
+                                                                    <rect key="frame" x="16" y="16" width="136" height="20.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="136" id="wY2-rZ-K9g"/>
                                                                     </constraints>
@@ -2460,7 +2516,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số điện thọai" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tcv-yJ-pbg">
-                                                                    <rect key="frame" x="154" y="15" width="163" height="20"/>
+                                                                    <rect key="frame" x="154" y="16" width="163" height="20"/>
                                                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                                     <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -2634,7 +2690,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="btnBackToRootClicked:" destination="f3g-t4-IvH" eventType="touchUpInside" id="kGf-Ga-y0F"/>
+                                            <action selector="btnGoHomeTapped:" destination="f3g-t4-IvH" eventType="touchUpInside" id="GSd-N3-wWg"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2822,7 +2878,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 VND" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixv-0u-ah1">
-                                                                <rect key="frame" x="180" y="8" width="179" height="18"/>
+                                                                <rect key="frame" x="180" y="8.5" width="179" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -3977,6 +4033,7 @@
         <image name="ic_disclosureIndicator1" width="8" height="13"/>
         <image name="ic_disclosureIndicator2" width="5" height="7"/>
         <image name="ic_disclosureIndicator3" width="5" height="7"/>
+        <image name="ic_elipse_slider" width="16" height="16"/>
         <image name="ic_questInfo" width="8" height="9"/>
         <image name="img_bg_verify_fb" width="375" height="667"/>
         <image name="option_icon" width="4" height="14"/>

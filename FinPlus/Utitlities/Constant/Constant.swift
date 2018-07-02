@@ -10,6 +10,7 @@ import Foundation
 
 // MARK: API Constant
 enum API_MESSAGE {
+    static let Request_Timeout = "Request Timeout"
     static let NO_INTERNET = "Vui lòng kiểm tra lại kết nối mạng của bạn"
     static let OTHER_ERROR = "Lỗi không xác định. Vui lòng thử lại sau"
     static let DATA_FORMART_ERROR = "Không xử lý được dữ liệu nhận được"
@@ -47,16 +48,6 @@ enum TYPE_UPLOAD_MEDIA_LENDING: String {
 
 // Các trạng thái của khoản vay
 enum STATUS_LOAN: Int {
-//    case DRAFT = 1 // H3
-//    case WAITING_FOR_APPROVAL = 2 // H4
-//    case PENDING = 3 // H5
-//    case ACCEPTED = 4 // H6
-//    case REJECTED = 5 // H13
-//    case CANCELED = 6
-//    case RAISING_CAPITAL = 7
-//    case COMPLETED = 8 // H3
-//
-//    case PAY_TEST_STATUS = 9
     
     case OTHER = -1
     case DRAFT = 0 // Khoản vay chưa hoàn thiện (Đang ở trạng thái client tạo đơn vay)

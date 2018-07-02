@@ -24,9 +24,6 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         if let info = DataManager.shared.browwerInfo?.activeLoan,  let loanId = info.loanId, loanId > 0 {
             //Cập nhật
             self.updateDataToServer()
-        } else {
-            //chua có thì tạo
-            self.createLoan()
         }
         
     }

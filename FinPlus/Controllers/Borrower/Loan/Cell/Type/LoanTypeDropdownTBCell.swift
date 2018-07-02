@@ -82,6 +82,11 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
         guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
         
         if id.contains("jobType") {
+            if DataManager.shared.checkFieldIsMissing(key: "jobType") {
+                //Cap nhat thong tin khong hop le
+                self.updateInfoFalse(pre: title)
+            }
+            
             var value = ""
             if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.jobType, data.length() > 0 {
                 value = data
@@ -94,11 +99,13 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             if value.length() > 0 {
                 self.lblValue?.text = value
                 DataManager.shared.loanInfo.jobInfo.jobType = value
-            } else {
-                //Cap nhat thong tin thieu
-                self.updateInfoFalse(pre: title)
             }
         } else if id.contains("position") {
+            if DataManager.shared.checkFieldIsMissing(key: "position") {
+                //Cap nhat thong tin khong hop le
+                self.updateInfoFalse(pre: title)
+            }
+            
             var value = ""
             if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.position, data.length() > 0 {
                 value = data
@@ -111,11 +118,13 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             if value.length() > 0 {
                 self.lblValue?.text = value
                 DataManager.shared.loanInfo.jobInfo.position = value
-            } else {
-                //Cap nhat thong tin thieu
-                self.updateInfoFalse(pre: title)
             }
         } else if id.contains("birthday") {
+            if DataManager.shared.checkFieldIsMissing(key: "birthday") {
+                //Cap nhat thong tin khong hop le
+                self.updateInfoFalse(pre: title)
+            }
+            
             var value = ""
             var dateTemp = Date()
             if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.birthday, data.length() > 0 {
@@ -125,7 +134,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             
             if DataManager.shared.loanInfo.userInfo.birthDay.length() > 0 {
                 value = DataManager.shared.loanInfo.userInfo.birthDay
-                dateTemp = Date.init(fromString: value, format: DateFormat.custom(kDisplayFormat))
+                dateTemp = Date.init(fromString: value, format: DateFormat.custom(ISO8601Format.DateTimeSec.rawValue))
             }
             
             if value.length() > 0 {
@@ -138,6 +147,11 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 self.lblValue?.text = date
             }
         } else if id.contains("gender") {
+            if DataManager.shared.checkFieldIsMissing(key: "gender") {
+                //Cap nhat thong tin khong hop le
+                self.updateInfoFalse(pre: title)
+            }
+            
             var value = ""
             if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.gender, data.length() > 0 {
                 value = data
@@ -155,9 +169,6 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 }
                 
                 DataManager.shared.loanInfo.userInfo.gender = value
-            } else {
-                //Cap nhat thong tin thieu
-                self.updateInfoFalse(pre: title)
             }
         }
         
