@@ -65,23 +65,29 @@ class LoanSummaryInfoVC: BaseViewController {
         
         let date = Date().toString(DateFormat.custom(kDisplayFormat))
         
+        let term = DataManager.shared.loanInfo.term
+        
         var labelStudentLoan = ""
+        var termDisplay = ""
         if cate.id == Loan_Student_Category_ID {
             labelStudentLoan = "Thanh toán dự kiến"
+            termDisplay = "\(term) Ngày"
         } else {
             labelStudentLoan = "Trả góp dự kiến hàng tháng"
+            termDisplay = "\(term / 30) Tháng"
         }
         
         var amountDouble = Double(DataManager.shared.loanInfo.amount)
         
-        let term = DataManager.shared.loanInfo.term
+        
         amountDouble = FinPlusHelper.CalculateMoneyPayMonth(month: amountDouble, term: Double(term/30), rate: cate.interestRate!)
+        
         
         dataSource = [
             LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
             LoanSummaryModel(name: "Ngày tạo đơn", value: date, attributed: nil),
             LoanSummaryModel(name: "Số tiền vay", value: FinPlusHelper.formatDisplayCurrency(Double(DataManager.shared.loanInfo.amount)) + "đ", attributed: nil),
-            LoanSummaryModel(name: "Kỳ hạn vay", value: "\(DataManager.shared.loanInfo.term) Ngày", attributed: nil),
+            LoanSummaryModel(name: "Kỳ hạn vay", value: termDisplay, attributed: nil),
             LoanSummaryModel(name: "Lãi suất dự kiến", value: "\(Int(cate.interestRate!))% năm", attributed: nil),
             LoanSummaryModel(name: "Phí dịch vụ", value: feeStr, attributed: nil),
             LoanSummaryModel(name: labelStudentLoan, value: FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ", attributed: nil),
