@@ -133,7 +133,7 @@ class LoginViewController: BaseViewController {
                         
                         
                         // fix to test investor
-                        //self?.accountType = .None
+                        self?.accountType = .None
                     }
 
                     //Cap nhat push notification token
