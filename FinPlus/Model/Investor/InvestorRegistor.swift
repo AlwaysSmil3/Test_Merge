@@ -107,6 +107,7 @@ struct InvestorRegisterModel: Encodable {
         try container.encode(accessToken, forKey: .accessToken)
         try container.encode(avatar, forKey: .avatar)
         try container.encode(displayName, forKey: .displayName)
+        try container.encode(nationalId, forKey: .nationalId)
         try container.encode(birthday, forKey: .birthday)
         try container.encode(fullname, forKey: .fullname)
         try container.encode(email, forKey: .email)
