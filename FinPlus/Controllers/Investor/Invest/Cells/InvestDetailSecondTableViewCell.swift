@@ -9,7 +9,9 @@
 import UIKit
 
 class InvestDetailSecondTableViewCell: UITableViewCell {
-    var cellData : DemoLoanModel!
+    var cellData : BrowwerActiveLoan!
+    var loanCategories : [LoanCategories] = [LoanCategories]()
+
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var amountTitleLb: UILabel!
     @IBOutlet weak var dueMonthLb: UILabel!
@@ -34,30 +36,80 @@ class InvestDetailSecondTableViewCell: UITableViewCell {
         borderView.layer.borderWidth = 1
         borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
     }
-
+    
     func updateCellView() {
         let formatter = NumberFormatter()
         formatter.locale = Locale.current // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
         formatter.numberStyle = .currency
-        if let formattedTipAmount = formatter.string(from: cellData.amount as NSNumber) {
+        if let formattedTipAmount = formatter.string(from: cellData.amount! as NSNumber) {
             amountLb.text = formattedTipAmount
+            amountAvaiableInvestLb.text = formattedTipAmount
         } else {
-            amountLb.text = cellData.amount.toString()
+            amountLb.text = "\(cellData.amount!)"
+            amountAvaiableInvestLb.text = "\(cellData.amount!)"
         }
-
-        alreadyAmountPercentLb.text = cellData.alreadyAmount.toString() + "%"
-        let avaiableAmount = cellData.amount - (cellData.alreadyAmount / 100 * cellData.amount)
+        var already : Float = 25.50
+        if let temp = cellData.funded {
+            already = temp
+        }
+        alreadyAmountPercentLb.text = already.toString() + "%"
+        let avaiableAmount = Float(cellData.amount!) - (Float(cellData.amount!) * already / 100)
         if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
             amountAvaiableInvestLb.text = formattedTipAmount
         } else {
-            amountAvaiableInvestLb.text = avaiableAmount.toString()
+            amountAvaiableInvestLb.text = "\(avaiableAmount)"
         }
-        interestLb.text = cellData.interestRate.toString() + "%/năm"
-        borrowerLb.text = "Vu Thanh Do"
-        reliabilityLb.text = cellData.reliability.title
-        loanTypeLb.text = cellData.name
-        dueMonthLb.text = "\(cellData.dueMonth) tháng"
+        var rate : Float = 20
+        if let temp = cellData.inRate {
+            rate = temp
+        }
+        interestLb.text = rate.toString() + "%/năm"
+        borrowerLb.text = cellData.userInfo?.fullName
+        self.reliabilityLb.text = cellData.grade ?? "A1"
 
+        var reliType : LoanReliability!
+        switch reliabilityLb.text {
+        case "A1":
+            reliType = LoanReliability.A1
+        case "A2":
+            reliType = LoanReliability.A2
+        case "A3":
+            reliType = LoanReliability.A3
+        case "B1":
+            reliType = LoanReliability.B1
+        case "B2":
+            reliType = LoanReliability.B2
+        case "B3":
+            reliType = LoanReliability.B3
+        case "C1":
+            reliType = LoanReliability.C1
+        case "C2":
+            reliType = LoanReliability.C2
+        case "C3":
+            reliType = LoanReliability.C3
+        case "D":
+            reliType = LoanReliability.D
+        default:
+            reliType = LoanReliability.A1
+
+        }
+        reliabilityLb.text = reliType.rawValue
+
+        if self.loanCategories.count > 0 {
+            for loanCategoryDetail in self.loanCategories {
+                if (loanCategoryDetail.id! == cellData.loanCategoryId) {
+                    self.loanTypeLb.text = loanCategoryDetail.title
+                }
+            }
+        }
+        //        self.loanTypeNameLb.text = cellData.name
+        var termStr = ""
+        if cellData.loanCategoryId == 1 {
+            termStr = "\(cellData.term!) ngày"
+        } else {
+            termStr = "\(cellData.term!/30) tháng"
+        }
+        self.dueMonthLb.text = termStr
         self.updateCellMode()
     }
 
