@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		48D46DDE05C608E1D160EC14 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
 		6303923020E8B108000C422D /* VSSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303922D20E8B108000C422D /* VSSlider.swift */; };
-		6303923120E8B108000C422D /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 6303922E20E8B108000C422D /* .gitkeep */; };
 		6303923220E8B108000C422D /* InternalSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303922F20E8B108000C422D /* InternalSlider.swift */; };
 		630467B320B5094F0069469A /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630467B220B5094F0069469A /* Address.storyboard */; };
 		630467B620B50B5C0069469A /* AddressFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630467B520B50B5C0069469A /* AddressFirstViewController.swift */; };
@@ -336,7 +335,6 @@
 
 /* Begin PBXFileReference section */
 		6303922D20E8B108000C422D /* VSSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSSlider.swift; sourceTree = "<group>"; };
-		6303922E20E8B108000C422D /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		6303922F20E8B108000C422D /* InternalSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalSlider.swift; sourceTree = "<group>"; };
 		630467B220B5094F0069469A /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
 		630467B520B50B5C0069469A /* AddressFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFirstViewController.swift; sourceTree = "<group>"; };
@@ -688,7 +686,6 @@
 			isa = PBXGroup;
 			children = (
 				6303922D20E8B108000C422D /* VSSlider.swift */,
-				6303922E20E8B108000C422D /* .gitkeep */,
 				6303922F20E8B108000C422D /* InternalSlider.swift */,
 			);
 			path = VerticalSteppedSlider;
@@ -1787,7 +1784,6 @@
 				84114BD020D79464005026DF /* BankAccountTableViewCell.xib in Resources */,
 				8467326420E1F4D70011C576 /* InvestContractViewController.xib in Resources */,
 				630BA60E20C22A4100880DAE /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
-				6303923120E8B108000C422D /* .gitkeep in Resources */,
 				639C9DC020A1498A00F2CF5E /* LaunchScreen.storyboard in Resources */,
 				630BA62920C22A4100880DAE /* SF-Pro-Display-BoldItalic.otf in Resources */,
 				E7F519F920CE176700F72682 /* ProfileHeaderView.xib in Resources */,
