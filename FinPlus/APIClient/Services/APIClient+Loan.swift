@@ -215,16 +215,24 @@ extension APIClient {
     /*
      API Invest A Loan
      */
-    func investLoan(loanId: Int32, investorId: Int32, notes: Int32, walletId: Int32) -> Promise<APIResponseGeneral> {
-        let endPoint = "loans/" + "\(loanId)/" + "\(notes)"
+    func investLoan(loanId: Int32, investorId: Int32, notes: Int32) -> Promise<InvestLoanBaseClass> {
+
+
+        let endPoint = "loans/" + "\(loanId)/" + "notes"
+        // fix wallet
+        let walletId : Int32 = 1
         let params = ["loanId" : loanId, "investorId" : investorId, "notes" : notes, "walletId" : walletId]
-        return Promise<APIResponseGeneral> { seal in
-            requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST).done{ json in
-                print(json)
-                }.catch {
-                    error in seal.reject(error)
-            }
+
+        return Promise<InvestLoanBaseClass> { seal in
+            requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
+                .done { json in
+
+                    let model = InvestLoanBaseClass(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in seal.reject(error)}
         }
+
     }
 
     /*
@@ -262,11 +270,13 @@ extension APIClient {
      */
 
     func confirmOTPInvestLoan(loanId: Int32, noteId: Int32, OTP: String) -> Promise<APIResponseGeneral> {
+//        /loans/604/notes/3/otp
         let endPoint = "loans/" + "\(loanId)/" + "notes/" + "\(noteId)/" + "otp"
         let params = ["otp" : OTP]
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST).done{ json in
-                print(json)
+                let model = APIResponseGeneral(object: json)
+                seal.fulfill(model)
                 }.catch {
                     error in seal.reject(error)
             }
