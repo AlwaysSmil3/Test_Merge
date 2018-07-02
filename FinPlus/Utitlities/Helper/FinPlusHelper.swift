@@ -245,9 +245,9 @@ class FinPlusHelper {
     /// Tinh số tiền phải trả hàng tháng
     ///
     /// - Parameters:
-    ///   - mounth: <#mounth description#>
-    ///   - term: <#term description#>
-    ///   - rate: <#rate description#>
+    ///   - mounth: Số tiền
+    ///   - term: Kỳ hạn
+    ///   - rate: lãi xuất
     class func CalculateMoneyPayMonth(month: Double, term: Double, rate: Double) -> Double {
         
         var value = term
