@@ -72,6 +72,10 @@ class LoanStateViewController: UIViewController {
                 
             }
         }
+        
+        self.getLoanCategories()
+        
+        
         //Map DataLoan
         DataManager.shared.mapDataBrowwerAndLoan()
         
