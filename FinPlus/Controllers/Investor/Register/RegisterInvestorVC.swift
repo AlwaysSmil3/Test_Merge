@@ -24,8 +24,8 @@ class RegisterInvestorVC: BaseViewController {
                 if let cell = self.mainTBView?.cellForRow(at: indexPath) as? RegisterInvestorDateTBCell {
                     cell.dataRes?.value = date
                     //DateTime ISO 8601
-                    //let timeISO8601 = date1.toString(.iso8601(ISO8601Format.DateTimeSec))
-                    //DataManager.shared.loanInfo.userInfo.birthDay = timeISO8601
+                    let timeISO8601 = date1.toString(.iso8601(ISO8601Format.DateTimeSec))
+                    self.registerInvestModel.birthday = timeISO8601
                 }
             }
         }
@@ -38,6 +38,8 @@ class RegisterInvestorVC: BaseViewController {
     var accountType: TypeAccount?
     
     var pw: String?
+    
+    var registerInvestModel: InvestorRegisterModel = InvestorRegisterModel()
     
     var dataSource: [InvestorRegister] = [
         InvestorRegister(title: "Họ và tên", value: "", icon: nil, placeHolder: "Họ và tên của bạn"),
@@ -61,6 +63,9 @@ class RegisterInvestorVC: BaseViewController {
         mainTBView.rowHeight = UITableViewAutomaticDimension
         mainTBView.separatorColor = UIColor.clear
         mainTBView.tableFooterView = UIView()
+        
+        self.registerInvestModel.phoneNumber = DataManager.shared.currentAccount
+        self.registerInvestModel.password = self.pw ?? ""
         
         
     }
@@ -92,8 +97,35 @@ class RegisterInvestorVC: BaseViewController {
     }
     
     @IBAction func continueBtnTapped(_ sender: Any) {
-        let investorWaitingVC = InvestorSignupWaitingViewController(nibName: "InvestorSignupWaitingViewController", bundle: nil)
-        self.navigationController?.present(investorWaitingVC, animated: true, completion: nil)
+        
+        if let cell = self.mainTBView?.cellForRow(at: IndexPath(row: 0, section: 0)) as? RegisterInvestorTFTBCell {
+            //Name
+            self.registerInvestModel.displayName = cell.tfValue?.text ?? ""
+            
+        }
+        
+        if let cell = self.mainTBView?.cellForRow(at: IndexPath(row: 2, section: 0)) as? RegisterInvestorTFTBCell {
+            //NationalID
+            self.registerInvestModel.nationalId = cell.tfValue?.text ?? ""
+            
+        }
+        
+        if let cell = self.mainTBView?.cellForRow(at: IndexPath(row: 3, section: 0)) as? RegisterInvestorTFTBCell {
+            //Email
+            self.registerInvestModel.email = cell.tfValue?.text ?? ""
+            
+        }
+        
+        guard let displayName = self.registerInvestModel.displayName, displayName.length() > 0, let birthDay = self.registerInvestModel.birthday, birthDay.length() > 0, let nationalID = self.registerInvestModel.nationalId, nationalID.length() > 0, let email = self.registerInvestModel.email, email.length() > 0 else { return }
+        
+        APIClient.shared.updateInfoForInvestor(investInfo: self.registerInvestModel)
+            .done(on: DispatchQueue.main) { [weak self] model in
+                let investorWaitingVC = InvestorSignupWaitingViewController(nibName: "InvestorSignupWaitingViewController", bundle: nil)
+                self?.navigationController?.present(investorWaitingVC, animated: true, completion: nil)
+                
+            }
+            .catch { error in}
+
     }
 
 }
@@ -206,6 +238,8 @@ extension RegisterInvestorVC: UITableViewDelegate, UITableViewDataSource {
 extension RegisterInvestorVC: AddressDelegate {
     func getAddress(address: Address, type: Int, title: String) {
         let add = address.street + ", " + address.commune + ", " + address.district + ", " + address.city
+        //Update Address
+        self.registerInvestModel.residentAddress = address
         
         guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
         self.mainTBView?.deselectRow(at: indexPath, animated: true)
@@ -222,6 +256,11 @@ extension RegisterInvestorVC: AddressDelegate {
 extension RegisterInvestorVC: FacebookInfoDelegate {
     func getFacebookInfo(info: FacebookInfo) {
         
+        //Update FB info
+        self.registerInvestModel.accessToken = info.accessToken
+        self.registerInvestModel.avatar = info.avatar
+        self.registerInvestModel.fullname = info.fullName
+        
         guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
         self.mainTBView?.deselectRow(at: indexPath, animated: true)
         if let cell = self.mainTBView?.cellForRow(at: indexPath) as? RegisterInvestorSelectionTBCell {
@@ -236,11 +275,29 @@ extension RegisterInvestorVC: FacebookInfoDelegate {
 extension RegisterInvestorVC: BankDataDelegate {
     func getBankAccountData(bank: AccountBank) {
         
+        //Update bank
+        self.registerInvestModel.bank?.accountHolder = bank.accountBankName ?? ""
+        self.registerInvestModel.bank?.accountNumber = bank.accountBankNumber ?? ""
+        self.registerInvestModel.bank?.type = bank.bankName ?? ""
+        self.registerInvestModel.bank?.branch = bank.district ?? ""
+        
+        
         guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
         self.mainTBView?.deselectRow(at: indexPath, animated: true)
         if let cell = self.mainTBView?.cellForRow(at: indexPath) as? RegisterInvestorSelectionTBCell {
             cell.dataRes?.value = (bank.bankName ?? "") + " - " + (bank.accountBankNumber ?? "")
             cell.imgIcon.image = bank.icon
+            
+            switch(BankName(rawValue: bank.bankType!))
+            {
+            case .Vietcombank?: cell.imgIcon.image = UIImage(named: "vcb_selected")
+            case .Viettinbank?: cell.imgIcon.image = UIImage(named: "viettin_selected")
+            case .Techcombank?: cell.imgIcon.image = UIImage(named: "tech_selected")
+            case .Agribank?: cell.imgIcon.image = UIImage(named: "agri_selected")
+            case .none:
+                break
+            }
+            
             cell.icDisclosure?.image = #imageLiteral(resourceName: "option_icon")
         }
         
