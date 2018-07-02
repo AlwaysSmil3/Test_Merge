@@ -19,12 +19,12 @@ public struct AccountBank {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
-    static let accountBankName = "accountBankName"
-    static let accountBankNumber = "accountBankNumber"
-    static let bankName = "bankName"
+    static let accountBankName = "accountHolder"
+    static let accountBankNumber = "accountNumber"
+    static let bankName = "type"
     static let id = "id"
-    static let bankType = "bankType"
-    static let district = "district"
+    static let bankType = "type"
+    static let district = "branch"
   }
 
   // MARK: Properties
@@ -68,8 +68,20 @@ public struct AccountBank {
     accountBankNumber = json[SerializationKeys.accountBankNumber].string ?? ""
     bankName = json[SerializationKeys.bankName].string ?? ""
     id = json[SerializationKeys.id].int32 ?? 0
-    bankType = json[SerializationKeys.bankType].int ?? 0
     district = json[SerializationKeys.district].string ?? ""
+    
+    if bankName == "Vietcombank" || bankName == "VCB" {
+        bankType = 1
+    }
+    else if bankName == "Viettinbank" {
+        bankType = 2
+    }
+    else if bankName == "Techcombank" {
+        bankType = 3
+    }
+    else if bankName == "Agribank" {
+        bankType = 4
+    }
   }
 
   /// Generates description of the object in the form of a NSDictionary.

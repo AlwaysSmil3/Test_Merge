@@ -78,11 +78,6 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProt
         if value.length() > 0 {
             DataManager.shared.loanInfo.userInfo.relationships.phoneNumber = value
             self.tfValue?.text = value
-        }else {
-            //Cap nhat thong tin thieu
-            guard let field_ = self.field, let title = field_.title else { return }
-            self.updateInfoFalse(pre: title)
-            
         }
     }
     

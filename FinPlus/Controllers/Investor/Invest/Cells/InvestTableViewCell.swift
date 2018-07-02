@@ -71,7 +71,7 @@ class InvestTableViewCell: UITableViewCell {
             amountLb.text = Float(cellData.amount!).toString()
         }
         var funed : Float = 25
-        if let temp = cellData.funed {
+        if let temp = cellData.funded {
             funed = temp
         }
         alreadyAmountLb.text = "Đã huy động: " + "\(funed)" + "%"

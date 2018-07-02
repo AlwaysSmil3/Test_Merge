@@ -114,9 +114,9 @@ extension APIClient {
      
      Tên hiển thị trên facebook
      */
-    func updateInfoFromFacebook(phoneNumber: String, pass: String, accountType: Int, accessToken: String, avatar: String, displayName: String) -> Promise<BrowwerInfo> {
+    func updateInfoFromFacebook(phoneNumber: String, pass: String, accountType: Int, accessToken: String, avatar: String, displayName: String, investOtherInfo: InvestorRegisterModel? = nil) -> Promise<BrowwerInfo> {
         
-        let params: JSONDictionary = [
+        var params: JSONDictionary = [
             "phoneNumber": phoneNumber,
             "password": pass,
             "accountType": accountType,
@@ -147,6 +147,48 @@ extension APIClient {
         }
         
     }
+    
+    
+    /// Update in cho đăng ký là nhà đầu tư
+    ///
+    /// - Parameter investInfo: <#investInfo description#>
+    /// - Returns: <#return value description#>
+    func updateInfoForInvestor(investInfo: InvestorRegisterModel) -> Promise<BrowwerInfo> {
+        
+        let params: JSONDictionary = [
+            "" : ""
+        ]
+        
+        let investInfoData = try? JSONEncoder().encode(investInfo)
+        
+        var dataAPI = Data()
+        if let data = investInfoData {
+            dataAPI = data
+        }
+        
+        return Promise<BrowwerInfo> { seal in
+            
+            requestWithEndPoint(endPoint: EndPoint.Authen.Authen, params: params, isShowLoadingView: true, httpType: HTTPMethodType.PUT, jsonData: dataAPI)
+                .done { json in
+                    
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode == 1 else {
+                        self.showErrorMessage(json: json)
+                        return
+                    }
+                    
+                    if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
+                        let model = BrowwerInfo(object: data)
+                        seal.fulfill(model)
+                    }
+                    
+                }
+                .catch { error in
+                    seal.reject(error)
+            }
+        }
+        
+    }
+    
     
     /*
      POST [Done] Đăng xuất ứng dụng điện thoại

@@ -30,11 +30,12 @@ class ListWalletViewController: BaseViewController {
     
     var walletAction: WalletAction = .WalletDetail
     let cellIdentifier = "cell"
-    private var listWallet: NSMutableArray = [
-        AccountBank(wID: 1, wType: 1, wAccountName: "Nguyen Van A", wBankName: "Vietcombank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "vcb_selected")),
-        AccountBank(wID: 2, wType: 2, wAccountName: "Nguyen Van B", wBankName: "Viettinbank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "viettin_selected")),
-        AccountBank(wID: 3, wType: 3, wAccountName: "Nguyen Van C", wBankName: "Techcombank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "tech_selected")),
-    ]
+    private var listWallet: NSMutableArray = []
+//    private var listWallet: NSMutableArray = [
+//        AccountBank(wID: 1, wType: 1, wAccountName: "Nguyen Van A", wBankName: "Vietcombank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "vcb_selected")),
+//        AccountBank(wID: 2, wType: 2, wAccountName: "Nguyen Van B", wBankName: "Viettinbank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "viettin_selected")),
+//        AccountBank(wID: 3, wType: 3, wAccountName: "Nguyen Van C", wBankName: "Techcombank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "tech_selected")),
+//    ]
     
     //CaoHai tra ve du lieu bank khi chon bank
     var delegate: BankDataDelegate?
@@ -66,9 +67,6 @@ class ListWalletViewController: BaseViewController {
         let cellNib = UINib(nibName: "WalletTableViewCell", bundle: nil)
         self.tableview.register(cellNib, forCellReuseIdentifier: cellIdentifier)
         
-        self.tableview.isHidden = self.listWallet.count < 1
-        self.noWalletLabel.isHidden = self.listWallet.count > 0
-        self.addBtn.isHidden = self.listWallet.count > 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,6 +75,8 @@ class ListWalletViewController: BaseViewController {
         if let ishidden = self.navigationController?.isNavigationBarHidden, ishidden {
             self.navigationController?.isNavigationBarHidden = false
         }
+        
+        self.loadListBank()
     }
     
     /// Cho Loan - Xong mỗi bước là gửi api put cập nhật dữ liệu cho mỗi bước
@@ -86,6 +86,34 @@ class ListWalletViewController: BaseViewController {
                 DataManager.shared.loanID = model.loanId!
             }
             .catch { error in }
+    }
+    
+    /// Cho Loan - Xong mỗi bước là gửi api put cập nhật dữ liệu cho mỗi bước
+    func loadListBank() {
+        self.handleLoadingView(isShow: true)
+        
+        APIClient.shared.getListBank(uId: DataManager.shared.userID)
+            .done(on: DispatchQueue.main) { model in
+
+                self.listWallet.removeAllObjects()
+                
+                if (model.count > 0 )
+                {
+                    if let id = model[0].id, id > 0 {
+                        self.listWallet.addObjects(from: model)
+                        self.tableview.reloadData()
+                    }
+                }
+                
+                self.tableview.isHidden = self.listWallet.count < 1
+                self.noWalletLabel.isHidden = self.listWallet.count > 0
+                self.addBtn.isHidden = self.listWallet.count > 0
+                
+                self.handleLoadingView(isShow: false)
+            }
+            .catch { error in
+                self.handleLoadingView(isShow: false)
+        }
     }
     
     @IBAction func navi_back(sender: UIButton) {
@@ -141,7 +169,7 @@ class ListWalletViewController: BaseViewController {
 extension ListWalletViewController: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return listWallet.count > 0 ? 2 : 0
+        return self.listWallet.count > 0 ? 2 : 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -234,6 +262,8 @@ extension ListWalletViewController: UITableViewDataSource {
             }
             cell?.nameLabel.text = item.bankName
             cell?.desLabel.text = item.accountBankNumber
+            cell?.desLabel.isHidden = false
+            cell?.optionBtn.setImage(UIImage(named: "option_icon"), for: .normal)
             cell?.optionBtn.addTarget(self, action: #selector(self.cell_action(sender:)), for: .touchUpInside)
             
             return cell!

@@ -19,8 +19,14 @@ class AddressFirstViewController: BaseViewController {
     var dataSource : [LoanBuilderFields] = []
     
     var cityModel: Model1?
+    var cityModelTemp: Model1?
+    
     var districtModel: Model1?
+    var districtModelTemp: Model1?
+    
+    
     var communeModel: Model1?
+    
     //Số nhà, thôn, xóm,....
     var numberHouse: String?
     
@@ -215,13 +221,25 @@ extension AddressFirstViewController: AddressModelDelegate {
         switch type {
         case .City:
             self.cityModel = model
-            let indexPath = IndexPath(row: 0, section: 0)
-            self.mainTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            
+            guard self.cityModelTemp?.id != model.id else { return }
+            self.cityModelTemp = model
+            
+            self.districtModel = nil
+            self.communeModel = nil
+            
+            self.mainTableView.reloadData()
+            
             break
         case .District:
             self.districtModel = model
-            let indexPath = IndexPath(row: 1, section: 0)
-            self.mainTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            guard self.districtModelTemp?.id != model.id else { return }
+            self.districtModelTemp = model
+            
+            self.communeModel = nil
+            
+            self.mainTableView.reloadData()
+            
             break
         case .Commune:
             self.communeModel = model

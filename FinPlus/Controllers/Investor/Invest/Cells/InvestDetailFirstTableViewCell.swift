@@ -144,7 +144,7 @@ class InvestDetailFirstTableViewCell: UITableViewCell {
         alreadyAmountCircleProgressView.maxValue = 100
         //fix to test
         var already : Float = 25
-        if let temp = cellData.funed {
+        if let temp = cellData.funded {
             already = temp
         }
         self.alreadyProgress.text = already.toString()

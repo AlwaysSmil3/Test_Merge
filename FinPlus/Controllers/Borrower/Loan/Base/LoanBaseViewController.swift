@@ -48,10 +48,11 @@ class LoanBaseViewController: BaseViewController {
                 guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
                 self.mainTBView?.deselectRow(at: indexPath, animated: true)
                 if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeDropdownTBCell {
-                    cell.field?.placeholder = date
                     //DateTime ISO 8601
                     let timeISO8601 = date1.toString(.iso8601(ISO8601Format.DateTimeSec))
                     DataManager.shared.loanInfo.userInfo.birthDay = timeISO8601
+                    
+                    cell.field?.placeholder = date
                 }
             }
         }
