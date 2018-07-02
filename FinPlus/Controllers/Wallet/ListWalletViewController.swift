@@ -262,6 +262,8 @@ extension ListWalletViewController: UITableViewDataSource {
             }
             cell?.nameLabel.text = item.bankName
             cell?.desLabel.text = item.accountBankNumber
+            cell?.desLabel.isHidden = false
+            cell?.optionBtn.setImage(UIImage(named: "option_icon"), for: .normal)
             cell?.optionBtn.addTarget(self, action: #selector(self.cell_action(sender:)), for: .touchUpInside)
             
             return cell!

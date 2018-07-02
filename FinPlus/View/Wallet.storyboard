@@ -227,174 +227,199 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chọn ngân hàng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2P-Aa-tNu">
-                                <rect key="frame" x="16" y="50" width="113" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JxF-EE-TNJ">
-                                <rect key="frame" x="16" y="84" width="163.5" height="56"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fET-fr-C25" customClass="TPKeyboardAvoidingScrollView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JA1-Xq-HwQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNx-k4-LtW">
+                                                <rect key="frame" x="195.5" y="64" width="163.5" height="56"/>
+                                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Button" image="viettin">
+                                                    <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="selected" image="viettin_selected"/>
+                                                <connections>
+                                                    <action selector="viettinBtn_selectedWithSender:" destination="71L-If-6xU" eventType="touchUpInside" id="B8d-IA-lLp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCW-bE-9Ch">
+                                                <rect key="frame" x="195.5" y="136" width="163.5" height="56"/>
+                                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Button" image="agri">
+                                                    <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="selected" image="agri_selected"/>
+                                                <connections>
+                                                    <action selector="agriBtn_selectedWithSender:" destination="71L-If-6xU" eventType="touchUpInside" id="cdZ-hd-FGF"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chọn ngân hàng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAN-dt-hxv">
+                                                <rect key="frame" x="16" y="30" width="113" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPW-Rv-tUB">
+                                                <rect key="frame" x="16" y="136" width="164" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="VHB-g7-wiM"/>
+                                                </constraints>
+                                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Button" image="tech">
+                                                    <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="selected" image="tech_selected"/>
+                                                <connections>
+                                                    <action selector="techBtn_selectedWithSender:" destination="71L-If-6xU" eventType="touchUpInside" id="xsS-9e-8eX"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQF-Rq-arJ">
+                                                <rect key="frame" x="16" y="64" width="164" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="ffX-ie-1LK"/>
+                                                </constraints>
+                                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Button" image="vcb">
+                                                    <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="selected" image="vcb_selected"/>
+                                                <connections>
+                                                    <action selector="vcbBtn_selectedWithSender:" destination="71L-If-6xU" eventType="touchUpInside" id="mc8-oa-zTE"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập tỉnh thành nơi bạn ở" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZOf-cQ-kzF" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="360" width="343" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="aeF-Ni-5fo"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                        <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                                        <real key="value" value="0.80000000000000004"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="disableEffect" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="headerText" value="Tỉnh"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                        <color key="value" red="0.72156862749999995" green="0.78823529410000004" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ví dụ: 2880CUHY770" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OLB-Sh-PDf" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="284" width="343" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="P8d-cG-big"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                        <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                                        <real key="value" value="0.80000000000000004"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="disableEffect" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="headerText" value="Nhập số tài khoản"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                        <color key="value" red="0.72156862749999995" green="0.78823529410000004" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Họ và tên chủ tài khoản" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pUK-xc-opj" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="208" width="343" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="BMn-kl-5na"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                        <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                                        <real key="value" value="0.80000000000000004"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="disableEffect" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="headerText" value="Họ và tên chủ tài khoản"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                        <color key="value" red="0.72156862749999995" green="0.78823529410000004" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="ZOf-cQ-kzF" firstAttribute="top" secondItem="OLB-Sh-PDf" secondAttribute="bottom" constant="20" id="0js-Cu-0Yx"/>
+                                            <constraint firstItem="FAN-dt-hxv" firstAttribute="top" secondItem="JA1-Xq-HwQ" secondAttribute="top" constant="30" id="3OL-9f-ZcV"/>
+                                            <constraint firstItem="dPW-Rv-tUB" firstAttribute="top" secondItem="TQF-Rq-arJ" secondAttribute="bottom" constant="16" id="494-UF-8QH"/>
+                                            <constraint firstItem="TQF-Rq-arJ" firstAttribute="top" secondItem="FAN-dt-hxv" secondAttribute="bottom" constant="16" id="4b5-CB-h3y"/>
+                                            <constraint firstItem="FAN-dt-hxv" firstAttribute="leading" secondItem="JA1-Xq-HwQ" secondAttribute="leading" constant="16" id="5Ym-j9-dfO"/>
+                                            <constraint firstItem="XCW-bE-9Ch" firstAttribute="width" secondItem="dPW-Rv-tUB" secondAttribute="width" id="7kU-lJ-uik"/>
+                                            <constraint firstItem="ZOf-cQ-kzF" firstAttribute="trailing" secondItem="pUK-xc-opj" secondAttribute="trailing" id="Bgz-LM-S2Y"/>
+                                            <constraint firstItem="XCW-bE-9Ch" firstAttribute="leading" secondItem="MNx-k4-LtW" secondAttribute="leading" id="CH5-ga-clD"/>
+                                            <constraint firstItem="XCW-bE-9Ch" firstAttribute="height" secondItem="dPW-Rv-tUB" secondAttribute="height" id="Hwr-Fg-BJ2"/>
+                                            <constraint firstItem="XCW-bE-9Ch" firstAttribute="leading" secondItem="dPW-Rv-tUB" secondAttribute="trailing" constant="16" id="Jv0-rb-XCd"/>
+                                            <constraint firstAttribute="trailing" secondItem="pUK-xc-opj" secondAttribute="trailing" constant="16" id="MHu-T1-NPm"/>
+                                            <constraint firstItem="TQF-Rq-arJ" firstAttribute="leading" secondItem="FAN-dt-hxv" secondAttribute="leading" id="Pg9-zT-HzV"/>
+                                            <constraint firstItem="pUK-xc-opj" firstAttribute="leading" secondItem="JA1-Xq-HwQ" secondAttribute="leading" constant="16" id="SPJ-6H-xvV"/>
+                                            <constraint firstItem="MNx-k4-LtW" firstAttribute="height" secondItem="TQF-Rq-arJ" secondAttribute="height" id="TvJ-20-MGY"/>
+                                            <constraint firstItem="MNx-k4-LtW" firstAttribute="leading" secondItem="TQF-Rq-arJ" secondAttribute="trailing" constant="16" id="WVs-QS-4bQ"/>
+                                            <constraint firstItem="pUK-xc-opj" firstAttribute="top" secondItem="dPW-Rv-tUB" secondAttribute="bottom" constant="16" id="X7I-1p-cTs"/>
+                                            <constraint firstItem="XCW-bE-9Ch" firstAttribute="centerY" secondItem="dPW-Rv-tUB" secondAttribute="centerY" id="ZyQ-QO-bEI"/>
+                                            <constraint firstAttribute="trailing" secondItem="MNx-k4-LtW" secondAttribute="trailing" constant="16" id="cAN-BH-qWx"/>
+                                            <constraint firstItem="MNx-k4-LtW" firstAttribute="width" secondItem="TQF-Rq-arJ" secondAttribute="width" id="cOV-ty-3u7"/>
+                                            <constraint firstItem="dPW-Rv-tUB" firstAttribute="leading" secondItem="TQF-Rq-arJ" secondAttribute="leading" id="d3l-Ue-Kpo"/>
+                                            <constraint firstItem="MNx-k4-LtW" firstAttribute="centerY" secondItem="TQF-Rq-arJ" secondAttribute="centerY" id="lbH-oO-2i2"/>
+                                            <constraint firstItem="OLB-Sh-PDf" firstAttribute="top" secondItem="pUK-xc-opj" secondAttribute="bottom" constant="20" id="sQC-ME-A82"/>
+                                            <constraint firstItem="ZOf-cQ-kzF" firstAttribute="leading" secondItem="pUK-xc-opj" secondAttribute="leading" id="tqW-lT-hgV"/>
+                                            <constraint firstItem="OLB-Sh-PDf" firstAttribute="leading" secondItem="pUK-xc-opj" secondAttribute="leading" id="tqw-Xd-tR4"/>
+                                            <constraint firstItem="OLB-Sh-PDf" firstAttribute="trailing" secondItem="pUK-xc-opj" secondAttribute="trailing" id="xCb-sN-Kfs"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="6KT-5A-MeV"/>
+                                    <constraint firstItem="JA1-Xq-HwQ" firstAttribute="leading" secondItem="fET-fr-C25" secondAttribute="leading" id="IV6-Or-vyQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="JA1-Xq-HwQ" secondAttribute="bottom" id="Raf-oa-59j"/>
+                                    <constraint firstItem="JA1-Xq-HwQ" firstAttribute="top" secondItem="fET-fr-C25" secondAttribute="top" id="fWX-lx-dPz"/>
+                                    <constraint firstAttribute="trailing" secondItem="JA1-Xq-HwQ" secondAttribute="trailing" id="ruM-zp-7gT"/>
                                 </constraints>
-                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Button" image="vcb">
-                                    <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="selected" image="vcb_selected"/>
-                                <connections>
-                                    <action selector="vcbBtn_selectedWithSender:" destination="71L-If-6xU" eventType="touchUpInside" id="Ing-tG-yoP"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zh-RN-5h5">
-                                <rect key="frame" x="195.5" y="84" width="163.5" height="56"/>
-                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Button" image="viettin">
-                                    <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="selected" image="viettin_selected"/>
-                                <connections>
-                                    <action selector="viettinBtn_selectedWithSender:" destination="71L-If-6xU" eventType="touchUpInside" id="zV3-Kp-dH3"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Họ và tên chủ tài khoản" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zvR-gs-xF6" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
-                                <rect key="frame" x="16" y="228" width="343" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="aCA-1h-vj7"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" textContentType="name"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
-                                        <color key="value" red="0.8901960784313725" green="0.92156862745098034" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
-                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                        <real key="value" value="0.80000000000000004"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="disableEffect" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="headerText" value="Họ và tên chủ tài khoản"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                        <color key="value" red="0.72156862745098038" green="0.78823529411764703" blue="0.82745098039215681" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ví dụ: 2880CUHY770" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ebh-KD-dJm" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
-                                <rect key="frame" x="16" y="304" width="343" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="cEj-Rf-l1A"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" textContentType="name"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
-                                        <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
-                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                        <real key="value" value="0.80000000000000004"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="disableEffect" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="headerText" value="Nhập số tài khoản"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                        <color key="value" red="0.72156862749999995" green="0.78823529410000004" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập tỉnh thành nơi bạn ở" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0RP-5F-WYW" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
-                                <rect key="frame" x="16" y="380" width="343" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="mkf-WN-gV0"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" textContentType="name"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
-                                        <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
-                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                        <real key="value" value="0.80000000000000004"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="disableEffect" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="headerText" value="Tỉnh"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                        <color key="value" red="0.72156862749999995" green="0.78823529410000004" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6V-kP-aeH">
-                                <rect key="frame" x="16" y="156" width="163.5" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="njj-FX-9r3"/>
-                                </constraints>
-                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Button" image="tech">
-                                    <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="selected" image="tech_selected"/>
-                                <connections>
-                                    <action selector="techBtn_selectedWithSender:" destination="71L-If-6xU" eventType="touchUpInside" id="YgI-Ci-8Qg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emo-6F-Mif">
-                                <rect key="frame" x="195.5" y="156" width="163.5" height="56"/>
-                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Button" image="agri">
-                                    <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="selected" image="agri_selected"/>
-                                <connections>
-                                    <action selector="agriBtn_selectedWithSender:" destination="71L-If-6xU" eventType="touchUpInside" id="CgN-Cu-IcX"/>
-                                </connections>
-                            </button>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ebh-KD-dJm" firstAttribute="trailing" secondItem="dZL-cX-lcz" secondAttribute="trailingMargin" id="49j-Av-5lD"/>
-                            <constraint firstItem="emo-6F-Mif" firstAttribute="leading" secondItem="u6V-kP-aeH" secondAttribute="trailing" constant="16" id="4H9-f3-0b5"/>
-                            <constraint firstItem="zvR-gs-xF6" firstAttribute="top" secondItem="u6V-kP-aeH" secondAttribute="bottom" constant="16" id="4rT-JC-2aT"/>
-                            <constraint firstItem="W2P-Aa-tNu" firstAttribute="top" secondItem="UVM-Ce-V3Z" secondAttribute="bottom" constant="30" id="7Xz-Bl-OcF"/>
-                            <constraint firstItem="9zh-RN-5h5" firstAttribute="centerY" secondItem="JxF-EE-TNJ" secondAttribute="centerY" id="8Mh-1s-Ocv"/>
-                            <constraint firstItem="JxF-EE-TNJ" firstAttribute="leading" secondItem="dZL-cX-lcz" secondAttribute="leadingMargin" id="AzQ-fu-n1g"/>
-                            <constraint firstItem="JxF-EE-TNJ" firstAttribute="top" secondItem="W2P-Aa-tNu" secondAttribute="bottom" constant="16" id="EcB-tL-LXA"/>
-                            <constraint firstItem="emo-6F-Mif" firstAttribute="height" secondItem="u6V-kP-aeH" secondAttribute="height" id="KHr-J0-67A"/>
-                            <constraint firstItem="ebh-KD-dJm" firstAttribute="leading" secondItem="dZL-cX-lcz" secondAttribute="leadingMargin" id="KUA-PV-IqC"/>
-                            <constraint firstItem="u6V-kP-aeH" firstAttribute="top" secondItem="JxF-EE-TNJ" secondAttribute="bottom" constant="16" id="Qxm-am-Cwf"/>
-                            <constraint firstItem="0RP-5F-WYW" firstAttribute="trailing" secondItem="dZL-cX-lcz" secondAttribute="trailingMargin" id="TrA-Ks-8L7"/>
-                            <constraint firstItem="ebh-KD-dJm" firstAttribute="top" secondItem="zvR-gs-xF6" secondAttribute="bottom" constant="20" id="XQr-Eg-Sh2"/>
-                            <constraint firstItem="zvR-gs-xF6" firstAttribute="leading" secondItem="dZL-cX-lcz" secondAttribute="leadingMargin" id="Xen-Jg-qZ4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9zh-RN-5h5" secondAttribute="trailing" id="a9f-pN-zIz"/>
-                            <constraint firstItem="emo-6F-Mif" firstAttribute="leading" secondItem="9zh-RN-5h5" secondAttribute="leading" id="aRh-Aj-EUY"/>
-                            <constraint firstItem="emo-6F-Mif" firstAttribute="width" secondItem="u6V-kP-aeH" secondAttribute="width" id="aak-81-bWV"/>
-                            <constraint firstItem="emo-6F-Mif" firstAttribute="centerY" secondItem="u6V-kP-aeH" secondAttribute="centerY" id="acY-T7-l6a"/>
-                            <constraint firstItem="9zh-RN-5h5" firstAttribute="width" secondItem="JxF-EE-TNJ" secondAttribute="width" id="eXf-dh-aYO"/>
-                            <constraint firstItem="0RP-5F-WYW" firstAttribute="top" secondItem="ebh-KD-dJm" secondAttribute="bottom" constant="20" id="fCC-94-9XM"/>
-                            <constraint firstItem="W2P-Aa-tNu" firstAttribute="leading" secondItem="dZL-cX-lcz" secondAttribute="leadingMargin" id="mKb-RR-m1f"/>
-                            <constraint firstItem="0RP-5F-WYW" firstAttribute="leading" secondItem="dZL-cX-lcz" secondAttribute="leadingMargin" id="mvw-4R-9zs"/>
-                            <constraint firstItem="u6V-kP-aeH" firstAttribute="leading" secondItem="JxF-EE-TNJ" secondAttribute="leading" id="qJS-tz-L7k"/>
-                            <constraint firstItem="9zh-RN-5h5" firstAttribute="leading" secondItem="JxF-EE-TNJ" secondAttribute="trailing" constant="16" id="wxu-sl-Mil"/>
-                            <constraint firstItem="9zh-RN-5h5" firstAttribute="height" secondItem="JxF-EE-TNJ" secondAttribute="height" id="z18-Qc-7pm"/>
-                            <constraint firstItem="zvR-gs-xF6" firstAttribute="trailing" secondItem="dZL-cX-lcz" secondAttribute="trailingMargin" id="zC5-SY-0av"/>
+                            <constraint firstItem="fET-fr-C25" firstAttribute="top" secondItem="UVM-Ce-V3Z" secondAttribute="bottom" id="3II-8P-c9n"/>
+                            <constraint firstItem="JA1-Xq-HwQ" firstAttribute="width" secondItem="dZL-cX-lcz" secondAttribute="width" id="FR8-Wj-fjH"/>
+                            <constraint firstItem="fET-fr-C25" firstAttribute="leading" secondItem="dZL-cX-lcz" secondAttribute="leading" id="Sn2-go-FLo"/>
+                            <constraint firstAttribute="trailing" secondItem="fET-fr-C25" secondAttribute="trailing" id="VfF-wI-UcE"/>
+                            <constraint firstAttribute="bottom" secondItem="fET-fr-C25" secondAttribute="bottom" id="eHK-2t-Bpo"/>
+                            <constraint firstItem="JA1-Xq-HwQ" firstAttribute="height" secondItem="dZL-cX-lcz" secondAttribute="height" id="f6f-47-a7r"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5Ia-My-PbB">
@@ -411,16 +436,16 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="accTextField" destination="ebh-KD-dJm" id="4Vt-4K-sdW"/>
-                        <outlet property="agriBtn" destination="emo-6F-Mif" id="er2-PN-8rU"/>
+                        <outlet property="accTextField" destination="OLB-Sh-PDf" id="0Ke-T5-w6Z"/>
+                        <outlet property="agriBtn" destination="XCW-bE-9Ch" id="suN-aO-owO"/>
                         <outlet property="leftBarBtn" destination="exK-B4-094" id="WQl-BI-Bns"/>
-                        <outlet property="nameTextField" destination="zvR-gs-xF6" id="Wry-78-ODV"/>
-                        <outlet property="reAccTextField" destination="0RP-5F-WYW" id="3ug-54-G3F"/>
+                        <outlet property="nameTextField" destination="pUK-xc-opj" id="dxC-PR-MVo"/>
+                        <outlet property="reAccTextField" destination="ZOf-cQ-kzF" id="kju-rc-J5W"/>
                         <outlet property="rightBarBtn" destination="84J-9Q-Veo" id="EXE-87-Mh5"/>
-                        <outlet property="techBtn" destination="u6V-kP-aeH" id="SCo-PO-Uf9"/>
-                        <outlet property="typeLabel" destination="W2P-Aa-tNu" id="8qa-vT-CVG"/>
-                        <outlet property="vcbBtn" destination="JxF-EE-TNJ" id="npR-5T-p4w"/>
-                        <outlet property="viettinBtn" destination="9zh-RN-5h5" id="JuF-ay-bL5"/>
+                        <outlet property="techBtn" destination="dPW-Rv-tUB" id="bij-eR-lIT"/>
+                        <outlet property="typeLabel" destination="FAN-dt-hxv" id="gSS-6r-Sid"/>
+                        <outlet property="vcbBtn" destination="TQF-Rq-arJ" id="lB1-xY-whw"/>
+                        <outlet property="viettinBtn" destination="MNx-k4-LtW" id="OKb-n3-fQg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uDr-ZR-twG" userLabel="First Responder" sceneMemberID="firstResponder"/>
