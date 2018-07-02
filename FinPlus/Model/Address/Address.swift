@@ -46,8 +46,8 @@ struct Address: Encodable {
         case commune
         case street
         case zipCode
-        case long
-        case lat
+        case longitude
+        case latitude
     }
     
     func encode(to encoder: Encoder) throws {
@@ -57,8 +57,8 @@ struct Address: Encodable {
         try container.encode(commune, forKey: .commune)
         try container.encode(street, forKey: .street)
         try container.encode(zipCode, forKey: .zipCode)
-        try container.encode(long, forKey: .long)
-        try container.encode(lat, forKey: .lat)
+        try container.encode(long, forKey: .longitude)
+        try container.encode(lat, forKey: .latitude)
         
     }
 

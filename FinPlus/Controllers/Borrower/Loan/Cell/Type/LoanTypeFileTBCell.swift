@@ -46,28 +46,55 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     }
     
     func getData() {
-        guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
+        guard let field_ = self.field, let id = field_.id else { return }
         if id.contains("nationalIdAllImg") {
             
+            var value = ""
             if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdAllImg, data.length() > 0 {
-                self.imgValue?.sd_setImage(with: URL(string: hostLoan + data), completed: nil)
-                DataManager.shared.loanInfo.nationalIdAllImg = data
+                value = data
+            }
+            
+            if DataManager.shared.loanInfo.nationalIdAllImg.length() > 0 {
+                value = DataManager.shared.loanInfo.nationalIdAllImg
+            }
+            
+            if value.length() > 0 {
+                self.imgValue?.sd_setImage(with: URL(string: hostLoan + value), completed: nil)
+                DataManager.shared.loanInfo.nationalIdAllImg = value
                 self.imgAdd?.isHidden = true
                 self.lblDescription?.isHidden = true
             }
             
         } else if id.contains("nationalIdFrontImg") {
+            var value = ""
             if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdFrontImg, data.length() > 0 {
-                self.imgValue?.sd_setImage(with: URL(string: hostLoan + data), completed: nil)
-                DataManager.shared.loanInfo.nationalIdFrontImg = data
+                value = data
+            }
+            
+            if DataManager.shared.loanInfo.nationalIdFrontImg.length() > 0 {
+                value = DataManager.shared.loanInfo.nationalIdFrontImg
+            }
+            
+            if value.length() > 0 {
+                self.imgValue?.sd_setImage(with: URL(string: hostLoan + value), completed: nil)
+                DataManager.shared.loanInfo.nationalIdFrontImg = value
                 self.imgAdd?.isHidden = true
                 self.lblDescription?.isHidden = true
             }
             
         } else if id.contains("nationalIdBackImg") {
+            var value = ""
             if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdBackImg, data.length() > 0 {
-                self.imgValue?.sd_setImage(with: URL(string: hostLoan + data), completed: nil)
-                DataManager.shared.loanInfo.nationalIdBackImg = data
+                value = data
+            }
+            
+            if DataManager.shared.loanInfo.nationalIdBackImg.length() > 0 {
+                value = DataManager.shared.loanInfo.nationalIdBackImg
+            }
+            
+            if value.length() > 0 {
+                self.imgValue?.sd_setImage(with: URL(string: hostLoan + value), completed: nil)
+                DataManager.shared.loanInfo.nationalIdBackImg = value
                 self.imgAdd?.isHidden = true
                 self.lblDescription?.isHidden = true
             }
