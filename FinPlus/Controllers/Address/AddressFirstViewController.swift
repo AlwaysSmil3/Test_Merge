@@ -225,32 +225,21 @@ extension AddressFirstViewController: AddressModelDelegate {
             guard self.cityModelTemp?.id != model.id else { return }
             self.cityModelTemp = model
             
-            self.dataSource[1].title = "Phường/Xã/Thị trấn"
-            self.dataSource[1].placeholder = "Nhấn để chọn"
-            self.dataSource[1].selectorTitle = "Nhấn để chọn"
-            
-            self.dataSource[2].title = "Phường/Xã/Thị trấn"
-            self.dataSource[2].placeholder = "Nhấn để chọn"
-            self.dataSource[2].selectorTitle = "Nhấn để chọn"
+            self.districtModel = nil
+            self.communeModel = nil
             
             self.mainTableView.reloadData()
             
-//            let indexPath = IndexPath(row: 0, section: 0)
-//            self.mainTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             break
         case .District:
             self.districtModel = model
             guard self.districtModelTemp?.id != model.id else { return }
             self.districtModelTemp = model
             
-            self.dataSource[3].title = "Phường/Xã/Thị trấn"
-            self.dataSource[3].placeholder = "Nhấn để chọn"
-            self.dataSource[3].selectorTitle = "Nhấn để chọn"
+            self.communeModel = nil
             
             self.mainTableView.reloadData()
             
-//            let indexPath = IndexPath(row: 1, section: 0)
-//            self.mainTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             break
         case .Commune:
             self.communeModel = model
