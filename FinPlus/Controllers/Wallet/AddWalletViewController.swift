@@ -98,8 +98,6 @@ class AddWalletViewController: UIViewController {
     
     func addNewBank() {
         
-        self.handleLoadingView(isShow: true)
-        
         if ((self.nameTextField.text?.length())! < 1)
         {
             self.showAlertView(title: "Thông báo", message: "Bạn chưa điền thông tin họ và tên", okTitle: "Đồng ý", cancelTitle: nil)
@@ -146,12 +144,14 @@ class AddWalletViewController: UIViewController {
         APIClient.shared.addNewBank(uId: DataManager.shared.userID, params: params)
             .done(on: DispatchQueue.main) { model in
                 
-                self.handleLoadingView(isShow: false)
+                guard let code = model.returnCode, code > 0 else {
+                    self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg ?? "Thêm ngân hàng thất bại", okTitle: "OK", cancelTitle: nil)
+                    return
+                }
                 
                 self.navigationController?.popViewController(animated: true)
             }
             .catch { error in
-                self.handleLoadingView(isShow: false)
         }
     }
     

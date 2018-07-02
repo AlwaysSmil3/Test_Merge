@@ -20,6 +20,8 @@ protocol AddressModelDelegate {
 
 class AddressTBViewController: BaseViewController {
     
+    
+    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var mainTBView: UITableView!
     
     var delegate: AddressModelDelegate?
@@ -29,9 +31,30 @@ class AddressTBViewController: BaseViewController {
     
     var dataSource: [Model1] = [] {
         didSet {
+            self.dataSourceTemp = self.dataSource
+        }
+    }
+    
+    var dataSourceTemp: [Model1] = [] {
+        didSet {
             self.mainTBView.reloadData()
         }
     }
+    
+    
+    var isSearch: Bool = false {
+        
+        didSet {
+            guard !self.isSearch else {
+                
+                return
+            }
+            
+            self.view.endEditing(true)
+            self.dataSourceTemp = self.dataSource
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,13 +121,13 @@ class AddressTBViewController: BaseViewController {
 extension AddressTBViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataSource.count
+        return self.dataSourceTemp.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Address_First_TB_Cell", for: indexPath) as! AddressFirstTBCell
         
-        let model = self.dataSource[indexPath.row]
+        let model = self.dataSourceTemp[indexPath.row]
         cell.lblTitleCell.text = model.name!
         
         return cell
@@ -113,11 +136,42 @@ extension AddressTBViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        self.delegate?.getModel1(model: self.dataSource[indexPath.row], type: self.type)
+        self.delegate?.getModel1(model: self.dataSourceTemp[indexPath.row], type: self.type)
         self.navigationController?.popViewController(animated: true)
         
     }
+}
+
+extension AddressTBViewController: UISearchBarDelegate {
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText.length() > 0 {
+            //self.searchBar.showsCancelButton = true
+            self.dataSourceTemp = self.dataSource.filter({ (model) -> Bool in
+                return model.name!.contains(searchText)
+            })
+        } else {
+            //self.searchBar.showsCancelButton = false
+            self.dataSourceTemp = self.dataSource
+        }
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.isSearch = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        //self.isSearch = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.isSearch = false
+    }
     
     
 }
+
+
+
+

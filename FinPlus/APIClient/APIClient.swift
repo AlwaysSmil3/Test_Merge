@@ -36,6 +36,7 @@ class APIClient {
             // Init delete request
             let _deleteRequest = NSMutableURLRequest()
             _deleteRequest.httpMethod = "DELETE"
+            _deleteRequest.timeoutInterval = 5
             _deleteRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _deleteRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
             return _deleteRequest
@@ -48,6 +49,9 @@ class APIClient {
             // Init post request
             let _postRequest = NSMutableURLRequest()
             _postRequest.httpMethod = "POST"
+            
+            _postRequest.timeoutInterval = 5
+            
             _postRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _postRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
             return _postRequest
@@ -60,6 +64,7 @@ class APIClient {
             // Init get request
             let _getRequest = NSMutableURLRequest()
             _getRequest.httpMethod = "GET"
+            _getRequest.timeoutInterval = 5
 //            _getRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
 //            _getRequest.setValue("application/json, text/javascript, */*; q=0.01", forHTTPHeaderField: "Accept")
             _getRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -74,6 +79,7 @@ class APIClient {
             // Init get request
             let _putRequest = NSMutableURLRequest()
             _putRequest.httpMethod = "PUT"
+            _putRequest.timeoutInterval = 5
             _putRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _putRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
             return _putRequest
@@ -148,6 +154,7 @@ class APIClient {
                 switch response.result {
                 case .failure(let error):
                     seal.reject(error)
+                    print(error)
                     UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: self.getDisplayMessage(error: error), okTitle: "OK", cancelTitle: nil)
                     
                 case .success(let responseObject):
@@ -307,8 +314,9 @@ class APIClient {
         if  err.code == NSURLErrorNotConnectedToInternet {
             // no internet connection
             errMessage = API_MESSAGE.NO_INTERNET
-        }
-        else {
+        } else if err.code == NSURLErrorTimedOut  {
+            errMessage = API_MESSAGE.Request_Timeout
+        } else {
             // other failures
             errMessage = API_MESSAGE.OTHER_ERROR
         }

@@ -97,10 +97,12 @@ class ListWalletViewController: BaseViewController {
 
                 self.listWallet.removeAllObjects()
                 
-                if (model.count > 0)
+                if (model.count > 0 )
                 {
-                    self.listWallet.addObjects(from: model)
-                    self.tableview.reloadData()
+                    if let id = model[0].id, id > 0 {
+                        self.listWallet.addObjects(from: model)
+                        self.tableview.reloadData()
+                    }
                 }
                 
                 self.tableview.isHidden = self.listWallet.count < 1

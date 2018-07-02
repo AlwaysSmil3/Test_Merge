@@ -92,9 +92,7 @@ extension APIClient {
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
                 .done { json in
-                    
-                    if let errorCode = json[API_RESPONSE_RETURN_CODE] as? Int, errorCode == 1
-                    {
+
                         var array: [AccountBank] = []
                         
                         if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
@@ -107,7 +105,7 @@ extension APIClient {
                         }
                         
                         seal.fulfill(array)
-                    }
+            
                 }
                 .catch { error in
                     seal.reject(error)
@@ -126,15 +124,9 @@ extension APIClient {
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(host: Host.productURL, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
                 .done { json in
-                    if let errorCode = json[API_RESPONSE_RETURN_CODE] as? Int, errorCode == 0
-                    {
-                        let model = APIResponseGeneral(object: json)
-                        seal.fulfill(model)
-                    }
-                    else
-                    {
-                        seal.reject(json[API_RESPONSE_RETURN_MESSAGE] as! Error)
-                    }
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+
                 }
                 .catch { error in seal.reject(error)}
         }

@@ -134,7 +134,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             
             if DataManager.shared.loanInfo.userInfo.birthDay.length() > 0 {
                 value = DataManager.shared.loanInfo.userInfo.birthDay
-                dateTemp = Date.init(fromString: value, format: DateFormat.custom(kDisplayFormat))
+                dateTemp = Date.init(fromString: value, format: DateFormat.custom(ISO8601Format.DateTimeSec.rawValue))
             }
             
             if value.length() > 0 {

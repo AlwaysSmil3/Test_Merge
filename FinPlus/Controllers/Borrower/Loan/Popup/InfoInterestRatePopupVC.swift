@@ -52,7 +52,7 @@ extension InfoInterestRatePopupVC: UITableViewDelegate, UITableViewDataSource {
         let rate = DataManager.shared.listRateInfo[indexPath.row]
         
         cell.lblValue?.text = rate.name!
-        cell.lblSubTitle?.text = "Lãi xuất vay \(rate.rate!)%"
+        cell.lblSubTitle?.text = "Lãi suất vay \(rate.rate!)%"
         
         return cell
     }
