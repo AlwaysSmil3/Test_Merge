@@ -189,7 +189,52 @@ extension APIClient {
         }
         
     }
-    
-    
-    
+
+    /*
+     API Invest A Loan
+    */
+    func investLoan(loanId: Int32, investorId: Int32, notes: Int32, walletId: Int32) -> Promise<APIResponseGeneral> {
+        let endPoint = "loans/" + "\(loanId)/" + "\(notes)"
+        let params = ["loanId" : loanId, "investorId" : investorId, "notes" : notes, "walletId" : walletId]
+        return Promise<APIResponseGeneral> { seal in
+            requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST).done{ json in
+                print(json)
+                }.catch {
+                    error in seal.reject(error)
+            }
+        }
+    }
+
+    /*
+     API request OTP to Invest A Loan
+    */
+
+    func investLoanOTP(loanId: Int32, noteId: Int32) -> Promise<APIResponseGeneral> {
+        return Promise<APIResponseGeneral> { seal in
+            let endPoint = "loans/" + "\(loanId)/" + "notes/" + "\(noteId)/" + "otp"
+            getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: false)
+                .done { json in
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in seal.reject(error)}
+        }
+    }
+
+    /*
+     API confirm OTP to Invest A Loan
+     */
+
+    func confirmOTPInvestLoan(loanId: Int32, noteId: Int32, OTP: String) -> Promise<APIResponseGeneral> {
+            let endPoint = "loans/" + "\(loanId)/" + "notes/" + "\(noteId)/" + "otp"
+            let params = ["otp" : OTP]
+            return Promise<APIResponseGeneral> { seal in
+                requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST).done{ json in
+                    print(json)
+                    }.catch {
+                        error in seal.reject(error)
+                }
+            }
+        }
+
 }

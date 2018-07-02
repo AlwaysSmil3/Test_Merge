@@ -10,11 +10,15 @@ import UIKit
 
 class InvestContractViewController: UIViewController {
 
+    @IBAction func backAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Hợp đồng vay"
-        self.tableView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
+//        self.tableView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
 
         // Do any additional setup after loading the view.
     }

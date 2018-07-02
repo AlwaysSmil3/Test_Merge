@@ -121,11 +121,11 @@ class InvestDetailFirstTableViewCell: UITableViewCell {
         }
         // third block
         // add attribute string
-        var rate = 0
+        var rate : Float = 20
         if let temp = cellData.inRate {
             rate = temp
         }
-        let interestCircleStr = "\(rate)" + "\n%/năm"
+        let interestCircleStr = rate.toString() + "\n%/năm"
         let myRange = NSRange(location: interestCircleStr.length() - 5, length: 5)
         var myMutableString = NSMutableAttributedString()
         myMutableString = NSMutableAttributedString(string: interestCircleStr)
@@ -138,14 +138,31 @@ class InvestDetailFirstTableViewCell: UITableViewCell {
             self.interestNameLb.text = "Lãi suất cao"
         }
 
-        self.interestDes.text = "\(rate)" + "/năm, trả góp hàng tháng"
+        self.interestDes.text = rate.toString() + "/năm, trả góp hàng tháng"
         alreadyAmountCircleProgressView.innerRingColor = reliType.color
         alreadyAmountCircleProgressView.minValue = 0
         alreadyAmountCircleProgressView.maxValue = 100
         //fix to test
-        alreadyAmountCircleProgressView.value = CGFloat(25)
+        var already : Float = 25
+        if let temp = cellData.funed {
+            already = temp
+        }
+        self.alreadyProgress.text = already.toString()
+        alreadyAmountCircleProgressView.value = CGFloat(already)
         alreadyAmountCircleProgressView.font = UIFont(name: "SFProDisplay-Semibold", size: 17)!
         alreadyAmountCircleProgressView.shouldShowValueText = false
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        var avaiableAmountStr = ""
+        let avaiableAmount = Float(cellData.amount!) - (Float(cellData.amount!) * already / 100)
+
+        if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
+            avaiableAmountStr = formattedTipAmount
+        } else {
+            avaiableAmountStr = "\(avaiableAmount)"
+        }
+        self.alreadyDesLb.text = "Đã huy động " + "\(already)" + "%, còn lại " +  avaiableAmountStr
         // last block
 //        let alreadyStr = cellData.alreadyAmount.toString() + "%"
 //        let range2 = NSRange(location: alreadyStr.length() - 1, length: 1)

@@ -11,6 +11,7 @@ import UIKit
 enum WebViewType {
     case termView
     case aboutView
+    case contractView
 }
 
 class WebViewViewController: UIViewController, UIWebViewDelegate {
@@ -50,9 +51,12 @@ class WebViewViewController: UIViewController, UIWebViewDelegate {
         case .termView:
             self.title = NSLocalizedString("TERMS_OF_USE", comment: "")
             htmlPath = Bundle.main.path(forResource: "terms-and-conditions", ofType: "html")!
-        default:
+        case .aboutView:
             self.title = NSLocalizedString("ABOUT_FINSMART", comment: "")
             htmlPath = Bundle.main.path(forResource: "about", ofType: "html")!
+        default:
+            self.title = NSLocalizedString("CONTRACT", comment: "")
+            htmlPath = Bundle.main.path(forResource: "terms-and-conditions", ofType: "html")!
         }
         
         let url = URL(fileURLWithPath: htmlPath)

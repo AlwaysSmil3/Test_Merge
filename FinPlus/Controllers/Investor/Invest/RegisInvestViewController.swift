@@ -36,6 +36,7 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Đăng ký đầu tư"
+        self.budgetSelected = Float(investDetail.amount!)
         containView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         let myRange = NSRange(location: 25, length: 17)
         let policyStr : String = "Tôi đã hiểu và đồng ý với hợp đồng đầu tư."
@@ -57,7 +58,6 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
             avaiableAmount = Int(temp)
         }
 
-
 //        let avaiableAmount = investDetail.amount - (investDetail.alreadyAmount / 100 * investDetail.amount)
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
@@ -68,12 +68,56 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
         } else {
             avaiableAmountStr = "\(avaiableAmount)"
         }
+
+
         self.amountTf.text = avaiableAmountStr
+
+        var rate : Float = 20
+        if let temp = investDetail.inRate {
+            rate = temp
+        }
+        var interestAmount :Float = 0
+        self.interestLb.text = "\(rate) %/năm"
+        if let loanCategoryId = investDetail.loanCategoryId {
+            if loanCategoryId == 1 {
+                if let term = investDetail.term {
+                    self.timeLb.text = "\(term) ngày"
+                    interestAmount = budgetSelected * rate * Float(term) / 12 / 30
+                    if let formattedTipAmount = formatter.string(from: interestAmount as NSNumber) {
+                        self.interestAmount.text = formattedTipAmount
+                    } else {
+                        self.interestAmount.text = interestAmount.toString()
+                    }
+                }
+            } else {
+                if let term = investDetail.term {
+                    self.timeLb.text = "\(term) tháng"
+                    interestAmount = budgetSelected * rate * Float(term) / 12
+                    if let formattedTipAmount = formatter.string(from: interestAmount as NSNumber) {
+                        self.interestAmount.text = formattedTipAmount
+                    } else {
+                        self.interestAmount.text = interestAmount.toString()
+                    }
+                }
+            }
+        }
+//        self.interestAmount.text = interestAmount.toString()
+
+        var selectedAmountStr = ""
+        if let formattedTipAmount = formatter.string(from: self.budgetSelected as NSNumber) {
+            selectedAmountStr = formattedTipAmount
+        } else {
+            selectedAmountStr = self.budgetSelected.toString()
+        }
+        self.sumAmountLb.text = selectedAmountStr
         // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
+            self.navigationController?.isNavigationBarHidden = true
+        }
         self.mode = UserDefaults.standard.bool(forKey: APP_MODE)
         setupMode()
     }
@@ -201,13 +245,16 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
             avaiableAmountStr = budgetSelected.toString()
         }
         self.amountTf.text = avaiableAmountStr
+        self.sumAmountLb.text = avaiableAmountStr
     }
 
     @available(iOS 10.0, *)
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         if URL.scheme == "more" {
-            let investContractVC = InvestContractViewController(nibName: "InvestContractViewController", bundle: nil)
-            self.navigationController?.pushViewController(investContractVC, animated: true)
+            let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "WEBVIEW") as! WebViewViewController
+            vc.webViewType = .contractView
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
             return false
         }
         else {
@@ -227,6 +274,11 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
     @IBAction func regisBtnAction(_ sender: Any) {
         // push to OTP view controller
         self.view.endEditing(true)
+        // check accept policy
+        if self.isAcceptPolicy == false {
+            self.showGreenBtnMessage(title: "Error", message: "You must read and accept with contract before sign.", okTitle: "Ok", cancelTitle: nil)
+            return
+        }
         let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
         verifyVC.verifyType = .RegisInvest
         self.navigationController?.pushViewController(verifyVC, animated: true)

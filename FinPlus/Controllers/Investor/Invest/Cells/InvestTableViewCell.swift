@@ -70,18 +70,22 @@ class InvestTableViewCell: UITableViewCell {
         } else {
             amountLb.text = Float(cellData.amount!).toString()
         }
-//        alreadyAmountLb.text = "Đã huy động: " + cellData.alreadyAmount.toString() + "%"
+        var funed : Float = 25
+        if let temp = cellData.funed {
+            funed = temp
+        }
+        alreadyAmountLb.text = "Đã huy động: " + "\(funed)" + "%"
         var termStr = ""
         if cellData.loanCategoryId == 1 {
             termStr = "\(cellData.term!) ngày"
         } else {
             termStr = "\(cellData.term!/30) tháng"
         }
-        var rate = 0
+        var rate : Float = 20
         if let temp = cellData.inRate {
             rate = temp
         }
-        exporeTimeLb.text = "Lãi suất " + "\(rate)" + "%/năm - " + termStr
+        exporeTimeLb.text = "Lãi suất " + rate.toString() + "%/năm - " + termStr
         // update mode
 //        DataManager.shared.loanCate
                     if self.loanCategories.count > 0 {

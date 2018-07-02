@@ -132,6 +132,11 @@ class BudgetAwardsViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBAction func budgetRewardAction(_ sender: Any) {
         print("budget reward")
+        // check bank
+        if (self.bankSelected) == nil {
+            self.showGreenBtnMessage(title: "Error", message: "You must select a bank account before award.", okTitle: "Ok", cancelTitle: nil)
+            return
+        }
         // direct to bank
 
         // after success -> success view

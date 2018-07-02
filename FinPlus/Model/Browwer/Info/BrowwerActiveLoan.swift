@@ -31,6 +31,7 @@ public struct BrowwerActiveLoan {
     static let inRate = "inRate"
     static let score = "score"
     static let grade = "grade"
+    static let funed = "funed"
   }
 
   // MARK: Properties
@@ -50,9 +51,10 @@ public struct BrowwerActiveLoan {
   public var loanCategory: LoanCategories?
   public var createdTime: String?
     
-    public var inRate: Int?
+    public var inRate: Float?
     public var score: String?
     public var grade: String?
+    public var funed: Float?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -82,9 +84,10 @@ public struct BrowwerActiveLoan {
     loanCategoryId = json[SerializationKeys.loanCategoryId].int16
     loanCategory = LoanCategories(json: json[SerializationKeys.loanCategory])
     createdTime = json[SerializationKeys.createdTime].string
-    inRate = json[SerializationKeys.inRate].int
+    inRate = json[SerializationKeys.inRate].float
     score = json[SerializationKeys.score].string
     grade = json[SerializationKeys.grade].string
+    funed = json[SerializationKeys.funed].float
   }
 
   /// Generates description of the object in the form of a NSDictionary.

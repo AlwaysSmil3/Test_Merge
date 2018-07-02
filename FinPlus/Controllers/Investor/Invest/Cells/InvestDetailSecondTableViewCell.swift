@@ -48,18 +48,22 @@ class InvestDetailSecondTableViewCell: UITableViewCell {
             amountLb.text = "\(cellData.amount!)"
             amountAvaiableInvestLb.text = "\(cellData.amount!)"
         }
-//        alreadyAmountPercentLb.text = cellData.alreadyAmount.toString() + "%"
-//        let avaiableAmount = cellData.amount - (cellData.alreadyAmount / 100 * cellData.amount)
-//        if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
-//            amountAvaiableInvestLb.text = formattedTipAmount
-//        } else {
-//            amountAvaiableInvestLb.text = avaiableAmount.toString()
-//        }
-        var rate = 0
+        var already : Float = 25.50
+        if let temp = cellData.funed {
+            already = temp
+        }
+        alreadyAmountPercentLb.text = "\(already)" + "%"
+        let avaiableAmount = Float(cellData.amount!) - (Float(cellData.amount!) * already / 100)
+        if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
+            amountAvaiableInvestLb.text = formattedTipAmount
+        } else {
+            amountAvaiableInvestLb.text = "\(avaiableAmount)"
+        }
+        var rate : Float = 20
         if let temp = cellData.inRate {
             rate = temp
         }
-        interestLb.text = "\(rate)" + "%/năm"
+        interestLb.text = rate.toString() + "%/năm"
         borrowerLb.text = cellData.userInfo?.fullName
         self.reliabilityLb.text = cellData.grade ?? "A1"
 
@@ -101,9 +105,9 @@ class InvestDetailSecondTableViewCell: UITableViewCell {
         //        self.loanTypeNameLb.text = cellData.name
         var termStr = ""
         if cellData.loanCategoryId == 1 {
-            termStr = "Thời hạn \(cellData.term!) ngày"
+            termStr = "\(cellData.term!) ngày"
         } else {
-            termStr = "Thời hạn \(cellData.term!/30) tháng"
+            termStr = "\(cellData.term!/30) tháng"
         }
         self.dueMonthLb.text = termStr
         self.updateCellMode()
