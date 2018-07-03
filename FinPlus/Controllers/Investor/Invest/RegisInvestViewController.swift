@@ -208,10 +208,16 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
 //        guard let field_ = self.field, let data = field_.data else { return }
         let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
         popup.titleString = "Số tiền đầu tư"
-        var avaiableAmount = 0
+        var avaiableAmount : Float = 0
+        var amount : Float = 0
         if let temp = investDetail.amount {
-            avaiableAmount = Int(temp)
+            amount = Float(temp)
         }
+        var funded : Float = 0
+        if let temp = investDetail.funded {
+            funded = temp
+        }
+        avaiableAmount = amount - funded
 //        let avaiableAmount = investDetail.amount - (investDetail.alreadyAmount / 100 * investDetail.amount)
 
         if Int(avaiableAmount) > unit {
