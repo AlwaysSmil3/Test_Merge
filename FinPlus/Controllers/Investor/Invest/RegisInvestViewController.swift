@@ -68,29 +68,37 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
         if let temp = investDetail.inRate {
             rate = temp
         }
-        var interestAmount :Float = 0
+       
         self.interestLb.text = "\(rate) %/năm"
+        self.calculateInterest()
+        
+        var selectedAmountStr = ""
+        self.sumAmountLb.text = self.budgetSelected.toLocalCurrencyFormat()
+        // Do any additional setup after loading the view.
+    }
+    
+    func calculateInterest() {
+        var rate : Float = 20
+        if let temp = investDetail.inRate {
+            rate = temp
+        }
+        var interestAmount :Float = 0
         if let loanCategoryId = investDetail.loanCategoryId {
             if loanCategoryId == 1 {
                 if let term = investDetail.term {
                     self.timeLb.text = "\(term) ngày"
-                    interestAmount = round(budgetSelected * rate * Float(term) / 12 / 30 / 100)
+                    interestAmount = round(self.budgetSelected * rate * Float(term) / 12 / 30 / 100)
                     self.interestAmount.text = interestAmount.toLocalCurrencyFormat()
                     
                 }
             } else {
                 if let term = investDetail.term {
                     self.timeLb.text = "\(term) tháng"
-                    interestAmount = round(budgetSelected * rate * Float(term) / 12 / 100)
+                    interestAmount = round(self.budgetSelected * rate * Float(term) / 12 / 100)
                     self.interestAmount.text = interestAmount.toLocalCurrencyFormat()
                 }
             }
         }
-
-        var selectedAmountStr = ""
-        
-        self.sumAmountLb.text = self.budgetSelected.toLocalCurrencyFormat()
-        // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -197,8 +205,8 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
             if maxUnit > 0 {
                 var sourceArray = [LoanBuilderData]()
                 for index in 1...maxUnit {
-                    let avaiableAmount = index * unit
-                    let sourceItem = ["id" : index, "title": Float(avaiableAmount).toLocalCurrencyFormat()] as [String : Any]
+                    let nodeAmount = index * unit
+                    let sourceItem = ["id" : index, "title": Float(nodeAmount).toLocalCurrencyFormat() + " (\(index)" + " note)"] as [String : Any]
                     let item : LoanBuilderData = LoanBuilderData(object: sourceItem)
                     sourceArray.append(item)
                 }
@@ -212,9 +220,10 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
     //MARK: Data Selected
     func dataSelected(data: LoanBuilderData) {
         budgetSelected = Float(unit * Int(data.id!))
-        
-        self.amountTf.text = self.budgetSelected.toLocalCurrencyFormat()
-        self.sumAmountLb.text = self.budgetSelected.toLocalCurrencyFormat()
+        self.amountTf.text = data.title ?? ""
+        self.sumAmountLb.text = data.title ?? ""
+        self.calculateInterest()
+
     }
 
     @available(iOS 10.0, *)

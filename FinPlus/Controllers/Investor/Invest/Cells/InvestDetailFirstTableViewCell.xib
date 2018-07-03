@@ -152,7 +152,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20.25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ie4-Tj-Xj4">
-                                        <rect key="frame" x="59.5" y="10" width="35" height="22"/>
+                                        <rect key="frame" x="59.5" y="14" width="35" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="1eb-2x-Scu"/>
                                             <constraint firstAttribute="width" constant="35" id="km0-qh-rvV"/>
@@ -245,9 +245,9 @@
                                         <rect key="frame" x="55" y="8" width="44" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25.5" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1zG-Q1-nYQ">
-                                                <rect key="frame" x="0.0" y="8" width="30" height="28"/>
+                                                <rect key="frame" x="2" y="8" width="28" height="28"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="30" id="iZa-Cx-2X3"/>
+                                                    <constraint firstAttribute="width" constant="28" id="iZa-Cx-2X3"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="16"/>
                                                 <nil key="textColor"/>
@@ -271,7 +271,7 @@
                                             <constraint firstAttribute="bottom" secondItem="1zG-Q1-nYQ" secondAttribute="bottom" constant="8" id="EVv-CJ-hNK"/>
                                             <constraint firstItem="HeO-f3-9ji" firstAttribute="leading" secondItem="1zG-Q1-nYQ" secondAttribute="trailing" id="Viq-y3-A18"/>
                                             <constraint firstAttribute="height" constant="44" id="WmF-9b-zjC"/>
-                                            <constraint firstItem="1zG-Q1-nYQ" firstAttribute="leading" secondItem="EbZ-OD-ZPD" secondAttribute="leading" id="i9W-Vi-pIQ"/>
+                                            <constraint firstItem="1zG-Q1-nYQ" firstAttribute="leading" secondItem="EbZ-OD-ZPD" secondAttribute="leading" constant="2" id="i9W-Vi-pIQ"/>
                                             <constraint firstItem="1zG-Q1-nYQ" firstAttribute="centerY" secondItem="EbZ-OD-ZPD" secondAttribute="centerY" id="iAm-4r-w7V"/>
                                             <constraint firstItem="HeO-f3-9ji" firstAttribute="centerY" secondItem="EbZ-OD-ZPD" secondAttribute="centerY" constant="-4" id="mJi-cq-AUg"/>
                                         </constraints>

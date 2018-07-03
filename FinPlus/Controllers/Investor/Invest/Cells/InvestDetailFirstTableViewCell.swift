@@ -114,7 +114,7 @@ class InvestDetailFirstTableViewCell: UITableViewCell {
         }
         // third block
         // add attribute string
-        var rate : Float = 20.25
+        var rate : Float = 20
         if let temp = cellData.inRate {
             rate = temp
         }
