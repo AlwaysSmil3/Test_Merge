@@ -27,9 +27,6 @@ class InvestTableViewCell: UITableViewCell {
 
     func updateCellView() {
 
-//        reliabilityLb.text = cellData.reliability.title
-//        reliabilityLb.layer.borderColor = cellData.reliability.color.cgColor
-//        nameLb.text = cellData.name
         reliabilityLb.text = cellData.grade ?? "A1"
         var reliType : LoanReliability!
         switch reliabilityLb.text {
@@ -59,25 +56,19 @@ class InvestTableViewCell: UITableViewCell {
         }
         reliabilityLb.layer.borderColor = reliType.color.cgColor
 
-
-        // get 
-
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
-        formatter.numberStyle = .currency
-        if let formattedTipAmount = formatter.string(from: cellData.amount! as NSNumber) {
-            amountLb.text = formattedTipAmount
-        } else {
-            amountLb.text = Float(cellData.amount!).toString()
+        var amount : Float = 0
+        if let temp = cellData.amount {
+            amount = Float(temp)
         }
-        var funed : Float = 0
+        amountLb.text = amount.toLocalCurrencyFormat()
+        
+        var funded : Float = 0
         if let temp = cellData.funded {
-            funed = temp
+            funded = temp
         }
-//        Float(round(Double(already * 100 / Float(cellData.amount!))))
-        funed = Float(round(Double(funed * 100 / Float(cellData.amount!))))
+        let fundedPercent : Float = funded / amount * 100
 
-        alreadyAmountLb.text = "Đã huy động: " + funed.toString() + "%"
+        alreadyAmountLb.text = "Đã huy động: " + fundedPercent.toString() + "%"
         var termStr = ""
         if cellData.loanCategoryId == 1 {
             termStr = "\(cellData.term!) ngày"
