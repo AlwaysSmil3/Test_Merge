@@ -36,6 +36,10 @@ public struct BrowwerActiveLoan {
     static let contractId = "contractId"
     static let paidMonth = "paidMonth"
     
+    static let createdAt = "createdAt"
+    static let approvedAt = "approvedAt"
+    static let acceptedAt = "acceptedAt"
+    
   }
 
   // MARK: Properties
@@ -61,6 +65,10 @@ public struct BrowwerActiveLoan {
     public var funded: Float?
     public var contractId: Int32?
     public var paidMonth: Int?
+    
+    public var createdAt: String?
+    public var approvedAt: String?
+    public var acceptedAt: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -98,6 +106,10 @@ public struct BrowwerActiveLoan {
     contractId = json[SerializationKeys.contractId].int32
     paidMonth = json[SerializationKeys.paidMonth].int
     
+    createdAt = json[SerializationKeys.createdAt].string
+    approvedAt = json[SerializationKeys.approvedAt].string
+    acceptedAt = json[SerializationKeys.acceptedAt].string
+    
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -126,6 +138,10 @@ public struct BrowwerActiveLoan {
     
     if let value = funded { dictionary[SerializationKeys.funded] = value }
     if let value = contractId { dictionary[SerializationKeys.contractId] = value }
+    if let value = paidMonth { dictionary[SerializationKeys.paidMonth] = value }
+    
+    if let value = createdAt { dictionary[SerializationKeys.createdAt] = value }
+    if let value = approvedAt { dictionary[SerializationKeys.approvedAt] = value }
     if let value = paidMonth { dictionary[SerializationKeys.paidMonth] = value }
     
     return dictionary

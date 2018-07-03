@@ -32,9 +32,34 @@ class ConfirmRateSuccessViewController: UIViewController {
     }
     
     @IBAction func comHome(_ sender: Any) {
-        let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-        self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.pushViewController(tabbarVC, animated: true)
+        DataManager.shared.loanInfo.status = STATUS_LOAN.RAISING_CAPITAL.rawValue
+        APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
+            .done(on: DispatchQueue.global()) { model in
+                DataManager.shared.loanID = model.loanId!
+                
+                //Lay thong tin nguoi dung
+                APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
+                    .done(on: DispatchQueue.main) { model in
+                        DataManager.shared.browwerInfo = model
+                        
+                        let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+                        if let window = UIApplication.shared.delegate?.window, let win = window {
+                            win.rootViewController = tabbarVC
+                        }
+                        
+                    }
+                    .catch { error in
+                        
+                }
+                
+            }
+            .catch { error in }
+        
+        
+        
+//        let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+//        self.navigationController?.isNavigationBarHidden = true
+//        self.navigationController?.pushViewController(tabbarVC, animated: true)
     }
     
 

@@ -46,6 +46,24 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         self.mainCollectionView?.dataSource = self
         self.mainCollectionView?.register(UINib(nibName: "LoanOtherInfoCollectionCell", bundle: nil), forCellWithReuseIdentifier: "Loan_Other_Info_Collection_Cell")
         
+        self.updateData()
+        
+    }
+    
+    private func updateData() {
+        
+        var temp: [String] = []
+        
+        if let data = DataManager.shared.browwerInfo?.activeLoan?.optionalMedia, data.count > 0 {
+            temp = data
+        }
+        
+        if DataManager.shared.loanInfo.optionalMedia.count > 0 {
+            temp = DataManager.shared.loanInfo.optionalMedia
+            
+            self.dataSourceCollection = temp
+        }
+        
     }
     
     func showLibrary() {
@@ -121,6 +139,12 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
         
         if let data = self.dataSourceCollection[indexPath.row] as? UIImage {
             cell.imgValue.image = data
+            cell.imgAdd.isHidden = true
+            cell.btnDelete.isHidden = false
+        }
+        
+        if let data = self.dataSourceCollection[indexPath.row] as? String {
+            cell.imgValue.sd_setImage(with: URL(string: hostLoan + data), completed: nil)
             cell.imgAdd.isHidden = true
             cell.btnDelete.isHidden = false
         }

@@ -183,10 +183,23 @@ extension APIClient {
         let params: JSONDictionary = [
             "otp": otp
         ]
-
+        
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
                 .done { json in
+                    
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+                        if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
+                                if status {
+                                }
+                                
+                                
+                            })
+                        }
+                        
+                        return
+                    }
 
                     let model = APIResponseGeneral(object: json)
                     seal.fulfill(model)
@@ -258,6 +271,7 @@ extension APIClient {
         return Promise<APIResponseGeneral> { seal in
             getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
+                    
                     let model = APIResponseGeneral(object: json)
                     seal.fulfill(model)
                 }
@@ -292,6 +306,19 @@ extension APIClient {
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
                 .done { json in
+                    
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+                        if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
+                                if status {
+                                }
+                                
+                                
+                            })
+                        }
+                        
+                        return
+                    }
 
                     let model = APIResponseGeneral(object: json)
                     seal.fulfill(model)
