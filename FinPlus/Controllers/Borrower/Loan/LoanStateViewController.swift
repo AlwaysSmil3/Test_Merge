@@ -723,7 +723,7 @@ class LoanStateViewController: UIViewController {
             }) { (complete) in
                 var heightOfTableView: CGFloat = 0.0
                 // Get visible cells and sum up their heights
-                let cells = self.dataTableView?.visibleCells
+                let cells = self.dataTableView?.visibleCells 
                 for cell in cells! {
                     heightOfTableView += cell.frame.height
                 }
