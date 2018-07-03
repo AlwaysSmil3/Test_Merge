@@ -439,7 +439,9 @@ class LoanStateViewController: UIViewController {
                         ],
                 ]
                 
-            case .DISBURSAL?:
+                
+            case .TIMELY_DEPT?, .DISBURSAL?:
+                
                 //đã giải ngân
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -455,16 +457,6 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
-                headerData = [
-                    [
-                        "type": HeaderCellType.TextType,
-                        "text": "Bạn cần thanh toán \(payMounthString) trong tháng này. Hãy thanh toán trước ngày: 20/7/2018.",
-                        "subType": TextCellType.TitleType,
-                        ],
-                ]
-                
-                
-            case .TIMELY_DEPT?:
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
@@ -1065,7 +1057,7 @@ extension LoanStateViewController: UITableViewDataSource {
 //                cell?.desLabel.text = "Vay mua điện thoại"
 //            }
             
-            if indexPath.row == 8 {
+            if indexPath.row == self.dataSource.count {
                 updateConstrainTable(tableView: self.dataTableView!)
             }
             
