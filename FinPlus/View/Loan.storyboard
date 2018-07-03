@@ -2507,7 +2507,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số điện thọai" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucb-XD-4MV">
-                                                                    <rect key="frame" x="16" y="16" width="136" height="20.5"/>
+                                                                    <rect key="frame" x="16" y="16.5" width="136" height="20.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="136" id="wY2-rZ-K9g"/>
                                                                     </constraints>
@@ -2878,7 +2878,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 VND" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixv-0u-ah1">
-                                                                <rect key="frame" x="180" y="8.5" width="179" height="18"/>
+                                                                <rect key="frame" x="180" y="9" width="179" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>

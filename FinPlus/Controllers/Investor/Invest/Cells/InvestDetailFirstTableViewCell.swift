@@ -143,10 +143,11 @@ class InvestDetailFirstTableViewCell: UITableViewCell {
         alreadyAmountCircleProgressView.minValue = 0
         alreadyAmountCircleProgressView.maxValue = 100
         //fix to test
-        var already : Float = 25
+        var already : Float = 0
         if let temp = cellData.funded {
             already = temp
         }
+        already = Float(round(Double(already * 100 / Float(cellData.amount!))))
         self.alreadyProgress.text = already.toString()
         alreadyAmountCircleProgressView.value = CGFloat(already)
         alreadyAmountCircleProgressView.font = UIFont(name: "SFProDisplay-Semibold", size: 17)!

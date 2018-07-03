@@ -48,10 +48,11 @@ class InvestDetailSecondTableViewCell: UITableViewCell {
             amountLb.text = "\(cellData.amount!)"
             amountAvaiableInvestLb.text = "\(cellData.amount!)"
         }
-        var already : Float = 25.50
+        var already : Float = 0
         if let temp = cellData.funded {
             already = temp
         }
+        already = Float(round(Double(already * 100 / Float(cellData.amount!))))
         alreadyAmountPercentLb.text = already.toString() + "%"
         let avaiableAmount = Float(cellData.amount!) - (Float(cellData.amount!) * already / 100)
         if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
