@@ -137,7 +137,7 @@ class LoginViewController: BaseViewController {
                             UserDefaults.standard.set(false, forKey: IS_INVESTOR)
                         }
                         // fix to test
-                        //self?.accountType = .None
+                        self?.accountType = .None
 
                     }
 

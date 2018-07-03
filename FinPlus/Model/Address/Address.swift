@@ -23,7 +23,7 @@ struct Address: Encodable {
         self.district = ""
         self.commune = ""
         self.street = ""
-        self.zipCode = ""
+        self.zipCode = "66666"
         self.long = 0.0
         self.lat = 0.0
     }
