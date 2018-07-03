@@ -47,13 +47,7 @@ class LoanFirstViewController: BaseViewController {
         
         self.setupInit()
         self.updateData()
-        
-        /*
-        self.termSlider?.setThumbImage(#imageLiteral(resourceName: "ic_elipse_slider"), for: UIControlState.normal)
-        self.amountSlider?.setThumbImage(#imageLiteral(resourceName: "ic_elipse_slider"), for: UIControlState.normal)
-        self.termSlider?.setThumbImage(#imageLiteral(resourceName: "ic_elipse_slider"), for: UIControlState.highlighted)
-        self.amountSlider?.setThumbImage(#imageLiteral(resourceName: "ic_elipse_slider"), for: UIControlState.highlighted)
-        */
+
         
         for cate in DataManager.shared.loanCategories {
             var loan = LoanBuilderData(object: NSObject())

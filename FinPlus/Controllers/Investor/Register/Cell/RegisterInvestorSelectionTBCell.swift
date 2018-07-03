@@ -24,6 +24,8 @@ class RegisterInvestorSelectionTBCell: UITableViewCell {
         self.imgIcon.layer.cornerRadius = 5
         self.imgIcon.clipsToBounds = true
         
+        self.selectionStyle = .none
+        
     }
     
     var dataRes: InvestorRegister? {
