@@ -98,11 +98,11 @@ class RegisterInvestorVC: BaseViewController {
     
     @IBAction func continueBtnTapped(_ sender: Any) {
 
-        // lionel fix to test
-        let investorWaitingVC = InvestorSignupWaitingViewController(nibName: "InvestorSignupWaitingViewController", bundle: nil)
-        self.navigationController?.present(investorWaitingVC, animated: true, completion: nil)
-        return
-        // end
+//        // lionel fix to test
+//        let investorWaitingVC = InvestorSignupWaitingViewController(nibName: "InvestorSignupWaitingViewController", bundle: nil)
+//        self.navigationController?.present(investorWaitingVC, animated: true, completion: nil)
+//        return
+//        // end
 
         if let cell = self.mainTBView?.cellForRow(at: IndexPath(row: 0, section: 0)) as? RegisterInvestorTFTBCell {
             //Name
@@ -246,6 +246,7 @@ extension RegisterInvestorVC: AddressDelegate {
         let add = address.street + ", " + address.commune + ", " + address.district + ", " + address.city
         //Update Address
         self.registerInvestModel.residentAddress = address
+        self.registerInvestModel.residentAddress?.zipCode = "66666"
         
         guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
         self.mainTBView?.deselectRow(at: indexPath, animated: true)
