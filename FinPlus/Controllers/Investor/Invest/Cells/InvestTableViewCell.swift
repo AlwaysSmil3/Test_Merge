@@ -70,11 +70,14 @@ class InvestTableViewCell: UITableViewCell {
         } else {
             amountLb.text = Float(cellData.amount!).toString()
         }
-        var funed : Float = 25
+        var funed : Float = 0
         if let temp = cellData.funded {
             funed = temp
         }
-        alreadyAmountLb.text = "Đã huy động: " + "\(funed)" + "%"
+//        Float(round(Double(already * 100 / Float(cellData.amount!))))
+        funed = Float(round(Double(funed * 100 / Float(cellData.amount!))))
+
+        alreadyAmountLb.text = "Đã huy động: " + funed.toString() + "%"
         var termStr = ""
         if cellData.loanCategoryId == 1 {
             termStr = "\(cellData.term!) ngày"

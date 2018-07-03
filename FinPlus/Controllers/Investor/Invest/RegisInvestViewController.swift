@@ -36,7 +36,15 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Đăng ký đầu tư"
-        self.budgetSelected = Float(investDetail.amount!)
+        var funded : Float = 0
+        if let temp = investDetail.funded {
+            funded = temp
+        }
+        var amount : Float = 0
+        if let temp = investDetail.amount {
+            amount = Float(temp)
+        }
+        self.budgetSelected = amount - funded
         containView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         let myRange = NSRange(location: 25, length: 17)
         let policyStr : String = "Tôi đã hiểu và đồng ý với hợp đồng đầu tư."
@@ -53,20 +61,20 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
         acceptTv.delegate = self
         acceptTv.isSelectable = true
         acceptTv.isEditable = false
-        var avaiableAmount = 0
-        if let temp = investDetail.amount {
-            avaiableAmount = Int(temp)
-        }
-
+//        var avaiableAmount : Float = Float(investDetail.amount!) - investDetail.funded!
+//        if let temp = investDetail.amount {
+//            avaiableAmount = Float(temp)
+//        }
+//        avaiableAmount =
 //        let avaiableAmount = investDetail.amount - (investDetail.alreadyAmount / 100 * investDetail.amount)
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
         formatter.numberStyle = .currency
         var avaiableAmountStr = ""
-        if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
+        if let formattedTipAmount = formatter.string(from: self.budgetSelected as NSNumber) {
             avaiableAmountStr = formattedTipAmount
         } else {
-            avaiableAmountStr = "\(avaiableAmount)"
+            avaiableAmountStr = self.budgetSelected.toString()
         }
 
 
@@ -82,7 +90,7 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
             if loanCategoryId == 1 {
                 if let term = investDetail.term {
                     self.timeLb.text = "\(term) ngày"
-                    interestAmount = budgetSelected * rate * Float(term) / 12 / 30
+                    interestAmount = budgetSelected * rate * Float(term) / 12 / 30 / 100
                     if let formattedTipAmount = formatter.string(from: interestAmount as NSNumber) {
                         self.interestAmount.text = formattedTipAmount
                     } else {
@@ -92,7 +100,7 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
             } else {
                 if let term = investDetail.term {
                     self.timeLb.text = "\(term) tháng"
-                    interestAmount = budgetSelected * rate * Float(term) / 12
+                    interestAmount = budgetSelected * rate * Float(term) / 12 / 100
                     if let formattedTipAmount = formatter.string(from: interestAmount as NSNumber) {
                         self.interestAmount.text = formattedTipAmount
                     } else {
