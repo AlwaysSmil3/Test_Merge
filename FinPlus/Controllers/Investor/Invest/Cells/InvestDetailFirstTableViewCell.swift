@@ -46,18 +46,11 @@ class InvestDetailFirstTableViewCell: UITableViewCell {
         // Initialization code
         self.realibilityCircleLb.clipsToBounds = true
         self.realibilityCircleLb.layer.cornerRadius = 22
-
-        self.interestCircleLb.clipsToBounds = true
-        self.interestCircleLb.layer.cornerRadius = 22
-
-        self.interestCircleLb.backgroundColor = UIColor(hexString: "#F7F7F7")
     }
 
     func updateCellView() {
         // first block
         self.realibilityCircleLb.layer.cornerRadius = 22
-        self.interestCircleLb.layer.cornerRadius = 22
-
         self.realibilityCircleLb.text = cellData.grade ?? "A1"
 
         var reliType : LoanReliability!
@@ -125,12 +118,17 @@ class InvestDetailFirstTableViewCell: UITableViewCell {
         if let temp = cellData.inRate {
             rate = temp
         }
-        let interestCircleStr = rate.toString() + "\n%/năm"
-        let myRange = NSRange(location: interestCircleStr.length() - 5, length: 5)
-        var myMutableString = NSMutableAttributedString()
-        myMutableString = NSMutableAttributedString(string: interestCircleStr)
-        myMutableString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "SF Pro Display", size: 8)!, range: myRange)
-        self.interestCircleLb.attributedText = myMutableString
+//        let interestCircleStr = rate.toString() + "\n%/năm"
+//        let myRange = NSRange(location: interestCircleStr.length() - 5, length: 5)
+//        var myMutableString = NSMutableAttributedString()
+//        myMutableString = NSMutableAttributedString(string: interestCircleStr)
+//        myMutableString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "SF Pro Display", size: 8)!, range: myRange)
+//        self.interestCircleLb.attributedText = myMutableString
+        self.interestCircleLb.text = rate.toString()
+        self.interestCircleLb.adjustsFontSizeToFitWidth = true
+        self.interestCircleLb.minimumScaleFactor = 0.5
+        
+        // change font self.interestCircleLb suitable with contect
         switch reliType {
         case .A1, .A2, .A3, .B1, .B2:
             self.interestNameLb.text = "Lãi suất thấp"
@@ -143,102 +141,33 @@ class InvestDetailFirstTableViewCell: UITableViewCell {
         alreadyAmountCircleProgressView.minValue = 0
         alreadyAmountCircleProgressView.maxValue = 100
         //fix to test
-        var already : Float = 0
+        var amount : Float = 0
+        var funded : Float = 0
+        if let temp = cellData.amount {
+            amount = Float(temp)
+        }
         if let temp = cellData.funded {
-            already = temp
+            funded = temp
         }
-        already = Float(round(Double(already * 100 / Float(cellData.amount!))))
-        self.alreadyProgress.text = already.toString()
-        alreadyAmountCircleProgressView.value = CGFloat(already)
-        alreadyAmountCircleProgressView.font = UIFont(name: "SFProDisplay-Semibold", size: 17)!
-        alreadyAmountCircleProgressView.shouldShowValueText = false
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current
-        formatter.numberStyle = .currency
-        var avaiableAmountStr = ""
-        let avaiableAmount = Float(cellData.amount!) - (Float(cellData.amount!) * already / 100)
-
-        if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
-            avaiableAmountStr = formattedTipAmount
-        } else {
-            avaiableAmountStr = "\(avaiableAmount)"
-        }
-        self.alreadyDesLb.text = "Đã huy động " + "\(already)" + "%, còn lại " +  avaiableAmountStr
-        // last block
-//        let alreadyStr = cellData.alreadyAmount.toString() + "%"
-//        let range2 = NSRange(location: alreadyStr.length() - 1, length: 1)
-//        var alreadyMutableStr = NSMutableAttributedString()
-//        alreadyMutableStr = NSMutableAttributedString(string: alreadyStr)
-//        alreadyMutableStr.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "SF Pro Display", size: 11)!, range: range2)
-//        self.alreadyProgress.attributedText = alreadyMutableStr
-
         
-//        self.alreadyProgress.text = cellData.alreadyAmount.toString()
-        /*
-        self.alreadyNameLb.text = "Đã huy động"
-        var avaiableAmountStr = ""
-        let avaiableAmount = cellData.amount - (cellData.alreadyAmount / 100 * cellData.amount)
-        alreadyAmountCircleProgressView.innerRingColor =  cellData.reliability.color
-        alreadyAmountCircleProgressView.minValue = 0
-        alreadyAmountCircleProgressView.maxValue = 100
-        alreadyAmountCircleProgressView.value = CGFloat(cellData.alreadyAmount)
+        let fundedPercent : Float = funded / amount * 100
+        
+        
+        self.alreadyProgress.text = fundedPercent.toString()
+        // set font size suitable with text
+        self.alreadyProgress.numberOfLines = 1
+        self.alreadyProgress.adjustsFontSizeToFitWidth = true;
+        self.alreadyProgress.minimumScaleFactor = 0.5
+
+        alreadyAmountCircleProgressView.value = CGFloat(fundedPercent)
         alreadyAmountCircleProgressView.font = UIFont(name: "SFProDisplay-Semibold", size: 17)!
         alreadyAmountCircleProgressView.shouldShowValueText = false
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current
-        formatter.numberStyle = .currency
-        if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
-            avaiableAmountStr = formattedTipAmount
-        } else {
-            avaiableAmountStr = avaiableAmount.toString()
-        }
-        self.alreadyDesLb.text = "Đã huy động " + cellData.alreadyAmount.toString() + "%, còn lại " +  avaiableAmountStr
-    */
+        
+        self.alreadyDesLb.text = "Đã huy động " + fundedPercent.toString() + "%, còn lại " +  (amount - funded).toLocalCurrencyFormat()
+
         // set up cell mode
         self.updateCellMode()
     }
-    /// Lấy dữ liệu từ CoreData
-    ///
-    /// - Parameter completion: <#completion description#>
-//    func fetchCoreData(completion: () -> Void) {
-//        guard let context = self.managedContext else { return }
-//        //Lay list entity
-//        let list = FinPlusHelper.fetchRecordsForEntity("LoanCategory", inManagedObjectContext: context)
-//        guard list.count > 0 else { return }
-//        DataManager.shared.loanCategories.removeAll()
-//        for entity in list {
-//            var loan = LoanCategories(object: NSObject())
-//            if let title = entity.value(forKey: CDLoanCategoryTitle) as? String {
-//                loan.title = title
-//            }
-//            if let desc = entity.value(forKey: CDLoanCategoryDescription) as? String {
-//                loan.descriptionValue = desc
-//            }
-//            if let id = entity.value(forKey: CDLoanCategoryID) as? Int16 {
-//                loan.id = id
-//            }
-//            if let max = entity.value(forKey: CDLoanCategoryMax) as? Int32 {
-//                loan.max = max
-//            }
-//            if let min = entity.value(forKey: CDLoanCategoryMin) as? Int32 {
-//                loan.min = min
-//            }
-//            if let termMax = entity.value(forKey: CDLoanCategoryTermMax) as? Int16 {
-//                loan.termMax = termMax
-//            }
-//            if let termMin = entity.value(forKey: CDLoanCategoryTermMin) as? Int16 {
-//                loan.termMin = termMin
-//            }
-//            if let interestRate = entity.value(forKey: CDLoanCategoryInterestRate) as? Double {
-//                loan.interestRate = interestRate
-//            }
-//            if let url = entity.value(forKey: CDLoanCategoryImageURL) as? String {
-//                loan.imageUrl = url
-//            }
-//            DataManager.shared.loanCategories.append(loan)
-//        }
-//        completion()
-//    }
 
     func updateCellMode() {
         if UserDefaults.standard.bool(forKey: APP_MODE) == true {

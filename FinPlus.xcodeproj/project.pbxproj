@@ -238,8 +238,6 @@
 		84B4DF3120EA3EBD004D9BBB /* InvestLoanBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4DF2F20EA3EBC004D9BBB /* InvestLoanBaseClass.swift */; };
 		84B4DF3220EA3EBD004D9BBB /* InvestLoanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4DF3020EA3EBC004D9BBB /* InvestLoanData.swift */; };
 		84B7B33D20D12F2A006CADA1 /* Invest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B7B33C20D12F2A006CADA1 /* Invest.storyboard */; };
-		84B7B34920D12F4E006CADA1 /* InvestDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7B34120D12F4E006CADA1 /* InvestDetailTableViewCell.swift */; };
-		84B7B34A20D12F4E006CADA1 /* InvestDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B7B34220D12F4E006CADA1 /* InvestDetailTableViewCell.xib */; };
 		84B7B34B20D12F4E006CADA1 /* InvestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7B34320D12F4E006CADA1 /* InvestTableViewCell.swift */; };
 		84B7B34D20D12F4E006CADA1 /* InvestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B7B34520D12F4E006CADA1 /* InvestTableViewCell.xib */; };
 		84B7B34F20D12F4E006CADA1 /* InvestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7B34720D12F4E006CADA1 /* InvestDetailViewController.swift */; };
@@ -573,8 +571,6 @@
 		84B4DF2F20EA3EBC004D9BBB /* InvestLoanBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvestLoanBaseClass.swift; sourceTree = "<group>"; };
 		84B4DF3020EA3EBC004D9BBB /* InvestLoanData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvestLoanData.swift; sourceTree = "<group>"; };
 		84B7B33C20D12F2A006CADA1 /* Invest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Invest.storyboard; sourceTree = "<group>"; };
-		84B7B34120D12F4E006CADA1 /* InvestDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvestDetailTableViewCell.swift; sourceTree = "<group>"; };
-		84B7B34220D12F4E006CADA1 /* InvestDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvestDetailTableViewCell.xib; sourceTree = "<group>"; };
 		84B7B34320D12F4E006CADA1 /* InvestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvestTableViewCell.swift; sourceTree = "<group>"; };
 		84B7B34520D12F4E006CADA1 /* InvestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvestTableViewCell.xib; sourceTree = "<group>"; };
 		84B7B34720D12F4E006CADA1 /* InvestDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvestDetailViewController.swift; sourceTree = "<group>"; };
@@ -1448,8 +1444,6 @@
 		84B7B34020D12F4E006CADA1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				84B7B34120D12F4E006CADA1 /* InvestDetailTableViewCell.swift */,
-				84B7B34220D12F4E006CADA1 /* InvestDetailTableViewCell.xib */,
 				84B7B34320D12F4E006CADA1 /* InvestTableViewCell.swift */,
 				84B7B34520D12F4E006CADA1 /* InvestTableViewCell.xib */,
 				8456CBD020DCD8CE00160B84 /* InvestDetailFirstTableViewCell.swift */,
@@ -1781,7 +1775,6 @@
 				84CBBE4020CE74BE0058C834 /* OnBoard.storyboard in Resources */,
 				639C9E1620A18A7500F2CF5E /* Roboto-Italic.ttf in Resources */,
 				84A4791E20E09AE200F83AF4 /* BudgetRewardSuccessViewController.xib in Resources */,
-				84B7B34A20D12F4E006CADA1 /* InvestDetailTableViewCell.xib in Resources */,
 				630BA61620C22A4100880DAE /* SF-Pro-Display-Heavy.otf in Resources */,
 				E7A4A0A420E6321600B5F7ED /* about.html in Resources */,
 				639C9E1520A18A7500F2CF5E /* Roboto-LightItalic.ttf in Resources */,
@@ -2156,7 +2149,6 @@
 				84D73FFF20D0BC5600770FB5 /* LoanStatus.swift in Sources */,
 				633AE0B620B428C6007AB0D1 /* Constant+DateFormat.swift in Sources */,
 				6338F3FA20BE602C005777E2 /* BrowwerCurrentAddress.swift in Sources */,
-				84B7B34920D12F4E006CADA1 /* InvestDetailTableViewCell.swift in Sources */,
 				6355FAEA20B7BEB100038F5B /* LoanResponseModel.swift in Sources */,
 				84A2A79A20D9049A00083CA8 /* PayBtnTableViewCell.swift in Sources */,
 				639C9DCE20A14B3800F2CF5E /* APIClient.swift in Sources */,

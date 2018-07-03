@@ -38,28 +38,21 @@ class InvestDetailSecondTableViewCell: UITableViewCell {
     }
     
     func updateCellView() {
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
-        formatter.numberStyle = .currency
-        if let formattedTipAmount = formatter.string(from: cellData.amount! as NSNumber) {
-            amountLb.text = formattedTipAmount
-            amountAvaiableInvestLb.text = formattedTipAmount
-        } else {
-            amountLb.text = "\(cellData.amount!)"
-            amountAvaiableInvestLb.text = "\(cellData.amount!)"
+        
+        var amount : Float = 0
+        if let temp = cellData.amount {
+            amount = Float(temp)
         }
-        var already : Float = 0
+        amountLb.text = amount.toLocalCurrencyFormat()
+        amountAvaiableInvestLb.text = amount.toLocalCurrencyFormat()
+        var funded : Float = 0
         if let temp = cellData.funded {
-            already = temp
+            funded = temp
         }
-        already = Float(round(Double(already * 100 / Float(cellData.amount!))))
-        alreadyAmountPercentLb.text = already.toString() + "%"
-        let avaiableAmount = Float(cellData.amount!) - (Float(cellData.amount!) * already / 100)
-        if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
-            amountAvaiableInvestLb.text = formattedTipAmount
-        } else {
-            amountAvaiableInvestLb.text = "\(avaiableAmount)"
-        }
+        let fundedPercent : Float = funded / amount * 100
+        alreadyAmountPercentLb.text = fundedPercent.toString() + "%"
+        let avaiableAmount = amount - funded
+        amountAvaiableInvestLb.text = avaiableAmount.toLocalCurrencyFormat()
         var rate : Float = 20
         if let temp = cellData.inRate {
             rate = temp
