@@ -245,11 +245,6 @@ class LoanFirstViewController: BaseViewController {
         let amountDouble = Double(amountInt)
         self.lblMoneySlider.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ"
         
-        //Cho set step
-        //if let slider = sender as? UISlider {
-            //let fixed = roundf(Float(Int(slider.value)))
-            //self.amountSlider.setValue(fixed, animated: true)
-        //}
         self.updateTotalAmountMounth()
     }
     
@@ -257,12 +252,8 @@ class LoanFirstViewController: BaseViewController {
         guard let loan = self.loanCategory else { return }
         //Cho set step
         if loan.id == Loan_Student_Category_ID {
-            //let fixed = roundf(slider.value / 10.0) * 10.0
-            //self.termSlider.setValue(fixed, animated: true)
             self.lblTermSlider.text = "\(Int(self.termSlider.value / 10) * 10)" + " Ngày"
         } else {
-            //let fixed = roundf(slider.value / 30.0) * 30.0
-            //self.termSlider.setValue(fixed, animated: true)
             self.lblTermSlider.text = "\(Int(self.termSlider.value / 30))" + " Tháng"
         }
         self.updateTotalAmountMounth()
