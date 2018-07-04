@@ -43,6 +43,8 @@ class LoanSummaryInfoVC: BaseViewController {
         self.setupData()
         self.setupTextView()
         
+        self.updateDataLoan()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,7 +96,16 @@ class LoanSummaryInfoVC: BaseViewController {
             LoanSummaryModel(name: "Mục đích vay", value: cate.title!, attributed: nil)
         ]
         
-        
+    }
+    
+    private func updateDataLoan() {
+        DataManager.shared.loanInfo.currentStep = 5
+        APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
+            .done(on: DispatchQueue.main) { model in
+                DataManager.shared.loanID = model.loanId!
+
+            }
+            .catch { error in }
     }
     
     
@@ -125,12 +136,10 @@ class LoanSummaryInfoVC: BaseViewController {
     
     
     private func loan() {
-        APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
+        APIClient.shared.getLoanOTP(loanID: DataManager.shared.loanID ?? 0)
             .done(on: DispatchQueue.main) { [weak self] model in
-                DataManager.shared.loanID = model.loanId!
-                
+
                 let otpVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
-                otpVC.loanResponseModel = model
                 otpVC.verifyType = .Loan
                 self?.navigationController?.pushViewController(otpVC, animated: true)
             }
