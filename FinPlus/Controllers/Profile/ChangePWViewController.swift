@@ -17,8 +17,14 @@ class ChangePWViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var renewPass: HoshiTextField!
     @IBOutlet weak var showRenewPassBtn: UIButton!
     
+    @IBOutlet weak var leftBarBtn: UIBarButtonItem!
+    @IBOutlet weak var rightBarBtn: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.rightBarBtn.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : MAIN_COLOR], for: .normal)
+        self.leftBarBtn.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : MAIN_COLOR], for: .normal)
 
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("CHANG_PASSWORD", comment: "")
