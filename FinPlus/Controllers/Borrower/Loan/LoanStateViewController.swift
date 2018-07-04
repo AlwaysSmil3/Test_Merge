@@ -161,7 +161,7 @@ class LoanStateViewController: UIViewController {
                     ],
                 ]
                 
-            case .SALE_REVIEW?, .SALE_PENDING?, .RISK_REVIEW?, .REJECTED?:
+            case .SALE_REVIEW?, .SALE_PENDING?, .RISK_REVIEW?:
                 
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -242,6 +242,18 @@ class LoanStateViewController: UIViewController {
                 ]
                 
             case .REJECTED?:
+                
+                dataSource = [
+                    LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
+                    LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
+                    LoanSummaryModel(name: "Số tiền vay", value: amountString, attributed: NSAttributedString(string: amountString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Thời hạn vay", value: "\((loan.term ?? 0)!) Ngày", attributed: NSAttributedString(string: "\((loan.term ?? 0)!) Ngày", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Trạng thái", value: "Đơn vay bị từ chối", attributed: NSAttributedString(string: "Đơn vay bị từ chối", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
+                    LoanSummaryModel(name: "Lãi suất dự kiến", value: "\(rate)%/năm", attributed: nil),
+                    LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFee) + "đ", attributed: nil),
+                    LoanSummaryModel(name: "Trả góp dự kiến hàng tháng", value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
+                ]
                 
                 headerData = [
                     [
@@ -636,8 +648,7 @@ class LoanStateViewController: UIViewController {
         self.headerTableView?.register(buttonCellNib, forCellReuseIdentifier: buttonIdentifier)
         
         self.headerTableView?.tableFooterView = UIView()
-        self.headerTableView?.estimatedRowHeight = 44
-        self.headerTableView?.rowHeight = UITableViewAutomaticDimension
+        self.headerTableView?.estimatedRowHeight = UITableViewAutomaticDimension
         self.headerTableView?.alwaysBounceVertical = false;
         
         let cellNib = UINib(nibName: "DoubleTextTableViewCell", bundle: nil)
@@ -650,8 +661,7 @@ class LoanStateViewController: UIViewController {
         }
         
         self.dataTableView?.tableHeaderView = UIView()
-        self.dataTableView?.estimatedRowHeight = 44
-        self.dataTableView?.rowHeight = UITableViewAutomaticDimension
+        self.dataTableView?.estimatedRowHeight = UITableViewAutomaticDimension
         self.dataTableView?.alwaysBounceVertical = false;
         
         self.borderView.layer.borderWidth = 0.5
@@ -659,8 +669,6 @@ class LoanStateViewController: UIViewController {
         self.borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         
         self.navigationItem.titleView = UIImageView(image: UIImage(named: "ic_logo"))
-        
-        self.view.layoutIfNeeded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -673,63 +681,16 @@ class LoanStateViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
-        if (headerData.count > 0)
-        {
-            //            UIView.animate(withDuration: 0, animations: {
-            //                self.headerTableView?.layoutIfNeeded()
-            //            }) { (complete) in
-            //                // Edit heightOfTableViewConstraint's constant to update height of table view
-            //                self.headerTableViewHeightConstraint?.constant = (self.headerTableView?.visibleCells[0].frame.height)!*CGFloat(self.headerData.count)
-            //            }
-        }
-        else
-        {
-            self.headerTableViewHeightConstraint?.constant = 0
-        }
-        
-        UIView.animate(withDuration: 0, animations: {
-            self.dataTableView?.layoutIfNeeded()
-        }) { (complete) in
-            // Edit heightOfTableViewConstraint's constant to update height of table view
-            self.dataTableViewHeightConstraint?.constant = (self.dataTableView?.visibleCells[0].frame.height)!*CGFloat(self.dataSource.count)
-        }
-    }
-    
-    func updateConstrainTable(tableView: UITableView) {
-        //End of loading all Visible cells
-        if (tableView == self.headerTableView)
-        {
-            UIView.animate(withDuration: 0, animations: {
-                self.headerTableView?.layoutIfNeeded()
-            }) { (complete) in
-                var heightOfTableView: CGFloat = 0.0
-                // Get visible cells and sum up their heights
-                let cells = self.headerTableView?.visibleCells
-                for cell in cells! {
-                    heightOfTableView += cell.frame.height
-                }
-                // Edit heightOfTableViewConstraint's constant to update height of table view
-                
-                self.headerTableViewHeightConstraint?.constant = heightOfTableView
-            }
-        }
-        else
-        {
-            UIView.animate(withDuration: 0, animations: {
-                self.dataTableView?.layoutIfNeeded()
-            }) { (complete) in
-                var heightOfTableView: CGFloat = 0.0
-                // Get visible cells and sum up their heights
-                let cells = self.dataTableView?.visibleCells 
-                for cell in cells! {
-                    heightOfTableView += cell.frame.height
-                }
-                // Edit heightOfTableViewConstraint's constant to update height of table view
-                
-                self.dataTableViewHeightConstraint?.constant = heightOfTableView
+        self.dataTableView?.reloadData()
+        self.headerTableView?.reloadData()
+        DispatchQueue.main.async() {
+            self.dataTableViewHeightConstraint?.constant = (self.dataTableView?.contentSize.height)!
+            self.headerTableViewHeightConstraint?.constant = (self.headerTableView?.contentSize.height)!
+            UIView.animate(withDuration: 0.4) {
+                self.view.layoutIfNeeded()
             }
         }
     }
@@ -755,7 +716,7 @@ class LoanStateViewController: UIViewController {
                 })
             }))
             
-        case .RISK_PENDING?, .SALE_REVIEW?, .SALE_PENDING?:
+        case .RISK_PENDING?, .RISK_REVIEW?, .SALE_REVIEW?, .SALE_PENDING?:
             alert.addAction(UIAlertAction(title: "Chỉnh sửa đơn vay", style: .default , handler:{ (UIAlertAction)in
                 
             }))
@@ -976,10 +937,6 @@ extension LoanStateViewController: UITableViewDataSource {
                     cell?.label.attributedText = oldAttributed
                 }
                 
-                if indexPath.row == (headerData.count - 1) {
-                    updateConstrainTable(tableView: self.headerTableView!)
-                }
-                
                 return cell!
             }
             else
@@ -997,10 +954,6 @@ extension LoanStateViewController: UITableViewDataSource {
                 if ((target?.count)! > 0)
                 {
                     cell?.button.addTarget(self, action: Selector(target!), for: .touchUpInside)
-                }
-                
-                if indexPath.row == (headerData.count - 1) {
-                    updateConstrainTable(tableView: self.headerTableView!)
                 }
                 
                 return cell!
@@ -1056,10 +1009,6 @@ extension LoanStateViewController: UITableViewDataSource {
 //                cell?.nameLabel.text = NSLocalizedString("LOAN_DIS", comment: "")
 //                cell?.desLabel.text = "Vay mua điện thoại"
 //            }
-            
-            if indexPath.row == self.dataSource.count {
-                updateConstrainTable(tableView: self.dataTableView!)
-            }
             
             return cell!
         }
