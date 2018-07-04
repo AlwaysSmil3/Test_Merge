@@ -51,12 +51,22 @@ class BorrowHomeViewController: BaseViewController {
 
         self.setupUI()
         
-        //Map DataLoan
-        DataManager.shared.mapDataBrowwerAndLoan()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let info = DataManager.shared.browwerInfo?.activeLoan,  let loanId = info.loanId, loanId > 0 {
+            //cập nhật lại Home
+            let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+            if let window = UIApplication.shared.delegate?.window, let win = window {
+                win.rootViewController = tabbarVC
+            }
+        }
         
     }
     
