@@ -51,7 +51,8 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         
         // Setting DateFormatter
         dateFormatter.dateFormat = "dd/MM/YYYY"
-        dateTextField.text = dateFormatter.string(from: currentDate)
+//        dateTextField.text = dateFormatter.string(from: currentDate)
+        dateTextField.text = NSLocalizedString("Chọn ngày giải ngân", comment: "")
         
         // Setup Font
         moneyLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
@@ -69,9 +70,15 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         dateTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         dateTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_SMALL)
         
+        calBtn.layer.cornerRadius = 4
+        calBtn.layer.masksToBounds = true
+        calBtn.isEnabled = false
         calBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)
+        calBtn.setBackgroundColor(color: UIColor(hexString: "#B8C9D3"), forState: .disabled)
+        calBtn.setBackgroundColor(color: UIColor(hexString: "#00A651"), forState: .normal)
         
         // TableView Custom
+        spreadsheetView.isHidden = true
         spreadsheetView.dataSource = self
         spreadsheetView.delegate = self
         
@@ -102,6 +109,8 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
                 self.currentDate = date
                 self.dateFormatter.dateFormat = "dd/MM/YYYY"
                 self.dateTextField.text = self.dateFormatter.string(from: self.currentDate)
+                
+                self.validateData()
             }
         }
     }
@@ -126,9 +135,13 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
     @IBAction func calculate(sender: UIButton) {
 
         self.view.endEditing(true)
+        spreadsheetView.isHidden = false
+        
         self.months.removeAllObjects()
         self.data.removeAllObjects()
+        
         dateFormatter.dateFormat = "dd/MM/YY"
+        
         if (self.moneyTextField.text?.count)! < 4 {
             showAlertView(title: "Lỗi", message: "Số tiền không được nhỏ hơn 1000000", okTitle: "Đồng ý", cancelTitle: nil)
             return
@@ -166,8 +179,26 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         spreadsheetView.flashScrollIndicators()
     }
     
+    func validateData() {
+        if ((self.moneyTextField.text?.count)! > 0 && (self.monthTextField.text?.count)! > 0 && (self.rateTextField.text?.count)! > 0 && (self.dateTextField.text != NSLocalizedString("Chọn ngày giải ngân", comment: ""))) {
+            self.calBtn.isEnabled = true
+        }
+        else
+        {
+            self.calBtn.isEnabled = false
+        }
+    }
+    
+    // MARK: UITextFieldDelegate
     @IBAction func textFieldDidChange(_ textField: UITextField) {
-        textField.text = convertNumberFormat(text: textField.text!)
+        
+        if (textField == self.moneyTextField)
+        {
+            textField.text = convertNumberFormat(text: textField.text!)
+        }
+        
+        self.validateData()
+        
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
