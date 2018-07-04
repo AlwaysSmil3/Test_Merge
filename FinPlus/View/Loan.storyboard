@@ -754,6 +754,7 @@
                             <constraint firstItem="jqN-pc-HUI" firstAttribute="top" secondItem="hYV-kr-Ost" secondAttribute="bottom" id="haP-Gz-7Hg"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="QSs-4O-iAP">
                         <barButtonItem key="leftBarButtonItem" image="ic_back" id="jGi-wb-CS2">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -778,6 +779,7 @@
                         <outlet property="headerTableView" destination="us7-Ig-gfT" id="vTe-5d-VqD"/>
                         <outlet property="headerTableViewHeightConstraint" destination="aAh-cS-J1m" id="nZG-cp-azU"/>
                         <outlet property="labelBottomView" destination="b7g-vZ-KNF" id="ecf-44-mtx"/>
+                        <outlet property="scrollView" destination="jqN-pc-HUI" id="Obn-0n-fSF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CdD-zc-OAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
