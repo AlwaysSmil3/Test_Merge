@@ -31,7 +31,7 @@ class VerifyOTPAuthenVC: BaseViewController {
     var timer = Timer()
     var otp: String = ""
     
-    //Cho Tạo Loan
+    //Cho Tạo Loan  
     var loanResponseModel: LoanResponseModel?
     
     override func viewDidLoad() {
@@ -56,15 +56,6 @@ class VerifyOTPAuthenVC: BaseViewController {
         super.viewWillDisappear(true)
         
         self.timer.invalidate()
-    }
-
-    @IBAction func resendCodeBtnAction(_ sender: Any) {
-        // call to resend Code API
-        print("Resend Code API")
-        self.otp = ""
-        self.resendCodeBtn.isHidden = true
-        count = 0
-        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
     private func setupPinView() {
@@ -104,8 +95,58 @@ class VerifyOTPAuthenVC: BaseViewController {
         self.lblLimitTime.text = "\(60 - self.count) " + "giây"
     }
     
+    //MARK: Resend - Get OTP
+    private func updateOTP() {
+        self.otp = ""
+        //self.pinCodeTextField.
+        self.resendCodeBtn.isHidden = true
+        count = 0
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        
+        for _ in 0...6 {
+            self.pinCodeTextField.deleteBackward()
+        }
+    }
+    
+    private func getOTPLoan() {
+        APIClient.shared.getLoanOTP(loanID: DataManager.shared.loanID ?? 0)
+            .done(on: DispatchQueue.main) { [weak self] model in
+                self?.updateOTP()
+                
+            }
+            .catch { error in }
+    }
+    
     @objc private func pinCodeNextAction() {
         print("next tapped")
+    }
+    
+    @IBAction func resendCodeBtnAction(_ sender: Any) {
+        // call to resend Code API
+        print("Resend Code API")
+        
+        
+        switch verifyType {
+        case .Login:
+            
+            break
+            
+        case .SignContract:
+            
+            
+            break
+        case .Loan:
+            self.getOTPLoan()
+            
+            break
+        case .RegisInvest:
+            
+            break
+        default:
+            print("Forgot Password Verify")
+            break
+        }
+        
     }
     
     
