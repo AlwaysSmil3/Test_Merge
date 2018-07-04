@@ -92,7 +92,7 @@ struct InvestorRegisterModel: Encodable {
         case avatar
         case displayName
         case birthday
-        case fullname
+        case fullName
         case nationalId
         case email
         case residentAddress
@@ -109,7 +109,7 @@ struct InvestorRegisterModel: Encodable {
         try container.encode(displayName, forKey: .displayName)
         try container.encode(nationalId, forKey: .nationalId)
         try container.encode(birthday, forKey: .birthday)
-        try container.encode(fullname, forKey: .fullname)
+        try container.encode(fullname, forKey: .fullName)
         try container.encode(email, forKey: .email)
         try container.encode(residentAddress, forKey: .residentAddress)
         try container.encode(bank, forKey: .bank)
