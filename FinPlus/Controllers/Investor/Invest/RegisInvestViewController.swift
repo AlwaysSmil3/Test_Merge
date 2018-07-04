@@ -61,64 +61,44 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
         acceptTv.delegate = self
         acceptTv.isSelectable = true
         acceptTv.isEditable = false
-//        var avaiableAmount : Float = Float(investDetail.amount!) - investDetail.funded!
-//        if let temp = investDetail.amount {
-//            avaiableAmount = Float(temp)
-//        }
-//        avaiableAmount =
-//        let avaiableAmount = investDetail.amount - (investDetail.alreadyAmount / 100 * investDetail.amount)
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current
-        formatter.numberStyle = .currency
-        var avaiableAmountStr = ""
-        if let formattedTipAmount = formatter.string(from: self.budgetSelected as NSNumber) {
-            avaiableAmountStr = formattedTipAmount
-        } else {
-            avaiableAmountStr = self.budgetSelected.toString()
-        }
 
-
-        self.amountTf.text = avaiableAmountStr
+        self.amountTf.text = self.budgetSelected.toLocalCurrencyFormat()
 
         var rate : Float = 20
         if let temp = investDetail.inRate {
             rate = temp
         }
-        var interestAmount :Float = 0
+       
         self.interestLb.text = "\(rate) %/năm"
+        self.calculateInterest()
+        
+        var selectedAmountStr = ""
+        self.sumAmountLb.text = self.budgetSelected.toLocalCurrencyFormat()
+        // Do any additional setup after loading the view.
+    }
+    
+    func calculateInterest() {
+        var rate : Float = 20
+        if let temp = investDetail.inRate {
+            rate = temp
+        }
+        var interestAmount :Float = 0
         if let loanCategoryId = investDetail.loanCategoryId {
             if loanCategoryId == 1 {
                 if let term = investDetail.term {
                     self.timeLb.text = "\(term) ngày"
-                    interestAmount = budgetSelected * rate * Float(term) / 12 / 30 / 100
-                    if let formattedTipAmount = formatter.string(from: interestAmount as NSNumber) {
-                        self.interestAmount.text = formattedTipAmount
-                    } else {
-                        self.interestAmount.text = interestAmount.toString()
-                    }
+                    interestAmount = round(self.budgetSelected * rate * Float(term) / 12 / 30 / 100)
+                    self.interestAmount.text = interestAmount.toLocalCurrencyFormat()
+                    
                 }
             } else {
                 if let term = investDetail.term {
                     self.timeLb.text = "\(term) tháng"
-                    interestAmount = budgetSelected * rate * Float(term) / 12 / 100
-                    if let formattedTipAmount = formatter.string(from: interestAmount as NSNumber) {
-                        self.interestAmount.text = formattedTipAmount
-                    } else {
-                        self.interestAmount.text = interestAmount.toString()
-                    }
+                    interestAmount = round(self.budgetSelected * rate * Float(term) / 12 / 100)
+                    self.interestAmount.text = interestAmount.toLocalCurrencyFormat()
                 }
             }
         }
-//        self.interestAmount.text = interestAmount.toString()
-
-        var selectedAmountStr = ""
-        if let formattedTipAmount = formatter.string(from: self.budgetSelected as NSNumber) {
-            selectedAmountStr = formattedTipAmount
-        } else {
-            selectedAmountStr = self.budgetSelected.toString()
-        }
-        self.sumAmountLb.text = selectedAmountStr
-        // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -225,17 +205,8 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
             if maxUnit > 0 {
                 var sourceArray = [LoanBuilderData]()
                 for index in 1...maxUnit {
-                    let avaiableAmount = index * unit
-                    let formatter = NumberFormatter()
-                    formatter.locale = Locale.current
-                    formatter.numberStyle = .currency
-                    var avaiableAmountStr = ""
-                    if let formattedTipAmount = formatter.string(from: avaiableAmount as NSNumber) {
-                        avaiableAmountStr = formattedTipAmount
-                    } else {
-                        avaiableAmountStr = "\(avaiableAmount)"
-                    }
-                    let sourceItem = ["id" : index, "title": avaiableAmountStr] as [String : Any]
+                    let nodeAmount = index * unit
+                    let sourceItem = ["id" : index, "title": Float(nodeAmount).toLocalCurrencyFormat() + " (\(index)" + " note)"] as [String : Any]
                     let item : LoanBuilderData = LoanBuilderData(object: sourceItem)
                     sourceArray.append(item)
                 }
@@ -249,17 +220,10 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
     //MARK: Data Selected
     func dataSelected(data: LoanBuilderData) {
         budgetSelected = Float(unit * Int(data.id!))
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current
-        formatter.numberStyle = .currency
-        var avaiableAmountStr = ""
-        if let formattedTipAmount = formatter.string(from: budgetSelected as NSNumber) {
-            avaiableAmountStr = formattedTipAmount
-        } else {
-            avaiableAmountStr = budgetSelected.toString()
-        }
-        self.amountTf.text = avaiableAmountStr
-        self.sumAmountLb.text = avaiableAmountStr
+        self.amountTf.text = data.title ?? ""
+        self.sumAmountLb.text = data.title ?? ""
+        self.calculateInterest()
+
     }
 
     @available(iOS 10.0, *)

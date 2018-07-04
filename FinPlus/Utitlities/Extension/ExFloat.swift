@@ -12,7 +12,20 @@ extension Float {
         if floor(self) == self {
             return "\(Int(self))"
         } else {
-            return "\(self)"
+            return String(format: "%.2f", self)
+//            return "\(self)"
         }
+    }
+    func toLocalCurrencyFormat() -> String {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        var avaiableAmountStr = ""
+        if let formattedTipAmount = formatter.string(from: self as NSNumber) {
+            avaiableAmountStr = formattedTipAmount
+        } else {
+            avaiableAmountStr = self.toString()
+        }
+        return avaiableAmountStr
     }
 }
