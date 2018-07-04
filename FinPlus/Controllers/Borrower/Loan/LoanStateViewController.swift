@@ -24,6 +24,7 @@ enum BOTTOM_STATE: Int {
 
 class LoanStateViewController: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView?
     @IBOutlet weak var containerView: UIView?
     @IBOutlet weak var headerTableView: UITableView?
     
@@ -668,6 +669,8 @@ class LoanStateViewController: UIViewController {
         self.borderView.layer.cornerRadius = 8
         self.borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         
+        self.edgesForExtendedLayout = []
+        
         self.navigationItem.titleView = UIImageView(image: UIImage(named: "ic_logo"))
     }
     
@@ -684,15 +687,17 @@ class LoanStateViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        self.dataTableView?.reloadData()
-        self.headerTableView?.reloadData()
+        self.dataTableViewHeightConstraint?.constant = (self.dataTableView?.contentSize.height)!
+        self.headerTableViewHeightConstraint?.constant = (self.headerTableView?.contentSize.height)!
+        
         DispatchQueue.main.async() {
-            self.dataTableViewHeightConstraint?.constant = (self.dataTableView?.contentSize.height)!
-            self.headerTableViewHeightConstraint?.constant = (self.headerTableView?.contentSize.height)!
-            UIView.animate(withDuration: 0.4) {
-                self.view.layoutIfNeeded()
-            }
+
+            NSLog("headerTableView contentSize: %0.2f", self.headerTableView?.contentSize.height ?? 0)
+            NSLog("dataTableView contentSize: %0.2f", self.dataTableView?.contentSize.height ?? 0)
+            NSLog("contentSize: %0.2f", self.scrollView?.contentSize.height ?? 0)
+            NSLog("height: %0.2f", self.scrollView?.frame.size.height ?? 0)
         }
+        
     }
     
     // MARK: Action
