@@ -19,7 +19,11 @@ class DataManager {
     var pushNotificationToken: String?
     
     // User info
-    var browwerInfo: BrowwerInfo?
+    var browwerInfo: BrowwerInfo? {
+        didSet {
+            self.mapDataBrowwerAndLoan()
+        }
+    }
     
     // Info for Loan
     var loanInfo: LoanInfo = LoanInfo()

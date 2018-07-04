@@ -138,7 +138,7 @@ extension APIClient {
         }
 
         let uid = DataManager.shared.userID
-        var endPoint = "users/" + "\(uid)/" + EndPoint.Loan.Loans
+        var endPoint = "users/" + "\(uid)/" + EndPoint.Loan.CreateLoans
 
         if httpType == .PUT {
             endPoint = "loans/" + "\(DataManager.shared.loanID ?? 0)"
