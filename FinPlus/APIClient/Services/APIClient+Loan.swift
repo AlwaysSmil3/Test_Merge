@@ -290,7 +290,7 @@ extension APIClient {
      API request OTP to Invest A Loan
      */
 
-    func investLoanOTP(loanId: Int32, noteId: Int32) -> Promise<APIResponseGeneral> {
+    func investLoanOTP(loanId: Int32, noteId: Int) -> Promise<APIResponseGeneral> {
         return Promise<APIResponseGeneral> { seal in
             let endPoint = "loans/" + "\(loanId)/" + "notes/" + "\(noteId)/" + "otp"
             getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: false)

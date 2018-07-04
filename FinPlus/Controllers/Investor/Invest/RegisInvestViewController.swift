@@ -274,7 +274,7 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
                     if let returnMsg = model.returnMsg, returnMsg != "" {
                         self.showGreenBtnMessage(title: "Đầu tư thất bại", message: returnMsg, okTitle: "Ok", cancelTitle: nil)
                     } else {
-                        self.showGreenBtnMessage(title: "Đầu tư thất bại", message: "Lỗi không xác định", okTitle: "Ok", cancelTitle: nil)
+                        self.showGreenBtnMessage(title: "Đầu tư thất bại", message: API_MESSAGE.OTHER_ERROR, okTitle: "Ok", cancelTitle: nil)
                     }
                 }
             }
