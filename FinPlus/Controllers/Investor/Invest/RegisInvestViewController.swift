@@ -152,7 +152,7 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
             self.navigationController?.navigationBar.barTintColor = LIGHT_MODE_NAVI_COLOR
             self.navigationController?.navigationBar.tintColor = LIGHT_BODY_TEXT_COLOR
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: LIGHT_BODY_TEXT_COLOR]
-            self.view.backgroundColor = LIGHT_BACKGROUND_COLOR
+            self.view.backgroundColor = UIColor.white
 
             let policyStr : String = "Tôi đã hiểu và đồng ý với hợp đồng đầu tư."
 
@@ -170,7 +170,7 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
             self.investAmountTitleLb.textColor = LIGHT_SUBTEXT_COLOR
             self.amountTf.textColor = LIGHT_BODY_TEXT_COLOR
             self.investDetailTitleLb.textColor = LIGHT_SUBTEXT_COLOR
-            self.containView.backgroundColor = LIGHT_BACKGROUND_COLOR
+            self.containView.backgroundColor = UIColor.white
             self.sumAmountTitleLb.textColor = LIGHT_BODY_TEXT_COLOR
             self.sumAmountLb.textColor = LIGHT_SUBTEXT_COLOR
             self.interestTitleLb.textColor = LIGHT_BODY_TEXT_COLOR
@@ -217,6 +217,9 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
         popup.show()
     }
 
+    @IBAction func backAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     //MARK: Data Selected
     func dataSelected(data: LoanBuilderData) {
         budgetSelected = Float(unit * Int(data.id!))

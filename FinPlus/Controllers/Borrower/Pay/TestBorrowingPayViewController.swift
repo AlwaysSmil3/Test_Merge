@@ -121,18 +121,28 @@ class TestBorrowingPayViewController: UIViewController {
     var payTypeSelected : PayType!
     var payAllSelected : PayAllBefore!
     var walletSelected : AccountBank!
+    var bankList = [AccountBank]()
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
         // update data
-        updateData()
+        self.updateData()
         // Do any additional setup after loading the view.
     }
+    
+    func getUserBankList() {
+        APIClient.shared.getListBank(uId: DataManager.shared.userID).done { (bankList) in
+            self.bankList = bankList
+            self.updateData()
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if self.navigationController?.isNavigationBarHidden == false {
             self.navigationController?.isNavigationBarHidden = true
         }
+        self.getUserBankList()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -159,21 +169,18 @@ class TestBorrowingPayViewController: UIViewController {
         let infoData = BorrowingInfoBasicData(contractCode: "AABBCC", loanMoney: 100000000, expireAmountTime: 12, inerestPerMonth: 2000000, numberOfMonthPaid: 2, nextDayHaveToPaid: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)
         let payType1 = PayType(id: 1, typeTitle: "Phai tra thang nay", expireDate: Date(), originAmount: 1000000, interestAmount: 500000, sumAmount: 20000000)
         let payAll = PayAllBefore(id: 1, typeTitle: "Tra tat ca luon", originAmount: 3000000, interestAmount: 100000, feeToPayBefore: 2000000, sumAmount: 7000000)
-        let wallet1 = AccountBank(wID: 1, wType: 1, wAccountName: "0987654231234", wBankName: "Vietcombank", wNumber: "212312309123", wDistrict: "Hà Nội")
-        let wallet2 = AccountBank(wID: 1, wType: 2, wAccountName: "0987654231234", wBankName: "Techcombank", wNumber: "102312321876", wDistrict: "Hà Nội")
-
         let payTypeArray = [payType1]
-        let walletArray = [wallet1, wallet2]
-        borrowingPay = BorrowingData(basicInfo: infoData, payType: payTypeArray, payAll: payAll, walletList: walletArray)
-
+        borrowingPay = BorrowingData(basicInfo: infoData, payType: payTypeArray, payAll: payAll, walletList: self.bankList)
         self.sections.removeAll()
         let sectionBasicData = SectionData()
         sectionBasicData.title = "Thông tin khoản vay"
+        
         if let basicInfo = borrowingPay.basicInfo {
             // caculate cell height
             let cellNewPhone = CellData(cellType: .InfoCell, data: basicInfo, cellHeight: 366)
             sectionBasicData.cells.append(cellNewPhone)
         }
+        
         let sectionPayTypeData = SectionData()
         sectionPayTypeData.title = "Chọn loại thanh toán"
         if let payTypeArray = borrowingPay.payType {
@@ -184,13 +191,13 @@ class TestBorrowingPayViewController: UIViewController {
                 }
             }
         }
+        
         if let payAll = borrowingPay.payAll {
             let cellNewPhone = CellData(cellType: .PayAllCell, data: payAll, cellHeight: 126)
             sectionPayTypeData.cells.append(cellNewPhone)
 
         }
-
-
+        
         let sectionWalletData = SectionData()
         sectionWalletData.title = "Chọn tài khoản để thanh toán"
         if let walletArray = borrowingPay.walletList {
@@ -312,10 +319,11 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
 
         } else if let _ = cell as? AddNewWalletTableViewCell {
             // push to add new wallet
+            let vc = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ADD_WALLET") as! AddWalletViewController
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         tableView.reloadData()
-//        tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
-//        tableView.reloadSections(IndexSet(integer: indexPath.section), with: UITableViewRowAnimation.none)
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -336,3 +344,4 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
         return indexPath
     }
 }
+
