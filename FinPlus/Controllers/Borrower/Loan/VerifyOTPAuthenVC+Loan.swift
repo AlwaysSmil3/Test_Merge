@@ -12,8 +12,7 @@ extension VerifyOTPAuthenVC {
     
     //MARK: Verify Loan
     func verifyOTPLoan() {
-        guard let loan = self.loanResponseModel else { return }
-        APIClient.shared.loanVerify(otp: self.otp, loanID: loan.loanId!)
+        APIClient.shared.loanVerify(otp: self.otp, loanID: DataManager.shared.loanID ?? 0)
             .done(on: DispatchQueue.main) { [weak self] model in
                 let successVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSendSuccessVC") as! LoanSendSuccessVC
                 self?.navigationController?.pushViewController(successVC, animated: true)

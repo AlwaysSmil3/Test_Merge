@@ -144,7 +144,8 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
         }
         
         if let data = self.dataSourceCollection[indexPath.row] as? String {
-            cell.imgValue.sd_setImage(with: URL(string: hostLoan + data), completed: nil)
+            //cell.imgValue.sd_setImage(with: URL(string: hostLoan + data), completed: nil)
+            cell.imgValue.sd_setImage(with: URL(string: hostLoan + data), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: nil)
             cell.imgAdd.isHidden = true
             cell.btnDelete.isHidden = false
         }
