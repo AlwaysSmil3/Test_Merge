@@ -138,7 +138,7 @@ extension APIClient {
         }
 
         let uid = DataManager.shared.userID
-        var endPoint = "users/" + "\(uid)/" + EndPoint.Loan.Loans
+        var endPoint = "users/" + "\(uid)/" + EndPoint.Loan.CreateLoans
 
         if httpType == .PUT {
             endPoint = "loans/" + "\(DataManager.shared.loanID ?? 0)"
@@ -208,6 +208,44 @@ extension APIClient {
         }
 
     }
+    
+    /* GET [Done]Y/c gửi lại OTP xác thực khoản vay
+ 
+ 
+    */
+    
+    func getLoanOTP(loanID: Int32) -> Promise<APIResponseGeneral> {
+        
+        let endPoint = "loans/" + "\(loanID)/" + "otp"
+        
+        return Promise<APIResponseGeneral> { seal in
+            getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: true)
+                .done { json in
+                    
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+                        if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
+                                if status {
+                                }
+
+                            })
+                        }
+                        
+                        return
+                    }
+                    
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in seal.reject(error)}
+        }
+        
+    }
+    
+    
+    
+    
+    
 
     func delLoan(loanID: Int32) -> Promise<APIResponseGeneral> {
 

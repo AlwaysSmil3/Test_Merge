@@ -75,12 +75,11 @@ extension LoanStateViewController {
     // Hoan thien don
     @IBAction func update_loan()
     {
-        
         guard DataManager.shared.loanCategories.count > 0 else { return }
-        guard let info = DataManager.shared.browwerInfo else { return }
+        guard let _ = DataManager.shared.browwerInfo else { return }
         
-        
-        DataManager.shared.mapDataBrowwerAndLoan()
+//
+//        DataManager.shared.mapDataBrowwerAndLoan()
         
         let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
         

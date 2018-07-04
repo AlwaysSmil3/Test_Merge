@@ -77,8 +77,8 @@ class LoanStateViewController: UIViewController {
         self.getLoanCategories()
         
         
-        //Map DataLoan
-        DataManager.shared.mapDataBrowwerAndLoan()
+//        //Map DataLoan
+//        DataManager.shared.mapDataBrowwerAndLoan()
         
         let id = activeLoan?.status
         var isEnableFooterView = false

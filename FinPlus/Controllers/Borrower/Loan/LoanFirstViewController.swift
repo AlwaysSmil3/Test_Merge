@@ -246,49 +246,26 @@ class LoanFirstViewController: BaseViewController {
         self.lblMoneySlider.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ"
         
         //Cho set step
-        if let slider = sender as? UISlider {
-            let fixed = roundf(Float(Int(slider.value)))
+        //if let slider = sender as? UISlider {
+            //let fixed = roundf(Float(Int(slider.value)))
             //self.amountSlider.setValue(fixed, animated: true)
-        }
+        //}
         self.updateTotalAmountMounth()
     }
     
     @IBAction func termSliderValueChanged(_ sender: Any) {
-        guard let loan = self.loanCategory, let slider = sender as? UISlider else { return }
+        guard let loan = self.loanCategory else { return }
         //Cho set step
         if loan.id == Loan_Student_Category_ID {
-            let fixed = roundf(slider.value / 10.0) * 10.0
+            //let fixed = roundf(slider.value / 10.0) * 10.0
             //self.termSlider.setValue(fixed, animated: true)
             self.lblTermSlider.text = "\(Int(self.termSlider.value / 10) * 10)" + " Ngày"
         } else {
-            let fixed = roundf(slider.value / 30.0) * 30.0
+            //let fixed = roundf(slider.value / 30.0) * 30.0
             //self.termSlider.setValue(fixed, animated: true)
             self.lblTermSlider.text = "\(Int(self.termSlider.value / 30))" + " Tháng"
         }
         self.updateTotalAmountMounth()
-    }
-    
-    @IBAction func sliderAmountEditDidEnd(_ sender: Any) {
-        //Cho set step
-        if let slider = sender as? UISlider {
-            let fixed = roundf(Float(Int(slider.value)))
-            //self.amountSlider.setValue(fixed, animated: true)
-        }
-        
-    }
-    
-    @IBAction func sliderTermEditDidEnd(_ sender: Any) {
-        guard let loan = self.loanCategory, let slider = sender as? UISlider else { return }
-        if loan.id == Loan_Student_Category_ID {
-            let fixed = roundf(slider.value / 10.0) * 10.0
-            //self.termSlider.setValue(fixed, animated: true)
-            //self.lblTermSlider.text = "\(Int(self.termSlider.value / 10) * 10)" + " Ngày"
-        } else {
-            let fixed = roundf(slider.value / 30.0) * 30.0
-            //self.termSlider.setValue(fixed, animated: true)
-            //self.lblTermSlider.text = "\(Int(self.termSlider.value / 30))" + " Tháng"
-        }
-        
     }
     
     
@@ -320,13 +297,23 @@ class LoanFirstViewController: BaseViewController {
                     .done(on: DispatchQueue.main) { model in
                         DataManager.shared.loanID = model.loanId!
                         
-                        let loanPersionalInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanPersionalInfoVC") as! LoanPersionalInfoVC
+                        //Lay thong tin nguoi dung
+                        APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
+                            .done(on: DispatchQueue.main) { model in
+                                DataManager.shared.browwerInfo = model
+                                
+                                let loanPersionalInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanPersionalInfoVC") as! LoanPersionalInfoVC
+                                
+                                self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
+                                
+                            }
+                            .catch { error in
+                                self.navigationController?.popToRootViewController(animated: true)
+                        }
                         
-                        self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
                     }
                     .catch { error in }
             }
-            
             
         }
         
