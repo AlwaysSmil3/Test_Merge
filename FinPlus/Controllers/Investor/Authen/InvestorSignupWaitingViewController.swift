@@ -36,9 +36,22 @@ class InvestorSignupWaitingViewController: UIViewController {
 
     @IBAction func showRejectAction(_ sender: Any) {
         let rejectVC = InvestorSignUpRejectedViewController(nibName: "InvestorSignUpRejectedViewController", bundle: nil)
-        self.present(rejectVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(rejectVC, animated: true)
+//        self.present(rejectVC, animated: true, completion: nil)
     }
     @IBAction func editProfileAction(_ sender: Any) {
+        
+//        if let navi = self.navigationController {
+//            navi.popViewController(animated: true)
+//        } else {
+            let registerInvestor = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "RegisterInvestorVC") as! RegisterInvestorVC
+            registerInvestor.pw = ""
+            registerInvestor.accountType = .Investor
+            registerInvestor.isRegisterNew = false
+            self.navigationController?.pushViewController(registerInvestor, animated: true)
+//            self.present(registerInvestor, animated: true, completion: nil)
+//        }
+        
     }
     @IBAction func turnOnNotiAction(_ sender: Any) {
         let enableNotiVC = InvestorSignupEnableNotiViewController(nibName: "InvestorSignupEnableNotiViewController", bundle: nil)

@@ -9,7 +9,7 @@
 import Foundation
 
 class RegisterInvestorVC: BaseViewController {
-    
+    var isRegisterNew = true
     
     @IBOutlet var mainTBView: TPKeyboardAvoidingTableView!
     
@@ -76,6 +76,33 @@ class RegisterInvestorVC: BaseViewController {
         if self.navigationController?.isNavigationBarHidden == false {
             self.navigationController?.isNavigationBarHidden = true
         }
+        if self.isRegisterNew == false {
+            // update data from user.
+            // map userinfo with registerinvestmodel
+            
+            
+//            self.registerInvestModel.birthday = timeISO8601
+//            self.registerInvestModel.phoneNumber = DataManager.shared.currentAccount
+//            self.registerInvestModel.password = self.pw ?? ""
+//            self.registerInvestModel.displayName = "Vu Thanh Do"
+//            self.registerInvestModel.nationalId = cell.tfValue?.text ?? ""
+//            self.registerInvestModel.email = cell.tfValue?.text ?? ""
+//            self.registerInvestModel.residentAddress = address
+//            self.registerInvestModel.residentAddress?.zipCode = "66666"
+//            self.registerInvestModel.accessToken = info.accessToken
+//            self.registerInvestModel.avatar = info.avatar
+//            self.registerInvestModel.fullname = info.fullName
+//            self.registerInvestModel.bank?.accountHolder = bank.accountBankName ?? ""
+//            self.registerInvestModel.bank?.accountNumber = bank.accountBankNumber ?? ""
+//            self.registerInvestModel.bank?.type = bank.bankName ?? ""
+//            self.registerInvestModel.bank?.branch = bank.district ?? ""
+//            self.registerInvestModel.nationalId = "123123123"
+            self.mainTBView.reloadData()
+            // self.isRegisterNew = true
+        }
+        
+        
+        
     }
     
     /// Show date time Picker
@@ -99,9 +126,9 @@ class RegisterInvestorVC: BaseViewController {
     @IBAction func continueBtnTapped(_ sender: Any) {
 
 //        // lionel fix to test
-        let investorWaitingVC = InvestorSignupWaitingViewController(nibName: "InvestorSignupWaitingViewController", bundle: nil)
-        self.navigationController?.present(investorWaitingVC, animated: true, completion: nil)
-        return
+//        let investorWaitingVC = InvestorSignupWaitingViewController(nibName: "InvestorSignupWaitingViewController", bundle: nil)
+//        self.navigationController?.present(investorWaitingVC, animated: true, completion: nil)
+//        return
 //        // end
 
         if let cell = self.mainTBView?.cellForRow(at: IndexPath(row: 0, section: 0)) as? RegisterInvestorTFTBCell {
@@ -148,34 +175,91 @@ extension RegisterInvestorVC: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Register_Investor_TF_TB_Cell", for: indexPath) as! RegisterInvestorTFTBCell
-            cell.dataRes = self.dataSource[indexPath.row]
+            var dataRes = self.dataSource[indexPath.row]
+            if self.isRegisterNew == false {
+                if let value = DataManager.shared.browwerInfo?.fullName {
+                    dataRes.value = value
+                }
+            }
+            cell.dataRes = dataRes
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Register_Investor_Date_TB_Cell", for: indexPath) as! RegisterInvestorDateTBCell
-            cell.dataRes = self.dataSource[indexPath.row]
+            var dataRes = self.dataSource[indexPath.row]
+            if self.isRegisterNew == false {
+                if let value = DataManager.shared.browwerInfo?.birthday {
+                    dataRes.value = value
+                }
+            }
+            
+            cell.dataRes = dataRes
             return cell
             
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Register_Investor_TF_TB_Cell", for: indexPath) as! RegisterInvestorTFTBCell
-            cell.dataRes = self.dataSource[indexPath.row]
+            var dataRes = self.dataSource[indexPath.row]
+            if self.isRegisterNew == false {
+                if let value = DataManager.shared.browwerInfo?.nationalId {
+                    dataRes.value = value
+                }
+            }
+            
+            cell.dataRes = dataRes
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Register_Investor_TF_TB_Cell", for: indexPath) as! RegisterInvestorTFTBCell
-            cell.dataRes = self.dataSource[indexPath.row]
+            var dataRes = self.dataSource[indexPath.row]
+            if self.isRegisterNew == false {
+                if let value = DataManager.shared.browwerInfo?.email {
+                    dataRes.value = value
+                }
+            }
+            
+            cell.dataRes = dataRes
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Register_Investor_Address_TB_Cell", for: indexPath) as! RegisterInvestorAddressTBCell
-            cell.dataRes = self.dataSource[indexPath.row]
+            var dataRes = self.dataSource[indexPath.row]
+            if self.isRegisterNew == false {
+//                if let address = self.registerInvestModel.residentAddress {
+//                    let add = address.street + ", " + address.commune + ", " + address.district + ", " + address.city
+//                    dataRes.value = add
+//                } else {
+                    if let value = DataManager.shared.browwerInfo?.residence {
+                        self.getAddress(address: self.mappingResidenceToAddress(residence: value), type: 0, title: "")
+                    }
+//                }
+                
+            }
+            
+            cell.dataRes = dataRes
             return cell
             
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Register_Investor_Selection_TB_Cell", for: indexPath) as! RegisterInvestorSelectionTBCell
-            cell.dataRes = self.dataSource[indexPath.row]
+            let dataRes = self.dataSource[indexPath.row]
+            if self.isRegisterNew == false {
+                
+//                if let bank = self.registerInvestModel.bank {
+//                    let add = address.street + ", " + address.commune + ", " + address.district + ", " + address.city
+//                    dataRes.value = add
+//                } else {
+                    if let value = DataManager.shared.browwerInfo?.banks?.first{
+                        self.getBankAccountData(bank: value)
+                    }
+//                }
+                
+                
+            }
+            
+            cell.dataRes = dataRes
             return cell
             
         case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Register_Investor_Selection_TB_Cell", for: indexPath) as! RegisterInvestorSelectionTBCell
-            cell.dataRes = self.dataSource[indexPath.row]
+            var dataRes = self.dataSource[indexPath.row]
+            
+            cell.dataRes = dataRes
             return cell
             
         default:
@@ -254,9 +338,14 @@ extension RegisterInvestorVC: AddressDelegate {
             cell.dataRes?.value = add
             
         }
-        
+        self.isRegisterNew = true
+    }
+    
+    func mappingResidenceToAddress(residence: BrowwerResidence) -> Address {
+        return Address(city: residence.city ?? "", district: residence.district ?? "", commune: residence.commune ?? "", street: residence.address ?? "", zipCode: residence.zipCode ?? "", long: Double(residence.longitude ?? 0), lat: Double(residence.latitude ?? 0))
         
     }
+    
 }
 
 //MARK: RegisterInvestorVC
@@ -275,6 +364,7 @@ extension RegisterInvestorVC: FacebookInfoDelegate {
             cell.imgIcon.sd_setImage(with: URL(string: info.avatar), completed: nil)
             cell.icDisclosure?.image = #imageLiteral(resourceName: "option_icon")
         }
+        self.isRegisterNew = true
     }
 }
 
@@ -307,7 +397,7 @@ extension RegisterInvestorVC: BankDataDelegate {
             
             cell.icDisclosure?.image = #imageLiteral(resourceName: "option_icon")
         }
-        
+        self.isRegisterNew = true
     }
 }
 

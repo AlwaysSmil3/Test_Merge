@@ -35,7 +35,15 @@ public struct AccountBank {
   public var bankType: Int?
   public var district: String?
     public var icon: UIImage?
-
+    public init() {
+        accountBankName = ""
+        accountBankNumber = ""
+        bankName = ""
+        id = 0
+        bankType = 0
+        district = ""
+        icon = nil
+    }
     // MARK: SwiftyJSON manual
     /// Initiates the instance based on the object.
     ///

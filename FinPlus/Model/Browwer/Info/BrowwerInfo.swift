@@ -32,6 +32,8 @@ public struct BrowwerInfo {
     static let uuidDevice = "uuidDevice"
     static let token = "token"
     static let avatar = "avatar"
+    static let banks = "banks"
+    
   }
 
   // MARK: Properties
@@ -54,6 +56,7 @@ public struct BrowwerInfo {
     public var token: String?
     public var uuidDevice: String?
     public var avatar: String?
+    public var banks : [AccountBank]?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -88,6 +91,7 @@ public struct BrowwerInfo {
     token = json[SerializationKeys.token].string
     uuidDevice = json[SerializationKeys.uuidDevice].string
     avatar = json[SerializationKeys.avatar].string
+    if let items = json[SerializationKeys.banks].array { banks = items.map { AccountBank(json: $0) } }
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -114,6 +118,8 @@ public struct BrowwerInfo {
     if let value = token { dictionary[SerializationKeys.token] = value }
     if let value = uuidDevice { dictionary[SerializationKeys.uuidDevice] = value }
     if let value = avatar { dictionary[SerializationKeys.avatar] = value }
+    if let value = banks { dictionary[SerializationKeys.banks] = value.map { $0.dictionaryRepresentation() } }
+
     return dictionary
   }
 

@@ -72,7 +72,6 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
         self.interestLb.text = "\(rate) %/năm"
         self.calculateInterest()
         
-        var selectedAmountStr = ""
         self.sumAmountLb.text = self.budgetSelected.toLocalCurrencyFormat()
         // Do any additional setup after loading the view.
     }
@@ -93,8 +92,8 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
                 }
             } else {
                 if let term = investDetail.term {
-                    self.timeLb.text = "\(term) tháng"
-                    interestAmount = round(self.budgetSelected * rate * Float(term) / 12 / 100)
+                    self.timeLb.text = "\(term/30) tháng"
+                    interestAmount = round(self.budgetSelected * rate * Float(term) / 12 / 30 / 100)
                     self.interestAmount.text = interestAmount.toLocalCurrencyFormat()
                 }
             }
@@ -118,7 +117,6 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: DARK_BODY_TEXT_COLOR]
             self.view.backgroundColor = DARK_BACKGROUND_COLOR
             // policy text
-//            let myRange = NSRange(location: 25, length: 17)
             let policyStr : String = "Tôi đã hiểu và đồng ý với hợp đồng đầu tư."
             var myMutableString = NSMutableAttributedString()
             myMutableString = NSMutableAttributedString(string: policyStr)
@@ -198,8 +196,6 @@ class RegisInvestViewController: UIViewController, UITextViewDelegate, DataSelec
             funded = temp
         }
         avaiableAmount = amount - funded
-//        let avaiableAmount = investDetail.amount - (investDetail.alreadyAmount / 100 * investDetail.amount)
-
         if Int(avaiableAmount) > unit {
             let maxUnit = Int(avaiableAmount) / unit
             if maxUnit > 0 {
