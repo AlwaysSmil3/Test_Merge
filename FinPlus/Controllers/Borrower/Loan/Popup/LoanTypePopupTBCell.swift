@@ -14,7 +14,8 @@ class LoanTypePopupTBCell: UITableViewCell {
     @IBOutlet var lblSubTitle: UILabel!
     @IBOutlet var imgIcon: UIImageView!
     
-
+    @IBOutlet weak var constantLblValueCenterY: NSLayoutConstraint!
+    
 }
 
 

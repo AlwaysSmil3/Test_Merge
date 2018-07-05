@@ -146,6 +146,13 @@ extension LoanTypePopupVC: UITableViewDelegate, UITableViewDataSource {
         
         cell.lblValue?.text = self.dataSource[indexPath.row].title!
         
+        if let subTitle = self.dataSource[indexPath.row].subTitle {
+            cell.lblSubTitle?.text = subTitle
+            cell.constantLblValueCenterY.constant = -7
+        } else {
+            cell.constantLblValueCenterY.constant = 0
+        }
+        
         guard let i = self.currentIndex, i == indexPath.row else {
             cell.imgIcon?.image = #imageLiteral(resourceName: "ic_radio_off")
             return cell

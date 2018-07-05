@@ -23,6 +23,9 @@ class AddWalletViewController: UIViewController {
     @IBOutlet weak var leftBarBtn: UIBarButtonItem!
     @IBOutlet weak var rightBarBtn: UIBarButtonItem!
     
+    //CaoHai tra ve du lieu bank khi chon bank
+    var delegate: BankDataDelegate?
+    
     var wallet: AccountBank!
     
     override func viewDidLoad() {
