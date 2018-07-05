@@ -28,7 +28,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8f-F8-G9n">
-                        <rect key="frame" x="140.5" y="170.5" width="39.5" height="32"/>
+                        <rect key="frame" x="140.5" y="170.5" width="39.5" height="42"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -51,7 +51,7 @@
                 <constraints>
                     <constraint firstItem="JCM-GI-CXj" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="5vE-rv-4eX"/>
                     <constraint firstItem="c8f-F8-G9n" firstAttribute="top" secondItem="JCM-GI-CXj" secondAttribute="bottom" constant="8" id="7i0-T0-zZM"/>
-                    <constraint firstAttribute="bottom" secondItem="c8f-F8-G9n" secondAttribute="bottom" constant="20" id="AuH-Wa-zTe"/>
+                    <constraint firstAttribute="bottom" secondItem="c8f-F8-G9n" secondAttribute="bottom" constant="10" id="AuH-Wa-zTe"/>
                     <constraint firstItem="AXS-5c-3Uy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="45" id="BfJ-ta-BYw"/>
                     <constraint firstItem="AXS-5c-3Uy" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="VIn-U1-hJk"/>
                     <constraint firstItem="c8f-F8-G9n" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="bdF-D5-8xJ"/>

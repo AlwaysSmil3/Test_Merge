@@ -274,7 +274,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Chọn ngày giải ngân" placeholder="Chọn ngày giải ngân" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kYr-B5-qWM" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chọn ngày giải ngân" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kYr-B5-qWM" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
                                 <rect key="frame" x="16" y="256" width="343" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="CQe-I2-brh"/>
@@ -324,6 +324,13 @@
                                 <rect key="frame" x="0.0" y="396" width="375" height="271"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_down_green" translatesAutoresizingMaskIntoConstraints="NO" id="ZpY-G2-K7W">
+                                <rect key="frame" x="343" y="290" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="ch2-Lr-dGH"/>
+                                    <constraint firstAttribute="width" constant="16" id="iQi-Jm-ATm"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -345,11 +352,13 @@
                             <constraint firstItem="fyj-lc-04U" firstAttribute="trailing" secondItem="kYr-B5-qWM" secondAttribute="trailing" constant="16" id="fdu-0e-peH"/>
                             <constraint firstItem="mzm-PJ-Arh" firstAttribute="trailing" secondItem="Pkw-9Z-wFe" secondAttribute="trailing" id="gNK-3n-Er8"/>
                             <constraint firstItem="ZVJ-AL-lgG" firstAttribute="top" secondItem="kYr-B5-qWM" secondAttribute="bottom" constant="20" id="hls-CY-VlM"/>
+                            <constraint firstItem="ZpY-G2-K7W" firstAttribute="bottom" secondItem="kYr-B5-qWM" secondAttribute="bottom" constant="-6" id="ieO-Bq-Ln5"/>
                             <constraint firstItem="ZVJ-AL-lgG" firstAttribute="leading" secondItem="fyj-lc-04U" secondAttribute="leading" constant="16" id="kfa-0x-7gV"/>
                             <constraint firstItem="C2e-oJ-xq5" firstAttribute="leading" secondItem="fyj-lc-04U" secondAttribute="leading" constant="16" id="le1-qZ-8zI"/>
                             <constraint firstItem="OUl-Rs-LVE" firstAttribute="trailing" secondItem="Ugi-g7-b5m" secondAttribute="trailing" id="naL-5C-9fV"/>
                             <constraint firstItem="fyj-lc-04U" firstAttribute="trailing" secondItem="C2e-oJ-xq5" secondAttribute="trailing" constant="16" id="tDA-4j-lkC"/>
                             <constraint firstItem="fyj-lc-04U" firstAttribute="trailing" secondItem="ZVJ-AL-lgG" secondAttribute="trailing" constant="16" id="tR2-aV-uU8"/>
+                            <constraint firstItem="ZpY-G2-K7W" firstAttribute="trailing" secondItem="kYr-B5-qWM" secondAttribute="trailing" id="vI0-hv-KkC"/>
                             <constraint firstItem="mIf-0f-mpn" firstAttribute="bottom" secondItem="C2e-oJ-xq5" secondAttribute="bottom" constant="-6" id="xEv-Ie-Dsb"/>
                             <constraint firstItem="Ugi-g7-b5m" firstAttribute="leading" secondItem="fyj-lc-04U" secondAttribute="leading" constant="16" id="xTR-uQ-wi4"/>
                         </constraints>
@@ -617,6 +626,7 @@
     </scenes>
     <resources>
         <image name="ic_back" width="20" height="18"/>
+        <image name="ic_down_green" width="8" height="5"/>
         <image name="ic_hide_pass" width="16" height="12"/>
         <image name="ic_show_pass" width="16" height="10"/>
     </resources>

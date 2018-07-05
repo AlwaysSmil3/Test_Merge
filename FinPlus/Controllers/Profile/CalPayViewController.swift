@@ -52,7 +52,6 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         // Setting DateFormatter
         dateFormatter.dateFormat = "dd/MM/YYYY"
 //        dateTextField.text = dateFormatter.string(from: currentDate)
-        dateTextField.text = NSLocalizedString("Chọn ngày giải ngân", comment: "")
         
         // Setup Font
         moneyLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
@@ -180,7 +179,7 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
     }
     
     func validateData() {
-        if ((self.moneyTextField.text?.count)! > 0 && (self.monthTextField.text?.count)! > 0 && (self.rateTextField.text?.count)! > 0 && (self.dateTextField.text != NSLocalizedString("Chọn ngày giải ngân", comment: ""))) {
+        if ((self.moneyTextField.text?.count)! > 0 && (self.monthTextField.text?.count)! > 0 && (self.rateTextField.text?.count)! > 0 && ((self.dateTextField.text?.count)! > 0)) {
             self.calBtn.isEnabled = true
         }
         else
