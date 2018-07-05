@@ -37,6 +37,11 @@ class BorrowerTabBarController: UITabBarController {
      */
     @IBInspectable var onTopIndicator: Bool = true
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        print("----- deinit: \(String(describing: self.self))")
+    }
+    
     
     //MARK:- View Controller Life Cycle
     override func viewWillLayoutSubviews() {

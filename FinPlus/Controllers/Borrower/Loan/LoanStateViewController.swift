@@ -359,7 +359,7 @@ class LoanStateViewController: UIViewController {
                 //Đơn vay huy động đủ tiền, chờ ký hợp đồng
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
-                    LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
+                    LoanSummaryModel(name: "Ngày duyệt đơn", value: dateString, attributed: nil),
                     LoanSummaryModel(name: "Số tiền vay được duyệt", value: amountString, attributed: NSAttributedString(string: amountString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Số tiền huy động được", value: amountString, attributed: NSAttributedString(string: amountString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
                     LoanSummaryModel(name: "Thời hạn vay", value: "\((loan.term ?? 0)!) Ngày", attributed: NSAttributedString(string: "\((loan.term ?? 0)!) Ngày", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
@@ -649,7 +649,8 @@ class LoanStateViewController: UIViewController {
         self.headerTableView?.register(buttonCellNib, forCellReuseIdentifier: buttonIdentifier)
         
         self.headerTableView?.tableFooterView = UIView()
-        self.headerTableView?.estimatedRowHeight = UITableViewAutomaticDimension
+        self.headerTableView?.estimatedRowHeight = 123
+        self.headerTableView?.rowHeight = UITableViewAutomaticDimension
         self.headerTableView?.alwaysBounceVertical = false;
         
         let cellNib = UINib(nibName: "DoubleTextTableViewCell", bundle: nil)
@@ -662,7 +663,8 @@ class LoanStateViewController: UIViewController {
         }
         
         self.dataTableView?.tableHeaderView = UIView()
-        self.dataTableView?.estimatedRowHeight = UITableViewAutomaticDimension
+        self.dataTableView?.estimatedRowHeight = 123
+        self.dataTableView?.rowHeight = UITableViewAutomaticDimension
         self.dataTableView?.alwaysBounceVertical = false;
         
         self.borderView.layer.borderWidth = 0.5
@@ -689,15 +691,7 @@ class LoanStateViewController: UIViewController {
         
         self.dataTableViewHeightConstraint?.constant = (self.dataTableView?.contentSize.height)!
         self.headerTableViewHeightConstraint?.constant = (self.headerTableView?.contentSize.height)!
-        
-        DispatchQueue.main.async() {
-
-            NSLog("headerTableView contentSize: %0.2f", self.headerTableView?.contentSize.height ?? 0)
-            NSLog("dataTableView contentSize: %0.2f", self.dataTableView?.contentSize.height ?? 0)
-            NSLog("contentSize: %0.2f", self.scrollView?.contentSize.height ?? 0)
-            NSLog("height: %0.2f", self.scrollView?.frame.size.height ?? 0)
-        }
-        
+    
     }
     
     // MARK: Action
