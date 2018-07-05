@@ -19,6 +19,7 @@ public struct LoanBuilderData {
   // MARK: Properties
   public var id: Int16?
   public var title: String?
+    public var subTitle: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -35,6 +36,7 @@ public struct LoanBuilderData {
   public init(json: JSON) {
     id = json[SerializationKeys.id].int16 ?? 0
     title = json[SerializationKeys.title].string ?? ""
+  
   }
 
   /// Generates description of the object in the form of a NSDictionary.

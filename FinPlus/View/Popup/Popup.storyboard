@@ -127,19 +127,20 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="wbL-7D-DhP" firstAttribute="leading" secondItem="FOd-Oq-fam" secondAttribute="leading" id="2tm-6l-wPm"/>
+                                                        <constraint firstItem="FOd-Oq-fam" firstAttribute="centerY" secondItem="1Ie-Zc-XyF" secondAttribute="centerY" id="4Bm-xD-UI2"/>
                                                         <constraint firstItem="FOd-Oq-fam" firstAttribute="leading" secondItem="1Ie-Zc-XyF" secondAttribute="leadingMargin" constant="25" id="6Fz-Ua-Run"/>
                                                         <constraint firstItem="33n-9g-fWL" firstAttribute="trailing" secondItem="FOd-Oq-fam" secondAttribute="trailing" id="8XO-iK-7W8"/>
+                                                        <constraint firstItem="kp6-WZ-DSC" firstAttribute="centerY" secondItem="1Ie-Zc-XyF" secondAttribute="centerY" id="Owf-3Y-6Vw"/>
                                                         <constraint firstItem="wbL-7D-DhP" firstAttribute="top" secondItem="FOd-Oq-fam" secondAttribute="bottom" id="PiC-AY-Ity"/>
-                                                        <constraint firstItem="kp6-WZ-DSC" firstAttribute="centerY" secondItem="1Ie-Zc-XyF" secondAttribute="centerY" id="SrN-mC-uZq"/>
                                                         <constraint firstAttribute="trailing" secondItem="wbL-7D-DhP" secondAttribute="trailing" constant="8" id="Zgi-dl-9WI"/>
                                                         <constraint firstItem="33n-9g-fWL" firstAttribute="leading" secondItem="kp6-WZ-DSC" secondAttribute="leading" id="e3Y-sz-C0w"/>
                                                         <constraint firstAttribute="bottom" secondItem="33n-9g-fWL" secondAttribute="bottom" id="f8o-ja-avk"/>
-                                                        <constraint firstItem="FOd-Oq-fam" firstAttribute="centerY" secondItem="kp6-WZ-DSC" secondAttribute="centerY" id="gZl-aV-IgF"/>
                                                         <constraint firstAttribute="trailing" secondItem="FOd-Oq-fam" secondAttribute="trailing" constant="8" id="ti0-v0-esJ"/>
                                                         <constraint firstItem="kp6-WZ-DSC" firstAttribute="leading" secondItem="1Ie-Zc-XyF" secondAttribute="leading" constant="8" id="yYk-gN-WzT"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="constantLblValueCenterY" destination="4Bm-xD-UI2" id="U3U-RY-zpL"/>
                                                     <outlet property="imgIcon" destination="kp6-WZ-DSC" id="4dT-M3-VhS"/>
                                                     <outlet property="lblSubTitle" destination="wbL-7D-DhP" id="Xan-Gs-Ee6"/>
                                                     <outlet property="lblValue" destination="FOd-Oq-fam" id="PMO-72-lmY"/>

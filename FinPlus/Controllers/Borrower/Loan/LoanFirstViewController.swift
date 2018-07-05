@@ -53,6 +53,7 @@ class LoanFirstViewController: BaseViewController {
             var loan = LoanBuilderData(object: NSObject())
             loan.id = cate.id!
             loan.title = cate.title!
+            loan.subTitle = "\(cate.min! / MONEY_TERM_DISPLAY)-\(cate.max! / MONEY_TERM_DISPLAY) triệu"
             self.listDataCategoriesForPopup.append(loan)
         }
         
