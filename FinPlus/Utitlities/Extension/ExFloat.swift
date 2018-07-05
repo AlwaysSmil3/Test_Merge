@@ -13,7 +13,6 @@ extension Float {
             return "\(Int(self))"
         } else {
             return String(format: "%.2f", self)
-//            return "\(self)"
         }
     }
     func toLocalCurrencyFormat() -> String {

@@ -20,7 +20,7 @@ class RegisterInvestorTFTBCell: UITableViewCell {
             
             self.lblTitle?.attributedText = FinPlusHelper.setAttributeTextForLoan(text: title)
             self.tfValue?.placeholder = place
-            
+            self.tfValue?.text = data.value
         }
     }
     

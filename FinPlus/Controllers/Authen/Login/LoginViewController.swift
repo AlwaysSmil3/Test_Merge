@@ -169,6 +169,17 @@ class LoginViewController: BaseViewController {
         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
             .done(on: DispatchQueue.main) { model in
                 DataManager.shared.browwerInfo = model
+                // check investor signup waiting -> show signupWaiting VC
+                // self.accountType = .Investor
+                if self.accountType == .Investor {
+                    let isInvetorWaiting = true
+                    if isInvetorWaiting == true {
+                        let investorSignUpWaitingVC = InvestorSignupWaitingViewController(nibName: "InvestorSignupWaitingViewController", bundle: nil)
+                        self.navigationController?.pushViewController(investorSignUpWaitingVC, animated: true)
+//                        self.present(investorSignUpWaitingVC, animated: true, completion: nil)
+                        return
+                    }
+                }
                 self.pushToHomeVC(accountType: self.accountType)
 
             }
