@@ -59,7 +59,7 @@ class InvestorTabBarController: UITabBarController {
         let sProfile = UIStoryboard.init(name: "Profile", bundle: nil)
 
         let v1 = investStoryboard.instantiateViewController(withIdentifier: "INVEST_NAVI")
-        let v2 = investStoryboard.instantiateViewController(withIdentifier: "INVEST_NAVI")
+        let v2 = investStoryboard.instantiateViewController(withIdentifier: "INVEST_NAVI_FILTER")
         let v3 = investStoryboard.instantiateViewController(withIdentifier: "INVEST_NAVI")
         let v4 = investStoryboard.instantiateViewController(withIdentifier: "INVEST_NAVI")
         

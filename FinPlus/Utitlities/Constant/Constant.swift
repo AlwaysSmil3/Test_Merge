@@ -148,6 +148,7 @@ let FONT_CAPTION = UIFont(name: "SFProDisplay-Semibold", size: 11) ?? UIFont.sys
 
 let FONT_FAMILY_BOLD = "SFProDisplay-Bold"
 let FONT_FAMILY_SEMIBOLD = "SFProDisplay-Semibold"
+let FONT_FAMILY_MEDIUM = "SFProDisplay-Medium"
 let FONT_FAMILY_REGULAR = "SFProDisplay-Regular"
 
 let FONT_SIZE_LARGE : CGFloat = 34

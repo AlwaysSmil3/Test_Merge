@@ -257,6 +257,8 @@
 		DD471C902E2C45FF6323FC89 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
 		E73BBE9120E0E99800045265 /* ModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73BBE9020E0E99800045265 /* ModeViewController.swift */; };
 		E73BBE9320E0EF6C00045265 /* Constant+Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73BBE9220E0EF6C00045265 /* Constant+Mode.swift */; };
+		E75AE7EE20EE0A4500AE60EA /* InvestFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AE7EC20EE0A4500AE60EA /* InvestFilterTableViewCell.swift */; };
+		E75AE7EF20EE0A4500AE60EA /* InvestFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E75AE7ED20EE0A4500AE60EA /* InvestFilterTableViewCell.xib */; };
 		E75B705F20DA3963007D158D /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B705D20DA3963007D158D /* TitleTableViewCell.swift */; };
 		E75B706020DA3963007D158D /* TitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E75B705E20DA3963007D158D /* TitleTableViewCell.xib */; };
 		E75B706720DA39CC007D158D /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B706520DA39CC007D158D /* ButtonTableViewCell.swift */; };
@@ -280,6 +282,12 @@
 		E774D30B20CA2F7B00F7696D /* ListWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774D30A20CA2F7B00F7696D /* ListWalletViewController.swift */; };
 		E774D31120CA398300F7696D /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774D30F20CA398300F7696D /* WalletTableViewCell.swift */; };
 		E774D31220CA398300F7696D /* WalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E774D31020CA398300F7696D /* WalletTableViewCell.xib */; };
+		E798FAD120EF50480017ECF8 /* InvestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E798FAD020EF50480017ECF8 /* InvestViewController.swift */; };
+		E798FAD320EF6A390017ECF8 /* InvestFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E798FAD220EF6A390017ECF8 /* InvestFilterViewController.swift */; };
+		E798FAD620EF6C620017ECF8 /* SlideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E798FAD420EF6C620017ECF8 /* SlideTableViewCell.swift */; };
+		E798FAD720EF6C620017ECF8 /* SlideTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E798FAD520EF6C620017ECF8 /* SlideTableViewCell.xib */; };
+		E798FADA20EF6C720017ECF8 /* SelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E798FAD820EF6C720017ECF8 /* SelectTableViewCell.swift */; };
+		E798FADB20EF6C720017ECF8 /* SelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E798FAD920EF6C720017ECF8 /* SelectTableViewCell.xib */; };
 		E7A4A0A420E6321600B5F7ED /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = E7A4A0A220E6321500B5F7ED /* about.html */; };
 		E7A4A0A520E6321600B5F7ED /* terms-and-conditions.html in Resources */ = {isa = PBXBuildFile; fileRef = E7A4A0A320E6321500B5F7ED /* terms-and-conditions.html */; };
 		E7A4A0A720E65B9500B5F7ED /* hop-dong.html in Resources */ = {isa = PBXBuildFile; fileRef = E7A4A0A620E65B9400B5F7ED /* hop-dong.html */; };
@@ -591,6 +599,8 @@
 		D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E73BBE9020E0E99800045265 /* ModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeViewController.swift; sourceTree = "<group>"; };
 		E73BBE9220E0EF6C00045265 /* Constant+Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant+Mode.swift"; sourceTree = "<group>"; };
+		E75AE7EC20EE0A4500AE60EA /* InvestFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestFilterTableViewCell.swift; sourceTree = "<group>"; };
+		E75AE7ED20EE0A4500AE60EA /* InvestFilterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestFilterTableViewCell.xib; sourceTree = "<group>"; };
 		E75B705D20DA3963007D158D /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		E75B705E20DA3963007D158D /* TitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTableViewCell.xib; sourceTree = "<group>"; };
 		E75B706520DA39CC007D158D /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -615,6 +625,12 @@
 		E774D30A20CA2F7B00F7696D /* ListWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWalletViewController.swift; sourceTree = "<group>"; };
 		E774D30F20CA398300F7696D /* WalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewCell.swift; sourceTree = "<group>"; };
 		E774D31020CA398300F7696D /* WalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletTableViewCell.xib; sourceTree = "<group>"; };
+		E798FAD020EF50480017ECF8 /* InvestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestViewController.swift; sourceTree = "<group>"; };
+		E798FAD220EF6A390017ECF8 /* InvestFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestFilterViewController.swift; sourceTree = "<group>"; };
+		E798FAD420EF6C620017ECF8 /* SlideTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideTableViewCell.swift; sourceTree = "<group>"; };
+		E798FAD520EF6C620017ECF8 /* SlideTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideTableViewCell.xib; sourceTree = "<group>"; };
+		E798FAD820EF6C720017ECF8 /* SelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableViewCell.swift; sourceTree = "<group>"; };
+		E798FAD920EF6C720017ECF8 /* SelectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectTableViewCell.xib; sourceTree = "<group>"; };
 		E7A4A0A220E6321500B5F7ED /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		E7A4A0A320E6321500B5F7ED /* terms-and-conditions.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "terms-and-conditions.html"; sourceTree = "<group>"; };
 		E7A4A0A620E65B9400B5F7ED /* hop-dong.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "hop-dong.html"; sourceTree = "<group>"; };
@@ -1437,6 +1453,8 @@
 				84A4791C20E09AE200F83AF4 /* BudgetRewardSuccessViewController.xib */,
 				8467326120E1F4D70011C576 /* InvestContractViewController.swift */,
 				8467326220E1F4D70011C576 /* InvestContractViewController.xib */,
+				E798FAD020EF50480017ECF8 /* InvestViewController.swift */,
+				E798FAD220EF6A390017ECF8 /* InvestFilterViewController.swift */,
 			);
 			path = Invest;
 			sourceTree = "<group>";
@@ -1519,6 +1537,12 @@
 				E75B706620DA39CC007D158D /* ButtonTableViewCell.xib */,
 				E76AF6A920DB4F7700C71305 /* FooterButtonView.swift */,
 				E76AF6AA20DB4F7700C71305 /* FooterButtonView.xib */,
+				E75AE7EC20EE0A4500AE60EA /* InvestFilterTableViewCell.swift */,
+				E75AE7ED20EE0A4500AE60EA /* InvestFilterTableViewCell.xib */,
+				E798FAD420EF6C620017ECF8 /* SlideTableViewCell.swift */,
+				E798FAD520EF6C620017ECF8 /* SlideTableViewCell.xib */,
+				E798FAD820EF6C720017ECF8 /* SelectTableViewCell.swift */,
+				E798FAD920EF6C720017ECF8 /* SelectTableViewCell.xib */,
 			);
 			path = SubItems;
 			sourceTree = "<group>";
@@ -1753,6 +1777,7 @@
 				630BA62820C22A4100880DAE /* SF-Pro-Text-Medium.otf in Resources */,
 				6387D11D20D901B7008AC08C /* LoanTypeOptionalMediaTBCell.xib in Resources */,
 				E774D31220CA398300F7696D /* WalletTableViewCell.xib in Resources */,
+				E798FADB20EF6C720017ECF8 /* SelectTableViewCell.xib in Resources */,
 				E7F51A1F20CE6D1600F72682 /* LoanTypeAddressTBCell.xib in Resources */,
 				639C9E1820A18A7500F2CF5E /* Roboto-Bold.ttf in Resources */,
 				8456CBF920DD0C5200160B84 /* RegisInvestViewController.xib in Resources */,
@@ -1768,6 +1793,7 @@
 				639C9E2120A18A7500F2CF5E /* Oswald-Light.ttf in Resources */,
 				E7F51A2120CE6D1600F72682 /* LoanTypeFooterTBView.xib in Resources */,
 				E7A4A0A520E6321600B5F7ED /* terms-and-conditions.html in Resources */,
+				E75AE7EF20EE0A4500AE60EA /* InvestFilterTableViewCell.xib in Resources */,
 				63FD80CD20C13C14004BD22A /* HomeInvestor.storyboard in Resources */,
 				84CBBE5720CF85610058C834 /* NotificationTableViewCell.xib in Resources */,
 				84CBBE4D20CF82A40058C834 /* Notification.storyboard in Resources */,
@@ -1842,6 +1868,7 @@
 				84114BCA20D79464005026DF /* PayTypeTableViewCell.xib in Resources */,
 				6336D5C620B2750A00A6C38A /* Loan.storyboard in Resources */,
 				630BA61720C22A4100880DAE /* SF-Pro-Text-Light.otf in Resources */,
+				E798FAD720EF6C620017ECF8 /* SlideTableViewCell.xib in Resources */,
 				639C9E2020A18A7500F2CF5E /* Oswald-ExtraLight.ttf in Resources */,
 				E7BC258B20CFDACA001FF0F4 /* README.md in Resources */,
 				639C9E1E20A18A7500F2CF5E /* Oswald-Regular.ttf in Resources */,
@@ -1995,6 +2022,7 @@
 				639C9DF520A189E600F2CF5E /* ToastWindow.swift in Sources */,
 				849A337020CFD0CB000D886D /* Config.swift in Sources */,
 				E7F51A2C20CE6D3F00F72682 /* LoanTypeAddressTBCell.swift in Sources */,
+				E798FAD320EF6A390017ECF8 /* InvestFilterViewController.swift in Sources */,
 				639C9DBB20A1498A00F2CF5E /* FinPlus.xcdatamodeld in Sources */,
 				E7BC256F20CF8096001FF0F4 /* SpreadCell.swift in Sources */,
 				84B7B34B20D12F4E006CADA1 /* InvestTableViewCell.swift in Sources */,
@@ -2081,12 +2109,14 @@
 				633899E520E0EB3200F0233F /* RegisterInvestorDateTBCell.swift in Sources */,
 				630467BB20B513FC0069469A /* AddressTBViewController.swift in Sources */,
 				639C9DF620A189E600F2CF5E /* ToastView.swift in Sources */,
+				E798FADA20EF6C720017ECF8 /* SelectTableViewCell.swift in Sources */,
 				6334891E20C639ED00C95931 /* HomeBrowerCollectionCell.swift in Sources */,
 				633899EA20E0EB3200F0233F /* RegisterInvestorAddressTBCell.swift in Sources */,
 				84114BDD20D79D59005026DF /* PayHistoryTableViewCell.swift in Sources */,
 				E772D76C20CA76F6001F0B8E /* ListLoanViewController.swift in Sources */,
 				638DDC9A20D78CD900CB927D /* Constant+CoreData.swift in Sources */,
 				637A90B020A2E52700CCACA5 /* APIClient+Authen.swift in Sources */,
+				E798FAD620EF6C620017ECF8 /* SlideTableViewCell.swift in Sources */,
 				E772D77720CA8A46001F0B8E /* DoubleTextTableViewCell.swift in Sources */,
 				E76AF6AE20DB8E2600C71305 /* SignContractViewController.swift in Sources */,
 				633899EB20E0EB3200F0233F /* RegisterInvestorSelectionTBCell.swift in Sources */,
@@ -2146,10 +2176,12 @@
 				84114BD120D79464005026DF /* SubInfoLastTableViewCell.swift in Sources */,
 				630467C720B56DD40069469A /* Address.swift in Sources */,
 				6303923020E8B108000C422D /* VSSlider.swift in Sources */,
+				E798FAD120EF50480017ECF8 /* InvestViewController.swift in Sources */,
 				84D73FFF20D0BC5600770FB5 /* LoanStatus.swift in Sources */,
 				633AE0B620B428C6007AB0D1 /* Constant+DateFormat.swift in Sources */,
 				6338F3FA20BE602C005777E2 /* BrowwerCurrentAddress.swift in Sources */,
 				6355FAEA20B7BEB100038F5B /* LoanResponseModel.swift in Sources */,
+				E75AE7EE20EE0A4500AE60EA /* InvestFilterTableViewCell.swift in Sources */,
 				84A2A79A20D9049A00083CA8 /* PayBtnTableViewCell.swift in Sources */,
 				639C9DCE20A14B3800F2CF5E /* APIClient.swift in Sources */,
 				639C9DD920A14BD200F2CF5E /* FinPlusHelper.swift in Sources */,
