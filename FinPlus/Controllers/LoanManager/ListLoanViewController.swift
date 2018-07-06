@@ -36,7 +36,7 @@ class ListLoanViewController: UIViewController {
         let cellNib = UINib(nibName: "LoanTableViewCell", bundle: nil)
         self.tableview.register(cellNib, forCellReuseIdentifier: cellIdentifier)
         
-        self.getAllLoans()
+        // self.getAllLoans(isShowLoading: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,10 +44,12 @@ class ListLoanViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private func getAllLoans() {
+    private func getAllLoans(isShowLoading: Bool) {
         
-        self.handleLoadingView(isShow: true)
-        
+        if isShowLoading {
+            self.handleLoadingView(isShow: true)
+        }
+        self.listLoan.removeAllObjects()
         APIClient.shared.getAllLoans()
             .done(on: DispatchQueue.main) { model in
                 
@@ -123,6 +125,8 @@ extension ListLoanViewController: UITableViewDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
+        // reload data
+        self.getAllLoans(isShowLoading: false)
     }
     
 }
