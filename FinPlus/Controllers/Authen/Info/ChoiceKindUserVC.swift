@@ -55,8 +55,7 @@ class ChoiceKindUserVC: BaseViewController {
         self.investView.dropShadow(color: DROP_SHADOW_COLOR)
         self.investView.layer.cornerRadius = 5
         
-        self.imgGrowth1.tintColor = UIColor.black
-        self.imgGrowth.tintColor = UIColor.black
+        self.accountType = .Browwer
     }
     
     override func viewDidLayoutSubviews() {
@@ -73,14 +72,14 @@ class ChoiceKindUserVC: BaseViewController {
             self.lblBrow2.textColor = UIColor.white
             self.lblBrow3.textColor = UIColor.white
             self.browView.dropShadow(color: MAIN_COLOR)
-            self.imgGrowth.tintColor = UIColor.white
+            self.imgGrowth.image = #imageLiteral(resourceName: "ic_growth_selected")
             
             self.imgBgInvest.image = #imageLiteral(resourceName: "img_bg_growth1")
             self.lblInvest1.textColor = UIColor(hexString: "#08121E")
             self.lblInvest2.textColor = UIColor(hexString: "#4D6678")
             self.lblInvest3.textColor = UIColor(hexString: "#3EAA5F")
             self.investView.dropShadow(color: DROP_SHADOW_COLOR)
-            self.imgGrowth1.tintColor = UIColor.black
+            self.imgGrowth1.image = #imageLiteral(resourceName: "ic_growth1")
             
         } else {
             self.imgBgBrow.image = #imageLiteral(resourceName: "img_bg_growth1")
@@ -88,14 +87,14 @@ class ChoiceKindUserVC: BaseViewController {
             self.lblBrow2.textColor = UIColor(hexString: "#4D6678")
             self.lblBrow3.textColor = UIColor(hexString: "#3EAA5F")
             self.browView.dropShadow(color: DROP_SHADOW_COLOR)
-            self.imgGrowth.tintColor = UIColor.black
+            self.imgGrowth.image = #imageLiteral(resourceName: "ic_growth")
             
             self.imgBgInvest.image = #imageLiteral(resourceName: "img_bg_growth")
             self.lblInvest1.textColor = UIColor.white
             self.lblInvest2.textColor = UIColor.white
             self.lblInvest3.textColor = UIColor.white
             self.investView.dropShadow(color: MAIN_COLOR)
-            self.imgGrowth1.tintColor = UIColor.white
+            self.imgGrowth1.image = #imageLiteral(resourceName: "ic_growth1_selected")
         }
     }
     
@@ -109,11 +108,6 @@ class ChoiceKindUserVC: BaseViewController {
 
         self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Bạn chắc chắn muốn trở thành nhà đầu tư?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
             if status {
-//                let homeVC = UIStoryboard(name: "HomeInvestor", bundle: nil).instantiateViewController(withIdentifier: "InvestorTabBarController")
-//
-//                self.navigationController?.present(homeVC, animated: true, completion: {
-//
-//                })
                 
                 let registerInvestor = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "RegisterInvestorVC") as! RegisterInvestorVC
                 registerInvestor.pw = self.pw
