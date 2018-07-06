@@ -90,7 +90,7 @@ class LoanSummaryInfoVC: BaseViewController {
             LoanSummaryModel(name: "Ngày tạo đơn", value: date, attributed: nil),
             LoanSummaryModel(name: "Số tiền vay", value: FinPlusHelper.formatDisplayCurrency(Double(DataManager.shared.loanInfo.amount)) + "đ", attributed: nil),
             LoanSummaryModel(name: "Kỳ hạn vay", value: termDisplay, attributed: nil),
-            LoanSummaryModel(name: "Lãi suất dự kiến", value: "\(Int(cate.interestRate!))% năm", attributed: nil),
+            LoanSummaryModel(name: "Lãi suất dự kiến", value: "\(Int(cate.interestRate!))%/năm", attributed: nil),
             LoanSummaryModel(name: "Phí dịch vụ", value: feeStr, attributed: nil),
             LoanSummaryModel(name: labelStudentLoan, value: FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ", attributed: nil),
             LoanSummaryModel(name: "Mục đích vay", value: cate.title!, attributed: nil)

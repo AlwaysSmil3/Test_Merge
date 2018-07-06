@@ -153,7 +153,7 @@
                                         </connections>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgk-TF-j1q">
-                                        <rect key="frame" x="8" y="14" width="259" height="21"/>
+                                        <rect key="frame" x="8" y="14" width="259" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
                                         <color key="textColor" red="0.031372549019607843" green="0.070588235294117646" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -272,7 +272,7 @@
                                         </connections>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jef-ae-9T3">
-                                        <rect key="frame" x="8" y="14" width="299" height="21"/>
+                                        <rect key="frame" x="8" y="14" width="299" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
                                         <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -312,6 +312,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MU8-U8-KYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="776.79999999999995" y="160.56971514242881"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="VVl-gE-Vkx">
+            <objects>
+                <viewController id="rD7-W0-Jj8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Trp-zV-IcJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="VCz-53-NbH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vgw-vG-Nky">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84R-Bj-sFP" customClass="AnimatableView" customModule="IBAnimatable">
+                                <rect key="frame" x="30" y="83.5" width="315" height="420"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBi-7c-bf3">
+                                        <rect key="frame" x="8" y="14" width="299" height="20"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
+                                        <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="FBi-7c-bf3" firstAttribute="leading" secondItem="84R-Bj-sFP" secondAttribute="leading" constant="8" id="EBv-2X-uYz"/>
+                                    <constraint firstItem="FBi-7c-bf3" firstAttribute="top" secondItem="84R-Bj-sFP" secondAttribute="top" constant="14" id="GTw-6D-83a"/>
+                                    <constraint firstAttribute="trailing" secondItem="FBi-7c-bf3" secondAttribute="trailing" constant="8" id="Vje-nH-Gny"/>
+                                    <constraint firstAttribute="width" secondItem="84R-Bj-sFP" secondAttribute="height" multiplier="3:4" id="yVb-bk-AvC"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="84R-Bj-sFP" firstAttribute="leading" secondItem="Vgw-vG-Nky" secondAttribute="leading" constant="30" id="6Z6-7r-txW"/>
+                            <constraint firstItem="84R-Bj-sFP" firstAttribute="centerY" secondItem="Vgw-vG-Nky" secondAttribute="centerY" constant="-40" id="9hX-M5-L3l"/>
+                            <constraint firstItem="84R-Bj-sFP" firstAttribute="centerX" secondItem="Vgw-vG-Nky" secondAttribute="centerX" id="cGQ-Pa-8yY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="centerView" destination="84R-Bj-sFP" id="xF7-0w-tqT"/>
+                        <outlet property="lblTitle" destination="FBi-7c-bf3" id="BvH-BI-c0z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5hb-Vq-oFC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1468" y="161"/>
         </scene>
     </scenes>
     <resources>
