@@ -272,7 +272,7 @@ extension APIClient {
         let endPoint = "loans/" + "\(loanId)/" + "notes"
         // fix wallet
         let walletId : Int32 = 1
-        let params = ["loanId" : loanId, "investorId" : investorId, "notes" : notes, "walletId" : walletId]
+        let params = [ "investorId" : investorId, "notes" : notes, "bankId" : walletId]
 
         return Promise<InvestLoanBaseClass> { seal in
             requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
@@ -290,7 +290,7 @@ extension APIClient {
      API request OTP to Invest A Loan
      */
 
-    func investLoanOTP(loanId: Int32, noteId: Int32) -> Promise<APIResponseGeneral> {
+    func investLoanOTP(loanId: Int32, noteId: Int) -> Promise<APIResponseGeneral> {
         return Promise<APIResponseGeneral> { seal in
             let endPoint = "loans/" + "\(loanId)/" + "notes/" + "\(noteId)/" + "otp"
             getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: false)

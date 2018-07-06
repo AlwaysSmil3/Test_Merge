@@ -26,34 +26,8 @@ class BankAccountTableViewCell: UITableViewCell {
     }
 
     func updateCellView() {
-        switch(BankName(rawValue: cellData.bankType!))
-        {
-        case .Vietcombank?: self.walletImg.image = #imageLiteral(resourceName: "vcb")
-        case .Viettinbank?: self.walletImg.image = #imageLiteral(resourceName: "viettin")
-        case .Techcombank?: self.walletImg.image = #imageLiteral(resourceName: "tech")
-        case .Agribank?: self.walletImg.image = #imageLiteral(resourceName: "agri")
-        case .none:
-            break
-        }
-        
-        self.walletNameLb.text = cellData.bankName
-        self.accountNumberLb.text = cellData.accountBankNumber
-        if isSelectedCell == true {
-            self.containView.layer.borderColor = MAIN_COLOR.cgColor
-            self.selectImg.image = #imageLiteral(resourceName: "ic_radio_on")
-            switch(BankName(rawValue: cellData.bankType!))
-            {
-            case .Vietcombank?: self.walletImg.image = #imageLiteral(resourceName: "vcb_selected")
-            case .Viettinbank?: self.walletImg.image = #imageLiteral(resourceName: "viettin_selected")
-            case .Techcombank?: self.walletImg.image = #imageLiteral(resourceName: "tech_selected")
-            case .Agribank?: self.walletImg.image = #imageLiteral(resourceName: "agri_selected")
-            case .none:
-                break
-            }
-        } else {
-            self.containView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
-            self.selectImg.image = #imageLiteral(resourceName: "ic_radio_off")
-            switch(BankName(rawValue: cellData.bankType!))
+        if let bankType = cellData.bankType {
+            switch(BankName(rawValue: bankType))
             {
             case .Vietcombank?: self.walletImg.image = #imageLiteral(resourceName: "vcb")
             case .Viettinbank?: self.walletImg.image = #imageLiteral(resourceName: "viettin")
@@ -61,6 +35,41 @@ class BankAccountTableViewCell: UITableViewCell {
             case .Agribank?: self.walletImg.image = #imageLiteral(resourceName: "agri")
             case .none:
                 break
+            }
+        }
+        
+        
+        self.walletNameLb.text = cellData.bankName
+        self.accountNumberLb.text = cellData.accountBankNumber
+        if isSelectedCell == true {
+            self.containView.layer.borderColor = MAIN_COLOR.cgColor
+            self.selectImg.image = #imageLiteral(resourceName: "ic_radio_on")
+            if let bankType = cellData.bankType {
+                switch(BankName(rawValue: bankType))
+                {
+                case .Vietcombank?: self.walletImg.image = #imageLiteral(resourceName: "vcb_selected")
+                case .Viettinbank?: self.walletImg.image = #imageLiteral(resourceName: "viettin_selected")
+                case .Techcombank?: self.walletImg.image = #imageLiteral(resourceName: "tech_selected")
+                case .Agribank?: self.walletImg.image = #imageLiteral(resourceName: "agri_selected")
+                case .none:
+                    break
+                }
+            }
+                
+            
+        } else {
+            self.containView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
+            self.selectImg.image = #imageLiteral(resourceName: "ic_radio_off")
+            if let bankType = cellData.bankType {
+                switch(BankName(rawValue: bankType))
+                {
+                case .Vietcombank?: self.walletImg.image = #imageLiteral(resourceName: "vcb")
+                case .Viettinbank?: self.walletImg.image = #imageLiteral(resourceName: "viettin")
+                case .Techcombank?: self.walletImg.image = #imageLiteral(resourceName: "tech")
+                case .Agribank?: self.walletImg.image = #imageLiteral(resourceName: "agri")
+                case .none:
+                    break
+                }
             }
         }
         // update cell mode

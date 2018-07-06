@@ -72,7 +72,14 @@ class BorrowHomeViewController: BaseViewController {
     
     private func setupUI() {
         guard let brow = DataManager.shared.browwerInfo else { return }
-        self.lblTitle.text = "Xin chào " + (brow.fullName ?? "") + "!"
+        
+        var name = DataManager.shared.currentAccount
+        
+        if let fullName = brow.fullName, fullName.length() > 0 {
+            name = fullName
+        }
+        
+        self.lblTitle.text = "Xin chào " + name + "!"
     }
     
     

@@ -140,11 +140,33 @@ class VerifyOTPAuthenVC: BaseViewController {
             
             break
         case .RegisInvest:
-            
+            self.resendInvestCode()
             break
         default:
             print("Forgot Password Verify")
             break
+        }
+        
+    }
+    
+    func resendInvestCode() {
+        if let loanId = self.loanId {
+            if let noteId = self.noteId {
+                APIClient.shared.investLoanOTP(loanId: loanId, noteId: noteId).done { (model) in
+                    if let returnCode = model.returnCode, returnCode == 1 {
+                        self.showGreenBtnMessage(title: "Thành công", message: "OTP đã được gửi lại thành công.", okTitle: "OK", cancelTitle: nil)
+                    } else {
+                        if let returnMsg = model.returnMsg {
+                            self.showGreenBtnMessage(title: "Thất bại", message: returnMsg, okTitle: "OK", cancelTitle: nil)
+                        } else {
+                            self.showGreenBtnMessage(title: "Thất bại", message: API_MESSAGE.OTHER_ERROR, okTitle: "OK", cancelTitle: nil)
+                        }
+                    }
+                }
+                    .catch { (error) in
+                        self.showGreenBtnMessage(title: "Thất bại", message: API_MESSAGE.OTHER_ERROR, okTitle: "OK", cancelTitle: nil)
+                }
+            }
         }
         
     }
@@ -231,7 +253,7 @@ class VerifyOTPAuthenVC: BaseViewController {
                     if let returnMsg = model.returnMsg, returnMsg != "" {
                         self?.showGreenBtnMessage(title: "Verify OTP thất bại", message: returnMsg, okTitle: "Ok", cancelTitle: nil)
                     } else {
-                        self?.showGreenBtnMessage(title: "Verify OTP thất bại", message: "Lỗi không xác định", okTitle: "Ok", cancelTitle: nil)
+                        self?.showGreenBtnMessage(title: "Verify OTP thất bại", message: API_MESSAGE.OTHER_ERROR, okTitle: "Ok", cancelTitle: nil)
                     }
                 }
 

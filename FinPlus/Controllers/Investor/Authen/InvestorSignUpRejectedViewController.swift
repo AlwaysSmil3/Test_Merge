@@ -21,10 +21,16 @@ class InvestorSignUpRejectedViewController: UIViewController {
     }
 
     @IBAction func backAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-//        self.navigationController?.popViewController(animated: true)
+//        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func updateProfileBtnAction(_ sender: Any) {
+        let registerInvestor = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "RegisterInvestorVC") as! RegisterInvestorVC
+        registerInvestor.pw = ""
+        registerInvestor.accountType = .Investor
+        registerInvestor.isRegisterNew = false
+        self.navigationController?.pushViewController(registerInvestor, animated: true)
+//        self.present(registerInvestor, animated: true, completion: nil)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
