@@ -21,7 +21,7 @@ class BasePopup : BaseViewController {
         
         centerView.animationType = .zoom(way: .in)
         
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
     }
     
