@@ -313,10 +313,10 @@
             </objects>
             <point key="canvasLocation" x="776.79999999999995" y="160.56971514242881"/>
         </scene>
-        <!--View Controller-->
+        <!--Alert Confirm Create Loan Popup-->
         <scene sceneID="VVl-gE-Vkx">
             <objects>
-                <viewController id="rD7-W0-Jj8" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlertConfirmCreateLoanPopup" id="rD7-W0-Jj8" customClass="AlertConfirmCreateLoanPopup" customModule="FinPlus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Trp-zV-IcJ"/>
                         <viewControllerLayoutGuide type="bottom" id="VCz-53-NbH"/>
@@ -326,21 +326,79 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84R-Bj-sFP" customClass="AnimatableView" customModule="IBAnimatable">
-                                <rect key="frame" x="30" y="83.5" width="315" height="420"/>
+                                <rect key="frame" x="50" y="164" width="275" height="260.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBi-7c-bf3">
-                                        <rect key="frame" x="8" y="14" width="299" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lưu ý" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBi-7c-bf3">
+                                        <rect key="frame" x="8" y="16" width="259" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
                                         <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qj4-QH-OvL">
+                                        <rect key="frame" x="22" y="52" width="231" height="101.5"/>
+                                        <string key="text">Các thông tin bạn cung cấp dưới sau đây ảnh hưởng tới mức lãi suất khoản vay của bạn. Bạn vui lòng điền thông tin chính xác để nhận mức lãi suất phù hợp nhất</string>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                        <color key="textColor" red="0.031372549019607843" green="0.070588235294117646" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpc-4z-U9Q">
+                                        <rect key="frame" x="46" y="165.5" width="26" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="tpc-4z-U9Q" secondAttribute="height" multiplier="1:1" id="Dd2-I9-6LS"/>
+                                            <constraint firstAttribute="width" constant="26" id="ffw-Mm-GSe"/>
+                                        </constraints>
+                                        <state key="normal" image="ic_checkbox_checked"/>
+                                        <state key="selected" image="ic_accept_policy"/>
+                                        <connections>
+                                            <action selector="btnSaveTapped:" destination="rD7-W0-Jj8" eventType="touchUpInside" id="T3b-Y1-HF3"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Không hiện lại nữa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AB1-a5-ecz">
+                                        <rect key="frame" x="80" y="169.5" width="115.5" height="18"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
+                                        <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FY-iI-HNA">
+                                        <rect key="frame" x="0.0" y="211.5" width="275" height="1"/>
+                                        <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="3ga-jZ-FOb"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttf-bW-YIf">
+                                        <rect key="frame" x="94.5" y="212.5" width="86" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="aSy-bP-NFU"/>
+                                            <constraint firstAttribute="width" constant="86" id="wMc-Br-DAr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
+                                        <state key="normal" title="Đồng ý">
+                                            <color key="titleColor" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnAggreeTapped:" destination="rD7-W0-Jj8" eventType="touchUpInside" id="Lbr-Dd-fyf"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="AB1-a5-ecz" firstAttribute="leading" secondItem="tpc-4z-U9Q" secondAttribute="trailing" constant="8" id="79j-Zd-bVf"/>
+                                    <constraint firstItem="AB1-a5-ecz" firstAttribute="centerY" secondItem="tpc-4z-U9Q" secondAttribute="centerY" id="BwZ-BF-T6g"/>
                                     <constraint firstItem="FBi-7c-bf3" firstAttribute="leading" secondItem="84R-Bj-sFP" secondAttribute="leading" constant="8" id="EBv-2X-uYz"/>
-                                    <constraint firstItem="FBi-7c-bf3" firstAttribute="top" secondItem="84R-Bj-sFP" secondAttribute="top" constant="14" id="GTw-6D-83a"/>
+                                    <constraint firstItem="AB1-a5-ecz" firstAttribute="centerX" secondItem="84R-Bj-sFP" secondAttribute="centerX" id="EX9-0S-u0Y"/>
+                                    <constraint firstItem="qj4-QH-OvL" firstAttribute="top" secondItem="FBi-7c-bf3" secondAttribute="bottom" constant="16" id="FYV-3R-n3H"/>
+                                    <constraint firstItem="FBi-7c-bf3" firstAttribute="top" secondItem="84R-Bj-sFP" secondAttribute="top" constant="16" id="GTw-6D-83a"/>
+                                    <constraint firstAttribute="trailing" secondItem="9FY-iI-HNA" secondAttribute="trailing" id="K9W-fK-tPf"/>
+                                    <constraint firstAttribute="bottom" secondItem="ttf-bW-YIf" secondAttribute="bottom" constant="4" id="MgA-aM-2yl"/>
+                                    <constraint firstItem="9FY-iI-HNA" firstAttribute="leading" secondItem="84R-Bj-sFP" secondAttribute="leading" id="OXB-FK-aAE"/>
+                                    <constraint firstAttribute="trailing" secondItem="qj4-QH-OvL" secondAttribute="trailing" constant="22" id="QkW-0L-0fW"/>
                                     <constraint firstAttribute="trailing" secondItem="FBi-7c-bf3" secondAttribute="trailing" constant="8" id="Vje-nH-Gny"/>
-                                    <constraint firstAttribute="width" secondItem="84R-Bj-sFP" secondAttribute="height" multiplier="3:4" id="yVb-bk-AvC"/>
+                                    <constraint firstItem="qj4-QH-OvL" firstAttribute="leading" secondItem="84R-Bj-sFP" secondAttribute="leading" constant="22" id="fj0-ZS-hRj"/>
+                                    <constraint firstItem="ttf-bW-YIf" firstAttribute="top" secondItem="9FY-iI-HNA" secondAttribute="bottom" id="gyg-yh-Bf7"/>
+                                    <constraint firstItem="ttf-bW-YIf" firstAttribute="centerX" secondItem="84R-Bj-sFP" secondAttribute="centerX" id="qph-mz-biU"/>
+                                    <constraint firstItem="9FY-iI-HNA" firstAttribute="top" secondItem="tpc-4z-U9Q" secondAttribute="bottom" constant="20" id="tPc-CU-eKB"/>
+                                    <constraint firstItem="AB1-a5-ecz" firstAttribute="top" secondItem="qj4-QH-OvL" secondAttribute="bottom" constant="16" id="wTe-hT-s63"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -351,22 +409,24 @@
                         </subviews>
                         <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="84R-Bj-sFP" firstAttribute="leading" secondItem="Vgw-vG-Nky" secondAttribute="leading" constant="30" id="6Z6-7r-txW"/>
+                            <constraint firstItem="84R-Bj-sFP" firstAttribute="leading" secondItem="Vgw-vG-Nky" secondAttribute="leading" constant="50" id="6Z6-7r-txW"/>
                             <constraint firstItem="84R-Bj-sFP" firstAttribute="centerY" secondItem="Vgw-vG-Nky" secondAttribute="centerY" constant="-40" id="9hX-M5-L3l"/>
                             <constraint firstItem="84R-Bj-sFP" firstAttribute="centerX" secondItem="Vgw-vG-Nky" secondAttribute="centerX" id="cGQ-Pa-8yY"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="centerView" destination="84R-Bj-sFP" id="xF7-0w-tqT"/>
-                        <outlet property="lblTitle" destination="FBi-7c-bf3" id="BvH-BI-c0z"/>
+                        <outlet property="btnChecked" destination="tpc-4z-U9Q" id="PYc-sH-5Je"/>
+                        <outlet property="centerView" destination="84R-Bj-sFP" id="dgE-DY-0bp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hb-Vq-oFC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1468" y="161"/>
+            <point key="canvasLocation" x="1468" y="160.56971514242881"/>
         </scene>
     </scenes>
     <resources>
+        <image name="ic_accept_policy" width="14" height="14"/>
+        <image name="ic_checkbox_checked" width="14" height="14"/>
         <image name="ic_radio_off" width="16" height="16"/>
     </resources>
 </document>
