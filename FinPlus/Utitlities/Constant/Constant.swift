@@ -18,8 +18,8 @@ enum API_MESSAGE {
 
 // Giới tính
 enum Gender: Int {
-    case Male = 1
-    case Female = 2
+    case Male = 0
+    case Female = 1
 }
 
 // Số điện thọai người thân
@@ -83,7 +83,7 @@ enum DATA_TYPE_TB_CELL {
     static let Footer = "footer"
     static let File = "file"
     static let MultipleFile = "multiple_file"
-
+    static let Choice = "choice"
     
 }
 

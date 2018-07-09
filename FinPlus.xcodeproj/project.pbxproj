@@ -123,8 +123,6 @@
 		637A90B620A2FA5F00CCACA5 /* SRMonthPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B320A2FA5F00CCACA5 /* SRMonthPicker.m */; };
 		637A90B820A2FA5F00CCACA5 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B520A2FA5F00CCACA5 /* DatePickerDialog.swift */; };
 		6387D11B20D9008F008AC08C /* LoanTypeOptionalMediaTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6387D11A20D9008F008AC08C /* LoanTypeOptionalMediaTBCell.swift */; };
-		6387D11D20D901B7008AC08C /* LoanTypeOptionalMediaTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6387D11C20D901B7008AC08C /* LoanTypeOptionalMediaTBCell.xib */; };
-		6387D12120D90483008AC08C /* LoanOtherInfoCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6387D12020D90483008AC08C /* LoanOtherInfoCollectionCell.xib */; };
 		638DDC9820D76A9B00CB927D /* BorrowHomeViewController+CategoryCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DDC9720D76A9B00CB927D /* BorrowHomeViewController+CategoryCoreData.swift */; };
 		638DDC9A20D78CD900CB927D /* Constant+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DDC9920D78CD900CB927D /* Constant+CoreData.swift */; };
 		6397B1B820CFB436009BAF33 /* LoanTypePopupTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6397B1B620CFB436009BAF33 /* LoanTypePopupTBCell.swift */; };
@@ -170,6 +168,18 @@
 		63C5C8E520AC183D00F65068 /* FacebookSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C5C8E420AC183D00F65068 /* FacebookSignInManager.swift */; };
 		63D49DAD20D3997A00114AFA /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D49DAC20D3997A00114AFA /* Popup.storyboard */; };
 		63D49DAF20D399E400114AFA /* InfoInterestRatePopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D49DAE20D399E400114AFA /* InfoInterestRatePopupVC.swift */; };
+		63D4CB6420F2FFB900519FFB /* LoanOtherInfoCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D4CB5C20F2FFB900519FFB /* LoanOtherInfoCollectionCell.xib */; };
+		63D4CB6520F2FFB900519FFB /* LoanTypeAddressTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D4CB5D20F2FFB900519FFB /* LoanTypeAddressTBCell.xib */; };
+		63D4CB6620F2FFB900519FFB /* LoanTypeDropdownTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D4CB5E20F2FFB900519FFB /* LoanTypeDropdownTBCell.xib */; };
+		63D4CB6720F2FFB900519FFB /* LoanTypeFileTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D4CB5F20F2FFB900519FFB /* LoanTypeFileTBCell.xib */; };
+		63D4CB6820F2FFB900519FFB /* LoanTypeFooterTBView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D4CB6020F2FFB900519FFB /* LoanTypeFooterTBView.xib */; };
+		63D4CB6920F2FFB900519FFB /* LoanTypeOptionalMediaTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D4CB6120F2FFB900519FFB /* LoanTypeOptionalMediaTBCell.xib */; };
+		63D4CB6A20F2FFB900519FFB /* LoanTypePhoneRelationTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D4CB6220F2FFB900519FFB /* LoanTypePhoneRelationTBCell.xib */; };
+		63D4CB6B20F2FFB900519FFB /* LoanTypeTextFieldTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D4CB6320F2FFB900519FFB /* LoanTypeTextFieldTBCell.xib */; };
+		63D4CB6D20F3009200519FFB /* LoanTypeChoiceTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D4CB6C20F3009100519FFB /* LoanTypeChoiceTBCell.swift */; };
+		63D4CB6F20F3015500519FFB /* LoanTypeChoiceTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D4CB6E20F3015500519FFB /* LoanTypeChoiceTBCell.xib */; };
+		63D4CB7120F3064500519FFB /* LoanTypeChoiceCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D4CB7020F3064500519FFB /* LoanTypeChoiceCollectionCell.xib */; };
+		63D4CB7320F3080A00519FFB /* LoanTypeChoiceCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D4CB7220F3080A00519FFB /* LoanTypeChoiceCollectionCell.swift */; };
 		63DE086C20D10F7400FD95AE /* VerifyFacebookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DE086B20D10F7400FD95AE /* VerifyFacebookVC.swift */; };
 		63F0CC5620C00B1D0065E3BD /* ConfirmInterestRateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F0CC5520C00B1D0065E3BD /* ConfirmInterestRateVC.swift */; };
 		63FD80C920C0E13D004BD22A /* LoanBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FD80C820C0E13D004BD22A /* LoanBaseViewController.swift */; };
@@ -315,12 +325,6 @@
 		E7F51A1020CE6CE800F72682 /* LoanBuilderBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F51A0D20CE6CE800F72682 /* LoanBuilderBase.swift */; };
 		E7F51A1120CE6CE800F72682 /* LoanBuilderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F51A0E20CE6CE800F72682 /* LoanBuilderData.swift */; };
 		E7F51A1220CE6CE800F72682 /* LoanBuilderFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F51A0F20CE6CE800F72682 /* LoanBuilderFields.swift */; };
-		E7F51A1D20CE6D1600F72682 /* LoanTypeDropdownTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F51A1720CE6D1600F72682 /* LoanTypeDropdownTBCell.xib */; };
-		E7F51A1E20CE6D1600F72682 /* LoanTypeTextFieldTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F51A1820CE6D1600F72682 /* LoanTypeTextFieldTBCell.xib */; };
-		E7F51A1F20CE6D1600F72682 /* LoanTypeAddressTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F51A1920CE6D1600F72682 /* LoanTypeAddressTBCell.xib */; };
-		E7F51A2020CE6D1600F72682 /* LoanTypeFileTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F51A1A20CE6D1600F72682 /* LoanTypeFileTBCell.xib */; };
-		E7F51A2120CE6D1600F72682 /* LoanTypeFooterTBView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F51A1B20CE6D1600F72682 /* LoanTypeFooterTBView.xib */; };
-		E7F51A2220CE6D1600F72682 /* LoanTypePhoneRelationTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F51A1C20CE6D1600F72682 /* LoanTypePhoneRelationTBCell.xib */; };
 		E7F51A2A20CE6D3F00F72682 /* LoanTypeFooterTBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F51A2420CE6D3F00F72682 /* LoanTypeFooterTBView.swift */; };
 		E7F51A2B20CE6D3F00F72682 /* LoanTypePhoneRelationTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F51A2520CE6D3F00F72682 /* LoanTypePhoneRelationTBCell.swift */; };
 		E7F51A2C20CE6D3F00F72682 /* LoanTypeAddressTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F51A2620CE6D3F00F72682 /* LoanTypeAddressTBCell.swift */; };
@@ -451,8 +455,6 @@
 		637A90B420A2FA5F00CCACA5 /* SRMonthPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRMonthPicker.h; sourceTree = "<group>"; };
 		637A90B520A2FA5F00CCACA5 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		6387D11A20D9008F008AC08C /* LoanTypeOptionalMediaTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanTypeOptionalMediaTBCell.swift; sourceTree = "<group>"; };
-		6387D11C20D901B7008AC08C /* LoanTypeOptionalMediaTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoanTypeOptionalMediaTBCell.xib; sourceTree = "<group>"; };
-		6387D12020D90483008AC08C /* LoanOtherInfoCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoanOtherInfoCollectionCell.xib; sourceTree = "<group>"; };
 		638DDC9720D76A9B00CB927D /* BorrowHomeViewController+CategoryCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BorrowHomeViewController+CategoryCoreData.swift"; sourceTree = "<group>"; };
 		638DDC9920D78CD900CB927D /* Constant+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant+CoreData.swift"; sourceTree = "<group>"; };
 		6397B1B620CFB436009BAF33 /* LoanTypePopupTBCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanTypePopupTBCell.swift; sourceTree = "<group>"; };
@@ -503,6 +505,18 @@
 		63C5C8E620AC26DA00F65068 /* FinPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinPlus.entitlements; sourceTree = "<group>"; };
 		63D49DAC20D3997A00114AFA /* Popup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Popup.storyboard; sourceTree = "<group>"; };
 		63D49DAE20D399E400114AFA /* InfoInterestRatePopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoInterestRatePopupVC.swift; sourceTree = "<group>"; };
+		63D4CB5C20F2FFB900519FFB /* LoanOtherInfoCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoanOtherInfoCollectionCell.xib; sourceTree = "<group>"; };
+		63D4CB5D20F2FFB900519FFB /* LoanTypeAddressTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoanTypeAddressTBCell.xib; sourceTree = "<group>"; };
+		63D4CB5E20F2FFB900519FFB /* LoanTypeDropdownTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoanTypeDropdownTBCell.xib; sourceTree = "<group>"; };
+		63D4CB5F20F2FFB900519FFB /* LoanTypeFileTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoanTypeFileTBCell.xib; sourceTree = "<group>"; };
+		63D4CB6020F2FFB900519FFB /* LoanTypeFooterTBView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoanTypeFooterTBView.xib; sourceTree = "<group>"; };
+		63D4CB6120F2FFB900519FFB /* LoanTypeOptionalMediaTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoanTypeOptionalMediaTBCell.xib; sourceTree = "<group>"; };
+		63D4CB6220F2FFB900519FFB /* LoanTypePhoneRelationTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoanTypePhoneRelationTBCell.xib; sourceTree = "<group>"; };
+		63D4CB6320F2FFB900519FFB /* LoanTypeTextFieldTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoanTypeTextFieldTBCell.xib; sourceTree = "<group>"; };
+		63D4CB6C20F3009100519FFB /* LoanTypeChoiceTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanTypeChoiceTBCell.swift; sourceTree = "<group>"; };
+		63D4CB6E20F3015500519FFB /* LoanTypeChoiceTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoanTypeChoiceTBCell.xib; sourceTree = "<group>"; };
+		63D4CB7020F3064500519FFB /* LoanTypeChoiceCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoanTypeChoiceCollectionCell.xib; sourceTree = "<group>"; };
+		63D4CB7220F3080A00519FFB /* LoanTypeChoiceCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanTypeChoiceCollectionCell.swift; sourceTree = "<group>"; };
 		63DE086B20D10F7400FD95AE /* VerifyFacebookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyFacebookVC.swift; sourceTree = "<group>"; };
 		63F0CC5520C00B1D0065E3BD /* ConfirmInterestRateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmInterestRateVC.swift; sourceTree = "<group>"; };
 		63FD80C820C0E13D004BD22A /* LoanBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanBaseViewController.swift; sourceTree = "<group>"; };
@@ -650,12 +664,6 @@
 		E7F51A0D20CE6CE800F72682 /* LoanBuilderBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanBuilderBase.swift; sourceTree = "<group>"; };
 		E7F51A0E20CE6CE800F72682 /* LoanBuilderData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanBuilderData.swift; sourceTree = "<group>"; };
 		E7F51A0F20CE6CE800F72682 /* LoanBuilderFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanBuilderFields.swift; sourceTree = "<group>"; };
-		E7F51A1720CE6D1600F72682 /* LoanTypeDropdownTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoanTypeDropdownTBCell.xib; sourceTree = "<group>"; };
-		E7F51A1820CE6D1600F72682 /* LoanTypeTextFieldTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoanTypeTextFieldTBCell.xib; sourceTree = "<group>"; };
-		E7F51A1920CE6D1600F72682 /* LoanTypeAddressTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoanTypeAddressTBCell.xib; sourceTree = "<group>"; };
-		E7F51A1A20CE6D1600F72682 /* LoanTypeFileTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoanTypeFileTBCell.xib; sourceTree = "<group>"; };
-		E7F51A1B20CE6D1600F72682 /* LoanTypeFooterTBView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoanTypeFooterTBView.xib; sourceTree = "<group>"; };
-		E7F51A1C20CE6D1600F72682 /* LoanTypePhoneRelationTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoanTypePhoneRelationTBCell.xib; sourceTree = "<group>"; };
 		E7F51A2420CE6D3F00F72682 /* LoanTypeFooterTBView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanTypeFooterTBView.swift; sourceTree = "<group>"; };
 		E7F51A2520CE6D3F00F72682 /* LoanTypePhoneRelationTBCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanTypePhoneRelationTBCell.swift; sourceTree = "<group>"; };
 		E7F51A2620CE6D3F00F72682 /* LoanTypeAddressTBCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanTypeAddressTBCell.swift; sourceTree = "<group>"; };
@@ -1081,7 +1089,6 @@
 				63D49DAB20D3994C00114AFA /* Popup */,
 				84B7B33C20D12F2A006CADA1 /* Invest.storyboard */,
 				84CBBE3F20CE74BE0058C834 /* OnBoard.storyboard */,
-				E7F51A1520CE6D1600F72682 /* Loan */,
 				630467B220B5094F0069469A /* Address.storyboard */,
 				639C9DDC20A15E3500F2CF5E /* Authen.storyboard */,
 				6338F3CE20BE43DA005777E2 /* BrrowerHome */,
@@ -1305,6 +1312,23 @@
 				63D49DAC20D3997A00114AFA /* Popup.storyboard */,
 			);
 			path = Popup;
+			sourceTree = "<group>";
+		};
+		63D4CB5B20F2FFB900519FFB /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				63D4CB5C20F2FFB900519FFB /* LoanOtherInfoCollectionCell.xib */,
+				63D4CB5D20F2FFB900519FFB /* LoanTypeAddressTBCell.xib */,
+				63D4CB5E20F2FFB900519FFB /* LoanTypeDropdownTBCell.xib */,
+				63D4CB5F20F2FFB900519FFB /* LoanTypeFileTBCell.xib */,
+				63D4CB6020F2FFB900519FFB /* LoanTypeFooterTBView.xib */,
+				63D4CB6120F2FFB900519FFB /* LoanTypeOptionalMediaTBCell.xib */,
+				63D4CB6220F2FFB900519FFB /* LoanTypePhoneRelationTBCell.xib */,
+				63D4CB6320F2FFB900519FFB /* LoanTypeTextFieldTBCell.xib */,
+				63D4CB6E20F3015500519FFB /* LoanTypeChoiceTBCell.xib */,
+				63D4CB7020F3064500519FFB /* LoanTypeChoiceCollectionCell.xib */,
+			);
+			path = Xib;
 			sourceTree = "<group>";
 		};
 		63EFBD9620C01441001381A9 /* Base */ = {
@@ -1618,32 +1642,10 @@
 			path = LoanBuilder;
 			sourceTree = "<group>";
 		};
-		E7F51A1520CE6D1600F72682 /* Loan */ = {
-			isa = PBXGroup;
-			children = (
-				E7F51A1620CE6D1600F72682 /* Cell */,
-			);
-			path = Loan;
-			sourceTree = "<group>";
-		};
-		E7F51A1620CE6D1600F72682 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				E7F51A1720CE6D1600F72682 /* LoanTypeDropdownTBCell.xib */,
-				E7F51A1820CE6D1600F72682 /* LoanTypeTextFieldTBCell.xib */,
-				E7F51A1920CE6D1600F72682 /* LoanTypeAddressTBCell.xib */,
-				E7F51A1A20CE6D1600F72682 /* LoanTypeFileTBCell.xib */,
-				E7F51A1B20CE6D1600F72682 /* LoanTypeFooterTBView.xib */,
-				E7F51A1C20CE6D1600F72682 /* LoanTypePhoneRelationTBCell.xib */,
-				6387D11C20D901B7008AC08C /* LoanTypeOptionalMediaTBCell.xib */,
-				6387D12020D90483008AC08C /* LoanOtherInfoCollectionCell.xib */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		E7F51A2320CE6D3F00F72682 /* Type */ = {
 			isa = PBXGroup;
 			children = (
+				63D4CB5B20F2FFB900519FFB /* Xib */,
 				E7F51A2420CE6D3F00F72682 /* LoanTypeFooterTBView.swift */,
 				E7F51A2520CE6D3F00F72682 /* LoanTypePhoneRelationTBCell.swift */,
 				E7F51A2620CE6D3F00F72682 /* LoanTypeAddressTBCell.swift */,
@@ -1653,6 +1655,8 @@
 				6387D11A20D9008F008AC08C /* LoanTypeOptionalMediaTBCell.swift */,
 				6334B60A20DA3E8E009960A5 /* LoanTypeBaseTBCell.swift */,
 				633ACA8520DB5E1D00020AE6 /* LoanTypeTBCellProtocol.swift */,
+				63D4CB6C20F3009100519FFB /* LoanTypeChoiceTBCell.swift */,
+				63D4CB7220F3080A00519FFB /* LoanTypeChoiceCollectionCell.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -1741,19 +1745,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				639C9E1F20A18A7500F2CF5E /* OFL.txt in Resources */,
-				E7F51A2220CE6D1600F72682 /* LoanTypePhoneRelationTBCell.xib in Resources */,
 				E7F519FD20CE1B8C00F72682 /* ProfileTableViewCell.xib in Resources */,
+				63D4CB6520F2FFB900519FFB /* LoanTypeAddressTBCell.xib in Resources */,
+				63D4CB6720F2FFB900519FFB /* LoanTypeFileTBCell.xib in Resources */,
+				63D4CB6620F2FFB900519FFB /* LoanTypeDropdownTBCell.xib in Resources */,
 				E772D76920CA7694001F0B8E /* LoanManager.storyboard in Resources */,
 				6338F3D020BE442D005777E2 /* BrrowerHome.xib in Resources */,
-				E7F51A1D20CE6D1600F72682 /* LoanTypeDropdownTBCell.xib in Resources */,
 				633899E420E0EB3200F0233F /* RegisterInvestorAddressTBCell.xib in Resources */,
 				639C9E1B20A18A7500F2CF5E /* Oswald-Bold.ttf in Resources */,
 				630BA61520C22A4100880DAE /* SF-Pro-Display-Medium.otf in Resources */,
 				630BA62A20C22A4100880DAE /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
 				630BA62820C22A4100880DAE /* SF-Pro-Text-Medium.otf in Resources */,
-				6387D11D20D901B7008AC08C /* LoanTypeOptionalMediaTBCell.xib in Resources */,
+				63D4CB6B20F2FFB900519FFB /* LoanTypeTextFieldTBCell.xib in Resources */,
 				E774D31220CA398300F7696D /* WalletTableViewCell.xib in Resources */,
-				E7F51A1F20CE6D1600F72682 /* LoanTypeAddressTBCell.xib in Resources */,
 				639C9E1820A18A7500F2CF5E /* Roboto-Bold.ttf in Resources */,
 				8456CBF920DD0C5200160B84 /* RegisInvestViewController.xib in Resources */,
 				8467326820E32BC40011C576 /* EmtyInvestViewController.xib in Resources */,
@@ -1766,7 +1770,6 @@
 				E76AF6AC20DB4F7700C71305 /* FooterButtonView.xib in Resources */,
 				84647A8F20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.xib in Resources */,
 				639C9E2120A18A7500F2CF5E /* Oswald-Light.ttf in Resources */,
-				E7F51A2120CE6D1600F72682 /* LoanTypeFooterTBView.xib in Resources */,
 				E7A4A0A520E6321600B5F7ED /* terms-and-conditions.html in Resources */,
 				63FD80CD20C13C14004BD22A /* HomeInvestor.storyboard in Resources */,
 				84CBBE5720CF85610058C834 /* NotificationTableViewCell.xib in Resources */,
@@ -1776,6 +1779,7 @@
 				639C9E1620A18A7500F2CF5E /* Roboto-Italic.ttf in Resources */,
 				84A4791E20E09AE200F83AF4 /* BudgetRewardSuccessViewController.xib in Resources */,
 				630BA61620C22A4100880DAE /* SF-Pro-Display-Heavy.otf in Resources */,
+				63D4CB6420F2FFB900519FFB /* LoanOtherInfoCollectionCell.xib in Resources */,
 				E7A4A0A420E6321600B5F7ED /* about.html in Resources */,
 				639C9E1520A18A7500F2CF5E /* Roboto-LightItalic.ttf in Resources */,
 				8456CBD720DCDFC400160B84 /* InvestDetailSecondTableViewCell.xib in Resources */,
@@ -1802,6 +1806,7 @@
 				639C9E1720A18A7500F2CF5E /* Roboto-BlackItalic.ttf in Resources */,
 				630BA61D20C22A4100880DAE /* SF-Pro-Display-Ultralight.otf in Resources */,
 				630BA62220C22A4100880DAE /* SF-Pro-Text-BoldItalic.otf in Resources */,
+				63D4CB7120F3064500519FFB /* LoanTypeChoiceCollectionCell.xib in Resources */,
 				84114BDE20D79D59005026DF /* PayHistoryTableViewCell.xib in Resources */,
 				84647A8B20E0F4C50053DD0D /* InvestorSignUpRejectedViewController.xib in Resources */,
 				E774D30620CA2C6400F7696D /* Localizable.strings in Resources */,
@@ -1811,7 +1816,7 @@
 				E75B706020DA3963007D158D /* TitleTableViewCell.xib in Resources */,
 				84114BCF20D79464005026DF /* PayAllTableViewCell.xib in Resources */,
 				633899E820E0EB3200F0233F /* RegisterInvestorDateTBCell.xib in Resources */,
-				E7F51A1E20CE6D1600F72682 /* LoanTypeTextFieldTBCell.xib in Resources */,
+				63D4CB6A20F2FFB900519FFB /* LoanTypePhoneRelationTBCell.xib in Resources */,
 				63D49DAD20D3997A00114AFA /* Popup.storyboard in Resources */,
 				633899E920E0EB3200F0233F /* RegisterInvestorSelectionTBCell.xib in Resources */,
 				6339D24B20BCF312008B40F8 /* GoogleService-Info.plist in Resources */,
@@ -1821,10 +1826,10 @@
 				630BA62720C22A4100880DAE /* SF-Pro-Text-LightItalic.otf in Resources */,
 				63B833CA20CE79C400416596 /* LoanBuilder.json in Resources */,
 				84114BD220D79464005026DF /* BorrowingPayInfoTableViewCell.xib in Resources */,
+				63D4CB6820F2FFB900519FFB /* LoanTypeFooterTBView.xib in Resources */,
 				639C9DBD20A1498A00F2CF5E /* Assets.xcassets in Resources */,
 				8456CBC020DB660400160B84 /* InvestorSignupViewController.xib in Resources */,
 				630BA61820C22A4100880DAE /* SF-Pro-Display-Semibold.otf in Resources */,
-				6387D12120D90483008AC08C /* LoanOtherInfoCollectionCell.xib in Resources */,
 				630BA61120C22A4100880DAE /* SF-Pro-Display-Light.otf in Resources */,
 				630BA62120C22A4100880DAE /* SF-Pro-Display-Black.otf in Resources */,
 				630BA62320C22A4100880DAE /* SF-Pro-Text-RegularItalic.otf in Resources */,
@@ -1834,6 +1839,7 @@
 				E7BC258720CFDACA001FF0F4 /* Assets.xcassets in Resources */,
 				6307D3BD20AD2BF000055F5C /* HomeBrowwer.storyboard in Resources */,
 				6374FC4620BBA1C100E4BC38 /* Wallet.storyboard in Resources */,
+				63D4CB6F20F3015500519FFB /* LoanTypeChoiceTBCell.xib in Resources */,
 				630BA61B20C22A4100880DAE /* SF-Pro-Display-MediumItalic.otf in Resources */,
 				639C9E1A20A18A7500F2CF5E /* Roboto-Black.ttf in Resources */,
 				639C9E1C20A18A7500F2CF5E /* Oswald-SemiBold.ttf in Resources */,
@@ -1841,6 +1847,7 @@
 				84114BD520D79464005026DF /* TestBorrowingPayViewController.xib in Resources */,
 				84114BCA20D79464005026DF /* PayTypeTableViewCell.xib in Resources */,
 				6336D5C620B2750A00A6C38A /* Loan.storyboard in Resources */,
+				63D4CB6920F2FFB900519FFB /* LoanTypeOptionalMediaTBCell.xib in Resources */,
 				630BA61720C22A4100880DAE /* SF-Pro-Text-Light.otf in Resources */,
 				639C9E2020A18A7500F2CF5E /* Oswald-ExtraLight.ttf in Resources */,
 				E7BC258B20CFDACA001FF0F4 /* README.md in Resources */,
@@ -1862,7 +1869,6 @@
 				630BA61220C22A4100880DAE /* SF-Pro-Display-Regular.otf in Resources */,
 				639C9DB820A1498A00F2CF5E /* Main.storyboard in Resources */,
 				633899E720E0EB3200F0233F /* RegisterInvestorTFTBCell.xib in Resources */,
-				E7F51A2020CE6D1600F72682 /* LoanTypeFileTBCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2069,6 +2075,7 @@
 				E7F51A2A20CE6D3F00F72682 /* LoanTypeFooterTBView.swift in Sources */,
 				630467B920B50BDD0069469A /* AddressFirstTBCell.swift in Sources */,
 				84D7400520D0F8DC00770FB5 /* AuthenticationBase.swift in Sources */,
+				63D4CB7320F3080A00519FFB /* LoanTypeChoiceCollectionCell.swift in Sources */,
 				633AF9BE20A9921B00BAE2BB /* LoginViewController.swift in Sources */,
 				6361E09720D7550F005D2C7A /* LoanSumnaryModel.swift in Sources */,
 				633899EC20E0EB3200F0233F /* RegisterInvestorVC.swift in Sources */,
@@ -2147,6 +2154,7 @@
 				630467C720B56DD40069469A /* Address.swift in Sources */,
 				6303923020E8B108000C422D /* VSSlider.swift in Sources */,
 				84D73FFF20D0BC5600770FB5 /* LoanStatus.swift in Sources */,
+				63D4CB6D20F3009200519FFB /* LoanTypeChoiceTBCell.swift in Sources */,
 				633AE0B620B428C6007AB0D1 /* Constant+DateFormat.swift in Sources */,
 				6338F3FA20BE602C005777E2 /* BrowwerCurrentAddress.swift in Sources */,
 				6355FAEA20B7BEB100038F5B /* LoanResponseModel.swift in Sources */,
