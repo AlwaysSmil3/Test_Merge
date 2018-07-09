@@ -16,7 +16,7 @@
         {
             "id": "gender",
             "index": 2,
-            "type":"dropdown",
+            "type":"choice",
             "title": "Giới tính",
             "is_required": true,
             "placeholder": "Giới tính của bạn",

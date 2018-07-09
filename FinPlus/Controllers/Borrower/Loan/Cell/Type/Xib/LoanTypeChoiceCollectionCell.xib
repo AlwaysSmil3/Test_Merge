@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Loan_Type_Choice_Collection_Cell" id="a0z-o9-44g" customClass="LoanTypeChoiceCollectionCell" customModule="FinPlus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="174" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="174" height="30"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BWE-6q-qNl" customClass="AnimatableView" customModule="IBAnimatable">
+                        <rect key="frame" x="0.0" y="0.0" width="174" height="30"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gN-Lu-xtC">
+                                <rect key="frame" x="70" y="5" width="34" height="21"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                <color key="textColor" red="0.55686274509803924" green="0.63921568627450975" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7gN-Lu-xtC" firstAttribute="centerX" secondItem="BWE-6q-qNl" secondAttribute="centerX" id="6gQ-0R-lQ0"/>
+                            <constraint firstItem="7gN-Lu-xtC" firstAttribute="centerY" secondItem="BWE-6q-qNl" secondAttribute="centerY" id="f1w-2B-YgJ"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.8901960784313725" green="0.92156862745098034" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="BWE-6q-qNl" firstAttribute="leading" secondItem="a0z-o9-44g" secondAttribute="leading" id="Ec9-7K-CAi"/>
+                <constraint firstAttribute="bottom" secondItem="BWE-6q-qNl" secondAttribute="bottom" id="OQZ-AC-5NQ"/>
+                <constraint firstAttribute="trailing" secondItem="BWE-6q-qNl" secondAttribute="trailing" id="mXF-Tm-t9u"/>
+                <constraint firstItem="BWE-6q-qNl" firstAttribute="top" secondItem="a0z-o9-44g" secondAttribute="top" id="tgo-PE-3ku"/>
+            </constraints>
+            <size key="customSize" width="174" height="43"/>
+            <connections>
+                <outlet property="lblValue" destination="7gN-Lu-xtC" id="D2I-c6-k4A"/>
+                <outlet property="parentView" destination="BWE-6q-qNl" id="pQF-ry-vbZ"/>
+            </connections>
+            <point key="canvasLocation" x="7" y="-90.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
