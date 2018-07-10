@@ -45,10 +45,7 @@ class AddressTBViewController: BaseViewController {
     var isSearch: Bool = false {
         
         didSet {
-            guard !self.isSearch else {
-                
-                return
-            }
+            guard !self.isSearch else { return }
             
             self.view.endEditing(true)
             self.dataSourceTemp = self.dataSource
@@ -149,7 +146,9 @@ extension AddressTBViewController: UISearchBarDelegate {
         if searchText.length() > 0 {
             //self.searchBar.showsCancelButton = true
             self.dataSourceTemp = self.dataSource.filter({ (model) -> Bool in
-                return model.name!.contains(searchText)
+                //Bỏ dấu
+                let textFold = model.name!.removeVietnameseMark()
+                return model.name!.contains(searchText) || textFold.contains(searchText)
             })
         } else {
             //self.searchBar.showsCancelButton = false

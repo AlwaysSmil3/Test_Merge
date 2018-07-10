@@ -54,6 +54,8 @@ class LoanTypePopupVC: BasePopup {
         
         self.mainTBView?.tableFooterView = UIView()
         self.mainTBView?.separatorColor = UIColor.clear
+        self.mainTBView?.rowHeight = UITableViewAutomaticDimension
+        self.mainTBView?.register(UINib(nibName: "LoanTypePopupAddTextTBCell", bundle: nil), forCellReuseIdentifier: "Loan_Type_Popup_Add_Text_TB_Cell")
         
         self.lblTitle?.text = titleString
         
@@ -144,9 +146,18 @@ extension LoanTypePopupVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Loan_Type_Popup_TB_Cell", for: indexPath) as! LoanTypePopupTBCell
         
-        cell.lblValue?.text = self.dataSource[indexPath.row].title!
+        let data = self.dataSource[indexPath.row]
         
-        if let subTitle = self.dataSource[indexPath.row].subTitle {
+        if let isText = data.isTextInput, isText, self.currentIndex == self.dataSource.count - 1 {
+            let cell_ = tableView.dequeueReusableCell(withIdentifier: "Loan_Type_Popup_Add_Text_TB_Cell", for: indexPath) as! LoanTypePopupAddTextTBCell
+            
+            
+            return cell_
+        }
+        
+        cell.lblValue?.text = data.title!
+        
+        if let subTitle = data.subTitle {
             cell.lblSubTitle?.text = subTitle
             cell.constantLblValueCenterY.constant = -7
         } else {
@@ -166,6 +177,10 @@ extension LoanTypePopupVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         self.currentIndex = indexPath.row
+        
+        if self.currentIndex == self.dataSource.count - 1 {
+            self.mainTBView?.reloadData()
+        }
         
     }
     

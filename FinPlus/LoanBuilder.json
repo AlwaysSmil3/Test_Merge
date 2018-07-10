@@ -141,6 +141,24 @@
                 {
                     "id": 1,
                     "title": "Sinh Viên"
+                },
+                {
+                    "id": 2,
+                    "title": "Nhân viên văn phòng"
+                },
+                {
+                    "id": 3,
+                    "title": "Kinh doanh"
+                },
+                {
+                    "id": 4,
+                    "title": "Tự do"
+                },
+                {
+                    "id": 6,
+                    "title": "Khác ...",
+                    "isTextInput" : true,
+                    "placeholder":"Nhập tên nghề nghiệp"
                 }
             ]
         },
