@@ -58,25 +58,43 @@
             "type":"dropdown_text_box",
             "title": "Số điện thoại liên lạc của người thân",
             "is_required": true,
-            "placeholder": "Số điện thoại người thân",
             "selector_title": "Chọn người thân của bạn",
             "multiple_line": false,
             "keyboard": "default",
-            "data": [{
-                    "id": 0,
-                    "title": "Vợ"
+            "multiple_data": [
+                {
+                    "placeholder" : "Số điện thoại người thân 1",
+                    "options" : [
+                        {
+                            "id": 0,
+                            "title": "Vợ"
+                        },
+                        {
+                            "id": 1,
+                            "title": "Chồng"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Bố"
+                        },
+                        {
+                            "id": 3,
+                            "title": "Mẹ"
+                        }
+                    ]
                 },
                 {
-                    "id": 1,
-                    "title": "Chồng"
-                },
-                {
-                    "id": 2,
-                    "title": "Bố"
-                },
-                {
-                    "id": 3,
-                    "title": "Mẹ"
+                    "placeholder" : "Số điện thoại người thân 2",
+                    "options" : [
+                        {
+                            "id": 4,
+                            "title": "Bạn bè"
+                        },
+                        {
+                            "id": 5,
+                            "title": "Đồng nghiệp"
+                        }
+                    ]
                 }
             ]
         },
@@ -131,7 +149,7 @@
             "index": 2,
             "type":"dropdown",
             "title": "Cấp bậc",
-            "is_required": false,
+            "is_required": true,
             "placeholder": "Cấp bậc trong cơ quan",
             "selector_title": "Chọn cấp bậc trong cơ quan",
             "data": [{
@@ -178,7 +196,7 @@
             "index": 6,
             "type":"text_box",
             "title": "SĐT cơ quan",
-            "is_required": false,
+            "is_required": true,
             "placeholder": "Số điện thoại cơ quan của bạn",
             "multiple_line": false,
             "keyboard": "phone_pad"

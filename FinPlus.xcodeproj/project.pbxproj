@@ -55,6 +55,10 @@
 		630BA62920C22A4100880DAE /* SF-Pro-Display-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 630BA60B20C22A4100880DAE /* SF-Pro-Display-BoldItalic.otf */; };
 		630BA62A20C22A4100880DAE /* SF-Pro-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 630BA60C20C22A4100880DAE /* SF-Pro-Text-SemiboldItalic.otf */; };
 		630D983F20CF6BEB00994D81 /* LoanSendSuccessVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D983E20CF6BEB00994D81 /* LoanSendSuccessVC.swift */; };
+		630F684220F45F97004FF32E /* LoanBuilderMultipleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630F684020F45F96004FF32E /* LoanBuilderMultipleData.swift */; };
+		630F684320F45F97004FF32E /* LoanBuilderOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630F684120F45F97004FF32E /* LoanBuilderOptions.swift */; };
+		630F684520F4641A004FF32E /* LoanTypePhoneRelationSubTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630F684420F4641A004FF32E /* LoanTypePhoneRelationSubTBCell.swift */; };
+		630F684720F4664D004FF32E /* LoanTypePhoneRelationSubTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630F684620F4664D004FF32E /* LoanTypePhoneRelationSubTBCell.xib */; };
 		632FD02120AAC3CC00D9399C /* APIResponseGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */; };
 		632FD02420AADF3C00D9399C /* VerifyAuthenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */; };
 		632FD02620AAE15800D9399C /* ExString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02520AAE15800D9399C /* ExString.swift */; };
@@ -386,6 +390,10 @@
 		630BA60B20C22A4100880DAE /* SF-Pro-Display-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BoldItalic.otf"; sourceTree = "<group>"; };
 		630BA60C20C22A4100880DAE /* SF-Pro-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		630D983E20CF6BEB00994D81 /* LoanSendSuccessVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanSendSuccessVC.swift; sourceTree = "<group>"; };
+		630F684020F45F96004FF32E /* LoanBuilderMultipleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanBuilderMultipleData.swift; sourceTree = "<group>"; };
+		630F684120F45F97004FF32E /* LoanBuilderOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanBuilderOptions.swift; sourceTree = "<group>"; };
+		630F684420F4641A004FF32E /* LoanTypePhoneRelationSubTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanTypePhoneRelationSubTBCell.swift; sourceTree = "<group>"; };
+		630F684620F4664D004FF32E /* LoanTypePhoneRelationSubTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoanTypePhoneRelationSubTBCell.xib; sourceTree = "<group>"; };
 		632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponseGeneral.swift; sourceTree = "<group>"; };
 		632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyAuthenData.swift; sourceTree = "<group>"; };
 		632FD02520AAE15800D9399C /* ExString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExString.swift; sourceTree = "<group>"; };
@@ -1330,6 +1338,7 @@
 				63D4CB6320F2FFB900519FFB /* LoanTypeTextFieldTBCell.xib */,
 				63D4CB6E20F3015500519FFB /* LoanTypeChoiceTBCell.xib */,
 				63D4CB7020F3064500519FFB /* LoanTypeChoiceCollectionCell.xib */,
+				630F684620F4664D004FF32E /* LoanTypePhoneRelationSubTBCell.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -1638,6 +1647,8 @@
 		E7F51A0C20CE6CE800F72682 /* LoanBuilder */ = {
 			isa = PBXGroup;
 			children = (
+				630F684020F45F96004FF32E /* LoanBuilderMultipleData.swift */,
+				630F684120F45F97004FF32E /* LoanBuilderOptions.swift */,
 				E7F51A0D20CE6CE800F72682 /* LoanBuilderBase.swift */,
 				E7F51A0E20CE6CE800F72682 /* LoanBuilderData.swift */,
 				E7F51A0F20CE6CE800F72682 /* LoanBuilderFields.swift */,
@@ -1660,6 +1671,7 @@
 				633ACA8520DB5E1D00020AE6 /* LoanTypeTBCellProtocol.swift */,
 				63D4CB6C20F3009100519FFB /* LoanTypeChoiceTBCell.swift */,
 				63D4CB7220F3080A00519FFB /* LoanTypeChoiceCollectionCell.swift */,
+				630F684420F4641A004FF32E /* LoanTypePhoneRelationSubTBCell.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -1790,6 +1802,7 @@
 				E772D77420CA7C86001F0B8E /* LoanTableViewCell.xib in Resources */,
 				630467B320B5094F0069469A /* Address.storyboard in Resources */,
 				630BA62020C22A4100880DAE /* SF-Pro-Display-BlackItalic.otf in Resources */,
+				630F684720F4664D004FF32E /* LoanTypePhoneRelationSubTBCell.xib in Resources */,
 				E7BC258920CFDACA001FF0F4 /* README.md in Resources */,
 				8456CBD320DCD8CE00160B84 /* InvestDetailFirstTableViewCell.xib in Resources */,
 				84A4791A20E091E000F83AF4 /* BudgetAwardsViewController.xib in Resources */,
@@ -1969,6 +1982,7 @@
 				E7BC258C20CFDACA001FF0F4 /* YoshikoTextField.swift in Sources */,
 				84D7400420D0F8DC00770FB5 /* AuthenticationData.swift in Sources */,
 				E75B706A20DA4644007D158D /* LoanStateViewController.swift in Sources */,
+				630F684520F4641A004FF32E /* LoanTypePhoneRelationSubTBCell.swift in Sources */,
 				E7BC258F20CFDACA001FF0F4 /* YokoTextField.swift in Sources */,
 				84B7B35420D13051006CADA1 /* InvestorTabBarController.swift in Sources */,
 				633ACA8620DB5E1D00020AE6 /* LoanTypeTBCellProtocol.swift in Sources */,
@@ -2019,6 +2033,7 @@
 				E7BC258820CFDACA001FF0F4 /* FAQView.swift in Sources */,
 				84647A7F20E0E89B0053DD0D /* UICircularProgressRingStyle.swift in Sources */,
 				E7F519FC20CE1B8C00F72682 /* ProfileTableViewCell.swift in Sources */,
+				630F684220F45F97004FF32E /* LoanBuilderMultipleData.swift in Sources */,
 				6338F3FF20BE602C005777E2 /* BrowwerInfo.swift in Sources */,
 				E7BC259220CFDACA001FF0F4 /* MadokaTextField.swift in Sources */,
 				E7F51A1220CE6CE800F72682 /* LoanBuilderFields.swift in Sources */,
@@ -2150,6 +2165,7 @@
 				633AF9AF20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift in Sources */,
 				6374FC4F20BBC3E200E4BC38 /* AccountBank.swift in Sources */,
 				E774D30320CA28F000F7696D /* BorrowerTabBarController.swift in Sources */,
+				630F684320F45F97004FF32E /* LoanBuilderOptions.swift in Sources */,
 				6336D5C820B27B7500A6C38A /* LoanFirstViewController.swift in Sources */,
 				639C9DE420A15F6100F2CF5E /* BaseViewController.swift in Sources */,
 				63FD80C920C0E13D004BD22A /* LoanBaseViewController.swift in Sources */,

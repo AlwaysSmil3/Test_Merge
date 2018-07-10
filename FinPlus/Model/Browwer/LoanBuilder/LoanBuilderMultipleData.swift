@@ -1,5 +1,5 @@
 //
-//  LoanBuilderBase.swift
+//  LoanBuilderMultipleData.swift
 //
 //  Created by Cao Van Hai on 7/10/18
 //  Copyright (c) . All rights reserved.
@@ -7,21 +7,17 @@
 
 import Foundation
 
-public struct LoanBuilderBase {
+public struct LoanBuilderMultipleData {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
-    static let fields = "fields"
-    static let title = "title"
-    static let id = "id"
-    static let index = "index"
+    static let placeholder = "placeholder"
+    static let options = "options"
   }
 
   // MARK: Properties
-  public var fields: [LoanBuilderFields]?
-  public var title: String?
-  public var id: String?
-  public var index: Int?
+  public var placeholder: String?
+  public var options: [LoanBuilderOptions]?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -36,10 +32,8 @@ public struct LoanBuilderBase {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    if let items = json[SerializationKeys.fields].array { fields = items.map { LoanBuilderFields(json: $0) } }
-    title = json[SerializationKeys.title].string
-    id = json[SerializationKeys.id].string
-    index = json[SerializationKeys.index].int
+    placeholder = json[SerializationKeys.placeholder].string
+    if let items = json[SerializationKeys.options].array { options = items.map { LoanBuilderOptions(json: $0) } }
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -47,10 +41,8 @@ public struct LoanBuilderBase {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
-    if let value = fields { dictionary[SerializationKeys.fields] = value.map { $0.dictionaryRepresentation() } }
-    if let value = title { dictionary[SerializationKeys.title] = value }
-    if let value = id { dictionary[SerializationKeys.id] = value }
-    if let value = index { dictionary[SerializationKeys.index] = value }
+    if let value = placeholder { dictionary[SerializationKeys.placeholder] = value }
+    if let value = options { dictionary[SerializationKeys.options] = value.map { $0.dictionaryRepresentation() } }
     return dictionary
   }
 

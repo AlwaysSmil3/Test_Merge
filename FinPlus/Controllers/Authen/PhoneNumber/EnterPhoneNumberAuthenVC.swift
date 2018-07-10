@@ -81,7 +81,6 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
                     //Cap nhat push notification token
                     DataManager.shared.updatePushNotificationToken()
                     // get config
-                    // strongSelf.getConfig()
                     userDefault.set(phone, forKey: fNEW_ACCOUNT_NAME)
                     break
                 }
@@ -91,17 +90,7 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
                 print(error)
         }
     }
-    func getConfig() {
-        APIClient.shared.getConfigs().done(on: DispatchQueue.main) { [weak self] model in
-            systemConfig = model
-            guard let strongSelf = self else { return }
-            userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fNEW_ACCOUNT_NAME)
-            strongSelf.pushToVerifyVC(verifyType: .Login)
-            }
-            .catch({ (error) in
-                print(error)
-            })
-    }
+
 
     func pushToVerifyVC(verifyType: VerifyType) {
         self.view.endEditing(true)

@@ -55,11 +55,6 @@ class ConfirmRateSuccessViewController: UIViewController {
             }
             .catch { error in }
         
-        
-        
-//        let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-//        self.navigationController?.isNavigationBarHidden = true
-//        self.navigationController?.pushViewController(tabbarVC, animated: true)
     }
     
 
