@@ -157,7 +157,8 @@
                 {
                     "id": 6,
                     "title": "Khác ...",
-                    "isTextInput" : true
+                    "isTextInput" : true,
+                    "placeholder":"Nhập tên nghề nghiệp"
                 }
             ]
         },
