@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Loan_Type_Phone_Relation_Sub_TB_Cell" rowHeight="91" id="Jos-gx-5J4" customClass="LoanTypePhoneRelationSubTBCell" customModule="FinPlus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jos-gx-5J4" id="I5C-Jr-UQd">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="90.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="▾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkW-sg-AFd">
+                        <rect key="frame" x="99" y="23" width="13" height="31.5"/>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="26"/>
+                        <color key="textColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0a-Z0-YSK">
+                        <rect key="frame" x="128" y="56" width="231" height="1"/>
+                        <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="KhI-h7-z5J"/>
+                        </constraints>
+                    </view>
+                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Người thân" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eum-OP-tVD">
+                        <rect key="frame" x="16" y="30" width="96" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="96" id="qsA-E8-TCK"/>
+                        </constraints>
+                        <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7bS-uO-jku">
+                        <rect key="frame" x="16" y="56" width="96" height="1"/>
+                        <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="oj9-pD-0tJ"/>
+                        </constraints>
+                    </view>
+                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số điện thọai người thân" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kfe-W5-WZe">
+                        <rect key="frame" x="128" y="28" width="231" height="21"/>
+                        <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                        <connections>
+                            <action selector="tfEditEnd:" destination="Jos-gx-5J4" eventType="editingDidEnd" id="rFW-hS-jMp"/>
+                        </connections>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uc8-bw-vBd">
+                        <rect key="frame" x="16" y="13" width="96" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="Amm-pp-ZqQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <connections>
+                            <action selector="btnTypeRelationTapped:" destination="Jos-gx-5J4" eventType="touchUpInside" id="1wt-F2-ODD"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Z0a-Z0-YSK" firstAttribute="trailing" secondItem="Kfe-W5-WZe" secondAttribute="trailing" id="7Re-cv-uhH"/>
+                    <constraint firstItem="uc8-bw-vBd" firstAttribute="leading" secondItem="I5C-Jr-UQd" secondAttribute="leading" constant="16" id="Bfw-BU-CcQ"/>
+                    <constraint firstItem="Z0a-Z0-YSK" firstAttribute="leading" secondItem="Kfe-W5-WZe" secondAttribute="leading" id="FTw-lU-D1c"/>
+                    <constraint firstItem="Kfe-W5-WZe" firstAttribute="leading" secondItem="bkW-sg-AFd" secondAttribute="trailing" constant="16" id="GIw-Qc-orR"/>
+                    <constraint firstItem="7bS-uO-jku" firstAttribute="trailing" secondItem="eum-OP-tVD" secondAttribute="trailing" id="OHu-XC-D0Y"/>
+                    <constraint firstItem="7bS-uO-jku" firstAttribute="leading" secondItem="eum-OP-tVD" secondAttribute="leading" id="Pgn-q0-ER8"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="uc8-bw-vBd" secondAttribute="bottom" constant="2" id="Rs3-71-heb"/>
+                    <constraint firstItem="Z0a-Z0-YSK" firstAttribute="top" secondItem="7bS-uO-jku" secondAttribute="top" id="Sbv-6u-CEo"/>
+                    <constraint firstItem="7bS-uO-jku" firstAttribute="top" secondItem="eum-OP-tVD" secondAttribute="bottom" constant="8" id="aa6-2g-WWz"/>
+                    <constraint firstAttribute="trailing" secondItem="Kfe-W5-WZe" secondAttribute="trailing" constant="16" id="ekK-GR-zx5"/>
+                    <constraint firstItem="bkW-sg-AFd" firstAttribute="trailing" secondItem="eum-OP-tVD" secondAttribute="trailing" id="jPE-Xl-hAn"/>
+                    <constraint firstItem="Kfe-W5-WZe" firstAttribute="centerY" secondItem="eum-OP-tVD" secondAttribute="centerY" id="oFc-Qa-iuK"/>
+                    <constraint firstItem="bkW-sg-AFd" firstAttribute="centerY" secondItem="eum-OP-tVD" secondAttribute="centerY" id="pNG-Mu-aQi"/>
+                    <constraint firstItem="uc8-bw-vBd" firstAttribute="trailing" secondItem="eum-OP-tVD" secondAttribute="trailing" id="qTR-Tk-wJS"/>
+                    <constraint firstItem="eum-OP-tVD" firstAttribute="centerY" secondItem="uc8-bw-vBd" secondAttribute="centerY" id="qe7-md-ptM"/>
+                    <constraint firstItem="uc8-bw-vBd" firstAttribute="top" secondItem="I5C-Jr-UQd" secondAttribute="topMargin" constant="2" id="xBw-WG-NJU"/>
+                    <constraint firstItem="uc8-bw-vBd" firstAttribute="leading" secondItem="eum-OP-tVD" secondAttribute="leading" id="xOT-l3-jjY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="tfRelationPhone" destination="Kfe-W5-WZe" id="gfI-eW-Jxj"/>
+                <outlet property="tfTypeRelation" destination="eum-OP-tVD" id="WiR-5h-QU6"/>
+            </connections>
+            <point key="canvasLocation" x="-184" y="44"/>
+        </tableViewCell>
+    </objects>
+</document>

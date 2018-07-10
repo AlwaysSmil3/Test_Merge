@@ -336,7 +336,7 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qj4-QH-OvL">
                                         <rect key="frame" x="22" y="52" width="231" height="101.5"/>
-                                        <string key="text">Các thông tin bạn cung cấp dưới sau đây ảnh hưởng tới mức lãi suất khoản vay của bạn. Bạn vui lòng điền thông tin chính xác để nhận mức lãi suất phù hợp nhất</string>
+                                        <string key="text">Các thông tin bạn cung cấp sau đây ảnh hưởng tới mức lãi suất khoản vay của bạn. Bạn vui lòng điền thông tin chính xác để nhận mức lãi suất phù hợp nhất</string>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                         <color key="textColor" red="0.031372549019607843" green="0.070588235294117646" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>

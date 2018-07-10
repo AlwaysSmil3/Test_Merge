@@ -1,12 +1,11 @@
 //
 //  LoanBuilderData.swift
 //
-//  Created by Cao Van Hai on 6/10/18
+//  Created by Cao Van Hai on 7/10/18
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
-import SwiftyJSON
 
 public struct LoanBuilderData {
 
@@ -34,9 +33,8 @@ public struct LoanBuilderData {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    id = json[SerializationKeys.id].int16 ?? 0
-    title = json[SerializationKeys.title].string ?? ""
-  
+    id = json[SerializationKeys.id].int16
+    title = json[SerializationKeys.title].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.

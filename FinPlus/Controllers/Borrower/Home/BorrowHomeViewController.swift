@@ -152,6 +152,7 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
     
 }
 
+//MARK: AlertAggreeCreateLoanDelegate
 extension BorrowHomeViewController: AlertAggreeCreateLoanDelegate {
     func confirmAggree() {
         self.gotoLoanFirstVC()

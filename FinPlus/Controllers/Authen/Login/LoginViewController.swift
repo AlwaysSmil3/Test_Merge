@@ -136,18 +136,12 @@ class LoginViewController: BaseViewController {
                         } else {
                             UserDefaults.standard.set(false, forKey: IS_INVESTOR)
                         }
-                        // fix to test
-                         self?.accountType = .None
 
                     }
 
-                    //Cap nhat push notification token
-                    // get config
-//                    self?.getConfig()
-                    // push to choice viewcontroller
-
-//                    self?.pushToChoiceKindUserVC()
                     self?.getUserInfo()
+                    
+                    
                     break
                 default :
                     if let returnMessage = model.returnMsg {
@@ -169,17 +163,7 @@ class LoginViewController: BaseViewController {
         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
             .done(on: DispatchQueue.main) { model in
                 DataManager.shared.browwerInfo = model
-                // check investor signup waiting -> show signupWaiting VC
-                // self.accountType = .Investor
-                if self.accountType == .Investor {
-                    let isInvetorWaiting = true
-                    if isInvetorWaiting == true {
-                        let investorSignUpWaitingVC = InvestorSignupWaitingViewController(nibName: "InvestorSignupWaitingViewController", bundle: nil)
-                        self.navigationController?.pushViewController(investorSignUpWaitingVC, animated: true)
-//                        self.present(investorSignUpWaitingVC, animated: true, completion: nil)
-                        return
-                    }
-                }
+
                 self.pushToHomeVC(accountType: self.accountType)
 
             }
@@ -208,16 +192,6 @@ class LoginViewController: BaseViewController {
         }
     }
 
-    func getConfig() {
-        APIClient.shared.getConfigs().done(on: DispatchQueue.main) { [weak self] model in
-            systemConfig = model
-//            userDefault.set(model, forKey: fSYSTEM_CONFIG)
-            // self?.pushToVerifyVC(verifyType: .Login, isExisted: false, account: "")
-            }
-            .catch({ (error) in
-                print(error)
-            })
-    }
 
     func pushToChoiceKindUserVC() {
         let choiceKindUser = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "ChoiceKindUserVC") as! ChoiceKindUserVC

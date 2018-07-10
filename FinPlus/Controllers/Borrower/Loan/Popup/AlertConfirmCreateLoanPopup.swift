@@ -15,7 +15,6 @@ protocol AlertAggreeCreateLoanDelegate {
 class AlertConfirmCreateLoanPopup: BasePopup {
     
     
-    
     @IBOutlet weak var btnChecked: UIButton!
     var loanCategory: LoanCategories?
     

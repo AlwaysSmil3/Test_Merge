@@ -1,12 +1,11 @@
 //
 //  LoanBuilderFields.swift
 //
-//  Created by Cao Van Hai on 6/10/18
+//  Created by Cao Van Hai on 7/10/18
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
-import SwiftyJSON
 
 public struct LoanBuilderFields {
 
@@ -19,6 +18,7 @@ public struct LoanBuilderFields {
     static let descriptionValue = "description"
     static let showData = "show_data"
     static let type = "type"
+    static let multipleData = "multiple_data"
     static let index = "index"
     static let id = "id"
     static let isRequired = "is_required"
@@ -36,6 +36,7 @@ public struct LoanBuilderFields {
   public var descriptionValue: String?
   public var showData: Bool? = false
   public var type: String?
+  public var multipleData: [LoanBuilderMultipleData]?
   public var index: Int?
   public var id: String?
   public var isRequired: Bool? = false
@@ -64,6 +65,7 @@ public struct LoanBuilderFields {
     descriptionValue = json[SerializationKeys.descriptionValue].string
     showData = json[SerializationKeys.showData].boolValue
     type = json[SerializationKeys.type].string
+    if let items = json[SerializationKeys.multipleData].array { multipleData = items.map { LoanBuilderMultipleData(json: $0) } }
     index = json[SerializationKeys.index].int
     id = json[SerializationKeys.id].string
     isRequired = json[SerializationKeys.isRequired].boolValue
@@ -85,6 +87,7 @@ public struct LoanBuilderFields {
     if let value = descriptionValue { dictionary[SerializationKeys.descriptionValue] = value }
     dictionary[SerializationKeys.showData] = showData
     if let value = type { dictionary[SerializationKeys.type] = value }
+    if let value = multipleData { dictionary[SerializationKeys.multipleData] = value.map { $0.dictionaryRepresentation() } }
     if let value = index { dictionary[SerializationKeys.index] = value }
     if let value = id { dictionary[SerializationKeys.id] = value }
     dictionary[SerializationKeys.isRequired] = isRequired
