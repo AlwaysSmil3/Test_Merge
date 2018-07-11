@@ -40,6 +40,8 @@ enum EndPoint {
     enum User {
         static let User = "users/"
         static let PushToken = "users/uid/push-token"
+        static let ForgetPassword = "users/forget-password"
+        static let ForgetPasswordOTP    = "users/forget-password/otp"
     }
     
     enum Loan {

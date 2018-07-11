@@ -57,11 +57,13 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         var value: [LoanBuilderMultipleData] = []
         if let phones = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.relationships, phones.count == 2 {
             for pho in phones {
-                var d = LoanBuilderMultipleData(object: NSObject())
-                
-                d.phoneNumber = pho.phoneNumber
-                d.type = pho.type
-                value.append(d)
+                if let phoneNumber = pho.phoneNumber, phoneNumber.length() > 0 {
+                    var d = LoanBuilderMultipleData(object: NSObject())
+                    
+                    d.phoneNumber = pho.phoneNumber
+                    d.type = pho.type
+                    value.append(d)
+                }
             }
             
         }
@@ -69,11 +71,13 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         if DataManager.shared.loanInfo.userInfo.relationships.count == 2 {
             value.removeAll()
             for pho in DataManager.shared.loanInfo.userInfo.relationships {
-                var d = LoanBuilderMultipleData(object: NSObject())
-                
-                d.phoneNumber = pho.phoneNumber
-                d.type = Int(pho.type)
-                value.append(d)
+                if pho.phoneNumber.length() > 0 {
+                    var d = LoanBuilderMultipleData(object: NSObject())
+                    
+                    d.phoneNumber = pho.phoneNumber
+                    d.type = Int(pho.type)
+                    value.append(d)
+                }
             }
         }
 
