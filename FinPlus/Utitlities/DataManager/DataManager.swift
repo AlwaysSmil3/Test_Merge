@@ -261,8 +261,8 @@ class DataManager {
                 missingListKey.append("nationalId")
             }
             
-            if let phone = userInfo.relationships?.phoneNumber, phone.length() > 0 {
-                missingListKey.append("phoneNumber")
+            if let relationPhones = userInfo.relationships, relationPhones.count > 0 {
+                missingListKey.append("relationships")
             }
             
             if let _ = userInfo.residentAddress {

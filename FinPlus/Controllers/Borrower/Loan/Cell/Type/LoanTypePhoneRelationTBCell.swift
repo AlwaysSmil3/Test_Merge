@@ -54,18 +54,45 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
     func getData() {
         
-        var value = ""
-        if let phone = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.relationships?.phoneNumber, phone.length() > 0 {
-            value = phone
-        }
-        
-        if DataManager.shared.loanInfo.userInfo.relationships.phoneNumber.length() > 0 {
-            value = DataManager.shared.loanInfo.userInfo.relationships.phoneNumber
-        }
-        
-        if value.length() > 0 {
-            DataManager.shared.loanInfo.userInfo.relationships.phoneNumber = value
+        var value: [LoanBuilderMultipleData] = []
+        if let phones = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.relationships, phones.count == 2 {
+            for pho in phones {
+                if let phoneNumber = pho.phoneNumber, phoneNumber.length() > 0 {
+                    var d = LoanBuilderMultipleData(object: NSObject())
+                    
+                    d.phoneNumber = pho.phoneNumber
+                    d.type = pho.type
+                    value.append(d)
+                }
+            }
             
+        }
+
+        if DataManager.shared.loanInfo.userInfo.relationships.count == 2 {
+            value.removeAll()
+            for pho in DataManager.shared.loanInfo.userInfo.relationships {
+                if pho.phoneNumber.length() > 0 {
+                    var d = LoanBuilderMultipleData(object: NSObject())
+                    
+                    d.phoneNumber = pho.phoneNumber
+                    d.type = Int(pho.type)
+                    value.append(d)
+                }
+            }
+        }
+
+        if value.count == 2 {
+            DataManager.shared.loanInfo.userInfo.relationships.removeAll()
+            for pho in value {
+                var d = RelationShipPhone()
+                
+                d.phoneNumber = pho.phoneNumber ?? ""
+                d.type = Int16(pho.type ?? 0)
+                DataManager.shared.loanInfo.userInfo.relationships.append(d)
+            }
+            
+            self.dataSource = value
+
         }
     }
     

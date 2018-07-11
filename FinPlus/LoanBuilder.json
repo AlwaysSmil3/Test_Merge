@@ -46,9 +46,9 @@
             "id": "nationalId",
             "index": 4,
             "type":"text_box",
-            "title": "Số chứng minh thư",
+            "title": "Số CMND/thẻ căn cước",
             "is_required": true,
-            "placeholder": "Số CMTND của bạn",
+            "placeholder": "Số CMND/thẻ căn cước của bạn",
             "multiple_line": false,
             "keyboard": "numeric"
         },

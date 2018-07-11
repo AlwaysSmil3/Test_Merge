@@ -36,7 +36,17 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
     
     @IBAction func tfEditEnd(_ sender: Any) {
         if let value = self.tfRelationPhone?.text {
-            DataManager.shared.loanInfo.userInfo.relationships.phoneNumber = value
+            guard let data_ = data, let placeHolder = data_.placeholder else { return }
+            if placeHolder.contains("người thân 1") {
+                if DataManager.shared.loanInfo.userInfo.relationships.count > 0 {
+                    DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber = value
+                }
+            } else {
+                if DataManager.shared.loanInfo.userInfo.relationships.count > 1 {
+                    DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber = value
+                }
+            }
+            
         }
     }
     
@@ -87,7 +97,18 @@ extension LoanTypePhoneRelationSubTBCell: DataSelectedFromPopupProtocol {
     func dataSelected(data: LoanBuilderData) {
         self.tfTypeRelation?.text = data.title!
         self.tfRelationPhone?.placeholder = "Số điện thoại của " + data.title!
-        DataManager.shared.loanInfo.userInfo.relationships.type = data.id!
+        //DataManager.shared.loanInfo.userInfo.relationships.type = data.id!
+        
+        guard let data_ = self.data, let placeHolder = data_.placeholder else { return }
+        if placeHolder.contains("người thân 1") {
+            if DataManager.shared.loanInfo.userInfo.relationships.count > 0 {
+                DataManager.shared.loanInfo.userInfo.relationships[0].type = data.id!
+            }
+        } else {
+            if DataManager.shared.loanInfo.userInfo.relationships.count > 1 {
+                DataManager.shared.loanInfo.userInfo.relationships[1].type = data.id!
+            }
+        }
     }
     
 

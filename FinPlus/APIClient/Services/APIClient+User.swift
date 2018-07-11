@@ -150,4 +150,61 @@ extension APIClient {
         }
     }
     
+    
+    /// forget password
+    ///
+    /// - Parameters:
+    ///   - phoneNumber: <#phoneNumber description#>
+    ///   - nationalId: <#nationalId description#>
+    /// - Returns: <#return value description#>
+    func forgetPassword(phoneNumber: String, nationalId: String = "") -> Promise<OTP> {
+        
+        let params: JSONDictionary = [
+            "phoneNumber": phoneNumber,
+            "nationalId": nationalId,
+            ]
+        
+        return Promise<OTP> { seal in
+            requestWithEndPoint(endPoint: EndPoint.User.ForgetPassword, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST)
+                .done { json in
+                    let model = OTP(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in
+                    seal.reject(error)
+            }
+            
+        }
+    }
+    
+    
+    /// Quen pass verify otp
+    ///
+    /// - Parameters:
+    ///   - phoneNumber: <#phoneNumber description#>
+    ///   - otp: <#otp description#>
+    /// - Returns: <#return value description#>
+    func forgetPasswordOTP(phoneNumber: String, otp: String) -> Promise<OTP> {
+        
+        let params: JSONDictionary = [
+            "phoneNumber": phoneNumber,
+            "otp": otp,
+            ]
+        
+        return Promise<OTP> { seal in
+            requestWithEndPoint(endPoint: EndPoint.User.ForgetPasswordOTP, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST)
+                .done { json in
+                    let model = OTP(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in
+                    seal.reject(error)
+            }
+            
+        }
+    }
+    
+    
+    
+    
 }

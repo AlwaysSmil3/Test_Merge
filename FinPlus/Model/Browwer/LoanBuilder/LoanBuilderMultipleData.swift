@@ -18,6 +18,9 @@ public struct LoanBuilderMultipleData {
   // MARK: Properties
   public var placeholder: String?
   public var options: [LoanBuilderOptions]?
+    
+    public var phoneNumber: String?
+    public var type: Int?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
