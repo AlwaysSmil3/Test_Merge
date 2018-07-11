@@ -192,6 +192,7 @@
                     </view>
                     <connections>
                         <outlet property="centerView" destination="9Ea-gb-AVF" id="iIo-iu-gzn"/>
+                        <outlet property="centerYConstraint" destination="1Sf-xQ-b0W" id="FNS-pi-VkZ"/>
                         <outlet property="lblTitle" destination="Qgk-TF-j1q" id="Pdf-Yp-vqC"/>
                         <outlet property="mainTBView" destination="xFW-8d-0Sm" id="Ibe-vz-djU"/>
                     </connections>

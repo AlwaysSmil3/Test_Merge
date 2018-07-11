@@ -25,6 +25,7 @@ class LoanTypePopupVC: BasePopup {
     
     @IBOutlet var lblTitle: UILabel!
     @IBOutlet var mainTBView: UITableView?
+    @IBOutlet weak var centerYConstraint: NSLayoutConstraint!
     
     var delegate: DataSelectedFromPopupProtocol?
     
@@ -109,6 +110,14 @@ class LoanTypePopupVC: BasePopup {
     @IBAction func btnOkTapped(_ sender: Any) {
         guard let index = self.currentIndex else { return }
         
+        if index == self.dataSource.count - 1 {
+            if let cell = self.mainTBView?.cellForRow(at: IndexPath(row: index, section: 0)) as? LoanTypePopupAddTextTBCell {
+                self.dataSource[index].textValue = cell.tfValue?.text
+            }
+        } else {
+            self.dataSource[index].textValue = nil
+        }
+        
         self.hide {
             self.delegate?.dataSelected(data: self.dataSource[index])
             
@@ -118,7 +127,7 @@ class LoanTypePopupVC: BasePopup {
                 DataManager.shared.currentIndexCategoriesSelectedPopup = self.currentIndex
                 break
             case .RelationShipPhone:
-                DataManager.shared.currentIndexRelationPhoneSelectedPopup = self.currentIndex
+                //DataManager.shared.currentIndexRelationPhoneSelectedPopup = self.currentIndex
                 break
             case .Job:
                 DataManager.shared.currentIndexJobSelectedPopup = self.currentIndex
@@ -150,8 +159,8 @@ extension LoanTypePopupVC: UITableViewDelegate, UITableViewDataSource {
         
         if let isText = data.isTextInput, isText, self.currentIndex == self.dataSource.count - 1 {
             let cell_ = tableView.dequeueReusableCell(withIdentifier: "Loan_Type_Popup_Add_Text_TB_Cell", for: indexPath) as! LoanTypePopupAddTextTBCell
-            
-            
+            cell_.data = data
+            cell_.delegate = self
             return cell_
         }
         
@@ -186,3 +195,45 @@ extension LoanTypePopupVC: UITableViewDelegate, UITableViewDataSource {
     
     
 }
+
+//MARK: LoanTypePopupAddTextDelegate
+extension LoanTypePopupVC: PopupAddTextDelegate {
+    
+    //Show keyboard
+    func beginEditing() {
+        UIView.animate(withDuration: 0.5,
+                       delay: 0.2,
+                       options: UIViewAnimationOptions.curveEaseOut,
+                       animations: { () -> Void in
+                        
+                        self.centerYConstraint.constant = -150
+                        self.view.layoutIfNeeded()
+                        
+        }, completion: { (finished) -> Void in
+            // ....
+        })
+
+    }
+    
+    //Hide keyboard
+    func endEditing() {
+        
+        UIView.animate(withDuration: 0.5,
+                       delay: 0.2,
+                       options: UIViewAnimationOptions.curveEaseIn,
+                       animations: { () -> Void in
+                        
+                        self.centerYConstraint.constant = -40
+                        self.view.layoutIfNeeded()
+                        
+        }, completion: { (finished) -> Void in
+            // ....
+        })
+    }
+    
+}
+
+
+
+
+

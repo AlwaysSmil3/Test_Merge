@@ -58,6 +58,10 @@
                                 <real key="value" value="5"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="tfValueEditingDidBegin:" destination="A7y-yL-EBL" eventType="editingDidBegin" id="hwS-0d-I5S"/>
+                            <action selector="tfValueEditingDidEnd:" destination="A7y-yL-EBL" eventType="editingDidEnd" id="WFF-AW-Elr"/>
+                        </connections>
                     </textField>
                 </subviews>
                 <constraints>
