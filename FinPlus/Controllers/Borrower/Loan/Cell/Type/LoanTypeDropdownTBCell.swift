@@ -65,14 +65,21 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
     
     //MARK: Data Selected
     func dataSelected(data: LoanBuilderData) {
-        self.lblValue?.text = data.title
+        
+        var value = data.title ?? ""
+        if let textValue = data.textValue {
+            value = textValue
+        }
+        
+        
+        self.lblValue?.text = value
         
         guard let field_ = self.field, let id = field_.id else { return }
         
         if id.contains("jobType") {
-            DataManager.shared.loanInfo.jobInfo.jobType = data.title!
+            DataManager.shared.loanInfo.jobInfo.jobType = value
         } else if id.contains("position") {
-            DataManager.shared.loanInfo.jobInfo.position = data.title!
+            DataManager.shared.loanInfo.jobInfo.position = value
         }
         
     }

@@ -23,6 +23,7 @@ public struct LoanBuilderData {
     public var subTitle: String?
     public var isTextInput: Bool?
     public var placeholder: String?
+    public var textValue: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.

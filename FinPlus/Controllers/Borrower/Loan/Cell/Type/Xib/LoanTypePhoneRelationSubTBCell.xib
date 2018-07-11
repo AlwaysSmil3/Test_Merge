@@ -25,36 +25,36 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="▾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkW-sg-AFd">
-                        <rect key="frame" x="99" y="23" width="13" height="31.5"/>
+                        <rect key="frame" x="108" y="23" width="13" height="31.5"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="26"/>
                         <color key="textColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0a-Z0-YSK">
-                        <rect key="frame" x="128" y="56" width="231" height="1"/>
+                        <rect key="frame" x="137" y="56" width="222" height="1"/>
                         <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="KhI-h7-z5J"/>
                         </constraints>
                     </view>
                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Người thân" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eum-OP-tVD">
-                        <rect key="frame" x="16" y="30" width="96" height="16"/>
+                        <rect key="frame" x="16" y="30" width="105" height="16"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="96" id="qsA-E8-TCK"/>
+                            <constraint firstAttribute="width" constant="105" id="qsA-E8-TCK"/>
                         </constraints>
                         <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7bS-uO-jku">
-                        <rect key="frame" x="16" y="56" width="96" height="1"/>
+                        <rect key="frame" x="16" y="56" width="105" height="1"/>
                         <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="oj9-pD-0tJ"/>
                         </constraints>
                     </view>
                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số điện thọai người thân" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kfe-W5-WZe">
-                        <rect key="frame" x="128" y="28" width="231" height="21"/>
+                        <rect key="frame" x="137" y="28" width="222" height="21"/>
                         <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
@@ -63,7 +63,7 @@
                         </connections>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uc8-bw-vBd">
-                        <rect key="frame" x="16" y="13" width="96" height="50"/>
+                        <rect key="frame" x="16" y="13" width="105" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="Amm-pp-ZqQ"/>
                         </constraints>
