@@ -157,17 +157,17 @@ extension APIClient {
     ///   - phoneNumber: <#phoneNumber description#>
     ///   - nationalId: <#nationalId description#>
     /// - Returns: <#return value description#>
-    func forgetPassword(phoneNumber: String, nationalId: String = "") -> Promise<OTP> {
+    func forgetPassword(phoneNumber: String, nationalId: String = "") -> Promise<APIResponseGeneral> {
         
         let params: JSONDictionary = [
             "phoneNumber": phoneNumber,
             "nationalId": nationalId,
             ]
         
-        return Promise<OTP> { seal in
+        return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: EndPoint.User.ForgetPassword, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST)
                 .done { json in
-                    let model = OTP(object: json)
+                    let model = APIResponseGeneral(object: json)
                     seal.fulfill(model)
                 }
                 .catch { error in
@@ -184,17 +184,44 @@ extension APIClient {
     ///   - phoneNumber: <#phoneNumber description#>
     ///   - otp: <#otp description#>
     /// - Returns: <#return value description#>
-    func forgetPasswordOTP(phoneNumber: String, otp: String) -> Promise<OTP> {
+    func forgetPasswordOTP(phoneNumber: String, otp: String) -> Promise<APIResponseGeneral> {
         
         let params: JSONDictionary = [
             "phoneNumber": phoneNumber,
             "otp": otp,
             ]
         
-        return Promise<OTP> { seal in
+        return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: EndPoint.User.ForgetPasswordOTP, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST)
                 .done { json in
-                    let model = OTP(object: json)
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in
+                    seal.reject(error)
+            }
+            
+        }
+    }
+    
+    
+    /// Cap nhat pass moi khi quen pass
+    ///
+    /// - Parameters:
+    ///   - phoneNumber: <#phoneNumber description#>
+    ///   - pwd: <#pwd description#>
+    /// - Returns: <#return value description#>
+    func forgetPasswordNewPass(phoneNumber: String, pwd: String) -> Promise<APIResponseGeneral> {
+        
+        let params: JSONDictionary = [
+            "phoneNumber": phoneNumber,
+            "password": pwd,
+            ]
+        
+        return Promise<APIResponseGeneral> { seal in
+            requestWithEndPoint(endPoint: EndPoint.User.ForgetPasswordNewPass, params: params, isShowLoadingView: true, httpType: HTTPMethodType.PUT)
+                .done { json in
+                    let model = APIResponseGeneral(object: json)
                     seal.fulfill(model)
                 }
                 .catch { error in

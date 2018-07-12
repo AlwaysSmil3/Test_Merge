@@ -58,7 +58,24 @@ class AddressTBViewController: BaseViewController {
         
         self.mainTBView.tableFooterView = UIView()
         
+        //Add ToolBar
+        let toolbar = UIToolbar()
+        let nextButtonItem = UIBarButtonItem(title: NSLocalizedString("Xong",
+                                                                      comment: ""),
+                                             style: .done,
+                                             target: self,
+                                             action: #selector(pinCodeNextAction))
+        toolbar.items = [nextButtonItem]
+        toolbar.barStyle = .default
+        toolbar.sizeToFit()
+        self.searchBar.inputAccessoryView = toolbar
+
+        
         self.getData()
+    }
+    
+    @objc private func pinCodeNextAction() {
+        self.view.endEditing(true)
     }
     
     private func getData() {
