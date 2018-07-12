@@ -222,23 +222,34 @@ class VerifyOTPAuthenVC: BaseViewController {
             // call to api check OTP
             // success
             self.verifyOTPInvestLoan()
-            // push delegate to invest register to Budget Awards
-//            let budgetAwardsVC = BudgetAwardsViewController(nibName: "BudgetAwardsViewController", bundle: nil)
-////            self.present(budgetAwardsVC, animated: true, completion: nil)
-//            self.navigationController?.pushViewController(budgetAwardsVC, animated: true)
             break
-        default:
-            print("Forgot Password Verify")
-            let phoneNumber = DataManager.shared.currentAccount
-            APIClient.shared.verifyOTPAuthen(phoneNumber: phoneNumber, otp: self.otp)
-                .done(on: DispatchQueue.main) { [weak self] model in
-                    let updatePassVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "SetPassAuthenVC") as! SetPassAuthenVC
-                    updatePassVC.setPassOrResetPass = .ResetPass
-                    self?.navigationController?.pushViewController(updatePassVC, animated: true)
-            }
-            .catch { error in}
+            
+        case .Forgot:
+            self.verifyOTPForgotPass()
+            
+            break
+
         }
 
+    }
+    
+    //MARK: forgot password
+    
+    private func verifyOTPForgotPass() {
+        APIClient.shared.forgetPasswordOTP(phoneNumber: self.account, otp: self.otp)
+            .done(on: DispatchQueue.main) { [weak self] model in
+                guard let code = model.returnCode, code == 1 else {
+                    self?.showAlertView(title: MS_TITLE_ALERT, message: model.returnMsg!, okTitle: "OK", cancelTitle: nil)
+                    return
+                }
+                
+                DataManager.shared.currentAccount = self?.account ?? ""
+                
+                let updatePassVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "SetPassAuthenVC") as! SetPassAuthenVC
+                updatePassVC.setPassOrResetPass = .ResetPass
+                self?.navigationController?.pushViewController(updatePassVC, animated: true)
+            }
+            .catch { error in}
     }
 
     //MARK: Verify sign contract
