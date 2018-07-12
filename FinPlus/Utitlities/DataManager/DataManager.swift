@@ -246,31 +246,37 @@ class DataManager {
             //Thong tin UserInfo
             if let fullName = userInfo.fullName, fullName.length() > 0 {
                 missingListKey.append("fullName")
-                missingListTitle.append("")
+                missingListTitle.append("Họ và tên")
             }
             
             if let gender = userInfo.gender, gender.length() > 0 {
                 missingListKey.append("gender")
+                missingListTitle.append("Giới tính")
             }
             
             if let birthday = userInfo.birthday, birthday.length() > 0 {
                 missingListKey.append("birthday")
+                missingListTitle.append("Ngày sinh")
             }
             
             if let nationalId = userInfo.nationalId, nationalId.length() > 0 {
                 missingListKey.append("nationalId")
+                missingListTitle.append("Số CMND/thẻ căn cước")
             }
             
             if let relationPhones = userInfo.relationships, relationPhones.count > 0 {
                 missingListKey.append("relationships")
+                missingListTitle.append("Số điện thoại liên lạc của người thân")
             }
             
-            if let _ = userInfo.residentAddress {
+            if let add = userInfo.residentAddress, let city = add.city, city.length() > 0 {
                 missingListKey.append("residentAddress")
+                missingListTitle.append("Địa chỉ nhà thường trú")
             }
             
-            if let _ = userInfo.currentAddress {
+            if let add = userInfo.currentAddress, let city = add.city, city.length() > 0 {
                 missingListKey.append("currentAddress")
+                missingListTitle.append("Địa chỉ nhà tạm trú")
             }
             
         }
@@ -279,47 +285,58 @@ class DataManager {
             //Thong tin JobInfo
             if let _ = jobInfo.jobType {
                 missingListKey.append("jobType")
+                missingListTitle.append("Nghề nghiệp")
             }
             
             if let _ = jobInfo.position {
                 missingListKey.append("position")
+                missingListTitle.append("Cấp bậc")
             }
             
             if let _ = jobInfo.company {
                 missingListKey.append("company")
+                missingListTitle.append("Tên cơ quan")
             }
             
             if let sa = jobInfo.salary, sa > 0 {
                 missingListKey.append("salary")
+                missingListTitle.append("Thu nhập hàng tháng")
             }
             
             if let _ = jobInfo.companyPhoneNumber {
                 missingListKey.append("companyPhoneNumber")
+                missingListTitle.append("SĐT cơ quan")
             }
             
-            if let _ = jobInfo.address {
+            if let add = jobInfo.address, let city = add.city, city.length() > 0 {
                 missingListKey.append("address")
+                missingListTitle.append("Địa chỉ cơ quan")
             }
             
         }
         
         if let _ = miss.nationalIdAllImg {
             missingListKey.append("nationalIdAllImg")
+            missingListTitle.append("Ảnh bạn đang cầm CMND")
         }
         
         if let _ = miss.nationalIdFrontImg {
             missingListKey.append("nationalIdFrontImg")
+            missingListTitle.append("Ảnh mặt trước CMND")
         }
         
         if let _ = miss.nationalIdBackImg {
             missingListKey.append("nationalIdBackImg")
+            missingListTitle.append("Ảnh mặt sau CMND")
         }
         
         if let _ = miss.optionalText {
             missingListKey.append("optionalText")
+            missingListTitle.append("Lương hàng tháng của bạn")
         }
         
         self.listKeyMissingLoanKey = missingListKey
+        self.listKeyMissingLoanTitle = missingListTitle
     }
     
     

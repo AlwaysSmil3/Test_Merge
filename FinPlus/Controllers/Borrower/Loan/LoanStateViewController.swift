@@ -211,9 +211,25 @@ class LoanStateViewController: UIViewController {
                 ]
                 
             case .RISK_PENDING?:
+                //Cần bổ sung thông tin
                 if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
                     self.navigationController?.isNavigationBarHidden = true
                 }
+                
+                if payMounthTitle == "Trả góp hàng tháng" {
+                    payMounthTitle = "Trả góp dự kiến hàng tháng"
+                }
+                dataSource = [
+                    LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
+                    LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
+                    LoanSummaryModel(name: "Số tiền vay", value: amountString, attributed: NSAttributedString(string: amountString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Thời hạn vay", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Trạng thái", value: "Cần bổ sung thông tin", attributed: NSAttributedString(string: "Cần bổ sung thông tin", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : UIColor(hexString: "#ED8A17")])),
+                    LoanSummaryModel(name: "Lãi suất dự kiến", value: "\(rate)%/năm", attributed: nil),
+                    LoanSummaryModel(name: "Phí dịch vụ dự kiến", value: FinPlusHelper.formatDisplayCurrency(serviceFee) + "đ", attributed: nil),
+                    LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
+                ]
                 
                 headerData = [
                     [
@@ -223,19 +239,20 @@ class LoanStateViewController: UIViewController {
                         ],
                     [
                         "type": HeaderCellType.TextType,
-                        "text": "Để được duyệt, hãy bổ sung các thông tin sau:\n• Số chứng minh thư.\n• Ảnh chứng minh thư.\n• Bảng lương.",
+                        "text": self.formatTitleMissingKey(),
                         "subType": TextCellType.DesType,
+                        
                         ],
                     [
                         "type": HeaderCellType.ButtonType,
                         "text": "Bổ sung thông tin",
                         "subType": ButtonCellType.FillType,
-                        "target": ""
+                        "target": "update_loan"
                     ],
                 ]
                 
             case .INTEREST_CONFIRM?, .INTEREST_CONFIRM_EXPIRED?:
-                //Cho xác nhận lãi xuất, thángạn xác nhận lãi xuất
+                //Cho xác nhận lãi xuất, qúa hạn xác nhận lãi xuất
                 if payMounthTitle == "Trả góp hàng tháng" {
                     payMounthTitle = "Trả góp dự kiến hàng tháng"
                 }
@@ -273,7 +290,7 @@ class LoanStateViewController: UIViewController {
                 ]
                 
             case .REJECTED?:
-                
+                //Bị từ chối
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
@@ -306,7 +323,7 @@ class LoanStateViewController: UIViewController {
                 ]
                 
             case .CANCELED?:
-                
+                //Đã huỷ đơn vay
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
@@ -400,8 +417,6 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
-                
-                
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
@@ -484,7 +499,7 @@ class LoanStateViewController: UIViewController {
                 
                 
             case .TIMELY_DEPT?, .DISBURSAL?:
-                
+                //Nợ đúng hạn
                 //đã giải ngân
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -564,6 +579,12 @@ class LoanStateViewController: UIViewController {
                         "target": "pushToPayHistoryVC"
                     ],
                 ]
+                break
+            case .SETTLED?:
+                //Khoản vay thanh toán thành công
+                
+                
+                break
  
                 
             default:
@@ -666,6 +687,9 @@ class LoanStateViewController: UIViewController {
             self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.confirmRate), for: .touchUpInside)
             self.labelBottomView.text = "Tiền phí sẽ được trừ ngay sau khi giải ngân tiền vay."
             isEnableFooterView = true
+            break
+            
+            
             
         default:
             break
@@ -721,6 +745,18 @@ class LoanStateViewController: UIViewController {
         self.dataTableViewHeightConstraint?.constant = (self.dataTableView?.contentSize.height)!
         self.headerTableViewHeightConstraint?.constant = (self.headerTableView?.contentSize.height)!
     
+    }
+    
+    private func formatTitleMissingKey() -> String {
+        var value = "Để được duyệt, hãy bổ sung các thông tin sau:"
+        guard let listTitle = DataManager.shared.listKeyMissingLoanTitle else { return value }
+        for i in listTitle {
+            //Để được duyệt, hãy bổ sung các thông tin sau:\n• Số chứng minh thư.\n• Ảnh chứng minh thư.\n• Bảng lương.
+            value.append("\n• \(i)")
+
+        }
+        
+        return value
     }
     
     // MARK: Action
