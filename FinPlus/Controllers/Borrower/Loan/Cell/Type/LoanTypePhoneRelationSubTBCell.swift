@@ -18,8 +18,10 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
     var data: LoanBuilderMultipleData? {
         didSet {
             guard let data_ = data else { return }
-            
             self.tfRelationPhone?.placeholder = data_.placeholder
+            self.tfRelationPhone?.text = data_.phoneNumber
+            
+            self.tfTypeRelation?.text = DataManager.getTitleRelationShip(id: data_.type ?? 0)
 
         }
         

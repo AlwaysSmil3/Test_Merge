@@ -28,7 +28,7 @@ public struct BrowwerActiveLoan {
     static let loanCategory = "loanCategory"
     static let createdTime = "createdAt"
     
-    static let inRate = "inRate"
+    static let inRate = "intRate"
     static let score = "score"
     static let grade = "grade"
 
