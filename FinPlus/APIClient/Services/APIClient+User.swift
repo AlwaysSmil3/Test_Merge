@@ -24,10 +24,20 @@ extension APIClient {
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = BrowwerInfo(object: data)
                         
-                        if let activeLoan = data["activeLoan"] as? JSONDictionary, let missingData = activeLoan["missingData"] as? JSONDictionary {
-                            DataManager.shared.missingLoanData = BrowwerActiveLoan(object: missingData)
+                        if let activeLoan = model.activeLoan,let status = activeLoan.status, status == STATUS_LOAN.SALE_PENDING.rawValue || status == STATUS_LOAN.RISK_PENDING.rawValue {
+                            if let activeLoan = data["activeLoan"] as? JSONDictionary, let missingData = activeLoan["missingData"] as? JSONDictionary {
+                                DataManager.shared.missingLoanData = BrowwerActiveLoan(object: missingData)
+                            } else {
+                                DataManager.shared.missingLoanData = nil
+                                DataManager.shared.listKeyMissingLoanKey = nil
+                                DataManager.shared.listKeyMissingLoanTitle = nil
+                            }
+                        } else {
+                            DataManager.shared.missingLoanData = nil
+                            DataManager.shared.listKeyMissingLoanKey = nil
+                            DataManager.shared.listKeyMissingLoanTitle = nil
                         }
-                        
+
                         seal.fulfill(model)
                     }
                 }
