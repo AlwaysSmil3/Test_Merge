@@ -247,7 +247,7 @@ class LoanStateViewController: UIViewController {
                         "type": HeaderCellType.ButtonType,
                         "text": "Bổ sung thông tin",
                         "subType": ButtonCellType.FillType,
-                        "target": "update_loan"
+                        "target": "update_loan_MissData"
                     ],
                 ]
                 

@@ -151,7 +151,7 @@ class LoanSummaryInfoVC: BaseViewController {
     @IBAction func btnLoanTapped(_ sender: Any) {
         
         guard DataManager.shared.listKeyMissingLoanKey == nil || DataManager.shared.listKeyMissingLoanKey!.count == 0 else {
-            self.updateDataLoan()
+            self.updateLoanStatus()
             return
         }
 
