@@ -361,6 +361,32 @@ class DataManager {
     }
     
     
+    /// Title RelationShip
+    ///
+    /// - Parameter id: <#id description#>
+    /// - Returns: <#return value description#>
+    class func getTitleRelationShip(id: Int) -> String {
+        
+        switch id {
+        case 0:
+            return "Vợ"
+        case 1:
+            return "Chồng"
+        case 2:
+            return "Bố"
+        case 3:
+            return "Mẹ"
+        case 4:
+            return "Bạn bè"
+        case 5:
+            return "Đồng nghiệp"
+            
+        default:
+            return "Người thân"
+        }
+        
+        
+    }
     
     
     

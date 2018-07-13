@@ -782,7 +782,7 @@ class LoanStateViewController: UIViewController {
             
         case .RISK_PENDING?, .RISK_REVIEW?, .SALE_REVIEW?, .SALE_PENDING?:
             alert.addAction(UIAlertAction(title: "Chỉnh sửa đơn vay", style: .default , handler:{ (UIAlertAction)in
-                
+                self.update_loan()
             }))
             
             alert.addAction(UIAlertAction(title: "Hủy yêu cầu", style: .destructive , handler:{ (UIAlertAction)in
