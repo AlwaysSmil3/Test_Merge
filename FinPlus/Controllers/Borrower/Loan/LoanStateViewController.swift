@@ -186,7 +186,7 @@ class LoanStateViewController: UIViewController {
                     ],
                 ]
                 
-            case .SALE_REVIEW?, .SALE_PENDING?, .RISK_REVIEW?:
+            case .SALE_REVIEW?, .RISK_REVIEW?:
                 if payMounthTitle == "Trả góp hàng tháng" {
                     payMounthTitle = "Trả góp dự kiến hàng tháng"
                 }
@@ -210,7 +210,7 @@ class LoanStateViewController: UIViewController {
                         ],
                 ]
                 
-            case .RISK_PENDING?:
+            case .RISK_PENDING?, .SALE_PENDING?:
                 //Cần bổ sung thông tin
                 if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
                     self.navigationController?.isNavigationBarHidden = true
@@ -247,7 +247,7 @@ class LoanStateViewController: UIViewController {
                         "type": HeaderCellType.ButtonType,
                         "text": "Bổ sung thông tin",
                         "subType": ButtonCellType.FillType,
-                        "target": "update_loan"
+                        "target": "update_loan_MissData"
                     ],
                 ]
                 

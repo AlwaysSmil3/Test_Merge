@@ -139,6 +139,10 @@ class DataManager {
             self.currentIndexCategoriesSelectedPopup = Int(cateID) - 1
         }
         
+        if let status = activeLoan.status {
+            DataManager.shared.loanInfo.status = status
+        }
+        
         if let loanId = activeLoan.loanId, loanId > 0 {
             DataManager.shared.loanID = loanId
         }
@@ -237,6 +241,7 @@ class DataManager {
     
     //Update Các thông tin không hợp lệ
     func updateListMissingKeyData() {
+        
         guard let miss = self.missingLoanData else { return }
         
         var missingListKey : [String] = []

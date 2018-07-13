@@ -123,8 +123,6 @@ class VerifyOTPAuthenVC: BaseViewController {
     
     @IBAction func resendCodeBtnAction(_ sender: Any) {
         // call to resend Code API
-        print("Resend Code API")
-        
         
         switch verifyType {
         case .Login:
@@ -142,9 +140,12 @@ class VerifyOTPAuthenVC: BaseViewController {
         case .RegisInvest:
             self.resendInvestCode()
             break
-        default:
-            print("Forgot Password Verify")
+        case .Forgot:
+            //Quen mat khau
+            
+            
             break
+
         }
         
     }
@@ -230,7 +231,6 @@ class VerifyOTPAuthenVC: BaseViewController {
             break
 
         }
-
     }
     
     //MARK: forgot password

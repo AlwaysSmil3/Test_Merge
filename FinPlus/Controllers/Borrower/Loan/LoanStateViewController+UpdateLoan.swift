@@ -78,8 +78,6 @@ extension LoanStateViewController {
         guard DataManager.shared.loanCategories.count > 0 else { return }
         guard let _ = DataManager.shared.browwerInfo else { return }
         
-//
-//        DataManager.shared.mapDataBrowwerAndLoan()
         
         let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
         
@@ -88,6 +86,17 @@ extension LoanStateViewController {
         //DataManager.shared.currentIndexCategoriesSelectedPopup = 0
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(loanFirstVC, animated: true)
+    }
+    
+    @IBAction func update_loan_MissData()
+    {
+        guard DataManager.shared.loanCategories.count > 0 else { return }
+        guard let _ = DataManager.shared.browwerInfo else { return }
+        
+        let loanPersionalInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanPersionalInfoVC") as! LoanPersionalInfoVC
+        loanPersionalInfoVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
     }
     
     

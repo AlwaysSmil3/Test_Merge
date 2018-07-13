@@ -29,6 +29,11 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
+            self.navigationController?.isNavigationBarHidden = true
+        }
+        
         super.viewWillAppear(animated)
         
     }
