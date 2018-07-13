@@ -337,7 +337,7 @@ extension APIClient {
 
     func signContract(otp: String, loanID: Int32) -> Promise<APIResponseGeneral> {
 
-        let endPoint = "loans/" + "\(loanID)/contract"
+        let endPoint = "loans/" + "\(loanID)/contract/otp"
         let params: JSONDictionary = [
             "otp": otp
         ]
