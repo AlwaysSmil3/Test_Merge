@@ -283,17 +283,17 @@ class DataManager {
         
         if let jobInfo = miss.jobInfo {
             //Thong tin JobInfo
-            if let _ = jobInfo.jobType {
+            if let value = jobInfo.jobType, value.length() > 0 {
                 missingListKey.append("jobType")
                 missingListTitle.append("Nghề nghiệp")
             }
             
-            if let _ = jobInfo.position {
+            if let value = jobInfo.position, value.length() > 0 {
                 missingListKey.append("position")
                 missingListTitle.append("Cấp bậc")
             }
             
-            if let _ = jobInfo.company {
+            if let value = jobInfo.company, value.length() > 0 {
                 missingListKey.append("company")
                 missingListTitle.append("Tên cơ quan")
             }
@@ -303,7 +303,7 @@ class DataManager {
                 missingListTitle.append("Thu nhập hàng tháng")
             }
             
-            if let _ = jobInfo.companyPhoneNumber {
+            if let value = jobInfo.companyPhoneNumber, value.length() > 0 {
                 missingListKey.append("companyPhoneNumber")
                 missingListTitle.append("SĐT cơ quan")
             }
@@ -315,22 +315,22 @@ class DataManager {
             
         }
         
-        if let _ = miss.nationalIdAllImg {
+        if let value = miss.nationalIdAllImg, value.length() > 0 {
             missingListKey.append("nationalIdAllImg")
             missingListTitle.append("Ảnh bạn đang cầm CMND")
         }
         
-        if let _ = miss.nationalIdFrontImg {
+        if let value = miss.nationalIdFrontImg, value.length() > 0 {
             missingListKey.append("nationalIdFrontImg")
             missingListTitle.append("Ảnh mặt trước CMND")
         }
         
-        if let _ = miss.nationalIdBackImg {
+        if let value = miss.nationalIdBackImg, value.length() > 0 {
             missingListKey.append("nationalIdBackImg")
             missingListTitle.append("Ảnh mặt sau CMND")
         }
         
-        if let _ = miss.optionalText {
+        if let value = miss.optionalText, value.length() > 0 {
             missingListKey.append("optionalText")
             missingListTitle.append("Lương hàng tháng của bạn")
         }
