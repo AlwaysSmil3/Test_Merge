@@ -68,8 +68,8 @@ enum STATUS_LOAN: Int {
     case OVERDUE_DEPT = 15 // Nợ quá hạn (Thông tin có nợ bổ sung nợ quá hạn bao nhiêu ngày)
     case TIMELY_DEPT = 16 // Nợ đúng hạn
     case CANCELED = 17 // Đã hủy
-    case EXPIRED_NOT_ENOUGH = 18 // Đã hủy
-    case COMPLETED = 19 // Đã hoàn thành
+    case SETTLED = 18 // Khoản vay đã thanh toán thành công
+
 }
 
 
@@ -206,8 +206,8 @@ func getState(type: STATUS_LOAN) -> String {
         return "Nợ đúng hạn"
     case .CANCELED:
         return "Đã hủy"
-    case .EXPIRED_NOT_ENOUGH:
-        return "Quá hạn nhưng không huy động đủ tiền"
+    case .SETTLED:
+        return "Khoản vay đã thanh toán thành công"
     default:
         return "Hoàn thành"
     }
@@ -219,7 +219,7 @@ func getColorText(type: STATUS_LOAN) -> UIColor {
         return UIColor(hexString: "#ED8A17") // Da cam
     case .SALE_PENDING, .SALE_REVIEW, .RISK_REVIEW, .INTEREST_CONFIRM, .RAISING_CAPITAL, .PARTIAL_FILLED, .FILLED, .CONTRACT_READY, .CONTRACT_SIGNED, .DISBURSAL, .TIMELY_DEPT:
         return UIColor(hexString: "#3EAA5F") // Xanh
-    case .REJECTED, .INTEREST_CONFIRM_EXPIRED, .EXPIRED, .OVERDUE_DEPT, .CANCELED, .EXPIRED_NOT_ENOUGH:
+    case .REJECTED, .INTEREST_CONFIRM_EXPIRED, .EXPIRED, .OVERDUE_DEPT, .CANCELED:
         return UIColor(hexString: "#DA3535") // Đỏ
     default:
         return UIColor(hexString: "#4D6678") // Xám lông chuột
