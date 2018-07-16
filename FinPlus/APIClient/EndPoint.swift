@@ -43,7 +43,7 @@ enum EndPoint {
         static let PushToken = "users/uid/push-token"
         static let ForgetPassword = "users/forget-password"
         static let ForgetPasswordOTP    = "users/forget-password/otp"
-        static let ForgetPasswordNewPass = "users/new-password"
+        static let ForgetPasswordNewPass = "users/forget-password/new-password"
         static let ChangePassword = "users/:userId/change-password"
         static let GetOTPForgetPassword = "users/forget-password/\(DataManager.shared.currentAccount)/otp"
     }

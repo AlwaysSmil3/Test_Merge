@@ -233,7 +233,7 @@ extension APIClient {
         let endPoint = EndPoint.Authen.resendOTPAuthen + DataManager.shared.currentAccount
         
         return Promise<APIResponseGeneral> { seal in
-            getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: true)
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
                 .done { json in
                     
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
