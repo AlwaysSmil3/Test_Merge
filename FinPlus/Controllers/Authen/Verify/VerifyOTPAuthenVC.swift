@@ -142,7 +142,7 @@ class VerifyOTPAuthenVC: BaseViewController {
             break
         case .Forgot:
             //Quen mat khau
-            
+            self.getOTPForgetPass()
             
             break
 
@@ -154,6 +154,7 @@ class VerifyOTPAuthenVC: BaseViewController {
     private func getAuthenOTP() {
         APIClient.shared.getAuthenOTP()
             .done(on: DispatchQueue.main) { [weak self]model in
+                self?.showToastWithMessage(message: model.returnMsg!)
                 self?.updateOTP()
             }
             .catch { error in }
@@ -166,9 +167,23 @@ class VerifyOTPAuthenVC: BaseViewController {
         guard let loanid_ = self.loanId else { return }
         APIClient.shared.getOTPContract(loanID: loanid_)
             .done(on: DispatchQueue.main) { [weak self]model in
+                self?.showToastWithMessage(message: model.returnMsg!)
                 self?.updateOTP()
             }
             .catch { error in }
+        
+    }
+    
+    
+    /// Gửi yêu cầu gửi lại otp phần quên mật khẩu
+    private func getOTPForgetPass() {
+        APIClient.shared.getForgetPasswordOTP()
+            .done(on: DispatchQueue.main) { [weak self]model in
+                self?.showToastWithMessage(message: model.returnMsg!)
+                self?.updateOTP()
+            }
+            .catch { error in }
+        
         
     }
     

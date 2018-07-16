@@ -285,12 +285,16 @@ extension APIClient {
         }
     }
     
-    func getForgetOTP() -> Promise<APIResponseGeneral> {
+    
+    /// gui lai otp mục quên mật khẩu
+    ///
+    /// - Returns: <#return value description#>
+    func getForgetPasswordOTP() -> Promise<APIResponseGeneral> {
         
-        let endPoint = EndPoint.Authen.resendOTPAuthen + DataManager.shared.currentAccount
+        let endPoint = EndPoint.User.GetOTPForgetPassword
         
         return Promise<APIResponseGeneral> { seal in
-            getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: true)
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
                 .done { json in
                     
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
