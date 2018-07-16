@@ -126,11 +126,11 @@ class VerifyOTPAuthenVC: BaseViewController {
         
         switch verifyType {
         case .Login:
-            
+            self.getAuthenOTP()
             break
             
         case .SignContract:
-            
+            self.getSignContractOTP()
             
             break
         case .Loan:
@@ -149,6 +149,29 @@ class VerifyOTPAuthenVC: BaseViewController {
         }
         
     }
+    
+    //Gui yeu cau gui lai otp login, register
+    private func getAuthenOTP() {
+        APIClient.shared.getAuthenOTP()
+            .done(on: DispatchQueue.main) { [weak self]model in
+                self?.updateOTP()
+            }
+            .catch { error in }
+        
+    }
+    
+    
+    /// Gui yeu cau gui otp Ky hợp đồng
+    private func getSignContractOTP() {
+        guard let loanid_ = self.loanId else { return }
+        APIClient.shared.getOTPContract(loanID: loanid_)
+            .done(on: DispatchQueue.main) { [weak self]model in
+                self?.updateOTP()
+            }
+            .catch { error in }
+        
+    }
+    
     
     func resendInvestCode() {
         if let loanId = self.loanId {

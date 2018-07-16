@@ -13,7 +13,11 @@ class DataManager {
     static let shared = DataManager()
     
     var currentAccount: String = ""
-    var userID: Int32 = 0
+    var userID: Int32 = 0 {
+        didSet {
+            loanInfo.userID = self.userID
+        }
+    }
     
     //Push Notification Token
     var pushNotificationToken: String?
