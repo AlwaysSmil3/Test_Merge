@@ -225,6 +225,37 @@ extension APIClient {
     }
     
     
+    /// gui yeu cau gửi lại otp khi Authen
+    ///
+    /// - Returns: <#return value description#>
+    func getAuthenOTP() -> Promise<APIResponseGeneral> {
+        
+        let endPoint = EndPoint.Authen.resendOTPAuthen + DataManager.shared.currentAccount
+        
+        return Promise<APIResponseGeneral> { seal in
+            getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: true)
+                .done { json in
+                    
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+                        if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
+                                if status {
+                                }
+                                
+                            })
+                        }
+                        
+                        return
+                    }
+                    
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in seal.reject(error)}
+        }
+        
+    }
+    
     
     
     
