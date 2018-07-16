@@ -242,6 +242,50 @@ extension APIClient {
     }
     
     
+    /// Đổi password
+    ///
+    /// - Parameters:
+    ///   - phoneNumber: <#phoneNumber description#>
+    ///   - pwd: <#pwd description#>
+    /// - Returns: <#return value description#>
+    func changePassword(oldPass: String, newPass: String) -> Promise<APIResponseGeneral> {
+        
+        let params: JSONDictionary = [
+            "oldPassword": oldPass,
+            "newPassword": newPass,
+            ]
+        
+        let uID = DataManager.shared.userID
+        let endPoint = "users/" + "\(uID)" + "/change-password"
+        
+        return Promise<APIResponseGeneral> { seal in
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: HTTPMethodType.PUT)
+                .done { json in
+                    
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+                        if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
+                                if status {
+                                }
+                                
+                            })
+                        }
+                        
+                        return
+                    }
+                    
+                    
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in
+                    seal.reject(error)
+            }
+            
+        }
+    }
+    
+    
     
     
 }

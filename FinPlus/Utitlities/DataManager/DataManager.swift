@@ -231,7 +231,9 @@ class DataManager {
         if let optionMedia = activeLoan.optionalMedia {
             DataManager.shared.loanInfo.optionalMedia.removeAll()
             for i in optionMedia {
-                DataManager.shared.loanInfo.optionalMedia.append(i)
+                if i.length() > 0 {
+                    DataManager.shared.loanInfo.optionalMedia.append(i)
+                }
             }
             
         }
