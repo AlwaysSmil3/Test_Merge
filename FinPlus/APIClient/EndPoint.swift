@@ -43,6 +43,7 @@ enum EndPoint {
         static let ForgetPassword = "users/forget-password"
         static let ForgetPasswordOTP    = "users/forget-password/otp"
         static let ForgetPasswordNewPass = "users/new-password"
+        static let ChangePassword = "users/:userId/change-password"
     }
     
     enum Loan {

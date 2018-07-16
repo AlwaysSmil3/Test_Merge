@@ -55,7 +55,10 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         var temp: [String] = []
         
         if let data = DataManager.shared.browwerInfo?.activeLoan?.optionalMedia, data.count > 0 {
-            temp = data
+            if data[0].length() > 0 {
+                temp = data
+            }
+            
         }
         
         if DataManager.shared.loanInfo.optionalMedia.count > 0 {
