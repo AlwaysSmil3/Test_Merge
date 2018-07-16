@@ -116,7 +116,7 @@ extension APIClient {
      */
     func updateInfoFromFacebook(phoneNumber: String, pass: String, accountType: Int, accessToken: String, avatar: String, displayName: String, investOtherInfo: InvestorRegisterModel? = nil) -> Promise<BrowwerInfo> {
         
-        var params: JSONDictionary = [
+        let params: JSONDictionary = [
             "phoneNumber": phoneNumber,
             "password": pass,
             "accountType": accountType,
