@@ -100,7 +100,7 @@ let API_RESPONSE_RETURN_DATA = "data"
 let API_DEVICE_TYPE_OS = 0 // ios 0, android: 1
 
 //MARK: Colors
-let MAIN_COLOR = UIColor(hexString: "#3BAB63")
+let MAIN_COLOR = UIColor(hexString: "#3EAA5F")
 let BAR_DEFAULT_COLOR = UIColor(hexString: "#c9c9cd")
 let DISABLE_BUTTON_COLOR = UIColor(hexString: "#B8C9D3")
 let TEXT_NORMAL_COLOR = UIColor(hexString: "#4D6678")

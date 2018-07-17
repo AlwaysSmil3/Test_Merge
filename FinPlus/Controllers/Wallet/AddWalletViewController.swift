@@ -72,7 +72,12 @@ class AddWalletViewController: UIViewController {
         if (wallet != nil)
         {
             self.rightBarBtn.title = "Lưu"
-            self.title = "Sửa tài khoản ngân hàng"
+            
+            self.leftBarBtn.image = nil
+            self.leftBarBtn.tintColor = MAIN_COLOR
+            self.leftBarBtn.title = "Huỷ"
+            
+            self.title = "Sửa thông tin tài khoản"
             nameTextField.text = wallet!.accountBankName
             accTextField.text = wallet!.accountBankNumber
             
@@ -95,6 +100,14 @@ class AddWalletViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.wallet != nil {
+            self.leftBarBtn.tintColor = MAIN_COLOR
+        }
     }
     
     func addNewBank() {
