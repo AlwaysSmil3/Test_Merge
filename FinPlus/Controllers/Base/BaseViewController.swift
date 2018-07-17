@@ -13,9 +13,9 @@ class BaseViewController: UIViewController {
     @IBOutlet var btnContinue: UIButton?
     @IBOutlet var imgBgBtnContinue: UIImageView?
     
-    func setupTitleView(title: String, subTitle: String) {
+    func setupTitleView(title: String, subTitle: String? = nil) {
         let topText = NSLocalizedString(title, comment: "")
-        let bottomText = NSLocalizedString(subTitle, comment: "")
+        
         
         let titleParameters = [NSAttributedStringKey.foregroundColor: UIColor(hexString: "#08121E"),
                                NSAttributedStringKey.font : UIFont(name: FONT_FAMILY_BOLD, size: 17)]
@@ -23,10 +23,14 @@ class BaseViewController: UIViewController {
                                   NSAttributedStringKey.font : UIFont(name: FONT_FAMILY_REGULAR, size: 11)]
         
         let title:NSMutableAttributedString = NSMutableAttributedString(string: topText, attributes: titleParameters)
-        let subtitle:NSAttributedString = NSAttributedString(string: bottomText, attributes: subtitleParameters)
         
-        title.append(NSAttributedString(string: "\n"))
-        title.append(subtitle)
+        if let sub = subTitle {
+            let bottomText = NSLocalizedString(sub, comment: "")
+            let subtitle:NSAttributedString = NSAttributedString(string: bottomText, attributes: subtitleParameters)
+            
+            title.append(NSAttributedString(string: "\n"))
+            title.append(subtitle)
+        }
         
         let size = title.size()
         

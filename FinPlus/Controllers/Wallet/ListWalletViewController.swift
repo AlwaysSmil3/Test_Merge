@@ -44,17 +44,18 @@ class ListWalletViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         if self.walletAction == .LoanNation {
             self.setupTitleView(title: "Tạo yêu cầu vay", subTitle: "Bước 4: Tài khoản ngân hàng")
-            self.navigationController?.navigationBar.shadowImage = UIImage()
+            //self.navigationController?.navigationBar.shadowImage = UIImage()
             self.bottomView.isHidden = false
             DataManager.shared.loanInfo.currentStep = 2
             self.updateDataToServer()
-        }
-        
+        } else {
 
-        self.title = NSLocalizedString("ACCOUNT_MANAGER", comment: "")
+            self.setupTitleView(title: "Tài khoản nhận tiền")
+        }
         
         self.noWalletLabel.text = NSLocalizedString("NO_ACCOUNT_BANK", comment: "")
         
@@ -129,11 +130,9 @@ class ListWalletViewController: BaseViewController {
         }))
         
         alert.addAction(UIAlertAction(title: "Xóa tài khoản", style: .destructive , handler:{ (UIAlertAction)in
-            self.listWallet.removeObject(at: sender.tag)
-            self.tableview.reloadData()
-            self.tableview.isHidden = self.listWallet.count < 1
-            self.noWalletLabel.isHidden = self.listWallet.count > 0
-            self.addBtn.isHidden = self.listWallet.count > 0
+            guard let bank = self.listWallet[sender.tag] as? AccountBank, let bankID = bank.id else { return }
+            self.deleteBank(bankID: bankID, index: sender.tag)
+            
         }))
         
         alert.addAction(UIAlertAction(title: "Hủy", style: .cancel, handler:{ (UIAlertAction)in
@@ -164,6 +163,27 @@ class ListWalletViewController: BaseViewController {
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    
+    /// Delete Bank
+    ///
+    /// - Parameter bankID: <#bankID description#>
+    func deleteBank(bankID: Int32, index: Int) {
+        APIClient.shared.deleteBankAccount(bankAccountID: bankID)
+            .done(on: DispatchQueue.main) { [weak self]model in
+                guard let strongSelf = self else { return }
+                strongSelf.showToastWithMessage(message: model.returnMsg!)
+                
+                strongSelf.listWallet.removeObject(at: index)
+                strongSelf.tableview.reloadData()
+                strongSelf.tableview.isHidden = strongSelf.listWallet.count < 1
+                strongSelf.noWalletLabel.isHidden = strongSelf.listWallet.count > 0
+                strongSelf.addBtn.isHidden = strongSelf.listWallet.count > 0
+            }
+            .catch { error in }
+ 
+    }
+    
 }
 
 extension ListWalletViewController: UITableViewDelegate {
@@ -220,6 +240,25 @@ extension ListWalletViewController: UITableViewDelegate {
 }
 
 extension ListWalletViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = FONT_CAPTION
+        header.textLabel?.textColor = TEXT_NORMAL_COLOR
+        switch section {
+        case 0:
+            if (self.walletAction == .LoanNation)
+            {
+                header.textLabel?.text = NSLocalizedString("CHOOSE_ACCOUNT", comment: "")
+            }
+            else
+            {
+                header.textLabel?.text = NSLocalizedString("ALL_ACCOUNT_CONNECTED", comment: "")
+            }
+        default:
+            header.textLabel?.text = NSLocalizedString("CREATE_NEW_ACCOUNT", comment: "")
+        }
+    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
