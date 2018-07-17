@@ -18,7 +18,6 @@ class AddWalletViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: HoshiTextField!
     @IBOutlet weak var accTextField: HoshiTextField!
-    @IBOutlet weak var reAccTextField: HoshiTextField!
     
     @IBOutlet weak var leftBarBtn: UIBarButtonItem!
     @IBOutlet weak var rightBarBtn: UIBarButtonItem!
@@ -26,12 +25,14 @@ class AddWalletViewController: UIViewController {
     //CaoHai tra ve du lieu bank khi chon bank
     var delegate: BankDataDelegate?
     
-    var wallet: AccountBank!
+    var wallet: AccountBank?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         self.rightBarBtn.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : MAIN_COLOR], for: .normal)
         
@@ -65,8 +66,6 @@ class AddWalletViewController: UIViewController {
         accTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         accTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_SMALL)
         
-        reAccTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
-        reAccTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_SMALL)
         
         self.title = "Thêm tài khoản ngân hàng"
         
@@ -74,11 +73,10 @@ class AddWalletViewController: UIViewController {
         {
             self.rightBarBtn.title = "Lưu"
             self.title = "Sửa tài khoản ngân hàng"
-            nameTextField.text = wallet.accountBankName
-            accTextField.text = wallet.accountBankNumber
-            reAccTextField.text = wallet.district
+            nameTextField.text = wallet!.accountBankName
+            accTextField.text = wallet!.accountBankNumber
             
-            switch(BankName(rawValue: wallet.bankType!))
+            switch(BankName(rawValue: wallet!.bankType!))
             {
             case .Vietcombank?: setBorderColor(button: vcbBtn, isSelect: true)
             case .Viettinbank?: setBorderColor(button: viettinBtn, isSelect: true)
@@ -115,12 +113,6 @@ class AddWalletViewController: UIViewController {
             return
         }
         
-        if (((self.reAccTextField.text?.length())! < 1))
-        {
-            self.showAlertView(title: "Thông báo", message: "Bạn chưa điền thông tin Tỉnh", okTitle: "Đồng ý", cancelTitle: nil)
-            self.reAccTextField.becomeFirstResponder()
-            return
-        }
         
         var bankName = ""
         
@@ -141,23 +133,47 @@ class AddWalletViewController: UIViewController {
             "type": bankName,
             "accountHolder": self.nameTextField.text!,
             "accountNumber": self.accTextField.text!,
-            "branch": self.reAccTextField.text!
+            "branch": "Hai Ba Trung"
         ]
         
+        if let wal = self.wallet, let idBank = wal.id {
+            self.updateBank(bankId: idBank, params: params)
+        } else {
+            self.addBank(params: params)
+        }
+        
+    }
+    
+    private func addBank(params: JSONDictionary) {
+        
         APIClient.shared.addNewBank(uId: DataManager.shared.userID, params: params)
-            .done(on: DispatchQueue.main) { model in
+            .done(on: DispatchQueue.main) { [weak self]model in
                 
                 guard let code = model.returnCode, code > 0 else {
-                    self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg ?? "Thêm ngân hàng thất bại", okTitle: "OK", cancelTitle: nil)
+                    self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg ?? "", okTitle: "OK", cancelTitle: nil)
                     return
                 }
-                
-                self.navigationController?.popViewController(animated: true)
+                self?.showToastWithMessage(message: model.returnMsg ?? "")
+                self?.navigationController?.popViewController(animated: true)
             }
             .catch { error in
         }
     }
     
+    private func updateBank(bankId: Int32, params: JSONDictionary) {
+        APIClient.shared.updateBankAccount(bankAccountID: bankId, params: params)
+            .done(on: DispatchQueue.main) { [weak self]model in
+                
+                self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg!, okTitle: "OK", cancelTitle: "Cancel", completion: { (status) in
+                    self?.navigationController?.popToRootViewController(animated: true)
+                })
+
+            }
+            .catch { error in }
+    }
+    
+    
+    //MARK: Actions
     @IBAction func navi_cancel(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }

@@ -13,6 +13,9 @@
         <array key="SF-Pro-Display-Bold.otf">
             <string>SFProDisplay-Bold</string>
         </array>
+        <array key="SF-Pro-Display-Semibold.otf">
+            <string>SFProDisplay-Semibold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Navigation Controller-->
@@ -234,7 +237,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNx-k4-LtW">
-                                                <rect key="frame" x="195.5" y="64" width="163.5" height="56"/>
+                                                <rect key="frame" x="195.5" y="59.5" width="163.5" height="56"/>
                                                 <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Button" image="viettin">
                                                     <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
@@ -245,7 +248,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCW-bE-9Ch">
-                                                <rect key="frame" x="195.5" y="136" width="163.5" height="56"/>
+                                                <rect key="frame" x="195.5" y="131.5" width="163.5" height="56"/>
                                                 <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Button" image="agri">
                                                     <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
@@ -256,13 +259,13 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chọn ngân hàng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAN-dt-hxv">
-                                                <rect key="frame" x="16" y="30" width="113" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <rect key="frame" x="16" y="30" width="80" height="13.5"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="11"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPW-Rv-tUB">
-                                                <rect key="frame" x="16" y="136" width="164" height="56"/>
+                                                <rect key="frame" x="16" y="131.5" width="164" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="VHB-g7-wiM"/>
                                                 </constraints>
@@ -276,7 +279,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQF-Rq-arJ">
-                                                <rect key="frame" x="16" y="64" width="164" height="56"/>
+                                                <rect key="frame" x="16" y="59.5" width="164" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="ffX-ie-1LK"/>
                                                 </constraints>
@@ -289,36 +292,8 @@
                                                     <action selector="vcbBtn_selectedWithSender:" destination="71L-If-6xU" eventType="touchUpInside" id="mc8-oa-zTE"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập tỉnh thành nơi bạn ở" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZOf-cQ-kzF" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="360" width="343" height="56"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="56" id="aeF-Ni-5fo"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" textContentType="name"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
-                                                        <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
-                                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                                        <real key="value" value="0.80000000000000004"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="disableEffect" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="headerText" value="Tỉnh"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                        <color key="value" red="0.72156862749999995" green="0.78823529410000004" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ví dụ: 2880CUHY770" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OLB-Sh-PDf" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="284" width="343" height="56"/>
+                                                <rect key="frame" x="16" y="279.5" width="343" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="P8d-cG-big"/>
                                                 </constraints>
@@ -330,7 +305,7 @@
                                                         <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
-                                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                         <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -346,7 +321,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Họ và tên chủ tài khoản" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pUK-xc-opj" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="208" width="343" height="56"/>
+                                                <rect key="frame" x="16" y="203.5" width="343" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="BMn-kl-5na"/>
                                                 </constraints>
@@ -358,7 +333,7 @@
                                                         <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
-                                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                         <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -376,13 +351,11 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="ZOf-cQ-kzF" firstAttribute="top" secondItem="OLB-Sh-PDf" secondAttribute="bottom" constant="20" id="0js-Cu-0Yx"/>
                                             <constraint firstItem="FAN-dt-hxv" firstAttribute="top" secondItem="JA1-Xq-HwQ" secondAttribute="top" constant="30" id="3OL-9f-ZcV"/>
                                             <constraint firstItem="dPW-Rv-tUB" firstAttribute="top" secondItem="TQF-Rq-arJ" secondAttribute="bottom" constant="16" id="494-UF-8QH"/>
                                             <constraint firstItem="TQF-Rq-arJ" firstAttribute="top" secondItem="FAN-dt-hxv" secondAttribute="bottom" constant="16" id="4b5-CB-h3y"/>
                                             <constraint firstItem="FAN-dt-hxv" firstAttribute="leading" secondItem="JA1-Xq-HwQ" secondAttribute="leading" constant="16" id="5Ym-j9-dfO"/>
                                             <constraint firstItem="XCW-bE-9Ch" firstAttribute="width" secondItem="dPW-Rv-tUB" secondAttribute="width" id="7kU-lJ-uik"/>
-                                            <constraint firstItem="ZOf-cQ-kzF" firstAttribute="trailing" secondItem="pUK-xc-opj" secondAttribute="trailing" id="Bgz-LM-S2Y"/>
                                             <constraint firstItem="XCW-bE-9Ch" firstAttribute="leading" secondItem="MNx-k4-LtW" secondAttribute="leading" id="CH5-ga-clD"/>
                                             <constraint firstItem="XCW-bE-9Ch" firstAttribute="height" secondItem="dPW-Rv-tUB" secondAttribute="height" id="Hwr-Fg-BJ2"/>
                                             <constraint firstItem="XCW-bE-9Ch" firstAttribute="leading" secondItem="dPW-Rv-tUB" secondAttribute="trailing" constant="16" id="Jv0-rb-XCd"/>
@@ -398,7 +371,6 @@
                                             <constraint firstItem="dPW-Rv-tUB" firstAttribute="leading" secondItem="TQF-Rq-arJ" secondAttribute="leading" id="d3l-Ue-Kpo"/>
                                             <constraint firstItem="MNx-k4-LtW" firstAttribute="centerY" secondItem="TQF-Rq-arJ" secondAttribute="centerY" id="lbH-oO-2i2"/>
                                             <constraint firstItem="OLB-Sh-PDf" firstAttribute="top" secondItem="pUK-xc-opj" secondAttribute="bottom" constant="20" id="sQC-ME-A82"/>
-                                            <constraint firstItem="ZOf-cQ-kzF" firstAttribute="leading" secondItem="pUK-xc-opj" secondAttribute="leading" id="tqW-lT-hgV"/>
                                             <constraint firstItem="OLB-Sh-PDf" firstAttribute="leading" secondItem="pUK-xc-opj" secondAttribute="leading" id="tqw-Xd-tR4"/>
                                             <constraint firstItem="OLB-Sh-PDf" firstAttribute="trailing" secondItem="pUK-xc-opj" secondAttribute="trailing" id="xCb-sN-Kfs"/>
                                         </constraints>
@@ -440,7 +412,6 @@
                         <outlet property="agriBtn" destination="XCW-bE-9Ch" id="suN-aO-owO"/>
                         <outlet property="leftBarBtn" destination="exK-B4-094" id="WQl-BI-Bns"/>
                         <outlet property="nameTextField" destination="pUK-xc-opj" id="dxC-PR-MVo"/>
-                        <outlet property="reAccTextField" destination="ZOf-cQ-kzF" id="kju-rc-J5W"/>
                         <outlet property="rightBarBtn" destination="84J-9Q-Veo" id="EXE-87-Mh5"/>
                         <outlet property="techBtn" destination="dPW-Rv-tUB" id="bij-eR-lIT"/>
                         <outlet property="typeLabel" destination="FAN-dt-hxv" id="gSS-6r-Sid"/>
