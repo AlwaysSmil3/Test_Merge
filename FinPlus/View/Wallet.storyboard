@@ -396,6 +396,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="5Ia-My-PbB">
                         <barButtonItem key="leftBarButtonItem" image="ic_close" id="exK-B4-094">
+                            <color key="tintColor" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="navi_cancelWithSender:" destination="71L-If-6xU" id="16H-R2-Vwg"/>
                             </connections>
