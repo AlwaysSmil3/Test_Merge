@@ -34,12 +34,18 @@ enum EndPoint {
         static let Authen = "auth"
         static let verifyOTP = "auth/otp"
         static let Logout = "logout"
+        static let resendOTPAuthen = "auth/otp?phoneNumber="
         
     }
     
     enum User {
         static let User = "users/"
         static let PushToken = "users/uid/push-token"
+        static let ForgetPassword = "users/forget-password"
+        static let ForgetPasswordOTP    = "users/forget-password/otp"
+        static let ForgetPasswordNewPass = "users/forget-password/new-password"
+        static let ChangePassword = "users/:userId/change-password"
+        static let GetOTPForgetPassword = "users/forget-password/\(DataManager.shared.currentAccount)/otp"
     }
     
     enum Loan {

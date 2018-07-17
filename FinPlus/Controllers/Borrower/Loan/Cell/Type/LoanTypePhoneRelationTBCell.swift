@@ -8,16 +8,20 @@
 
 import Foundation
 
-class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol, LoanTypeTBCellProtocol {
+class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
 
-    @IBOutlet var tfValue: UITextField?
-    @IBOutlet var lblTypeRelation: UITextField?
+    @IBOutlet weak var mainTableView: UITableView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.lblTitle?.font = FONT_CAPTION
-        self.tfValue?.delegate = self
+        
+        self.mainTableView?.delegate = self
+        self.mainTableView?.dataSource = self
+        self.mainTableView?.register(UINib(nibName: "LoanTypePhoneRelationSubTBCell", bundle: nil), forCellReuseIdentifier: "Loan_Type_Phone_Relation_Sub_TB_Cell")
+        self.mainTableView?.tableFooterView = UIView()
+        
     }
     
     var field: LoanBuilderFields? {
@@ -32,8 +36,9 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProt
                 }
             }
             
-            if let value = field_.placeholder {
-                self.tfValue?.placeholder = value
+            
+            if let data = field_.multipleData {
+                self.dataSource = data
             }
             
             self.getData()
@@ -41,64 +46,90 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProt
     
     }
     
-    
-    @IBAction func btnDropdownTapped(_ sender: Any) {
-        guard let field_ = self.field, let data = field_.data else { return }
-        let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
-        popup.setDataSource(data: data, type: .RelationShipPhone)
-        popup.delegate = self
-        
-        popup.show()
-    }
-    
-    //MARK: Data Selected
-    func dataSelected(data: LoanBuilderData) {
-        self.lblTypeRelation?.text = data.title!
-        self.tfValue?.placeholder = "Số điện thoại của " + data.title!
-        DataManager.shared.loanInfo.userInfo.relationships.type = data.id!
-    }
-    
-    @IBAction func tfEditEnd(_ sender: Any) {
-        if let value = self.tfValue?.text {
-            DataManager.shared.loanInfo.userInfo.relationships.phoneNumber = value
+    var dataSource: [LoanBuilderMultipleData] = [] {
+        didSet {
+            self.mainTableView?.reloadData()
         }
     }
     
     func getData() {
         
-        var value = ""
-        if let phone = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.relationships?.phoneNumber, phone.length() > 0 {
-            value = phone
+        var value: [LoanBuilderMultipleData] = []
+        if let phones = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.relationships, phones.count == 2 {
+            for pho in phones {
+                if let phoneNumber = pho.phoneNumber, phoneNumber.length() > 0 {
+                    var d = LoanBuilderMultipleData(object: NSObject())
+                    
+                    d.phoneNumber = pho.phoneNumber
+                    d.type = pho.type
+                    value.append(d)
+                }
+            }
+            
         }
-        
-        if DataManager.shared.loanInfo.userInfo.relationships.phoneNumber.length() > 0 {
-            value = DataManager.shared.loanInfo.userInfo.relationships.phoneNumber
+
+        if DataManager.shared.loanInfo.userInfo.relationships.count == 2 {
+            var tempValue: [LoanBuilderMultipleData] = []
+            for pho in DataManager.shared.loanInfo.userInfo.relationships {
+                if pho.phoneNumber.length() > 0 {
+                    var d = LoanBuilderMultipleData(object: NSObject())
+                    
+                    d.phoneNumber = pho.phoneNumber
+                    d.type = Int(pho.type)
+                    tempValue.append(d)
+                }
+            }
+            if tempValue.count > 0 {
+                value = tempValue
+            }
         }
-        
-        if value.length() > 0 {
-            DataManager.shared.loanInfo.userInfo.relationships.phoneNumber = value
-            self.tfValue?.text = value
+
+        if value.count == 2 {
+            
+            guard let field_ = self.field, let data_ = field_.multipleData, data_.count == 2 else { return }
+            
+            value[0].options = data_[0].options
+            value[1].options = data_[1].options
+            value[0].placeholder = data_[0].placeholder
+            value[1].placeholder = data_[1].placeholder
+            
+            DataManager.shared.loanInfo.userInfo.relationships.removeAll()
+            for pho in value {
+                var d = RelationShipPhone()
+                
+                d.phoneNumber = pho.phoneNumber ?? ""
+                d.type = Int16(pho.type ?? 0)
+                DataManager.shared.loanInfo.userInfo.relationships.append(d)
+            }
+            
+            self.dataSource = value
+
         }
     }
     
     
 }
 
-//MARK: TextField Delegate
-extension LoanTypePhoneRelationTBCell: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // Giới hạn ký tự nhập vào
-        let maxLength = 11
-        let currentString: NSString = textField.text! as NSString
-        let newString: NSString =
-            currentString.replacingCharacters(in: range, with: string) as NSString
+
+//MARK: TableViewDelegate, DataSource
+extension LoanTypePhoneRelationTBCell: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.dataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Loan_Type_Phone_Relation_Sub_TB_Cell", for: indexPath) as! LoanTypePhoneRelationSubTBCell
+        cell.data = self.dataSource[indexPath.row]
         
-        if newString.length > maxLength { return false }
-        
-        return true
+        return cell
     }
     
     
+    
 }
+
+
+
 
 

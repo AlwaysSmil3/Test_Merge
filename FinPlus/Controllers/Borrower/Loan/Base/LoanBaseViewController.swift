@@ -17,6 +17,7 @@ enum Loan_Identifier_TB_Cell {
     static let Footer = "Loan_Type_Footer_TB_View"
     static let File = "Loan_Type_File_TB_Cell"
     static let OptionalMedia = "Loan_Type_Optional_Media_TB_Cell"
+    static let Choice = "Loan_Type_Choice_TB_Cell"
 }
 
 
@@ -91,6 +92,7 @@ class LoanBaseViewController: BaseViewController {
         tableView.register(UINib(nibName: "LoanTypeFooterTBView", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.Footer)
         tableView.register(UINib(nibName: "LoanTypeFileTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.File)
         tableView.register(UINib(nibName: "LoanTypeOptionalMediaTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.OptionalMedia)
+        tableView.register(UINib(nibName: "LoanTypeChoiceTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.Choice)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorColor = UIColor.clear
@@ -129,6 +131,7 @@ class LoanBaseViewController: BaseViewController {
         self.navigationController?.pushViewController(firstAddressVC, animated: true)
     }
     
+    /*
     //Chọn giới tính
     func selectedGender() {
         let filterVC = UIAlertController(title: "Chọn giới tính của bạn", message: nil, preferredStyle: .actionSheet)
@@ -166,6 +169,7 @@ class LoanBaseViewController: BaseViewController {
         
         self.present(filterVC, animated: true, completion: nil)
     }
+     */
     
     //Chọn ảnh
     func selectedFile() {
@@ -324,6 +328,11 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             cell.field = model
             return cell
             
+        case DATA_TYPE_TB_CELL.Choice:
+            let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.Choice, for: indexPath) as! LoanTypeChoiceTBCell
+            cell.field = model
+            return cell
+            
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.TextField, for: indexPath) as! LoanTypeTextFieldTBCell
             
@@ -344,12 +353,8 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             
             break
         case DATA_TYPE_TB_CELL.DropDown:
-            //Giới tính
             //Chức vụ
             //Nghề nghiệp
-            if model.id == "gender" {
-                self.selectedGender()
-            }
             
             break
         case DATA_TYPE_TB_CELL.DateTime:
@@ -378,6 +383,10 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             break
             
         case DATA_TYPE_TB_CELL.MultipleFile:
+            
+            break
+            
+        case DATA_TYPE_TB_CELL.Choice:
             
             break
             

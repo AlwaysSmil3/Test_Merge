@@ -24,10 +24,20 @@ extension APIClient {
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = BrowwerInfo(object: data)
                         
-                        if let activeLoan = data["activeLoan"] as? JSONDictionary, let missingData = activeLoan["missingData"] as? JSONDictionary {
-                            DataManager.shared.missingLoanData = BrowwerActiveLoan(object: missingData)
+                        if let activeLoan = model.activeLoan,let status = activeLoan.status, status == STATUS_LOAN.SALE_PENDING.rawValue || status == STATUS_LOAN.RISK_PENDING.rawValue {
+                            if let activeLoan = data["activeLoan"] as? JSONDictionary, let missingData = activeLoan["missingData"] as? JSONDictionary {
+                                DataManager.shared.missingLoanData = BrowwerActiveLoan(object: missingData)
+                            } else {
+                                DataManager.shared.missingLoanData = nil
+                                DataManager.shared.listKeyMissingLoanKey = nil
+                                DataManager.shared.listKeyMissingLoanTitle = nil
+                            }
+                        } else {
+                            DataManager.shared.missingLoanData = nil
+                            DataManager.shared.listKeyMissingLoanKey = nil
+                            DataManager.shared.listKeyMissingLoanTitle = nil
                         }
-                        
+
                         seal.fulfill(model)
                     }
                 }
@@ -149,5 +159,165 @@ extension APIClient {
                 .catch { error in seal.reject(error)}
         }
     }
+    
+    
+    /// forget password
+    ///
+    /// - Parameters:
+    ///   - phoneNumber: <#phoneNumber description#>
+    ///   - nationalId: <#nationalId description#>
+    /// - Returns: <#return value description#>
+    func forgetPassword(phoneNumber: String, nationalId: String = "") -> Promise<APIResponseGeneral> {
+        
+        let params: JSONDictionary = [
+            "phoneNumber": phoneNumber,
+            "nationalId": nationalId,
+            ]
+        
+        return Promise<APIResponseGeneral> { seal in
+            requestWithEndPoint(endPoint: EndPoint.User.ForgetPassword, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST)
+                .done { json in
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in
+                    seal.reject(error)
+            }
+            
+        }
+    }
+    
+    
+    /// Quen pass verify otp
+    ///
+    /// - Parameters:
+    ///   - phoneNumber: <#phoneNumber description#>
+    ///   - otp: <#otp description#>
+    /// - Returns: <#return value description#>
+    func forgetPasswordOTP(phoneNumber: String, otp: String) -> Promise<APIResponseGeneral> {
+        
+        let params: JSONDictionary = [
+            "phoneNumber": phoneNumber,
+            "otp": otp,
+            ]
+        
+        return Promise<APIResponseGeneral> { seal in
+            requestWithEndPoint(endPoint: EndPoint.User.ForgetPasswordOTP, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST)
+                .done { json in
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in
+                    seal.reject(error)
+            }
+            
+        }
+    }
+    
+    
+    /// Cap nhat pass moi khi quen pass
+    ///
+    /// - Parameters:
+    ///   - phoneNumber: <#phoneNumber description#>
+    ///   - pwd: <#pwd description#>
+    /// - Returns: <#return value description#>
+    func forgetPasswordNewPass(phoneNumber: String, pwd: String) -> Promise<APIResponseGeneral> {
+        
+        let params: JSONDictionary = [
+            "phoneNumber": phoneNumber,
+            "password": pwd,
+            ]
+        
+        return Promise<APIResponseGeneral> { seal in
+            requestWithEndPoint(endPoint: EndPoint.User.ForgetPasswordNewPass, params: params, isShowLoadingView: true, httpType: HTTPMethodType.PUT)
+                .done { json in
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in
+                    seal.reject(error)
+            }
+            
+        }
+    }
+    
+    
+    /// Đổi password
+    ///
+    /// - Parameters:
+    ///   - phoneNumber: <#phoneNumber description#>
+    ///   - pwd: <#pwd description#>
+    /// - Returns: <#return value description#>
+    func changePassword(oldPass: String, newPass: String) -> Promise<APIResponseGeneral> {
+        
+        let params: JSONDictionary = [
+            "oldPassword": oldPass,
+            "newPassword": newPass,
+            ]
+        
+        let uID = DataManager.shared.userID
+        let endPoint = "users/" + "\(uID)" + "/change-password"
+        
+        return Promise<APIResponseGeneral> { seal in
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: HTTPMethodType.PUT)
+                .done { json in
+                    
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+                        if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
+                                if status {
+                                }
+                                
+                            })
+                        }
+                        
+                        return
+                    }
+                    
+                    
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in
+                    seal.reject(error)
+            }
+            
+        }
+    }
+    
+    
+    /// gui lai otp mục quên mật khẩu
+    ///
+    /// - Returns: <#return value description#>
+    func getForgetPasswordOTP() -> Promise<APIResponseGeneral> {
+        
+        let endPoint = EndPoint.User.GetOTPForgetPassword
+        
+        return Promise<APIResponseGeneral> { seal in
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
+                .done { json in
+                    
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+                        if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
+                                if status {
+                                }
+                                
+                            })
+                        }
+                        
+                        return
+                    }
+                    
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in seal.reject(error)}
+        }
+        
+    }
+    
+    
+    
     
 }

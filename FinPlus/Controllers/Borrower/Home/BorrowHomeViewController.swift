@@ -124,19 +124,40 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
         guard DataManager.shared.loanCategories.count > 0 else { return }
         
+        DataManager.shared.currentIndexCategoriesSelectedPopup = indexPath.row
+        
+        if let value = userDefault.value(forKey: kUserDefault_Aler_Popup_Confirm_Loan) as? String, value == "1" {
+            //Đã hiện popup rồi, người dùng chọn k cần hiện nữa
+            self.gotoLoanFirstVC()
+        } else {
+            let popupConfirm = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "AlertConfirmCreateLoanPopup") as! AlertConfirmCreateLoanPopup
+            popupConfirm.delegate = self
+            
+            popupConfirm.show()
+        }
+
+    }
+    
+    func gotoLoanFirstVC() {
         let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
         
         loanFirstVC.hidesBottomBarWhenPushed = true
-        loanFirstVC.loanCategory = DataManager.shared.loanCategories[indexPath.row]
-        DataManager.shared.currentIndexCategoriesSelectedPopup = indexPath.row
+        loanFirstVC.loanCategory = DataManager.shared.loanCategories[DataManager.shared.currentIndexCategoriesSelectedPopup ?? 0]
         
         self.navigationController?.pushViewController(loanFirstVC, animated: true)
     }
     
     
+}
+
+//MARK: AlertAggreeCreateLoanDelegate
+extension BorrowHomeViewController: AlertAggreeCreateLoanDelegate {
+    func confirmAggree() {
+        self.gotoLoanFirstVC()
+        
+    }
 }
 
 

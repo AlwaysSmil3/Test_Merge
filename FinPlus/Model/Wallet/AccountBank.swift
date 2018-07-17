@@ -89,7 +89,10 @@ public struct AccountBank {
     }
     else if bankName == "Agribank" {
         bankType = 4
+    } else {
+        bankType = 1
     }
+    
   }
 
   /// Generates description of the object in the form of a NSDictionary.

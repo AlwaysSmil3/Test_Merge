@@ -13,6 +13,7 @@
 @import TPKeyboardAvoiding;
 @import PromiseKit;
 @import IBAnimatable;
+@import SwiftyJSON;
 #import "SRMonthPicker.h"
 
 

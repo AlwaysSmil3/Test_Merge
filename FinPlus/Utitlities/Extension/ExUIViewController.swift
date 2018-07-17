@@ -30,8 +30,16 @@ extension UIViewController {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
+        if (cancelTitle != nil) {
+            let cancelAction = UIAlertAction(title: cancelTitle, style: .default, handler: { (result: UIAlertAction) in
+                print("Cancel")
+                completion?(false)
+            })
+            
+            alert.addAction(cancelAction)
+        }
         if (okTitle != nil) {
-            let okAction = UIAlertAction(title: okTitle, style: .default, handler: { (result: UIAlertAction) in
+            let okAction = UIAlertAction(title: okTitle, style: .destructive, handler: { (result: UIAlertAction) in
                 print("OK")
                 completion?(true)
             })
@@ -39,38 +47,32 @@ extension UIViewController {
             alert.addAction(okAction)
         }
         
-        if (cancelTitle != nil) {
-            let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: { (result: UIAlertAction) in
-                print("Cancel")
-                completion?(false)
-            })
-            
-            alert.addAction(cancelAction)
-        }
         
         self.present(alert, animated: true, completion: nil)
     }
 
     func showGreenBtnMessage(title: String, message: String, okTitle: String?, cancelTitle: String?, completion:((_ isPressedOK: Bool) -> Swift.Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        if (okTitle != nil) {
-            let okAction = UIAlertAction(title: okTitle, style: .default, handler: { (result: UIAlertAction) in
-                print("OK")
-                completion?(true)
-            })
-            okAction.setValue(MAIN_COLOR, forKey: "titleTextColor")
-
-            alert.addAction(okAction)
-        }
 
         if (cancelTitle != nil) {
-            let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: { (result: UIAlertAction) in
+            let cancelAction = UIAlertAction(title: cancelTitle, style: .default, handler: { (result: UIAlertAction) in
                 print("Cancel")
                 completion?(false)
             })
             cancelAction.setValue(MAIN_COLOR, forKey: "titleTextColor")
             alert.addAction(cancelAction)
         }
+        
+        if (okTitle != nil) {
+            let okAction = UIAlertAction(title: okTitle, style: .destructive, handler: { (result: UIAlertAction) in
+                print("OK")
+                completion?(true)
+            })
+            okAction.setValue(MAIN_COLOR, forKey: "titleTextColor")
+            
+            alert.addAction(okAction)
+        }
+        
         self.present(alert, animated: true, completion: nil)
     }
     

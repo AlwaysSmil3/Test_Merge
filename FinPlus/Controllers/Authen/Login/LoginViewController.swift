@@ -14,28 +14,28 @@ enum AccountType {
     case Investor
     case Borrower
 }
-class LoginViewController: BaseViewController {
+class LoginViewController: BaseAuthenViewController {
     
     @IBOutlet var lblHeaderAccount: UILabel!
-    @IBOutlet var tfPass: UITextField!
-    var accountType : AccountType = .None
+    //@IBOutlet var tfPass: UITextField!
+    
     @IBOutlet var btnHideShowPass: UIButton!
     var isShowPass: Bool = false {
         didSet {
             if isShowPass {
                 self.btnHideShowPass.setImage(#imageLiteral(resourceName: "ic_hide_pass"), for: .normal)
-                self.tfPass.isSecureTextEntry = false
+                self.tfPass?.isSecureTextEntry = false
             } else {
                 self.btnHideShowPass.setImage(#imageLiteral(resourceName: "ic_show_pass"), for: .normal)
-                self.tfPass.isSecureTextEntry = true
+                self.tfPass?.isSecureTextEntry = true
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tfPass.delegate = self
-        self.tfPass.becomeFirstResponder()
+        self.tfPass?.delegate = self
+        self.tfPass?.becomeFirstResponder()
 
         self.updateUI()
     }
@@ -43,8 +43,10 @@ class LoginViewController: BaseViewController {
     private func updateUI() {
         if let account = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String {
             self.lblHeaderAccount.text = "Xin chào \(account), Vui lòng nhập mật khẩu của bạn để tiếp tục."
+            DataManager.shared.currentAccount = account
         } else if let account = userDefault.value(forKey: fNEW_ACCOUNT_NAME) as? String {
             self.lblHeaderAccount.text = "Xin chào \(account), Vui lòng nhập mật khẩu của bạn để tiếp tục."
+            DataManager.shared.currentAccount = account
         }
     }
     
@@ -53,7 +55,7 @@ class LoginViewController: BaseViewController {
     //MARK: Actions
     
     @IBAction func tfEditChanged(_ sender: Any) {
-        if self.tfPass.text!.length() >= 6 {
+        if let text = self.tfPass?.text, text.length() >= 6 {
             self.isEnableContinueButton(isEnable: true)
             self.view.endEditing(true)
         } else {
@@ -73,175 +75,45 @@ class LoginViewController: BaseViewController {
             account = temp
         }
 
-        if self.tfPass.text?.length() == 0 {
+        if self.tfPass?.text?.length() == 0 {
             self.showToastWithMessage(message: "Vui lòng nhập mật khẩu để tiếp tục")
             return
         }
         
-        APIClient.shared.authentication(phoneNumber: account, pass: tfPass.text!)
-            .done(on: DispatchQueue.main) { [weak self] model in
-                // go to choice VC of back to enter phone number
-                
-                DataManager.shared.userID = model.data?.id ?? 0
-                
-                switch model.returnCode {
-                case 3:
-                    // đang đăng nhập trên 1 thiết bị khác -> push home investor or borrwer
-                    userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
-                    DataManager.shared.currentAccount = account
-                    DataManager.shared.updatePushNotificationToken()
-                    if let data = model.data {
-                        if let token = data.accessToken {
-                            userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
-                        }
-                        if let accountType = data.accountType {
-                            if accountType == "BORROWER" {
-                                self?.accountType = .Borrower
-                            } else if accountType == "INVESTOR" {
-                                self?.accountType = .Investor
-                            }
-                        }
-                    }
-                    if self?.accountType == .Investor {
-                        UserDefaults.standard.set(true, forKey: IS_INVESTOR)
-                    } else {
-                        UserDefaults.standard.set(false, forKey: IS_INVESTOR)
-                    }
-                    // check user type: investor or borrwer
-                    // push to home viewcontroller
-
-                    //Cap nhat push notification token
-                    self?.getUserInfo()
-                    break
-                case 1:
-                    DataManager.shared.updatePushNotificationToken()
-                    userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
-                    DataManager.shared.currentAccount = account
-
-
-                    // save token
-                    if let data = model.data {
-                        if let token = data.accessToken {
-                            userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
-                        }
-                        if let accountType = data.accountType {
-                            if accountType == "BORROWER" {
-                                self?.accountType = .Borrower
-                            } else if accountType == "INVESTOR" {
-                                self?.accountType = .Investor
-                            }
-                        }
-                        if self?.accountType == .Investor {
-                            UserDefaults.standard.set(true, forKey: IS_INVESTOR)
-                        } else {
-                            UserDefaults.standard.set(false, forKey: IS_INVESTOR)
-                        }
-                        // fix to test
-                         self?.accountType = .None
-
-                    }
-
-                    //Cap nhat push notification token
-                    // get config
-//                    self?.getConfig()
-                    // push to choice viewcontroller
-
-//                    self?.pushToChoiceKindUserVC()
-                    self?.getUserInfo()
-                    break
-                default :
-                    if let returnMessage = model.returnMsg {
-                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
-                        return
-                    } else {
-                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: API_MESSAGE.OTHER_ERROR, okTitle: "OK", cancelTitle: nil)
-                    }
-                }
-            }
-            .catch {
-                error in
-                self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: API_MESSAGE.OTHER_ERROR, okTitle: "OK", cancelTitle: nil)
-        }
+        self.login(account: account, pass: tfPass?.text! ?? "")
     }
 
-    func getUserInfo() {
-        //Lay thong tin nguoi dung
-        APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
-            .done(on: DispatchQueue.main) { model in
-                DataManager.shared.browwerInfo = model
-                // check investor signup waiting -> show signupWaiting VC
-                // self.accountType = .Investor
-                if self.accountType == .Investor {
-                    let isInvetorWaiting = true
-                    if isInvetorWaiting == true {
-                        let investorSignUpWaitingVC = InvestorSignupWaitingViewController(nibName: "InvestorSignupWaitingViewController", bundle: nil)
-                        self.navigationController?.pushViewController(investorSignUpWaitingVC, animated: true)
-//                        self.present(investorSignUpWaitingVC, animated: true, completion: nil)
-                        return
-                    }
-                }
-                self.pushToHomeVC(accountType: self.accountType)
-
-            }
-            .catch { error in
-                self.pushToHomeVC(accountType: self.accountType)
-        }
-    }
-
-    func pushToHomeVC(accountType: AccountType) {
-        print("Push to user home viewcontroller")
-        switch accountType {
-        case .Borrower:
-            let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-
-            self.navigationController?.present(tabbarVC, animated: true, completion: {
-
-            })
-        case .Investor:
-            let tabbarVC = InvestorTabBarController(nibName: nil, bundle: nil)
-
-            self.navigationController?.present(tabbarVC, animated: true, completion: {
-
-            })
-        default:
-            self.pushToChoiceKindUserVC()
-        }
-    }
-
-    func getConfig() {
-        APIClient.shared.getConfigs().done(on: DispatchQueue.main) { [weak self] model in
-            systemConfig = model
-//            userDefault.set(model, forKey: fSYSTEM_CONFIG)
-            // self?.pushToVerifyVC(verifyType: .Login, isExisted: false, account: "")
-            }
-            .catch({ (error) in
-                print(error)
-            })
-    }
-
-    func pushToChoiceKindUserVC() {
-        let choiceKindUser = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "ChoiceKindUserVC") as! ChoiceKindUserVC
-            choiceKindUser.pw = self.tfPass.text!
-        self.navigationController?.pushViewController(choiceKindUser, animated: true)
-    }
     
     @IBAction func btnForgotPassTapped(_ sender: Any) {
         // show alert confirm
         if let account = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String {
             self.self.showGreenBtnMessage(title: "Đặt lại mật khẩu", message: "Mã xác thực sẽ được gửi tới \(account) qua tin nhắn SMS sau khi bạn đồng ý. Bạn chắc chắn không?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
                 if (status) {
-                    self.pushToVerifyVC(verifyType: .Forgot, isExisted: false, account: "")
+                    self.pushToVerifyVC(verifyType: .Forgot, account: account)
                 }
             })
         }
     }
 
-    func pushToVerifyVC(verifyType: VerifyType, isExisted : Bool, account: String) {
+    func pushToVerifyVC(verifyType: VerifyType, account: String) {
         self.view.endEditing(true)
-        let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
-        verifyVC.verifyType = verifyType
-        verifyVC.account = account
-        self.navigationController?.pushViewController(verifyVC, animated: true)
+        APIClient.shared.forgetPassword(phoneNumber: account)
+            .done(on: DispatchQueue.main) { [weak self]model in
+                guard let code = model.returnCode, code == 1 else {
+                    self?.showAlertView(title: MS_TITLE_ALERT, message: model.returnMsg!, okTitle: "OK", cancelTitle: nil)
+                    return
+                }
+                
+                let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
+                verifyVC.verifyType = verifyType
+                verifyVC.account = account
+                self?.navigationController?.pushViewController(verifyVC, animated: true)
+                
+        }
+            .catch { errror in }
+        
+        
+        
     }
 
     func pushToPhoneVC() {
