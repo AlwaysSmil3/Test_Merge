@@ -120,6 +120,7 @@
 		635B5E0820B6B3D800F02132 /* LoanUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B5E0720B6B3D800F02132 /* LoanUserInfo.swift */; };
 		635B5E0A20B6B3E800F02132 /* LoanJobInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B5E0920B6B3E800F02132 /* LoanJobInfo.swift */; };
 		635B5E0C20B6B4F900F02132 /* RelationShipPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B5E0B20B6B4F900F02132 /* RelationShipPhone.swift */; };
+		635DC11F20FEEA5500AA84DF /* UpdateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635DC11E20FEEA5500AA84DF /* UpdateWalletViewController.swift */; };
 		6361E09720D7550F005D2C7A /* LoanSumnaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361E09620D7550F005D2C7A /* LoanSumnaryModel.swift */; };
 		6369BBD420AE8AD400E0C435 /* APIClient+Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369BBD320AE8AD400E0C435 /* APIClient+Loan.swift */; };
 		6374FC4620BBA1C100E4BC38 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6374FC4520BBA1C100E4BC38 /* Wallet.storyboard */; };
@@ -455,6 +456,7 @@
 		635B5E0720B6B3D800F02132 /* LoanUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanUserInfo.swift; sourceTree = "<group>"; };
 		635B5E0920B6B3E800F02132 /* LoanJobInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanJobInfo.swift; sourceTree = "<group>"; };
 		635B5E0B20B6B4F900F02132 /* RelationShipPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationShipPhone.swift; sourceTree = "<group>"; };
+		635DC11E20FEEA5500AA84DF /* UpdateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWalletViewController.swift; sourceTree = "<group>"; };
 		6361E09620D7550F005D2C7A /* LoanSumnaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanSumnaryModel.swift; sourceTree = "<group>"; };
 		6369BBD320AE8AD400E0C435 /* APIClient+Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Loan.swift"; sourceTree = "<group>"; };
 		6374FC4520BBA1C100E4BC38 /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
@@ -957,6 +959,7 @@
 			children = (
 				E772D76F20CA7939001F0B8E /* AddWalletViewController.swift */,
 				E774D30A20CA2F7B00F7696D /* ListWalletViewController.swift */,
+				635DC11E20FEEA5500AA84DF /* UpdateWalletViewController.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -2157,6 +2160,7 @@
 				6336D5C820B27B7500A6C38A /* LoanFirstViewController.swift in Sources */,
 				639C9DE420A15F6100F2CF5E /* BaseViewController.swift in Sources */,
 				63FD80C920C0E13D004BD22A /* LoanBaseViewController.swift in Sources */,
+				635DC11F20FEEA5500AA84DF /* UpdateWalletViewController.swift in Sources */,
 				E7BC259520CFDACA001FF0F4 /* IsaoTextField.swift in Sources */,
 				84114BD120D79464005026DF /* SubInfoLastTableViewCell.swift in Sources */,
 				630467C720B56DD40069469A /* Address.swift in Sources */,

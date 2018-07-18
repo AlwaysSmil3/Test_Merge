@@ -424,6 +424,159 @@
             </objects>
             <point key="canvasLocation" x="225" y="90"/>
         </scene>
+        <!--Update Wallet View Controller-->
+        <scene sceneID="wQE-rO-npf">
+            <objects>
+                <viewController storyboardIdentifier="UpdateWalletViewController" id="2u8-Vl-fJH" customClass="UpdateWalletViewController" customModule="FinPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X3t-2g-auI"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qyz-pQ-V3k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eGU-IZ-Cms">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ulu-2K-kam" customClass="TPKeyboardAvoidingScrollView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYN-y1-Ida">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngân hàng được chọn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXJ-3U-8hK">
+                                                <rect key="frame" x="16" y="30" width="107.5" height="13.5"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="11"/>
+                                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRk-Ie-4Et">
+                                                <rect key="frame" x="16" y="59.5" width="164" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="M5m-UO-QOZ"/>
+                                                    <constraint firstAttribute="width" constant="164" id="peg-2M-atx"/>
+                                                </constraints>
+                                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Button" image="vcb">
+                                                    <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="selected" image="vcb_selected"/>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ví dụ: 2880CUHY770" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WoW-ak-lf6" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="215.5" width="343" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="nhw-eu-2ge"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                        <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                                        <real key="value" value="0.80000000000000004"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="disableEffect" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="headerText" value="Nhập số tài khoản"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                        <color key="value" red="0.72156862749999995" green="0.78823529410000004" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Họ và tên chủ tài khoản" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rIM-fh-Rz8" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="139.5" width="343" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="tyo-X7-Kp2"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                        <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                                        <real key="value" value="0.80000000000000004"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="disableEffect" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="headerText" value="Họ và tên chủ tài khoản"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                        <color key="value" red="0.72156862749999995" green="0.78823529410000004" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="rIM-fh-Rz8" firstAttribute="top" secondItem="eRk-Ie-4Et" secondAttribute="bottom" constant="24" id="83G-Ng-e4N"/>
+                                            <constraint firstItem="eRk-Ie-4Et" firstAttribute="leading" secondItem="vXJ-3U-8hK" secondAttribute="leading" id="8av-OD-d4i"/>
+                                            <constraint firstItem="WoW-ak-lf6" firstAttribute="leading" secondItem="rIM-fh-Rz8" secondAttribute="leading" id="9GI-tX-jnC"/>
+                                            <constraint firstItem="vXJ-3U-8hK" firstAttribute="leading" secondItem="eYN-y1-Ida" secondAttribute="leading" constant="16" id="Qx0-tj-gMw"/>
+                                            <constraint firstItem="vXJ-3U-8hK" firstAttribute="top" secondItem="eYN-y1-Ida" secondAttribute="top" constant="30" id="Vxn-tp-Btw"/>
+                                            <constraint firstItem="eRk-Ie-4Et" firstAttribute="top" secondItem="vXJ-3U-8hK" secondAttribute="bottom" constant="16" id="aWH-3Q-Pth"/>
+                                            <constraint firstItem="WoW-ak-lf6" firstAttribute="top" secondItem="rIM-fh-Rz8" secondAttribute="bottom" constant="20" id="ekL-g1-Pbf"/>
+                                            <constraint firstAttribute="trailing" secondItem="rIM-fh-Rz8" secondAttribute="trailing" constant="16" id="hie-tH-Bi2"/>
+                                            <constraint firstItem="WoW-ak-lf6" firstAttribute="trailing" secondItem="rIM-fh-Rz8" secondAttribute="trailing" id="tZ8-1e-Pcr"/>
+                                            <constraint firstItem="rIM-fh-Rz8" firstAttribute="leading" secondItem="eYN-y1-Ida" secondAttribute="leading" constant="16" id="vef-Ze-o6p"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="eYN-y1-Ida" firstAttribute="leading" secondItem="Ulu-2K-kam" secondAttribute="leading" id="PTL-Jk-4fu"/>
+                                    <constraint firstAttribute="bottom" secondItem="eYN-y1-Ida" secondAttribute="bottom" id="Wir-q9-j0J"/>
+                                    <constraint firstAttribute="trailing" secondItem="eYN-y1-Ida" secondAttribute="trailing" id="XHA-5W-VsH"/>
+                                    <constraint firstItem="eYN-y1-Ida" firstAttribute="top" secondItem="Ulu-2K-kam" secondAttribute="top" id="kHA-yc-NEY"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ulu-2K-kam" secondAttribute="trailing" id="569-1g-waU"/>
+                            <constraint firstItem="eYN-y1-Ida" firstAttribute="height" secondItem="eGU-IZ-Cms" secondAttribute="height" id="dEu-N2-qd8"/>
+                            <constraint firstItem="Ulu-2K-kam" firstAttribute="top" secondItem="X3t-2g-auI" secondAttribute="bottom" id="dSq-bZ-0mW"/>
+                            <constraint firstAttribute="bottom" secondItem="Ulu-2K-kam" secondAttribute="bottom" id="ixb-w5-Gtk"/>
+                            <constraint firstItem="Ulu-2K-kam" firstAttribute="leading" secondItem="eGU-IZ-Cms" secondAttribute="leading" id="mcb-iy-fjH"/>
+                            <constraint firstItem="eYN-y1-Ida" firstAttribute="width" secondItem="eGU-IZ-Cms" secondAttribute="width" id="tlf-lp-rr4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qpm-uO-rG8">
+                        <barButtonItem key="leftBarButtonItem" title="Huỷ" id="KVH-rZ-OiN">
+                            <color key="tintColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="navi_cancelWithSender:" destination="2u8-Vl-fJH" id="KXf-JT-e3y"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Lưu" id="SZ3-Mi-OGF">
+                            <color key="tintColor" red="0.0" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="navi_saveWithSender:" destination="2u8-Vl-fJH" id="07J-sO-CPB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="accTextField" destination="WoW-ak-lf6" id="Eso-UP-Ync"/>
+                        <outlet property="leftBarBtn" destination="KVH-rZ-OiN" id="V0W-fE-Vcj"/>
+                        <outlet property="nameTextField" destination="rIM-fh-Rz8" id="M4I-dl-ZZg"/>
+                        <outlet property="rightBarBtn" destination="SZ3-Mi-OGF" id="coO-Kh-YjW"/>
+                        <outlet property="typeLabel" destination="vXJ-3U-8hK" id="VgG-NO-17R"/>
+                        <outlet property="vcbBtn" destination="eRk-Ie-4Et" id="4dA-Q0-61H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T76-EI-sZE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="935" y="82"/>
+        </scene>
     </scenes>
     <resources>
         <image name="agri" width="25" height="25"/>

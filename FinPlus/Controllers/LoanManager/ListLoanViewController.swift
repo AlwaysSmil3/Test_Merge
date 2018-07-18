@@ -50,7 +50,7 @@ class ListLoanViewController: UIViewController {
             self.handleLoadingView(isShow: true)
         }
         self.listLoan.removeAllObjects()
-        APIClient.shared.getAllLoans()
+        APIClient.shared.getUserLoans()
             .done(on: DispatchQueue.main) { model in
                 
                 self.handleLoadingView(isShow: false)
@@ -152,7 +152,7 @@ extension ListLoanViewController: UITableViewDataSource {
         
         let state = item.status
         
-        cell?.dateLabel.text = Date.init(fromString: item.createdTime!, format: DateFormat.custom(DATE_FORMATTER_TO_SERVER)).toString(DateFormat.custom(kDisplayFormat))
+        cell?.dateLabel.text = Date.init(fromString: item.createdTime!, format: DateFormat.custom(DATE_FORMATTER_FROM_SERVER)).toString(DateFormat.custom(kDisplayFormat))
         cell?.statusLabel.text = NSLocalizedString("STATUS", comment: "")
         cell?.statusValueLabel.text = getState(type: STATUS_LOAN(rawValue: state!)!)
         cell?.statusValueLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: state!)!)

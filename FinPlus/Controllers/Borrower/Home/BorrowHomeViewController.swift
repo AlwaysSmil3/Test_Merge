@@ -13,7 +13,12 @@ import SDWebImage
 class BorrowHomeViewController: BaseViewController {
     
     
+    @IBOutlet weak var heightConstraintContentView: NSLayoutConstraint!
+    @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet var lblTitle: UILabel!
+    
+    @IBOutlet weak var lblHeader1: UILabel!
+    @IBOutlet weak var lblHeader2: UILabel!
     
     @IBOutlet var contentLoanView: UIView!
     @IBOutlet var mainCollectionView: UICollectionView!
@@ -70,6 +75,12 @@ class BorrowHomeViewController: BaseViewController {
         
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.heightConstraintContentView.constant = self.headerView.frame.size.height + self.contentLoanView.frame.size.height - BOUND_SCREEN.size.height + 10
+    }
+    
     private func setupUI() {
         guard let brow = DataManager.shared.browwerInfo else { return }
         
@@ -80,6 +91,7 @@ class BorrowHomeViewController: BaseViewController {
         }
         
         self.lblTitle.text = "Xin chào " + name + "!"
+        
     }
     
     
@@ -93,6 +105,7 @@ class BorrowHomeViewController: BaseViewController {
 //MARK: UICollectionView Delegate, DataSource
 
 extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return DataManager.shared.loanCategories.count
@@ -159,6 +172,7 @@ extension BorrowHomeViewController: AlertAggreeCreateLoanDelegate {
         
     }
 }
+
 
 
 
