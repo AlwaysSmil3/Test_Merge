@@ -13,7 +13,12 @@ import SDWebImage
 class BorrowHomeViewController: BaseViewController {
     
     
+    @IBOutlet weak var heightConstraintContentView: NSLayoutConstraint!
+    @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet var lblTitle: UILabel!
+    
+    @IBOutlet weak var lblHeader1: UILabel!
+    @IBOutlet weak var lblHeader2: UILabel!
     
     @IBOutlet var contentLoanView: UIView!
     @IBOutlet var mainCollectionView: UICollectionView!
@@ -70,6 +75,13 @@ class BorrowHomeViewController: BaseViewController {
         
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.heightConstraintContentView.constant = self.headerView.frame.size.height + self.contentLoanView.frame.size.height - BOUND_SCREEN.size.height + 10
+        //self.mainScrollView.contentSize = CGSize(width: BOUND_SCREEN.size.width, height: self.headerView.frame.size.height + self.contentLoanView.frame.size.height + 20)
+    }
+    
     private func setupUI() {
         guard let brow = DataManager.shared.browwerInfo else { return }
         
@@ -80,6 +92,7 @@ class BorrowHomeViewController: BaseViewController {
         }
         
         self.lblTitle.text = "Xin chào " + name + "!"
+        
     }
     
     
@@ -93,6 +106,48 @@ class BorrowHomeViewController: BaseViewController {
 //MARK: UICollectionView Delegate, DataSource
 
 extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    /*
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let scrollDiff               = scrollView.contentOffset.y - self.previousScrollOffset
+        
+        let absoluteTop    : CGFloat = 0
+        var absoluteBottom : CGFloat = scrollView.contentSize.height - scrollView.frame.size.height
+        absoluteBottom               = absoluteBottom > 0 ? absoluteBottom : 0
+        
+        let isScrollingDown          = scrollDiff > 0 && scrollView.contentOffset.y > absoluteTop
+        let isScrollingUp            = scrollDiff < 0 && scrollView.contentOffset.y < absoluteBottom
+        
+        if isScrollingUp {
+            //Top
+            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseOut, animations: {
+                self.lblTitle.text = self.titleTemp
+                self.lblHeader1.text = "Bạn muốn vay để làm gì?"
+                self.lblHeader2.text = "Hãy lựa chọn cho mình một khoản vay phù hợp trong danh sách dưới đây."
+                self.view.layoutIfNeeded()
+            }) { (status) in
+                
+            }
+            
+        } else if isScrollingDown {
+            //Down
+
+            UIView.animate(withDuration: 0.5, delay: 0.1, options: UIViewAnimationOptions.curveEaseIn, animations: {
+                self.lblTitle.text = nil
+                self.lblHeader1.text = nil
+                self.lblHeader2.text = nil
+                self.view.layoutIfNeeded()
+            }, completion: { (status) in
+                
+            })
+        }
+        
+        self.previousScrollOffset = scrollView.contentOffset.y
+        
+        
+    }
+    */
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return DataManager.shared.loanCategories.count
@@ -159,6 +214,7 @@ extension BorrowHomeViewController: AlertAggreeCreateLoanDelegate {
         
     }
 }
+
 
 
 
