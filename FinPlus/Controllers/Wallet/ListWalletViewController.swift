@@ -157,7 +157,7 @@ class ListWalletViewController: BaseViewController {
     }
     
     func editWallet(index: Int) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ADD_WALLET") as! AddWalletViewController
+        let vc = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "UpdateWalletViewController") as! UpdateWalletViewController
         vc.wallet = self.listWallet[index] as! AccountBank
         vc.hidesBottomBarWhenPushed = true
         
