@@ -101,9 +101,9 @@ extension APIClient {
         return Promise<[BrowwerActiveLoan]> { seal in
 
             let uid = DataManager.shared.userID
-            let endPoint = "\(uid)/" + EndPoint.Loan.Loans
+            let endPoint = "users/\(uid)/" + EndPoint.Loan.Loans
 
-            getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: false)
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
                     var array: [BrowwerActiveLoan] = []
 
