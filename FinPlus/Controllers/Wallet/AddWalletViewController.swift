@@ -16,6 +16,8 @@ class AddWalletViewController: UIViewController {
     @IBOutlet weak var techBtn: UIButton!
     @IBOutlet weak var agriBtn: UIButton!
     
+    @IBOutlet weak var viettelPayBtn: UIButton!
+    
     @IBOutlet weak var nameTextField: HoshiTextField!
     @IBOutlet weak var accTextField: HoshiTextField!
     
@@ -60,6 +62,12 @@ class AddWalletViewController: UIViewController {
         agriBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         agriBtn.setTitle(NSLocalizedString("Agribank", comment: ""), for: .normal)
         
+        viettelPayBtn.layer.borderWidth = 0.5
+        viettelPayBtn.layer.cornerRadius = 8
+        viettelPayBtn.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
+        viettelPayBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        viettelPayBtn.setTitle("ViettelPay", for: .normal)
+        
         nameTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         nameTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_SMALL)
         
@@ -87,6 +95,7 @@ class AddWalletViewController: UIViewController {
             case .Viettinbank?: setBorderColor(button: viettinBtn, isSelect: true)
             case .Techcombank?: setBorderColor(button: techBtn, isSelect: true)
             case .Agribank?: setBorderColor(button: agriBtn, isSelect: true)
+            case .ViettelPay?: setBorderColor(button: viettelPayBtn, isSelect: true)
             case .none:
                 break
             }
@@ -140,6 +149,8 @@ class AddWalletViewController: UIViewController {
         }
         else if self.agriBtn.isSelected {
             bankName = "Agribank"
+        } else if self.viettelPayBtn.isSelected {
+            bankName = "ViettelPay"
         }
         
         let params: JSONDictionary = [
@@ -201,6 +212,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: viettinBtn, isSelect: false)
         setBorderColor(button: techBtn, isSelect: false)
         setBorderColor(button: agriBtn, isSelect: false)
+        setBorderColor(button: viettelPayBtn, isSelect: false)
     }
     
     @IBAction func viettinBtn_selected(sender: UIButton)
@@ -209,6 +221,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: viettinBtn, isSelect: true)
         setBorderColor(button: techBtn, isSelect: false)
         setBorderColor(button: agriBtn, isSelect: false)
+        setBorderColor(button: viettelPayBtn, isSelect: false)
     }
     
     @IBAction func techBtn_selected(sender: UIButton)
@@ -217,6 +230,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: viettinBtn, isSelect: false)
         setBorderColor(button: techBtn, isSelect: true)
         setBorderColor(button: agriBtn, isSelect: false)
+        setBorderColor(button: viettelPayBtn, isSelect: false)
     }
     
     @IBAction func agriBtn_selected(sender: UIButton)
@@ -225,6 +239,14 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: viettinBtn, isSelect: false)
         setBorderColor(button: techBtn, isSelect: false)
         setBorderColor(button: agriBtn, isSelect: true)
+        setBorderColor(button: viettelPayBtn, isSelect: false)
+    }
+    @IBAction func viettelPayBtn_Selected(_ sender: Any) {
+        setBorderColor(button: vcbBtn, isSelect: false)
+        setBorderColor(button: viettinBtn, isSelect: false)
+        setBorderColor(button: techBtn, isSelect: false)
+        setBorderColor(button: agriBtn, isSelect: false)
+        setBorderColor(button: viettelPayBtn, isSelect: true)
     }
     
     func setBorderColor(button: UIButton, isSelect: Bool) {

@@ -10,7 +10,7 @@ import Foundation
 
 class BaseAuthenViewController: BaseViewController {
     
-    var accountType : AccountType = .None
+    var accountType : AccountType = .Borrower
     @IBOutlet weak var tfPass: UITextField?
     
     override func viewDidLoad() {
