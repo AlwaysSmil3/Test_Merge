@@ -169,6 +169,18 @@ class DataManager {
                 DataManager.shared.loanInfo.userInfo.gender = gender
             }
             
+            if let relationShips = userInfo.relationships, relationShips.count > 1 {
+                
+                if let phone1 = relationShips[0].phoneNumber, phone1.length() > 0, let phone2 = relationShips[1].phoneNumber, phone2.length() > 0 {
+                    DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber = phone1
+                    DataManager.shared.loanInfo.userInfo.relationships[0].type = Int16(relationShips[0].type ?? 0)
+                    DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber = phone1
+                    DataManager.shared.loanInfo.userInfo.relationships[1].type = Int16(relationShips[1].type ?? 0)
+                    
+                }
+                
+            }
+            
             if let birthDay = userInfo.birthday {
                 DataManager.shared.loanInfo.userInfo.birthDay = birthDay
             }
