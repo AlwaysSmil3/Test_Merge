@@ -31,11 +31,7 @@ class ListWalletViewController: BaseViewController {
     var walletAction: WalletAction = .WalletDetail
     let cellIdentifier = "cell"
     private var listWallet: NSMutableArray = []
-//    private var listWallet: NSMutableArray = [
-//        AccountBank(wID: 1, wType: 1, wAccountName: "Nguyen Van A", wBankName: "Vietcombank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "vcb_selected")),
-//        AccountBank(wID: 2, wType: 2, wAccountName: "Nguyen Van B", wBankName: "Viettinbank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "viettin_selected")),
-//        AccountBank(wID: 3, wType: 3, wAccountName: "Nguyen Van C", wBankName: "Techcombank", wNumber: "9888GH87UYY7", wDistrict: "Hà Nội", wIcon: #imageLiteral(resourceName: "tech_selected")),
-//    ]
+
     
     //CaoHai tra ve du lieu bank khi chon bank
     var delegate: BankDataDelegate?
@@ -47,7 +43,7 @@ class ListWalletViewController: BaseViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         if self.walletAction == .LoanNation {
-            self.setupTitleView(title: "Tạo yêu cầu vay", subTitle: "Bước 4: Tài khoản ngân hàng")
+            self.setupTitleView(title: "Tạo yêu cầu vay", subTitle: "Bước 4: Tài khoản nhận tiền")
             //self.navigationController?.navigationBar.shadowImage = UIImage()
             self.bottomView.isHidden = false
             DataManager.shared.loanInfo.currentStep = 2

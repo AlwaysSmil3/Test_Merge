@@ -59,7 +59,7 @@ class ListLoanViewController: UIViewController {
                 let unCompleteArr:NSMutableArray = []
                 
                 model.forEach({ (loan) in
-                    if ((loan as BrowwerActiveLoan).status! > 0)
+                    if (((loan as BrowwerActiveLoan).status ?? 0) > 0)
                     {
                         unCompleteArr.add(loan)
                     }
@@ -119,6 +119,7 @@ extension ListLoanViewController: UITableViewDelegate {
         let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
         if let loanStatusVC = v1 as? LoanStateViewController {
             loanStatusVC.activeLoan = item
+            v1.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(v1, animated: true)
         }
     }
@@ -152,13 +153,13 @@ extension ListLoanViewController: UITableViewDataSource {
         
         let state = item.status
         
-        cell?.dateLabel.text = Date.init(fromString: item.createdTime!, format: DateFormat.custom(DATE_FORMATTER_FROM_SERVER)).toString(DateFormat.custom(kDisplayFormat))
+        cell?.dateLabel.text = Date.init(fromString: item.createdTime ?? "", format: DateFormat.custom(DATE_FORMATTER_FROM_SERVER)).toString(DateFormat.custom(kDisplayFormat))
         cell?.statusLabel.text = NSLocalizedString("STATUS", comment: "")
         cell?.statusValueLabel.text = getState(type: STATUS_LOAN(rawValue: state!)!)
         cell?.statusValueLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: state!)!)
         let amount = FinPlusHelper.formatDisplayCurrency(Double(item.amount?.description ?? "") ?? 0) + " đ"
         cell?.moneyLabel.text = amount
-        cell?.disLabel.text = "Thời hạn: \(item.term!) ngày - \(item.loanCategory?.title! ?? "")"
+        cell?.disLabel.text = "Thời hạn: \(item.term ?? 0) ngày - \(item.loanCategory?.title ?? "")"
         
         return cell!
     }
