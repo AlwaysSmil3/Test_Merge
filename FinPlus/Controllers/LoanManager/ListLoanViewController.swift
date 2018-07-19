@@ -156,8 +156,9 @@ extension ListLoanViewController: UITableViewDataSource {
         cell?.statusLabel.text = NSLocalizedString("STATUS", comment: "")
         cell?.statusValueLabel.text = getState(type: STATUS_LOAN(rawValue: state!)!)
         cell?.statusValueLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: state!)!)
-        cell?.moneyLabel.text = "\(item.amount?.description ?? "")"
-        cell?.disLabel.text = "Thời hạn: \(item.term!) - \(item.loanCategory?.title! ?? "")"
+        let amount = FinPlusHelper.formatDisplayCurrency(Double(item.amount?.description ?? "") ?? 0) + " đ"
+        cell?.moneyLabel.text = amount
+        cell?.disLabel.text = "Thời hạn: \(item.term!) ngày - \(item.loanCategory?.title! ?? "")"
         
         return cell!
     }

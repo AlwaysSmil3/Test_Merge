@@ -311,6 +311,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         {
             switch indexPath.row {
             case 0:
+                self.navigationController?.isNavigationBarHidden = false
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "CHANG_PASSWORD") as! ChangePWViewController
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
