@@ -202,8 +202,11 @@ class DataManager {
         
         if let jobInfo = activeLoan.jobInfo {
             //Thong tin Job
-            if let jobType = jobInfo.jobType {
-                DataManager.shared.loanInfo.jobInfo.jobType = jobType
+            if let jobTitle = jobInfo.jobTitle, jobTitle.length() > 0 {
+                DataManager.shared.loanInfo.jobInfo.jobTitle = jobTitle
+                if let jobType = jobInfo.jobType {
+                    DataManager.shared.loanInfo.jobInfo.jobType = jobType
+                }
             }
             
             if let position = jobInfo.position {
@@ -306,7 +309,7 @@ class DataManager {
         
         if let jobInfo = miss.jobInfo {
             //Thong tin JobInfo
-            if let value = jobInfo.jobType, value.length() > 0 {
+            if let value = jobInfo.jobTitle, value.length() > 0 {
                 missingListKey.append("jobType")
                 missingListTitle.append("Nghề nghiệp")
             }

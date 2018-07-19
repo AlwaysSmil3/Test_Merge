@@ -10,7 +10,8 @@ import Foundation
 
 struct LoanJobInfo: Encodable {
     
-    var jobType: String
+    var jobType: Int
+    var jobTitle: String
     var position: String
     var company: String
     var salary: Int32
@@ -19,7 +20,8 @@ struct LoanJobInfo: Encodable {
     var address: Address
     
     init() {
-        self.jobType = ""
+        self.jobType = 0
+        self.jobTitle = ""
         self.position = ""
         self.company = ""
         self.salary = 0
@@ -30,6 +32,7 @@ struct LoanJobInfo: Encodable {
     
     enum CodingKeys: String, CodingKey {
         case jobType
+        case jobTitle
         case position
         case company
         case salary
@@ -40,6 +43,7 @@ struct LoanJobInfo: Encodable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(jobType, forKey: .jobType)
+        try container.encode(jobTitle, forKey: .jobTitle)
         try container.encode(position, forKey: .position)
         try container.encode(company, forKey: .company)
         try container.encode(salary, forKey: .salary)
