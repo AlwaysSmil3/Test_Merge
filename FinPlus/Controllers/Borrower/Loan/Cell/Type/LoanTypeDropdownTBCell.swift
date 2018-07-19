@@ -79,7 +79,8 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
         guard let field_ = self.field, let id = field_.id else { return }
         
         if id.contains("jobType") {
-            DataManager.shared.loanInfo.jobInfo.jobType = value
+            DataManager.shared.loanInfo.jobInfo.jobType = Int(data.id ?? 0)
+            DataManager.shared.loanInfo.jobInfo.jobTitle = value
         } else if id.contains("position") {
             DataManager.shared.loanInfo.jobInfo.position = value
         }
@@ -97,17 +98,21 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             }
             
             var value = ""
-            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.jobType, data.length() > 0 {
+            var type = -1
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.jobTitle, data.length() > 0 {
                 value = data
+                type = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.jobType ?? 0
             }
             
-            if DataManager.shared.loanInfo.jobInfo.jobType.length() > 0 {
-                value = DataManager.shared.loanInfo.jobInfo.jobType
+            if DataManager.shared.loanInfo.jobInfo.jobTitle.length() > 0 {
+                value = DataManager.shared.loanInfo.jobInfo.jobTitle
+                type = DataManager.shared.loanInfo.jobInfo.jobType
             }
             
             if value.length() > 0 {
                 self.lblValue?.text = value
-                DataManager.shared.loanInfo.jobInfo.jobType = value
+                DataManager.shared.loanInfo.jobInfo.jobTitle = value
+                DataManager.shared.loanInfo.jobInfo.jobType = type
             }
         } else if id.contains("position") {
             if DataManager.shared.checkFieldIsMissing(key: "position") {
