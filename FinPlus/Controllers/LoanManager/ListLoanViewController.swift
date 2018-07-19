@@ -18,6 +18,7 @@ class ListLoanViewController: UIViewController {
     let cellIdentifier = "cell"
     private var listLoan: NSMutableArray = []
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,14 +47,9 @@ class ListLoanViewController: UIViewController {
     
     private func getAllLoans(isShowLoading: Bool) {
         
-        if isShowLoading {
-            self.handleLoadingView(isShow: true)
-        }
         self.listLoan.removeAllObjects()
         APIClient.shared.getUserLoans()
             .done(on: DispatchQueue.main) { model in
-                
-                self.handleLoadingView(isShow: false)
                 
                 let completeArr:NSMutableArray = []
                 let unCompleteArr:NSMutableArray = []
@@ -86,7 +82,6 @@ class ListLoanViewController: UIViewController {
                 self.addBtn.isHidden = self.listLoan.count > 0
             }
             .catch { error in
-                self.handleLoadingView(isShow: false)
         }
     }
     
@@ -126,6 +121,7 @@ extension ListLoanViewController: UITableViewDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
+        
         // reload data
         self.getAllLoans(isShowLoading: false)
     }

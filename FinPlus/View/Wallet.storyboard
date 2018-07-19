@@ -293,7 +293,7 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ví dụ: 2880CUHY770" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OLB-Sh-PDf" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="279.5" width="343" height="56"/>
+                                                <rect key="frame" x="16" y="360" width="343" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="P8d-cG-big"/>
                                                 </constraints>
@@ -321,7 +321,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Họ và tên chủ tài khoản" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pUK-xc-opj" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="203.5" width="343" height="56"/>
+                                                <rect key="frame" x="16" y="284" width="343" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="BMn-kl-5na"/>
                                                 </constraints>
@@ -348,6 +348,20 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLp-5d-8jK">
+                                                <rect key="frame" x="16" y="204" width="164" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="MeW-81-Eqi"/>
+                                                </constraints>
+                                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Button" image="viettelPay">
+                                                    <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="selected" image="viettelPay_selected"/>
+                                                <connections>
+                                                    <action selector="viettelPayBtn_Selected:" destination="71L-If-6xU" eventType="touchUpInside" id="27Z-dJ-9jf"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -356,15 +370,17 @@
                                             <constraint firstItem="TQF-Rq-arJ" firstAttribute="top" secondItem="FAN-dt-hxv" secondAttribute="bottom" constant="16" id="4b5-CB-h3y"/>
                                             <constraint firstItem="FAN-dt-hxv" firstAttribute="leading" secondItem="JA1-Xq-HwQ" secondAttribute="leading" constant="16" id="5Ym-j9-dfO"/>
                                             <constraint firstItem="XCW-bE-9Ch" firstAttribute="width" secondItem="dPW-Rv-tUB" secondAttribute="width" id="7kU-lJ-uik"/>
+                                            <constraint firstItem="CLp-5d-8jK" firstAttribute="leading" secondItem="dPW-Rv-tUB" secondAttribute="leading" id="CF5-pW-zkM"/>
                                             <constraint firstItem="XCW-bE-9Ch" firstAttribute="leading" secondItem="MNx-k4-LtW" secondAttribute="leading" id="CH5-ga-clD"/>
+                                            <constraint firstItem="CLp-5d-8jK" firstAttribute="trailing" secondItem="dPW-Rv-tUB" secondAttribute="trailing" id="HHZ-nX-bDH"/>
                                             <constraint firstItem="XCW-bE-9Ch" firstAttribute="height" secondItem="dPW-Rv-tUB" secondAttribute="height" id="Hwr-Fg-BJ2"/>
                                             <constraint firstItem="XCW-bE-9Ch" firstAttribute="leading" secondItem="dPW-Rv-tUB" secondAttribute="trailing" constant="16" id="Jv0-rb-XCd"/>
                                             <constraint firstAttribute="trailing" secondItem="pUK-xc-opj" secondAttribute="trailing" constant="16" id="MHu-T1-NPm"/>
                                             <constraint firstItem="TQF-Rq-arJ" firstAttribute="leading" secondItem="FAN-dt-hxv" secondAttribute="leading" id="Pg9-zT-HzV"/>
+                                            <constraint firstItem="pUK-xc-opj" firstAttribute="top" secondItem="CLp-5d-8jK" secondAttribute="bottom" constant="24" id="QAF-11-wRR"/>
                                             <constraint firstItem="pUK-xc-opj" firstAttribute="leading" secondItem="JA1-Xq-HwQ" secondAttribute="leading" constant="16" id="SPJ-6H-xvV"/>
                                             <constraint firstItem="MNx-k4-LtW" firstAttribute="height" secondItem="TQF-Rq-arJ" secondAttribute="height" id="TvJ-20-MGY"/>
                                             <constraint firstItem="MNx-k4-LtW" firstAttribute="leading" secondItem="TQF-Rq-arJ" secondAttribute="trailing" constant="16" id="WVs-QS-4bQ"/>
-                                            <constraint firstItem="pUK-xc-opj" firstAttribute="top" secondItem="dPW-Rv-tUB" secondAttribute="bottom" constant="16" id="X7I-1p-cTs"/>
                                             <constraint firstItem="XCW-bE-9Ch" firstAttribute="centerY" secondItem="dPW-Rv-tUB" secondAttribute="centerY" id="ZyQ-QO-bEI"/>
                                             <constraint firstAttribute="trailing" secondItem="MNx-k4-LtW" secondAttribute="trailing" constant="16" id="cAN-BH-qWx"/>
                                             <constraint firstItem="MNx-k4-LtW" firstAttribute="width" secondItem="TQF-Rq-arJ" secondAttribute="width" id="cOV-ty-3u7"/>
@@ -372,6 +388,7 @@
                                             <constraint firstItem="MNx-k4-LtW" firstAttribute="centerY" secondItem="TQF-Rq-arJ" secondAttribute="centerY" id="lbH-oO-2i2"/>
                                             <constraint firstItem="OLB-Sh-PDf" firstAttribute="top" secondItem="pUK-xc-opj" secondAttribute="bottom" constant="20" id="sQC-ME-A82"/>
                                             <constraint firstItem="OLB-Sh-PDf" firstAttribute="leading" secondItem="pUK-xc-opj" secondAttribute="leading" id="tqw-Xd-tR4"/>
+                                            <constraint firstItem="CLp-5d-8jK" firstAttribute="top" secondItem="dPW-Rv-tUB" secondAttribute="bottom" constant="16" id="vLa-00-fnX"/>
                                             <constraint firstItem="OLB-Sh-PDf" firstAttribute="trailing" secondItem="pUK-xc-opj" secondAttribute="trailing" id="xCb-sN-Kfs"/>
                                         </constraints>
                                     </view>
@@ -417,6 +434,7 @@
                         <outlet property="techBtn" destination="dPW-Rv-tUB" id="bij-eR-lIT"/>
                         <outlet property="typeLabel" destination="FAN-dt-hxv" id="gSS-6r-Sid"/>
                         <outlet property="vcbBtn" destination="TQF-Rq-arJ" id="lB1-xY-whw"/>
+                        <outlet property="viettelPayBtn" destination="CLp-5d-8jK" id="YPJ-ak-ZVR"/>
                         <outlet property="viettinBtn" destination="MNx-k4-LtW" id="OKb-n3-fQg"/>
                     </connections>
                 </viewController>
@@ -589,6 +607,8 @@
         <image name="tech_selected" width="25" height="16"/>
         <image name="vcb" width="24" height="24"/>
         <image name="vcb_selected" width="24" height="24"/>
+        <image name="viettelPay" width="25" height="14"/>
+        <image name="viettelPay_selected" width="25" height="14"/>
         <image name="viettin" width="25" height="25"/>
         <image name="viettin_selected" width="25" height="25"/>
     </resources>

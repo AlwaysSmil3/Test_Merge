@@ -33,6 +33,7 @@ class BankAccountTableViewCell: UITableViewCell {
             case .Viettinbank?: self.walletImg.image = #imageLiteral(resourceName: "viettin")
             case .Techcombank?: self.walletImg.image = #imageLiteral(resourceName: "tech")
             case .Agribank?: self.walletImg.image = #imageLiteral(resourceName: "agri")
+            case .ViettelPay?: self.walletImg.image = #imageLiteral(resourceName: "viettelPay_selected")
             case .none:
                 break
             }
@@ -51,6 +52,7 @@ class BankAccountTableViewCell: UITableViewCell {
                 case .Viettinbank?: self.walletImg.image = #imageLiteral(resourceName: "viettin_selected")
                 case .Techcombank?: self.walletImg.image = #imageLiteral(resourceName: "tech_selected")
                 case .Agribank?: self.walletImg.image = #imageLiteral(resourceName: "agri_selected")
+                case .ViettelPay?: self.walletImg.image = #imageLiteral(resourceName: "viettelPay_selected")
                 case .none:
                     break
                 }
@@ -67,6 +69,7 @@ class BankAccountTableViewCell: UITableViewCell {
                 case .Viettinbank?: self.walletImg.image = #imageLiteral(resourceName: "viettin")
                 case .Techcombank?: self.walletImg.image = #imageLiteral(resourceName: "tech")
                 case .Agribank?: self.walletImg.image = #imageLiteral(resourceName: "agri")
+                case .ViettelPay?: self.walletImg.image = #imageLiteral(resourceName: "viettelPay_selected")
                 case .none:
                     break
                 }

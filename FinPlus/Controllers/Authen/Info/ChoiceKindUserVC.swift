@@ -109,15 +109,7 @@ class ChoiceKindUserVC: BaseViewController {
         self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Bạn chắc chắn muốn trở thành nhà đầu tư?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
             if status {
                 
-                let registerInvestor = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "RegisterInvestorVC") as! RegisterInvestorVC
-                registerInvestor.pw = self.pw
-                registerInvestor.accountType = self.accountType
-                
-                // Setting App Type
-                userDefault.set(true, forKey: IS_INVESTOR)
-                userDefault.synchronize()
-                
-                self.navigationController?.pushViewController(registerInvestor, animated: true)
+               
                 
             }
         })

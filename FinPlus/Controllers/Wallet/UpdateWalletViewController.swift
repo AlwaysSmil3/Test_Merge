@@ -127,6 +127,10 @@ class UpdateWalletViewController: BaseViewController {
             self.vcbBtn.setImage(#imageLiteral(resourceName: "agri_selected"), for: UIControlState.normal)
             self.vcbBtn.setImage(#imageLiteral(resourceName: "agri_selected"), for: UIControlState.selected)
             break
+        case .ViettelPay?:
+            self.vcbBtn.setImage(#imageLiteral(resourceName: "viettelPay_selected"), for: UIControlState.normal)
+            self.vcbBtn.setImage(#imageLiteral(resourceName: "viettelPay_selected"), for: UIControlState.selected)
+            break
         case .none:
             break
         }
