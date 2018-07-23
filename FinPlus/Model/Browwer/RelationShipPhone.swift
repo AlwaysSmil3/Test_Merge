@@ -14,7 +14,7 @@ struct RelationShipPhone: Encodable {
     var phoneNumber: String
     
     init() {
-        self.type = 0
+        self.type = -1
         self.phoneNumber = ""
     }
     

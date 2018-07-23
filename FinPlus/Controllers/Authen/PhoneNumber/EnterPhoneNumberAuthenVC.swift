@@ -81,32 +81,22 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
                     //Cap nhat push notification token
                     DataManager.shared.updatePushNotificationToken()
                     // get config
-                    // strongSelf.getConfig()
                     userDefault.set(phone, forKey: fNEW_ACCOUNT_NAME)
                     break
                 }
 
-                strongSelf.pushToVerifyVC(verifyType: .Login)
+                strongSelf.pushToVerifyVC(verifyType: .Login, phone: phone!)
             }.catch { error in
                 print(error)
         }
     }
-    func getConfig() {
-        APIClient.shared.getConfigs().done(on: DispatchQueue.main) { [weak self] model in
-            systemConfig = model
-            guard let strongSelf = self else { return }
-            userDefault.set(strongSelf.tfPhoneNumber.text!, forKey: fNEW_ACCOUNT_NAME)
-            strongSelf.pushToVerifyVC(verifyType: .Login)
-            }
-            .catch({ (error) in
-                print(error)
-            })
-    }
 
-    func pushToVerifyVC(verifyType: VerifyType) {
+
+    func pushToVerifyVC(verifyType: VerifyType, phone: String) {
         self.view.endEditing(true)
         let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
         verifyVC.verifyType = verifyType
+        verifyVC.account = phone
         self.navigationController?.pushViewController(verifyVC, animated: true)
     }
 

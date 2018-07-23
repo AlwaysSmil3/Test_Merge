@@ -55,7 +55,10 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         var temp: [String] = []
         
         if let data = DataManager.shared.browwerInfo?.activeLoan?.optionalMedia, data.count > 0 {
-            temp = data
+            if data[0].length() > 0 {
+                temp = data
+            }
+            
         }
         
         if DataManager.shared.loanInfo.optionalMedia.count > 0 {
@@ -69,18 +72,19 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     func showLibrary() {
         CameraHandler.shared.showCamera(vc: UIApplication.shared.topViewController()!)
         CameraHandler.shared.imagePickedBlock = { (image) in
-            let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
+            //let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
 
-            self.uploadData(img: img)
+            self.uploadData(img: image)
         }
     }
     
     //Upload Data Image
     func uploadData(img: UIImage) {
-        let dataImg = UIImagePNGRepresentation(img)
+        //let dataImg = UIImagePNGRepresentation(img)
+        guard let data = img.jpeg(.lowest) else { return }
         
         let loanID = DataManager.shared.loanID ?? 0
-        guard let data = dataImg else { return }
+        //guard let data = dataImg else { return }
         let endPoint = "loans/" + "\(loanID)/" + "file"
         
         UIApplication.shared.topViewController()!.handleLoadingView(isShow: true)
@@ -145,7 +149,7 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
         
         if let data = self.dataSourceCollection[indexPath.row] as? String {
             //cell.imgValue.sd_setImage(with: URL(string: hostLoan + data), completed: nil)
-            cell.imgValue.sd_setImage(with: URL(string: hostLoan + data), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: nil)
+            cell.imgValue.sd_setImage(with: URL(string: data), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: nil)
             cell.imgAdd.isHidden = true
             cell.btnDelete.isHidden = false
         }

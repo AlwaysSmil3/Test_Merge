@@ -13,7 +13,11 @@ class DataManager {
     static let shared = DataManager()
     
     var currentAccount: String = ""
-    var userID: Int32 = 0
+    var userID: Int32 = 0 {
+        didSet {
+            loanInfo.userID = self.userID
+        }
+    }
     
     //Push Notification Token
     var pushNotificationToken: String?
@@ -139,6 +143,10 @@ class DataManager {
             self.currentIndexCategoriesSelectedPopup = Int(cateID) - 1
         }
         
+        if let status = activeLoan.status {
+            DataManager.shared.loanInfo.status = status
+        }
+        
         if let loanId = activeLoan.loanId, loanId > 0 {
             DataManager.shared.loanID = loanId
         }
@@ -159,6 +167,18 @@ class DataManager {
             
             if let gender = userInfo.gender {
                 DataManager.shared.loanInfo.userInfo.gender = gender
+            }
+            
+            if let relationShips = userInfo.relationships, relationShips.count > 1 {
+                
+                if let phone1 = relationShips[0].phoneNumber, phone1.length() > 0, let phone2 = relationShips[1].phoneNumber, phone2.length() > 0 {
+                    DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber = phone1
+                    DataManager.shared.loanInfo.userInfo.relationships[0].type = Int16(relationShips[0].type ?? 0)
+                    DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber = phone2
+                    DataManager.shared.loanInfo.userInfo.relationships[1].type = Int16(relationShips[1].type ?? 0)
+                    
+                }
+                
             }
             
             if let birthDay = userInfo.birthday {
@@ -182,8 +202,11 @@ class DataManager {
         
         if let jobInfo = activeLoan.jobInfo {
             //Thong tin Job
-            if let jobType = jobInfo.jobType {
-                DataManager.shared.loanInfo.jobInfo.jobType = jobType
+            if let jobTitle = jobInfo.jobTitle, jobTitle.length() > 0 {
+                DataManager.shared.loanInfo.jobInfo.jobTitle = jobTitle
+                if let jobType = jobInfo.jobType {
+                    DataManager.shared.loanInfo.jobInfo.jobType = jobType
+                }
             }
             
             if let position = jobInfo.position {
@@ -227,7 +250,9 @@ class DataManager {
         if let optionMedia = activeLoan.optionalMedia {
             DataManager.shared.loanInfo.optionalMedia.removeAll()
             for i in optionMedia {
-                DataManager.shared.loanInfo.optionalMedia.append(i)
+                if i.length() > 0 {
+                    DataManager.shared.loanInfo.optionalMedia.append(i)
+                }
             }
             
         }
@@ -237,6 +262,7 @@ class DataManager {
     
     //Update Các thông tin không hợp lệ
     func updateListMissingKeyData() {
+        
         guard let miss = self.missingLoanData else { return }
         
         var missingListKey : [String] = []
@@ -246,80 +272,97 @@ class DataManager {
             //Thong tin UserInfo
             if let fullName = userInfo.fullName, fullName.length() > 0 {
                 missingListKey.append("fullName")
-                missingListTitle.append("")
+                missingListTitle.append("Họ và tên")
             }
             
             if let gender = userInfo.gender, gender.length() > 0 {
                 missingListKey.append("gender")
+                missingListTitle.append("Giới tính")
             }
             
             if let birthday = userInfo.birthday, birthday.length() > 0 {
                 missingListKey.append("birthday")
+                missingListTitle.append("Ngày sinh")
             }
             
             if let nationalId = userInfo.nationalId, nationalId.length() > 0 {
                 missingListKey.append("nationalId")
+                missingListTitle.append("Số CMND/thẻ căn cước")
             }
             
-            if let phone = userInfo.relationships?.phoneNumber, phone.length() > 0 {
-                missingListKey.append("phoneNumber")
+            if let relationPhones = userInfo.relationships, relationPhones.count > 0 {
+                missingListKey.append("relationships")
+                missingListTitle.append("Số điện thoại liên lạc của người thân")
             }
             
-            if let _ = userInfo.residentAddress {
+            if let add = userInfo.residentAddress, let city = add.city, city.length() > 0 {
                 missingListKey.append("residentAddress")
+                missingListTitle.append("Địa chỉ nhà thường trú")
             }
             
-            if let _ = userInfo.currentAddress {
+            if let add = userInfo.currentAddress, let city = add.city, city.length() > 0 {
                 missingListKey.append("currentAddress")
+                missingListTitle.append("Địa chỉ nhà tạm trú")
             }
             
         }
         
         if let jobInfo = miss.jobInfo {
             //Thong tin JobInfo
-            if let _ = jobInfo.jobType {
+            if let value = jobInfo.jobTitle, value.length() > 0 {
                 missingListKey.append("jobType")
+                missingListTitle.append("Nghề nghiệp")
             }
             
-            if let _ = jobInfo.position {
+            if let value = jobInfo.position, value.length() > 0 {
                 missingListKey.append("position")
+                missingListTitle.append("Cấp bậc")
             }
             
-            if let _ = jobInfo.company {
+            if let value = jobInfo.company, value.length() > 0 {
                 missingListKey.append("company")
+                missingListTitle.append("Tên cơ quan")
             }
             
             if let sa = jobInfo.salary, sa > 0 {
                 missingListKey.append("salary")
+                missingListTitle.append("Thu nhập hàng tháng")
             }
             
-            if let _ = jobInfo.companyPhoneNumber {
+            if let value = jobInfo.companyPhoneNumber, value.length() > 0 {
                 missingListKey.append("companyPhoneNumber")
+                missingListTitle.append("SĐT cơ quan")
             }
             
-            if let _ = jobInfo.address {
+            if let add = jobInfo.address, let city = add.city, city.length() > 0 {
                 missingListKey.append("address")
+                missingListTitle.append("Địa chỉ cơ quan")
             }
             
         }
         
-        if let _ = miss.nationalIdAllImg {
+        if let value = miss.nationalIdAllImg, value.length() > 0 {
             missingListKey.append("nationalIdAllImg")
+            missingListTitle.append("Ảnh bạn đang cầm CMND")
         }
         
-        if let _ = miss.nationalIdFrontImg {
+        if let value = miss.nationalIdFrontImg, value.length() > 0 {
             missingListKey.append("nationalIdFrontImg")
+            missingListTitle.append("Ảnh mặt trước CMND")
         }
         
-        if let _ = miss.nationalIdBackImg {
+        if let value = miss.nationalIdBackImg, value.length() > 0 {
             missingListKey.append("nationalIdBackImg")
+            missingListTitle.append("Ảnh mặt sau CMND")
         }
         
-        if let _ = miss.optionalText {
+        if let value = miss.optionalText, value.length() > 0 {
             missingListKey.append("optionalText")
+            missingListTitle.append("Lương hàng tháng của bạn")
         }
         
         self.listKeyMissingLoanKey = missingListKey
+        self.listKeyMissingLoanTitle = missingListTitle
     }
     
     
@@ -339,6 +382,32 @@ class DataManager {
     }
     
     
+    /// Title RelationShip
+    ///
+    /// - Parameter id: <#id description#>
+    /// - Returns: <#return value description#>
+    class func getTitleRelationShip(id: Int) -> String {
+        
+        switch id {
+        case 0:
+            return "Vợ"
+        case 1:
+            return "Chồng"
+        case 2:
+            return "Bố"
+        case 3:
+            return "Mẹ"
+        case 4:
+            return "Bạn bè"
+        case 5:
+            return "Đồng nghiệp"
+            
+        default:
+            return "Người thân"
+        }
+        
+        
+    }
     
     
     

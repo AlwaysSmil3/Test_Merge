@@ -44,6 +44,12 @@ class ChangePWViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    //MARK: TextField Delegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Giới hạn ký tự nhập vào
         let maxLength = 6
@@ -56,14 +62,101 @@ class ChangePWViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    
+    private func changePassword(oldPass: String, newPass: String) {
+        
+        APIClient.shared.changePassword(oldPass: oldPass, newPass: newPass)
+            .done(on: DispatchQueue.main) { [weak self] model in
+                
+                self?.showToastWithMessage(message: model.returnMsg!)
+                
+                let account = DataManager.shared.currentAccount
+                APIClient.shared.authentication(phoneNumber: account, pass: newPass)
+                    .done(on: DispatchQueue.main) { [weak self] model in
+                        // go to choice VC of back to enter phone number
+                        
+                        DataManager.shared.userID = model.data?.id ?? 0
+                        
+                        switch model.returnCode {
+                        case 3:
+                            // đang đăng nhập trên 1 thiết bị khác -> push home investor or borrwer
+                            userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+                            DataManager.shared.currentAccount = account
+                            DataManager.shared.updatePushNotificationToken()
+                            if let data = model.data {
+                                if let token = data.accessToken {
+                                    userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
+                                }
+                                
+                            }
+                            self?.navigationController?.popToRootViewController(animated: true)
+                            
+                            break
+                        case 1:
+                            DataManager.shared.updatePushNotificationToken()
+                            userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+                            DataManager.shared.currentAccount = account
+                            
+                            // save token
+                            if let data = model.data {
+                                if let token = data.accessToken {
+                                    userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
+                                }
+                                
+                            }
+                            self?.navigationController?.popToRootViewController(animated: true)
+                            
+                            break
+                        default :
+                            if let returnMessage = model.returnMsg {
+                                self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
+                                return
+                            } else {
+                                self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: API_MESSAGE.OTHER_ERROR, okTitle: "OK", cancelTitle: nil)
+                            }
+                        }
+                    }
+                    .catch {
+                        error in
+                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: API_MESSAGE.OTHER_ERROR, okTitle: "OK", cancelTitle: nil)
+                }
+                
+            }
+            .catch { errror in }
+        
+        
+    }
+    
+    
+    
+    
+    
+    //MARK: Actions
+    
     @IBAction func navi_back(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func navi_save(sender: UIButton) {
-        if (newPass.text == renewPass.text)
+        guard let currentPass = self.currentPass.text, currentPass.length() > 0 else {
+            self.showToastWithMessage(message: "Vui lòng nhập mật khẩu hiện tại")
+            return
+        }
+        
+        guard let newPass = self.newPass.text, newPass.length() > 0 else {
+            self.showToastWithMessage(message: "Vui lòng nhập mật khẩu hiện tại")
+            return
+        }
+        
+        guard let renewPass = self.renewPass.text, renewPass.length() > 0 else {
+            self.showToastWithMessage(message: "Vui lòng nhập mật khẩu hiện tại")
+            return
+        }
+        
+        if (newPass == renewPass)
         {
-            self.navigationController?.popViewController(animated: true)
+            self.changePassword(oldPass: currentPass, newPass: newPass)
+            
         }
         else
         {

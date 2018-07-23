@@ -30,11 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Setup start View Controller
         self.setupStartVC()
-//        let tabbarVC = InvestorTabBarController(nibName: nil, bundle: nil)
-//        self.window?.rootViewController = tabbarVC
-
-        //let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-        //self.window?.rootViewController = tabbarVC
         
         // Register Notifications
         self.registerForRemoteNotifications(application)
@@ -127,11 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //MARK: Setup Start View Controller
     
     private func setupStartVC() {
-        // lionel fix to test
-//        let investorWaitingVC = InvestorSignupWaitingViewController(nibName: "InvestorSignupWaitingViewController", bundle: nil)
-//        self.window?.rootViewController = investorWaitingVC
-//        return
-        // end
+
         let isFirstLaunch = UserDefaults.isFirstLaunch()
         if isFirstLaunch == true {
             let enterPhoneVC = UIStoryboard(name: "OnBoard", bundle: nil).instantiateInitialViewController()

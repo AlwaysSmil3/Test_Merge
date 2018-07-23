@@ -91,20 +91,22 @@
                                     <constraint firstAttribute="trailing" secondItem="xaJ-GX-fEv" secondAttribute="trailing" constant="40" id="s7l-TS-1aF"/>
                                 </constraints>
                             </view>
+                            <searchBar contentMode="redraw" placeholder="Tìm kiếm" translatesAutoresizingMaskIntoConstraints="NO" id="jHP-C6-SLu">
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="mp5-D5-7j9"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eoa-m2-UNT" id="27r-ED-n9v"/>
+                                </connections>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bp8-0n-iYt">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Tìm kiếm" id="jHP-C6-SLu">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="eoa-m2-UNT" id="27r-ED-n9v"/>
-                                    </connections>
-                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Address_First_TB_Cell" id="550-bL-mjK" customClass="AddressFirstTBCell" customModule="FinPlus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="550-bL-mjK" id="wBK-BW-b9i">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -136,13 +138,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bp8-0n-iYt" firstAttribute="top" secondItem="gpy-ya-Zke" secondAttribute="bottom" id="2fG-K4-UZo"/>
                             <constraint firstAttribute="trailing" secondItem="gpy-ya-Zke" secondAttribute="trailing" id="39E-Ff-xwj"/>
+                            <constraint firstItem="jHP-C6-SLu" firstAttribute="leading" secondItem="sFW-9V-2Dz" secondAttribute="leading" id="74h-nU-BZf"/>
                             <constraint firstItem="bp8-0n-iYt" firstAttribute="leading" secondItem="sFW-9V-2Dz" secondAttribute="leading" id="D9E-i7-daS"/>
                             <constraint firstItem="gpy-ya-Zke" firstAttribute="top" secondItem="uZJ-aA-cAE" secondAttribute="bottom" constant="-20" id="FAS-C3-bLj"/>
                             <constraint firstAttribute="bottom" secondItem="bp8-0n-iYt" secondAttribute="bottom" id="Hhf-Zl-frR"/>
                             <constraint firstItem="gpy-ya-Zke" firstAttribute="leading" secondItem="sFW-9V-2Dz" secondAttribute="leading" id="Pvn-xZ-wGl"/>
                             <constraint firstAttribute="trailing" secondItem="bp8-0n-iYt" secondAttribute="trailing" id="brR-gs-hrC"/>
+                            <constraint firstAttribute="trailing" secondItem="jHP-C6-SLu" secondAttribute="trailing" id="hs8-0i-Ixx"/>
+                            <constraint firstItem="bp8-0n-iYt" firstAttribute="top" secondItem="jHP-C6-SLu" secondAttribute="bottom" id="mP4-8x-ffq"/>
+                            <constraint firstItem="jHP-C6-SLu" firstAttribute="top" secondItem="gpy-ya-Zke" secondAttribute="bottom" id="pvv-Ex-HAS"/>
                         </constraints>
                     </view>
                     <connections>
@@ -152,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3FW-98-N7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-582" y="108"/>
+            <point key="canvasLocation" x="-574" y="108"/>
         </scene>
         <!--Address First View Controller-->
         <scene sceneID="oNz-Hi-XxA">

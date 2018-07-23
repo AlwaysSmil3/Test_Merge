@@ -101,9 +101,9 @@ extension APIClient {
         return Promise<[BrowwerActiveLoan]> { seal in
 
             let uid = DataManager.shared.userID
-            let endPoint = "\(uid)/" + EndPoint.Loan.Loans
+            let endPoint = "users/\(uid)/" + EndPoint.Loan.Loans
 
-            getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: false)
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
                 .done { json in
                     var array: [BrowwerActiveLoan] = []
 
@@ -137,8 +137,8 @@ extension APIClient {
             dataAPI = data
         }
 
-        let uid = DataManager.shared.userID
-        var endPoint = "users/" + "\(uid)/" + EndPoint.Loan.CreateLoans
+        //let uid = DataManager.shared.userID
+        var endPoint = EndPoint.Loan.CreateLoans
 
         if httpType == .PUT {
             endPoint = "loans/" + "\(DataManager.shared.loanID ?? 0)"
@@ -337,7 +337,7 @@ extension APIClient {
 
     func signContract(otp: String, loanID: Int32) -> Promise<APIResponseGeneral> {
 
-        let endPoint = "loans/" + "\(loanID)/contract"
+        let endPoint = "loans/" + "\(loanID)/contract/otp"
         let params: JSONDictionary = [
             "otp": otp
         ]

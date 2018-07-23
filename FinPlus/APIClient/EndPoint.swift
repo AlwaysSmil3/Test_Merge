@@ -13,6 +13,7 @@ enum Host {
     static let alphaURL = ""
     // mock
 #if DEBUG
+    //static let productURL = "http://gateway.mony.vn/"
     static let productURL = "http://192.168.104.70:31018/"
 //    static let productURL = "https://90f21a30-3a49-4afb-9df9-378245f98be5.mock.pstmn.io/"
     //static let productURL = "http://192.168.104.70:31007/" //Cho Loan Service
@@ -34,12 +35,18 @@ enum EndPoint {
         static let Authen = "auth"
         static let verifyOTP = "auth/otp"
         static let Logout = "logout"
+        static let resendOTPAuthen = "auth/otp?phoneNumber="
         
     }
     
     enum User {
         static let User = "users/"
         static let PushToken = "users/uid/push-token"
+        static let ForgetPassword = "users/forget-password"
+        static let ForgetPasswordOTP    = "users/forget-password/otp"
+        static let ForgetPasswordNewPass = "users/forget-password/new-password"
+        static let ChangePassword = "users/:userId/change-password"
+        static let GetOTPForgetPassword = "users/forget-password/\(DataManager.shared.currentAccount)/otp"
     }
     
     enum Loan {

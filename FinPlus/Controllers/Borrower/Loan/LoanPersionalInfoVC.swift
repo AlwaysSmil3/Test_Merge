@@ -29,6 +29,11 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
+            self.navigationController?.isNavigationBarHidden = true
+        }
+        
         super.viewWillAppear(animated)
         
     }
@@ -65,8 +70,28 @@ class LoanPersionalInfoVC: LoanBaseViewController {
             return
         }
         
-        if DataManager.shared.loanInfo.userInfo.relationships.phoneNumber.length() == 0 {
+        if DataManager.shared.loanInfo.userInfo.relationships.count < 2 {
             self.showToastWithMessage(message: "Vui lòng nhập số điện thoại người thân để tiếp tục.")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.relationships[0].type < 0 {
+            self.showToastWithMessage(message: "Vui lòng chọn người thân 1 để tiếp tục.")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại người thân 1 để tiếp tục.")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.relationships[1].type < 0 {
+            self.showToastWithMessage(message: "Vui lòng chọn người thân 2 để tiếp tục.")
+            return
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại người thân 2 để tiếp tục.")
             return
         }
         

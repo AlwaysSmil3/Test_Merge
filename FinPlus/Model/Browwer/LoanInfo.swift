@@ -10,6 +10,7 @@ import Foundation
 
 struct LoanInfo: Encodable {
     
+    var userID: Int32
     var loanCategoryID: Int16
     var amount: Int32
     var term: Int
@@ -49,7 +50,7 @@ struct LoanInfo: Encodable {
         
         self.optionalText = ""
         self.optionalMedia = []
-        
+        self.userID = 0
     }
     
     enum CodingKeys: String, CodingKey {
@@ -67,6 +68,7 @@ struct LoanInfo: Encodable {
         case nationalIdBackImg
         case optionalText
         case optionalMedia
+        case userId
     }
     
     func encode(to encoder: Encoder) throws {
@@ -85,6 +87,7 @@ struct LoanInfo: Encodable {
         try container.encode(nationalIdBackImg, forKey: .nationalIdBackImg)
         try container.encode(optionalText, forKey: .optionalText)
         try container.encode(optionalMedia, forKey: .optionalMedia)
+        try container.encode(userID, forKey: .userId)
         
     }
     

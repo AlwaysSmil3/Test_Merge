@@ -19,3 +19,5 @@ let kDisplayFormatTradingHistory = "HH:mm:ss - dd/MM/yyyy";
 let kDisplayFormatInvoiceHistory = "yyyy-MM-dd'T'HH:mm:ss.SSSSZZZ";
 let kDisplayFormatInvoiceSometimeHistory = "yyyy-MM-dd'T'HH:mm:ssZ";
 let kDisplayFormatYear = "yyyy";
+
+let DATE_FORMATTER_FROM_SERVER = "yyyy-MM-dd'T'HH:mm:ssZ"

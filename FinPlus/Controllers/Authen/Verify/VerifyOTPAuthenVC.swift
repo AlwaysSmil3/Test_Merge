@@ -36,16 +36,7 @@ class VerifyOTPAuthenVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        switch verifyType {
-//        case .Login:
-//            self.descriptionLb.text = "Hãy điền 6 số được gửi kèm tin nhắn được gửi vào số điện thoại của bạn. Thời gian còn lại:"
-//            break
-//        case .Forgot :
-//            self.descriptionLb.text = "Vui lòng nhập mã xác thực gồm 6 chữ số đã được gửi đến số điện thoại của bạn. Thời gian còn lại:"
-//            break
-//        default:
-//            break
-//        }
+
         self.setupPinView()
         
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
@@ -123,16 +114,14 @@ class VerifyOTPAuthenVC: BaseViewController {
     
     @IBAction func resendCodeBtnAction(_ sender: Any) {
         // call to resend Code API
-        print("Resend Code API")
-        
         
         switch verifyType {
         case .Login:
-            
+            self.getAuthenOTP()
             break
             
         case .SignContract:
-            
+            self.getSignContractOTP()
             
             break
         case .Loan:
@@ -142,12 +131,53 @@ class VerifyOTPAuthenVC: BaseViewController {
         case .RegisInvest:
             self.resendInvestCode()
             break
-        default:
-            print("Forgot Password Verify")
+        case .Forgot:
+            //Quen mat khau
+            self.getOTPForgetPass()
+            
             break
+
         }
         
     }
+    
+    //Gui yeu cau gui lai otp login, register
+    private func getAuthenOTP() {
+        APIClient.shared.getAuthenOTP()
+            .done(on: DispatchQueue.main) { [weak self]model in
+                self?.showToastWithMessage(message: model.returnMsg!)
+                self?.updateOTP()
+            }
+            .catch { error in }
+        
+    }
+    
+    
+    /// Gui yeu cau gui otp Ky hợp đồng
+    private func getSignContractOTP() {
+        guard let loanid_ = self.loanId else { return }
+        APIClient.shared.getOTPContract(loanID: loanid_)
+            .done(on: DispatchQueue.main) { [weak self]model in
+                self?.showToastWithMessage(message: model.returnMsg!)
+                self?.updateOTP()
+            }
+            .catch { error in }
+        
+    }
+    
+    
+    /// Gửi yêu cầu gửi lại otp phần quên mật khẩu
+    private func getOTPForgetPass() {
+        APIClient.shared.getForgetPasswordOTP()
+            .done(on: DispatchQueue.main) { [weak self]model in
+                self?.showToastWithMessage(message: model.returnMsg!)
+                self?.updateOTP()
+            }
+            .catch { error in }
+        
+        
+    }
+    
     
     func resendInvestCode() {
         if let loanId = self.loanId {
@@ -222,23 +252,33 @@ class VerifyOTPAuthenVC: BaseViewController {
             // call to api check OTP
             // success
             self.verifyOTPInvestLoan()
-            // push delegate to invest register to Budget Awards
-//            let budgetAwardsVC = BudgetAwardsViewController(nibName: "BudgetAwardsViewController", bundle: nil)
-////            self.present(budgetAwardsVC, animated: true, completion: nil)
-//            self.navigationController?.pushViewController(budgetAwardsVC, animated: true)
             break
-        default:
-            print("Forgot Password Verify")
-            let phoneNumber = DataManager.shared.currentAccount
-            APIClient.shared.verifyOTPAuthen(phoneNumber: phoneNumber, otp: self.otp)
-                .done(on: DispatchQueue.main) { [weak self] model in
-                    let updatePassVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "SetPassAuthenVC") as! SetPassAuthenVC
-                    updatePassVC.setPassOrResetPass = .ResetPass
-                    self?.navigationController?.pushViewController(updatePassVC, animated: true)
+            
+        case .Forgot:
+            self.verifyOTPForgotPass()
+            
+            break
+
+        }
+    }
+    
+    //MARK: forgot password
+    
+    private func verifyOTPForgotPass() {
+        APIClient.shared.forgetPasswordOTP(phoneNumber: self.account, otp: self.otp)
+            .done(on: DispatchQueue.main) { [weak self] model in
+                guard let code = model.returnCode, code == 1 else {
+                    self?.showAlertView(title: MS_TITLE_ALERT, message: model.returnMsg!, okTitle: "OK", cancelTitle: nil)
+                    return
+                }
+                
+                DataManager.shared.currentAccount = self?.account ?? ""
+                
+                let updatePassVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "SetPassAuthenVC") as! SetPassAuthenVC
+                updatePassVC.setPassOrResetPass = .ResetPass
+                self?.navigationController?.pushViewController(updatePassVC, animated: true)
             }
             .catch { error in}
-        }
-
     }
 
     //MARK: Verify sign contract

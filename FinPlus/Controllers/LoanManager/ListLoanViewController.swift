@@ -18,6 +18,7 @@ class ListLoanViewController: UIViewController {
     let cellIdentifier = "cell"
     private var listLoan: NSMutableArray = []
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,20 +47,15 @@ class ListLoanViewController: UIViewController {
     
     private func getAllLoans(isShowLoading: Bool) {
         
-        if isShowLoading {
-            self.handleLoadingView(isShow: true)
-        }
         self.listLoan.removeAllObjects()
-        APIClient.shared.getAllLoans()
+        APIClient.shared.getUserLoans()
             .done(on: DispatchQueue.main) { model in
-                
-                self.handleLoadingView(isShow: false)
                 
                 let completeArr:NSMutableArray = []
                 let unCompleteArr:NSMutableArray = []
                 
                 model.forEach({ (loan) in
-                    if ((loan as BrowwerActiveLoan).status! > 0)
+                    if (((loan as BrowwerActiveLoan).status ?? 0) > 0)
                     {
                         unCompleteArr.add(loan)
                     }
@@ -86,7 +82,6 @@ class ListLoanViewController: UIViewController {
                 self.addBtn.isHidden = self.listLoan.count > 0
             }
             .catch { error in
-                self.handleLoadingView(isShow: false)
         }
     }
     
@@ -119,12 +114,14 @@ extension ListLoanViewController: UITableViewDelegate {
         let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
         if let loanStatusVC = v1 as? LoanStateViewController {
             loanStatusVC.activeLoan = item
+            v1.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(v1, animated: true)
         }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
+        
         // reload data
         self.getAllLoans(isShowLoading: false)
     }
@@ -152,12 +149,13 @@ extension ListLoanViewController: UITableViewDataSource {
         
         let state = item.status
         
-        cell?.dateLabel.text = Date.init(fromString: item.createdTime!, format: DateFormat.custom(DATE_FORMATTER_TO_SERVER)).toString(DateFormat.custom(kDisplayFormat))
+        cell?.dateLabel.text = Date.init(fromString: item.createdTime ?? "", format: DateFormat.custom(DATE_FORMATTER_FROM_SERVER)).toString(DateFormat.custom(kDisplayFormat))
         cell?.statusLabel.text = NSLocalizedString("STATUS", comment: "")
         cell?.statusValueLabel.text = getState(type: STATUS_LOAN(rawValue: state!)!)
         cell?.statusValueLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: state!)!)
-        cell?.moneyLabel.text = "\(item.amount?.description ?? "")"
-        cell?.disLabel.text = "Thời hạn: \(item.term!) - \(item.loanCategory?.title! ?? "")"
+        let amount = FinPlusHelper.formatDisplayCurrency(Double(item.amount?.description ?? "") ?? 0) + " đ"
+        cell?.moneyLabel.text = amount
+        cell?.disLabel.text = "Thời hạn: \(item.term ?? 0) ngày - \(item.loanCategory?.title ?? "")"
         
         return cell!
     }

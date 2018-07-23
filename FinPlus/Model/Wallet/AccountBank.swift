@@ -13,6 +13,7 @@ enum BankName: Int {
     case Viettinbank = 2
     case Techcombank = 3
     case Agribank = 4
+    case ViettelPay = 5
 }
 
 public struct AccountBank {
@@ -90,6 +91,13 @@ public struct AccountBank {
     else if bankName == "Agribank" {
         bankType = 4
     }
+    else if bankName == "ViettelPay" {
+        bankType = 5
+    }
+    else {
+        bankType = 1
+    }
+    
   }
 
   /// Generates description of the object in the form of a NSDictionary.

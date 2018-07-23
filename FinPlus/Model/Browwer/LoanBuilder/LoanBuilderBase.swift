@@ -1,12 +1,11 @@
 //
 //  LoanBuilderBase.swift
 //
-//  Created by Cao Van Hai on 6/10/18
+//  Created by Cao Van Hai on 7/10/18
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
-import SwiftyJSON
 
 public struct LoanBuilderBase {
 
@@ -14,15 +13,15 @@ public struct LoanBuilderBase {
   private struct SerializationKeys {
     static let fields = "fields"
     static let title = "title"
-    static let index = "index"
     static let id = "id"
+    static let index = "index"
   }
 
   // MARK: Properties
   public var fields: [LoanBuilderFields]?
   public var title: String?
-    public var index: Int?
-    public var id: String?
+  public var id: String?
+  public var index: Int?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -39,8 +38,8 @@ public struct LoanBuilderBase {
   public init(json: JSON) {
     if let items = json[SerializationKeys.fields].array { fields = items.map { LoanBuilderFields(json: $0) } }
     title = json[SerializationKeys.title].string
-    index = json[SerializationKeys.index].int
     id = json[SerializationKeys.id].string
+    index = json[SerializationKeys.index].int
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -50,8 +49,8 @@ public struct LoanBuilderBase {
     var dictionary: [String: Any] = [:]
     if let value = fields { dictionary[SerializationKeys.fields] = value.map { $0.dictionaryRepresentation() } }
     if let value = title { dictionary[SerializationKeys.title] = value }
-    if let index = index { dictionary[SerializationKeys.index] = index }
-    if let id = id { dictionary[SerializationKeys.id] = id }
+    if let value = id { dictionary[SerializationKeys.id] = value }
+    if let value = index { dictionary[SerializationKeys.index] = value }
     return dictionary
   }
 

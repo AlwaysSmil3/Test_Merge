@@ -16,7 +16,7 @@
         {
             "id": "gender",
             "index": 2,
-            "type":"dropdown",
+            "type":"choice",
             "title": "Giới tính",
             "is_required": true,
             "placeholder": "Giới tính của bạn",
@@ -46,9 +46,9 @@
             "id": "nationalId",
             "index": 4,
             "type":"text_box",
-            "title": "Số chứng minh thư",
+            "title": "Số CMND/thẻ căn cước",
             "is_required": true,
-            "placeholder": "Số CMTND của bạn",
+            "placeholder": "Số CMND/thẻ căn cước của bạn",
             "multiple_line": false,
             "keyboard": "numeric"
         },
@@ -58,25 +58,43 @@
             "type":"dropdown_text_box",
             "title": "Số điện thoại liên lạc của người thân",
             "is_required": true,
-            "placeholder": "Số điện thoại người thân",
             "selector_title": "Chọn người thân của bạn",
             "multiple_line": false,
             "keyboard": "default",
-            "data": [{
-                    "id": 0,
-                    "title": "Vợ"
+            "multiple_data": [
+                {
+                    "placeholder" : "Số điện thoại người thân 1",
+                    "options" : [
+                        {
+                            "id": 0,
+                            "title": "Vợ"
+                        },
+                        {
+                            "id": 1,
+                            "title": "Chồng"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Bố"
+                        },
+                        {
+                            "id": 3,
+                            "title": "Mẹ"
+                        }
+                    ]
                 },
                 {
-                    "id": 1,
-                    "title": "Chồng"
-                },
-                {
-                    "id": 2,
-                    "title": "Bố"
-                },
-                {
-                    "id": 3,
-                    "title": "Mẹ"
+                    "placeholder" : "Số điện thoại người thân 2",
+                    "options" : [
+                        {
+                            "id": 4,
+                            "title": "Bạn bè"
+                        },
+                        {
+                            "id": 5,
+                            "title": "Đồng nghiệp"
+                        }
+                    ]
                 }
             ]
         },
@@ -123,6 +141,24 @@
                 {
                     "id": 1,
                     "title": "Sinh Viên"
+                },
+                {
+                    "id": 2,
+                    "title": "Nhân viên văn phòng"
+                },
+                {
+                    "id": 3,
+                    "title": "Kinh doanh"
+                },
+                {
+                    "id": 4,
+                    "title": "Tự do"
+                },
+                {
+                    "id": 6,
+                    "title": "Khác ...",
+                    "isTextInput" : true,
+                    "placeholder":"Nhập tên nghề nghiệp"
                 }
             ]
         },
@@ -131,7 +167,7 @@
             "index": 2,
             "type":"dropdown",
             "title": "Cấp bậc",
-            "is_required": false,
+            "is_required": true,
             "placeholder": "Cấp bậc trong cơ quan",
             "selector_title": "Chọn cấp bậc trong cơ quan",
             "data": [{
@@ -178,7 +214,7 @@
             "index": 6,
             "type":"text_box",
             "title": "SĐT cơ quan",
-            "is_required": false,
+            "is_required": true,
             "placeholder": "Số điện thoại cơ quan của bạn",
             "multiple_line": false,
             "keyboard": "phone_pad"

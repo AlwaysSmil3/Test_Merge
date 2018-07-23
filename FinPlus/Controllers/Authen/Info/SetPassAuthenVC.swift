@@ -12,12 +12,11 @@ enum SetPassOrResetPass {
     case SetPass
     case ResetPass
 }
-class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
+class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
     var phone : String!
     var setPassOrResetPass: SetPassOrResetPass = SetPassOrResetPass.SetPass
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblHeader: UILabel!
-    @IBOutlet weak var tfPass: UITextField!
     @IBOutlet weak var tfRePass: UITextField!
     
     @IBOutlet var btnHideShowPass: UIButton!
@@ -25,10 +24,10 @@ class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
         didSet {
             if isShowPass {
                 self.btnHideShowPass.setImage(#imageLiteral(resourceName: "ic_hide_pass"), for: .normal)
-                self.tfPass.isSecureTextEntry = false
+                self.tfPass?.isSecureTextEntry = false
             } else {
                 self.btnHideShowPass.setImage(#imageLiteral(resourceName: "ic_show_pass"), for: .normal)
-                self.tfPass.isSecureTextEntry = true
+                self.tfPass?.isSecureTextEntry = true
             }
         }
     }
@@ -49,10 +48,10 @@ class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tfPass.delegate = self
+        self.tfPass?.delegate = self
         self.tfRePass.delegate = self
         
-        self.tfPass.becomeFirstResponder()
+        self.tfPass?.becomeFirstResponder()
         
     }
 
@@ -64,16 +63,18 @@ class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
             if let account = userDefault.value(forKey: fNEW_ACCOUNT_NAME) as? String {
                 self.lblHeader.text = "Xin chào \(account), bạn chưa có tài khoản. Vui lòng thiết lập mật khẩu để bắt đầu."
             }
-        default:
+            break
+        case .ResetPass:
             self.lblTitle.text = "Thiết lập mật khẩu mới"
             if let account = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String {
                 self.lblHeader.text = "Xin chào \(account), bạn đã yêu cầu đặt lại mật khẩu. Vui lòng tạo mật khẩu mới."
             }
+            break
         }
     }
     
     private func updateStateBtnContinue() {
-        if self.tfPass.text!.length() >= 6 && self.tfRePass.text!.length() >= 6 {
+        if (self.tfPass?.text! ?? "").length() >= 6 && self.tfRePass.text!.length() >= 6 {
             self.isEnableContinueButton(isEnable: true)
             self.view.endEditing(true)
         } else {
@@ -118,12 +119,12 @@ class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
     
     @IBAction func btnConfirmTapped(_ sender: Any) {
         // validate password
-        if self.tfPass.text!.length() == 0 {
+        if self.tfPass?.text!.length() == 0 {
             self.showToastWithMessage(message: "Vui lòng nhập mật khẩu")
             return
         }
 
-        if self.tfPass.text!.length() < 6 {
+        if (self.tfPass?.text! ?? "").length() < 6 {
             self.showToastWithMessage(message: "Mật khẩu nhập vào không hợp lệ. Mật khẩu chỉ gồm 6 số, không bao gồm chữ cái và các ký tự khác")
             return
         }
@@ -138,7 +139,7 @@ class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
             return
         }
 
-        if !self.tfPass.text!.contains(self.tfRePass.text!) {
+        if !(self.tfPass?.text! ?? "").contains(self.tfRePass.text!) {
             self.showToastWithMessage(message: "Mật khẩu Không trùng khớp. Vui lòng thử lại.")
 
             return
@@ -146,13 +147,13 @@ class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
         
         switch setPassOrResetPass {
         case .SetPass:
-            self.setNewPasswordAPI(newPassword: self.tfPass.text!)
+            self.setNewPasswordAPI(newPassword: self.tfPass?.text! ?? "")
             self.pushToChoiceKindUserVC()
-        default:
-            self.resetPasswordAPI(newPassword: self.tfPass.text!)
-            self.showGreenBtnMessage(title: "Thành công", message: "Mật khẩu mới đã được thiết lập thành công", okTitle: "OK", cancelTitle: nil) { (true) in
-                self.pushToChoiceKindUserVC()
-            }
+            break
+        case .ResetPass:
+            self.resetPasswordAPI(newPassword: self.tfPass?.text! ?? "")
+            break
+
         }
     }
 
@@ -168,15 +169,24 @@ class SetPassAuthenVC: BaseViewController, UITextFieldDelegate {
 
     func resetPasswordAPI(newPassword: String) {
         // call to reset password API (update user data)
+        
+        APIClient.shared.forgetPasswordNewPass(phoneNumber: DataManager.shared.currentAccount, pwd: newPassword)
+            .done(on: DispatchQueue.main) { [weak self]model in
+                
+                guard let code = model.returnCode, code == 1 else {
+                    self?.showAlertView(title: MS_TITLE_ALERT, message: model.returnMsg!, okTitle: "OK", cancelTitle: nil)
+                    return
+                }
+                
+                // sucess -> save phone
+                userDefault.set(DataManager.shared.currentAccount, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+                
+                self?.login(account: DataManager.shared.currentAccount, pass: newPassword)
+                
+        }
+            .catch { model in }
 
-        // sucess -> save phone
-        userDefault.set(DataManager.shared.currentAccount, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
     }
 
-    func pushToChoiceKindUserVC() {
-        let choiceKindUser = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "ChoiceKindUserVC") as! ChoiceKindUserVC
-        choiceKindUser.pw = self.tfPass.text!
-        self.navigationController?.pushViewController(choiceKindUser, animated: true)
-    }
 
 }

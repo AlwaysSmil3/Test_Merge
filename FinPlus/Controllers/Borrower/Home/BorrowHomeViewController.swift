@@ -13,7 +13,12 @@ import SDWebImage
 class BorrowHomeViewController: BaseViewController {
     
     
+    @IBOutlet weak var heightConstraintContentView: NSLayoutConstraint!
+    @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet var lblTitle: UILabel!
+    
+    @IBOutlet weak var lblHeader1: UILabel!
+    @IBOutlet weak var lblHeader2: UILabel!
     
     @IBOutlet var contentLoanView: UIView!
     @IBOutlet var mainCollectionView: UICollectionView!
@@ -70,6 +75,12 @@ class BorrowHomeViewController: BaseViewController {
         
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.heightConstraintContentView.constant = self.headerView.frame.size.height + self.contentLoanView.frame.size.height - BOUND_SCREEN.size.height + 10
+    }
+    
     private func setupUI() {
         guard let brow = DataManager.shared.browwerInfo else { return }
         
@@ -80,6 +91,7 @@ class BorrowHomeViewController: BaseViewController {
         }
         
         self.lblTitle.text = "Xin chào " + name + "!"
+        
     }
     
     
@@ -93,6 +105,7 @@ class BorrowHomeViewController: BaseViewController {
 //MARK: UICollectionView Delegate, DataSource
 
 extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return DataManager.shared.loanCategories.count
@@ -124,20 +137,42 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
         guard DataManager.shared.loanCategories.count > 0 else { return }
         
+        DataManager.shared.currentIndexCategoriesSelectedPopup = indexPath.row
+        
+        if let value = userDefault.value(forKey: kUserDefault_Aler_Popup_Confirm_Loan) as? String, value == "1" {
+            //Đã hiện popup rồi, người dùng chọn k cần hiện nữa
+            self.gotoLoanFirstVC()
+        } else {
+            let popupConfirm = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "AlertConfirmCreateLoanPopup") as! AlertConfirmCreateLoanPopup
+            popupConfirm.delegate = self
+            
+            popupConfirm.show()
+        }
+
+    }
+    
+    func gotoLoanFirstVC() {
         let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
         
         loanFirstVC.hidesBottomBarWhenPushed = true
-        loanFirstVC.loanCategory = DataManager.shared.loanCategories[indexPath.row]
-        DataManager.shared.currentIndexCategoriesSelectedPopup = indexPath.row
+        loanFirstVC.loanCategory = DataManager.shared.loanCategories[DataManager.shared.currentIndexCategoriesSelectedPopup ?? 0]
         
         self.navigationController?.pushViewController(loanFirstVC, animated: true)
     }
     
     
 }
+
+//MARK: AlertAggreeCreateLoanDelegate
+extension BorrowHomeViewController: AlertAggreeCreateLoanDelegate {
+    func confirmAggree() {
+        self.gotoLoanFirstVC()
+        
+    }
+}
+
 
 
 
