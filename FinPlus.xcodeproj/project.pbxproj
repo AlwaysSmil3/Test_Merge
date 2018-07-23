@@ -114,6 +114,7 @@
 		635DC11F20FEEA5500AA84DF /* UpdateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635DC11E20FEEA5500AA84DF /* UpdateWalletViewController.swift */; };
 		6361E09720D7550F005D2C7A /* LoanSumnaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361E09620D7550F005D2C7A /* LoanSumnaryModel.swift */; };
 		6369BBD420AE8AD400E0C435 /* APIClient+Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369BBD320AE8AD400E0C435 /* APIClient+Loan.swift */; };
+		63733BB421057AC600D00A77 /* ExUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63733BB321057AC600D00A77 /* ExUIImage.swift */; };
 		6374FC4620BBA1C100E4BC38 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6374FC4520BBA1C100E4BC38 /* Wallet.storyboard */; };
 		6374FC4F20BBC3E200E4BC38 /* AccountBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374FC4E20BBC3E200E4BC38 /* AccountBank.swift */; };
 		63750EF220F701840063054F /* BaseAuthenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750EF120F701840063054F /* BaseAuthenViewController.swift */; };
@@ -427,6 +428,7 @@
 		635DC11E20FEEA5500AA84DF /* UpdateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWalletViewController.swift; sourceTree = "<group>"; };
 		6361E09620D7550F005D2C7A /* LoanSumnaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanSumnaryModel.swift; sourceTree = "<group>"; };
 		6369BBD320AE8AD400E0C435 /* APIClient+Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Loan.swift"; sourceTree = "<group>"; };
+		63733BB321057AC600D00A77 /* ExUIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExUIImage.swift; sourceTree = "<group>"; };
 		6374FC4520BBA1C100E4BC38 /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		6374FC4E20BBC3E200E4BC38 /* AccountBank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountBank.swift; sourceTree = "<group>"; };
 		63750EF120F701840063054F /* BaseAuthenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAuthenViewController.swift; sourceTree = "<group>"; };
@@ -1169,6 +1171,7 @@
 				632FD02520AAE15800D9399C /* ExString.swift */,
 				6357825320C2888300DE09A0 /* ExUIView.swift */,
 				84A4791F20E0CDA300F83AF4 /* ExFloat.swift */,
+				63733BB321057AC600D00A77 /* ExUIImage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2048,6 +2051,7 @@
 				6355FAEA20B7BEB100038F5B /* LoanResponseModel.swift in Sources */,
 				84A2A79A20D9049A00083CA8 /* PayBtnTableViewCell.swift in Sources */,
 				639C9DCE20A14B3800F2CF5E /* APIClient.swift in Sources */,
+				63733BB421057AC600D00A77 /* ExUIImage.swift in Sources */,
 				639C9DD920A14BD200F2CF5E /* FinPlusHelper.swift in Sources */,
 				638DDC9820D76A9B00CB927D /* BorrowHomeViewController+CategoryCoreData.swift in Sources */,
 				632FD02620AAE15800D9399C /* ExString.swift in Sources */,

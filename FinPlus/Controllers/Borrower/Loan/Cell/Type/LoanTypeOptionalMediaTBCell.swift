@@ -72,18 +72,19 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     func showLibrary() {
         CameraHandler.shared.showCamera(vc: UIApplication.shared.topViewController()!)
         CameraHandler.shared.imagePickedBlock = { (image) in
-            let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
+            //let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
 
-            self.uploadData(img: img)
+            self.uploadData(img: image)
         }
     }
     
     //Upload Data Image
     func uploadData(img: UIImage) {
-        let dataImg = UIImagePNGRepresentation(img)
+        //let dataImg = UIImagePNGRepresentation(img)
+        guard let data = img.jpeg(.lowest) else { return }
         
         let loanID = DataManager.shared.loanID ?? 0
-        guard let data = dataImg else { return }
+        //guard let data = dataImg else { return }
         let endPoint = "loans/" + "\(loanID)/" + "file"
         
         UIApplication.shared.topViewController()!.handleLoadingView(isShow: true)
