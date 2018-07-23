@@ -31,6 +31,7 @@ class ListWalletViewController: BaseViewController {
     var walletAction: WalletAction = .WalletDetail
     let cellIdentifier = "cell"
     private var listWallet: NSMutableArray = []
+    var currentSelected: Int?
 
     
     //CaoHai tra ve du lieu bank khi chon bank
@@ -285,6 +286,7 @@ extension ListWalletViewController: UITableViewDataSource {
             }
             
             cell?.tag = indexPath.row
+            cell?.currentIndex = indexPath
             
             switch(BankName(rawValue: item.bankType!))
             {
@@ -300,7 +302,8 @@ extension ListWalletViewController: UITableViewDataSource {
             cell?.desLabel.text = item.accountBankNumber
             cell?.desLabel.isHidden = false
             cell?.optionBtn.setImage(UIImage(named: "option_icon"), for: .normal)
-            cell?.optionBtn.addTarget(self, action: #selector(self.cell_action(sender:)), for: .touchUpInside)
+            cell?.delegate = self
+            //cell?.optionBtn.addTarget(self, action: #selector(self.cell_action(sender:)), for: .touchUpInside)
             
             return cell!
             
@@ -321,3 +324,30 @@ extension ListWalletViewController: UITableViewDataSource {
     }
     
 }
+
+extension ListWalletViewController: EditWalletDelegate {
+    func editWallet(index: IndexPath) {
+        let alert = UIAlertController(title: "", message: "Lựa chọn", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Sửa thông tin tài khoản", style: .default , handler:{ (UIAlertAction)in
+            self.editWallet(index: index.row)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Xóa tài khoản", style: .destructive , handler:{ (UIAlertAction)in
+            guard let bank = self.listWallet[index.row] as? AccountBank, let bankID = bank.id else { return }
+            self.deleteBank(bankID: bankID, index: index.row)
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Hủy", style: .cancel, handler:{ (UIAlertAction)in
+            print("User click Dismiss button")
+        }))
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+    }
+}
+
+
+

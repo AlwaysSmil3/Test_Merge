@@ -134,7 +134,7 @@ class LoanStateViewController: UIViewController {
         let payMounthString = FinPlusHelper.formatDisplayCurrency(payMounth) + "đ"
         
         
-        var dateString = ""
+        var dateString = " "
         if let date_ = loan.createdAt, date_.length() > 0 {
             let date = Date.init(fromString: date_, format: DateFormat.custom("yyyy-MM-dd HH:mm:ssZ"))
             dateString = date.toString(.custom(kDisplayFormat))
@@ -145,7 +145,7 @@ class LoanStateViewController: UIViewController {
         
         //Số tiền huy động được
         let funded = FinPlusHelper.formatDisplayCurrency(Double(loan.funded ?? 0)) + "đ"
-        var nextPaymentDate = ""
+        var nextPaymentDate = "Đang cập nhật"
         if let nextDateString = loan.nextPaymentDate {
             let nextDate = Date(fromString: nextDateString, format: .iso8601(ISO8601Format.DateTimeSec))
             nextPaymentDate = nextDate.toString(DateFormat.custom(kDisplayFormat))
