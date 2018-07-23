@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15942B172105AF1700591BA4 /* PaymentMethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15942B132105AF1400591BA4 /* PaymentMethodTableViewCell.swift */; };
+		15942B182105AF1700591BA4 /* MonyBankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15942B142105AF1500591BA4 /* MonyBankTableViewCell.xib */; };
+		15942B192105AF1700591BA4 /* MonyBankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15942B152105AF1600591BA4 /* MonyBankTableViewCell.swift */; };
+		15942B1A2105AF1700591BA4 /* PaymentMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15942B162105AF1600591BA4 /* PaymentMethodTableViewCell.xib */; };
+		15942B1D2105AF5200591BA4 /* MonyBankListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15942B1B2105AF5000591BA4 /* MonyBankListViewController.swift */; };
+		15942B1E2105AF5200591BA4 /* MonyBankListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15942B1C2105AF5100591BA4 /* MonyBankListViewController.xib */; };
+		15942B202105B32300591BA4 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15942B1F2105B32300591BA4 /* PaymentMethod.swift */; };
 		48D46DDE05C608E1D160EC14 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
 		6303923020E8B108000C422D /* VSSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303922D20E8B108000C422D /* VSSlider.swift */; };
 		6303923220E8B108000C422D /* InternalSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303922F20E8B108000C422D /* InternalSlider.swift */; };
@@ -321,6 +328,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15942B132105AF1400591BA4 /* PaymentMethodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodTableViewCell.swift; sourceTree = "<group>"; };
+		15942B142105AF1500591BA4 /* MonyBankTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonyBankTableViewCell.xib; sourceTree = "<group>"; };
+		15942B152105AF1600591BA4 /* MonyBankTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonyBankTableViewCell.swift; sourceTree = "<group>"; };
+		15942B162105AF1600591BA4 /* PaymentMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentMethodTableViewCell.xib; sourceTree = "<group>"; };
+		15942B1B2105AF5000591BA4 /* MonyBankListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonyBankListViewController.swift; sourceTree = "<group>"; };
+		15942B1C2105AF5100591BA4 /* MonyBankListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonyBankListViewController.xib; sourceTree = "<group>"; };
+		15942B1F2105B32300591BA4 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		6303922D20E8B108000C422D /* VSSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSSlider.swift; sourceTree = "<group>"; };
 		6303922F20E8B108000C422D /* InternalSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalSlider.swift; sourceTree = "<group>"; };
 		630467B220B5094F0069469A /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
@@ -942,6 +956,7 @@
 		6374FC4B20BBC1EE00E4BC38 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				15942B1F2105B32300591BA4 /* PaymentMethod.swift */,
 				6374FC4E20BBC3E200E4BC38 /* AccountBank.swift */,
 			);
 			path = Wallet;
@@ -1355,6 +1370,8 @@
 		84B7B33F20D12F4E006CADA1 /* Invest */ = {
 			isa = PBXGroup;
 			children = (
+				15942B1B2105AF5000591BA4 /* MonyBankListViewController.swift */,
+				15942B1C2105AF5100591BA4 /* MonyBankListViewController.xib */,
 				84B7B34720D12F4E006CADA1 /* InvestDetailViewController.swift */,
 				84B7B34820D12F4E006CADA1 /* InvestListViewController.swift */,
 				84B7B34020D12F4E006CADA1 /* Cells */,
@@ -1374,6 +1391,10 @@
 		84B7B34020D12F4E006CADA1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				15942B152105AF1600591BA4 /* MonyBankTableViewCell.swift */,
+				15942B142105AF1500591BA4 /* MonyBankTableViewCell.xib */,
+				15942B132105AF1400591BA4 /* PaymentMethodTableViewCell.swift */,
+				15942B162105AF1600591BA4 /* PaymentMethodTableViewCell.xib */,
 				84B7B34320D12F4E006CADA1 /* InvestTableViewCell.swift */,
 				84B7B34520D12F4E006CADA1 /* InvestTableViewCell.xib */,
 				8456CBD020DCD8CE00160B84 /* InvestDetailFirstTableViewCell.swift */,
@@ -1671,6 +1692,7 @@
 				630BA60D20C22A4100880DAE /* SF-Pro-Display-Thin.otf in Resources */,
 				630BA62420C22A4100880DAE /* SF-Pro-Text-Semibold.otf in Resources */,
 				630BA61320C22A4100880DAE /* SF-Pro-Text-MediumItalic.otf in Resources */,
+				15942B1E2105AF5200591BA4 /* MonyBankListViewController.xib in Resources */,
 				E7F519F020CE159300F72682 /* Profile.storyboard in Resources */,
 				84114BDA20D79A6F005026DF /* TestPayHistoryViewController.xib in Resources */,
 				E76AF6AC20DB4F7700C71305 /* FooterButtonView.xib in Resources */,
@@ -1698,6 +1720,7 @@
 				639C9E1120A18A7500F2CF5E /* Roboto-Regular.ttf in Resources */,
 				630BA61E20C22A4100880DAE /* SF-Pro-Display-UltralightItalic.otf in Resources */,
 				84114BD020D79464005026DF /* BankAccountTableViewCell.xib in Resources */,
+				15942B1A2105AF1700591BA4 /* PaymentMethodTableViewCell.xib in Resources */,
 				8467326420E1F4D70011C576 /* InvestContractViewController.xib in Resources */,
 				630BA60E20C22A4100880DAE /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
 				639C9DC020A1498A00F2CF5E /* LaunchScreen.storyboard in Resources */,
@@ -1736,6 +1759,7 @@
 				630BA61420C22A4100880DAE /* SF-Pro-Display-Bold.otf in Resources */,
 				E7BC258720CFDACA001FF0F4 /* Assets.xcassets in Resources */,
 				6307D3BD20AD2BF000055F5C /* HomeBrowwer.storyboard in Resources */,
+				15942B182105AF1700591BA4 /* MonyBankTableViewCell.xib in Resources */,
 				6374FC4620BBA1C100E4BC38 /* Wallet.storyboard in Resources */,
 				63D4CB6F20F3015500519FFB /* LoanTypeChoiceTBCell.xib in Resources */,
 				630BA61B20C22A4100880DAE /* SF-Pro-Display-MediumItalic.otf in Resources */,
@@ -1885,6 +1909,7 @@
 				637A90B620A2FA5F00CCACA5 /* SRMonthPicker.m in Sources */,
 				E7F51A3720CE6DE700F72682 /* TutorialViewController.swift in Sources */,
 				E73BBE9120E0E99800045265 /* ModeViewController.swift in Sources */,
+				15942B1D2105AF5200591BA4 /* MonyBankListViewController.swift in Sources */,
 				E75B706720DA39CC007D158D /* ButtonTableViewCell.swift in Sources */,
 				842D38DD20D25914004E2B36 /* OTPData.swift in Sources */,
 				639C9DD520A14B9D00F2CF5E /* DataManager.swift in Sources */,
@@ -1917,6 +1942,7 @@
 				6338F3FF20BE602C005777E2 /* BrowwerInfo.swift in Sources */,
 				E7BC259220CFDACA001FF0F4 /* MadokaTextField.swift in Sources */,
 				E7F51A1220CE6CE800F72682 /* LoanBuilderFields.swift in Sources */,
+				15942B192105AF1700591BA4 /* MonyBankTableViewCell.swift in Sources */,
 				E7F51A3120CE6D8100F72682 /* CameraHandler.swift in Sources */,
 				635B5E0A20B6B3E800F02132 /* LoanJobInfo.swift in Sources */,
 				E7F51A0920CE5AA700F72682 /* ChangePWViewController.swift in Sources */,
@@ -1963,6 +1989,7 @@
 				6355FAEE20B7EF2800038F5B /* LoanCategories.swift in Sources */,
 				E7F51A2E20CE6D3F00F72682 /* LoanTypeTextFieldTBCell.swift in Sources */,
 				E76AF6AB20DB4F7700C71305 /* FooterButtonView.swift in Sources */,
+				15942B172105AF1700591BA4 /* PaymentMethodTableViewCell.swift in Sources */,
 				84A4791920E091E000F83AF4 /* BudgetAwardsViewController.swift in Sources */,
 				633415B620E1E0D0004B95C0 /* InvestorRegistor.swift in Sources */,
 				84CBBE5220CF83AA0058C834 /* NotificationListViewController.swift in Sources */,
@@ -1981,6 +2008,7 @@
 				6307D3BF20AD2F0500055F5C /* FacebookInfo.swift in Sources */,
 				6357824F20C2330800DE09A0 /* KeychainPasswordItem.swift in Sources */,
 				84CBBE5620CF85610058C834 /* NotificationTableViewCell.swift in Sources */,
+				15942B202105B32300591BA4 /* PaymentMethod.swift in Sources */,
 				630467BB20B513FC0069469A /* AddressTBViewController.swift in Sources */,
 				639C9DF620A189E600F2CF5E /* ToastView.swift in Sources */,
 				6334891E20C639ED00C95931 /* HomeBrowerCollectionCell.swift in Sources */,
