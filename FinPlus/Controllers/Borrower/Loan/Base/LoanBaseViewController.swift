@@ -131,53 +131,15 @@ class LoanBaseViewController: BaseViewController {
         self.navigationController?.pushViewController(firstAddressVC, animated: true)
     }
     
-    /*
-    //Chọn giới tính
-    func selectedGender() {
-        let filterVC = UIAlertController(title: "Chọn giới tính của bạn", message: nil, preferredStyle: .actionSheet)
-        filterVC.view.tintColor = MAIN_COLOR
-        
-        let cancel = UIAlertAction(title: "Huỷ", style: .cancel) { (action) in
-            
-        }
-        
-        cancel.setValue(UIColor(hexString: "#08121E"), forKey: "titleTextColor")
-        
-        let title1 = "Nam"
-        let action1 = UIAlertAction(title: title1, style: .default) { (action) in
-            guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
-            self.mainTBView?.deselectRow(at: indexPath, animated: true)
-            if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeDropdownTBCell {
-                cell.field?.placeholder = title1
-                self.gender = .Male
-            }
-        }
-        
-        let title2 = "Nữ"
-        let action2 = UIAlertAction(title: title2, style: .default) { (action) in
-            guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
-            self.mainTBView?.deselectRow(at: indexPath, animated: true)
-            if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeDropdownTBCell {
-                cell.field?.placeholder = title2
-                self.gender = .Female
-            }
-        }
-        
-        filterVC.addAction(cancel)
-        filterVC.addAction(action1)
-        filterVC.addAction(action2)
-        
-        self.present(filterVC, animated: true, completion: nil)
-    }
-     */
+
     
     //Chọn ảnh
     func selectedFile() {
         CameraHandler.shared.showCamera(vc: self)
         CameraHandler.shared.imagePickedBlock = { (image) in
-            let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
+            //let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
             
-            self.uploadData(img: img)
+            self.uploadData(img: image)
             
         }
     }
@@ -186,11 +148,13 @@ class LoanBaseViewController: BaseViewController {
     func uploadData(img: UIImage) {
         
         guard let type = self.typeImgFile else { return }
+//
+//        let dataImg = UIImagePNGRepresentation(img)
         
-        let dataImg = UIImagePNGRepresentation(img)
+        guard let data = img.jpeg(.lowest) else { return }
         
         let loanID = DataManager.shared.loanID ?? 0
-        guard let data = dataImg else { return }
+        //guard let data = dataImg else { return }
         let endPoint = "loans/" + "\(loanID)/" + "file"
         
         guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }

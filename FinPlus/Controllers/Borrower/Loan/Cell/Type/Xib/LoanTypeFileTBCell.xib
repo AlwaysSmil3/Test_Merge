@@ -37,7 +37,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mZ4-jl-d8H" customClass="AnimatableView" customModule="IBAnimatable">
                         <rect key="frame" x="16" y="29.5" width="343" height="162"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loan_rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="hmx-QV-WET">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loan_rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="hmx-QV-WET">
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="162"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loan_add" translatesAutoresizingMaskIntoConstraints="NO" id="sr0-wS-eg9">
