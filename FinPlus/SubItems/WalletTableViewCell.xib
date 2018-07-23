@@ -36,6 +36,9 @@
                                     <constraint firstAttribute="width" secondItem="a3m-U1-xVo" secondAttribute="height" multiplier="2:3" id="VGm-Ch-KhT"/>
                                 </constraints>
                                 <state key="normal" image="option_icon"/>
+                                <connections>
+                                    <action selector="editWalletTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="b28-Aa-J4t"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPi-IM-7NL">
                                 <rect key="frame" x="48" y="19" width="42" height="21"/>

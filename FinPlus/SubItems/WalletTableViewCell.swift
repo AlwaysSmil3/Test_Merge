@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol  EditWalletDelegate {
+    func editWallet(index: IndexPath)
+}
+
 class WalletTableViewCell: UITableViewCell {
 
     @IBOutlet weak var avatar: UIImageView!
@@ -15,6 +19,9 @@ class WalletTableViewCell: UITableViewCell {
     @IBOutlet weak var desLabel: UILabel!
     @IBOutlet weak var optionBtn: UIButton!
     @IBOutlet weak var borderView: UIView!
+    
+    var currentIndex: IndexPath?
+    var delegate: EditWalletDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,5 +42,11 @@ class WalletTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func editWalletTapped(_ sender: Any) {
+        guard let index = self.currentIndex else { return }
+        self.delegate?.editWallet(index: index)
+    }
+    
     
 }

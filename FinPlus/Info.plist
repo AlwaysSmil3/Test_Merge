@@ -24,6 +24,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb243505112873077</string>
+				<string>monyBorrower</string>
 			</array>
 		</dict>
 	</array>

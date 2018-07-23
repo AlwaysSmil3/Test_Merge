@@ -59,8 +59,12 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
             if value.length() > 0 {
+                self.activityIndicator.startAnimating()
                 //self.imgValue?.sd_setImage(with: URL(string: hostLoan + value), completed: nil)
-                self.imgValue?.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: nil)
+                //self.imgValue?.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: nil)
+                self.imgValue?.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: { (image, error, type, url) in
+                    self.activityIndicator.stopAnimating()
+                })
                 DataManager.shared.loanInfo.nationalIdAllImg = value
                 self.imgAdd?.isHidden = true
                 self.lblDescription?.isHidden = true
@@ -77,8 +81,10 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
             if value.length() > 0 {
-                //self.imgValue?.sd_setImage(with: URL(string: hostLoan + value), completed: nil)
-                self.imgValue?.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: nil)
+                self.activityIndicator.startAnimating()
+                self.imgValue?.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: { (image, error, type, url) in
+                    self.activityIndicator.stopAnimating()
+                })
                 DataManager.shared.loanInfo.nationalIdFrontImg = value
                 self.imgAdd?.isHidden = true
                 self.lblDescription?.isHidden = true
@@ -95,8 +101,10 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
             if value.length() > 0 {
-                //self.imgValue?.sd_setImage(with: URL(string: hostLoan + value), completed: nil)
-                self.imgValue?.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: nil)
+                self.activityIndicator.startAnimating()
+                self.imgValue?.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: { (image, error, type, url) in
+                    self.activityIndicator.stopAnimating()
+                })
                 DataManager.shared.loanInfo.nationalIdBackImg = value
                 self.imgAdd?.isHidden = true
                 self.lblDescription?.isHidden = true
