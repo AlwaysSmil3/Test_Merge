@@ -157,6 +157,7 @@ class ListWalletViewController: BaseViewController {
         let vc = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "UpdateWalletViewController") as! UpdateWalletViewController
         vc.wallet = self.listWallet[index] as! AccountBank
         vc.hidesBottomBarWhenPushed = true
+        vc.walletAction = self.walletAction
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

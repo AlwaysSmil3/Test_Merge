@@ -532,7 +532,7 @@ class LoanStateViewController: UIViewController {
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày vay", value: dateString, attributed: nil),
-                    LoanSummaryModel(name: "Số tiền vay", value: funded, attributed: NSAttributedString(string: funded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Số tiền vay", value: funded, attributed: NSAttributedString(string: funded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
                     LoanSummaryModel(name: "Số tháng đã thanh toán", value: paidMonth, attributed: NSAttributedString(string: paidMonth, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Trạng thái", value: "Đang vay", attributed: NSAttributedString(string: "Đang vay", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
                     LoanSummaryModel(name: "Ngày thanh toán tiếp theo", value: nextPaymentDate, attributed: nil),
@@ -551,7 +551,7 @@ class LoanStateViewController: UIViewController {
                         ],
                     [
                         "type": HeaderCellType.TextType,
-                        "text": "Bạn cần thanh toán \(payMounthString) trong tháng này. Hãy thanh toán trước ngày: 20/7/2018.",
+                        "text": "Bạn cần thanh toán \(payMounthString) trong tháng này. Hãy thanh toán trước ngày: \(nextPaymentDate).",
                         "subType": TextCellType.DesType,
                         ],
                     [
@@ -572,7 +572,7 @@ class LoanStateViewController: UIViewController {
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày vay", value: dateString, attributed: nil),
-                    LoanSummaryModel(name: "Số tiền vay", value: funded, attributed: NSAttributedString(string: funded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Số tiền vay", value: funded, attributed: NSAttributedString(string: funded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
                     LoanSummaryModel(name: "Số tháng đã thanh toán", value: paidMonth, attributed: NSAttributedString(string: paidMonth, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Trạng thái", value: "Nợ quá hạn", attributed: NSAttributedString(string: "Nợ quá hạn", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : NAGATIVE5_COLOR])),
                     LoanSummaryModel(name: "Ngày thanh toán tiếp theo", value: nextPaymentDate, attributed: nil),
