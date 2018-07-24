@@ -212,9 +212,16 @@ extension ListWalletViewController: UITableViewDelegate {
                 let wallet = self.listWallet[indexPath.row] as! AccountBank
                 let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
                 DataManager.shared.loanInfo.walletId = wallet.id!
-                DataManager.shared.loanInfo.bankId = Int(wallet.id!)
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
+                DataManager.shared.loanInfo.bankId = wallet.id!
+                
+                self.tableview.reloadData()
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    
+                    self.navigationController?.isNavigationBarHidden = true
+                    self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
+                }
+                
                 break
             case .RegisterInvestor:
                 //Cho đăng ký làm nhà đầu tư
@@ -223,6 +230,8 @@ extension ListWalletViewController: UITableViewDelegate {
                 self.navigationController?.popViewController(animated: true)
                 break
             }
+            
+            
             
         default:
             addNewWallet()
@@ -303,7 +312,17 @@ extension ListWalletViewController: UITableViewDataSource {
             cell?.desLabel.isHidden = false
             cell?.optionBtn.setImage(UIImage(named: "option_icon"), for: .normal)
             cell?.delegate = self
-            //cell?.optionBtn.addTarget(self, action: #selector(self.cell_action(sender:)), for: .touchUpInside)
+            
+            if self.walletAction == .LoanNation {
+                if let id = item.id {
+                    if DataManager.shared.loanInfo.bankId > 0 && id == DataManager.shared.loanInfo.bankId {
+                        cell?.borderView.layer.borderColor = MAIN_COLOR.cgColor
+                        return cell!
+                    }
+                }
+            }
+            
+            cell?.borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
             
             return cell!
             

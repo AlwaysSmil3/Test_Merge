@@ -118,6 +118,7 @@
 		6374FC4620BBA1C100E4BC38 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6374FC4520BBA1C100E4BC38 /* Wallet.storyboard */; };
 		6374FC4F20BBC3E200E4BC38 /* AccountBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374FC4E20BBC3E200E4BC38 /* AccountBank.swift */; };
 		63750EF220F701840063054F /* BaseAuthenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750EF120F701840063054F /* BaseAuthenViewController.swift */; };
+		6377342621070A39000889F2 /* BrowwerBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6377342521070A39000889F2 /* BrowwerBank.swift */; };
 		637A90B020A2E52700CCACA5 /* APIClient+Authen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90AF20A2E52700CCACA5 /* APIClient+Authen.swift */; };
 		637A90B620A2FA5F00CCACA5 /* SRMonthPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B320A2FA5F00CCACA5 /* SRMonthPicker.m */; };
 		637A90B820A2FA5F00CCACA5 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B520A2FA5F00CCACA5 /* DatePickerDialog.swift */; };
@@ -432,6 +433,7 @@
 		6374FC4520BBA1C100E4BC38 /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		6374FC4E20BBC3E200E4BC38 /* AccountBank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountBank.swift; sourceTree = "<group>"; };
 		63750EF120F701840063054F /* BaseAuthenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAuthenViewController.swift; sourceTree = "<group>"; };
+		6377342521070A39000889F2 /* BrowwerBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowwerBank.swift; sourceTree = "<group>"; };
 		637A90AF20A2E52700CCACA5 /* APIClient+Authen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Authen.swift"; sourceTree = "<group>"; };
 		637A90B320A2FA5F00CCACA5 /* SRMonthPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRMonthPicker.m; sourceTree = "<group>"; };
 		637A90B420A2FA5F00CCACA5 /* SRMonthPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRMonthPicker.h; sourceTree = "<group>"; };
@@ -735,6 +737,7 @@
 				6338F3F720BE602C005777E2 /* BrowwerUserInfo.swift */,
 				6338F3F820BE602C005777E2 /* BrowwerWallets.swift */,
 				6338F3F520BE602B005777E2 /* BrowwerWorks.swift */,
+				6377342521070A39000889F2 /* BrowwerBank.swift */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -1923,6 +1926,7 @@
 				84114BD920D79A6F005026DF /* TestPayHistoryViewController.swift in Sources */,
 				633415B220E1D6E8004B95C0 /* RateInfo.swift in Sources */,
 				E7BC259320CFDACA001FF0F4 /* KaedeTextField.swift in Sources */,
+				6377342621070A39000889F2 /* BrowwerBank.swift in Sources */,
 				6387D11B20D9008F008AC08C /* LoanTypeOptionalMediaTBCell.swift in Sources */,
 				633AF9B720A98A7D00BAE2BB /* SetPassAuthenVC.swift in Sources */,
 				E7BC259120CFDACA001FF0F4 /* JiroTextField.swift in Sources */,

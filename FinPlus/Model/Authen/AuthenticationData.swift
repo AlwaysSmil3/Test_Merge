@@ -25,6 +25,7 @@ public struct AuthenticationData {
     static let displayName = "displayName"
     static let birthday = "birthday"
     static let nationalId = "nationalId"
+    static let jwtToken = "jwtToken"
   }
 
   // MARK: Properties
@@ -41,6 +42,7 @@ public struct AuthenticationData {
   public var displayName: String?
   public var birthday: String?
   public var nationalId: String?
+    public var jwtToken: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -68,6 +70,7 @@ public struct AuthenticationData {
     displayName = json[SerializationKeys.displayName].string
     birthday = json[SerializationKeys.birthday].string
     nationalId = json[SerializationKeys.nationalId].string
+    jwtToken = json[SerializationKeys.jwtToken].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -88,6 +91,7 @@ public struct AuthenticationData {
     if let value = displayName { dictionary[SerializationKeys.displayName] = value }
     if let value = birthday { dictionary[SerializationKeys.birthday] = value }
     if let value = nationalId { dictionary[SerializationKeys.nationalId] = value }
+    if let value = jwtToken { dictionary[SerializationKeys.jwtToken] = value }
     return dictionary
   }
 

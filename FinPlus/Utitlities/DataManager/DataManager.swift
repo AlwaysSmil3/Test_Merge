@@ -19,6 +19,9 @@ class DataManager {
         }
     }
     
+    //header token for API
+    var token: String?
+    
     //Push Notification Token
     var pushNotificationToken: String?
     
@@ -158,6 +161,16 @@ class DataManager {
         if let amount = activeLoan.amount, amount > 0 {
             DataManager.shared.loanInfo.amount = amount
         }
+        
+        if let bank = activeLoan.bank, let bankID = bank.id {
+            DataManager.shared.loanInfo.bankId = bankID
+            
+        }
+        
+        if let bankId = activeLoan.bankId, bankId > 0 {
+            DataManager.shared.loanInfo.bankId = bankId
+        }
+        
         
         if let userInfo = activeLoan.userInfo {
             //Thong tin user
