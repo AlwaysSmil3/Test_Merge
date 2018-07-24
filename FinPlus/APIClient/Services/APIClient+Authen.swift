@@ -45,6 +45,11 @@ extension APIClient {
             requestWithEndPoint(endPoint: EndPoint.Authen.Authen, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST)
                 .done { json in
                     let model = AuthenticationBase(object: json)
+                    
+                    if let data = model.data, let token = data.jwtToken {
+                        DataManager.shared.token = token
+                    }
+                    
                     seal.fulfill(model)
                 }
                 .catch{ error in
