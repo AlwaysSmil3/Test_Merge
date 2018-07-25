@@ -162,7 +162,7 @@ class DataManager {
             DataManager.shared.loanInfo.amount = amount
         }
         
-        if let bank = activeLoan.bank, let bankID = bank.id {
+        if let bank = activeLoan.bank, let bankID = bank.id, bankID > 0 {
             DataManager.shared.loanInfo.bankId = bankID
             
         }

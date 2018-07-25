@@ -251,7 +251,8 @@ class APIClient {
         
         let headers: HTTPHeaders = [
             /* "Authorization": "your_access_token",  in case you need authorization header */
-            "Content-type": "multipart/form-data"
+            "Content-type": "multipart/form-data",
+            "Authorization": "\(DataManager.shared.token ?? "")"
         ]
         
         Alamofire.upload(multipartFormData: { (multipartFormData) in

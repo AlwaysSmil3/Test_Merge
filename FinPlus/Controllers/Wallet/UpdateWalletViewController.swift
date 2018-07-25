@@ -24,6 +24,8 @@ class UpdateWalletViewController: BaseViewController {
     
     var wallet: AccountBank?
     
+    var walletAction: WalletAction = .WalletDetail
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -160,6 +162,12 @@ class UpdateWalletViewController: BaseViewController {
             .done(on: DispatchQueue.main) { [weak self]model in
                 
                 self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg!, okTitle: "OK", cancelTitle: "Cancel", completion: { (status) in
+                    
+                    if self?.walletAction == .LoanNation {
+                        self?.navigationController?.popViewController(animated: true)
+                        return
+                    }
+                    
                     self?.navigationController?.popToRootViewController(animated: true)
                 })
                 
