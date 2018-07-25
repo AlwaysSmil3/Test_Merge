@@ -569,6 +569,22 @@ class LoanStateViewController: UIViewController {
                 ]
             case .OVERDUE_DEPT?:
                 //Nợ quá hạn
+                var overDate = "0"
+                if let nextDateStr = loan.nextPaymentDate {
+                    let calendar = NSCalendar.current
+                    let d1 = Date()
+                    let date1 = calendar.startOfDay(for: d1)
+                    let d2 = Date(fromString: nextDateStr, format: .iso8601(ISO8601Format.DateTimeSec))
+                    let date2 = calendar.startOfDay(for: d2)
+                    
+                    if d1 > d2 {
+                        let components = calendar.dateComponents([.day], from: date2, to: date1)
+                        overDate = "\(components.day!)"
+                    }
+                    
+                }
+                
+                
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày vay", value: dateString, attributed: nil),
@@ -585,7 +601,7 @@ class LoanStateViewController: UIViewController {
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
-                        "text": "Khoản vay của bạn đang quá hạn 2 ngày.",
+                        "text": "Khoản vay của bạn đang quá hạn \(overDate) ngày.",
                         "subType": TextCellType.TitleType,
                         ],
                     [
@@ -625,15 +641,29 @@ class LoanStateViewController: UIViewController {
             
         case .DISBURSEMENT_SOON:
             //Giai ngan som
-            //let funded = FinPlusHelper.formatDisplayCurrency(Double(loan.funded ?? 0)) + "đ"
             let fullName = loan.userInfo?.fullName ?? ""
+            
+            var acceptedDate = "0"
+            if let acceptedDateStr = loan.acceptedAt {
+                let calendar = NSCalendar.current
+                let d1 = Date()
+                let date1 = calendar.startOfDay(for: d1)
+                let d2 = Date(fromString: acceptedDateStr, format: .iso8601(ISO8601Format.DateTimeSec))
+                let date2 = calendar.startOfDay(for: d2)
+                
+                if d2 > d1 {
+                    let components = calendar.dateComponents([.day], from: date1, to: date2)
+                    acceptedDate = "\(components.day!)"
+                }
+                
+            }
             
             dataSource = [
                 LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                 LoanSummaryModel(name: "Họ và tên", value: fullName, attributed: nil),
                 LoanSummaryModel(name: "Số tiền vay được duyệt", value: amountString, attributed: NSAttributedString(string: amountString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                 LoanSummaryModel(name: "Số tiền huy động được", value: funded, attributed: NSAttributedString(string: funded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
-                LoanSummaryModel(name: "Ngày huy động còn lại", value: "5 Ngày", attributed: NSAttributedString(string: "5 Ngày", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!])),
+                LoanSummaryModel(name: "Ngày huy động còn lại", value: "\(acceptedDate) Ngày", attributed: NSAttributedString(string: "\(acceptedDate) Ngày", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : UIColor(hexString: "#DA3535")])),
                 LoanSummaryModel(name: "Thời hạn vay được duyệt", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                 LoanSummaryModel(name: "Lãi suất", value: "\(rate)%/năm", attributed: nil),
                 LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFee) + "đ", attributed: nil),
