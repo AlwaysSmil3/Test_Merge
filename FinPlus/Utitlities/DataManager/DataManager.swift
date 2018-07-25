@@ -109,6 +109,7 @@ class DataManager {
         self.userID = 0
         userDefault.set(nil, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
         userDefault.set(nil, forKey: fUSER_DEFAUT_TOKEN)
+        self.token = nil
         
         completion()
     }
