@@ -19,7 +19,7 @@ enum Host {
     //static let productURL = "http://192.168.104.70:31007/" //Cho Loan Service
     //static let productURL = "https://b10644cc-7d66-4541-aa97-770206b05b43.mock.pstmn.io/"
 #else
-    static let productURL = "http://192.168.104.70:31018/"
+    static let productURL = "http://gateway.mony.vn/"
 #endif
 }
 
