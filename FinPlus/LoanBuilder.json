@@ -164,7 +164,7 @@
                         "keyboard": "default"
                     },
                     {
-                        "id": "position",
+                        "id": "strength",
                         "index": 3,
                         "type":"dropdown",
                         "title": "Học lực",
