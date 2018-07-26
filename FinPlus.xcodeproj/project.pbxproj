@@ -109,6 +109,8 @@
 		6355FAEA20B7BEB100038F5B /* LoanResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355FAE920B7BEB000038F5B /* LoanResponseModel.swift */; };
 		6355FAEC20B7C1FB00038F5B /* VerifyOTPAuthenVC+Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355FAEB20B7C1FB00038F5B /* VerifyOTPAuthenVC+Loan.swift */; };
 		6355FAEE20B7EF2800038F5B /* LoanCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355FAED20B7EF2800038F5B /* LoanCategories.swift */; };
+		635732F82109A6CF00F6CD04 /* LoanTypeTextViewTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635732F72109A6CF00F6CD04 /* LoanTypeTextViewTBCell.swift */; };
+		635732FA2109A83800F6CD04 /* LoanTypeTextViewTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635732F92109A83800F6CD04 /* LoanTypeTextViewTBCell.xib */; };
 		6357824E20C2330800DE09A0 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357824C20C2330800DE09A0 /* KeychainConfiguration.swift */; };
 		6357824F20C2330800DE09A0 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357824D20C2330800DE09A0 /* KeychainPasswordItem.swift */; };
 		6357825420C2888300DE09A0 /* ExUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357825320C2888300DE09A0 /* ExUIView.swift */; };
@@ -431,6 +433,8 @@
 		6355FAE920B7BEB000038F5B /* LoanResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanResponseModel.swift; sourceTree = "<group>"; };
 		6355FAEB20B7C1FB00038F5B /* VerifyOTPAuthenVC+Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerifyOTPAuthenVC+Loan.swift"; sourceTree = "<group>"; };
 		6355FAED20B7EF2800038F5B /* LoanCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanCategories.swift; sourceTree = "<group>"; };
+		635732F72109A6CF00F6CD04 /* LoanTypeTextViewTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanTypeTextViewTBCell.swift; sourceTree = "<group>"; };
+		635732F92109A83800F6CD04 /* LoanTypeTextViewTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoanTypeTextViewTBCell.xib; sourceTree = "<group>"; };
 		6357824C20C2330800DE09A0 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainConfiguration.swift; sourceTree = "<group>"; };
 		6357824D20C2330800DE09A0 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		6357825320C2888300DE09A0 /* ExUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExUIView.swift; sourceTree = "<group>"; };
@@ -1282,6 +1286,7 @@
 				63D4CB6E20F3015500519FFB /* LoanTypeChoiceTBCell.xib */,
 				63D4CB7020F3064500519FFB /* LoanTypeChoiceCollectionCell.xib */,
 				630F684620F4664D004FF32E /* LoanTypePhoneRelationSubTBCell.xib */,
+				635732F92109A83800F6CD04 /* LoanTypeTextViewTBCell.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -1590,6 +1595,7 @@
 				63D4CB6C20F3009100519FFB /* LoanTypeChoiceTBCell.swift */,
 				63D4CB7220F3080A00519FFB /* LoanTypeChoiceCollectionCell.swift */,
 				630F684420F4641A004FF32E /* LoanTypePhoneRelationSubTBCell.swift */,
+				635732F72109A6CF00F6CD04 /* LoanTypeTextViewTBCell.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -1773,6 +1779,7 @@
 				84114BCA20D79464005026DF /* PayTypeTableViewCell.xib in Resources */,
 				6336D5C620B2750A00A6C38A /* Loan.storyboard in Resources */,
 				63D4CB6920F2FFB900519FFB /* LoanTypeOptionalMediaTBCell.xib in Resources */,
+				635732FA2109A83800F6CD04 /* LoanTypeTextViewTBCell.xib in Resources */,
 				630BA61720C22A4100880DAE /* SF-Pro-Text-Light.otf in Resources */,
 				639C9E2020A18A7500F2CF5E /* Oswald-ExtraLight.ttf in Resources */,
 				E7BC258B20CFDACA001FF0F4 /* README.md in Resources */,
@@ -2025,6 +2032,7 @@
 				6397B1B820CFB436009BAF33 /* LoanTypePopupTBCell.swift in Sources */,
 				E7F51A3820CE6DE700F72682 /* OnBoardViewController.swift in Sources */,
 				633AF9BA20A98F6000BAE2BB /* ChoiceKindUserVC.swift in Sources */,
+				635732F82109A6CF00F6CD04 /* LoanTypeTextViewTBCell.swift in Sources */,
 				635B5E0820B6B3D800F02132 /* LoanUserInfo.swift in Sources */,
 				631A2DA420F60C6800D8D9B8 /* BorrowerTabBarController.swift in Sources */,
 				84647A8320E0E89B0053DD0D /* UICircularProgressRingView.swift in Sources */,

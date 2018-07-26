@@ -17,16 +17,18 @@ extension BorrowHomeViewController {
         guard DataManager.shared.isUpdateFromConfig || DataManager.shared.loanCategories.count == 0 else { return }
         //Có thay đổi cần cập nhật lại dữ liệu
         
-        APIClient.shared.getLoanCategories()
-            .done(on: DispatchQueue.main) { model in
-                print(model)
-                DataManager.shared.loanCategories = model
-                self.mainCollectionView.reloadData()
-                
-                self.updateCoreData()
-                
-            }
-            .catch { error in }
+        //self.updateCoreData()
+        
+//        APIClient.shared.getLoanCategories()
+//            .done(on: DispatchQueue.main) { model in
+//                print(model)
+//                DataManager.shared.loanCategories = model
+//                self.mainCollectionView.reloadData()
+//
+//                self.updateCoreData()
+//
+//            }
+//            .catch { error in }
     }
     
     func updateCoreData() {

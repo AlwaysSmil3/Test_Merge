@@ -46,11 +46,11 @@ class BorrowHomeViewController: BaseViewController {
         self.navigationController?.isNavigationBarHidden = true
         
         //Lấy data Local
-        if let context = self.managedContext {
-            FinPlusHelper.fetchCoreData(context: context) {
-                self.mainCollectionView.reloadData()
-            }
-        }
+//        if let context = self.managedContext {
+//            FinPlusHelper.fetchCoreData(context: context) {
+//                self.mainCollectionView.reloadData()
+//            }
+//        }
 
         self.getLoanCategories()
 

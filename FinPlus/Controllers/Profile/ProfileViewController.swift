@@ -234,81 +234,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
-        if (self.isInvestor)
-        {
-            switch indexPath.row {
-            case 0:
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "CHANG_PASSWORD") as! ChangePWViewController
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
-            case 1:
-                let swallet = UIStoryboard.init(name: "Wallet", bundle: nil)
-                let vc = swallet.instantiateViewController(withIdentifier: "LIST_WALLET")
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
-            case 2:
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "APP_MODE") as! ModeViewController
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
-            case 3:
-                sendEmail()
-            case 4:
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "FAQ") as! FAQViewController
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
-            case 5:
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "WEBVIEW") as! WebViewViewController
-                vc.webViewType = .termView
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
-            case 6:
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "WEBVIEW") as! WebViewViewController
-                vc.webViewType = .aboutView
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
-                
-            case 7:
-                //LogOut
-                self.showAlertView(title: "Đăng xuất", message: "Bạn có chắc chắn muốn đăng xuất tài khoản này?", okTitle: "Đồng ý", cancelTitle: "Huỷ") { (status) in
-                    
-                    if status {
-                        
-                        APIClient.shared.logOut()
-                            .done(on: DispatchQueue.main) { [weak self] model in
-                                
-                                guard let reponseCode = model.returnCode, reponseCode > 0 else {
-                                    self?.showToastWithMessage(message: model.returnMsg!)
-                                    return
-                                }
-                                
-                                guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {
-                                    return
-                                }
-                                
-                                //Clear Data and Login
-                                DataManager.shared.clearData {
-                                    let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
-                                    
-                                    window.rootViewController = enterPhoneVC
-                                }
-                                
-                            }
-                            .catch { error in}
-                        
-                    }
-                    
-                }
-                
-                
-                
-                break
-                
-            default: break
-                
-            }
-        }
-        else
-        {
+
             switch indexPath.row {
             case 0:
                 self.navigationController?.isNavigationBarHidden = false
@@ -375,7 +301,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             default: break
                 
             }
-        }
+        
     }
     
     func sendEmail() {
