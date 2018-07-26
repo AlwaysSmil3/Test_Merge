@@ -103,6 +103,7 @@ class MonyBankListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func payBtnAction(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
 //        let successVC = BudgetRewardSuccessViewController(nibName: "BudgetRewardSuccessViewController", bundle: nil)
 ////        self.present(successVC, animated: true, completion: nil)
 //        self.navigationController?.pushViewController(successVC, animated: true)

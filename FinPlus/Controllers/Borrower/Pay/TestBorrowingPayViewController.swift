@@ -245,14 +245,19 @@ class TestBorrowingPayViewController: UIViewController {
 
     @objc func payBtnAction() {
         // check and show mony bank list
-        if (self.methodSelected.id == 1) {
-            let monyBankListVC = MonyBankListViewController(nibName: "MonyBankListViewController", bundle: nil)
-            if let navi = self.navigationController {
-                self.navigationController?.pushViewController(monyBankListVC, animated: true)
-            } else {
-                self.present(monyBankListVC, animated: true, completion: nil)
+        if self.methodSelected != nil {
+            if (self.methodSelected.id == 1) {
+                let monyBankListVC = MonyBankListViewController(nibName: "MonyBankListViewController", bundle: nil)
+                if let navi = self.navigationController {
+                    self.navigationController?.pushViewController(monyBankListVC, animated: true)
+                } else {
+                    self.present(monyBankListVC, animated: true, completion: nil)
+                }
             }
+        } else {
+            self.showGreenBtnMessage(title: "Không thể thanh toán", message: "Bạn cần chọn hình thức thanh toán trước khi tiến hành thanh toán", okTitle: "Ok", cancelTitle: nil)
         }
+        
     }
 
 }
