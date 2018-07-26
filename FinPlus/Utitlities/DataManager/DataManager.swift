@@ -48,13 +48,20 @@ class DataManager {
     var isUpdateFromConfig: Bool = true
     
     //Data from LoanBuilder json
-    var loanBuilder: [LoanBuilderBase] = []
+    //var loanBuilder: [LoanBuilderBase] = []
+    //var loanBuilder: [LoanCategories] = []
     
     //List Lãi xuất dự kiến
     var listRateInfo: [RateInfo] = []
     
     //Category đang chọn hiện tại
-    var currentIndexCategoriesSelectedPopup: Int?
+    var currentIndexCategoriesSelectedPopup: Int? {
+        didSet {
+            if let i = self.currentIndexCategoriesSelectedPopup {
+                self.loanInfo.loanCategoryID = Int16(i + 1)
+            }
+        }
+    }
     //So dien thoai nguoi than
     var currentIndexRelationPhoneSelectedPopup: Int?
     //Job hien tai dang chon
@@ -88,8 +95,9 @@ class DataManager {
                     // do stuff
                     
                     jsonResult.forEach({ (data) in
-                        let toll = LoanBuilderBase(object: data)
-                        self.loanBuilder.append(toll)
+                        let toll = LoanCategories(object: data)
+                        //self.loanBuilder.append(toll)
+                        self.loanCategories.append(toll)
                     })
 
                 }
@@ -109,6 +117,7 @@ class DataManager {
         self.userID = 0
         userDefault.set(nil, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
         userDefault.set(nil, forKey: fUSER_DEFAUT_TOKEN)
+        self.token = nil
         
         completion()
     }

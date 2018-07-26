@@ -21,6 +21,8 @@ public struct LoanCategories {
     static let title = "title"
     static let imageUrl = "imageUrl"
     static let termMax = "termMax"
+    
+    static let builder = "builder"
   }
 
   // MARK: Properties
@@ -33,6 +35,8 @@ public struct LoanCategories {
   public var title: String?
   public var imageUrl: String?
   public var termMax: Int16?
+    
+   public var builders: [LoanBuilderBase]?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -56,6 +60,7 @@ public struct LoanCategories {
     title = json[SerializationKeys.title].string ?? ""
     imageUrl = json[SerializationKeys.imageUrl].string ?? ""
     termMax = json[SerializationKeys.termMax].int16 ?? 0
+    if let items = json[SerializationKeys.builder].array { builders = items.map { LoanBuilderBase(json: $0) } }
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -72,6 +77,8 @@ public struct LoanCategories {
     if let value = title { dictionary[SerializationKeys.title] = value }
     if let value = imageUrl { dictionary[SerializationKeys.imageUrl] = value }
     if let value = termMax { dictionary[SerializationKeys.termMax] = value }
+    if let value = builders { dictionary[SerializationKeys.builder] = value.map { $0.dictionaryRepresentation() } }
+    
     return dictionary
   }
 

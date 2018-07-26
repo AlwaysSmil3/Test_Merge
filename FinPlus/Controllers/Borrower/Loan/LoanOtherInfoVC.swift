@@ -38,10 +38,10 @@ class LoanOtherInfoVC: LoanBaseViewController {
         
         self.view.endEditing(true)
         
-        if DataManager.shared.loanInfo.optionalText.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập lương tháng của bạn")
-            return
-        }
+//        if DataManager.shared.loanInfo.optionalText.length() == 0 {
+//            self.showToastWithMessage(message: "Vui lòng nhập lương tháng của bạn")
+//            return
+//        }
         
         if !Platform.isSimulator {
             if DataManager.shared.loanInfo.optionalMedia.count == 0 {

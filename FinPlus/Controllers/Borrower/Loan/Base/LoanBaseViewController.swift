@@ -18,6 +18,7 @@ enum Loan_Identifier_TB_Cell {
     static let File = "Loan_Type_File_TB_Cell"
     static let OptionalMedia = "Loan_Type_Optional_Media_TB_Cell"
     static let Choice = "Loan_Type_Choice_TB_Cell"
+    static let TextView = "LoanTypeTextViewTBCell"
 }
 
 
@@ -79,9 +80,15 @@ class LoanBaseViewController: BaseViewController {
     /// Setup cho tableView
     func setupMainTBView() {
         guard let tableView = self.mainTBView else { return }
-        guard self.index < DataManager.shared.loanBuilder.count else { return }
+//        guard self.index < DataManager.shared.loanBuilder.count else { return }
+//
+//        self.dataSource = DataManager.shared.loanBuilder[self.index]
         
-        self.dataSource = DataManager.shared.loanBuilder[self.index]
+        guard let cate = DataManager.shared.getCurrentCategory(), let builders = cate.builders else { return }
+        guard self.index < builders.count else { return }
+        self.dataSource = builders[self.index]
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -93,6 +100,7 @@ class LoanBaseViewController: BaseViewController {
         tableView.register(UINib(nibName: "LoanTypeFileTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.File)
         tableView.register(UINib(nibName: "LoanTypeOptionalMediaTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.OptionalMedia)
         tableView.register(UINib(nibName: "LoanTypeChoiceTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.Choice)
+        tableView.register(UINib(nibName: "LoanTypeTextViewTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.TextView)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorColor = UIColor.clear
@@ -244,6 +252,17 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch model.type! {
         case DATA_TYPE_TB_CELL.TextBox:
+            
+            if let multiline = model.multipleLine, multiline {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.TextView, for: indexPath) as! LoanTypeTextViewTBCell
+                
+                //cell.parent = data.id
+                cell.field = model
+                
+                return cell
+                
+            }
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.TextField, for: indexPath) as! LoanTypeTextFieldTBCell
             
             cell.parent = data.id
