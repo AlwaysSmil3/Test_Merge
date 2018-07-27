@@ -13,7 +13,7 @@ class BaseAuthenViewController: BaseViewController {
     var accountType : AccountType = .Borrower {
         didSet {
             if accountType == .Investor {
-                self.gotoAppInvestor()
+                self.confirmGotoAppInvestor()
             }
         }
     }
@@ -109,35 +109,18 @@ class BaseAuthenViewController: BaseViewController {
         }
     }
     
-    func gotoAppInvestor() {
+    //Confirm Goto app Investor
+    func confirmGotoAppInvestor() {
         self.showGreenBtnMessage(title: "Khác loại tài khoản", message: "Số điện thoại \(DataManager.shared.currentAccount) đã được đăng ký làm nhà đầu tư, bạn có muốn chuyển sang app cho nhà đầu tư không?", okTitle: "Chuyển", cancelTitle: "Không") { (status) in
             if status {
-                if let url = URL(string: "monyInvestor://") {
-                    
-                    if UIApplication.shared.canOpenURL(url) {
-                        //da cai app
-                        if #available(iOS 10, *) {
-                            UIApplication.shared.open(url, options: [:],
-                                                      completionHandler: {
-                                                        (success) in
-                                                        
-                            })
-                        } else {
-                            UIApplication.shared.openURL(url)
-                        }
-                    } else {
-                        //chua cai app
-                        if let link = URL(string: "https://itunes.apple.com/vn/app/facebook/id284882215") {
-                            UIApplication.shared.openURL(link)
-                        }
-                        
-                    }
-                }
+                self.gotoAppInvestor()
             }
         }
         
         
     }
+    
+    
     
     func pushToHomeVC(accountType: AccountType) {
         print("Push to user home viewcontroller")

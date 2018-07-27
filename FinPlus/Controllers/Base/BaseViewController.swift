@@ -102,6 +102,31 @@ class BaseViewController: UIViewController {
         _ = self.navigationController?.popToRootViewController(animated: true)
     }
     
+    //Goto App Investor
+    func gotoAppInvestor() {
+        if let url = URL(string: "monyInvestor://") {
+            
+            if UIApplication.shared.canOpenURL(url) {
+                //da cai app
+                if #available(iOS 10, *) {
+                    UIApplication.shared.open(url, options: [:],
+                                              completionHandler: {
+                                                (success) in
+                                                
+                    })
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
+            } else {
+                //chua cai app
+                if let link = URL(string: "https://itunes.apple.com/vn/app/facebook/id284882215") {
+                    UIApplication.shared.openURL(link)
+                }
+                
+            }
+        }
+    }
+    
     
     
 }
