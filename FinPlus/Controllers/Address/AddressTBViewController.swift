@@ -165,7 +165,8 @@ extension AddressTBViewController: UISearchBarDelegate {
             self.dataSourceTemp = self.dataSource.filter({ (model) -> Bool in
                 //Bỏ dấu
                 let textFold = model.name!.removeVietnameseMark()
-                return model.name!.contains(searchText) || textFold.contains(searchText)
+                let texFoldLower = textFold.lowercased() // Khong viet hoa
+                return model.name!.contains(searchText) || textFold.contains(searchText) || texFoldLower.contains(searchText.lowercased())
             })
         } else {
             //self.searchBar.showsCancelButton = false
