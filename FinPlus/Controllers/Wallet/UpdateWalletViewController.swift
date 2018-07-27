@@ -161,7 +161,7 @@ class UpdateWalletViewController: BaseViewController {
         APIClient.shared.updateBankAccount(bankAccountID: bankId, params: params)
             .done(on: DispatchQueue.main) { [weak self]model in
                 
-                self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg!, okTitle: "OK", cancelTitle: "Cancel", completion: { (status) in
+                self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg!, okTitle: "OK", cancelTitle: nil, completion: { (status) in
                     
                     if self?.walletAction == .LoanNation {
                         self?.navigationController?.popViewController(animated: true)
