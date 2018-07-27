@@ -73,19 +73,19 @@ class PaymentMethodTableViewCell: UITableViewCell {
 //            }
         }
         // update cell mode
-        self.updateCellMode()
+        //self.updateCellMode()
     }
     
-    func updateCellMode() {
-        if (UserDefaults.standard.bool(forKey: APP_MODE) && UserDefaults.standard.bool(forKey: IS_INVESTOR)) {
-            self.methodTitleLb.textColor = DARK_BODY_TEXT_COLOR
-            self.methodDesLb.textColor = DARK_SUBTEXT_COLOR
-        } else {
-            self.methodTitleLb.textColor = LIGHT_BODY_TEXT_COLOR
-            self.methodDesLb.textColor = LIGHT_SUBTEXT_COLOR
-        }
-        
-    }
+//    func updateCellMode() {
+//        if (UserDefaults.standard.bool(forKey: APP_MODE) && UserDefaults.standard.bool(forKey: IS_INVESTOR)) {
+//            self.methodTitleLb.textColor = DARK_BODY_TEXT_COLOR
+//            self.methodDesLb.textColor = DARK_SUBTEXT_COLOR
+//        } else {
+//            self.methodTitleLb.textColor = LIGHT_BODY_TEXT_COLOR
+//            self.methodDesLb.textColor = LIGHT_SUBTEXT_COLOR
+//        }
+//
+//    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
