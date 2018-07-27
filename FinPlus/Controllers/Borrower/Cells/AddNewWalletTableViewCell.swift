@@ -22,14 +22,14 @@ class AddNewWalletTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func updateCellView() {
-        if (UserDefaults.standard.bool(forKey: APP_MODE) && UserDefaults.standard.bool(forKey: IS_INVESTOR)) {
-            self.titleLb.textColor = DARK_SUBTEXT_COLOR
-        } else {
-            self.titleLb.textColor = LIGHT_BODY_TEXT_COLOR
-        }
-    }
-
+//    func updateCellView() {
+//        if (UserDefaults.standard.bool(forKey: APP_MODE) && UserDefaults.standard.bool(forKey: IS_INVESTOR)) {
+//            self.titleLb.textColor = DARK_SUBTEXT_COLOR
+//        } else {
+//            self.titleLb.textColor = LIGHT_BODY_TEXT_COLOR
+//        }
+//    }
+//
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

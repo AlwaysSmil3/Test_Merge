@@ -131,8 +131,8 @@ class ChoiceKindUserVC: BaseViewController {
                     verifyFBVC.accountType = self.accountType
                     
                     // Setting App Type
-                    userDefault.set(false, forKey: IS_INVESTOR)
-                    userDefault.synchronize()
+                    //userDefault.set(false, forKey: IS_INVESTOR)
+                    //userDefault.synchronize()
                     
                     self.navigationController?.pushViewController(verifyFBVC, animated: true)
                 }

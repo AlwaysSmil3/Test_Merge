@@ -105,7 +105,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.isNavigationBarHidden = true
         
         self.mode = UserDefaults.standard.bool(forKey: APP_MODE)
-        self.isInvestor = UserDefaults.standard.bool(forKey: IS_INVESTOR)
+        //self.isInvestor = UserDefaults.standard.bool(forKey: IS_INVESTOR)
         
         setupMode()
     }
