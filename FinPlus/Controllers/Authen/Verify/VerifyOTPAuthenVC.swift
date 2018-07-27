@@ -36,16 +36,7 @@ class VerifyOTPAuthenVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        switch verifyType {
-//        case .Login:
-//            self.descriptionLb.text = "Hãy điền 6 số được gửi kèm tin nhắn được gửi vào số điện thoại của bạn. Thời gian còn lại:"
-//            break
-//        case .Forgot :
-//            self.descriptionLb.text = "Vui lòng nhập mã xác thực gồm 6 chữ số đã được gửi đến số điện thoại của bạn. Thời gian còn lại:"
-//            break
-//        default:
-//            break
-//        }
+
         self.setupPinView()
         
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
@@ -260,7 +251,6 @@ class VerifyOTPAuthenVC: BaseViewController {
             print("Register Inves")
             // call to api check OTP
             // success
-            self.verifyOTPInvestLoan()
             break
             
         case .Forgot:
@@ -288,30 +278,6 @@ class VerifyOTPAuthenVC: BaseViewController {
                 self?.navigationController?.pushViewController(updatePassVC, animated: true)
             }
             .catch { error in}
-    }
-
-    //MARK: Verify sign contract
-    func verifyOTPInvestLoan() {
-        guard let loanId = self.loanId else { return }
-        APIClient.shared.confirmOTPInvestLoan(loanId: loanId, noteId: Int32(noteId), OTP: self.otp)
-            .done(on: DispatchQueue.main) { [weak self] model in
-                if let returnCode = model.returnCode, returnCode == 1 {
-                    let budgetAwardsVC = BudgetAwardsViewController(nibName: "BudgetAwardsViewController", bundle: nil)
-                    self?.navigationController?.pushViewController(budgetAwardsVC, animated: true)
-                } else {
-                    if let returnMsg = model.returnMsg, returnMsg != "" {
-                        self?.showGreenBtnMessage(title: "Verify OTP thất bại", message: returnMsg, okTitle: "Ok", cancelTitle: nil)
-                    } else {
-                        self?.showGreenBtnMessage(title: "Verify OTP thất bại", message: API_MESSAGE.OTHER_ERROR, okTitle: "Ok", cancelTitle: nil)
-                    }
-                }
-
-//                self?.navigationController?.isNavigationBarHidden = true
-//                self?.navigationController?.pushViewController(vc, animated: true)
-            }
-            .catch { error in
-
-        }
     }
     
     //MARK: Verify sign contract

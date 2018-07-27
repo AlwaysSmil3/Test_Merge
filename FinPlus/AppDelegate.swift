@@ -123,6 +123,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupStartVC() {
 
+        // lionel fix to test
+//        let payVC = TestBorrowingPayViewController(nibName: "TestBorrowingPayViewController", bundle: nil)
+//        let navi = UINavigationController(rootViewController: payVC)
+//        self.window?.rootViewController = navi
+//        return
+        // end
+        
         let isFirstLaunch = UserDefaults.isFirstLaunch()
         if isFirstLaunch == true {
             let enterPhoneVC = UIStoryboard(name: "OnBoard", bundle: nil).instantiateInitialViewController()

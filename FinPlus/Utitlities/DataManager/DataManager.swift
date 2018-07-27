@@ -19,6 +19,9 @@ class DataManager {
         }
     }
     
+    //header token for API
+    var token: String?
+    
     //Push Notification Token
     var pushNotificationToken: String?
     
@@ -45,13 +48,20 @@ class DataManager {
     var isUpdateFromConfig: Bool = true
     
     //Data from LoanBuilder json
-    var loanBuilder: [LoanBuilderBase] = []
+    //var loanBuilder: [LoanBuilderBase] = []
+    //var loanBuilder: [LoanCategories] = []
     
     //List Lãi xuất dự kiến
     var listRateInfo: [RateInfo] = []
     
     //Category đang chọn hiện tại
-    var currentIndexCategoriesSelectedPopup: Int?
+    var currentIndexCategoriesSelectedPopup: Int? {
+        didSet {
+            if let i = self.currentIndexCategoriesSelectedPopup {
+                self.loanInfo.loanCategoryID = Int16(i + 1)
+            }
+        }
+    }
     //So dien thoai nguoi than
     var currentIndexRelationPhoneSelectedPopup: Int?
     //Job hien tai dang chon
@@ -85,8 +95,9 @@ class DataManager {
                     // do stuff
                     
                     jsonResult.forEach({ (data) in
-                        let toll = LoanBuilderBase(object: data)
-                        self.loanBuilder.append(toll)
+                        let toll = LoanCategories(object: data)
+                        //self.loanBuilder.append(toll)
+                        self.loanCategories.append(toll)
                     })
 
                 }
@@ -106,6 +117,7 @@ class DataManager {
         self.userID = 0
         userDefault.set(nil, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
         userDefault.set(nil, forKey: fUSER_DEFAUT_TOKEN)
+        self.token = nil
         
         completion()
     }
@@ -118,6 +130,19 @@ class DataManager {
             }
             .catch { error in}
         
+    }
+    
+    
+    /// Check khoan vay hien tai co phai sinh vien
+    ///
+    /// - Returns: <#return value description#>
+    func isLendingforStudent() -> Bool {
+        var value = false
+        if self.loanInfo.loanCategoryID == Loan_Student_Category_ID {
+            value = true
+        }
+        
+        return value
     }
     
     
@@ -159,6 +184,16 @@ class DataManager {
             DataManager.shared.loanInfo.amount = amount
         }
         
+        if let bank = activeLoan.bank, let bankID = bank.id, bankID > 0 {
+            DataManager.shared.loanInfo.bankId = bankID
+            
+        }
+        
+        if let bankId = activeLoan.bankId, bankId > 0 {
+            DataManager.shared.loanInfo.bankId = bankId
+        }
+        
+        
         if let userInfo = activeLoan.userInfo {
             //Thong tin user
             if let fullName = userInfo.fullName {
@@ -167,6 +202,18 @@ class DataManager {
             
             if let gender = userInfo.gender {
                 DataManager.shared.loanInfo.userInfo.gender = gender
+            }
+            
+            if let relationShips = userInfo.relationships, relationShips.count > 1 {
+                
+                if let phone1 = relationShips[0].phoneNumber, phone1.length() > 0, let phone2 = relationShips[1].phoneNumber, phone2.length() > 0 {
+                    DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber = phone1
+                    DataManager.shared.loanInfo.userInfo.relationships[0].type = Int16(relationShips[0].type ?? 0)
+                    DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber = phone2
+                    DataManager.shared.loanInfo.userInfo.relationships[1].type = Int16(relationShips[1].type ?? 0)
+                    
+                }
+                
             }
             
             if let birthDay = userInfo.birthday {
@@ -190,8 +237,11 @@ class DataManager {
         
         if let jobInfo = activeLoan.jobInfo {
             //Thong tin Job
-            if let jobType = jobInfo.jobType {
-                DataManager.shared.loanInfo.jobInfo.jobType = jobType
+            if let jobTitle = jobInfo.jobTitle, jobTitle.length() > 0 {
+                DataManager.shared.loanInfo.jobInfo.jobTitle = jobTitle
+                if let jobType = jobInfo.jobType {
+                    DataManager.shared.loanInfo.jobInfo.jobType = jobType
+                }
             }
             
             if let position = jobInfo.position {
@@ -294,7 +344,7 @@ class DataManager {
         
         if let jobInfo = miss.jobInfo {
             //Thong tin JobInfo
-            if let value = jobInfo.jobType, value.length() > 0 {
+            if let value = jobInfo.jobTitle, value.length() > 0 {
                 missingListKey.append("jobType")
                 missingListTitle.append("Nghề nghiệp")
             }

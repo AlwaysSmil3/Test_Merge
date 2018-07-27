@@ -8,6 +8,14 @@
 
 import Foundation
 
+
+//Type User
+enum UserRole: String {
+    case Borrower = "0"
+    case Investor = "1"
+    case Admin = "2"
+}
+
 // MARK: API Constant
 enum API_MESSAGE {
     static let Request_Timeout = "Request Timeout"
@@ -88,7 +96,7 @@ enum DATA_TYPE_TB_CELL {
 }
 
 let APP_MODE = "APP_MODE"
-let IS_INVESTOR = "IS_INVESTOR"
+//let IS_INVESTOR = "IS_INVESTOR"
 
 //Category ID
 let Loan_Student_Category_ID: Int16 = 1 // Id cua vay sinh vien
@@ -100,7 +108,7 @@ let API_RESPONSE_RETURN_DATA = "data"
 let API_DEVICE_TYPE_OS = 0 // ios 0, android: 1
 
 //MARK: Colors
-let MAIN_COLOR = UIColor(hexString: "#3BAB63")
+let MAIN_COLOR = UIColor(hexString: "#3EAA5F")
 let BAR_DEFAULT_COLOR = UIColor(hexString: "#c9c9cd")
 let DISABLE_BUTTON_COLOR = UIColor(hexString: "#B8C9D3")
 let TEXT_NORMAL_COLOR = UIColor(hexString: "#4D6678")

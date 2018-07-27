@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15942B202105B32300591BA4 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15942B1F2105B32300591BA4 /* PaymentMethod.swift */; };
 		48D46DDE05C608E1D160EC14 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
 		6303923020E8B108000C422D /* VSSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303922D20E8B108000C422D /* VSSlider.swift */; };
 		6303923220E8B108000C422D /* InternalSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303922F20E8B108000C422D /* InternalSlider.swift */; };
@@ -72,15 +73,6 @@
 		6336D5C820B27B7500A6C38A /* LoanFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6336D5C720B27B7500A6C38A /* LoanFirstViewController.swift */; };
 		6336D5CA20B2B43700A6C38A /* LoanPersionalInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6336D5C920B2B43700A6C38A /* LoanPersionalInfoVC.swift */; };
 		6336D5CC20B2B75000A6C38A /* LoanInfoJobVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6336D5CB20B2B75000A6C38A /* LoanInfoJobVC.swift */; };
-		633899E420E0EB3200F0233F /* RegisterInvestorAddressTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633899DB20E0EB3200F0233F /* RegisterInvestorAddressTBCell.xib */; };
-		633899E520E0EB3200F0233F /* RegisterInvestorDateTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633899DC20E0EB3200F0233F /* RegisterInvestorDateTBCell.swift */; };
-		633899E620E0EB3200F0233F /* RegisterInvestorTFTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633899DD20E0EB3200F0233F /* RegisterInvestorTFTBCell.swift */; };
-		633899E720E0EB3200F0233F /* RegisterInvestorTFTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633899DE20E0EB3200F0233F /* RegisterInvestorTFTBCell.xib */; };
-		633899E820E0EB3200F0233F /* RegisterInvestorDateTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633899DF20E0EB3200F0233F /* RegisterInvestorDateTBCell.xib */; };
-		633899E920E0EB3200F0233F /* RegisterInvestorSelectionTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633899E020E0EB3200F0233F /* RegisterInvestorSelectionTBCell.xib */; };
-		633899EA20E0EB3200F0233F /* RegisterInvestorAddressTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633899E120E0EB3200F0233F /* RegisterInvestorAddressTBCell.swift */; };
-		633899EB20E0EB3200F0233F /* RegisterInvestorSelectionTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633899E220E0EB3200F0233F /* RegisterInvestorSelectionTBCell.swift */; };
-		633899EC20E0EB3200F0233F /* RegisterInvestorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633899E320E0EB3200F0233F /* RegisterInvestorVC.swift */; };
 		6338F3F920BE602C005777E2 /* BrowwerJobInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6338F3ED20BE602B005777E2 /* BrowwerJobInfo.swift */; };
 		6338F3FA20BE602C005777E2 /* BrowwerCurrentAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6338F3EE20BE602B005777E2 /* BrowwerCurrentAddress.swift */; };
 		6338F3FB20BE602C005777E2 /* BrowwerAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6338F3EF20BE602B005777E2 /* BrowwerAddress.swift */; };
@@ -111,6 +103,8 @@
 		6355FAEA20B7BEB100038F5B /* LoanResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355FAE920B7BEB000038F5B /* LoanResponseModel.swift */; };
 		6355FAEC20B7C1FB00038F5B /* VerifyOTPAuthenVC+Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355FAEB20B7C1FB00038F5B /* VerifyOTPAuthenVC+Loan.swift */; };
 		6355FAEE20B7EF2800038F5B /* LoanCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355FAED20B7EF2800038F5B /* LoanCategories.swift */; };
+		635732F82109A6CF00F6CD04 /* LoanTypeTextViewTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635732F72109A6CF00F6CD04 /* LoanTypeTextViewTBCell.swift */; };
+		635732FA2109A83800F6CD04 /* LoanTypeTextViewTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635732F92109A83800F6CD04 /* LoanTypeTextViewTBCell.xib */; };
 		6357824E20C2330800DE09A0 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357824C20C2330800DE09A0 /* KeychainConfiguration.swift */; };
 		6357824F20C2330800DE09A0 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357824D20C2330800DE09A0 /* KeychainPasswordItem.swift */; };
 		6357825420C2888300DE09A0 /* ExUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357825320C2888300DE09A0 /* ExUIView.swift */; };
@@ -120,11 +114,20 @@
 		635B5E0820B6B3D800F02132 /* LoanUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B5E0720B6B3D800F02132 /* LoanUserInfo.swift */; };
 		635B5E0A20B6B3E800F02132 /* LoanJobInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B5E0920B6B3E800F02132 /* LoanJobInfo.swift */; };
 		635B5E0C20B6B4F900F02132 /* RelationShipPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B5E0B20B6B4F900F02132 /* RelationShipPhone.swift */; };
+		635DC11F20FEEA5500AA84DF /* UpdateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635DC11E20FEEA5500AA84DF /* UpdateWalletViewController.swift */; };
 		6361E09720D7550F005D2C7A /* LoanSumnaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361E09620D7550F005D2C7A /* LoanSumnaryModel.swift */; };
 		6369BBD420AE8AD400E0C435 /* APIClient+Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369BBD320AE8AD400E0C435 /* APIClient+Loan.swift */; };
+		63733BB421057AC600D00A77 /* ExUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63733BB321057AC600D00A77 /* ExUIImage.swift */; };
+		63748BFD210ADB8000E79EB6 /* PaymentMethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63748BFB210ADB7F00E79EB6 /* PaymentMethodTableViewCell.swift */; };
+		63748BFE210ADB8000E79EB6 /* PaymentMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63748BFC210ADB7F00E79EB6 /* PaymentMethodTableViewCell.xib */; };
+		63748C01210ADBEC00E79EB6 /* MonyBankListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63748BFF210ADBEC00E79EB6 /* MonyBankListViewController.xib */; };
+		63748C02210ADBEC00E79EB6 /* MonyBankListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63748C00210ADBEC00E79EB6 /* MonyBankListViewController.swift */; };
+		63748C05210ADC5400E79EB6 /* MonyBankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63748C03210ADC5400E79EB6 /* MonyBankTableViewCell.xib */; };
+		63748C06210ADC5400E79EB6 /* MonyBankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63748C04210ADC5400E79EB6 /* MonyBankTableViewCell.swift */; };
 		6374FC4620BBA1C100E4BC38 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6374FC4520BBA1C100E4BC38 /* Wallet.storyboard */; };
 		6374FC4F20BBC3E200E4BC38 /* AccountBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374FC4E20BBC3E200E4BC38 /* AccountBank.swift */; };
 		63750EF220F701840063054F /* BaseAuthenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750EF120F701840063054F /* BaseAuthenViewController.swift */; };
+		6377342621070A39000889F2 /* BrowwerBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6377342521070A39000889F2 /* BrowwerBank.swift */; };
 		637A90B020A2E52700CCACA5 /* APIClient+Authen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90AF20A2E52700CCACA5 /* APIClient+Authen.swift */; };
 		637A90B620A2FA5F00CCACA5 /* SRMonthPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B320A2FA5F00CCACA5 /* SRMonthPicker.m */; };
 		637A90B820A2FA5F00CCACA5 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A90B520A2FA5F00CCACA5 /* DatePickerDialog.swift */; };
@@ -213,51 +216,18 @@
 		84114BDE20D79D59005026DF /* PayHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84114BDC20D79D59005026DF /* PayHistoryTableViewCell.xib */; };
 		842D38DC20D25914004E2B36 /* OTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D38DA20D25913004E2B36 /* OTP.swift */; };
 		842D38DD20D25914004E2B36 /* OTPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D38DB20D25913004E2B36 /* OTPData.swift */; };
-		8456CBBF20DB660400160B84 /* InvestorSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456CBBD20DB660400160B84 /* InvestorSignupViewController.swift */; };
-		8456CBC020DB660400160B84 /* InvestorSignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8456CBBE20DB660400160B84 /* InvestorSignupViewController.xib */; };
-		8456CBC420DB93CC00160B84 /* InvestorTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456CBC220DB93CC00160B84 /* InvestorTextFieldTableViewCell.swift */; };
-		8456CBC520DB93CC00160B84 /* InvestorTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8456CBC320DB93CC00160B84 /* InvestorTextFieldTableViewCell.xib */; };
-		8456CBC820DB944F00160B84 /* InvestorSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456CBC620DB944E00160B84 /* InvestorSelectTableViewCell.swift */; };
-		8456CBC920DB944F00160B84 /* InvestorSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8456CBC720DB944E00160B84 /* InvestorSelectTableViewCell.xib */; };
-		8456CBCC20DB945E00160B84 /* InvestorBtnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456CBCA20DB945E00160B84 /* InvestorBtnTableViewCell.swift */; };
-		8456CBCD20DB945E00160B84 /* InvestorBtnTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8456CBCB20DB945E00160B84 /* InvestorBtnTableViewCell.xib */; };
-		8456CBCF20DCB2B700160B84 /* DemoLoanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456CBCE20DCB2B700160B84 /* DemoLoanModel.swift */; };
-		8456CBD220DCD8CE00160B84 /* InvestDetailFirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456CBD020DCD8CE00160B84 /* InvestDetailFirstTableViewCell.swift */; };
-		8456CBD320DCD8CE00160B84 /* InvestDetailFirstTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8456CBD120DCD8CE00160B84 /* InvestDetailFirstTableViewCell.xib */; };
-		8456CBD620DCDFC400160B84 /* InvestDetailSecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456CBD420DCDFC400160B84 /* InvestDetailSecondTableViewCell.swift */; };
-		8456CBD720DCDFC400160B84 /* InvestDetailSecondTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8456CBD520DCDFC400160B84 /* InvestDetailSecondTableViewCell.xib */; };
-		8456CBF820DD0C5200160B84 /* RegisInvestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456CBF620DD0C5200160B84 /* RegisInvestViewController.swift */; };
-		8456CBF920DD0C5200160B84 /* RegisInvestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8456CBF720DD0C5200160B84 /* RegisInvestViewController.xib */; };
 		84647A7F20E0E89B0053DD0D /* UICircularProgressRingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84647A7A20E0E89B0053DD0D /* UICircularProgressRingStyle.swift */; };
 		84647A8020E0E89B0053DD0D /* UICircularProgressRingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84647A7B20E0E89B0053DD0D /* UICircularProgressRingLayer.swift */; };
 		84647A8120E0E89B0053DD0D /* UICircularProgressRingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84647A7C20E0E89B0053DD0D /* UICircularProgressRingDelegate.swift */; };
 		84647A8220E0E89B0053DD0D /* UICircularProgressRingGradientPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84647A7D20E0E89B0053DD0D /* UICircularProgressRingGradientPosition.swift */; };
 		84647A8320E0E89B0053DD0D /* UICircularProgressRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84647A7E20E0E89B0053DD0D /* UICircularProgressRingView.swift */; };
-		84647A8620E0EF950053DD0D /* InvestorSignupWaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84647A8420E0EF950053DD0D /* InvestorSignupWaitingViewController.swift */; };
-		84647A8720E0EF950053DD0D /* InvestorSignupWaitingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84647A8520E0EF950053DD0D /* InvestorSignupWaitingViewController.xib */; };
-		84647A8A20E0F4C50053DD0D /* InvestorSignUpRejectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84647A8820E0F4C50053DD0D /* InvestorSignUpRejectedViewController.swift */; };
-		84647A8B20E0F4C50053DD0D /* InvestorSignUpRejectedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84647A8920E0F4C50053DD0D /* InvestorSignUpRejectedViewController.xib */; };
-		84647A8E20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84647A8C20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.swift */; };
-		84647A8F20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84647A8D20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.xib */; };
-		8467326320E1F4D70011C576 /* InvestContractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8467326120E1F4D70011C576 /* InvestContractViewController.swift */; };
-		8467326420E1F4D70011C576 /* InvestContractViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8467326220E1F4D70011C576 /* InvestContractViewController.xib */; };
-		8467326720E32BC40011C576 /* EmtyInvestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8467326520E32BC40011C576 /* EmtyInvestViewController.swift */; };
-		8467326820E32BC40011C576 /* EmtyInvestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8467326620E32BC40011C576 /* EmtyInvestViewController.xib */; };
 		849A337020CFD0CB000D886D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A336F20CFD0CB000D886D /* Config.swift */; };
 		84A2A79A20D9049A00083CA8 /* PayBtnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A79820D9047D00083CA8 /* PayBtnTableViewCell.swift */; };
 		84A2A79B20D9049A00083CA8 /* PayBtnTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A2A79920D9049900083CA8 /* PayBtnTableViewCell.xib */; };
-		84A4791920E091E000F83AF4 /* BudgetAwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4791720E091E000F83AF4 /* BudgetAwardsViewController.swift */; };
-		84A4791A20E091E000F83AF4 /* BudgetAwardsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A4791820E091E000F83AF4 /* BudgetAwardsViewController.xib */; };
-		84A4791D20E09AE200F83AF4 /* BudgetRewardSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4791B20E09AE200F83AF4 /* BudgetRewardSuccessViewController.swift */; };
-		84A4791E20E09AE200F83AF4 /* BudgetRewardSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A4791C20E09AE200F83AF4 /* BudgetRewardSuccessViewController.xib */; };
 		84A4792020E0CDA300F83AF4 /* ExFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4791F20E0CDA300F83AF4 /* ExFloat.swift */; };
 		84B4DF3120EA3EBD004D9BBB /* InvestLoanBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4DF2F20EA3EBC004D9BBB /* InvestLoanBaseClass.swift */; };
 		84B4DF3220EA3EBD004D9BBB /* InvestLoanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4DF3020EA3EBC004D9BBB /* InvestLoanData.swift */; };
 		84B7B33D20D12F2A006CADA1 /* Invest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B7B33C20D12F2A006CADA1 /* Invest.storyboard */; };
-		84B7B34B20D12F4E006CADA1 /* InvestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7B34320D12F4E006CADA1 /* InvestTableViewCell.swift */; };
-		84B7B34D20D12F4E006CADA1 /* InvestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B7B34520D12F4E006CADA1 /* InvestTableViewCell.xib */; };
-		84B7B34F20D12F4E006CADA1 /* InvestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7B34720D12F4E006CADA1 /* InvestDetailViewController.swift */; };
-		84B7B35020D12F4E006CADA1 /* InvestListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7B34820D12F4E006CADA1 /* InvestListViewController.swift */; };
 		84B7B35220D12F91006CADA1 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7B35120D12F90006CADA1 /* UITableView+Extensions.swift */; };
 		84CBBE4020CE74BE0058C834 /* OnBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CBBE3F20CE74BE0058C834 /* OnBoard.storyboard */; };
 		84CBBE4D20CF82A40058C834 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CBBE4C20CF82A40058C834 /* Notification.storyboard */; };
@@ -342,6 +312,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15942B1F2105B32300591BA4 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		6303922D20E8B108000C422D /* VSSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSSlider.swift; sourceTree = "<group>"; };
 		6303922F20E8B108000C422D /* InternalSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalSlider.swift; sourceTree = "<group>"; };
 		630467B220B5094F0069469A /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
@@ -406,15 +377,6 @@
 		6336D5C720B27B7500A6C38A /* LoanFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanFirstViewController.swift; sourceTree = "<group>"; };
 		6336D5C920B2B43700A6C38A /* LoanPersionalInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanPersionalInfoVC.swift; sourceTree = "<group>"; };
 		6336D5CB20B2B75000A6C38A /* LoanInfoJobVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanInfoJobVC.swift; sourceTree = "<group>"; };
-		633899DB20E0EB3200F0233F /* RegisterInvestorAddressTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterInvestorAddressTBCell.xib; sourceTree = "<group>"; };
-		633899DC20E0EB3200F0233F /* RegisterInvestorDateTBCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterInvestorDateTBCell.swift; sourceTree = "<group>"; };
-		633899DD20E0EB3200F0233F /* RegisterInvestorTFTBCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterInvestorTFTBCell.swift; sourceTree = "<group>"; };
-		633899DE20E0EB3200F0233F /* RegisterInvestorTFTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterInvestorTFTBCell.xib; sourceTree = "<group>"; };
-		633899DF20E0EB3200F0233F /* RegisterInvestorDateTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterInvestorDateTBCell.xib; sourceTree = "<group>"; };
-		633899E020E0EB3200F0233F /* RegisterInvestorSelectionTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterInvestorSelectionTBCell.xib; sourceTree = "<group>"; };
-		633899E120E0EB3200F0233F /* RegisterInvestorAddressTBCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterInvestorAddressTBCell.swift; sourceTree = "<group>"; };
-		633899E220E0EB3200F0233F /* RegisterInvestorSelectionTBCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterInvestorSelectionTBCell.swift; sourceTree = "<group>"; };
-		633899E320E0EB3200F0233F /* RegisterInvestorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterInvestorVC.swift; sourceTree = "<group>"; };
 		6338F3ED20BE602B005777E2 /* BrowwerJobInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowwerJobInfo.swift; sourceTree = "<group>"; };
 		6338F3EE20BE602B005777E2 /* BrowwerCurrentAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowwerCurrentAddress.swift; sourceTree = "<group>"; };
 		6338F3EF20BE602B005777E2 /* BrowwerAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowwerAddress.swift; sourceTree = "<group>"; };
@@ -446,6 +408,8 @@
 		6355FAE920B7BEB000038F5B /* LoanResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanResponseModel.swift; sourceTree = "<group>"; };
 		6355FAEB20B7C1FB00038F5B /* VerifyOTPAuthenVC+Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerifyOTPAuthenVC+Loan.swift"; sourceTree = "<group>"; };
 		6355FAED20B7EF2800038F5B /* LoanCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanCategories.swift; sourceTree = "<group>"; };
+		635732F72109A6CF00F6CD04 /* LoanTypeTextViewTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanTypeTextViewTBCell.swift; sourceTree = "<group>"; };
+		635732F92109A83800F6CD04 /* LoanTypeTextViewTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoanTypeTextViewTBCell.xib; sourceTree = "<group>"; };
 		6357824C20C2330800DE09A0 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainConfiguration.swift; sourceTree = "<group>"; };
 		6357824D20C2330800DE09A0 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		6357825320C2888300DE09A0 /* ExUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExUIView.swift; sourceTree = "<group>"; };
@@ -455,11 +419,20 @@
 		635B5E0720B6B3D800F02132 /* LoanUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanUserInfo.swift; sourceTree = "<group>"; };
 		635B5E0920B6B3E800F02132 /* LoanJobInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanJobInfo.swift; sourceTree = "<group>"; };
 		635B5E0B20B6B4F900F02132 /* RelationShipPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationShipPhone.swift; sourceTree = "<group>"; };
+		635DC11E20FEEA5500AA84DF /* UpdateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWalletViewController.swift; sourceTree = "<group>"; };
 		6361E09620D7550F005D2C7A /* LoanSumnaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanSumnaryModel.swift; sourceTree = "<group>"; };
 		6369BBD320AE8AD400E0C435 /* APIClient+Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Loan.swift"; sourceTree = "<group>"; };
+		63733BB321057AC600D00A77 /* ExUIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExUIImage.swift; sourceTree = "<group>"; };
+		63748BFB210ADB7F00E79EB6 /* PaymentMethodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodTableViewCell.swift; sourceTree = "<group>"; };
+		63748BFC210ADB7F00E79EB6 /* PaymentMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentMethodTableViewCell.xib; sourceTree = "<group>"; };
+		63748BFF210ADBEC00E79EB6 /* MonyBankListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonyBankListViewController.xib; sourceTree = "<group>"; };
+		63748C00210ADBEC00E79EB6 /* MonyBankListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonyBankListViewController.swift; sourceTree = "<group>"; };
+		63748C03210ADC5400E79EB6 /* MonyBankTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonyBankTableViewCell.xib; sourceTree = "<group>"; };
+		63748C04210ADC5400E79EB6 /* MonyBankTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonyBankTableViewCell.swift; sourceTree = "<group>"; };
 		6374FC4520BBA1C100E4BC38 /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		6374FC4E20BBC3E200E4BC38 /* AccountBank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountBank.swift; sourceTree = "<group>"; };
 		63750EF120F701840063054F /* BaseAuthenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAuthenViewController.swift; sourceTree = "<group>"; };
+		6377342521070A39000889F2 /* BrowwerBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowwerBank.swift; sourceTree = "<group>"; };
 		637A90AF20A2E52700CCACA5 /* APIClient+Authen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Authen.swift"; sourceTree = "<group>"; };
 		637A90B320A2FA5F00CCACA5 /* SRMonthPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRMonthPicker.m; sourceTree = "<group>"; };
 		637A90B420A2FA5F00CCACA5 /* SRMonthPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRMonthPicker.h; sourceTree = "<group>"; };
@@ -554,51 +527,18 @@
 		84114BDC20D79D59005026DF /* PayHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		842D38DA20D25913004E2B36 /* OTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTP.swift; sourceTree = "<group>"; };
 		842D38DB20D25913004E2B36 /* OTPData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPData.swift; sourceTree = "<group>"; };
-		8456CBBD20DB660400160B84 /* InvestorSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorSignupViewController.swift; sourceTree = "<group>"; };
-		8456CBBE20DB660400160B84 /* InvestorSignupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestorSignupViewController.xib; sourceTree = "<group>"; };
-		8456CBC220DB93CC00160B84 /* InvestorTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorTextFieldTableViewCell.swift; sourceTree = "<group>"; };
-		8456CBC320DB93CC00160B84 /* InvestorTextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestorTextFieldTableViewCell.xib; sourceTree = "<group>"; };
-		8456CBC620DB944E00160B84 /* InvestorSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorSelectTableViewCell.swift; sourceTree = "<group>"; };
-		8456CBC720DB944E00160B84 /* InvestorSelectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestorSelectTableViewCell.xib; sourceTree = "<group>"; };
-		8456CBCA20DB945E00160B84 /* InvestorBtnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorBtnTableViewCell.swift; sourceTree = "<group>"; };
-		8456CBCB20DB945E00160B84 /* InvestorBtnTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestorBtnTableViewCell.xib; sourceTree = "<group>"; };
-		8456CBCE20DCB2B700160B84 /* DemoLoanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoLoanModel.swift; sourceTree = "<group>"; };
-		8456CBD020DCD8CE00160B84 /* InvestDetailFirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestDetailFirstTableViewCell.swift; sourceTree = "<group>"; };
-		8456CBD120DCD8CE00160B84 /* InvestDetailFirstTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestDetailFirstTableViewCell.xib; sourceTree = "<group>"; };
-		8456CBD420DCDFC400160B84 /* InvestDetailSecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestDetailSecondTableViewCell.swift; sourceTree = "<group>"; };
-		8456CBD520DCDFC400160B84 /* InvestDetailSecondTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestDetailSecondTableViewCell.xib; sourceTree = "<group>"; };
-		8456CBF620DD0C5200160B84 /* RegisInvestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisInvestViewController.swift; sourceTree = "<group>"; };
-		8456CBF720DD0C5200160B84 /* RegisInvestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisInvestViewController.xib; sourceTree = "<group>"; };
 		84647A7A20E0E89B0053DD0D /* UICircularProgressRingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircularProgressRingStyle.swift; sourceTree = "<group>"; };
 		84647A7B20E0E89B0053DD0D /* UICircularProgressRingLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircularProgressRingLayer.swift; sourceTree = "<group>"; };
 		84647A7C20E0E89B0053DD0D /* UICircularProgressRingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircularProgressRingDelegate.swift; sourceTree = "<group>"; };
 		84647A7D20E0E89B0053DD0D /* UICircularProgressRingGradientPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircularProgressRingGradientPosition.swift; sourceTree = "<group>"; };
 		84647A7E20E0E89B0053DD0D /* UICircularProgressRingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircularProgressRingView.swift; sourceTree = "<group>"; };
-		84647A8420E0EF950053DD0D /* InvestorSignupWaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorSignupWaitingViewController.swift; sourceTree = "<group>"; };
-		84647A8520E0EF950053DD0D /* InvestorSignupWaitingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestorSignupWaitingViewController.xib; sourceTree = "<group>"; };
-		84647A8820E0F4C50053DD0D /* InvestorSignUpRejectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorSignUpRejectedViewController.swift; sourceTree = "<group>"; };
-		84647A8920E0F4C50053DD0D /* InvestorSignUpRejectedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestorSignUpRejectedViewController.xib; sourceTree = "<group>"; };
-		84647A8C20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorSignupEnableNotiViewController.swift; sourceTree = "<group>"; };
-		84647A8D20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestorSignupEnableNotiViewController.xib; sourceTree = "<group>"; };
-		8467326120E1F4D70011C576 /* InvestContractViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestContractViewController.swift; sourceTree = "<group>"; };
-		8467326220E1F4D70011C576 /* InvestContractViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestContractViewController.xib; sourceTree = "<group>"; };
-		8467326520E32BC40011C576 /* EmtyInvestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmtyInvestViewController.swift; sourceTree = "<group>"; };
-		8467326620E32BC40011C576 /* EmtyInvestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmtyInvestViewController.xib; sourceTree = "<group>"; };
 		849A336F20CFD0CB000D886D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		84A2A79820D9047D00083CA8 /* PayBtnTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayBtnTableViewCell.swift; sourceTree = "<group>"; };
 		84A2A79920D9049900083CA8 /* PayBtnTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayBtnTableViewCell.xib; sourceTree = "<group>"; };
-		84A4791720E091E000F83AF4 /* BudgetAwardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetAwardsViewController.swift; sourceTree = "<group>"; };
-		84A4791820E091E000F83AF4 /* BudgetAwardsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BudgetAwardsViewController.xib; sourceTree = "<group>"; };
-		84A4791B20E09AE200F83AF4 /* BudgetRewardSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetRewardSuccessViewController.swift; sourceTree = "<group>"; };
-		84A4791C20E09AE200F83AF4 /* BudgetRewardSuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BudgetRewardSuccessViewController.xib; sourceTree = "<group>"; };
 		84A4791F20E0CDA300F83AF4 /* ExFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExFloat.swift; sourceTree = "<group>"; };
 		84B4DF2F20EA3EBC004D9BBB /* InvestLoanBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvestLoanBaseClass.swift; sourceTree = "<group>"; };
 		84B4DF3020EA3EBC004D9BBB /* InvestLoanData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvestLoanData.swift; sourceTree = "<group>"; };
 		84B7B33C20D12F2A006CADA1 /* Invest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Invest.storyboard; sourceTree = "<group>"; };
-		84B7B34320D12F4E006CADA1 /* InvestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvestTableViewCell.swift; sourceTree = "<group>"; };
-		84B7B34520D12F4E006CADA1 /* InvestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvestTableViewCell.xib; sourceTree = "<group>"; };
-		84B7B34720D12F4E006CADA1 /* InvestDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvestDetailViewController.swift; sourceTree = "<group>"; };
-		84B7B34820D12F4E006CADA1 /* InvestListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvestListViewController.swift; sourceTree = "<group>"; };
 		84B7B35120D12F90006CADA1 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		84CBBE3F20CE74BE0058C834 /* OnBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoard.storyboard; sourceTree = "<group>"; };
 		84CBBE4C20CF82A40058C834 /* Notification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
@@ -777,6 +717,7 @@
 				6338F3F720BE602C005777E2 /* BrowwerUserInfo.swift */,
 				6338F3F820BE602C005777E2 /* BrowwerWallets.swift */,
 				6338F3F520BE602B005777E2 /* BrowwerWorks.swift */,
+				6377342521070A39000889F2 /* BrowwerBank.swift */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -918,30 +859,6 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		633899D920E0EB3200F0233F /* Register */ = {
-			isa = PBXGroup;
-			children = (
-				633899DA20E0EB3200F0233F /* Cell */,
-				633899E320E0EB3200F0233F /* RegisterInvestorVC.swift */,
-			);
-			path = Register;
-			sourceTree = "<group>";
-		};
-		633899DA20E0EB3200F0233F /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				633899DB20E0EB3200F0233F /* RegisterInvestorAddressTBCell.xib */,
-				633899DC20E0EB3200F0233F /* RegisterInvestorDateTBCell.swift */,
-				633899DD20E0EB3200F0233F /* RegisterInvestorTFTBCell.swift */,
-				633899DE20E0EB3200F0233F /* RegisterInvestorTFTBCell.xib */,
-				633899DF20E0EB3200F0233F /* RegisterInvestorDateTBCell.xib */,
-				633899E020E0EB3200F0233F /* RegisterInvestorSelectionTBCell.xib */,
-				633899E120E0EB3200F0233F /* RegisterInvestorAddressTBCell.swift */,
-				633899E220E0EB3200F0233F /* RegisterInvestorSelectionTBCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		633AE0AB20B3F3D3007AB0D1 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -957,6 +874,7 @@
 			children = (
 				E772D76F20CA7939001F0B8E /* AddWalletViewController.swift */,
 				E774D30A20CA2F7B00F7696D /* ListWalletViewController.swift */,
+				635DC11E20FEEA5500AA84DF /* UpdateWalletViewController.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -1007,6 +925,7 @@
 		6374FC4B20BBC1EE00E4BC38 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				15942B1F2105B32300591BA4 /* PaymentMethod.swift */,
 				6374FC4E20BBC3E200E4BC38 /* AccountBank.swift */,
 			);
 			path = Wallet;
@@ -1132,7 +1051,6 @@
 			isa = PBXGroup;
 			children = (
 				631A2DA120F60C0400D8D9B8 /* Tabbar */,
-				84B7B33E20D12F4E006CADA1 /* Investor */,
 				84CBBE4E20CF834A0058C834 /* Notification */,
 				E7F51A3220CE6DE700F72682 /* OnBoard */,
 				E7F519F120CE15BE00F72682 /* Profile */,
@@ -1236,6 +1154,7 @@
 				632FD02520AAE15800D9399C /* ExString.swift */,
 				6357825320C2888300DE09A0 /* ExUIView.swift */,
 				84A4791F20E0CDA300F83AF4 /* ExFloat.swift */,
+				63733BB321057AC600D00A77 /* ExUIImage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1328,6 +1247,7 @@
 				63D4CB6E20F3015500519FFB /* LoanTypeChoiceTBCell.xib */,
 				63D4CB7020F3064500519FFB /* LoanTypeChoiceCollectionCell.xib */,
 				630F684620F4664D004FF32E /* LoanTypePhoneRelationSubTBCell.xib */,
+				635732F92109A83800F6CD04 /* LoanTypeTextViewTBCell.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -1351,6 +1271,10 @@
 		84114BB320D79464005026DF /* Pay */ = {
 			isa = PBXGroup;
 			children = (
+				63748C04210ADC5400E79EB6 /* MonyBankTableViewCell.swift */,
+				63748C03210ADC5400E79EB6 /* MonyBankTableViewCell.xib */,
+				63748C00210ADBEC00E79EB6 /* MonyBankListViewController.swift */,
+				63748BFF210ADBEC00E79EB6 /* MonyBankListViewController.xib */,
 				84114BB420D79464005026DF /* TestBorrowingPayViewController.swift */,
 				84114BC420D79464005026DF /* TestBorrowingPayViewController.xib */,
 				84114BC520D79464005026DF /* BorrowingPayViewController.swift */,
@@ -1363,6 +1287,8 @@
 		84114BB520D79464005026DF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				63748BFB210ADB7F00E79EB6 /* PaymentMethodTableViewCell.swift */,
+				63748BFC210ADB7F00E79EB6 /* PaymentMethodTableViewCell.xib */,
 				84A2A79820D9047D00083CA8 /* PayBtnTableViewCell.swift */,
 				84A2A79920D9049900083CA8 /* PayBtnTableViewCell.xib */,
 				84114BDB20D79D59005026DF /* PayHistoryTableViewCell.swift */,
@@ -1381,35 +1307,6 @@
 				84114BC120D79464005026DF /* BorrowingPayInfoTableViewCell.xib */,
 				84114BC220D79464005026DF /* BankAccountTableViewCell.swift */,
 				84114BC320D79464005026DF /* AddNewWalletTableViewCell.xib */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		8456CBBC20DB65C100160B84 /* Authen */ = {
-			isa = PBXGroup;
-			children = (
-				8456CBC120DB832A00160B84 /* Cells */,
-				8456CBBD20DB660400160B84 /* InvestorSignupViewController.swift */,
-				8456CBBE20DB660400160B84 /* InvestorSignupViewController.xib */,
-				84647A8420E0EF950053DD0D /* InvestorSignupWaitingViewController.swift */,
-				84647A8520E0EF950053DD0D /* InvestorSignupWaitingViewController.xib */,
-				84647A8820E0F4C50053DD0D /* InvestorSignUpRejectedViewController.swift */,
-				84647A8920E0F4C50053DD0D /* InvestorSignUpRejectedViewController.xib */,
-				84647A8C20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.swift */,
-				84647A8D20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.xib */,
-			);
-			path = Authen;
-			sourceTree = "<group>";
-		};
-		8456CBC120DB832A00160B84 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				8456CBC220DB93CC00160B84 /* InvestorTextFieldTableViewCell.swift */,
-				8456CBC320DB93CC00160B84 /* InvestorTextFieldTableViewCell.xib */,
-				8456CBC620DB944E00160B84 /* InvestorSelectTableViewCell.swift */,
-				8456CBC720DB944E00160B84 /* InvestorSelectTableViewCell.xib */,
-				8456CBCA20DB945E00160B84 /* InvestorBtnTableViewCell.swift */,
-				8456CBCB20DB945E00160B84 /* InvestorBtnTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1433,50 +1330,6 @@
 				84B4DF3020EA3EBC004D9BBB /* InvestLoanData.swift */,
 			);
 			path = Invest;
-			sourceTree = "<group>";
-		};
-		84B7B33E20D12F4E006CADA1 /* Investor */ = {
-			isa = PBXGroup;
-			children = (
-				633899D920E0EB3200F0233F /* Register */,
-				8456CBBC20DB65C100160B84 /* Authen */,
-				84B7B33F20D12F4E006CADA1 /* Invest */,
-				8467326520E32BC40011C576 /* EmtyInvestViewController.swift */,
-				8467326620E32BC40011C576 /* EmtyInvestViewController.xib */,
-			);
-			path = Investor;
-			sourceTree = "<group>";
-		};
-		84B7B33F20D12F4E006CADA1 /* Invest */ = {
-			isa = PBXGroup;
-			children = (
-				84B7B34720D12F4E006CADA1 /* InvestDetailViewController.swift */,
-				84B7B34820D12F4E006CADA1 /* InvestListViewController.swift */,
-				84B7B34020D12F4E006CADA1 /* Cells */,
-				8456CBCE20DCB2B700160B84 /* DemoLoanModel.swift */,
-				8456CBF620DD0C5200160B84 /* RegisInvestViewController.swift */,
-				8456CBF720DD0C5200160B84 /* RegisInvestViewController.xib */,
-				84A4791720E091E000F83AF4 /* BudgetAwardsViewController.swift */,
-				84A4791820E091E000F83AF4 /* BudgetAwardsViewController.xib */,
-				84A4791B20E09AE200F83AF4 /* BudgetRewardSuccessViewController.swift */,
-				84A4791C20E09AE200F83AF4 /* BudgetRewardSuccessViewController.xib */,
-				8467326120E1F4D70011C576 /* InvestContractViewController.swift */,
-				8467326220E1F4D70011C576 /* InvestContractViewController.xib */,
-			);
-			path = Invest;
-			sourceTree = "<group>";
-		};
-		84B7B34020D12F4E006CADA1 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				84B7B34320D12F4E006CADA1 /* InvestTableViewCell.swift */,
-				84B7B34520D12F4E006CADA1 /* InvestTableViewCell.xib */,
-				8456CBD020DCD8CE00160B84 /* InvestDetailFirstTableViewCell.swift */,
-				8456CBD120DCD8CE00160B84 /* InvestDetailFirstTableViewCell.xib */,
-				8456CBD420DCDFC400160B84 /* InvestDetailSecondTableViewCell.swift */,
-				8456CBD520DCDFC400160B84 /* InvestDetailSecondTableViewCell.xib */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		84CBBE4E20CF834A0058C834 /* Notification */ = {
@@ -1661,6 +1514,7 @@
 				63D4CB6C20F3009100519FFB /* LoanTypeChoiceTBCell.swift */,
 				63D4CB7220F3080A00519FFB /* LoanTypeChoiceCollectionCell.swift */,
 				630F684420F4641A004FF32E /* LoanTypePhoneRelationSubTBCell.swift */,
+				635732F72109A6CF00F6CD04 /* LoanTypeTextViewTBCell.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -1754,7 +1608,6 @@
 				63D4CB6720F2FFB900519FFB /* LoanTypeFileTBCell.xib in Resources */,
 				63D4CB6620F2FFB900519FFB /* LoanTypeDropdownTBCell.xib in Resources */,
 				E772D76920CA7694001F0B8E /* LoanManager.storyboard in Resources */,
-				633899E420E0EB3200F0233F /* RegisterInvestorAddressTBCell.xib in Resources */,
 				639C9E1B20A18A7500F2CF5E /* Oswald-Bold.ttf in Resources */,
 				630BA61520C22A4100880DAE /* SF-Pro-Display-Medium.otf in Resources */,
 				630BA62A20C22A4100880DAE /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
@@ -1762,16 +1615,12 @@
 				63D4CB6B20F2FFB900519FFB /* LoanTypeTextFieldTBCell.xib in Resources */,
 				E774D31220CA398300F7696D /* WalletTableViewCell.xib in Resources */,
 				639C9E1820A18A7500F2CF5E /* Roboto-Bold.ttf in Resources */,
-				8456CBF920DD0C5200160B84 /* RegisInvestViewController.xib in Resources */,
-				8467326820E32BC40011C576 /* EmtyInvestViewController.xib in Resources */,
 				630BA60D20C22A4100880DAE /* SF-Pro-Display-Thin.otf in Resources */,
-				8456CBC920DB944F00160B84 /* InvestorSelectTableViewCell.xib in Resources */,
 				630BA62420C22A4100880DAE /* SF-Pro-Text-Semibold.otf in Resources */,
 				630BA61320C22A4100880DAE /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				E7F519F020CE159300F72682 /* Profile.storyboard in Resources */,
 				84114BDA20D79A6F005026DF /* TestPayHistoryViewController.xib in Resources */,
 				E76AF6AC20DB4F7700C71305 /* FooterButtonView.xib in Resources */,
-				84647A8F20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.xib in Resources */,
 				639C9E2120A18A7500F2CF5E /* Oswald-Light.ttf in Resources */,
 				E7A4A0A520E6321600B5F7ED /* terms-and-conditions.html in Resources */,
 				84CBBE5720CF85610058C834 /* NotificationTableViewCell.xib in Resources */,
@@ -1779,24 +1628,20 @@
 				639C9E0F20A18A7500F2CF5E /* Roboto-Medium.ttf in Resources */,
 				84CBBE4020CE74BE0058C834 /* OnBoard.storyboard in Resources */,
 				639C9E1620A18A7500F2CF5E /* Roboto-Italic.ttf in Resources */,
-				84A4791E20E09AE200F83AF4 /* BudgetRewardSuccessViewController.xib in Resources */,
 				630BA61620C22A4100880DAE /* SF-Pro-Display-Heavy.otf in Resources */,
 				63D4CB6420F2FFB900519FFB /* LoanOtherInfoCollectionCell.xib in Resources */,
 				E7A4A0A420E6321600B5F7ED /* about.html in Resources */,
 				639C9E1520A18A7500F2CF5E /* Roboto-LightItalic.ttf in Resources */,
-				8456CBD720DCDFC400160B84 /* InvestDetailSecondTableViewCell.xib in Resources */,
 				630BA61F20C22A4100880DAE /* SF-Pro-Display-LightItalic.otf in Resources */,
 				E772D77420CA7C86001F0B8E /* LoanTableViewCell.xib in Resources */,
 				630467B320B5094F0069469A /* Address.storyboard in Resources */,
 				630BA62020C22A4100880DAE /* SF-Pro-Display-BlackItalic.otf in Resources */,
 				630F684720F4664D004FF32E /* LoanTypePhoneRelationSubTBCell.xib in Resources */,
 				E7BC258920CFDACA001FF0F4 /* README.md in Resources */,
-				8456CBD320DCD8CE00160B84 /* InvestDetailFirstTableViewCell.xib in Resources */,
-				84A4791A20E091E000F83AF4 /* BudgetAwardsViewController.xib in Resources */,
 				639C9E1120A18A7500F2CF5E /* Roboto-Regular.ttf in Resources */,
+				63748BFE210ADB8000E79EB6 /* PaymentMethodTableViewCell.xib in Resources */,
 				630BA61E20C22A4100880DAE /* SF-Pro-Display-UltralightItalic.otf in Resources */,
 				84114BD020D79464005026DF /* BankAccountTableViewCell.xib in Resources */,
-				8467326420E1F4D70011C576 /* InvestContractViewController.xib in Resources */,
 				630BA60E20C22A4100880DAE /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
 				639C9DC020A1498A00F2CF5E /* LaunchScreen.storyboard in Resources */,
 				630BA62920C22A4100880DAE /* SF-Pro-Display-BoldItalic.otf in Resources */,
@@ -1811,27 +1656,21 @@
 				630BA62220C22A4100880DAE /* SF-Pro-Text-BoldItalic.otf in Resources */,
 				63D4CB7120F3064500519FFB /* LoanTypeChoiceCollectionCell.xib in Resources */,
 				84114BDE20D79D59005026DF /* PayHistoryTableViewCell.xib in Resources */,
-				84647A8B20E0F4C50053DD0D /* InvestorSignUpRejectedViewController.xib in Resources */,
 				E774D30620CA2C6400F7696D /* Localizable.strings in Resources */,
-				84647A8720E0EF950053DD0D /* InvestorSignupWaitingViewController.xib in Resources */,
 				E772D77820CA8A46001F0B8E /* DoubleTextTableViewCell.xib in Resources */,
 				639C9E1920A18A7500F2CF5E /* Roboto-Thin.ttf in Resources */,
 				E75B706020DA3963007D158D /* TitleTableViewCell.xib in Resources */,
 				84114BCF20D79464005026DF /* PayAllTableViewCell.xib in Resources */,
-				633899E820E0EB3200F0233F /* RegisterInvestorDateTBCell.xib in Resources */,
 				63D4CB6A20F2FFB900519FFB /* LoanTypePhoneRelationTBCell.xib in Resources */,
 				63D49DAD20D3997A00114AFA /* Popup.storyboard in Resources */,
-				633899E920E0EB3200F0233F /* RegisterInvestorSelectionTBCell.xib in Resources */,
+				63748C01210ADBEC00E79EB6 /* MonyBankListViewController.xib in Resources */,
 				6339D24B20BCF312008B40F8 /* GoogleService-Info.plist in Resources */,
-				8456CBCD20DB945E00160B84 /* InvestorBtnTableViewCell.xib in Resources */,
 				639C9E1220A18A7500F2CF5E /* Roboto-MediumItalic.ttf in Resources */,
-				8456CBC520DB93CC00160B84 /* InvestorTextFieldTableViewCell.xib in Resources */,
 				630BA62720C22A4100880DAE /* SF-Pro-Text-LightItalic.otf in Resources */,
 				63B833CA20CE79C400416596 /* LoanBuilder.json in Resources */,
 				84114BD220D79464005026DF /* BorrowingPayInfoTableViewCell.xib in Resources */,
 				63D4CB6820F2FFB900519FFB /* LoanTypeFooterTBView.xib in Resources */,
 				639C9DBD20A1498A00F2CF5E /* Assets.xcassets in Resources */,
-				8456CBC020DB660400160B84 /* InvestorSignupViewController.xib in Resources */,
 				630BA61820C22A4100880DAE /* SF-Pro-Display-Semibold.otf in Resources */,
 				630BA61120C22A4100880DAE /* SF-Pro-Display-Light.otf in Resources */,
 				630BA62120C22A4100880DAE /* SF-Pro-Display-Black.otf in Resources */,
@@ -1851,13 +1690,13 @@
 				84114BCA20D79464005026DF /* PayTypeTableViewCell.xib in Resources */,
 				6336D5C620B2750A00A6C38A /* Loan.storyboard in Resources */,
 				63D4CB6920F2FFB900519FFB /* LoanTypeOptionalMediaTBCell.xib in Resources */,
+				635732FA2109A83800F6CD04 /* LoanTypeTextViewTBCell.xib in Resources */,
 				630BA61720C22A4100880DAE /* SF-Pro-Text-Light.otf in Resources */,
 				639C9E2020A18A7500F2CF5E /* Oswald-ExtraLight.ttf in Resources */,
 				E7BC258B20CFDACA001FF0F4 /* README.md in Resources */,
 				639C9E1E20A18A7500F2CF5E /* Oswald-Regular.ttf in Resources */,
 				630BA62520C22A4100880DAE /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				84114BC920D79464005026DF /* SubInfoLastTableViewCell.xib in Resources */,
-				84B7B34D20D12F4E006CADA1 /* InvestTableViewCell.xib in Resources */,
 				630BA61A20C22A4100880DAE /* SF-Pro-Text-Bold.otf in Resources */,
 				639C9E1320A18A7500F2CF5E /* Roboto-ThinItalic.ttf in Resources */,
 				639C9DDD20A15E3500F2CF5E /* Authen.storyboard in Resources */,
@@ -1871,8 +1710,8 @@
 				639C9E1420A18A7500F2CF5E /* Roboto-BoldItalic.ttf in Resources */,
 				84114BC820D79464005026DF /* SubInfoTableViewCell.xib in Resources */,
 				630BA61220C22A4100880DAE /* SF-Pro-Display-Regular.otf in Resources */,
+				63748C05210ADC5400E79EB6 /* MonyBankTableViewCell.xib in Resources */,
 				639C9DB820A1498A00F2CF5E /* Main.storyboard in Resources */,
-				633899E720E0EB3200F0233F /* RegisterInvestorTFTBCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1983,7 +1822,6 @@
 				632FD02420AADF3C00D9399C /* VerifyAuthenData.swift in Sources */,
 				639C9E2420A1A4FF00F2CF5E /* Constant.swift in Sources */,
 				635B5E0C20B6B4F900F02132 /* RelationShipPhone.swift in Sources */,
-				8456CBF820DD0C5200160B84 /* RegisInvestViewController.swift in Sources */,
 				6338F40420BE602C005777E2 /* BrowwerWallets.swift in Sources */,
 				E763DDAC20DCE75D006BBA50 /* ConfirmRateSuccessViewController.swift in Sources */,
 				6336D5CA20B2B43700A6C38A /* LoanPersionalInfoVC.swift in Sources */,
@@ -1998,9 +1836,7 @@
 				633AE0B820B42BAB007AB0D1 /* DateHelper.swift in Sources */,
 				84114BC720D79464005026DF /* AddNewWalletTableViewCell.swift in Sources */,
 				E772D77020CA7939001F0B8E /* AddWalletViewController.swift in Sources */,
-				84A4791D20E09AE200F83AF4 /* BudgetRewardSuccessViewController.swift in Sources */,
 				633AF9C120A992B200BAE2BB /* BorrowHomeViewController.swift in Sources */,
-				8456CBC420DB93CC00160B84 /* InvestorTextFieldTableViewCell.swift in Sources */,
 				63D49DAF20D399E400114AFA /* InfoInterestRatePopupVC.swift in Sources */,
 				639C9DF520A189E600F2CF5E /* ToastWindow.swift in Sources */,
 				849A337020CFD0CB000D886D /* Config.swift in Sources */,
@@ -2008,9 +1844,7 @@
 				639C9DBB20A1498A00F2CF5E /* FinPlus.xcdatamodeld in Sources */,
 				E7BC256F20CF8096001FF0F4 /* SpreadCell.swift in Sources */,
 				6358EC6E20F4BB67002858C8 /* LoanTypePopupAddTextTBCell.swift in Sources */,
-				84B7B34B20D12F4E006CADA1 /* InvestTableViewCell.swift in Sources */,
 				6355FAEC20B7C1FB00038F5B /* VerifyOTPAuthenVC+Loan.swift in Sources */,
-				84647A8E20E0F5A70053DD0D /* InvestorSignupEnableNotiViewController.swift in Sources */,
 				630467C220B547500069469A /* Version.swift in Sources */,
 				E7BC259420CFDACA001FF0F4 /* AkiraTextField.swift in Sources */,
 				6357825420C2888300DE09A0 /* ExUIView.swift in Sources */,
@@ -2031,10 +1865,12 @@
 				84114BD920D79A6F005026DF /* TestPayHistoryViewController.swift in Sources */,
 				633415B220E1D6E8004B95C0 /* RateInfo.swift in Sources */,
 				E7BC259320CFDACA001FF0F4 /* KaedeTextField.swift in Sources */,
+				6377342621070A39000889F2 /* BrowwerBank.swift in Sources */,
 				6387D11B20D9008F008AC08C /* LoanTypeOptionalMediaTBCell.swift in Sources */,
 				633AF9B720A98A7D00BAE2BB /* SetPassAuthenVC.swift in Sources */,
 				E7BC259120CFDACA001FF0F4 /* JiroTextField.swift in Sources */,
 				6336D5CC20B2B75000A6C38A /* LoanInfoJobVC.swift in Sources */,
+				63748BFD210ADB8000E79EB6 /* PaymentMethodTableViewCell.swift in Sources */,
 				E7F51A0720CE5A3B00F72682 /* CalPayViewController.swift in Sources */,
 				6369BBD420AE8AD400E0C435 /* APIClient+Loan.swift in Sources */,
 				E7F51A1020CE6CE800F72682 /* LoanBuilderBase.swift in Sources */,
@@ -2046,7 +1882,6 @@
 				63750EF220F701840063054F /* BaseAuthenViewController.swift in Sources */,
 				E76AF6B020DB8E4100C71305 /* ContractSuccessViewController.swift in Sources */,
 				6338F3FD20BE602C005777E2 /* BrowwerRelationships.swift in Sources */,
-				633899E620E0EB3200F0233F /* RegisterInvestorTFTBCell.swift in Sources */,
 				84114BD320D79464005026DF /* BankAccountTableViewCell.swift in Sources */,
 				6338F3FE20BE602C005777E2 /* BrowwerResidence.swift in Sources */,
 				E772D76E20CA770F001F0B8E /* LoanDetailViewController.swift in Sources */,
@@ -2072,12 +1907,11 @@
 				6355FAEE20B7EF2800038F5B /* LoanCategories.swift in Sources */,
 				E7F51A2E20CE6D3F00F72682 /* LoanTypeTextFieldTBCell.swift in Sources */,
 				E76AF6AB20DB4F7700C71305 /* FooterButtonView.swift in Sources */,
-				84A4791920E091E000F83AF4 /* BudgetAwardsViewController.swift in Sources */,
 				633415B620E1E0D0004B95C0 /* InvestorRegistor.swift in Sources */,
 				84CBBE5220CF83AA0058C834 /* NotificationListViewController.swift in Sources */,
 				84114BCD20D79464005026DF /* SubInfoTableViewCell.swift in Sources */,
-				8456CBCF20DCB2B700160B84 /* DemoLoanModel.swift in Sources */,
 				E75B705F20DA3963007D158D /* TitleTableViewCell.swift in Sources */,
+				63748C06210ADC5400E79EB6 /* MonyBankTableViewCell.swift in Sources */,
 				E7F51A2F20CE6D3F00F72682 /* LoanTypeDropdownTBCell.swift in Sources */,
 				E7F51A2A20CE6D3F00F72682 /* LoanTypeFooterTBView.swift in Sources */,
 				630467B920B50BDD0069469A /* AddressFirstTBCell.swift in Sources */,
@@ -2085,41 +1919,33 @@
 				63D4CB7320F3080A00519FFB /* LoanTypeChoiceCollectionCell.swift in Sources */,
 				633AF9BE20A9921B00BAE2BB /* LoginViewController.swift in Sources */,
 				6361E09720D7550F005D2C7A /* LoanSumnaryModel.swift in Sources */,
-				633899EC20E0EB3200F0233F /* RegisterInvestorVC.swift in Sources */,
-				8456CBC820DB944F00160B84 /* InvestorSelectTableViewCell.swift in Sources */,
-				8456CBD220DCD8CE00160B84 /* InvestDetailFirstTableViewCell.swift in Sources */,
 				639C9DF820A189E600F2CF5E /* ToastCenter.swift in Sources */,
 				6307D3BF20AD2F0500055F5C /* FacebookInfo.swift in Sources */,
 				6357824F20C2330800DE09A0 /* KeychainPasswordItem.swift in Sources */,
 				84CBBE5620CF85610058C834 /* NotificationTableViewCell.swift in Sources */,
-				633899E520E0EB3200F0233F /* RegisterInvestorDateTBCell.swift in Sources */,
+				15942B202105B32300591BA4 /* PaymentMethod.swift in Sources */,
 				630467BB20B513FC0069469A /* AddressTBViewController.swift in Sources */,
 				639C9DF620A189E600F2CF5E /* ToastView.swift in Sources */,
 				6334891E20C639ED00C95931 /* HomeBrowerCollectionCell.swift in Sources */,
-				633899EA20E0EB3200F0233F /* RegisterInvestorAddressTBCell.swift in Sources */,
 				84114BDD20D79D59005026DF /* PayHistoryTableViewCell.swift in Sources */,
 				E772D76C20CA76F6001F0B8E /* ListLoanViewController.swift in Sources */,
 				638DDC9A20D78CD900CB927D /* Constant+CoreData.swift in Sources */,
 				637A90B020A2E52700CCACA5 /* APIClient+Authen.swift in Sources */,
 				E772D77720CA8A46001F0B8E /* DoubleTextTableViewCell.swift in Sources */,
 				E76AF6AE20DB8E2600C71305 /* SignContractViewController.swift in Sources */,
-				633899EB20E0EB3200F0233F /* RegisterInvestorSelectionTBCell.swift in Sources */,
 				6397B1B820CFB436009BAF33 /* LoanTypePopupTBCell.swift in Sources */,
 				E7F51A3820CE6DE700F72682 /* OnBoardViewController.swift in Sources */,
 				633AF9BA20A98F6000BAE2BB /* ChoiceKindUserVC.swift in Sources */,
-				84647A8620E0EF950053DD0D /* InvestorSignupWaitingViewController.swift in Sources */,
+				635732F82109A6CF00F6CD04 /* LoanTypeTextViewTBCell.swift in Sources */,
 				635B5E0820B6B3D800F02132 /* LoanUserInfo.swift in Sources */,
 				631A2DA420F60C6800D8D9B8 /* BorrowerTabBarController.swift in Sources */,
 				84647A8320E0E89B0053DD0D /* UICircularProgressRingView.swift in Sources */,
 				E7F51A0520CE545300F72682 /* WebViewViewController.swift in Sources */,
 				633AE0B220B40A36007AB0D1 /* LoanOtherInfoVC.swift in Sources */,
-				8456CBD620DCDFC400160B84 /* InvestDetailSecondTableViewCell.swift in Sources */,
-				8456CBBF20DB660400160B84 /* InvestorSignupViewController.swift in Sources */,
 				E774D30B20CA2F7B00F7696D /* ListWalletViewController.swift in Sources */,
 				842D38DC20D25914004E2B36 /* OTP.swift in Sources */,
 				633AE0B020B40036007AB0D1 /* LoanNationalIDViewController.swift in Sources */,
 				63C5C8E520AC183D00F65068 /* FacebookSignInManager.swift in Sources */,
-				8467326320E1F4D70011C576 /* InvestContractViewController.swift in Sources */,
 				639C9DB320A1498A00F2CF5E /* AppDelegate.swift in Sources */,
 				6397B1B920CFB436009BAF33 /* LoanTypePopupVC.swift in Sources */,
 				E7F51A3620CE6DE700F72682 /* TutorialPageViewController.swift in Sources */,
@@ -2127,23 +1953,19 @@
 				E7F51A1120CE6CE800F72682 /* LoanBuilderData.swift in Sources */,
 				63F0CC5620C00B1D0065E3BD /* ConfirmInterestRateVC.swift in Sources */,
 				630467BD20B524610069469A /* APIClient+Config.swift in Sources */,
-				8467326720E32BC40011C576 /* EmtyInvestViewController.swift in Sources */,
 				84B4DF3220EA3EBD004D9BBB /* InvestLoanData.swift in Sources */,
-				84B7B34F20D12F4E006CADA1 /* InvestDetailViewController.swift in Sources */,
 				633AE0B420B40AA1007AB0D1 /* LoanSummaryInfoVC.swift in Sources */,
 				633AE0AD20B3F430007AB0D1 /* LoanWalletTBCell.swift in Sources */,
 				84114BC620D79464005026DF /* TestBorrowingPayViewController.swift in Sources */,
 				6307D3CD20AD817300055F5C /* APIClient+User.swift in Sources */,
 				E7BC258E20CFDACA001FF0F4 /* MinoruTextField.swift in Sources */,
-				8456CBCC20DB945E00160B84 /* InvestorBtnTableViewCell.swift in Sources */,
-				84647A8A20E0F4C50053DD0D /* InvestorSignUpRejectedViewController.swift in Sources */,
 				E7F519F820CE176700F72682 /* ProfileHeaderView.swift in Sources */,
 				6338F40320BE602C005777E2 /* BrowwerUserInfo.swift in Sources */,
 				E7F51A2B20CE6D3F00F72682 /* LoanTypePhoneRelationTBCell.swift in Sources */,
 				6338F3FC20BE602C005777E2 /* BrowwerContacts.swift in Sources */,
 				E772D77320CA7C86001F0B8E /* LoanTableViewCell.swift in Sources */,
-				84B7B35020D12F4E006CADA1 /* InvestListViewController.swift in Sources */,
 				6334891C20C635BA00C95931 /* HomeBrowwer.swift in Sources */,
+				63748C02210ADBEC00E79EB6 /* MonyBankListViewController.swift in Sources */,
 				630467BF20B526CE0069469A /* APIClient+Wallet.swift in Sources */,
 				6338F3F920BE602C005777E2 /* BrowwerJobInfo.swift in Sources */,
 				632FD02120AAC3CC00D9399C /* APIResponseGeneral.swift in Sources */,
@@ -2157,6 +1979,7 @@
 				6336D5C820B27B7500A6C38A /* LoanFirstViewController.swift in Sources */,
 				639C9DE420A15F6100F2CF5E /* BaseViewController.swift in Sources */,
 				63FD80C920C0E13D004BD22A /* LoanBaseViewController.swift in Sources */,
+				635DC11F20FEEA5500AA84DF /* UpdateWalletViewController.swift in Sources */,
 				E7BC259520CFDACA001FF0F4 /* IsaoTextField.swift in Sources */,
 				84114BD120D79464005026DF /* SubInfoLastTableViewCell.swift in Sources */,
 				630467C720B56DD40069469A /* Address.swift in Sources */,
@@ -2168,6 +1991,7 @@
 				6355FAEA20B7BEB100038F5B /* LoanResponseModel.swift in Sources */,
 				84A2A79A20D9049A00083CA8 /* PayBtnTableViewCell.swift in Sources */,
 				639C9DCE20A14B3800F2CF5E /* APIClient.swift in Sources */,
+				63733BB421057AC600D00A77 /* ExUIImage.swift in Sources */,
 				639C9DD920A14BD200F2CF5E /* FinPlusHelper.swift in Sources */,
 				638DDC9820D76A9B00CB927D /* BorrowHomeViewController+CategoryCoreData.swift in Sources */,
 				632FD02620AAE15800D9399C /* ExString.swift in Sources */,

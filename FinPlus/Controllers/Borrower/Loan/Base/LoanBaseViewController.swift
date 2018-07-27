@@ -18,6 +18,7 @@ enum Loan_Identifier_TB_Cell {
     static let File = "Loan_Type_File_TB_Cell"
     static let OptionalMedia = "Loan_Type_Optional_Media_TB_Cell"
     static let Choice = "Loan_Type_Choice_TB_Cell"
+    static let TextView = "LoanTypeTextViewTBCell"
 }
 
 
@@ -79,9 +80,15 @@ class LoanBaseViewController: BaseViewController {
     /// Setup cho tableView
     func setupMainTBView() {
         guard let tableView = self.mainTBView else { return }
-        guard self.index < DataManager.shared.loanBuilder.count else { return }
+//        guard self.index < DataManager.shared.loanBuilder.count else { return }
+//
+//        self.dataSource = DataManager.shared.loanBuilder[self.index]
         
-        self.dataSource = DataManager.shared.loanBuilder[self.index]
+        guard let cate = DataManager.shared.getCurrentCategory(), let builders = cate.builders else { return }
+        guard self.index < builders.count else { return }
+        self.dataSource = builders[self.index]
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -93,6 +100,7 @@ class LoanBaseViewController: BaseViewController {
         tableView.register(UINib(nibName: "LoanTypeFileTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.File)
         tableView.register(UINib(nibName: "LoanTypeOptionalMediaTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.OptionalMedia)
         tableView.register(UINib(nibName: "LoanTypeChoiceTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.Choice)
+        tableView.register(UINib(nibName: "LoanTypeTextViewTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.TextView)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorColor = UIColor.clear
@@ -123,61 +131,24 @@ class LoanBaseViewController: BaseViewController {
     
     
     /// Sang màn chọn địa chỉ
-    func gotoAddressVC(title: String) {
+    func gotoAddressVC(title: String, id: String) {
         let firstAddressVC = UIStoryboard(name: "Address", bundle: nil).instantiateViewController(withIdentifier: "AddressFirstViewController") as! AddressFirstViewController
         firstAddressVC.delegate = self
         firstAddressVC.titleString = title
+        firstAddressVC.id = id
         
         self.navigationController?.pushViewController(firstAddressVC, animated: true)
     }
     
-    /*
-    //Chọn giới tính
-    func selectedGender() {
-        let filterVC = UIAlertController(title: "Chọn giới tính của bạn", message: nil, preferredStyle: .actionSheet)
-        filterVC.view.tintColor = MAIN_COLOR
-        
-        let cancel = UIAlertAction(title: "Huỷ", style: .cancel) { (action) in
-            
-        }
-        
-        cancel.setValue(UIColor(hexString: "#08121E"), forKey: "titleTextColor")
-        
-        let title1 = "Nam"
-        let action1 = UIAlertAction(title: title1, style: .default) { (action) in
-            guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
-            self.mainTBView?.deselectRow(at: indexPath, animated: true)
-            if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeDropdownTBCell {
-                cell.field?.placeholder = title1
-                self.gender = .Male
-            }
-        }
-        
-        let title2 = "Nữ"
-        let action2 = UIAlertAction(title: title2, style: .default) { (action) in
-            guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
-            self.mainTBView?.deselectRow(at: indexPath, animated: true)
-            if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeDropdownTBCell {
-                cell.field?.placeholder = title2
-                self.gender = .Female
-            }
-        }
-        
-        filterVC.addAction(cancel)
-        filterVC.addAction(action1)
-        filterVC.addAction(action2)
-        
-        self.present(filterVC, animated: true, completion: nil)
-    }
-     */
+
     
     //Chọn ảnh
     func selectedFile() {
         CameraHandler.shared.showCamera(vc: self)
         CameraHandler.shared.imagePickedBlock = { (image) in
-            let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
+            //let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
             
-            self.uploadData(img: img)
+            self.uploadData(img: image)
             
         }
     }
@@ -186,11 +157,13 @@ class LoanBaseViewController: BaseViewController {
     func uploadData(img: UIImage) {
         
         guard let type = self.typeImgFile else { return }
+//
+//        let dataImg = UIImagePNGRepresentation(img)
         
-        let dataImg = UIImagePNGRepresentation(img)
+        guard let data = img.jpeg(.lowest) else { return }
         
         let loanID = DataManager.shared.loanID ?? 0
-        guard let data = dataImg else { return }
+        //guard let data = dataImg else { return }
         let endPoint = "loans/" + "\(loanID)/" + "file"
         
         guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
@@ -280,6 +253,17 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch model.type! {
         case DATA_TYPE_TB_CELL.TextBox:
+            
+            if let multiline = model.multipleLine, multiline {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.TextView, for: indexPath) as! LoanTypeTextViewTBCell
+                
+                //cell.parent = data.id
+                cell.field = model
+                
+                return cell
+                
+            }
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.TextField, for: indexPath) as! LoanTypeTextFieldTBCell
             
             cell.parent = data.id
@@ -364,7 +348,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             //Xử lý trong cell
             break
         case DATA_TYPE_TB_CELL.Address:
-            self.gotoAddressVC(title: model.title!)
+            self.gotoAddressVC(title: model.title!, id: model.id!)
             break
         case DATA_TYPE_TB_CELL.File:
             
@@ -405,14 +389,14 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: Address Delegate
 extension LoanBaseViewController: AddressDelegate {
-    func getAddress(address: Address, type: Int, title: String) {
+    func getAddress(address: Address, type: Int, title: String, id: String) {
         let add = address.street + ", " + address.commune + ", " + address.district + ", " + address.city
         
-        if title.contains("thường trú") {
+        if id.contains("residentAddress") {
             DataManager.shared.loanInfo.userInfo.residentAddress = address
-        } else if title.contains("tạm trú") {
+        } else if id.contains("currentAddress") {
             DataManager.shared.loanInfo.userInfo.temporaryAddress = address
-        } else if title.contains("cơ quan") {
+        } else if id.contains("address") {
             DataManager.shared.loanInfo.jobInfo.address = address
         }
         

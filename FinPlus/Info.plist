@@ -24,6 +24,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb243505112873077</string>
+				<string>monyBorrower</string>
 			</array>
 		</dict>
 	</array>
@@ -50,6 +51,7 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
+		<string>monyInvestor</string>
 		<string>fb-messenger-share-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>

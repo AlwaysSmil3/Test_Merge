@@ -1,277 +1,2658 @@
-[{
-    "index": 2,
-    "title": "Thông tin cá nhân",
-    "id":"userInfo",
-    "fields": [
-        {
-            "id": "fullName",
-            "index": 1,
-            "type":"text_box",
-            "title": "Họ và tên",
-            "is_required": true,
-            "placeholder": "Nhập họ và tên của bạn",
-            "multiple_line": false,
-            "keyboard": "default"
-        },
-        {
-            "id": "gender",
-            "index": 2,
-            "type":"choice",
-            "title": "Giới tính",
-            "is_required": true,
-            "placeholder": "Giới tính của bạn",
-            "selector_title": "Chọn giới tính của bạn",
-            "data": [{
-                    "id": 0,
-                    "title": "Nam"
+[
+    {
+        "id": 1,
+        "title": "Vay sinh viên",
+        "description": "Khoản vay thiết kế để hỗ trợ sinh viên",
+        "min": 1000000,
+        "max": 5000000,
+        "termMin": 10,
+        "termMax": 30,
+        "interestRate": 15,
+        "imageUrl": "/images/vaysinhvien.png",
+        "builder" : [
+            {
+                "index": 2,
+                "title": "Thông tin cá nhân",
+                "id":"userInfo",
+                "fields": [
+                    {
+                        "id": "fullName",
+                        "index": 1,
+                        "type":"text_box",
+                        "title": "Họ và tên",
+                        "is_required": true,
+                        "placeholder": "Nhập họ và tên của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "gender",
+                        "index": 2,
+                        "type":"choice",
+                        "title": "Giới tính",
+                        "is_required": true,
+                        "placeholder": "Giới tính của bạn",
+                        "selector_title": "Chọn giới tính của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nam"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Nữ"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "birthday",
+                        "index": 3,
+                        "type":"datetime",
+                        "show_data": true,
+                        "show_time": false,
+                        "title": "Ngày sinh",
+                        "is_required": true,
+                        "placeholder": "Ngày sinh của bạn",
+                        "selector_title": "Chọn ngày sinh của bạn"
+                    },
+                    {
+                        "id": "nationalId",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Số CMND/thẻ căn cước",
+                        "is_required": true,
+                        "placeholder": "Số CMND/thẻ căn cước của bạn",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "relationships",
+                        "index": 5,
+                        "type":"dropdown_text_box",
+                        "title": "Số điện thoại liên lạc của người thân",
+                        "is_required": true,
+                        "selector_title": "Chọn người thân của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default",
+                        "multiple_data": [
+                            {
+                                "placeholder" : "Số điện thoại người thân 1",
+                                "options" : [
+                                    {
+                                        "id": 0,
+                                        "title": "Vợ"
+                                    },
+                                    {
+                                        "id": 1,
+                                        "title": "Chồng"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "title": "Bố"
+                                    },
+                                    {
+                                        "id": 3,
+                                        "title": "Mẹ"
+                                    }
+                                ]
+                            },
+                            {
+                                "placeholder" : "Số điện thoại người thân 2",
+                                "options" : [
+                                    {
+                                        "id": 4,
+                                        "title": "Bạn bè"
+                                    },
+                                    {
+                                        "id": 5,
+                                        "title": "Đồng nghiệp"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "residentAddress",
+                        "index": 6,
+                        "type":"address",
+                        "title": "Địa chỉ nhà thường trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "currentAddress",
+                        "index": 7,
+                        "type":"address",
+                        "title": "Địa chỉ nhà tạm trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 8,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "index": 3,
+                "title": "Thông tin nghề nghiệp",
+                "id":"jobInfo",
+                "fields": [{
+                        "id": "jobType",
+                        "index": 1,
+                        "type":"dropdown",
+                        "title": "Nghề nghiệp",
+                        "is_required": true,
+                        "placeholder": "Nghề nghiệp của bạn",
+                        "selector_title": "Chọn nghề nghiệp của bạn",
+                        "data": [
+                            {
+                                "id": 1,
+                                "title": "Sinh Viên"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "company",
+                        "index": 2,
+                        "type":"text_box",
+                        "title": "Tên trường học",
+                        "is_required": true,
+                        "placeholder": "Tên trường học bạn đang theo học",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "strength",
+                        "index": 3,
+                        "type":"dropdown",
+                        "title": "Học lực",
+                        "is_required": true,
+                        "placeholder": "Học lực của bạn",
+                        "selector_title": "Chọn học lực của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Giỏi"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Khá"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Trung Bình"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "address",
+                        "index": 4,
+                        "type":"address",
+                        "title": "Địa chỉ trường học",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "salary",
+                        "index": 5,
+                        "type":"text_box",
+                        "title": "Tổng thu nhập hàng tháng",
+                        "is_required": true,
+                        "placeholder": "Thu nhập hàng tháng của bạn",
+                        "multiple_line": false,
+                        "keyboard": "money",
+                        "suffix": "đ"
+                    },
+                    {
+                        "id": "companyPhoneNumber",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "SĐT cơ quan",
+                        "is_required": true,
+                        "placeholder": "Số điện thoại cơ quan của bạn",
+                        "multiple_line": false,
+                        "keyboard": "phone_pad"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 7,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "title": "Nhân Thân",
+                "id": null,
+                "fields": [{
+                        "id": "nationalIdAllImg",
+                        "index": 1,
+                        "type":"file",
+                        "title": "Ảnh bạn đang cầm CMND",
+                        "description": "Nhấn để chụp hình bạn cầm chứng minh thư trước ngực. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdFrontImg",
+                        "index": 2,
+                        "type":"file",
+                        "title": "Ảnh mặt trước CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt trước của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdBackImg",
+                        "index": 3,
+                        "type":"file",
+                        "title": "Ảnh mặt sau CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt sau của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    }
+                ]
+            },
+            {
+                "title": "Thông Tin Bổ Sung",
+                "id": null,
+                "fields": [{
+                        "id": "optionalText",
+                        "index": 1,
+                        "type":"text_box",
+                        "title": "Mô tả khoản vay",
+                        "placeholder": "Hãy nói vài dòng về khoản vay của bạn như mục đích cụ thể, mong muốn, kế hoạch sử dụng khoản vay….",
+                        "multiple_line": true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 2,
+                        "type":"multiple_file",
+                        "title": "Ảnh chụp thẻ sinh viên và bảng điểm kỳ gần nhất"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Vay mua điện thoại",
+        "description": "Khoản vay được sử dụng để mua điện thoại",
+        "min": 1000000,
+        "max": 15000000,
+        "termMin": 30,
+        "termMax": 360,
+        "interestRate": 16,
+        "imageUrl": "/images/vaymuadienthoai.png",
+        "builder" : [
+            {
+                "index": 2,
+                "title": "Thông tin cá nhân",
+                "id":"userInfo",
+                "fields": [
+                    {
+                        "id": "fullName",
+                        "index": 1,
+                        "type":"text_box",
+                        "title": "Họ và tên",
+                        "is_required": true,
+                        "placeholder": "Nhập họ và tên của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "gender",
+                        "index": 2,
+                        "type":"choice",
+                        "title": "Giới tính",
+                        "is_required": true,
+                        "placeholder": "Giới tính của bạn",
+                        "selector_title": "Chọn giới tính của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nam"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Nữ"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "birthday",
+                        "index": 3,
+                        "type":"datetime",
+                        "show_data": true,
+                        "show_time": false,
+                        "title": "Ngày sinh",
+                        "is_required": true,
+                        "placeholder": "Ngày sinh của bạn",
+                        "selector_title": "Chọn ngày sinh của bạn"
+                    },
+                    {
+                        "id": "nationalId",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Số CMND/thẻ căn cước",
+                        "is_required": true,
+                        "placeholder": "Số CMND/thẻ căn cước của bạn",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "relationships",
+                        "index": 5,
+                        "type":"dropdown_text_box",
+                        "title": "Số điện thoại liên lạc của người thân",
+                        "is_required": true,
+                        "selector_title": "Chọn người thân của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default",
+                        "multiple_data": [
+                            {
+                                "placeholder" : "Số điện thoại người thân 1",
+                                "options" : [
+                                    {
+                                        "id": 0,
+                                        "title": "Vợ"
+                                    },
+                                    {
+                                        "id": 1,
+                                        "title": "Chồng"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "title": "Bố"
+                                    },
+                                    {
+                                        "id": 3,
+                                        "title": "Mẹ"
+                                    }
+                                ]
+                            },
+                            {
+                                "placeholder" : "Số điện thoại người thân 2",
+                                "options" : [
+                                    {
+                                        "id": 4,
+                                        "title": "Bạn bè"
+                                    },
+                                    {
+                                        "id": 5,
+                                        "title": "Đồng nghiệp"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "numDependence",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "Số người phụ thuộc",
+                        "is_required": true,
+                        "placeholder": "Điền số lượng người phụ thuộc",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "residentAddress",
+                        "index": 7,
+                        "type":"address",
+                        "title": "Địa chỉ nhà thường trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "currentAddress",
+                        "index": 8,
+                        "type":"address",
+                        "title": "Địa chỉ nhà tạm trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 9,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "index": 3,
+                "title": "Thông tin nghề nghiệp",
+                "id":"jobInfo",
+                "fields": [{
+                        "id": "jobType",
+                        "index": 1,
+                        "type":"dropdown",
+                        "title": "Nghề nghiệp",
+                        "is_required": true,
+                        "placeholder": "Nghề nghiệp của bạn",
+                        "selector_title": "Chọn nghề nghiệp của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Ngân Hàng"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Sinh Viên"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Nhân viên văn phòng"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Kinh doanh"
+                            },
+                            {
+                                "id": 4,
+                                "title": "Tự do"
+                            },
+                            {
+                                "id": 6,
+                                "title": "Khác ...",
+                                "isTextInput" : true,
+                                "placeholder":"Nhập tên nghề nghiệp"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "index": 2,
+                        "type":"dropdown",
+                        "title": "Vị trí làm việc",
+                        "is_required": true,
+                        "placeholder": "Cấp bậc trong cơ quan",
+                        "selector_title": "Chọn cấp bậc trong cơ quan",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nhân viên"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Trưởng phòng"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "company",
+                        "index": 3,
+                        "type":"text_box",
+                        "title": "Nơi làm việc",
+                        "is_required": true,
+                        "placeholder": "Tên cơ quan/công ty bạn đang làm",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "salary",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Tổng thu nhập hàng tháng",
+                        "is_required": true,
+                        "placeholder": "Thu nhập hàng tháng của bạn",
+                        "multiple_line": false,
+                        "keyboard": "money",
+                        "suffix": "đ"
+                    },
+                    {
+                        "id": "address",
+                        "index": 5,
+                        "type":"address",
+                        "title": "Địa chỉ làm việc",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "companyPhoneNumber",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "SĐT cơ quan",
+                        "is_required": true,
+                        "placeholder": "Số điện thoại cơ quan của bạn",
+                        "multiple_line": false,
+                        "keyboard": "phone_pad"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 7,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "title": "Nhân Thân",
+                "id": null,
+                "fields": [{
+                        "id": "nationalIdAllImg",
+                        "index": 1,
+                        "type":"file",
+                        "title": "Ảnh bạn đang cầm CMND",
+                        "description": "Nhấn để chụp hình bạn cầm chứng minh thư trước ngực. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdFrontImg",
+                        "index": 2,
+                        "type":"file",
+                        "title": "Ảnh mặt trước CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt trước của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdBackImg",
+                        "index": 3,
+                        "type":"file",
+                        "title": "Ảnh mặt sau CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt sau của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    }
+                ]
+            },
+            {
+                "title": "Thông Tin Bổ Sung",
+                "id": null,
+                "fields": [{
+                        "id": "optionalText",
+                        "index": 1,
+                        "type":"text_box",
+                        "title": "Điền một số thông tin bổ sung",
+                        "placeholder": "Dòng điện thoại dự kiến mua\nNơi dự kiến mua\nGiá trị điện thoại dự kiến mua",
+                        "multiple_line": true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 2,
+                        "type":"multiple_file",
+                        "title": "Ảnh chứng minh thu nhập và ảnh chụp bạn tại nơi làm việc"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Vay mua xe máy",
+        "description": "Khoản vay được sử dụng để mua xe máy",
+        "min": 1000000,
+        "max": 15000000,
+        "termMin": 30,
+        "termMax": 360,
+        "interestRate": 17,
+        "imageUrl": "/images/vaymuaxemay.png",
+        "builder" : [
+            {
+                "index": 2,
+                "title": "Thông tin cá nhân",
+                "id":"userInfo",
+                "fields": [
+                    {
+                        "id": "fullName",
+                        "index": 1,
+                        "type":"text_box",
+                        "title": "Họ và tên",
+                        "is_required": true,
+                        "placeholder": "Nhập họ và tên của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "gender",
+                        "index": 2,
+                        "type":"choice",
+                        "title": "Giới tính",
+                        "is_required": true,
+                        "placeholder": "Giới tính của bạn",
+                        "selector_title": "Chọn giới tính của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nam"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Nữ"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "birthday",
+                        "index": 3,
+                        "type":"datetime",
+                        "show_data": true,
+                        "show_time": false,
+                        "title": "Ngày sinh",
+                        "is_required": true,
+                        "placeholder": "Ngày sinh của bạn",
+                        "selector_title": "Chọn ngày sinh của bạn"
+                    },
+                    {
+                        "id": "nationalId",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Số CMND/thẻ căn cước",
+                        "is_required": true,
+                        "placeholder": "Số CMND/thẻ căn cước của bạn",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "relationships",
+                        "index": 5,
+                        "type":"dropdown_text_box",
+                        "title": "Số điện thoại liên lạc của người thân",
+                        "is_required": true,
+                        "selector_title": "Chọn người thân của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default",
+                        "multiple_data": [
+                            {
+                                "placeholder" : "Số điện thoại người thân 1",
+                                "options" : [
+                                    {
+                                        "id": 0,
+                                        "title": "Vợ"
+                                    },
+                                    {
+                                        "id": 1,
+                                        "title": "Chồng"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "title": "Bố"
+                                    },
+                                    {
+                                        "id": 3,
+                                        "title": "Mẹ"
+                                    }
+                                ]
+                            },
+                            {
+                                "placeholder" : "Số điện thoại người thân 2",
+                                "options" : [
+                                    {
+                                        "id": 4,
+                                        "title": "Bạn bè"
+                                    },
+                                    {
+                                        "id": 5,
+                                        "title": "Đồng nghiệp"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "numDependence",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "Số người phụ thuộc",
+                        "is_required": true,
+                        "placeholder": "Điền số lượng người phụ thuộc",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "residentAddress",
+                        "index": 7,
+                        "type":"address",
+                        "title": "Địa chỉ nhà thường trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "currentAddress",
+                        "index": 8,
+                        "type":"address",
+                        "title": "Địa chỉ nhà tạm trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 9,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "index": 3,
+                "title": "Thông tin nghề nghiệp",
+                "id":"jobInfo",
+                "fields": [{
+                        "id": "jobType",
+                        "index": 1,
+                        "type":"dropdown",
+                        "title": "Nghề nghiệp",
+                        "is_required": true,
+                        "placeholder": "Nghề nghiệp của bạn",
+                        "selector_title": "Chọn nghề nghiệp của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Ngân Hàng"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Sinh Viên"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Nhân viên văn phòng"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Kinh doanh"
+                            },
+                            {
+                                "id": 4,
+                                "title": "Tự do"
+                            },
+                            {
+                                "id": 6,
+                                "title": "Khác ...",
+                                "isTextInput" : true,
+                                "placeholder":"Nhập tên nghề nghiệp"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "index": 2,
+                        "type":"dropdown",
+                        "title": "Vị trí làm việc",
+                        "is_required": true,
+                        "placeholder": "Cấp bậc trong cơ quan",
+                        "selector_title": "Chọn cấp bậc trong cơ quan",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nhân viên"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Trưởng phòng"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "company",
+                        "index": 3,
+                        "type":"text_box",
+                        "title": "Nơi làm việc",
+                        "is_required": true,
+                        "placeholder": "Tên cơ quan/công ty bạn đang làm",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "salary",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Tổng thu nhập hàng tháng",
+                        "is_required": true,
+                        "placeholder": "Thu nhập hàng tháng của bạn",
+                        "multiple_line": false,
+                        "keyboard": "money",
+                        "suffix": "đ"
+                    },
+                    {
+                        "id": "address",
+                        "index": 5,
+                        "type":"address",
+                        "title": "Địa chỉ làm việc",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "companyPhoneNumber",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "SĐT cơ quan",
+                        "is_required": true,
+                        "placeholder": "Số điện thoại cơ quan của bạn",
+                        "multiple_line": false,
+                        "keyboard": "phone_pad"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 7,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "title": "Nhân Thân",
+                "id": null,
+                "fields": [{
+                        "id": "nationalIdAllImg",
+                        "index": 1,
+                        "type":"file",
+                        "title": "Ảnh bạn đang cầm CMND",
+                        "description": "Nhấn để chụp hình bạn cầm chứng minh thư trước ngực. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdFrontImg",
+                        "index": 2,
+                        "type":"file",
+                        "title": "Ảnh mặt trước CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt trước của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdBackImg",
+                        "index": 3,
+                        "type":"file",
+                        "title": "Ảnh mặt sau CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt sau của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    }
+                ]
+            },
+            {
+                "title": "Thông Tin Bổ Sung",
+                "id": null,
+                "fields": [{
+                    "id": "optionalText",
+                    "index": 1,
+                    "type":"text_box",
+                    "title": "Điền một số thông tin bổ sung",
+                    "placeholder": "Dòng xe dự kiến mua\nNơi dự kiến mua\nGiá trị xe dự kiến mua",
+                    "multiple_line": true,
+                    "keyboard": "default"
                 },
                 {
-                    "id": 1,
-                    "title": "Nữ"
+                    "id": "optionalMedia",
+                    "index": 2,
+                    "type":"multiple_file",
+                    "title": "Ảnh chứng minh thu nhập và ảnh chụp bạn tại nơi làm việc"
                 }
             ]
-        },
-        {
-            "id": "birthday",
-            "index": 3,
-            "type":"datetime",
-            "show_data": true,
-            "show_time": false,
-            "title": "Ngày sinh",
-            "is_required": true,
-            "placeholder": "Ngày sinh của bạn",
-            "selector_title": "Chọn ngày sinh của bạn"
-        },
-        {
-            "id": "nationalId",
-            "index": 4,
-            "type":"text_box",
-            "title": "Số CMND/thẻ căn cước",
-            "is_required": true,
-            "placeholder": "Số CMND/thẻ căn cước của bạn",
-            "multiple_line": false,
-            "keyboard": "numeric"
-        },
-        {
-            "id": "relationships",
-            "index": 5,
-            "type":"dropdown_text_box",
-            "title": "Số điện thoại liên lạc của người thân",
-            "is_required": true,
-            "selector_title": "Chọn người thân của bạn",
-            "multiple_line": false,
-            "keyboard": "default",
-            "multiple_data": [
-                {
-                    "placeholder" : "Số điện thoại người thân 1",
-                    "options" : [
-                        {
-                            "id": 0,
-                            "title": "Vợ"
-                        },
-                        {
-                            "id": 1,
-                            "title": "Chồng"
-                        },
-                        {
-                            "id": 2,
-                            "title": "Bố"
-                        },
-                        {
-                            "id": 3,
-                            "title": "Mẹ"
-                        }
-                    ]
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Vay đám cưới",
+        "description": "Khoản vay được thiết kế để hỗ trợ các cặp đôi chuẩn bị kết hôn",
+        "min": 1000000,
+        "max": 15000000,
+        "termMin": 30,
+        "termMax": 360,
+        "interestRate": 17,
+        "imageUrl": "/images/vaydamcuoi.png",
+        "builder" : [
+            {
+                "index": 2,
+                "title": "Thông tin cá nhân",
+                "id":"userInfo",
+                "fields": [
+                    {
+                        "id": "fullName",
+                        "index": 1,
+                        "type":"text_box",
+                        "title": "Họ và tên",
+                        "is_required": true,
+                        "placeholder": "Nhập họ và tên của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "gender",
+                        "index": 2,
+                        "type":"choice",
+                        "title": "Giới tính",
+                        "is_required": true,
+                        "placeholder": "Giới tính của bạn",
+                        "selector_title": "Chọn giới tính của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nam"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Nữ"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "birthday",
+                        "index": 3,
+                        "type":"datetime",
+                        "show_data": true,
+                        "show_time": false,
+                        "title": "Ngày sinh",
+                        "is_required": true,
+                        "placeholder": "Ngày sinh của bạn",
+                        "selector_title": "Chọn ngày sinh của bạn"
+                    },
+                    {
+                        "id": "nationalId",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Số CMND/thẻ căn cước",
+                        "is_required": true,
+                        "placeholder": "Số CMND/thẻ căn cước của bạn",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "relationships",
+                        "index": 5,
+                        "type":"dropdown_text_box",
+                        "title": "Số điện thoại liên lạc của người thân",
+                        "is_required": true,
+                        "selector_title": "Chọn người thân của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default",
+                        "multiple_data": [
+                            {
+                                "placeholder" : "Số điện thoại người thân 1",
+                                "options" : [
+                                    {
+                                        "id": 0,
+                                        "title": "Vợ"
+                                    },
+                                    {
+                                        "id": 1,
+                                        "title": "Chồng"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "title": "Bố"
+                                    },
+                                    {
+                                        "id": 3,
+                                        "title": "Mẹ"
+                                    }
+                                ]
+                            },
+                            {
+                                "placeholder" : "Số điện thoại người thân 2",
+                                "options" : [
+                                    {
+                                        "id": 4,
+                                        "title": "Bạn bè"
+                                    },
+                                    {
+                                        "id": 5,
+                                        "title": "Đồng nghiệp"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "numDependence",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "Số người phụ thuộc",
+                        "is_required": true,
+                        "placeholder": "Điền số lượng người phụ thuộc",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "residentAddress",
+                        "index": 7,
+                        "type":"address",
+                        "title": "Địa chỉ nhà thường trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "currentAddress",
+                        "index": 8,
+                        "type":"address",
+                        "title": "Địa chỉ nhà tạm trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 9,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "index": 3,
+                "title": "Thông tin nghề nghiệp",
+                "id":"jobInfo",
+                "fields": [{
+                        "id": "jobType",
+                        "index": 1,
+                        "type":"dropdown",
+                        "title": "Nghề nghiệp",
+                        "is_required": true,
+                        "placeholder": "Nghề nghiệp của bạn",
+                        "selector_title": "Chọn nghề nghiệp của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Ngân Hàng"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Sinh Viên"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Nhân viên văn phòng"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Kinh doanh"
+                            },
+                            {
+                                "id": 4,
+                                "title": "Tự do"
+                            },
+                            {
+                                "id": 6,
+                                "title": "Khác ...",
+                                "isTextInput" : true,
+                                "placeholder":"Nhập tên nghề nghiệp"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "index": 2,
+                        "type":"dropdown",
+                        "title": "Vị trí làm việc",
+                        "is_required": true,
+                        "placeholder": "Cấp bậc trong cơ quan",
+                        "selector_title": "Chọn cấp bậc trong cơ quan",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nhân viên"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Trưởng phòng"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "company",
+                        "index": 3,
+                        "type":"text_box",
+                        "title": "Nơi làm việc",
+                        "is_required": true,
+                        "placeholder": "Tên cơ quan/công ty bạn đang làm",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "salary",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Tổng thu nhập hàng tháng",
+                        "is_required": true,
+                        "placeholder": "Thu nhập hàng tháng của bạn",
+                        "multiple_line": false,
+                        "keyboard": "money",
+                        "suffix": "đ"
+                    },
+                    {
+                        "id": "address",
+                        "index": 5,
+                        "type":"address",
+                        "title": "Địa chỉ làm việc",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "companyPhoneNumber",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "SĐT cơ quan",
+                        "is_required": true,
+                        "placeholder": "Số điện thoại cơ quan của bạn",
+                        "multiple_line": false,
+                        "keyboard": "phone_pad"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 7,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "title": "Nhân Thân",
+                "id": null,
+                "fields": [{
+                        "id": "nationalIdAllImg",
+                        "index": 1,
+                        "type":"file",
+                        "title": "Ảnh bạn đang cầm CMND",
+                        "description": "Nhấn để chụp hình bạn cầm chứng minh thư trước ngực. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdFrontImg",
+                        "index": 2,
+                        "type":"file",
+                        "title": "Ảnh mặt trước CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt trước của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdBackImg",
+                        "index": 3,
+                        "type":"file",
+                        "title": "Ảnh mặt sau CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt sau của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    }
+                ]
+            },
+            {
+                "title": "Thông Tin Bổ Sung",
+                "id": null,
+                "fields": [{
+                    "id": "optionalText",
+                    "index": 1,
+                    "type":"text_box",
+                    "title": "Điền một số thông tin bổ sung",
+                    "placeholder": "Thông tin vợ/chồng: Tên, SĐT, CMND, nghề nghiệp, nơi làm việc",
+                    "multiple_line": true,
+                    "keyboard": "default"
                 },
                 {
-                    "placeholder" : "Số điện thoại người thân 2",
-                    "options" : [
-                        {
-                            "id": 4,
-                            "title": "Bạn bè"
-                        },
-                        {
-                            "id": 5,
-                            "title": "Đồng nghiệp"
-                        }
-                    ]
+                    "id": "optionalMedia",
+                    "index": 2,
+                    "type":"multiple_file",
+                    "title": "Ảnh đăng ký kết hôn (nếu có), ảnh chứng minh thu nhập và ảnh chụp bạn tại nơi làm việc"
                 }
             ]
-        },
-        {
-            "id": "residentAddress",
-            "index": 6,
-            "type":"address",
-            "title": "Địa chỉ nhà thường trú",
-            "is_required": true,
-            "placeholder": "Nhấn để chọn địa chỉ"
-        },
-        {
-            "id": "currentAddress",
-            "index": 7,
-            "type":"address",
-            "title": "Địa chỉ nhà tạm trú",
-            "is_required": true,
-            "placeholder": "Nhấn để chọn địa chỉ"
-        },
-        {
-            "id": "footer",
-            "index": 8,
-            "type":"footer",
-            "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
-        }
-    ]
-},
-{
-    "index": 3,
-    "title": "Thông tin nghề nghiệp",
-    "id":"jobInfo",
-    "fields": [{
-            "id": "jobType",
-            "index": 1,
-            "type":"dropdown",
-            "title": "Nghề nghiệp",
-            "is_required": true,
-            "placeholder": "Nghề nghiệp của bạn",
-            "selector_title": "Chọn nghề nghiệp của bạn",
-            "data": [{
-                    "id": 0,
-                    "title": "Ngân Hàng"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Vay bà bầu",
+        "description": "Khoản vay được thiết kế để hỗ trợ các bà bầu hay các bà mẹ mới sinh con",
+        "min": 1000000,
+        "max": 15000000,
+        "termMin": 30,
+        "termMax": 360,
+        "interestRate": 17,
+        "imageUrl": "/images/vaybabau.png",
+        "builder" : [
+            {
+                "index": 2,
+                "title": "Thông tin cá nhân",
+                "id":"userInfo",
+                "fields": [
+                    {
+                        "id": "fullName",
+                        "index": 1,
+                        "type":"text_box",
+                        "title": "Họ và tên",
+                        "is_required": true,
+                        "placeholder": "Nhập họ và tên của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "gender",
+                        "index": 2,
+                        "type":"choice",
+                        "title": "Giới tính",
+                        "is_required": true,
+                        "placeholder": "Giới tính của bạn",
+                        "selector_title": "Chọn giới tính của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nam"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Nữ"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "birthday",
+                        "index": 3,
+                        "type":"datetime",
+                        "show_data": true,
+                        "show_time": false,
+                        "title": "Ngày sinh",
+                        "is_required": true,
+                        "placeholder": "Ngày sinh của bạn",
+                        "selector_title": "Chọn ngày sinh của bạn"
+                    },
+                    {
+                        "id": "nationalId",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Số CMND/thẻ căn cước",
+                        "is_required": true,
+                        "placeholder": "Số CMND/thẻ căn cước của bạn",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "relationships",
+                        "index": 5,
+                        "type":"dropdown_text_box",
+                        "title": "Số điện thoại liên lạc của người thân",
+                        "is_required": true,
+                        "selector_title": "Chọn người thân của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default",
+                        "multiple_data": [
+                            {
+                                "placeholder" : "Số điện thoại người thân 1",
+                                "options" : [
+                                    {
+                                        "id": 0,
+                                        "title": "Vợ"
+                                    },
+                                    {
+                                        "id": 1,
+                                        "title": "Chồng"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "title": "Bố"
+                                    },
+                                    {
+                                        "id": 3,
+                                        "title": "Mẹ"
+                                    }
+                                ]
+                            },
+                            {
+                                "placeholder" : "Số điện thoại người thân 2",
+                                "options" : [
+                                    {
+                                        "id": 4,
+                                        "title": "Bạn bè"
+                                    },
+                                    {
+                                        "id": 5,
+                                        "title": "Đồng nghiệp"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "numDependence",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "Số người phụ thuộc",
+                        "is_required": true,
+                        "placeholder": "Điền số lượng người phụ thuộc",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "residentAddress",
+                        "index": 7,
+                        "type":"address",
+                        "title": "Địa chỉ nhà thường trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "currentAddress",
+                        "index": 8,
+                        "type":"address",
+                        "title": "Địa chỉ nhà tạm trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 9,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "index": 3,
+                "title": "Thông tin nghề nghiệp",
+                "id":"jobInfo",
+                "fields": [{
+                        "id": "jobType",
+                        "index": 1,
+                        "type":"dropdown",
+                        "title": "Nghề nghiệp",
+                        "is_required": true,
+                        "placeholder": "Nghề nghiệp của bạn",
+                        "selector_title": "Chọn nghề nghiệp của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Ngân Hàng"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Sinh Viên"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Nhân viên văn phòng"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Kinh doanh"
+                            },
+                            {
+                                "id": 4,
+                                "title": "Tự do"
+                            },
+                            {
+                                "id": 6,
+                                "title": "Khác ...",
+                                "isTextInput" : true,
+                                "placeholder":"Nhập tên nghề nghiệp"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "index": 2,
+                        "type":"dropdown",
+                        "title": "Vị trí làm việc",
+                        "is_required": true,
+                        "placeholder": "Cấp bậc trong cơ quan",
+                        "selector_title": "Chọn cấp bậc trong cơ quan",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nhân viên"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Trưởng phòng"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "company",
+                        "index": 3,
+                        "type":"text_box",
+                        "title": "Nơi làm việc",
+                        "is_required": true,
+                        "placeholder": "Tên cơ quan/công ty bạn đang làm",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "salary",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Tổng thu nhập hàng tháng",
+                        "is_required": true,
+                        "placeholder": "Thu nhập hàng tháng của bạn",
+                        "multiple_line": false,
+                        "keyboard": "money",
+                        "suffix": "đ"
+                    },
+                    {
+                        "id": "address",
+                        "index": 5,
+                        "type":"address",
+                        "title": "Địa chỉ làm việc",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "companyPhoneNumber",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "SĐT cơ quan",
+                        "is_required": true,
+                        "placeholder": "Số điện thoại cơ quan của bạn",
+                        "multiple_line": false,
+                        "keyboard": "phone_pad"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 7,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "title": "Nhân Thân",
+                "id": null,
+                "fields": [{
+                        "id": "nationalIdAllImg",
+                        "index": 1,
+                        "type":"file",
+                        "title": "Ảnh bạn đang cầm CMND",
+                        "description": "Nhấn để chụp hình bạn cầm chứng minh thư trước ngực. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdFrontImg",
+                        "index": 2,
+                        "type":"file",
+                        "title": "Ảnh mặt trước CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt trước của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdBackImg",
+                        "index": 3,
+                        "type":"file",
+                        "title": "Ảnh mặt sau CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt sau của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    }
+                ]
+            },
+            {
+                "title": "Thông Tin Bổ Sung",
+                "id": null,
+                "fields": [{
+                    "id": "optionalText",
+                    "index": 1,
+                    "type":"text_box",
+                    "title": "Điền một số thông tin bổ sung",
+                    "placeholder": "Thời gian dự kiến sinh\nThông tin bố em bé: Tên, SĐT, CMND, nghề nghiệp, nơi làm việc",
+                    "multiple_line": true,
+                    "keyboard": "default"
                 },
                 {
-                    "id": 1,
-                    "title": "Sinh Viên"
-                },
-                {
-                    "id": 2,
-                    "title": "Nhân viên văn phòng"
-                },
-                {
-                    "id": 3,
-                    "title": "Kinh doanh"
-                },
-                {
-                    "id": 4,
-                    "title": "Tự do"
-                },
-                {
-                    "id": 6,
-                    "title": "Khác ...",
-                    "isTextInput" : true,
-                    "placeholder":"Nhập tên nghề nghiệp"
+                    "id": "optionalMedia",
+                    "index": 2,
+                    "type":"multiple_file",
+                    "title": "Ảnh siêu âm 3 tháng gần nhất, ảnh chứng minh thu nhập và ảnh chụp bạn tại nơi làm việc"
                 }
             ]
-        },
-        {
-            "id": "position",
-            "index": 2,
-            "type":"dropdown",
-            "title": "Cấp bậc",
-            "is_required": true,
-            "placeholder": "Cấp bậc trong cơ quan",
-            "selector_title": "Chọn cấp bậc trong cơ quan",
-            "data": [{
-                    "id": 0,
-                    "title": "Nhân viên"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Vay em bé",
+        "description": "Khoản vay thiết kế hỗ trợ việc nuối em bé trong vòng 6 năm đầu",
+        "min": 1000000,
+        "max": 15000000,
+        "termMin": 30,
+        "termMax": 360,
+        "interestRate": 17,
+        "imageUrl": "/images/vaychoebe.png",
+        "builder" : [
+            {
+                "index": 2,
+                "title": "Thông tin cá nhân",
+                "id":"userInfo",
+                "fields": [
+                    {
+                        "id": "fullName",
+                        "index": 1,
+                        "type":"text_box",
+                        "title": "Họ và tên",
+                        "is_required": true,
+                        "placeholder": "Nhập họ và tên của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "gender",
+                        "index": 2,
+                        "type":"choice",
+                        "title": "Giới tính",
+                        "is_required": true,
+                        "placeholder": "Giới tính của bạn",
+                        "selector_title": "Chọn giới tính của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nam"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Nữ"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "birthday",
+                        "index": 3,
+                        "type":"datetime",
+                        "show_data": true,
+                        "show_time": false,
+                        "title": "Ngày sinh",
+                        "is_required": true,
+                        "placeholder": "Ngày sinh của bạn",
+                        "selector_title": "Chọn ngày sinh của bạn"
+                    },
+                    {
+                        "id": "nationalId",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Số CMND/thẻ căn cước",
+                        "is_required": true,
+                        "placeholder": "Số CMND/thẻ căn cước của bạn",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "relationships",
+                        "index": 5,
+                        "type":"dropdown_text_box",
+                        "title": "Số điện thoại liên lạc của người thân",
+                        "is_required": true,
+                        "selector_title": "Chọn người thân của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default",
+                        "multiple_data": [
+                            {
+                                "placeholder" : "Số điện thoại người thân 1",
+                                "options" : [
+                                    {
+                                        "id": 0,
+                                        "title": "Vợ"
+                                    },
+                                    {
+                                        "id": 1,
+                                        "title": "Chồng"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "title": "Bố"
+                                    },
+                                    {
+                                        "id": 3,
+                                        "title": "Mẹ"
+                                    }
+                                ]
+                            },
+                            {
+                                "placeholder" : "Số điện thoại người thân 2",
+                                "options" : [
+                                    {
+                                        "id": 4,
+                                        "title": "Bạn bè"
+                                    },
+                                    {
+                                        "id": 5,
+                                        "title": "Đồng nghiệp"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "numDependence",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "Số người phụ thuộc",
+                        "is_required": true,
+                        "placeholder": "Điền số lượng người phụ thuộc",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "residentAddress",
+                        "index": 7,
+                        "type":"address",
+                        "title": "Địa chỉ nhà thường trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "currentAddress",
+                        "index": 8,
+                        "type":"address",
+                        "title": "Địa chỉ nhà tạm trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 9,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "index": 3,
+                "title": "Thông tin nghề nghiệp",
+                "id":"jobInfo",
+                "fields": [{
+                        "id": "jobType",
+                        "index": 1,
+                        "type":"dropdown",
+                        "title": "Nghề nghiệp",
+                        "is_required": true,
+                        "placeholder": "Nghề nghiệp của bạn",
+                        "selector_title": "Chọn nghề nghiệp của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Ngân Hàng"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Sinh Viên"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Nhân viên văn phòng"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Kinh doanh"
+                            },
+                            {
+                                "id": 4,
+                                "title": "Tự do"
+                            },
+                            {
+                                "id": 6,
+                                "title": "Khác ...",
+                                "isTextInput" : true,
+                                "placeholder":"Nhập tên nghề nghiệp"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "index": 2,
+                        "type":"dropdown",
+                        "title": "Vị trí làm việc",
+                        "is_required": true,
+                        "placeholder": "Cấp bậc trong cơ quan",
+                        "selector_title": "Chọn cấp bậc trong cơ quan",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nhân viên"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Trưởng phòng"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "company",
+                        "index": 3,
+                        "type":"text_box",
+                        "title": "Nơi làm việc",
+                        "is_required": true,
+                        "placeholder": "Tên cơ quan/công ty bạn đang làm",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "salary",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Tổng thu nhập hàng tháng",
+                        "is_required": true,
+                        "placeholder": "Thu nhập hàng tháng của bạn",
+                        "multiple_line": false,
+                        "keyboard": "money",
+                        "suffix": "đ"
+                    },
+                    {
+                        "id": "address",
+                        "index": 5,
+                        "type":"address",
+                        "title": "Địa chỉ làm việc",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "companyPhoneNumber",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "SĐT cơ quan",
+                        "is_required": true,
+                        "placeholder": "Số điện thoại cơ quan của bạn",
+                        "multiple_line": false,
+                        "keyboard": "phone_pad"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 7,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "title": "Nhân Thân",
+                "id": null,
+                "fields": [{
+                        "id": "nationalIdAllImg",
+                        "index": 1,
+                        "type":"file",
+                        "title": "Ảnh bạn đang cầm CMND",
+                        "description": "Nhấn để chụp hình bạn cầm chứng minh thư trước ngực. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdFrontImg",
+                        "index": 2,
+                        "type":"file",
+                        "title": "Ảnh mặt trước CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt trước của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdBackImg",
+                        "index": 3,
+                        "type":"file",
+                        "title": "Ảnh mặt sau CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt sau của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    }
+                ]
+            },
+            {
+                "title": "Thông Tin Bổ Sung",
+                "id": null,
+                "fields": [{
+                    "id": "optionalText",
+                    "index": 1,
+                    "type":"text_box",
+                    "title": "Điền một số thông tin bổ sung",
+                    "placeholder": "Thông tin bé: Tên, Ngày sinh, Giới tính, Ảnh giấy khai sinh\nThông tin bố/mẹ bé: Tên, SĐT, CMND, nghề nghiệp, nơi làm việc",
+                    "multiple_line": true,
+                    "keyboard": "default"
                 },
                 {
-                    "id": 1,
-                    "title": "Trưởng phòng"
+                    "id": "optionalMedia",
+                    "index": 2,
+                    "type":"multiple_file",
+                    "title": "Ảnh chứng minh thu nhập và ảnh chụp bạn tại nơi làm việc"
                 }
             ]
-        },
-        {
-            "id": "company",
-            "index": 3,
-            "type":"text_box",
-            "title": "Tên cơ quan",
-            "is_required": true,
-            "placeholder": "Tên cơ quan/công ty bạn đang làm",
-            "multiple_line": false,
-            "keyboard": "default"
-        },
-        {
-            "id": "salary",
-            "index": 4,
-            "type":"text_box",
-            "title": "Thu nhập hàng tháng",
-            "is_required": true,
-            "placeholder": "Thu nhập hàng tháng của bạn",
-            "multiple_line": false,
-            "keyboard": "money",
-            "suffix": "đ"
-        },
-        {
-            "id": "address",
-            "index": 5,
-            "type":"address",
-            "title": "Địa chỉ cơ quan",
-            "is_required": true,
-            "placeholder": "Nhấn để chọn địa chỉ"
-        },
-        {
-            "id": "companyPhoneNumber",
-            "index": 6,
-            "type":"text_box",
-            "title": "SĐT cơ quan",
-            "is_required": true,
-            "placeholder": "Số điện thoại cơ quan của bạn",
-            "multiple_line": false,
-            "keyboard": "phone_pad"
-        },
-        {
-            "id": "footer",
-            "index": 7,
-            "type":"footer",
-            "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
-        }
-    ]
-},
-{
-    "title": "Nhân Thân",
-    "id": null,
-    "fields": [{
-            "id": "nationalIdAllImg",
-            "index": 1,
-            "type":"file",
-            "title": "Ảnh bạn đang cầm CMND",
-            "description": "Nhấn để chụp hình bạn cầm chứng minh thư trước ngực. Yêu cầu rõ nét và chụp trực tiếp từ camera."
-        },
-        {
-            "id": "nationalIdFrontImg",
-            "index": 2,
-            "type":"file",
-            "title": "Ảnh mặt trước CMND",
-            "description": "Nhấn để chụp hình ảnh mặt trước của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
-        },
-        {
-            "id": "nationalIdBackImg",
-            "index": 3,
-            "type":"file",
-            "title": "Ảnh mặt sau CMND",
-            "description": "Nhấn để chụp hình ảnh mặt sau của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
-        }
-    ]
-},
-{
-    "title": "Thông Tin Bổ Sung",
-    "id": null,
-    "fields": [{
-            "id": "optionalText",
-            "index": 1,
-            "type":"text_box",
-            "title": "Lương hàng tháng của bạn",
-            "placeholder": "Điền lương hàng tháng của bạn",
-            "multiple_line": false,
-            "keyboard": "money",
-            "suffix": "đ"
-        },
-        {
-            "id": "optionalMedia",
-            "index": 2,
-            "type":"multiple_file",
-            "title": "Ảnh bảng lương/chấm công của bạn"
-        }
-    ]
-}
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Vay mua đồ nội thất",
+        "description": "Khoản vay được sử dụng để mua đồ nội thất",
+        "min": 1000000,
+        "max": 15000000,
+        "termMin": 30,
+        "termMax": 360,
+        "interestRate": 17,
+        "imageUrl": "/images/vaynoithat.png",
+        "builder" : [
+            {
+                "index": 2,
+                "title": "Thông tin cá nhân",
+                "id":"userInfo",
+                "fields": [
+                    {
+                        "id": "fullName",
+                        "index": 1,
+                        "type":"text_box",
+                        "title": "Họ và tên",
+                        "is_required": true,
+                        "placeholder": "Nhập họ và tên của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "gender",
+                        "index": 2,
+                        "type":"choice",
+                        "title": "Giới tính",
+                        "is_required": true,
+                        "placeholder": "Giới tính của bạn",
+                        "selector_title": "Chọn giới tính của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nam"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Nữ"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "birthday",
+                        "index": 3,
+                        "type":"datetime",
+                        "show_data": true,
+                        "show_time": false,
+                        "title": "Ngày sinh",
+                        "is_required": true,
+                        "placeholder": "Ngày sinh của bạn",
+                        "selector_title": "Chọn ngày sinh của bạn"
+                    },
+                    {
+                        "id": "nationalId",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Số CMND/thẻ căn cước",
+                        "is_required": true,
+                        "placeholder": "Số CMND/thẻ căn cước của bạn",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "relationships",
+                        "index": 5,
+                        "type":"dropdown_text_box",
+                        "title": "Số điện thoại liên lạc của người thân",
+                        "is_required": true,
+                        "selector_title": "Chọn người thân của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default",
+                        "multiple_data": [
+                            {
+                                "placeholder" : "Số điện thoại người thân 1",
+                                "options" : [
+                                    {
+                                        "id": 0,
+                                        "title": "Vợ"
+                                    },
+                                    {
+                                        "id": 1,
+                                        "title": "Chồng"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "title": "Bố"
+                                    },
+                                    {
+                                        "id": 3,
+                                        "title": "Mẹ"
+                                    }
+                                ]
+                            },
+                            {
+                                "placeholder" : "Số điện thoại người thân 2",
+                                "options" : [
+                                    {
+                                        "id": 4,
+                                        "title": "Bạn bè"
+                                    },
+                                    {
+                                        "id": 5,
+                                        "title": "Đồng nghiệp"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "numDependence",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "Số người phụ thuộc",
+                        "is_required": true,
+                        "placeholder": "Điền số lượng người phụ thuộc",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "residentAddress",
+                        "index": 7,
+                        "type":"address",
+                        "title": "Địa chỉ nhà thường trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "currentAddress",
+                        "index": 8,
+                        "type":"address",
+                        "title": "Địa chỉ nhà tạm trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 9,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "index": 3,
+                "title": "Thông tin nghề nghiệp",
+                "id":"jobInfo",
+                "fields": [{
+                        "id": "jobType",
+                        "index": 1,
+                        "type":"dropdown",
+                        "title": "Nghề nghiệp",
+                        "is_required": true,
+                        "placeholder": "Nghề nghiệp của bạn",
+                        "selector_title": "Chọn nghề nghiệp của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Ngân Hàng"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Sinh Viên"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Nhân viên văn phòng"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Kinh doanh"
+                            },
+                            {
+                                "id": 4,
+                                "title": "Tự do"
+                            },
+                            {
+                                "id": 6,
+                                "title": "Khác ...",
+                                "isTextInput" : true,
+                                "placeholder":"Nhập tên nghề nghiệp"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "index": 2,
+                        "type":"dropdown",
+                        "title": "Vị trí làm việc",
+                        "is_required": true,
+                        "placeholder": "Cấp bậc trong cơ quan",
+                        "selector_title": "Chọn cấp bậc trong cơ quan",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nhân viên"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Trưởng phòng"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "company",
+                        "index": 3,
+                        "type":"text_box",
+                        "title": "Nơi làm việc",
+                        "is_required": true,
+                        "placeholder": "Tên cơ quan/công ty bạn đang làm",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "salary",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Tổng thu nhập hàng tháng",
+                        "is_required": true,
+                        "placeholder": "Thu nhập hàng tháng của bạn",
+                        "multiple_line": false,
+                        "keyboard": "money",
+                        "suffix": "đ"
+                    },
+                    {
+                        "id": "address",
+                        "index": 5,
+                        "type":"address",
+                        "title": "Địa chỉ làm việc",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "companyPhoneNumber",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "SĐT cơ quan",
+                        "is_required": true,
+                        "placeholder": "Số điện thoại cơ quan của bạn",
+                        "multiple_line": false,
+                        "keyboard": "phone_pad"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 7,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "title": "Nhân Thân",
+                "id": null,
+                "fields": [{
+                        "id": "nationalIdAllImg",
+                        "index": 1,
+                        "type":"file",
+                        "title": "Ảnh bạn đang cầm CMND",
+                        "description": "Nhấn để chụp hình bạn cầm chứng minh thư trước ngực. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdFrontImg",
+                        "index": 2,
+                        "type":"file",
+                        "title": "Ảnh mặt trước CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt trước của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdBackImg",
+                        "index": 3,
+                        "type":"file",
+                        "title": "Ảnh mặt sau CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt sau của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    }
+                ]
+            },
+            {
+                "title": "Thông Tin Bổ Sung",
+                "id": null,
+                "fields": [{
+                    "id": "optionalText",
+                    "index": 1,
+                    "type":"text_box",
+                    "title": "Điền một số thông tin bổ sung",
+                    "placeholder": "Sản phẩm dự kiến mua\nNơi dự kiến mua\nGiá trị dự kiến",
+                    "multiple_line": true,
+                    "keyboard": "default"
+                },
+                {
+                    "id": "optionalMedia",
+                    "index": 2,
+                    "type":"multiple_file",
+                    "title": "Ảnh chứng minh thu nhập và ảnh chụp bạn tại nơi làm việc"
+                }
+            ]
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "title": "Vay thanh toán nợ",
+        "description": "Khoản vay được thiết kế để thanh toán 1 khoản nợ khác của người đi vay",
+        "min": 1000000,
+        "max": 30000000,
+        "termMin": 30,
+        "termMax": 360,
+        "interestRate": 17,
+        "imageUrl": "/images/vayhopnhatno.png",
+        "builder" : [
+            {
+                "index": 2,
+                "title": "Thông tin cá nhân",
+                "id":"userInfo",
+                "fields": [
+                    {
+                        "id": "fullName",
+                        "index": 1,
+                        "type":"text_box",
+                        "title": "Họ và tên",
+                        "is_required": true,
+                        "placeholder": "Nhập họ và tên của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "gender",
+                        "index": 2,
+                        "type":"choice",
+                        "title": "Giới tính",
+                        "is_required": true,
+                        "placeholder": "Giới tính của bạn",
+                        "selector_title": "Chọn giới tính của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nam"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Nữ"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "birthday",
+                        "index": 3,
+                        "type":"datetime",
+                        "show_data": true,
+                        "show_time": false,
+                        "title": "Ngày sinh",
+                        "is_required": true,
+                        "placeholder": "Ngày sinh của bạn",
+                        "selector_title": "Chọn ngày sinh của bạn"
+                    },
+                    {
+                        "id": "nationalId",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Số CMND/thẻ căn cước",
+                        "is_required": true,
+                        "placeholder": "Số CMND/thẻ căn cước của bạn",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "relationships",
+                        "index": 5,
+                        "type":"dropdown_text_box",
+                        "title": "Số điện thoại liên lạc của người thân",
+                        "is_required": true,
+                        "selector_title": "Chọn người thân của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default",
+                        "multiple_data": [
+                            {
+                                "placeholder" : "Số điện thoại người thân 1",
+                                "options" : [
+                                    {
+                                        "id": 0,
+                                        "title": "Vợ"
+                                    },
+                                    {
+                                        "id": 1,
+                                        "title": "Chồng"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "title": "Bố"
+                                    },
+                                    {
+                                        "id": 3,
+                                        "title": "Mẹ"
+                                    }
+                                ]
+                            },
+                            {
+                                "placeholder" : "Số điện thoại người thân 2",
+                                "options" : [
+                                    {
+                                        "id": 4,
+                                        "title": "Bạn bè"
+                                    },
+                                    {
+                                        "id": 5,
+                                        "title": "Đồng nghiệp"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "numDependence",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "Số người phụ thuộc",
+                        "is_required": true,
+                        "placeholder": "Điền số lượng người phụ thuộc",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "residentAddress",
+                        "index": 7,
+                        "type":"address",
+                        "title": "Địa chỉ nhà thường trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "currentAddress",
+                        "index": 8,
+                        "type":"address",
+                        "title": "Địa chỉ nhà tạm trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 9,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "index": 3,
+                "title": "Thông tin nghề nghiệp",
+                "id":"jobInfo",
+                "fields": [{
+                        "id": "jobType",
+                        "index": 1,
+                        "type":"dropdown",
+                        "title": "Nghề nghiệp",
+                        "is_required": true,
+                        "placeholder": "Nghề nghiệp của bạn",
+                        "selector_title": "Chọn nghề nghiệp của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Ngân Hàng"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Sinh Viên"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Nhân viên văn phòng"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Kinh doanh"
+                            },
+                            {
+                                "id": 4,
+                                "title": "Tự do"
+                            },
+                            {
+                                "id": 6,
+                                "title": "Khác ...",
+                                "isTextInput" : true,
+                                "placeholder":"Nhập tên nghề nghiệp"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "index": 2,
+                        "type":"dropdown",
+                        "title": "Vị trí làm việc",
+                        "is_required": true,
+                        "placeholder": "Cấp bậc trong cơ quan",
+                        "selector_title": "Chọn cấp bậc trong cơ quan",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nhân viên"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Trưởng phòng"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "company",
+                        "index": 3,
+                        "type":"text_box",
+                        "title": "Nơi làm việc",
+                        "is_required": true,
+                        "placeholder": "Tên cơ quan/công ty bạn đang làm",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "salary",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Tổng thu nhập hàng tháng",
+                        "is_required": true,
+                        "placeholder": "Thu nhập hàng tháng của bạn",
+                        "multiple_line": false,
+                        "keyboard": "money",
+                        "suffix": "đ"
+                    },
+                    {
+                        "id": "address",
+                        "index": 5,
+                        "type":"address",
+                        "title": "Địa chỉ làm việc",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "companyPhoneNumber",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "SĐT cơ quan",
+                        "is_required": true,
+                        "placeholder": "Số điện thoại cơ quan của bạn",
+                        "multiple_line": false,
+                        "keyboard": "phone_pad"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 7,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "title": "Nhân Thân",
+                "id": null,
+                "fields": [{
+                        "id": "nationalIdAllImg",
+                        "index": 1,
+                        "type":"file",
+                        "title": "Ảnh bạn đang cầm CMND",
+                        "description": "Nhấn để chụp hình bạn cầm chứng minh thư trước ngực. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdFrontImg",
+                        "index": 2,
+                        "type":"file",
+                        "title": "Ảnh mặt trước CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt trước của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdBackImg",
+                        "index": 3,
+                        "type":"file",
+                        "title": "Ảnh mặt sau CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt sau của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    }
+                ]
+            },
+            {
+                "title": "Thông Tin Bổ Sung",
+                "id": null,
+                "fields": [{
+                    "id": "optionalText",
+                    "index": 1,
+                    "type":"text_box",
+                    "title": "Lương hàng tháng của bạn",
+                    "placeholder": "Điền lương hàng tháng của bạn",
+                    "multiple_line": false,
+                    "keyboard": "money",
+                    "suffix": "đ"
+                },
+                {
+                    "id": "optionalMedia",
+                    "index": 2,
+                    "type":"multiple_file",
+                    "title": "Ảnh sao kê lịch sử trả nợ trong 12 tháng gần nhất, ảnh chứng minh thu nhập và ảnh chụp bạn tại nơi làm việc"
+                }
+            ]
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "title": "Khác",
+        "description": "Khoản vay ngoài các mục đích trên",
+        "min": 1000000,
+        "max": 10000000,
+        "termMin": 30,
+        "termMax": 270,
+        "interestRate": 17,
+        "imageUrl": "/images/vaykhac.png",
+        "builder" : [
+            {
+                "index": 2,
+                "title": "Thông tin cá nhân",
+                "id":"userInfo",
+                "fields": [
+                    {
+                        "id": "fullName",
+                        "index": 1,
+                        "type":"text_box",
+                        "title": "Họ và tên",
+                        "is_required": true,
+                        "placeholder": "Nhập họ và tên của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "gender",
+                        "index": 2,
+                        "type":"choice",
+                        "title": "Giới tính",
+                        "is_required": true,
+                        "placeholder": "Giới tính của bạn",
+                        "selector_title": "Chọn giới tính của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nam"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Nữ"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "birthday",
+                        "index": 3,
+                        "type":"datetime",
+                        "show_data": true,
+                        "show_time": false,
+                        "title": "Ngày sinh",
+                        "is_required": true,
+                        "placeholder": "Ngày sinh của bạn",
+                        "selector_title": "Chọn ngày sinh của bạn"
+                    },
+                    {
+                        "id": "nationalId",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Số CMND/thẻ căn cước",
+                        "is_required": true,
+                        "placeholder": "Số CMND/thẻ căn cước của bạn",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "relationships",
+                        "index": 5,
+                        "type":"dropdown_text_box",
+                        "title": "Số điện thoại liên lạc của người thân",
+                        "is_required": true,
+                        "selector_title": "Chọn người thân của bạn",
+                        "multiple_line": false,
+                        "keyboard": "default",
+                        "multiple_data": [
+                            {
+                                "placeholder" : "Số điện thoại người thân 1",
+                                "options" : [
+                                    {
+                                        "id": 0,
+                                        "title": "Vợ"
+                                    },
+                                    {
+                                        "id": 1,
+                                        "title": "Chồng"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "title": "Bố"
+                                    },
+                                    {
+                                        "id": 3,
+                                        "title": "Mẹ"
+                                    }
+                                ]
+                            },
+                            {
+                                "placeholder" : "Số điện thoại người thân 2",
+                                "options" : [
+                                    {
+                                        "id": 4,
+                                        "title": "Bạn bè"
+                                    },
+                                    {
+                                        "id": 5,
+                                        "title": "Đồng nghiệp"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "numDependence",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "Số người phụ thuộc",
+                        "is_required": true,
+                        "placeholder": "Điền số lượng người phụ thuộc",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
+                        "id": "residentAddress",
+                        "index": 7,
+                        "type":"address",
+                        "title": "Địa chỉ nhà thường trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "currentAddress",
+                        "index": 8,
+                        "type":"address",
+                        "title": "Địa chỉ nhà tạm trú",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 9,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "index": 3,
+                "title": "Thông tin nghề nghiệp",
+                "id":"jobInfo",
+                "fields": [{
+                        "id": "jobType",
+                        "index": 1,
+                        "type":"dropdown",
+                        "title": "Nghề nghiệp",
+                        "is_required": true,
+                        "placeholder": "Nghề nghiệp của bạn",
+                        "selector_title": "Chọn nghề nghiệp của bạn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Ngân Hàng"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Sinh Viên"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Nhân viên văn phòng"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Kinh doanh"
+                            },
+                            {
+                                "id": 4,
+                                "title": "Tự do"
+                            },
+                            {
+                                "id": 6,
+                                "title": "Khác ...",
+                                "isTextInput" : true,
+                                "placeholder":"Nhập tên nghề nghiệp"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "index": 2,
+                        "type":"dropdown",
+                        "title": "Vị trí làm việc",
+                        "is_required": true,
+                        "placeholder": "Cấp bậc trong cơ quan",
+                        "selector_title": "Chọn cấp bậc trong cơ quan",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nhân viên"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Trưởng phòng"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "company",
+                        "index": 3,
+                        "type":"text_box",
+                        "title": "Nơi làm việc",
+                        "is_required": true,
+                        "placeholder": "Tên cơ quan/công ty bạn đang làm",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "salary",
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Tổng thu nhập hàng tháng",
+                        "is_required": true,
+                        "placeholder": "Thu nhập hàng tháng của bạn",
+                        "multiple_line": false,
+                        "keyboard": "money",
+                        "suffix": "đ"
+                    },
+                    {
+                        "id": "address",
+                        "index": 5,
+                        "type":"address",
+                        "title": "Địa chỉ làm việc",
+                        "is_required": true,
+                        "placeholder": "Nhấn để chọn địa chỉ"
+                    },
+                    {
+                        "id": "companyPhoneNumber",
+                        "index": 6,
+                        "type":"text_box",
+                        "title": "SĐT cơ quan",
+                        "is_required": true,
+                        "placeholder": "Số điện thoại cơ quan của bạn",
+                        "multiple_line": false,
+                        "keyboard": "phone_pad"
+                    },
+                    {
+                        "id": "footer",
+                        "index": 7,
+                        "type":"footer",
+                        "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
+                    }
+                ]
+            },
+            {
+                "title": "Nhân Thân",
+                "id": null,
+                "fields": [{
+                        "id": "nationalIdAllImg",
+                        "index": 1,
+                        "type":"file",
+                        "title": "Ảnh bạn đang cầm CMND",
+                        "description": "Nhấn để chụp hình bạn cầm chứng minh thư trước ngực. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdFrontImg",
+                        "index": 2,
+                        "type":"file",
+                        "title": "Ảnh mặt trước CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt trước của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    },
+                    {
+                        "id": "nationalIdBackImg",
+                        "index": 3,
+                        "type":"file",
+                        "title": "Ảnh mặt sau CMND",
+                        "description": "Nhấn để chụp hình ảnh mặt sau của chứng minh thư. Yêu cầu rõ nét và chụp trực tiếp từ camera."
+                    }
+                ]
+            },
+            {
+                "title": "Thông Tin Bổ Sung",
+                "id": null,
+                "fields": [{
+                        "id": "optionalText",
+                        "index": 1,
+                        "type":"text_box",
+                        "title": "Điền một số thông tin bổ sung",
+                        "placeholder": "Sản phẩm dự kiến mua\nNơi dự kiến mua\nGiá trị dự kiến",
+                        "multiple_line": true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 2,
+                        "type":"multiple_file",
+                        "title": "Ảnh chứng minh thu nhập và ảnh chụp bạn tại nơi làm việc"
+                    }
+                ]
+            }
+        ]
+    }
 ]

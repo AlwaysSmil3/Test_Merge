@@ -71,5 +71,72 @@ extension APIClient {
     }
     
     
+    /// xoá Tài khoản bank
+    ///
+    /// - Parameter bankAccountID: <#bankAccountID description#>
+    /// - Returns: <#return value description#>
+    func deleteBankAccount(bankAccountID: Int32) -> Promise<APIResponseGeneral> {
+        let userID = DataManager.shared.userID
+        let endPoint = "users/\(userID)" + "/bank-account/\(bankAccountID)/"
+        
+        return Promise<APIResponseGeneral> { seal in
+            requestWithEndPoint(endPoint: endPoint, params: [:], isShowLoadingView: true, httpType: .DELETE)
+                .done { json in
+                    
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+                        if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
+                                if status {
+                                }
+                                
+                            })
+                        }
+                        
+                        return
+                    }
+                    
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in seal.reject(error)}
+        }
+        
+    }
+    
+    
+    /// Cập nhật tài khoản ngân hàng
+    ///
+    /// - Parameter bankAccountID: <#bankAccountID description#>
+    /// - Returns: <#return value description#>
+    func updateBankAccount(bankAccountID: Int32, params: JSONDictionary) -> Promise<APIResponseGeneral> {
+        let userID = DataManager.shared.userID
+        let endPoint = "users/\(userID)" + "/bank-account/\(bankAccountID)/"
+        
+        return Promise<APIResponseGeneral> { seal in
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .PUT)
+                .done { json in
+                    
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+                        if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
+                                if status {
+                                }
+                                
+                            })
+                        }
+                        
+                        return
+                    }
+                    
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in seal.reject(error)}
+        }
+        
+    }
+    
+    
+    
     
 }

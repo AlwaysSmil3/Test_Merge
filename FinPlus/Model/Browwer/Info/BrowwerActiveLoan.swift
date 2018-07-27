@@ -39,6 +39,9 @@ public struct BrowwerActiveLoan {
     static let createdAt = "createdAt"
     static let approvedAt = "approvedAt"
     static let acceptedAt = "acceptedAt"
+    static let nextPaymentDate = "nextPaymentDate"
+    static let bank = "bank"
+    static let bankId = "bankId"
     
   }
 
@@ -66,9 +69,15 @@ public struct BrowwerActiveLoan {
     public var contractId: Int32?
     public var paidMonth: Int?
     
+    
     public var createdAt: String?
     public var approvedAt: String?
     public var acceptedAt: String?
+    public var nextPaymentDate: String?
+    
+    public var bank: BrowwerBank?
+    public var bankId: Int32?
+    
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -109,6 +118,10 @@ public struct BrowwerActiveLoan {
     createdAt = json[SerializationKeys.createdAt].string
     approvedAt = json[SerializationKeys.approvedAt].string
     acceptedAt = json[SerializationKeys.acceptedAt].string
+    nextPaymentDate = json[SerializationKeys.nextPaymentDate].string
+    
+    bank = BrowwerBank(json: json[SerializationKeys.bank])
+    bankId = json[SerializationKeys.bankId].int32
     
   }
 
@@ -143,6 +156,10 @@ public struct BrowwerActiveLoan {
     if let value = createdAt { dictionary[SerializationKeys.createdAt] = value }
     if let value = approvedAt { dictionary[SerializationKeys.approvedAt] = value }
     if let value = paidMonth { dictionary[SerializationKeys.paidMonth] = value }
+    if let value = nextPaymentDate { dictionary[SerializationKeys.nextPaymentDate] = value }
+    
+    if let value = bank { dictionary[SerializationKeys.bank] = value.dictionaryRepresentation() }
+    if let value = bankId { dictionary[SerializationKeys.bankId] = value }
     
     return dictionary
   }

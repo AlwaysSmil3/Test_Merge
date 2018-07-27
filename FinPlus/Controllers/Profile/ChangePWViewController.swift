@@ -44,6 +44,11 @@ class ChangePWViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     //MARK: TextField Delegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Giới hạn ký tự nhập vào
