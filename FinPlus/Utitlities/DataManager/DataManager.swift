@@ -133,6 +133,19 @@ class DataManager {
     }
     
     
+    /// Check khoan vay hien tai co phai sinh vien
+    ///
+    /// - Returns: <#return value description#>
+    func isLendingforStudent() -> Bool {
+        var value = false
+        if self.loanInfo.loanCategoryID == Loan_Student_Category_ID {
+            value = true
+        }
+        
+        return value
+    }
+    
+    
     /// Get Category hiện tại
     ///
     /// - Returns: <#return value description#>

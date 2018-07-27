@@ -131,10 +131,11 @@ class LoanBaseViewController: BaseViewController {
     
     
     /// Sang màn chọn địa chỉ
-    func gotoAddressVC(title: String) {
+    func gotoAddressVC(title: String, id: String) {
         let firstAddressVC = UIStoryboard(name: "Address", bundle: nil).instantiateViewController(withIdentifier: "AddressFirstViewController") as! AddressFirstViewController
         firstAddressVC.delegate = self
         firstAddressVC.titleString = title
+        firstAddressVC.id = id
         
         self.navigationController?.pushViewController(firstAddressVC, animated: true)
     }
@@ -347,7 +348,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             //Xử lý trong cell
             break
         case DATA_TYPE_TB_CELL.Address:
-            self.gotoAddressVC(title: model.title!)
+            self.gotoAddressVC(title: model.title!, id: model.id!)
             break
         case DATA_TYPE_TB_CELL.File:
             
@@ -388,14 +389,14 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: Address Delegate
 extension LoanBaseViewController: AddressDelegate {
-    func getAddress(address: Address, type: Int, title: String) {
+    func getAddress(address: Address, type: Int, title: String, id: String) {
         let add = address.street + ", " + address.commune + ", " + address.district + ", " + address.city
         
-        if title.contains("thường trú") {
+        if id.contains("residentAddress") {
             DataManager.shared.loanInfo.userInfo.residentAddress = address
-        } else if title.contains("tạm trú") {
+        } else if id.contains("currentAddress") {
             DataManager.shared.loanInfo.userInfo.temporaryAddress = address
-        } else if title.contains("cơ quan") {
+        } else if id.contains("address") {
             DataManager.shared.loanInfo.jobInfo.address = address
         }
         

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol AddressDelegate {
-    func getAddress(address: Address, type: Int, title: String)
+    func getAddress(address: Address, type: Int, title: String, id: String)
 }
 
 class AddressFirstViewController: BaseViewController {
@@ -35,6 +35,7 @@ class AddressFirstViewController: BaseViewController {
     //Title trong fields LoanBuider
     //var titleTypeAddress: String = ""
     var titleString: String = "Địa chỉ"
+    var id: String = "address"
     
     @IBOutlet var lblTitleHeader: UILabel!
     @IBOutlet var mainTableView: TPKeyboardAvoidingTableView!
@@ -114,7 +115,7 @@ class AddressFirstViewController: BaseViewController {
         let address = Address(city: cityModel_.name!, district: districtModel_.name!, commune: communeModel_.name!, street: street, zipCode: "", long: 0.0, lat: 0.0)
         
         
-        self.delegate?.getAddress(address: address, type: self.typeAddress, title: self.titleString)
+        self.delegate?.getAddress(address: address, type: self.typeAddress, title: self.titleString, id: self.id)
         self.navigationController?.popViewController(animated: true)
         
     }
