@@ -17,7 +17,7 @@ public struct BrowwerInfo {
     static let contacts = "contacts"
     static let works = "works"
     static let wallets = "wallets"
-    static let residence = "residence"
+    static let residence = "residentAddress"
     static let activeLoan = "activeLoan"
     static let birthday = "birthday"
     static let role = "role"

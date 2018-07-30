@@ -318,6 +318,12 @@ extension ListWalletViewController: UITableViewDataSource {
                 if let id = item.id {
                     if DataManager.shared.loanInfo.bankId > 0 && id == DataManager.shared.loanInfo.bankId {
                         cell?.borderView.layer.borderColor = MAIN_COLOR.cgColor
+                        
+                        if DataManager.shared.checkFieldIsMissing(key: "bank") {
+                            //Cap nhat thong tin khong hop le
+                            cell?.borderView.layer.borderColor = UIColor.red.cgColor
+                        }
+                        
                         return cell!
                     }
                 }
