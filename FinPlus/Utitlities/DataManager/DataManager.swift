@@ -315,6 +315,11 @@ class DataManager {
                 missingListTitle.append("Giới tính")
             }
             
+            if let relationShip = userInfo.relationships, relationShip.count > 0 {
+                missingListKey.append("relationships")
+                missingListTitle.append("Số điện thoại liên lạc của người thân")
+            }
+            
             if let birthday = userInfo.birthday, birthday.length() > 0 {
                 missingListKey.append("birthday")
                 missingListTitle.append("Ngày sinh")
