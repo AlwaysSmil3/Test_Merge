@@ -16,7 +16,7 @@ public struct BrowwerResidence {
     static let city = "city"
     static let latitude = "latitude"
     static let commune = "commune"
-    static let address = "address"
+    static let address = "street"
     static let longitude = "longitude"
     static let zipCode = "zipCode"
   }

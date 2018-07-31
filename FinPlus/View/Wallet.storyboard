@@ -505,6 +505,9 @@
                                                         <color key="value" red="0.72156862749999995" green="0.78823529410000004" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="tfNumberEditDidEnd:" destination="2u8-Vl-fJH" eventType="editingDidEnd" id="QcW-i2-vGs"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Họ và tên chủ tài khoản" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rIM-fh-Rz8" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="139.5" width="343" height="56"/>
@@ -533,6 +536,9 @@
                                                         <color key="value" red="0.72156862749999995" green="0.78823529410000004" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="tfAccEditDidEnd:" destination="2u8-Vl-fJH" eventType="editingDidEnd" id="gaw-ld-t13"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

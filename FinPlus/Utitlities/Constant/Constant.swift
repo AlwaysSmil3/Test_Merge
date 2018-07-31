@@ -95,6 +95,8 @@ enum DATA_TYPE_TB_CELL {
     
 }
 
+let InValidMissingDataColor = UIColor(hexString: "#DA3535")
+
 let APP_MODE = "APP_MODE"
 //let IS_INVESTOR = "IS_INVESTOR"
 

@@ -376,6 +376,12 @@ class DataManager {
             
         }
         
+        //if let bank = miss.bank,
+        if let bank = miss.bank, let id = bank.id, id > 0 {
+            missingListKey.append("bank")
+            missingListTitle.append("Tài khoản nhận tiền")
+        }
+        
         if let value = miss.nationalIdAllImg, value.length() > 0 {
             missingListKey.append("nationalIdAllImg")
             missingListTitle.append("Ảnh bạn đang cầm CMND")
