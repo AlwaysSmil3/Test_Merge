@@ -130,7 +130,8 @@ class LoanFirstViewController: BaseViewController {
         self.updateAmountSlider(loan: loan)
 
         self.lblInterestRate?.text = "\(Int(loan.interestRate!))%/năm"
-        self.lblTempTotalAmount?.text = "0đ"
+        //self.lblTempTotalAmount?.text = "0đ"
+        self.updateTotalAmountMounth()
     }
     
     
@@ -263,7 +264,7 @@ class LoanFirstViewController: BaseViewController {
     
     //Update số tiền trả góp hàng tháng
     private func updateTotalAmountMounth() {
-        guard let version = DataManager.shared.config, let loan = self.loanCategory else { return }
+        guard let version = DataManager.shared.config, let loan = self.loanCategory, self.amountSlider != nil, self.termSlider != nil else { return }
         
         let fee = Double(Int(self.amountSlider.value) * version.serviceFee! * 1000000 / 100)
         self.lblTempFee.text = FinPlusHelper.formatDisplayCurrency(fee) + "đ"

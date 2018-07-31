@@ -14,10 +14,12 @@ enum Host {
     // mock
 #if DEBUG
     static let productURL = "http://gateway.mony.vn/"
+    
     //static let productURL = "http://192.168.104.70:31018/"
 //    static let productURL = "https://90f21a30-3a49-4afb-9df9-378245f98be5.mock.pstmn.io/"
     //static let productURL = "http://192.168.104.70:31007/" //Cho Loan Service
     //static let productURL = "https://b10644cc-7d66-4541-aa97-770206b05b43.mock.pstmn.io/"
+    //static let productURL = "http://192.168.8.50:8079"// - may thai
 #else
     static let productURL = "http://gateway.mony.vn/"
 #endif
