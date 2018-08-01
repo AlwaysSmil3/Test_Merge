@@ -73,6 +73,12 @@ enum EndPoint {
         static let AddWallet = "users/:uid/wallets"
     }
     
+    enum Payment {
+        static let Transaction = "loans/transaction"
+        static let GetTransactions = "transactions/:userId"
+        static let Collections = "loans/:loanId/collections"
+    }
+    
     
     
 }

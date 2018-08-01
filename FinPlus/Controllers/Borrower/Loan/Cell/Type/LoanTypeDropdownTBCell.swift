@@ -159,7 +159,9 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 
                 let date = dateTemp.toString(.custom(kDisplayFormat))
                 //DateTime ISO 8601
-                let timeISO8601 = dateTemp.toString(.iso8601(ISO8601Format.DateTimeSec))
+                
+                //let timeISO8601 = dateTemp.toString(.iso8601(ISO8601Format.DateTimeSec))
+                let timeISO8601 = dateTemp.toString(.custom("yyyy-MM-dd'T'HH:mm:ssXXX"))
                 DataManager.shared.loanInfo.userInfo.birthDay = timeISO8601
                 self.lblValue?.text = date
             }

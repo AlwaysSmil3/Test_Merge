@@ -146,6 +146,7 @@ class TestBorrowingPayViewController: UIViewController {
             self.bankList = bankList
             self.updateData()
         }
+            .catch { error in }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -168,6 +169,8 @@ class TestBorrowingPayViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.showsVerticalScrollIndicator = false
 //        tableView.registerNibCell(type: BorrowingPayInfoTableViewCell.self)
         tableView.registerNibCell(type: PayTypeTableViewCell.self)
         tableView.registerNibCell(type: PayAllTableViewCell.self)
@@ -249,7 +252,7 @@ class TestBorrowingPayViewController: UIViewController {
             if (self.methodSelected.id == 1) {
                 let monyBankListVC = MonyBankListViewController(nibName: "MonyBankListViewController", bundle: nil)
                 if let navi = self.navigationController {
-                    self.navigationController?.pushViewController(monyBankListVC, animated: true)
+                    navi.pushViewController(monyBankListVC, animated: true)
                 } else {
                     self.present(monyBankListVC, animated: true, completion: nil)
                 }
@@ -259,6 +262,16 @@ class TestBorrowingPayViewController: UIViewController {
         }
         
     }
+    
+    
+    private func createTransaction() {
+        
+        
+        
+        
+        
+    }
+    
 
 }
 

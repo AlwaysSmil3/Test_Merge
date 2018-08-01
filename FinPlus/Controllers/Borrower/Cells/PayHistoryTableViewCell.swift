@@ -18,6 +18,7 @@ class PayHistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var statusImg: UIImageView!
     @IBOutlet weak var imgBackgroundView: UIView!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         mainBackgroundView.layer.cornerRadius = 5
@@ -27,32 +28,29 @@ class PayHistoryTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func displayCell(cellData: PayHistoryItem) {
-        timeLb.text = "Đợt \(cellData.time)"
-        payDateLb.text = "\(cellData.payDate)"
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current
-        formatter.numberStyle = .currency
-        if let formattedTipAmount = formatter.string(from: cellData.amount as NSNumber) {
-            amountLb.text = formattedTipAmount
-        } else {
-            amountLb.text = cellData.amount.toString()
-        }
-//        amountLb.text = "\(cellData.amount)"
+    func displayCell(cellData: CollectionPay, index: Int) {
+        let time = Date(fromString: cellData.dueDatetime!, format: .iso8601(ISO8601Format.DateTimeSec))
+        let timeDisplay = time.toString(DateFormat.custom(kDisplayFormat))
+        timeLb.text = "Đợt \(index)"
+        payDateLb.text = timeDisplay
+        
+        amountLb.text = FinPlusHelper.formatDisplayCurrency(cellData.principal!) + "đ"
+        
 
         // set theme cell
-        switch cellData.status {
-        case .NotYet:
+        switch cellData.status! {
+        case 0:
             self.notYetCellView()
-
-        case .NeedToPay:
+            break
+        case 1:
             self.needToPayCellView()
-
-        case .NeedToPayNow:
+            break
+        case 3:
             self.needToPayNowViewCell()
-
+            break
         default:
             self.paidViewCell()
+            break
         }
     }
 
