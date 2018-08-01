@@ -148,6 +148,10 @@ class LoanStateViewController: UIViewController {
         
         //Số tiền huy động được
         let funded = FinPlusHelper.formatDisplayCurrency(Double(loan.funded ?? 0)) + "đ"
+        var serviceFeeFunded: Double = 0
+        if let config = DataManager.shared.config, let fun = loan.funded, fun > 0 {
+            serviceFeeFunded = Double(Int(fun) * (config.serviceFee ?? 0 ) / 100)
+        }
         
         //Ngay thanh toán tiếp theo
         var nextPaymentDate = "Đang cập nhật"
@@ -459,11 +463,11 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày duyệt đơn", value: dateString, attributed: nil),
                     LoanSummaryModel(name: "Số tiền vay được duyệt", value: amountString, attributed: NSAttributedString(string: amountString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
-                    LoanSummaryModel(name: "Số tiền huy động được", value: amountString, attributed: NSAttributedString(string: amountString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
+                    LoanSummaryModel(name: "Số tiền huy động được", value: funded, attributed: NSAttributedString(string: funded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
                     LoanSummaryModel(name: "Thời hạn vay", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Trạng thái", value: "Đã huy động đủ 100%", attributed: NSAttributedString(string: "Đã huy động đủ 100%", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
                     LoanSummaryModel(name: "Lãi suất", value: "\(rate)%/năm", attributed: nil),
-                    LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFee) + "đ", attributed: nil),
+                    LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFeeFunded) + "đ", attributed: nil),
                     LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
@@ -499,7 +503,7 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Thời hạn vay được duyệt", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Trạng thái", value: "Hết thời gian huy động", attributed: NSAttributedString(string: "Hết thời gian huy động", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Lãi suất", value: "\(rate)%/năm", attributed: nil),
-                    LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFee) + "đ", attributed: nil),
+                    LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFeeFunded) + "đ", attributed: nil),
                     LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
@@ -534,7 +538,7 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Thời hạn vay được duyệt", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Trạng thái", value: "Đang đợi nhận tiền", attributed: NSAttributedString(string: "Đang đợi nhận tiền", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
                     LoanSummaryModel(name: "Lãi suất", value: "\(rate)%/năm", attributed: nil),
-                    LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFee) + "đ", attributed: nil),
+                    LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFeeFunded) + "đ", attributed: nil),
                     LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
@@ -560,7 +564,7 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Ngày thanh toán tiếp theo", value: nextPaymentDate, attributed: nil),
                     LoanSummaryModel(name: "Thời hạn vay", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Lãi suất", value: "\(rate)%/năm", attributed: nil),
-                    LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFee) + "đ", attributed: nil),
+                    LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFeeFunded) + "đ", attributed: nil),
                     LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
@@ -616,7 +620,7 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Ngày thanh toán tiếp theo", value: nextPaymentDate, attributed: nil),
                     LoanSummaryModel(name: "Thời hạn vay", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Lãi suất", value: "\(rate)%/năm", attributed: nil),
-                    LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFee) + "đ", attributed: nil),
+                    LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFeeFunded) + "đ", attributed: nil),
                     LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
@@ -673,7 +677,7 @@ class LoanStateViewController: UIViewController {
                 LoanSummaryModel(name: "Ngày huy động còn lại", value: "\(acceptedDate) Ngày", attributed: NSAttributedString(string: "\(acceptedDate) Ngày", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : UIColor(hexString: "#DA3535")])),
                 LoanSummaryModel(name: "Thời hạn vay được duyệt", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                 LoanSummaryModel(name: "Lãi suất", value: "\(rate)%/năm", attributed: nil),
-                LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFee) + "đ", attributed: nil),
+                LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFeeFunded) + "đ", attributed: nil),
                 LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!]))
             ]
             
@@ -703,7 +707,7 @@ class LoanStateViewController: UIViewController {
                 LoanSummaryModel(name: "Số tiền huy động được", value: funded, attributed: NSAttributedString(string: funded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
                 LoanSummaryModel(name: "Thời hạn vay được duyệt", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                 LoanSummaryModel(name: "Lãi suất", value: "\(rate)%/năm", attributed: nil),
-                LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFee) + "đ", attributed: nil),
+                LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFeeFunded) + "đ", attributed: nil),
                 LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!]))
             ]
             
@@ -725,7 +729,7 @@ class LoanStateViewController: UIViewController {
                 LoanSummaryModel(name: "Số tiền huy động được", value: funded, attributed: NSAttributedString(string: funded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
                 LoanSummaryModel(name: "Thời hạn vay được duyệt", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                 LoanSummaryModel(name: "Lãi suất", value: "\(rate)%/năm", attributed: nil),
-                LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFee) + "đ", attributed: nil),
+                LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFeeFunded) + "đ", attributed: nil),
                 LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!]))
             ]
             
@@ -942,11 +946,13 @@ class LoanStateViewController: UIViewController {
     
     @IBAction func pushToPayViewController() {
         let payVC = TestBorrowingPayViewController(nibName: "TestBorrowingPayViewController", bundle: nil)
+        payVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(payVC, animated: true)
     }
     
     @IBAction func pushToPayHistoryVC() {
         let payHistoryVC = TestPayHistoryViewController(nibName: "TestPayHistoryViewController", bundle: nil)
+        payHistoryVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(payHistoryVC, animated: true)
     }
     
