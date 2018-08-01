@@ -19,6 +19,9 @@ class DataManager {
         }
     }
     
+    //header token for API
+    var token: String?
+    
     //Push Notification Token
     var pushNotificationToken: String?
     
@@ -45,13 +48,20 @@ class DataManager {
     var isUpdateFromConfig: Bool = true
     
     //Data from LoanBuilder json
-    var loanBuilder: [LoanBuilderBase] = []
+    //var loanBuilder: [LoanBuilderBase] = []
+    //var loanBuilder: [LoanCategories] = []
     
     //List Lãi xuất dự kiến
     var listRateInfo: [RateInfo] = []
     
     //Category đang chọn hiện tại
-    var currentIndexCategoriesSelectedPopup: Int?
+    var currentIndexCategoriesSelectedPopup: Int? {
+        didSet {
+            if let i = self.currentIndexCategoriesSelectedPopup {
+                self.loanInfo.loanCategoryID = Int16(i + 1)
+            }
+        }
+    }
     //So dien thoai nguoi than
     var currentIndexRelationPhoneSelectedPopup: Int?
     //Job hien tai dang chon
@@ -85,8 +95,9 @@ class DataManager {
                     // do stuff
                     
                     jsonResult.forEach({ (data) in
-                        let toll = LoanBuilderBase(object: data)
-                        self.loanBuilder.append(toll)
+                        let toll = LoanCategories(object: data)
+                        //self.loanBuilder.append(toll)
+                        self.loanCategories.append(toll)
                     })
 
                 }
@@ -106,6 +117,7 @@ class DataManager {
         self.userID = 0
         userDefault.set(nil, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
         userDefault.set(nil, forKey: fUSER_DEFAUT_TOKEN)
+        self.token = nil
         
         completion()
     }
@@ -118,6 +130,19 @@ class DataManager {
             }
             .catch { error in}
         
+    }
+    
+    
+    /// Check khoan vay hien tai co phai sinh vien
+    ///
+    /// - Returns: <#return value description#>
+    func isLendingforStudent() -> Bool {
+        var value = false
+        if self.loanInfo.loanCategoryID == Loan_Student_Category_ID {
+            value = true
+        }
+        
+        return value
     }
     
     
@@ -158,6 +183,16 @@ class DataManager {
         if let amount = activeLoan.amount, amount > 0 {
             DataManager.shared.loanInfo.amount = amount
         }
+        
+        if let bank = activeLoan.bank, let bankID = bank.id, bankID > 0 {
+            DataManager.shared.loanInfo.bankId = bankID
+            
+        }
+        
+        if let bankId = activeLoan.bankId, bankId > 0 {
+            DataManager.shared.loanInfo.bankId = bankId
+        }
+        
         
         if let userInfo = activeLoan.userInfo {
             //Thong tin user
@@ -280,6 +315,11 @@ class DataManager {
                 missingListTitle.append("Giới tính")
             }
             
+            if let relationShip = userInfo.relationships, relationShip.count > 0 {
+                missingListKey.append("relationships")
+                missingListTitle.append("Số điện thoại liên lạc của người thân")
+            }
+            
             if let birthday = userInfo.birthday, birthday.length() > 0 {
                 missingListKey.append("birthday")
                 missingListTitle.append("Ngày sinh")
@@ -339,6 +379,12 @@ class DataManager {
                 missingListTitle.append("Địa chỉ cơ quan")
             }
             
+        }
+        
+        //if let bank = miss.bank,
+        if let bank = miss.bank, let id = bank.id, id > 0 {
+            missingListKey.append("bank")
+            missingListTitle.append("Tài khoản nhận tiền")
         }
         
         if let value = miss.nationalIdAllImg, value.length() > 0 {

@@ -106,10 +106,9 @@ class ChoiceKindUserVC: BaseViewController {
             self.accountType = .Investor
         }
 
-        self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Bạn chắc chắn muốn trở thành nhà đầu tư?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
+        self.showGreenBtnMessage(title: "Chuyển app", message: "Bạn sẽ được chuyển sang app phiên bản nhà đầu tư. Bạn có chắc chắn không?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
             if status {
-                
-               
+               self.gotoAppInvestor()
                 
             }
         })
@@ -130,9 +129,6 @@ class ChoiceKindUserVC: BaseViewController {
                     verifyFBVC.pw = self.pw
                     verifyFBVC.accountType = self.accountType
                     
-                    // Setting App Type
-                    userDefault.set(false, forKey: IS_INVESTOR)
-                    userDefault.synchronize()
                     
                     self.navigationController?.pushViewController(verifyFBVC, animated: true)
                 }

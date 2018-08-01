@@ -10,7 +10,15 @@ import Foundation
 
 class BaseAuthenViewController: BaseViewController {
     
-    var accountType : AccountType = .Borrower
+    var accountType : AccountType = .Borrower {
+        didSet {
+            if accountType == .Investor {
+                self.confirmGotoAppInvestor()
+            }
+        }
+    }
+    
+    
     @IBOutlet weak var tfPass: UITextField?
     
     override func viewDidLoad() {
@@ -31,22 +39,18 @@ class BaseAuthenViewController: BaseViewController {
                     userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
                     DataManager.shared.currentAccount = account
                     DataManager.shared.updatePushNotificationToken()
+                    
+                    //save token
                     if let data = model.data {
                         if let token = data.accessToken {
                             userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
                         }
                         if let accountType = data.accountType {
-                            if accountType == "BORROWER" {
-                                self?.accountType = .Borrower
-                            } else if accountType == "INVESTOR" {
+                            if accountType == UserRole.Investor.rawValue {
                                 self?.accountType = .Investor
+                                return
                             }
                         }
-                    }
-                    if self?.accountType == .Investor {
-                        UserDefaults.standard.set(true, forKey: IS_INVESTOR)
-                    } else {
-                        UserDefaults.standard.set(false, forKey: IS_INVESTOR)
                     }
 
                     self?.getUserInfo()
@@ -62,16 +66,10 @@ class BaseAuthenViewController: BaseViewController {
                             userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
                         }
                         if let accountType = data.accountType {
-                            if accountType == "BORROWER" {
-                                self?.accountType = .Borrower
-                            } else if accountType == "INVESTOR" {
+                            if accountType == UserRole.Investor.rawValue {
                                 self?.accountType = .Investor
+                                return
                             }
-                        }
-                        if self?.accountType == .Investor {
-                            UserDefaults.standard.set(true, forKey: IS_INVESTOR)
-                        } else {
-                            UserDefaults.standard.set(false, forKey: IS_INVESTOR)
                         }
                         
                     }
@@ -110,6 +108,19 @@ class BaseAuthenViewController: BaseViewController {
                 self.pushToHomeVC(accountType: self.accountType)
         }
     }
+    
+    //Confirm Goto app Investor
+    func confirmGotoAppInvestor() {
+        self.showGreenBtnMessage(title: "Khác loại tài khoản", message: "Số điện thoại \(DataManager.shared.currentAccount) đã được đăng ký làm nhà đầu tư, bạn có muốn chuyển sang app cho nhà đầu tư không?", okTitle: "Chuyển", cancelTitle: "Không") { (status) in
+            if status {
+                self.gotoAppInvestor()
+            }
+        }
+        
+        
+    }
+    
+    
     
     func pushToHomeVC(accountType: AccountType) {
         print("Push to user home viewcontroller")

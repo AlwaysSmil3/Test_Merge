@@ -21,7 +21,7 @@ struct LoanInfo: Encodable {
     var jobInfo: LoanJobInfo
     
     var walletId: Int32
-    var bankId: Int
+    var bankId: Int32
     
     var nationalIdAllImg: String
     var nationalIdFrontImg: String

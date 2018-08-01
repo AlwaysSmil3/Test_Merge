@@ -19,6 +19,7 @@ enum TypePopup: Int {
     case RelationShipPhone // Số điện thoại nguoi than
     case Job // Công việc
     case JobPosition // chức vụ
+    case Strength // Học lực
 }
 
 class LoanTypePopupVC: BasePopup {
@@ -101,6 +102,9 @@ class LoanTypePopupVC: BasePopup {
                 self.currentIndex = current
             }
             break
+        case .Strength:
+            
+            break
             
         }
         
@@ -134,6 +138,9 @@ class LoanTypePopupVC: BasePopup {
                 break
             case .JobPosition:
                 DataManager.shared.currentIndexJobPositionSelectedPopup = self.currentIndex
+                break
+            case .Strength:
+                
                 break
             }
         }

@@ -32,7 +32,6 @@ class LoanInfoJobVC: LoanBaseViewController {
     
     private func updateDataForLoanAPI(completion: () -> Void) {
         
-        
         if DataManager.shared.loanInfo.jobInfo.jobTitle.length() == 0 {
             self.showToastWithMessage(message: "Vui lòng chọn nghề nghiệp")
             return

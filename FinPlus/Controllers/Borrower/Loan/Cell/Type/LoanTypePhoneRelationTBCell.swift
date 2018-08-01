@@ -54,6 +54,11 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
     func getData() {
         
+        if DataManager.shared.checkFieldIsMissing(key: "relationships") {
+            //Cap nhat thong tin khong hop le
+            self.updateInfoFalse(pre: self.field?.title ?? "")
+        }
+        
         var value: [LoanBuilderMultipleData] = []
         if let phones = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.relationships, phones.count == 2 {
             for pho in phones {

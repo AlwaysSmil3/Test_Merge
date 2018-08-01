@@ -108,7 +108,7 @@ class APIClient {
     
     
     // MARK: - Common function
-    // Request post, Put
+    // Request post, Put, Delete
     public func requestWithEndPoint(host: String? = nil, endPoint: String, params: [String : Any], isShowLoadingView: Bool, httpType: HTTPMethodType, jsonData: Data? = nil) -> Promise<JSONDictionary> {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
@@ -132,6 +132,11 @@ class APIClient {
         var baseURL = self.baseURLString
         if let host_ = host {
             baseURL = host_
+        }
+        
+        if let token = DataManager.shared.token {
+            //Set Jwt Token
+            mutableURLRequest.setValue(token, forHTTPHeaderField: "Authorization")
         }
         
         return Promise<JSONDictionary> { seal in
@@ -198,6 +203,11 @@ class APIClient {
             baseURL = host_
         }
         
+        if let token = DataManager.shared.token {
+            //Set Jwt Token
+            mutableURLRequest.setValue(token, forHTTPHeaderField: "Authorization")
+        }
+        
         return Promise<JSONDictionary> { seal in
             mutableURLRequest.url = URL(string: baseURL + endPoint)
             
@@ -241,7 +251,8 @@ class APIClient {
         
         let headers: HTTPHeaders = [
             /* "Authorization": "your_access_token",  in case you need authorization header */
-            "Content-type": "multipart/form-data"
+            "Content-type": "multipart/form-data",
+            "Authorization": "\(DataManager.shared.token ?? "")"
         ]
         
         Alamofire.upload(multipartFormData: { (multipartFormData) in

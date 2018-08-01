@@ -48,14 +48,17 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
         
         guard let field_ = self.field, let data = field_.data, let id = field_.id else { return }
         
-        if id.contains("position") || id.contains("jobType") {
+        if id.contains("position") || id.contains("jobType") || id.contains("strength") {
             let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
             
             if id.contains("position") {
                 popup.setDataSource(data: data, type: .JobPosition)
-            } else {
+            } else if id.contains("jobType") {
                 popup.setDataSource(data: data, type: .Job)
+            } else {
+                popup.setDataSource(data: data, type: .Strength)
             }
+            
             popup.delegate = self
             
             popup.show()

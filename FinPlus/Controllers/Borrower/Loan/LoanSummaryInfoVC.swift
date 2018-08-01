@@ -150,10 +150,10 @@ class LoanSummaryInfoVC: BaseViewController {
     
     @IBAction func btnLoanTapped(_ sender: Any) {
         
-        guard DataManager.shared.listKeyMissingLoanKey == nil || DataManager.shared.listKeyMissingLoanKey!.count == 0 else {
-            self.updateLoanStatus()
-            return
-        }
+//        guard DataManager.shared.listKeyMissingLoanKey == nil || DataManager.shared.listKeyMissingLoanKey!.count == 0 else {
+//            self.updateLoanStatus()
+//            return
+//        }
 
         let messeage = "Mã xác thực sẽ được gửi tới " + DataManager.shared.currentAccount + " qua tin nhắn SMS sau khi bạn đồng ý. Bạn có chắc chắn không?"
         self.showGreenBtnMessage(title: "Gửi đơn vay", message: messeage, okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ") { (status) in

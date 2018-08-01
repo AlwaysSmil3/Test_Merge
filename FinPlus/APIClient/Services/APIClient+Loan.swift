@@ -8,8 +8,12 @@
 
 import Foundation
 
-let hostLoan = "http://192.168.104.70:31007/"//Loan Service
+
+
+let hostLoan = "http://gateway.mony.vn/"//Loan Service
+//let hostLoan = "http://192.168.104.70:31007/"//Loan Service
 //let hostLoan = "https://b10644cc-7d66-4541-aa97-770206b05b43.mock.pstmn.io/" //Mock
+//let hostLoan = "http://192.168.8.50:8079/"// - may thai
 
 extension APIClient {
 
