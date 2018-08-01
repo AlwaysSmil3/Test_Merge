@@ -45,6 +45,11 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
         
         if id.contains("residentAddress") {
+            if DataManager.shared.checkFieldIsMissing(key: "residentAddress") {
+                //Cap nhat thong tin khong hop le
+                self.updateInfoFalse(pre: title)
+            }
+            
             var value = ""
             var addressTemp: Address?
             if let add = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.residentAddress, let city = add.city, let district = add.district, let commune = add.commune, let street = add.street, city.length() > 0 {
@@ -65,6 +70,11 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
         } else if id.contains("currentAddress") {
+            if DataManager.shared.checkFieldIsMissing(key: "currentAddress") {
+                //Cap nhat thong tin khong hop le
+                self.updateInfoFalse(pre: title)
+            }
+            
             var value = ""
             var addressTemp: Address?
             if let add = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.currentAddress, let city = add.city, let district = add.district, let commune = add.commune, let street = add.street, city.length() > 0 {
@@ -85,6 +95,12 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
         } else if id.contains("address") {
+            
+            if DataManager.shared.checkFieldIsMissing(key: "address") {
+                //Cap nhat thong tin khong hop le
+                self.updateInfoFalse(pre: title)
+            }
+            
             var value = ""
             var addressTemp: Address?
             if let add = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.address, let city = add.city, let district = add.district, let commune = add.commune, let street = add.street, city.length() > 0 {

@@ -46,8 +46,13 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     }
     
     func getData() {
-        guard let field_ = self.field, let id = field_.id else { return }
+        guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
         if id.contains("nationalIdAllImg") {
+            
+            if DataManager.shared.checkFieldIsMissing(key: "nationalIdAllImg") {
+                //Cap nhat thong tin khong hop le
+                self.updateInfoFalse(pre: title)
+            }
             
             var value = ""
             if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdAllImg, data.length() > 0 {
@@ -71,6 +76,12 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
         } else if id.contains("nationalIdFrontImg") {
+            
+            if DataManager.shared.checkFieldIsMissing(key: "nationalIdFrontImg") {
+                //Cap nhat thong tin khong hop le
+                self.updateInfoFalse(pre: title)
+            }
+            
             var value = ""
             if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdFrontImg, data.length() > 0 {
                 value = data
@@ -91,6 +102,12 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
         } else if id.contains("nationalIdBackImg") {
+            
+            if DataManager.shared.checkFieldIsMissing(key: "nationalIdBackImg") {
+                //Cap nhat thong tin khong hop le
+                self.updateInfoFalse(pre: title)
+            }
+            
             var value = ""
             if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdBackImg, data.length() > 0 {
                 value = data
