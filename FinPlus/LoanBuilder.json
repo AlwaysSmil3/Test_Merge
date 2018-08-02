@@ -78,14 +78,6 @@
                                 "placeholder" : "Số điện thoại người thân 1",
                                 "options" : [
                                     {
-                                        "id": 0,
-                                        "title": "Vợ"
-                                    },
-                                    {
-                                        "id": 1,
-                                        "title": "Chồng"
-                                    },
-                                    {
                                         "id": 2,
                                         "title": "Bố"
                                     },
@@ -138,24 +130,10 @@
                 "index": 3,
                 "title": "Thông tin nghề nghiệp",
                 "id":"jobInfo",
-                "fields": [{
-                        "id": "jobType",
-                        "index": 1,
-                        "type":"dropdown",
-                        "title": "Nghề nghiệp",
-                        "is_required": true,
-                        "placeholder": "Nghề nghiệp của bạn",
-                        "selector_title": "Chọn nghề nghiệp của bạn",
-                        "data": [
-                            {
-                                "id": 1,
-                                "title": "Sinh Viên"
-                            }
-                        ]
-                    },
+                "fields": [
                     {
                         "id": "company",
-                        "index": 2,
+                        "index": 1,
                         "type":"text_box",
                         "title": "Tên trường học",
                         "is_required": true,
@@ -165,7 +143,7 @@
                     },
                     {
                         "id": "strength",
-                        "index": 3,
+                        "index": 2,
                         "type":"dropdown",
                         "title": "Học lực",
                         "is_required": true,
@@ -173,17 +151,26 @@
                         "selector_title": "Chọn học lực của bạn",
                         "data": [{
                                 "id": 0,
-                                "title": "Giỏi"
+                                "title": "Học lực giỏi"
                             },
                             {
                                 "id": 1,
-                                "title": "Khá"
+                                "title": "Học lực khá"
                             },
                             {
                                 "id": 2,
-                                "title": "Trung Bình"
+                                "title": "Học lực trung bình"
                             }
                         ]
+                    },
+                    {
+                        "id": "studentId",
+                        "index": 3,
+                        "type":"text_box",
+                        "title": "Mã số sinh viên",
+                        "placeholder": "Nhập mã số sinh viên",
+                        "multiple_line": false,
+                        "keyboard": "default"
                     },
                     {
                         "id": "address",
@@ -194,29 +181,8 @@
                         "placeholder": "Nhấn để chọn địa chỉ"
                     },
                     {
-                        "id": "salary",
-                        "index": 5,
-                        "type":"text_box",
-                        "title": "Tổng thu nhập hàng tháng",
-                        "is_required": true,
-                        "placeholder": "Thu nhập hàng tháng của bạn",
-                        "multiple_line": false,
-                        "keyboard": "money",
-                        "suffix": "đ"
-                    },
-                    {
-                        "id": "companyPhoneNumber",
-                        "index": 6,
-                        "type":"text_box",
-                        "title": "SĐT cơ quan",
-                        "is_required": true,
-                        "placeholder": "Số điện thoại cơ quan của bạn",
-                        "multiple_line": false,
-                        "keyboard": "phone_pad"
-                    },
-                    {
                         "id": "footer",
-                        "index": 7,
+                        "index": 5,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -252,7 +218,7 @@
                 "title": "Thông Tin Bổ Sung",
                 "id": null,
                 "fields": [{
-                        "id": "optionalText",
+                        "id": "optionalText[0]",
                         "index": 1,
                         "type":"text_box",
                         "title": "Mô tả khoản vay",
@@ -262,7 +228,7 @@
                     },
                     {
                         "id": "optionalMedia",
-                        "index": 2,
+                        "index": 1,
                         "type":"multiple_file",
                         "title": "Ảnh chụp thẻ sinh viên và bảng điểm kỳ gần nhất"
                     }
@@ -382,18 +348,8 @@
                         ]
                     },
                     {
-                        "id": "numDependence",
-                        "index": 6,
-                        "type":"text_box",
-                        "title": "Số người phụ thuộc",
-                        "is_required": true,
-                        "placeholder": "Điền số lượng người phụ thuộc",
-                        "multiple_line": false,
-                        "keyboard": "numeric"
-                    },
-                    {
                         "id": "residentAddress",
-                        "index": 7,
+                        "index": 6,
                         "type":"address",
                         "title": "Địa chỉ nhà thường trú",
                         "is_required": true,
@@ -401,7 +357,7 @@
                     },
                     {
                         "id": "currentAddress",
-                        "index": 8,
+                        "index": 7,
                         "type":"address",
                         "title": "Địa chỉ nhà tạm trú",
                         "is_required": true,
@@ -409,7 +365,7 @@
                     },
                     {
                         "id": "footer",
-                        "index": 9,
+                        "index": 8,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -456,36 +412,83 @@
                         ]
                     },
                     {
-                        "id": "position",
+                        "id": "academicLevel",
                         "index": 2,
+                        "type":"dropdown",
+                        "title": "Trình độ học vấn",
+                        "is_required": true,
+                        "placeholder": "Lựa chọn trình độ học vấn",
+                        "selector_title": "Lựa chọn trình độ học vấn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Đại học, trên đại học"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Cao đẳng, trung cấp"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Trung học phổ thông"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Trung học cơ sở"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "index": 3,
                         "type":"dropdown",
                         "title": "Vị trí làm việc",
                         "is_required": true,
                         "placeholder": "Cấp bậc trong cơ quan",
                         "selector_title": "Chọn cấp bậc trong cơ quan",
-                        "data": [{
+                        "data": [
+                            {
                                 "id": 0,
-                                "title": "Nhân viên"
+                                "title": "Trưởng phòng"
                             },
                             {
                                 "id": 1,
-                                "title": "Trưởng phòng"
+                                "title": "Phó phòng"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Nhân viên"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Khác ...",
+                                "isTextInput" : true,
+                                "placeholder":"Nhập vị trí làm việc"
                             }
                         ]
                     },
                     {
                         "id": "company",
-                        "index": 3,
+                        "index": 4,
                         "type":"text_box",
                         "title": "Nơi làm việc",
                         "is_required": true,
-                        "placeholder": "Tên cơ quan/công ty bạn đang làm",
+                        "placeholder": "Nhập tên nơi làm việc",
                         "multiple_line": false,
                         "keyboard": "default"
                     },
                     {
+                        "id": "experienceYear",
+                        "index": 5,
+                        "type":"text_box",
+                        "title": "Số năm kinh nghiệm",
+                        "is_required": true,
+                        "placeholder": "Nhập số năm kinh nghiệm",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
                         "id": "salary",
-                        "index": 4,
+                        "index": 6,
                         "type":"text_box",
                         "title": "Tổng thu nhập hàng tháng",
                         "is_required": true,
@@ -496,7 +499,7 @@
                     },
                     {
                         "id": "address",
-                        "index": 5,
+                        "index": 7,
                         "type":"address",
                         "title": "Địa chỉ làm việc",
                         "is_required": true,
@@ -504,7 +507,7 @@
                     },
                     {
                         "id": "companyPhoneNumber",
-                        "index": 6,
+                        "index": 8,
                         "type":"text_box",
                         "title": "SĐT cơ quan",
                         "is_required": true,
@@ -514,7 +517,7 @@
                     },
                     {
                         "id": "footer",
-                        "index": 7,
+                        "index": 9,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -549,20 +552,30 @@
             {
                 "title": "Thông Tin Bổ Sung",
                 "id": null,
-                "fields": [{
-                        "id": "optionalText",
+                "fields": [
+                    {
+                        "id": "optionalText[0]",
                         "index": 1,
                         "type":"text_box",
-                        "title": "Điền một số thông tin bổ sung",
-                        "placeholder": "Dòng điện thoại dự kiến mua\nNơi dự kiến mua\nGiá trị điện thoại dự kiến mua",
+                        "title": "Giá trị dự kiến điện thoại định mua",
+                        "placeholder": "Nhập giá trị dự kiến điện thoại định mua",
+                        "multiple_line": false,
+                        "keyboard": "money"
+                    },
+                    {
+                        "id": "optionalText[1]",
+                        "index": 2,
+                        "type":"text_box",
+                        "title": "Nơi dự kiến mua hàng",
+                        "placeholder": "Nhập địa chỉ nơi dự kiến mua hàng",
                         "multiple_line": true,
                         "keyboard": "default"
                     },
                     {
                         "id": "optionalMedia",
-                        "index": 2,
+                        "index": 3,
                         "type":"multiple_file",
-                        "title": "Ảnh chứng minh thu nhập và ảnh chụp bạn tại nơi làm việc"
+                        "title": "Ảnh chụp bạn tại nơi làm việc\nẢnh chụp bảng lương\nẢnh chụp đăng ký tự doanh(nếu có)\nẢnh chụp loại điện thoại dự kiến mua"
                     }
                 ]
             }
@@ -680,18 +693,8 @@
                         ]
                     },
                     {
-                        "id": "numDependence",
-                        "index": 6,
-                        "type":"text_box",
-                        "title": "Số người phụ thuộc",
-                        "is_required": true,
-                        "placeholder": "Điền số lượng người phụ thuộc",
-                        "multiple_line": false,
-                        "keyboard": "numeric"
-                    },
-                    {
                         "id": "residentAddress",
-                        "index": 7,
+                        "index": 6,
                         "type":"address",
                         "title": "Địa chỉ nhà thường trú",
                         "is_required": true,
@@ -699,7 +702,7 @@
                     },
                     {
                         "id": "currentAddress",
-                        "index": 8,
+                        "index": 7,
                         "type":"address",
                         "title": "Địa chỉ nhà tạm trú",
                         "is_required": true,
@@ -707,7 +710,7 @@
                     },
                     {
                         "id": "footer",
-                        "index": 9,
+                        "index": 8,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -754,36 +757,83 @@
                         ]
                     },
                     {
-                        "id": "position",
+                        "id": "academicLevel",
                         "index": 2,
+                        "type":"dropdown",
+                        "title": "Trình độ học vấn",
+                        "is_required": true,
+                        "placeholder": "Lựa chọn trình độ học vấn",
+                        "selector_title": "Lựa chọn trình độ học vấn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Đại học, trên đại học"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Cao đẳng, trung cấp"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Trung học phổ thông"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Trung học cơ sở"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "index": 3,
                         "type":"dropdown",
                         "title": "Vị trí làm việc",
                         "is_required": true,
                         "placeholder": "Cấp bậc trong cơ quan",
                         "selector_title": "Chọn cấp bậc trong cơ quan",
-                        "data": [{
+                        "data": [
+                            {
                                 "id": 0,
-                                "title": "Nhân viên"
+                                "title": "Trưởng phòng"
                             },
                             {
                                 "id": 1,
-                                "title": "Trưởng phòng"
+                                "title": "Phó phòng"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Nhân viên"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Khác ...",
+                                "isTextInput" : true,
+                                "placeholder":"Nhập vị trí làm việc"
                             }
                         ]
                     },
                     {
                         "id": "company",
-                        "index": 3,
+                        "index": 4,
                         "type":"text_box",
                         "title": "Nơi làm việc",
                         "is_required": true,
-                        "placeholder": "Tên cơ quan/công ty bạn đang làm",
+                        "placeholder": "Nhập tên nơi làm việc",
                         "multiple_line": false,
                         "keyboard": "default"
                     },
                     {
+                        "id": "experienceYear",
+                        "index": 5,
+                        "type":"text_box",
+                        "title": "Số năm kinh nghiệm",
+                        "is_required": true,
+                        "placeholder": "Nhập số năm kinh nghiệm",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
                         "id": "salary",
-                        "index": 4,
+                        "index": 6,
                         "type":"text_box",
                         "title": "Tổng thu nhập hàng tháng",
                         "is_required": true,
@@ -794,7 +844,7 @@
                     },
                     {
                         "id": "address",
-                        "index": 5,
+                        "index": 7,
                         "type":"address",
                         "title": "Địa chỉ làm việc",
                         "is_required": true,
@@ -802,7 +852,7 @@
                     },
                     {
                         "id": "companyPhoneNumber",
-                        "index": 6,
+                        "index": 8,
                         "type":"text_box",
                         "title": "SĐT cơ quan",
                         "is_required": true,
@@ -812,7 +862,7 @@
                     },
                     {
                         "id": "footer",
-                        "index": 7,
+                        "index": 9,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -847,20 +897,30 @@
             {
                 "title": "Thông Tin Bổ Sung",
                 "id": null,
-                "fields": [{
-                    "id": "optionalText",
+                "fields": [
+                    {
+                    "id": "optionalText[0]",
                     "index": 1,
                     "type":"text_box",
-                    "title": "Điền một số thông tin bổ sung",
-                    "placeholder": "Dòng xe dự kiến mua\nNơi dự kiến mua\nGiá trị xe dự kiến mua",
+                    "title": "Giá trị dự kiến xe máy dự định mua",
+                    "placeholder": "Điền giá trị dự kiến xe máy dự định mua",
+                    "multiple_line": false,
+                    "keyboard": "money"
+                },
+                {
+                    "id": "optionalText[1]",
+                    "index": 2,
+                    "type":"text_box",
+                    "title": "Nơi dự kiến mua hàng",
+                    "placeholder": "Điền nơi dự kiến mua hàng",
                     "multiple_line": true,
                     "keyboard": "default"
                 },
                 {
                     "id": "optionalMedia",
-                    "index": 2,
+                    "index": 3,
                     "type":"multiple_file",
-                    "title": "Ảnh chứng minh thu nhập và ảnh chụp bạn tại nơi làm việc"
+                    "title": "Ảnh chụp bạn tại nơi làm việc\nẢnh chụp bảng lương\nẢnh chụp đăng ký tự doanh(nếu có)\nẢnh chụp dòng xe máy dự kiến định mua"
                 }
             ]
             }
@@ -978,18 +1038,8 @@
                         ]
                     },
                     {
-                        "id": "numDependence",
-                        "index": 6,
-                        "type":"text_box",
-                        "title": "Số người phụ thuộc",
-                        "is_required": true,
-                        "placeholder": "Điền số lượng người phụ thuộc",
-                        "multiple_line": false,
-                        "keyboard": "numeric"
-                    },
-                    {
                         "id": "residentAddress",
-                        "index": 7,
+                        "index": 6,
                         "type":"address",
                         "title": "Địa chỉ nhà thường trú",
                         "is_required": true,
@@ -997,7 +1047,7 @@
                     },
                     {
                         "id": "currentAddress",
-                        "index": 8,
+                        "index": 7,
                         "type":"address",
                         "title": "Địa chỉ nhà tạm trú",
                         "is_required": true,
@@ -1005,7 +1055,7 @@
                     },
                     {
                         "id": "footer",
-                        "index": 9,
+                        "index": 8,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -1052,36 +1102,83 @@
                         ]
                     },
                     {
-                        "id": "position",
+                        "id": "academicLevel",
                         "index": 2,
+                        "type":"dropdown",
+                        "title": "Trình độ học vấn",
+                        "is_required": true,
+                        "placeholder": "Lựa chọn trình độ học vấn",
+                        "selector_title": "Lựa chọn trình độ học vấn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Đại học, trên đại học"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Cao đẳng, trung cấp"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Trung học phổ thông"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Trung học cơ sở"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "index": 3,
                         "type":"dropdown",
                         "title": "Vị trí làm việc",
                         "is_required": true,
                         "placeholder": "Cấp bậc trong cơ quan",
                         "selector_title": "Chọn cấp bậc trong cơ quan",
-                        "data": [{
+                        "data": [
+                            {
                                 "id": 0,
-                                "title": "Nhân viên"
+                                "title": "Trưởng phòng"
                             },
                             {
                                 "id": 1,
-                                "title": "Trưởng phòng"
+                                "title": "Phó phòng"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Nhân viên"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Khác ...",
+                                "isTextInput" : true,
+                                "placeholder":"Nhập vị trí làm việc"
                             }
                         ]
                     },
                     {
                         "id": "company",
-                        "index": 3,
+                        "index": 4,
                         "type":"text_box",
                         "title": "Nơi làm việc",
                         "is_required": true,
-                        "placeholder": "Tên cơ quan/công ty bạn đang làm",
+                        "placeholder": "Nhập tên nơi làm việc",
                         "multiple_line": false,
                         "keyboard": "default"
                     },
                     {
+                        "id": "experienceYear",
+                        "index": 5,
+                        "type":"text_box",
+                        "title": "Số năm kinh nghiệm",
+                        "is_required": true,
+                        "placeholder": "Nhập số năm kinh nghiệm",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
                         "id": "salary",
-                        "index": 4,
+                        "index": 6,
                         "type":"text_box",
                         "title": "Tổng thu nhập hàng tháng",
                         "is_required": true,
@@ -1092,7 +1189,7 @@
                     },
                     {
                         "id": "address",
-                        "index": 5,
+                        "index": 7,
                         "type":"address",
                         "title": "Địa chỉ làm việc",
                         "is_required": true,
@@ -1100,7 +1197,7 @@
                     },
                     {
                         "id": "companyPhoneNumber",
-                        "index": 6,
+                        "index": 8,
                         "type":"text_box",
                         "title": "SĐT cơ quan",
                         "is_required": true,
@@ -1110,7 +1207,7 @@
                     },
                     {
                         "id": "footer",
-                        "index": 7,
+                        "index": 9,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -1145,20 +1242,30 @@
             {
                 "title": "Thông Tin Bổ Sung",
                 "id": null,
-                "fields": [{
-                    "id": "optionalText",
+                "fields": [
+                {
+                    "id": "optionalText[0]",
                     "index": 1,
                     "type":"text_box",
-                    "title": "Điền một số thông tin bổ sung",
-                    "placeholder": "Thông tin vợ/chồng: Tên, SĐT, CMND, nghề nghiệp, nơi làm việc",
+                    "title": "Kế hoạch sử dụng cho đám cưới",
+                    "placeholder": "Nêu rõ kế hoạch sử dụng cho đám cưới",
+                    "multiple_line": true,
+                    "keyboard": "default"
+                },
+                {
+                    "id": "optionalText[1]",
+                    "index": 2,
+                    "type":"text_box",
+                    "title": "Thông tin của vợ hoặc chồng",
+                    "placeholder": "Tên\nSố chứng mình thư\nSố điện thoại\nNghề nghiệp, nơi làm việc\nĐịa chỉ facebook",
                     "multiple_line": true,
                     "keyboard": "default"
                 },
                 {
                     "id": "optionalMedia",
-                    "index": 2,
+                    "index": 3,
                     "type":"multiple_file",
-                    "title": "Ảnh đăng ký kết hôn (nếu có), ảnh chứng minh thu nhập và ảnh chụp bạn tại nơi làm việc"
+                    "title": "Ảnh chụp bạn tại nơi làm việc\nẢnh chụp bảng lương\nẢnh chụp đăng ký tự doanh(nếu có)\nẢnh giấy đăng ký kết hôn(nếu có)"
                 }
             ]
             }
@@ -1276,18 +1383,8 @@
                         ]
                     },
                     {
-                        "id": "numDependence",
-                        "index": 6,
-                        "type":"text_box",
-                        "title": "Số người phụ thuộc",
-                        "is_required": true,
-                        "placeholder": "Điền số lượng người phụ thuộc",
-                        "multiple_line": false,
-                        "keyboard": "numeric"
-                    },
-                    {
                         "id": "residentAddress",
-                        "index": 7,
+                        "index": 6,
                         "type":"address",
                         "title": "Địa chỉ nhà thường trú",
                         "is_required": true,
@@ -1295,7 +1392,7 @@
                     },
                     {
                         "id": "currentAddress",
-                        "index": 8,
+                        "index": 7,
                         "type":"address",
                         "title": "Địa chỉ nhà tạm trú",
                         "is_required": true,
@@ -1303,7 +1400,7 @@
                     },
                     {
                         "id": "footer",
-                        "index": 9,
+                        "index": 8,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -1350,36 +1447,83 @@
                         ]
                     },
                     {
-                        "id": "position",
+                        "id": "academicLevel",
                         "index": 2,
+                        "type":"dropdown",
+                        "title": "Trình độ học vấn",
+                        "is_required": true,
+                        "placeholder": "Lựa chọn trình độ học vấn",
+                        "selector_title": "Lựa chọn trình độ học vấn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Đại học, trên đại học"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Cao đẳng, trung cấp"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Trung học phổ thông"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Trung học cơ sở"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "index": 3,
                         "type":"dropdown",
                         "title": "Vị trí làm việc",
                         "is_required": true,
                         "placeholder": "Cấp bậc trong cơ quan",
                         "selector_title": "Chọn cấp bậc trong cơ quan",
-                        "data": [{
+                        "data": [
+                            {
                                 "id": 0,
-                                "title": "Nhân viên"
+                                "title": "Trưởng phòng"
                             },
                             {
                                 "id": 1,
-                                "title": "Trưởng phòng"
+                                "title": "Phó phòng"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Nhân viên"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Khác ...",
+                                "isTextInput" : true,
+                                "placeholder":"Nhập vị trí làm việc"
                             }
                         ]
                     },
                     {
                         "id": "company",
-                        "index": 3,
+                        "index": 4,
                         "type":"text_box",
                         "title": "Nơi làm việc",
                         "is_required": true,
-                        "placeholder": "Tên cơ quan/công ty bạn đang làm",
+                        "placeholder": "Nhập tên nơi làm việc",
                         "multiple_line": false,
                         "keyboard": "default"
                     },
                     {
+                        "id": "experienceYear",
+                        "index": 5,
+                        "type":"text_box",
+                        "title": "Số năm kinh nghiệm",
+                        "is_required": true,
+                        "placeholder": "Nhập số năm kinh nghiệm",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
                         "id": "salary",
-                        "index": 4,
+                        "index": 6,
                         "type":"text_box",
                         "title": "Tổng thu nhập hàng tháng",
                         "is_required": true,
@@ -1390,7 +1534,7 @@
                     },
                     {
                         "id": "address",
-                        "index": 5,
+                        "index": 7,
                         "type":"address",
                         "title": "Địa chỉ làm việc",
                         "is_required": true,
@@ -1398,7 +1542,7 @@
                     },
                     {
                         "id": "companyPhoneNumber",
-                        "index": 6,
+                        "index": 8,
                         "type":"text_box",
                         "title": "SĐT cơ quan",
                         "is_required": true,
@@ -1408,7 +1552,7 @@
                     },
                     {
                         "id": "footer",
-                        "index": 7,
+                        "index": 9,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -1443,28 +1587,38 @@
             {
                 "title": "Thông Tin Bổ Sung",
                 "id": null,
-                "fields": [{
-                    "id": "optionalText",
-                    "index": 1,
-                    "type":"text_box",
-                    "title": "Điền một số thông tin bổ sung",
-                    "placeholder": "Thời gian dự kiến sinh\nThông tin bố em bé: Tên, SĐT, CMND, nghề nghiệp, nơi làm việc",
-                    "multiple_line": true,
-                    "keyboard": "default"
-                },
-                {
-                    "id": "optionalMedia",
-                    "index": 2,
-                    "type":"multiple_file",
-                    "title": "Ảnh siêu âm 3 tháng gần nhất, ảnh chứng minh thu nhập và ảnh chụp bạn tại nơi làm việc"
-                }
+                "fields": [
+                    {
+                        "id": "optionalText[0]",
+                        "index": 1,
+                        "type":"text_box",
+                        "title": "Mục đích sử dụng khoản vay",
+                        "placeholder": "Mô tả mục đích sử dụng khoản vay",
+                        "multiple_line": true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalText[1]",
+                        "index": 2,
+                        "type":"text_box",
+                        "title": "Thông tin của vợ hoặc chồng",
+                        "placeholder": "Tên\nSố chứng mình thư\nSố điện thoại\nNghề nghiệp, nơi làm việc\nĐịa chỉ facebook",
+                        "multiple_line": true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 3,
+                        "type":"multiple_file",
+                        "title": "Ảnh chụp toàn thân\nẢnh chụp bảng lương\nẢnh chụp đăng ký tự doanh(nếu có)\nẢnh giấy đăng ký kết hôn(nếu có)"
+                    }
             ]
             }
         ]
     },
     {
         "id": 6,
-        "title": "Vay em bé",
+        "title": "Vay nuôi bé",
         "description": "Khoản vay thiết kế hỗ trợ việc nuối em bé trong vòng 6 năm đầu",
         "min": 1000000,
         "max": 15000000,
@@ -1574,18 +1728,8 @@
                         ]
                     },
                     {
-                        "id": "numDependence",
-                        "index": 6,
-                        "type":"text_box",
-                        "title": "Số người phụ thuộc",
-                        "is_required": true,
-                        "placeholder": "Điền số lượng người phụ thuộc",
-                        "multiple_line": false,
-                        "keyboard": "numeric"
-                    },
-                    {
                         "id": "residentAddress",
-                        "index": 7,
+                        "index": 6,
                         "type":"address",
                         "title": "Địa chỉ nhà thường trú",
                         "is_required": true,
@@ -1593,7 +1737,7 @@
                     },
                     {
                         "id": "currentAddress",
-                        "index": 8,
+                        "index": 7,
                         "type":"address",
                         "title": "Địa chỉ nhà tạm trú",
                         "is_required": true,
@@ -1601,7 +1745,7 @@
                     },
                     {
                         "id": "footer",
-                        "index": 9,
+                        "index": 8,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -1648,36 +1792,83 @@
                         ]
                     },
                     {
-                        "id": "position",
+                        "id": "academicLevel",
                         "index": 2,
+                        "type":"dropdown",
+                        "title": "Trình độ học vấn",
+                        "is_required": true,
+                        "placeholder": "Lựa chọn trình độ học vấn",
+                        "selector_title": "Lựa chọn trình độ học vấn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Đại học, trên đại học"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Cao đẳng, trung cấp"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Trung học phổ thông"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Trung học cơ sở"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "index": 3,
                         "type":"dropdown",
                         "title": "Vị trí làm việc",
                         "is_required": true,
                         "placeholder": "Cấp bậc trong cơ quan",
                         "selector_title": "Chọn cấp bậc trong cơ quan",
-                        "data": [{
+                        "data": [
+                            {
                                 "id": 0,
-                                "title": "Nhân viên"
+                                "title": "Trưởng phòng"
                             },
                             {
                                 "id": 1,
-                                "title": "Trưởng phòng"
+                                "title": "Phó phòng"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Nhân viên"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Khác ...",
+                                "isTextInput" : true,
+                                "placeholder":"Nhập vị trí làm việc"
                             }
                         ]
                     },
                     {
                         "id": "company",
-                        "index": 3,
+                        "index": 4,
                         "type":"text_box",
                         "title": "Nơi làm việc",
                         "is_required": true,
-                        "placeholder": "Tên cơ quan/công ty bạn đang làm",
+                        "placeholder": "Nhập tên nơi làm việc",
                         "multiple_line": false,
                         "keyboard": "default"
                     },
                     {
+                        "id": "experienceYear",
+                        "index": 5,
+                        "type":"text_box",
+                        "title": "Số năm kinh nghiệm",
+                        "is_required": true,
+                        "placeholder": "Nhập số năm kinh nghiệm",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
                         "id": "salary",
-                        "index": 4,
+                        "index": 6,
                         "type":"text_box",
                         "title": "Tổng thu nhập hàng tháng",
                         "is_required": true,
@@ -1688,7 +1879,7 @@
                     },
                     {
                         "id": "address",
-                        "index": 5,
+                        "index": 7,
                         "type":"address",
                         "title": "Địa chỉ làm việc",
                         "is_required": true,
@@ -1696,7 +1887,7 @@
                     },
                     {
                         "id": "companyPhoneNumber",
-                        "index": 6,
+                        "index": 8,
                         "type":"text_box",
                         "title": "SĐT cơ quan",
                         "is_required": true,
@@ -1706,7 +1897,7 @@
                     },
                     {
                         "id": "footer",
-                        "index": 7,
+                        "index": 9,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -1741,21 +1932,31 @@
             {
                 "title": "Thông Tin Bổ Sung",
                 "id": null,
-                "fields": [{
-                    "id": "optionalText",
-                    "index": 1,
-                    "type":"text_box",
-                    "title": "Điền một số thông tin bổ sung",
-                    "placeholder": "Thông tin bé: Tên, Ngày sinh, Giới tính, Ảnh giấy khai sinh\nThông tin bố/mẹ bé: Tên, SĐT, CMND, nghề nghiệp, nơi làm việc",
-                    "multiple_line": true,
-                    "keyboard": "default"
-                },
-                {
-                    "id": "optionalMedia",
-                    "index": 2,
-                    "type":"multiple_file",
-                    "title": "Ảnh chứng minh thu nhập và ảnh chụp bạn tại nơi làm việc"
-                }
+                "fields": [
+                    {
+                        "id": "optionalText[0]",
+                        "index": 1,
+                        "type":"text_box",
+                        "title": "Mục đích sử dụng khoản vay",
+                        "placeholder": "Mô tả mục đích sử dụng khoản vay",
+                        "multiple_line": true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalText[1]",
+                        "index": 2,
+                        "type":"text_box",
+                        "title": "Thông tin của vợ hoặc chồng",
+                        "placeholder": "Tên\nSố chứng mình thư\nSố điện thoại\nNghề nghiệp, nơi làm việc\nĐịa chỉ facebook",
+                        "multiple_line": true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 3,
+                        "type":"multiple_file",
+                        "title": "Ảnh chụp bạn tại nơi làm việc\nẢnh chụp bảng lương\nẢnh chụp đăng ký tự doanh(nếu có)\nẢnh chụp giấy khai sinh gốc"
+                    }
             ]
             }
         ]
@@ -1872,18 +2073,8 @@
                         ]
                     },
                     {
-                        "id": "numDependence",
-                        "index": 6,
-                        "type":"text_box",
-                        "title": "Số người phụ thuộc",
-                        "is_required": true,
-                        "placeholder": "Điền số lượng người phụ thuộc",
-                        "multiple_line": false,
-                        "keyboard": "numeric"
-                    },
-                    {
                         "id": "residentAddress",
-                        "index": 7,
+                        "index": 6,
                         "type":"address",
                         "title": "Địa chỉ nhà thường trú",
                         "is_required": true,
@@ -1891,7 +2082,7 @@
                     },
                     {
                         "id": "currentAddress",
-                        "index": 8,
+                        "index": 7,
                         "type":"address",
                         "title": "Địa chỉ nhà tạm trú",
                         "is_required": true,
@@ -1899,7 +2090,7 @@
                     },
                     {
                         "id": "footer",
-                        "index": 9,
+                        "index": 8,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -1946,36 +2137,83 @@
                         ]
                     },
                     {
-                        "id": "position",
+                        "id": "academicLevel",
                         "index": 2,
+                        "type":"dropdown",
+                        "title": "Trình độ học vấn",
+                        "is_required": true,
+                        "placeholder": "Lựa chọn trình độ học vấn",
+                        "selector_title": "Lựa chọn trình độ học vấn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Đại học, trên đại học"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Cao đẳng, trung cấp"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Trung học phổ thông"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Trung học cơ sở"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "index": 3,
                         "type":"dropdown",
                         "title": "Vị trí làm việc",
                         "is_required": true,
                         "placeholder": "Cấp bậc trong cơ quan",
                         "selector_title": "Chọn cấp bậc trong cơ quan",
-                        "data": [{
+                        "data": [
+                            {
                                 "id": 0,
-                                "title": "Nhân viên"
+                                "title": "Trưởng phòng"
                             },
                             {
                                 "id": 1,
-                                "title": "Trưởng phòng"
+                                "title": "Phó phòng"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Nhân viên"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Khác ...",
+                                "isTextInput" : true,
+                                "placeholder":"Nhập vị trí làm việc"
                             }
                         ]
                     },
                     {
                         "id": "company",
-                        "index": 3,
+                        "index": 4,
                         "type":"text_box",
                         "title": "Nơi làm việc",
                         "is_required": true,
-                        "placeholder": "Tên cơ quan/công ty bạn đang làm",
+                        "placeholder": "Nhập tên nơi làm việc",
                         "multiple_line": false,
                         "keyboard": "default"
                     },
                     {
+                        "id": "experienceYear",
+                        "index": 5,
+                        "type":"text_box",
+                        "title": "Số năm kinh nghiệm",
+                        "is_required": true,
+                        "placeholder": "Nhập số năm kinh nghiệm",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
                         "id": "salary",
-                        "index": 4,
+                        "index": 6,
                         "type":"text_box",
                         "title": "Tổng thu nhập hàng tháng",
                         "is_required": true,
@@ -1986,7 +2224,7 @@
                     },
                     {
                         "id": "address",
-                        "index": 5,
+                        "index": 7,
                         "type":"address",
                         "title": "Địa chỉ làm việc",
                         "is_required": true,
@@ -1994,7 +2232,7 @@
                     },
                     {
                         "id": "companyPhoneNumber",
-                        "index": 6,
+                        "index": 8,
                         "type":"text_box",
                         "title": "SĐT cơ quan",
                         "is_required": true,
@@ -2004,7 +2242,7 @@
                     },
                     {
                         "id": "footer",
-                        "index": 7,
+                        "index": 9,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -2039,21 +2277,31 @@
             {
                 "title": "Thông Tin Bổ Sung",
                 "id": null,
-                "fields": [{
-                    "id": "optionalText",
-                    "index": 1,
-                    "type":"text_box",
-                    "title": "Điền một số thông tin bổ sung",
-                    "placeholder": "Sản phẩm dự kiến mua\nNơi dự kiến mua\nGiá trị dự kiến",
-                    "multiple_line": true,
-                    "keyboard": "default"
-                },
-                {
-                    "id": "optionalMedia",
-                    "index": 2,
-                    "type":"multiple_file",
-                    "title": "Ảnh chứng minh thu nhập và ảnh chụp bạn tại nơi làm việc"
-                }
+                "fields": [
+                    {
+                        "id": "optionalText[0]",
+                        "index": 1,
+                        "type":"text_box",
+                        "title": "Giá trị dự kiến đồ nội thất dự định mua",
+                        "placeholder": "Điền giá trị dự kiến đồ nội thất dự định mua",
+                        "multiple_line": false,
+                        "keyboard": "money"
+                    },
+                    {
+                        "id": "optionalText[1]",
+                        "index": 2,
+                        "type":"text_box",
+                        "title": "Nơi dự kiến mua hàng",
+                        "placeholder": "Điền nơi dự kiến mua hàng",
+                        "multiple_line": true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 3,
+                        "type":"multiple_file",
+                        "title": "Ảnh chụp bạn tại nơi làm việc\nẢnh chụp bảng lương\nẢnh chụp đăng ký tự doanh(nếu có)\nẢnh chụp đồ nội thất dự kiến định mua"
+                    }
             ]
             }
         ]
@@ -2170,18 +2418,8 @@
                         ]
                     },
                     {
-                        "id": "numDependence",
-                        "index": 6,
-                        "type":"text_box",
-                        "title": "Số người phụ thuộc",
-                        "is_required": true,
-                        "placeholder": "Điền số lượng người phụ thuộc",
-                        "multiple_line": false,
-                        "keyboard": "numeric"
-                    },
-                    {
                         "id": "residentAddress",
-                        "index": 7,
+                        "index": 6,
                         "type":"address",
                         "title": "Địa chỉ nhà thường trú",
                         "is_required": true,
@@ -2189,7 +2427,7 @@
                     },
                     {
                         "id": "currentAddress",
-                        "index": 8,
+                        "index": 7,
                         "type":"address",
                         "title": "Địa chỉ nhà tạm trú",
                         "is_required": true,
@@ -2197,7 +2435,7 @@
                     },
                     {
                         "id": "footer",
-                        "index": 9,
+                        "index": 8,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -2244,36 +2482,83 @@
                         ]
                     },
                     {
-                        "id": "position",
+                        "id": "academicLevel",
                         "index": 2,
+                        "type":"dropdown",
+                        "title": "Trình độ học vấn",
+                        "is_required": true,
+                        "placeholder": "Lựa chọn trình độ học vấn",
+                        "selector_title": "Lựa chọn trình độ học vấn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Đại học, trên đại học"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Cao đẳng, trung cấp"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Trung học phổ thông"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Trung học cơ sở"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "index": 3,
                         "type":"dropdown",
                         "title": "Vị trí làm việc",
                         "is_required": true,
                         "placeholder": "Cấp bậc trong cơ quan",
                         "selector_title": "Chọn cấp bậc trong cơ quan",
-                        "data": [{
+                        "data": [
+                            {
                                 "id": 0,
-                                "title": "Nhân viên"
+                                "title": "Trưởng phòng"
                             },
                             {
                                 "id": 1,
-                                "title": "Trưởng phòng"
+                                "title": "Phó phòng"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Nhân viên"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Khác ...",
+                                "isTextInput" : true,
+                                "placeholder":"Nhập vị trí làm việc"
                             }
                         ]
                     },
                     {
                         "id": "company",
-                        "index": 3,
+                        "index": 4,
                         "type":"text_box",
                         "title": "Nơi làm việc",
                         "is_required": true,
-                        "placeholder": "Tên cơ quan/công ty bạn đang làm",
+                        "placeholder": "Nhập tên nơi làm việc",
                         "multiple_line": false,
                         "keyboard": "default"
                     },
                     {
+                        "id": "experienceYear",
+                        "index": 5,
+                        "type":"text_box",
+                        "title": "Số năm kinh nghiệm",
+                        "is_required": true,
+                        "placeholder": "Nhập số năm kinh nghiệm",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
                         "id": "salary",
-                        "index": 4,
+                        "index": 6,
                         "type":"text_box",
                         "title": "Tổng thu nhập hàng tháng",
                         "is_required": true,
@@ -2284,7 +2569,7 @@
                     },
                     {
                         "id": "address",
-                        "index": 5,
+                        "index": 7,
                         "type":"address",
                         "title": "Địa chỉ làm việc",
                         "is_required": true,
@@ -2292,7 +2577,7 @@
                     },
                     {
                         "id": "companyPhoneNumber",
-                        "index": 6,
+                        "index": 8,
                         "type":"text_box",
                         "title": "SĐT cơ quan",
                         "is_required": true,
@@ -2302,7 +2587,7 @@
                     },
                     {
                         "id": "footer",
-                        "index": 7,
+                        "index": 9,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -2337,29 +2622,29 @@
             {
                 "title": "Thông Tin Bổ Sung",
                 "id": null,
-                "fields": [{
-                    "id": "optionalText",
-                    "index": 1,
-                    "type":"text_box",
-                    "title": "Lương hàng tháng của bạn",
-                    "placeholder": "Điền lương hàng tháng của bạn",
-                    "multiple_line": false,
-                    "keyboard": "money",
-                    "suffix": "đ"
-                },
-                {
-                    "id": "optionalMedia",
-                    "index": 2,
-                    "type":"multiple_file",
-                    "title": "Ảnh sao kê lịch sử trả nợ trong 12 tháng gần nhất, ảnh chứng minh thu nhập và ảnh chụp bạn tại nơi làm việc"
-                }
+                "fields": [
+                    {
+                        "id": "optionalText[0]",
+                        "index": 1,
+                        "type":"text_box",
+                        "title": "Thông tin về khoản nợ",
+                        "placeholder": "Điền các thông tin về khoản nợ",
+                        "multiple_line": true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 2,
+                        "type":"multiple_file",
+                        "title": "Ảnh chụp bạn tại nơi làm việc\nẢnh chụp bảng lương\nẢnh chụp sao kê lịch sử trả nợ\nẢnh chụp tra cứu CIC"
+                    }
             ]
             }
         ]
     },
     {
         "id": 10,
-        "title": "Khác",
+        "title": "Vay khác",
         "description": "Khoản vay ngoài các mục đích trên",
         "min": 1000000,
         "max": 10000000,
@@ -2469,18 +2754,8 @@
                         ]
                     },
                     {
-                        "id": "numDependence",
-                        "index": 6,
-                        "type":"text_box",
-                        "title": "Số người phụ thuộc",
-                        "is_required": true,
-                        "placeholder": "Điền số lượng người phụ thuộc",
-                        "multiple_line": false,
-                        "keyboard": "numeric"
-                    },
-                    {
                         "id": "residentAddress",
-                        "index": 7,
+                        "index": 6,
                         "type":"address",
                         "title": "Địa chỉ nhà thường trú",
                         "is_required": true,
@@ -2488,7 +2763,7 @@
                     },
                     {
                         "id": "currentAddress",
-                        "index": 8,
+                        "index": 7,
                         "type":"address",
                         "title": "Địa chỉ nhà tạm trú",
                         "is_required": true,
@@ -2496,7 +2771,7 @@
                     },
                     {
                         "id": "footer",
-                        "index": 9,
+                        "index": 8,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -2543,36 +2818,83 @@
                         ]
                     },
                     {
-                        "id": "position",
+                        "id": "academicLevel",
                         "index": 2,
+                        "type":"dropdown",
+                        "title": "Trình độ học vấn",
+                        "is_required": true,
+                        "placeholder": "Lựa chọn trình độ học vấn",
+                        "selector_title": "Lựa chọn trình độ học vấn",
+                        "data": [{
+                                "id": 0,
+                                "title": "Đại học, trên đại học"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Cao đẳng, trung cấp"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Trung học phổ thông"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Trung học cơ sở"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "index": 3,
                         "type":"dropdown",
                         "title": "Vị trí làm việc",
                         "is_required": true,
                         "placeholder": "Cấp bậc trong cơ quan",
                         "selector_title": "Chọn cấp bậc trong cơ quan",
-                        "data": [{
+                        "data": [
+                            {
                                 "id": 0,
-                                "title": "Nhân viên"
+                                "title": "Trưởng phòng"
                             },
                             {
                                 "id": 1,
-                                "title": "Trưởng phòng"
+                                "title": "Phó phòng"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Nhân viên"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Khác ...",
+                                "isTextInput" : true,
+                                "placeholder":"Nhập vị trí làm việc"
                             }
                         ]
                     },
                     {
                         "id": "company",
-                        "index": 3,
+                        "index": 4,
                         "type":"text_box",
                         "title": "Nơi làm việc",
                         "is_required": true,
-                        "placeholder": "Tên cơ quan/công ty bạn đang làm",
+                        "placeholder": "Nhập tên nơi làm việc",
                         "multiple_line": false,
                         "keyboard": "default"
                     },
                     {
+                        "id": "experienceYear",
+                        "index": 5,
+                        "type":"text_box",
+                        "title": "Số năm kinh nghiệm",
+                        "is_required": true,
+                        "placeholder": "Nhập số năm kinh nghiệm",
+                        "multiple_line": false,
+                        "keyboard": "numeric"
+                    },
+                    {
                         "id": "salary",
-                        "index": 4,
+                        "index": 6,
                         "type":"text_box",
                         "title": "Tổng thu nhập hàng tháng",
                         "is_required": true,
@@ -2583,7 +2905,7 @@
                     },
                     {
                         "id": "address",
-                        "index": 5,
+                        "index": 7,
                         "type":"address",
                         "title": "Địa chỉ làm việc",
                         "is_required": true,
@@ -2591,7 +2913,7 @@
                     },
                     {
                         "id": "companyPhoneNumber",
-                        "index": 6,
+                        "index": 8,
                         "type":"text_box",
                         "title": "SĐT cơ quan",
                         "is_required": true,
@@ -2601,7 +2923,7 @@
                     },
                     {
                         "id": "footer",
-                        "index": 7,
+                        "index": 9,
                         "type":"footer",
                         "title": "Chúng tôi chỉ sử dụng các thông tin liên lạc bạn cung cấp nếu không thể liên lạc được với bạn khi quá hạn trả nợ."
                     }
@@ -2636,20 +2958,30 @@
             {
                 "title": "Thông Tin Bổ Sung",
                 "id": null,
-                "fields": [{
-                        "id": "optionalText",
+                "fields": [
+                    {
+                        "id": "optionalText[0]",
                         "index": 1,
                         "type":"text_box",
-                        "title": "Điền một số thông tin bổ sung",
-                        "placeholder": "Sản phẩm dự kiến mua\nNơi dự kiến mua\nGiá trị dự kiến",
+                        "title": "Giá trị dự kiến sản phẩm dự định mua",
+                        "placeholder": "Điền giá trị dự kiến sản phẩm dự định mua",
+                        "multiple_line": false,
+                        "keyboard": "money"
+                    },
+                    {
+                        "id": "optionalText[1]",
+                        "index": 2,
+                        "type":"text_box",
+                        "title": "Nơi dự kiến mua hàng",
+                        "placeholder": "Điền nơi dự kiến mua hàng",
                         "multiple_line": true,
                         "keyboard": "default"
                     },
                     {
                         "id": "optionalMedia",
-                        "index": 2,
+                        "index": 3,
                         "type":"multiple_file",
-                        "title": "Ảnh chứng minh thu nhập và ảnh chụp bạn tại nơi làm việc"
+                        "title": "Ảnh chụp bạn tại nơi làm việc\nẢnh chụp bảng lương\nẢnh chụp đăng ký tự doanh(nếu có)\nẢnh chụp sản phẩm dự kiến định mua"
                     }
                 ]
             }
