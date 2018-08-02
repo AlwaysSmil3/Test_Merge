@@ -75,10 +75,6 @@ class TestPayHistoryViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     
-    
-    
-
-    
     //MARK: UITableViewDelegate, UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
