@@ -32,6 +32,13 @@ class BaseAuthenViewController: BaseViewController {
                 // go to choice VC of back to enter phone number
                 
                 DataManager.shared.userID = model.data?.id ?? 0
+                DataManager.shared.currentAccount = account
+                
+                if let type = model.data?.accountType, type == "1" {
+                    //Investor
+                    self?.confirmGotoAppInvestor()
+                    return
+                }
                 
                 switch model.returnCode {
                 case 3:

@@ -218,7 +218,8 @@
                 "title": "Thông Tin Bổ Sung",
                 "id": null,
                 "fields": [{
-                        "id": "optionalText[0]",
+                        "id": "optionalText",
+                        "array_index": 0,
                         "index": 1,
                         "type":"text_box",
                         "title": "Mô tả khoản vay",
@@ -554,8 +555,9 @@
                 "id": null,
                 "fields": [
                     {
-                        "id": "optionalText[0]",
+                        "id": "optionalText",
                         "index": 1,
+                        "array_index": 0,
                         "type":"text_box",
                         "title": "Giá trị dự kiến điện thoại định mua",
                         "placeholder": "Nhập giá trị dự kiến điện thoại định mua",
@@ -563,7 +565,8 @@
                         "keyboard": "money"
                     },
                     {
-                        "id": "optionalText[1]",
+                        "id": "optionalText",
+                        "array_index": 1,
                         "index": 2,
                         "type":"text_box",
                         "title": "Nơi dự kiến mua hàng",
@@ -899,7 +902,8 @@
                 "id": null,
                 "fields": [
                     {
-                    "id": "optionalText[0]",
+                    "id": "optionalText",
+                    "array_index": 0,
                     "index": 1,
                     "type":"text_box",
                     "title": "Giá trị dự kiến xe máy dự định mua",
@@ -908,7 +912,8 @@
                     "keyboard": "money"
                 },
                 {
-                    "id": "optionalText[1]",
+                    "id": "optionalText",
+                    "array_index": 1,
                     "index": 2,
                     "type":"text_box",
                     "title": "Nơi dự kiến mua hàng",
@@ -1244,7 +1249,8 @@
                 "id": null,
                 "fields": [
                 {
-                    "id": "optionalText[0]",
+                    "id": "optionalText",
+                    "array_index": 0,
                     "index": 1,
                     "type":"text_box",
                     "title": "Kế hoạch sử dụng cho đám cưới",
@@ -1253,7 +1259,8 @@
                     "keyboard": "default"
                 },
                 {
-                    "id": "optionalText[1]",
+                    "id": "optionalText",
+                    "array_index": 1,
                     "index": 2,
                     "type":"text_box",
                     "title": "Thông tin của vợ hoặc chồng",
@@ -1589,7 +1596,8 @@
                 "id": null,
                 "fields": [
                     {
-                        "id": "optionalText[0]",
+                        "id": "optionalText",
+                        "array_index": 0,
                         "index": 1,
                         "type":"text_box",
                         "title": "Mục đích sử dụng khoản vay",
@@ -1598,7 +1606,8 @@
                         "keyboard": "default"
                     },
                     {
-                        "id": "optionalText[1]",
+                        "id": "optionalText",
+                        "array_index": 1,
                         "index": 2,
                         "type":"text_box",
                         "title": "Thông tin của vợ hoặc chồng",
@@ -1934,7 +1943,8 @@
                 "id": null,
                 "fields": [
                     {
-                        "id": "optionalText[0]",
+                        "id": "optionalText",
+                        "array_index": 0,
                         "index": 1,
                         "type":"text_box",
                         "title": "Mục đích sử dụng khoản vay",
@@ -1943,7 +1953,8 @@
                         "keyboard": "default"
                     },
                     {
-                        "id": "optionalText[1]",
+                        "id": "optionalText",
+                        "array_index": 1,
                         "index": 2,
                         "type":"text_box",
                         "title": "Thông tin của vợ hoặc chồng",
@@ -2279,7 +2290,8 @@
                 "id": null,
                 "fields": [
                     {
-                        "id": "optionalText[0]",
+                        "id": "optionalText",
+                        "array_index": 0,
                         "index": 1,
                         "type":"text_box",
                         "title": "Giá trị dự kiến đồ nội thất dự định mua",
@@ -2288,7 +2300,8 @@
                         "keyboard": "money"
                     },
                     {
-                        "id": "optionalText[1]",
+                        "id": "optionalText",
+                        "array_index": 1,
                         "index": 2,
                         "type":"text_box",
                         "title": "Nơi dự kiến mua hàng",
@@ -2624,7 +2637,8 @@
                 "id": null,
                 "fields": [
                     {
-                        "id": "optionalText[0]",
+                        "id": "optionalText",
+                        "array_index": 0,
                         "index": 1,
                         "type":"text_box",
                         "title": "Thông tin về khoản nợ",
@@ -2960,7 +2974,8 @@
                 "id": null,
                 "fields": [
                     {
-                        "id": "optionalText[0]",
+                        "id": "optionalText",
+                        "array_index": 0,
                         "index": 1,
                         "type":"text_box",
                         "title": "Giá trị dự kiến sản phẩm dự định mua",
@@ -2969,7 +2984,8 @@
                         "keyboard": "money"
                     },
                     {
-                        "id": "optionalText[1]",
+                        "id": "optionalText",
+                        "array_index": 1,
                         "index": 2,
                         "type":"text_box",
                         "title": "Nơi dự kiến mua hàng",

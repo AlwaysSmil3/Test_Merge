@@ -260,6 +260,18 @@ class DataManager {
                 DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = phone
             }
             
+            if let strength = jobInfo.strength {
+                DataManager.shared.loanInfo.jobInfo.strength = strength
+            }
+            
+            if let ace = jobInfo.academicLevel {
+                DataManager.shared.loanInfo.jobInfo.academicLevel = ace
+            }
+            
+            if let exp = jobInfo.experienceYear {
+                DataManager.shared.loanInfo.jobInfo.experienceYear = exp
+            }
+            
             if let add = jobInfo.address, let city = add.city, let dis = add.district, let commue = add.commune, let street = add.street {
                 DataManager.shared.loanInfo.jobInfo.address = Address(city: city, district: dis, commune: commue, street: street, zipCode: "", long: 0, lat: 0)
             }
@@ -359,6 +371,21 @@ class DataManager {
                 missingListTitle.append("Cấp bậc")
             }
             
+            if let strength = jobInfo.strength, strength > 0 {
+                missingListKey.append("strength")
+                missingListTitle.append("Học lực")
+            }
+            
+            if let ace = jobInfo.academicLevel, ace > 0 {
+                missingListKey.append("academicLevel")
+                missingListTitle.append("Trình độ học vấn")
+            }
+            
+            if let exp = jobInfo.experienceYear, exp > 0 {
+                missingListKey.append("experienceYear")
+                missingListTitle.append("Số năm kinh nghiệm")
+            }
+            
             if let value = jobInfo.company, value.length() > 0 {
                 missingListKey.append("company")
                 missingListTitle.append("Tên cơ quan")
@@ -402,9 +429,9 @@ class DataManager {
             missingListTitle.append("Ảnh mặt sau CMND")
         }
         
-        if let value = miss.optionalText, value.length() > 0 {
+        if let value = miss.optionalText, value.count > 0 {
             missingListKey.append("optionalText")
-            missingListTitle.append("Lương hàng tháng của bạn")
+            missingListTitle.append("Thông tin bổ sung")
         }
         
         self.listKeyMissingLoanKey = missingListKey

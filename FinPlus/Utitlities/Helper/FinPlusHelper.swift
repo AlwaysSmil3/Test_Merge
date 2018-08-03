@@ -251,11 +251,15 @@ class FinPlusHelper {
     class func CalculateMoneyPayMonth(month: Double, term: Double, rate: Double) -> Double {
         
         var value = term
+        
         if value < 1 {
             value = 1
+            if let terms = DataManager.shared.browwerInfo?.activeLoan?.term {
+                return (month + Double(terms) * month * rate/(100 * 12 * 30)) / value
+            }
         }
         
-        let amount = (month + term * month * rate/(100*12)) / value
+        let amount = (month + term * month * rate/(100 * 12)) / value
         
         return amount
     }

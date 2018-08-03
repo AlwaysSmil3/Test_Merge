@@ -32,18 +32,22 @@ class LoanInfoJobVC: LoanBaseViewController {
     
     private func updateDataForLoanAPI(completion: () -> Void) {
         
-        if DataManager.shared.loanInfo.jobInfo.jobTitle.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng chọn nghề nghiệp")
-            return
+        if  !DataManager.shared.isLendingforStudent() {
+            if DataManager.shared.loanInfo.jobInfo.jobTitle.length() == 0 {
+                self.showToastWithMessage(message: "Vui lòng chọn nghề nghiệp")
+                return
+            }
+            
+            if DataManager.shared.loanInfo.jobInfo.salary == 0 {
+                self.showToastWithMessage(message: "Vui lòng nhập mức thu nhập hàng tháng để tiếp tục.")
+                return
+            }
+        } else {
+            
         }
         
         if DataManager.shared.loanInfo.jobInfo.company.length() == 0 {
             self.showToastWithMessage(message: "Vui lòng nhập tên cơ quan để tiếp tục.")
-            return
-        }
-        
-        if DataManager.shared.loanInfo.jobInfo.salary == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập mức thu nhập hàng tháng để tiếp tục.")
             return
         }
         
