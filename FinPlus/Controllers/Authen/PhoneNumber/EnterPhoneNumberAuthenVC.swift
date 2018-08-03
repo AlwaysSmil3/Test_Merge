@@ -60,6 +60,13 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
                 guard let strongSelf = self else { return }
                 
                 DataManager.shared.userID = model.data?.id ?? 0
+                DataManager.shared.currentAccount = phone!
+                
+                if let type = model.data?.accountType, type == "1" {
+                    //Investor
+                    self?.confirmGotoAppInvestor()
+                    return
+                }
                 
                 switch model.returnCode {
                 case 0:
@@ -72,12 +79,6 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
                 default :
                     // new account
                     DataManager.shared.currentAccount = phone!
-                    
-                    if let type = model.data?.accountType, type == "1" {
-                        //Investor
-                        self?.confirmGotoAppInvestor()
-                        return
-                    }
                     
                     // save token
                     if let data = model.data {

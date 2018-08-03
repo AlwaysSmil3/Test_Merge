@@ -48,15 +48,17 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
         
         guard let field_ = self.field, let data = field_.data, let id = field_.id else { return }
         
-        if id.contains("position") || id.contains("jobType") || id.contains("strength") {
+        if id.contains("position") || id.contains("jobType") || id.contains("strength") || id.contains("academicLevel") {
             let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
             
             if id.contains("position") {
                 popup.setDataSource(data: data, type: .JobPosition)
             } else if id.contains("jobType") {
                 popup.setDataSource(data: data, type: .Job)
-            } else {
+            } else if id.contains("strength") {
                 popup.setDataSource(data: data, type: .Strength)
+            } else if id.contains("academicLevel") {
+                popup.setDataSource(data: data, type: .AcademicLevel)
             }
             
             popup.delegate = self
@@ -86,6 +88,10 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             DataManager.shared.loanInfo.jobInfo.jobTitle = value
         } else if id.contains("position") {
             DataManager.shared.loanInfo.jobInfo.position = value
+        } else if id.contains("academicLevel") {
+            DataManager.shared.loanInfo.jobInfo.academicLevel = Int(data.id ?? 0)
+        } else if id.contains("strength") {
+            DataManager.shared.loanInfo.jobInfo.strength = Int(data.id ?? 0)
         }
         
     }
@@ -189,9 +195,71 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 
                 DataManager.shared.loanInfo.userInfo.gender = value
             }
+        } else if id.contains("strength") {
+            if DataManager.shared.checkFieldIsMissing(key: "strength") {
+                //Cap nhat thong tin khong hop le
+                self.updateInfoFalse(pre: title)
+            }
+            
+            var idInt = -1
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.strength, data > 0 {
+                idInt = data
+            }
+            
+            if DataManager.shared.loanInfo.jobInfo.strength > 0 {
+                idInt = DataManager.shared.loanInfo.jobInfo.strength
+            }
+            
+            if idInt > 0 {
+                var value = ""
+                if let data = field_.data {
+                    for d in data {
+                        if Int(d.id ?? 0) == idInt {
+                            value = d.title ?? ""
+                        }
+                    }
+                }
+                
+                
+                self.lblValue?.text = value
+                DataManager.shared.loanInfo.jobInfo.strength = idInt
+            }
+        } else if id.contains("academicLevel") {
+            if DataManager.shared.checkFieldIsMissing(key: "academicLevel") {
+                //Cap nhat thong tin khong hop le
+                self.updateInfoFalse(pre: title)
+            }
+            
+            var idInt = -1
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.academicLevel, data > 0 {
+                idInt = data
+            }
+            
+            if DataManager.shared.loanInfo.jobInfo.academicLevel > 0 {
+                idInt = DataManager.shared.loanInfo.jobInfo.academicLevel
+            }
+            
+            if idInt > 0 {
+                var value = ""
+                if let data = field_.data {
+                    for d in data {
+                        if Int(d.id ?? 0) == idInt {
+                            value = d.title ?? ""
+                        }
+                    }
+                }
+                
+                
+                self.lblValue?.text = value
+                DataManager.shared.loanInfo.jobInfo.academicLevel = idInt
+            }
         }
         
     }
+        
+    
+    
+    
     
     
 }

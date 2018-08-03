@@ -37,9 +37,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 
             }
             
-            if let id = field_.id, id.contains("nationalId") || id.contains("salary") || id.contains("companyPhoneNumber") || id.contains("optionalText") {
-                self.tfValue?.keyboardType = .numberPad
+            if let id = field_.id {
+                if id.contains("nationalId") || id.contains("salary") || id.contains("companyPhoneNumber") || id.contains("studentId") {
+                    self.tfValue?.keyboardType = .numberPad
+                } else if id.contains("experienceYear") {
+                    self.tfValue?.keyboardType = .default
+                }
             }
+            
             
             if let value = field_.placeholder {
                 self.tfValue?.placeholder = value
@@ -62,9 +67,13 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         guard let parent = self.parent else {
             if id.contains("optionalText") {
                 //thông tin khác
-                let tempAmount1 = self.tfValue?.text?.replacingOccurrences(of: ",", with: "") ?? ""
-                let tempAmount2 = tempAmount1.replacingOccurrences(of: ".", with: "")
-                DataManager.shared.loanInfo.optionalText = tempAmount2
+//                let tempAmount1 = self.tfValue?.text?.replacingOccurrences(of: ",", with: "") ?? ""
+//                let tempAmount2 = tempAmount1.replacingOccurrences(of: ".", with: "")
+                
+                if let index = field_.arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
+                    DataManager.shared.loanInfo.optionalText[index] = self.tfValue?.text ?? ""
+                }
+                
             }
             return
         }
@@ -87,6 +96,10 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 DataManager.shared.loanInfo.jobInfo.salary = Int32(tempAmount2) ?? 0
             } else if id == "companyPhoneNumber"  {
                 DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = self.tfValue?.text ?? ""
+            } else if id == "experienceYear"  {
+                DataManager.shared.loanInfo.jobInfo.experienceYear = Float(self.tfValue?.text ?? "") ?? 0
+            } else if id == "studentId"  {
+                DataManager.shared.loanInfo.jobInfo.studentId = self.tfValue?.text ?? ""
             }
         }
     }
@@ -101,19 +114,25 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     self.updateInfoFalse(pre: title)
                 }
                 
-                
-                var value = ""
-                if let data = DataManager.shared.browwerInfo?.activeLoan?.optionalText, data.length() > 0 {
-                    value = data
+                var index = 0
+                if let i = field_.arrayIndex {
+                    index = i
                 }
                 
-                if DataManager.shared.loanInfo.optionalText.length() > 0 {
-                    value = DataManager.shared.loanInfo.optionalText
+                guard let data = DataManager.shared.browwerInfo?.activeLoan?.optionalText, data.count > index, DataManager.shared.loanInfo.optionalText.count > index else { return }
+                
+                var value = ""
+                if data.count > 0 {
+                    value = data[index]
+                }
+                
+                if DataManager.shared.loanInfo.optionalText[index].length() > 0 {
+                    value = DataManager.shared.loanInfo.optionalText[index]
                 }
                 
                 if value.length() > 0 {
-                    self.tfValue?.text = FinPlusHelper.formatDisplayCurrency(Double(value) ?? 0)
-                    DataManager.shared.loanInfo.optionalText = value
+                    self.tfValue?.text = value
+                    DataManager.shared.loanInfo.optionalText[index] = value
                 }
             }
             
@@ -225,6 +244,44 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     self.tfValue?.text = value
                     DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = value
                 }
+            } else if id == "experienceYear" {
+                if DataManager.shared.checkFieldIsMissing(key: "experienceYear") {
+                    //Cap nhat thong tin khong hop le
+                    self.updateInfoFalse(pre: title)
+                }
+                
+                var valueFloat: Float = 0
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.experienceYear , data > 0 {
+                    valueFloat = data
+                }
+                
+                if DataManager.shared.loanInfo.jobInfo.experienceYear > 0 {
+                    valueFloat = DataManager.shared.loanInfo.jobInfo.experienceYear
+                }
+                
+                if valueFloat > 0 {
+                    self.tfValue?.text = "\(valueFloat)"
+                    DataManager.shared.loanInfo.jobInfo.experienceYear = valueFloat
+                }
+            } else if id == "studentId" {
+                if DataManager.shared.checkFieldIsMissing(key: "studentId") {
+                    //Cap nhat thong tin khong hop le
+                    self.updateInfoFalse(pre: title)
+                }
+                
+                var value = ""
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.studentId , data.length() > 0 {
+                    value = data
+                }
+                
+                if DataManager.shared.loanInfo.jobInfo.studentId.length() > 0 {
+                    value = DataManager.shared.loanInfo.jobInfo.studentId
+                }
+                
+                if value.length() > 0 {
+                    self.tfValue?.text = value
+                    DataManager.shared.loanInfo.jobInfo.studentId = value
+                }
             }
         }
         
@@ -249,11 +306,11 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
         if let field_ = self.field, let id = field_.id {
             
             var bool = false
-            if let parent = self.parent, parent.contains("jobInfo") ,id.contains("salary") {
+            if let parent = self.parent, parent.contains("jobInfo") ,id.contains("salary"),id.contains("optionalText"),id.contains("experienceYear"),id.contains("studentId") {
                 bool = true
             }
             
-            if bool || id.contains("optionalText") {
+            if bool {
                 return self.formatTFSalary(textField, shouldChangeCharactersIn: range, replacementString: string)
             }
         }
@@ -309,7 +366,10 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
             }
             
             if id.contains("optionalText") {
-                DataManager.shared.loanInfo.optionalText = tempAmount2
+                if let index = field_.arrayIndex, index < DataManager.shared.loanInfo.optionalText.count {
+                    DataManager.shared.loanInfo.optionalText[index] = tempAmount2
+                }
+                
             }
         }
 
@@ -340,6 +400,10 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
                 maxLength = 13
             } else if id.contains("companyPhoneNumber") {
                 maxLength = 11
+            } else if id.contains("experienceYear") {
+                maxLength = 3
+            } else if id.contains("studentId") {
+                maxLength = 12
             }
         }
         
