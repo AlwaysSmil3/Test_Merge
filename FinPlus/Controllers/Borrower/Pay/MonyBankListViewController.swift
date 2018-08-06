@@ -14,6 +14,9 @@ class MonyBankListViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var payBtn: UIButton!
     @IBOutlet weak var titleLb: UILabel!
+    
+    var amount: Double = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
@@ -56,8 +59,8 @@ class MonyBankListViewController: UIViewController, UITableViewDelegate, UITable
     
     func createBankList() {
         self.bankList.removeAll()
-        let vietcombank = MonyBankAccount(bankType: 1, bankNameDetail: "Vietcombank Thái Hà", bankNumber: "1452 3665 2556 3321", bankUsername: "Công ty cổ phần FinPlus", amount: 180000, content: "0988128020 chuyển tiền")
-        let vietinbank = MonyBankAccount(bankType: 2, bankNameDetail: "Vietinbank Đông Đô", bankNumber: "3623 5566 3333 1254", bankUsername: "Công ty cổ phần FinPlus", amount: 180000, content: "0988128020 chuyển tiền")
+        let vietcombank = MonyBankAccount(bankType: 1, bankNameDetail: "Vietcombank Thái Hà", bankNumber: "1452 3665 2556 3321", bankUsername: "Công ty cổ phần FinPlus", amount: self.amount, content: "0988128020 chuyển tiền")
+        let vietinbank = MonyBankAccount(bankType: 2, bankNameDetail: "Vietinbank Đông Đô", bankNumber: "3623 5566 3333 1254", bankUsername: "Công ty cổ phần FinPlus", amount: self.amount, content: "0988128020 chuyển tiền")
         self.bankList.append(vietcombank)
         self.bankList.append(vietinbank)
         self.tableView.reloadData()
