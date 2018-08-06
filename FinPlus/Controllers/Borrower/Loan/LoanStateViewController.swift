@@ -174,7 +174,7 @@ class LoanStateViewController: UIViewController {
         }
         
         //Ngày huy động còn lại
-        var acceptedDate = "0"
+        var acceptedDate = "30"
         if let acceptedDateStr = loan.acceptedAt {
             let calendar = NSCalendar.current
             let d1 = Date()

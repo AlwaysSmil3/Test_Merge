@@ -133,6 +133,13 @@ class TestBorrowingPayViewController: UIViewController {
     // var walletSelected : AccountBank!
     var methodSelected : PaymentMethod!
     var bankList = [AccountBank]()
+    
+    //Tra ky nay
+    var payAmountPresent: Double = 0
+    //Tra truoc toan bo
+    var payTotalAmount: Double = 0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -182,8 +189,38 @@ class TestBorrowingPayViewController: UIViewController {
 
     func updateData() {
         // let infoData = BorrowingInfoBasicData(contractCode: "AABBCC", loanMoney: 100000000, expireAmountTime: 12, inerestPerMonth: 2000000, numberOfMonthPaid: 2, nextDayHaveToPaid: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)
-        let payType1 = PayType(id: 1, typeTitle: "Phai tra thang nay", expireDate: Date(), originAmount: 1000000, interestAmount: 500000, sumAmount: 20000000)
-        let payAll = PayAllBefore(id: 1, typeTitle: "Tra tat ca luon", originAmount: 3000000, interestAmount: 100000, feeToPayBefore: 2000000, sumAmount: 7000000)
+        
+        guard let loan = DataManager.shared.browwerInfo?.activeLoan, let cate = loan.loanCategoryId else { return }
+
+        var rate = 0
+        //Lãi suất
+        if let inRate = loan.inRate, inRate > 0 {
+            rate = Int(inRate)
+        }
+        
+        let term: Float = cate == Loan_Student_Category_ID ? 1 : Float((loan.term ?? 0)/30)
+        
+        let amount = loan.funded ?? 0
+        let originAmount = Float(amount / term)
+        
+        
+        //Số tiền thanh toán hàng tháng
+        let payMounth = FinPlusHelper.CalculateMoneyPayMonth(month: Double(amount), term: Double((loan.term ?? 0)/30), rate: Double(rate))
+        
+        let interestAmount = Float(payMounth) - originAmount
+        
+        //Thanh toán cả năm
+        let amountCurrentTotal: Float = amount - amount * Float(loan.paidMonth ?? 0) / term
+        //Phi thanh toán cả năm
+        let interestTotalAmount: Float = Float((amountCurrentTotal * Float(rate)/100))
+        //Phí thanh toán trước nợ
+        let feePayBefore = Float((amount - originAmount * Float(loan.paidMonth ?? 0)) * 2/100)
+        
+        self.payAmountPresent = Double(originAmount + interestAmount)
+        self.payTotalAmount = Double(interestTotalAmount + feePayBefore + amount)
+        
+        let payType1 = PayType(id: 1, typeTitle: "Phai tra thang nay", expireDate: Date(), originAmount: originAmount, interestAmount: interestAmount, sumAmount: originAmount + interestAmount)
+        let payAll = PayAllBefore(id: 1, typeTitle: "Tra tat ca luon", originAmount: Float(amount), interestAmount: interestTotalAmount, feeToPayBefore: feePayBefore, sumAmount: Float(self.payTotalAmount))
         let payTypeArray = [payType1]
         // create list payment method
         var paymentList = [PaymentMethod]()
@@ -251,6 +288,13 @@ class TestBorrowingPayViewController: UIViewController {
         if self.methodSelected != nil {
             if (self.methodSelected.id == 1) {
                 let monyBankListVC = MonyBankListViewController(nibName: "MonyBankListViewController", bundle: nil)
+                
+                if self.payAllSelected != nil {
+                    monyBankListVC.amount = self.payTotalAmount
+                } else {
+                    monyBankListVC.amount = self.payAmountPresent
+                }
+                
                 if let navi = self.navigationController {
                     navi.pushViewController(monyBankListVC, animated: true)
                 } else {

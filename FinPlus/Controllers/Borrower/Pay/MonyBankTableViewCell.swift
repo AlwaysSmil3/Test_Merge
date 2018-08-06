@@ -54,7 +54,7 @@ class MonyBankTableViewCell: UITableViewCell {
         self.bankNameDetailLb.text = bankData.bankNameDetail
         self.bankNumber.text = bankData.bankNumber
         self.bankUsernameLb.text = bankData.bankNumber
-        self.amountLb.text = "\(bankData.amount)"
+        self.amountLb.text = FinPlusHelper.formatDisplayCurrency(bankData.amount) + "đ"
         self.contentLb.text = contentLb.text
         if self.isSelected == true {
             containView.layer.borderColor = UIColor(hexString: "#3BAB63").cgColor
