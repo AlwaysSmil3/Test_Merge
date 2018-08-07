@@ -22,6 +22,9 @@
 		630467C220B547500069469A /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630467C120B5474F0069469A /* Version.swift */; };
 		630467C420B54BAC0069469A /* Model1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630467C320B54BAC0069469A /* Model1.swift */; };
 		630467C720B56DD40069469A /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630467C620B56DD40069469A /* Address.swift */; };
+		6304AC77211955C80052C29C /* Relationships.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304AC74211955C80052C29C /* Relationships.swift */; };
+		6304AC78211955C80052C29C /* DateLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304AC75211955C80052C29C /* DateLimit.swift */; };
+		6304AC79211955C80052C29C /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304AC76211955C80052C29C /* Role.swift */; };
 		6307D3BB20AD274700055F5C /* UpdateInfoFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6307D3BA20AD274700055F5C /* UpdateInfoFacebook.swift */; };
 		6307D3BD20AD2BF000055F5C /* HomeBrowwer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6307D3BC20AD2BF000055F5C /* HomeBrowwer.storyboard */; };
 		6307D3BF20AD2F0500055F5C /* FacebookInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6307D3BE20AD2F0500055F5C /* FacebookInfo.swift */; };
@@ -212,7 +215,6 @@
 		84114BD320D79464005026DF /* BankAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84114BC220D79464005026DF /* BankAccountTableViewCell.swift */; };
 		84114BD420D79464005026DF /* AddNewWalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84114BC320D79464005026DF /* AddNewWalletTableViewCell.xib */; };
 		84114BD520D79464005026DF /* TestBorrowingPayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84114BC420D79464005026DF /* TestBorrowingPayViewController.xib */; };
-		84114BD620D79464005026DF /* BorrowingPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84114BC520D79464005026DF /* BorrowingPayViewController.swift */; };
 		84114BD920D79A6F005026DF /* TestPayHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84114BD720D79A6F005026DF /* TestPayHistoryViewController.swift */; };
 		84114BDA20D79A6F005026DF /* TestPayHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84114BD820D79A6F005026DF /* TestPayHistoryViewController.xib */; };
 		84114BDD20D79D59005026DF /* PayHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84114BDB20D79D59005026DF /* PayHistoryTableViewCell.swift */; };
@@ -329,6 +331,9 @@
 		630467C120B5474F0069469A /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		630467C320B54BAC0069469A /* Model1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model1.swift; sourceTree = "<group>"; };
 		630467C620B56DD40069469A /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		6304AC74211955C80052C29C /* Relationships.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relationships.swift; sourceTree = "<group>"; };
+		6304AC75211955C80052C29C /* DateLimit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateLimit.swift; sourceTree = "<group>"; };
+		6304AC76211955C80052C29C /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		6307D3BA20AD274700055F5C /* UpdateInfoFacebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateInfoFacebook.swift; sourceTree = "<group>"; };
 		6307D3BC20AD2BF000055F5C /* HomeBrowwer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeBrowwer.storyboard; sourceTree = "<group>"; };
 		6307D3BE20AD2F0500055F5C /* FacebookInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookInfo.swift; sourceTree = "<group>"; };
@@ -526,7 +531,6 @@
 		84114BC220D79464005026DF /* BankAccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankAccountTableViewCell.swift; sourceTree = "<group>"; };
 		84114BC320D79464005026DF /* AddNewWalletTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewWalletTableViewCell.xib; sourceTree = "<group>"; };
 		84114BC420D79464005026DF /* TestBorrowingPayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestBorrowingPayViewController.xib; sourceTree = "<group>"; };
-		84114BC520D79464005026DF /* BorrowingPayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorrowingPayViewController.swift; sourceTree = "<group>"; };
 		84114BD720D79A6F005026DF /* TestPayHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPayHistoryViewController.swift; sourceTree = "<group>"; };
 		84114BD820D79A6F005026DF /* TestPayHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestPayHistoryViewController.xib; sourceTree = "<group>"; };
 		84114BDB20D79D59005026DF /* PayHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayHistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -683,6 +687,9 @@
 		630467C020B5474F0069469A /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				6304AC75211955C80052C29C /* DateLimit.swift */,
+				6304AC74211955C80052C29C /* Relationships.swift */,
+				6304AC76211955C80052C29C /* Role.swift */,
 				633415B120E1D6E8004B95C0 /* RateInfo.swift */,
 				84D73FFC20D0BC5600770FB5 /* Faq.swift */,
 				84D73FFD20D0BC5600770FB5 /* LoanStatus.swift */,
@@ -1294,7 +1301,6 @@
 				63748BFF210ADBEC00E79EB6 /* MonyBankListViewController.xib */,
 				84114BB420D79464005026DF /* TestBorrowingPayViewController.swift */,
 				84114BC420D79464005026DF /* TestBorrowingPayViewController.xib */,
-				84114BC520D79464005026DF /* BorrowingPayViewController.swift */,
 				84114BD720D79A6F005026DF /* TestPayHistoryViewController.swift */,
 				84114BD820D79A6F005026DF /* TestPayHistoryViewController.xib */,
 			);
@@ -1889,6 +1895,7 @@
 				E7BC259120CFDACA001FF0F4 /* JiroTextField.swift in Sources */,
 				6336D5CC20B2B75000A6C38A /* LoanInfoJobVC.swift in Sources */,
 				63748BFD210ADB8000E79EB6 /* PaymentMethodTableViewCell.swift in Sources */,
+				6304AC78211955C80052C29C /* DateLimit.swift in Sources */,
 				E7F51A0720CE5A3B00F72682 /* CalPayViewController.swift in Sources */,
 				6369BBD420AE8AD400E0C435 /* APIClient+Loan.swift in Sources */,
 				E7F51A1020CE6CE800F72682 /* LoanBuilderBase.swift in Sources */,
@@ -1903,10 +1910,10 @@
 				84114BD320D79464005026DF /* BankAccountTableViewCell.swift in Sources */,
 				6338F3FE20BE602C005777E2 /* BrowwerResidence.swift in Sources */,
 				E772D76E20CA770F001F0B8E /* LoanDetailViewController.swift in Sources */,
-				84114BD620D79464005026DF /* BorrowingPayViewController.swift in Sources */,
 				6303923220E8B108000C422D /* InternalSlider.swift in Sources */,
 				84114BCB20D79464005026DF /* BorrowingPayInfoTableViewCell.swift in Sources */,
 				84B7B35220D12F91006CADA1 /* UITableView+Extensions.swift in Sources */,
+				6304AC77211955C80052C29C /* Relationships.swift in Sources */,
 				E7BC259020CFDACA001FF0F4 /* TextFieldEffects.swift in Sources */,
 				6357824E20C2330800DE09A0 /* KeychainConfiguration.swift in Sources */,
 				6338F3FB20BE602C005777E2 /* BrowwerAddress.swift in Sources */,
@@ -1975,6 +1982,7 @@
 				84B4DF3220EA3EBD004D9BBB /* InvestLoanData.swift in Sources */,
 				633AE0B420B40AA1007AB0D1 /* LoanSummaryInfoVC.swift in Sources */,
 				633AE0AD20B3F430007AB0D1 /* LoanWalletTBCell.swift in Sources */,
+				6304AC79211955C80052C29C /* Role.swift in Sources */,
 				84114BC620D79464005026DF /* TestBorrowingPayViewController.swift in Sources */,
 				6307D3CD20AD817300055F5C /* APIClient+User.swift in Sources */,
 				E7BC258E20CFDACA001FF0F4 /* MinoruTextField.swift in Sources */,

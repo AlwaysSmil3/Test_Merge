@@ -54,6 +54,37 @@ class LoginViewController: BaseAuthenViewController {
     
     //MARK: Actions
     
+    @IBAction func btnLogoutTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "", message: "Lựa chọn", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Đăng xuất", style: .destructive , handler:{ (UIAlertAction)in
+            
+            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {
+                return
+            }
+            
+            //Clear Data and Login
+            DataManager.shared.clearData {
+                let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
+                
+                window.rootViewController = enterPhoneVC
+            }
+        
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Hủy", style: .cancel, handler:{ (UIAlertAction)in
+            print("User click Dismiss button")
+        }))
+        
+        alert.view.tintColor = UIColor(hexString: "#08121E")
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+        
+    }
+    
+    
     @IBAction func tfEditChanged(_ sender: Any) {
         if let text = self.tfPass?.text, text.length() >= 6 {
             self.isEnableContinueButton(isEnable: true)

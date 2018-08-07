@@ -38,11 +38,13 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
             if let id = field_.id {
-                if id.contains("nationalId") || id.contains("salary") || id.contains("companyPhoneNumber") || id.contains("studentId") {
+                if id.contains("nationalId") || id.contains("salary") || id.contains("companyPhoneNumber") || id.contains("studentId") || id.contains("experienceYear") {
                     self.tfValue?.keyboardType = .numberPad
-                } else if id.contains("experienceYear") {
-                    self.tfValue?.keyboardType = .default
                 }
+            }
+            
+            if let keyboard = field_.keyboard, keyboard.contains("money") || keyboard.contains("numeric") {
+                self.tfValue?.keyboardType = .numberPad
             }
             
             
@@ -260,7 +262,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 }
                 
                 if valueFloat > 0 {
-                    self.tfValue?.text = "\(valueFloat)"
+                    self.tfValue?.text = "\(Int(valueFloat))"
                     DataManager.shared.loanInfo.jobInfo.experienceYear = valueFloat
                 }
             } else if id == "studentId" {
@@ -306,7 +308,7 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
         if let field_ = self.field, let id = field_.id {
             
             var bool = false
-            if let parent = self.parent, parent.contains("jobInfo") ,id.contains("salary"),id.contains("optionalText"),id.contains("experienceYear"),id.contains("studentId") {
+            if let parent = self.parent, parent.contains("jobInfo") ,id.contains("salary") {
                 bool = true
             }
             
