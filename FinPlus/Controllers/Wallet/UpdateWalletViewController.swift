@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UpdateWalletViewController: BaseViewController {
+class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
     
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var vcbBtn: UIButton!
@@ -23,6 +23,8 @@ class UpdateWalletViewController: BaseViewController {
     var delegate: BankDataDelegate?
     
     var wallet: AccountBank?
+    
+    var missBank: BrowwerBank?
     
     var walletAction: WalletAction = .WalletDetail
     
@@ -51,6 +53,9 @@ class UpdateWalletViewController: BaseViewController {
         accTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         accTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_SMALL)
         
+        nameTextField.delegate = self
+        accTextField.delegate = self
+        
         
         self.title = "Thêm tài khoản ngân hàng"
         
@@ -63,7 +68,30 @@ class UpdateWalletViewController: BaseViewController {
             
             self.setBtnVCB(wallet: wallet_)
             
+            if self.walletAction == .LoanNation {
+                if DataManager.shared.checkFieldIsMissing(key: "bank"), let missData = DataManager.shared.missingLoanData, let bank = missData.bank, let id = bank.id, id == wallet_.id {
+                    self.missBank = bank
+                    //Cap nhat thong tin khong hop le
+                    if let account = bank.accountNumber, account.length() > 0 {
+                        accTextField.borderActiveColor = InValidMissingDataColor
+                        accTextField.borderInactiveColor = InValidMissingDataColor
+                        accTextField.textColor = InValidMissingDataColor
+                    }
+                    
+                    if let holder = bank.accountHolder, holder.length() > 0 {
+                        nameTextField.borderActiveColor = InValidMissingDataColor
+                        nameTextField.borderInactiveColor = InValidMissingDataColor
+                        nameTextField.textColor = InValidMissingDataColor
+                    }
+                    
+                }
+                
+                
+            }
+            
         }
+        
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -75,6 +103,50 @@ class UpdateWalletViewController: BaseViewController {
         super.viewWillAppear(animated)
         
     }
+    
+    //MARK: TFAction
+    
+    private func checkInputValue() {
+        guard let miss = self.missBank else { return }
+        if self.nameTextField.text != miss.accountHolder {
+            accTextField.borderActiveColor = UIColor(hexString: "#E3EBF0")
+            accTextField.borderInactiveColor = UIColor(hexString: "#E3EBF0")
+            accTextField.textColor = UIColor(hexString: "#08121E")
+        } else {
+            accTextField.borderActiveColor = InValidMissingDataColor
+            accTextField.borderInactiveColor = InValidMissingDataColor
+            accTextField.textColor = InValidMissingDataColor
+        }
+        
+        if self.accTextField.text != miss.accountNumber {
+            nameTextField.borderActiveColor = UIColor(hexString: "#E3EBF0")
+            nameTextField.borderInactiveColor = UIColor(hexString: "#E3EBF0")
+            nameTextField.textColor = UIColor(hexString: "#08121E")
+        } else {
+            nameTextField.borderActiveColor = InValidMissingDataColor
+            nameTextField.borderInactiveColor = InValidMissingDataColor
+            nameTextField.textColor = InValidMissingDataColor
+        }
+    }
+    
+    @IBAction func tfAccEditDidEnd(_ sender: Any) {
+        
+    }
+    
+    
+    
+    @IBAction func tfNumberEditDidEnd(_ sender: Any) {
+        
+    }
+    
+    //MARK: TF Delegate
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        self.checkInputValue()
+        
+        return true
+    }
+    
     
     func updateBank() {
         
@@ -90,6 +162,15 @@ class UpdateWalletViewController: BaseViewController {
             self.showAlertView(title: "Thông báo", message: "Bạn chưa điền số tài khoản", okTitle: "Đồng ý", cancelTitle: nil)
             self.accTextField.becomeFirstResponder()
             return
+        }
+        
+        if let _ = self.missBank {
+            
+            if self.accTextField.textColor == InValidMissingDataColor || self.nameTextField.textColor == InValidMissingDataColor {
+                self.showToastWithMessage(message: "Vui lòng cập nhật thông tin mới chính xác!")
+                return
+            }
+            
         }
         
         

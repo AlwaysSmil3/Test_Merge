@@ -14,6 +14,8 @@ import CoreData
 import Fabric
 import Crashlytics
 
+//Cho optionalText trong tạo loan
+var optionalTextCount = 10
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -88,7 +88,6 @@ class ListWalletViewController: BaseViewController {
     
     /// Cho Loan - Xong mỗi bước là gửi api put cập nhật dữ liệu cho mỗi bước
     func loadListBank() {
-        self.handleLoadingView(isShow: true)
         
         APIClient.shared.getListBank(uId: DataManager.shared.userID)
             .done(on: DispatchQueue.main) { model in
@@ -107,10 +106,8 @@ class ListWalletViewController: BaseViewController {
                 self.noWalletLabel.isHidden = self.listWallet.count > 0
                 self.addBtn.isHidden = self.listWallet.count > 0
                 
-                self.handleLoadingView(isShow: false)
             }
             .catch { error in
-                self.handleLoadingView(isShow: false)
         }
     }
     
@@ -318,6 +315,12 @@ extension ListWalletViewController: UITableViewDataSource {
                 if let id = item.id {
                     if DataManager.shared.loanInfo.bankId > 0 && id == DataManager.shared.loanInfo.bankId {
                         cell?.borderView.layer.borderColor = MAIN_COLOR.cgColor
+                        
+                        if DataManager.shared.checkFieldIsMissing(key: "bank"), let missData = DataManager.shared.missingLoanData, let bank = missData.bank, let id = bank.id, id == item.id {
+                            //Cap nhat thong tin khong hop le
+                            cell?.borderView.layer.borderColor = UIColor.red.cgColor
+                        }
+                        
                         return cell!
                     }
                 }

@@ -11,7 +11,20 @@ import Foundation
 struct LoanInfo: Encodable {
     
     var userID: Int32
-    var loanCategoryID: Int16
+    var loanCategoryID: Int16 {
+        didSet {
+            guard self.loanCategoryID > 0 else { return }
+            if self.loanCategoryID == Loan_Student_Category_ID {
+                self.optionalText = [""]
+            } else {
+                self.optionalText = ["", ""]
+            }
+            
+        }
+    }
+    
+    
+    
     var amount: Int32
     var term: Int
     var status: Int
@@ -27,7 +40,7 @@ struct LoanInfo: Encodable {
     var nationalIdFrontImg: String
     var nationalIdBackImg: String
     
-    var optionalText: String
+    var optionalText: [String]
     var optionalMedia: [String]
     
     init() {
@@ -48,7 +61,8 @@ struct LoanInfo: Encodable {
         self.nationalIdFrontImg = ""
         self.nationalIdBackImg = ""
         
-        self.optionalText = ""
+        self.optionalText = []
+        
         self.optionalMedia = []
         self.userID = 0
     }

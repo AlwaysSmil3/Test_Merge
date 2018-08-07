@@ -103,7 +103,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOd-Oq-fam">
-                                                            <rect key="frame" x="40" y="11.5" width="207" height="20.5"/>
+                                                            <rect key="frame" x="40" y="12" width="207" height="20.5"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                             <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -112,7 +112,7 @@
                                                             <rect key="frame" x="8" y="14" width="16" height="16"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbL-7D-DhP">
-                                                            <rect key="frame" x="40" y="32" width="207" height="0.0"/>
+                                                            <rect key="frame" x="40" y="32.5" width="207" height="0.0"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                                             <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -228,7 +228,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hạng A" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="efk-fN-ikr">
-                                                            <rect key="frame" x="23" y="15.5" width="60" height="20.5"/>
+                                                            <rect key="frame" x="23" y="16" width="60" height="20.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="60" id="aqq-j8-ogb"/>
                                                             </constraints>
@@ -327,7 +327,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84R-Bj-sFP" customClass="AnimatableView" customModule="IBAnimatable">
-                                <rect key="frame" x="50" y="164" width="275" height="260.5"/>
+                                <rect key="frame" x="50" y="163.5" width="275" height="260.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lưu ý" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBi-7c-bf3">
                                         <rect key="frame" x="8" y="16" width="259" height="20"/>
@@ -343,7 +343,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpc-4z-U9Q">
-                                        <rect key="frame" x="46" y="165.5" width="26" height="26"/>
+                                        <rect key="frame" x="46.5" y="165.5" width="26" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="tpc-4z-U9Q" secondAttribute="height" multiplier="1:1" id="Dd2-I9-6LS"/>
                                             <constraint firstAttribute="width" constant="26" id="ffw-Mm-GSe"/>
@@ -355,7 +355,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Không hiện lại nữa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AB1-a5-ecz">
-                                        <rect key="frame" x="80" y="169.5" width="115.5" height="18"/>
+                                        <rect key="frame" x="80.5" y="169.5" width="115.5" height="18"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
                                         <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>

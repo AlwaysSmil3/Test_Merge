@@ -56,7 +56,7 @@ public struct BrowwerActiveLoan {
   public var term: Int?
   public var amount: Int32?
   public var loanId: Int32?
-  public var optionalText: String?
+  public var optionalText: [String]?
   public var userInfo: BrowwerUserInfo?
   public var loanCategoryId: Int16?
   public var loanCategory: LoanCategories?
@@ -102,7 +102,9 @@ public struct BrowwerActiveLoan {
     term = json[SerializationKeys.term].int
     amount = json[SerializationKeys.amount].int32
     loanId = json[SerializationKeys.loanId].int32
-    optionalText = json[SerializationKeys.optionalText].string
+    //optionalText = json[SerializationKeys.optionalText].string
+    if let items = json[SerializationKeys.optionalText].array { optionalText = items.map { $0.stringValue } }
+    
     userInfo = BrowwerUserInfo(json: json[SerializationKeys.userInfo])
     loanCategoryId = json[SerializationKeys.loanCategoryId].int16
     loanCategory = LoanCategories(json: json[SerializationKeys.loanCategory])

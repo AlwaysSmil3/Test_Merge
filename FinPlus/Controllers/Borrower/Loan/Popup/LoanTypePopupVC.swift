@@ -20,6 +20,7 @@ enum TypePopup: Int {
     case Job // Công việc
     case JobPosition // chức vụ
     case Strength // Học lực
+    case AcademicLevel // Trinh độ học vấn
 }
 
 class LoanTypePopupVC: BasePopup {
@@ -106,6 +107,10 @@ class LoanTypePopupVC: BasePopup {
             
             break
             
+        case .AcademicLevel:
+            
+            break
+            
         }
         
     }
@@ -141,6 +146,9 @@ class LoanTypePopupVC: BasePopup {
                 break
             case .Strength:
                 
+                break
+                
+            case .AcademicLevel:
                 break
             }
         }

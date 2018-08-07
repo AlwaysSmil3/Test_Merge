@@ -17,6 +17,12 @@ struct LoanJobInfo: Encodable {
     var salary: Int32
     var companyPhoneNumber: String
     
+    var studentId: String
+    var strength: Int
+    var academicLevel: Int
+    var experienceYear: Float
+    
+    
     var address: Address
     
     init() {
@@ -28,6 +34,11 @@ struct LoanJobInfo: Encodable {
         self.companyPhoneNumber = ""
         self.address = Address()
         
+        self.studentId = ""
+        self.strength = 0
+        self.academicLevel = 0
+        self.experienceYear = 0
+        
     }
     
     enum CodingKeys: String, CodingKey {
@@ -38,6 +49,10 @@ struct LoanJobInfo: Encodable {
         case salary
         case companyPhoneNumber
         case address
+        case strength
+        case academicLevel
+        case experienceYear
+        case studentId
     }
     
     func encode(to encoder: Encoder) throws {
@@ -49,6 +64,13 @@ struct LoanJobInfo: Encodable {
         try container.encode(salary, forKey: .salary)
         try container.encode(companyPhoneNumber, forKey: .companyPhoneNumber)
         try container.encode(address, forKey: .address)
+    
+        try container.encode(strength, forKey: .strength)
+        try container.encode(studentId, forKey: .studentId)
+        
+        try container.encode(academicLevel, forKey: .academicLevel)
+        try container.encode(experienceYear, forKey: .experienceYear)
+        
         
     }
     

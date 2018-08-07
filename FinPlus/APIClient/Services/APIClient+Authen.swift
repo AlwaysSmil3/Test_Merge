@@ -38,7 +38,8 @@ extension APIClient {
             "phoneNumber": phoneNumber,
             "uuid": id,
             "deviceType": API_DEVICE_TYPE_OS,
-            "password": pass
+            "password": pass,
+            "appType": 0
         ]
         
         return Promise<AuthenticationBase> { seal in

@@ -10,7 +10,7 @@ import Foundation
 import JWT
 
 
-class EnterPhoneNumberAuthenVC: BaseViewController {
+class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
     
     @IBOutlet var tfPhoneNumber: UITextField!
     
@@ -60,6 +60,13 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
                 guard let strongSelf = self else { return }
                 
                 DataManager.shared.userID = model.data?.id ?? 0
+                DataManager.shared.currentAccount = phone!
+                
+                if let type = model.data?.accountType, type == "1" {
+                    //Investor
+                    self?.confirmGotoAppInvestor()
+                    return
+                }
                 
                 switch model.returnCode {
                 case 0:
@@ -72,6 +79,7 @@ class EnterPhoneNumberAuthenVC: BaseViewController {
                 default :
                     // new account
                     DataManager.shared.currentAccount = phone!
+                    
                     // save token
                     if let data = model.data {
                         if let token = data.accessToken {
