@@ -1,5 +1,5 @@
 //
-//  RateInfo.swift
+//  Relationships.swift
 //
 //  Created by Cao Van Hai on 8/7/18
 //  Copyright (c) . All rights reserved.
@@ -8,17 +8,17 @@
 import Foundation
 import SwiftyJSON
 
-public struct RateInfo {
+public struct Relationships {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
+    static let id = "id"
     static let name = "name"
-    static let rate = "rate"
   }
 
   // MARK: Properties
+  public var id: Int?
   public var name: String?
-  public var rate: Int?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -33,8 +33,8 @@ public struct RateInfo {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
+    id = json[SerializationKeys.id].int
     name = json[SerializationKeys.name].string
-    rate = json[SerializationKeys.rate].int
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -42,8 +42,8 @@ public struct RateInfo {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
+    if let value = id { dictionary[SerializationKeys.id] = value }
     if let value = name { dictionary[SerializationKeys.name] = value }
-    if let value = rate { dictionary[SerializationKeys.rate] = value }
     return dictionary
   }
 

@@ -995,6 +995,17 @@
                                                     <constraint firstItem="kV7-im-cff" firstAttribute="leading" secondItem="yd6-s5-O1G" secondAttribute="leading" id="wyc-X1-uQG"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hI-sB-1sG">
+                                                <rect key="frame" x="345" y="12" width="30" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="78H-ii-Np5"/>
+                                                    <constraint firstAttribute="height" constant="26" id="aOm-OE-iXL"/>
+                                                </constraints>
+                                                <state key="normal" image="ic_option"/>
+                                                <connections>
+                                                    <action selector="btnLogoutTapped:" destination="nJo-AF-Fq5" eventType="touchUpInside" id="Yvg-g8-I5I"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1004,6 +1015,7 @@
                                             <constraint firstItem="Ds5-Nf-wbN" firstAttribute="trailing" secondItem="dtI-NQ-Aqp" secondAttribute="trailing" id="FaH-b1-o4Z"/>
                                             <constraint firstItem="ei3-Hx-oMg" firstAttribute="leading" secondItem="TAs-fK-tf6" secondAttribute="leading" id="FoK-t4-lWB"/>
                                             <constraint firstItem="dtI-NQ-Aqp" firstAttribute="leading" secondItem="TAs-fK-tf6" secondAttribute="leading" id="HE0-1w-cgl"/>
+                                            <constraint firstItem="2hI-sB-1sG" firstAttribute="top" secondItem="4ED-P3-2z0" secondAttribute="top" constant="12" id="Igd-AI-eia"/>
                                             <constraint firstItem="TAs-fK-tf6" firstAttribute="leading" secondItem="4ED-P3-2z0" secondAttribute="leading" constant="32" id="Jva-9U-h0y"/>
                                             <constraint firstItem="ei3-Hx-oMg" firstAttribute="top" secondItem="TAs-fK-tf6" secondAttribute="bottom" constant="40" id="KnM-sM-oLu"/>
                                             <constraint firstItem="yd6-s5-O1G" firstAttribute="leading" secondItem="Ds5-Nf-wbN" secondAttribute="leading" id="LKd-26-Gyz"/>
@@ -1018,6 +1030,7 @@
                                             <constraint firstItem="aqm-gv-bVK" firstAttribute="trailing" secondItem="dtI-NQ-Aqp" secondAttribute="trailing" id="edo-55-QRg"/>
                                             <constraint firstItem="yd6-s5-O1G" firstAttribute="top" secondItem="Ds5-Nf-wbN" secondAttribute="bottom" constant="93" id="ey9-Um-PX2"/>
                                             <constraint firstItem="dtI-NQ-Aqp" firstAttribute="top" secondItem="ei3-Hx-oMg" secondAttribute="bottom" constant="8" id="inM-W5-PvA"/>
+                                            <constraint firstAttribute="trailing" secondItem="2hI-sB-1sG" secondAttribute="trailing" id="yQK-k1-Rbg"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1207,6 +1220,7 @@
         <image name="ic_growth" width="55" height="55"/>
         <image name="ic_growth1" width="55" height="55"/>
         <image name="ic_logo" width="109" height="14"/>
+        <image name="ic_option" width="3" height="13"/>
         <image name="ic_show_pass" width="16" height="10"/>
         <image name="img_bg_growth1" width="172" height="291"/>
         <image name="img_bg_verify_fb" width="375" height="667"/>

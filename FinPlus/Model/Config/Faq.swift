@@ -1,7 +1,7 @@
 //
 //  Faq.swift
 //
-//  Created by Lionel Vũ Thành Đô on 6/13/18
+//  Created by Cao Van Hai on 8/7/18
 //  Copyright (c) . All rights reserved.
 //
 

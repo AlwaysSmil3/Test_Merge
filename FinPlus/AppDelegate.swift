@@ -86,8 +86,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         print("userInfo \(userInfo)")
+        self.handleNotificationFireBase(userInfo: userInfo)
+        
     }
     
+    
+    func handleNotificationFireBase(userInfo: [AnyHashable : Any]) {
+        guard let aps = userInfo["aps"] as? NSDictionary, let alert = aps["alert"] as? NSDictionary else {
+            return
+        }
+        
+        if let body = alert["body"] as? String, let title = alert["title"] as? String {
+            
+            if let topVC = UIApplication.shared.topViewController() {
+                topVC.showAlertView(title: title, message: body, okTitle: "OK", cancelTitle: nil)
+            }
+            
+        }
+        
+    }
     
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -261,8 +278,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         // Print message ID.
         
         // Print full message.
+        //Khi dang mở app
         print(userInfo)
-        
+        self.handleNotificationFireBase(userInfo: userInfo)
         
         // Change this to your preferred presentation option
         completionHandler([])
@@ -278,13 +296,21 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 //        }
         
         // Print full message.
+        //Khi app đang dứoi background
         print(userInfo)
+        self.handleNotificationFireBase(userInfo: userInfo)
         
         completionHandler()
     }
     
     
+
+    
+    
+    
 }
+
+
 
 
 
