@@ -24,7 +24,7 @@ struct LoanInfo: Encodable {
     }
     
     
-    
+    var intRate: Float
     var amount: Int32
     var term: Int
     var status: Int
@@ -65,6 +65,7 @@ struct LoanInfo: Encodable {
         
         self.optionalMedia = []
         self.userID = 0
+        self.intRate = 0
     }
     
     enum CodingKeys: String, CodingKey {
@@ -83,6 +84,7 @@ struct LoanInfo: Encodable {
         case optionalText
         case optionalMedia
         case userId
+        case intRate
     }
     
     func encode(to encoder: Encoder) throws {
@@ -102,6 +104,7 @@ struct LoanInfo: Encodable {
         try container.encode(optionalText, forKey: .optionalText)
         try container.encode(optionalMedia, forKey: .optionalMedia)
         try container.encode(userID, forKey: .userId)
+        try container.encode(intRate, forKey: .intRate)
         
     }
     

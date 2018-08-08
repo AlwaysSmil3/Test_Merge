@@ -59,6 +59,7 @@ class DataManager {
         didSet {
             if let i = self.currentIndexCategoriesSelectedPopup {
                 self.loanInfo.loanCategoryID = Int16(i + 1)
+                self.updateIntRate()
             }
         }
     }
@@ -158,6 +159,14 @@ class DataManager {
     }
     
     
+    
+    /// Update IntRate
+    func updateIntRate() {
+        guard let cate = self.getCurrentCategory() else { return }
+        DataManager.shared.loanInfo.intRate = Float(cate.interestRate ?? 0)
+    }
+    
+    
     /// <#Description#>
     func mapDataBrowwerAndLoan() {
         
@@ -166,6 +175,10 @@ class DataManager {
         if let cateID = activeLoan.loanCategoryId, cateID > 0 {
             DataManager.shared.loanInfo.loanCategoryID = cateID
             self.currentIndexCategoriesSelectedPopup = Int(cateID) - 1
+        }
+        
+        if let intRate = activeLoan.inRate {
+            DataManager.shared.loanInfo.intRate = intRate
         }
         
         if let status = activeLoan.status {
@@ -366,17 +379,17 @@ class DataManager {
                 missingListTitle.append("Nghề nghiệp")
             }
             
-            if let value = jobInfo.position, value.length() > 0 {
+            if let _ = jobInfo.position {
                 missingListKey.append("position")
                 missingListTitle.append("Cấp bậc")
             }
             
-            if let strength = jobInfo.strength, strength > 0 {
+            if let _ = jobInfo.strength {
                 missingListKey.append("strength")
                 missingListTitle.append("Học lực")
             }
             
-            if let ace = jobInfo.academicLevel, ace > 0 {
+            if let _ = jobInfo.academicLevel {
                 missingListKey.append("academicLevel")
                 missingListTitle.append("Trình độ học vấn")
             }
