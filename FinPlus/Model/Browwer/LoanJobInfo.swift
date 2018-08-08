@@ -12,7 +12,7 @@ struct LoanJobInfo: Encodable {
     
     var jobType: Int
     var jobTitle: String
-    var position: String
+    var position: Int
     var company: String
     var salary: Int32
     var companyPhoneNumber: String
@@ -26,17 +26,17 @@ struct LoanJobInfo: Encodable {
     var address: Address
     
     init() {
-        self.jobType = 0
+        self.jobType = -1
         self.jobTitle = ""
-        self.position = ""
+        self.position = -1
         self.company = ""
         self.salary = 0
         self.companyPhoneNumber = ""
         self.address = Address()
         
         self.studentId = ""
-        self.strength = 0
-        self.academicLevel = 0
+        self.strength = -1
+        self.academicLevel = -1
         self.experienceYear = 0
         
     }

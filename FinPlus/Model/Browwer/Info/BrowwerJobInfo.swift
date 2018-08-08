@@ -26,7 +26,7 @@ public struct BrowwerJobInfo {
   }
 
   // MARK: Properties
-  public var position: String?
+  public var position: Int?
   public var companyPhoneNumber: String?
   public var salary: Int?
   public var company: String?
@@ -51,7 +51,7 @@ public struct BrowwerJobInfo {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    position = json[SerializationKeys.position].string
+    position = json[SerializationKeys.position].int
     companyPhoneNumber = json[SerializationKeys.companyPhoneNumber].string
     salary = json[SerializationKeys.salary].int
     company = json[SerializationKeys.company].string

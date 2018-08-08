@@ -74,6 +74,12 @@ class ListWalletViewController: BaseViewController {
             self.navigationController?.isNavigationBarHidden = false
         }
         
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         self.loadListBank()
     }
     
