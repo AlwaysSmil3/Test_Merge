@@ -76,7 +76,7 @@ class LoanStateViewController: UIViewController {
         
         self.getLoanCategories()
         
-        
+        self.handleDataNoti()
 //        //Map DataLoan
 //        DataManager.shared.mapDataBrowwerAndLoan()
         

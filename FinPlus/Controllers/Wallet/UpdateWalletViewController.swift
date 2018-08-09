@@ -85,8 +85,6 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
                     }
                     
                 }
-                
-                
             }
             
         }

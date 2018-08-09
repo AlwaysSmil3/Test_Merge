@@ -24,6 +24,31 @@ extension UIViewController {
         toast.show()
     }
     
+    func handleDataNoti() {
+        guard let alert = DataManager.shared.notificationData else { return }
+        if let body = alert["body"] as? String, let title = alert["title"] as? String {
+            DataManager.shared.notificationData = nil
+            self.showAlertView(title: title, message: body, okTitle: "OK", cancelTitle: nil)
+        }
+    }
+    
+    
+    func reLoadStatusLoanVC() {
+        //Lay thong tin nguoi dung
+        APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
+            .done(on: DispatchQueue.main) { model in
+                DataManager.shared.browwerInfo = model
+                
+                let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+                if let window = UIApplication.shared.delegate?.window, let win = window {
+                    win.rootViewController = tabbarVC
+                }
+                
+            }
+            .catch { error in
+                
+        }
+    }
     
     //MARK:----------------- Show Alert View----------------------
     func showAlertView(title: String, message: String, okTitle: String?, cancelTitle: String?, completion:((_ isPressedOK: Bool) -> Swift.Void)? = nil) {

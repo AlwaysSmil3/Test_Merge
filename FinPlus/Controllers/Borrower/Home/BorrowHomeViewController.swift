@@ -56,6 +56,7 @@ class BorrowHomeViewController: BaseViewController {
 
         self.setupUI()
         
+        self.handleDataNoti()
     }
     
     override func viewWillAppear(_ animated: Bool) {
