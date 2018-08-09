@@ -84,7 +84,8 @@ class DataManager {
     //List Title missing Loan Data
     var listKeyMissingLoanTitle: [String]?
     
-
+    //Data when push notification
+    var notificationData: NSDictionary?
     
     /// Get Data from JSON
     func getDataLoanFromJSON() {

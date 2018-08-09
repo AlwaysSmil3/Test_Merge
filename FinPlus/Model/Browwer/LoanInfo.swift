@@ -14,6 +14,7 @@ struct LoanInfo: Encodable {
     var loanCategoryID: Int16 {
         didSet {
             guard self.loanCategoryID > 0 else { return }
+            if self.optionalText.count > 0, self.optionalText[0].length() > 0 { return }
             if self.loanCategoryID == Loan_Student_Category_ID {
                 self.optionalText = [""]
             } else {

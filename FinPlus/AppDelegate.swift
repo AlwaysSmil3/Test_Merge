@@ -96,11 +96,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
         
-        if let body = alert["body"] as? String, let title = alert["title"] as? String {
+        if let body = alert["body"] as? String {
             
-            if let topVC = UIApplication.shared.topViewController() {
-                topVC.showAlertView(title: title, message: body, okTitle: "OK", cancelTitle: nil)
+            var title = "Thông báo"
+            if let t = alert["title"] as? String {
+                title = t
             }
+            
+            guard let topVC = UIApplication.shared.topViewController() else { return }
+            
+            if let _ = topVC as? LoginViewController {
+                DataManager.shared.notificationData = alert
+                return
+            }
+            
+            if let tabbar = topVC as? BorrowerTabBarController, let currentNavi = tabbar.selectedViewController as? UINavigationController, let currentVC = currentNavi.topViewController as? LoanStateViewController  {
+                
+                currentVC.showAlertView(title: title, message: body, okTitle: "OK", cancelTitle: nil) { (status) in
+                    currentVC.reLoadStatusLoanVC()
+                }
+                
+                return
+            }
+            
+            topVC.showAlertView(title: title, message: body, okTitle: "OK", cancelTitle: nil)
             
         }
         
