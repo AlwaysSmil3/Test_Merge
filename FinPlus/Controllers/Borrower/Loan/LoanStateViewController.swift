@@ -464,7 +464,7 @@ class LoanStateViewController: UIViewController {
                     ],
                 ]
                 
-            case .FILLED?, .CONTRACT_READY? :
+            case .FILLED?:
                 //Đơn vay huy động đủ tiền, chờ ký hợp đồng
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -488,6 +488,41 @@ class LoanStateViewController: UIViewController {
                     [
                         "type": HeaderCellType.TextType,
                         "text": "Hãy ấn nút 'Giải ngân' để ký hợp đồng và lấy tiền ngay.",
+                        "subType": TextCellType.DesType,
+                        ],
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Giải ngân",
+                        "subType": ButtonCellType.FillType,
+                        "target": "disburse_expried"
+                    ],
+                ]
+                
+            case .CONTRACT_READY? :
+                //Số tiền huy động > 50% và hết thời gian huy động
+                dataSource = [
+                    LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
+                    LoanSummaryModel(name: "Ngày duyệt đơn", value: dateString, attributed: nil),
+                    LoanSummaryModel(name: "Số tiền vay được duyệt", value: amountString, attributed: NSAttributedString(string: amountString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Số tiền huy động được", value: funded, attributed: NSAttributedString(string: funded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
+                    LoanSummaryModel(name: "Ngày huy động còn lại", value: "0 Ngày", attributed: NSAttributedString(string: "0 Ngày", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Thời hạn vay được duyệt", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Trạng thái", value: "Hết thời gian huy động", attributed: NSAttributedString(string: "Hết thời gian huy động", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Lãi suất", value: "\(rate)%/năm", attributed: nil),
+                    LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFeeFunded) + "đ", attributed: nil),
+                    LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
+                ]
+                
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Đã hết thời gian huy động, Số tiền huy động được:\(funded)",
+                        "subType": TextCellType.TitleType,
+                        ],
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Khoản vay của bạn đã hết thời gian huy động. Bạn có thể giải ngân số tiền huy động được.",
                         "subType": TextCellType.DesType,
                         ],
                     [
@@ -990,6 +1025,10 @@ class LoanStateViewController: UIViewController {
                 self.handleLoadingView(isShow: false)
                 
                 self.showGreenBtnMessage(title: "", message: "Đơn vay của bạn đã được xóa. Bạn có thể tạo một đơn mới.", okTitle: "ok", cancelTitle: nil, completion: { (okAction) in
+                    
+                    DataManager.shared.loanInfo.amount = 0
+                    DataManager.shared.loanInfo.term = 0
+                    
                     self.moveHome()
                     
                     

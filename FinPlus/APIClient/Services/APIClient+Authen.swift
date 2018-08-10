@@ -120,16 +120,27 @@ extension APIClient {
      
      Tên hiển thị trên facebook
      */
-    func updateInfoFromFacebook(phoneNumber: String, pass: String, accountType: Int, accessToken: String, avatar: String, displayName: String, investOtherInfo: InvestorRegisterModel? = nil) -> Promise<BrowwerInfo> {
+    func updateInfoFromFacebook(phoneNumber: String, pass: String, accountType: Int?, accessToken: String? = nil, avatar: String? = nil, displayName: String? = nil, investOtherInfo: InvestorRegisterModel? = nil) -> Promise<BrowwerInfo> {
         
-        let params: JSONDictionary = [
+        
+        var params: JSONDictionary = [
             "phoneNumber": phoneNumber,
             "password": pass,
-            "accountType": accountType,
-            "accessToken": accessToken,
-            "avatar": avatar,
-            "displayName": displayName
+            //"accessToken": accessToken,
+            //"avatar": avatar,
+            //"displayName": displayName
         ]
+        
+        if let type = accountType {
+            params = [
+                "phoneNumber": phoneNumber,
+                "password": pass,
+                "accountType": type,
+                //"accessToken": accessToken,
+                //"avatar": avatar,
+                //"displayName": displayName
+            ]
+        }
         
         return Promise<BrowwerInfo> { seal in
             
