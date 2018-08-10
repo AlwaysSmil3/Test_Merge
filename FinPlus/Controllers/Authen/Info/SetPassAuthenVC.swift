@@ -148,7 +148,8 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
         switch setPassOrResetPass {
         case .SetPass:
             self.setNewPasswordAPI(newPassword: self.tfPass?.text! ?? "")
-            self.pushToChoiceKindUserVC()
+            //self.pushToChoiceKindUserVC()
+            self.updateNewInfo()
             break
         case .ResetPass:
             self.resetPasswordAPI(newPassword: self.tfPass?.text! ?? "")
@@ -166,6 +167,18 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
             DataManager.shared.currentAccount = newPhone
         }
     }
+    
+    private func updateNewInfo() {
+        APIClient.shared.updateInfoFromFacebook(phoneNumber: DataManager.shared.currentAccount, pass: self.tfPass?.text! ?? "", accountType: nil)
+            .done(on: DispatchQueue.main) { [weak self]data in
+                DataManager.shared.userID = data.id!
+                //Lay thong tin nguoi dung
+                self?.pushToChoiceKindUserVC()
+                
+            }
+            .catch { error in }
+    }
+    
 
     func resetPasswordAPI(newPassword: String) {
         // call to reset password API (update user data)

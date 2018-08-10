@@ -98,6 +98,32 @@ class ChoiceKindUserVC: BaseViewController {
         }
     }
     
+    private func updateUserInfo() {
+        APIClient.shared.updateInfoFromFacebook(phoneNumber: DataManager.shared.currentAccount, pass: pw, accountType: self.accountType!.rawValue)
+            .done(on: DispatchQueue.main) { [weak self]data in
+                
+                DataManager.shared.userID = data.id!
+                
+                //Lay thong tin nguoi dung
+                APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
+                    .done(on: DispatchQueue.main) { model in
+                        DataManager.shared.browwerInfo = model
+                        
+                        let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+                        
+                        self?.navigationController?.present(tabbarVC, animated: true, completion: {
+                            
+                        })
+                    }
+                    .catch { error in }
+                
+            }
+            .catch { error in
+                
+        }
+        
+    }
+    
     // MARK Actions
     
     @IBAction func btnInvestorSelectedTapped(_ sender: Any) {
@@ -115,6 +141,7 @@ class ChoiceKindUserVC: BaseViewController {
 
     }
     
+    
     @IBAction func btnBrowwerSelectedTapped(_ sender: Any) {
         
         if self.accountType == nil {
@@ -124,13 +151,8 @@ class ChoiceKindUserVC: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Bạn chắc chắn muốn trở thành người vay tiền?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
                 if status {
-                    let verifyFBVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyFacebookVC") as! VerifyFacebookVC
+                    self.updateUserInfo()
                     
-                    verifyFBVC.pw = self.pw
-                    verifyFBVC.accountType = self.accountType
-                    
-                    
-                    self.navigationController?.pushViewController(verifyFBVC, animated: true)
                 }
             })
         }

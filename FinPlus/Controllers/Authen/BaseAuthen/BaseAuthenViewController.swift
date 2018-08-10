@@ -77,6 +77,10 @@ class BaseAuthenViewController: BaseViewController {
                                 self?.accountType = .Investor
                                 return
                             }
+                        } else {
+                            //Chua chọn loại user
+                            self?.pushToChoiceKindUserVC()
+                            return
                         }
                         
                     }
