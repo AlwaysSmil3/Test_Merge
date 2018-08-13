@@ -225,11 +225,21 @@
                         "title": "Mô tả khoản vay",
                         "placeholder": "Hãy nói vài dòng về khoản vay của bạn như mục đích cụ thể, mong muốn, kế hoạch sử dụng khoản vay….",
                         "multiple_line": true,
+                        "is_required" : true,
                         "keyboard": "default"
                     },
                     {
                         "id": "optionalMedia",
-                        "index": 1,
+                        "index": 2,
+                        "array_index": 0,
+                        "type":"multiple_file",
+                        "is_required" : true,
+                        "title": "Ảnh chụp thẻ sinh viên và bảng điểm kỳ gần nhất"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 3,
+                        "array_index": 1,
                         "type":"multiple_file",
                         "title": "Ảnh chụp thẻ sinh viên và bảng điểm kỳ gần nhất"
                     }
@@ -559,26 +569,60 @@
                         "index": 1,
                         "array_index": 0,
                         "type":"text_box",
-                        "title": "Giá trị dự kiến điện thoại định mua",
-                        "placeholder": "Nhập giá trị dự kiến điện thoại định mua",
+                        "title": "Dòng điện thoại dự kiến mua",
+                        "placeholder": "Nhập dòng điện thoại dự kiến mua",
                         "multiple_line": false,
-                        "keyboard": "money"
+                        "is_required" : true,
+                        "keyboard": "default"
                     },
                     {
                         "id": "optionalText",
                         "array_index": 1,
                         "index": 2,
                         "type":"text_box",
-                        "title": "Nơi dự kiến mua hàng",
-                        "placeholder": "Nhập địa chỉ nơi dự kiến mua hàng",
+                        "title": "Nơi dự kiến mua",
+                        "placeholder": "Nhập địa chỉ nơi dự kiến mua",
                         "multiple_line": true,
+                        "is_required" : true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalText",
+                        "index": 3,
+                        "array_index": 2,
+                        "type":"text_box",
+                        "title": "Giá trị điện thoại dự kiến định mua",
+                        "placeholder": "Nhập giá trị điện thoại dự kiến định mua",
+                        "multiple_line": false,
+                        "is_required" : true,
+                        "keyboard": "money"
+                    },
+                    {
+                        "id": "optionalText",
+                        "array_index": 3,
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Mô tả khoản vay",
+                        "placeholder": "Hãy nói vài dòng về mục đích, kế hoạch sử dụng chiếc điện thoại bạn định mua...",
+                        "multiple_line": true,
+                        "is_required" : true,
                         "keyboard": "default"
                     },
                     {
                         "id": "optionalMedia",
-                        "index": 3,
+                        "index": 5,
+                        "array_index": 0,
                         "type":"multiple_file",
-                        "title": "Ảnh chụp bạn tại nơi làm việc\nẢnh chụp bảng lương\nẢnh chụp đăng ký tự doanh(nếu có)\nẢnh chụp loại điện thoại dự kiến mua"
+                        "is_required" : true,
+                        "title": "Ảnh chứng minh thu nhập\n(VD: Bảng lương, phiếu chi lương, bảng kê doanh thu...)"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 6,
+                        "array_index": 1,
+                        "type":"multiple_file",
+                        "is_required" : true,
+                        "title": "Ảnh chụp bạn tại nơi làm việc\n(Note: Yêu cầu rõ mặt, và thể hiện rõ nơi bạn đang làm)"
                     }
                 ]
             }
@@ -902,31 +946,65 @@
                 "id": null,
                 "fields": [
                     {
-                    "id": "optionalText",
-                    "array_index": 0,
-                    "index": 1,
-                    "type":"text_box",
-                    "title": "Giá trị dự kiến xe máy dự định mua",
-                    "placeholder": "Điền giá trị dự kiến xe máy dự định mua",
-                    "multiple_line": false,
-                    "keyboard": "money"
-                },
-                {
-                    "id": "optionalText",
-                    "array_index": 1,
-                    "index": 2,
-                    "type":"text_box",
-                    "title": "Nơi dự kiến mua hàng",
-                    "placeholder": "Điền nơi dự kiến mua hàng",
-                    "multiple_line": true,
-                    "keyboard": "default"
-                },
-                {
-                    "id": "optionalMedia",
-                    "index": 3,
-                    "type":"multiple_file",
-                    "title": "Ảnh chụp bạn tại nơi làm việc\nẢnh chụp bảng lương\nẢnh chụp đăng ký tự doanh(nếu có)\nẢnh chụp dòng xe máy dự kiến định mua"
-                }
+                        "id": "optionalText",
+                        "index": 1,
+                        "array_index": 0,
+                        "type":"text_box",
+                        "title": "Dòng xe dự kiến mua",
+                        "placeholder": "Nhập xe thoại dự kiến mua",
+                        "multiple_line": false,
+                        "is_required" : true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalText",
+                        "array_index": 1,
+                        "index": 2,
+                        "type":"text_box",
+                        "title": "Nơi dự kiến mua",
+                        "placeholder": "Nhập địa chỉ nơi dự kiến mua",
+                        "multiple_line": true,
+                        "is_required" : true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalText",
+                        "index": 3,
+                        "array_index": 2,
+                        "type":"text_box",
+                        "title": "Giá trị xe dự kiến định mua",
+                        "placeholder": "Nhập giá xe trị dự kiến định mua",
+                        "multiple_line": false,
+                        "is_required" : true,
+                        "keyboard": "money"
+                    },
+                    {
+                        "id": "optionalText",
+                        "array_index": 3,
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Mô tả khoản vay",
+                        "placeholder": "Hãy nói vài dòng về mục đích, kế hoạch sử dụng chiếu xe máy bạn định mua....",
+                        "multiple_line": true,
+                        "is_required" : true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 5,
+                        "array_index": 0,
+                        "type":"multiple_file",
+                        "is_required" : true,
+                        "title": "Ảnh chứng minh thu nhập\n(VD: Bảng lương, phiếu chi lương, bảng kê doanh thu...)"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 6,
+                        "array_index": 1,
+                        "type":"multiple_file",
+                        "is_required" : true,
+                        "title": "Ảnh chụp bạn tại nơi làm việc\n(Note: Yêu cầu rõ mặt, và thể hiện rõ nơi bạn đang làm)"
+                    }
             ]
             }
         ]
@@ -1253,9 +1331,10 @@
                     "array_index": 0,
                     "index": 1,
                     "type":"text_box",
-                    "title": "Kế hoạch sử dụng cho đám cưới",
-                    "placeholder": "Nêu rõ kế hoạch sử dụng cho đám cưới",
-                    "multiple_line": true,
+                    "title": "Họ và tên vợ/chồng",
+                    "placeholder": "Họ và tên vợ/chồng",
+                    "multiple_line": false,
+                    "is_required":true,
                     "keyboard": "default"
                 },
                 {
@@ -1263,16 +1342,76 @@
                     "array_index": 1,
                     "index": 2,
                     "type":"text_box",
-                    "title": "Thông tin của vợ hoặc chồng",
-                    "placeholder": "Tên\nSố chứng mình thư\nSố điện thoại\nNghề nghiệp, nơi làm việc\nĐịa chỉ facebook",
+                    "title": "Số điện thoại vợ/chồng",
+                    "placeholder": "Số điện thoại vợ/chồng",
+                    "multiple_line": false,
+                    "is_required":true,
+                    "keyboard": "default"
+                },
+                {
+                    "id": "optionalText",
+                    "array_index": 2,
+                    "index": 3,
+                    "type":"text_box",
+                    "title": "Nghề nghiệp của vợ/chồng",
+                    "placeholder": "Nghề nghiệp của vợ/chồng",
+                    "multiple_line": false,
+                    "is_required":true,
+                    "keyboard": "default"
+                },
+                {
+                    "id": "optionalText",
+                    "array_index": 3,
+                    "index": 4,
+                    "type":"text_box",
+                    "title": "Nơi làm việc của vợ/chồng",
+                    "placeholder": "Nơi làm việc của vợ/chồng",
+                    "multiple_line": false,
+                    "is_required":true,
+                    "keyboard": "default"
+                },
+                {
+                    "id": "optionalText",
+                    "array_index": 4,
+                    "index": 5,
+                    "type":"text_box",
+                    "title": "Mô tả khoản vay",
+                    "placeholder": "Hãy nói vài dòng về khoản vay của bạn như mục đích cụ thể, mong muốn, kế hoạch sử dụng khoản vay",
                     "multiple_line": true,
+                    "is_required":true,
                     "keyboard": "default"
                 },
                 {
                     "id": "optionalMedia",
-                    "index": 3,
+                    "index": 6,
+                    "array_index": 0,
                     "type":"multiple_file",
-                    "title": "Ảnh chụp bạn tại nơi làm việc\nẢnh chụp bảng lương\nẢnh chụp đăng ký tự doanh(nếu có)\nẢnh giấy đăng ký kết hôn(nếu có)"
+                    "is_required" : true,
+                    "title": "Ảnh chứng minh thu nhập\n(VD: Bảng lương, phiếu chi lương, bảng kê doanh thu...)"
+                },
+                {
+                    "id": "optionalMedia",
+                    "index": 7,
+                    "array_index": 1,
+                    "type":"multiple_file",
+                    "is_required" : true,
+                    "title": "Ảnh chụp bạn tại nơi làm việc\n(Note: Yêu cầu rõ mặt, và thể hiện rõ nơi bạn đang làm)"
+                },
+                {
+                    "id": "optionalMedia",
+                    "index": 8,
+                    "array_index": 2,
+                    "type":"multiple_file",
+                    "is_required" : false,
+                    "title": "Giấy đăng ký kết hôn"
+                },
+                {
+                    "id": "optionalMedia",
+                    "index": 9,
+                    "array_index": 3,
+                    "type":"multiple_file",
+                    "is_required" : false,
+                    "title": "Chụ ảnh CMND/ CCCD vợ/chồng"
                 }
             ]
             }
@@ -1600,9 +1739,10 @@
                         "array_index": 0,
                         "index": 1,
                         "type":"text_box",
-                        "title": "Mục đích sử dụng khoản vay",
-                        "placeholder": "Mô tả mục đích sử dụng khoản vay",
-                        "multiple_line": true,
+                        "title": "Họ và tên vợ/chồng",
+                        "placeholder": "Họ và tên vợ/chồng",
+                        "multiple_line": false,
+                        "is_required":true,
                         "keyboard": "default"
                     },
                     {
@@ -1610,16 +1750,76 @@
                         "array_index": 1,
                         "index": 2,
                         "type":"text_box",
-                        "title": "Thông tin của vợ hoặc chồng",
-                        "placeholder": "Tên\nSố chứng mình thư\nSố điện thoại\nNghề nghiệp, nơi làm việc\nĐịa chỉ facebook",
+                        "title": "Số điện thoại vợ/chồng",
+                        "placeholder": "Số điện thoại vợ/chồng",
+                        "multiple_line": false,
+                        "is_required":true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalText",
+                        "array_index": 2,
+                        "index": 3,
+                        "type":"text_box",
+                        "title": "Nghề nghiệp của vợ/chồng",
+                        "placeholder": "Nghề nghiệp của vợ/chồng",
+                        "multiple_line": false,
+                        "is_required":true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalText",
+                        "array_index": 3,
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Nơi làm việc của vợ/chồng",
+                        "placeholder": "Nơi làm việc của vợ/chồng",
+                        "multiple_line": false,
+                        "is_required":true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalText",
+                        "array_index": 4,
+                        "index": 5,
+                        "type":"text_box",
+                        "title": "Mô tả khoản vay",
+                        "placeholder": "Hãy nói vài dòng về khoản vay của bạn như mục đích cụ thể, mong muốn, kế hoạch sử dụng khoản vay",
                         "multiple_line": true,
+                        "is_required":true,
                         "keyboard": "default"
                     },
                     {
                         "id": "optionalMedia",
-                        "index": 3,
+                        "index": 6,
+                        "array_index": 0,
                         "type":"multiple_file",
-                        "title": "Ảnh chụp toàn thân\nẢnh chụp bảng lương\nẢnh chụp đăng ký tự doanh(nếu có)\nẢnh giấy đăng ký kết hôn(nếu có)"
+                        "is_required" : true,
+                        "title": "Ảnh chứng minh thu nhập\n(VD: Bảng lương, phiếu chi lương, bảng kê doanh thu...)"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 7,
+                        "array_index": 1,
+                        "type":"multiple_file",
+                        "is_required" : true,
+                        "title": "Ảnh chụp bạn tại nơi làm việc\n(Note: Yêu cầu rõ mặt, và thể hiện rõ nơi bạn đang làm)"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 8,
+                        "array_index": 2,
+                        "type":"multiple_file",
+                        "is_required" : true,
+                        "title": "Ảnh kết quả siêu âm thai trong vòng 3 tháng gần nhất (Yêu cầu thể hiện rõ họ tên bà bầu)"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 9,
+                        "array_index": 3,
+                        "type":"multiple_file",
+                        "is_required" : true,
+                        "title": "Ảnh chụp CMND/CCCD vợ/chồng"
                     }
             ]
             }
@@ -1634,7 +1834,7 @@
         "termMin": 30,
         "termMax": 360,
         "interestRate": 17,
-        "imageUrl": "/images/vaychoembe.png",
+        "imageUrl": "/images/vaychoebe.png",
         "builder" : [
             {
                 "index": 2,
@@ -1947,9 +2147,10 @@
                         "array_index": 0,
                         "index": 1,
                         "type":"text_box",
-                        "title": "Mục đích sử dụng khoản vay",
-                        "placeholder": "Mô tả mục đích sử dụng khoản vay",
-                        "multiple_line": true,
+                        "title": "Họ và tên vợ/chồng",
+                        "placeholder": "Họ và tên vợ/chồng",
+                        "multiple_line": false,
+                        "is_required":true,
                         "keyboard": "default"
                     },
                     {
@@ -1957,16 +2158,116 @@
                         "array_index": 1,
                         "index": 2,
                         "type":"text_box",
-                        "title": "Thông tin của vợ hoặc chồng",
-                        "placeholder": "Tên\nSố chứng mình thư\nSố điện thoại\nNghề nghiệp, nơi làm việc\nĐịa chỉ facebook",
+                        "title": "Số điện thoại vợ/chồng",
+                        "placeholder": "Số điện thoại vợ/chồng",
+                        "multiple_line": false,
+                        "is_required":true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalText",
+                        "array_index": 2,
+                        "index": 3,
+                        "type":"text_box",
+                        "title": "Nghề nghiệp của vợ/chồng",
+                        "placeholder": "Nghề nghiệp của vợ/chồng",
+                        "multiple_line": false,
+                        "is_required":true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalText",
+                        "array_index": 3,
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Nơi làm việc của vợ/chồng",
+                        "placeholder": "Nơi làm việc của vợ/chồng",
+                        "multiple_line": false,
+                        "is_required":true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalText",
+                        "array_index": 4,
+                        "index": 5,
+                        "type":"text_box",
+                        "title": "Họ và tên bé",
+                        "placeholder": "Họ và tên bé",
+                        "multiple_line": false,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalText",
+                        "array_index": 5,
+                        "index": 6,
+                        "type":"datetime",
+                        "title": "Ngày sinh của bé",
+                        "placeholder": "Ngày sinh của bé",
+                        "multiple_line": false,
+                        "show_data": true,
+                        "show_time": false
+                    },
+                    {
+                        "id": "optionalText",
+                        "array_index": 6,
+                        "index": 7,
+                        "type":"choice",
+                        "title": "Giới tính của bé",
+                        "placeholder": "Giới tính của bé",
+                        "multiple_line": false,
+                        "keyboard": "default",
+                        "data": [{
+                                "id": 0,
+                                "title": "Nam"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Nữ"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "optionalText",
+                        "array_index": 7,
+                        "index": 8,
+                        "type":"text_box",
+                        "title": "Mô tả khoản vay",
+                        "placeholder": "Hãy nói vài dòng về khoản vay của bạn như mục đích cụ thể, mong muốn, kế hoạch sử dụng khoản vay",
                         "multiple_line": true,
+                        "is_required":true,
                         "keyboard": "default"
                     },
                     {
                         "id": "optionalMedia",
-                        "index": 3,
+                        "index": 9,
+                        "array_index": 0,
                         "type":"multiple_file",
-                        "title": "Ảnh chụp bạn tại nơi làm việc\nẢnh chụp bảng lương\nẢnh chụp đăng ký tự doanh(nếu có)\nẢnh chụp giấy khai sinh gốc"
+                        "is_required" : true,
+                        "title": "Ảnh chứng minh thu nhập\n(VD: Bảng lương, phiếu chi lương, bảng kê doanh thu...)"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 10,
+                        "array_index": 1,
+                        "type":"multiple_file",
+                        "is_required" : true,
+                        "title": "Ảnh chụp bạn tại nơi làm việc\n(Note: Yêu cầu rõ mặt, và thể hiện rõ nơi bạn đang làm)"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 11,
+                        "array_index": 2,
+                        "type":"multiple_file",
+                        "is_required" : true,
+                        "title": "Ảnh giấy khai sinh của bé"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 9,
+                        "array_index": 3,
+                        "type":"multiple_file",
+                        "is_required" : false,
+                        "title": "Chụ ảnh CMND/ CCCD vợ/chồng"
                     }
             ]
             }
@@ -2291,29 +2592,63 @@
                 "fields": [
                     {
                         "id": "optionalText",
-                        "array_index": 0,
                         "index": 1,
+                        "array_index": 0,
                         "type":"text_box",
-                        "title": "Giá trị dự kiến đồ nội thất dự định mua",
-                        "placeholder": "Điền giá trị dự kiến đồ nội thất dự định mua",
+                        "title": "Sản phẩm dự kiến mua",
+                        "placeholder": "Sản phẩm dự kiến mua",
                         "multiple_line": false,
-                        "keyboard": "money"
+                        "is_required" : true,
+                        "keyboard": "default"
                     },
                     {
                         "id": "optionalText",
                         "array_index": 1,
                         "index": 2,
                         "type":"text_box",
-                        "title": "Nơi dự kiến mua hàng",
-                        "placeholder": "Điền nơi dự kiến mua hàng",
+                        "title": "Nơi dự kiến mua",
+                        "placeholder": "Nhập địa chỉ nơi dự kiến mua",
                         "multiple_line": true,
+                        "is_required" : true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalText",
+                        "index": 3,
+                        "array_index": 2,
+                        "type":"text_box",
+                        "title": "Giá dự kiến định mua",
+                        "placeholder": "Nhập giá dự kiến định mua",
+                        "multiple_line": false,
+                        "is_required" : true,
+                        "keyboard": "money"
+                    },
+                    {
+                        "id": "optionalText",
+                        "array_index": 3,
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Mô tả khoản vay",
+                        "placeholder": "Hãy nói vài dòng về khoản vay của bạn như mục đích cụ thể, mong muốn, kế hoạch sử dụng khoản vay....",
+                        "multiple_line": true,
+                        "is_required" : true,
                         "keyboard": "default"
                     },
                     {
                         "id": "optionalMedia",
-                        "index": 3,
+                        "index": 5,
+                        "array_index": 0,
                         "type":"multiple_file",
-                        "title": "Ảnh chụp bạn tại nơi làm việc\nẢnh chụp bảng lương\nẢnh chụp đăng ký tự doanh(nếu có)\nẢnh chụp đồ nội thất dự kiến định mua"
+                        "is_required" : true,
+                        "title": "Ảnh chứng minh thu nhập\n(VD: Bảng lương, phiếu chi lương, bảng kê doanh thu...)"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 6,
+                        "array_index": 1,
+                        "type":"multiple_file",
+                        "is_required" : true,
+                        "title": "Ảnh chụp bạn tại nơi làm việc\n(Note: Yêu cầu rõ mặt, và thể hiện rõ nơi bạn đang làm)"
                     }
             ]
             }
@@ -2975,29 +3310,64 @@
                 "fields": [
                     {
                         "id": "optionalText",
-                        "array_index": 0,
                         "index": 1,
+                        "array_index": 0,
                         "type":"text_box",
-                        "title": "Giá trị dự kiến sản phẩm dự định mua",
-                        "placeholder": "Điền giá trị dự kiến sản phẩm dự định mua",
+                        "title": "Mục đích vay cụ thể",
+                        "title": "Mục đích vay cụ thể",
+                        "placeholder": "Sản phẩm dự kiến mua",
                         "multiple_line": false,
-                        "keyboard": "money"
+                        "is_required" : true,
+                        "keyboard": "default"
                     },
                     {
                         "id": "optionalText",
                         "array_index": 1,
                         "index": 2,
                         "type":"text_box",
-                        "title": "Nơi dự kiến mua hàng",
-                        "placeholder": "Điền nơi dự kiến mua hàng",
+                        "title": "Nơi dự kiến mua",
+                        "placeholder": "Nhập địa chỉ nơi dự kiến mua",
                         "multiple_line": true,
+                        "is_required" : true,
+                        "keyboard": "default"
+                    },
+                    {
+                        "id": "optionalText",
+                        "index": 3,
+                        "array_index": 2,
+                        "type":"text_box",
+                        "title": "Giá dự kiến định mua",
+                        "placeholder": "Nhập giá dự kiến định mua",
+                        "multiple_line": false,
+                        "is_required" : true,
+                        "keyboard": "money"
+                    },
+                    {
+                        "id": "optionalText",
+                        "array_index": 3,
+                        "index": 4,
+                        "type":"text_box",
+                        "title": "Mô tả khoản vay",
+                        "placeholder": "Hãy nói vài dòng về khoản vay của bạn như mục đích cụ thể, mong muốn, kế hoạch sử dụng khoản vay....",
+                        "multiple_line": true,
+                        "is_required" : true,
                         "keyboard": "default"
                     },
                     {
                         "id": "optionalMedia",
-                        "index": 3,
+                        "index": 5,
+                        "array_index": 0,
                         "type":"multiple_file",
-                        "title": "Ảnh chụp bạn tại nơi làm việc\nẢnh chụp bảng lương\nẢnh chụp đăng ký tự doanh(nếu có)\nẢnh chụp sản phẩm dự kiến định mua"
+                        "is_required" : true,
+                        "title": "Ảnh chứng minh thu nhập\n(VD: Bảng lương, phiếu chi lương, bảng kê doanh thu...)"
+                    },
+                    {
+                        "id": "optionalMedia",
+                        "index": 6,
+                        "array_index": 1,
+                        "type":"multiple_file",
+                        "is_required" : true,
+                        "title": "Ảnh chụp bạn tại nơi làm việc\n(Note: Yêu cầu rõ mặt, và thể hiện rõ nơi bạn đang làm)"
                     }
                 ]
             }

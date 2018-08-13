@@ -23,6 +23,7 @@ public struct BrowwerJobInfo {
     static let academicLevel = "academicLevel"
     static let experienceYear = "experienceYear"
     static let studentId = "studentId"
+    static let positionTitle = "positionTitle"
   }
 
   // MARK: Properties
@@ -37,6 +38,7 @@ public struct BrowwerJobInfo {
     public var academicLevel: Int?
     public var experienceYear: Float?
     public var studentId: String?
+    public var positionTitle: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -62,7 +64,9 @@ public struct BrowwerJobInfo {
     academicLevel = json[SerializationKeys.academicLevel].int
     experienceYear = json[SerializationKeys.experienceYear].float
     studentId = json[SerializationKeys.studentId].string
+    positionTitle = json[SerializationKeys.positionTitle].string
   }
+    
 
   /// Generates description of the object in the form of a NSDictionary.
   ///
@@ -80,6 +84,7 @@ public struct BrowwerJobInfo {
     if let value = academicLevel { dictionary[SerializationKeys.academicLevel] = value }
     if let value = experienceYear { dictionary[SerializationKeys.experienceYear] = value }
     if let value = studentId { dictionary[SerializationKeys.studentId] = value }
+    if let value = positionTitle { dictionary[SerializationKeys.positionTitle] = value }
     return dictionary
   }
 

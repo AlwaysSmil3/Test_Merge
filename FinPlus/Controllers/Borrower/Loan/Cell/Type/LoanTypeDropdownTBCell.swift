@@ -88,6 +88,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             DataManager.shared.loanInfo.jobInfo.jobTitle = value
         } else if id.contains("position") {
             DataManager.shared.loanInfo.jobInfo.position = Int(data.id ?? 0)
+            DataManager.shared.loanInfo.jobInfo.positionTitle = value
         } else if id.contains("academicLevel") {
             DataManager.shared.loanInfo.jobInfo.academicLevel = Int(data.id ?? 0)
         } else if id.contains("strength") {
@@ -129,28 +130,23 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 self.updateInfoFalse(pre: title)
             }
             
-            
+            var value = ""
             var idInt = -1
-            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.position {
-                idInt = data
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.positionTitle, data.count > 0 {
+                value = data
+                idInt = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.position ?? 0
             }
             
-            if DataManager.shared.loanInfo.jobInfo.position >= 0 {
+            if DataManager.shared.loanInfo.jobInfo.positionTitle.count > 0 {
                 idInt = DataManager.shared.loanInfo.jobInfo.position
+                value = DataManager.shared.loanInfo.jobInfo.positionTitle
             }
             
-            if idInt >= 0 {
+            if value.count > 0 {
 
-                var value = ""
-                if let data = field_.data {
-                    for d in data {
-                        if Int(d.id ?? 0) == idInt {
-                            value = d.title ?? ""
-                        }
-                    }
-                }
                 self.lblValue?.text = value
                 DataManager.shared.loanInfo.jobInfo.position = idInt
+                DataManager.shared.loanInfo.jobInfo.positionTitle = value
             }
         } else if id.contains("birthday") {
             if DataManager.shared.checkFieldIsMissing(key: "birthday") {
