@@ -13,6 +13,7 @@ struct LoanJobInfo: Encodable {
     var jobType: Int
     var jobTitle: String
     var position: Int
+    var positionTitle: String
     var company: String
     var salary: Int32
     var companyPhoneNumber: String
@@ -29,6 +30,7 @@ struct LoanJobInfo: Encodable {
         self.jobType = -1
         self.jobTitle = ""
         self.position = -1
+        self.positionTitle = ""
         self.company = ""
         self.salary = 0
         self.companyPhoneNumber = ""
@@ -45,6 +47,7 @@ struct LoanJobInfo: Encodable {
         case jobType
         case jobTitle
         case position
+        case positionTitle
         case company
         case salary
         case companyPhoneNumber
@@ -60,6 +63,7 @@ struct LoanJobInfo: Encodable {
         try container.encode(jobType, forKey: .jobType)
         try container.encode(jobTitle, forKey: .jobTitle)
         try container.encode(position, forKey: .position)
+        try container.encode(positionTitle, forKey: .positionTitle)
         try container.encode(company, forKey: .company)
         try container.encode(salary, forKey: .salary)
         try container.encode(companyPhoneNumber, forKey: .companyPhoneNumber)

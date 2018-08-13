@@ -262,6 +262,10 @@ class DataManager {
                 DataManager.shared.loanInfo.jobInfo.position = position
             }
             
+            if let positionTitle = jobInfo.positionTitle, positionTitle.count > 0 {
+                DataManager.shared.loanInfo.jobInfo.positionTitle = positionTitle
+            }
+            
             if let company = jobInfo.company {
                 DataManager.shared.loanInfo.jobInfo.company = company
             }
