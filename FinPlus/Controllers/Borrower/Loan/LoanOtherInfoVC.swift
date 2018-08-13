@@ -56,9 +56,15 @@ class LoanOtherInfoVC: LoanBaseViewController {
         }
         
         
-        let loanSummaryInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSummaryInfoVC") as! LoanSummaryInfoVC
+//        let loanSummaryInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSummaryInfoVC") as! LoanSummaryInfoVC
+//
+//        self.navigationController?.pushViewController(loanSummaryInfoVC, animated: true)
         
-        self.navigationController?.pushViewController(loanSummaryInfoVC, animated: true)
+        let socialInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSocialInfoViewController") as! LoanSocialInfoViewController
+        
+        self.navigationController?.pushViewController(socialInfoVC, animated: true)
+        
+        
     }
     
     private func updateLoanStatus() {
