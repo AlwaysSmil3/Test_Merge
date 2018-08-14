@@ -25,6 +25,8 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
                 } else {
                     self.lblTitle?.text = title
                 }
+                
+                self.updateData()
             }
         }
     }
@@ -51,18 +53,18 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     }
     
     private func updateData() {
-        
+        guard let field_ = self.field, let indexArray = field_.arrayIndex else { return }
         var temp: [String] = []
         
-        if let data = DataManager.shared.browwerInfo?.activeLoan?.optionalMedia, data.count > 0 {
-            if data[0].length() > 0 {
-                temp = data
+        if let data = DataManager.shared.browwerInfo?.activeLoan?.optionalMedia, data.count > indexArray {
+            if data[indexArray].count > 0 {
+                temp = data[indexArray] as! [String]
             }
             
         }
         
-        if DataManager.shared.loanInfo.optionalMedia.count > 0 {
-            temp = DataManager.shared.loanInfo.optionalMedia
+        if DataManager.shared.loanInfo.optionalMedia.count > indexArray {
+            temp = DataManager.shared.loanInfo.optionalMedia[indexArray]
             
             self.dataSourceCollection = temp
         }
@@ -105,7 +107,11 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
             //DataManager.shared.loanInfo.optionalMedia.removeAll()
             for d in data {
                 if let url = d["url"] as? String {
-                    DataManager.shared.loanInfo.optionalMedia.append(url)
+                    print("optionalMediaCount\(DataManager.shared.loanInfo.optionalMedia.count)")
+                    if let indexArray = self.field?.arrayIndex, DataManager.shared.loanInfo.optionalMedia.count > indexArray {
+                        DataManager.shared.loanInfo.optionalMedia[indexArray].append(url)
+                    }
+                    
                 }
             }
             
@@ -169,9 +175,14 @@ extension LoanTypeOptionalMediaTBCell: OptionMediaDelegate {
     
     func deleteOptionMedia(index: Int) {
         self.dataSourceCollection.remove(at: index)
-        if DataManager.shared.loanInfo.optionalMedia.count > index {
-            DataManager.shared.loanInfo.optionalMedia.remove(at: index)
+        
+        if let indexArray = self.field?.arrayIndex, DataManager.shared.loanInfo.optionalMedia.count > indexArray {
+            if DataManager.shared.loanInfo.optionalMedia[indexArray].count > index {
+                DataManager.shared.loanInfo.optionalMedia[indexArray].remove(at: index)
+            }
         }
+        
+        
     }
     
 }

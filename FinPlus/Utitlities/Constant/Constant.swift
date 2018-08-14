@@ -8,6 +8,42 @@
 
 import Foundation
 
+//Vay sinh vien
+var CountOptionTextVaySinhVien = 1
+var CountOptionMediaVaySinhView = 2
+
+//Vay mua dien thoai
+var CountOptionTextVayMuaDienThoai = 4
+var CountOptionMediaVayMuaDienThoai = 2
+
+// Vay Mua xe may
+var CountOptionTextVayMuaXeMay = 4
+var CountOptionMediaVayMuaXeMay = 2
+
+// Vay Dam cuoi
+var CountOptionTextVayDamCuoi = 5
+var CountOptionMediaVayDamCuoi = 4
+
+//Vay ba bau
+var CountOptionTextVayBaBau = 5
+var CountOptionMediaVayBaBau = 4
+
+// Vay nuoi be
+var CountOptionTextVayNuoiBe = 8
+var CountOptionMediaVayNuoiBe = 4
+
+// Vay mua do noi that
+var CountOptionTextVayMuaDoNoiThat = 4
+var CountOptionMediaVayMuaDoNoiThat = 2
+
+// Vay Thanh toan no
+var CountOptionTextVayThanhToanNo = 1
+var CountOptionMediaVayThanhToanNo = 1
+
+// Vay Khac
+var CountOptionTextVayKhac = 4
+var CountOptionMediaVayKhac = 2
+
 
 //Type User
 enum UserRole: String {
@@ -102,6 +138,71 @@ let APP_MODE = "APP_MODE"
 
 //Category ID
 let Loan_Student_Category_ID: Int16 = 1 // Id cua vay sinh vien
+let VayMuaDienThoai_Category_ID: Int16 = 2 // Id cua vay sinh vien
+let VayMuaXeMay_Category_ID: Int16 = 3 // Id cua vay sinh vien
+let VayDamCuoi_Category_ID: Int16 = 4 // Id cua vay sinh vien
+let VayBaBau_Category_ID: Int16 = 5 // Id cua vay sinh vien
+let VayNuoiBe_Category_ID: Int16 = 6 // Id cua vay sinh vien
+let VayMuaDoNoiThat_Category_ID: Int16 = 7 // Id cua vay sinh vien
+let VayThanhToanNo_Category_ID: Int16 = 8 // Id cua vay sinh vien
+let VayKhac_Category_ID: Int16 = 9 // Id cua vay sinh vien
+
+//Get CountOptionalText
+func getCountOptionalText(cateId: Int16) -> Int {
+    switch cateId {
+    case Loan_Student_Category_ID:
+        return CountOptionTextVaySinhVien
+    case VayMuaDienThoai_Category_ID:
+        return CountOptionTextVayMuaDienThoai
+    case VayMuaXeMay_Category_ID:
+        return CountOptionTextVayMuaXeMay
+    case VayDamCuoi_Category_ID:
+        return CountOptionTextVayDamCuoi
+    case VayBaBau_Category_ID:
+        return CountOptionTextVayBaBau
+    case VayNuoiBe_Category_ID:
+        return CountOptionTextVayNuoiBe
+    case VayMuaDoNoiThat_Category_ID:
+        return CountOptionTextVayMuaDoNoiThat
+    case VayThanhToanNo_Category_ID:
+        return CountOptionTextVayThanhToanNo
+    case VayKhac_Category_ID:
+        return CountOptionTextVayKhac
+        
+    default:
+        return 4
+        
+    }
+}
+
+//Get CountOptionalMedia
+func getCountOptionalMedia(cateId: Int16) -> Int {
+    switch cateId {
+    case Loan_Student_Category_ID:
+        return CountOptionMediaVaySinhView
+    case VayMuaDienThoai_Category_ID:
+        return CountOptionMediaVayMuaDienThoai
+    case VayMuaXeMay_Category_ID:
+        return CountOptionMediaVayMuaXeMay
+    case VayDamCuoi_Category_ID:
+        return CountOptionMediaVayDamCuoi
+    case VayBaBau_Category_ID:
+        return CountOptionMediaVayBaBau
+    case VayNuoiBe_Category_ID:
+        return CountOptionMediaVayNuoiBe
+    case VayMuaDoNoiThat_Category_ID:
+        return CountOptionMediaVayMuaDoNoiThat
+    case VayThanhToanNo_Category_ID:
+        return CountOptionMediaVayThanhToanNo
+    case VayKhac_Category_ID:
+        return CountOptionMediaVayKhac
+        
+    default:
+        return 4
+        
+    }
+}
+
 
 let API_RESPONSE_RETURN_CODE = "returnCode"
 let API_RESPONSE_RETURN_MESSAGE = "returnMsg"

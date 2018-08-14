@@ -27,6 +27,8 @@ class LoanSocialInfoViewController: BaseViewController {
         self.tableView.separatorColor = UIColor.clear
         self.tableView.tableFooterView = UIView()
         
+        self.updateDataLoan()
+        
     }
     
     // Pasre Facebook Data Info
@@ -82,6 +84,16 @@ class LoanSocialInfoViewController: BaseViewController {
                 print(error!)
             }
         }
+    }
+    
+    private func updateDataLoan() {
+        DataManager.shared.loanInfo.currentStep = 5
+        APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
+            .done(on: DispatchQueue.main) { model in
+                DataManager.shared.loanID = model.loanId!
+                
+            }
+            .catch { error in }
     }
     
     //MARK: Actions

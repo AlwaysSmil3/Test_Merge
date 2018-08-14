@@ -14,12 +14,38 @@ struct LoanInfo: Encodable {
     var loanCategoryID: Int16 {
         didSet {
             guard self.loanCategoryID > 0 else { return }
-            if self.optionalText.count > 0, self.optionalText[0].length() > 0 { return }
-            if self.loanCategoryID == Loan_Student_Category_ID {
-                self.optionalText = [""]
-            } else {
-                self.optionalText = ["", ""]
+            //OptionalText
+            if self.optionalText.count == 0 {
+                self.optionalText = self.initOptionalText(cateId: loanCategoryID)
             }
+            
+            if self.optionalText.count > 0, self.optionalText[0].length() == 0 {
+                self.optionalText = self.initOptionalText(cateId: loanCategoryID)
+            }
+            
+            if self.optionalText.count < self.initOptionalText(cateId: loanCategoryID).count {
+                let range = self.initOptionalText(cateId: loanCategoryID).count - self.optionalText.count
+                for _ in 0...range - 1 {
+                    self.optionalText.append("")
+                }
+            }
+            
+            //OptionalMedia
+            if self.optionalMedia.count == 0 {
+                self.optionalMedia = self.initOptionalMedia(cateId: loanCategoryID)
+            }
+            
+            if self.optionalMedia.count > 0, self.optionalMedia[0].count == 0 {
+                self.optionalMedia = self.initOptionalMedia(cateId: loanCategoryID)
+            }
+            
+            if self.optionalMedia.count < self.initOptionalMedia(cateId: loanCategoryID).count {
+                let range = self.initOptionalMedia(cateId: loanCategoryID).count - self.optionalMedia.count
+                for _ in 0...range - 1 {
+                    self.optionalMedia.append([])
+                }
+            }
+
             
         }
     }
@@ -42,7 +68,7 @@ struct LoanInfo: Encodable {
     var nationalIdBackImg: String
     
     var optionalText: [String]
-    var optionalMedia: [String]
+    var optionalMedia:  [[String]]
     
     init() {
         
@@ -64,7 +90,7 @@ struct LoanInfo: Encodable {
         
         self.optionalText = []
         
-        self.optionalMedia = []
+        self.optionalMedia = [[]]
         self.userID = 0
         self.intRate = 0
     }
@@ -109,6 +135,31 @@ struct LoanInfo: Encodable {
         
     }
     
+    
+    /// init optionalText
+    ///
+    /// - Parameter cateId: <#cateId description#>
+    func initOptionalText(cateId: Int16) -> [String] {
+        var value: [String] = []
+        for _ in 0...getCountOptionalText(cateId: cateId) - 1 {
+            value.append("")
+        }
+        
+        return value
+    }
+    
+    
+    /// init optionalMedia
+    ///
+    /// - Parameter cateId: <#cateId description#>
+    func initOptionalMedia(cateId: Int16) -> [[String]] {
+        var value: [[String]] = [[]]
+        for _ in 0...getCountOptionalMedia(cateId: cateId) - 1 {
+            value.append([])
+        }
+        
+        return value
+    }
     
 }
 
