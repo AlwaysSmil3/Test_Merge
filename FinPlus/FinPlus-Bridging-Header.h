@@ -14,6 +14,7 @@
 @import PromiseKit;
 @import IBAnimatable;
 @import SwiftyJSON;
+@import SVProgressHUD;
 #import "SRMonthPicker.h"
 
 

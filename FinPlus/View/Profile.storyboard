@@ -204,7 +204,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập thời hạn vay" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pkw-9Z-wFe" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập kỳ hạn vay" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pkw-9Z-wFe" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
                                 <rect key="frame" x="16" y="112" width="343" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="0jE-T9-4aP"/>
@@ -225,7 +225,7 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
                                         <real key="value" value="0.80000000000000004"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="headerText" value="Thời hạn vay"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="headerText" value="Kỳ hạn vay"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="disableEffect" value="YES"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                         <color key="value" red="0.72156862749999995" green="0.78823529410000004" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
