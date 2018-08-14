@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import NVActivityIndicatorView
+//import NVActivityIndicatorView
+import SVProgressHUD
 
 extension UIViewController {
     
@@ -101,8 +102,28 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func handleLoadingView(isShow: Bool) {
+        if isShow {
+            self.showLoadingView()
+        } else {
+            self.hideLoadingView()
+        }
+    }
+    
+    // Show loading view
+    private func showLoadingView() {
+        SVProgressHUD.show(withStatus: "Mony...")
+        
+    }
+    
+    // Hide
+    private func hideLoadingView() {
+        SVProgressHUD.dismiss()
+    }
+    
 }
 
+/*
 extension UIViewController: NVActivityIndicatorViewable {
     
     // MARK: Indicator view
@@ -116,16 +137,17 @@ extension UIViewController: NVActivityIndicatorViewable {
     
     // Show loading view
     private func showLoadingView() {
-        
-        let size = CGSize(width: 30, height:30)
-        startAnimating(size, message: "", type: .ballScaleMultiple)
+        SVProgressHUD.show(withStatus: "Mony...")
+//        let size = CGSize(width: 30, height:30)
+//        startAnimating(size, message: "", type: .ballScaleMultiple)
     }
     
     // Hide
     private func hideLoadingView() {
-        stopAnimating()
+        //stopAnimating()
+        SVProgressHUD.dismiss()
     }
     
     
 }
-
+*/

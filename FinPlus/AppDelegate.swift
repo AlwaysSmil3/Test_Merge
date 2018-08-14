@@ -14,6 +14,7 @@ import CoreData
 import Fabric
 import Crashlytics
 
+
 //Cho optionalText trong tạo loan
 var optionalTextCount = 10
 
@@ -32,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Setup start View Controller
         self.setupStartVC()
+        
+        SVProgressHUD.setDefaultAnimationType(.native)
+        SVProgressHUD.setDefaultMaskType(.black)
         
         // Register Notifications
         self.registerForRemoteNotifications(application)

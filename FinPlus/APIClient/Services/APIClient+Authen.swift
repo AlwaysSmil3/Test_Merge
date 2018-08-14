@@ -120,25 +120,40 @@ extension APIClient {
      
      Tên hiển thị trên facebook
      */
-    func updateInfoFromFacebook(phoneNumber: String, pass: String, accountType: Int?, accessToken: String? = nil, avatar: String? = nil, displayName: String? = nil, investOtherInfo: InvestorRegisterModel? = nil) -> Promise<BrowwerInfo> {
+    func updateInfoFromFacebook(phoneNumber: String, pass: String? = nil, accountType: Int? = 0, accessToken: String? = nil, avatar: String? = nil, displayName: String? = nil, investOtherInfo: InvestorRegisterModel? = nil) -> Promise<BrowwerInfo> {
         
+        var params: JSONDictionary = [:]
         
-        var params: JSONDictionary = [
-            "phoneNumber": phoneNumber,
-            "password": pass,
-            //"accessToken": accessToken,
-            //"avatar": avatar,
-            //"displayName": displayName
-        ]
-        
-        if let type = accountType {
+        if let pas = pass {
             params = [
                 "phoneNumber": phoneNumber,
-                "password": pass,
-                "accountType": type,
+                "password": pas,
                 //"accessToken": accessToken,
                 //"avatar": avatar,
                 //"displayName": displayName
+            ]
+            
+            if let type = accountType {
+                params = [
+                    "phoneNumber": phoneNumber,
+                    "password": pas,
+                    "accountType": type,
+                    //"accessToken": accessToken,
+                    //"avatar": avatar,
+                    //"displayName": displayName
+                ]
+            }
+        }
+
+        
+        if let accessToken = accessToken {
+            params = [
+                "phoneNumber": phoneNumber,
+//                "password": pass,
+                "accountType": 0,
+                "accessToken": accessToken,
+                "avatar": avatar ?? "",
+                "displayName": displayName ?? ""
             ]
         }
         
