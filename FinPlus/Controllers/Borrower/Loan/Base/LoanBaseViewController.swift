@@ -215,7 +215,7 @@ class LoanBaseViewController: BaseViewController {
                 DataManager.shared.loanInfo.optionalMedia.removeAll()
                 for d in data {
                     if let url = d["url"] as? String {
-                        DataManager.shared.loanInfo.optionalMedia.append(url)
+                        DataManager.shared.loanInfo.optionalMedia[0].append(url)
                     }
                 }
                 

@@ -47,7 +47,7 @@ public struct BrowwerActiveLoan {
 
   // MARK: Properties
   public var walletId: Int?
-  public var optionalMedia: [String]?
+  public var optionalMedia: [[Any]]?
   public var status: Int?
   public var nationalIdBackImg: String?
   public var nationalIdFrontImg: String?
@@ -93,7 +93,8 @@ public struct BrowwerActiveLoan {
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
     walletId = json[SerializationKeys.walletId].int
-    if let items = json[SerializationKeys.optionalMedia].array { optionalMedia = items.map { $0.stringValue } }
+    if let items = json[SerializationKeys.optionalMedia].array { optionalMedia = items.map { $0.arrayObject ?? [] } }
+  
     status = json[SerializationKeys.status].int
     nationalIdBackImg = json[SerializationKeys.nationalIdBackImg].string
     nationalIdFrontImg = json[SerializationKeys.nationalIdFrontImg].string
