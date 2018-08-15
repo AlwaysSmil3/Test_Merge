@@ -61,6 +61,7 @@
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
+                            <action selector="tfDidBegin:" destination="x8t-Xj-0Yt" eventType="editingDidBegin" id="FcE-je-EVv"/>
                             <action selector="tfEditEnd:" destination="x8t-Xj-0Yt" eventType="editingDidEnd" id="ox1-OB-9Ny"/>
                         </connections>
                     </textField>

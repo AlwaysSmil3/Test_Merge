@@ -138,14 +138,14 @@ let APP_MODE = "APP_MODE"
 
 //Category ID
 let Loan_Student_Category_ID: Int16 = 1 // Id cua vay sinh vien
-let VayMuaDienThoai_Category_ID: Int16 = 2 // Id cua vay sinh vien
-let VayMuaXeMay_Category_ID: Int16 = 3 // Id cua vay sinh vien
-let VayDamCuoi_Category_ID: Int16 = 4 // Id cua vay sinh vien
-let VayBaBau_Category_ID: Int16 = 5 // Id cua vay sinh vien
-let VayNuoiBe_Category_ID: Int16 = 6 // Id cua vay sinh vien
-let VayMuaDoNoiThat_Category_ID: Int16 = 7 // Id cua vay sinh vien
-let VayThanhToanNo_Category_ID: Int16 = 8 // Id cua vay sinh vien
-let VayKhac_Category_ID: Int16 = 9 // Id cua vay sinh vien
+let VayMuaDienThoai_Category_ID: Int16 = 2 // Id cua vay Mua dien thoai
+let VayMuaXeMay_Category_ID: Int16 = 3 // Id cua vay mua xe may
+let VayDamCuoi_Category_ID: Int16 = 4 // Id cua vay Dam cuoi
+let VayBaBau_Category_ID: Int16 = 5 // Id cua vay ba bau
+let VayNuoiBe_Category_ID: Int16 = 6 // Id cua vay Nuoi be
+let VayMuaDoNoiThat_Category_ID: Int16 = 7 // Id cua vay Mua do noi that
+let VayThanhToanNo_Category_ID: Int16 = 8 // Id cua vay thanh toan no
+let VayKhac_Category_ID: Int16 = 9 // Id cua vay khac
 
 //Get CountOptionalText
 func getCountOptionalText(cateId: Int16) -> Int {
@@ -198,7 +198,7 @@ func getCountOptionalMedia(cateId: Int16) -> Int {
         return CountOptionMediaVayKhac
         
     default:
-        return 4
+        return 2
         
     }
 }
