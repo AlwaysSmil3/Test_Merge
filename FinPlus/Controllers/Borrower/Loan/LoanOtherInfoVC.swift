@@ -24,16 +24,55 @@ class LoanOtherInfoVC: LoanBaseViewController {
         if let bottomView = self.bottomScrollView {
             bottomView.setContentOffset(CGPoint(x: 100, y: 0), animated: true)
         }
+        
+        self.configTextMesseageView()
+        
+        //NotificationCenter.default.addObserver(self, selector: #selector(showInputMesseage(notification:)), name: .showMuiltiLineInputText, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: Notification.Name.UIKeyboardWillShow, object: nil)
     }
     
+    //MARK: For catch event show hidden keyboard
+    @objc func keyboardWillAppear(notification: NSNotification) {
+        guard self.isMuiltiLineText else { return }
+        self.isMuiltiLineText = false
+        //Do something here
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            print(keyboardHeight)
+            self.contentInputView?.isHidden = false
+            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseOut, animations: {
+                self.bottomConstraintContentInputView?.constant = keyboardHeight
+                self.view.layoutIfNeeded()
+            }) { (status) in
+            }
+        }
+    }
+    
+    @objc func keyboardWillDisappear(notification: NSNotification) {
+        //Do something here
+        self.hideInputMessageView()
+    }
+    
+    
+    
+    
+    @objc func showInputMesseage(notification: NSNotification) {
+        self.isMuiltiLineText = true
+        self.sbInputView?.textView.becomeFirstResponder()
+    }
+    
+    
     //MARK: ACtions
-
+    
     @IBAction func btnContinueTapped(_ sender: Any) {
         
         self.view.endEditing(true)
@@ -112,8 +151,6 @@ class LoanOtherInfoVC: LoanBaseViewController {
     
     
 }
-
-
 
 
 //MARK: UICollection View Delegate Flow Layout

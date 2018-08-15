@@ -8,11 +8,17 @@
 
 import Foundation
 
+protocol TextFieldEditDidBeginDelegate {
+    func textFieldEditDidBegin()
+}
+
 class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
 
     @IBOutlet var tfValue: UITextField?
     @IBOutlet var lblDOptional: UILabel?
+    
+    var delegateTextField: TextFieldEditDidBeginDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,6 +68,11 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             
         }
     }
+    
+    @IBAction func tfDidBegin(_ sender: Any) {
+        self.delegateTextField?.textFieldEditDidBegin()
+    }
+    
     
     @IBAction func tfEditEnd(_ sender: Any) {
         

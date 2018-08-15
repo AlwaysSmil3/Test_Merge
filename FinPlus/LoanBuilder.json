@@ -582,7 +582,7 @@
                         "type":"text_box",
                         "title": "Nơi dự kiến mua",
                         "placeholder": "Nhập địa chỉ nơi dự kiến mua",
-                        "multiple_line": true,
+                        "multiple_line": false,
                         "is_required" : true,
                         "keyboard": "default"
                     },
@@ -963,7 +963,7 @@
                         "type":"text_box",
                         "title": "Nơi dự kiến mua",
                         "placeholder": "Nhập địa chỉ nơi dự kiến mua",
-                        "multiple_line": true,
+                        "multiple_line": false,
                         "is_required" : true,
                         "keyboard": "default"
                     },
@@ -1411,7 +1411,7 @@
                     "array_index": 3,
                     "type":"multiple_file",
                     "is_required" : false,
-                    "title": "Chụ ảnh CMND/ CCCD vợ/chồng"
+                    "title": "Chụp ảnh CMND/ CCCD vợ/chồng"
                 }
             ]
             }
@@ -2267,7 +2267,7 @@
                         "array_index": 3,
                         "type":"multiple_file",
                         "is_required" : false,
-                        "title": "Chụ ảnh CMND/ CCCD vợ/chồng"
+                        "title": "Chụp ảnh CMND/ CCCD vợ/chồng"
                     }
             ]
             }
@@ -2608,7 +2608,7 @@
                         "type":"text_box",
                         "title": "Nơi dự kiến mua",
                         "placeholder": "Nhập địa chỉ nơi dự kiến mua",
-                        "multiple_line": true,
+                        "multiple_line": false,
                         "is_required" : true,
                         "keyboard": "default"
                     },
@@ -3327,7 +3327,7 @@
                         "type":"text_box",
                         "title": "Nơi dự kiến mua",
                         "placeholder": "Nhập địa chỉ nơi dự kiến mua",
-                        "multiple_line": true,
+                        "multiple_line": false,
                         "is_required" : true,
                         "keyboard": "default"
                     },
