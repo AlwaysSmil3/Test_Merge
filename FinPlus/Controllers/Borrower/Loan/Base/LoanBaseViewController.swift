@@ -275,13 +275,13 @@ class LoanBaseViewController: BaseViewController {
     @IBAction func btnInputMuiltiTextDoneTapped(_ sender: Any) {
         self.hideInputMessageView()
         self.view.endEditing(true)
-        guard let index = self.currentIndexSelected else { return }
+        guard let index = self.currentIndexSelected, let text = self.sbInputView?.textView.text, text.count > 0 else { return }
         
         if let index = self.dataSource?.fields![index.row].arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
-            DataManager.shared.loanInfo.optionalText[index] = self.sbInputView?.textView.text ?? ""
+            DataManager.shared.loanInfo.optionalText[index] = text
         }
         
-        self.dataSource?.fields![index.row].placeholder = self.sbInputView?.textView.text
+        self.dataSource?.fields![index.row].placeholder = text
         
         self.mainTBView?.reloadRows(at: [index], with: UITableViewRowAnimation.automatic)
         

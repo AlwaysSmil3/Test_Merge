@@ -19,11 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logosplash_logo" translatesAutoresizingMaskIntoConstraints="NO" id="n3i-FH-3nv">
-                                <rect key="frame" x="78.5" y="319.5" width="217" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="217" id="FsZ-ex-egG"/>
-                                    <constraint firstAttribute="height" constant="28" id="MT5-Nt-vIO"/>
-                                </constraints>
+                                <rect key="frame" x="106" y="306" width="162" height="55"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,6 +36,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logosplash_logo" width="217" height="28"/>
+        <image name="logosplash_logo" width="162" height="55"/>
     </resources>
 </document>
