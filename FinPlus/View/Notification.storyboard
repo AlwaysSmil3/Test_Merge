@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="fZf-qn-mNH">
@@ -30,6 +35,10 @@
         <scene sceneID="Sb4-lR-6W0">
             <objects>
                 <viewController id="KMp-YF-dEX" customClass="NotificationListViewController" customModule="FinPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UaB-Sc-TdQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="eD8-2L-qDC"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="grR-57-F6H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,24 +47,47 @@
                                 <rect key="frame" x="8" y="80" width="359" height="579"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4jv-qu-m3A">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bạn chưa có thông báo nào. Các thông báo về Mony sẽ được hiển thị ở đây." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2Z-Yj-2Hf">
+                                        <rect key="frame" x="79.5" y="268.5" width="216" height="26.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="216" id="eLm-0S-9dg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                        <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="h2Z-Yj-2Hf" firstAttribute="centerX" secondItem="4jv-qu-m3A" secondAttribute="centerX" id="NOl-Yy-RMs"/>
+                                    <constraint firstItem="h2Z-Yj-2Hf" firstAttribute="centerY" secondItem="4jv-qu-m3A" secondAttribute="centerY" constant="-20" id="fBM-8O-APP"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="9wI-Lj-OBd" firstAttribute="top" secondItem="79d-nS-mEb" secondAttribute="top" constant="16" id="2pW-R4-Pw0"/>
-                            <constraint firstItem="79d-nS-mEb" firstAttribute="trailing" secondItem="9wI-Lj-OBd" secondAttribute="trailing" constant="8" id="Sk6-yo-la6"/>
-                            <constraint firstItem="9wI-Lj-OBd" firstAttribute="leading" secondItem="79d-nS-mEb" secondAttribute="leading" constant="8" id="bYy-Et-jri"/>
-                            <constraint firstItem="79d-nS-mEb" firstAttribute="bottom" secondItem="9wI-Lj-OBd" secondAttribute="bottom" constant="8" id="nyM-zM-wyI"/>
+                            <constraint firstItem="9wI-Lj-OBd" firstAttribute="top" secondItem="UaB-Sc-TdQ" secondAttribute="bottom" constant="16" id="2pW-R4-Pw0"/>
+                            <constraint firstItem="4jv-qu-m3A" firstAttribute="top" secondItem="UaB-Sc-TdQ" secondAttribute="bottom" id="CJU-bt-B4B"/>
+                            <constraint firstItem="4jv-qu-m3A" firstAttribute="leading" secondItem="grR-57-F6H" secondAttribute="leading" id="KLX-lb-Smn"/>
+                            <constraint firstAttribute="trailing" secondItem="4jv-qu-m3A" secondAttribute="trailing" id="Mxh-Ma-NgZ"/>
+                            <constraint firstAttribute="trailing" secondItem="9wI-Lj-OBd" secondAttribute="trailing" constant="8" id="Sk6-yo-la6"/>
+                            <constraint firstItem="9wI-Lj-OBd" firstAttribute="leading" secondItem="grR-57-F6H" secondAttribute="leading" constant="8" id="bYy-Et-jri"/>
+                            <constraint firstItem="eD8-2L-qDC" firstAttribute="top" secondItem="9wI-Lj-OBd" secondAttribute="bottom" constant="8" id="nyM-zM-wyI"/>
+                            <constraint firstItem="eD8-2L-qDC" firstAttribute="top" secondItem="4jv-qu-m3A" secondAttribute="bottom" id="vQ7-1H-fxi"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="79d-nS-mEb"/>
                     </view>
                     <navigationItem key="navigationItem" id="gs9-dW-bQr"/>
                     <connections>
+                        <outlet property="noNotificationView" destination="4jv-qu-m3A" id="HE9-nj-T1Y"/>
                         <outlet property="tableView" destination="9wI-Lj-OBd" id="fNE-Aw-pKn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCW-jw-RpX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-229" y="-120"/>
+            <point key="canvasLocation" x="-229.59999999999999" y="-120.08995502248877"/>
         </scene>
     </scenes>
 </document>

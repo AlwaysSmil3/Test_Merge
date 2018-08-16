@@ -25,6 +25,8 @@
 		6304AC77211955C80052C29C /* Relationships.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304AC74211955C80052C29C /* Relationships.swift */; };
 		6304AC78211955C80052C29C /* DateLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304AC75211955C80052C29C /* DateLimit.swift */; };
 		6304AC79211955C80052C29C /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304AC76211955C80052C29C /* Role.swift */; };
+		630532E321251CE400C808A2 /* APIClient+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630532E221251CE400C808A2 /* APIClient+Notifications.swift */; };
+		630532E6212526C100C808A2 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630532E5212526C100C808A2 /* NotificationModel.swift */; };
 		630597442123FFD800EEADEF /* SBMessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630597432123FFD800EEADEF /* SBMessageInputView.swift */; };
 		630597462124049500EEADEF /* LoanTypeInputTextMuiltilineTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630597452124049500EEADEF /* LoanTypeInputTextMuiltilineTBCell.swift */; };
 		630597482124093200EEADEF /* LoanTypeInputTextMuiltiLineTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630597472124093200EEADEF /* LoanTypeInputTextMuiltiLineTBCell.xib */; };
@@ -341,6 +343,8 @@
 		6304AC74211955C80052C29C /* Relationships.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relationships.swift; sourceTree = "<group>"; };
 		6304AC75211955C80052C29C /* DateLimit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateLimit.swift; sourceTree = "<group>"; };
 		6304AC76211955C80052C29C /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
+		630532E221251CE400C808A2 /* APIClient+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Notifications.swift"; sourceTree = "<group>"; };
+		630532E5212526C100C808A2 /* NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		630597432123FFD800EEADEF /* SBMessageInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBMessageInputView.swift; sourceTree = "<group>"; };
 		630597452124049500EEADEF /* LoanTypeInputTextMuiltilineTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanTypeInputTextMuiltilineTBCell.swift; sourceTree = "<group>"; };
 		630597472124093200EEADEF /* LoanTypeInputTextMuiltiLineTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoanTypeInputTextMuiltiLineTBCell.xib; sourceTree = "<group>"; };
@@ -719,6 +723,14 @@
 				630467C620B56DD40069469A /* Address.swift */,
 			);
 			path = Address;
+			sourceTree = "<group>";
+		};
+		630532E4212526A700C808A2 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				630532E5212526C100C808A2 /* NotificationModel.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		630597422123FFD800EEADEF /* SBMessageInputView */ = {
@@ -1112,6 +1124,7 @@
 		639C9DCB20A14A7900F2CF5E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				630532E4212526A700C808A2 /* Notification */,
 				63037F5021119A7A002CE49B /* Transaction */,
 				633415B420E1E0AC004B95C0 /* Investor */,
 				6374FC4B20BBC1EE00E4BC38 /* Wallet */,
@@ -1134,6 +1147,7 @@
 				630467BC20B524610069469A /* APIClient+Config.swift */,
 				630467BE20B526CE0069469A /* APIClient+Wallet.swift */,
 				63037F4E21115531002CE49B /* APIClient+Payment.swift */,
+				630532E221251CE400C808A2 /* APIClient+Notifications.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1864,6 +1878,7 @@
 			files = (
 				E7BC258C20CFDACA001FF0F4 /* YoshikoTextField.swift in Sources */,
 				84D7400420D0F8DC00770FB5 /* AuthenticationData.swift in Sources */,
+				630532E6212526C100C808A2 /* NotificationModel.swift in Sources */,
 				E75B706A20DA4644007D158D /* LoanStateViewController.swift in Sources */,
 				630F684520F4641A004FF32E /* LoanTypePhoneRelationSubTBCell.swift in Sources */,
 				E7BC258F20CFDACA001FF0F4 /* YokoTextField.swift in Sources */,
@@ -1932,6 +1947,7 @@
 				E7BC259120CFDACA001FF0F4 /* JiroTextField.swift in Sources */,
 				6336D5CC20B2B75000A6C38A /* LoanInfoJobVC.swift in Sources */,
 				63748BFD210ADB8000E79EB6 /* PaymentMethodTableViewCell.swift in Sources */,
+				630532E321251CE400C808A2 /* APIClient+Notifications.swift in Sources */,
 				6304AC78211955C80052C29C /* DateLimit.swift in Sources */,
 				E7F51A0720CE5A3B00F72682 /* CalPayViewController.swift in Sources */,
 				6369BBD420AE8AD400E0C435 /* APIClient+Loan.swift in Sources */,

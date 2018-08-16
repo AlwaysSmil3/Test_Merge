@@ -9,16 +9,33 @@
 import UIKit
 
 class NotificationListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    var notificationList = [
-        ["title" : "Bạn đã nhận được tiền từ nhà đầu tư", "content" : "Xin chào Minh, bạn đã nhận được 2.000.000đ từ nhà đầu tư.", "time" : "12/02/2018"],
-        ["title" : "Yêu cầu xác nhận lãi suất", "content" : "Đơn vay của bạn đã được gửi đi thành công. Hệ thống sẽ tiến hành phê duyệt và đưa ra mức lãi suất, khoản thanh toán phù hợp nhất với bạn.", "time" : "12/02/2018"]]
+    
+    var currentIndex: Int = 1
+    
+    var notificationList: [NotificationModel] = [] {
+        didSet{
+            self.tableView.reloadData()
+        }
+    }
+    
+    @IBOutlet var noNotificationView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Thông báo"
         configTableView()
         updateData()
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         // Do any additional setup after loading the view.
+        
+        self.getListNotification()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
 
     func configTableView() {
@@ -32,6 +49,30 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         self.tableView.reloadData()
     }
 
+    private func getListNotification() {
+        APIClient.shared.getListNotifications(pageIndex: self.currentIndex)
+            .done(on: DispatchQueue.main) { model in
+                if model.count > 0{
+                    self.noNotificationView.isHidden = true
+                    self.notificationList.append(contentsOf: model)
+                } else {
+                    self.noNotificationView.isHidden = false
+                }
+            }
+            .catch { error in
+                self.noNotificationView.isHidden = false
+            }
+        
+        
+    }
+    
+    private func updateNoti(index: Int32) {
+        APIClient.shared.updateNotification(notiID: index)
+            .done(on: DispatchQueue.global()) { model in }
+            .catch { error in}
+    }
+    
+    //MARK:
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -47,9 +88,10 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
             cell.containView.layer.borderColor = UIColor.lightGray.cgColor
             cell.timeLb.textColor = UIColor.darkGray
             cell.containView.layer.borderWidth = 1
-            cell.titleLb.text = cellData["title"]
-            cell.contentLb.text = cellData["content"]
-            cell.timeLb.text = cellData["time"]
+            cell.titleLb.text = cellData.title!
+            cell.contentLb.text = cellData.messages!
+            let date = Date.init(fromString: cellData.createdDate!, format: DateFormat.custom(kDOBFormatWithMilisecond))
+            cell.timeLb.text = date.toString(.custom("HH:mm dd/MM/yyyy"))
             cell.selectionStyle = .none
             return cell
         }
@@ -62,6 +104,13 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
             cell.timeLb.textColor = MAIN_COLOR
             cell.titleLb.textColor = UIColor(hexString: "#08121E")
             cell.contentLb.textColor = UIColor(hexString: "#08121E")
+        }
+        
+        let data = self.notificationList[indexPath.row]
+        guard let status = data.status, status else {
+            self.updateNoti(index: Int32(indexPath.row))
+            
+            return
         }
 
     }
