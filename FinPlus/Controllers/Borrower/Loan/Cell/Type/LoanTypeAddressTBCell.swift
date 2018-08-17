@@ -94,22 +94,22 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 DataManager.shared.loanInfo.userInfo.temporaryAddress = address
             }
             
-        } else if id.contains("address") {
+        } else if id.contains("jobAddress") {
             
-            if DataManager.shared.checkFieldIsMissing(key: "address") {
+            if DataManager.shared.checkFieldIsMissing(key: "jobAddress") {
                 //Cap nhat thong tin khong hop le
                 self.updateInfoFalse(pre: title)
             }
             
             var value = ""
             var addressTemp: Address?
-            if let add = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.address, let city = add.city, let district = add.district, let commune = add.commune, let street = add.street, city.length() > 0 {
+            if let add = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.jobAddress, let city = add.city, let district = add.district, let commune = add.commune, let street = add.street, city.length() > 0 {
                 value = String(format: "%@ , %@, %@, %@",street, commune, district, city)
                 addressTemp = Address(city: city, district: district, commune: commune, street: street, zipCode: "", long: 0, lat: 0)
             }
             
-            if DataManager.shared.loanInfo.jobInfo.address.city.length() > 0 {
-                let add = DataManager.shared.loanInfo.jobInfo.address
+            if DataManager.shared.loanInfo.jobInfo.jobAddress.city.length() > 0 {
+                let add = DataManager.shared.loanInfo.jobInfo.jobAddress
                 addressTemp = Address(city: add.city, district: add.district, commune: add.commune, street: add.street, zipCode: "", long: 0, lat: 0)
                 value = String(format: "%@ , %@, %@, %@",
                                add.street, add.commune, add.district, add.city)
@@ -117,7 +117,33 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             
             if value.length() > 0, let address = addressTemp {
                 self.lblValue?.text = value
-                DataManager.shared.loanInfo.jobInfo.address = address
+                DataManager.shared.loanInfo.jobInfo.jobAddress = address
+            }
+            
+        } else if id.contains("academicAddress") {
+            
+            if DataManager.shared.checkFieldIsMissing(key: "academicAddress") {
+                //Cap nhat thong tin khong hop le
+                self.updateInfoFalse(pre: title)
+            }
+            
+            var value = ""
+            var addressTemp: Address?
+            if let add = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.academicAddress, let city = add.city, let district = add.district, let commune = add.commune, let street = add.street, city.length() > 0 {
+                value = String(format: "%@ , %@, %@, %@",street, commune, district, city)
+                addressTemp = Address(city: city, district: district, commune: commune, street: street, zipCode: "", long: 0, lat: 0)
+            }
+            
+            if DataManager.shared.loanInfo.jobInfo.academicAddress.city.length() > 0 {
+                let add = DataManager.shared.loanInfo.jobInfo.academicAddress
+                addressTemp = Address(city: add.city, district: add.district, commune: add.commune, street: add.street, zipCode: "", long: 0, lat: 0)
+                value = String(format: "%@ , %@, %@, %@",
+                               add.street, add.commune, add.district, add.city)
+            }
+            
+            if value.length() > 0, let address = addressTemp {
+                self.lblValue?.text = value
+                DataManager.shared.loanInfo.jobInfo.academicAddress = address
             }
             
         }

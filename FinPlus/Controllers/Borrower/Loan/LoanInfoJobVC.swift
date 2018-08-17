@@ -38,23 +38,37 @@ class LoanInfoJobVC: LoanBaseViewController {
                 return
             }
             
+            if DataManager.shared.loanInfo.jobInfo.jobAddress.city.length() == 0 {
+                self.showToastWithMessage(message: "Vui lòng chọn địa chỉ cơ quan.")
+                return
+            }
+            
+            if DataManager.shared.loanInfo.jobInfo.company.length() == 0 {
+                self.showToastWithMessage(message: "Vui lòng nhập tên cơ quan để tiếp tục.")
+                return
+            }
+            
             if DataManager.shared.loanInfo.jobInfo.salary == 0 {
                 self.showToastWithMessage(message: "Vui lòng nhập mức thu nhập hàng tháng để tiếp tục.")
                 return
             }
+            
+            
         } else {
             
+            
+            if DataManager.shared.loanInfo.jobInfo.academicName.length() == 0 {
+                self.showToastWithMessage(message: "Vui lòng nhập tên trường học để tiếp tục.")
+                return
+            }
+            
+            
+            if DataManager.shared.loanInfo.jobInfo.academicAddress.city.length() == 0 {
+                self.showToastWithMessage(message: "Vui lòng chọn địa trường học.")
+                return
+            }
         }
-        
-        if DataManager.shared.loanInfo.jobInfo.company.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập tên cơ quan để tiếp tục.")
-            return
-        }
-        
-        if DataManager.shared.loanInfo.jobInfo.address.city.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng chọn địa chỉ cơ quan.")
-            return
-        }
+
         
         
         completion()

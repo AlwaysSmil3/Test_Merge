@@ -35,7 +35,7 @@ class AddressFirstViewController: BaseViewController {
     //Title trong fields LoanBuider
     //var titleTypeAddress: String = ""
     var titleString: String = "Địa chỉ"
-    var id: String = "address"
+    var id: String = "jobAddress"
     
     @IBOutlet var lblTitleHeader: UILabel!
     @IBOutlet var mainTableView: TPKeyboardAvoidingTableView!

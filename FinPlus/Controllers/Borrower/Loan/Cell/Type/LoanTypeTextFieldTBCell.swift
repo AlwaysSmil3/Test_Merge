@@ -113,6 +113,8 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 DataManager.shared.loanInfo.jobInfo.experienceYear = Float(self.tfValue?.text ?? "") ?? 0
             } else if id == "studentId"  {
                 DataManager.shared.loanInfo.jobInfo.studentId = self.tfValue?.text ?? ""
+            } else if id == "academicName" {
+                DataManager.shared.loanInfo.jobInfo.academicName = self.tfValue?.text ?? ""
             }
         }
     }
@@ -294,6 +296,25 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 if value.length() > 0 {
                     self.tfValue?.text = value
                     DataManager.shared.loanInfo.jobInfo.studentId = value
+                }
+            } else if id == "academicName" {
+                if DataManager.shared.checkFieldIsMissing(key: "academicName") {
+                    //Cap nhat thong tin khong hop le
+                    self.updateInfoFalse(pre: title)
+                }
+                
+                var value = ""
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.academicName , data.length() > 0 {
+                    value = data
+                }
+                
+                if DataManager.shared.loanInfo.jobInfo.academicName.length() > 0 {
+                    value = DataManager.shared.loanInfo.jobInfo.academicName
+                }
+                
+                if value.length() > 0 {
+                    self.tfValue?.text = value
+                    DataManager.shared.loanInfo.jobInfo.academicName = value
                 }
             }
         }

@@ -132,7 +132,7 @@
                 "id":"jobInfo",
                 "fields": [
                     {
-                        "id": "company",
+                        "id": "academicName",
                         "index": 1,
                         "type":"text_box",
                         "title": "Tên trường học",
@@ -173,7 +173,7 @@
                         "keyboard": "default"
                     },
                     {
-                        "id": "address",
+                        "id": "academicAddress",
                         "index": 4,
                         "type":"address",
                         "title": "Địa chỉ trường học",
@@ -509,7 +509,7 @@
                         "suffix": "đ"
                     },
                     {
-                        "id": "address",
+                        "id": "jobAddress",
                         "index": 7,
                         "type":"address",
                         "title": "Địa chỉ làm việc",
@@ -890,7 +890,7 @@
                         "suffix": "đ"
                     },
                     {
-                        "id": "address",
+                        "id": "jobAddress",
                         "index": 7,
                         "type":"address",
                         "title": "Địa chỉ làm việc",
@@ -1271,7 +1271,7 @@
                         "suffix": "đ"
                     },
                     {
-                        "id": "address",
+                        "id": "jobAddress",
                         "index": 7,
                         "type":"address",
                         "title": "Địa chỉ làm việc",
@@ -1679,7 +1679,7 @@
                         "suffix": "đ"
                     },
                     {
-                        "id": "address",
+                        "id": "jobAddress",
                         "index": 7,
                         "type":"address",
                         "title": "Địa chỉ làm việc",
@@ -2087,7 +2087,7 @@
                         "suffix": "đ"
                     },
                     {
-                        "id": "address",
+                        "id": "jobAddress",
                         "index": 7,
                         "type":"address",
                         "title": "Địa chỉ làm việc",
@@ -2535,7 +2535,7 @@
                         "suffix": "đ"
                     },
                     {
-                        "id": "address",
+                        "id": "jobAddress",
                         "index": 7,
                         "type":"address",
                         "title": "Địa chỉ làm việc",
@@ -2916,7 +2916,7 @@
                         "suffix": "đ"
                     },
                     {
-                        "id": "address",
+                        "id": "jobAddress",
                         "index": 7,
                         "type":"address",
                         "title": "Địa chỉ làm việc",
@@ -3253,7 +3253,7 @@
                         "suffix": "đ"
                     },
                     {
-                        "id": "address",
+                        "id": "jobAddress",
                         "index": 7,
                         "type":"address",
                         "title": "Địa chỉ làm việc",
