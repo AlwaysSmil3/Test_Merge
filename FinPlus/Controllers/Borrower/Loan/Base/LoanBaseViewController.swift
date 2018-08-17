@@ -497,8 +497,10 @@ extension LoanBaseViewController: AddressDelegate {
             DataManager.shared.loanInfo.userInfo.residentAddress = address
         } else if id.contains("currentAddress") {
             DataManager.shared.loanInfo.userInfo.temporaryAddress = address
-        } else if id.contains("address") {
-            DataManager.shared.loanInfo.jobInfo.address = address
+        } else if id.contains("jobAddress") {
+            DataManager.shared.loanInfo.jobInfo.jobAddress = address
+        } else if id.contains("academicAddress") {
+            DataManager.shared.loanInfo.jobInfo.academicAddress = address
         }
         
         guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
