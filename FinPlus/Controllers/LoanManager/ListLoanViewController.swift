@@ -45,7 +45,14 @@ class ListLoanViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private func getAllLoans(isShowLoading: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // reload data
+        self.getAllLoans()
+    }
+    
+    private func getAllLoans() {
         
         self.listLoan.removeAllObjects()
         APIClient.shared.getUserLoans()
@@ -122,8 +129,7 @@ extension ListLoanViewController: UITableViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         
-        // reload data
-        self.getAllLoans(isShowLoading: false)
+        
     }
     
 }

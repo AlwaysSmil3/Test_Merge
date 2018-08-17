@@ -59,6 +59,7 @@ class DataManager {
         didSet {
             if let i = self.currentIndexCategoriesSelectedPopup {
                 self.loanInfo.loanCategoryID = Int16(i + 1)
+                self.updateIntRate()
             }
         }
     }
@@ -83,7 +84,8 @@ class DataManager {
     //List Title missing Loan Data
     var listKeyMissingLoanTitle: [String]?
     
-
+    //Data when push notification
+    var notificationData: NSDictionary?
     
     /// Get Data from JSON
     func getDataLoanFromJSON() {
@@ -158,6 +160,14 @@ class DataManager {
     }
     
     
+    
+    /// Update IntRate
+    func updateIntRate() {
+        guard let cate = self.getCurrentCategory() else { return }
+        DataManager.shared.loanInfo.intRate = Float(cate.interestRate ?? 0)
+    }
+    
+    
     /// <#Description#>
     func mapDataBrowwerAndLoan() {
         
@@ -166,6 +176,10 @@ class DataManager {
         if let cateID = activeLoan.loanCategoryId, cateID > 0 {
             DataManager.shared.loanInfo.loanCategoryID = cateID
             self.currentIndexCategoriesSelectedPopup = Int(cateID) - 1
+        }
+        
+        if let intRate = activeLoan.inRate {
+            DataManager.shared.loanInfo.intRate = intRate
         }
         
         if let status = activeLoan.status {
@@ -248,6 +262,10 @@ class DataManager {
                 DataManager.shared.loanInfo.jobInfo.position = position
             }
             
+            if let positionTitle = jobInfo.positionTitle, positionTitle.count > 0 {
+                DataManager.shared.loanInfo.jobInfo.positionTitle = positionTitle
+            }
+            
             if let company = jobInfo.company {
                 DataManager.shared.loanInfo.jobInfo.company = company
             }
@@ -272,8 +290,12 @@ class DataManager {
                 DataManager.shared.loanInfo.jobInfo.experienceYear = exp
             }
             
-            if let add = jobInfo.address, let city = add.city, let dis = add.district, let commue = add.commune, let street = add.street {
-                DataManager.shared.loanInfo.jobInfo.address = Address(city: city, district: dis, commune: commue, street: street, zipCode: "", long: 0, lat: 0)
+            if let add = jobInfo.jobAddress, let city = add.city, let dis = add.district, let commue = add.commune, let street = add.street {
+                DataManager.shared.loanInfo.jobInfo.jobAddress = Address(city: city, district: dis, commune: commue, street: street, zipCode: "", long: 0, lat: 0)
+            }
+            
+            if let add = jobInfo.academicAddress, let city = add.city, let dis = add.district, let commue = add.commune, let street = add.street {
+                DataManager.shared.loanInfo.jobInfo.academicAddress = Address(city: city, district: dis, commune: commue, street: street, zipCode: "", long: 0, lat: 0)
             }
             
         }
@@ -297,8 +319,8 @@ class DataManager {
         if let optionMedia = activeLoan.optionalMedia {
             DataManager.shared.loanInfo.optionalMedia.removeAll()
             for i in optionMedia {
-                if i.length() > 0 {
-                    DataManager.shared.loanInfo.optionalMedia.append(i)
+                if i.count > 0 {
+                    DataManager.shared.loanInfo.optionalMedia.append(i as! [String])
                 }
             }
             
@@ -366,17 +388,17 @@ class DataManager {
                 missingListTitle.append("Nghề nghiệp")
             }
             
-            if let value = jobInfo.position, value.length() > 0 {
+            if let _ = jobInfo.position {
                 missingListKey.append("position")
                 missingListTitle.append("Cấp bậc")
             }
             
-            if let strength = jobInfo.strength, strength > 0 {
+            if let _ = jobInfo.strength {
                 missingListKey.append("strength")
                 missingListTitle.append("Học lực")
             }
             
-            if let ace = jobInfo.academicLevel, ace > 0 {
+            if let _ = jobInfo.academicLevel {
                 missingListKey.append("academicLevel")
                 missingListTitle.append("Trình độ học vấn")
             }
@@ -401,9 +423,14 @@ class DataManager {
                 missingListTitle.append("SĐT cơ quan")
             }
             
-            if let add = jobInfo.address, let city = add.city, city.length() > 0 {
-                missingListKey.append("address")
+            if let add = jobInfo.jobAddress, let city = add.city, city.length() > 0 {
+                missingListKey.append("jobAddress")
                 missingListTitle.append("Địa chỉ cơ quan")
+            }
+            
+            if let add = jobInfo.academicAddress, let city = add.city, city.length() > 0 {
+                missingListKey.append("academicAddress")
+                missingListTitle.append("Địa chỉ trường học")
             }
             
         }

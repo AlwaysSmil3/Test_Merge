@@ -14,6 +14,7 @@ import CoreData
 import Fabric
 import Crashlytics
 
+
 //Cho optionalText trong tạo loan
 var optionalTextCount = 10
 
@@ -32,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Setup start View Controller
         self.setupStartVC()
+        
+        SVProgressHUD.setDefaultAnimationType(.native)
+        SVProgressHUD.setDefaultMaskType(.black)
         
         // Register Notifications
         self.registerForRemoteNotifications(application)
@@ -86,8 +90,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         print("userInfo \(userInfo)")
+        self.handleNotificationFireBase(userInfo: userInfo)
+        
     }
     
+    
+    func handleNotificationFireBase(userInfo: [AnyHashable : Any]) {
+        guard let aps = userInfo["aps"] as? NSDictionary, let alert = aps["alert"] as? NSDictionary else {
+            return
+        }
+        
+        if let body = alert["body"] as? String {
+            
+            var title = "Thông báo"
+            if let t = alert["title"] as? String {
+                title = t
+            }
+            
+            guard let topVC = UIApplication.shared.topViewController() else { return }
+            
+            if let _ = topVC as? LoginViewController {
+                DataManager.shared.notificationData = alert
+                return
+            }
+            
+            if let tabbar = topVC as? BorrowerTabBarController, let currentNavi = tabbar.selectedViewController as? UINavigationController, let currentVC = currentNavi.topViewController as? LoanStateViewController  {
+                
+                currentVC.showAlertView(title: title, message: body, okTitle: "OK", cancelTitle: nil) { (status) in
+                    currentVC.reLoadStatusLoanVC()
+                }
+                
+                return
+            }
+            
+            topVC.showAlertView(title: title, message: body, okTitle: "OK", cancelTitle: nil)
+            
+        }
+        
+    }
     
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -261,8 +301,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         // Print message ID.
         
         // Print full message.
+        //Khi dang mở app
         print(userInfo)
-        
+        self.handleNotificationFireBase(userInfo: userInfo)
         
         // Change this to your preferred presentation option
         completionHandler([])
@@ -278,13 +319,21 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 //        }
         
         // Print full message.
+        //Khi app đang dứoi background
         print(userInfo)
+        self.handleNotificationFireBase(userInfo: userInfo)
         
         completionHandler()
     }
     
     
+
+    
+    
+    
 }
+
+
 
 
 

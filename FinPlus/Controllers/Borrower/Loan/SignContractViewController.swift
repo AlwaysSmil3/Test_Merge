@@ -74,6 +74,7 @@ class SignContractViewController: UIViewController, UIWebViewDelegate {
     }
     
     @IBAction func sign_contract(_ sender: Any) {
+        if self.isSigned { return }
         self.sendOTP()
     }
     

@@ -36,20 +36,7 @@ class ContractSuccessViewController: UIViewController {
     
     @IBAction func comHome(_ sender: Any) {
         
-        //Lay thong tin nguoi dung
-        APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
-            .done(on: DispatchQueue.main) { model in
-                DataManager.shared.browwerInfo = model
-                
-                let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-                if let window = UIApplication.shared.delegate?.window, let win = window {
-                    win.rootViewController = tabbarVC
-                }
-                
-            }
-            .catch { error in
-                
-        }
+        self.reLoadStatusLoanVC()
         
 //        let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
 //        self.navigationController?.isNavigationBarHidden = true

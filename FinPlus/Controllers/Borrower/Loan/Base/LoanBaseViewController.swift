@@ -28,6 +28,10 @@ class LoanBaseViewController: BaseViewController {
     @IBOutlet var mainTBView: TPKeyboardAvoidingTableView?
     @IBOutlet var bottomScrollView: UIScrollView?
     
+    @IBOutlet var contentInputView: UIView?
+    @IBOutlet var sbInputView: SBMessageInputView?
+    @IBOutlet var bottomConstraintContentInputView: NSLayoutConstraint?
+    
     //DataSource cho main tablview, dữ liệu tuỳ theo index màn hình
     var dataSource: LoanBuilderBase?
     
@@ -71,6 +75,11 @@ class LoanBaseViewController: BaseViewController {
     // Kiểu File Img
     var typeImgFile: FILE_TYPE_IMG?
     
+    //Cell đang chọn hiện tại
+    var currentIndexSelected: IndexPath?
+    
+    var isMuiltiLineText: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -101,6 +110,8 @@ class LoanBaseViewController: BaseViewController {
         tableView.register(UINib(nibName: "LoanTypeOptionalMediaTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.OptionalMedia)
         tableView.register(UINib(nibName: "LoanTypeChoiceTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.Choice)
         tableView.register(UINib(nibName: "LoanTypeTextViewTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.TextView)
+        
+        tableView.register(UINib(nibName: "LoanTypeInputTextMuiltiLineTBCell", bundle: nil), forCellReuseIdentifier: "LoanTypeInputTextMuiltiLineTBCell")
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorColor = UIColor.clear
@@ -215,7 +226,7 @@ class LoanBaseViewController: BaseViewController {
                 DataManager.shared.loanInfo.optionalMedia.removeAll()
                 for d in data {
                     if let url = d["url"] as? String {
-                        DataManager.shared.loanInfo.optionalMedia.append(url)
+                        DataManager.shared.loanInfo.optionalMedia[0].append(url)
                     }
                 }
                 
@@ -232,8 +243,50 @@ class LoanBaseViewController: BaseViewController {
         }
     }
     
+    //MARK: Text Input View
+    func configTextMesseageView() {
+        self.sbInputView?.mainView.backgroundColor = UIColor(red: 234/255, green: 239/255, blue: 247/255, alpha: 1.0)
+        self.sbInputView?.delegate = self
+        self.contentInputView?.isHidden = true
+    }
+    
+    func hideInputMessageView() {
+        UIView.animate(withDuration: 0.5, delay: 0.1, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            self.bottomConstraintContentInputView?.constant = 0
+            self.view.layoutIfNeeded()
+        }, completion: { (status) in
+            self.contentInputView?.isHidden = true
+            self.refreshTextInput()
+        })
+    }
+    
+    func showInputMesseageView() {
+        self.isMuiltiLineText = true
+        self.sbInputView?.textView.becomeFirstResponder()
+    }
+    
+    /// Làm mới lại View Nhập text comment
+    func refreshTextInput() {
+        self.sbInputView?.textView.text = ""
+        self.sbInputView?.numberOfLines = 1
+    }
     
     
+    @IBAction func btnInputMuiltiTextDoneTapped(_ sender: Any) {
+        self.hideInputMessageView()
+        self.view.endEditing(true)
+        guard let index = self.currentIndexSelected, let text = self.sbInputView?.textView.text, text.count > 0 else { return }
+        
+        if let index = self.dataSource?.fields![index.row].arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
+            DataManager.shared.loanInfo.optionalText[index] = text
+        }
+        
+        self.dataSource?.fields![index.row].placeholder = text
+        
+        self.mainTBView?.reloadRows(at: [index], with: UITableViewRowAnimation.automatic)
+        
+        
+    }
     
     
 }
@@ -255,10 +308,12 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         case DATA_TYPE_TB_CELL.TextBox:
             
             if let multiline = model.multipleLine, multiline {
-                let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.TextView, for: indexPath) as! LoanTypeTextViewTBCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LoanTypeInputTextMuiltiLineTBCell", for: indexPath) as! LoanTypeInputTextMuiltiLineTBCell
                 
                 //cell.parent = data.id
                 cell.field = model
+                cell.currentIndex = indexPath
+                cell.showInputViewDelegate = self
                 
                 return cell
                 
@@ -268,6 +323,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.parent = data.id
             cell.field = model
+            cell.delegateTextField = self
             
             
             return cell
@@ -331,9 +387,11 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let data = self.dataSource, let fields = data.fields else { return }
         let model = fields[indexPath.row]
+        self.currentIndexSelected = indexPath
         
         switch model.type! {
         case DATA_TYPE_TB_CELL.TextBox:
+            //self.showInputMesseageView()
             
             break
         case DATA_TYPE_TB_CELL.DropDown:
@@ -387,6 +445,49 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+//MARK: SBMessageInputViewDelegate
+extension LoanBaseViewController: SBMessageInputViewDelegate {
+    
+    func inputViewDidChange(textView: UITextView) {
+        
+    }
+    
+    func inputViewShouldBeginEditing(textView: UITextView) -> Bool {
+        textView.text = ""
+        
+        
+        return true
+    }
+    
+    func inputView(textView: UITextView, shouldChangeTextInRange: NSRange, replacementText: String) -> Bool {
+        
+        return true
+    }
+    
+    func inputViewDidBeginEditing(textView: UITextView) {
+        
+    }
+}
+
+//MARK: ShowTextInputMesseageViewDelegate
+extension LoanBaseViewController: ShowTextInputMesseageViewDelegate {
+    func showTextInput(indexPath: IndexPath) {
+        self.currentIndexSelected = indexPath
+        if let _ = self.sbInputView {
+            self.showInputMesseageView()
+        }
+    }
+}
+
+//MARK: TextFieldEditDidBeginDelegate
+extension LoanBaseViewController: TextFieldEditDidBeginDelegate {
+    func textFieldEditDidBegin() {
+        if let _ = self.sbInputView {
+            self.hideInputMessageView()
+        }
+    }
+}
+
 //MARK: Address Delegate
 extension LoanBaseViewController: AddressDelegate {
     func getAddress(address: Address, type: Int, title: String, id: String) {
@@ -396,8 +497,10 @@ extension LoanBaseViewController: AddressDelegate {
             DataManager.shared.loanInfo.userInfo.residentAddress = address
         } else if id.contains("currentAddress") {
             DataManager.shared.loanInfo.userInfo.temporaryAddress = address
-        } else if id.contains("address") {
-            DataManager.shared.loanInfo.jobInfo.address = address
+        } else if id.contains("jobAddress") {
+            DataManager.shared.loanInfo.jobInfo.jobAddress = address
+        } else if id.contains("academicAddress") {
+            DataManager.shared.loanInfo.jobInfo.academicAddress = address
         }
         
         guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }

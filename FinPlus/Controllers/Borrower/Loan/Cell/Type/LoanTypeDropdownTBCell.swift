@@ -87,7 +87,8 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             DataManager.shared.loanInfo.jobInfo.jobType = Int(data.id ?? 0)
             DataManager.shared.loanInfo.jobInfo.jobTitle = value
         } else if id.contains("position") {
-            DataManager.shared.loanInfo.jobInfo.position = value
+            DataManager.shared.loanInfo.jobInfo.position = Int(data.id ?? 0)
+            DataManager.shared.loanInfo.jobInfo.positionTitle = value
         } else if id.contains("academicLevel") {
             DataManager.shared.loanInfo.jobInfo.academicLevel = Int(data.id ?? 0)
         } else if id.contains("strength") {
@@ -130,17 +131,22 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             }
             
             var value = ""
-            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.position, data.length() > 0 {
+            var idInt = -1
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.positionTitle, data.count > 0 {
                 value = data
+                idInt = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.position ?? 0
             }
             
-            if DataManager.shared.loanInfo.jobInfo.position.length() > 0 {
-                value = DataManager.shared.loanInfo.jobInfo.position
+            if DataManager.shared.loanInfo.jobInfo.positionTitle.count > 0 {
+                idInt = DataManager.shared.loanInfo.jobInfo.position
+                value = DataManager.shared.loanInfo.jobInfo.positionTitle
             }
             
-            if value.length() > 0 {
+            if value.count > 0 {
+
                 self.lblValue?.text = value
-                DataManager.shared.loanInfo.jobInfo.position = value
+                DataManager.shared.loanInfo.jobInfo.position = idInt
+                DataManager.shared.loanInfo.jobInfo.positionTitle = value
             }
         } else if id.contains("birthday") {
             if DataManager.shared.checkFieldIsMissing(key: "birthday") {
@@ -202,15 +208,15 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             }
             
             var idInt = -1
-            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.strength, data > 0 {
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.strength {
                 idInt = data
             }
             
-            if DataManager.shared.loanInfo.jobInfo.strength > 0 {
+            if DataManager.shared.loanInfo.jobInfo.strength >= 0 {
                 idInt = DataManager.shared.loanInfo.jobInfo.strength
             }
             
-            if idInt > 0 {
+            if idInt >= 0 {
                 var value = ""
                 if let data = field_.data {
                     for d in data {
@@ -231,15 +237,15 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             }
             
             var idInt = -1
-            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.academicLevel, data > 0 {
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.academicLevel {
                 idInt = data
             }
             
-            if DataManager.shared.loanInfo.jobInfo.academicLevel > 0 {
+            if DataManager.shared.loanInfo.jobInfo.academicLevel >= 0 {
                 idInt = DataManager.shared.loanInfo.jobInfo.academicLevel
             }
             
-            if idInt > 0 {
+            if idInt >= 0 {
                 var value = ""
                 if let data = field_.data {
                     for d in data {

@@ -1,7 +1,7 @@
 //
 //  RateInfo.swift
 //
-//  Created by Cao Van Hai on 6/25/18
+//  Created by Cao Van Hai on 8/7/18
 //  Copyright (c) . All rights reserved.
 //
 
@@ -33,8 +33,8 @@ public struct RateInfo {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    name = json[SerializationKeys.name].string ?? ""
-    rate = json[SerializationKeys.rate].int ?? 0
+    name = json[SerializationKeys.name].string
+    rate = json[SerializationKeys.rate].int
   }
 
   /// Generates description of the object in the form of a NSDictionary.

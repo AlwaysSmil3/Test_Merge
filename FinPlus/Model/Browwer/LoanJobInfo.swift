@@ -12,7 +12,8 @@ struct LoanJobInfo: Encodable {
     
     var jobType: Int
     var jobTitle: String
-    var position: String
+    var position: Int
+    var positionTitle: String
     var company: String
     var salary: Int32
     var companyPhoneNumber: String
@@ -21,23 +22,28 @@ struct LoanJobInfo: Encodable {
     var strength: Int
     var academicLevel: Int
     var experienceYear: Float
+    var academicName: String
     
     
-    var address: Address
+    var jobAddress: Address
+    var academicAddress: Address
     
     init() {
-        self.jobType = 0
+        self.jobType = -1
         self.jobTitle = ""
-        self.position = ""
+        self.position = -1
+        self.positionTitle = ""
         self.company = ""
         self.salary = 0
         self.companyPhoneNumber = ""
-        self.address = Address()
+        self.jobAddress = Address()
+        self.academicAddress = Address()
         
         self.studentId = ""
-        self.strength = 0
-        self.academicLevel = 0
+        self.strength = -1
+        self.academicLevel = -1
         self.experienceYear = 0
+        self.academicName = ""
         
     }
     
@@ -45,14 +51,17 @@ struct LoanJobInfo: Encodable {
         case jobType
         case jobTitle
         case position
+        case positionTitle
         case company
         case salary
         case companyPhoneNumber
-        case address
+        case jobAddress
         case strength
         case academicLevel
         case experienceYear
         case studentId
+        case academicAddress
+        case academicName
     }
     
     func encode(to encoder: Encoder) throws {
@@ -60,13 +69,16 @@ struct LoanJobInfo: Encodable {
         try container.encode(jobType, forKey: .jobType)
         try container.encode(jobTitle, forKey: .jobTitle)
         try container.encode(position, forKey: .position)
+        try container.encode(positionTitle, forKey: .positionTitle)
         try container.encode(company, forKey: .company)
         try container.encode(salary, forKey: .salary)
         try container.encode(companyPhoneNumber, forKey: .companyPhoneNumber)
-        try container.encode(address, forKey: .address)
+        try container.encode(jobAddress, forKey: .jobAddress)
+        try container.encode(academicAddress, forKey: .academicAddress)
     
         try container.encode(strength, forKey: .strength)
         try container.encode(studentId, forKey: .studentId)
+        try container.encode(academicName, forKey: .academicName)
         
         try container.encode(academicLevel, forKey: .academicLevel)
         try container.encode(experienceYear, forKey: .experienceYear)

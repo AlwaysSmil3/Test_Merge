@@ -8,11 +8,17 @@
 
 import Foundation
 
+protocol TextFieldEditDidBeginDelegate {
+    func textFieldEditDidBegin()
+}
+
 class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
 
     @IBOutlet var tfValue: UITextField?
     @IBOutlet var lblDOptional: UILabel?
+    
+    var delegateTextField: TextFieldEditDidBeginDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,11 +44,13 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
             if let id = field_.id {
-                if id.contains("nationalId") || id.contains("salary") || id.contains("companyPhoneNumber") || id.contains("studentId") {
+                if id.contains("nationalId") || id.contains("salary") || id.contains("companyPhoneNumber") || id.contains("studentId") || id.contains("experienceYear") {
                     self.tfValue?.keyboardType = .numberPad
-                } else if id.contains("experienceYear") {
-                    self.tfValue?.keyboardType = .default
                 }
+            }
+            
+            if let keyboard = field_.keyboard, keyboard.contains("money") || keyboard.contains("numeric") {
+                self.tfValue?.keyboardType = .numberPad
             }
             
             
@@ -60,6 +68,11 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             
         }
     }
+    
+    @IBAction func tfDidBegin(_ sender: Any) {
+        self.delegateTextField?.textFieldEditDidBegin()
+    }
+    
     
     @IBAction func tfEditEnd(_ sender: Any) {
         
@@ -100,6 +113,8 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 DataManager.shared.loanInfo.jobInfo.experienceYear = Float(self.tfValue?.text ?? "") ?? 0
             } else if id == "studentId"  {
                 DataManager.shared.loanInfo.jobInfo.studentId = self.tfValue?.text ?? ""
+            } else if id == "academicName" {
+                DataManager.shared.loanInfo.jobInfo.academicName = self.tfValue?.text ?? ""
             }
         }
     }
@@ -260,7 +275,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 }
                 
                 if valueFloat > 0 {
-                    self.tfValue?.text = "\(valueFloat)"
+                    self.tfValue?.text = "\(Int(valueFloat))"
                     DataManager.shared.loanInfo.jobInfo.experienceYear = valueFloat
                 }
             } else if id == "studentId" {
@@ -281,6 +296,25 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 if value.length() > 0 {
                     self.tfValue?.text = value
                     DataManager.shared.loanInfo.jobInfo.studentId = value
+                }
+            } else if id == "academicName" {
+                if DataManager.shared.checkFieldIsMissing(key: "academicName") {
+                    //Cap nhat thong tin khong hop le
+                    self.updateInfoFalse(pre: title)
+                }
+                
+                var value = ""
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.academicName , data.length() > 0 {
+                    value = data
+                }
+                
+                if DataManager.shared.loanInfo.jobInfo.academicName.length() > 0 {
+                    value = DataManager.shared.loanInfo.jobInfo.academicName
+                }
+                
+                if value.length() > 0 {
+                    self.tfValue?.text = value
+                    DataManager.shared.loanInfo.jobInfo.academicName = value
                 }
             }
         }
@@ -306,7 +340,7 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
         if let field_ = self.field, let id = field_.id {
             
             var bool = false
-            if let parent = self.parent, parent.contains("jobInfo") ,id.contains("salary"),id.contains("optionalText"),id.contains("experienceYear"),id.contains("studentId") {
+            if let parent = self.parent, parent.contains("jobInfo") ,id.contains("salary") {
                 bool = true
             }
             

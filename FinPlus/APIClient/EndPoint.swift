@@ -79,6 +79,11 @@ enum EndPoint {
         static let Collections = "loans/:loanId/collections"
     }
     
+    enum Notification {
+        static let GetList = "/users/(uID)/notification?page=(pageIndex)&limit=(20)"
+        static let UpdateNoti = "/users/{uid}/notification"
+    }
+    
     
     
 }

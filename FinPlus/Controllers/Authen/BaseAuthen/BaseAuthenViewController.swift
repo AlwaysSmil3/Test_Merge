@@ -30,7 +30,6 @@ class BaseAuthenViewController: BaseViewController {
         APIClient.shared.authentication(phoneNumber: account, pass: pass)
             .done(on: DispatchQueue.main) { [weak self] model in
                 // go to choice VC of back to enter phone number
-                
                 DataManager.shared.userID = model.data?.id ?? 0
                 DataManager.shared.currentAccount = account
                 
@@ -77,6 +76,10 @@ class BaseAuthenViewController: BaseViewController {
                                 self?.accountType = .Investor
                                 return
                             }
+                        } else {
+                            //Chua chọn loại user
+                            self?.pushToChoiceKindUserVC()
+                            return
                         }
                         
                     }
