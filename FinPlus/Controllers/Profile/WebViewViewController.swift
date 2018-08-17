@@ -45,21 +45,25 @@ class WebViewViewController: UIViewController, UIWebViewDelegate {
             self.navigationController?.isNavigationBarHidden = false
         }
         
-        var htmlPath = ""
+        //        var htmlPath = ""
+        var url: URL!
         
         switch webViewType {
         case .termView:
             self.title = NSLocalizedString("TERMS_OF_USE", comment: "")
-            htmlPath = Bundle.main.path(forResource: "terms-and-conditions", ofType: "html")!
+            url = URL(string: (DataManager.shared.config?.policy)!)
+        //            htmlPath = Bundle.main.path(forResource: "terms-and-conditions", ofType: "html")!
         case .aboutView:
             self.title = NSLocalizedString("ABOUT_FINSMART", comment: "")
-            htmlPath = Bundle.main.path(forResource: "about", ofType: "html")!
+            url = URL(string: (DataManager.shared.config?.about)!)
+        //            htmlPath = Bundle.main.path(forResource: "about", ofType: "html")!
         default:
             self.title = NSLocalizedString("CONTRACT", comment: "")
-            htmlPath = Bundle.main.path(forResource: "terms-and-conditions", ofType: "html")!
+            url = URL(string: (DataManager.shared.config?.policy)!)
+            //            htmlPath = Bundle.main.path(forResource: "terms-and-conditions", ofType: "html")!
         }
         
-        let url = URL(fileURLWithPath: htmlPath)
+        //        let url = URL(fileURLWithPath: htmlPath)
         let request = URLRequest(url: url)
         self.webView.loadRequest(request)
     }
