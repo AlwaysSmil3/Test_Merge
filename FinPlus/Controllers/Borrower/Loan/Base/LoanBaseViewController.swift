@@ -281,7 +281,7 @@ class LoanBaseViewController: BaseViewController {
             DataManager.shared.loanInfo.optionalText[index] = text
         }
         
-        self.dataSource?.fields![index.row].placeholder = text
+        self.dataSource?.fields![index.row].textInputMuiltiline = text
         
         self.mainTBView?.reloadRows(at: [index], with: UITableViewRowAnimation.automatic)
         

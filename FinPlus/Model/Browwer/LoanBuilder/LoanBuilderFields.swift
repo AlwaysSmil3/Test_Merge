@@ -46,6 +46,7 @@ public struct LoanBuilderFields {
   public var keyboard: String?
   public var showTime: Bool? = false
     public var arrayIndex: Int?
+    public var textInputMuiltiline: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
