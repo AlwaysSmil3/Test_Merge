@@ -344,6 +344,10 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
                 bool = true
             }
             
+            if let keyboard = field_.keyboard, keyboard.contains("money") {
+                bool = true
+            }
+            
             if bool {
                 return self.formatTFSalary(textField, shouldChangeCharactersIn: range, replacementString: string)
             }
