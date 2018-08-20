@@ -108,6 +108,11 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
             for d in data {
                 if let url = d["url"] as? String {
                     print("optionalMediaCount\(DataManager.shared.loanInfo.optionalMedia.count)")
+                    
+                    if DataManager.shared.loanInfo.optionalMedia.count == 0 {
+                        DataManager.shared.loanInfo.optionalMedia = DataManager.shared.loanInfo.initOptionalMedia(cateId: DataManager.shared.loanInfo.loanCategoryID)
+                    }
+                    
                     if let indexArray = self.field?.arrayIndex, DataManager.shared.loanInfo.optionalMedia.count > indexArray {
                         DataManager.shared.loanInfo.optionalMedia[indexArray].append(url)
                     }
