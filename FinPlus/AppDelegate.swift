@@ -28,8 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         
         // Override point for customization after application launch.
-        // Get Loan Data from Json
-        DataManager.shared.getDataLoanFromJSON()
+        self.getLoanCategories()
         
         //Setup start View Controller
         self.setupStartVC()
@@ -220,6 +219,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             .catch { error in
             }
+    }
+    
+    private func getLoanCategories() {
+        APIClient.shared.getLoanCategories()
+            .done(on: DispatchQueue.main) { model in
+                print(model)
+                DataManager.shared.loanCategories.append(contentsOf: model)
+            }
+            .catch { error in
+                // Get Loan Data from Json
+                DataManager.shared.getDataLoanFromJSON()
+            }
+        
     }
     
     // MARK: - Core Data stack
