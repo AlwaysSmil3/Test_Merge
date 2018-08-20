@@ -160,6 +160,8 @@ struct LoanInfo: Encodable {
         
         return value
     }
+
+    
     
 }
 
