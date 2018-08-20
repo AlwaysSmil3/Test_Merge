@@ -270,6 +270,10 @@ class DataManager {
                 DataManager.shared.loanInfo.jobInfo.company = company
             }
             
+            if let company = jobInfo.academicName {
+                DataManager.shared.loanInfo.jobInfo.academicName = company
+            }
+            
             if let salary = jobInfo.salary {
                 DataManager.shared.loanInfo.jobInfo.salary = Int32(salary)
             }
@@ -323,7 +327,6 @@ class DataManager {
                     DataManager.shared.loanInfo.optionalMedia.append(i as! [String])
                 }
             }
-            
         }
         
         
@@ -411,6 +414,11 @@ class DataManager {
             if let value = jobInfo.company, value.length() > 0 {
                 missingListKey.append("company")
                 missingListTitle.append("Tên cơ quan")
+            }
+            
+            if let value = jobInfo.academicName, value.length() > 0 {
+                missingListKey.append("academicName")
+                missingListTitle.append("Tên trường học")
             }
             
             if let sa = jobInfo.salary, sa > 0 {
