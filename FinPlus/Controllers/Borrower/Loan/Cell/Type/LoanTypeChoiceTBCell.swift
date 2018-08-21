@@ -17,7 +17,14 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     var gender: Gender? {
         didSet {
             guard let g = self.gender else { return }
-            DataManager.shared.loanInfo.userInfo.gender = "\(g.rawValue)"
+            guard let field_ = self.field, let id = field_.id else { return }
+            if id.contains("gender") {
+                DataManager.shared.loanInfo.userInfo.gender = "\(g.rawValue)"
+            } else if id.contains("optionalText") {
+                if let index = field_.arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
+                    DataManager.shared.loanInfo.optionalText[index] = "\(g.rawValue)"
+                }
+            }
         }
     }
     
@@ -103,6 +110,38 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 }
                 
                 DataManager.shared.loanInfo.userInfo.gender = value
+            }
+        } else if id.contains("optionalText") {
+            //thông tin khác
+            if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
+                //Cap nhat thong tin khong hop le
+                self.updateInfoFalse(pre: title)
+            }
+            
+            var index = 0
+            if let i = field_.arrayIndex {
+                index = i
+            }
+            
+            guard let data = DataManager.shared.browwerInfo?.activeLoan?.optionalText, data.count > index, DataManager.shared.loanInfo.optionalText.count > index else { return }
+            
+            var value = ""
+            if data.count > 0 {
+                value = data[index]
+            }
+            
+            if DataManager.shared.loanInfo.optionalText[index].length() > 0 {
+                value = DataManager.shared.loanInfo.optionalText[index]
+            }
+            
+            if value.length() > 0 {
+                if value == "Nam" {
+                    self.currentSelectedCollection = IndexPath(row: 1, section: 0)
+                } else {
+                    self.currentSelectedCollection = IndexPath(row: 0, section: 0)
+                    
+                }
+                DataManager.shared.loanInfo.optionalText[index] = value
             }
         }
         

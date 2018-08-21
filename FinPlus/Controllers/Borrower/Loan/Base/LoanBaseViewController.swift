@@ -56,9 +56,19 @@ class LoanBaseViewController: BaseViewController {
                 if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeDropdownTBCell {
                     //DateTime ISO 8601
                     let timeISO8601 = date1.toString(.iso8601(ISO8601Format.DateTimeSec))
-                    DataManager.shared.loanInfo.userInfo.birthDay = timeISO8601
                     
+                    
+                    guard let id = cell.field?.id else { return }
+                    
+                    if id.contains("birthday") {
+                        DataManager.shared.loanInfo.userInfo.birthDay = timeISO8601
+                    } else if id.contains("optionalText") {
+                        if let index = cell.field?.arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
+                            DataManager.shared.loanInfo.optionalText[index] = date
+                        }
+                    }
                     cell.field?.placeholder = date
+                    
                 }
             }
         }
@@ -68,7 +78,20 @@ class LoanBaseViewController: BaseViewController {
     var gender: Gender? {
         didSet {
             guard let g = self.gender else { return }
-            DataManager.shared.loanInfo.userInfo.gender = "\(g.rawValue)"
+            guard let i = self.currentIndexSelected, let field_ = self.dataSource?.fields![i.row], let id = field_.id else { return }
+            
+            if id.contains("gender") {
+                DataManager.shared.loanInfo.userInfo.gender = "\(g.rawValue)"
+            } else if id.contains("optionalText") {
+                if let index = field_.arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
+                    if g.rawValue == 0 {
+                        DataManager.shared.loanInfo.optionalText[index] = "Nam"
+                    } else {
+                        DataManager.shared.loanInfo.optionalText[index] = "Nữ"
+                    }
+                }
+            }
+
         }
     }
     

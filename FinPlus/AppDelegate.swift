@@ -120,6 +120,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 
                 return
+            } else {
+                DataManager.shared.isNeedReloadLoanStatusVC = true
             }
             
             topVC.showAlertView(title: title, message: body, okTitle: "OK", cancelTitle: nil)

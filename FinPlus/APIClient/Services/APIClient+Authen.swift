@@ -120,7 +120,7 @@ extension APIClient {
      
      Tên hiển thị trên facebook
      */
-    func updateInfoFromFacebook(phoneNumber: String, pass: String? = nil, accountType: Int? = 0, accessToken: String? = nil, avatar: String? = nil, displayName: String? = nil, investOtherInfo: InvestorRegisterModel? = nil) -> Promise<BrowwerInfo> {
+    func updateInfoFromFacebook(phoneNumber: String, pass: String? = nil, accountType: Int? = 0, accessToken: String? = nil, avatar: String? = nil, displayName: String? = nil, investOtherInfo: InvestorRegisterModel? = nil, facebookId: String? = nil) -> Promise<BrowwerInfo> {
         
         var params: JSONDictionary = [:]
         
@@ -153,7 +153,8 @@ extension APIClient {
                 "accountType": 0,
                 "accessToken": accessToken,
                 "avatar": avatar ?? "",
-                "displayName": displayName ?? ""
+                "displayName": displayName ?? "",
+                "facebookId": facebookId ?? ""
             ]
         }
         

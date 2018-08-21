@@ -18,6 +18,8 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         }
     }
     
+    var refresher: UIRefreshControl!
+    
     @IBOutlet var noNotificationView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,6 +28,8 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         self.title = "Thông báo"
         configTableView()
         updateData()
+        
+        self.initRefresher()
         self.navigationController?.navigationBar.shadowImage = UIImage()
         // Do any additional setup after loading the view.
         
@@ -36,6 +40,19 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+    }
+    
+    private func initRefresher() {
+        self.refresher = UIRefreshControl()
+        self.tableView.addSubview(self.refresher)
+        
+        //self.refresher.attributedTitle = NSAttributedString(string: "Refreshing")
+        //self.refresher.tintColor = MAIN_COLOR
+        self.refresher.addTarget(self, action: #selector(completeRefresh), for: .valueChanged)
+    }
+    
+    @objc func completeRefresh() {
+        self.reloadData()
     }
 
     func configTableView() {
@@ -48,10 +65,18 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         // update get notification list
         self.tableView.reloadData()
     }
+    
+    private func reloadData() {
+        self.currentIndex = 0
+        self.notificationList.removeAll()
+        self.getListNotification()
+    }
 
     private func getListNotification() {
         APIClient.shared.getListNotifications(pageIndex: self.currentIndex)
             .done(on: DispatchQueue.main) { model in
+                self.refresher.endRefreshing()
+                self.currentIndex += 1
                 if model.count > 0{
                     self.noNotificationView.isHidden = true
                     self.notificationList.append(contentsOf: model)
@@ -60,6 +85,7 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
                 }
             }
             .catch { error in
+                self.refresher.endRefreshing()
                 self.noNotificationView.isHidden = false
             }
         
@@ -90,7 +116,13 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
             cell.containView.layer.borderWidth = 1
             cell.titleLb.text = cellData.title!
             cell.contentLb.text = cellData.messages!
-            let date = Date.init(fromString: cellData.createdDate!, format: DateFormat.custom(kDOBFormatWithMilisecond))
+            
+            var dateString = cellData.createdDate!
+            if cellData.createdDate!.contains("+07:00") {
+                dateString = cellData.createdDate!.replacingOccurrences(of: "+07:00", with: "")
+            }
+            
+            let date = Date.init(fromString: dateString, format: DateFormat.custom("yyyy-MM-dd'T'HH:mm:ss"))
             cell.timeLb.text = date.toString(.custom("HH:mm dd/MM/yyyy"))
             cell.selectionStyle = .none
             return cell
@@ -123,6 +155,19 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
             cell.contentLb.textColor = UIColor(hexString: "#4D6678")
         }
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == self.notificationList.count - 1 {
+            
+            if self.notificationList.count % 20 == 0 {
+                self.currentIndex += 1
+                self.getListNotification()
+            }
+        }
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

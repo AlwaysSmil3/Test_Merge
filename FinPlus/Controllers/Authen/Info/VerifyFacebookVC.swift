@@ -35,6 +35,7 @@ class VerifyFacebookVC: BaseViewController {
         var accessToken = ""
         var fullName = ""
         var avatar = ""
+        var facebookId = ""
         
         if let picture = data["picture"], let data = picture["data"] as? FacebookDataType, let url = data["url"] as? String {
             avatar = url
@@ -48,7 +49,7 @@ class VerifyFacebookVC: BaseViewController {
             accessToken = FBSDKAccessToken.current().tokenString
         }
         
-        self.faceBookInfo = FacebookInfo(accessToken: accessToken, fullName: fullName, avatar: avatar)
+        self.faceBookInfo = FacebookInfo(accessToken: accessToken, fullName: fullName, avatar: avatar, facebookId: facebookId)
         
     }
     
@@ -68,7 +69,7 @@ class VerifyFacebookVC: BaseViewController {
                 
                 guard let fbInfo = self.faceBookInfo, let pass = self.pw else { return }
                 
-                APIClient.shared.updateInfoFromFacebook(phoneNumber: DataManager.shared.currentAccount, pass: pass, accountType: self.accountType!.rawValue, accessToken: fbInfo.accessToken, avatar: fbInfo.avatar, displayName: fbInfo.fullName)
+                APIClient.shared.updateInfoFromFacebook(phoneNumber: DataManager.shared.currentAccount, pass: pass, accountType: self.accountType!.rawValue, accessToken: fbInfo.accessToken, avatar: fbInfo.avatar, displayName: fbInfo.fullName, facebookId: fbInfo.facebookId)
                     .done(on: DispatchQueue.main) { [weak self]data in
                         
                         DataManager.shared.userID = data.id!
@@ -77,8 +78,6 @@ class VerifyFacebookVC: BaseViewController {
                         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
                             .done(on: DispatchQueue.main) { model in
                                 DataManager.shared.browwerInfo = model
-                                
-                                print("avatar \(model.avatar)")
                                 
                                 let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
                                 

@@ -61,6 +61,14 @@ class LoanStateViewController: UIViewController {
         return appDelegate.managedObjectContext
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let isNeedReload = DataManager.shared.isNeedReloadLoanStatusVC, isNeedReload {
+            self.reLoadStatusLoanVC()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
