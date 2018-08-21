@@ -410,6 +410,7 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
+                self.navigationItem.rightBarButtonItem = nil
                 
                 headerData = [
                     [
@@ -443,7 +444,7 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
-                
+                self.navigationItem.rightBarButtonItem = nil
                 
                 headerData = [
                     [
@@ -479,6 +480,8 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
+                self.navigationItem.rightBarButtonItem = nil
+                
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
@@ -513,6 +516,8 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
+                
+                self.navigationItem.rightBarButtonItem = nil
                 
                 headerData = [
                     [
@@ -550,7 +555,7 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
-                
+                self.navigationItem.rightBarButtonItem = nil
                 
                 headerData = [
                     [
@@ -585,6 +590,8 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
+                self.navigationItem.rightBarButtonItem = nil
+                
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
@@ -610,6 +617,8 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: payMounthTitle, value: payMounthStringWithFunded, attributed: NSAttributedString(string: payMounthStringWithFunded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
+                
+                self.navigationItem.rightBarButtonItem = nil
                 
                 headerData = [
                     [
@@ -666,6 +675,9 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: payMounthTitle, value: payMounthStringWithFunded, attributed: NSAttributedString(string: payMounthStringWithFunded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
+                
+                self.navigationItem.rightBarButtonItem = nil
+                
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
@@ -753,6 +765,7 @@ class LoanStateViewController: UIViewController {
                 LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!]))
             ]
             
+            self.navigationItem.rightBarButtonItem = nil
             
             self.btnBottomView.setTitle("Ký hợp đồng để giải ngân", for: .normal)
             self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.confirmSignContract), for: .touchUpInside)
@@ -763,6 +776,8 @@ class LoanStateViewController: UIViewController {
             //Ky hop dong
             //let funded = FinPlusHelper.formatDisplayCurrency(Double(loan.funded ?? 0)) + "đ"
             let fullName = loan.userInfo?.fullName ?? ""
+            
+            self.navigationItem.rightBarButtonItem = nil
             
             dataSource = [
                 LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -782,6 +797,8 @@ class LoanStateViewController: UIViewController {
             
         case .CONFIRM_RATE:
             //Xac nhan lai suat
+            self.navigationItem.rightBarButtonItem = nil
+            
             dataSource = [
                 LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                 LoanSummaryModel(name: "Số tiền vay được duyệt", value: amountString, attributed: NSAttributedString(string: amountString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
