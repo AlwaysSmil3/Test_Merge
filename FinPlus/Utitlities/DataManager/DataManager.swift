@@ -87,6 +87,9 @@ class DataManager {
     //Data when push notification
     var notificationData: NSDictionary?
     
+    //Khi co thong bao chuyen trang thai loan cần update LoanStatusVC
+    var isNeedReloadLoanStatusVC: Bool?
+    
     /// Get Data from JSON
     func getDataLoanFromJSON() {
         if let path = Bundle.main.path(forResource: "LoanBuilder", ofType: "json") {

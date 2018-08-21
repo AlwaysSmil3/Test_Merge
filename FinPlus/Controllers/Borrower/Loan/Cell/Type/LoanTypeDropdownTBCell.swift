@@ -255,9 +255,35 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                     }
                 }
                 
-                
                 self.lblValue?.text = value
                 DataManager.shared.loanInfo.jobInfo.academicLevel = idInt
+            }
+        }  else if id.contains("optionalText") {
+            //thông tin khác
+            if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
+                //Cap nhat thong tin khong hop le
+                self.updateInfoFalse(pre: title)
+            }
+            
+            var index = 0
+            if let i = field_.arrayIndex {
+                index = i
+            }
+            
+            guard let data = DataManager.shared.browwerInfo?.activeLoan?.optionalText, data.count > index, DataManager.shared.loanInfo.optionalText.count > index else { return }
+            
+            var value = ""
+            if data.count > 0 {
+                value = data[index]
+            }
+            
+            if DataManager.shared.loanInfo.optionalText[index].length() > 0 {
+                value = DataManager.shared.loanInfo.optionalText[index]
+            }
+            
+            if value.length() > 0 {
+                self.lblValue?.text = value
+                DataManager.shared.loanInfo.optionalText[index] = value
             }
         }
         

@@ -36,6 +36,11 @@ class LoanSocialInfoViewController: BaseViewController {
         var accessToken = ""
         var fullName = ""
         var avatar = ""
+        var facebookId = ""
+        
+        if let id = data["id"] as? String {
+            facebookId = id
+        }
         
         if let picture = data["picture"], let data = picture["data"] as? FacebookDataType, let url = data["url"] as? String {
             avatar = url
@@ -49,7 +54,7 @@ class LoanSocialInfoViewController: BaseViewController {
             accessToken = FBSDKAccessToken.current().tokenString
         }
         
-        self.faceBookInfo = FacebookInfo(accessToken: accessToken, fullName: fullName, avatar: avatar)
+        self.faceBookInfo = FacebookInfo(accessToken: accessToken, fullName: fullName, avatar: avatar, facebookId: facebookId)
         
     }
     
@@ -63,7 +68,7 @@ class LoanSocialInfoViewController: BaseViewController {
                 
                 guard let fbInfo = self.faceBookInfo else { return }
                 
-                APIClient.shared.updateInfoFromFacebook(phoneNumber: DataManager.shared.currentAccount, accessToken: fbInfo.accessToken, avatar: fbInfo.avatar, displayName: fbInfo.fullName)
+                APIClient.shared.updateInfoFromFacebook(phoneNumber: DataManager.shared.currentAccount, accessToken: fbInfo.accessToken, avatar: fbInfo.avatar, displayName: fbInfo.fullName, facebookId: fbInfo.facebookId)
                     .done(on: DispatchQueue.main) { data in
                         
                         DataManager.shared.userID = data.id!
