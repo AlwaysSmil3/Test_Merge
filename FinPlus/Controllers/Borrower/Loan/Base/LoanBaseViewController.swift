@@ -64,7 +64,7 @@ class LoanBaseViewController: BaseViewController {
                         DataManager.shared.loanInfo.userInfo.birthDay = timeISO8601
                     } else if id.contains("optionalText") {
                         if let index = cell.field?.arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
-                            DataManager.shared.loanInfo.optionalText[index] = date
+                            DataManager.shared.loanInfo.optionalText[index] = timeISO8601
                         }
                     }
                     cell.field?.placeholder = date

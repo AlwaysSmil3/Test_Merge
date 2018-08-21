@@ -282,8 +282,16 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             }
             
             if value.length() > 0 {
-                self.lblValue?.text = value
-                DataManager.shared.loanInfo.optionalText[index] = value
+                //self.lblValue?.text = value
+                
+                let dateTemp = Date.init(fromString: value, format: DateFormat.custom(ISO8601Format.DateTimeSec.rawValue))
+                let date = dateTemp.toString(.custom(kDisplayFormat))
+                //DateTime ISO 8601
+                
+                //let timeISO8601 = dateTemp.toString(.iso8601(ISO8601Format.DateTimeSec))
+                let timeISO8601 = dateTemp.toString(.custom("yyyy-MM-dd'T'HH:mm:ssXXX"))
+                DataManager.shared.loanInfo.optionalText[index] = timeISO8601
+                self.lblValue?.text = date
             }
         }
         
