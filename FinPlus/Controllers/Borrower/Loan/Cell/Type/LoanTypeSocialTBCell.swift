@@ -20,7 +20,8 @@ class LoanTypeSocialTBCell: LoanTypeBaseTBCell {
             guard let data = self.socialData else { return }
             self.lblDisplayName?.text = data.fullName
             self.imgAvatar?.sd_setImage(with: URL(string: data.avatar), completed: nil)
-            self.iconLeft?.image = #imageLiteral(resourceName: "option_icon")
+            //self.iconLeft?.image = #imageLiteral(resourceName: "option_icon")
+            self.iconLeft?.isHidden = true
         }
     }
     

@@ -608,10 +608,9 @@ class LoanStateViewController: UIViewController {
                         ],
                 ]
                 
-                
-            case .TIMELY_DEPT?, .DISBURSAL?:
-                //Nợ đúng hạn
+            case .DISBURSAL?:
                 //đã giải ngân
+                
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày vay", value: dateString, attributed: nil),
@@ -639,6 +638,61 @@ class LoanStateViewController: UIViewController {
                         "text": "Bạn cần thanh toán \(payMounthStringWithFunded) trong tháng này. Hãy thanh toán trước ngày: \(nextPaymentDate).",
                         "subType": TextCellType.DesType,
                         ],
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Thanh toán",
+                        "subType": ButtonCellType.FillType,
+                        "target": "pushToPayViewController"
+                    ],
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Lịch sử thanh toán",
+                        "subType": ButtonCellType.NullType,
+                        "target": "pushToPayHistoryVC"
+                    ],
+                ]
+                
+                break
+                
+            case .TIMELY_DEPT?:
+                //Nợ đúng hạn
+                
+                dataSource = [
+                    LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
+                    LoanSummaryModel(name: "Ngày vay", value: dateString, attributed: nil),
+                    LoanSummaryModel(name: "Số tiền vay", value: funded, attributed: NSAttributedString(string: funded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
+                    LoanSummaryModel(name: "Số tháng đã thanh toán", value: paidMonth, attributed: NSAttributedString(string: paidMonth, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Trạng thái", value: "Đang vay", attributed: NSAttributedString(string: "Đang vay", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
+                    LoanSummaryModel(name: "Ngày thanh toán tiếp theo", value: nextPaymentDate, attributed: nil),
+                    LoanSummaryModel(name: "Kỳ hạn vay", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Lãi suất", value: "\(rate)%/năm", attributed: nil),
+                    LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFeeFunded) + "đ", attributed: nil),
+                    LoanSummaryModel(name: payMounthTitle, value: payMounthStringWithFunded, attributed: NSAttributedString(string: payMounthStringWithFunded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
+                ]
+                
+                self.navigationItem.rightBarButtonItem = nil
+                
+                var array: [String: Any] = [
+                    "type": HeaderCellType.TextType,
+                    "text": "Bạn cần thanh toán \(payMounthStringWithFunded) trong tháng này. Hãy thanh toán trước ngày: \(nextPaymentDate).",
+                    "subType": TextCellType.DesType,
+                    ]
+                if self.checkCollectionRightPayForStatusTimelyDebt() {
+                    array = [
+                        "type": HeaderCellType.TextType,
+                        "text": "Bạn đã thanh toán \(payMounthStringWithFunded) trong tháng này. Bạn có thể thanh toán trước cho đợt tiếp theo",
+                        "subType": TextCellType.DesType,
+                    ]
+                }
+                
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Xin chào \(self.userInfo.fullName ?? ""), bạn đang vay \(funded).",
+                        "subType": TextCellType.TitleType,
+                        ],
+                    array,
                     [
                         "type": HeaderCellType.ButtonType,
                         "text": "Thanh toán",
@@ -956,6 +1010,27 @@ class LoanStateViewController: UIViewController {
         })
     }
     
+    func checkCollectionRightPayForStatusTimelyDebt() -> Bool {
+        var value = false
+        guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return value }
+        
+        let monthCurrent = Date().month()
+        
+        for col in collections {
+            if let status = col.status, status == 2 {
+                if let monthPayed = col.dueDatetime {
+                    let date = Date(fromString: monthPayed, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
+                    let month = date.month()
+                    if monthCurrent + 1 == month || monthCurrent == month {
+                        value = true
+                    }
+                }
+            }
+        }
+        
+        return value
+    }
+    
     // Xác nhận lãi suất
     @IBAction func confirm_rate()
     {
@@ -963,6 +1038,7 @@ class LoanStateViewController: UIViewController {
         vc.bottom_state = .CONFIRM_RATE
         vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -980,6 +1056,7 @@ class LoanStateViewController: UIViewController {
         vc.bottom_state = .DISBURSEMENT_SOON
         vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -990,6 +1067,7 @@ class LoanStateViewController: UIViewController {
         vc.bottom_state = .DISBURSEMENT_ONTIME
         vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -1000,6 +1078,7 @@ class LoanStateViewController: UIViewController {
         vc.bottom_state = .SIGN_CONTRACT
         vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -1008,18 +1087,21 @@ class LoanStateViewController: UIViewController {
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SIGN") as! SignContractViewController
         vc.activeLoan = self.activeLoan
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func pushToPayViewController() {
         let payVC = TestBorrowingPayViewController(nibName: "TestBorrowingPayViewController", bundle: nil)
         payVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(payVC, animated: true)
     }
     
     @IBAction func pushToPayHistoryVC() {
         let payHistoryVC = TestPayHistoryViewController(nibName: "TestPayHistoryViewController", bundle: nil)
         payHistoryVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(payHistoryVC, animated: true)
     }
     

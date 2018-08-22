@@ -127,7 +127,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let info = DataManager.shared.browwerInfo {
             header.usernameLabel.text = info.fullName ?? info.displayName
             header.phoneLabel.text = info.phoneNumber ?? ""
-            header.avatarBtn.sd_setImage(with: URL(string: info.avatar ?? ""), for: .normal, completed: nil)
+            //header.avatarBtn.sd_setImage(with: URL(string: info.avatar ?? ""), for: .normal, completed: nil)
+            header.avatarBtn.sd_setImage(with: URL(string: info.avatar ?? ""), for: .normal, placeholderImage: UIImage(named: "user-default")!, options: SDWebImageOptions.cacheMemoryOnly, completed: nil)
         }
         
 //        header.usernameLabel.text = "+84988xxxxxx"
