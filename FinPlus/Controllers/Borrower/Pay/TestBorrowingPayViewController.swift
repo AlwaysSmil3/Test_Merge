@@ -220,7 +220,8 @@ class TestBorrowingPayViewController: UIViewController {
         self.payAmountPresent = Double(originAmount + interestAmount)
         self.payTotalAmount = Double(interestTotalAmount + feePayBefore + amount)
         
-        let payType1 = PayType(id: 1, typeTitle: "Phai tra thang nay", expireDate: Date(), originAmount: originAmount, interestAmount: interestAmount, sumAmount: originAmount + interestAmount)
+        let expireDate = Date.init(fromString: loan.nextPaymentDate ?? "", format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
+        let payType1 = PayType(id: 1, typeTitle: "Phai tra thang nay", expireDate: expireDate, originAmount: originAmount, interestAmount: interestAmount, sumAmount: originAmount + interestAmount)
         let payAll = PayAllBefore(id: 1, typeTitle: "Tra tat ca luon", originAmount: Float(amount), interestAmount: interestTotalAmount, feeToPayBefore: feePayBefore, sumAmount: Float(self.payTotalAmount))
         let payTypeArray = [payType1]
         // create list payment method
