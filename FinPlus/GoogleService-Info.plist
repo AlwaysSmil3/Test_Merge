@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>658618586899-c2nhd7kq6mh0qcap62094h7huma27hsv.apps.googleusercontent.com</string>
+	<string>658618586899-2nrcatm7t4vlvo6tl6hj19a0fi5dskgf.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.658618586899-c2nhd7kq6mh0qcap62094h7huma27hsv</string>
+	<string>com.googleusercontent.apps.658618586899-2nrcatm7t4vlvo6tl6hj19a0fi5dskgf</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDSc7aiWOaZK2HmMguL3AsMCs0RIhpijKg</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.demo.finplus</string>
+	<string>vn.five9.mony</string>
 	<key>PROJECT_ID</key>
 	<string>p2p-lending-7081b</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:658618586899:ios:6c5b33b63ee366eb</string>
+	<string>1:658618586899:ios:b7dfc00df87d5b51</string>
 	<key>DATABASE_URL</key>
 	<string>https://p2p-lending-7081b.firebaseio.com</string>
 </dict>

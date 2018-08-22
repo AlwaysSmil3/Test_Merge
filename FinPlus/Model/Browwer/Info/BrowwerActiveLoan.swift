@@ -42,6 +42,7 @@ public struct BrowwerActiveLoan {
     static let nextPaymentDate = "nextPaymentDate"
     static let bank = "bank"
     static let bankId = "bankId"
+    static let collections = "collections"
     
   }
 
@@ -77,6 +78,7 @@ public struct BrowwerActiveLoan {
     
     public var bank: BrowwerBank?
     public var bankId: Int32?
+    public var collections: [BrowwerCollections]?
     
 
   // MARK: SwiftyJSON Initializers
@@ -126,6 +128,8 @@ public struct BrowwerActiveLoan {
     bank = BrowwerBank(json: json[SerializationKeys.bank])
     bankId = json[SerializationKeys.bankId].int32
     
+    if let items = json[SerializationKeys.collections].array { collections = items.map { BrowwerCollections(json: $0) } }
+    
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -163,6 +167,8 @@ public struct BrowwerActiveLoan {
     
     if let value = bank { dictionary[SerializationKeys.bank] = value.dictionaryRepresentation() }
     if let value = bankId { dictionary[SerializationKeys.bankId] = value }
+    
+    if let value = collections { dictionary[SerializationKeys.collections] = value.map { $0.dictionaryRepresentation() } }
     
     return dictionary
   }
