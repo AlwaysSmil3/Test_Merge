@@ -117,12 +117,9 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
             cell.titleLb.text = cellData.title!
             cell.contentLb.text = cellData.messages!
             
-            var dateString = cellData.createdDate!
-            if cellData.createdDate!.contains("+07:00") {
-                dateString = cellData.createdDate!.replacingOccurrences(of: "+07:00", with: "")
-            }
+            let dateString = cellData.createdDate!
             
-            let date = Date.init(fromString: dateString, format: DateFormat.custom("yyyy-MM-dd'T'HH:mm:ss"))
+            let date = Date.init(fromString: dateString, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
             cell.timeLb.text = date.toString(.custom("HH:mm dd/MM/yyyy"))
             cell.selectionStyle = .none
             return cell
