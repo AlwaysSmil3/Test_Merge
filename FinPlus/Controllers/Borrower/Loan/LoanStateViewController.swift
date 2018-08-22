@@ -646,7 +646,7 @@ class LoanStateViewController: UIViewController {
                     ],
                     [
                         "type": HeaderCellType.ButtonType,
-                        "text": "Lịch sử thanh toán",
+                        "text": "Lịch trả nợ",
                         "subType": ButtonCellType.NullType,
                         "target": "pushToPayHistoryVC"
                     ],
@@ -701,7 +701,7 @@ class LoanStateViewController: UIViewController {
                     ],
                     [
                         "type": HeaderCellType.ButtonType,
-                        "text": "Lịch sử thanh toán",
+                        "text": "Lịch trả nợ",
                         "subType": ButtonCellType.NullType,
                         "target": "pushToPayHistoryVC"
                     ],
@@ -760,7 +760,7 @@ class LoanStateViewController: UIViewController {
                     ],
                     [
                         "type": HeaderCellType.ButtonType,
-                        "text": "Lịch sử thanh toán",
+                        "text": "Lịch trả nợ",
                         "subType": ButtonCellType.NullType,
                         "target": "pushToPayHistoryVC"
                     ],
