@@ -173,7 +173,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 //DateTime ISO 8601
                 
                 //let timeISO8601 = dateTemp.toString(.iso8601(ISO8601Format.DateTimeSec))
-                let timeISO8601 = dateTemp.toString(.custom("yyyy-MM-dd'T'HH:mm:ssXXX"))
+                let timeISO8601 = dateTemp.toString(.custom(DATE_FORMATTER_WITH_SERVER))
                 DataManager.shared.loanInfo.userInfo.birthDay = timeISO8601
                 self.lblValue?.text = date
             }
@@ -289,7 +289,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 //DateTime ISO 8601
                 
                 //let timeISO8601 = dateTemp.toString(.iso8601(ISO8601Format.DateTimeSec))
-                let timeISO8601 = dateTemp.toString(.custom("yyyy-MM-dd'T'HH:mm:ssXXX"))
+                let timeISO8601 = dateTemp.toString(.custom(DATE_FORMATTER_WITH_SERVER))
                 DataManager.shared.loanInfo.optionalText[index] = timeISO8601
                 self.lblValue?.text = date
             }

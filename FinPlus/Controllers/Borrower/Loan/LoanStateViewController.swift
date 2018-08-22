@@ -147,7 +147,7 @@ class LoanStateViewController: UIViewController {
         //Ngày tạo đơn
         var dateString = " "
         if let date_ = loan.createdAt, date_.length() > 0 {
-            let date = Date.init(fromString: date_, format: DateFormat.custom("yyyy-MM-dd HH:mm:ssZ"))
+            let date = Date.init(fromString: date_, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
             dateString = date.toString(.custom(kDisplayFormat))
             
         } else {
