@@ -132,7 +132,7 @@ class TestBorrowingPayViewController: UIViewController {
     var payAllSelected : PayAllBefore!
     // var walletSelected : AccountBank!
     var methodSelected : PaymentMethod!
-    var bankList = [AccountBank]()
+    //var bankList = [AccountBank]()
     
     //Tra ky nay
     var payAmountPresent: Double = 0
@@ -150,7 +150,7 @@ class TestBorrowingPayViewController: UIViewController {
     
     func getUserBankList() {
         APIClient.shared.getListBank(uId: DataManager.shared.userID).done { (bankList) in
-            self.bankList = bankList
+            //self.bankList = bankList
             self.updateData()
         }
             .catch { error in }
@@ -161,7 +161,7 @@ class TestBorrowingPayViewController: UIViewController {
         if self.navigationController?.isNavigationBarHidden == false {
             self.navigationController?.isNavigationBarHidden = true
         }
-        self.getUserBankList()
+        //self.getUserBankList()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
