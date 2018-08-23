@@ -183,6 +183,8 @@ class LoanStateViewController: UIViewController {
         
         //Ngày huy động còn lại
         var acceptedDate = "30"
+        var acceptedDateTemp = 0
+        
         if let acceptedDateStr = loan.acceptedAt {
             let calendar = NSCalendar.current
             let d1 = Date()
@@ -192,9 +194,12 @@ class LoanStateViewController: UIViewController {
             
             if d2 > d1 {
                 let components = calendar.dateComponents([.day], from: date1, to: date2)
-                acceptedDate = "\(components.day!)"
+                acceptedDateTemp = components.day!
             }
-            
+        }
+        
+        if let rasingCapital = DataManager.shared.config?.dateLimit?.rAISINGCAPITAL, rasingCapital > acceptedDateTemp {
+            acceptedDate = "\(rasingCapital - acceptedDateTemp)"
         }
         
         dataSource = [

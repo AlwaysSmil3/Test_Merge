@@ -140,7 +140,7 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
         
         guard DataManager.shared.loanCategories.count > 0 else { return }
         
-        DataManager.shared.currentIndexCategoriesSelectedPopup = indexPath.row
+        DataManager.shared.currentIndexCategoriesSelectedPopup = Int(DataManager.shared.loanCategories[indexPath.row].id ?? 0)
         
         if let value = userDefault.value(forKey: kUserDefault_Aler_Popup_Confirm_Loan) as? String, value == "1" {
             //Đã hiện popup rồi, người dùng chọn k cần hiện nữa
@@ -158,7 +158,8 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
         let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
         
         loanFirstVC.hidesBottomBarWhenPushed = true
-        loanFirstVC.loanCategory = DataManager.shared.loanCategories[DataManager.shared.currentIndexCategoriesSelectedPopup ?? 0]
+//        loanFirstVC.loanCategory = DataManager.shared.loanCategories[DataManager.shared.currentIndexCategoriesSelectedPopup ?? 0]
+        loanFirstVC.loanCategory = DataManager.shared.getCurrentCategory()
         
         self.navigationController?.pushViewController(loanFirstVC, animated: true)
     }
