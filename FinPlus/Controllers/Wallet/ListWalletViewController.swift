@@ -23,7 +23,7 @@ class ListWalletViewController: BaseViewController {
 
     // MARK: - Outlet
     
-    @IBOutlet var rightBarButtonItem: UIBarButtonItem!
+   
     
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var noWalletLabel: UILabel!
