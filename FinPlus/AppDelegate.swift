@@ -236,6 +236,89 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    private func updateCount(field: LoanBuilderBase) {
+        
+        
+        
+        
+        
+    }
+    
+    private func updateCountOptionalData(model: [LoanCategories]) {
+        
+        for mo in model {
+            if let id = mo.id {
+                switch id {
+                case 1:
+                    //sinhVien
+                    guard let field = mo.builders, field.count > 3 else { return }
+                    self.updateCount(field: field[3])
+                    
+                    break
+                case 2:
+                    //dien Thoai
+                    
+                    break
+                    
+                case 3:
+                    //Mua xe may
+                    
+                    break
+                case 4:
+                    //Vay dam cuoi
+                    
+                    break
+                    
+                case 5:
+                    //Vay ba bau
+                    
+                    break
+                    
+                case 6:
+                    //Vay nuoi be
+                    
+                    break
+                    
+                case 7:
+                    //Vay mua do noi that
+                    
+                    break
+                    
+                case 8:
+                    //Vay thanh toan no
+                    
+                    break
+                    
+                    
+                case 9:
+                    //Vay khac
+                    
+                    break
+                    
+                    
+                case 10:
+                    
+                    break
+                    
+                default:
+                    break
+                    
+                    
+                }
+
+            }
+            
+            
+            
+            
+            
+            
+            
+        }
+        
+        
+    }
+    
     // MARK: - Core Data stack
     lazy var applicationDocumentsDirectory: URL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "caohai.PresentationSkill" in the application's documents Application Support directory.
