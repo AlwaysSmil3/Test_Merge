@@ -22,6 +22,9 @@ protocol BankDataDelegate {
 class ListWalletViewController: BaseViewController {
 
     // MARK: - Outlet
+    
+    @IBOutlet var rightBarButtonItem: UIBarButtonItem!
+    
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var noWalletLabel: UILabel!
     @IBOutlet weak var addBtn: UIButton!
@@ -42,6 +45,8 @@ class ListWalletViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        
         
         if self.walletAction == .LoanNation {
             self.setupTitleView(title: "Tạo yêu cầu vay", subTitle: "Bước 4: Tài khoản nhận tiền")

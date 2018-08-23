@@ -30,6 +30,8 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
     var parent: String?
     
+    var valueTemp: String?
+    
     var field: LoanBuilderFields? {
         didSet {
             guard let field_ = self.field else { return }
@@ -157,11 +159,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         if parent.contains("userInfo") {
             // thông tin user
             if id.contains("fullName") {
-                if DataManager.shared.checkFieldIsMissing(key: "fullName") {
-                    //Cap nhat thong tin khong hop le
-                    self.updateInfoFalse(pre: title)
-                }
-                
+
                 var value = ""
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.fullName, data.length() > 0 {
                     value = data
@@ -176,12 +174,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     DataManager.shared.loanInfo.userInfo.fullName = value
                 }
                 
-            } else if id.contains("nationalId") {
-                if DataManager.shared.checkFieldIsMissing(key: "nationalId") {
+                if DataManager.shared.checkFieldIsMissing(key: "fullName") {
                     //Cap nhat thong tin khong hop le
                     self.updateInfoFalse(pre: title)
+                    self.valueTemp = value
                 }
                 
+            } else if id.contains("nationalId") {
+
                 var value = ""
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.nationalId, data.length() > 0 {
                     value = data
@@ -195,15 +195,16 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     self.tfValue?.text = value
                     DataManager.shared.loanInfo.userInfo.nationalID = value
                 }
+                if DataManager.shared.checkFieldIsMissing(key: "nationalId") {
+                    //Cap nhat thong tin khong hop le
+                    self.updateInfoFalse(pre: title)
+                    self.valueTemp = value
+                }
             }
             
         } else if parent.contains("jobInfo") {
             // Thông tin nghề nghiêp
             if id == "company" {
-                if DataManager.shared.checkFieldIsMissing(key: "company") {
-                    //Cap nhat thong tin khong hop le
-                    self.updateInfoFalse(pre: title)
-                }
                 
                 var value = ""
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.company, data.length() > 0 {
@@ -219,12 +220,13 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     DataManager.shared.loanInfo.jobInfo.company = value
                 }
                 
-            }  else if id == "salary" {
-                
-                if DataManager.shared.checkFieldIsMissing(key: "salary") {
+                if DataManager.shared.checkFieldIsMissing(key: "company") {
                     //Cap nhat thong tin khong hop le
                     self.updateInfoFalse(pre: title)
+                    self.valueTemp = value
                 }
+                
+            }  else if id == "salary" {
                 
                 var value: Int32 = 0
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.salary, data > 0 {
@@ -240,11 +242,13 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     DataManager.shared.loanInfo.jobInfo.salary = Int32(value)
                 }
                 
-            } else if id == "companyPhoneNumber" {
-                if DataManager.shared.checkFieldIsMissing(key: "companyPhoneNumber") {
+                if DataManager.shared.checkFieldIsMissing(key: "salary") {
                     //Cap nhat thong tin khong hop le
                     self.updateInfoFalse(pre: title)
+                    self.valueTemp = FinPlusHelper.formatDisplayCurrency(Double(value))
                 }
+                
+            } else if id == "companyPhoneNumber" {
                 
                 var value = ""
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.companyPhoneNumber , data.length() > 0 {
@@ -259,11 +263,13 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     self.tfValue?.text = value
                     DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = value
                 }
-            } else if id == "experienceYear" {
-                if DataManager.shared.checkFieldIsMissing(key: "experienceYear") {
+                
+                if DataManager.shared.checkFieldIsMissing(key: "companyPhoneNumber") {
                     //Cap nhat thong tin khong hop le
                     self.updateInfoFalse(pre: title)
+                    self.valueTemp = value
                 }
+            } else if id == "experienceYear" {
                 
                 var valueFloat: Float = 0
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.experienceYear , data > 0 {
@@ -278,11 +284,12 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     self.tfValue?.text = "\(Int(valueFloat))"
                     DataManager.shared.loanInfo.jobInfo.experienceYear = valueFloat
                 }
-            } else if id == "studentId" {
-                if DataManager.shared.checkFieldIsMissing(key: "studentId") {
+                if DataManager.shared.checkFieldIsMissing(key: "experienceYear") {
                     //Cap nhat thong tin khong hop le
                     self.updateInfoFalse(pre: title)
+                    self.valueTemp = "\(Int(valueFloat))"
                 }
+            } else if id == "studentId" {
                 
                 var value = ""
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.studentId , data.length() > 0 {
@@ -297,11 +304,13 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     self.tfValue?.text = value
                     DataManager.shared.loanInfo.jobInfo.studentId = value
                 }
-            } else if id == "academicName" {
-                if DataManager.shared.checkFieldIsMissing(key: "academicName") {
+                
+                if DataManager.shared.checkFieldIsMissing(key: "studentId") {
                     //Cap nhat thong tin khong hop le
                     self.updateInfoFalse(pre: title)
+                    self.valueTemp = value
                 }
+            } else if id == "academicName" {
                 
                 var value = ""
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.academicName , data.length() > 0 {
@@ -315,6 +324,12 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 if value.length() > 0 {
                     self.tfValue?.text = value
                     DataManager.shared.loanInfo.jobInfo.academicName = value
+                }
+                
+                if DataManager.shared.checkFieldIsMissing(key: "academicName") {
+                    //Cap nhat thong tin khong hop le
+                    self.updateInfoFalse(pre: title)
+                    self.valueTemp = value
                 }
             }
         }
@@ -330,6 +345,15 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
 extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Giới hạn ký tự nhập vào
+        
+        if let temp = self.valueTemp {
+            if textField.text! != temp {
+                self.isNeedUpdate = false
+            } else {
+                self.isNeedUpdate = true
+            }
+        }
+        
         let maxLength = self.getMaxLength()
         let currentString: NSString = textField.text! as NSString
         let newString: NSString =
