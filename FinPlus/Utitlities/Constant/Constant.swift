@@ -30,7 +30,7 @@ var CountOptionMediaVayBaBau = 4
 
 // Vay nuoi be
 var CountOptionTextVayNuoiBe = 8
-var CountOptionMediaVayNuoiBe = 4
+var CountOptionMediaVayNuoiBe = 3
 
 // Vay mua do noi that
 var CountOptionTextVayMuaDoNoiThat = 4
