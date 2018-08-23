@@ -83,9 +83,9 @@ class LoanTypePopupVC: BasePopup {
         guard let type_ = self.type else { return }
         switch type_ {
         case .Categories:
-            if let current = DataManager.shared.currentIndexCategoriesSelectedPopup {
-                self.currentIndex = current
-            }
+//            if let current = DataManager.shared.currentIndexCategoriesSelectedPopup {
+//                self.currentIndex = current
+//            }
             break
         case .RelationShipPhone:
             if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup {
@@ -133,7 +133,10 @@ class LoanTypePopupVC: BasePopup {
             guard let type_ = self.type else { return }
             switch type_ {
             case .Categories:
-                DataManager.shared.currentIndexCategoriesSelectedPopup = self.currentIndex
+                if DataManager.shared.loanCategories.count > index {
+                    DataManager.shared.currentIndexCategoriesSelectedPopup = Int(DataManager.shared.loanCategories[index].id ?? 0)
+                }
+                
                 break
             case .RelationShipPhone:
                 //DataManager.shared.currentIndexRelationPhoneSelectedPopup = self.currentIndex

@@ -442,7 +442,7 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
         guard let field_ = self.field, let id = field_.id else { return maxLength }
         guard let parent = self.parent else {
             if id.contains("optionalText") {
-                maxLength = 13
+                maxLength = 50
             }
             
             return maxLength

@@ -268,8 +268,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if counts.count > 1 {
                         CountOptionTextVaySinhVien = counts[0]
                         CountOptionMediaVaySinhView = counts[1]
-                        print(counts[0])
-                        print(counts[1])
+
                     }
                     
                     
@@ -282,8 +281,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if counts.count > 1 {
                         CountOptionTextVayMuaDienThoai = counts[0]
                         CountOptionMediaVayMuaDienThoai = counts[1]
-                        print(counts[0])
-                        print(counts[1])
+
                     }
                     
                     break
@@ -296,8 +294,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if counts.count > 1 {
                         CountOptionTextVayMuaXeMay = counts[0]
                         CountOptionMediaVayMuaXeMay = counts[1]
-                        print(counts[0])
-                        print(counts[1])
+
                     }
                     
                     break

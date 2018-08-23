@@ -58,7 +58,7 @@ class DataManager {
     var currentIndexCategoriesSelectedPopup: Int? {
         didSet {
             if let i = self.currentIndexCategoriesSelectedPopup {
-                self.loanInfo.loanCategoryID = Int16(i + 1)
+                self.loanInfo.loanCategoryID = Int16(i)
                 self.updateIntRate()
             }
         }
@@ -178,7 +178,7 @@ class DataManager {
         
         if let cateID = activeLoan.loanCategoryId, cateID > 0 {
             DataManager.shared.loanInfo.loanCategoryID = cateID
-            self.currentIndexCategoriesSelectedPopup = Int(cateID) - 1
+            self.currentIndexCategoriesSelectedPopup = Int(cateID)
         }
         
         if let intRate = activeLoan.inRate {
