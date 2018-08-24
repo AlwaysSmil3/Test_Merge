@@ -112,6 +112,11 @@ class DataManager {
         }
     }
     
+    func reloadOptionalData() {
+        DataManager.shared.loanInfo.optionalMedia = [[]]
+        DataManager.shared.loanInfo.optionalText = []
+    }
+    
     //Xoa du lieu khi logout
     func clearData(completion: () -> Void) {
         

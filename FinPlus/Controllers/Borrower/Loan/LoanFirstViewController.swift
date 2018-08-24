@@ -327,6 +327,7 @@ class LoanFirstViewController: BaseViewController {
 
 extension LoanFirstViewController: DataSelectedFromPopupProtocol {
     func dataSelected(data: LoanBuilderData) {
+        DataManager.shared.reloadOptionalData()
         DataManager.shared.loanInfo.loanCategoryID = data.id!
         self.loanCategory = DataManager.shared.getCurrentCategory()
     }

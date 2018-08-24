@@ -192,8 +192,8 @@ class LoanStateViewController: UIViewController {
             let d2 = Date(fromString: acceptedDateStr, format: .iso8601(ISO8601Format.DateTimeSec))
             let date2 = calendar.startOfDay(for: d2)
             
-            if d2 > d1 {
-                let components = calendar.dateComponents([.day], from: date1, to: date2)
+            if d1 > d2 {
+                let components = calendar.dateComponents([.day], from: date2, to: date1)
                 acceptedDateTemp = components.day!
             }
         }
