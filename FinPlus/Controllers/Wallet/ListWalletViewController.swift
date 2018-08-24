@@ -23,7 +23,8 @@ class ListWalletViewController: BaseViewController {
 
     // MARK: - Outlet
     
-   
+    @IBOutlet var rightBarButtonItem: UIBarButtonItem!
+    
     
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var noWalletLabel: UILabel!
@@ -35,6 +36,7 @@ class ListWalletViewController: BaseViewController {
     let cellIdentifier = "cell"
     private var listWallet: NSMutableArray = []
     var currentSelected: Int?
+    var currentBankIdSelected: Int32?
 
     
     //CaoHai tra ve du lieu bank khi chon bank
@@ -46,16 +48,16 @@ class ListWalletViewController: BaseViewController {
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        
-        
         if self.walletAction == .LoanNation {
+            self.navigationItem.rightBarButtonItem?.tintColor = MAIN_COLOR
             self.setupTitleView(title: "Tạo yêu cầu vay", subTitle: "Bước 4: Tài khoản nhận tiền")
             //self.navigationController?.navigationBar.shadowImage = UIImage()
             self.bottomView.isHidden = false
+            self.updateDataFromServer()
             DataManager.shared.loanInfo.currentStep = 2
             self.updateDataToServer()
         } else {
-
+            self.navigationItem.rightBarButtonItem = nil
             self.setupTitleView(title: "Tài khoản nhận tiền")
         }
         
@@ -79,13 +81,20 @@ class ListWalletViewController: BaseViewController {
             self.navigationController?.isNavigationBarHidden = false
         }
         
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.loadListBank()
+    }
+    
+    private func updateDataFromServer() {
+        if DataManager.shared.loanInfo.bankId > 0 {
+            self.currentBankIdSelected = DataManager.shared.loanInfo.bankId
+            self.tableview.reloadData()
+        }
+        
     }
     
     /// Cho Loan - Xong mỗi bước là gửi api put cập nhật dữ liệu cho mỗi bước
@@ -121,6 +130,21 @@ class ListWalletViewController: BaseViewController {
             .catch { error in
         }
     }
+    
+    @IBAction func raightBarButtonTapped(_ sender: Any) {
+        
+        guard self.walletAction == .LoanNation, let bankId = self.currentBankIdSelected else { return }
+        
+        DataManager.shared.loanInfo.walletId = bankId
+        DataManager.shared.loanInfo.bankId = bankId
+        
+        let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
+        
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
+
+    }
+    
     
     @IBAction func navi_back(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -162,8 +186,9 @@ class ListWalletViewController: BaseViewController {
     }
     
     func editWallet(index: Int) {
+        guard let bank = self.listWallet[index] as? AccountBank else { return }
         let vc = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "UpdateWalletViewController") as! UpdateWalletViewController
-        vc.wallet = self.listWallet[index] as! AccountBank
+        vc.wallet = bank
         vc.hidesBottomBarWhenPushed = true
         vc.walletAction = self.walletAction
         
@@ -211,6 +236,8 @@ extension ListWalletViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
+        self.currentSelected = indexPath.row
+        
         switch indexPath.section {
         case 0:
             switch walletAction {
@@ -218,17 +245,9 @@ extension ListWalletViewController: UITableViewDelegate {
                 editWallet(index: indexPath.row)
                 break
             case .LoanNation:
-                let wallet = self.listWallet[indexPath.row] as! AccountBank
-                let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
-                DataManager.shared.loanInfo.walletId = wallet.id!
-                DataManager.shared.loanInfo.bankId = wallet.id!
-                
-                self.tableview.reloadData()
-
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    
-                    self.navigationController?.isNavigationBarHidden = true
-                    self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
+                if let wallet = self.listWallet[indexPath.row] as? AccountBank, let bankID = wallet.id {
+                    self.currentBankIdSelected = bankID
+                    self.tableview.reloadData()
                 }
                 
                 break
@@ -239,17 +258,10 @@ extension ListWalletViewController: UITableViewDelegate {
                 self.navigationController?.popViewController(animated: true)
                 break
             }
-            
-            
-            
+        
         default:
             addNewWallet()
         }
-        
-        
-        
-        
-        
     }
     
 }
@@ -324,7 +336,7 @@ extension ListWalletViewController: UITableViewDataSource {
             
             if self.walletAction == .LoanNation {
                 if let id = item.id {
-                    if DataManager.shared.loanInfo.bankId > 0 && id == DataManager.shared.loanInfo.bankId {
+                    if let bankIdSelected = self.currentBankIdSelected,  bankIdSelected > 0 && id == bankIdSelected {
                         cell?.borderView.layer.borderColor = MAIN_COLOR.cgColor
                         
                         if DataManager.shared.checkFieldIsMissing(key: "bank"), let missData = DataManager.shared.missingLoanData, let bank = missData.bank, let id = bank.id, id == item.id {

@@ -60,9 +60,9 @@ class LoanTypePopupVC: BasePopup {
         self.mainTBView?.rowHeight = UITableViewAutomaticDimension
         self.mainTBView?.register(UINib(nibName: "LoanTypePopupAddTextTBCell", bundle: nil), forCellReuseIdentifier: "Loan_Type_Popup_Add_Text_TB_Cell")
         
-        self.lblTitle?.text = titleString
-        
         self.updateSelected()
+        
+        self.lblTitle?.text = titleString
         
     }
     
@@ -94,21 +94,23 @@ class LoanTypePopupVC: BasePopup {
             break
             
         case .Job:
+            self.titleString = "Nghề nhiệp"
             if let current = DataManager.shared.currentIndexJobSelectedPopup {
                 self.currentIndex = current
             }
             break
         case .JobPosition:
+            self.titleString = "Cấp bậc"
             if let current = DataManager.shared.currentIndexJobPositionSelectedPopup {
                 self.currentIndex = current
             }
             break
         case .Strength:
-            
+            self.titleString = "Học lực"
             break
             
         case .AcademicLevel:
-            
+            self.titleString = "Trình độ học vấn"
             break
             
         }

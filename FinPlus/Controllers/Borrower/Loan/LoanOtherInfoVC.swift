@@ -72,33 +72,33 @@ class LoanOtherInfoVC: LoanBaseViewController {
     
     private func validateInput(completion: () -> Void) {
         
-//        var optionalTextIsDone = true
-//        for text in DataManager.shared.loanInfo.optionalText {
-//            if text.count == 0 {
-//                optionalTextIsDone = false
-//                break
-//            }
-//        }
-//
-//        if !optionalTextIsDone {
-//            self.showToastWithMessage(message: "Vui lòng nhập đầy đủ thông tin để sang bước tiếp theo")
-//            return
-//        }
-//
-//        var optionalMediaIsDone = true
-//        var index = 0
-//        for media in DataManager.shared.loanInfo.optionalMedia {
-//            if index == 0 && media.count == 0 {
-//                optionalMediaIsDone = false
-//                break
-//            }
-//            index += 1
-//        }
-//
-//        if !optionalMediaIsDone {
-//            self.showToastWithMessage(message: "Vui lòng upload đầy đủ ảnh để sang bước tiếp theo")
-//            return
-//        }
+        var optionalTextIsDone = true
+        for text in DataManager.shared.loanInfo.optionalText {
+            if text.count == 0 {
+                optionalTextIsDone = false
+                break
+            }
+        }
+
+        if !optionalTextIsDone {
+            self.showToastWithMessage(message: "Vui lòng nhập đầy đủ thông tin để sang bước tiếp theo")
+            return
+        }
+
+        var optionalMediaIsDone = true
+        var index = 0
+        for media in DataManager.shared.loanInfo.optionalMedia {
+            if index == 0 && media.count == 0 {
+                optionalMediaIsDone = false
+                break
+            }
+            index += 1
+        }
+
+        if !optionalMediaIsDone {
+            self.showToastWithMessage(message: "Vui lòng upload đầy đủ ảnh để sang bước tiếp theo")
+            return
+        }
         
         completion()
         

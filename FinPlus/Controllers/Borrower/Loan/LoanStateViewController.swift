@@ -24,6 +24,8 @@ enum BOTTOM_STATE: Int {
 
 class LoanStateViewController: UIViewController {
     
+    var refresher: UIRefreshControl!
+    
     @IBOutlet weak var scrollView: UIScrollView?
     @IBOutlet weak var containerView: UIView?
     @IBOutlet weak var headerTableView: UITableView?
@@ -81,6 +83,7 @@ class LoanStateViewController: UIViewController {
 //
 //            }
 //        }
+        self.initRefresher()
         
         self.getLoanCategories()
         
@@ -940,6 +943,41 @@ class LoanStateViewController: UIViewController {
         self.dataTableViewHeightConstraint?.constant = (self.dataTableView?.contentSize.height)!
         self.headerTableViewHeightConstraint?.constant = (self.headerTableView?.contentSize.height)!
     
+    }
+    
+    private func initRefresher() {
+        self.refresher = UIRefreshControl()
+        self.scrollView?.addSubview(self.refresher)
+        
+        //self.refresher.attributedTitle = NSAttributedString(string: "Refreshing")
+        //self.refresher.tintColor = MAIN_COLOR
+        self.refresher.addTarget(self, action: #selector(completeRefresh), for: .valueChanged)
+    }
+    
+    @objc func completeRefresh() {
+        //self.reloadData()
+        self.refreshData()
+    }
+    
+    private func refreshData() {
+        //Lay thong tin nguoi dung
+        APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
+            .done(on: DispatchQueue.main) { model in
+                self.refresher.endRefreshing()
+                guard let status = DataManager.shared.browwerInfo?.activeLoan?.status, let currentStatus = DataManager.shared.browwerInfo?.activeLoan?.status, status != currentStatus else { return }
+                DataManager.shared.isNeedReloadLoanStatusVC = false
+                DataManager.shared.browwerInfo = model
+                
+                let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+                if let window = UIApplication.shared.delegate?.window, let win = window {
+                    win.rootViewController = tabbarVC
+                }
+                
+            }
+            .catch { error in
+                self.refresher.endRefreshing()
+                
+        }
     }
     
     private func formatTitleMissingKey() -> String {
