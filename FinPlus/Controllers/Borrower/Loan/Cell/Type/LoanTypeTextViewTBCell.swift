@@ -101,7 +101,7 @@ extension LoanTypeTextViewTBCell: UITextViewDelegate {
             }
         
     }
-    
+        
     
 }
 

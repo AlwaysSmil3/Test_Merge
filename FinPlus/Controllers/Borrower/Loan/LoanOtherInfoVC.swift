@@ -111,10 +111,6 @@ class LoanOtherInfoVC: LoanBaseViewController {
         
         self.view.endEditing(true)
         
-//        if DataManager.shared.loanInfo.optionalText.length() == 0 {
-//            self.showToastWithMessage(message: "Vui lòng nhập lương tháng của bạn")
-//            return
-//        }
         self.validateInput {
             guard DataManager.shared.listKeyMissingLoanKey == nil || DataManager.shared.listKeyMissingLoanKey!.count == 0 else {
                 self.updateLoanStatus()
@@ -136,13 +132,6 @@ class LoanOtherInfoVC: LoanBaseViewController {
             
             self.navigationController?.pushViewController(socialInfoVC, animated: true)
         }
-        
-//        if !Platform.isSimulator {
-//            if DataManager.shared.loanInfo.optionalMedia.count == 0 {
-//                self.showToastWithMessage(message: "Vui lòng tải ảnh bảng lương/ chấm công của bạn")
-//                return
-//            }
-//        }
         
         
     }

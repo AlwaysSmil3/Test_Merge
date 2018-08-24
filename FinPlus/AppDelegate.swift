@@ -271,7 +271,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                     }
                     
-                    
                     break
                 case 2:
                     //dien Thoai
