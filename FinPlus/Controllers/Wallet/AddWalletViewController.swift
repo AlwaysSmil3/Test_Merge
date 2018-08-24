@@ -36,6 +36,9 @@ class AddWalletViewController: UIViewController {
         
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
+        self.accTextField.delegate = self
+        self.nameTextField.delegate = self
+        
         self.rightBarBtn.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : MAIN_COLOR], for: .normal)
         
         vcbBtn.layer.borderWidth = 0.5
@@ -131,6 +134,12 @@ class AddWalletViewController: UIViewController {
         if ((self.accTextField.text?.length())! < 1)
         {
             self.showAlertView(title: "Thông báo", message: "Bạn chưa điền số tài khoản", okTitle: "Đồng ý", cancelTitle: nil)
+            self.accTextField.becomeFirstResponder()
+            return
+        }
+        
+        if self.accTextField.text!.count < 9 {
+            self.showToastWithMessage(message: "Số tài khoản từ 9 -> 15 ký tự")
             self.accTextField.becomeFirstResponder()
             return
         }
@@ -263,4 +272,24 @@ class AddWalletViewController: UIViewController {
         }
     }
 
+}
+
+//MARK: TextField Delegate
+extension AddWalletViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Giới hạn ký tự nhập vào
+        var maxLength = 15
+        
+        if textField == self.nameTextField {
+            maxLength = 50
+        }
+        
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        
+        if newString.length > maxLength { return false }
+        
+        return true
+    }
 }

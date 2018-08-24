@@ -20,7 +20,7 @@ extension APIClient {
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
                 .done { json in
-                    print(json)
+                    //print(json)
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = BrowwerInfo(object: data)
                         
