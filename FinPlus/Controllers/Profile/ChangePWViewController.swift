@@ -134,6 +134,7 @@ class ChangePWViewController: UIViewController, UITextFieldDelegate {
     //MARK: Actions
     
     @IBAction func navi_back(sender: UIButton) {
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.popViewController(animated: true)
     }
     

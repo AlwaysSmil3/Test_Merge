@@ -30,6 +30,7 @@ class ModeViewController: UIViewController {
     }
     
     @IBAction func navi_back(sender: UIButton) {
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.popViewController(animated: true)
     }
     

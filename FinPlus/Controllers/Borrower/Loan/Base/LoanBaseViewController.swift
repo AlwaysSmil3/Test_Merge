@@ -483,8 +483,12 @@ extension LoanBaseViewController: SBMessageInputViewDelegate {
     }
     
     func inputView(textView: UITextView, shouldChangeTextInRange: NSRange, replacementText: String) -> Bool {
-        
-        return true
+        let newText = (textView.text as NSString).replacingCharacters(in: shouldChangeTextInRange, with: replacementText)
+        let trimmedText = newText.trimmingCharacters(in: CharacterSet.whitespaces)
+        let textLast = trimmedText.replacingOccurrences(of: "\n", with: "")
+        let numberOfChars = textLast.count // for Swift use count(newText)
+        return numberOfChars < 500
+
     }
     
     func inputViewDidBeginEditing(textView: UITextView) {

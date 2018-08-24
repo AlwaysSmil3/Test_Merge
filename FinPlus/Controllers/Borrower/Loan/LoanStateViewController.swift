@@ -76,6 +76,7 @@ class LoanStateViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.85)
         
         //Lấy data Local
 //        if let context = self.managedContext {

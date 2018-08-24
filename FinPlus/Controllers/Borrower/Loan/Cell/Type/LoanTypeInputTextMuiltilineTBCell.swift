@@ -23,6 +23,7 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
         super.awakeFromNib()
         self.lblTitle?.font = FONT_CAPTION
         
+        
         lblValue?.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapFunction(sender:)))
         lblValue?.addGestureRecognizer(tapGesture)
