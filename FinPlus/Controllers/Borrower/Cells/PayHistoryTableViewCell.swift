@@ -40,16 +40,24 @@ class PayHistoryTableViewCell: UITableViewCell {
         // set theme cell
         switch cellData.status! {
         case 0:
+            //chưa phát sinh
             self.notYetCellView()
             break
         case 1:
+            //Chưa thanh toán
             self.needToPayCellView()
             break
+        case 2:
+            //Đã thanh toán
+            amountLb.text = FinPlusHelper.formatDisplayCurrency(cellData.repayFeeOverdue! + cellData.repayOverdue! + cellData.repayInterest! + cellData.repayPrincipal!) + "đ"
+            self.paidViewCell()
+            break
         case 3:
+            // Trễ thanh toán
             self.needToPayNowViewCell()
             break
         default:
-            self.paidViewCell()
+            
             break
         }
     }

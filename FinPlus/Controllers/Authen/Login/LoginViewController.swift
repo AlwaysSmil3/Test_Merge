@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 enum AccountType {
     case None
@@ -35,9 +36,70 @@ class LoginViewController: BaseAuthenViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tfPass?.delegate = self
-        self.tfPass?.becomeFirstResponder()
+        
 
         self.updateUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.getNotificationSettings()
+    }
+    
+    //Check cai dat notification
+    func getNotificationSettings() {
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+                
+                switch settings.authorizationStatus {
+                case .authorized:
+                    print("Notification authorized")
+                    
+                    break
+                    
+                case .denied:
+                    print("Notification denied")
+                    self.showAlertView(title: MS_TITLE_ALERT, message: "Vui lòng vào: Cài đặt > Thông báo -> Mony -> Bật thông báo, để nhận những thông báo mới nhất từ Mony", okTitle: "Huỷ", cancelTitle: "Đồng ý", completion: { (status) in
+                        
+                        guard !status else {
+                            self.tfPass?.becomeFirstResponder()
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                                return
+                            }
+                            
+                            if UIApplication.shared.canOpenURL(settingsUrl) {
+                                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                    print("Settings opened: \(success)") // Prints true
+                                })
+                            }
+                        }
+                        
+                    })
+                    
+                    return
+                case .notDetermined:
+                    print("Notification not Determined")
+                    
+                    break
+                    
+                }
+                DispatchQueue.main.async {
+                    self.tfPass?.becomeFirstResponder()
+                }
+                
+            }
+        } else {
+            // Fallback on earlier versions
+            DispatchQueue.main.async {
+                self.tfPass?.becomeFirstResponder()
+            }
+        }
+        
+        
     }
     
     private func updateUI() {
@@ -90,7 +152,7 @@ class LoginViewController: BaseAuthenViewController {
             self.isEnableContinueButton(isEnable: true)
             self.view.endEditing(true)
         } else {
-            self.isEnableContinueButton(isEnable: true)
+            self.isEnableContinueButton(isEnable: false)
         }
     }
     

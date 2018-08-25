@@ -210,7 +210,10 @@ let API_RESPONSE_RETURN_DATA = "data"
 
 let API_DEVICE_TYPE_OS = 0 // ios 0, android: 1
 
+
+
 //MARK: Colors
+let NAVIGATION_BAR_COLOR = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.85)
 let MAIN_COLOR = UIColor(hexString: "#3EAA5F")
 let BAR_DEFAULT_COLOR = UIColor(hexString: "#c9c9cd")
 let DISABLE_BUTTON_COLOR = UIColor(hexString: "#B8C9D3")

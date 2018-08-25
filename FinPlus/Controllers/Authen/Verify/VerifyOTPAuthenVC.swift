@@ -54,16 +54,17 @@ class VerifyOTPAuthenVC: BaseViewController {
         pinCodeTextField.keyboardType = .numberPad
         pinCodeTextField.becomeFirstResponder()
         
-        let toolbar = UIToolbar()
-        let nextButtonItem = UIBarButtonItem(title: NSLocalizedString("Tiếp theo",
-                                                                      comment: ""),
-                                             style: .done,
-                                             target: self,
-                                             action: #selector(pinCodeNextAction))
-        toolbar.items = [nextButtonItem]
-        toolbar.barStyle = .default
-        toolbar.sizeToFit()
-        pinCodeTextField.inputAccessoryView = toolbar
+//        let toolbar = UIToolbar()
+//        let nextButtonItem = UIBarButtonItem(title: NSLocalizedString("Tiếp theo",
+//                                                                      comment: ""),
+//                                             style: .done,
+//                                             target: self,
+//                                             action: #selector(pinCodeNextAction))
+//        toolbar.items = [nextButtonItem]
+//        toolbar.barStyle = .default
+//        toolbar.sizeToFit()
+//        pinCodeTextField.inputAccessoryView = toolbar
+        
         resendCodeBtn.isHidden = true
     }
     

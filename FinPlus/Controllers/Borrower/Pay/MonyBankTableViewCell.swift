@@ -53,9 +53,9 @@ class MonyBankTableViewCell: UITableViewCell {
         
         self.bankNameDetailLb.text = bankData.bankNameDetail
         self.bankNumber.text = bankData.bankNumber
-        self.bankUsernameLb.text = bankData.bankNumber
+        self.bankUsernameLb.text = bankData.bankUsername
         self.amountLb.text = FinPlusHelper.formatDisplayCurrency(bankData.amount) + "đ"
-        self.contentLb.text = contentLb.text
+        self.contentLb.text = bankData.content
         if self.isSelected == true {
             containView.layer.borderColor = UIColor(hexString: "#3BAB63").cgColor
         } else {
@@ -68,5 +68,39 @@ class MonyBankTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    //MARK: Actions
+    
+    @IBAction func btnCopyBankNameTapped(_ sender: Any) {
+        UIPasteboard.general.string = bankData.bankNameDetail
+        guard let topVC = UIApplication.shared.topViewController() else { return }
+        topVC.showToastWithMessage(message: "Đã copy thông tin ra clipboard.")
+    }
+    
+    @IBAction func btnCopyBankAccountNumberTapped(_ sender: Any) {
+        UIPasteboard.general.string = bankData.bankNumber
+        guard let topVC = UIApplication.shared.topViewController() else { return }
+        topVC.showToastWithMessage(message: "Đã copy thông tin ra clipboard.")
+    }
+    
+    @IBAction func btnCopyBankAccountOwnerNameTapped(_ sender: Any) {
+        UIPasteboard.general.string = bankData.bankUsername
+        guard let topVC = UIApplication.shared.topViewController() else { return }
+        topVC.showToastWithMessage(message: "Đã copy thông tin ra clipboard.")
+    }
+    
+    @IBAction func btnCopyAmountTapped(_ sender: Any) {
+        UIPasteboard.general.string = "\(bankData.amount)"
+        guard let topVC = UIApplication.shared.topViewController() else { return }
+        topVC.showToastWithMessage(message: "Đã copy thông tin ra clipboard.")
+    }
+    
+    @IBAction func btnCopyDescriptionPayTapped(_ sender: Any) {
+        UIPasteboard.general.string = bankData.content
+        guard let topVC = UIApplication.shared.topViewController() else { return }
+        topVC.showToastWithMessage(message: "Đã copy thông tin ra clipboard.")
+    }
+    
+    
     
 }

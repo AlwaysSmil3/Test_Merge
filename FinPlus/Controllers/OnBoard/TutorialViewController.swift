@@ -21,8 +21,14 @@ class TutorialViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         pageControl.addTarget(self, action: #selector(self.didChangePageControlValue), for: .valueChanged)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
     }
 
     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -73,6 +79,7 @@ extension TutorialViewController: TutorialPageViewControllerDelegate {
 
     func tutorialPageViewController(tutorialPageViewController: TutorialPageViewController,
                                     didUpdatePageIndex index: Int) {
+
         pageControl.currentPage = index
     }
 
