@@ -88,6 +88,7 @@ class LoanTypePopupVC: BasePopup {
 //            }
             break
         case .RelationShipPhone:
+            self.titleString = "Người thân"
             if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup {
                 self.currentIndex = current
             }

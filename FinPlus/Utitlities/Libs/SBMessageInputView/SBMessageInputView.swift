@@ -62,6 +62,13 @@ class SBMessageInputView: UIView {
         }
     }
     
+    var tempValue: String? {
+        didSet {
+            guard let temp = self.tempValue else { return }
+            self.textView.text = temp
+        }
+    }
+    
     // Views
     var mainView = UIView()
     var textView = UITextView(frame: .zero)
@@ -180,7 +187,7 @@ class SBMessageInputView: UIView {
             textView.font = self.font
             
             textView.backgroundColor = UIColor(red: 234/255, green: 239/255, blue: 247/255, alpha: 1.0)
-            textView.text = "Nhập thông tin"
+            //textView.text = "Nhập thông tin"
             textView.textColor = UIColor(hexString: "#08121E")
             
             mainView.addSubview(textView)

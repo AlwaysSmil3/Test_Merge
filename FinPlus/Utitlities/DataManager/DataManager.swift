@@ -117,6 +117,11 @@ class DataManager {
         DataManager.shared.loanInfo.optionalText = []
     }
     
+    func reloadDataFirstLoanVC() {
+        DataManager.shared.loanInfo.amount = 0
+        DataManager.shared.loanInfo.term = 0
+    }
+    
     //Xoa du lieu khi logout
     func clearData(completion: () -> Void) {
         

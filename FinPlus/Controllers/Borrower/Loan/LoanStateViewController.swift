@@ -357,6 +357,8 @@ class LoanStateViewController: UIViewController {
                 
             case .REJECTED?:
                 //Bị từ chối
+                DataManager.shared.reloadDataFirstLoanVC()
+                
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
