@@ -113,6 +113,9 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
             cell.containView.layer.cornerRadius = 8
             cell.containView.layer.borderColor = UIColor.lightGray.cgColor
             cell.timeLb.textColor = UIColor.darkGray
+            cell.titleLb.textColor = UIColor(hexString: "#4D6678")
+            cell.contentLb.textColor = UIColor(hexString: "#4D6678")
+            
             cell.containView.layer.borderWidth = 1
             cell.titleLb.text = cellData.title!
             cell.contentLb.text = cellData.messages!
