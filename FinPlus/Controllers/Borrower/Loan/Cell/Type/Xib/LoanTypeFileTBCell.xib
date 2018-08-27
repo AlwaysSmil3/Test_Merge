@@ -41,10 +41,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="162"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loan_add" translatesAutoresizingMaskIntoConstraints="NO" id="sr0-wS-eg9">
-                                <rect key="frame" x="163" y="72" width="18" height="18"/>
+                                <rect key="frame" x="163" y="71.5" width="18" height="18"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chụp ảnh" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hn5-En-wPs">
-                                <rect key="frame" x="32" y="133" width="279" height="13"/>
+                                <rect key="frame" x="32" y="132.5" width="279" height="13.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                 <color key="textColor" red="0.55686274509803924" green="0.63921568627450975" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -56,11 +56,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Hn5-En-wPs" firstAttribute="top" secondItem="sr0-wS-eg9" secondAttribute="bottom" constant="43" id="3FV-e5-xHY"/>
-                            <constraint firstItem="sr0-wS-eg9" firstAttribute="centerY" secondItem="mZ4-jl-d8H" secondAttribute="centerY" id="4nQ-q7-nin"/>
                             <constraint firstAttribute="width" secondItem="mZ4-jl-d8H" secondAttribute="height" multiplier="343:162" id="BCp-gz-24i"/>
                             <constraint firstItem="sr0-wS-eg9" firstAttribute="centerX" secondItem="mZ4-jl-d8H" secondAttribute="centerX" id="DGv-lo-SkT"/>
                             <constraint firstItem="AUJ-sf-U6A" firstAttribute="centerX" secondItem="mZ4-jl-d8H" secondAttribute="centerX" id="GQX-GG-8xY"/>
+                            <constraint firstItem="sr0-wS-eg9" firstAttribute="centerY" secondItem="mZ4-jl-d8H" secondAttribute="centerY" id="H27-xI-3Dw"/>
                             <constraint firstItem="AUJ-sf-U6A" firstAttribute="centerY" secondItem="mZ4-jl-d8H" secondAttribute="centerY" id="HJo-aT-LQI"/>
                             <constraint firstItem="hmx-QV-WET" firstAttribute="top" secondItem="mZ4-jl-d8H" secondAttribute="top" id="Msp-3E-mgo"/>
                             <constraint firstItem="Hn5-En-wPs" firstAttribute="bottom" secondItem="hmx-QV-WET" secondAttribute="bottom" constant="-16" id="RyM-QJ-pDu"/>

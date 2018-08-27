@@ -16,6 +16,11 @@ class LoanTypePopupTBCell: UITableViewCell {
     
     @IBOutlet weak var constantLblValueCenterY: NSLayoutConstraint!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.selectionStyle = .none
+    }
+    
 }
 
 

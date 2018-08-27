@@ -72,19 +72,19 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RpL-mH-GPw">
-                                <rect key="frame" x="0.0" y="20" width="375" height="597"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cog-1t-BT4">
-                                        <rect key="frame" x="0.0" y="0.0" width="1125" height="597"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1125" height="617"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Au-6Z-ADy">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagefirstOnboard" translatesAutoresizingMaskIntoConstraints="NO" id="Ech-ST-wc9">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="458"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagefirstOnboard" translatesAutoresizingMaskIntoConstraints="NO" id="Ech-ST-wc9">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="478"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tạo các khoản vay để kêu gọi huy động vốn trực tiếp từ những nhà đầu tư cá nhân trên sàn giao dịch của chúng tôi." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWf-lw-PU7">
-                                                        <rect key="frame" x="30" y="534" width="315" height="55"/>
+                                                        <rect key="frame" x="30" y="554" width="315" height="55"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="55" id="YTN-eQ-h3x"/>
                                                         </constraints>
@@ -93,7 +93,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vay trực tiếp từ nhà đầu tư" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="urr-P8-Xcd">
-                                                        <rect key="frame" x="30" y="488" width="315" height="30"/>
+                                                        <rect key="frame" x="30" y="508" width="315" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="1Ll-jQ-fI9"/>
                                                         </constraints>
@@ -117,13 +117,13 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wvZ-eI-nwq">
-                                                <rect key="frame" x="375" y="0.0" width="375" height="597"/>
+                                                <rect key="frame" x="375" y="0.0" width="375" height="617"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagesecondOnboard" translatesAutoresizingMaskIntoConstraints="NO" id="173-f7-8xY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="458"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="478"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhà đầu tư sẽ lựa chọn để đầu tư phù hợp và nhận được lãi suất sau đó. Hai bên người vay và người đầu tư đều có lợi!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CK7-nM-A2B">
-                                                        <rect key="frame" x="30" y="534" width="315" height="55"/>
+                                                        <rect key="frame" x="30" y="554" width="315" height="55"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="55" id="wUM-5s-5ZT"/>
                                                         </constraints>
@@ -132,7 +132,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cho vay và nhận lãi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPZ-49-fpw">
-                                                        <rect key="frame" x="30" y="488" width="315" height="30"/>
+                                                        <rect key="frame" x="30" y="508" width="315" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="Ge5-cW-FPI"/>
                                                         </constraints>
@@ -156,13 +156,13 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yde-Sa-oCp">
-                                                <rect key="frame" x="750" y="0.0" width="375" height="597"/>
+                                                <rect key="frame" x="750" y="0.0" width="375" height="617"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagethirdOnboard" translatesAutoresizingMaskIntoConstraints="NO" id="ynz-EM-weS">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="458"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="478"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMH-ea-QnT">
-                                                        <rect key="frame" x="30" y="534" width="315" height="55"/>
+                                                        <rect key="frame" x="30" y="554" width="315" height="55"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="55" id="HR5-1x-zjZ"/>
                                                         </constraints>
@@ -172,7 +172,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An toàn, dễ dùng và tin cậy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0e-fl-rYk">
-                                                        <rect key="frame" x="30" y="488" width="315" height="30"/>
+                                                        <rect key="frame" x="30" y="508" width="315" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="TY2-mr-l8j"/>
                                                         </constraints>
@@ -229,8 +229,8 @@
                             <constraint firstItem="mtq-ih-Pfa" firstAttribute="trailing" secondItem="RpL-mH-GPw" secondAttribute="trailing" id="KsS-Xa-N5x"/>
                             <constraint firstItem="YEW-lE-O5U" firstAttribute="top" secondItem="RpL-mH-GPw" secondAttribute="bottom" id="RAM-hm-jFk"/>
                             <constraint firstAttribute="trailing" secondItem="YEW-lE-O5U" secondAttribute="trailing" id="hyU-0o-KLw"/>
-                            <constraint firstItem="RpL-mH-GPw" firstAttribute="top" secondItem="mtq-ih-Pfa" secondAttribute="top" id="rZU-MV-RzK"/>
                             <constraint firstAttribute="bottom" secondItem="YEW-lE-O5U" secondAttribute="bottom" id="ubr-Q0-paD"/>
+                            <constraint firstItem="RpL-mH-GPw" firstAttribute="top" secondItem="NQo-7x-FsP" secondAttribute="top" id="wez-ja-bwj"/>
                             <constraint firstItem="YEW-lE-O5U" firstAttribute="leading" secondItem="NQo-7x-FsP" secondAttribute="leading" id="yhV-cd-LuQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mtq-ih-Pfa"/>

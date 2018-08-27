@@ -12,5 +12,6 @@ struct FacebookInfo {
     var accessToken: String
     var fullName: String
     var avatar: String
+    var facebookId: String
     
 }

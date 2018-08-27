@@ -58,17 +58,28 @@ class DataManager {
     var currentIndexCategoriesSelectedPopup: Int? {
         didSet {
             if let i = self.currentIndexCategoriesSelectedPopup {
-                self.loanInfo.loanCategoryID = Int16(i + 1)
+                self.loanInfo.loanCategoryID = Int16(i)
                 self.updateIntRate()
             }
         }
     }
-    //So dien thoai nguoi than
-    var currentIndexRelationPhoneSelectedPopup: Int?
+    //So dien thoai nguoi than 1
+    var currentIndexRelationPhoneSelectedPopup1: Int?
+    
+    //So dien thoai nguoi than 2
+    var currentIndexRelationPhoneSelectedPopup2: Int?
+    
     //Job hien tai dang chon
     var currentIndexJobSelectedPopup: Int?
+    
     //Job Position hien tai dang chon
     var currentIndexJobPositionSelectedPopup: Int?
+    
+    //Acedemic Level hien tai dang chon
+    var currentIndexAcedemicLevelSelectedPopup: Int?
+    
+    //Hoc luc hien tai dang chon
+    var currentIndexStrengthSelectedPopup: Int?
     
     //Các trường không hợp lệ của loan
     var missingLoanData: BrowwerActiveLoan? {
@@ -86,6 +97,9 @@ class DataManager {
     
     //Data when push notification
     var notificationData: NSDictionary?
+    
+    //Khi co thong bao chuyen trang thai loan cần update LoanStatusVC
+    var isNeedReloadLoanStatusVC: Bool?
     
     /// Get Data from JSON
     func getDataLoanFromJSON() {
@@ -107,6 +121,16 @@ class DataManager {
                 // handle error
             }
         }
+    }
+    
+    func reloadOptionalData() {
+        DataManager.shared.loanInfo.optionalMedia = [[]]
+        DataManager.shared.loanInfo.optionalText = []
+    }
+    
+    func reloadDataFirstLoanVC() {
+        DataManager.shared.loanInfo.amount = 0
+        DataManager.shared.loanInfo.term = 0
     }
     
     //Xoa du lieu khi logout
@@ -175,7 +199,7 @@ class DataManager {
         
         if let cateID = activeLoan.loanCategoryId, cateID > 0 {
             DataManager.shared.loanInfo.loanCategoryID = cateID
-            self.currentIndexCategoriesSelectedPopup = Int(cateID) - 1
+            self.currentIndexCategoriesSelectedPopup = Int(cateID)
         }
         
         if let intRate = activeLoan.inRate {

@@ -9,6 +9,7 @@
 import Foundation
 
 //Date format
+let DATE_FORMATTER_WITH_SERVER = "yyyy-MM-dd'T'HH:mm:ssXXX"
 let kDOBFormat  = "yyyy-MM-dd'T'HH:mm:ssZ";
 let kDOBFormatWithMilisecond  = "yyyy-MM-dd'T'HH:mm:ss.SSSSZ";
 let kDisplayFormat = "dd/MM/yyyy";

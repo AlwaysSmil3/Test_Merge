@@ -56,9 +56,19 @@ class LoanBaseViewController: BaseViewController {
                 if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeDropdownTBCell {
                     //DateTime ISO 8601
                     let timeISO8601 = date1.toString(.iso8601(ISO8601Format.DateTimeSec))
-                    DataManager.shared.loanInfo.userInfo.birthDay = timeISO8601
                     
+                    
+                    guard let id = cell.field?.id else { return }
+                    
+                    if id.contains("birthday") {
+                        DataManager.shared.loanInfo.userInfo.birthDay = timeISO8601
+                    } else if id.contains("optionalText") {
+                        if let index = cell.field?.arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
+                            DataManager.shared.loanInfo.optionalText[index] = timeISO8601
+                        }
+                    }
                     cell.field?.placeholder = date
+                    
                 }
             }
         }
@@ -68,7 +78,20 @@ class LoanBaseViewController: BaseViewController {
     var gender: Gender? {
         didSet {
             guard let g = self.gender else { return }
-            DataManager.shared.loanInfo.userInfo.gender = "\(g.rawValue)"
+            guard let i = self.currentIndexSelected, let field_ = self.dataSource?.fields![i.row], let id = field_.id else { return }
+            
+            if id.contains("gender") {
+                DataManager.shared.loanInfo.userInfo.gender = "\(g.rawValue)"
+            } else if id.contains("optionalText") {
+                if let index = field_.arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
+                    if g.rawValue == 0 {
+                        DataManager.shared.loanInfo.optionalText[index] = "Nam"
+                    } else {
+                        DataManager.shared.loanInfo.optionalText[index] = "Nữ"
+                    }
+                }
+            }
+
         }
     }
     
@@ -262,7 +285,39 @@ class LoanBaseViewController: BaseViewController {
     
     func showInputMesseageView() {
         self.isMuiltiLineText = true
-        self.sbInputView?.textView.becomeFirstResponder()
+        
+        self.checkValueOptionalTextMuiltiLine {
+            self.sbInputView?.textView.becomeFirstResponder()
+        }
+        
+    }
+    
+    //Check nếu có text nhập rồi thì input vào cho edit từ đã có
+    func checkValueOptionalTextMuiltiLine(completion: () -> Void) {
+        guard let index = self.currentIndexSelected?.row else {
+            completion()
+            return
+        }
+        guard index < DataManager.shared.loanInfo.optionalText.count, DataManager.shared.loanInfo.optionalText[index].count > 0 else {
+            completion()
+            return
+        }
+        
+        let text = DataManager.shared.loanInfo.optionalText[index]
+        
+        self.sbInputView?.lineHeight = 20
+        self.sbInputView?.numberOfLines = CGFloat(self.getCountLine(text: text))
+        self.sbInputView?.tempValue = text
+        completion()
+    }
+    
+    func getCountLine(text: String) -> Int {
+        let lines = text.components(separatedBy: "\n")
+        if lines.count > 0 {
+            return lines.count
+        }
+        
+        return 1
     }
     
     /// Làm mới lại View Nhập text comment
@@ -281,7 +336,7 @@ class LoanBaseViewController: BaseViewController {
             DataManager.shared.loanInfo.optionalText[index] = text
         }
         
-        self.dataSource?.fields![index.row].placeholder = text
+        self.dataSource?.fields![index.row].textInputMuiltiline = text
         
         self.mainTBView?.reloadRows(at: [index], with: UITableViewRowAnimation.automatic)
         
@@ -453,15 +508,19 @@ extension LoanBaseViewController: SBMessageInputViewDelegate {
     }
     
     func inputViewShouldBeginEditing(textView: UITextView) -> Bool {
-        textView.text = ""
+        //textView.text = ""
         
         
         return true
     }
     
     func inputView(textView: UITextView, shouldChangeTextInRange: NSRange, replacementText: String) -> Bool {
-        
-        return true
+        let newText = (textView.text as NSString).replacingCharacters(in: shouldChangeTextInRange, with: replacementText)
+        let trimmedText = newText.trimmingCharacters(in: CharacterSet.whitespaces)
+        let textLast = trimmedText.replacingOccurrences(of: "\n", with: "")
+        let numberOfChars = textLast.count // for Swift use count(newText)
+        return numberOfChars < 500
+
     }
     
     func inputViewDidBeginEditing(textView: UITextView) {

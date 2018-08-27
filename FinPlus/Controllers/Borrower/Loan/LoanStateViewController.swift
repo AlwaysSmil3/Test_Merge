@@ -24,6 +24,8 @@ enum BOTTOM_STATE: Int {
 
 class LoanStateViewController: UIViewController {
     
+    var refresher: UIRefreshControl!
+    
     @IBOutlet weak var scrollView: UIScrollView?
     @IBOutlet weak var containerView: UIView?
     @IBOutlet weak var headerTableView: UITableView?
@@ -61,11 +63,20 @@ class LoanStateViewController: UIViewController {
         return appDelegate.managedObjectContext
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let isNeedReload = DataManager.shared.isNeedReloadLoanStatusVC, isNeedReload {
+            self.reLoadStatusLoanVC()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.85)
         
         //Lấy data Local
 //        if let context = self.managedContext {
@@ -73,6 +84,7 @@ class LoanStateViewController: UIViewController {
 //
 //            }
 //        }
+        self.initRefresher()
         
         self.getLoanCategories()
         
@@ -139,7 +151,7 @@ class LoanStateViewController: UIViewController {
         //Ngày tạo đơn
         var dateString = " "
         if let date_ = loan.createdAt, date_.length() > 0 {
-            let date = Date.init(fromString: date_, format: DateFormat.custom("yyyy-MM-dd HH:mm:ssZ"))
+            let date = Date.init(fromString: date_, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
             dateString = date.toString(.custom(kDisplayFormat))
             
         } else {
@@ -175,6 +187,8 @@ class LoanStateViewController: UIViewController {
         
         //Ngày huy động còn lại
         var acceptedDate = "30"
+        var acceptedDateTemp = 0
+        
         if let acceptedDateStr = loan.acceptedAt {
             let calendar = NSCalendar.current
             let d1 = Date()
@@ -182,11 +196,14 @@ class LoanStateViewController: UIViewController {
             let d2 = Date(fromString: acceptedDateStr, format: .iso8601(ISO8601Format.DateTimeSec))
             let date2 = calendar.startOfDay(for: d2)
             
-            if d2 > d1 {
-                let components = calendar.dateComponents([.day], from: date1, to: date2)
-                acceptedDate = "\(components.day!)"
+            if d1 > d2 {
+                let components = calendar.dateComponents([.day], from: date2, to: date1)
+                acceptedDateTemp = components.day!
             }
-            
+        }
+        
+        if let rasingCapital = DataManager.shared.config?.dateLimit?.rAISINGCAPITAL, rasingCapital > acceptedDateTemp {
+            acceptedDate = "\(rasingCapital - acceptedDateTemp)"
         }
         
         dataSource = [
@@ -205,6 +222,7 @@ class LoanStateViewController: UIViewController {
         {
             switch(STATUS_LOAN(rawValue: id!)) {
             case .DRAFT?:
+                //Trang thai Draft = 0
                 if payMounthTitle == "Trả góp hàng tháng" {
                     payMounthTitle = "Trả góp dự kiến hàng tháng"
                 }
@@ -235,7 +253,8 @@ class LoanStateViewController: UIViewController {
                     ],
                 ]
                 
-            case .SALE_REVIEW?, .RISK_REVIEW?:
+            case .SALE_REVIEW?:
+                //Kinh doanh duyệt = 1
                 if payMounthTitle == "Trả góp hàng tháng" {
                     payMounthTitle = "Trả góp dự kiến hàng tháng"
                 }
@@ -259,8 +278,79 @@ class LoanStateViewController: UIViewController {
                         ],
                 ]
                 
-            case .RISK_PENDING?, .SALE_PENDING?:
-                //Cần bổ sung thông tin
+                
+            case .RISK_REVIEW?:
+                // Thẩm định viên duyệt = 3
+                if payMounthTitle == "Trả góp hàng tháng" {
+                    payMounthTitle = "Trả góp dự kiến hàng tháng"
+                }
+                dataSource = [
+                    LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
+                    LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
+                    LoanSummaryModel(name: "Số tiền vay", value: amountString, attributed: NSAttributedString(string: amountString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Kỳ hạn vay", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Trạng thái", value: "Chờ phê duyệt", attributed: NSAttributedString(string: "Chờ phê duyệt", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
+                    LoanSummaryModel(name: "Lãi suất dự kiến", value: "\(rate)%/năm", attributed: nil),
+                    LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFee) + "đ", attributed: nil),
+                    LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
+                ]
+                
+                self.navigationItem.rightBarButtonItem = nil
+                
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Đơn vay của bạn đang chờ duyệt.",
+                        "subType": TextCellType.TitleType,
+                        ],
+                ]
+                
+            case .SALE_PENDING?:
+                //Can bo sung thong tin, Sale review = 2
+                if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
+                    self.navigationController?.isNavigationBarHidden = true
+                }
+                
+                if payMounthTitle == "Trả góp hàng tháng" {
+                    payMounthTitle = "Trả góp dự kiến hàng tháng"
+                }
+                dataSource = [
+                    LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
+                    LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
+                    LoanSummaryModel(name: "Số tiền vay", value: amountString, attributed: NSAttributedString(string: amountString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Kỳ hạn vay", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Trạng thái", value: "Cần bổ sung thông tin", attributed: NSAttributedString(string: "Cần bổ sung thông tin", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : UIColor(hexString: "#ED8A17")])),
+                    LoanSummaryModel(name: "Lãi suất dự kiến", value: "\(rate)%/năm", attributed: nil),
+                    LoanSummaryModel(name: "Phí dịch vụ dự kiến", value: FinPlusHelper.formatDisplayCurrency(serviceFee) + "đ", attributed: nil),
+                    LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
+                ]
+                
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Đơn vay của bạn cần được bổ sung thông tin.",
+                        "subType": TextCellType.TitleType,
+                        ],
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": self.formatTitleMissingKey(),
+                        "subType": TextCellType.DesType,
+                        
+                        ],
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Bổ sung thông tin",
+                        "subType": ButtonCellType.FillType,
+                        "target": "update_loan_MissData"
+                    ],
+                ]
+                
+                
+                
+            case .RISK_PENDING?:
+                //Cần bổ sung thông tin, risk pending = 4
                 if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
                     self.navigationController?.isNavigationBarHidden = true
                 }
@@ -301,7 +391,7 @@ class LoanStateViewController: UIViewController {
                 ]
                 
             case .INTEREST_CONFIRM?, .INTEREST_CONFIRM_EXPIRED?:
-                //Cho xác nhận lãi xuất, qúa hạn xác nhận lãi xuất
+                //Cho xác nhận lãi xuất, qúa hạn xác nhận lãi xuất, 6 - 7
                 if payMounthTitle == "Trả góp hàng tháng" {
                     payMounthTitle = "Trả góp dự kiến hàng tháng"
                 }
@@ -319,6 +409,9 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
+                
+                self.navigationItem.rightBarButtonItem = nil
+                
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
@@ -339,7 +432,9 @@ class LoanStateViewController: UIViewController {
                 ]
                 
             case .REJECTED?:
-                //Bị từ chối
+                //Bị từ chối - 5
+                DataManager.shared.reloadDataFirstLoanVC()
+                
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
@@ -372,7 +467,7 @@ class LoanStateViewController: UIViewController {
                 ]
                 
             case .CANCELED?:
-                //Đã huỷ đơn vay
+                //Đã huỷ đơn vay , 17
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
@@ -395,7 +490,7 @@ class LoanStateViewController: UIViewController {
                 ]
                 
             case .RAISING_CAPITAL?:
-                //Đang huy động vốn
+                //Đang huy động vốn - 8
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày duyệt đơn", value: dateString, attributed: nil),
@@ -410,6 +505,7 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
+                self.navigationItem.rightBarButtonItem = nil
                 
                 headerData = [
                     [
@@ -425,7 +521,7 @@ class LoanStateViewController: UIViewController {
                 ]
                 
             case .PARTIAL_FILLED?:
-                //Huy động được 1 phần
+                //Huy động được 1 phần - 9
                 
                 //let funded = FinPlusHelper.formatDisplayCurrency(Double(loan.funded ?? 0)) + "đ"
                 
@@ -443,29 +539,42 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
-                
+                self.navigationItem.rightBarButtonItem = nil
                 
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
-                        "text": "Bạn đã huy động được \(funded) trong vòng 1 ngày.",
+                        "text": "FinSmart đang huy động cho khoản vay của bạn.",
                         "subType": TextCellType.TitleType,
                         ],
                     [
                         "type": HeaderCellType.TextType,
-                        "text": "Bạn có thể tiếp tục huy động để có đủ số tiền vay hoặc ấn \"Giải ngân sớm\" để nhận ngay số tiền đã huy động được.",
+                        "text": "Xin vui lòng chờ, khoản vay của bạn đang được huy động vốn từ các nhà đầu tư.",
                         "subType": TextCellType.DesType,
                         ],
-                    [
-                        "type": HeaderCellType.ButtonType,
-                        "text": "Giải ngân sớm",
-                        "subType": ButtonCellType.NullType,
-                        "target": "disburse_soon"
-                    ],
                 ]
                 
+//                headerData = [
+//                    [
+//                        "type": HeaderCellType.TextType,
+//                        "text": "Bạn đã huy động được \(funded) trong vòng 1 ngày.",
+//                        "subType": TextCellType.TitleType,
+//                        ],
+//                    [
+//                        "type": HeaderCellType.TextType,
+//                        "text": "Bạn có thể tiếp tục huy động để có đủ số tiền vay hoặc ấn \"Giải ngân sớm\" để nhận ngay số tiền đã huy động được.",
+//                        "subType": TextCellType.DesType,
+//                        ],
+//                    [
+//                        "type": HeaderCellType.ButtonType,
+//                        "text": "Giải ngân sớm",
+//                        "subType": ButtonCellType.NullType,
+//                        "target": "disburse_soon"
+//                    ],
+//                ]
+                
             case .FILLED?:
-                //Đơn vay huy động đủ tiền, chờ ký hợp đồng
+                //Đơn vay huy động đủ tiền, chờ ký hợp đồng - 10
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày duyệt đơn", value: dateString, attributed: nil),
@@ -478,6 +587,8 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
+                
+                self.navigationItem.rightBarButtonItem = nil
                 
                 headerData = [
                     [
@@ -499,7 +610,7 @@ class LoanStateViewController: UIViewController {
                 ]
                 
             case .CONTRACT_READY? :
-                //Số tiền huy động > 50% và hết thời gian huy động
+                //Số tiền huy động > 50% và hết thời gian huy động - 11
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày duyệt đơn", value: dateString, attributed: nil),
@@ -513,6 +624,8 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
+                
+                self.navigationItem.rightBarButtonItem = nil
                 
                 headerData = [
                     [
@@ -534,7 +647,7 @@ class LoanStateViewController: UIViewController {
                 ]
                 
             case .EXPIRED? :
-                //Đơn vay quá hạn huy động
+                //Đơn vay quá hạn huy động - 12
                 
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -550,7 +663,7 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
-                
+                self.navigationItem.rightBarButtonItem = nil
                 
                 headerData = [
                     [
@@ -572,7 +685,7 @@ class LoanStateViewController: UIViewController {
                 ]
                 
             case .CONTRACT_SIGNED?:
-                // Đã ký hợp đồng
+                // Đã ký hợp đồng - 13
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày duyệt đơn", value: dateString, attributed: nil),
@@ -585,6 +698,8 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
+                self.navigationItem.rightBarButtonItem = nil
+                
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
@@ -593,10 +708,9 @@ class LoanStateViewController: UIViewController {
                         ],
                 ]
                 
+            case .DISBURSAL?:
+                //đã giải ngân - 14
                 
-            case .TIMELY_DEPT?, .DISBURSAL?:
-                //Nợ đúng hạn
-                //đã giải ngân
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày vay", value: dateString, attributed: nil),
@@ -610,6 +724,8 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: payMounthTitle, value: payMounthStringWithFunded, attributed: NSAttributedString(string: payMounthStringWithFunded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
+                
+                self.navigationItem.rightBarButtonItem = nil
                 
                 headerData = [
                     [
@@ -630,13 +746,68 @@ class LoanStateViewController: UIViewController {
                     ],
                     [
                         "type": HeaderCellType.ButtonType,
-                        "text": "Lịch sử thanh toán",
+                        "text": "Lịch trả nợ",
+                        "subType": ButtonCellType.NullType,
+                        "target": "pushToPayHistoryVC"
+                    ],
+                ]
+                
+                break
+                
+            case .TIMELY_DEPT?:
+                //Nợ đúng hạn - 16
+                
+                dataSource = [
+                    LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
+                    LoanSummaryModel(name: "Ngày vay", value: dateString, attributed: nil),
+                    LoanSummaryModel(name: "Số tiền vay", value: funded, attributed: NSAttributedString(string: funded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
+                    LoanSummaryModel(name: "Số tháng đã thanh toán", value: paidMonth, attributed: NSAttributedString(string: paidMonth, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Trạng thái", value: "Đang vay", attributed: NSAttributedString(string: "Đang vay", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
+                    LoanSummaryModel(name: "Ngày thanh toán tiếp theo", value: nextPaymentDate, attributed: nil),
+                    LoanSummaryModel(name: "Kỳ hạn vay", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Lãi suất", value: "\(rate)%/năm", attributed: nil),
+                    LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFeeFunded) + "đ", attributed: nil),
+                    LoanSummaryModel(name: payMounthTitle, value: payMounthStringWithFunded, attributed: NSAttributedString(string: payMounthStringWithFunded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
+                ]
+                
+                self.navigationItem.rightBarButtonItem = nil
+                
+                var array: [String: Any] = [
+                    "type": HeaderCellType.TextType,
+                    "text": "Bạn cần thanh toán \(payMounthStringWithFunded) trong tháng này. Hãy thanh toán trước ngày: \(nextPaymentDate).",
+                    "subType": TextCellType.DesType,
+                    ]
+                if self.checkCollectionRightPayForStatusTimelyDebt() {
+                    array = [
+                        "type": HeaderCellType.TextType,
+                        "text": "Bạn đã thanh toán \(payMounthStringWithFunded) trong tháng này. Bạn có thể thanh toán trước cho đợt tiếp theo",
+                        "subType": TextCellType.DesType,
+                    ]
+                }
+                
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Xin chào \(self.userInfo.fullName ?? ""), bạn đang vay \(funded).",
+                        "subType": TextCellType.TitleType,
+                        ],
+                    array,
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Thanh toán",
+                        "subType": ButtonCellType.FillType,
+                        "target": "pushToPayViewController"
+                    ],
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Lịch trả nợ",
                         "subType": ButtonCellType.NullType,
                         "target": "pushToPayHistoryVC"
                     ],
                 ]
             case .OVERDUE_DEPT?:
-                //Nợ quá hạn
+                //Nợ quá hạn - 15
                 var overDate = "0"
                 if let nextDateStr = loan.nextPaymentDate {
                     let calendar = NSCalendar.current
@@ -666,6 +837,9 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: payMounthTitle, value: payMounthStringWithFunded, attributed: NSAttributedString(string: payMounthStringWithFunded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
+                
+                self.navigationItem.rightBarButtonItem = nil
+                
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
@@ -686,14 +860,14 @@ class LoanStateViewController: UIViewController {
                     ],
                     [
                         "type": HeaderCellType.ButtonType,
-                        "text": "Lịch sử thanh toán",
+                        "text": "Lịch trả nợ",
                         "subType": ButtonCellType.NullType,
                         "target": "pushToPayHistoryVC"
                     ],
                 ]
                 break
             case .SETTLED?:
-                //Khoản vay thanh toán thành công
+                //Khoản vay thanh toán thành công - 18
                 
                 
                 break
@@ -753,6 +927,7 @@ class LoanStateViewController: UIViewController {
                 LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!]))
             ]
             
+            self.navigationItem.rightBarButtonItem = nil
             
             self.btnBottomView.setTitle("Ký hợp đồng để giải ngân", for: .normal)
             self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.confirmSignContract), for: .touchUpInside)
@@ -763,6 +938,8 @@ class LoanStateViewController: UIViewController {
             //Ky hop dong
             //let funded = FinPlusHelper.formatDisplayCurrency(Double(loan.funded ?? 0)) + "đ"
             let fullName = loan.userInfo?.fullName ?? ""
+            
+            self.navigationItem.rightBarButtonItem = nil
             
             dataSource = [
                 LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -782,6 +959,8 @@ class LoanStateViewController: UIViewController {
             
         case .CONFIRM_RATE:
             //Xac nhan lai suat
+            self.navigationItem.rightBarButtonItem = nil
+            
             dataSource = [
                 LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                 LoanSummaryModel(name: "Số tiền vay được duyệt", value: amountString, attributed: NSAttributedString(string: amountString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
@@ -858,6 +1037,41 @@ class LoanStateViewController: UIViewController {
     
     }
     
+    private func initRefresher() {
+        self.refresher = UIRefreshControl()
+        self.scrollView?.addSubview(self.refresher)
+        
+        //self.refresher.attributedTitle = NSAttributedString(string: "Refreshing")
+        //self.refresher.tintColor = MAIN_COLOR
+        self.refresher.addTarget(self, action: #selector(completeRefresh), for: .valueChanged)
+    }
+    
+    @objc func completeRefresh() {
+        //self.reloadData()
+        self.refreshData()
+    }
+    
+    private func refreshData() {
+        //Lay thong tin nguoi dung
+        APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
+            .done(on: DispatchQueue.main) { model in
+                self.refresher.endRefreshing()
+                guard let status = DataManager.shared.browwerInfo?.activeLoan?.status, let currentStatus = DataManager.shared.browwerInfo?.activeLoan?.status, status != currentStatus else { return }
+                DataManager.shared.isNeedReloadLoanStatusVC = false
+                DataManager.shared.browwerInfo = model
+                
+                let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+                if let window = UIApplication.shared.delegate?.window, let win = window {
+                    win.rootViewController = tabbarVC
+                }
+                
+            }
+            .catch { error in
+                self.refresher.endRefreshing()
+                
+        }
+    }
+    
     private func formatTitleMissingKey() -> String {
         var value = "Để được duyệt, hãy bổ sung các thông tin sau:"
         guard let listTitle = DataManager.shared.listKeyMissingLoanTitle else { return value }
@@ -891,7 +1105,7 @@ class LoanStateViewController: UIViewController {
                 })
             }))
             
-        case .RISK_PENDING?, .RISK_REVIEW?, .SALE_REVIEW?, .SALE_PENDING?:
+        case .SALE_REVIEW?:
             alert.addAction(UIAlertAction(title: "Chỉnh sửa đơn vay", style: .default , handler:{ (UIAlertAction)in
                 self.update_loan()
             }))
@@ -905,7 +1119,29 @@ class LoanStateViewController: UIViewController {
                 })
             }))
             
-        case .CONTRACT_SIGNED?:
+            
+        case .RISK_PENDING?, .SALE_PENDING?:
+            
+            alert.addAction(UIAlertAction(title: "Hủy yêu cầu", style: .destructive , handler:{ (UIAlertAction)in
+                self.showGreenBtnMessage(title: "Hủy yêu cầu", message: "Bạn có chắc chắn muốn xóa đơn vay này?", okTitle: "Xóa", cancelTitle: "Không", completion: { (okAction) in
+                    if (okAction)
+                    {
+                        self.delLoan()
+                    }
+                })
+            }))
+            
+//        case .RISK_REVIEW?:
+//            alert.addAction(UIAlertAction(title: "Hủy yêu cầu", style: .destructive , handler:{ (UIAlertAction)in
+//                self.showGreenBtnMessage(title: "Hủy yêu cầu", message: "Bạn có chắc chắn muốn xóa đơn vay này?", okTitle: "Xóa", cancelTitle: "Không", completion: { (okAction) in
+//                    if (okAction)
+//                    {
+//                        self.delLoan()
+//                    }
+//                })
+//            }))
+            
+        case .CONTRACT_SIGNED?, .DISBURSAL?:
             alert.addAction(UIAlertAction(title: "Xem hợp đồng", style: .default , handler:{ (UIAlertAction)in
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SIGN") as! SignContractViewController
                 vc.isSigned = true
@@ -914,9 +1150,9 @@ class LoanStateViewController: UIViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }))
             
-            alert.addAction(UIAlertAction(title: "Hủy đơn vay", style: .destructive , handler:{ (UIAlertAction)in
-                
-            }))
+//            alert.addAction(UIAlertAction(title: "Hủy đơn vay", style: .destructive , handler:{ (UIAlertAction)in
+//
+//            }))
             
         default:
             break
@@ -931,6 +1167,27 @@ class LoanStateViewController: UIViewController {
         })
     }
     
+    func checkCollectionRightPayForStatusTimelyDebt() -> Bool {
+        var value = false
+        guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return value }
+        
+        let monthCurrent = Date().month()
+        
+        for col in collections {
+            if let status = col.status, status == 2 {
+                if let monthPayed = col.dueDatetime {
+                    let date = Date(fromString: monthPayed, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
+                    let month = date.month()
+                    if monthCurrent + 1 == month || monthCurrent == month {
+                        value = true
+                    }
+                }
+            }
+        }
+        
+        return value
+    }
+    
     // Xác nhận lãi suất
     @IBAction func confirm_rate()
     {
@@ -938,6 +1195,7 @@ class LoanStateViewController: UIViewController {
         vc.bottom_state = .CONFIRM_RATE
         vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -955,6 +1213,7 @@ class LoanStateViewController: UIViewController {
         vc.bottom_state = .DISBURSEMENT_SOON
         vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -965,6 +1224,7 @@ class LoanStateViewController: UIViewController {
         vc.bottom_state = .DISBURSEMENT_ONTIME
         vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -975,6 +1235,7 @@ class LoanStateViewController: UIViewController {
         vc.bottom_state = .SIGN_CONTRACT
         vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -983,18 +1244,21 @@ class LoanStateViewController: UIViewController {
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SIGN") as! SignContractViewController
         vc.activeLoan = self.activeLoan
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func pushToPayViewController() {
         let payVC = TestBorrowingPayViewController(nibName: "TestBorrowingPayViewController", bundle: nil)
         payVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(payVC, animated: true)
     }
     
     @IBAction func pushToPayHistoryVC() {
         let payHistoryVC = TestPayHistoryViewController(nibName: "TestPayHistoryViewController", bundle: nil)
         payHistoryVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(payHistoryVC, animated: true)
     }
     

@@ -60,9 +60,13 @@ class LoanTypePopupVC: BasePopup {
         self.mainTBView?.rowHeight = UITableViewAutomaticDimension
         self.mainTBView?.register(UINib(nibName: "LoanTypePopupAddTextTBCell", bundle: nil), forCellReuseIdentifier: "Loan_Type_Popup_Add_Text_TB_Cell")
         
+        self.updateSelected()
+        
         self.lblTitle?.text = titleString
         
-        self.updateSelected()
+        if self.currentIndex == nil {
+            self.updateDataSelectedFromServer()
+        }
         
     }
     
@@ -77,37 +81,137 @@ class LoanTypePopupVC: BasePopup {
         self.dataSource = data
     }
     
+    private func updateDataSelectedFromServer() {
+        guard let type_ = self.type else { return }
+        switch type_ {
+        case .Categories:
+            //            if let current = DataManager.shared.currentIndexCategoriesSelectedPopup {
+            //                self.currentIndex = current
+            //            }
+            break
+        case .RelationShipPhone:
+            
+            break
+            
+        case .Job:
+            var index = 0
+            var update = false
+            for d in dataSource {
+                if let id = d.id, id == Int16(DataManager.shared.loanInfo.jobInfo.jobType) {
+                    update = true
+                    break
+                }
+                index += 1
+            }
+            if update {
+                self.currentIndex = index
+            }
+            
+            
+            break
+        case .JobPosition:
+            
+            var index = 0
+            var update = false
+            for d in dataSource {
+                if let id = d.id, id == Int16(DataManager.shared.loanInfo.jobInfo.position) {
+                    update = true
+                    break
+                }
+                index += 1
+            }
+            if update {
+                self.currentIndex = index
+            }
+            break
+        case .Strength:
+            
+            var index = 0
+            var update = false
+            for d in dataSource {
+                if let id = d.id, id == Int16(DataManager.shared.loanInfo.jobInfo.strength) {
+                    update = true
+                    break
+                }
+                index += 1
+            }
+            if update {
+                self.currentIndex = index
+            }
+            
+            break
+            
+        case .AcademicLevel:
+            
+            var index = 0
+            var update = false
+            for d in dataSource {
+                if let id = d.id, id == Int16(DataManager.shared.loanInfo.jobInfo.academicLevel) {
+                    update = true
+                    break
+                }
+                index += 1
+            }
+            if update {
+                self.currentIndex = index
+            }
+            
+            break
+            
+        }
+        
+        
+        
+    }
+    
+    
     
     /// Update index hiện tại đang chọn
     func updateSelected() {
         guard let type_ = self.type else { return }
         switch type_ {
         case .Categories:
-            if let current = DataManager.shared.currentIndexCategoriesSelectedPopup {
-                self.currentIndex = current
-            }
+//            if let current = DataManager.shared.currentIndexCategoriesSelectedPopup {
+//                self.currentIndex = current
+//            }
             break
         case .RelationShipPhone:
-            if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup {
-                self.currentIndex = current
-            }
+            self.titleString = "Người thân"
+            
+            
+            
+//            if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup1 {
+//                self.currentIndex = current
+//            }
             break
             
         case .Job:
+            self.titleString = "Nghề nhiệp"
             if let current = DataManager.shared.currentIndexJobSelectedPopup {
                 self.currentIndex = current
             }
             break
         case .JobPosition:
+            self.titleString = "Cấp bậc"
             if let current = DataManager.shared.currentIndexJobPositionSelectedPopup {
                 self.currentIndex = current
             }
             break
         case .Strength:
+            self.titleString = "Học lực"
+            
+            if let current = DataManager.shared.currentIndexStrengthSelectedPopup {
+                self.currentIndex = current
+            }
             
             break
             
         case .AcademicLevel:
+            self.titleString = "Trình độ học vấn"
+            
+            if let current = DataManager.shared.currentIndexAcedemicLevelSelectedPopup {
+                self.currentIndex = current
+            }
             
             break
             
@@ -133,7 +237,10 @@ class LoanTypePopupVC: BasePopup {
             guard let type_ = self.type else { return }
             switch type_ {
             case .Categories:
-                DataManager.shared.currentIndexCategoriesSelectedPopup = self.currentIndex
+                if DataManager.shared.loanCategories.count > index {
+                    DataManager.shared.currentIndexCategoriesSelectedPopup = Int(DataManager.shared.loanCategories[index].id ?? 0)
+                }
+                
                 break
             case .RelationShipPhone:
                 //DataManager.shared.currentIndexRelationPhoneSelectedPopup = self.currentIndex
@@ -145,10 +252,11 @@ class LoanTypePopupVC: BasePopup {
                 DataManager.shared.currentIndexJobPositionSelectedPopup = self.currentIndex
                 break
             case .Strength:
-                
+                DataManager.shared.currentIndexStrengthSelectedPopup = self.currentIndex
                 break
                 
             case .AcademicLevel:
+                DataManager.shared.currentIndexAcedemicLevelSelectedPopup = self.currentIndex
                 break
             }
         }

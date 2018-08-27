@@ -19,6 +19,7 @@ class WalletTableViewCell: UITableViewCell {
     @IBOutlet weak var desLabel: UILabel!
     @IBOutlet weak var optionBtn: UIButton!
     @IBOutlet weak var borderView: UIView!
+    @IBOutlet weak var hiddenCharLabel: UILabel?
     
     var currentIndex: IndexPath?
     var delegate: EditWalletDelegate?

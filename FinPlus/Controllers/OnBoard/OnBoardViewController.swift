@@ -15,6 +15,11 @@ class OnBoardViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var nextBtn: UIButton!
     let totalPage = 3
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
 
     @IBAction func skipBtnAction(_ sender: Any) {
         guard let _ = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String else {
@@ -28,6 +33,8 @@ class OnBoardViewController: UIViewController, UIScrollViewDelegate {
         let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewControllerNavi") as! UINavigationController
         self.present(loginVC, animated: true, completion: nil)
     }
+    
+    
 
     @IBAction func nextBtnAction(_ sender: Any) {
         let currentIndex = getCurrentScrollViewIndex()
@@ -51,6 +58,7 @@ class OnBoardViewController: UIViewController, UIScrollViewDelegate {
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         pageControl.currentPage = getCurrentScrollViewIndex()
+        
         if getCurrentScrollViewIndex() + 1 == totalPage {
             nextBtn.setTitle("BẮT ĐẦU", for: UIControlState.normal)
             skipBtn.isHidden = true

@@ -206,11 +206,18 @@
                                 <action selector="navi_backWithSender:" destination="egq-u3-j2r" id="tBX-eq-06V"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Tiếp" id="xwi-6h-WbM">
+                            <color key="tintColor" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="raightBarButtonTapped:" destination="egq-u3-j2r" id="JBf-6M-jgU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addBtn" destination="DxA-1t-Zf1" id="Ehl-Yc-74L"/>
                         <outlet property="bottomView" destination="Whj-Oy-eL8" id="BMQ-c5-SY4"/>
                         <outlet property="noWalletLabel" destination="24l-Wz-1SQ" id="3Cj-fA-WA0"/>
+                        <outlet property="rightBarButtonItem" destination="xwi-6h-WbM" id="RNc-v4-zHl"/>
                         <outlet property="tableview" destination="A1B-jr-6bw" id="05p-lQ-OpT"/>
                     </connections>
                 </viewController>

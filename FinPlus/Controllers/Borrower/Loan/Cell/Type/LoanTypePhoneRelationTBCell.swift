@@ -70,7 +70,6 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     value.append(d)
                 }
             }
-            
         }
 
         if DataManager.shared.loanInfo.userInfo.relationships.count == 2 {

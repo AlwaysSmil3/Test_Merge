@@ -23,6 +23,7 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
         super.awakeFromNib()
         self.lblTitle?.font = FONT_CAPTION
         
+        
         lblValue?.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapFunction(sender:)))
         lblValue?.addGestureRecognizer(tapGesture)
@@ -47,7 +48,12 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
             
             if let value = field_.placeholder {
                 self.lblValue?.text = value
-                //self.lblValue?.textColor = UIColor.lightGray
+                self.lblValue?.textColor = UIColor(red: 194/255, green: 194/255, blue: 201/255, alpha: 1.0)
+            }
+            
+            if let text = field_.textInputMuiltiline, text.count > 0 {
+                self.lblValue?.text = text
+                self.lblValue?.textColor = UIColor(hexString: "#08121E")
             }
             
             

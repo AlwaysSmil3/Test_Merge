@@ -30,6 +30,8 @@ class WebViewViewController: UIViewController, UIWebViewDelegate {
         self.borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         self.borderView.layer.cornerRadius = 8
         
+        self.webView.delegate = self
+        
         self.webView.scrollView.showsVerticalScrollIndicator = false;
         self.webView.scrollView.showsHorizontalScrollIndicator = false;
         
@@ -51,15 +53,15 @@ class WebViewViewController: UIViewController, UIWebViewDelegate {
         switch webViewType {
         case .termView:
             self.title = NSLocalizedString("TERMS_OF_USE", comment: "")
-            url = URL(string: (DataManager.shared.config?.policy)!)
+            url = URL(string: DataManager.shared.config?.policy ?? "")
         //            htmlPath = Bundle.main.path(forResource: "terms-and-conditions", ofType: "html")!
         case .aboutView:
             self.title = NSLocalizedString("ABOUT_FINSMART", comment: "")
-            url = URL(string: (DataManager.shared.config?.about)!)
+            url = URL(string: DataManager.shared.config?.about ?? "")
         //            htmlPath = Bundle.main.path(forResource: "about", ofType: "html")!
         default:
             self.title = NSLocalizedString("CONTRACT", comment: "")
-            url = URL(string: (DataManager.shared.config?.policy)!)
+            url = URL(string: DataManager.shared.config?.policy ?? "")
             //            htmlPath = Bundle.main.path(forResource: "terms-and-conditions", ofType: "html")!
         }
         
@@ -74,7 +76,16 @@ class WebViewViewController: UIViewController, UIWebViewDelegate {
     }
     
     @IBAction func navi_back(sender: UIButton) {
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
 
 }

@@ -12,6 +12,8 @@ class LoanSummaryInfoVC: BaseViewController {
     
     @IBOutlet var mainTBView: UITableView!
     @IBOutlet var footerTextView: UITextView!
+    @IBOutlet var btnAgreeTerm: UIButton?
+
     
     let currentCategory: LoanCategories? = DataManager.shared.getCurrentCategory()
     
@@ -33,6 +35,8 @@ class LoanSummaryInfoVC: BaseViewController {
         self.mainTBView.separatorColor = UIColor.clear
         self.mainTBView.tableFooterView = UIView()
         self.mainTBView.allowsSelection = false
+        
+        self.btnContinue?.dropShadow(color: MAIN_COLOR)
 
         DataManager.shared.loanInfo.currentStep = 5
         
@@ -112,20 +116,20 @@ class LoanSummaryInfoVC: BaseViewController {
     /// Set link cho UITextView
     private func setupTextView() {
         
-        let policyStr : String = "Bằng cách ấn nút gửi 'Gửi đơn vay' ở trên tôi đã hiểu và đồng ý với điều khoản sử dụng"
+        let policyStr : String = "Tôi đã hiểu và đồng ý với điều khoản sử dụng."
         
         var myMutableString = NSMutableAttributedString()
-        myMutableString = NSMutableAttributedString(string: policyStr, attributes: [ NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: 11)!,NSAttributedStringKey.foregroundColor:TEXT_NORMAL_COLOR])
-        let myRange = (myMutableString.string as NSString).range(of: "Bằng cách ấn nút gửi 'Gửi đơn vay' ở trên tôi đã hiểu và đồng ý với ")
+        myMutableString = NSMutableAttributedString(string: policyStr, attributes: [ NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: 15)!,NSAttributedStringKey.foregroundColor:TEXT_NORMAL_COLOR])
+        let myRange = (myMutableString.string as NSString).range(of: "Tôi đã hiểu và đồng ý với ")
         myMutableString.addAttribute(
             NSAttributedStringKey.link,
             value: "more://",
-            range: (myMutableString.string as NSString).range(of: "điều khoản sử dụng"))
+            range: (myMutableString.string as NSString).range(of: "điều khoản sử dụng."))
         myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(hexString: "#4D6678"), range: myRange)
         
-        let string2 = NSMutableAttributedString(string: " của FinSmart", attributes: [ NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: 11)!,NSAttributedStringKey.foregroundColor:TEXT_NORMAL_COLOR])
-
-        myMutableString.append(string2)
+//        let string2 = NSMutableAttributedString(string: " của Mony", attributes: [ NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: 11)!,NSAttributedStringKey.foregroundColor:TEXT_NORMAL_COLOR])
+//
+//        myMutableString.append(string2)
         
         
         UITextView.appearance().linkTextAttributes = [ NSAttributedStringKey.foregroundColor.rawValue: UIColor(hexString: "#3EAA5F")]
@@ -147,6 +151,11 @@ class LoanSummaryInfoVC: BaseViewController {
         
     }
     
+    //MARK: Actions
+    
+    @IBAction func btnAgreeTermTapped(_ sender: Any) {
+        self.btnAgreeTerm!.isSelected = !self.btnAgreeTerm!.isSelected
+    }
     
     @IBAction func btnLoanTapped(_ sender: Any) {
         
@@ -207,7 +216,7 @@ extension LoanSummaryInfoVC: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         if URL.scheme == "more" {
             let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "WEBVIEW") as! WebViewViewController
-            vc.webViewType = .aboutView
+            vc.webViewType = .termView
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
             return false

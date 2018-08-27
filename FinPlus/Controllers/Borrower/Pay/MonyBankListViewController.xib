@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MonyBankListViewController" customModule="Investor" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MonyBankListViewController" customModule="FinPlus" customModuleProvider="target">
             <connections>
                 <outlet property="payBtn" destination="Qh0-DX-doP" id="I9h-6L-ry1"/>
                 <outlet property="tableView" destination="jLm-YX-ww1" id="dp7-L8-mJz"/>

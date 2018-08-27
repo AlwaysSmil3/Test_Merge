@@ -1,14 +1,14 @@
 //
-//  Collection.swift
+//  BrowwerCollections.swift
 //
-//  Created by Cao Van Hai on 8/1/18
+//  Created by Cao Van Hai on 8/22/18
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 
-public struct CollectionPay {
+public struct BrowwerCollections {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
@@ -22,33 +22,19 @@ public struct CollectionPay {
     static let overdue = "overdue"
     static let loanId = "loanId"
     static let feeOverdue = "feeOverdue"
-    
-    static let repayPrincipal = "repayPrincipal"
-    static let repayInterest = "repayInterest"
-    static let repayOverdue = "repayOverdue"
-    static let repayFeeOverdue = "repayFeeOverdue"
-    
   }
 
   // MARK: Properties
   public var interestRate: Int?
   public var status: Int?
-  public var id: Int16?
+  public var id: Int?
   public var createdDate: String?
+  public var principal: Int?
+  public var interest: Int?
   public var dueDatetime: String?
-
+  public var overdue: Int?
   public var loanId: Int?
-    
-    public var principal: Double?
-    public var interest: Double?
-    public var overdue: Double?
-    public var feeOverdue: Double?
-    
-    public var repayPrincipal: Double?
-    public var repayInterest: Double?
-    public var repayOverdue: Double?
-    public var repayFeeOverdue: Double?
-    
+  public var feeOverdue: Int?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -63,23 +49,16 @@ public struct CollectionPay {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
-    interestRate = json[SerializationKeys.interestRate].int ?? 0
-    status = json[SerializationKeys.status].int ?? 0
-    id = json[SerializationKeys.id].int16 ?? 0
-    createdDate = json[SerializationKeys.createdDate].string ?? ""
-    principal = json[SerializationKeys.principal].double ?? 0
-    interest = json[SerializationKeys.interest].double ?? 0
-    dueDatetime = json[SerializationKeys.dueDatetime].string ?? ""
-    overdue = json[SerializationKeys.overdue].double ?? 0
-    loanId = json[SerializationKeys.loanId].int ?? 0
-    feeOverdue = json[SerializationKeys.feeOverdue].double ?? 0
-    
-    repayPrincipal = json[SerializationKeys.repayPrincipal].double ?? 0
-    repayInterest = json[SerializationKeys.repayInterest].double ?? 0
-    repayOverdue = json[SerializationKeys.repayOverdue].double ?? 0
-    repayFeeOverdue = json[SerializationKeys.repayFeeOverdue].double ?? 0
-    
-    
+    interestRate = json[SerializationKeys.interestRate].int
+    status = json[SerializationKeys.status].int
+    id = json[SerializationKeys.id].int
+    createdDate = json[SerializationKeys.createdDate].string
+    principal = json[SerializationKeys.principal].int
+    interest = json[SerializationKeys.interest].int
+    dueDatetime = json[SerializationKeys.dueDatetime].string
+    overdue = json[SerializationKeys.overdue].int
+    loanId = json[SerializationKeys.loanId].int
+    feeOverdue = json[SerializationKeys.feeOverdue].int
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -97,12 +76,6 @@ public struct CollectionPay {
     if let value = overdue { dictionary[SerializationKeys.overdue] = value }
     if let value = loanId { dictionary[SerializationKeys.loanId] = value }
     if let value = feeOverdue { dictionary[SerializationKeys.feeOverdue] = value }
-    
-    if let value = repayFeeOverdue { dictionary[SerializationKeys.repayFeeOverdue] = value }
-    if let value = repayOverdue { dictionary[SerializationKeys.repayOverdue] = value }
-    if let value = repayInterest { dictionary[SerializationKeys.repayInterest] = value }
-    if let value = repayPrincipal { dictionary[SerializationKeys.repayPrincipal] = value }
-    
     return dictionary
   }
 

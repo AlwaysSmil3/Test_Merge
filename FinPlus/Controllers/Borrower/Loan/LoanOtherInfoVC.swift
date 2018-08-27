@@ -70,6 +70,40 @@ class LoanOtherInfoVC: LoanBaseViewController {
         self.sbInputView?.textView.becomeFirstResponder()
     }
     
+    private func validateInput(completion: () -> Void) {
+        
+        var optionalTextIsDone = true
+        for text in DataManager.shared.loanInfo.optionalText {
+            if text.count == 0 {
+                optionalTextIsDone = false
+                break
+            }
+        }
+
+        if !optionalTextIsDone {
+            self.showToastWithMessage(message: "Vui lòng nhập đầy đủ thông tin để sang bước tiếp theo")
+            return
+        }
+
+        var optionalMediaIsDone = true
+        var index = 0
+        for media in DataManager.shared.loanInfo.optionalMedia {
+            if index == 0 && media.count == 0 {
+                optionalMediaIsDone = false
+                break
+            }
+            index += 1
+        }
+
+        if !optionalMediaIsDone {
+            self.showToastWithMessage(message: "Vui lòng upload đầy đủ ảnh để sang bước tiếp theo")
+            return
+        }
+        
+        completion()
+        
+        
+    }
     
     //MARK: ACtions
     
@@ -77,37 +111,27 @@ class LoanOtherInfoVC: LoanBaseViewController {
         
         self.view.endEditing(true)
         
-//        if DataManager.shared.loanInfo.optionalText.length() == 0 {
-//            self.showToastWithMessage(message: "Vui lòng nhập lương tháng của bạn")
-//            return
-//        }
-        
-        if !Platform.isSimulator {
-            if DataManager.shared.loanInfo.optionalMedia.count == 0 {
-                self.showToastWithMessage(message: "Vui lòng tải ảnh bảng lương/ chấm công của bạn")
+        self.validateInput {
+            guard DataManager.shared.listKeyMissingLoanKey == nil || DataManager.shared.listKeyMissingLoanKey!.count == 0 else {
+                self.updateLoanStatus()
                 return
             }
-        }
-        
-        guard DataManager.shared.listKeyMissingLoanKey == nil || DataManager.shared.listKeyMissingLoanKey!.count == 0 else {
-            self.updateLoanStatus()
-            return
-        }
-        
-        if let avatar = DataManager.shared.browwerInfo?.avatar, avatar.count > 0 {
-            //Đã có thông tin Facebook
-            let loanSummaryInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSummaryInfoVC") as! LoanSummaryInfoVC
             
-            self.navigationController?.pushViewController(loanSummaryInfoVC, animated: true)
+            if let avatar = DataManager.shared.browwerInfo?.avatar, avatar.count > 0 {
+                //Đã có thông tin Facebook
+                let loanSummaryInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSummaryInfoVC") as! LoanSummaryInfoVC
+                
+                self.navigationController?.pushViewController(loanSummaryInfoVC, animated: true)
+                
+                return
+            }
             
-            return
+            //Chưa có thông tin Facebook
+            
+            let socialInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSocialInfoViewController") as! LoanSocialInfoViewController
+            
+            self.navigationController?.pushViewController(socialInfoVC, animated: true)
         }
-        
-        //Chưa có thông tin Facebook
-        
-        let socialInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSocialInfoViewController") as! LoanSocialInfoViewController
-        
-        self.navigationController?.pushViewController(socialInfoVC, animated: true)
         
         
     }
