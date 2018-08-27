@@ -63,12 +63,23 @@ class DataManager {
             }
         }
     }
-    //So dien thoai nguoi than
-    var currentIndexRelationPhoneSelectedPopup: Int?
+    //So dien thoai nguoi than 1
+    var currentIndexRelationPhoneSelectedPopup1: Int?
+    
+    //So dien thoai nguoi than 2
+    var currentIndexRelationPhoneSelectedPopup2: Int?
+    
     //Job hien tai dang chon
     var currentIndexJobSelectedPopup: Int?
+    
     //Job Position hien tai dang chon
     var currentIndexJobPositionSelectedPopup: Int?
+    
+    //Acedemic Level hien tai dang chon
+    var currentIndexAcedemicLevelSelectedPopup: Int?
+    
+    //Hoc luc hien tai dang chon
+    var currentIndexStrengthSelectedPopup: Int?
     
     //Các trường không hợp lệ của loan
     var missingLoanData: BrowwerActiveLoan? {
