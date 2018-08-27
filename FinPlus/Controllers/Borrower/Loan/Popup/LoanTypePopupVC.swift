@@ -64,6 +64,10 @@ class LoanTypePopupVC: BasePopup {
         
         self.lblTitle?.text = titleString
         
+        if self.currentIndex == nil {
+            self.updateDataSelectedFromServer()
+        }
+        
     }
     
     
@@ -77,6 +81,90 @@ class LoanTypePopupVC: BasePopup {
         self.dataSource = data
     }
     
+    private func updateDataSelectedFromServer() {
+        guard let type_ = self.type else { return }
+        switch type_ {
+        case .Categories:
+            //            if let current = DataManager.shared.currentIndexCategoriesSelectedPopup {
+            //                self.currentIndex = current
+            //            }
+            break
+        case .RelationShipPhone:
+            
+            break
+            
+        case .Job:
+            var index = 0
+            var update = false
+            for d in dataSource {
+                if let id = d.id, id == Int16(DataManager.shared.loanInfo.jobInfo.jobType) {
+                    update = true
+                    break
+                }
+                index += 1
+            }
+            if update {
+                self.currentIndex = index
+            }
+            
+            
+            break
+        case .JobPosition:
+            
+            var index = 0
+            var update = false
+            for d in dataSource {
+                if let id = d.id, id == Int16(DataManager.shared.loanInfo.jobInfo.position) {
+                    update = true
+                    break
+                }
+                index += 1
+            }
+            if update {
+                self.currentIndex = index
+            }
+            break
+        case .Strength:
+            
+            var index = 0
+            var update = false
+            for d in dataSource {
+                if let id = d.id, id == Int16(DataManager.shared.loanInfo.jobInfo.strength) {
+                    update = true
+                    break
+                }
+                index += 1
+            }
+            if update {
+                self.currentIndex = index
+            }
+            
+            break
+            
+        case .AcademicLevel:
+            
+            var index = 0
+            var update = false
+            for d in dataSource {
+                if let id = d.id, id == Int16(DataManager.shared.loanInfo.jobInfo.academicLevel) {
+                    update = true
+                    break
+                }
+                index += 1
+            }
+            if update {
+                self.currentIndex = index
+            }
+            
+            break
+            
+        }
+        
+        
+        
+    }
+    
+    
     
     /// Update index hiện tại đang chọn
     func updateSelected() {
@@ -89,9 +177,12 @@ class LoanTypePopupVC: BasePopup {
             break
         case .RelationShipPhone:
             self.titleString = "Người thân"
-            if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup {
-                self.currentIndex = current
-            }
+            
+            
+            
+//            if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup1 {
+//                self.currentIndex = current
+//            }
             break
             
         case .Job:
@@ -108,10 +199,20 @@ class LoanTypePopupVC: BasePopup {
             break
         case .Strength:
             self.titleString = "Học lực"
+            
+            if let current = DataManager.shared.currentIndexStrengthSelectedPopup {
+                self.currentIndex = current
+            }
+            
             break
             
         case .AcademicLevel:
             self.titleString = "Trình độ học vấn"
+            
+            if let current = DataManager.shared.currentIndexAcedemicLevelSelectedPopup {
+                self.currentIndex = current
+            }
+            
             break
             
         }
@@ -151,10 +252,11 @@ class LoanTypePopupVC: BasePopup {
                 DataManager.shared.currentIndexJobPositionSelectedPopup = self.currentIndex
                 break
             case .Strength:
-                
+                DataManager.shared.currentIndexStrengthSelectedPopup = self.currentIndex
                 break
                 
             case .AcademicLevel:
+                DataManager.shared.currentIndexAcedemicLevelSelectedPopup = self.currentIndex
                 break
             }
         }

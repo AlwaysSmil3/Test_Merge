@@ -544,21 +544,34 @@ class LoanStateViewController: UIViewController {
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
-                        "text": "Bạn đã huy động được \(funded) trong vòng 1 ngày.",
+                        "text": "FinSmart đang huy động cho khoản vay của bạn.",
                         "subType": TextCellType.TitleType,
                         ],
                     [
                         "type": HeaderCellType.TextType,
-                        "text": "Bạn có thể tiếp tục huy động để có đủ số tiền vay hoặc ấn \"Giải ngân sớm\" để nhận ngay số tiền đã huy động được.",
+                        "text": "Xin vui lòng chờ, khoản vay của bạn đang được huy động vốn từ các nhà đầu tư.",
                         "subType": TextCellType.DesType,
                         ],
-                    [
-                        "type": HeaderCellType.ButtonType,
-                        "text": "Giải ngân sớm",
-                        "subType": ButtonCellType.NullType,
-                        "target": "disburse_soon"
-                    ],
                 ]
+                
+//                headerData = [
+//                    [
+//                        "type": HeaderCellType.TextType,
+//                        "text": "Bạn đã huy động được \(funded) trong vòng 1 ngày.",
+//                        "subType": TextCellType.TitleType,
+//                        ],
+//                    [
+//                        "type": HeaderCellType.TextType,
+//                        "text": "Bạn có thể tiếp tục huy động để có đủ số tiền vay hoặc ấn \"Giải ngân sớm\" để nhận ngay số tiền đã huy động được.",
+//                        "subType": TextCellType.DesType,
+//                        ],
+//                    [
+//                        "type": HeaderCellType.ButtonType,
+//                        "text": "Giải ngân sớm",
+//                        "subType": ButtonCellType.NullType,
+//                        "target": "disburse_soon"
+//                    ],
+//                ]
                 
             case .FILLED?:
                 //Đơn vay huy động đủ tiền, chờ ký hợp đồng - 10
