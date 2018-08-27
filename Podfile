@@ -25,7 +25,7 @@ pod 'FBSDKLoginKit'
 pod 'Firebase/Core'
 pod 'Firebase/Messaging'
 
-
+pod 'SCPageControl'
 pod 'SpreadsheetView'
 pod 'PinCodeTextField'
 

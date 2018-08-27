@@ -34,6 +34,22 @@
             </objects>
             <point key="canvasLocation" x="-916" y="206"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="q9i-7g-DQn">
+            <objects>
+                <navigationController storyboardIdentifier="INVEST_NAVI_FILTER" id="FqU-fq-qEH" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DD1-F2-CUx">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9oy-ZH-nPx" kind="relationship" relationship="rootViewController" id="e1a-h2-S96"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Bo-W8-Ydf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-916" y="924"/>
+        </scene>
         <!--Invest List View Controller-->
         <scene sceneID="Xhh-Mu-50B">
             <objects>
@@ -225,6 +241,102 @@ Hãy chọn 1 trong những khoản vay để đầu tư</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bW1-gj-yTj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="616.79999999999995" y="207.34632683658174"/>
+        </scene>
+        <!--Invest View Controller-->
+        <scene sceneID="vgV-iB-lm6">
+            <objects>
+                <viewController storyboardIdentifier="INVEST" id="9oy-ZH-nPx" customClass="InvestViewController" customModule="FinPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i0F-mg-XP1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Udh-7A-eqH">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="9oy-ZH-nPx" id="atw-O8-Efe"/>
+                                    <outlet property="delegate" destination="9oy-ZH-nPx" id="MfQ-Aa-avt"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JEj-dA-2mc" firstAttribute="trailing" secondItem="Udh-7A-eqH" secondAttribute="trailing" id="6S3-72-3nV"/>
+                            <constraint firstItem="Udh-7A-eqH" firstAttribute="top" secondItem="JEj-dA-2mc" secondAttribute="top" id="RRf-hp-nGy"/>
+                            <constraint firstItem="Udh-7A-eqH" firstAttribute="leading" secondItem="JEj-dA-2mc" secondAttribute="leading" id="p9K-QY-MDG"/>
+                            <constraint firstItem="JEj-dA-2mc" firstAttribute="bottom" secondItem="Udh-7A-eqH" secondAttribute="bottom" id="qiT-28-UIR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JEj-dA-2mc"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bNp-yS-sdv">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="Vce-b5-k5L">
+                            <connections>
+                                <action selector="navi_leftWithSender:" destination="9oy-ZH-nPx" id="JNE-9H-pVY"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="L9E-aE-b28">
+                            <connections>
+                                <action selector="navi_rightWithSender:" destination="9oy-ZH-nPx" id="bfP-0l-emA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="leftBarBtn" destination="Vce-b5-k5L" id="G0J-UN-gSP"/>
+                        <outlet property="rightBarBtn" destination="L9E-aE-b28" id="eW5-ow-ruu"/>
+                        <outlet property="tableview" destination="Udh-7A-eqH" id="G2k-Mo-5SL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tFO-Ro-hUn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-114" y="923"/>
+        </scene>
+        <!--Invest Filter View Controller-->
+        <scene sceneID="wsF-iJ-ul4">
+            <objects>
+                <viewController storyboardIdentifier="INVEST_FILTER" id="Xw5-wz-AEB" customClass="InvestFilterViewController" customModule="FinPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k1t-i7-O9x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="phs-wX-OTc">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Xw5-wz-AEB" id="PRL-Jh-LkG"/>
+                                    <outlet property="delegate" destination="Xw5-wz-AEB" id="UmT-cG-PHd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="phs-wX-OTc" firstAttribute="top" secondItem="tNM-TA-7Gf" secondAttribute="top" id="9l4-zw-EVj"/>
+                            <constraint firstItem="phs-wX-OTc" firstAttribute="leading" secondItem="tNM-TA-7Gf" secondAttribute="leading" id="Obh-C2-cGb"/>
+                            <constraint firstItem="tNM-TA-7Gf" firstAttribute="bottom" secondItem="phs-wX-OTc" secondAttribute="bottom" id="s0p-A8-8E7"/>
+                            <constraint firstItem="tNM-TA-7Gf" firstAttribute="trailing" secondItem="phs-wX-OTc" secondAttribute="trailing" id="ulj-6P-kXe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tNM-TA-7Gf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5P2-eo-ete">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="aLq-qM-8Nz">
+                            <connections>
+                                <action selector="navi_leftWithSender:" destination="Xw5-wz-AEB" id="NLE-Tm-3Jx"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="yK7-aN-Ps4">
+                            <connections>
+                                <action selector="navi_rightWithSender:" destination="Xw5-wz-AEB" id="A5e-Xe-yEI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="leftBarBtn" destination="aLq-qM-8Nz" id="gWA-Ka-hIa"/>
+                        <outlet property="rightBarBtn" destination="yK7-aN-Ps4" id="VKI-tW-lD1"/>
+                        <outlet property="tableview" destination="phs-wX-OTc" id="6W0-ug-N8R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IQC-QG-dDf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="617" y="923"/>
         </scene>
     </scenes>
     <resources>

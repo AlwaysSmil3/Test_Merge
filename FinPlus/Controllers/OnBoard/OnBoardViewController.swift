@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import SCPageControl
 
 class OnBoardViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var skipBtn: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var pageControl: SCPageControlView!
     @IBOutlet weak var nextBtn: UIButton!
     let totalPage = 3
     
@@ -49,16 +50,20 @@ class OnBoardViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
-        pageControl.isUserInteractionEnabled = false
+        
+        pageControl.scp_style = .SCNormal
+        pageControl.set_view(totalPage, current: 0, tint_color: MAIN_COLOR)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        pageControl.scroll_did(scrollView)
     }
 
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         scrollViewDidEndDecelerating(scrollView)
     }
 
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        pageControl.currentPage = getCurrentScrollViewIndex()
-        
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {        
         if getCurrentScrollViewIndex() + 1 == totalPage {
             nextBtn.setTitle("BẮT ĐẦU", for: UIControlState.normal)
             skipBtn.isHidden = true
