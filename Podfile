@@ -32,6 +32,8 @@ pod 'PinCodeTextField'
 pod 'Fabric'
 pod 'Crashlytics'
 
+pod 'SVProgressHUD'
+
   # Pods for FinPlus
 
 end
