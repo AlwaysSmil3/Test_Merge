@@ -95,6 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    
     func getNotificationSettings() {
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().getNotificationSettings { (settings) in
