@@ -76,13 +76,25 @@ class LoanFirstViewController: BaseViewController {
         var amount: Double = 0
         var cateID: Int16 = 0
         
-        if let loan = DataManager.shared.browwerInfo?.activeLoan, let term_ = loan.term, term_ > 0 {
-            term = Float(term_)
+        if let loan = DataManager.shared.browwerInfo?.activeLoan, let status = loan.status, status != STATUS_LOAN.REJECTED.rawValue {
+            
+            if let term_ = loan.term, term_ > 0 {
+                term = Float(term_)
+            }
+            
+            if let amount_ = loan.amount, amount_ > 0 {
+                amount = Double(amount_)
+            }
+            
         }
         
-        if let loan = DataManager.shared.browwerInfo?.activeLoan, let amount_ = loan.amount, amount_ > 0 {
-            amount = Double(amount_)
-        }
+//        if let loan = DataManager.shared.browwerInfo?.activeLoan, let status = loan.status, status != STATUS_LOAN.REJECTED.rawValue, let term_ = loan.term, term_ > 0 {
+//            term = Float(term_)
+//        }
+//
+//        if let loan = DataManager.shared.browwerInfo?.activeLoan, let amount_ = loan.amount, amount_ > 0 {
+//            amount = Double(amount_)
+//        }
         
         if let loan = DataManager.shared.browwerInfo?.activeLoan, let cateId_ = loan.loanCategoryId, cateId_ > 0 {
             cateID = cateId_

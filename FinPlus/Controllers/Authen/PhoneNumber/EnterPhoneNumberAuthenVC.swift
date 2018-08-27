@@ -7,18 +7,22 @@
 //
 
 import Foundation
-import JWT
+//import JWT
 
 
 class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
     
     @IBOutlet var tfPhoneNumber: UITextField!
+    @IBOutlet var textDescription: UITextView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.textDescription.delegate = self
         self.tfPhoneNumber.delegate = self
         self.setupUI()
+        self.setupTextView()
         
     }
     
@@ -29,11 +33,43 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
         
     }
     
+    /// Set link cho UITextView
+    private func setupTextView() {
+        
+        let policyStr : String = "Bằng cách ấn nút 'Tiếp tục' ở trên, tôi đã hiểu và đồng ý với điều khoản sử dụng của Mony"
+        
+        var myMutableString = NSMutableAttributedString()
+        myMutableString = NSMutableAttributedString(string: policyStr, attributes: [ NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: 11)!,NSAttributedStringKey.foregroundColor:TEXT_NORMAL_COLOR])
+        let myRange = (myMutableString.string as NSString).range(of: "Bằng cách ấn nút 'Tiếp tục' ở trên, tôi đã hiểu và đồng ý với ")
+        myMutableString.addAttribute(
+            NSAttributedStringKey.link,
+            value: "more://",
+            range: (myMutableString.string as NSString).range(of: "điều khoản sử dụng"))
+        myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(hexString: "#4D6678"), range: myRange)
+        
+        let string2 = NSMutableAttributedString(string: " của Mony", attributes: [ NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: 11)!,NSAttributedStringKey.foregroundColor:TEXT_NORMAL_COLOR])
+        
+        myMutableString.append(string2)
+        
+        
+        UITextView.appearance().linkTextAttributes = [ NSAttributedStringKey.foregroundColor.rawValue: UIColor(hexString: "#3EAA5F")]
+        
+        self.textDescription.attributedText = myMutableString
+        
+    }
+    
     
     //MARK: Actions
     
     @IBAction func tfPhoneNumberEditChanged(_ sender: Any) {
-        if self.tfPhoneNumber.text!.length() >= 9 {
+        var phone = self.tfPhoneNumber.text!
+        if phone.hasPrefix("0") {
+            
+        } else {
+            phone = "0" + phone
+        }
+        
+        if phone.length() >= 10 {
             self.isEnableContinueButton(isEnable: true)
         } else {
             self.isEnableContinueButton(isEnable: false)
@@ -41,26 +77,26 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
     }
     
     @IBAction func btnContinueTapped(_ sender: Any) {
-        var phone = self.tfPhoneNumber.text
-        if (phone?.hasPrefix("0"))! {
+        var phone = self.tfPhoneNumber.text!
+        if phone.hasPrefix("0") {
 
         } else {
-            phone = "0" + phone!
+            phone = "0" + phone
         }
 
         if self.tfPhoneNumber.text?.length() == 0 {
             self.showToastWithMessage(message: "Vui lòng nhập số điện thoại để tiếp tục.")
             return
-        } else if (phone?.length())! < 10 {
+        } else if phone.length() < 10 {
             self.showToastWithMessage(message: "Số điện thoại phải chứa 10 hoặc 11 số. Vui lòng kiểm tra lại.")
             return
         }
-        APIClient.shared.authentication(phoneNumber: phone!)
+        APIClient.shared.authentication(phoneNumber: phone)
             .done(on: DispatchQueue.main) { [weak self]model in
                 guard let strongSelf = self else { return }
                 
                 DataManager.shared.userID = model.data?.id ?? 0
-                DataManager.shared.currentAccount = phone!
+                DataManager.shared.currentAccount = phone
                 
                 if let type = model.data?.accountType, type == "1" {
                     //Investor
@@ -78,7 +114,7 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
                     break
                 default :
                     // new account
-                    DataManager.shared.currentAccount = phone!
+                    DataManager.shared.currentAccount = phone
                     
                     // save token
                     if let data = model.data {
@@ -93,7 +129,7 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
                     break
                 }
 
-                strongSelf.pushToVerifyVC(verifyType: .Login, phone: phone!)
+                strongSelf.pushToVerifyVC(verifyType: .Login, phone: phone)
             }.catch { error in
                 print(error)
         }
@@ -129,5 +165,21 @@ extension EnterPhoneNumberAuthenVC: UITextFieldDelegate {
         if newString.length > maxLength { return false }
         
         return true
+    }
+}
+
+extension EnterPhoneNumberAuthenVC: UITextViewDelegate {
+    @available(iOS 10.0, *)
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        if URL.scheme == "more" {
+            let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "WEBVIEW") as! WebViewViewController
+            vc.webViewType = .termView
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+            return false
+        }
+        else {
+            return true
+        }
     }
 }

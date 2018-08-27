@@ -127,6 +127,8 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             if id.contains("optionalText") {
                 //thông tin khác
                 if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
+                    
+                    
                     //Cap nhat thong tin khong hop le
                     self.updateInfoFalse(pre: title)
                 }

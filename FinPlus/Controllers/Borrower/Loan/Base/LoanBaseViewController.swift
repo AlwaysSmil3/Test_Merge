@@ -285,7 +285,39 @@ class LoanBaseViewController: BaseViewController {
     
     func showInputMesseageView() {
         self.isMuiltiLineText = true
-        self.sbInputView?.textView.becomeFirstResponder()
+        
+        self.checkValueOptionalTextMuiltiLine {
+            self.sbInputView?.textView.becomeFirstResponder()
+        }
+        
+    }
+    
+    //Check nếu có text nhập rồi thì input vào cho edit từ đã có
+    func checkValueOptionalTextMuiltiLine(completion: () -> Void) {
+        guard let index = self.currentIndexSelected?.row else {
+            completion()
+            return
+        }
+        guard index < DataManager.shared.loanInfo.optionalText.count, DataManager.shared.loanInfo.optionalText[index].count > 0 else {
+            completion()
+            return
+        }
+        
+        let text = DataManager.shared.loanInfo.optionalText[index]
+        
+        self.sbInputView?.lineHeight = 20
+        self.sbInputView?.numberOfLines = CGFloat(self.getCountLine(text: text))
+        self.sbInputView?.tempValue = text
+        completion()
+    }
+    
+    func getCountLine(text: String) -> Int {
+        let lines = text.components(separatedBy: "\n")
+        if lines.count > 0 {
+            return lines.count
+        }
+        
+        return 1
     }
     
     /// Làm mới lại View Nhập text comment
@@ -476,7 +508,7 @@ extension LoanBaseViewController: SBMessageInputViewDelegate {
     }
     
     func inputViewShouldBeginEditing(textView: UITextView) -> Bool {
-        textView.text = ""
+        //textView.text = ""
         
         
         return true

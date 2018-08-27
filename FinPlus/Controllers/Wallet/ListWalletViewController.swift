@@ -49,7 +49,7 @@ class ListWalletViewController: BaseViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         if self.walletAction == .LoanNation {
-            self.navigationItem.rightBarButtonItem?.tintColor = MAIN_COLOR
+            self.rightBarButtonItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : MAIN_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_SEMIBOLD, size: 17) ?? UIFont.boldSystemFont(ofSize: 17)], for: .normal)
             self.setupTitleView(title: "Tạo yêu cầu vay", subTitle: "Bước 4: Tài khoản nhận tiền")
             //self.navigationController?.navigationBar.shadowImage = UIImage()
             self.bottomView.isHidden = false

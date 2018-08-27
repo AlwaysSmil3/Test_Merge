@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7AM-KR-2Q6">
+                            <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7AM-KR-2Q6">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tạo yêu cầu vay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9To-wk-bn3">
@@ -87,7 +87,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="nJm-gZ-qBg" secondAttribute="trailing" id="2Pa-a1-cZd"/>
                                     <constraint firstItem="9To-wk-bn3" firstAttribute="top" secondItem="7AM-KR-2Q6" secondAttribute="top" constant="26" id="6Bg-lX-VcI"/>
@@ -2488,10 +2488,10 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="595"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMc-ta-e0p" customClass="AnimatableView" customModule="IBAnimatable">
-                                        <rect key="frame" x="16" y="0.0" width="343" height="431.5"/>
+                                        <rect key="frame" x="16" y="0.0" width="343" height="443"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bl8-XE-G8X">
-                                                <rect key="frame" x="5" y="0.0" width="333" height="431.5"/>
+                                                <rect key="frame" x="5" y="0.0" width="333" height="443"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Loan_Type_Popup_TB_Cell" id="w4i-bW-OD2" customClass="LoanTypePopupTBCell" customModule="FinPlus" customModuleProvider="target">
@@ -2566,8 +2566,18 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Bằng cách ấn nút 'Gửi đơn vay' ở trên, tôi đã hiểu và đồng ý với điều khoản sử dụng của Mony" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6Br-cG-CBf">
+                                        <rect key="frame" x="38" y="449" width="321" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="fJd-bM-McR"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SuF-pF-JOP">
-                                        <rect key="frame" x="16" y="447.5" width="343" height="46"/>
+                                        <rect key="frame" x="16" y="499" width="343" height="46"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_button_enable_login" translatesAutoresizingMaskIntoConstraints="NO" id="t8c-9v-hIv">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="46"/>
@@ -2602,29 +2612,33 @@
                                             <constraint firstItem="BVR-K9-4Xf" firstAttribute="leading" secondItem="SuF-pF-JOP" secondAttribute="leading" id="yUG-ER-u2C"/>
                                         </constraints>
                                     </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Bằng cách ấn nút 'Gửi đơn vay' ở trên, tôi đã hiểu và đồng ý với điều khoản sử dụng của Mony" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6Br-cG-CBf">
-                                        <rect key="frame" x="16" y="501" width="343" height="68"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ce-5i-oWN">
+                                        <rect key="frame" x="12" y="453" width="26" height="26"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="68" id="id4-ek-AzW"/>
+                                            <constraint firstAttribute="height" constant="26" id="Gfv-Ru-iaj"/>
+                                            <constraint firstAttribute="width" constant="26" id="ilg-j7-PJN"/>
                                         </constraints>
-                                        <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                        <state key="normal" image="ic_accept_policy"/>
+                                        <state key="selected" image="ic_checkbox_checked"/>
+                                        <connections>
+                                            <action selector="btnAgreeTermTapped:" destination="GxB-tv-dPY" eventType="touchUpInside" id="J59-6w-564"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="6Br-cG-CBf" firstAttribute="top" secondItem="6ce-5i-oWN" secondAttribute="top" constant="-4" id="6Hq-7B-BhD"/>
+                                    <constraint firstAttribute="bottom" secondItem="SuF-pF-JOP" secondAttribute="bottom" constant="50" id="IIh-L0-4AI"/>
                                     <constraint firstItem="SuF-pF-JOP" firstAttribute="trailing" secondItem="KMc-ta-e0p" secondAttribute="trailing" id="JEN-DU-HIj"/>
-                                    <constraint firstAttribute="bottom" secondItem="6Br-cG-CBf" secondAttribute="bottom" constant="26" id="U0x-41-d7h"/>
+                                    <constraint firstItem="SuF-pF-JOP" firstAttribute="leading" secondItem="6ce-5i-oWN" secondAttribute="leading" constant="4" id="KBC-eM-sQj"/>
                                     <constraint firstItem="KMc-ta-e0p" firstAttribute="top" secondItem="Y6W-li-AgB" secondAttribute="top" id="WO6-DW-Jdx"/>
-                                    <constraint firstItem="6Br-cG-CBf" firstAttribute="leading" secondItem="SuF-pF-JOP" secondAttribute="leading" id="XMZ-0j-PnW"/>
-                                    <constraint firstItem="6Br-cG-CBf" firstAttribute="top" secondItem="SuF-pF-JOP" secondAttribute="bottom" constant="8" id="a0f-Gc-24W"/>
-                                    <constraint firstItem="SuF-pF-JOP" firstAttribute="top" secondItem="KMc-ta-e0p" secondAttribute="bottom" constant="16" id="ilV-im-hdb"/>
+                                    <constraint firstItem="SuF-pF-JOP" firstAttribute="top" secondItem="KMc-ta-e0p" secondAttribute="bottom" constant="56" id="ilV-im-hdb"/>
+                                    <constraint firstItem="SuF-pF-JOP" firstAttribute="top" secondItem="6ce-5i-oWN" secondAttribute="bottom" constant="20" id="jbs-CP-XcW"/>
                                     <constraint firstItem="KMc-ta-e0p" firstAttribute="leading" secondItem="Y6W-li-AgB" secondAttribute="leading" constant="16" id="lI1-xA-fLZ"/>
                                     <constraint firstItem="SuF-pF-JOP" firstAttribute="leading" secondItem="KMc-ta-e0p" secondAttribute="leading" id="t5g-G5-NnJ"/>
                                     <constraint firstItem="6Br-cG-CBf" firstAttribute="trailing" secondItem="SuF-pF-JOP" secondAttribute="trailing" id="tdg-ug-XDR"/>
                                     <constraint firstAttribute="trailing" secondItem="KMc-ta-e0p" secondAttribute="trailing" constant="16" id="tlB-Xk-S1q"/>
+                                    <constraint firstItem="6Br-cG-CBf" firstAttribute="leading" secondItem="6ce-5i-oWN" secondAttribute="trailing" id="y71-Z4-UaK"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2640,13 +2654,15 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnAgreeTerm" destination="6ce-5i-oWN" id="whu-tu-rgw"/>
+                        <outlet property="btnContinue" destination="BVR-K9-4Xf" id="z2N-tj-Hcn"/>
                         <outlet property="footerTextView" destination="6Br-cG-CBf" id="NGi-Yj-CyX"/>
                         <outlet property="mainTBView" destination="bl8-XE-G8X" id="37k-9q-iDN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sen-U1-49V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4849" y="941"/>
+            <point key="canvasLocation" x="4848.8000000000002" y="940.47976011994012"/>
         </scene>
         <!--Loan Send SuccessVC-->
         <scene sceneID="KqJ-hC-rSx">
@@ -3938,7 +3954,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ya-Uv-bHh" customClass="AnimatableView" customModule="IBAnimatable">
                                         <rect key="frame" x="0.0" y="4" width="327" height="50"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrK-Aa-JX7" customClass="SBMessageInputView" customModule="Halo" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrK-Aa-JX7" customClass="SBMessageInputView" customModule="FinPlus" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="327" height="50"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -4331,7 +4347,9 @@
     </scenes>
     <resources>
         <image name="bg_button_enable_login" width="311" height="44"/>
+        <image name="ic_accept_policy" width="14" height="14"/>
         <image name="ic_back" width="20" height="18"/>
+        <image name="ic_checkbox_checked" width="14" height="14"/>
         <image name="ic_disclosureIndicator1" width="8" height="13"/>
         <image name="ic_disclosureIndicator2" width="5" height="7"/>
         <image name="ic_disclosureIndicator3" width="5" height="7"/>

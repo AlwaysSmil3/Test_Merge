@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Fabric.with([Crashlytics.self])
         
+        UINavigationBar.appearance().backgroundColor = NAVIGATION_BAR_COLOR
+//        UINavigationBar.appearance().tintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.85)
+        
         // Override point for customization after application launch.
         self.getLoanCategories()
         
@@ -62,7 +65,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
-                completionHandler: {_, _ in })
+                completionHandler: {(granted, error) in
+                    
+                    print("Permission granted: \(granted)")
+                    
+                    //guard granted else { return }
+                    
+//                    let viewAction = UNNotificationAction(identifier: viewActionIdentifier,
+//                                                          title: "View",
+//                                                          options: [.foreground])
+//
+//                    let newsCategory = UNNotificationCategory(identifier: newsCategoryIdentifier,
+//                                                              actions: [viewAction],
+//                                                              intentIdentifiers: [],
+//                                                              options: [])
+//
+//                    UNUserNotificationCenter.current().setNotificationCategories([newsCategory])
+                    
+                    self.getNotificationSettings()
+                    
+            })
         } else {
             let settings: UIUserNotificationSettings =
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
@@ -71,6 +93,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.registerForRemoteNotifications()
         
+    }
+    
+    func getNotificationSettings() {
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+
+                switch settings.authorizationStatus {
+                case .authorized:
+                    print("Notification authorized")
+                    DispatchQueue.main.async {
+                        UIApplication.shared.registerForRemoteNotifications()
+                    }
+                    
+                    break
+                    
+                case .denied:
+                    print("Notification denied")
+//                    guard let topVC = UIApplication.shared.topViewController() else { return }
+//
+//                    topVC.showAlertView(title: MS_TITLE_ALERT, message: "Vui lòng vào: cài đặt > Thông báo -> Mony -> Bật thông báo, để nhận những thông báo mới nhất từ Mony", okTitle: "Đồng ý", cancelTitle: nil)
+                    
+                    
+                    break
+                case .notDetermined:
+                    print("Notification not Determined")
+                    
+                    break
+                    
+                }
+                
+            }
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     // Get Token for remote Notification (sử dụng fireBase thì k chạy vào đây, lấy token ở fireBase)
