@@ -50,6 +50,8 @@ class LoanTypePopupVC: BasePopup {
     var type: TypePopup?
     
     var titleString: String = "Thông báo"
+    
+    var indexRelationPhone: Int = 0
 
     
     override func viewDidLoad() {
@@ -85,12 +87,35 @@ class LoanTypePopupVC: BasePopup {
         guard let type_ = self.type else { return }
         switch type_ {
         case .Categories:
-            //            if let current = DataManager.shared.currentIndexCategoriesSelectedPopup {
-            //                self.currentIndex = current
-            //            }
+            var index = 0
+            var update = false
+            for d in dataSource {
+                if let id = d.id, id == Int16(DataManager.shared.loanInfo.loanCategoryID) {
+                    update = true
+                    break
+                }
+                index += 1
+            }
+            if update {
+                self.currentIndex = index
+            }
+            
             break
         case .RelationShipPhone:
-            
+            guard self.indexRelationPhone < DataManager.shared.loanInfo.userInfo.relationships.count else { return }
+            var index = 0
+            var update = false
+            for d in dataSource {
+                if let id = d.id, id == Int16(DataManager.shared.loanInfo.userInfo.relationships[self.indexRelationPhone].type) {
+                    update = true
+                    break
+                }
+                index += 1
+            }
+            if update {
+                self.currentIndex = index
+            }
+        
             break
             
         case .Job:
@@ -142,7 +167,6 @@ class LoanTypePopupVC: BasePopup {
             break
             
         case .AcademicLevel:
-            
             var index = 0
             var update = false
             for d in dataSource {
@@ -159,12 +183,7 @@ class LoanTypePopupVC: BasePopup {
             break
             
         }
-        
-        
-        
     }
-    
-    
     
     /// Update index hiện tại đang chọn
     func updateSelected() {
@@ -174,15 +193,33 @@ class LoanTypePopupVC: BasePopup {
 //            if let current = DataManager.shared.currentIndexCategoriesSelectedPopup {
 //                self.currentIndex = current
 //            }
+            var index = 0
+            var update = false
+            for d in dataSource {
+                if let id = d.id, id == Int16(DataManager.shared.loanInfo.loanCategoryID) {
+                    update = true
+                    break
+                }
+                index += 1
+            }
+            if update {
+                self.currentIndex = index
+            }
+            
             break
         case .RelationShipPhone:
             self.titleString = "Người thân"
             
+            if self.indexRelationPhone == 0 {
+                if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup1 {
+                    self.currentIndex = current
+                }
+            } else {
+                if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup2 {
+                    self.currentIndex = current
+                }
+            }
             
-            
-//            if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup1 {
-//                self.currentIndex = current
-//            }
             break
             
         case .Job:
@@ -199,7 +236,6 @@ class LoanTypePopupVC: BasePopup {
             break
         case .Strength:
             self.titleString = "Học lực"
-            
             if let current = DataManager.shared.currentIndexStrengthSelectedPopup {
                 self.currentIndex = current
             }
@@ -208,7 +244,6 @@ class LoanTypePopupVC: BasePopup {
             
         case .AcademicLevel:
             self.titleString = "Trình độ học vấn"
-            
             if let current = DataManager.shared.currentIndexAcedemicLevelSelectedPopup {
                 self.currentIndex = current
             }

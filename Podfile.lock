@@ -62,12 +62,10 @@ PODS:
   - PromiseKit/UIKit (6.2.8):
     - PromiseKit/CorePromise
   - Protobuf (3.5.0)
-  - SCPageControl (0.2.1)
   - SDWebImage (4.4.0):
     - SDWebImage/Core (= 4.4.0)
   - SDWebImage/Core (4.4.0)
   - SpreadsheetView (0.8.4)
-  - SVProgressHUD (2.2.5)
   - SwiftyJSON (4.1.0)
   - TPKeyboardAvoiding (1.3.2)
 
@@ -85,10 +83,8 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - PinCodeTextField
   - PromiseKit
-  - SCPageControl
   - SDWebImage (~> 4.0)
   - SpreadsheetView
-  - SVProgressHUD
   - SwiftyJSON
   - TPKeyboardAvoiding
 
@@ -114,10 +110,8 @@ SPEC REPOS:
     - PinCodeTextField
     - PromiseKit
     - Protobuf
-    - SCPageControl
     - SDWebImage
     - SpreadsheetView
-    - SVProgressHUD
     - SwiftyJSON
     - TPKeyboardAvoiding
 
@@ -142,13 +136,11 @@ SPEC CHECKSUMS:
   PinCodeTextField: a3c39be58bde3ed1d6888d0fb1d88b0a4a2277cc
   PromiseKit: 6788ce1a0ed5448b83d4aaf56b9fc49fb7647d32
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
-  SCPageControl: 85efcc9c6f350fd9dce5f81d774ba0d37d09fd84
   SDWebImage: b534502786e43dde36dfcaee89356fe6df30e203
   SpreadsheetView: 17c55b6dc82099993cc2ceb818248d19f3220998
-  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: a2a08301f50b14d9a2c935d4c032bd3208132dfb
+PODFILE CHECKSUM: c54152d07ca22dcf4731b2f9346c498c5522630e
 
 COCOAPODS: 1.5.3

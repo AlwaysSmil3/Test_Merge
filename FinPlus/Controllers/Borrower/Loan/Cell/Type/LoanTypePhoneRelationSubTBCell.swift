@@ -15,6 +15,8 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
     
     @IBOutlet weak var tfRelationPhone: UITextField?
     
+    var currentIndex: Int = 0
+    
     var data: LoanBuilderMultipleData? {
         didSet {
             guard let data_ = data else { return }
@@ -22,6 +24,21 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
             self.tfRelationPhone?.text = data_.phoneNumber
             
             self.tfTypeRelation?.text = DataManager.getTitleRelationShip(id: data_.type ?? -1)
+            
+            if self.currentIndex == 0 {
+                if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup1 {
+                    if let options = data_.options, current < options.count {
+                        self.tfRelationPhone?.text = options[current].title
+                    }
+                }
+            } else {
+                if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup2 {
+                    if let options = data_.options, current < options.count {
+                        self.tfRelationPhone?.text = options[current].title
+                    }
+                }
+            }
+            
 
         }
         
@@ -38,8 +55,8 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
     
     @IBAction func tfEditEnd(_ sender: Any) {
         if let value = self.tfRelationPhone?.text {
-            guard let data_ = data, let placeHolder = data_.placeholder else { return }
-            if placeHolder.contains("người thân 1") {
+            //guard let data_ = data, let placeHolder = data_.placeholder else { return }
+            if self.currentIndex == 0 {
                 if DataManager.shared.loanInfo.userInfo.relationships.count > 0 {
                     DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber = value
                 }
@@ -65,6 +82,7 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
         
         let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
         popup.setDataSource(data: dataSource, type: .RelationShipPhone)
+        popup.indexRelationPhone = self.currentIndex
         popup.delegate = self
         
         popup.show()
@@ -101,8 +119,8 @@ extension LoanTypePhoneRelationSubTBCell: DataSelectedFromPopupProtocol {
         self.tfRelationPhone?.placeholder = "Số điện thoại của " + data.title!
         //DataManager.shared.loanInfo.userInfo.relationships.type = data.id!
         
-        guard let data_ = self.data, let placeHolder = data_.placeholder else { return }
-        if placeHolder.contains("người thân 1") {
+        //guard let data_ = self.data, let placeHolder = data_.placeholder else { return }
+        if self.currentIndex == 0 {
             if DataManager.shared.loanInfo.userInfo.relationships.count > 0 {
                 DataManager.shared.loanInfo.userInfo.relationships[0].type = data.id!
             }

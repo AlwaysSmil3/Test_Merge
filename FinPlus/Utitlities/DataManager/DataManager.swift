@@ -522,13 +522,13 @@ class DataManager {
         
         switch id {
         case 0:
-            return "Vợ"
-        case 1:
-            return "Chồng"
-        case 2:
             return "Bố"
-        case 3:
+        case 1:
             return "Mẹ"
+        case 2:
+            return "Vợ"
+        case 3:
+            return "Chồng"
         case 4:
             return "Bạn bè"
         case 5:
