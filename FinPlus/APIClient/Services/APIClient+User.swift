@@ -132,7 +132,7 @@ extension APIClient {
         let endPoint = EndPoint.User.User + "\(uId)/bank-account"
 
         return Promise<APIResponseGeneral> { seal in
-            requestWithEndPoint(host: Host.productURL, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
+            requestWithEndPoint(host: Host.apiURL, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
                 .done { json in
                     let model = APIResponseGeneral(object: json)
                     seal.fulfill(model)
