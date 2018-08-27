@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="148" id="KGk-i7-Jjw" customClass="SlideTableViewCell" customModule="FinPlus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="483" height="148"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="483" height="147.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSY-iH-RE8">
+                        <rect key="frame" x="16" y="16" width="223.5" height="36.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Snd-1L-Pbi">
+                        <rect key="frame" x="243.5" y="24" width="223.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCt-OS-B45">
+                        <rect key="frame" x="16" y="110.5" width="223.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5g-e9-LZy">
+                        <rect key="frame" x="243.5" y="110.5" width="223.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vyA-lg-s0h" customClass="VSSlider" customModule="FinPlus" customModuleProvider="target">
+                        <rect key="frame" x="16" y="66.5" width="451" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.23137254900000001" green="0.6705882353" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="vMf-y0-PPf"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="thumbImage" value="ic_elipse_slider"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                <real key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="increment">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="maximumTrackTintColor">
+                                <color key="value" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="markWidth">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="trackExtendsUnderThumb" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="vertical" value="NO"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Snd-1L-Pbi" firstAttribute="centerY" secondItem="TSY-iH-RE8" secondAttribute="centerY" id="3J8-6v-YZh"/>
+                    <constraint firstAttribute="bottom" secondItem="SCt-OS-B45" secondAttribute="bottom" constant="16" id="5V6-CS-1fi"/>
+                    <constraint firstItem="SCt-OS-B45" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="8Wx-Ft-gnu"/>
+                    <constraint firstItem="vyA-lg-s0h" firstAttribute="top" secondItem="TSY-iH-RE8" secondAttribute="bottom" constant="14" id="HKG-Ew-D0T"/>
+                    <constraint firstItem="Snd-1L-Pbi" firstAttribute="leading" secondItem="TSY-iH-RE8" secondAttribute="trailing" constant="4" id="Ihh-VH-cb2"/>
+                    <constraint firstItem="vyA-lg-s0h" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Ijq-Ll-Nfr"/>
+                    <constraint firstItem="Snd-1L-Pbi" firstAttribute="width" secondItem="TSY-iH-RE8" secondAttribute="width" id="QAs-W3-Th3"/>
+                    <constraint firstAttribute="trailing" secondItem="vyA-lg-s0h" secondAttribute="trailing" constant="16" id="VIF-lj-eor"/>
+                    <constraint firstAttribute="trailing" secondItem="Snd-1L-Pbi" secondAttribute="trailing" constant="16" id="WGI-DO-HOP"/>
+                    <constraint firstItem="J5g-e9-LZy" firstAttribute="leading" secondItem="SCt-OS-B45" secondAttribute="trailing" constant="4" id="Xxe-zY-c5A"/>
+                    <constraint firstItem="SCt-OS-B45" firstAttribute="top" secondItem="vyA-lg-s0h" secondAttribute="bottom" constant="14" id="eHQ-ru-5uy"/>
+                    <constraint firstItem="J5g-e9-LZy" firstAttribute="width" secondItem="SCt-OS-B45" secondAttribute="width" id="kSV-n6-0Ei"/>
+                    <constraint firstItem="TSY-iH-RE8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="nsN-9N-pA2"/>
+                    <constraint firstItem="J5g-e9-LZy" firstAttribute="centerY" secondItem="SCt-OS-B45" secondAttribute="centerY" id="sG4-q4-Ewo"/>
+                    <constraint firstItem="TSY-iH-RE8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="sud-lu-cRc"/>
+                    <constraint firstAttribute="trailing" secondItem="J5g-e9-LZy" secondAttribute="trailing" constant="16" id="ykm-po-C0r"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bottomTitleLabel" destination="SCt-OS-B45" id="8yb-zG-Ckd"/>
+                <outlet property="bottomValueLabel" destination="J5g-e9-LZy" id="kFR-qq-jil"/>
+                <outlet property="slider" destination="vyA-lg-s0h" id="9np-nB-ftL"/>
+                <outlet property="topTitleLabel" destination="TSY-iH-RE8" id="Z7X-kK-paA"/>
+                <outlet property="topValueLabel" destination="Snd-1L-Pbi" id="E6I-8V-5o3"/>
+            </connections>
+            <point key="canvasLocation" x="106.5" y="104"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_elipse_slider" width="16" height="16"/>
+    </resources>
+</document>

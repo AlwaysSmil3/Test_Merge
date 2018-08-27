@@ -30,11 +30,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YEW-lE-O5U">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="xDR-kr-64G">
-                                        <rect key="frame" x="168" y="6.5" width="39" height="37"/>
-                                        <color key="pageIndicatorTintColor" red="0.72156862749999995" green="0.78823529410000004" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="currentPageIndicatorTintColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    </pageControl>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xha-bS-17C" customClass="SCPageControlView" customModule="SCPageControl">
+                                        <rect key="frame" x="92" y="8" width="191" height="34"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Li-yr-SdD">
                                         <rect key="frame" x="316" y="0.0" width="51" height="50"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="15"/>
@@ -65,9 +64,13 @@
                                     <constraint firstItem="pZs-h6-MCo" firstAttribute="top" secondItem="YEW-lE-O5U" secondAttribute="top" id="Egg-Vw-w33"/>
                                     <constraint firstItem="4Li-yr-SdD" firstAttribute="top" secondItem="YEW-lE-O5U" secondAttribute="top" id="K5L-Ad-vBW"/>
                                     <constraint firstAttribute="height" constant="50" id="L0I-bR-cru"/>
-                                    <constraint firstItem="xDR-kr-64G" firstAttribute="centerX" secondItem="YEW-lE-O5U" secondAttribute="centerX" id="PvQ-OI-Xrj"/>
-                                    <constraint firstItem="xDR-kr-64G" firstAttribute="centerY" secondItem="YEW-lE-O5U" secondAttribute="centerY" id="Tlb-PZ-1dT"/>
+                                    <constraint firstItem="Xha-bS-17C" firstAttribute="leading" secondItem="YEW-lE-O5U" secondAttribute="leading" constant="92" id="Pih-E5-iX3"/>
+                                    <constraint firstAttribute="trailing" secondItem="Xha-bS-17C" secondAttribute="trailing" constant="92" id="TZ1-aN-GtU"/>
+                                    <constraint firstItem="Xha-bS-17C" firstAttribute="centerX" secondItem="YEW-lE-O5U" secondAttribute="centerX" id="UK5-Ye-rmD"/>
+                                    <constraint firstAttribute="bottom" secondItem="Xha-bS-17C" secondAttribute="bottom" constant="8" id="ZEN-0h-VJZ"/>
                                     <constraint firstItem="pZs-h6-MCo" firstAttribute="leading" secondItem="YEW-lE-O5U" secondAttribute="leading" constant="8" id="mdo-sC-TPq"/>
+                                    <constraint firstItem="Xha-bS-17C" firstAttribute="top" secondItem="YEW-lE-O5U" secondAttribute="top" constant="8" id="p6z-1X-Dds"/>
+                                    <constraint firstItem="Xha-bS-17C" firstAttribute="centerY" secondItem="YEW-lE-O5U" secondAttribute="centerY" id="suf-ia-8Ui"/>
                                     <constraint firstAttribute="trailing" secondItem="4Li-yr-SdD" secondAttribute="trailing" constant="8" id="zMw-Sl-Ma6"/>
                                 </constraints>
                             </view>
@@ -237,7 +240,7 @@
                     </view>
                     <connections>
                         <outlet property="nextBtn" destination="4Li-yr-SdD" id="0Pc-ZC-EcK"/>
-                        <outlet property="pageControl" destination="xDR-kr-64G" id="nxE-De-WD5"/>
+                        <outlet property="pageControl" destination="Xha-bS-17C" id="I1E-AI-GGr"/>
                         <outlet property="scrollView" destination="RpL-mH-GPw" id="4OJ-G8-Ndo"/>
                         <outlet property="skipBtn" destination="pZs-h6-MCo" id="kqC-28-KH6"/>
                     </connections>
