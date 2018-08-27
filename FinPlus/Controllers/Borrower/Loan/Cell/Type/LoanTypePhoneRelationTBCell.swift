@@ -125,6 +125,7 @@ extension LoanTypePhoneRelationTBCell: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Loan_Type_Phone_Relation_Sub_TB_Cell", for: indexPath) as! LoanTypePhoneRelationSubTBCell
         cell.data = self.dataSource[indexPath.row]
+        cell.currentIndex = indexPath.row
         
         return cell
     }

@@ -15,7 +15,6 @@ pod 'DropDown'
 
 pod 'Alamofire'
 pod 'NVActivityIndicatorView'
-pod 'SVProgressHUD'
 
 pod 'SDWebImage', '~> 4.0'
 pod 'JSONWebToken'
@@ -31,6 +30,8 @@ pod 'PinCodeTextField'
 
 pod 'Fabric'
 pod 'Crashlytics'
+
+pod 'SVProgressHUD'
 
   # Pods for FinPlus
 
