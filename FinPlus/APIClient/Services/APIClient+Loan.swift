@@ -10,7 +10,7 @@ import Foundation
 
 
 
-let hostLoan = "https://dev-api.mony.vn/"//Loan Service
+//let hostLoan = "https://dev-api.mony.vn/"//Loan Service
 //let hostLoan = "http://192.168.104.70:31007/"//Loan Service
 //let hostLoan = "https://b10644cc-7d66-4541-aa97-770206b05b43.mock.pstmn.io/" //Mock
 //let hostLoan = "http://192.168.8.50:8079/"// - may thai
@@ -24,7 +24,7 @@ extension APIClient {
     func getLoanCategories() -> Promise<[LoanCategories]> {
 
         return Promise<[LoanCategories]> { seal in
-            getDataWithEndPoint(host: hostLoan, endPoint: EndPoint.Loan.LoanCategories, isShowLoadingView: false)
+            getDataWithEndPoint(endPoint: EndPoint.Loan.LoanCategories, isShowLoadingView: false)
                 .done { json in
 
                     var array: [LoanCategories] = []
@@ -51,7 +51,7 @@ extension APIClient {
         return Promise<[BrowwerActiveLoan]> { seal in
             let endPoint = EndPoint.Loan.Loans
 
-            getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: false)
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
                     var array: [BrowwerActiveLoan] = []
 
@@ -75,7 +75,7 @@ extension APIClient {
         return Promise<[BrowwerActiveLoan]> { seal in
             let endPoint = EndPoint.Loan.InvesableLoans
 
-            getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: false)
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
                     var array: [BrowwerActiveLoan] = []
                     print(endPoint)
@@ -149,7 +149,7 @@ extension APIClient {
         }
 
         return Promise<LoanResponseModel> { seal in
-            requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: isShowLoandingView, httpType: httpType, jsonData: dataAPI)
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: isShowLoandingView, httpType: httpType, jsonData: dataAPI)
                 .done { json in
 
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
@@ -189,7 +189,7 @@ extension APIClient {
         ]
         
         return Promise<APIResponseGeneral> { seal in
-            requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
                 .done { json in
                     
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
@@ -223,7 +223,7 @@ extension APIClient {
         let endPoint = "loans/" + "\(loanID)/" + "otp"
         
         return Promise<APIResponseGeneral> { seal in
-            getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: true)
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
                 .done { json in
                     
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
@@ -256,7 +256,7 @@ extension APIClient {
         let endPoint = "loans/" + "\(loanID)/"
 
         return Promise<APIResponseGeneral> { seal in
-            requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: [:], isShowLoadingView: true, httpType: .DELETE)
+            requestWithEndPoint(endPoint: endPoint, params: [:], isShowLoadingView: true, httpType: .DELETE)
                 .done { json in
 
                     let model = APIResponseGeneral(object: json)
@@ -279,7 +279,7 @@ extension APIClient {
         let params = [ "investorId" : investorId, "notes" : notes, "bankId" : walletId]
 
         return Promise<InvestLoanBaseClass> { seal in
-            requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
                 .done { json in
 
                     let model = InvestLoanBaseClass(object: json)
@@ -297,7 +297,7 @@ extension APIClient {
     func investLoanOTP(loanId: Int32, noteId: Int) -> Promise<APIResponseGeneral> {
         return Promise<APIResponseGeneral> { seal in
             let endPoint = "loans/" + "\(loanId)/" + "notes/" + "\(noteId)/" + "otp"
-            getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: false)
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
                     let model = APIResponseGeneral(object: json)
                     seal.fulfill(model)
@@ -311,7 +311,7 @@ extension APIClient {
         let endPoint = "loans/" + "\(loanID)/contract"
 
         return Promise<APIResponseGeneral> { seal in
-            getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: false)
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
                     
                     let model = APIResponseGeneral(object: json)
@@ -330,7 +330,7 @@ extension APIClient {
         let endPoint = "loans/" + "\(loanId)/" + "notes/" + "\(noteId)/" + "otp"
         let params = ["otp" : OTP]
         return Promise<APIResponseGeneral> { seal in
-            requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST).done{ json in
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST).done{ json in
                 let model = APIResponseGeneral(object: json)
                 seal.fulfill(model)
                 }.catch {
@@ -346,7 +346,7 @@ extension APIClient {
             "otp": otp
         ]
         return Promise<APIResponseGeneral> { seal in
-            requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
                 .done { json in
                     
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {

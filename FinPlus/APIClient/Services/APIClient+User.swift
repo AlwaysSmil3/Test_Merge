@@ -162,7 +162,7 @@ extension APIClient {
         let endPoint = EndPoint.User.User + "\(uId)/bank-account"
         
         return Promise<APIResponseGeneral> { seal in
-            requestWithEndPoint(host: hostLoan, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .DELETE)
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .DELETE)
                 .done { json in
                     
                     let model = APIResponseGeneral(object: json)
