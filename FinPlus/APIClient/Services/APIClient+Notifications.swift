@@ -46,7 +46,7 @@ extension APIClient {
     ///
     /// - Parameter notiID: <#notiID description#>
     /// - Returns: <#return value description#>
-    func updateNotification(notiID: Int32) -> Promise<APIResponseGeneral> {
+    func updateNotification(notiID: Int) -> Promise<APIResponseGeneral> {
         let userID = DataManager.shared.userID
         let endPoint = "users/\(userID)/notification"
         let params: JSONDictionary = ["id": notiID,
