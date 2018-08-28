@@ -158,6 +158,33 @@ extension APIClient {
         
     }
     
-    
+    func calculatorPay(amount: Int, term: Int, intRate: Int, disbursalDate: String) -> Promise<[CalculatorPay]> {
+        
+        return Promise<[CalculatorPay]> { seal in
+            
+            let endPoint = EndPoint.Payment.CalculatorPay + "?amount=\(amount)&term=\(term)&intRate=\(intRate)&disbursalDate=\(disbursalDate)"
+            
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
+                .done { json in
+                    
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode == 1 else {
+                        self.showErrorMessage(json: json)
+                        return
+                    }
+                    
+                    var array: [CalculatorPay] = []
+                    
+                    if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
+                        for d in data {
+                            let model1 = CalculatorPay(object: d)
+                            array.append(model1)
+                        }
+                    }
+                    seal.fulfill(array)
+                }
+                .catch { error in seal.reject(error)}
+        }
+        
+    }
     
 }
