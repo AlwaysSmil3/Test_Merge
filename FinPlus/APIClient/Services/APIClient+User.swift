@@ -34,6 +34,12 @@ extension APIClient {
                                 if let optionalMedia = missingData["optionalMedia"] as? [String: Any] {
                                     DataManager.shared.missingOptionalMedia = optionalMedia
                                 }
+                                
+                                if let userInfo = missingData["userInfo"] as? JSONDictionary, let relationShip = userInfo["relationships"] as? [String: Any] {
+                                    DataManager.shared.missingRelationsShip = relationShip
+                                }
+                                
+                                
                                 DataManager.shared.missingLoanDataDictionary = missingData
                                 DataManager.shared.missingLoanData = BrowwerActiveLoan(object: missingData)
                                 

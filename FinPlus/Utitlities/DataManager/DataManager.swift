@@ -95,6 +95,7 @@ class DataManager {
     
     //MissingData optionalMedia
     var missingOptionalMedia: [String: Any]?
+    var missingRelationsShip: [String: Any]?
     
     
     //List Key missing Loan Data
@@ -132,6 +133,7 @@ class DataManager {
     }
     
     func clearMissingLoanData() {
+        DataManager.shared.missingRelationsShip = nil
         DataManager.shared.missingLoanDataDictionary = nil
         DataManager.shared.missingOptionalText = nil
         DataManager.shared.missingOptionalMedia = nil
@@ -408,10 +410,15 @@ class DataManager {
                 missingListTitle.append("Số CMND/thẻ căn cước")
             }
             
-            if let relationPhones = userInfo.relationships, relationPhones.count > 0 {
+            if self.missingRelationsShip != nil {
                 missingListKey.append("relationships")
                 missingListTitle.append("Số điện thoại liên lạc của người thân")
             }
+            
+//            if let relationPhones = userInfo.relationships, relationPhones.count > 0 {
+//                missingListKey.append("relationships")
+//                missingListTitle.append("Số điện thoại liên lạc của người thân")
+//            }
             
             if let add = userInfo.residentAddress, let city = add.city, city.length() > 0 {
                 missingListKey.append("residentAddress")
@@ -539,6 +546,8 @@ class DataManager {
             missingListKey.append("optionalMedia")
             missingListTitle.append("Thông tin bổ sung Media")
         }
+        
+    
         
 //        if let value = miss.optionalText, value.count > 0 {
 //            missingListKey.append("optionalText")
