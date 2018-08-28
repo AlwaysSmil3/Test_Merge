@@ -809,14 +809,14 @@ class LoanStateViewController: UIViewController {
             case .OVERDUE_DEPT?:
                 //Nợ quá hạn - 15
                 var overDate = "0"
-                if let nextDateStr = loan.nextPaymentDate {
+                if let overdudeDate = self.getDateOverdude() {
                     let calendar = NSCalendar.current
                     let d1 = Date()
                     let date1 = calendar.startOfDay(for: d1)
-                    let d2 = Date(fromString: nextDateStr, format: .iso8601(ISO8601Format.DateTimeSec))
-                    let date2 = calendar.startOfDay(for: d2)
+//                    let d2 = Date(fromString: nextDateStr, format: .iso8601(ISO8601Format.DateTimeSec))
+                    let date2 = calendar.startOfDay(for: overdudeDate)
                     
-                    if d1 > d2 {
+                    if d1 > overdudeDate {
                         let components = calendar.dateComponents([.day], from: date2, to: date1)
                         overDate = "\(components.day!)"
                     }
@@ -1216,6 +1216,24 @@ class LoanStateViewController: UIViewController {
         })
     }
     
+    //Lấy ngày quá hạn
+    func getDateOverdude() -> Date? {
+        guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return nil }
+        
+        for col in collections {
+            if let status = col.status, status == 3 {
+                if let monthPayed = col.dueDatetime {
+                    let date = Date(fromString: monthPayed, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
+                    return date
+                }
+            }
+        }
+        
+        return nil
+    }
+    
+    
+    //Check đã thanh toán kỳ nào chưa
     func checkCollectionRightPayForStatusTimelyDebt() -> Bool {
         var value = false
         guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return value }
