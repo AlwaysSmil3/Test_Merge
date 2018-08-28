@@ -10,7 +10,9 @@ import Foundation
 
 //MARK: Base Host
 enum Host {
-    static let apiURL = "https://stage-api.mony.vn/";
+    static let alphaURL = ""
+    
+    static let productURL = "https://dev-api.mony.vn/"
 }
 
 //MARK: API End Point
