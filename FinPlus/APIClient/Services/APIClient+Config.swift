@@ -17,7 +17,7 @@ extension APIClient {
     
     func getConfigs() -> Promise<Config> {
         return Promise<Config> { seal in
-            getDataWithEndPoint(host: hostLoan, endPoint: EndPoint.Config.Configs, isShowLoadingView: false)
+            getDataWithEndPoint(endPoint: EndPoint.Config.Configs, isShowLoadingView: false)
                 .done { json in
                     
                     //Tỷ giá lãi xuất
@@ -47,7 +47,7 @@ extension APIClient {
      */
     func getCities() -> Promise<[Model1]> {
         return Promise<[Model1]> { seal in
-            getDataWithEndPoint(host: hostLoan, endPoint: EndPoint.Config.Cities, isShowLoadingView: false)
+            getDataWithEndPoint(endPoint: EndPoint.Config.Cities, isShowLoadingView: false)
                 .done { json in
                     
                     var array: [Model1] = []
@@ -76,7 +76,7 @@ extension APIClient {
             
             let endPoint = "cities/\(cityID)/" + EndPoint.Config.Districts
             
-            getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: false)
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
                     
                     var array: [Model1] = []
@@ -106,7 +106,7 @@ extension APIClient {
             
             let endPoint = "districts/\(districtID)/" + EndPoint.Config.Communes
             
-            getDataWithEndPoint(host: hostLoan, endPoint: endPoint, isShowLoadingView: false)
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
                     
                     var array: [Model1] = []
