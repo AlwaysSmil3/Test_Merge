@@ -186,7 +186,7 @@ class AddWalletViewController: UIViewController {
                     self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg ?? "", okTitle: "OK", cancelTitle: nil)
                     return
                 }
-                self?.showToastWithMessage(message: model.returnMsg ?? "")
+                //self?.showToastWithMessage(message: model.returnMsg ?? "")
                 self?.navigationController?.popViewController(animated: true)
             }
             .catch { error in

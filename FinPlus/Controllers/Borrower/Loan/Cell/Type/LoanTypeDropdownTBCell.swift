@@ -26,10 +26,10 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 }
             }
             
-            if let value = field_.placeholder, let id = field_.id {
+            if let value = field_.placeholder {
                 self.lblValue?.text = value
                 
-                if id.contains("birthday"), let temp = self.valueTemp {
+                if let id = field_.id, id.contains("birthday"), let temp = self.valueTemp {
                     if temp == value {
                         self.updateInfoFalse(pre: field_.title ?? "")
                     } else {
