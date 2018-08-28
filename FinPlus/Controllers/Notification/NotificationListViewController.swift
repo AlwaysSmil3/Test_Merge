@@ -92,7 +92,7 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         
     }
     
-    private func updateNoti(index: Int32) {
+    private func updateNoti(index: Int) {
         APIClient.shared.updateNotification(notiID: index)
             .done(on: DispatchQueue.global()) { model in }
             .catch { error in}
@@ -111,10 +111,21 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         let cellData = notificationList[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationCell") as? NotificationTableViewCell {
             cell.containView.layer.cornerRadius = 8
-            cell.containView.layer.borderColor = UIColor.lightGray.cgColor
-            cell.timeLb.textColor = UIColor.darkGray
-            cell.titleLb.textColor = UIColor(hexString: "#4D6678")
-            cell.contentLb.textColor = UIColor(hexString: "#4D6678")
+            
+            if (cellData.status)!
+            {
+                cell.timeLb.textColor = MAIN_COLOR
+                cell.containView.layer.borderColor = MAIN_COLOR.cgColor
+                cell.titleLb.textColor = UIColor(hexString: "#08121E")
+                cell.contentLb.textColor = UIColor(hexString: "#08121E")
+            }
+            else
+            {
+                cell.containView.layer.borderColor = UIColor.lightGray.cgColor
+                cell.titleLb.textColor = UIColor(hexString: "#4D6678")
+                cell.contentLb.textColor = UIColor(hexString: "#4D6678")
+                cell.timeLb.textColor = UIColor(hexString: "#8EA3AF")
+            }
             
             cell.containView.layer.borderWidth = 1
             cell.titleLb.text = cellData.title!
@@ -132,15 +143,16 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? NotificationTableViewCell {
-            cell.containView.layer.borderColor = MAIN_COLOR.cgColor
-            cell.timeLb.textColor = MAIN_COLOR
-            cell.titleLb.textColor = UIColor(hexString: "#08121E")
-            cell.contentLb.textColor = UIColor(hexString: "#08121E")
+            
+            cell.containView.layer.borderColor = UIColor.lightGray.cgColor
+            cell.titleLb.textColor = UIColor(hexString: "#4D6678")
+            cell.contentLb.textColor = UIColor(hexString: "#4D6678")
+            cell.timeLb.textColor = UIColor(hexString: "#8EA3AF")
         }
         
         let data = self.notificationList[indexPath.row]
-        guard let status = data.status, status else {
-            self.updateNoti(index: Int32(indexPath.row))
+        if let status = data.status, status == true {
+            self.updateNoti(index: data.id!)
             
             return
         }

@@ -13,6 +13,8 @@ class SCP_SCNormal: UIView {
     var numberOfPage: Int = 0, currentOfPage: Int = 0
     var f_start_point: CGFloat = 0.0, f_start: CGFloat = 0.0
     
+    var tin_color: UIColor = .red
+    var invisible_color: UIColor = .gray
     var screenWidth : CGFloat = UIScreen.main.bounds.size.width
     var screenHeight : CGFloat = UIScreen.main.bounds.size.height
     
@@ -29,8 +31,10 @@ class SCP_SCNormal: UIView {
     }
     
     // ## view init method ##
-    func set_view(_ page: Int, current: Int, tint_color: UIColor, invisible_color: UIColor) {
-               
+    func set_view(_ page: Int, current: Int, tint_color: UIColor, invisiblet_color: UIColor) {
+        
+        tin_color = tint_color
+        invisible_color = invisiblet_color
         numberOfPage = page
         currentOfPage = current
         
@@ -56,8 +60,10 @@ class SCP_SCNormal: UIView {
                 f_width = 10.0
                 img_page.alpha = 0.4
             }
+            
             img_page.frame = CGRect(x: f_x, y: f_y, width: f_width, height: f_height)
             img_page.layer.cornerRadius = img_page.frame.size.height/2.0
+            img_page.backgroundColor = tin_color
             img_page.tag = i+10
             self.addSubview(img_page)
             

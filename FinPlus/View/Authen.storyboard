@@ -45,7 +45,7 @@
                                                 <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vui lòng nhập số điện thoại của bạn để đăng ký mới hoặc đăng nhập nếu bạn đã có tài khoản" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mS8-di-apd">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vui lòng nhập số điện thoại của bạn để đăng ký mới hoặc đăng nhập nếu bạn đã có tài khoản." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mS8-di-apd">
                                                 <rect key="frame" x="32" y="172" width="311" height="61"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -112,7 +112,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="1QY-9T-iAF" secondAttribute="bottom" id="wyZ-6Z-HwG"/>
                                                 </constraints>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Bằng cách ấn nút 'Tiếp tục' ở trên, tôi đã hiểu và đồng ý với điều khoản sử dụng của Mony " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Dd5-xh-kMJ">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Bằng cách ấn nút 'Tiếp tục' ở trên, tôi đã hiểu và đồng ý với điều khoản sử dụng của Mony ." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Dd5-xh-kMJ">
                                                 <rect key="frame" x="28" y="396" width="319" height="68"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -432,7 +432,7 @@
                                                     <constraint firstAttribute="height" constant="1" id="28h-MG-IOj"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xin chào 0, bạn chưa có tài khoản. Vui lòng thiết lập mật khẩu để tiếp tục" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPy-zp-Q1O">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xin chào 0, bạn chưa có tài khoản. Vui lòng thiết lập mật khẩu để tiếp tục." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPy-zp-Q1O">
                                                 <rect key="frame" x="32" y="121.5" width="311" height="41"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -916,7 +916,7 @@
                                                     <constraint firstAttribute="height" constant="1" id="GP5-mr-GPw"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xin chào 0, Vui lòng nhập mật khẩu của bạn để tiếp tục" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAs-fK-tf6">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xin chào 0, vui lòng nhập mật khẩu của bạn để tiếp tục." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAs-fK-tf6">
                                                 <rect key="frame" x="32" y="121.5" width="311" height="41"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>

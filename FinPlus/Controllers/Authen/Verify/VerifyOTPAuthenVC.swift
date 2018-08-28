@@ -27,26 +27,30 @@ class VerifyOTPAuthenVC: BaseViewController {
     var loanId: Int32!
     var noteId: Int!
     var account = ""
-    var count = 0
     var timer = Timer()
     var otp: String = ""
     
     //Cho Tạo Loan  
     var loanResponseModel: LoanResponseModel?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.setupPinView()
         
+        self.lblLimitTime.text = "\(60 - appDelegate.timeCount) " + "giây"
+        
+        appDelegate.timer.invalidate()
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-    
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         
         self.timer.invalidate()
+        appDelegate.createTimer()
     }
     
     private func setupPinView() {
@@ -70,21 +74,21 @@ class VerifyOTPAuthenVC: BaseViewController {
     
     // Update timer
     @objc func updateTimer() {
-        guard count <= 59 else {
+        guard appDelegate.timeCount <= 59 else {
             self.timer.invalidate()
             resendCodeBtn.isHidden = false
             return
         }
         
-        if (60 - count) < 15 {
+        if (60 - appDelegate.timeCount) < 15 {
             //Gần hết time đổi màu
             self.lblLimitTime.textColor = UIColor(red: 255/255, green: 81/255, blue: 88/255, alpha: 1)
         } else {
             self.lblLimitTime.textColor = TEXT_NORMAL_COLOR
         }
         
-        count += 1
-        self.lblLimitTime.text = "\(60 - self.count) " + "giây"
+        appDelegate.timeCount += 1
+        self.lblLimitTime.text = "\(60 - appDelegate.timeCount) " + "giây"
     }
     
     //MARK: Resend - Get OTP
@@ -92,7 +96,7 @@ class VerifyOTPAuthenVC: BaseViewController {
         self.otp = ""
         //self.pinCodeTextField.
         self.resendCodeBtn.isHidden = true
-        count = 0
+        appDelegate.timeCount = 0
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
         for _ in 0...6 {
