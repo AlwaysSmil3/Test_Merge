@@ -41,6 +41,9 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         }
     }
     
+    //Url cac anh khong hop le
+    var listURLInValid: [String]?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -53,14 +56,29 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     }
     
     private func updateData() {
-        guard let field_ = self.field, let indexArray = field_.arrayIndex else { return }
+        guard let field_ = self.field, let indexArray = field_.arrayIndex, let _ = field_.title else { return }
         var temp: [String] = []
+        
+        if DataManager.shared.checkFieldIsMissing(key: "optionalMedia") {
+            //Cap nhat thong tin khong hop le
+            if let optionalMedia = DataManager.shared.missingOptionalMedia {
+                if let listUrl = optionalMedia["\(indexArray)"] as? [String] {
+                    if self.listURLInValid == nil {
+                        self.listURLInValid = listUrl
+                    }
+                    
+                    if let list = self.listURLInValid, list.count > 0 {
+                        self.updateInfoFalse(pre: "Ảnh cung cấp")
+                    }
+                    
+                }
+            }
+        }
         
         if let data = DataManager.shared.browwerInfo?.activeLoan?.optionalMedia, data.count > indexArray {
             if data[indexArray].count > 0 {
                 temp = data[indexArray] as! [String]
             }
-            
         }
         
         if DataManager.shared.loanInfo.optionalMedia.count > indexArray {
@@ -69,6 +87,27 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
             self.dataSourceCollection = temp
         }
         
+    }
+    
+    func removeUrlInValidInList(url: String?) {
+        if let list = self.listURLInValid {
+            var index = 0
+            var isRemove = false
+            for i in list {
+                if i == url {
+                    isRemove = true
+                    break
+                }
+                index += 1
+            }
+            if isRemove {
+                self.listURLInValid?.remove(at: index)
+            }
+            
+            if self.listURLInValid?.count == 0 {
+                self.isNeedUpdate = false
+            }
+        }
     }
     
     func showLibrary() {
@@ -103,20 +142,37 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
             }
             UIApplication.shared.topViewController()!.showToastWithMessage(message: "Upload thành công")
             
-            self.dataSourceCollection.append(img)
+            //self.dataSourceCollection.append(img)
+            if let current = self.currentSelectedCollection, current.row < self.dataSourceCollection.count {
+                
+                if let cell = self.mainCollectionView?.cellForItem(at: current) as? LoanOtherInfoCollectionCell, let hidden = cell.errorView?.isHidden, !hidden {
+                    //remove key url invalid
+                    self.removeUrlInValidInList(url: cell.urlImg)
+                    
+                }
+                
+                 self.dataSourceCollection[current.row] = img
+                
+            } else {
+                self.dataSourceCollection.append(img)
+            }
+            
             //DataManager.shared.loanInfo.optionalMedia.removeAll()
             for d in data {
                 if let url = d["url"] as? String {
-                    print("optionalMediaCount\(DataManager.shared.loanInfo.optionalMedia.count)")
                     
                     if DataManager.shared.loanInfo.optionalMedia.count == 0 {
                         DataManager.shared.loanInfo.optionalMedia = DataManager.shared.loanInfo.initOptionalMedia(cateId: DataManager.shared.loanInfo.loanCategoryID)
                     }
                     
                     if let indexArray = self.field?.arrayIndex, DataManager.shared.loanInfo.optionalMedia.count > indexArray {
-                        DataManager.shared.loanInfo.optionalMedia[indexArray].append(url)
+                        
+                        if let current = self.currentSelectedCollection, current.row < DataManager.shared.loanInfo.optionalMedia[indexArray].count {
+                            DataManager.shared.loanInfo.optionalMedia[indexArray][current.row] = url
+                        } else {
+                            DataManager.shared.loanInfo.optionalMedia[indexArray].append(url)
+                        }
                     }
-                    
                 }
             }
             
@@ -144,6 +200,7 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Loan_Other_Info_Collection_Cell", for: indexPath) as! LoanOtherInfoCollectionCell
         cell.currentSelectedCollection = indexPath
         cell.delegate = self
+        cell.errorView?.isHidden = true
         
         guard indexPath.row < self.dataSourceCollection.count else {
             cell.imgValue.image = #imageLiteral(resourceName: "ic_loan_rectangle1")
@@ -163,6 +220,16 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
             cell.imgValue.sd_setImage(with: URL(string: data), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: nil)
             cell.imgAdd.isHidden = true
             cell.btnDelete.isHidden = false
+            cell.urlImg = data
+            
+            if let isNeed = self.isNeedUpdate, isNeed, let urls = self.listURLInValid, urls.count > 0 {
+                for url in urls {
+                    if data == url {
+                        cell.errorView?.isHidden = false
+                    }
+                }
+            }
+            
         }
         
         return cell
@@ -178,7 +245,9 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
 
 extension LoanTypeOptionalMediaTBCell: OptionMediaDelegate {
     
-    func deleteOptionMedia(index: Int) {
+    func deleteOptionMedia(index: Int, urlImg: String?) {
+        
+        self.removeUrlInValidInList(url: urlImg)
         self.dataSourceCollection.remove(at: index)
         
         if let indexArray = self.field?.arrayIndex, DataManager.shared.loanInfo.optionalMedia.count > indexArray {

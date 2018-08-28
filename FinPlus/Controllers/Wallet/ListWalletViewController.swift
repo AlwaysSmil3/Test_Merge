@@ -355,8 +355,9 @@ extension ListWalletViewController: UITableViewDataSource {
                         cell?.borderView.layer.borderColor = MAIN_COLOR.cgColor
                         cell?.optionBtn.setImage(#imageLiteral(resourceName: "ic_radio_on"), for: .normal)
                         
-                        if DataManager.shared.checkFieldIsMissing(key: "bank"), let missData = DataManager.shared.missingLoanData, let bank = missData.bank, let id = bank.id, id == item.id {
+                        if DataManager.shared.checkMissingBankData(key: "bank", currentBankHolder: item.accountBankName, currenAccount: item.accountBankNumber) {
                             //Cap nhat thong tin khong hop le
+                            cell?.optionBtn.setImage(UIImage(named: "option_icon"), for: .normal)
                             cell?.borderView.layer.borderColor = UIColor.red.cgColor
                         }
                         
@@ -390,7 +391,8 @@ extension ListWalletViewController: UITableViewDataSource {
 
 extension ListWalletViewController: EditWalletDelegate {
     func editWallet(index: IndexPath) {
-        if self.walletAction == .LoanNation {
+        let bank = self.listWallet[index.row] as! AccountBank
+        if self.walletAction == .LoanNation && !DataManager.shared.checkMissingBankData(key: "bank", currentBankHolder: bank.accountBankName, currenAccount: bank.accountBankNumber) {
             return
         }
         

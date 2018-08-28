@@ -30,7 +30,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
     var parent: String?
     
-    var valueTemp: String?
+//    var valueTemp: String?
     
     var field: LoanBuilderFields? {
         didSet {
@@ -125,13 +125,8 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
         guard let parent = self.parent else {
             if id.contains("optionalText") {
+                
                 //thông tin khác
-                if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
-                    
-                    
-                    //Cap nhat thong tin khong hop le
-                    self.updateInfoFalse(pre: title)
-                }
                 
                 var index = 0
                 if let i = field_.arrayIndex {
@@ -152,6 +147,23 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 if value.length() > 0 {
                     self.tfValue?.text = value
                     DataManager.shared.loanInfo.optionalText[index] = value
+                }
+                
+                if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
+                    //Cap nhat thong tin khong hop le
+                    if let arrayIndex = field_.arrayIndex, let data = DataManager.shared.missingOptionalText {
+                        
+                        if let text = data["\(arrayIndex)"] as? String {
+                            //Cap nhat thong tin khong hop le
+                            print("OptionalText \(text)")
+                            if self.valueTemp == nil {
+                                self.updateInfoFalse(pre: title)
+                            }
+                            
+                            self.valueTemp = value
+                        }
+                    }
+                    
                 }
             }
             
@@ -176,9 +188,12 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     DataManager.shared.loanInfo.userInfo.fullName = value
                 }
                 
-                if DataManager.shared.checkFieldIsMissing(key: "fullName") {
+                if DataManager.shared.checkFieldIsMissing(key: "fullName", parentKey: "userInfo", currentValue: value) {
                     //Cap nhat thong tin khong hop le
-                    self.updateInfoFalse(pre: title)
+                    //self.updateInfoFalse(pre: title)
+                    if self.valueTemp == nil {
+                        self.updateInfoFalse(pre: title)
+                    }
                     self.valueTemp = value
                 }
                 
@@ -197,9 +212,12 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     self.tfValue?.text = value
                     DataManager.shared.loanInfo.userInfo.nationalID = value
                 }
-                if DataManager.shared.checkFieldIsMissing(key: "nationalId") {
+                if DataManager.shared.checkFieldIsMissing(key: "nationalId", parentKey: "userInfo", currentValue: value) {
                     //Cap nhat thong tin khong hop le
-                    self.updateInfoFalse(pre: title)
+                    //self.updateInfoFalse(pre: title)
+                    if self.valueTemp == nil {
+                        self.updateInfoFalse(pre: title)
+                    }
                     self.valueTemp = value
                 }
             }
@@ -222,9 +240,12 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     DataManager.shared.loanInfo.jobInfo.company = value
                 }
                 
-                if DataManager.shared.checkFieldIsMissing(key: "company") {
+                if DataManager.shared.checkFieldIsMissing(key: "company", parentKey: "jobInfo", currentValue: value) {
                     //Cap nhat thong tin khong hop le
-                    self.updateInfoFalse(pre: title)
+                    //self.updateInfoFalse(pre: title)
+                    if self.valueTemp == nil {
+                        self.updateInfoFalse(pre: title)
+                    }
                     self.valueTemp = value
                 }
                 
@@ -246,7 +267,10 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 
                 if DataManager.shared.checkFieldIsMissing(key: "salary") {
                     //Cap nhat thong tin khong hop le
-                    self.updateInfoFalse(pre: title)
+                    //self.updateInfoFalse(pre: title)
+                    if self.valueTemp == nil {
+                        self.updateInfoFalse(pre: title)
+                    }
                     self.valueTemp = FinPlusHelper.formatDisplayCurrency(Double(value))
                 }
                 
@@ -266,9 +290,12 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = value
                 }
                 
-                if DataManager.shared.checkFieldIsMissing(key: "companyPhoneNumber") {
+                if DataManager.shared.checkFieldIsMissing(key: "companyPhoneNumber", parentKey: "jobInfo", currentValue: value) {
                     //Cap nhat thong tin khong hop le
-                    self.updateInfoFalse(pre: title)
+                    //self.updateInfoFalse(pre: title)
+                    if self.valueTemp == nil {
+                        self.updateInfoFalse(pre: title)
+                    }
                     self.valueTemp = value
                 }
             } else if id == "experienceYear" {
@@ -288,7 +315,10 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 }
                 if DataManager.shared.checkFieldIsMissing(key: "experienceYear") {
                     //Cap nhat thong tin khong hop le
-                    self.updateInfoFalse(pre: title)
+                    //self.updateInfoFalse(pre: title)
+                    if self.valueTemp == nil {
+                        self.updateInfoFalse(pre: title)
+                    }
                     self.valueTemp = "\(Int(valueFloat))"
                 }
             } else if id == "studentId" {
@@ -307,9 +337,12 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     DataManager.shared.loanInfo.jobInfo.studentId = value
                 }
                 
-                if DataManager.shared.checkFieldIsMissing(key: "studentId") {
+                if DataManager.shared.checkFieldIsMissing(key: "studentId", parentKey: "jobInfo", currentValue: value) {
                     //Cap nhat thong tin khong hop le
-                    self.updateInfoFalse(pre: title)
+                    //self.updateInfoFalse(pre: title)
+                    if self.valueTemp == nil {
+                        self.updateInfoFalse(pre: title)
+                    }
                     self.valueTemp = value
                 }
             } else if id == "academicName" {
@@ -328,9 +361,12 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     DataManager.shared.loanInfo.jobInfo.academicName = value
                 }
                 
-                if DataManager.shared.checkFieldIsMissing(key: "academicName") {
+                if DataManager.shared.checkFieldIsMissing(key: "academicName", parentKey: "jobInfo", currentValue: value) {
                     //Cap nhat thong tin khong hop le
-                    self.updateInfoFalse(pre: title)
+                    //self.updateInfoFalse(pre: title)
+                    if self.valueTemp == nil {
+                        self.updateInfoFalse(pre: title)
+                    }
                     self.valueTemp = value
                 }
             }
