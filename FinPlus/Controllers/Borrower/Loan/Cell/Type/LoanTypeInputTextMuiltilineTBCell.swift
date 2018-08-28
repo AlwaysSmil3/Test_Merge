@@ -78,7 +78,16 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
             //thông tin khác
             if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
                 //Cap nhat thong tin khong hop le
-                self.updateInfoFalse(pre: title)
+                //self.updateInfoFalse(pre: title)
+                
+                if let arrayIndex = field_.arrayIndex, let data = DataManager.shared.missingOptionalText {
+                    
+                    if let text = data["\(arrayIndex)"] as? String {
+                        //Cap nhat thong tin khong hop le
+                        print("OptionalText \(text)")
+                        self.updateInfoFalse(pre: title)
+                    }
+                }
             }
             
             var index = 0

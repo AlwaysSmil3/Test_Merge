@@ -69,7 +69,7 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
             self.setBtnVCB(wallet: wallet_)
             
             if self.walletAction == .LoanNation {
-                if DataManager.shared.checkFieldIsMissing(key: "bank"), let missData = DataManager.shared.missingLoanData, let bank = missData.bank, let id = bank.id, id == wallet_.id {
+                if DataManager.shared.checkFieldIsMissing(key: "bank"), let missData = DataManager.shared.missingLoanData, let bank = missData.bank {
                     self.missBank = bank
                     //Cap nhat thong tin khong hop le
                     if let account = bank.accountNumber, account.length() > 0 {
@@ -104,19 +104,26 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
     
     //MARK: TFAction
     
-    private func checkInputValue() {
+    private func checkinputAccText() {
         guard let miss = self.missBank else { return }
-        if self.nameTextField.text != miss.accountHolder {
+        if self.accTextField.text != miss.accountNumber {
             accTextField.borderActiveColor = UIColor(hexString: "#E3EBF0")
             accTextField.borderInactiveColor = UIColor(hexString: "#E3EBF0")
             accTextField.textColor = UIColor(hexString: "#08121E")
+            
         } else {
             accTextField.borderActiveColor = InValidMissingDataColor
             accTextField.borderInactiveColor = InValidMissingDataColor
             accTextField.textColor = InValidMissingDataColor
+            
         }
         
-        if self.accTextField.text != miss.accountNumber {
+        
+    }
+    
+    private func checkInputNameText() {
+        guard let miss = self.missBank else { return }
+        if self.nameTextField.text != miss.accountHolder {
             nameTextField.borderActiveColor = UIColor(hexString: "#E3EBF0")
             nameTextField.borderInactiveColor = UIColor(hexString: "#E3EBF0")
             nameTextField.textColor = UIColor(hexString: "#08121E")
@@ -140,7 +147,14 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
     //MARK: TF Delegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        self.checkInputValue()
+        if textField == self.nameTextField {
+            self.checkInputNameText()
+        }
+        
+        if textField == self.accTextField {
+            self.checkinputAccText()
+        }
+        
         
         return true
     }

@@ -9,16 +9,18 @@
 import Foundation
 
 protocol OptionMediaDelegate {
-    func deleteOptionMedia(index: Int)
+    func deleteOptionMedia(index: Int, urlImg: String?)
 }
 
 class LoanOtherInfoCollectionCell: UICollectionViewCell {
     
+    @IBOutlet var errorView: AnimatableView?
     @IBOutlet var imgValue: UIImageView!
     @IBOutlet var imgAdd: UIImageView!
     @IBOutlet var btnDelete: UIButton!
     
     var currentSelectedCollection: IndexPath?
+    var urlImg: String?
     
     var delegate: OptionMediaDelegate?
     
@@ -32,7 +34,7 @@ class LoanOtherInfoCollectionCell: UICollectionViewCell {
     @IBAction func btnDeleteTapped(_ sender: Any) {
         guard let index = self.currentSelectedCollection else { return }
         
-        delegate?.deleteOptionMedia(index: index.row)
+        delegate?.deleteOptionMedia(index: index.row, urlImg: self.urlImg)
     }
     
 }

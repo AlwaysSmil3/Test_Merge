@@ -26,8 +26,16 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 }
             }
             
-            if let value = field_.placeholder {
+            if let value = field_.placeholder, let id = field_.id {
                 self.lblValue?.text = value
+                
+                if id.contains("birthday"), let temp = self.valueTemp {
+                    if temp == value {
+                        self.updateInfoFalse(pre: field_.title ?? "")
+                    } else {
+                        self.isNeedUpdate = false
+                    }
+                }
             }
             
             //Cap nhat Data
@@ -83,6 +91,14 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
         
         guard let field_ = self.field, let id = field_.id else { return }
         
+        if let temp = self.valueTemp {
+            if temp == value {
+                self.updateInfoFalse(pre: field_.title ?? "")
+            } else {
+                self.isNeedUpdate = false
+            }
+        }
+        
         if id.contains("jobType") {
             DataManager.shared.loanInfo.jobInfo.jobType = Int(data.id ?? 0)
             DataManager.shared.loanInfo.jobInfo.jobTitle = value
@@ -102,10 +118,6 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
         guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
         
         if id.contains("jobType") {
-            if DataManager.shared.checkFieldIsMissing(key: "jobType") {
-                //Cap nhat thong tin khong hop le
-                self.updateInfoFalse(pre: title)
-            }
             
             var value = ""
             var type = -1
@@ -124,11 +136,16 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 DataManager.shared.loanInfo.jobInfo.jobTitle = value
                 DataManager.shared.loanInfo.jobInfo.jobType = type
             }
-        } else if id.contains("position") {
-            if DataManager.shared.checkFieldIsMissing(key: "position") {
+            
+            if DataManager.shared.checkFieldIsMissing(key: "jobTitle", parentKey: "jobInfo", currentValue: value) || DataManager.shared.checkFieldIsMissing(key: "jobType", parentKey: "jobInfo", currentValue: "", currentValueIndex: type) {
                 //Cap nhat thong tin khong hop le
-                self.updateInfoFalse(pre: title)
+                if self.valueTemp == nil {
+                    self.updateInfoFalse(pre: title)
+                }
+                self.valueTemp = value
             }
+            
+        } else if id.contains("position") {
             
             var value = ""
             var idInt = -1
@@ -148,11 +165,16 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 DataManager.shared.loanInfo.jobInfo.position = idInt
                 DataManager.shared.loanInfo.jobInfo.positionTitle = value
             }
-        } else if id.contains("birthday") {
-            if DataManager.shared.checkFieldIsMissing(key: "birthday") {
+            
+            if DataManager.shared.checkFieldIsMissing(key: "positionTitle", parentKey: "jobInfo", currentValue: value) || DataManager.shared.checkFieldIsMissing(key: "position", parentKey: "jobInfo", currentValue: "", currentValueIndex: idInt) {
                 //Cap nhat thong tin khong hop le
-                self.updateInfoFalse(pre: title)
+                if self.valueTemp == nil {
+                    self.updateInfoFalse(pre: title)
+                }
+                self.valueTemp = value
             }
+            
+        } else if id.contains("birthday") {
             
             var value = ""
             var dateTemp = Date()
@@ -177,6 +199,15 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 DataManager.shared.loanInfo.userInfo.birthDay = timeISO8601
                 self.lblValue?.text = date
             }
+            
+            if DataManager.shared.checkFieldIsMissing(key: "birthday") {
+                //Cap nhat thong tin khong hop le
+                if self.valueTemp == nil {
+                    self.updateInfoFalse(pre: title)
+                }
+                self.valueTemp = self.lblValue?.text
+            }
+            
         } else if id.contains("gender") {
             if DataManager.shared.checkFieldIsMissing(key: "gender") {
                 //Cap nhat thong tin khong hop le
@@ -202,10 +233,6 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 DataManager.shared.loanInfo.userInfo.gender = value
             }
         } else if id.contains("strength") {
-            if DataManager.shared.checkFieldIsMissing(key: "strength") {
-                //Cap nhat thong tin khong hop le
-                self.updateInfoFalse(pre: title)
-            }
             
             var idInt = -1
             if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.strength {
@@ -216,8 +243,9 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 idInt = DataManager.shared.loanInfo.jobInfo.strength
             }
             
+            var value = ""
             if idInt >= 0 {
-                var value = ""
+                
                 if let data = field_.data {
                     for d in data {
                         if Int(d.id ?? 0) == idInt {
@@ -230,11 +258,15 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 self.lblValue?.text = value
                 DataManager.shared.loanInfo.jobInfo.strength = idInt
             }
-        } else if id.contains("academicLevel") {
-            if DataManager.shared.checkFieldIsMissing(key: "academicLevel") {
+            
+            if DataManager.shared.checkFieldIsMissing(key: "strength", parentKey: "jobInfo", currentValue: value) {
                 //Cap nhat thong tin khong hop le
-                self.updateInfoFalse(pre: title)
+                if self.valueTemp == nil {
+                    self.updateInfoFalse(pre: title)
+                }
+                self.valueTemp = self.lblValue?.text
             }
+        } else if id.contains("academicLevel") {
             
             var idInt = -1
             if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.academicLevel {
@@ -245,8 +277,9 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 idInt = DataManager.shared.loanInfo.jobInfo.academicLevel
             }
             
+            var value = ""
             if idInt >= 0 {
-                var value = ""
+                
                 if let data = field_.data {
                     for d in data {
                         if Int(d.id ?? 0) == idInt {
@@ -258,12 +291,17 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 self.lblValue?.text = value
                 DataManager.shared.loanInfo.jobInfo.academicLevel = idInt
             }
+            
+            if DataManager.shared.checkFieldIsMissing(key: "academicLevel", parentKey: "jobInfo", currentValue: value) {
+                //Cap nhat thong tin khong hop le
+                //self.updateInfoFalse(pre: title)
+                if self.valueTemp == nil {
+                    self.updateInfoFalse(pre: title)
+                }
+                self.valueTemp = self.lblValue?.text
+            }
         }  else if id.contains("optionalText") {
             //thông tin khác
-            if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
-                //Cap nhat thong tin khong hop le
-                self.updateInfoFalse(pre: title)
-            }
             
             var index = 0
             if let i = field_.arrayIndex {
@@ -292,6 +330,14 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 let timeISO8601 = dateTemp.toString(.custom(DATE_FORMATTER_WITH_SERVER))
                 DataManager.shared.loanInfo.optionalText[index] = timeISO8601
                 self.lblValue?.text = date
+            }
+            
+            if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
+                //Cap nhat thong tin khong hop le
+                if self.valueTemp == nil {
+                    self.updateInfoFalse(pre: title)
+                }
+                self.valueTemp = self.lblValue?.text
             }
         }
         

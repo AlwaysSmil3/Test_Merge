@@ -18,8 +18,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="153" height="126"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loan_rectangle1" translatesAutoresizingMaskIntoConstraints="NO" id="Ke9-F0-o29">
+                    <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTI-ZF-hHC" customClass="AnimatableView" customModule="IBAnimatable">
                         <rect key="frame" x="0.0" y="0.0" width="153" height="126"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="1" green="0.14901960780000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loan_rectangle1" translatesAutoresizingMaskIntoConstraints="NO" id="Ke9-F0-o29">
+                        <rect key="frame" x="1" y="1" width="151" height="124"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loan_add" translatesAutoresizingMaskIntoConstraints="NO" id="cUC-XR-UeU">
                         <rect key="frame" x="67.5" y="54" width="18" height="18"/>
@@ -34,18 +49,23 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Ke9-F0-o29" secondAttribute="trailing" id="3rr-bk-QKJ"/>
+                <constraint firstAttribute="trailing" secondItem="Ke9-F0-o29" secondAttribute="trailing" constant="1" id="3rr-bk-QKJ"/>
                 <constraint firstItem="urf-oC-9GN" firstAttribute="top" secondItem="RLs-vp-PaF" secondAttribute="top" id="7bX-wB-6jG"/>
-                <constraint firstItem="Ke9-F0-o29" firstAttribute="top" secondItem="RLs-vp-PaF" secondAttribute="top" id="I2e-yZ-Al5"/>
+                <constraint firstItem="Ke9-F0-o29" firstAttribute="top" secondItem="RLs-vp-PaF" secondAttribute="top" constant="1" id="I2e-yZ-Al5"/>
                 <constraint firstItem="cUC-XR-UeU" firstAttribute="centerX" secondItem="RLs-vp-PaF" secondAttribute="centerX" id="Qb2-4n-fFI"/>
                 <constraint firstAttribute="trailing" secondItem="urf-oC-9GN" secondAttribute="trailing" id="R9R-Ke-WAD"/>
-                <constraint firstAttribute="bottom" secondItem="Ke9-F0-o29" secondAttribute="bottom" id="fax-Dg-gfs"/>
+                <constraint firstItem="zTI-ZF-hHC" firstAttribute="leading" secondItem="RLs-vp-PaF" secondAttribute="leading" id="UHw-6k-SjN"/>
+                <constraint firstAttribute="bottom" secondItem="zTI-ZF-hHC" secondAttribute="bottom" id="dcb-8X-Ydk"/>
+                <constraint firstAttribute="bottom" secondItem="Ke9-F0-o29" secondAttribute="bottom" constant="1" id="fax-Dg-gfs"/>
+                <constraint firstItem="zTI-ZF-hHC" firstAttribute="top" secondItem="RLs-vp-PaF" secondAttribute="top" id="hm8-tI-11G"/>
+                <constraint firstAttribute="trailing" secondItem="zTI-ZF-hHC" secondAttribute="trailing" id="tpW-T1-yox"/>
                 <constraint firstItem="cUC-XR-UeU" firstAttribute="centerY" secondItem="RLs-vp-PaF" secondAttribute="centerY" id="uJI-XX-djC"/>
-                <constraint firstItem="Ke9-F0-o29" firstAttribute="leading" secondItem="RLs-vp-PaF" secondAttribute="leading" id="zy1-H8-ih0"/>
+                <constraint firstItem="Ke9-F0-o29" firstAttribute="leading" secondItem="RLs-vp-PaF" secondAttribute="leading" constant="1" id="zy1-H8-ih0"/>
             </constraints>
             <size key="customSize" width="153" height="126"/>
             <connections>
                 <outlet property="btnDelete" destination="urf-oC-9GN" id="4Qy-Qs-T5T"/>
+                <outlet property="errorView" destination="zTI-ZF-hHC" id="Kl1-Kt-l8p"/>
                 <outlet property="imgAdd" destination="cUC-XR-UeU" id="oPy-GS-Lbw"/>
                 <outlet property="imgValue" destination="Ke9-F0-o29" id="D3Q-eA-LN8"/>
             </connections>
