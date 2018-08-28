@@ -40,6 +40,7 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: HiddenNotificationIdentifier), object: nil)
     }
     
     private func initRefresher() {
