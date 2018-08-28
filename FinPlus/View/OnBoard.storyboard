@@ -80,11 +80,11 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cog-1t-BT4">
                                         <rect key="frame" x="0.0" y="0.0" width="1125" height="617"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Au-6Z-ADy">
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Au-6Z-ADy">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagefirstOnboard" translatesAutoresizingMaskIntoConstraints="NO" id="Ech-ST-wc9">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="478"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="465"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tạo các khoản vay để kêu gọi huy động vốn trực tiếp từ những nhà đầu tư cá nhân trên sàn giao dịch của chúng tôi." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWf-lw-PU7">
                                                         <rect key="frame" x="30" y="554" width="315" height="55"/>
@@ -108,7 +108,7 @@
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="Ech-ST-wc9" firstAttribute="leading" secondItem="3Au-6Z-ADy" secondAttribute="leading" id="6iF-nE-aIx"/>
-                                                    <constraint firstItem="urr-P8-Xcd" firstAttribute="top" secondItem="Ech-ST-wc9" secondAttribute="bottom" constant="30" id="FmR-8Q-Oxp"/>
+                                                    <constraint firstItem="urr-P8-Xcd" firstAttribute="top" secondItem="Ech-ST-wc9" secondAttribute="bottom" constant="43" id="FmR-8Q-Oxp"/>
                                                     <constraint firstAttribute="bottom" secondItem="IWf-lw-PU7" secondAttribute="bottom" constant="8" id="MRd-KL-XLT"/>
                                                     <constraint firstItem="urr-P8-Xcd" firstAttribute="leading" secondItem="3Au-6Z-ADy" secondAttribute="leading" constant="30" id="Oh8-bx-cYX"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ech-ST-wc9" secondAttribute="trailing" id="gbH-hO-3Im"/>
@@ -119,11 +119,11 @@
                                                     <constraint firstItem="IWf-lw-PU7" firstAttribute="top" secondItem="urr-P8-Xcd" secondAttribute="bottom" constant="16" id="zwz-zY-aI7"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wvZ-eI-nwq">
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wvZ-eI-nwq">
                                                 <rect key="frame" x="375" y="0.0" width="375" height="617"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagesecondOnboard" translatesAutoresizingMaskIntoConstraints="NO" id="173-f7-8xY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="478"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagesecondOnboard" translatesAutoresizingMaskIntoConstraints="NO" id="173-f7-8xY">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="465"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhà đầu tư sẽ lựa chọn để đầu tư phù hợp và nhận được lãi suất sau đó. Hai bên người vay và người đầu tư đều có lợi!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CK7-nM-A2B">
                                                         <rect key="frame" x="30" y="554" width="315" height="55"/>
@@ -154,15 +154,15 @@
                                                     <constraint firstAttribute="trailing" secondItem="CK7-nM-A2B" secondAttribute="trailing" constant="30" id="SvB-WR-Ygi"/>
                                                     <constraint firstAttribute="trailing" secondItem="173-f7-8xY" secondAttribute="trailing" id="X2G-4a-EeL"/>
                                                     <constraint firstItem="CK7-nM-A2B" firstAttribute="top" secondItem="yPZ-49-fpw" secondAttribute="bottom" constant="16" id="bfv-zE-kRq"/>
-                                                    <constraint firstItem="yPZ-49-fpw" firstAttribute="top" secondItem="173-f7-8xY" secondAttribute="bottom" constant="30" id="ysZ-m8-ctP"/>
+                                                    <constraint firstItem="yPZ-49-fpw" firstAttribute="top" secondItem="173-f7-8xY" secondAttribute="bottom" constant="43" id="ysZ-m8-ctP"/>
                                                     <constraint firstItem="173-f7-8xY" firstAttribute="leading" secondItem="wvZ-eI-nwq" secondAttribute="leading" id="znh-Zq-KZN"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yde-Sa-oCp">
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yde-Sa-oCp">
                                                 <rect key="frame" x="750" y="0.0" width="375" height="617"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagethirdOnboard" translatesAutoresizingMaskIntoConstraints="NO" id="ynz-EM-weS">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="478"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagethirdOnboard" translatesAutoresizingMaskIntoConstraints="NO" id="ynz-EM-weS">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="465"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMH-ea-QnT">
                                                         <rect key="frame" x="30" y="554" width="315" height="55"/>
@@ -191,7 +191,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="A0e-fl-rYk" secondAttribute="trailing" constant="30" id="JgA-JY-W8O"/>
                                                     <constraint firstItem="IMH-ea-QnT" firstAttribute="top" secondItem="A0e-fl-rYk" secondAttribute="bottom" constant="16" id="P4C-II-8Eq"/>
                                                     <constraint firstAttribute="trailing" secondItem="IMH-ea-QnT" secondAttribute="trailing" constant="30" id="Pah-6B-DXn"/>
-                                                    <constraint firstItem="A0e-fl-rYk" firstAttribute="top" secondItem="ynz-EM-weS" secondAttribute="bottom" constant="30" id="Rdd-f6-xAZ"/>
+                                                    <constraint firstItem="A0e-fl-rYk" firstAttribute="top" secondItem="ynz-EM-weS" secondAttribute="bottom" constant="43" id="Rdd-f6-xAZ"/>
                                                     <constraint firstItem="A0e-fl-rYk" firstAttribute="leading" secondItem="yde-Sa-oCp" secondAttribute="leading" constant="30" id="SBV-3U-f0l"/>
                                                     <constraint firstItem="ynz-EM-weS" firstAttribute="leading" secondItem="yde-Sa-oCp" secondAttribute="leading" id="ibB-IZ-fgr"/>
                                                     <constraint firstAttribute="bottom" secondItem="IMH-ea-QnT" secondAttribute="bottom" constant="8" id="rlb-os-YEF"/>
@@ -251,8 +251,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="imagefirstOnboard" width="375" height="468"/>
-        <image name="imagesecondOnboard" width="375" height="481"/>
-        <image name="imagethirdOnboard" width="375" height="460"/>
+        <image name="imagefirstOnboard" width="375" height="446"/>
+        <image name="imagesecondOnboard" width="375" height="446"/>
+        <image name="imagethirdOnboard" width="375" height="446"/>
     </resources>
 </document>

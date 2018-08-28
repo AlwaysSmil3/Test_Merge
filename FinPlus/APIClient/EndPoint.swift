@@ -67,6 +67,7 @@ enum EndPoint {
         static let Transaction = "loans/transaction"
         static let GetTransactions = "transactions/:userId"
         static let Collections = "loans/:loanId/collections"
+        static let GetInfoPayment = "/loans/:loanId/transactions/payment-info?paymentDate=2018-06-07T23:59:38+00:00"
     }
     
     enum Notification {

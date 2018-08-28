@@ -13,6 +13,9 @@
 		63037F5221119A93002CE49B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63037F5121119A93002CE49B /* Transaction.swift */; };
 		6303923020E8B108000C422D /* VSSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303922D20E8B108000C422D /* VSSlider.swift */; };
 		6303923220E8B108000C422D /* InternalSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303922F20E8B108000C422D /* InternalSlider.swift */; };
+		6303ECC0213509A1002C4C03 /* PaymentPaymentPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303ECBD213509A0002C4C03 /* PaymentPaymentPeriod.swift */; };
+		6303ECC1213509A1002C4C03 /* PaymentLiquidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303ECBE213509A1002C4C03 /* PaymentLiquidation.swift */; };
+		6303ECC2213509A1002C4C03 /* PaymentInfoMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303ECBF213509A1002C4C03 /* PaymentInfoMoney.swift */; };
 		630467B320B5094F0069469A /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630467B220B5094F0069469A /* Address.storyboard */; };
 		630467B620B50B5C0069469A /* AddressFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630467B520B50B5C0069469A /* AddressFirstViewController.swift */; };
 		630467B920B50BDD0069469A /* AddressFirstTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630467B820B50BDD0069469A /* AddressFirstTBCell.swift */; };
@@ -333,6 +336,9 @@
 		63037F5121119A93002CE49B /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		6303922D20E8B108000C422D /* VSSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSSlider.swift; sourceTree = "<group>"; };
 		6303922F20E8B108000C422D /* InternalSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalSlider.swift; sourceTree = "<group>"; };
+		6303ECBD213509A0002C4C03 /* PaymentPaymentPeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentPaymentPeriod.swift; sourceTree = "<group>"; };
+		6303ECBE213509A1002C4C03 /* PaymentLiquidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentLiquidation.swift; sourceTree = "<group>"; };
+		6303ECBF213509A1002C4C03 /* PaymentInfoMoney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentInfoMoney.swift; sourceTree = "<group>"; };
 		630467B220B5094F0069469A /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
 		630467B520B50B5C0069469A /* AddressFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFirstViewController.swift; sourceTree = "<group>"; };
 		630467B820B50BDD0069469A /* AddressFirstTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFirstTBCell.swift; sourceTree = "<group>"; };
@@ -673,6 +679,9 @@
 		63037F5021119A7A002CE49B /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
+				6303ECBF213509A1002C4C03 /* PaymentInfoMoney.swift */,
+				6303ECBE213509A1002C4C03 /* PaymentLiquidation.swift */,
+				6303ECBD213509A0002C4C03 /* PaymentPaymentPeriod.swift */,
 				63D170EE2111AF8200990A60 /* CollectionPay.swift */,
 				63037F5121119A93002CE49B /* Transaction.swift */,
 			);
@@ -1915,6 +1924,7 @@
 				633B1E5320E6139F000B65F6 /* LoanStateViewController+UpdateLoan.swift in Sources */,
 				633AE0B820B42BAB007AB0D1 /* DateHelper.swift in Sources */,
 				84114BC720D79464005026DF /* AddNewWalletTableViewCell.swift in Sources */,
+				6303ECC1213509A1002C4C03 /* PaymentLiquidation.swift in Sources */,
 				E772D77020CA7939001F0B8E /* AddWalletViewController.swift in Sources */,
 				633AF9C120A992B200BAE2BB /* BorrowHomeViewController.swift in Sources */,
 				63D49DAF20D399E400114AFA /* InfoInterestRatePopupVC.swift in Sources */,
@@ -1964,6 +1974,7 @@
 				6308DF6520A3FE90001DC320 /* BasePopup.swift in Sources */,
 				E7F51A0B20CE6CC800F72682 /* LoanOtherInfoCollectionCell.swift in Sources */,
 				639C9DEE20A182E900F2CF5E /* ExUIViewController.swift in Sources */,
+				6303ECC0213509A1002C4C03 /* PaymentPaymentPeriod.swift in Sources */,
 				637A90B820A2FA5F00CCACA5 /* DatePickerDialog.swift in Sources */,
 				63750EF220F701840063054F /* BaseAuthenViewController.swift in Sources */,
 				E76AF6B020DB8E4100C71305 /* ContractSuccessViewController.swift in Sources */,
@@ -2001,6 +2012,7 @@
 				63748C06210ADC5400E79EB6 /* MonyBankTableViewCell.swift in Sources */,
 				E7F51A2F20CE6D3F00F72682 /* LoanTypeDropdownTBCell.swift in Sources */,
 				63037F5221119A93002CE49B /* Transaction.swift in Sources */,
+				6303ECC2213509A1002C4C03 /* PaymentInfoMoney.swift in Sources */,
 				E7F51A2A20CE6D3F00F72682 /* LoanTypeFooterTBView.swift in Sources */,
 				630467B920B50BDD0069469A /* AddressFirstTBCell.swift in Sources */,
 				84D7400520D0F8DC00770FB5 /* AuthenticationBase.swift in Sources */,

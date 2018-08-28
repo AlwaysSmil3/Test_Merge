@@ -17,8 +17,44 @@ class PayTypeTableViewCell: UITableViewCell {
     @IBOutlet weak var selectImg: UIImageView!
     @IBOutlet weak var titleLb: UILabel!
     @IBOutlet weak var dateLb: UILabel!
+    
+    @IBOutlet weak var lblOverInterest: UILabel?
+    @IBOutlet weak var lblFeeOver: UILabel?
+    
     var cellData : PayType!
     var isSelectedCell: Bool = false
+    
+    var dateExpire: String?
+    
+    var paymentData: PaymentPaymentPeriod? {
+        didSet {
+            guard let data = self.paymentData else { return }
+            
+            self.originMoneyLb.text = "Tiền gốc: " + FinPlusHelper.formatDisplayCurrency(data.principal!) + "đ"
+            self.interestMoneyLb.text = "Tiền lãi: " + FinPlusHelper.formatDisplayCurrency(data.interest!) + "đ"
+//            self.lblOverInterest?.text = "Tiền lãi quá hạn: " + FinPlusHelper.formatDisplayCurrency(data.overdue!) + "đ"
+            
+//            self.lblFeeOver?.text = "Phí phạt quá hạn: " + FinPlusHelper.formatDisplayCurrency(data.feeOverdue!) + "đ"
+            
+            self.borrowingLb?.text = FinPlusHelper.formatDisplayCurrency(data.principal! + data.feeOverdue! + data.interest! + data.overdue!) + "đ"
+            
+            // create attributed string
+            
+            let attribute = [ NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: 11)!,NSAttributedStringKey.foregroundColor:UIColor(hexString: "#DA3535")]
+            
+            let name = NSAttributedString(string: "\(FinPlusHelper.formatDisplayCurrency(data.overdue!))đ", attributes: attribute )
+            let attrString = NSMutableAttributedString(string: "Tiền lãi quá hạn: ")
+            attrString.append(name)
+            self.lblOverInterest?.attributedText = attrString
+            
+            
+            let name1 = NSAttributedString(string: "\(FinPlusHelper.formatDisplayCurrency(data.feeOverdue!))đ", attributes: attribute )
+            let attrString1 = NSMutableAttributedString(string: "Phí phạt quá hạn: ")
+            attrString1.append(name1)
+            self.lblFeeOver?.attributedText = attrString1
+            
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,45 +62,23 @@ class PayTypeTableViewCell: UITableViewCell {
         self.containView.layer.cornerRadius = 5
         self.selectionStyle = .none
         // Initialization code
+        
+        self.titleLb.text = "Thanh toán tháng này"
+        if let loan = DataManager.shared.browwerInfo?.activeLoan {
+            self.dateLb.text = Date.init(fromString: loan.nextPaymentDate ?? "", format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER)).toString(.custom(kDisplayFormat))
+        }
     }
 
     func updateCellView() {
-        if let cellData = cellData {
-            self.titleLb.text = "Thanh toán tháng này"
-            self.dateLb.text = "Hạn: \(Date().convertDateToDisplayFormat(cellData.expireDate))"
-
-//            let formatter = NumberFormatter()
-//            formatter.locale = Locale.current
-//            formatter.numberStyle = .currency
-            let tipAmountStr = FinPlusHelper.formatDisplayCurrency(Double(cellData.originAmount)) + " đ"
-//            if let formattedTipAmount = formatter.string(from: cellData.originAmount as NSNumber) {
-                self.originMoneyLb.text = "Tiền gốc: " + tipAmountStr
-//            } else {
-//                self.originMoneyLb.text = "Tiền gốc: " + cellData.originAmount.toString()
-//            }
-            let interestAmount = FinPlusHelper.formatDisplayCurrency(Double(cellData.interestAmount)) + " đ"
-
-//            if let formattedTipAmount = formatter.string(from: cellData.interestAmount as NSNumber) {
-                self.interestMoneyLb.text = "Tiền lãi: " + interestAmount
-//            } else {
-//                self.interestMoneyLb.text = "Tiền lãi: " +  cellData.interestAmount.toString()
-//            }
-
-            let sumAmount = FinPlusHelper.formatDisplayCurrency(Double(cellData.sumAmount)) + " đ"
-//            if let formattedTipAmount = formatter.string(from: cellData.sumAmount as NSNumber) {
-                self.borrowingLb.text = sumAmount
-//            } else {
-//                self.borrowingLb.text = cellData.sumAmount.toString()
-//            }
-
-            if isSelectedCell == true {
-                self.containView.layer.borderColor = MAIN_COLOR.cgColor
-                self.selectImg.image = #imageLiteral(resourceName: "ic_radio_on")
-            } else {
-                self.containView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
-                self.selectImg.image = #imageLiteral(resourceName: "ic_radio_off")
-            }
+        
+        if isSelectedCell == true {
+            self.containView.layer.borderColor = MAIN_COLOR.cgColor
+            self.selectImg.image = #imageLiteral(resourceName: "ic_radio_on")
+        } else {
+            self.containView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
+            self.selectImg.image = #imageLiteral(resourceName: "ic_radio_off")
         }
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
