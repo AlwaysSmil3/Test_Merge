@@ -868,6 +868,7 @@ class LoanStateViewController: UIViewController {
                 break
             case .SETTLED?:
                 //Khoản vay thanh toán thành công - 18
+                
                 DataManager.shared.reloadDataFirstLoanVC()
                 
                 dataSource = [

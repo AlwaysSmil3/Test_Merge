@@ -440,11 +440,11 @@ class DataManager {
                 missingListTitle.append("Nghề nghiệp")
             }
             
-            if let _ = jobInfo.jobType {
-                missingListKey.append("jobType")
-                missingListKey.append("jobTitle")
-                missingListTitle.append("Nghề nghiệp")
-            }
+//            if let _ = jobInfo.jobType {
+//                missingListKey.append("jobType")
+//                missingListKey.append("jobTitle")
+//                missingListTitle.append("Nghề nghiệp")
+//            }
             
             if let value = jobInfo.positionTitle, value.length() > 0 {
                 missingListKey.append("position")
@@ -452,11 +452,11 @@ class DataManager {
                 missingListTitle.append("Cấp bậc")
             }
             
-            if let _ = jobInfo.position {
-                missingListKey.append("position")
-                missingListKey.append("positionTitle")
-                missingListTitle.append("Cấp bậc")
-            }
+//            if let _ = jobInfo.position {
+//                missingListKey.append("position")
+//                missingListKey.append("positionTitle")
+//                missingListTitle.append("Cấp bậc")
+//            }
             
             if let _ = jobInfo.strength {
                 missingListKey.append("strength")

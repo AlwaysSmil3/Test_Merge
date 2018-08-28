@@ -140,7 +140,7 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
                 
                 return
             }
-            UIApplication.shared.topViewController()!.showToastWithMessage(message: "Upload thành công")
+            //UIApplication.shared.topViewController()!.showToastWithMessage(message: "Upload thành công")
             
             //self.dataSourceCollection.append(img)
             if let current = self.currentSelectedCollection, current.row < self.dataSourceCollection.count {

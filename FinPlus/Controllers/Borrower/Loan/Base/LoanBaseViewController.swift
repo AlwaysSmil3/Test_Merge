@@ -219,7 +219,7 @@ class LoanBaseViewController: BaseViewController {
                 
                 return
             }
-            self.showToastWithMessage(message: "Upload thành công")
+            //self.showToastWithMessage(message: "Upload thành công")
             
             cell.imgValue?.image = img
             cell.imgAdd?.isHidden = true
