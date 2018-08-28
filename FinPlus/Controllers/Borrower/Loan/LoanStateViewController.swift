@@ -868,6 +868,38 @@ class LoanStateViewController: UIViewController {
                 break
             case .SETTLED?:
                 //Khoản vay thanh toán thành công - 18
+                DataManager.shared.reloadDataFirstLoanVC()
+                
+                dataSource = [
+                    LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
+                    LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
+                    LoanSummaryModel(name: "Số tiền vay", value: amountString, attributed: NSAttributedString(string: amountString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Kỳ hạn vay", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Trạng thái", value: "Đã tất toán", attributed: NSAttributedString(string: "Đã tất toán", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
+                    LoanSummaryModel(name: "Lãi suất dự kiến", value: "\(rate)%/năm", attributed: nil),
+                    LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFee) + "đ", attributed: nil),
+                    LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
+                ]
+                
+                headerData = [
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Khoản vay hiện tại đã được thanh toán toàn bộ.",
+                        "subType": TextCellType.TitleType,
+                        ],
+                    [
+                        "type": HeaderCellType.TextType,
+                        "text": "Bạn có thể nhấn 'Tạo đơn vay mới' để tạo khoản vay tiếp theo với mức lãi suất ưu đãi.",
+                        "subType": TextCellType.DesType,
+                        ],
+                    [
+                        "type": HeaderCellType.ButtonType,
+                        "text": "Tạo đơn vay mới",
+                        "subType": ButtonCellType.NullType,
+                        "target": "create_New_Loan"
+                    ],
+                ]
                 
                 
                 break
@@ -1085,6 +1117,21 @@ class LoanStateViewController: UIViewController {
     }
     
     // MARK: Action
+    
+    @IBAction func create_New_Loan() {
+        
+        let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
+        
+        loanFirstVC.hidesBottomBarWhenPushed = true
+        
+        DataManager.shared.reloadOptionalData()
+        DataManager.shared.currentIndexCategoriesSelectedPopup = Int(DataManager.shared.loanCategories[0].id ?? 0)
+        loanFirstVC.loanCategory = DataManager.shared.getCurrentCategory()
+        
+        self.navigationController?.pushViewController(loanFirstVC, animated: true)
+        
+        
+    }
     
     @IBAction func navi_back() {
         self.navigationController?.popViewController(animated: true)

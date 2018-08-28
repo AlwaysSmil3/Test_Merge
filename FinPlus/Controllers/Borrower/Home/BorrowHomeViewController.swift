@@ -118,7 +118,7 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
         
         let model = DataManager.shared.loanCategories[indexPath.row]
         
-        let urlString = hostLoan + model.imageUrl!
+        let urlString = Host.productURL + model.imageUrl!
         let url = URL(string: urlString)
         cell.imgIcon.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic_homeBrower_group1"))
         cell.lblName.text = FinPlusHelper.addCharactorToString(input: model.title!)
