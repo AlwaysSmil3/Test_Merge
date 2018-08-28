@@ -24,7 +24,7 @@ class APIClient {
     static let shared = APIClient()
     
     //Host
-    let baseURLString = Host.apiURL
+    let baseURLString = Host.productURL
     
     // DELETE request
     internal var deleteRequest : NSMutableURLRequest! {
