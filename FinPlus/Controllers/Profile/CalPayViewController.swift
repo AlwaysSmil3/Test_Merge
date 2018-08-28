@@ -32,7 +32,7 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
     
     let titles = ["Kỳ trả nợ", "Tiền gốc", "Tiền lãi", "Tiền gốc + lãi"]
     var months: NSMutableArray = []
-    var data: NSMutableArray = []
+    var data = [CalculatorPay]()
     
     var currentDate: Date = Date()
     let dateFormatter = DateFormatter()
@@ -138,7 +138,7 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         spreadsheetView.isHidden = false
         
         self.months.removeAllObjects()
-        self.data.removeAllObjects()
+        self.data = []
         
         dateFormatter.dateFormat = "dd/MM/YY"
         
@@ -155,23 +155,19 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
             return
         }
 
-        let money = Float(self.moneyTextField.text!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: ""))!
-        let monthCount = Int(self.monthTextField.text!)
-        let rate = Float(self.rateTextField.text!)!*money/Float(12*100)
-        let monthPay = money/Float(monthCount!)
+        let money = Int(self.moneyTextField.text!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: ""))!
+        let monthCount = Int(self.monthTextField.text ?? "0")
+        let rate = Int(self.rateTextField.text ?? "0")
+        let beginData = self.dateTextField.text ?? ""
         
-        var dateComponent = DateComponents()
-        for i in 1...(monthCount!)
-        {
-            dateComponent.month = i
-            let futureDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)
-            months.add(dateFormatter.string(from: futureDate!))
+        APIClient.shared.calculatorPay(amount: money, term: monthCount!*30, intRate: rate!, disbursalDate: beginData)
+        .done(on: DispatchQueue.main) { model in
+            self.data = model
+            self.spreadsheetView.reloadData()
         }
-        
-        data.addObjects(from:[ convertNumberFormat(text: String(format: "%.0f", monthPay/SHORT_TYPE)), convertNumberFormat(text: String(format: "%.0f", rate/SHORT_TYPE)), convertNumberFormat(text: String(format: "%.0f", (monthPay + rate)/SHORT_TYPE))])
-        
-        self.spreadsheetView.reloadData()
-        
+        .catch { error in
+            
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -216,7 +212,7 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
     }
 
     func numberOfRows(in spreadsheetView: SpreadsheetView) -> Int {
-        return 1 + months.count
+        return data.count > 0 ? (data.count + 1) : 0
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
@@ -231,13 +227,13 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         }
     }
     
-    func frozenColumns(in spreadsheetView: SpreadsheetView) -> Int {
-        return 1
-    }
-    
-    func frozenRows(in spreadsheetView: SpreadsheetView) -> Int {
-        return 1
-    }
+//    func frozenColumns(in spreadsheetView: SpreadsheetView) -> Int {
+//        return 1
+//    }
+//
+//    func frozenRows(in spreadsheetView: SpreadsheetView) -> Int {
+//        return 1
+//    }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
         if case (0...(titles.count - 1), 0) = (indexPath.column, indexPath.row) {
@@ -245,18 +241,27 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
             cell.label.text = titles[indexPath.column]
             cell.color = UIColor(hexString: "#F1F5F8")
             return cell
-        } else if case (0, 1...(months.count)) = (indexPath.column, indexPath.row) {
-            let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MonthCell.self), for: indexPath) as! MonthCell
-            cell.label.text = months[indexPath.row - 1] as? String
-            return cell
-        } else if case (1...(titles.count - 2), 1...(months.count)) = (indexPath.column, indexPath.row) {
-            let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MoneyCell.self), for: indexPath) as! MoneyCell
-            cell.label.text = (data[indexPath.column - 1] as? String)! + "K"
-            return cell
-        } else if case ((titles.count - 1), 1...(months.count)) = (indexPath.column, indexPath.row) {
-            let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: PayCell.self), for: indexPath) as! PayCell
-            cell.label.text = (data[indexPath.column - 1] as? String)! + "K"
-            return cell
+        } else {
+            
+            let item = self.data[indexPath.row]
+            
+            if (indexPath.column == 0) {
+                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MonthCell.self), for: indexPath) as! MonthCell
+                cell.label.text = "\(item.dueDatetime!)"
+                return cell
+            } else if (indexPath.column == 1) {
+                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MonthCell.self), for: indexPath) as! MonthCell
+                cell.label.text = "\(item.principal!)K"
+                return cell
+            } else if (indexPath.column == 2) {
+                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MoneyCell.self), for: indexPath) as! MoneyCell
+                cell.label.text = "\(item.interest!)K"
+                return cell
+            } else if (indexPath.column == 3) {
+                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: PayCell.self), for: indexPath) as! PayCell
+                cell.label.text = "\(item.interest! + item.principal!)K"
+                return cell
+            }
         }
         return nil
     }

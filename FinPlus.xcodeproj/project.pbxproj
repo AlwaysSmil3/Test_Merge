@@ -305,6 +305,7 @@
 		E7C4DDEF213402E800055944 /* SCP_SCJAMoveCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4DDEA213402E800055944 /* SCP_SCJAMoveCircle.swift */; };
 		E7C4DDF0213402E800055944 /* SCP_SCJAFlatBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4DDEB213402E800055944 /* SCP_SCJAFlatBar.swift */; };
 		E7C4DDF1213402E800055944 /* SCP_SCJAFillCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4DDEC213402E800055944 /* SCP_SCJAFillCircle.swift */; };
+		E7C4DDF321340DC300055944 /* CalculatorPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4DDF221340DC300055944 /* CalculatorPay.swift */; };
 		E7C87B2920D3AE2600E55F4E /* LoanDetailBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C87B2820D3AE2600E55F4E /* LoanDetailBaseViewController.swift */; };
 		E7F519F020CE159300F72682 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F519EF20CE159300F72682 /* Profile.storyboard */; };
 		E7F519F520CE167F00F72682 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F519F420CE167F00F72682 /* ProfileViewController.swift */; };
@@ -639,6 +640,7 @@
 		E7C4DDEA213402E800055944 /* SCP_SCJAMoveCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCP_SCJAMoveCircle.swift; sourceTree = "<group>"; };
 		E7C4DDEB213402E800055944 /* SCP_SCJAFlatBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCP_SCJAFlatBar.swift; sourceTree = "<group>"; };
 		E7C4DDEC213402E800055944 /* SCP_SCJAFillCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCP_SCJAFillCircle.swift; sourceTree = "<group>"; };
+		E7C4DDF221340DC300055944 /* CalculatorPay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorPay.swift; sourceTree = "<group>"; };
 		E7C87B2820D3AE2600E55F4E /* LoanDetailBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanDetailBaseViewController.swift; sourceTree = "<group>"; };
 		E7F519EF20CE159300F72682 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		E7F519F420CE167F00F72682 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -1149,6 +1151,7 @@
 				6307D3C020AD783500055F5C /* Browwer */,
 				632FD02220AADF1E00D9399C /* Authen */,
 				632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */,
+				E7C4DDF221340DC300055944 /* CalculatorPay.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2077,6 +2080,7 @@
 				6338F40320BE602C005777E2 /* BrowwerUserInfo.swift in Sources */,
 				E7F51A2B20CE6D3F00F72682 /* LoanTypePhoneRelationTBCell.swift in Sources */,
 				6338F3FC20BE602C005777E2 /* BrowwerContacts.swift in Sources */,
+				E7C4DDF321340DC300055944 /* CalculatorPay.swift in Sources */,
 				E772D77320CA7C86001F0B8E /* LoanTableViewCell.swift in Sources */,
 				6334891C20C635BA00C95931 /* HomeBrowwer.swift in Sources */,
 				63748C02210ADBEC00E79EB6 /* MonyBankListViewController.swift in Sources */,
