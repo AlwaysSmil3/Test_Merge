@@ -26,16 +26,28 @@ extension APIClient {
                         
                         if let activeLoan = model.activeLoan,let status = activeLoan.status, status == STATUS_LOAN.SALE_PENDING.rawValue || status == STATUS_LOAN.RISK_PENDING.rawValue {
                             if let activeLoan = data["activeLoan"] as? JSONDictionary, let missingData = activeLoan["missingData"] as? JSONDictionary {
+                                
+                                if let optionalData = missingData["optionalText"] as? JSONDictionary {
+                                    DataManager.shared.missingOptionalText = optionalData
+                                }
+                                
+                                if let optionalMedia = missingData["optionalMedia"] as? [String: Any] {
+                                    DataManager.shared.missingOptionalMedia = optionalMedia
+                                }
+                                
+                                if let userInfo = missingData["userInfo"] as? JSONDictionary, let relationShip = userInfo["relationships"] as? [String: Any] {
+                                    DataManager.shared.missingRelationsShip = relationShip
+                                }
+                                
+                                
+                                DataManager.shared.missingLoanDataDictionary = missingData
                                 DataManager.shared.missingLoanData = BrowwerActiveLoan(object: missingData)
+                                
                             } else {
-                                DataManager.shared.missingLoanData = nil
-                                DataManager.shared.listKeyMissingLoanKey = nil
-                                DataManager.shared.listKeyMissingLoanTitle = nil
+                                DataManager.shared.clearMissingLoanData()
                             }
                         } else {
-                            DataManager.shared.missingLoanData = nil
-                            DataManager.shared.listKeyMissingLoanKey = nil
-                            DataManager.shared.listKeyMissingLoanTitle = nil
+                            DataManager.shared.clearMissingLoanData()
                         }
 
                         seal.fulfill(model)

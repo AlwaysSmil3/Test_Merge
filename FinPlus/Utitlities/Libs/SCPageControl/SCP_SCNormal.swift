@@ -29,7 +29,7 @@ class SCP_SCNormal: UIView {
     }
     
     // ## view init method ##
-    func set_view(_ page: Int, current: Int, tint_color: UIColor) {
+    func set_view(_ page: Int, current: Int, tint_color: UIColor, invisible_color: UIColor) {
                
         numberOfPage = page
         currentOfPage = current
@@ -58,7 +58,6 @@ class SCP_SCNormal: UIView {
             }
             img_page.frame = CGRect(x: f_x, y: f_y, width: f_width, height: f_height)
             img_page.layer.cornerRadius = img_page.frame.size.height/2.0
-            img_page.backgroundColor = tint_color
             img_page.tag = i+10
             self.addSubview(img_page)
             

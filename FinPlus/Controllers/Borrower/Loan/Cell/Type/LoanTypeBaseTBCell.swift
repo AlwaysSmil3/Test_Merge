@@ -14,6 +14,8 @@ class LoanTypeBaseTBCell: UITableViewCell {
     @IBOutlet var underLine: UIView?
     @IBOutlet var lblDescriptionNeedUpdate: UILabel?
     
+    var valueTemp: String?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

@@ -88,6 +88,15 @@ class DataManager {
         }
     }
     
+    var missingLoanDataDictionary: JSONDictionary?
+    
+    //MissingData optionalText
+    var missingOptionalText: JSONDictionary?
+    
+    //MissingData optionalMedia
+    var missingOptionalMedia: [String: Any]?
+    var missingRelationsShip: [String: Any]?
+    
     
     //List Key missing Loan Data
     var listKeyMissingLoanKey: [String]?
@@ -121,6 +130,16 @@ class DataManager {
                 // handle error
             }
         }
+    }
+    
+    func clearMissingLoanData() {
+        DataManager.shared.missingRelationsShip = nil
+        DataManager.shared.missingLoanDataDictionary = nil
+        DataManager.shared.missingOptionalText = nil
+        DataManager.shared.missingOptionalMedia = nil
+        DataManager.shared.missingLoanData = nil
+        DataManager.shared.listKeyMissingLoanKey = nil
+        DataManager.shared.listKeyMissingLoanTitle = nil
     }
     
     func reloadOptionalData() {
@@ -391,10 +410,15 @@ class DataManager {
                 missingListTitle.append("Số CMND/thẻ căn cước")
             }
             
-            if let relationPhones = userInfo.relationships, relationPhones.count > 0 {
+            if self.missingRelationsShip != nil {
                 missingListKey.append("relationships")
                 missingListTitle.append("Số điện thoại liên lạc của người thân")
             }
+            
+//            if let relationPhones = userInfo.relationships, relationPhones.count > 0 {
+//                missingListKey.append("relationships")
+//                missingListTitle.append("Số điện thoại liên lạc của người thân")
+//            }
             
             if let add = userInfo.residentAddress, let city = add.city, city.length() > 0 {
                 missingListKey.append("residentAddress")
@@ -412,11 +436,25 @@ class DataManager {
             //Thong tin JobInfo
             if let value = jobInfo.jobTitle, value.length() > 0 {
                 missingListKey.append("jobType")
+                missingListKey.append("jobTitle")
                 missingListTitle.append("Nghề nghiệp")
+            }
+            
+            if let _ = jobInfo.jobType {
+                missingListKey.append("jobType")
+                missingListKey.append("jobTitle")
+                missingListTitle.append("Nghề nghiệp")
+            }
+            
+            if let value = jobInfo.positionTitle, value.length() > 0 {
+                missingListKey.append("position")
+                missingListKey.append("positionTitle")
+                missingListTitle.append("Cấp bậc")
             }
             
             if let _ = jobInfo.position {
                 missingListKey.append("position")
+                missingListKey.append("positionTitle")
                 missingListTitle.append("Cấp bậc")
             }
             
@@ -468,9 +506,20 @@ class DataManager {
         }
         
         //if let bank = miss.bank,
-        if let bank = miss.bank, let id = bank.id, id > 0 {
-            missingListKey.append("bank")
-            missingListTitle.append("Tài khoản nhận tiền")
+        if let bank = miss.bank {
+            var isAdd = false
+            if let accountHolder = bank.accountHolder, accountHolder.count > 0 {
+                isAdd = true
+            }
+            
+            if let accountNumber = bank.accountNumber, accountNumber.count > 0 {
+                isAdd = true
+            }
+            
+            if isAdd {
+                missingListKey.append("bank")
+                missingListTitle.append("Tài khoản nhận tiền")
+            }
         }
         
         if let value = miss.nationalIdAllImg, value.length() > 0 {
@@ -488,13 +537,55 @@ class DataManager {
             missingListTitle.append("Ảnh mặt sau CMND")
         }
         
-        if let value = miss.optionalText, value.count > 0 {
+        if self.missingOptionalText != nil {
             missingListKey.append("optionalText")
             missingListTitle.append("Thông tin bổ sung")
         }
         
+        if self.missingOptionalMedia != nil {
+            missingListKey.append("optionalMedia")
+            missingListTitle.append("Thông tin bổ sung Media")
+        }
+        
+    
+        
+//        if let value = miss.optionalText, value.count > 0 {
+//            missingListKey.append("optionalText")
+//            missingListTitle.append("Thông tin bổ sung")
+//        }
+        
         self.listKeyMissingLoanKey = missingListKey
         self.listKeyMissingLoanTitle = missingListTitle
+    }
+    
+    
+    /// Check missing bankData
+    ///
+    /// - Parameters:
+    ///   - key: <#key description#>
+    ///   - currentBankHolder: <#currentBankHolder description#>
+    ///   - currenAccount: <#currenAccount description#>
+    /// - Returns: <#return value description#>
+    func checkMissingBankData(key: String, currentBankHolder: String? = nil, currenAccount: String? = nil) -> Bool {
+        guard let list = self.listKeyMissingLoanKey else { return false }
+        guard let data = self.missingLoanDataDictionary, let bankData = data["bank"] as? JSONDictionary else { return false }
+        
+        let listFields = list.filter { $0 == key }
+        
+        if listFields.count == 0 {
+            return false
+        }
+        
+        if let invalidValue = bankData["accountHolder"] as? String, currentBankHolder == invalidValue {
+            return true
+        }
+        
+        if let invalidValue = bankData["accountNumber"] as? String, currenAccount == invalidValue {
+            return true
+        }
+        
+        
+        return false
     }
     
     
@@ -502,12 +593,37 @@ class DataManager {
     ///
     /// - Parameter key: <#key description#>
     /// - Returns: <#return value description#>
-    func checkFieldIsMissing(key: String) -> Bool {
+    func checkFieldIsMissing(key: String, parentKey: String? = nil, currentValue: String? = nil, currentValueIndex: Int? = nil) -> Bool {
         guard let list = self.listKeyMissingLoanKey else { return false }
+        guard let data = self.missingLoanDataDictionary else { return false }
+        
         let listFields = list.filter { $0 == key }
         
-        if listFields.count > 0 {
+        if listFields.count == 0 {
+            return false
+        }
+        
+        if currentValue == nil {
             return true
+        }
+        
+        if let parentKey_ = parentKey {
+            if let parent = data[parentKey_] as? JSONDictionary, let invalidValue = parent[key] as? String, currentValue == invalidValue {
+                return true
+            }
+            
+            if let parent = data[parentKey_] as? JSONDictionary, let invalidValue = parent[key] as? Int, currentValueIndex == invalidValue {
+                return true
+            }
+            
+        } else {
+            if let invalidValue = data[key] as? String, currentValue == invalidValue {
+                return true
+            }
+            
+            if let invalidValue = data[key] as? Int, currentValueIndex == invalidValue {
+                return true
+            }
         }
         
         return false

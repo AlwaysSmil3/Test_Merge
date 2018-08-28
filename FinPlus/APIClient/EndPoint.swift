@@ -64,6 +64,7 @@ enum EndPoint {
     }
     
     enum Payment {
+        static let CalculatorPay = "loans/collections"
         static let Transaction = "loans/transaction"
         static let GetTransactions = "transactions/:userId"
         static let Collections = "loans/:loanId/collections"

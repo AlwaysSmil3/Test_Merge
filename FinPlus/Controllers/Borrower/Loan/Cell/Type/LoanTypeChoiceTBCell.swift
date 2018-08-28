@@ -18,6 +18,15 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         didSet {
             guard let g = self.gender else { return }
             guard let field_ = self.field, let id = field_.id else { return }
+            
+            if let valueTemp_ = self.valueTemp {
+                if valueTemp_ == "\(g.rawValue)" {
+                    self.updateInfoFalse(pre: field_.title ?? "")
+                } else {
+                    self.isNeedUpdate = false
+                }
+            }
+            
             if id.contains("gender") {
                 DataManager.shared.loanInfo.userInfo.gender = "\(g.rawValue)"
             } else if id.contains("optionalText") {
@@ -87,10 +96,6 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
         
         if id.contains("gender") {
-            if DataManager.shared.checkFieldIsMissing(key: "gender") {
-                //Cap nhat thong tin khong hop le
-                self.updateInfoFalse(pre: title)
-            }
             
             var value = ""
             if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.gender, data.length() > 0 {
@@ -111,12 +116,19 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 
                 DataManager.shared.loanInfo.userInfo.gender = value
             }
+            
+            if DataManager.shared.checkFieldIsMissing(key: "gender") {
+                //Cap nhat thong tin khong hop le
+                if self.valueTemp == nil {
+                    self.updateInfoFalse(pre: title)
+                }
+                
+                self.valueTemp = value
+            }
+            
+            
         } else if id.contains("optionalText") {
             //thông tin khác
-            if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
-                //Cap nhat thong tin khong hop le
-                self.updateInfoFalse(pre: title)
-            }
             
             var index = 0
             if let i = field_.arrayIndex {
@@ -136,15 +148,34 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             
             if value.length() > 0 {
                 if value == "Nam" {
-                    self.currentSelectedCollection = IndexPath(row: 1, section: 0)
-                } else {
                     self.currentSelectedCollection = IndexPath(row: 0, section: 0)
+                } else {
+                    self.currentSelectedCollection = IndexPath(row: 1, section: 0)
                     
                 }
                 DataManager.shared.loanInfo.optionalText[index] = value
             }
+            
+            if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
+                //Cap nhat thong tin khong hop le
+                if let arrayIndex = field_.arrayIndex, let data = DataManager.shared.missingOptionalText {
+                    
+                    if let text = data["\(arrayIndex)"] as? String {
+                        //Cap nhat thong tin khong hop le
+                        print("OptionalText \(text)")
+                        if self.valueTemp == nil {
+                            self.updateInfoFalse(pre: title)
+                        }
+                        
+                        if value == "Nam" {
+                            self.valueTemp = "0"
+                        } else {
+                            self.valueTemp = "1"
+                        }
+                    }
+                }
+            }
         }
-        
     }
     
     

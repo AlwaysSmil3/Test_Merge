@@ -225,6 +225,11 @@ class LoanBaseViewController: BaseViewController {
             cell.imgAdd?.isHidden = true
             cell.lblDescription?.isHidden = true
             
+            if let isNeed = cell.isNeedUpdate, isNeed {
+                cell.isNeedUpdate = false
+            }
+            
+            
             switch type {
             case .ALL:
                 

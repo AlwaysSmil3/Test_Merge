@@ -37,6 +37,8 @@ class AddressFirstViewController: BaseViewController {
     var titleString: String = "Địa chỉ"
     var id: String = "jobAddress"
     
+    var valueTemp: String?
+    
     @IBOutlet var lblTitleHeader: UILabel!
     @IBOutlet var mainTableView: TPKeyboardAvoidingTableView!
     
