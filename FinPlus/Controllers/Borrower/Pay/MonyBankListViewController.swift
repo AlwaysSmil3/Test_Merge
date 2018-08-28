@@ -53,6 +53,7 @@ class MonyBankListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @objc func backAction() {
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.popViewController(animated: true)
     }
 
