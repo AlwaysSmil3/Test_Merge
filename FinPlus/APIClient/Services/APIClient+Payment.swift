@@ -124,6 +124,40 @@ extension APIClient {
     }
     
     
+    /// Get Money Info
+    ///
+    /// - Returns: <#return value description#>
+    func getPaymentMoneyInfo() -> Promise<PaymentInfoMoney> {
+        
+        let dateString = Date().toString(DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
+        
+        let endPoint = "loans/" + "\(DataManager.shared.loanID ?? 0)/" + "transactions/payment-info?paymentDate=" + dateString
+        
+        return Promise<PaymentInfoMoney> { seal in
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
+                .done { json in
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+                        if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
+                                if status {
+                                }
+                            })
+                        }
+                        
+                        return
+                    }
+                    
+                    if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
+                        let model = PaymentInfoMoney(object: data)
+                        seal.fulfill(model)
+                    }
+                    
+                }
+                .catch { error in seal.reject(error)}
+        }
+        
+    }
+    
     func calculatorPay(amount: Int, term: Int, intRate: Int, disbursalDate: String) -> Promise<[CalculatorPay]> {
         
         return Promise<[CalculatorPay]> { seal in
