@@ -869,7 +869,7 @@ class LoanStateViewController: UIViewController {
             case .SETTLED?:
                 //Khoản vay thanh toán thành công - 18
                 
-                DataManager.shared.reloadDataFirstLoanVC()
+                //DataManager.shared.reloadDataFirstLoanVC()
                 
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -883,6 +883,7 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
+                /*
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
@@ -901,7 +902,7 @@ class LoanStateViewController: UIViewController {
                         "target": "create_New_Loan"
                     ],
                 ]
-                
+                */
                 
                 break
  
