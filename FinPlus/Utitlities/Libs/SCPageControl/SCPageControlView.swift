@@ -59,7 +59,7 @@ import UIKit
         default: //.SCNormal
             let scp_normal = SCP_SCNormal(frame: viewFrame)
             scp_normal.tag = scp_style.rawValue
-            scp_normal.set_view(page, current: current, tint_color: tint_color, invisible_color: invisible_color)
+            scp_normal.set_view(page, current: current, tint_color: tint_color, invisiblet_color: invisible_color)
             self.addSubview(scp_normal)
         }
     }
