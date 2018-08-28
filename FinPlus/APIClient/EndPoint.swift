@@ -12,8 +12,7 @@ import Foundation
 enum Host {
     static let alphaURL = ""
 
-    static let productURL = "https://gateway.mony.vn/"
-//    static let productURL = "https://dev-api.mony.vn/"
+    static let productURL = "https://dev-api.mony.vn/"
 }
 
 //MARK: API End Point

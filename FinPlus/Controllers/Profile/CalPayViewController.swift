@@ -158,9 +158,10 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         let money = Int(self.moneyTextField.text!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: ""))!
         let monthCount = Int(self.monthTextField.text ?? "0")
         let rate = Int(self.rateTextField.text ?? "0")
-        let beginData = self.dateTextField.text ?? ""
+        let date = self.dateFormatter.date(from: self.dateTextField.text ?? "")
+        let beginData = date?.toString(.custom(kDisplayFormatCalculatorPay))
         
-        APIClient.shared.calculatorPay(amount: money, term: monthCount!*30, intRate: rate!, disbursalDate: beginData)
+        APIClient.shared.calculatorPay(amount: money, term: monthCount!*30, intRate: rate!, disbursalDate: beginData!)
         .done(on: DispatchQueue.main) { model in
             self.data = model
             self.spreadsheetView.reloadData()
@@ -237,29 +238,33 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
         if case (0...(titles.count - 1), 0) = (indexPath.column, indexPath.row) {
+            
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: TitleCell.self), for: indexPath) as! TitleCell
             cell.label.text = titles[indexPath.column]
             cell.color = UIColor(hexString: "#F1F5F8")
             return cell
+            
         } else {
             
-            let item = self.data[indexPath.row]
+            let item = self.data[indexPath.row - 1]
             
             if (indexPath.column == 0) {
                 let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MonthCell.self), for: indexPath) as! MonthCell
-                cell.label.text = "\(item.dueDatetime!)"
+                self.dateFormatter.dateFormat = kDisplayFormatCalculatorPay
+                let date = self.dateFormatter.date(from: item.dueDatetime ?? "")
+                cell.label.text = "\(date?.toString(.custom("dd/MM/YY")) ?? "")"
                 return cell
             } else if (indexPath.column == 1) {
                 let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MonthCell.self), for: indexPath) as! MonthCell
-                cell.label.text = "\(item.principal!)K"
+                cell.label.text = convertNumberFormat(text: "\(item.principal!/1000)") + "K"
                 return cell
             } else if (indexPath.column == 2) {
                 let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MoneyCell.self), for: indexPath) as! MoneyCell
-                cell.label.text = "\(item.interest!)K"
+                cell.label.text = convertNumberFormat(text: "\(item.interest!/1000)") + "K"
                 return cell
             } else if (indexPath.column == 3) {
                 let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: PayCell.self), for: indexPath) as! PayCell
-                cell.label.text = "\(item.interest! + item.principal!)K"
+                cell.label.text = convertNumberFormat(text: "\((item.interest! + item.principal!)/1000)") + "K"
                 return cell
             }
         }
