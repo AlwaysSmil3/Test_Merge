@@ -303,6 +303,12 @@
 		E7BC259320CFDACA001FF0F4 /* KaedeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC258320CFDACA001FF0F4 /* KaedeTextField.swift */; };
 		E7BC259420CFDACA001FF0F4 /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC258420CFDACA001FF0F4 /* AkiraTextField.swift */; };
 		E7BC259520CFDACA001FF0F4 /* IsaoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC258520CFDACA001FF0F4 /* IsaoTextField.swift */; };
+		E7C4DDED213402E800055944 /* SCP_SCNormal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4DDE8213402E800055944 /* SCP_SCNormal.swift */; };
+		E7C4DDEE213402E800055944 /* SCPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4DDE9213402E800055944 /* SCPageControlView.swift */; };
+		E7C4DDEF213402E800055944 /* SCP_SCJAMoveCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4DDEA213402E800055944 /* SCP_SCJAMoveCircle.swift */; };
+		E7C4DDF0213402E800055944 /* SCP_SCJAFlatBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4DDEB213402E800055944 /* SCP_SCJAFlatBar.swift */; };
+		E7C4DDF1213402E800055944 /* SCP_SCJAFillCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4DDEC213402E800055944 /* SCP_SCJAFillCircle.swift */; };
+		E7C4DDF321340DC300055944 /* CalculatorPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4DDF221340DC300055944 /* CalculatorPay.swift */; };
 		E7C87B2920D3AE2600E55F4E /* LoanDetailBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C87B2820D3AE2600E55F4E /* LoanDetailBaseViewController.swift */; };
 		E7F519F020CE159300F72682 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F519EF20CE159300F72682 /* Profile.storyboard */; };
 		E7F519F520CE167F00F72682 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F519F420CE167F00F72682 /* ProfileViewController.swift */; };
@@ -635,6 +641,12 @@
 		E7BC258320CFDACA001FF0F4 /* KaedeTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaedeTextField.swift; sourceTree = "<group>"; };
 		E7BC258420CFDACA001FF0F4 /* AkiraTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AkiraTextField.swift; sourceTree = "<group>"; };
 		E7BC258520CFDACA001FF0F4 /* IsaoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsaoTextField.swift; sourceTree = "<group>"; };
+		E7C4DDE8213402E800055944 /* SCP_SCNormal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCP_SCNormal.swift; sourceTree = "<group>"; };
+		E7C4DDE9213402E800055944 /* SCPageControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPageControlView.swift; sourceTree = "<group>"; };
+		E7C4DDEA213402E800055944 /* SCP_SCJAMoveCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCP_SCJAMoveCircle.swift; sourceTree = "<group>"; };
+		E7C4DDEB213402E800055944 /* SCP_SCJAFlatBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCP_SCJAFlatBar.swift; sourceTree = "<group>"; };
+		E7C4DDEC213402E800055944 /* SCP_SCJAFillCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCP_SCJAFillCircle.swift; sourceTree = "<group>"; };
+		E7C4DDF221340DC300055944 /* CalculatorPay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorPay.swift; sourceTree = "<group>"; };
 		E7C87B2820D3AE2600E55F4E /* LoanDetailBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanDetailBaseViewController.swift; sourceTree = "<group>"; };
 		E7F519EF20CE159300F72682 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		E7F519F420CE167F00F72682 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -1148,6 +1160,7 @@
 				6307D3C020AD783500055F5C /* Browwer */,
 				632FD02220AADF1E00D9399C /* Authen */,
 				632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */,
+				E7C4DDF221340DC300055944 /* CalculatorPay.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1169,6 +1182,7 @@
 		639C9DD120A14B6F00F2CF5E /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				E7C4DDE7213402E800055944 /* SCPageControl */,
 				630597422123FFD800EEADEF /* SBMessageInputView */,
 				6303922C20E8B108000C422D /* VerticalSteppedSlider */,
 				84647A7920E0E89B0053DD0D /* CircleProgressLib */,
@@ -1552,6 +1566,18 @@
 			path = TextFieldEffects;
 			sourceTree = "<group>";
 		};
+		E7C4DDE7213402E800055944 /* SCPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				E7C4DDE8213402E800055944 /* SCP_SCNormal.swift */,
+				E7C4DDE9213402E800055944 /* SCPageControlView.swift */,
+				E7C4DDEA213402E800055944 /* SCP_SCJAMoveCircle.swift */,
+				E7C4DDEB213402E800055944 /* SCP_SCJAFlatBar.swift */,
+				E7C4DDEC213402E800055944 /* SCP_SCJAFillCircle.swift */,
+			);
+			path = SCPageControl;
+			sourceTree = "<group>";
+		};
 		E7F519F120CE15BE00F72682 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -1851,7 +1877,6 @@
 				"${BUILT_PRODUCTS_DIR}/PinCodeTextField/PinCodeTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SCPageControl/SCPageControl.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SpreadsheetView/SpreadsheetView.framework",
@@ -1873,7 +1898,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinCodeTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCPageControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SpreadsheetView.framework",
@@ -1928,6 +1952,7 @@
 				E772D77020CA7939001F0B8E /* AddWalletViewController.swift in Sources */,
 				633AF9C120A992B200BAE2BB /* BorrowHomeViewController.swift in Sources */,
 				63D49DAF20D399E400114AFA /* InfoInterestRatePopupVC.swift in Sources */,
+				E7C4DDF1213402E800055944 /* SCP_SCJAFillCircle.swift in Sources */,
 				630597462124049500EEADEF /* LoanTypeInputTextMuiltilineTBCell.swift in Sources */,
 				639C9DF520A189E600F2CF5E /* ToastWindow.swift in Sources */,
 				6305974A21240C0F00EEADEF /* ExNotificationCenter.swift in Sources */,
@@ -1971,6 +1996,7 @@
 				6369BBD420AE8AD400E0C435 /* APIClient+Loan.swift in Sources */,
 				E7F51A1020CE6CE800F72682 /* LoanBuilderBase.swift in Sources */,
 				84647A8120E0E89B0053DD0D /* UICircularProgressRingDelegate.swift in Sources */,
+				E7C4DDED213402E800055944 /* SCP_SCNormal.swift in Sources */,
 				6308DF6520A3FE90001DC320 /* BasePopup.swift in Sources */,
 				E7F51A0B20CE6CC800F72682 /* LoanOtherInfoCollectionCell.swift in Sources */,
 				639C9DEE20A182E900F2CF5E /* ExUIViewController.swift in Sources */,
@@ -2066,6 +2092,7 @@
 				6338F40320BE602C005777E2 /* BrowwerUserInfo.swift in Sources */,
 				E7F51A2B20CE6D3F00F72682 /* LoanTypePhoneRelationTBCell.swift in Sources */,
 				6338F3FC20BE602C005777E2 /* BrowwerContacts.swift in Sources */,
+				E7C4DDF321340DC300055944 /* CalculatorPay.swift in Sources */,
 				E772D77320CA7C86001F0B8E /* LoanTableViewCell.swift in Sources */,
 				6334891C20C635BA00C95931 /* HomeBrowwer.swift in Sources */,
 				63748C02210ADBEC00E79EB6 /* MonyBankListViewController.swift in Sources */,
@@ -2085,13 +2112,16 @@
 				635DC11F20FEEA5500AA84DF /* UpdateWalletViewController.swift in Sources */,
 				E7BC259520CFDACA001FF0F4 /* IsaoTextField.swift in Sources */,
 				84114BD120D79464005026DF /* SubInfoLastTableViewCell.swift in Sources */,
+				E7C4DDEF213402E800055944 /* SCP_SCJAMoveCircle.swift in Sources */,
 				630467C720B56DD40069469A /* Address.swift in Sources */,
+				E7C4DDF0213402E800055944 /* SCP_SCJAFlatBar.swift in Sources */,
 				6303923020E8B108000C422D /* VSSlider.swift in Sources */,
 				84D73FFF20D0BC5600770FB5 /* LoanStatus.swift in Sources */,
 				63D4CB6D20F3009200519FFB /* LoanTypeChoiceTBCell.swift in Sources */,
 				633AE0B620B428C6007AB0D1 /* Constant+DateFormat.swift in Sources */,
 				63D170EF2111AF8200990A60 /* CollectionPay.swift in Sources */,
 				6338F3FA20BE602C005777E2 /* BrowwerCurrentAddress.swift in Sources */,
+				E7C4DDEE213402E800055944 /* SCPageControlView.swift in Sources */,
 				6355FAEA20B7BEB100038F5B /* LoanResponseModel.swift in Sources */,
 				84A2A79A20D9049A00083CA8 /* PayBtnTableViewCell.swift in Sources */,
 				639C9DCE20A14B3800F2CF5E /* APIClient.swift in Sources */,

@@ -32,7 +32,7 @@ class SCP_SCJAMoveCircle: UIView {
     }
     
     // ## view init method ##
-    func set_view(_ page: Int, current: Int, tint_color: UIColor) {
+    func set_view(_ page: Int, current: Int, tint_color: UIColor, invisible_color: UIColor) {
         
         numberOfPage = page
         currentOfPage = current
