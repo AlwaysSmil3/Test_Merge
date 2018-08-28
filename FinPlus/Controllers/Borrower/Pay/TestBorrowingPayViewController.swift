@@ -139,29 +139,39 @@ class TestBorrowingPayViewController: UIViewController {
     //Tra truoc toan bo
     var payTotalAmount: Double = 0
     
+    var paymentInfo: PaymentInfoMoney? {
+        didSet {
+            guard let pay  = self.paymentInfo else { return }
+            self.tableView.reloadData()
+            
+            if let period = pay.paymentPeriod {
+                self.payAmountPresent = period.feeOverdue! + period.interest! + period.overdue! + period.principal!
+            }
+            
+            if let total = pay.liquidation {
+                self.payTotalAmount = total.debt! + total.fee! + total.interest! + total.outstanding!
+            }
+            
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
         // update data
         self.updateData()
+        
+        self.getPaymentInfo()
         // Do any additional setup after loading the view.
     }
     
-    func getUserBankList() {
-        APIClient.shared.getListBank(uId: DataManager.shared.userID).done { (bankList) in
-            //self.bankList = bankList
-            self.updateData()
-        }
-            .catch { error in }
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if self.navigationController?.isNavigationBarHidden == false {
             self.navigationController?.isNavigationBarHidden = true
         }
-        //self.getUserBankList()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -170,6 +180,7 @@ class TestBorrowingPayViewController: UIViewController {
     }
 
     @IBAction func backAction(_ sender: Any) {
+        self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -284,6 +295,17 @@ class TestBorrowingPayViewController: UIViewController {
         self.sections.append(sectionWalletData)
         tableView.reloadData()
     }
+    
+    func getPaymentInfo() {
+        APIClient.shared.getPaymentMoneyInfo()
+            .done(on: DispatchQueue.main) { model in
+                
+                self.paymentInfo = model
+                
+        }
+            .catch { error in}
+    }
+    
 
     @objc func payBtnAction() {
         // check and show mony bank list
@@ -323,6 +345,15 @@ class TestBorrowingPayViewController: UIViewController {
 
 extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                return 138
+            }
+            
+            return 126
+        }
+        
         let cellData = sections[indexPath.section].cells[indexPath.row]
         return cellData.cellHeight
     }
@@ -352,8 +383,8 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             } else {
                 cell.isSelectedCell = false
             }
-            cell.cellData = data
             cell.updateCellView()
+            cell.paymentData = self.paymentInfo?.paymentPeriod
 
         } else if let cell = cell as? PayAllTableViewCell {
             let data = cellData.data as! PayAllBefore
@@ -366,8 +397,8 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             } else {
                 cell.isSelectedCell = false
             }
-            cell.cellData = data
             cell.updateCellView()
+            cell.paymentData = self.paymentInfo?.liquidation
 
         } else if let cell = cell as? BankAccountTableViewCell {
 //            let data = cellData.data as! AccountBank
@@ -403,6 +434,14 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                return 156
+            }
+            
+            return 136
+        }
+        
         let cellData = sections[indexPath.section].cells[indexPath.row]
         return cellData.cellHeight
     }
