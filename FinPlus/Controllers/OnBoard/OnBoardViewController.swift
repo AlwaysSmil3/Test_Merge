@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SCPageControl
 
 class OnBoardViewController: UIViewController, UIScrollViewDelegate {
 
@@ -52,7 +51,7 @@ class OnBoardViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         
         pageControl.scp_style = .SCNormal
-        pageControl.set_view(totalPage, current: 0, tint_color: MAIN_COLOR)
+        pageControl.set_view(totalPage, current: 0, tint_color: MAIN_COLOR, invisible_color: UIColor(hexString: "#B8C9D3"))
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
