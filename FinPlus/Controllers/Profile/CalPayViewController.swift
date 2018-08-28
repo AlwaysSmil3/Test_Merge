@@ -255,7 +255,7 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
                 cell.label.text = "\(date?.toString(.custom("dd/MM/YY")) ?? "")"
                 return cell
             } else if (indexPath.column == 1) {
-                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MonthCell.self), for: indexPath) as! MonthCell
+                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MoneyCell.self), for: indexPath) as! MoneyCell
                 cell.label.text = convertNumberFormat(text: "\(item.principal!/1000)") + "K"
                 return cell
             } else if (indexPath.column == 2) {
