@@ -11,7 +11,7 @@ import Foundation
 //MARK: Base Host
 enum Host {
     static let alphaURL = ""
-    
+
     static let productURL = "https://dev-api.mony.vn/"
 }
 
