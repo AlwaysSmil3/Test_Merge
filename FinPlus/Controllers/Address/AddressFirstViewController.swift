@@ -48,6 +48,7 @@ class AddressFirstViewController: BaseViewController {
         self.lblTitleHeader.text = self.titleString
         
         self.initData()
+        self.mapDataFromServer()
         self.setupMainTBView()
     }
     
@@ -86,6 +87,35 @@ class AddressFirstViewController: BaseViewController {
         
     }
     
+    func mapDataFromServer() {
+        if id.contains("jobAddress") {
+            self.mapData(address: DataManager.shared.loanInfo.jobInfo.jobAddress)
+        } else if id.contains("academicAddress") {
+            self.mapData(address: DataManager.shared.loanInfo.jobInfo.academicAddress)
+        } else if id.contains("currentAddress") {
+            self.mapData(address: DataManager.shared.loanInfo.userInfo.temporaryAddress)
+        } else if id.contains("residentAddress") {
+            self.mapData(address: DataManager.shared.loanInfo.userInfo.residentAddress)
+        }
+    }
+    
+    
+    private func mapData(address: Address) {
+        guard address.city.count > 0 else { return }
+        
+        self.numberHouse = address.street
+        
+        self.communeModel = Model1(object: NSObject())
+        self.communeModel?.name = address.commune
+        
+        self.districtModel = Model1(object: NSObject())
+        self.districtModel?.name = address.district
+        
+        self.cityModel = Model1(object: NSObject())
+        self.cityModel?.name = address.city
+        
+    }
+    
     /// Setup cho tableView
     func setupMainTBView() {
         
@@ -105,7 +135,7 @@ class AddressFirstViewController: BaseViewController {
     @IBAction func btnSaveTapped(_ sender: Any) {
         
         guard let cityModel_ = self.cityModel, let districtModel_ = self.districtModel, let communeModel_ = self.communeModel else {
-            self.showToastWithMessage(message: "Vui lòng chọn Tỉnh,Thành phố; Quân, Huyện; Phường, xã, thị trấn")
+            self.showToastWithMessage(message: "Vui lòng chọn Tỉnh,Thành phố; Quận, Huyện; Phường, xã, thị trấn")
             return
         }
         let indexPath = IndexPath(row: 3, section: 0)
@@ -115,7 +145,6 @@ class AddressFirstViewController: BaseViewController {
         }
         
         let address = Address(city: cityModel_.name!, district: districtModel_.name!, commune: communeModel_.name!, street: street, zipCode: "", long: 0.0, lat: 0.0)
-        
         
         self.delegate?.getAddress(address: address, type: self.typeAddress, title: self.titleString, id: self.id)
         self.navigationController?.popViewController(animated: true)
@@ -138,6 +167,14 @@ extension AddressFirstViewController: UITableViewDelegate, UITableViewDataSource
         case DATA_TYPE_TB_CELL.TextBox:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.TextField, for: indexPath) as! LoanTypeTextFieldTBCell
             cell.field = model
+            
+            if let text = cell.tfValue?.text, text.count == 0 {
+                if let stress = numberHouse {
+                    cell.tfValue?.text = stress
+                }
+                
+            }
+            
             return cell
             
         case DATA_TYPE_TB_CELL.DropDown:
@@ -251,6 +288,14 @@ extension AddressFirstViewController: AddressModelDelegate {
             break
             
         }
+        
+        let indexPath = IndexPath(row: 3, section: 0)
+        guard let cell = self.mainTableView.cellForRow(at: indexPath) as? LoanTypeTextFieldTBCell else {
+            
+            return
+        }
+        
+        cell.tfValue?.text = ""
         
     }
 }
