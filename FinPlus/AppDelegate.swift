@@ -22,7 +22,21 @@ var optionalTextCount = 10
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var timeCount = 0
+    var timer = Timer()
+    
+    func createTimer() {
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        guard self.timeCount <= 59 else {
+            self.timer.invalidate()
+            return
+        }
+        self.timeCount += 1
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         Fabric.with([Crashlytics.self])

@@ -15,6 +15,7 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
     @IBOutlet var tfPhoneNumber: UITextField!
     @IBOutlet var textDescription: UITextView!
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,53 +92,64 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
             self.showToastWithMessage(message: "Số điện thoại phải chứa 10 hoặc 11 số. Vui lòng kiểm tra lại.")
             return
         }
-        APIClient.shared.authentication(phoneNumber: phone)
-            .done(on: DispatchQueue.main) { [weak self]model in
-                guard let strongSelf = self else { return }
-                
-                DataManager.shared.userID = model.data?.id ?? 0
-                DataManager.shared.currentAccount = phone
-                
-                if let type = model.data?.accountType, type == "1" {
-                    //Investor
-                    self?.confirmGotoAppInvestor()
-                    return
-                }
-                
-                switch model.returnCode {
-                case 0:
-                    // code 0.
-                    if let returnMessage = model.returnMsg {
-                        self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
-                        return
-                    }
-                    break
-                default :
-                    // new account
+        
+        if (phone != DataManager.shared.currentAccount || appDelegate.timeCount == 60)
+        {
+            appDelegate.timeCount = 0
+            
+            APIClient.shared.authentication(phoneNumber: phone)
+                .done(on: DispatchQueue.main) { [weak self]model in
+                    guard let strongSelf = self else { return }
+                    
+                    DataManager.shared.userID = model.data?.id ?? 0
                     DataManager.shared.currentAccount = phone
                     
-                    // save token
-                    if let data = model.data {
-                        if let token = data.accessToken {
-                            userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
-                        }
+                    if let type = model.data?.accountType, type == "1" {
+                        //Investor
+                        self?.confirmGotoAppInvestor()
+                        return
                     }
-                    //Cap nhat push notification token
-                    DataManager.shared.updatePushNotificationToken()
-                    // get config
-                    userDefault.set(phone, forKey: fNEW_ACCOUNT_NAME)
-                    break
-                }
+                    
+                    switch model.returnCode {
+                    case 0:
+                        // code 0.
+                        if let returnMessage = model.returnMsg {
+                            self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
+                            return
+                        }
+                        break
+                    default :
+                        // new account
+                        DataManager.shared.currentAccount = phone
+                        
+                        // save token
+                        if let data = model.data {
+                            if let token = data.accessToken {
+                                userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
+                            }
+                        }
+                        //Cap nhat push notification token
+                        DataManager.shared.updatePushNotificationToken()
+                        // get config
+                        userDefault.set(phone, forKey: fNEW_ACCOUNT_NAME)
+                        break
+                    }
 
-                strongSelf.pushToVerifyVC(verifyType: .Login, phone: phone)
-            }.catch { error in
-                print(error)
+                    strongSelf.pushToVerifyVC(verifyType: .Login, phone: phone)
+                }.catch { error in
+                    print(error)
+                }
+        }
+        else
+        {
+            self.pushToVerifyVC(verifyType: .Login, phone: phone)
         }
     }
 
 
     func pushToVerifyVC(verifyType: VerifyType, phone: String) {
         self.view.endEditing(true)
+        
         let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
         verifyVC.verifyType = verifyType
         verifyVC.account = phone
