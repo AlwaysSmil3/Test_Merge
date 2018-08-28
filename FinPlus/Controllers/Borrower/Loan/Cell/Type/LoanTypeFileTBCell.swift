@@ -45,14 +45,27 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         }
     }
     
+    func checkImgInValid(key: String, url: String) -> Bool {
+        guard let list = DataManager.shared.listKeyMissingLoanKey else { return false }
+        guard let data = DataManager.shared.missingLoanDataDictionary else { return false }
+        
+        let listFields = list.filter { $0 == key }
+        
+        if listFields.count == 0 {
+            return false
+        }
+        
+        if let invalidValue = data[key] as? String, url == invalidValue {
+            return true
+        }
+        
+        return false
+    }
+    
+    
     func getData() {
         guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
         if id.contains("nationalIdAllImg") {
-            
-            if DataManager.shared.checkFieldIsMissing(key: "nationalIdAllImg") {
-                //Cap nhat thong tin khong hop le
-                self.updateInfoFalse(pre: title)
-            }
             
             var value = ""
             if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdAllImg, data.length() > 0 {
@@ -75,12 +88,20 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 self.lblDescription?.isHidden = true
             }
             
-        } else if id.contains("nationalIdFrontImg") {
-            
-            if DataManager.shared.checkFieldIsMissing(key: "nationalIdFrontImg") {
+            if DataManager.shared.checkFieldIsMissing(key: "nationalIdAllImg") && self.checkImgInValid(key: "nationalIdAllImg", url: value) {
                 //Cap nhat thong tin khong hop le
-                self.updateInfoFalse(pre: title)
+                if self.valueTemp == nil {
+                    self.valueTemp = value
+                    self.updateInfoFalse(pre: title)
+                }
+                
+                if valueTemp != value {
+                    self.isNeedUpdate = false
+                }
+                
             }
+            
+        } else if id.contains("nationalIdFrontImg") {
             
             var value = ""
             if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdFrontImg, data.length() > 0 {
@@ -101,13 +122,19 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 self.lblDescription?.isHidden = true
             }
             
-        } else if id.contains("nationalIdBackImg") {
-            
-            if DataManager.shared.checkFieldIsMissing(key: "nationalIdBackImg") {
+            if DataManager.shared.checkFieldIsMissing(key: "nationalIdFrontImg") && self.checkImgInValid(key: "nationalIdFrontImg", url: value) {
                 //Cap nhat thong tin khong hop le
-                self.updateInfoFalse(pre: title)
+                if self.valueTemp == nil {
+                    self.valueTemp = value
+                    self.updateInfoFalse(pre: title)
+                }
+                
+                if valueTemp != value {
+                    self.isNeedUpdate = false
+                }
             }
             
+        } else if id.contains("nationalIdBackImg") {
             var value = ""
             if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdBackImg, data.length() > 0 {
                 value = data
@@ -125,6 +152,18 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 DataManager.shared.loanInfo.nationalIdBackImg = value
                 self.imgAdd?.isHidden = true
                 self.lblDescription?.isHidden = true
+            }
+            
+            if DataManager.shared.checkFieldIsMissing(key: "nationalIdBackImg") && self.checkImgInValid(key: "nationalIdBackImg", url: value) {
+                //Cap nhat thong tin khong hop le
+                if self.valueTemp == nil {
+                    self.valueTemp = value
+                    self.updateInfoFalse(pre: title)
+                }
+                
+                if valueTemp != value {
+                    self.isNeedUpdate = false
+                }
             }
             
         }
