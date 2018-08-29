@@ -113,7 +113,7 @@ class LoanOtherInfoVC: LoanBaseViewController {
         
         self.validateInput {
             guard DataManager.shared.listKeyMissingLoanKey == nil || DataManager.shared.listKeyMissingLoanKey!.count == 0 else {
-                self.updateLoanStatus()
+                updateLoanStatusInvalidData()
                 return
             }
             
@@ -136,18 +136,21 @@ class LoanOtherInfoVC: LoanBaseViewController {
         
     }
     
+    /*
     private func updateLoanStatus() {
         DataManager.shared.loanInfo.status = DataManager.shared.loanInfo.status - 1
-        
+
+        clearValueInValidUserDefaultData()
+
         APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
             .done(on: DispatchQueue.main) { model in
                 DataManager.shared.loanID = model.loanId!
-                
+
                 //Lay thong tin nguoi dung
                 APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
                     .done(on: DispatchQueue.main) { model in
                         DataManager.shared.browwerInfo = model
-                        
+
                         self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Bạn đã cập nhật thông tin xong!", okTitle: "Về trang chủ", cancelTitle: nil) { (status) in
                             if status {
                                 if let info = DataManager.shared.browwerInfo?.activeLoan,  let loanId = info.loanId, loanId > 0 {
@@ -160,18 +163,18 @@ class LoanOtherInfoVC: LoanBaseViewController {
                                 }
                             }
                         }
-                        
+
                     }
                     .catch { error in
                         self.navigationController?.popToRootViewController(animated: true)
                 }
-                
+
             }
             .catch { error in }
-        
-        
+
+
     }
-    
+    */
     
     
 }

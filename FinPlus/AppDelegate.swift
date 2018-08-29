@@ -42,10 +42,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         
         UINavigationBar.appearance().backgroundColor = NAVIGATION_BAR_COLOR
+        
+        if #available(iOS 10, *) {
+            UITabBarItem.appearance().badgeColor = UIColor(hexString: "#DA3535")
+        }
 //        UINavigationBar.appearance().tintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.85)
         
         // Override point for customization after application launch.
         self.getLoanCategories()
+        
+        if userDefault.value(forKey: Notification_Have_New) == nil {
+            userDefault.set(false, forKey: Notification_Have_New)
+        }
         
         //Setup start View Controller
         self.setupStartVC()
@@ -166,6 +174,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func handleNotificationFireBase(userInfo: [AnyHashable : Any]) {
+        
+        userDefault.set(true, forKey: Notification_Have_New)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: ShowNotificationIdentifier), object: nil)
+        
         guard let aps = userInfo["aps"] as? NSDictionary, let alert = aps["alert"] as? NSDictionary else {
             return
         }

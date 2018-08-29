@@ -37,6 +37,8 @@ class BorrowerTabBarController: UITabBarController {
      */
     @IBInspectable var onTopIndicator: Bool = true
     
+    var redDot: UIView?
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
         print("----- deinit: \(String(describing: self.self))")
@@ -71,11 +73,13 @@ class BorrowerTabBarController: UITabBarController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: ShowNotificationIdentifier), object: nil, queue: nil, using: { (notification) in
-            self.updateBadge(isShow: true)
+            //self.updateBadge(isShow: true)
+            self.handleShowRedDot(isShow: true)
         })
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: HiddenNotificationIdentifier), object: nil, queue: nil, using: { (notification) in
-            self.updateBadge(isShow: false)
+            //self.updateBadge(isShow: false)
+            self.handleShowRedDot(isShow: false)
         })
         
         let sHomeBrowwer = UIStoryboard(name: "HomeBrowwer", bundle: nil)
@@ -137,13 +141,61 @@ class BorrowerTabBarController: UITabBarController {
         UINavigationBar.appearance().barTintColor = LIGHT_MODE_NAVI_COLOR
         UINavigationBar.appearance().tintColor = LIGHT_MODE_MAIN_TEXT_COLOR
         UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .normal)
+        
+        self.addRedDotAtTabBarItemIndex(index: 3)
 
+        if let isShowBadge = userDefault.value(forKey: Notification_Have_New) as? Bool, isShowBadge {
+            self.handleShowRedDot(isShow: true)
+        } else {
+            self.handleShowRedDot(isShow: false)
+        }
     }
     
     func formatTabBarItem(tabBarItem: UITabBarItem){
         tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor:UIColor.clear], for: .selected)
         tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor:UIColor.clear], for: .normal)
+    }
+    
+    func handleShowRedDot(isShow: Bool) {
+        self.redDot?.isHidden = !isShow
+    }
+    
+    //Add Badge Custom
+    func addRedDotAtTabBarItemIndex(index: Int) {
+        for subview in self.tabBar.subviews {
+            
+            if let subview = subview as? UIView {
+                
+                if subview.tag == 1234 {
+                    subview.removeFromSuperview()
+                    break
+                }
+            }
+        }
+        
+        let RedDotRadius: CGFloat = 5
+        let RedDotDiameter = RedDotRadius * 2
+        
+        let TopMargin:CGFloat = 5
+        
+        let TabBarItemCount = CGFloat(self.tabBar.items!.count)
+        
+        let screenSize = UIScreen.main.bounds
+        let HalfItemWidth = (screenSize.width) / (TabBarItemCount * 2)
+        
+        let  xOffset = HalfItemWidth * CGFloat(index * 2 + 1)
+        
+        let imageHalfWidth: CGFloat = (self.tabBar.items![index] as! UITabBarItem).selectedImage!.size.width / 2
+        
+        self.redDot = UIView(frame: CGRect(x: xOffset + imageHalfWidth - 7, y: TopMargin, width: RedDotDiameter, height: RedDotDiameter))
+        
+        redDot?.tag = 1234
+        redDot?.backgroundColor = UIColor(hexString: "#DA3535")
+        redDot?.layer.cornerRadius = RedDotRadius
+        
+        self.tabBar.addSubview(redDot!)
+        
     }
     
 }

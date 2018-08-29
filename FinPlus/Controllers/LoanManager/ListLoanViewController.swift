@@ -48,6 +48,12 @@ class ListLoanViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        
+        if let isBack = DataManager.shared.isBackFromLoanStatusVC, isBack {
+            DataManager.shared.isBackFromLoanStatusVC = nil
+            return
+        }
+        
         // reload data
         self.getAllLoans()
     }
@@ -122,6 +128,7 @@ extension ListLoanViewController: UITableViewDelegate {
         let v1 = sHome.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE")
         if let loanStatusVC = v1 as? LoanStateViewController {
             loanStatusVC.activeLoan = item
+            loanStatusVC.isFromManagerLoan = true
             v1.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(v1, animated: true)
         }
@@ -157,7 +164,7 @@ extension ListLoanViewController: UITableViewDataSource {
         let state = item.status
         
         cell?.dateLabel.text = Date.init(fromString: item.createdTime ?? "", format: DateFormat.custom(DATE_FORMATTER_FROM_SERVER)).toString(DateFormat.custom(kDisplayFormat))
-        cell?.statusLabel.text = NSLocalizedString("STATUS", comment: "")
+        cell?.statusLabel.text = NSLocalizedString("STATUS", comment: "") + ":"
         cell?.statusValueLabel.text = getState(type: STATUS_LOAN(rawValue: state!)!)
         cell?.statusValueLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: state!)!)
         let amount = FinPlusHelper.formatDisplayCurrency(Double(item.amount?.description ?? "") ?? 0) + " đ"

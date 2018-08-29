@@ -113,6 +113,13 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         
         self.view.endEditing(true)
         
+        if DataManager.shared.listKeyMissingLoanKey != nil && DataManager.shared.listKeyMissingLoanKey!.count > 0  {
+            if !DataManager.shared.checkIndexLastStepHaveMissingData(index: 2) {
+                updateLoanStatusInvalidData()
+                return
+            }
+        }
+        
         self.updateDataForLoanAPI {
             let loanInfoJobVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanInfoJobVC") as! LoanInfoJobVC
             

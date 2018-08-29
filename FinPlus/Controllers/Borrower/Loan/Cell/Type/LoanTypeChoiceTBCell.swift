@@ -147,7 +147,7 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
             if value.length() > 0 {
-                if value == "Nam" {
+                if value == "Nam" || value == "0" {
                     self.currentSelectedCollection = IndexPath(row: 0, section: 0)
                 } else {
                     self.currentSelectedCollection = IndexPath(row: 1, section: 0)
@@ -167,7 +167,7 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                             self.updateInfoFalse(pre: title)
                         }
                         
-                        if value == "Nam" {
+                        if value == "Nam" || value == "0" {
                             self.valueTemp = "0"
                         } else {
                             self.valueTemp = "1"

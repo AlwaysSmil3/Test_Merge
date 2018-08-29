@@ -8,6 +8,31 @@
 
 import Foundation
 
+let Notification_Have_New = "kNotification_Have_New"
+
+//Set Key Missing Data khi User Đã cập nhật
+let UserDefaultInValidRelationPhone = "kUserDefaultRelationPhone"
+let UserDefaultInValidResidentAddress = "kUserDefaultResidentAddress"
+let UserDefaultInValidCurrentAddress = "kUserDefaultCurrentAddress"
+let UserDefaultInValidJobAddress = "kUserDefaultJobAddress"
+let UserDefaultInValidAcademicAddress = "kUserDefaultAcademicAddress"
+let UserDefaultInValidOptionalText = "kUserDefaultOptionalText"
+let UserDefaultInValidOptionalMedia = "kUserDefaultOptionalMedia"
+let UserDefaultInValidBank = "kUserDefaultBank"
+
+
+func clearValueInValidUserDefaultData() {
+    userDefault.set(nil, forKey: UserDefaultInValidRelationPhone)
+    userDefault.set(nil, forKey: UserDefaultInValidResidentAddress)
+    userDefault.set(nil, forKey: UserDefaultInValidCurrentAddress)
+    userDefault.set(nil, forKey: UserDefaultInValidJobAddress)
+    userDefault.set(nil, forKey: UserDefaultInValidAcademicAddress)
+    userDefault.set(nil, forKey: UserDefaultInValidOptionalText)
+    userDefault.set(nil, forKey: UserDefaultInValidOptionalMedia)
+    userDefault.set(nil, forKey: UserDefaultInValidBank)
+}
+
+
 //Vay sinh vien
 var CountOptionTextVaySinhVien = 1
 var CountOptionMediaVaySinhView = 2

@@ -41,6 +41,7 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         super.viewDidAppear(animated)
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: HiddenNotificationIdentifier), object: nil)
+        userDefault.set(false, forKey: Notification_Have_New)
     }
     
     private func initRefresher() {

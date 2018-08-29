@@ -54,6 +54,8 @@ class LoanStateViewController: UIViewController {
     var bottom_state: BOTTOM_STATE!
     var userInfo: BrowwerInfo!
     
+    var isFromManagerLoan: Bool = false
+    
     // CoreData
     var managedContext: NSManagedObjectContext? {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -788,7 +790,7 @@ class LoanStateViewController: UIViewController {
                 if self.checkCollectionRightPayForStatusTimelyDebt() {
                     array = [
                         "type": HeaderCellType.TextType,
-                        "text": "Bạn cần thanh toán 0đ trong tháng này. Hãy thanh toán trước ngày: \(nextPaymentDate).",
+                        "text": "Bạn đã thanh toán cho kỳ thanh toán ngày \(nextPaymentDate). Xin cảm ơn",
                         "subType": TextCellType.DesType,
                     ]
                     
@@ -1029,6 +1031,11 @@ class LoanStateViewController: UIViewController {
             break
         }
         
+        if self.isFromManagerLoan {
+            self.navigationItem.rightBarButtonItem = nil
+            self.headerData = []
+        }
+        
         let textCellNib = UINib(nibName: "TitleTableViewCell", bundle: nil)
         self.headerTableView?.register(textCellNib, forCellReuseIdentifier: textIdentifier)
         
@@ -1100,7 +1107,7 @@ class LoanStateViewController: UIViewController {
         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
             .done(on: DispatchQueue.main) { model in
                 self.refresher.endRefreshing()
-                guard let status = DataManager.shared.browwerInfo?.activeLoan?.status, let currentStatus = DataManager.shared.browwerInfo?.activeLoan?.status, status != currentStatus else { return }
+                guard let status = model.activeLoan?.status, let currentStatus = DataManager.shared.browwerInfo?.activeLoan?.status, status != currentStatus else { return }
                 DataManager.shared.isNeedReloadLoanStatusVC = false
                 DataManager.shared.browwerInfo = model
                 
@@ -1146,6 +1153,7 @@ class LoanStateViewController: UIViewController {
     }
     
     @IBAction func navi_back() {
+        DataManager.shared.isBackFromLoanStatusVC = true
         self.navigationController?.popViewController(animated: true)
     }
     
