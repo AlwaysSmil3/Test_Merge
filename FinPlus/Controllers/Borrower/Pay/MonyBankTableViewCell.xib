@@ -46,8 +46,8 @@
                                     <constraint firstAttribute="height" constant="15" id="zdj-bz-biL"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngân hàng:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAU-t1-9LA">
-                                <rect key="frame" x="16" y="44" width="73" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chi nhánh:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAU-t1-9LA">
+                                <rect key="frame" x="16" y="44" width="68" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="S8q-ls-7ub"/>
                                 </constraints>

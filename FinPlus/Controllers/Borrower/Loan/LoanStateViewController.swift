@@ -167,6 +167,7 @@ class LoanStateViewController: UIViewController {
         if let config = DataManager.shared.config, let fun = loan.funded, fun > 0 {
             serviceFeeFunded = Double(Int(fun) * (config.serviceFee ?? 0 ) / 100)
             
+            
             let payMounthWithFunded = FinPlusHelper.CalculateMoneyPayMonth(month: Double(fun), term: Double((loan.term ?? 0)/30), rate: Double(rate))
             payMounthStringWithFunded = FinPlusHelper.formatDisplayCurrency(payMounthWithFunded) + "đ"
             
@@ -778,18 +779,27 @@ class LoanStateViewController: UIViewController {
                     "text": "Bạn cần thanh toán \(payMounthStringWithFunded) trong tháng này. Hãy thanh toán trước ngày: \(nextPaymentDate).",
                     "subType": TextCellType.DesType,
                     ]
+                
+                let temp = self.getAmountDebt()
+                let temptString = FinPlusHelper.formatDisplayCurrency(temp) + "đ"
+                
+                var currentAmount = funded
+                
                 if self.checkCollectionRightPayForStatusTimelyDebt() {
                     array = [
                         "type": HeaderCellType.TextType,
-                        "text": "Bạn đã thanh toán \(payMounthStringWithFunded) trong tháng này. Bạn có thể thanh toán trước cho đợt tiếp theo",
+                        "text": "Bạn cần thanh toán 0đ trong tháng này. Hãy thanh toán trước ngày: \(nextPaymentDate).",
                         "subType": TextCellType.DesType,
                     ]
+                    
+                    currentAmount = temptString
                 }
+                
                 
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
-                        "text": "Xin chào \(self.userInfo.fullName ?? ""), bạn đang vay \(funded).",
+                        "text": "Xin chào \(self.userInfo.fullName ?? ""), bạn đang vay \(currentAmount).",
                         "subType": TextCellType.TitleType,
                         ],
                     array,
@@ -809,14 +819,14 @@ class LoanStateViewController: UIViewController {
             case .OVERDUE_DEPT?:
                 //Nợ quá hạn - 15
                 var overDate = "0"
-                if let nextDateStr = loan.nextPaymentDate {
+                if let overdudeDate = self.getDateOverdude() {
                     let calendar = NSCalendar.current
                     let d1 = Date()
                     let date1 = calendar.startOfDay(for: d1)
-                    let d2 = Date(fromString: nextDateStr, format: .iso8601(ISO8601Format.DateTimeSec))
-                    let date2 = calendar.startOfDay(for: d2)
+//                    let d2 = Date(fromString: nextDateStr, format: .iso8601(ISO8601Format.DateTimeSec))
+                    let date2 = calendar.startOfDay(for: overdudeDate)
                     
-                    if d1 > d2 {
+                    if d1 > overdudeDate {
                         let components = calendar.dateComponents([.day], from: date2, to: date1)
                         overDate = "\(components.day!)"
                     }
@@ -1216,6 +1226,60 @@ class LoanStateViewController: UIViewController {
         })
     }
     
+    
+    /// Get số tiền đã thanh toán được
+    ///
+    /// - Returns: <#return value description#>
+    func getAmountPaided() -> Double {
+        guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return 0 }
+        var amount: Double = 0
+        for col in collections {
+            if let status = col.status, status == 2 {
+                let temp = col.repayFeeOverdue! + col.repayInterest! + col.repayOverdue! + col.repayPrincipal!
+                amount += temp
+            }
+        }
+        
+        return amount
+    }
+    
+    
+    /// Get Số tiền nợ
+    ///
+    /// - Returns: <#return value description#>
+    func getAmountDebt() -> Double {
+        guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return 0 }
+        var amount: Double = 0
+        for col in collections {
+            let temp = col.repayPrincipal!
+            amount += temp
+            
+        }
+        
+        let value: Double = Double(activeLoan.amount ?? 0) - amount
+
+        
+        return value
+    }
+    
+    //Lấy ngày quá hạn
+    func getDateOverdude() -> Date? {
+        guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return nil }
+        
+        for col in collections {
+            if let status = col.status, status == 3 {
+                if let monthPayed = col.dueDatetime {
+                    let date = Date(fromString: monthPayed, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
+                    return date
+                }
+            }
+        }
+        
+        return nil
+    }
+    
+    
+    //Check đã thanh toán kỳ nào chưa
     func checkCollectionRightPayForStatusTimelyDebt() -> Bool {
         var value = false
         guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return value }

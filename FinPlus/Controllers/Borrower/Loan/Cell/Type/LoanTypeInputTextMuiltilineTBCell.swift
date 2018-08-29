@@ -75,21 +75,6 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
         guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
         if id.contains("optionalText") {
             
-            //thông tin khác
-            if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
-                //Cap nhat thong tin khong hop le
-                //self.updateInfoFalse(pre: title)
-                
-                if let arrayIndex = field_.arrayIndex, let data = DataManager.shared.missingOptionalText {
-                    
-                    if let text = data["\(arrayIndex)"] as? String {
-                        //Cap nhat thong tin khong hop le
-                        print("OptionalText \(text)")
-                        self.updateInfoFalse(pre: title)
-                    }
-                }
-            }
-            
             var index = 0
             if let i = field_.arrayIndex {
                 index = i
@@ -110,6 +95,23 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
                 self.lblValue?.text = value
                 self.lblValue?.textColor = UIColor(hexString: "#08121E")
                 DataManager.shared.loanInfo.optionalText[index] = value
+            }
+            
+            //thông tin khác
+            if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
+                //Cap nhat thong tin khong hop le
+                if let arrayIndex = field_.arrayIndex, let data = DataManager.shared.missingOptionalText {
+                    if let text = data["\(arrayIndex)"] as? String {
+                        //Cap nhat thong tin khong hop le
+                        print(text)
+                        
+                        if self.valueTemp == nil {
+                            self.updateInfoFalse(pre: title)
+                        }
+                        
+                        self.valueTemp = value
+                    }
+                }
             }
             
         }
