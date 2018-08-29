@@ -11,14 +11,14 @@ import Foundation
 let Notification_Have_New = "kNotification_Have_New"
 
 //Set Key Missing Data khi User Đã cập nhật
-let UserDefaultInValidRelationPhone = "kUserDefaultRelationPhone"
-let UserDefaultInValidResidentAddress = "kUserDefaultResidentAddress"
-let UserDefaultInValidCurrentAddress = "kUserDefaultCurrentAddress"
-let UserDefaultInValidJobAddress = "kUserDefaultJobAddress"
-let UserDefaultInValidAcademicAddress = "kUserDefaultAcademicAddress"
-let UserDefaultInValidOptionalText = "kUserDefaultOptionalText"
-let UserDefaultInValidOptionalMedia = "kUserDefaultOptionalMedia"
-let UserDefaultInValidBank = "kUserDefaultBank"
+let UserDefaultInValidRelationPhone = "kUserDefaultInValidRelationPhone"
+let UserDefaultInValidResidentAddress = "kUserDefaultInValidResidentAddress"
+let UserDefaultInValidCurrentAddress = "kUserDefaultInValidCurrentAddress"
+let UserDefaultInValidJobAddress = "kUserDefaultInValidJobAddress"
+let UserDefaultInValidAcademicAddress = "kUserDefaultInValidAcademicAddress"
+let UserDefaultInValidOptionalText = "kUserDefaultInValidOptionalText"
+let UserDefaultInValidOptionalMedia = "kUserDefaultInValidOptionalMedia"
+let UserDefaultInValidBank = "kUserDefaultInValidBank"
 
 
 func clearValueInValidUserDefaultData() {
@@ -30,6 +30,7 @@ func clearValueInValidUserDefaultData() {
     userDefault.set(nil, forKey: UserDefaultInValidOptionalText)
     userDefault.set(nil, forKey: UserDefaultInValidOptionalMedia)
     userDefault.set(nil, forKey: UserDefaultInValidBank)
+    userDefault.synchronize()
 }
 
 
@@ -316,9 +317,9 @@ func getState(type: STATUS_LOAN) -> String {
     switch type {
     case .DRAFT:
         return "Chưa hoàn thiện"
-    case .SALE_REVIEW, .SALE_PENDING, .RISK_REVIEW:
+    case .SALE_REVIEW, .RISK_REVIEW:
         return "Chờ phê duyệt"
-    case .RISK_PENDING:
+    case .RISK_PENDING, .SALE_PENDING:
         return "Cần bổ sung thông tin"
     case .REJECTED:
         return "Đơn vay bị từ chối"

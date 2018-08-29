@@ -108,6 +108,7 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 self.valueTemp = value
             } else {
                 userDefault.set("", forKey: UserDefaultInValidResidentAddress)
+                userDefault.synchronize()
                 self.isNeedUpdate = false
             }
             
@@ -140,6 +141,7 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 self.valueTemp = value
             } else {
                 userDefault.set("", forKey: UserDefaultInValidCurrentAddress)
+                userDefault.synchronize()
                 self.isNeedUpdate = false
             }
             
@@ -172,6 +174,7 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 self.valueTemp = value
             } else {
                 userDefault.set("", forKey: UserDefaultInValidJobAddress)
+                userDefault.synchronize()
                 self.isNeedUpdate = false
             }
             
@@ -204,6 +207,7 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 self.valueTemp = value
             } else {
                 userDefault.set("", forKey: UserDefaultInValidAcademicAddress)
+                userDefault.synchronize()
                 self.isNeedUpdate = false
             }
             

@@ -73,6 +73,7 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
         if !DataManager.shared.isRelationPhone1Invalid && !DataManager.shared.isRelationPhone2Invalid {
             self.delegateUpdateStatusInvalid?.update(isNeed: false)
             userDefault.set("", forKey: UserDefaultInValidRelationPhone)
+            userDefault.synchronize()
         } else {
             self.delegateUpdateStatusInvalid?.update(isNeed: true)
         }

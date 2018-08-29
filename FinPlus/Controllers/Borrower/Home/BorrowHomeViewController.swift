@@ -140,6 +140,7 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
         
         guard DataManager.shared.loanCategories.count > 0 else { return }
         DataManager.shared.reloadOptionalData()
+        DataManager.shared.reloadDataFirstLoanVC()
         DataManager.shared.currentIndexCategoriesSelectedPopup = Int(DataManager.shared.loanCategories[indexPath.row].id ?? 0)
         
         if let value = userDefault.value(forKey: kUserDefault_Aler_Popup_Confirm_Loan) as? String, value == "1" {
