@@ -39,9 +39,13 @@ class VerifyOTPAuthenVC: BaseViewController {
 
         self.setupPinView()
         
+        appDelegate.timer.invalidate()
+        if verifyType != .Login {
+            appDelegate.timeCount = 0
+        }
         self.lblLimitTime.text = "\(60 - appDelegate.timeCount) " + "giây"
         
-        appDelegate.timer.invalidate()
+        
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
     }

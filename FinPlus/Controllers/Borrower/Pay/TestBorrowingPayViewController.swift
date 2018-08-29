@@ -134,10 +134,15 @@ class TestBorrowingPayViewController: UIViewController {
     var methodSelected : PaymentMethod!
     //var bankList = [AccountBank]()
     
+    var paymentList = [PaymentMethod]()
+    
     //Tra ky nay
     var payAmountPresent: Double = 0
     //Tra truoc toan bo
     var payTotalAmount: Double = 0
+    
+    var isOntime: Bool = true
+    var isDebt: Bool = false
     
     var paymentInfo: PaymentInfoMoney? {
         didSet {
@@ -146,10 +151,21 @@ class TestBorrowingPayViewController: UIViewController {
             
             if let period = pay.paymentPeriod {
                 self.payAmountPresent = period.feeOverdue! + period.interest! + period.overdue! + period.principal!
+                
+                if period.overdue! > 0 {
+                    self.isOntime = false
+                    self.tableView?.reloadData()
+                }
             }
             
             if let total = pay.liquidation {
                 self.payTotalAmount = total.debt! + total.fee! + total.interest! + total.outstanding!
+                
+                if total.debt! > 0 {
+                    self.isDebt = true
+                    self.tableView?.reloadData()
+                }
+                
             }
             
         }
@@ -163,9 +179,9 @@ class TestBorrowingPayViewController: UIViewController {
         self.updateData()
         
         self.getPaymentInfo()
+        
         // Do any additional setup after loading the view.
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -236,13 +252,16 @@ class TestBorrowingPayViewController: UIViewController {
         let payAll = PayAllBefore(id: 1, typeTitle: "Tra tat ca luon", originAmount: Float(amount), interestAmount: interestTotalAmount, feeToPayBefore: feePayBefore, sumAmount: Float(self.payTotalAmount))
         let payTypeArray = [payType1]
         // create list payment method
-        var paymentList = [PaymentMethod]()
+        self.payTypeSelected = payType1
+        
         let cashInPayment = PaymentMethod(wID: 1, wMethodTitle: "Chuyển khoản/tiền mặt", wMethodDescription: "Chuyển khoản qua internet hoặc đến ngân hàng để chuyển tiền mặt đến một trong những tài khoản ngân hàng của chúng tôi.", wMethodType: 1)
         let ATMPayment = PaymentMethod(wID: 2, wMethodTitle: "Sử dụng ATM nội địa", wMethodDescription: "Bạn sẽ được chuyển qua website napas.com.vn để hoàn tất quá trình thanh toán.", wMethodType: 2)
         let viettelPayPayment = PaymentMethod(wID: 3, wMethodTitle: "Thanh toán qua ví ViettelPay", wMethodDescription: "Chuyển qua ứng dụng ViettelPay để thanh toán. Bạn sẽ được chuyển về Mony sau khi hoàn thành.", wMethodType: 3)
         paymentList.append(cashInPayment)
-        paymentList.append(ATMPayment)
-        paymentList.append(viettelPayPayment)
+        //paymentList.append(ATMPayment)
+        //paymentList.append(viettelPayPayment)
+        
+        //self.methodSelected = paymentList[0]
         
         // borrowingPay = BorrowingData(basicInfo: infoData, payType: payTypeArray, payAll: payAll, walletList: self.bankList)
         newBorrowingPay = NewBorrowingData(payType: payTypeArray, payAll: payAll, paymentMethod: paymentList)
@@ -383,6 +402,9 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             } else {
                 cell.isSelectedCell = false
             }
+            
+            cell.isOnTime = self.isOntime
+            
             cell.updateCellView()
             cell.paymentData = self.paymentInfo?.paymentPeriod
 
@@ -397,6 +419,9 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             } else {
                 cell.isSelectedCell = false
             }
+            
+            cell.isDebt = self.isDebt
+            
             cell.updateCellView()
             cell.paymentData = self.paymentInfo?.liquidation
 
@@ -419,13 +444,20 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             cell.payBtn.addTarget(self, action:#selector(payBtnAction), for: .touchUpInside)
         } else if let cell = cell as? PaymentMethodTableViewCell {
             let data = cellData.data as! PaymentMethod
-            if let selected = self.methodSelected {
-                if selected.id == data.id {
-                    cell.isSelectedCell = true
-                } else {
-                    cell.isSelectedCell = false
-                }
+            
+            if data.id == 1 {
+                let cellData = sections[indexPath.section].cells[indexPath.row]
+                self.methodSelected = cellData.data  as! PaymentMethod
+                cell.isSelectedCell = true
             }
+            
+//            if let selected = self.methodSelected {
+//                if selected.id == 1 && selected.id == data.id {
+//                    cell.isSelectedCell = true
+//                } else {
+//                    //cell.isSelectedCell = false
+//                }
+//            }
             cell.cellData = data
             cell.updateCellView()
         }
@@ -436,7 +468,14 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
+                if isOntime {
+                    return 126
+                }
                 return 156
+            }
+            
+            if !isDebt {
+                return 110
             }
             
             return 136

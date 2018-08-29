@@ -26,9 +26,24 @@ class PayTypeTableViewCell: UITableViewCell {
     
     var dateExpire: String?
     
+    var isOnTime: Bool = true
+    
     var paymentData: PaymentPaymentPeriod? {
         didSet {
             guard let data = self.paymentData else { return }
+            
+            self.borrowingLb?.text = FinPlusHelper.formatDisplayCurrency(data.principal! + data.feeOverdue! + data.interest! + data.overdue!) + "đ"
+            
+            if self.isOnTime {
+                self.originMoneyLb.isHidden = true
+                self.interestMoneyLb.isHidden = true
+                
+                self.lblOverInterest?.text = "Tiền gốc: " + FinPlusHelper.formatDisplayCurrency(data.principal!) + "đ"
+                
+                self.lblFeeOver?.text = "Tiền lãi: " + FinPlusHelper.formatDisplayCurrency(data.interest!) + "đ"
+                
+                return
+            }
             
             self.originMoneyLb.text = "Tiền gốc: " + FinPlusHelper.formatDisplayCurrency(data.principal!) + "đ"
             self.interestMoneyLb.text = "Tiền lãi: " + FinPlusHelper.formatDisplayCurrency(data.interest!) + "đ"
@@ -36,7 +51,7 @@ class PayTypeTableViewCell: UITableViewCell {
             
 //            self.lblFeeOver?.text = "Phí phạt quá hạn: " + FinPlusHelper.formatDisplayCurrency(data.feeOverdue!) + "đ"
             
-            self.borrowingLb?.text = FinPlusHelper.formatDisplayCurrency(data.principal! + data.feeOverdue! + data.interest! + data.overdue!) + "đ"
+            
             
             // create attributed string
             

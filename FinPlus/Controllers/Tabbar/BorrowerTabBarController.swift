@@ -61,9 +61,22 @@ class BorrowerTabBarController: UITabBarController {
 //        self.tabBar.selectionIndicatorImage = indicatorImage
     }
     
+    func updateBadge(isShow: Bool)
+    {
+        self.tabBar.items?[3].badgeValue = isShow ? "" : nil
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: ShowNotificationIdentifier), object: nil, queue: nil, using: { (notification) in
+            self.updateBadge(isShow: true)
+        })
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: HiddenNotificationIdentifier), object: nil, queue: nil, using: { (notification) in
+            self.updateBadge(isShow: false)
+        })
         
         let sHomeBrowwer = UIStoryboard(name: "HomeBrowwer", bundle: nil)
         let sHome = UIStoryboard(name: "Loan", bundle: nil)
@@ -115,8 +128,8 @@ class BorrowerTabBarController: UITabBarController {
             // Fallback on earlier versions
         }
         self.tabBar.backgroundColor = .white
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:LIGHT_MODE_SUB_TEXT_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_SMALL)], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:MAIN_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_SMALL)], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:LIGHT_MODE_SUB_TEXT_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_SMALL)!], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:MAIN_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_SMALL)!], for: .selected)
         
         UIApplication.shared.statusBarStyle = .default
         let attributes = [NSAttributedStringKey.foregroundColor: LIGHT_MODE_MAIN_TEXT_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL) as Any]
@@ -124,6 +137,7 @@ class BorrowerTabBarController: UITabBarController {
         UINavigationBar.appearance().barTintColor = LIGHT_MODE_NAVI_COLOR
         UINavigationBar.appearance().tintColor = LIGHT_MODE_MAIN_TEXT_COLOR
         UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .normal)
+
     }
     
     func formatTabBarItem(tabBarItem: UITabBarItem){

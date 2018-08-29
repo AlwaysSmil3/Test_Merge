@@ -62,14 +62,15 @@ class ListLoanViewController: UIViewController {
                 let unCompleteArr:NSMutableArray = []
                 
                 model.forEach({ (loan) in
-                    if (((loan as BrowwerActiveLoan).status ?? 0) > 0)
-                    {
-                        unCompleteArr.add(loan)
+                    
+                    if let status = loan.status {
+                        if status == 17 || status == 18 || status == 5 {
+                            completeArr.add(loan)
+                        } else {
+                            unCompleteArr.add(loan)
+                        }
                     }
-                    else
-                    {
-                        completeArr.add(loan)
-                    }
+    
                 })
                 
                 if (unCompleteArr.count > 0)

@@ -10,6 +10,8 @@ import Foundation
 
 // Notification
 let ModeNotificationIdentifier: String = "ModeNotificationIdentifier"
+let ShowNotificationIdentifier: String = "ShowNotificationIdentifier"
+let HiddenNotificationIdentifier: String = "HiddenNotificationIdentifier"
 
 // DARK MODE
 let DARK_MODE_MAIN_TEXT_COLOR = UIColor(hexString: "#D7D7D7")
