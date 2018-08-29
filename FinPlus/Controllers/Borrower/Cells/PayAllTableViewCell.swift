@@ -13,6 +13,7 @@ class PayAllTableViewCell: UITableViewCell {
     @IBOutlet weak var containView: UIView!
     @IBOutlet weak var borrowingLb: UILabel!
     
+    @IBOutlet weak var lblLeftDebt: UILabel?
     @IBOutlet weak var lblDebt: UILabel?
     @IBOutlet weak var originMoneyLb: UILabel!
     @IBOutlet weak var interestMoneyLb: UILabel!
@@ -23,13 +24,25 @@ class PayAllTableViewCell: UITableViewCell {
     var cellData : PayAllBefore!
     var isSelectedCell = false
     
+    var isDebt: Bool = false
+    
     var paymentData: PaymentLiquidation? {
         didSet {
             guard let data = self.paymentData else { return }
             
-            self.lblDebt?.text = FinPlusHelper.formatDisplayCurrency(data.debt!) + "đ"
-            self.originMoneyLb.text = "Tiền gốc phải trả: " + FinPlusHelper.formatDisplayCurrency(data.outstanding!) + "đ"
-            self.interestMoneyLb?.text = "Tiền lãi cộng dồn trong kỳ: " + FinPlusHelper.formatDisplayCurrency(data.interest!) + "đ"
+            if !self.isDebt {
+                self.lblDebt?.isHidden = true
+                self.lblLeftDebt?.isHidden = true
+                self.originMoneyLb.isHidden = true
+                
+                self.interestMoneyLb?.text = "Tiền gốc phải trả: " + FinPlusHelper.formatDisplayCurrency(data.outstanding!) + "đ"
+
+            } else {
+                self.lblDebt?.text = FinPlusHelper.formatDisplayCurrency(data.debt!) + "đ"
+                 self.originMoneyLb.text = "Tiền gốc phải trả: " + FinPlusHelper.formatDisplayCurrency(data.outstanding!) + "đ"
+                
+                self.interestMoneyLb?.text = "Tiền lãi cộng dồn trong kỳ: " + FinPlusHelper.formatDisplayCurrency(data.interest!) + "đ"
+            }
             
             self.feeReturnBeforeDueDateLb?.text = "Phí tất toán: " + FinPlusHelper.formatDisplayCurrency(data.fee!) + "đ"
             

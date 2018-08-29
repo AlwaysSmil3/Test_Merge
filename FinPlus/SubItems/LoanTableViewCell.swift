@@ -21,6 +21,8 @@ class LoanTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        self.selectionStyle = .none
+        
         self.borderView.layer.borderWidth = 0.5
         self.borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         self.borderView.layer.cornerRadius = 8

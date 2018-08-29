@@ -142,6 +142,7 @@
                 <outlet property="feeReturnBeforeDueDateLb" destination="ij6-UP-yZH" id="iSK-Yc-5I5"/>
                 <outlet property="interestMoneyLb" destination="OFc-DC-5RO" id="w5c-gc-cY4"/>
                 <outlet property="lblDebt" destination="IWz-IP-h5W" id="17K-ri-lVn"/>
+                <outlet property="lblLeftDebt" destination="kG4-UB-9di" id="eox-SB-6Ag"/>
                 <outlet property="originMoneyLb" destination="3xa-C4-QoA" id="UAP-RE-uag"/>
                 <outlet property="selectImg" destination="IXQ-Kc-S13" id="vGl-SQ-Q8B"/>
                 <outlet property="titleLb" destination="Qhg-Sg-hAX" id="ebg-tm-4v7"/>
