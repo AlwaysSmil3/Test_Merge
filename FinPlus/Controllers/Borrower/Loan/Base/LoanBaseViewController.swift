@@ -213,9 +213,11 @@ class LoanBaseViewController: BaseViewController {
             print("Upload \(String(describing: response))")
             
             guard let res = response, let data = res["data"] as? [JSONDictionary], data.count > 0 else {
-                if let re = response, let message = re[API_RESPONSE_RETURN_MESSAGE] as? String {
-                    self.showToastWithMessage(message: message)
-                }
+//                if let re = response, let message = re[API_RESPONSE_RETURN_MESSAGE] as? String {
+//                    self.showToastWithMessage(message: message)
+//                }
+                
+                self.showToastWithMessage(message: "Có lỗi xảy ra, vui lòng thử lại")
                 
                 return
             }

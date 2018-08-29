@@ -79,6 +79,14 @@ class LoanInfoJobVC: LoanBaseViewController {
 
     @IBAction func btnContinueTapped(_ sender: Any) {
         self.view.endEditing(true)
+        
+        if DataManager.shared.listKeyMissingLoanKey != nil && DataManager.shared.listKeyMissingLoanKey!.count > 0  {
+            if !DataManager.shared.checkIndexLastStepHaveMissingData(index: 3) {
+                updateLoanStatusInvalidData()
+                return
+            }
+        }
+        
         self.updateDataForLoanAPI {
             let loanWalletVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "LIST_WALLET") as! ListWalletViewController
             loanWalletVC.walletAction = .LoanNation

@@ -93,6 +93,14 @@ extension LoanStateViewController {
     
     @IBAction func update_loan_MissData()
     {
+        
+        if DataManager.shared.listKeyMissingLoanKey == nil || DataManager.shared.listKeyMissingLoanKey!.count == 0 {
+ 
+            //Khi user da nhap het rồi thì chuyển trạng thái luôn
+            updateLoanStatusInvalidData()
+            return
+        }
+        
         guard DataManager.shared.loanCategories.count > 0 else { return }
         guard let _ = DataManager.shared.browwerInfo else { return }
         

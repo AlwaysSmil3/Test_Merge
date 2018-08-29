@@ -318,9 +318,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
         
-        mailComposerVC.setToRecipients(["support@five9.vn"])
-        mailComposerVC.setSubject("Help me")
-        mailComposerVC.setMessageBody("Hi Five9,\n", isHTML: false)
+        mailComposerVC.setToRecipients(["support@mony.vn"])
+        mailComposerVC.setSubject("[Mony - Hỗ trợ \(DataManager.shared.currentAccount)]")
+        mailComposerVC.setMessageBody("Hi Mony,\n", isHTML: false)
         
         return mailComposerVC
     }

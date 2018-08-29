@@ -52,6 +52,46 @@ extension UIViewController {
         }
     }
     
+    
+    /// update Loan status Invalid data khi user thay doi het thong tin sai
+    func updateLoanStatusInvalidData() {
+        DataManager.shared.loanInfo.status = DataManager.shared.loanInfo.status - 1
+        
+        clearValueInValidUserDefaultData()
+        
+        APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
+            .done(on: DispatchQueue.main) { model in
+                DataManager.shared.loanID = model.loanId!
+                
+                //Lay thong tin nguoi dung
+                APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
+                    .done(on: DispatchQueue.main) { model in
+                        DataManager.shared.browwerInfo = model
+                        
+                        self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Bạn đã cập nhật thông tin xong!", okTitle: "Về trang chủ", cancelTitle: nil) { (status) in
+                            if status {
+                                if let info = DataManager.shared.browwerInfo?.activeLoan,  let loanId = info.loanId, loanId > 0 {
+                                    let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+                                    if let window = UIApplication.shared.delegate?.window, let win = window {
+                                        win.rootViewController = tabbarVC
+                                    }
+                                } else {
+                                    self.navigationController?.popToRootViewController(animated: true)
+                                }
+                            }
+                        }
+                        
+                    }
+                    .catch { error in
+                        self.navigationController?.popToRootViewController(animated: true)
+                }
+                
+            }
+            .catch { error in }
+        
+        
+    }
+    
     //MARK:----------------- Show Alert View----------------------
     func showAlertView(title: String, message: String, okTitle: String?, cancelTitle: String?, completion:((_ isPressedOK: Bool) -> Swift.Void)? = nil) {
         

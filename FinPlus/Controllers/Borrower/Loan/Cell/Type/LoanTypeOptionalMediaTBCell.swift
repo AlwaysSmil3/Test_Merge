@@ -134,9 +134,9 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
             print("Upload \(String(describing: response))")
             
             guard let res = response, let data = res["data"] as? [JSONDictionary], data.count > 0 else {
-                if let re = response, let message = re[API_RESPONSE_RETURN_MESSAGE] as? String {
-                    UIApplication.shared.topViewController()!.showToastWithMessage(message: message)
-                }
+                //if let re = response {
+                UIApplication.shared.topViewController()!.showToastWithMessage(message: "Có lỗi xảy ra, vui lòng thử lại" )
+                //}
                 
                 return
             }

@@ -144,6 +144,8 @@ class TestBorrowingPayViewController: UIViewController {
     var isOntime: Bool = true
     var isDebt: Bool = false
     
+    var expireDateString = ""
+    
     var paymentInfo: PaymentInfoMoney? {
         didSet {
             guard let pay  = self.paymentInfo else { return }
@@ -244,10 +246,13 @@ class TestBorrowingPayViewController: UIViewController {
         //Phí thanh toán trước nợ
         let feePayBefore = Float((amount - originAmount * Float(loan.paidMonth ?? 0)) * 2/100)
         
-        self.payAmountPresent = Double(originAmount + interestAmount)
-        self.payTotalAmount = Double(interestTotalAmount + feePayBefore + amount)
+//        self.payAmountPresent = Double(originAmount + interestAmount)
+//        self.payTotalAmount = Double(interestTotalAmount + feePayBefore + amount)
         
         let expireDate = Date.init(fromString: loan.nextPaymentDate ?? "", format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
+        
+        self.expireDateString = expireDate.toString(.custom(kDisplayFormat))
+        
         let payType1 = PayType(id: 1, typeTitle: "Phai tra thang nay", expireDate: expireDate, originAmount: originAmount, interestAmount: interestAmount, sumAmount: originAmount + interestAmount)
         let payAll = PayAllBefore(id: 1, typeTitle: "Tra tat ca luon", originAmount: Float(amount), interestAmount: interestTotalAmount, feeToPayBefore: feePayBefore, sumAmount: Float(self.payTotalAmount))
         let payTypeArray = [payType1]
@@ -335,6 +340,13 @@ class TestBorrowingPayViewController: UIViewController {
                 if self.payAllSelected != nil {
                     monyBankListVC.amount = self.payTotalAmount
                 } else {
+                    
+                    if self.payAmountPresent == 0 {
+                        self.showGreenBtnMessage(title: "Thông báo", message: "Bạn đã thanh toán cho kỳ thanh toán ngày \(self.expireDateString). Bạn có thể lựa chọn tất toán toàn bộ khoản vay trước hạn. Xin cảm ơn.", okTitle: "Đóng", cancelTitle: nil)
+                        
+                        return
+                    }
+                    
                     monyBankListVC.amount = self.payAmountPresent
                 }
                 

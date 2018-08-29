@@ -334,10 +334,25 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             
             if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
                 //Cap nhat thong tin khong hop le
-                if self.valueTemp == nil {
-                    self.updateInfoFalse(pre: title)
+//                if self.valueTemp == nil {
+//                    self.updateInfoFalse(pre: title)
+//                }
+//                self.valueTemp = self.lblValue?.text
+                
+                
+                if let arrayIndex = field_.arrayIndex, let data = DataManager.shared.missingOptionalText {
+                    
+                    if let text = data["\(arrayIndex)"] as? String {
+                        //Cap nhat thong tin khong hop le
+                        print("OptionalText \(text)")
+                        if self.valueTemp == nil {
+                            self.updateInfoFalse(pre: title)
+                        }
+                        
+                        self.valueTemp = self.lblValue?.text
+                    }
                 }
-                self.valueTemp = self.lblValue?.text
+                
             }
         }
         
