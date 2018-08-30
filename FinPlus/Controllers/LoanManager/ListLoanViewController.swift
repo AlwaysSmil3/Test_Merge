@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListLoanViewController: UIViewController {
+class ListLoanViewController: BaseViewController {
     
     // MARK: - Outlet
     @IBOutlet weak var tableview: UITableView!
@@ -24,7 +24,9 @@ class ListLoanViewController: UIViewController {
         
         // Do any additional setup after loading the view.
 
-        self.title = NSLocalizedString("LOAN_MANAGER", comment: "")
+        //self.title = NSLocalizedString("LOAN_MANAGER", comment: "")
+        self.setupTitleView(title: "Quản lý các khoản vay")
+        
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         self.noWalletLabel.text = NSLocalizedString("NO_LOAN", comment: "")

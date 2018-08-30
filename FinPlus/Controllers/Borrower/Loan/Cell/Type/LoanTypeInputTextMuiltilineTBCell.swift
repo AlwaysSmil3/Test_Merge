@@ -70,6 +70,12 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
         
     }
     
+//    func checkOtherInfoInvalid(indexArray: String, currentValue: String) -> Bool {
+//
+//
+//
+//    }
+    
     
     func getData() {
         guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }

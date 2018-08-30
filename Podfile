@@ -32,6 +32,7 @@ pod 'Fabric'
 pod 'Crashlytics'
 
 pod 'SVProgressHUD'
+pod 'DateToolsSwift'
 
   # Pods for FinPlus
 

@@ -55,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefault.set(false, forKey: Notification_Have_New)
         }
         
+        clearValueInValidUserDefaultData()
         
         //Setup start View Controller
         self.setupStartVC()
