@@ -140,7 +140,7 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         self.months.removeAllObjects()
         self.data = []
         
-        dateFormatter.dateFormat = "dd/MM/YY"
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         
         if (self.moneyTextField.text?.count)! < 4 {
             showAlertView(title: "Lỗi", message: "Số tiền không được nhỏ hơn 1000000", okTitle: "Đồng ý", cancelTitle: nil)

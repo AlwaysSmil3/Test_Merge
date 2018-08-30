@@ -146,6 +146,14 @@ extension ListLoanViewController: UITableViewDelegate {
 
 extension ListLoanViewController: UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = FONT_CAPTION
+        header.textLabel?.textColor = TEXT_NORMAL_COLOR
+        let sectionItem = listLoan[section] as! NSDictionary
+        header.textLabel?.text = NSLocalizedString((sectionItem["title"] as? String)!, comment: "")
+    }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         let sectionItem = listLoan[section] as! NSDictionary
@@ -171,7 +179,13 @@ extension ListLoanViewController: UITableViewDataSource {
         cell?.statusValueLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: state!)!)
         let amount = FinPlusHelper.formatDisplayCurrency(Double(item.amount?.description ?? "") ?? 0) + " đ"
         cell?.moneyLabel.text = amount
-        cell?.disLabel.text = "Thời hạn: \(item.term ?? 0) ngày - \(item.loanCategory?.title ?? "")"
+        
+        var term = "\((item.term ?? 0)/30) tháng"
+        if item.loanCategory?.id == Loan_Student_Category_ID {
+            term = "\((item.term ?? 0)) ngày"
+        }
+        
+        cell?.disLabel.text = "Thời hạn: \(term) - \(item.loanCategory?.title ?? "")"
         
         return cell!
     }
