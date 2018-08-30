@@ -178,7 +178,7 @@ class DataManager {
     
     //Xoa du lieu khi logout
     func clearData(completion: () -> Void) {
-        
+        clearValueInValidUserDefaultData()
         self.browwerInfo = nil
         self.currentAccount = ""
         self.loanID = nil
