@@ -51,8 +51,6 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
         self.tfPass?.delegate = self
         self.tfRePass.delegate = self
         
-        self.tfPass?.becomeFirstResponder()
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +69,12 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
             }
             break
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.tfPass?.becomeFirstResponder()
     }
     
     private func updateStateBtnContinue() {
