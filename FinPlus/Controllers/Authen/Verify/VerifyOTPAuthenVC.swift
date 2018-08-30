@@ -154,7 +154,7 @@ class VerifyOTPAuthenVC: BaseViewController {
     private func getAuthenOTP() {
         APIClient.shared.getAuthenOTP()
             .done(on: DispatchQueue.main) { [weak self]model in
-                self?.showToastWithMessage(message: model.returnMsg!)
+                self?.showToastWithMessage(message: "OTP đã được gửi lại thành công.")
                 self?.updateOTP()
             }
             .catch { error in }
@@ -167,7 +167,7 @@ class VerifyOTPAuthenVC: BaseViewController {
         guard let loanid_ = self.loanId else { return }
         APIClient.shared.getOTPContract(loanID: loanid_)
             .done(on: DispatchQueue.main) { [weak self]model in
-                self?.showToastWithMessage(message: model.returnMsg!)
+                self?.showToastWithMessage(message: "OTP đã được gửi lại thành công.")
                 self?.updateOTP()
             }
             .catch { error in }
@@ -179,7 +179,7 @@ class VerifyOTPAuthenVC: BaseViewController {
     private func getOTPForgetPass() {
         APIClient.shared.getForgetPasswordOTP()
             .done(on: DispatchQueue.main) { [weak self]model in
-                self?.showToastWithMessage(message: model.returnMsg!)
+                self?.showToastWithMessage(message: "OTP đã được gửi lại thành công.")
                 self?.updateOTP()
             }
             .catch { error in }

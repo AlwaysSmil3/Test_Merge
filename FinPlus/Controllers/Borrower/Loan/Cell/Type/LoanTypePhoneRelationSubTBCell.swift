@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol UpdateStatusInvalidRelationPhoneDelegate {
+    func update(isNeed: Bool)
+}
+
 class LoanTypePhoneRelationSubTBCell: UITableViewCell {
     
     
@@ -16,6 +20,8 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
     @IBOutlet weak var tfRelationPhone: UITextField?
     
     var currentIndex: Int = 0
+    
+    var delegateUpdateStatusInvalid: UpdateStatusInvalidRelationPhoneDelegate?
     
     var data: LoanBuilderMultipleData? {
         didSet {
@@ -31,11 +37,24 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
                         self.tfRelationPhone?.text = options[current].title
                     }
                 }
+                
+                if DataManager.shared.isRelationPhone1Invalid {
+                    self.tfRelationPhone?.textColor = UIColor(hexString: "#DA3535")
+                } else {
+                    self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
+                }
+                
             } else {
                 if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup2 {
                     if let options = data_.options, current < options.count {
                         self.tfRelationPhone?.text = options[current].title
                     }
+                }
+                
+                if DataManager.shared.isRelationPhone2Invalid {
+                    self.tfRelationPhone?.textColor = UIColor(hexString: "#DA3535")
+                } else {
+                    self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
                 }
             }
             
@@ -50,6 +69,16 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
         self.tfRelationPhone?.delegate = self
     }
     
+    func updateStatus() {
+        if !DataManager.shared.isRelationPhone1Invalid && !DataManager.shared.isRelationPhone2Invalid {
+            self.delegateUpdateStatusInvalid?.update(isNeed: false)
+            userDefault.set("", forKey: UserDefaultInValidRelationPhone)
+            userDefault.synchronize()
+        } else {
+            self.delegateUpdateStatusInvalid?.update(isNeed: true)
+        }
+    }
+    
     
     //MARK: Actions
     
@@ -60,10 +89,29 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
                 if DataManager.shared.loanInfo.userInfo.relationships.count > 0 {
                     DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber = value
                 }
+                
+                if DataManager.shared.missingRelationsShip != nil {
+                    if value != DataManager.shared.getPhoneInValid(index: "0") {
+                        DataManager.shared.isRelationPhone1Invalid = false
+                        self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
+                    }
+                    self.updateStatus()
+                }
+
+                
             } else {
                 if DataManager.shared.loanInfo.userInfo.relationships.count > 1 {
                     DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber = value
                 }
+                
+                if DataManager.shared.missingRelationsShip != nil {
+                    if value != DataManager.shared.getPhoneInValid(index: "1") {
+                        DataManager.shared.isRelationPhone2Invalid = false
+                        self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
+                    }
+                    self.updateStatus()
+                }
+                
             }
             
         }
@@ -89,15 +137,36 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
     }
     
 
-    
-    
-    
 }
 
 //MARK: TextField Delegate
 extension LoanTypePhoneRelationSubTBCell: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Giới hạn ký tự nhập vào
+        
+        if DataManager.shared.missingRelationsShip != nil {
+            if self.currentIndex == 0 {
+                if textField.text != DataManager.shared.getPhoneInValid(index: "0") {
+                    DataManager.shared.isRelationPhone1Invalid = false
+                    self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
+                    
+                } else {
+                    DataManager.shared.isRelationPhone1Invalid = true
+                    self.tfRelationPhone?.textColor = UIColor(hexString: "#DA3535")
+                }
+            } else {
+                if textField.text != DataManager.shared.getPhoneInValid(index: "1") {
+                    DataManager.shared.isRelationPhone2Invalid = false
+                    self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
+                } else {
+                    DataManager.shared.isRelationPhone2Invalid = true
+                    self.tfRelationPhone?.textColor = UIColor(hexString: "#DA3535")
+                }
+            }
+            self.updateStatus()
+        }
+        
+        
         let maxLength = 11
         let currentString: NSString = textField.text! as NSString
         let newString: NSString =

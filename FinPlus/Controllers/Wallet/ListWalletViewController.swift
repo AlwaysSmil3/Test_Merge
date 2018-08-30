@@ -141,6 +141,14 @@ class ListWalletViewController: BaseViewController {
         DataManager.shared.loanInfo.walletId = bankId
         DataManager.shared.loanInfo.bankId = bankId
         
+        
+        if DataManager.shared.listKeyMissingLoanKey != nil && DataManager.shared.listKeyMissingLoanKey!.count > 0  {
+            if !DataManager.shared.checkIndexLastStepHaveMissingData(index: 4) {
+                updateLoanStatusInvalidData()
+                return
+            }
+        }
+        
         let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
         
         self.navigationController?.isNavigationBarHidden = true
@@ -359,6 +367,9 @@ extension ListWalletViewController: UITableViewDataSource {
                             //Cap nhat thong tin khong hop le
                             cell?.optionBtn.setImage(UIImage(named: "option_icon"), for: .normal)
                             cell?.borderView.layer.borderColor = UIColor.red.cgColor
+                        } else {
+                            userDefault.set("", forKey: UserDefaultInValidBank)
+                            userDefault.synchronize()
                         }
                         
                         return cell!

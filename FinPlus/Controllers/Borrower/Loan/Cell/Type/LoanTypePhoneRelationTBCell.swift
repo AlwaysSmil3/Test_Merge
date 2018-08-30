@@ -54,9 +54,11 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
     func getData() {
         
-        if DataManager.shared.checkFieldIsMissing(key: "relationships") {
+        if DataManager.shared.checkFieldIsMissing(key: "relationships") && (DataManager.shared.isRelationPhone1Invalid || DataManager.shared.isRelationPhone2Invalid) {
             //Cap nhat thong tin khong hop le
             self.updateInfoFalse(pre: self.field?.title ?? "")
+        } else {
+            self.isNeedUpdate = false
         }
         
         var value: [LoanBuilderMultipleData] = []
@@ -124,14 +126,21 @@ extension LoanTypePhoneRelationTBCell: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Loan_Type_Phone_Relation_Sub_TB_Cell", for: indexPath) as! LoanTypePhoneRelationSubTBCell
-        cell.data = self.dataSource[indexPath.row]
+        cell.delegateUpdateStatusInvalid = self
         cell.currentIndex = indexPath.row
+        cell.data = self.dataSource[indexPath.row]
         
         return cell
     }
     
     
-    
+}
+
+//MARK: UpdateStatusInvalidRelationPhoneDelegate
+extension LoanTypePhoneRelationTBCell: UpdateStatusInvalidRelationPhoneDelegate {
+    func update(isNeed: Bool) {
+        self.isNeedUpdate = isNeed
+    }
 }
 
 

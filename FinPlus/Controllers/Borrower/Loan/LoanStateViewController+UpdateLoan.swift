@@ -93,13 +93,83 @@ extension LoanStateViewController {
     
     @IBAction func update_loan_MissData()
     {
+        
+        if DataManager.shared.listKeyMissingLoanKey == nil || DataManager.shared.listKeyMissingLoanKey!.count == 0 {
+ 
+            //Khi user da nhap het rồi thì chuyển trạng thái luôn
+            updateLoanStatusInvalidData()
+            return
+        }
+        
         guard DataManager.shared.loanCategories.count > 0 else { return }
         guard let _ = DataManager.shared.browwerInfo else { return }
         
-        let loanPersionalInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanPersionalInfoVC") as! LoanPersionalInfoVC
-        loanPersionalInfoVC.hidesBottomBarWhenPushed = true
-        self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
+        self.gotoFirstVCHaveInvalidData()
+    }
+    
+    func gotoFirstVCHaveInvalidData() {
+        
+        guard let indexVC = DataManager.shared.getStartIndexHaveMissingData() else {
+            let loanPersionalInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanPersionalInfoVC") as! LoanPersionalInfoVC
+            loanPersionalInfoVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
+            
+            return
+        }
+        
+        switch indexVC {
+        case 2:
+            let loanPersionalInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanPersionalInfoVC") as! LoanPersionalInfoVC
+            loanPersionalInfoVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
+            
+            break
+        case 3:
+            let loanInfoJobVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanInfoJobVC") as! LoanInfoJobVC
+            loanInfoJobVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.pushViewController( loanInfoJobVC, animated: true)
+            
+            break
+        case 4:
+            let loanWalletVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "LIST_WALLET") as! ListWalletViewController
+            loanWalletVC.walletAction = .LoanNation
+            loanWalletVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.isNavigationBarHidden = true
+            
+            self.navigationController?.pushViewController(loanWalletVC, animated: true)
+            
+            break
+        case 5:
+            let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
+            loanNationalIDVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
+            
+            break
+        case 6:
+            let loanOtherInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanOtherInfoVC") as! LoanOtherInfoVC
+            
+            loanOtherInfoVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.isNavigationBarHidden = true
+            
+            self.navigationController?.pushViewController(loanOtherInfoVC, animated: true)
+            
+            break
+        default:
+            let loanPersionalInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanPersionalInfoVC") as! LoanPersionalInfoVC
+            loanPersionalInfoVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
+            
+            break
+        }
+        
+        
+        
+        
     }
     
     

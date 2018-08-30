@@ -8,6 +8,32 @@
 
 import Foundation
 
+let Notification_Have_New = "kNotification_Have_New"
+
+//Set Key Missing Data khi User Đã cập nhật
+let UserDefaultInValidRelationPhone = "kUserDefaultInValidRelationPhone"
+let UserDefaultInValidResidentAddress = "kUserDefaultInValidResidentAddress"
+let UserDefaultInValidCurrentAddress = "kUserDefaultInValidCurrentAddress"
+let UserDefaultInValidJobAddress = "kUserDefaultInValidJobAddress"
+let UserDefaultInValidAcademicAddress = "kUserDefaultInValidAcademicAddress"
+let UserDefaultInValidOptionalText = "kUserDefaultInValidOptionalText"
+let UserDefaultInValidOptionalMedia = "kUserDefaultInValidOptionalMedia"
+let UserDefaultInValidBank = "kUserDefaultInValidBank"
+
+
+func clearValueInValidUserDefaultData() {
+    userDefault.set(nil, forKey: UserDefaultInValidRelationPhone)
+    userDefault.set(nil, forKey: UserDefaultInValidResidentAddress)
+    userDefault.set(nil, forKey: UserDefaultInValidCurrentAddress)
+    userDefault.set(nil, forKey: UserDefaultInValidJobAddress)
+    userDefault.set(nil, forKey: UserDefaultInValidAcademicAddress)
+    userDefault.set(nil, forKey: UserDefaultInValidOptionalText)
+    userDefault.set(nil, forKey: UserDefaultInValidOptionalMedia)
+    userDefault.set(nil, forKey: UserDefaultInValidBank)
+    userDefault.synchronize()
+}
+
+
 //Vay sinh vien
 var CountOptionTextVaySinhVien = 1
 var CountOptionMediaVaySinhView = 2
@@ -291,9 +317,9 @@ func getState(type: STATUS_LOAN) -> String {
     switch type {
     case .DRAFT:
         return "Chưa hoàn thiện"
-    case .SALE_REVIEW, .SALE_PENDING, .RISK_REVIEW:
+    case .SALE_REVIEW, .RISK_REVIEW:
         return "Chờ phê duyệt"
-    case .RISK_PENDING:
+    case .RISK_PENDING, .SALE_PENDING:
         return "Cần bổ sung thông tin"
     case .REJECTED:
         return "Đơn vay bị từ chối"
