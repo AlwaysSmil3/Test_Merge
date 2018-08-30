@@ -369,6 +369,7 @@ extension ListWalletViewController: UITableViewDataSource {
                             cell?.borderView.layer.borderColor = UIColor.red.cgColor
                         } else {
                             userDefault.set("", forKey: UserDefaultInValidBank)
+                            userDefault.synchronize()
                         }
                         
                         return cell!

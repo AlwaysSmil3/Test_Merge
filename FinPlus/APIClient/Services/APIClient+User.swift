@@ -27,6 +27,8 @@ extension APIClient {
                         if let activeLoan = model.activeLoan,let status = activeLoan.status, status == STATUS_LOAN.SALE_PENDING.rawValue || status == STATUS_LOAN.RISK_PENDING.rawValue {
                             if let activeLoan = data["activeLoan"] as? JSONDictionary, let missingData = activeLoan["missingData"] as? JSONDictionary {
                                 
+                                DataManager.shared.browwerInfo = model
+                                
                                 if let optionalData = missingData["optionalText"] as? JSONDictionary {
                                     DataManager.shared.missingOptionalText = optionalData
                                 }

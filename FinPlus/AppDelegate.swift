@@ -55,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefault.set(false, forKey: Notification_Have_New)
         }
         
+        
         //Setup start View Controller
         self.setupStartVC()
         
@@ -198,7 +199,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             if let tabbar = topVC as? BorrowerTabBarController, let currentNavi = tabbar.selectedViewController as? UINavigationController, let currentVC = currentNavi.topViewController as? LoanStateViewController  {
                 
-                currentVC.showAlertView(title: title, message: body, okTitle: "OK", cancelTitle: nil) { (status) in
+                currentVC.showAlertView(title: title, message: body, okTitle: "Đồng ý", cancelTitle: nil) { (status) in
                     currentVC.reLoadStatusLoanVC()
                 }
                 

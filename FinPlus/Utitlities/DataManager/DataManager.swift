@@ -172,6 +172,8 @@ class DataManager {
     func reloadDataFirstLoanVC() {
         DataManager.shared.loanInfo.amount = 0
         DataManager.shared.loanInfo.term = 0
+        DataManager.shared.browwerInfo?.activeLoan?.amount = 0
+        DataManager.shared.browwerInfo?.activeLoan?.term = 0
     }
     
     //Xoa du lieu khi logout
@@ -572,13 +574,7 @@ class DataManager {
             missingListKey.append("optionalMedia")
             missingListTitle.append("Thông tin bổ sung Media")
         }
-        
-    
-        
-//        if let value = miss.optionalText, value.count > 0 {
-//            missingListKey.append("optionalText")
-//            missingListTitle.append("Thông tin bổ sung")
-//        }
+
         
         self.listKeyMissingLoanKey = missingListKey
         self.listKeyMissingLoanTitle = missingListTitle
@@ -589,42 +585,83 @@ class DataManager {
         
         guard let data = self.missingLoanDataDictionary else { return false }
         
-//        switch index {
-//        case 3:
-            if index < 3 {
-                if let _ = data["jobInfo"]  {
-                    return true
-                }
+        if index < 3 {
+            if let _ = data["jobInfo"]  {
+                return true
+            }
+        }
+        
+        
+        if index < 4 {
+            if let _ = data["bank"]  {
+                return true
+            }
+        }
+        
+        if index < 5 {
+            if let _ = data["nationalIdAllImg"]  {
+                return true
+            }
+            if let _ = data["nationalIdFrontImg"]  {
+                return true
+            }
+            if let _ = data["nationalIdBackImg"]  {
+                return true
+            }
+        }
+        
+        if index < 6 {
+            if let _ = data["optionalMedia"]  {
+                return true
             }
             
-//            break
-//        case 4:
-            if index < 4 {
-                if let _ = data["bank"]  {
-                    return true
-                }
+            if let _ = data["optionalText"]  {
+                return true
             }
-//            break
-//        case 5:
-            if index < 5 {
-                if let _ = data["optionalMedia"]  {
-                    return true
-                }
-                
-                if let _ = data["optionalText"]  {
-                    return true
-                }
-            }
-
-//            break
-//        case 6:
-//            break
-//        default:
-//            break
-//        }
-        
+        }
         
         return false
+    }
+    
+    
+    /// Get start index Have Invalid Data
+    ///
+    /// - Returns: <#return value description#>
+    func getStartIndexHaveMissingData() -> Int? {
+        
+        guard let data = self.missingLoanDataDictionary else { return nil }
+        
+        if let _ = data["userInfo"]  {
+            return 2
+        }
+        
+        if let _ = data["jobInfo"]  {
+            return 3
+        }
+        
+        if let _ = data["bank"]  {
+            return 4
+        }
+        
+        if let _ = data["nationalIdAllImg"]  {
+            return 5
+        }
+        if let _ = data["nationalIdFrontImg"]  {
+            return 5
+        }
+        if let _ = data["nationalIdBackImg"]  {
+            return 5
+        }
+        
+        if let _ = data["optionalMedia"]  {
+            return 6
+        }
+        
+        if let _ = data["optionalText"]  {
+            return 6
+        }
+        
+        return nil
     }
     
     
