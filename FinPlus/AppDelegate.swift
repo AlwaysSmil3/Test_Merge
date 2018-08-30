@@ -55,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefault.set(false, forKey: Notification_Have_New)
         }
         
+        clearValueInValidUserDefaultData()
         
         //Setup start View Controller
         self.setupStartVC()
@@ -208,7 +209,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 DataManager.shared.isNeedReloadLoanStatusVC = true
             }
             
-            topVC.showAlertView(title: title, message: body, okTitle: "OK", cancelTitle: nil)
+            topVC.showAlertView(title: title, message: body, okTitle: "Đồng ý", cancelTitle: nil)
             
         }
         

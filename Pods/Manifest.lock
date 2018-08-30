@@ -8,6 +8,7 @@ PODS:
   - Bolts/Tasks (1.9.0)
   - Crashlytics (3.10.2):
     - Fabric (~> 1.7.7)
+  - DateToolsSwift (4.0.0)
   - DropDown (2.3.2)
   - Fabric (1.7.7)
   - FBSDKCoreKit (4.33.0):
@@ -62,7 +63,6 @@ PODS:
   - PromiseKit/UIKit (6.2.8):
     - PromiseKit/CorePromise
   - Protobuf (3.5.0)
-  - SCPageControl (0.2.1)
   - SDWebImage (4.4.0):
     - SDWebImage/Core (= 4.4.0)
   - SDWebImage/Core (4.4.0)
@@ -74,6 +74,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Crashlytics
+  - DateToolsSwift
   - DropDown
   - Fabric
   - FBSDKCoreKit
@@ -85,7 +86,6 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - PinCodeTextField
   - PromiseKit
-  - SCPageControl
   - SDWebImage (~> 4.0)
   - SpreadsheetView
   - SVProgressHUD
@@ -97,6 +97,7 @@ SPEC REPOS:
     - Alamofire
     - Bolts
     - Crashlytics
+    - DateToolsSwift
     - DropDown
     - Fabric
     - FBSDKCoreKit
@@ -114,7 +115,6 @@ SPEC REPOS:
     - PinCodeTextField
     - PromiseKit
     - Protobuf
-    - SCPageControl
     - SDWebImage
     - SpreadsheetView
     - SVProgressHUD
@@ -125,6 +125,7 @@ SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Crashlytics: 0360624eea1c978a743feddb2fb1ef8b37fb7a0d
+  DateToolsSwift: 875d97ff9e3a5d54abdd67a269b3f51c757b71ab
   DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
   Fabric: bda89e242bce1b7b8ab264248cf3407774ce0095
   FBSDKCoreKit: 572b047a7e029bc44542bcf8a59414e7ff2b543e
@@ -142,13 +143,12 @@ SPEC CHECKSUMS:
   PinCodeTextField: a3c39be58bde3ed1d6888d0fb1d88b0a4a2277cc
   PromiseKit: 6788ce1a0ed5448b83d4aaf56b9fc49fb7647d32
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
-  SCPageControl: 85efcc9c6f350fd9dce5f81d774ba0d37d09fd84
   SDWebImage: b534502786e43dde36dfcaee89356fe6df30e203
   SpreadsheetView: 17c55b6dc82099993cc2ceb818248d19f3220998
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 6bc5c7418f3e0739819c328cd68774efa1918774
+PODFILE CHECKSUM: c6fc9045850105a5488114bf210bd6bb4fee4b54
 
 COCOAPODS: 1.5.3

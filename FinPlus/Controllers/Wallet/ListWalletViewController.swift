@@ -58,7 +58,7 @@ class ListWalletViewController: BaseViewController {
             self.updateDataToServer()
         } else {
             self.navigationItem.rightBarButtonItem = nil
-            self.setupTitleView(title: "Tài khoản nhận tiền")
+            self.setupTitleView(title: "Quản lý tài khoản")
         }
         
         self.noWalletLabel.text = NSLocalizedString("NO_ACCOUNT_BANK", comment: "")

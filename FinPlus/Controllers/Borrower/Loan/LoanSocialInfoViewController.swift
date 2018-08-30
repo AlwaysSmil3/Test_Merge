@@ -60,7 +60,9 @@ class LoanSocialInfoViewController: BaseViewController {
     
     private func facebookSignIn() {
         // Go to Facebook
+        self.handleLoadingView(isShow: true)
         FacebookSignInManager.basicInfoWithCompletionHandler(self) { (data, error) in
+            self.handleLoadingView(isShow: false)
             if error == nil {
                 guard let data = data else { return }
                 self.getFaceBookInfoData(data: data)

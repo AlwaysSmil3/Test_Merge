@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -44,7 +43,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9wI-Lj-OBd">
-                                <rect key="frame" x="8" y="80" width="359" height="579"/>
+                                <rect key="frame" x="8" y="66" width="359" height="601"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4jv-qu-m3A">
@@ -69,13 +68,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="9wI-Lj-OBd" firstAttribute="top" secondItem="UaB-Sc-TdQ" secondAttribute="bottom" constant="16" id="2pW-R4-Pw0"/>
+                            <constraint firstItem="9wI-Lj-OBd" firstAttribute="top" secondItem="UaB-Sc-TdQ" secondAttribute="bottom" constant="2" id="2pW-R4-Pw0"/>
                             <constraint firstItem="4jv-qu-m3A" firstAttribute="top" secondItem="UaB-Sc-TdQ" secondAttribute="bottom" id="CJU-bt-B4B"/>
                             <constraint firstItem="4jv-qu-m3A" firstAttribute="leading" secondItem="grR-57-F6H" secondAttribute="leading" id="KLX-lb-Smn"/>
                             <constraint firstAttribute="trailing" secondItem="4jv-qu-m3A" secondAttribute="trailing" id="Mxh-Ma-NgZ"/>
                             <constraint firstAttribute="trailing" secondItem="9wI-Lj-OBd" secondAttribute="trailing" constant="8" id="Sk6-yo-la6"/>
                             <constraint firstItem="9wI-Lj-OBd" firstAttribute="leading" secondItem="grR-57-F6H" secondAttribute="leading" constant="8" id="bYy-Et-jri"/>
-                            <constraint firstItem="eD8-2L-qDC" firstAttribute="top" secondItem="9wI-Lj-OBd" secondAttribute="bottom" constant="8" id="nyM-zM-wyI"/>
+                            <constraint firstItem="eD8-2L-qDC" firstAttribute="top" secondItem="9wI-Lj-OBd" secondAttribute="bottom" id="nyM-zM-wyI"/>
                             <constraint firstItem="eD8-2L-qDC" firstAttribute="top" secondItem="4jv-qu-m3A" secondAttribute="bottom" id="vQ7-1H-fxi"/>
                         </constraints>
                     </view>
