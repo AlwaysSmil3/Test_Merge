@@ -95,7 +95,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     print("Permission granted: \(granted)")
                     
-                    //guard granted else { return }
                     
 //                    let viewAction = UNNotificationAction(identifier: viewActionIdentifier,
 //                                                          title: "View",

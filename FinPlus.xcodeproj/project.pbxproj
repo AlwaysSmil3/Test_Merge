@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		15942B202105B32300591BA4 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15942B1F2105B32300591BA4 /* PaymentMethod.swift */; };
 		48D46DDE05C608E1D160EC14 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
+		6302C10721393DA90037277E /* DataManager+MissingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302C10621393DA90037277E /* DataManager+MissingData.swift */; };
 		63037F4F21115531002CE49B /* APIClient+Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63037F4E21115531002CE49B /* APIClient+Payment.swift */; };
 		63037F5221119A93002CE49B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63037F5121119A93002CE49B /* Transaction.swift */; };
 		6303923020E8B108000C422D /* VSSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303922D20E8B108000C422D /* VSSlider.swift */; };
@@ -341,6 +342,7 @@
 
 /* Begin PBXFileReference section */
 		15942B1F2105B32300591BA4 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
+		6302C10621393DA90037277E /* DataManager+MissingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+MissingData.swift"; sourceTree = "<group>"; };
 		63037F4E21115531002CE49B /* APIClient+Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Payment.swift"; sourceTree = "<group>"; };
 		63037F5121119A93002CE49B /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		6303922D20E8B108000C422D /* VSSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSSlider.swift; sourceTree = "<group>"; };
@@ -1217,6 +1219,7 @@
 			isa = PBXGroup;
 			children = (
 				639C9DD420A14B9D00F2CF5E /* DataManager.swift */,
+				6302C10621393DA90037277E /* DataManager+MissingData.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -2022,6 +2025,7 @@
 				636C53602138FD03005D24A2 /* ExUIDevice.swift in Sources */,
 				E7F51A0B20CE6CC800F72682 /* LoanOtherInfoCollectionCell.swift in Sources */,
 				639C9DEE20A182E900F2CF5E /* ExUIViewController.swift in Sources */,
+				6302C10721393DA90037277E /* DataManager+MissingData.swift in Sources */,
 				6303ECC0213509A1002C4C03 /* PaymentPaymentPeriod.swift in Sources */,
 				637A90B820A2FA5F00CCACA5 /* DatePickerDialog.swift in Sources */,
 				63750EF220F701840063054F /* BaseAuthenViewController.swift in Sources */,
