@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import DateToolsSwift
 
 class NotificationListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var currentIndex: Int = 1
+    var currentAfter: Int = 0
     
     var notificationList: [NotificationModel] = [] {
         didSet{
@@ -69,22 +70,25 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
     }
     
     private func reloadData() {
-        self.currentIndex = 0
+        self.currentAfter = 0
         self.notificationList.removeAll()
         self.getListNotification()
     }
 
     private func getListNotification() {
-        APIClient.shared.getListNotifications(pageIndex: self.currentIndex)
+        APIClient.shared.getListNotifications(after: self.currentAfter)
             .done(on: DispatchQueue.main) { model in
                 self.refresher.endRefreshing()
-                self.currentIndex += 1
+                
                 if model.count > 0{
                     self.noNotificationView.isHidden = true
                     self.notificationList.append(contentsOf: model)
+                    
+                    self.currentAfter = self.notificationList.last?.id ?? 0
                 } else {
                     self.noNotificationView.isHidden = false
                 }
+                
             }
             .catch { error in
                 self.refresher.endRefreshing()
@@ -98,6 +102,33 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         APIClient.shared.updateNotification(notiID: index)
             .done(on: DispatchQueue.global()) { model in }
             .catch { error in}
+    }
+    
+    
+    /// Format Date
+    ///
+    /// - Parameter date: <#date description#>
+    /// - Returns: <#return value description#>
+    private func formatDateDisplay(date: Date) -> String {
+        let currentDate = Date()
+        
+        if currentDate.hours(from: date) < 24 {
+            var hours = currentDate.hours(from: date)
+            
+            if hours == 0 {
+                hours = 1
+            }
+            
+            return "\(hours) giờ trước"
+        }
+        
+        
+        if currentDate.days(from: date) < 7 {
+            return "\(currentDate.days(from: date)) ngày trước"
+        }
+        
+        
+        return date.toString(.custom("HH:mm dd/MM/yyyy"))
     }
     
     //MARK:
@@ -136,7 +167,7 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
             let dateString = cellData.createdDate!
             
             let date = Date.init(fromString: dateString, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
-            cell.timeLb.text = date.toString(.custom("HH:mm dd/MM/yyyy"))
+            cell.timeLb.text = self.formatDateDisplay(date: date)
             cell.selectionStyle = .none
             return cell
         }
@@ -175,7 +206,7 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         if indexPath.row == self.notificationList.count - 1 {
             
             if self.notificationList.count % 20 == 0 {
-                self.currentIndex += 1
+                //self.currentAfter += self.notificationList.last?.id ?? 0
                 self.getListNotification()
             }
         }
