@@ -36,7 +36,7 @@ class APIClient {
             // Init delete request
             let _deleteRequest = NSMutableURLRequest()
             _deleteRequest.httpMethod = "DELETE"
-            _deleteRequest.timeoutInterval = 30
+            _deleteRequest.timeoutInterval = REQUEST_TIMEOUT
             _deleteRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _deleteRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
             return _deleteRequest
@@ -50,7 +50,7 @@ class APIClient {
             let _postRequest = NSMutableURLRequest()
             _postRequest.httpMethod = "POST"
             
-            _postRequest.timeoutInterval = 30
+            _postRequest.timeoutInterval = REQUEST_TIMEOUT
             
             _postRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _postRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
@@ -64,7 +64,7 @@ class APIClient {
             // Init get request
             let _getRequest = NSMutableURLRequest()
             _getRequest.httpMethod = "GET"
-            _getRequest.timeoutInterval = 30
+            _getRequest.timeoutInterval = REQUEST_TIMEOUT
 //            _getRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
 //            _getRequest.setValue("application/json, text/javascript, */*; q=0.01", forHTTPHeaderField: "Accept")
             _getRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -79,7 +79,7 @@ class APIClient {
             // Init get request
             let _putRequest = NSMutableURLRequest()
             _putRequest.httpMethod = "PUT"
-            _putRequest.timeoutInterval = 30
+            _putRequest.timeoutInterval = REQUEST_TIMEOUT
             _putRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _putRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
             return _putRequest

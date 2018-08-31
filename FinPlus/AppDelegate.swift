@@ -77,6 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         
+        print("UIDevice.modelName\(UIDevice.modelName)")
+        
         return true
     }
     
@@ -135,10 +137,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                 case .denied:
                     print("Notification denied")
-//                    guard let topVC = UIApplication.shared.topViewController() else { return }
-//
-//                    topVC.showAlertView(title: MS_TITLE_ALERT, message: "Vui lòng vào: cài đặt > Thông báo -> Mony -> Bật thông báo, để nhận những thông báo mới nhất từ Mony", okTitle: "Đồng ý", cancelTitle: nil)
-                    
                     
                     break
                 case .notDetermined:
@@ -147,7 +145,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     break
                     
                 }
-                
             }
         } else {
             // Fallback on earlier versions
@@ -250,13 +247,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //MARK: Setup Start View Controller
     
     private func setupStartVC() {
-
-        // lionel fix to test
-//        let payVC = TestBorrowingPayViewController(nibName: "TestBorrowingPayViewController", bundle: nil)
-//        let navi = UINavigationController(rootViewController: payVC)
-//        self.window?.rootViewController = navi
-//        return
-        // end
         
         let isFirstLaunch = UserDefaults.isFirstLaunch()
         if isFirstLaunch == true {
@@ -311,7 +301,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func getLoanCategories() {
         APIClient.shared.getLoanCategories()
             .done(on: DispatchQueue.main) { model in
-                print(model)
                 self.updateCountOptionalData(model: model, completion: {
                     DataManager.shared.loanCategories.append(contentsOf: model)
                 })
