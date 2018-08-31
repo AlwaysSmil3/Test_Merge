@@ -8,6 +8,9 @@
 
 import Foundation
 
+//Set time request TimeOut
+let REQUEST_TIMEOUT: Double = 30
+
 let Notification_Have_New = "kNotification_Have_New"
 
 //Set Key Missing Data khi User Đã cập nhật
@@ -23,12 +26,19 @@ let UserDefaultInValidBank = "kUserDefaultInValidBank"
 
 func clearValueInValidUserDefaultData() {
     userDefault.set(nil, forKey: UserDefaultInValidRelationPhone)
+    userDefault.synchronize()
     userDefault.set(nil, forKey: UserDefaultInValidResidentAddress)
+    userDefault.synchronize()
     userDefault.set(nil, forKey: UserDefaultInValidCurrentAddress)
+    userDefault.synchronize()
     userDefault.set(nil, forKey: UserDefaultInValidJobAddress)
+    userDefault.synchronize()
     userDefault.set(nil, forKey: UserDefaultInValidAcademicAddress)
+    userDefault.synchronize()
     userDefault.set(nil, forKey: UserDefaultInValidOptionalText)
+    userDefault.synchronize()
     userDefault.set(nil, forKey: UserDefaultInValidOptionalMedia)
+    userDefault.synchronize()
     userDefault.set(nil, forKey: UserDefaultInValidBank)
     userDefault.synchronize()
 }
@@ -80,7 +90,7 @@ enum UserRole: String {
 
 // MARK: API Constant
 enum API_MESSAGE {
-    static let Request_Timeout = "Request Timeout"
+    static let Request_Timeout = "Lỗi timeout đường truyền. Vui lòng thử lại sau."
     static let NO_INTERNET = "Vui lòng kiểm tra lại kết nối mạng của bạn"
     static let OTHER_ERROR = "Lỗi không xác định. Vui lòng thử lại sau"
     static let DATA_FORMART_ERROR = "Không xử lý được dữ liệu nhận được"

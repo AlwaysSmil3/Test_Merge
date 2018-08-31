@@ -48,7 +48,7 @@ class WebViewViewController: UIViewController, UIWebViewDelegate {
         }
         
         //        var htmlPath = ""
-        var url: URL!
+        var url: URL?
         
         switch webViewType {
         case .termView:
@@ -66,8 +66,11 @@ class WebViewViewController: UIViewController, UIWebViewDelegate {
         }
         
         //        let url = URL(fileURLWithPath: htmlPath)
-        let request = URLRequest(url: url)
-        self.webView.loadRequest(request)
+        if let url_ = url {
+            let request = URLRequest(url: url_)
+            self.webView.loadRequest(request)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

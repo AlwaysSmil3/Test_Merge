@@ -63,18 +63,27 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
     }
     
     @objc func tapFunction(sender:UITapGestureRecognizer) {
-        print("tap working")
         guard let index = self.currentIndex else { return }
         //NotificationCenter.default.post(name: .showMuiltiLineInputText, object: nil)
         self.showInputViewDelegate?.showTextInput(indexPath: index)
         
     }
     
-//    func checkOtherInfoInvalid(indexArray: String, currentValue: String) -> Bool {
-//
-//
-//
-//    }
+    
+    /// Check Other Invalid
+    ///
+    /// - Parameters:
+    ///   - indexArray: <#indexArray description#>
+    ///   - currentValue: <#currentValue description#>
+    /// - Returns: <#return value description#>
+    func checkOtherInfoInvalid(indexArray: String, currentValue: String) -> Bool {
+        guard let data = DataManager.shared.missingOptionalText else { return false }
+        if let value = data[indexArray] as? String, value == currentValue {
+            return true
+        }
+
+        return false
+    }
     
     
     func getData() {
@@ -104,7 +113,7 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
             }
             
             //thông tin khác
-            if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
+            if DataManager.shared.checkFieldIsMissing(key: "optionalText") && self.checkOtherInfoInvalid(indexArray: "\(index)", currentValue: value) {
                 //Cap nhat thong tin khong hop le
                 if let arrayIndex = field_.arrayIndex, let data = DataManager.shared.missingOptionalText {
                     if let text = data["\(arrayIndex)"] as? String {
@@ -118,6 +127,8 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
                         self.valueTemp = value
                     }
                 }
+            } else {
+                self.isNeedUpdate = false
             }
             
         }
