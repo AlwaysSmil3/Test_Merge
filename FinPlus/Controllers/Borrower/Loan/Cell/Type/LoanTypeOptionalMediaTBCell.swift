@@ -122,7 +122,7 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     //Upload Data Image
     func uploadData(img: UIImage) {
         //let dataImg = UIImagePNGRepresentation(img)
-        guard let data = img.jpeg(.lowest) else { return }
+        guard let imgResize = img.resizeMonyImage(originSize: img.size), let data = imgResize.jpeg(.lowest) else { return }
         
         let loanID = DataManager.shared.loanID ?? 0
         //guard let data = dataImg else { return }

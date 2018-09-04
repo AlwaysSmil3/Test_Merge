@@ -131,6 +131,9 @@ class DataManager {
     //Check khi back tu Loan Status
     var isBackFromLoanStatusVC: Bool?
     
+    
+    var isNoShowAlertTimeout: Bool?
+    
     /// Get Data from JSON
     func getDataLoanFromJSON() {
         if let path = Bundle.main.path(forResource: "LoanBuilder", ofType: "json") {
