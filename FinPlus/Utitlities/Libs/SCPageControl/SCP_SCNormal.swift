@@ -13,6 +13,11 @@ class SCP_SCNormal: UIView {
     var numberOfPage: Int = 0, currentOfPage: Int = 0
     var f_start_point: CGFloat = 0.0, f_start: CGFloat = 0.0
     
+    let long_width: CGFloat = 11.0
+    let short_width: CGFloat = 4.0
+    let all_height: CGFloat = 4.0
+    let merge: CGFloat = 4.0
+    
     var tin_color: UIColor = .red
     var invisible_color: UIColor = .gray
     var screenWidth : CGFloat = UIScreen.main.bounds.size.width
@@ -38,14 +43,14 @@ class SCP_SCNormal: UIView {
         numberOfPage = page
         currentOfPage = current
         
-        let f_all_width: CGFloat = CGFloat((numberOfPage-1)*20 + 25)
+        let f_all_width: CGFloat = CGFloat(numberOfPage-1)*(merge + short_width) + long_width
         
         guard f_all_width < self.frame.size.width else {
             print("frame.Width over Number Of Page")
             return
         }
         
-        var f_width: CGFloat = 10.0, f_height: CGFloat = 10.0
+        var f_width: CGFloat = short_width, f_height: CGFloat = all_height
         var f_x: CGFloat = (self.frame.size.width-f_all_width)/2.0, f_y: CGFloat = (self.frame.size.height-f_height)/2.0
         
         f_start_point = f_x
@@ -54,20 +59,19 @@ class SCP_SCNormal: UIView {
             let img_page = UIImageView()
             
             if i == currentOfPage {
-                f_width = 25.0
-                img_page.alpha = 1.0
+                f_width = long_width
+                img_page.backgroundColor = tin_color
             } else {
-                f_width = 10.0
-                img_page.alpha = 0.4
+                f_width = short_width
+                img_page.backgroundColor = invisible_color
             }
             
             img_page.frame = CGRect(x: f_x, y: f_y, width: f_width, height: f_height)
             img_page.layer.cornerRadius = img_page.frame.size.height/2.0
-            img_page.backgroundColor = tin_color
-            img_page.tag = i+10
+            img_page.tag = i+Int(merge)
             self.addSubview(img_page)
             
-            f_x += f_width + 10
+            f_x += f_width + merge
         }        
     }
     
@@ -76,28 +80,40 @@ class SCP_SCNormal: UIView {
         
         let f_page = scrollView.contentOffset.x / scrollView.frame.size.width
         
-        let tag_value = get_imgView_tag(f_page)+10
-        let f_next_start: CGFloat = (CGFloat(tag_value-10) * scrollView.frame.size.width)
+        let tag_value = get_imgView_tag(f_page)+Int(merge)
+        let f_move: CGFloat = ((short_width + merge/2)*(f_start-scrollView.contentOffset.x)/scrollView.frame.size.width)
         
-        let f_move: CGFloat = (15*(f_start-scrollView.contentOffset.x)/scrollView.frame.size.width)
-        let f_alpha: CGFloat = (0.6*(scrollView.contentOffset.x-f_next_start)/scrollView.frame.size.width)
-        
-        if let iv_page: UIImageView = self.viewWithTag(tag_value) as? UIImageView,
-            tag_value >= 10 && tag_value+1 < 10+numberOfPage {
+        if let iv_page: UIImageView = self.viewWithTag(tag_value) as? UIImageView {
             
-            iv_page.frame = CGRect(x: f_start_point+((CGFloat(tag_value)-10)*20),
-                                   y: iv_page.frame.origin.y,
-                                   width: 25+(f_move+((CGFloat(tag_value)-10)*15)),
-                                   height: iv_page.frame.size.height)
-            iv_page.alpha = 1-f_alpha
-            
-            if let iv_page_next: UIImageView = self.viewWithTag(tag_value+1) as? UIImageView {
-                let f_page_next_x: CGFloat = ((f_start_point+35)+((CGFloat(tag_value)-10)*20))
-                iv_page_next.frame = CGRect(x: f_page_next_x+(f_move+((CGFloat(tag_value)-10)*15)),
-                                            y: iv_page_next.frame.origin.y,
-                                            width: 10-(f_move+((CGFloat(tag_value)-10)*15)),
-                                            height: iv_page_next.frame.size.height)
-                iv_page_next.alpha = 0.4+f_alpha
+            if tag_value >= Int(merge) && tag_value+1 < Int(merge)+numberOfPage {
+    
+                iv_page.frame = CGRect(x: f_start_point+((CGFloat(tag_value)-merge)*(merge+short_width)),
+                                       y: iv_page.frame.origin.y,
+                                       width: (short_width + short_width + merge/2)+(f_move+((CGFloat(tag_value)-merge)*(short_width + merge/2))),
+                                       height: iv_page.frame.size.height)
+                iv_page.backgroundColor = invisible_color
+                
+                if let iv_page_next: UIImageView = self.viewWithTag(tag_value+1) as? UIImageView {
+                    let f_page_next_x: CGFloat = ((f_start_point+long_width+merge)+((CGFloat(tag_value)-merge)*(merge+short_width)))
+                    
+                    let f_page_next_width = short_width-(f_move+((CGFloat(tag_value)-merge)*(short_width + merge/2)))
+                    
+                    NSLog("f_page: \(f_page) \n tag_value: \(tag_value) \n f_page_next_width: \(f_page_next_width)")
+                    
+                    iv_page_next.frame = CGRect(x: f_page_next_x+(f_move+((CGFloat(tag_value)-merge)*(short_width + merge/2))),
+                                                y: iv_page_next.frame.origin.y,
+                                                width: f_page_next_width,
+                                                height: iv_page_next.frame.size.height)
+                    if (f_page_next_width > short_width)
+                    {
+                        iv_page_next.backgroundColor = tin_color
+                    }
+                    else
+                    {
+                        iv_page_next.backgroundColor = invisible_color
+                    }
+                }
+                
             }
         }
     }
@@ -111,7 +127,7 @@ class SCP_SCNormal: UIView {
     // ## Call the moment in rotate Device ##
     func set_rotateDevice(_ frame: CGRect) {
         self.frame = frame
-        let f_all_width: CGFloat = CGFloat((numberOfPage-1)*20 + 25)
+        let f_all_width: CGFloat = CGFloat(numberOfPage-1)*(merge + short_width) + long_width
         var f_x: CGFloat = (self.frame.size.width-f_all_width)/2.0
         
         f_start_point = f_x
@@ -119,7 +135,7 @@ class SCP_SCNormal: UIView {
         for subview in self.subviews {
             if subview.isKind(of: UIImageView.classForCoder()) {
                 subview.frame.origin.x = f_x
-                f_x += subview.frame.size.width + 10
+                f_x += subview.frame.size.width + merge
             }
         }
     }

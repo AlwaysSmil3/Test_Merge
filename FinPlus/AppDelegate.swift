@@ -248,7 +248,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupStartVC() {
         
         let isFirstLaunch = UserDefaults.isFirstLaunch()
-        if isFirstLaunch == true {
+        if isFirstLaunch != true {
             let enterPhoneVC = UIStoryboard(name: "OnBoard", bundle: nil).instantiateInitialViewController()
             self.window?.rootViewController = enterPhoneVC
 
