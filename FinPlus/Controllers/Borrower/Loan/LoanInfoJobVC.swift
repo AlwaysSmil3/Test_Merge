@@ -68,6 +68,13 @@ class LoanInfoJobVC: LoanBaseViewController {
                 return
             }
         }
+        
+        
+        if !DataManager.shared.checkDataInvalidChangedInStepJobInfo() {
+            //For Missing Data
+            self.showToastWithMessage(message: "Vui lòng thay đổi các thông tin không chính xác.")
+            return
+        }
 
         
         
