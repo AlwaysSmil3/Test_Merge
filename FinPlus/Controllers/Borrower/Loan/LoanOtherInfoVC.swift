@@ -100,6 +100,13 @@ class LoanOtherInfoVC: LoanBaseViewController {
             return
         }
         
+        if !DataManager.shared.checkDataInvalidChangedInStepOtherInfo() {
+            //For Missing Data
+            self.showToastWithMessage(message: "Vui lòng thay đổi các thông tin không chính xác.")
+            return
+        }
+        
+        
         completion()
         
         
