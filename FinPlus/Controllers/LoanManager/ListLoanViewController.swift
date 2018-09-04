@@ -58,7 +58,9 @@ class ListLoanViewController: BaseViewController {
         
         // reload data
         self.getAllLoans()
+        
     }
+    
     
     private func getAllLoans() {
         
@@ -98,8 +100,18 @@ class ListLoanViewController: BaseViewController {
                 self.addBtn.isHidden = self.listLoan.count > 0
             }
             .catch { error in
+                let err = error as NSError
+                if err.code == NSURLErrorTimedOut {
+                    self.showSnackView(message: "Lỗi timeout đường truyền.", titleButton: "Thử lại", completion: {
+                        
+                        self.getAllLoans()
+                        
+                    })
+                }
+                
         }
     }
+    
     
     @IBAction func addNewLoan(_ sender: Any) {
         self.tabBarController?.selectedIndex = 0

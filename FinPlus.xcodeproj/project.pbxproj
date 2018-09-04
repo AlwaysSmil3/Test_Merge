@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		15942B202105B32300591BA4 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15942B1F2105B32300591BA4 /* PaymentMethod.swift */; };
 		48D46DDE05C608E1D160EC14 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
+		6302C10721393DA90037277E /* DataManager+MissingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302C10621393DA90037277E /* DataManager+MissingData.swift */; };
 		63037F4F21115531002CE49B /* APIClient+Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63037F4E21115531002CE49B /* APIClient+Payment.swift */; };
 		63037F5221119A93002CE49B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63037F5121119A93002CE49B /* Transaction.swift */; };
 		6303923020E8B108000C422D /* VSSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303922D20E8B108000C422D /* VSSlider.swift */; };
@@ -135,6 +136,9 @@
 		635DC11F20FEEA5500AA84DF /* UpdateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635DC11E20FEEA5500AA84DF /* UpdateWalletViewController.swift */; };
 		6361E09720D7550F005D2C7A /* LoanSumnaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361E09620D7550F005D2C7A /* LoanSumnaryModel.swift */; };
 		6369BBD420AE8AD400E0C435 /* APIClient+Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369BBD320AE8AD400E0C435 /* APIClient+Loan.swift */; };
+		636C535D2138E918005D24A2 /* LPSnackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636C535A2138E918005D24A2 /* LPSnackbar.swift */; };
+		636C535E2138E918005D24A2 /* LPSnackbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636C535C2138E918005D24A2 /* LPSnackbarView.swift */; };
+		636C53602138FD03005D24A2 /* ExUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636C535F2138FD03005D24A2 /* ExUIDevice.swift */; };
 		63733BB421057AC600D00A77 /* ExUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63733BB321057AC600D00A77 /* ExUIImage.swift */; };
 		63748BFD210ADB8000E79EB6 /* PaymentMethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63748BFB210ADB7F00E79EB6 /* PaymentMethodTableViewCell.swift */; };
 		63748BFE210ADB8000E79EB6 /* PaymentMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63748BFC210ADB7F00E79EB6 /* PaymentMethodTableViewCell.xib */; };
@@ -338,6 +342,7 @@
 
 /* Begin PBXFileReference section */
 		15942B1F2105B32300591BA4 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
+		6302C10621393DA90037277E /* DataManager+MissingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+MissingData.swift"; sourceTree = "<group>"; };
 		63037F4E21115531002CE49B /* APIClient+Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Payment.swift"; sourceTree = "<group>"; };
 		63037F5121119A93002CE49B /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		6303922D20E8B108000C422D /* VSSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSSlider.swift; sourceTree = "<group>"; };
@@ -465,6 +470,10 @@
 		635DC11E20FEEA5500AA84DF /* UpdateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWalletViewController.swift; sourceTree = "<group>"; };
 		6361E09620D7550F005D2C7A /* LoanSumnaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanSumnaryModel.swift; sourceTree = "<group>"; };
 		6369BBD320AE8AD400E0C435 /* APIClient+Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Loan.swift"; sourceTree = "<group>"; };
+		636C535A2138E918005D24A2 /* LPSnackbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LPSnackbar.swift; sourceTree = "<group>"; };
+		636C535C2138E918005D24A2 /* LPSnackbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LPSnackbarView.swift; sourceTree = "<group>"; };
+		636C535F2138FD03005D24A2 /* ExUIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExUIDevice.swift; sourceTree = "<group>"; };
+		636C53612138FF14005D24A2 /* LPSnackbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPSnackbar.h; sourceTree = "<group>"; };
 		63733BB321057AC600D00A77 /* ExUIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExUIImage.swift; sourceTree = "<group>"; };
 		63748BFB210ADB7F00E79EB6 /* PaymentMethodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodTableViewCell.swift; sourceTree = "<group>"; };
 		63748BFC210ADB7F00E79EB6 /* PaymentMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentMethodTableViewCell.xib; sourceTree = "<group>"; };
@@ -1005,6 +1014,16 @@
 			path = Keychain;
 			sourceTree = "<group>";
 		};
+		636C53592138E918005D24A2 /* LPSnackbar */ = {
+			isa = PBXGroup;
+			children = (
+				636C53612138FF14005D24A2 /* LPSnackbar.h */,
+				636C535A2138E918005D24A2 /* LPSnackbar.swift */,
+				636C535C2138E918005D24A2 /* LPSnackbarView.swift */,
+			);
+			path = LPSnackbar;
+			sourceTree = "<group>";
+		};
 		6374FC4B20BBC1EE00E4BC38 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -1182,6 +1201,7 @@
 		639C9DD120A14B6F00F2CF5E /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				636C53592138E918005D24A2 /* LPSnackbar */,
 				E7C4DDE7213402E800055944 /* SCPageControl */,
 				630597422123FFD800EEADEF /* SBMessageInputView */,
 				6303922C20E8B108000C422D /* VerticalSteppedSlider */,
@@ -1199,6 +1219,7 @@
 			isa = PBXGroup;
 			children = (
 				639C9DD420A14B9D00F2CF5E /* DataManager.swift */,
+				6302C10621393DA90037277E /* DataManager+MissingData.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -1247,6 +1268,7 @@
 				63733BB321057AC600D00A77 /* ExUIImage.swift */,
 				6305974921240C0F00EEADEF /* ExNotificationCenter.swift */,
 				6355279B21300DA800F2CDA1 /* ExUIPageControl.swift */,
+				636C535F2138FD03005D24A2 /* ExUIDevice.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2000,8 +2022,10 @@
 				84647A8120E0E89B0053DD0D /* UICircularProgressRingDelegate.swift in Sources */,
 				E7C4DDED213402E800055944 /* SCP_SCNormal.swift in Sources */,
 				6308DF6520A3FE90001DC320 /* BasePopup.swift in Sources */,
+				636C53602138FD03005D24A2 /* ExUIDevice.swift in Sources */,
 				E7F51A0B20CE6CC800F72682 /* LoanOtherInfoCollectionCell.swift in Sources */,
 				639C9DEE20A182E900F2CF5E /* ExUIViewController.swift in Sources */,
+				6302C10721393DA90037277E /* DataManager+MissingData.swift in Sources */,
 				6303ECC0213509A1002C4C03 /* PaymentPaymentPeriod.swift in Sources */,
 				637A90B820A2FA5F00CCACA5 /* DatePickerDialog.swift in Sources */,
 				63750EF220F701840063054F /* BaseAuthenViewController.swift in Sources */,
@@ -2052,6 +2076,7 @@
 				6385D951212D0E0F00151B3A /* BrowwerCollections.swift in Sources */,
 				6357824F20C2330800DE09A0 /* KeychainPasswordItem.swift in Sources */,
 				84CBBE5620CF85610058C834 /* NotificationTableViewCell.swift in Sources */,
+				636C535E2138E918005D24A2 /* LPSnackbarView.swift in Sources */,
 				15942B202105B32300591BA4 /* PaymentMethod.swift in Sources */,
 				630467BB20B513FC0069469A /* AddressTBViewController.swift in Sources */,
 				639C9DF620A189E600F2CF5E /* ToastView.swift in Sources */,
@@ -2105,6 +2130,7 @@
 				84114BCC20D79464005026DF /* PayAllTableViewCell.swift in Sources */,
 				84647A8020E0E89B0053DD0D /* UICircularProgressRingLayer.swift in Sources */,
 				635B5E0620B6B3A500F02132 /* LoanInfo.swift in Sources */,
+				636C535D2138E918005D24A2 /* LPSnackbar.swift in Sources */,
 				633AF9AF20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift in Sources */,
 				6374FC4F20BBC3E200E4BC38 /* AccountBank.swift in Sources */,
 				630F684320F45F97004FF32E /* LoanBuilderOptions.swift in Sources */,

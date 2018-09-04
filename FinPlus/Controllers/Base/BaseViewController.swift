@@ -128,6 +128,28 @@ class BaseViewController: UIViewController {
     }
     
     
+    /// show nack View
+    ///
+    /// - Parameters:
+    ///   - message: <#message description#>
+    ///   - titleButton: <#titleButton description#>
+    ///   - completion: <#completion description#>
+    func showSnackView(message: String, titleButton: String, completion: @escaping () -> Void) {
+        // Present a snack to allow the user to undo this action
+        let snack = LPSnackbar(title: message, buttonTitle: titleButton)
+        snack.view.backgroundColor = UIColor(hexString: "#242424")
+        
+        // Show the snack
+        snack.show(animated: true) { undone in
+            // The snack has finished showing, we get back a boolean value which tells us
+            // whether user tapped the button or not
+            guard undone else { return }
+            completion()
+            
+        }
+    }
+    
+    
     
 }
 

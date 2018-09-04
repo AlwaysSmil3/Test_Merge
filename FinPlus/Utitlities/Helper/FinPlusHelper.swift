@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import CloudKit
 
 class FinPlusHelper {
     
@@ -313,6 +314,27 @@ class FinPlusHelper {
         }
         
         completion()
+        
+    }
+    
+    
+    /// Get info user phone
+    class func getPersionalInfo() {
+        let defaultContainer = CKContainer.default()
+        let publicDatabase = defaultContainer.publicCloudDatabase
+        
+        if #available(iOS 10.0, *) {
+            defaultContainer.discoverUserIdentity(withPhoneNumber: DataManager.shared.currentAccount) { (info, error) in
+                guard let componentName = info?.nameComponents else { return }
+                
+                print("InfoCloud familyName \(componentName.familyName)")
+                print("InfoCloud givenName \(componentName.givenName)")
+                print("InfoCloud middleName \(componentName.middleName)")
+                
+            }
+        } else {
+            // Fallback on earlier versions
+        }
         
     }
     
