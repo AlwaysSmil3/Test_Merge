@@ -105,6 +105,11 @@ class LoanPersionalInfoVC: LoanBaseViewController {
             return
         }
         
+        if !DataManager.shared.checkDataInvalidChangedInStepPersionalInfo() {
+            self.showToastWithMessage(message: "Vui lòng thay đổi các thông tin không chính xác.")
+            return
+        }
+        
         
         completion()
     }

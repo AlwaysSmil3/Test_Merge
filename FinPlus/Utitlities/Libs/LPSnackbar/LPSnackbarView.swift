@@ -144,7 +144,7 @@ open class LPSnackbarView: UIView {
         // Add subviews
         addSubview(titleLabel)
         addSubview(button)
-        addSubview(seperator)
+        //addSubview(seperator)
         
         //// Add constraints
         // Pin title label to left
@@ -188,14 +188,17 @@ open class LPSnackbarView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.textColor = UIColor.white
+        label.font = UIFont(name: FONT_FAMILY_REGULAR, size: 15)
         return label
     }()
     
     /// The button on the right hand side of the view which allows an action to be performed.
     open lazy var button: UIButton = {
         let button = UIButton(frame: .zero)
+        button.setTitleColor(UIColor(hexString: "#3EAA5F"), for: .normal)
+        button.titleLabel?.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: 11)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor(red: 0.702, green: 0.867, blue: 0.969, alpha: 1.00), for: .normal)
+        //button.setTitleColor(UIColor(red: 0.702, green: 0.867, blue: 0.969, alpha: 1.00), for: .normal)
         button.addTarget(self, action: #selector(self.buttonTapped(sender:)), for: .touchUpInside)
         return button
     }()
