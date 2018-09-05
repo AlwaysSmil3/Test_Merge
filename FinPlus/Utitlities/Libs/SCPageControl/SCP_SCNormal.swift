@@ -13,10 +13,10 @@ class SCP_SCNormal: UIView {
     var numberOfPage: Int = 0, currentOfPage: Int = 0
     var f_start_point: CGFloat = 0.0, f_start: CGFloat = 0.0
     
-    let long_width: CGFloat = 11.0
-    let short_width: CGFloat = 4.0
-    let all_height: CGFloat = 4.0
-    let merge: CGFloat = 4.0
+    let long_width: CGFloat = 11
+    let short_width: CGFloat = 4
+    let all_height: CGFloat = 4
+    let merge: CGFloat = 4
     
     var tin_color: UIColor = .red
     var invisible_color: UIColor = .gray
@@ -81,37 +81,40 @@ class SCP_SCNormal: UIView {
         let f_page = scrollView.contentOffset.x / scrollView.frame.size.width
         
         let tag_value = get_imgView_tag(f_page)+Int(merge)
-        let f_move: CGFloat = ((short_width + merge/2)*(f_start-scrollView.contentOffset.x)/scrollView.frame.size.width)
+        let f_next_start: CGFloat = (CGFloat(tag_value-Int(merge)) * scrollView.frame.size.width)
         
-        if let iv_page: UIImageView = self.viewWithTag(tag_value) as? UIImageView {
+        let f_move: CGFloat = ((long_width-merge)*(f_start-scrollView.contentOffset.x)/scrollView.frame.size.width)
+        let f_alpha: CGFloat = (0.6*(scrollView.contentOffset.x-f_next_start)/scrollView.frame.size.width)
+        
+        if let iv_page: UIImageView = self.viewWithTag(tag_value) as? UIImageView,
+            tag_value >= Int(merge) && tag_value+1 < Int(merge)+numberOfPage {
             
-            if tag_value >= Int(merge) && tag_value+1 < Int(merge)+numberOfPage {
-    
-                iv_page.frame = CGRect(x: f_start_point+((CGFloat(tag_value)-merge)*(merge+short_width)),
-                                       y: iv_page.frame.origin.y,
-                                       width: (short_width + short_width + merge/2)+(f_move+((CGFloat(tag_value)-merge)*(short_width + merge/2))),
-                                       height: iv_page.frame.size.height)
+            iv_page.frame = CGRect(x: f_start_point+((CGFloat(tag_value)-merge)*(short_width+merge)),
+                                   y: iv_page.frame.origin.y,
+                                   width: long_width+(f_move+((CGFloat(tag_value)-merge)*(long_width-merge))),
+                                   height: iv_page.frame.size.height)
+            if (1-f_alpha >= 0.6)
+            {
+                iv_page.backgroundColor = tin_color
+            }
+            else
+            {
                 iv_page.backgroundColor = invisible_color
-                
-                if let iv_page_next: UIImageView = self.viewWithTag(tag_value+1) as? UIImageView {
-                    let f_page_next_x: CGFloat = ((f_start_point+long_width+merge)+((CGFloat(tag_value)-merge)*(merge+short_width)))
-                    
-                    let f_page_next_width = short_width-(f_move+((CGFloat(tag_value)-merge)*(short_width + merge/2)))
-                    
-                    NSLog("f_page: \(f_page) \n tag_value: \(tag_value) \n f_page_next_width: \(f_page_next_width)")
-                    
-                    iv_page_next.frame = CGRect(x: f_page_next_x+(f_move+((CGFloat(tag_value)-merge)*(short_width + merge/2))),
-                                                y: iv_page_next.frame.origin.y,
-                                                width: f_page_next_width,
-                                                height: iv_page_next.frame.size.height)
-                    if (f_page_next_width > short_width)
-                    {
-                        iv_page_next.backgroundColor = tin_color
-                    }
-                    else
-                    {
-                        iv_page_next.backgroundColor = invisible_color
-                    }
+            }
+            
+            if let iv_page_next: UIImageView = self.viewWithTag(tag_value+1) as? UIImageView {
+                let f_page_next_x: CGFloat = ((f_start_point+long_width+merge)+((CGFloat(tag_value)-merge)*(short_width+merge)))
+                iv_page_next.frame = CGRect(x: f_page_next_x+(f_move+((CGFloat(tag_value)-merge)*(long_width-merge))),
+                                            y: iv_page_next.frame.origin.y,
+                                            width: short_width-(f_move+((CGFloat(tag_value)-merge)*(long_width-merge))),
+                                            height: iv_page_next.frame.size.height)
+                if (0.4+f_alpha >= 0.6)
+                {
+                    iv_page_next.backgroundColor = tin_color
+                }
+                else
+                {
+                    iv_page_next.backgroundColor = invisible_color
                 }
                 
             }
