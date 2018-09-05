@@ -109,8 +109,9 @@ class ListLoanViewController: BaseViewController {
                         self.errorConnectView?.isHidden = false
                         return
                     }
+                    self.errorConnectView?.isHidden = true
                     
-                    self.showSnackView(message: "Lỗi timeout đường truyền.", titleButton: "Thử lại", completion: {
+                    self.showSnackView(message: "Lỗi timeout đường truyền.", titleButton: "THỬ LẠI", completion: {
                         
                         self.getAllLoans()
                         
@@ -126,7 +127,7 @@ class ListLoanViewController: BaseViewController {
     }
     
     @IBAction func btnTryTapped(_ sender: Any) {
-        
+        self.getAllLoans()
     }
     
 }
