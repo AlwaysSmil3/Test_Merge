@@ -50,7 +50,6 @@ class ListLoanViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
         if let isBack = DataManager.shared.isBackFromLoanStatusVC, isBack {
             DataManager.shared.isBackFromLoanStatusVC = nil
             return
@@ -63,10 +62,12 @@ class ListLoanViewController: BaseViewController {
     
     
     private func getAllLoans() {
-        
+        DataManager.shared.isNoShowAlertTimeout = true
         self.listLoan.removeAllObjects()
         APIClient.shared.getUserLoans()
             .done(on: DispatchQueue.main) { model in
+                
+                self.errorConnectView?.isHidden = true
                 
                 let completeArr:NSMutableArray = []
                 let unCompleteArr:NSMutableArray = []
@@ -101,8 +102,16 @@ class ListLoanViewController: BaseViewController {
             }
             .catch { error in
                 let err = error as NSError
+            
                 if err.code == NSURLErrorTimedOut {
-                    self.showSnackView(message: "Lỗi timeout đường truyền.", titleButton: "Thử lại", completion: {
+                    
+                    guard self.listLoan.count > 0 else {
+                        self.errorConnectView?.isHidden = false
+                        return
+                    }
+                    self.errorConnectView?.isHidden = true
+                    
+                    self.showSnackView(message: "Lỗi timeout đường truyền.", titleButton: "THỬ LẠI", completion: {
                         
                         self.getAllLoans()
                         
@@ -116,6 +125,11 @@ class ListLoanViewController: BaseViewController {
     @IBAction func addNewLoan(_ sender: Any) {
         self.tabBarController?.selectedIndex = 0
     }
+    
+    @IBAction func btnTryTapped(_ sender: Any) {
+        self.getAllLoans()
+    }
+    
 }
 
 extension ListLoanViewController: UITableViewDelegate {

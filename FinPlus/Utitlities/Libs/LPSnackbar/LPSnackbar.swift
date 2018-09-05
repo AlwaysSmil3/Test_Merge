@@ -84,7 +84,7 @@ open class LPSnackbar: Equatable {
      bottom spacing of `12.0`, however, if you have a `UITabBarController` you may want to increase the bottom spacing
      so that the snack is presented above the bar.
      */
-    open var bottomSpacing: CGFloat = 66.0 {
+    open var bottomSpacing: CGFloat = 50.0 {
         didSet {
             // Update frame
             self.view.setNeedsLayout()

@@ -51,6 +51,12 @@ class LoanNationalIDViewController: LoanBaseViewController {
                 self.showToastWithMessage(message: "Vui lòng chụp ảnh CMND mặt sau")
                 return
             }
+            
+            if !DataManager.shared.checkDataInvalidChangedInStepNationalID() {
+                //For Missing Data
+                self.showToastWithMessage(message: "Vui lòng thay đổi các thông tin không chính xác.")
+                return
+            }
         }
         
         let loanOtherInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanOtherInfoVC") as! LoanOtherInfoVC

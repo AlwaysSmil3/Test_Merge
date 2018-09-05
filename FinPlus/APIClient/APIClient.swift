@@ -154,11 +154,22 @@ class APIClient {
                 
                 switch response.result {
                 case .failure(let error):
+                    
+                    if let isNoShow = DataManager.shared.isNoShowAlertTimeout, isNoShow {
+                        DataManager.shared.isNoShowAlertTimeout = nil
+                        let err = error as NSError
+                        if err.code == NSURLErrorTimedOut  {
+                            seal.reject(error)
+                            return
+                        }
+                    }
+                    
                     seal.reject(error)
                     print(error)
                     UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: self.getDisplayMessage(error: error), okTitle: "OK", cancelTitle: nil)
                     
                 case .success(let responseObject):
+                    DataManager.shared.isNoShowAlertTimeout = nil
                     if let responseDataDict = responseObject as? JSONDictionary {
                         
 //                        guard let returnCode = responseDataDict[API_RESPONSE_RETURN_CODE] as? Int, returnCode == 1 else {
@@ -218,11 +229,20 @@ class APIClient {
                     
                 case .failure(let error):
                     
+                    if let isNoShow = DataManager.shared.isNoShowAlertTimeout, isNoShow {
+                        DataManager.shared.isNoShowAlertTimeout = nil
+                        let err = error as NSError
+                        if err.code == NSURLErrorTimedOut  {
+                            seal.reject(error)
+                            return
+                        }
+                    }
+                    
                     seal.reject(error)
                     UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: self.getDisplayMessage(error: error), okTitle: "OK", cancelTitle: nil)
                     
                 case .success(let responseObject):
-                    
+                    DataManager.shared.isNoShowAlertTimeout = nil
                     if let responseDataDict = responseObject as? JSONDictionary {
                         
                         seal.fulfill(responseDataDict)

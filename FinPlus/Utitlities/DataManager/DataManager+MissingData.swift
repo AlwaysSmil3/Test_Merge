@@ -179,16 +179,17 @@ extension DataManager {
             missingListTitle.append("Ảnh mặt sau CMND")
         }
         
-        if self.missingOptionalText != nil {
-            missingListKey.append("optionalText")
+        if self.missingOptionalText != nil || self.missingOptionalMedia != nil {
+            if self.missingOptionalText != nil {
+                missingListKey.append("optionalText")
+            }
+            
+            if self.missingOptionalMedia != nil {
+                missingListKey.append("optionalMedia")
+            }
+            
             missingListTitle.append("Thông tin bổ sung")
         }
-        
-        if self.missingOptionalMedia != nil {
-            missingListKey.append("optionalMedia")
-            missingListTitle.append("Thông tin bổ sung Media")
-        }
-        
         
         self.listKeyMissingLoanKey = missingListKey
         self.listKeyMissingLoanTitle = missingListTitle
@@ -393,17 +394,80 @@ extension DataManager {
     /// Check Invalid Data in step persionalInfo did changed
     ///
     /// - Returns: <#return value description#>
-    func checkDataInvalidChangedInStepPersionalInfo() -> Bool {
+    func checkDataInvalidChangedInStepJobInfo() -> Bool {
+        guard let data = self.missingLoanDataDictionary else { return true }
         
+        guard let jobInfo = data["jobInfo"] as? JSONDictionary else { return true }
+        
+        if let value = jobInfo["jobTitle"] as? String, value == DataManager.shared.loanInfo.jobInfo.jobTitle {
+            return false
+        }
+        
+        if let value = jobInfo["positionTitle"] as? String, value == DataManager.shared.loanInfo.jobInfo.positionTitle {
+            return false
+        }
+        
+        if let value = jobInfo["strength"] as? Int, value == DataManager.shared.loanInfo.jobInfo.strength {
+            return false
+        }
+        
+        
+        if let value = jobInfo["experienceYear"] as? Float, value == DataManager.shared.loanInfo.jobInfo.experienceYear {
+            return false
+        }
+        
+        if let value = jobInfo["academicLevel"] as? Int, value == DataManager.shared.loanInfo.jobInfo.academicLevel {
+            return false
+        }
+        
+        if let value = jobInfo["studentId"] as? String, value == DataManager.shared.loanInfo.jobInfo.studentId {
+            return false
+        }
+        if let value = jobInfo["academicName"] as? String, value == DataManager.shared.loanInfo.jobInfo.academicName {
+            return false
+        }
+        
+        if let value = jobInfo["company"] as? String, value == DataManager.shared.loanInfo.jobInfo.company {
+            return false
+        }
+        
+        if let value = jobInfo["salary"] as? Int32, value == DataManager.shared.loanInfo.jobInfo.salary {
+            return false
+        }
+        
+        if let value = jobInfo["companyPhoneNumber"] as? String, value == DataManager.shared.loanInfo.jobInfo.companyPhoneNumber {
+            return false
+        }
+        
+        if let address = jobInfo["jobAddress"] as? JSONDictionary {
+            let currentAdd = DataManager.shared.loanInfo.jobInfo.jobAddress
+            if let city = address["city"] as? String, city == currentAdd.city,
+                let district = address["district"] as? String, district == currentAdd.district,
+                let commune = address["commune"] as? String, commune == currentAdd.commune,
+                let street = address["street"] as? String, street == currentAdd.street {
+                return false
+            }
+        }
+        
+        if let address = jobInfo["academicAddress"] as? JSONDictionary {
+            let currentAdd = DataManager.shared.loanInfo.jobInfo.academicAddress
+            if let city = address["city"] as? String, city == currentAdd.city,
+                let district = address["district"] as? String, district == currentAdd.district,
+                let commune = address["commune"] as? String, commune == currentAdd.commune,
+                let street = address["street"] as? String, street == currentAdd.street {
+                return false
+            }
+        }
         
         return true
+        
     }
     
     
-    /// Check Invalid Data in step persionalInfo did changed
+    /// Check Invalid Data in step persionalInfo did changed checkDataInvalidChangedInStepJobInfo
     ///
     /// - Returns: <#return value description#>
-    func checkDataInvalidChangedInStepJobInfo() -> Bool {
+    func checkDataInvalidChangedInStepPersionalInfo() -> Bool {
         //guard let list = self.listKeyMissingLoanKey else { return true }
         guard let data = self.missingLoanDataDictionary else { return true }
         
@@ -446,8 +510,6 @@ extension DataManager {
             }
         }
         
-        
-        
         return true
     }
     
@@ -457,7 +519,6 @@ extension DataManager {
     /// - Returns: <#return value description#>
     func checkDataInvalidChangedInStepBank() -> Bool {
         
-        
         return true
     }
     
@@ -466,7 +527,19 @@ extension DataManager {
     ///
     /// - Returns: <#return value description#>
     func checkDataInvalidChangedInStepNationalID() -> Bool {
+        guard let data = self.missingLoanDataDictionary else { return true }
         
+        if let value = data["nationalIdAllImg"] as? String, value == DataManager.shared.loanInfo.nationalIdAllImg {
+            return false
+        }
+        
+        if let value = data["nationalIdFrontImg"] as? String, value == DataManager.shared.loanInfo.nationalIdFrontImg {
+            return false
+        }
+        
+        if let value = data["nationalIdBackImg"] as? String, value == DataManager.shared.loanInfo.nationalIdBackImg {
+            return false
+        }
         
         return true
     }
@@ -477,7 +550,38 @@ extension DataManager {
     /// - Returns: <#return value description#>
     func checkDataInvalidChangedInStepOtherInfo() -> Bool {
         
+        guard let data = self.missingLoanDataDictionary else { return true }
         
+        if let optionText = data["optionalText"] as? JSONDictionary {
+            var index1 = 0
+            for text in DataManager.shared.loanInfo.optionalText {
+                
+                if let value = optionText["\(index1)"] as? String, value == text {
+                    return false
+                }
+                
+                index1 += 1
+            }
+        }
+        
+        if let optionalMedia = data["optionalMedia"] as? JSONDictionary {
+            var index2 = 0
+            for media in DataManager.shared.loanInfo.optionalMedia {
+                if let value = optionalMedia["\(index2)"] as? [String] {
+                    for value_ in value {
+                        for media_ in media {
+                            if media_ == value_ {
+                                return false
+                            }
+                        }
+                    }
+                }
+                
+                index2 += 1
+            }
+        }
+
+
         return true
     }
     
