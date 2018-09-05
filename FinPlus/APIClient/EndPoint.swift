@@ -13,7 +13,6 @@ enum Host {
     static let alphaURL = ""
 
     static let productURL = "https://dev-api.mony.vn/"
-
 }
 
 //MARK: API End Point
