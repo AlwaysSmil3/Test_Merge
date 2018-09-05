@@ -14,6 +14,7 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     
     var currentSelectedCollection: IndexPath?
     
+    var MAX_COUNT_IMAGE = 5
     
     var field: LoanBuilderFields? {
         didSet {
@@ -62,8 +63,17 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         if DataManager.shared.checkFieldIsMissing(key: "optionalMedia") {
             //Cap nhat thong tin khong hop le
             if let optionalMedia = DataManager.shared.missingOptionalMedia {
-                if let listUrl = optionalMedia["\(indexArray)"] as? [String] {
+                if let listUrlJSON = optionalMedia["\(indexArray)"] as? JSONDictionary {
+                    
                     if self.listURLInValid == nil {
+                        var listUrl: [String] = []
+                        
+                        for i in 0...MAX_COUNT_IMAGE {
+                            if let url = listUrlJSON["\(i)"] as? String {
+                                listUrl.append(url)
+                            }
+                        }
+                        
                         self.listURLInValid = listUrl
                     }
                     
@@ -192,6 +202,11 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
 extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if self.dataSourceCollection.count >= MAX_COUNT_IMAGE {
+            return self.dataSourceCollection.count
+        }
+        
         return self.dataSourceCollection.count + 1
     }
     
@@ -202,12 +217,21 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
         cell.delegate = self
         cell.errorView?.isHidden = true
         
-        guard indexPath.row < self.dataSourceCollection.count else {
+        
+        if self.dataSourceCollection.count < MAX_COUNT_IMAGE && indexPath.row == self.dataSourceCollection.count {
             cell.imgValue.image = #imageLiteral(resourceName: "ic_loan_rectangle1")
             cell.imgAdd.isHidden = false
             cell.btnDelete.isHidden = true
             return cell
         }
+        
+//        guard indexPath.row < self.dataSourceCollection.count else {
+//            cell.imgValue.image = #imageLiteral(resourceName: "ic_loan_rectangle1")
+//            cell.imgAdd.isHidden = false
+//            cell.btnDelete.isHidden = true
+//            return cell
+//        }
+        
         
         if let data = self.dataSourceCollection[indexPath.row] as? UIImage {
             cell.imgValue.image = data
