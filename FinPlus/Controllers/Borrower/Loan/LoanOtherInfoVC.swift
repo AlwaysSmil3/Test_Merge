@@ -120,6 +120,7 @@ class LoanOtherInfoVC: LoanBaseViewController {
         
         self.validateInput {
             guard DataManager.shared.listKeyMissingLoanKey == nil || DataManager.shared.listKeyMissingLoanKey!.count == 0 else {
+                DataManager.shared.loanInfo.currentStep = 5
                 updateLoanStatusInvalidData()
                 return
             }

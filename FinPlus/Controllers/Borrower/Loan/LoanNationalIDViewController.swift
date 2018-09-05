@@ -59,6 +59,15 @@ class LoanNationalIDViewController: LoanBaseViewController {
             }
         }
         
+        if DataManager.shared.listKeyMissingLoanKey != nil && DataManager.shared.listKeyMissingLoanKey!.count > 0  {
+            if !DataManager.shared.checkIndexLastStepHaveMissingData(index: 5) {
+                DataManager.shared.loanInfo.currentStep = 4
+                updateLoanStatusInvalidData()
+                return
+            }
+        }
+        
+        
         let loanOtherInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanOtherInfoVC") as! LoanOtherInfoVC
         
         self.navigationController?.pushViewController(loanOtherInfoVC, animated: true)
