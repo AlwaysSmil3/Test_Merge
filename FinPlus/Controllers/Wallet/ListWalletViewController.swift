@@ -144,6 +144,7 @@ class ListWalletViewController: BaseViewController {
         
         if DataManager.shared.listKeyMissingLoanKey != nil && DataManager.shared.listKeyMissingLoanKey!.count > 0  {
             if !DataManager.shared.checkIndexLastStepHaveMissingData(index: 4) {
+                DataManager.shared.loanInfo.currentStep = 3
                 updateLoanStatusInvalidData()
                 return
             }

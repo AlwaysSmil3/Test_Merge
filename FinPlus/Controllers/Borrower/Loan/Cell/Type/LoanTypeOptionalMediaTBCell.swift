@@ -68,22 +68,26 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
                 if let listUrlJSON = optionalMedia["\(indexArray)"] as? JSONDictionary {
                     
                     //if self.listURLInValid == nil {
-                        var listUrl: [String] = []
-                        
-                        for i in 0...MAX_COUNT_IMAGE {
-                            if let url = listUrlJSON["\(i)"] as? String {
-                                listUrl.append(url)
-                            }
+                    var listUrl: [String] = []
+                    
+                    for i in 0...MAX_COUNT_IMAGE {
+                        if let url = listUrlJSON["\(i)"] as? String {
+                            listUrl.append(url)
                         }
-                        
-                        self.listURLInValid = listUrl
+                    }
+                    
+                    self.listURLInValid = listUrl
                     self.updateListURLInvalid()
                     //}
                     
                     if let list = self.listURLInValid, list.count > 0 {
                         self.updateInfoFalse(pre: "Ảnh cung cấp")
+                    } else {
+                        self.isNeedUpdate = false
                     }
                     
+                } else {
+                    self.isNeedUpdate = false
                 }
             }
         }
