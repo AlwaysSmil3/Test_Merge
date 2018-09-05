@@ -14,7 +14,7 @@ protocol OptionMediaDelegate {
 
 class LoanOtherInfoCollectionCell: UICollectionViewCell {
     
-    @IBOutlet var errorView: AnimatableView?
+    @IBOutlet var errorView: AnimatableView!
     @IBOutlet var imgValue: UIImageView!
     @IBOutlet var imgAdd: UIImageView!
     @IBOutlet var btnDelete: UIButton!

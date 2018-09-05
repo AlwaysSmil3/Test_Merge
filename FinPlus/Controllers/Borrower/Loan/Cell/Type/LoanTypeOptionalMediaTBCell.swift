@@ -44,6 +44,8 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     
     //Url cac anh khong hop le
     var listURLInValid: [String]?
+    //List url invalid removed
+    var listRemovedURLInvalid: [String] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -65,22 +67,27 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
             if let optionalMedia = DataManager.shared.missingOptionalMedia {
                 if let listUrlJSON = optionalMedia["\(indexArray)"] as? JSONDictionary {
                     
-                    if self.listURLInValid == nil {
-                        var listUrl: [String] = []
-                        
-                        for i in 0...MAX_COUNT_IMAGE {
-                            if let url = listUrlJSON["\(i)"] as? String {
-                                listUrl.append(url)
-                            }
+                    //if self.listURLInValid == nil {
+                    var listUrl: [String] = []
+                    
+                    for i in 0...MAX_COUNT_IMAGE {
+                        if let url = listUrlJSON["\(i)"] as? String {
+                            listUrl.append(url)
                         }
-                        
-                        self.listURLInValid = listUrl
                     }
+                    
+                    self.listURLInValid = listUrl
+                    self.updateListURLInvalid()
+                    //}
                     
                     if let list = self.listURLInValid, list.count > 0 {
                         self.updateInfoFalse(pre: "Ảnh cung cấp")
+                    } else {
+                        self.isNeedUpdate = false
                     }
                     
+                } else {
+                    self.isNeedUpdate = false
                 }
             }
         }
@@ -120,6 +127,39 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         }
     }
     
+    func addToListURLInvalid(url: String) {
+        let temp = self.listRemovedURLInvalid.filter{ $0 == url }
+        if temp.count == 0 {
+            self.listRemovedURLInvalid.append(url)
+        }
+    }
+    
+    private func updateListURLInvalid() {
+        //guard let list = self.listURLInValid else { return }
+        self.listRemovedURLInvalid.forEach { (url) in
+            var index = 0
+            var isRemove = false
+            
+            if let list = self.listURLInValid {
+                for i in list {
+                    if i == url {
+                        isRemove = true
+                        break
+                    }
+                    
+                    index += 1
+                }
+                
+                if isRemove {
+                    if index < list.count {
+                        self.listURLInValid?.remove(at: index)
+                    }
+                }
+            }
+        }
+    }
+    
+    
     func showLibrary() {
         CameraHandler.shared.showCamera(vc: UIApplication.shared.topViewController()!)
         CameraHandler.shared.imagePickedBlock = { (image) in
@@ -158,7 +198,9 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
                 if let cell = self.mainCollectionView?.cellForItem(at: current) as? LoanOtherInfoCollectionCell, let hidden = cell.errorView?.isHidden, !hidden {
                     //remove key url invalid
                     self.removeUrlInValidInList(url: cell.urlImg)
-                    
+                    if let urlImg = cell.urlImg {
+                        self.addToListURLInvalid(url: urlImg)
+                    }
                 }
                 
                  self.dataSourceCollection[current.row] = img
@@ -215,7 +257,7 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Loan_Other_Info_Collection_Cell", for: indexPath) as! LoanOtherInfoCollectionCell
         cell.currentSelectedCollection = indexPath
         cell.delegate = self
-        cell.errorView?.isHidden = true
+        cell.errorView.isHidden = true
         
         
         if self.dataSourceCollection.count < MAX_COUNT_IMAGE && indexPath.row == self.dataSourceCollection.count {
@@ -247,11 +289,15 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
             cell.urlImg = data
             
             if let isNeed = self.isNeedUpdate, isNeed, let urls = self.listURLInValid, urls.count > 0 {
+                var isNoShowErrorView = true
                 for url in urls {
                     if data == url {
-                        cell.errorView?.isHidden = false
+                        isNoShowErrorView = false
+                        break
                     }
                 }
+                
+                cell.errorView.isHidden = isNoShowErrorView
             }
             
         }
@@ -273,6 +319,10 @@ extension LoanTypeOptionalMediaTBCell: OptionMediaDelegate {
         
         self.removeUrlInValidInList(url: urlImg)
         self.dataSourceCollection.remove(at: index)
+        
+        if let urlImg_ = urlImg {
+            self.addToListURLInvalid(url: urlImg_)
+        }
         
         if let indexArray = self.field?.arrayIndex, DataManager.shared.loanInfo.optionalMedia.count > indexArray {
             if DataManager.shared.loanInfo.optionalMedia[indexArray].count > index {
