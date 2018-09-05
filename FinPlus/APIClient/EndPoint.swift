@@ -13,7 +13,6 @@ enum Host {
     static let alphaURL = ""
 
     static let productURL = "https://dev-api.mony.vn/"
-    //static let productURL = "http://192.168.8.50:8079/" //- server may Thai
 
 }
 
