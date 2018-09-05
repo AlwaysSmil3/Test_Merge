@@ -32,10 +32,13 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xha-bS-17C" customClass="SCPageControlView" customModule="FinPlus" customModuleProvider="target">
                                         <rect key="frame" x="92" y="8" width="191" height="34"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="191" id="IYA-iz-tJt"/>
+                                        </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Li-yr-SdD">
-                                        <rect key="frame" x="314" y="0.0" width="53" height="50"/>
+                                        <rect key="frame" x="316" y="0.0" width="51" height="50"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="15"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" title="TIẾP">
@@ -46,7 +49,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZs-h6-MCo">
-                                        <rect key="frame" x="8" y="0.0" width="79" height="50"/>
+                                        <rect key="frame" x="8" y="0.0" width="76" height="50"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="15"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" title="BỎ QUA">
@@ -64,8 +67,6 @@
                                     <constraint firstItem="pZs-h6-MCo" firstAttribute="top" secondItem="YEW-lE-O5U" secondAttribute="top" id="Egg-Vw-w33"/>
                                     <constraint firstItem="4Li-yr-SdD" firstAttribute="top" secondItem="YEW-lE-O5U" secondAttribute="top" id="K5L-Ad-vBW"/>
                                     <constraint firstAttribute="height" constant="50" id="L0I-bR-cru"/>
-                                    <constraint firstItem="Xha-bS-17C" firstAttribute="leading" secondItem="YEW-lE-O5U" secondAttribute="leading" constant="92" id="Pih-E5-iX3"/>
-                                    <constraint firstAttribute="trailing" secondItem="Xha-bS-17C" secondAttribute="trailing" constant="92" id="TZ1-aN-GtU"/>
                                     <constraint firstItem="Xha-bS-17C" firstAttribute="centerX" secondItem="YEW-lE-O5U" secondAttribute="centerX" id="UK5-Ye-rmD"/>
                                     <constraint firstAttribute="bottom" secondItem="Xha-bS-17C" secondAttribute="bottom" constant="8" id="ZEN-0h-VJZ"/>
                                     <constraint firstItem="pZs-h6-MCo" firstAttribute="leading" secondItem="YEW-lE-O5U" secondAttribute="leading" constant="8" id="mdo-sC-TPq"/>
