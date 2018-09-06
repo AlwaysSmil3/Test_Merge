@@ -33,6 +33,7 @@ pod 'Crashlytics'
 
 pod 'SVProgressHUD'
 pod 'DateToolsSwift'
+pod 'APAddressBook/Swift'
 
   # Pods for FinPlus
 

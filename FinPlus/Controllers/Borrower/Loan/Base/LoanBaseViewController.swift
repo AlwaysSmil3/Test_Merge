@@ -187,6 +187,15 @@ class LoanBaseViewController: BaseViewController {
         }
     }
     
+    func showGuideCaptureView() {
+        let guideVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "GuideCaptureViewController") as! GuideCaptureViewController
+        guideVC.delegate = self
+        self.present(guideVC, animated: true, completion: {
+            
+        })
+        
+    }
+    
     //Upload Data Image
     func uploadData(img: UIImage) {
         
@@ -482,7 +491,18 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
                 self.typeImgFile = .Optional
             }
             
-            self.selectedFile()
+            if self.typeImgFile == .ALL {
+                
+                if let value = userDefault.value(forKey: UserDefaultShowGuideCameraView) as? Bool, value {
+                    self.selectedFile()
+                } else {
+                    self.showGuideCaptureView()
+                }
+                
+            } else {
+               self.selectedFile()
+            }
+        
             
             break
             
@@ -503,6 +523,14 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         
         
         
+    }
+    
+}
+
+//MARK: GuideCaptureDelegate
+extension LoanBaseViewController: GuideCaptureDelegate {
+    func showCamera() {
+        self.selectedFile()
     }
     
 }
