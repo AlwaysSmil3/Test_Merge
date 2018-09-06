@@ -27,7 +27,8 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
         didSet {
             guard let data_ = data else { return }
             self.tfRelationPhone?.placeholder = data_.placeholder
-            self.tfRelationPhone?.text = data_.phoneNumber
+            //self.tfRelationPhone?.text = data_.phoneNumber
+            self.tfRelationPhone?.text = self.getDisplayPhone(relationPhone: data_.phoneNumber ?? "")
             
             self.tfTypeRelation?.text = DataManager.getTitleRelationShip(id: data_.type ?? -1)
             
@@ -77,6 +78,17 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
         } else {
             self.delegateUpdateStatusInvalid?.update(isNeed: true)
         }
+    }
+    
+    private func getDisplayPhone(relationPhone: String) -> String {
+        var phone = relationPhone
+        if relationPhone.contains("_") {
+            let array = relationPhone.components(separatedBy: "_")
+            if array.count > 0 {
+                phone = array[0]
+            }
+        }
+        return phone
     }
     
     

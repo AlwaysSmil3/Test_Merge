@@ -101,9 +101,9 @@ class LoanPersionalInfoVC: LoanBaseViewController {
                 
                 let message = "Đang không có quyền truy cập danh bạ. Vui lòng vào: Cài đặt -> Mony -> và cho phép danh bạ."
                 
-                self.showAlertView(title: "Danh bạ", message: message, okTitle: "OK", cancelTitle: "Huỷ", completion: { (bool) in
+                self.showAlertView(title: "Danh bạ", message: message, okTitle: "Huỷ", cancelTitle: "Đồng ý", completion: { (bool) in
                     
-                    guard bool else {
+                    guard !bool else {
                         return
                     }
                     
