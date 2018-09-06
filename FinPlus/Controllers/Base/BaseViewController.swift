@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import CoreLocation
 
 class BaseViewController: UIViewController {
     
@@ -15,6 +15,9 @@ class BaseViewController: UIViewController {
     @IBOutlet var imgBgBtnContinue: UIImageView?
     
     @IBOutlet var errorConnectView: UIView?
+    
+    //Current Location
+    var locationManager: CLLocationManager?
     
     
     func setupTitleView(title: String, subTitle: String? = nil) {
@@ -62,6 +65,25 @@ class BaseViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
         print("----- deinit: \(String(describing: self.self))")
+    }
+    
+    func initLocationManager() {
+        if self.locationManager == nil {
+            self.locationManager = CLLocationManager()
+        }
+        
+        // Ask for Authorisation from the User.
+        self.locationManager?.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager?.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager?.delegate = self
+            locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager?.startUpdatingLocation()
+        }
+        
     }
     
     
@@ -155,6 +177,15 @@ class BaseViewController: UIViewController {
     
     
     
+}
+
+//MARK: CLLocationManagerDelegate
+extension BaseViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        DataManager.shared.currentLocation = locValue
+    }
 }
 
 

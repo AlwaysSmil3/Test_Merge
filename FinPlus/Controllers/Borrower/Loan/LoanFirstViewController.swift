@@ -50,6 +50,7 @@ class LoanFirstViewController: BaseViewController {
         self.setupInit()
         self.updateData()
 
+        self.initLocationManager()
         
         for cate in DataManager.shared.loanCategories {
             var loan = LoanBuilderData(object: NSObject())

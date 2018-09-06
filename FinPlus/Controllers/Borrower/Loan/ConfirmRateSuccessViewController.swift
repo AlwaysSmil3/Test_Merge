@@ -7,16 +7,13 @@
 //
 
 import UIKit
-import CoreLocation
 
-class ConfirmRateSuccessViewController: UIViewController {
+class ConfirmRateSuccessViewController: BaseViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var desLabel: UILabel!
     @IBOutlet weak var btnComeHome: UIButton!
     
-    //Current Location
-    var locationManager: CLLocationManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,24 +34,6 @@ class ConfirmRateSuccessViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func initLocationManager() {
-        if self.locationManager == nil {
-            self.locationManager = CLLocationManager()
-        }
-        
-        // Ask for Authorisation from the User.
-        self.locationManager?.requestAlwaysAuthorization()
-        
-        // For use in foreground
-        self.locationManager?.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager?.delegate = self
-            locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager?.startUpdatingLocation()
-        }
-        
-    }
     
     @IBAction func comHome(_ sender: Any) {
         DataManager.shared.loanInfo.status = STATUS_LOAN.RAISING_CAPITAL.rawValue
@@ -95,12 +74,4 @@ class ConfirmRateSuccessViewController: UIViewController {
 
 }
 
-//MARK: CLLocationManagerDelegate
-extension ConfirmRateSuccessViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        //print("locations = \(locValue.latitude) \(locValue.longitude)")
-        DataManager.shared.currentLocation = locValue
-    }
-}
 
