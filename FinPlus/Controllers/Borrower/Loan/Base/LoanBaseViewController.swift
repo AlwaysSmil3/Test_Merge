@@ -174,6 +174,13 @@ class LoanBaseViewController: BaseViewController {
         self.navigationController?.pushViewController(firstAddressVC, animated: true)
     }
     
+    func gotoDropdownSearchVC() {
+        let universityVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "UniversityViewController") as! UniversityViewController
+        universityVC.delegateUniversity = self
+
+        self.navigationController?.pushViewController(universityVC, animated: true)
+    }
+    
 
     
     //Chọn ảnh
@@ -376,6 +383,11 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         let model = fields[indexPath.row]
         
         switch model.type! {
+        case DATA_TYPE_TB_CELL.DropDownSearch:
+            let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.Address, for: indexPath) as! LoanTypeAddressTBCell
+            cell.field = model
+            return cell
+            
         case DATA_TYPE_TB_CELL.TextBox:
             
             if let multiline = model.multipleLine, multiline {
@@ -461,6 +473,10 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         self.currentIndexSelected = indexPath
         
         switch model.type! {
+        case DATA_TYPE_TB_CELL.DropDownSearch:
+            self.gotoDropdownSearchVC()
+            break
+            
         case DATA_TYPE_TB_CELL.TextBox:
             //self.showInputMesseageView()
             
@@ -525,6 +541,20 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+}
+
+//MARK: UniversitySelectionDelegate
+extension LoanBaseViewController: UniversitySelectionDelegate {
+    func universitySelected(model: UniversityModel) {
+        DataManager.shared.loanInfo.jobInfo.academicName = model.name!
+        
+        guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
+        self.mainTBView?.deselectRow(at: indexPath, animated: true)
+        
+        if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeAddressTBCell {
+            cell.field?.placeholder = model.name!
+        }
+    }
 }
 
 //MARK: GuideCaptureDelegate

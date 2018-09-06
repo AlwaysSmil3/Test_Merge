@@ -27,6 +27,7 @@ public struct LoanBuilderFields {
     static let keyboard = "keyboard"
     static let showTime = "show_time"
     static let arrayIndex = "array_index"
+    static let dataName = "data_name"
   }
 
   // MARK: Properties
@@ -47,6 +48,7 @@ public struct LoanBuilderFields {
   public var showTime: Bool? = false
     public var arrayIndex: Int?
     public var textInputMuiltiline: String?
+    public var dataName: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -77,6 +79,7 @@ public struct LoanBuilderFields {
     keyboard = json[SerializationKeys.keyboard].string
     showTime = json[SerializationKeys.showTime].boolValue
     arrayIndex = json[SerializationKeys.arrayIndex].int
+    dataName = json[SerializationKeys.dataName].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -101,6 +104,7 @@ public struct LoanBuilderFields {
     dictionary[SerializationKeys.showTime] = showTime
     
     if let value = arrayIndex { dictionary[SerializationKeys.arrayIndex] = value }
+    if let value = dataName { dictionary[SerializationKeys.dataName] = value }
     
     return dictionary
   }

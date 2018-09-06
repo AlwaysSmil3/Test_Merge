@@ -166,7 +166,7 @@ enum DATA_TYPE_TB_CELL {
     static let File = "file"
     static let MultipleFile = "multiple_file"
     static let Choice = "choice"
-    
+    static let DropDownSearch = "dropdown_search"
 }
 
 let InValidMissingDataColor = UIColor(hexString: "#DA3535")

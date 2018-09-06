@@ -218,6 +218,10 @@
 		63D4CB7520F33A6C00519FFB /* AlertConfirmCreateLoanPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D4CB7420F33A6C00519FFB /* AlertConfirmCreateLoanPopup.swift */; };
 		63DE086C20D10F7400FD95AE /* VerifyFacebookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DE086B20D10F7400FD95AE /* VerifyFacebookVC.swift */; };
 		63F0CC5620C00B1D0065E3BD /* ConfirmInterestRateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F0CC5520C00B1D0065E3BD /* ConfirmInterestRateVC.swift */; };
+		63FAF5512140C96D00985B92 /* UniversityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FAF5502140C96D00985B92 /* UniversityModel.swift */; };
+		63FAF5532140C9DD00985B92 /* university.json in Resources */ = {isa = PBXBuildFile; fileRef = 63FAF5522140C9DD00985B92 /* university.json */; };
+		63FAF5562140CDAB00985B92 /* UniversityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FAF5552140CDAB00985B92 /* UniversityViewController.swift */; };
+		63FAF5582140DD9500985B92 /* UniversityDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FAF5572140DD9500985B92 /* UniversityDataSource.swift */; };
 		63FD80C920C0E13D004BD22A /* LoanBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FD80C820C0E13D004BD22A /* LoanBaseViewController.swift */; };
 		84114BC620D79464005026DF /* TestBorrowingPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84114BB420D79464005026DF /* TestBorrowingPayViewController.swift */; };
 		84114BC720D79464005026DF /* AddNewWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84114BB620D79464005026DF /* AddNewWalletTableViewCell.swift */; };
@@ -561,6 +565,10 @@
 		63D4CB7420F33A6C00519FFB /* AlertConfirmCreateLoanPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConfirmCreateLoanPopup.swift; sourceTree = "<group>"; };
 		63DE086B20D10F7400FD95AE /* VerifyFacebookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyFacebookVC.swift; sourceTree = "<group>"; };
 		63F0CC5520C00B1D0065E3BD /* ConfirmInterestRateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmInterestRateVC.swift; sourceTree = "<group>"; };
+		63FAF5502140C96D00985B92 /* UniversityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversityModel.swift; sourceTree = "<group>"; };
+		63FAF5522140C9DD00985B92 /* university.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = university.json; sourceTree = "<group>"; };
+		63FAF5552140CDAB00985B92 /* UniversityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityViewController.swift; sourceTree = "<group>"; };
+		63FAF5572140DD9500985B92 /* UniversityDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityDataSource.swift; sourceTree = "<group>"; };
 		63FD80C820C0E13D004BD22A /* LoanBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanBaseViewController.swift; sourceTree = "<group>"; };
 		84114BB420D79464005026DF /* TestBorrowingPayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestBorrowingPayViewController.swift; sourceTree = "<group>"; };
 		84114BB620D79464005026DF /* AddNewWalletTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewWalletTableViewCell.swift; sourceTree = "<group>"; };
@@ -858,6 +866,7 @@
 		6308DF6E20A4553E001DC320 /* Loan */ = {
 			isa = PBXGroup;
 			children = (
+				63FAF5542140CC1000985B92 /* University */,
 				63B49D3E213FEF9600C7B999 /* GuideCapture */,
 				6397B1B520CFB436009BAF33 /* Popup */,
 				630D983D20CF6B8600994D81 /* Success */,
@@ -1182,6 +1191,7 @@
 		639C9DCB20A14A7900F2CF5E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				63FAF54F2140C94300985B92 /* University */,
 				6304FFB9214024F600834C09 /* Contact */,
 				630532E4212526A700C808A2 /* Notification */,
 				63037F5021119A7A002CE49B /* Transaction */,
@@ -1406,6 +1416,23 @@
 			path = ConfirmInterestRate;
 			sourceTree = "<group>";
 		};
+		63FAF54F2140C94300985B92 /* University */ = {
+			isa = PBXGroup;
+			children = (
+				63FAF5502140C96D00985B92 /* UniversityModel.swift */,
+			);
+			path = University;
+			sourceTree = "<group>";
+		};
+		63FAF5542140CC1000985B92 /* University */ = {
+			isa = PBXGroup;
+			children = (
+				63FAF5552140CDAB00985B92 /* UniversityViewController.swift */,
+				63FAF5572140DD9500985B92 /* UniversityDataSource.swift */,
+			);
+			path = University;
+			sourceTree = "<group>";
+		};
 		84114BB320D79464005026DF /* Pay */ = {
 			isa = PBXGroup;
 			children = (
@@ -1541,6 +1568,7 @@
 		E7A4A0A120E6321500B5F7ED /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				63FAF5522140C9DD00985B92 /* university.json */,
 				E7A4A0A620E65B9400B5F7ED /* hop-dong.html */,
 				E7A4A0A220E6321500B5F7ED /* about.html */,
 				E7A4A0A320E6321500B5F7ED /* terms-and-conditions.html */,
@@ -1788,6 +1816,7 @@
 				E772D77420CA7C86001F0B8E /* LoanTableViewCell.xib in Resources */,
 				630467B320B5094F0069469A /* Address.storyboard in Resources */,
 				630BA62020C22A4100880DAE /* SF-Pro-Display-BlackItalic.otf in Resources */,
+				63FAF5532140C9DD00985B92 /* university.json in Resources */,
 				630F684720F4664D004FF32E /* LoanTypePhoneRelationSubTBCell.xib in Resources */,
 				E7BC258920CFDACA001FF0F4 /* README.md in Resources */,
 				639C9E1120A18A7500F2CF5E /* Roboto-Regular.ttf in Resources */,
@@ -1919,6 +1948,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IBAnimatable/IBAnimatable.framework",
 				"${BUILT_PRODUCTS_DIR}/JSONWebToken/JWT.framework",
+				"${BUILT_PRODUCTS_DIR}/MYTableViewIndex/MYTableViewIndex.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/PinCodeTextField/PinCodeTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
@@ -1942,6 +1972,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IBAnimatable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MYTableViewIndex.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinCodeTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
@@ -2023,6 +2054,7 @@
 				E7F519FC20CE1B8C00F72682 /* ProfileTableViewCell.swift in Sources */,
 				630F684220F45F97004FF32E /* LoanBuilderMultipleData.swift in Sources */,
 				63037F4F21115531002CE49B /* APIClient+Payment.swift in Sources */,
+				63FAF5562140CDAB00985B92 /* UniversityViewController.swift in Sources */,
 				6338F3FF20BE602C005777E2 /* BrowwerInfo.swift in Sources */,
 				E7BC259220CFDACA001FF0F4 /* MadokaTextField.swift in Sources */,
 				E7F51A1220CE6CE800F72682 /* LoanBuilderFields.swift in Sources */,
@@ -2055,6 +2087,7 @@
 				63750EF220F701840063054F /* BaseAuthenViewController.swift in Sources */,
 				E76AF6B020DB8E4100C71305 /* ContractSuccessViewController.swift in Sources */,
 				6338F3FD20BE602C005777E2 /* BrowwerRelationships.swift in Sources */,
+				63FAF5582140DD9500985B92 /* UniversityDataSource.swift in Sources */,
 				84114BD320D79464005026DF /* BankAccountTableViewCell.swift in Sources */,
 				6338F3FE20BE602C005777E2 /* BrowwerResidence.swift in Sources */,
 				E772D76E20CA770F001F0B8E /* LoanDetailViewController.swift in Sources */,
@@ -2098,6 +2131,7 @@
 				639C9DF820A189E600F2CF5E /* ToastCenter.swift in Sources */,
 				6307D3BF20AD2F0500055F5C /* FacebookInfo.swift in Sources */,
 				63B49D40213FEFC300C7B999 /* GuideCaptureViewController.swift in Sources */,
+				63FAF5512140C96D00985B92 /* UniversityModel.swift in Sources */,
 				6385D951212D0E0F00151B3A /* BrowwerCollections.swift in Sources */,
 				6357824F20C2330800DE09A0 /* KeychainPasswordItem.swift in Sources */,
 				84CBBE5620CF85610058C834 /* NotificationTableViewCell.swift in Sources */,

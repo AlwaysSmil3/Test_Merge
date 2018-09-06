@@ -1,0 +1,9670 @@
+[
+	{
+		"id" : 1,
+		"name" : "Đại học Bách khoa Hồ Chí Minh"
+	},
+	{
+		"id" : 2,
+		"name" : "Đại học Công nghệ Thông tin Hồ Chí Minh"
+	},
+	{
+		"id" : 3,
+		"name" : "Đại học Khoa học Tự nhiên Hồ Chí Minh"
+	},
+	{
+		"id" : 4,
+		"name" : "Đại học Khoa học Xã hội và Nhân văn Hồ Chí Minh"
+	},
+	{
+		"id" : 5,
+		"name" : "Trường Đại học Kinh tế - Luật Hồ Chí Minh"
+	},
+	{
+		"id" : 6,
+		"name" : "Đại học Quốc tế Hồ Chí Minh"
+	},
+	{
+		"id" : 7,
+		"name" : "Trường Đại học An Giang"
+	},
+	{
+		"id" : 8,
+		"name" : "Trường Đại học Việt - Đức"
+	},
+	{
+		"id" : 9,
+		"name" : "Phân hiệu Đại học Quốc gia Hồ Chí Minh tại Bến Tre"
+	},
+	{
+		"id" : 10,
+		"name" : "Đại Học Y Dược Hồ Chí Minh"
+	},
+	{
+		"id" : 11,
+		"name" : "Đại học Bách khoa Đà Nẵng"
+	},
+	{
+		"id" : 12,
+		"name" : "Đại học Sư phạm Kỹ thuật Đà Nẵng"
+	},
+	{
+		"id" : 13,
+		"name" : "Đại học Kinh tế Đà Nẵng"
+	},
+	{
+		"id" : 14,
+		"name" : "Đại học Ngoại ngữ Đà Nẵng"
+	},
+	{
+		"id" : 15,
+		"name" : "Đại học Sư phạm Đà Nẵng"
+	},
+	{
+		"id" : 16,
+		"name" : "Phân hiệu Đại học Đà Nẵng tại Kon Tum"
+	},
+	{
+		"id" : 17,
+		"name" : "Viện Nghiên cứu và Đào tạo Việt-Anh"
+	},
+	{
+		"id" : 18,
+		"name" : "Khoa Y Dược Đại học Đà Nẵng"
+	},
+	{
+		"id" : 19,
+		"name" : "Khoa Công nghệ Đại Học Đà Nẵng"
+	},
+	{
+		"id" : 20,
+		"name" : " Công nghệ Thông tin và Truyền thông Đại học Đà Nẵng"
+	},
+	{
+		"id" : 21,
+		"name" : "Khoa Du lịch Đại học Đà Nẵng"
+	},
+	{
+		"id" : 22,
+		"name" : "Khoa Giáo dục thể chất Đại học Đà Nẵng"
+	},
+	{
+		"id" : 23,
+		"name" : "Phân hiệu Đại học Huế tại Quảng Trị"
+	},
+	{
+		"id" : 24,
+		"name" : "Đại học Khoa học Huế"
+	},
+	{
+		"id" : 25,
+		"name" : "Đại học Kinh tế Huế"
+	},
+	{
+		"id" : 26,
+		"name" : "Đại học Luật Huế"
+	},
+	{
+		"id" : 27,
+		"name" : "Đại học Nghệ thuật Huế"
+	},
+	{
+		"id" : 28,
+		"name" : "Đại học Ngoại ngữ Huế"
+	},
+	{
+		"id" : 29,
+		"name" : "Đại học Nông Lâm Huế"
+	},
+	{
+		"id" : 30,
+		"name" : "Đại học Sư phạm Huế"
+	},
+	{
+		"id" : 31,
+		"name" : "Đại học Y Dược Huế"
+	},
+	{
+		"id" : 32,
+		"name" : "Khoa Ngoại ngữ Đại học Thái Nguyên"
+	},
+	{
+		"id" : 33,
+		"name" : "Khoa Quốc tế Đại học Thái Nguyên"
+	},
+	{
+		"id" : 34,
+		"name" : "Phân hiệu Đại học Thái Nguyên tại Lào Cai"
+	},
+	{
+		"id" : 35,
+		"name" : "Đại học Công nghệ Thông tin và Truyền thông Thái Nguyên"
+	},
+	{
+		"id" : 36,
+		"name" : "Đại học Khoa học Thái Nguyên"
+	},
+	{
+		"id" : 37,
+		"name" : "Đại học Kinh tế và Quản trị Kinh doanh Thái Nguyên"
+	},
+	{
+		"id" : 38,
+		"name" : "Đại học Kỹ thuật Công nghiệp Thái Nguyên"
+	},
+	{
+		"id" : 39,
+		"name" : "Đại học Nông Lâm Thái Nguyên"
+	},
+	{
+		"id" : 40,
+		"name" : "Đại học Sư phạm Thái Nguyên"
+	},
+	{
+		"id" : 41,
+		"name" : "Đại học Y Dược Thái Nguyên"
+	},
+	{
+		"id" : 42,
+		"name" : "Đại học Công nghệ Thái Nguyên"
+	},
+	{
+		"id" : 43,
+		"name" : "Đại học Giáo dục"
+	},
+	{
+		"id" : 44,
+		"name" : "Đại học Kinh tế Hà Nội"
+	},
+	{
+		"id" : 45,
+		"name" : "Đại học Khoa học Tự nhiên Hà Nội"
+	},
+	{
+		"id" : 46,
+		"name" : "Đại học Khoa học Xã hội và Nhân văn Hà Nội"
+	},
+	{
+		"id" : 47,
+		"name" : "Đại học Ngoại ngữ Hà Nội"
+	},
+	{
+		"id" : 48,
+		"name" : "Trường Đại học Việt - Nhật"
+	},
+	{
+		"id" : 49,
+		"name" : "Khoa Luật đại học quốc gia Hà Nội"
+	},
+	{
+		"id" : 50,
+		"name" : "Khoa Quản trị Kinh doanh đại học quốc gia Hà Nội"
+	},
+	{
+		"id" : 51,
+		"name" : "Khoa Quốc tế đại học quốc gia Hà Nội"
+	},
+	{
+		"id" : 52,
+		"name" : "Khoa Y Dược đại học quốc gia Hà Nội"
+	},
+	{
+		"id" : 54,
+		"name" : "Đại học Công nghiệp Việt-Hung"
+	},
+	{
+		"id" : 55,
+		"name" : "Trường Đại học Bách khoa Hà Nội"
+	},
+	{
+		"id" : 56,
+		"name" : "Trường Đại học Công đoàn"
+	},
+	{
+		"id" : 57,
+		"name" : "Trường Đại học Công nghệ Giao thông Vận tải"
+	},
+	{
+		"id" : 58,
+		"name" : "Trường Đại học Công nghiệp Dệt May Hà Nội"
+	},
+	{
+		"id" : 59,
+		"name" : "Trường Đại học Công nghiệp Hà Nội"
+	},
+	{
+		"id" : 60,
+		"name" : "Trường Đại học Công nghiệp Quảng Ninh"
+	},
+	{
+		"id" : 61,
+		"name" : "Trường Đại học Công nghiệp Hồ Chí Minh"
+	},
+	{
+		"id" : 62,
+		"name" : "Trường Đại học Công nghiệp Thực phẩm Hồ Chí Minh"
+	},
+	{
+		"id" : 63,
+		"name" : "Trường Đại học Công nghiệp Việt Trì"
+	},
+	{
+		"id" : 64,
+		"name" : "Trường Đại học Dầu khí Việt Nam"
+	},
+	{
+		"id" : 65,
+		"name" : "Trường Đại học Điện lực"
+	},
+	{
+		"id" : 66,
+		"name" : "trường đại học điều dưỡng Nam Định"
+	},
+	{
+		"id" : 67,
+		"name" : "Trường Đại học Dược Hà Nội"
+	},
+	{
+		"id" : 68,
+		"name" : "Đại học Giao thông Vận tải Hồ Chí Minh"
+	},
+	{
+		"id" : 69,
+		"name" : "Trường Đại học Giao thông Vận tải"
+	},
+	{
+		"id" : 70,
+		"name" : "Trường Đại học Hà Nội"
+	},
+	{
+		"id" : 71,
+		"name" : "Trường Đại học Hàng hải Việt Nam"
+	},
+	{
+		"id" : 72,
+		"name" : "Trường Đại học Khoa học và Công nghệ Hà Nội"
+	},
+	{
+		"id" : 73,
+		"name" : "Trường Đại học Kiểm sát Hà Nội"
+	},
+	{
+		"id" : 74,
+		"name" : "Trường Đại học Kiến trúc Hà Nội"
+	},
+	{
+		"id" : 75,
+		"name" : "Trường Đại học Kiến trúc Hồ Chí Minh"
+	},
+	{
+		"id" : 76,
+		"name" : "Trường Đại học Kinh tế - Kỹ thuật Công nghiệp"
+	},
+	{
+		"id" : 77,
+		"name" : "Trường Đại học Kinh tế Quốc dân"
+	},
+	{
+		"id" : 78,
+		"name" : "Trường Đại học Kinh tế Hồ Chí Minh"
+	},
+	{
+		"id" : 79,
+		"name" : "Trường Đại học Kỹ thuật Y - Dược Đà Nẵng"
+	},
+	{
+		"id" : 80,
+		"name" : "Trường Đại học Kỹ thuật Y tế Hải Dương"
+	},
+	{
+		"id" : 81,
+		"name" : "Trường Đại học Lâm nghiệp Việt Nam"
+	},
+	{
+		"id" : 82,
+		"name" : "Trường Đại học Lao động - Xã hội cơ sở 2, Hồ Chí Minh"
+	},
+	{
+		"id" : 83,
+		"name" : "Trường Đại học Lao động - Xã hội, cơ sở Sơn Tây"
+	},
+	{
+		"id" : 84,
+		"name" : "Trường Đại học Lao động - Xã hội"
+	},
+	{
+		"id" : 85,
+		"name" : "Trường Đại học Luật Hà Nội"
+	},
+	{
+		"id" : 86,
+		"name" : "Trường Đại học Luật Hồ Chí Minh"
+	},
+	{
+		"id" : 87,
+		"name" : "Trường Đại học Mỏ - Địa chất"
+	},
+	{
+		"id" : 88,
+		"name" : "Trường Đại học Mở Hồ Chí Minh"
+	},
+	{
+		"id" : 89,
+		"name" : "Trường Đại học Mỹ thuật Công nghiệp"
+	},
+	{
+		"id" : 90,
+		"name" : "Trường Đại học Mỹ thuật Hồ Chí Minh"
+	},
+	{
+		"id" : 91,
+		"name" : "Trường Đại học Mỹ thuật Việt Nam"
+	},
+	{
+		"id" : 92,
+		"name" : "Trường Đại học Ngân hàng Hồ Chí Minh"
+	},
+	{
+		"id" : 93,
+		"name" : "Trường Đại học Ngoại thương cơ sở 2, Hồ Chí Minh"
+	},
+	{
+		"id" : 94,
+		"name" : "Trường Đại học Ngoại thương, cơ sở Quảng Ninh"
+	},
+	{
+		"id" : 95,
+		"name" : "Trường Đại học Ngoại thương Hà Nội"
+	},
+	{
+		"id" : 96,
+		"name" : "Trường Đại học Nội vụ Hà Nội"
+	},
+	{
+		"id" : 97,
+		"name" : "Trường Đại học Nông Lâm Bắc Giang"
+	},
+	{
+		"id" : 98,
+		"name" : "Trường Đại học Nông Lâm Hồ Chí Minh"
+	},
+	{
+		"id" : 99,
+		"name" : "Trường Đại học Phạm Văn Đồng"
+	},
+	{
+		"id" : 100,
+		"name" : "Trường Đại học Sân khấu - Điện ảnh Hồ Chí Minh"
+	},
+	{
+		"id" : 101,
+		"name" : "Đại học Sân khấu - Điện ảnh Hà Nội"
+	},
+	{
+		"id" : 102,
+		"name" : "Trường Đại học Sao Đỏ"
+	},
+	{
+		"id" : 103,
+		"name" : "Trường Đại học Sư phạm Hà Nội 2"
+	},
+	{
+		"id" : 104,
+		"name" : "Trường Đại học Sư phạm Hà Nội"
+	},
+	{
+		"id" : 105,
+		"name" : "Trường Đại học Sư phạm Kỹ thuật Hưng Yên"
+	},
+	{
+		"id" : 106,
+		"name" : "Trường Đại học Sư phạm Kỹ thuật Nam Định"
+	},
+	{
+		"id" : 107,
+		"name" : "Trường Đại học Sư phạm Kỹ thuật Hồ Chí Minh"
+	},
+	{
+		"id" : 108,
+		"name" : "Trường Đại học Sư phạm kỹ thuật Vĩnh Long"
+	},
+	{
+		"id" : 109,
+		"name" : "Trường Đại học Sư phạm Kỹ thuật Vinh"
+	},
+	{
+		"id" : 110,
+		"name" : "Trường Đại học Sư phạm Nghệ thuật Trung ương"
+	},
+	{
+		"id" : 111,
+		"name" : "Trường Đại học Sư phạm Hồ Chí Minh"
+	},
+	{
+		"id" : 112,
+		"name" : "Trường Đại học Sư phạm Thể dục Thể thao Hà Nội"
+	},
+	{
+		"id" : 113,
+		"name" : "Trường Đại học Sư phạm Thể dục Thể thao Hồ Chí Minh"
+	},
+	{
+		"id" : 114,
+		"name" : "Trường Đại học Tài chính - Kế toán"
+	},
+	{
+		"id" : 115,
+		"name" : "Trường Đại học Tài chính - Marketing"
+	},
+	{
+		"id" : 116,
+		"name" : "Trường Đại học Tài chính - Quản trị kinh doanh"
+	},
+	{
+		"id" : 117,
+		"name" : "Trường Đại học Tài nguyên và Môi trường Hà Nội"
+	},
+	{
+		"id" : 118,
+		"name" : "Trường Đại học Tài nguyên và Môi trường Hồ Chí Minh"
+	},
+	{
+		"id" : 119,
+		"name" : "Trường Đại học Thể dục Thể thao Bắc Ninh"
+	},
+	{
+		"id" : 120,
+		"name" : "Trường Đại học Thể dục Thể thao Đà Nẵng"
+	},
+	{
+		"id" : 121,
+		"name" : "Đại học Thể dục Thể thao Hồ Chí Minh"
+	},
+	{
+		"id" : 122,
+		"name" : "Đại học Thương Mại"
+	},
+	{
+		"id" : 123,
+		"name" : "Đại học Thủy lợi cơ sở 2, Hồ Chí Minh"
+	},
+	{
+		"id" : 124,
+		"name" : "Trường Đại học Thủy lợi"
+	},
+	{
+		"id" : 125,
+		"name" : "Trường Đại học Tôn Đức Thắng, cơ sở Bảo Lộc"
+	},
+	{
+		"id" : 126,
+		"name" : "Trường Đại học Tôn Đức Thắng, cơ sở Cà Mau"
+	},
+	{
+		"id" : 127,
+		"name" : "Trường Đại học Tôn Đức Thắng, cơ sở Nha Trang"
+	},
+	{
+		"id" : 128,
+		"name" : "Trường Đại học Tôn Đức Thắng"
+	},
+	{
+		"id" : 129,
+		"name" : "Trường Đại học Văn hóa Hà Nội"
+	},
+	{
+		"id" : 130,
+		"name" : "Trường Đại học Văn hóa Hồ Chí Minh"
+	},
+	{
+		"id" : 131,
+		"name" : "Trường Đại học Xây dựng Miền Tây"
+	},
+	{
+		"id" : 132,
+		"name" : "Trường Đại học Xây dựng miền Trung"
+	},
+	{
+		"id" : 133,
+		"name" : "Trường Đại học Xây dựng"
+	},
+	{
+		"id" : 134,
+		"name" : "Đại học Y Dược Cần Thơ"
+	},
+	{
+		"id" : 135,
+		"name" : "Trường Đại học Y Dược Hồ Chí Minh"
+	},
+	{
+		"id" : 136,
+		"name" : "Trường Đại học Y Hà Nội"
+	},
+	{
+		"id" : 137,
+		"name" : "Đại học Y Dược Hải Phòng"
+	},
+	{
+		"id" : 138,
+		"name" : "Đại học Y Phạm Ngọc Thạch"
+	},
+	{
+		"id" : 139,
+		"name" : "Trường Đại học Y khoa Vinh"
+	},
+	{
+		"id" : 140,
+		"name" : "Trường Đại học Y tế Công cộng"
+	},
+	{
+		"id" : 141,
+		"name" : "Đại học Y Dược Thái Bình"
+	},
+	{
+		"id" : 142,
+		"name" : "Học viện Âm nhạc Huế"
+	},
+	{
+		"id" : 143,
+		"name" : "Học viện Âm nhạc Quốc gia Việt Nam"
+	},
+	{
+		"id" : 144,
+		"name" : "Học viện Báo chí và Tuyên truyền"
+	},
+	{
+		"id" : 145,
+		"name" : "Học viện Cán bộ Quản lý xây dựng và đô thị"
+	},
+	{
+		"id" : 146,
+		"name" : "Học viện Cán bộ Hồ Chí Minh"
+	},
+	{
+		"id" : 147,
+		"name" : "Học viện Chính sách và phát triển"
+	},
+	{
+		"id" : 148,
+		"name" : "Học viện Chính trị - Hành chính Quốc gia Hồ Chí Minh"
+	},
+	{
+		"id" : 149,
+		"name" : "Học viện Công nghệ Bưu chính Viễn thông cơ sở 2, Hồ Chí Minh"
+	},
+	{
+		"id" : 150,
+		"name" : "Học viện Công nghệ Bưu chính Viễn thông"
+	},
+	{
+		"id" : 151,
+		"name" : "Học viện Dân tộc"
+	},
+	{
+		"id" : 152,
+		"name" : "Học viện Hàng không Việt Nam"
+	},
+	{
+		"id" : 153,
+		"name" : "Học viện Hành chính Quốc Gia"
+	},
+	{
+		"id" : 154,
+		"name" : "Học viện Hành chính cơ sở 2, Hồ Chí Minh"
+	},
+	{
+		"id" : 155,
+		"name" : "Học viện Khoa học và Công nghệ"
+	},
+	{
+		"id" : 156,
+		"name" : "Học viện Khoa học, Công nghệ và Đổi mới sáng tạo"
+	},
+	{
+		"id" : 157,
+		"name" : "Học viện Khoa học xã hội"
+	},
+	{
+		"id" : 158,
+		"name" : "Học viện Ngân hàng"
+	},
+	{
+		"id" : 159,
+		"name" : "Học viện Ngoại giao Việt Nam"
+	},
+	{
+		"id" : 160,
+		"name" : "Học viện Phụ nữ Việt Nam"
+	},
+	{
+		"id" : 161,
+		"name" : "Học viện Quản lý Giáo dục"
+	},
+	{
+		"id" : 162,
+		"name" : "Học viện Tài chính"
+	},
+	{
+		"id" : 163,
+		"name" : "Học viện Thanh thiếu niên"
+	},
+	{
+		"id" : 164,
+		"name" : "Học viện Tòa án"
+	},
+	{
+		"id" : 165,
+		"name" : "Học viện Tư Pháp"
+	},
+	{
+		"id" : 166,
+		"name" : "Học viện Xây dựng Đảng"
+	},
+	{
+		"id" : 167,
+		"name" : "Học viện Y dược học cổ truyền Việt Nam"
+	},
+	{
+		"id" : 168,
+		"name" : "Nhạc viện Hồ Chí Minh"
+	},
+	{
+		"id" : 169,
+		"name" : "Viện Đại học Mở Hà Nội"
+	},
+	{
+		"id" : 170,
+		"name" : "Đại học RMIT"
+	},
+	{
+		"id" : 171,
+		"name" : "Học viện Thiết kế và Thời trang London"
+	},
+	{
+		"id" : 172,
+		"name" : "Phân hiệu Đại học Bình Dương tại Cà Mau"
+	},
+	{
+		"id" : 173,
+		"name" : "Đại học Thành Đông"
+	},
+	{
+		"id" : 174,
+		"name" : "Trường Đại học Bà Rịa - Vũng Tàu"
+	},
+	{
+		"id" : 175,
+		"name" : "Trường Đại học Bình Dương"
+	},
+	{
+		"id" : 176,
+		"name" : "Trường Đại học Buôn Ma Thuột"
+	},
+	{
+		"id" : 177,
+		"name" : "Trường Đại học Chu Văn An"
+	},
+	{
+		"id" : 178,
+		"name" : "Trường Đại học Công nghệ Đông Á"
+	},
+	{
+		"id" : 179,
+		"name" : "Trường Đại học Công nghệ Đồng Nai"
+	},
+	{
+		"id" : 180,
+		"name" : "Trường Đại học Công nghệ Sài Gòn"
+	},
+	{
+		"id" : 181,
+		"name" : "Trường Đại học Công nghệ Hồ Chí Minh"
+	},
+	{
+		"id" : 182,
+		"name" : "Trường Đại học Công nghệ và Quản lý Hữu nghị"
+	},
+	{
+		"id" : 183,
+		"name" : "Trường Đại học Công nghệ Vạn Xuân"
+	},
+	{
+		"id" : 184,
+		"name" : "Trường Đại học Công nghiệp Vinh"
+	},
+	{
+		"id" : 185,
+		"name" : "Trường Đại học Cửu Long"
+	},
+	{
+		"id" : 186,
+		"name" : "Trường Đại học Đại Nam"
+	},
+	{
+		"id" : 187,
+		"name" : "Đại học Hải Phòng"
+	},
+	{
+		"id" : 188,
+		"name" : "Đại học Văn Lang"
+	},
+	{
+		"id" : 189,
+		"name" : "Đại học Yersin Đà Lạt"
+	},
+	{
+		"id" : 190,
+		"name" : "Trường Đại học Đông Á"
+	},
+	{
+		"id" : 191,
+		"name" : "Trường Đại học Đông Đô"
+	},
+	{
+		"id" : 192,
+		"name" : "Trường Đại học Duy Tân"
+	},
+	{
+		"id" : 193,
+		"name" : "Trường Đại học FPT"
+	},
+	{
+		"id" : 194,
+		"name" : "Trường Đại học Fulbright Việt Nam"
+	},
+	{
+		"id" : 195,
+		"name" : "Trường Đại học Hà Hoa Tiên"
+	},
+	{
+		"id" : 196,
+		"name" : "Trường Đại học Hòa Bình"
+	},
+	{
+		"id" : 197,
+		"name" : "Trường Đại học Hoa Sen"
+	},
+	{
+		"id" : 198,
+		"name" : "Trường Đại học Hùng Vương Hồ Chí Minh"
+	},
+	{
+		"id" : 199,
+		"name" : "Trường Đại học Kiến trúc Đà Nẵng"
+	},
+	{
+		"id" : 200,
+		"name" : "Trường Đại học Kinh Bắc"
+	},
+	{
+		"id" : 201,
+		"name" : "Trường Đại học Kinh doanh và Công nghệ Hà Nội"
+	},
+	{
+		"id" : 202,
+		"name" : "Trường Đại học Kinh tế - Tài chính Hồ Chí Minh"
+	},
+	{
+		"id" : 203,
+		"name" : "Đại học Kinh tế - Công nghiệp Long An"
+	},
+	{
+		"id" : 204,
+		"name" : "Trường Đại học Kinh tế- Kỹ thuật Bình Dương"
+	},
+	{
+		"id" : 205,
+		"name" : "Trường Đại học Lạc Hồng"
+	},
+	{
+		"id" : 206,
+		"name" : "Trường Đại học Lương Thế Vinh"
+	},
+	{
+		"id" : 207,
+		"name" : "Trường Đại học Mỹ tại Việt Nam - AUV Đà Nẵng"
+	},
+	{
+		"id" : 208,
+		"name" : "Trường Đại học Mỹ thuật Công nghiệp Á Châu"
+	},
+	{
+		"id" : 209,
+		"name" : "Trường Đại học Nam Cần Thơ"
+	},
+	{
+		"id" : 210,
+		"name" : "Trường Đại học Ngoại ngữ Tin học Hồ Chí Minh"
+	},
+	{
+		"id" : 211,
+		"name" : "Trường Đại học Nguyễn Tất Thành"
+	},
+	{
+		"id" : 212,
+		"name" : "Trường Đại học Nguyễn Trãi"
+	},
+	{
+		"id" : 213,
+		"name" : "Trường Đại học Phan Châu Trinh"
+	},
+	{
+		"id" : 214,
+		"name" : "Trường Đại học Phan Thiết"
+	},
+	{
+		"id" : 215,
+		"name" : "Trường Đại học Phú Xuân"
+	},
+	{
+		"id" : 216,
+		"name" : "Đại học Phương Đông"
+	},
+	{
+		"id" : 217,
+		"name" : "Trường Đại học Quang Trung"
+	},
+	{
+		"id" : 218,
+		"name" : "Trường Đại học Quốc tế Bắc Hà"
+	},
+	{
+		"id" : 219,
+		"name" : "Trường Đại học Quốc tế Hồng Bàng"
+	},
+	{
+		"id" : 220,
+		"name" : "Trường Đại học Quốc tế Miền Đông"
+	},
+	{
+		"id" : 221,
+		"name" : "Trường Đại học Quốc tế Sài Gòn"
+	},
+	{
+		"id" : 222,
+		"name" : "Trường Đại học Tài chính - Ngân hàng Hà Nội"
+	},
+	{
+		"id" : 223,
+		"name" : "Trường Đại học Tân Tạo"
+	},
+	{
+		"id" : 224,
+		"name" : "Trường Đại học Tây Đô"
+	},
+	{
+		"id" : 225,
+		"name" : "Trường Đại học Thái Bình Dương"
+	},
+	{
+		"id" : 226,
+		"name" : "Trường Đại học Thăng Long"
+	},
+	{
+		"id" : 227,
+		"name" : "Trường Đại học Thành Đô"
+	},
+	{
+		"id" : 228,
+		"name" : "Trường Đại học Thành Tây"
+	},
+	{
+		"id" : 229,
+		"name" : "Trường Đại học Trưng Vương"
+	},
+	{
+		"id" : 230,
+		"name" : "Đại học Gia Định"
+	},
+	{
+		"id" : 231,
+		"name" : "Trường Đại học Văn Hiến"
+	},
+	{
+		"id" : 232,
+		"name" : "Trường Đại học Việt Bắc"
+	},
+	{
+		"id" : 233,
+		"name" : "Trường Đại học Võ Trường Toản"
+	},
+	{
+		"id" : 234,
+		"name" : "Trường Đại học Y khoa Tokyo Việt Nam"
+	},
+	{
+		"id" : 235,
+		"name" : "Phân hiệu Đại học Cần Thơ tại Hậu Giang"
+	},
+	{
+		"id" : 236,
+		"name" : "Phân hiệu Đại học Công nghệ Giao thông Vận tải tại Thái Nguyên"
+	},
+	{
+		"id" : 237,
+		"name" : "Phân hiệu Đại học Công nghệ Giao thông Vận tải tại Vĩnh Phúc"
+	},
+	{
+		"id" : 238,
+		"name" : "Phân hiệu Đại học Công nghiệp Hồ Chí Minh tại Quảng Ngãi"
+	},
+	{
+		"id" : 239,
+		"name" : "Phân hiệu Đại học Giao thông Vận tải tại Hồ Chí Minh"
+	},
+	{
+		"id" : 240,
+		"name" : "Phân hiệu Đại học Kiến trúc Hồ Chí Minh tại Cần Thơ"
+	},
+	{
+		"id" : 241,
+		"name" : "Phân hiệu Đại học Kiến trúc Hồ Chí Minh tại Đà Lạt"
+	},
+	{
+		"id" : 242,
+		"name" : "Phân hiệu Đại học Mỏ-Địa chất tại Quảng Ninh"
+	},
+	{
+		"id" : 243,
+		"name" : "Phân hiệu Đại học Mỏ-Địa chất tại Vũng Tàu"
+	},
+	{
+		"id" : 244,
+		"name" : "Phân hiệu Đại học Nội vụ Hà Nội tại Quảng Nam"
+	},
+	{
+		"id" : 245,
+		"name" : "Phân hiệu Đại học Nông Lâm Hồ Chí Minh tại Gia Lai"
+	},
+	{
+		"id" : 246,
+		"name" : "Phân hiệu Đại học Nông Lâm Hồ Chí Minh tại Ninh Thuận"
+	},
+	{
+		"id" : 247,
+		"name" : "Phân hiệu Đại học Lâm nghiệp Việt Nam tại Đồng Nai"
+	},
+	{
+		"id" : 248,
+		"name" : "Phân hiệu Đại học Tài chính - Kế toán tại Thừa Thiên-Huế"
+	},
+	{
+		"id" : 249,
+		"name" : "Phân hiệu Đại học Tài nguyên và Môi trường Hà Nội tại Thanh Hóa"
+	},
+	{
+		"id" : 250,
+		"name" : "Phân hiệu Đại học Bình Dương tại Cà Mau"
+	},
+	{
+		"id" : 251,
+		"name" : "Học viện Biên phòng"
+	},
+	{
+		"id" : 252,
+		"name" : "Học viện Chính trị Quân sự"
+	},
+	{
+		"id" : 253,
+		"name" : "Học viện Hải quân"
+	},
+	{
+		"id" : 254,
+		"name" : "Học viện Hậu cần"
+	},
+	{
+		"id" : 255,
+		"name" : "Học viện Khoa học Quân sự"
+	},
+	{
+		"id" : 256,
+		"name" : "Học viện Kỹ thuật Mật mã"
+	},
+	{
+		"id" : 257,
+		"name" : "Học viện Kỹ thuật Quân sự"
+	},
+	{
+		"id" : 258,
+		"name" : "Học viện Lục quân Đà Lạt"
+	},
+	{
+		"id" : 259,
+		"name" : "Học viện Phòng không - Không quân"
+	},
+	{
+		"id" : 260,
+		"name" : "Học viện Quân y"
+	},
+	{
+		"id" : 261,
+		"name" : "Học viện Quốc phòng Việt Nam"
+	},
+	{
+		"id" : 262,
+		"name" : "Trường Đại học Ngô Quyền"
+	},
+	{
+		"id" : 263,
+		"name" : "Trường Sĩ quan Không quân"
+	},
+	{
+		"id" : 264,
+		"name" : "Trường Đại học Chính trị"
+	},
+	{
+		"id" : 265,
+		"name" : "Trường Đại học Trần Đại Nghĩa"
+	},
+	{
+		"id" : 266,
+		"name" : "Trường Đại học Trần Quốc Tuấn"
+	},
+	{
+		"id" : 267,
+		"name" : "Trường Đại học Nguyễn Huệ"
+	},
+	{
+		"id" : 268,
+		"name" : "Đại học Thông tin liên lạc"
+	},
+	{
+		"id" : 269,
+		"name" : "Trường Sĩ quan Pháo binh"
+	},
+	{
+		"id" : 270,
+		"name" : "Trường Sĩ quan Phòng hóa"
+	},
+	{
+		"id" : 271,
+		"name" : "Trường Sĩ quan Tăng-Thiết giáp"
+	},
+	{
+		"id" : 272,
+		"name" : "Trường Sĩ quan Đặc công"
+	},
+	{
+		"id" : 273,
+		"name" : "Trường Đại học Văn hóa - Nghệ thuật Quân đội"
+	},
+	{
+		"id" : 274,
+		"name" : "Trường Cao đẳng Công nghiệp Quốc phòng"
+	},
+	{
+		"id" : 275,
+		"name" : "Trường Cao đẳng Công nghệ và Kỹ thuật Ô tô"
+	},
+	{
+		"id" : 276,
+		"name" : "Trường Cao đẳng Kỹ thuật Hải quân"
+	},
+	{
+		"id" : 277,
+		"name" : "Trường Cao đẳng Quân y 1"
+	},
+	{
+		"id" : 278,
+		"name" : "Phân hiệu Học viện Kỹ thuật Mật mã tại Hồ Chí Minh"
+	},
+	{
+		"id" : 279,
+		"name" : "Trường Đại học Bạc Liêu"
+	},
+	{
+		"id" : 280,
+		"name" : "Đại học Đồng Nai"
+	},
+	{
+		"id" : 281,
+		"name" : "Trường Đại học Đà Lạt"
+	},
+	{
+		"id" : 282,
+		"name" : "Trường Đại học Đồng Tháp"
+	},
+	{
+		"id" : 283,
+		"name" : "Trường Đại học Hà Tĩnh"
+	},
+	{
+		"id" : 284,
+		"name" : "Trường Đại học Hạ Long"
+	},
+	{
+		"id" : 285,
+		"name" : "Trường Đại học Hải Dương"
+	},
+	{
+		"id" : 286,
+		"name" : "Trường Đại học Hải Phòng"
+	},
+	{
+		"id" : 287,
+		"name" : "Đại học Hồng Đức"
+	},
+	{
+		"id" : 288,
+		"name" : "Trường Đại học Hoa Lư"
+	},
+	{
+		"id" : 289,
+		"name" : "Trường Đại học Hùng Vương"
+	},
+	{
+		"id" : 290,
+		"name" : "Đại học Khánh Hòa"
+	},
+	{
+		"id" : 291,
+		"name" : "Trường Đại học Kiên Giang"
+	},
+	{
+		"id" : 292,
+		"name" : "Trường Đại học Kinh tế Nghệ An"
+	},
+	{
+		"id" : 293,
+		"name" : "Trường Đại học Kỹ thuật - Công nghệ Cần Thơ"
+	},
+	{
+		"id" : 294,
+		"name" : "Trường Đại học Nha Trang"
+	},
+	{
+		"id" : 295,
+		"name" : "Trường Đại học Phú Yên"
+	},
+	{
+		"id" : 296,
+		"name" : "Trường Đại học Quảng Bình"
+	},
+	{
+		"id" : 297,
+		"name" : "Trường Đại học Quảng Nam"
+	},
+	{
+		"id" : 298,
+		"name" : "Trường Đại học Sài Gòn"
+	},
+	{
+		"id" : 299,
+		"name" : "Trường Đại học Thủ Dầu Một"
+	},
+	{
+		"id" : 300,
+		"name" : "Trường Đại học Thủ đô Hà Nội"
+	},
+	{
+		"id" : 301,
+		"name" : "Trường Đại học Tân Trào"
+	},
+	{
+		"id" : 302,
+		"name" : "Trường Đại học Tiền Giang"
+	},
+	{
+		"id" : 303,
+		"name" : "Trường Đại học Thái Bình"
+	},
+	{
+		"id" : 304,
+		"name" : "Trường Đại học Trà Vinh"
+	},
+	{
+		"id" : 305,
+		"name" : "Trường Đại học Văn hóa, Thể thao và Du lịch Thanh Hóa"
+	},
+	{
+		"id" : 307,
+		"name" : "Trường Cao đẳng Cơ khí Luyện kim"
+	},
+	{
+		"id" : 308,
+		"name" : "Trường Cao đẳng Công nghệ và Kinh tế công nghiệp"
+	},
+	{
+		"id" : 309,
+		"name" : "Trường Cao đẳng Công nghiệp Cẩm Phả"
+	},
+	{
+		"id" : 310,
+		"name" : "Trường Cao đẳng Cộng đồng Bắc Kạn"
+	},
+	{
+		"id" : 311,
+		"name" : "Trường Cao đẳng Cộng đồng Lai Châu"
+	},
+	{
+		"id" : 312,
+		"name" : "Trường Cao đẳng Cộng đồng Lào Cai"
+	},
+	{
+		"id" : 313,
+		"name" : "Trường Cao đẳng Công nghiệp Thái Nguyên"
+	},
+	{
+		"id" : 314,
+		"name" : "Trường Cao đẳng Công nghiệp Thực phẩm"
+	},
+	{
+		"id" : 315,
+		"name" : "Trường Cao đẳng Công nghiệp và Xây dựng"
+	},
+	{
+		"id" : 316,
+		"name" : "Trường Cao đẳng Công nghiệp Việt Đức"
+	},
+	{
+		"id" : 317,
+		"name" : "Trường Cao đẳng Kinh tế - Tài chính Thái Nguyên"
+	},
+	{
+		"id" : 318,
+		"name" : "Trường Cao đẳng Kinh tế Kỹ thuật Điện Biên"
+	},
+	{
+		"id" : 319,
+		"name" : "Trường Cao đẳng Kinh tế Kỹ thuật Phú Thọ"
+	},
+	{
+		"id" : 320,
+		"name" : "Trường Cao đẳng Kỹ thuật Công nghiệp"
+	},
+	{
+		"id" : 321,
+		"name" : "Trường Cao đẳng Ngô Gia Tự"
+	},
+	{
+		"id" : 322,
+		"name" : "Trường Cao đẳng Nông Lâm Đông Bắc"
+	},
+	{
+		"id" : 323,
+		"name" : "Trường Cao đẳng Nông Lâm Sơn La"
+	},
+	{
+		"id" : 324,
+		"name" : "Trường Cao đẳng Sơn La"
+	},
+	{
+		"id" : 325,
+		"name" : "Trường Cao đẳng Sư phạm Cao Bằng"
+	},
+	{
+		"id" : 326,
+		"name" : "Trường Cao đẳng Sư phạm Điện Biên"
+	},
+	{
+		"id" : 327,
+		"name" : "Trường Cao đẳng Sư phạm Hà Giang"
+	},
+	{
+		"id" : 328,
+		"name" : "Trường Cao đẳng Sư phạm Hòa Bình"
+	},
+	{
+		"id" : 329,
+		"name" : "Trường Cao đẳng Sư phạm Lạng Sơn"
+	},
+	{
+		"id" : 330,
+		"name" : "Trường Cao đẳng Sư phạm Lào Cai"
+	},
+	{
+		"id" : 331,
+		"name" : "Trường Cao đẳng Sư phạm Thái Nguyên"
+	},
+	{
+		"id" : 332,
+		"name" : "Trường Cao đẳng Sư phạm Yên Bái"
+	},
+	{
+		"id" : 333,
+		"name" : "Trường Cao đẳng Thương mại và Du lịch Thái Nguyên"
+	},
+	{
+		"id" : 334,
+		"name" : "Trường Cao đẳng Văn hóa Nghệ thuật Du lịch Yên Bái"
+	},
+	{
+		"id" : 335,
+		"name" : "Trường Cao đẳng Văn hóa Nghệ thuật Tây Bắc"
+	},
+	{
+		"id" : 336,
+		"name" : "Trường Cao đẳng Văn hóa Nghệ thuật Du lịch Hạ Long"
+	},
+	{
+		"id" : 337,
+		"name" : "Trường Cao đẳng Văn hóa Nghệ thuật Việt Bắc"
+	},
+	{
+		"id" : 338,
+		"name" : "Trường Cao đẳng Y tế Điện Biên"
+	},
+	{
+		"id" : 339,
+		"name" : "Trường Cao đẳng Y tế Lạng Sơn"
+	},
+	{
+		"id" : 340,
+		"name" : "Trường Cao đẳng Y tế Phú Thọ"
+	},
+	{
+		"id" : 341,
+		"name" : "Trường Cao đẳng Y tế Quảng Ninh"
+	},
+	{
+		"id" : 342,
+		"name" : "Trường Cao đẳng Y tế Sơn La"
+	},
+	{
+		"id" : 343,
+		"name" : "Trường Cao đẳng Y tế Thái Nguyên"
+	},
+	{
+		"id" : 344,
+		"name" : "Trường Cao đẳng Y tế Yên Bái"
+	},
+	{
+		"id" : 346,
+		"name" : "Trường Cao đẳng Cộng đồng Hà Nội"
+	},
+	{
+		"id" : 347,
+		"name" : "Trường Cao đẳng Cộng đồng Hà Tây"
+	},
+	{
+		"id" : 348,
+		"name" : "Trường Cao đẳng Cộng đồng Hải Phòng"
+	},
+	{
+		"id" : 349,
+		"name" : "Trường Cao đẳng Công nghệ và Kinh tế Hà Nội"
+	},
+	{
+		"id" : 350,
+		"name" : "Trường Cao đẳng Công nghệ Viettronics"
+	},
+	{
+		"id" : 351,
+		"name" : "Trường Cao đẳng Công nghiệp Hưng Yên"
+	},
+	{
+		"id" : 352,
+		"name" : "Trường Cao đẳng Công nghiệp In"
+	},
+	{
+		"id" : 353,
+		"name" : "Trường Cao đẳng Công nghiệp Nam Định"
+	},
+	{
+		"id" : 354,
+		"name" : "Trường Cao đẳng Công nghiệp Phúc Yên"
+	},
+	{
+		"id" : 355,
+		"name" : "Trường Cao đẳng Điện tử - Điện lạnh Hà Nội"
+	},
+	{
+		"id" : 356,
+		"name" : "Trường Cao đẳng Du lịch Hà Nội"
+	},
+	{
+		"id" : 357,
+		"name" : "Trường Cao đẳng Dược Trung ương"
+	},
+	{
+		"id" : 358,
+		"name" : "Trường Cao đẳng Hải Dương"
+	},
+	{
+		"id" : 359,
+		"name" : "Trường Cao đẳng Hàng hải 1"
+	},
+	{
+		"id" : 360,
+		"name" : "Trường Cao đẳng Kinh tế và Công nghệ thực phẩm"
+	},
+	{
+		"id" : 361,
+		"name" : "Trường Cao đẳng Kinh tế - Kỹ thuật Thương mại"
+	},
+	{
+		"id" : 362,
+		"name" : "Trường Cao đẳng Kinh tế - Kỹ thuật Trung ương"
+	},
+	{
+		"id" : 363,
+		"name" : "Trường Cao đẳng Kinh tế - Kỹ thuật Vĩnh Phúc"
+	},
+	{
+		"id" : 364,
+		"name" : "Trường Cao đẳng Kinh tế Công nghiệp Hà Nội"
+	},
+	{
+		"id" : 365,
+		"name" : "Trường Cao đẳng Múa Việt Nam"
+	},
+	{
+		"id" : 366,
+		"name" : "Trường Cao đẳng Nghệ thuật Hà Nội"
+	},
+	{
+		"id" : 367,
+		"name" : "Trường Cao đẳng Nông nghiệp và Phát triển nông thôn Bắc Bộ"
+	},
+	{
+		"id" : 368,
+		"name" : "Trường Cao đẳng Phát thanh - Truyền hình I"
+	},
+	{
+		"id" : 369,
+		"name" : "Trường Cao đẳng Sư phạm Bắc Ninh"
+	},
+	{
+		"id" : 370,
+		"name" : "Trường Cao đẳng Sư phạm Hà Nam"
+	},
+	{
+		"id" : 371,
+		"name" : "Trường Cao đẳng Sư phạm Hà Tây"
+	},
+	{
+		"id" : 372,
+		"name" : "Trường Cao đẳng Sư phạm Hưng Yên"
+	},
+	{
+		"id" : 373,
+		"name" : "Trường Cao đẳng Sư phạm Nam Định"
+	},
+	{
+		"id" : 374,
+		"name" : "Trường Cao đẳng Sư phạm Thái Bình"
+	},
+	{
+		"id" : 375,
+		"name" : "Trường Cao đẳng Sư phạm Trung ương"
+	},
+	{
+		"id" : 376,
+		"name" : "Trường Cao đẳng Thống kê"
+	},
+	{
+		"id" : 377,
+		"name" : "Trường Cao đẳng Thương mại và Du lịch Hà Nội"
+	},
+	{
+		"id" : 378,
+		"name" : "Trường Cao đẳng Thủy lợi Bắc Bộ"
+	},
+	{
+		"id" : 379,
+		"name" : "Trường Cao đẳng Thủy sản"
+	},
+	{
+		"id" : 380,
+		"name" : "Trường Cao đẳng Truyền hình Việt Nam"
+	},
+	{
+		"id" : 381,
+		"name" : "Trường Cao đẳng Văn hóa Nghệ thuật và Du lịch Nam Định"
+	},
+	{
+		"id" : 382,
+		"name" : "Trường Cao đẳng Văn hóa Nghệ thuật Thái Bình"
+	},
+	{
+		"id" : 383,
+		"name" : "Trường Cao đẳng Vĩnh Phúc"
+	},
+	{
+		"id" : 384,
+		"name" : "Trường Cao đẳng Xây dựng công trình đô thị"
+	},
+	{
+		"id" : 385,
+		"name" : "Trường Cao đẳng Xây dựng Nam Định"
+	},
+	{
+		"id" : 386,
+		"name" : "Trường Cao đẳng Xây dựng số 1"
+	},
+	{
+		"id" : 387,
+		"name" : "Trường Cao đẳng Y tế Bạch Mai"
+	},
+	{
+		"id" : 388,
+		"name" : "Trường Cao đẳng Y tế Bắc Ninh"
+	},
+	{
+		"id" : 389,
+		"name" : "Trường Cao đẳng Y tế Hà Đông"
+	},
+	{
+		"id" : 390,
+		"name" : "Trường Cao đẳng Y tế Hà Nam"
+	},
+	{
+		"id" : 391,
+		"name" : "Trường Cao đẳng Y tế Hà Nội"
+	},
+	{
+		"id" : 392,
+		"name" : "Trường Cao đẳng Y tế Hải Dương"
+	},
+	{
+		"id" : 393,
+		"name" : "Trường Cao đẳng Y tế Hải Phòng"
+	},
+	{
+		"id" : 394,
+		"name" : "Trường Cao đẳng Y tế Hưng Yên"
+	},
+	{
+		"id" : 395,
+		"name" : "Trường Cao đẳng Y tế Ninh Bình"
+	},
+	{
+		"id" : 396,
+		"name" : "Trường Cao đẳng Y tế Thái Bình"
+	},
+	{
+		"id" : 398,
+		"name" : "Trường Cao đẳng Công nghiệp Huế"
+	},
+	{
+		"id" : 399,
+		"name" : "Trường Cao đẳng Giao thông Huế"
+	},
+	{
+		"id" : 400,
+		"name" : "Trường Cao đẳng Giao thông Vận tải miền Trung"
+	},
+	{
+		"id" : 401,
+		"name" : "Trường Cao đẳng Kinh tế Kỹ thuật Công thương"
+	},
+	{
+		"id" : 402,
+		"name" : "Trường Cao đẳng Kỹ thuật Công - Nông nghiệp Quảng Bình"
+	},
+	{
+		"id" : 403,
+		"name" : "Trường Cao đẳng Nông Lâm Thanh Hóa"
+	},
+	{
+		"id" : 404,
+		"name" : "Trường Cao đẳng Sư phạm Nghệ An"
+	},
+	{
+		"id" : 405,
+		"name" : "Trường Cao đẳng Sư phạm Quảng Trị"
+	},
+	{
+		"id" : 406,
+		"name" : "Trường Cao đẳng Sư phạm Thừa Thiên - Huế"
+	},
+	{
+		"id" : 407,
+		"name" : "Trường Cao đẳng Tài nguyên và Môi trường Miền Trung"
+	},
+	{
+		"id" : 408,
+		"name" : "Trường Cao đẳng Thể dục Thể thao Thanh Hóa"
+	},
+	{
+		"id" : 409,
+		"name" : "Trường Cao đẳng Văn hóa Nghệ thuật Nghệ An"
+	},
+	{
+		"id" : 410,
+		"name" : "Trường Cao đẳng Văn hóa, Thể thao và Du lịch Nguyễn Du"
+	},
+	{
+		"id" : 411,
+		"name" : "Trường Cao đẳng Y tế Hà Tĩnh"
+	},
+	{
+		"id" : 412,
+		"name" : "Trường Cao đẳng Y tế Huế"
+	},
+	{
+		"id" : 413,
+		"name" : "Trường Cao đẳng Y tế Thanh Hóa"
+	},
+	{
+		"id" : 415,
+		"name" : "Trường Cao đẳng Bình Định"
+	},
+	{
+		"id" : 416,
+		"name" : "Trường Cao đẳng Cộng đồng Bình Thuận"
+	},
+	{
+		"id" : 417,
+		"name" : "Trường Cao đẳng Công nghệ - Kinh tế và Thủy lợi miền Trung"
+	},
+	{
+		"id" : 418,
+		"name" : "Trường Cao đẳng Công nghệ thông tin Hữu nghị Việt - Hàn"
+	},
+	{
+		"id" : 419,
+		"name" : "Trường Cao đẳng Công nghiệp Tuy Hòa"
+	},
+	{
+		"id" : 420,
+		"name" : "Trường Cao đẳng Điện lực miền Trung"
+	},
+	{
+		"id" : 421,
+		"name" : "Trường Cao đẳng Giao thông vận tải 2"
+	},
+	{
+		"id" : 422,
+		"name" : "Trường Cao đẳng Kinh tế - Kế hoạch Đà Nẵng"
+	},
+	{
+		"id" : 423,
+		"name" : "Trường Cao đẳng Kinh tế - Kỹ thuật Quảng Nam"
+	},
+	{
+		"id" : 424,
+		"name" : "Trường Cao đẳng Lương thực Thực phẩm"
+	},
+	{
+		"id" : 425,
+		"name" : "Trường Cao đẳng Sư phạm Ninh Thuận"
+	},
+	{
+		"id" : 426,
+		"name" : "Trường Cao đẳng Sư phạm Trung ương Nha Trang"
+	},
+	{
+		"id" : 427,
+		"name" : "Trường Cao đẳng Thương mại"
+	},
+	{
+		"id" : 428,
+		"name" : "Trường Cao đẳng Văn hóa - Nghệ thuật Đà Nẵng"
+	},
+	{
+		"id" : 429,
+		"name" : "Trường Cao đẳng Y tế Bình Định"
+	},
+	{
+		"id" : 430,
+		"name" : "Trường Cao đẳng Y tế Bình Thuận"
+	},
+	{
+		"id" : 431,
+		"name" : "Trường Cao đẳng Y tế Đặng Thùy Trâm"
+	},
+	{
+		"id" : 432,
+		"name" : "Trường Cao đẳng Y tế Khánh Hòa"
+	},
+	{
+		"id" : 433,
+		"name" : "Trường Cao đẳng Y tế Phú Yên"
+	},
+	{
+		"id" : 434,
+		"name" : "Trường Cao đẳng Y tế Quảng Nam"
+	},
+	{
+		"id" : 436,
+		"name" : "Trường Cao đẳng Cộng đồng Kon Tum"
+	},
+	{
+		"id" : 437,
+		"name" : "Trường Cao đẳng Công nghệ và Kinh tế Bảo Lộc"
+	},
+	{
+		"id" : 438,
+		"name" : "Trường Cao đẳng Kinh tế - Kỹ thuật Lâm Đồng"
+	},
+	{
+		"id" : 439,
+		"name" : "Trường Cao đẳng Sư phạm Đà Lạt"
+	},
+	{
+		"id" : 440,
+		"name" : "Trường Cao đẳng Sư phạm Đắk Lắk"
+	},
+	{
+		"id" : 441,
+		"name" : "Trường Cao đẳng Sư phạm Gia Lai"
+	},
+	{
+		"id" : 442,
+		"name" : "Trường Cao đẳng Văn hóa Nghệ thuật Đắk Lắk"
+	},
+	{
+		"id" : 443,
+		"name" : "Trường Cao đẳng Y tế Đắk Lắk"
+	},
+	{
+		"id" : 444,
+		"name" : "Trường Cao đẳng Y tế Lâm Đồng"
+	},
+	{
+		"id" : 446,
+		"name" : "Trường Cao đẳng Cộng đồng Bà Rịa-Vũng Tàu"
+	},
+	{
+		"id" : 447,
+		"name" : "Trường Cao đẳng Công nghệ Thủ Đức"
+	},
+	{
+		"id" : 448,
+		"name" : "Trường Cao đẳng Công nghệ và Quản trị Sonadezi"
+	},
+	{
+		"id" : 449,
+		"name" : "Trường Cao đẳng Công nghiệp Cao Su"
+	},
+	{
+		"id" : 450,
+		"name" : "Trường Cao đẳng Công Thương Hồ Chí Minh"
+	},
+	{
+		"id" : 451,
+		"name" : "Trường Cao đẳng Điện lực Hồ Chí Minh"
+	},
+	{
+		"id" : 452,
+		"name" : "Trường Cao đẳng Giao thông vận tải 3"
+	},
+	{
+		"id" : 453,
+		"name" : "Trường Cao đẳng Giao thông vận tải Hồ Chí Minh"
+	},
+	{
+		"id" : 454,
+		"name" : "Trường Cao đẳng Kinh tế - Kỹ thuật Hồ Chí Minh"
+	},
+	{
+		"id" : 455,
+		"name" : "Trường Cao đẳng Kinh tế - Kỹ thuật Vinatex"
+	},
+	{
+		"id" : 456,
+		"name" : "Cao đẳng Kinh tế Đối ngoại"
+	},
+	{
+		"id" : 457,
+		"name" : "Trường Cao đẳng Kinh tế - Công nghệ Hồ Chí Minh"
+	},
+	{
+		"id" : 458,
+		"name" : "Trường Cao đẳng Kinh tế Hồ Chí Minh"
+	},
+	{
+		"id" : 459,
+		"name" : "Trường Cao đẳng Kỹ thuật Cao Thắng"
+	},
+	{
+		"id" : 460,
+		"name" : "Trường Cao đẳng Kỹ thuật Lý Tự Trọng"
+	},
+	{
+		"id" : 461,
+		"name" : "Trường Cao đẳng Mỹ thuật trang trí Đồng Nai"
+	},
+	{
+		"id" : 462,
+		"name" : "Trường Cao đẳng Phát thanh Truyền hình 2"
+	},
+	{
+		"id" : 463,
+		"name" : "Trường Cao đẳng Sư phạm Bà Rịa-Vũng Tàu"
+	},
+	{
+		"id" : 464,
+		"name" : "Trường Cao đẳng Sư phạm Bình Phước"
+	},
+	{
+		"id" : 465,
+		"name" : "Trường Cao đẳng Sư phạm Tây Ninh"
+	},
+	{
+		"id" : 466,
+		"name" : "Trường Cao đẳng Sư phạm Trung ương Hồ Chí Minh"
+	},
+	{
+		"id" : 467,
+		"name" : "Trường Cao đẳng Thống kê 2"
+	},
+	{
+		"id" : 468,
+		"name" : "Trường cao đẳng Văn hóa Nghệ thuật Hồ Chí Minh"
+	},
+	{
+		"id" : 469,
+		"name" : "Trường Cao đẳng Xây dựng số 2"
+	},
+	{
+		"id" : 470,
+		"name" : "Trường Cao đẳng Y tế Bình Dương"
+	},
+	{
+		"id" : 471,
+		"name" : "Trường Cao đẳng Y tế Bình Phước"
+	},
+	{
+		"id" : 472,
+		"name" : "Trường Cao đẳng Y tế Đồng Nai"
+	},
+	{
+		"id" : 474,
+		"name" : "Trường Cao đẳng Bến Tre"
+	},
+	{
+		"id" : 475,
+		"name" : "Trường Cao đẳng Cần Thơ"
+	},
+	{
+		"id" : 476,
+		"name" : "Trường Cao đẳng Cơ điện và Nông nghiệp Nam Bộ"
+	},
+	{
+		"id" : 477,
+		"name" : "Trường Cao đẳng Cộng đồng Cà Mau"
+	},
+	{
+		"id" : 478,
+		"name" : "Trường Cao đẳng Cộng đồng Đồng Tháp"
+	},
+	{
+		"id" : 479,
+		"name" : "Trường Cao đẳng Cộng đồng Hậu Giang"
+	},
+	{
+		"id" : 480,
+		"name" : "Trường Cao đẳng Cộng đồng Kiên Giang"
+	},
+	{
+		"id" : 481,
+		"name" : "Trường Cao đẳng Cộng đồng Sóc Trăng"
+	},
+	{
+		"id" : 482,
+		"name" : "Trường Cao đẳng Cộng đồng Vĩnh Long"
+	},
+	{
+		"id" : 483,
+		"name" : "Trường Cao đẳng Kinh tế - Kỹ thuật Bạc Liêu"
+	},
+	{
+		"id" : 484,
+		"name" : "Trường Cao đẳng Kinh tế - Kỹ thuật Cần Thơ"
+	},
+	{
+		"id" : 485,
+		"name" : "Trường Cao đẳng Kinh tế - Tài chính Vĩnh Long"
+	},
+	{
+		"id" : 486,
+		"name" : "Trường Cao đẳng Kinh tế - Kỹ thuật Kiên Giang"
+	},
+	{
+		"id" : 487,
+		"name" : "Trường Cao đẳng Nông nghiệp Nam Bộ"
+	},
+	{
+		"id" : 488,
+		"name" : "Trường Cao đẳng Sư phạm Cà Mau"
+	},
+	{
+		"id" : 489,
+		"name" : "Trường Cao đẳng Sư phạm Kiên Giang"
+	},
+	{
+		"id" : 490,
+		"name" : "Trường Cao đẳng Sư phạm Long An"
+	},
+	{
+		"id" : 491,
+		"name" : "Trường Cao đẳng Sư phạm Sóc Trăng"
+	},
+	{
+		"id" : 492,
+		"name" : "Trường Cao đẳng Sư phạm Vĩnh Long"
+	},
+	{
+		"id" : 493,
+		"name" : "Cao đẳng Văn hoá Nghệ thuật Cần Thơ"
+	},
+	{
+		"id" : 494,
+		"name" : "Trường Cao đẳng Y tế Bạc Liêu"
+	},
+	{
+		"id" : 495,
+		"name" : "Trường Cao đẳng Y tế Cà Mau"
+	},
+	{
+		"id" : 496,
+		"name" : "Trường Cao đẳng Y tế Cần Thơ"
+	},
+	{
+		"id" : 497,
+		"name" : "Trường Cao đẳng Y tế Đồng Tháp"
+	},
+	{
+		"id" : 498,
+		"name" : "Trường Cao đẳng Y tế Kiên Giang"
+	},
+	{
+		"id" : 499,
+		"name" : "Trường Cao đẳng Y tế Tiền Giang"
+	},
+	{
+		"id" : 500,
+		"name" : "Trường Cao đẳng Y tế Trà Vinh"
+	},
+	{
+		"id" : 501,
+		"name" : "Trường Cao đẳng ASEAN"
+	},
+	{
+		"id" : 502,
+		"name" : "Trường Cao đẳng Bách Việt"
+	},
+	{
+		"id" : 503,
+		"name" : "Trường Cao đẳng Bách khoa Đà Nẵng"
+	},
+	{
+		"id" : 504,
+		"name" : "Trường Cao đẳng Bách khoa Hưng Yên"
+	},
+	{
+		"id" : 505,
+		"name" : "Trường Cao đẳng Bán công Công nghệ và Quản trị doanh nghiệp"
+	},
+	{
+		"id" : 506,
+		"name" : "Trường Cao đẳng Dược Phú Thọ"
+	},
+	{
+		"id" : 507,
+		"name" : "Trường Cao đẳng Đại Việt Đà Nẵng"
+	},
+	{
+		"id" : 508,
+		"name" : "Trường Cao đẳng Đại Việt - Hà Nội"
+	},
+	{
+		"id" : 509,
+		"name" : "Trường Cao đẳng Đại Việt Sài Gòn"
+	},
+	{
+		"id" : 510,
+		"name" : "Trường Cao đẳng Công Kỹ Nghệ Đông Á - Quảng Nam"
+	},
+	{
+		"id" : 511,
+		"name" : "Trường Cao đẳng Công nghệ Bắc Hà"
+	},
+	{
+		"id" : 512,
+		"name" : "Trường Cao đẳng Công nghệ Hà Nội"
+	},
+	{
+		"id" : 513,
+		"name" : "Trường Cao đẳng Công nghệ thông tin Hồ Chí Minh"
+	},
+	{
+		"id" : 514,
+		"name" : "Trường Cao đẳng Công nghệ và Thương mại Hà Nội"
+	},
+	{
+		"id" : 515,
+		"name" : "Trường Cao đẳng Hoan Châu"
+	},
+	{
+		"id" : 516,
+		"name" : "Trường Cao đẳng Kinh tế Công nghệ Hồ Chí Minh"
+	},
+	{
+		"id" : 517,
+		"name" : "Trường Cao đẳng Kinh tế Kỹ thuật Đông Du - Đà Nẵng"
+	},
+	{
+		"id" : 518,
+		"name" : "Trường Cao đẳng Kinh tế Kỹ thuật Hà Nội"
+	},
+	{
+		"id" : 519,
+		"name" : "Trường Cao đẳng Miền Nam"
+	},
+	{
+		"id" : 520,
+		"name" : "Trường Cao đẳng Kỹ thuật Công nghệ Bách Khoa"
+	},
+	{
+		"id" : 521,
+		"name" : "Trường Cao đẳng Kỹ thuật Công nghệ Vạn Xuân"
+	},
+	{
+		"id" : 522,
+		"name" : "Trường Cao đẳng Kỹ thuật - Công nghiệp Quảng Ngãi"
+	},
+	{
+		"id" : 523,
+		"name" : "Trường Cao đẳng Lạc Việt - Đà Nẵng"
+	},
+	{
+		"id" : 524,
+		"name" : "Trường Cao đẳng Ngoại ngữ - Công nghệ Việt Nhật"
+	},
+	{
+		"id" : 525,
+		"name" : "Trường Cao đẳng Phương Đông - Đà Nẵng"
+	},
+	{
+		"id" : 526,
+		"name" : "Trường Cao đẳng Phương Đông - Quảng Nam"
+	},
+	{
+		"id" : 527,
+		"name" : "Trường Cao đẳng Quốc tế Pegasus"
+	},
+	{
+		"id" : 528,
+		"name" : "Trường Cao đẳng Tư thục Đức Trí - Đà Nẵng"
+	},
+	{
+		"id" : 529,
+		"name" : "Trường Cao đẳng Văn hoá Nghệ thuật và Du lịch Sài Gòn"
+	},
+	{
+		"id" : 530,
+		"name" : "Trường Cao đẳng Viễn Đông"
+	},
+	{
+		"id" : 531,
+		"name" : "Trường Cao đẳng Việt - Anh"
+	},
+	{
+		"id" : 532,
+		"name" : "Trường Cao đẳng Y Dược Hợp Lực - Thanh Hóa"
+	},
+	{
+		"id" : 533,
+		"name" : "Trường Cao đẳng Y Dược Pasteur Hà Nội"
+	},
+	{
+		"id" : 534,
+		"name" : "Trường Cao đẳng Y Dược Pasteur Hồ Chí Minh"
+	},
+	{
+		"id" : 535,
+		"name" : "Trường Cao đẳng Y Dược Pasteur Yên Bái"
+	},
+	{
+		"id" : 536,
+		"name" : "Trường Cao đẳng Y khoa Phạm Ngọc Thạch"
+	},
+	{
+		"id" : 537,
+		"name" : "Trường Cao đẳng Y Dược Hồ Chí Minh"
+	},
+	{
+		"id" : 538,
+		"name" : "Trường Cao đẳng Y Dược Sài Gòn"
+	},
+	{
+		"id" : 539,
+		"name" : "Trường Cao đẳng nghề An ninh - Công nghệ"
+	},
+	{
+		"id" : 540,
+		"name" : "Trường Cao đẳng nghề Quốc tế Hà Nội"
+	},
+	{
+		"id" : 541,
+		"name" : "Trường Cao đẳng nghề Cơ Điện và Công nghệ thực phẩm Hà Nội"
+	},
+	{
+		"id" : 542,
+		"name" : "Trường Cao đẳng nghề Kỹ thuật - Công nghệ - Kinh tế Simco Sông Đà"
+	},
+	{
+		"id" : 543,
+		"name" : "Trường Cao đẳng nghề Kỹ thuật Công nghệ"
+	},
+	{
+		"id" : 544,
+		"name" : "Trường Cao đẳng nghề Kỹ thuật Thiết bị Y tế"
+	},
+	{
+		"id" : 545,
+		"name" : "Trường Cao đẳng nghề Kỹ thuật Mỹ nghệ Việt Nam"
+	},
+	{
+		"id" : 546,
+		"name" : "Trường Cao đẳng Nghề Kỹ thuật và Nghiệp vụ Hà Nội"
+	},
+	{
+		"id" : 547,
+		"name" : "Trường Cao đẳng nghề Kinh doanh và Công nghệ Hà Nội"
+	},
+	{
+		"id" : 548,
+		"name" : "Trường Cao đẳng nghề Công nghệ và Kinh tế Hà Nội"
+	},
+	{
+		"id" : 549,
+		"name" : "Trường Cao đẳng nghề Công nghiệp Hà Nội"
+	},
+	{
+		"id" : 550,
+		"name" : "Trường Cao đẳng nghề Công nghệ cao Hà Nội"
+	},
+	{
+		"id" : 551,
+		"name" : "Trường Cao đẳng nghề Điện"
+	},
+	{
+		"id" : 552,
+		"name" : "Trường Cao đẳng nghề Cơ điện Hà Nội"
+	},
+	{
+		"id" : 553,
+		"name" : "Trường Cao đẳng nghề Đường sắt"
+	},
+	{
+		"id" : 554,
+		"name" : "Trường Cao đẳng Nghề Giao thông vận tải Trung ương 1"
+	},
+	{
+		"id" : 555,
+		"name" : "Trường Cao đẳng nghề Bách Khoa"
+	},
+	{
+		"id" : 556,
+		"name" : "Trường Cao đẳng nghề Bách khoa Hà Nội"
+	},
+	{
+		"id" : 557,
+		"name" : "Trường Cao đẳng nghề Phú Châu"
+	},
+	{
+		"id" : 558,
+		"name" : "Trường Cao đẳng nghề Long Biên"
+	},
+	{
+		"id" : 559,
+		"name" : "Trường Cao đẳng nghề Thăng Long"
+	},
+	{
+		"id" : 560,
+		"name" : "Trường Cao đẳng nghề Trần Hưng Đạo"
+	},
+	{
+		"id" : 561,
+		"name" : "Trường Cao đẳng nghề Hùng Vương"
+	},
+	{
+		"id" : 562,
+		"name" : "Trường Cao đẳng nghề Văn Lang Hà Nội"
+	},
+	{
+		"id" : 563,
+		"name" : "Trường Cao đẳng nghề Việt Nam - Hàn Quốc Hà Nội"
+	},
+	{
+		"id" : 564,
+		"name" : "Trường Cao đẳng nghề số 17 - Bộ Quốc phòng"
+	},
+	{
+		"id" : 565,
+		"name" : "Trường Cao đẳng Thực hành FPT"
+	},
+	{
+		"id" : 566,
+		"name" : "Trường Cao đẳng Nghề Hồ Chí Minh"
+	},
+	{
+		"id" : 567,
+		"name" : "Trường Cao đẳng Nghề Kỹ thuật - Công nghệ Hồ Chí Minh"
+	},
+	{
+		"id" : 568,
+		"name" : "Trường Cao đẳng Nghề Kinh tế kỹ thuật Hồ Chí Minh"
+	},
+	{
+		"id" : 569,
+		"name" : "Trường Cao đẳng Nghề Kinh tế công nghệ Hồ Chí Minh"
+	},
+	{
+		"id" : 570,
+		"name" : "Trường Cao đẳng Nghề Hàng hải Hồ Chí Minh"
+	},
+	{
+		"id" : 571,
+		"name" : "Trường Cao đẳng Nghề Giao thông vận tải Trung ương 3"
+	},
+	{
+		"id" : 572,
+		"name" : "Trường Cao đẳng Nghề Giao thông vận tải Đường thủy 2"
+	},
+	{
+		"id" : 573,
+		"name" : "Trường Cao đẳng nghề Sài Gòn"
+	},
+	{
+		"id" : 574,
+		"name" : "Trường Cao đẳng nghề Du lịch Sài Gòn"
+	},
+	{
+		"id" : 575,
+		"name" : "Trường Cao đẳng nghề Việt Mỹ"
+	},
+	{
+		"id" : 576,
+		"name" : "Trường Cao đẳng nghề Công nghệ thông tin iSPACE"
+	},
+	{
+		"id" : 577,
+		"name" : "Trường Cao đẳng nghề Nguyễn Trường Tộ"
+	},
+	{
+		"id" : 578,
+		"name" : "Trường Cao đẳng Nghề Thủ Đức"
+	},
+	{
+		"id" : 579,
+		"name" : "Trường Cao đẳng nghề Quận 2 - TP. Hồ Chí Minh"
+	},
+	{
+		"id" : 580,
+		"name" : "Trường Cao đẳng nghề số 7 - Bộ Quốc phòng"
+	},
+	{
+		"id" : 581,
+		"name" : "Trường Cao đẳng nghề Bắc Kạn"
+	},
+	{
+		"id" : 582,
+		"name" : "Trường Cao đẳng nghề Điện Biên"
+	},
+	{
+		"id" : 583,
+		"name" : "Trường Cao đẳng nghề Hà Giang"
+	},
+	{
+		"id" : 584,
+		"name" : "Trường Cao đẳng Nghề Kỹ thuật-Công nghệ Tuyên Quang"
+	},
+	{
+		"id" : 585,
+		"name" : "Trường Cao đẳng nghề Sơn La"
+	},
+	{
+		"id" : 586,
+		"name" : "Trường Cao đẳng nghề Lào Cai"
+	},
+	{
+		"id" : 587,
+		"name" : "Trường Cao đẳng nghề Yên Bái"
+	},
+	{
+		"id" : 588,
+		"name" : "Trường Cao đẳng nghề Âu Lạc"
+	},
+	{
+		"id" : 589,
+		"name" : "Trường Cao đẳng nghề Lạng Sơn"
+	},
+	{
+		"id" : 590,
+		"name" : "Trường Cao đẳng nghề Công nghệ và Nông lâm Đông Bắc"
+	},
+	{
+		"id" : 591,
+		"name" : "Trường Cao đẳng nghề Công nghiệp Việt Bắc - Vinacomin"
+	},
+	{
+		"id" : 592,
+		"name" : "Trường Cao đẳng nghề Cơ điện – Luyện kim Thái Nguyên"
+	},
+	{
+		"id" : 593,
+		"name" : "Trường Cao đẳng nghề Công thương Việt Nam"
+	},
+	{
+		"id" : 594,
+		"name" : "Trường Cao đẳng nghề Cơ điện Tây Bắc"
+	},
+	{
+		"id" : 595,
+		"name" : "Trường Cao đẳng nghề Sông Đà"
+	},
+	{
+		"id" : 596,
+		"name" : "Trường Cao đẳng nghề Hòa Bình"
+	},
+	{
+		"id" : 597,
+		"name" : "Trường Cao đẳng nghề Cơ điện Phú Thọ"
+	},
+	{
+		"id" : 598,
+		"name" : "Trường Cao đẳng nghề Phú Thọ"
+	},
+	{
+		"id" : 599,
+		"name" : "Trường Cao đẳng nghề Công nghệ và Nông lâm Phú Thọ"
+	},
+	{
+		"id" : 600,
+		"name" : "Trường Cao đẳng nghề Công nghệ Giấy và Cơ điện"
+	},
+	{
+		"id" : 601,
+		"name" : "Trường Cao đẳng nghề Vĩnh Phúc"
+	},
+	{
+		"id" : 602,
+		"name" : "Trường Cao đẳng nghề Cơ khí Nông nghiệp"
+	},
+	{
+		"id" : 603,
+		"name" : "Trường Cao đẳng nghề Việt Xô số 1"
+	},
+	{
+		"id" : 604,
+		"name" : "Trường Cao đẳng nghề Bắc Giang"
+	},
+	{
+		"id" : 605,
+		"name" : "Trường Cao đẳng nghề Công nghệ Việt- Hàn Bắc Giang"
+	},
+	{
+		"id" : 606,
+		"name" : "Trường Cao đẳng nghề Cơ điện và Xây dựng Bắc Ninh"
+	},
+	{
+		"id" : 607,
+		"name" : "Trường Cao đẳng nghề Kinh tế - Kỹ thuật Bắc Ninh"
+	},
+	{
+		"id" : 608,
+		"name" : "Trường Cao đẳng Nghề Kỹ thuật y tế Thăng Long"
+	},
+	{
+		"id" : 609,
+		"name" : "Trường Cao đẳng nghề Quản lý và Công nghệ"
+	},
+	{
+		"id" : 610,
+		"name" : "Trường Cao đẳng nghề Viglacera"
+	},
+	{
+		"id" : 611,
+		"name" : "Trường Cao đẳng nghề Hải Dương"
+	},
+	{
+		"id" : 612,
+		"name" : "Trường Cao đẳng nghề LICOGI"
+	},
+	{
+		"id" : 613,
+		"name" : "Trường Cao đẳng nghề Đại An"
+	},
+	{
+		"id" : 614,
+		"name" : "Trường Cao đẳng nghề Thương mại và Công nghiệp"
+	},
+	{
+		"id" : 615,
+		"name" : "Trường Cao đẳng nghề Giao thông Vận tải Đường thủy 1"
+	},
+	{
+		"id" : 616,
+		"name" : "Trường Cao đẳng nghề Kinh tế - Kỹ thuật Tô Hiệu"
+	},
+	{
+		"id" : 617,
+		"name" : "Trường Cao đẳng nghề Cơ điện và Thủy lợi"
+	},
+	{
+		"id" : 618,
+		"name" : "Trường Cao đẳng nghề Dịch vụ Hàng không AIRSERCO"
+	},
+	{
+		"id" : 619,
+		"name" : "Trường Cao đẳng nghề Kỹ thuật - Công nghệ LOD"
+	},
+	{
+		"id" : 620,
+		"name" : "Trường Cao đẳng nghề Duyên Hải"
+	},
+	{
+		"id" : 621,
+		"name" : "Trường Cao đẳng nghề Giao thông vận tải trung ương 2"
+	},
+	{
+		"id" : 622,
+		"name" : "Trường Cao đẳng nghề Bắc Nam"
+	},
+	{
+		"id" : 623,
+		"name" : "Trường Cao đẳng nghề VMU"
+	},
+	{
+		"id" : 624,
+		"name" : "Trường Cao đẳng nghề Công nghệ, Kinh tế và Thủy sản"
+	},
+	{
+		"id" : 625,
+		"name" : "Trường Cao đẳng nghề Kinh tế - Kỹ thuật Bắc Bộ"
+	},
+	{
+		"id" : 626,
+		"name" : "Trường Cao đẳng nghề Công nghiệp Hải Phòng"
+	},
+	{
+		"id" : 627,
+		"name" : "Trường Cao đẳng nghề Bách nghệ Hải Phòng"
+	},
+	{
+		"id" : 628,
+		"name" : "Trường Cao đẳng nghề Du lịch và dịch vụ Hải Phòng"
+	},
+	{
+		"id" : 629,
+		"name" : "Trường Cao đẳng nghề Lao động - Xã hội Hải Phòng"
+	},
+	{
+		"id" : 630,
+		"name" : "Trường Cao đẳng Nghề Giao thông Cơ điện Quảng Ninh"
+	},
+	{
+		"id" : 631,
+		"name" : "Trường Cao đẳng nghề Việt - Hàn Quảng Ninh"
+	},
+	{
+		"id" : 632,
+		"name" : "Trường Cao đẳng nghề Than – Khoáng sản Việt Nam"
+	},
+	{
+		"id" : 633,
+		"name" : "Trường Cao đẳng nghề mỏ Hữu Nghị - Vinacomin"
+	},
+	{
+		"id" : 634,
+		"name" : "Trường Cao đẳng nghề Thái Bình"
+	},
+	{
+		"id" : 635,
+		"name" : "Trường Cao đẳng nghề Công nghệ, Kinh tế và Chế biến lâm sản"
+	},
+	{
+		"id" : 636,
+		"name" : "Trường Cao đẳng nghề Hà Nam"
+	},
+	{
+		"id" : 637,
+		"name" : "Trường Cao đẳng nghề Nam Định"
+	},
+	{
+		"id" : 638,
+		"name" : "Trường Cao đẳng nghề Kinh tế Kỹ thuật Vinatex"
+	},
+	{
+		"id" : 639,
+		"name" : "Trường Cao đẳng nghề Cơ giới Ninh Bình"
+	},
+	{
+		"id" : 640,
+		"name" : "Trường Cao đẳng nghề Cơ điện xây dựng Tam Điệp"
+	},
+	{
+		"id" : 641,
+		"name" : "Trường Cao đẳng nghề LILAMA-1"
+	},
+	{
+		"id" : 642,
+		"name" : "Trường Cao đẳng nghề Công nghệ LICOGI Thanh Hóa"
+	},
+	{
+		"id" : 643,
+		"name" : "Trường Cao đẳng nghề Nông nghiệp và Phát triển nông thôn Thanh Hóa"
+	},
+	{
+		"id" : 644,
+		"name" : "Trường Cao đẳng nghề Công nghiệp Thanh Hóa"
+	},
+	{
+		"id" : 645,
+		"name" : "Trường Cao đẳng nghề Lam Kinh"
+	},
+	{
+		"id" : 646,
+		"name" : "Trường Cao đẳng nghề An Nhất Vinh"
+	},
+	{
+		"id" : 647,
+		"name" : "Trường Cao đẳng nghề Kinh tế - Công nghệ VICET"
+	},
+	{
+		"id" : 648,
+		"name" : "Trường Cao đẳng nghề Kinh tế - Kỹ thuật số 1 Nghệ An"
+	},
+	{
+		"id" : 649,
+		"name" : "Trường Cao đẳng nghề Kỹ thuật Công nghiệp Việt Nam - Hàn Quốc Nghệ An"
+	},
+	{
+		"id" : 650,
+		"name" : "Trường Cao đẳng nghề Du lịch – Thương mại Nghệ An"
+	},
+	{
+		"id" : 651,
+		"name" : "Trường Cao đẳng nghề Kỹ thuật Việt Đức Nghệ An"
+	},
+	{
+		"id" : 652,
+		"name" : "Trường Cao đẳng nghề số 1 - Bộ Quốc phòng"
+	},
+	{
+		"id" : 653,
+		"name" : "Trường Cao đẳng nghề số 2 - Bộ Quốc phòng"
+	},
+	{
+		"id" : 654,
+		"name" : "Trường Cao đẳng nghề số 3 - Bộ Quốc phòng"
+	},
+	{
+		"id" : 655,
+		"name" : "Trường Cao đẳng nghề số 4 - Bộ Quốc phòng"
+	},
+	{
+		"id" : 656,
+		"name" : "Trường Cao đẳng nghề số 13 - Bộ Quốc phòng"
+	},
+	{
+		"id" : 657,
+		"name" : "Trường Cao đẳng nghề số 19 - Bộ Quốc phòng"
+	},
+	{
+		"id" : 658,
+		"name" : "Trường Cao đẳng nghề số 20 - Bộ Quốc phòng"
+	},
+	{
+		"id" : 659,
+		"name" : "Trường Cao đẳng nghề Việt-Đức Hà Tĩnh"
+	},
+	{
+		"id" : 660,
+		"name" : "Trường Cao đẳng nghề Công nghệ Hà Tĩnh"
+	},
+	{
+		"id" : 661,
+		"name" : "Trường Cao đẳng nghề Quảng Bình"
+	},
+	{
+		"id" : 662,
+		"name" : "Trường Cao đẳng Nghề Thừa Thiên Huế"
+	},
+	{
+		"id" : 663,
+		"name" : "Trường Cao đẳng nghề Du lịch Huế"
+	},
+	{
+		"id" : 664,
+		"name" : "Trường Cao đẳng nghề Nguyễn Tri Phương"
+	},
+	{
+		"id" : 665,
+		"name" : "Trường Cao đẳng nghề số 23 - Bộ Quốc phòng"
+	},
+	{
+		"id" : 666,
+		"name" : "Trường Cao đẳng nghề số 21 - Bộ Quốc phòng"
+	},
+	{
+		"id" : 667,
+		"name" : "Trường Cao đẳng nghề số 22 - Bộ Quốc phòng"
+	},
+	{
+		"id" : 668,
+		"name" : "Trường Cao đẳng nghề số 5 - Bộ Quốc phòng"
+	},
+	{
+		"id" : 669,
+		"name" : "Trường Cao đẳng nghề số 8 - Bộ Quốc phòng"
+	},
+	{
+		"id" : 670,
+		"name" : "Trường Cao đẳng nghề số 9 - Bộ Quốc phòng"
+	},
+	{
+		"id" : 671,
+		"name" : "Trường Cao đẳng nghề Hoa Sen"
+	},
+	{
+		"id" : 672,
+		"name" : "Trường Cao đẳng nghề Việt-Úc Đà Nẵng"
+	},
+	{
+		"id" : 673,
+		"name" : "Trường Cao đẳng nghề Đà Nẵng"
+	},
+	{
+		"id" : 674,
+		"name" : "Trường Cao đẳng nghề Du lịch Đà Nẵng"
+	},
+	{
+		"id" : 675,
+		"name" : "Trường Cao đẳng nghề Hoàng Diệu"
+	},
+	{
+		"id" : 676,
+		"name" : "Trường Cao đẳng nghề Nguyễn Văn Trỗi"
+	},
+	{
+		"id" : 677,
+		"name" : "Trường Cao đẳng nghề Quảng Nam"
+	},
+	{
+		"id" : 678,
+		"name" : "Trường Cao đẳng nghề Chu Lai - Trường Hải"
+	},
+	{
+		"id" : 679,
+		"name" : "Trường Cao đẳng nghề Việt Nam-Hàn Quốc Quảng Ngãi"
+	},
+	{
+		"id" : 680,
+		"name" : "Trường Cao đẳng nghề Cơ giới Quảng Ngãi"
+	},
+	{
+		"id" : 681,
+		"name" : "Trường Cao đẳng Kỹ nghệ Dung Quất"
+	},
+	{
+		"id" : 682,
+		"name" : "Trường Cao đẳng nghề Cơ điện - Xây dựng và Nông lâm Trung Bộ"
+	},
+	{
+		"id" : 683,
+		"name" : "Trường Cao đẳng nghề Quy Nhơn"
+	},
+	{
+		"id" : 684,
+		"name" : "Trường Cao đẳng nghề Phú Yên"
+	},
+	{
+		"id" : 685,
+		"name" : "Trường Cao đẳng nghề Quốc tế Nam Việt"
+	},
+	{
+		"id" : 686,
+		"name" : "Trường Cao đẳng nghề Nha Trang"
+	},
+	{
+		"id" : 687,
+		"name" : "Trường Cao đẳng nghề Du lịch Nha Trang"
+	},
+	{
+		"id" : 688,
+		"name" : "Trường Cao đẳng nghề Ninh Thuận"
+	},
+	{
+		"id" : 689,
+		"name" : "Trường Cao đẳng nghề Bình Thuận"
+	},
+	{
+		"id" : 690,
+		"name" : "Trường Cao đẳng nghề Thanh niên Dân tộc Tây Nguyên"
+	},
+	{
+		"id" : 691,
+		"name" : "Trường Cao đẳng nghề Đắk Lắk"
+	},
+	{
+		"id" : 692,
+		"name" : "Trường Cao đẳng nghề Đà Lạt"
+	},
+	{
+		"id" : 693,
+		"name" : "Trường Cao đẳng nghề Du lịch Đà Lạt"
+	},
+	{
+		"id" : 694,
+		"name" : "Trường Cao đẳng nghề Công nghệ cao Đồng An"
+	},
+	{
+		"id" : 695,
+		"name" : "Trường Cao đẳng nghề Việt Nam - Singapore"
+	},
+	{
+		"id" : 696,
+		"name" : "Trường Cao đẳng Việt Nam-Hàn Quốc Bình Dương"
+	},
+	{
+		"id" : 697,
+		"name" : "Trường Cao đẳng Công nghệ và Nông lâm Nam Bộ"
+	},
+	{
+		"id" : 698,
+		"name" : "Trường Cao đẳng nghề Kỹ thuật thiết bị Y tế Bình Dương"
+	},
+	{
+		"id" : 699,
+		"name" : "Trường Cao đẳng nghề Công nghệ cao Đồng Nai"
+	},
+	{
+		"id" : 700,
+		"name" : "Trường Cao đẳng nghề LILAMA-2"
+	},
+	{
+		"id" : 701,
+		"name" : "Trường Cao đẳng Hòa Bình Xuân Lộc"
+	},
+	{
+		"id" : 702,
+		"name" : "Trường Cao đẳng nghề Đồng Nai"
+	},
+	{
+		"id" : 703,
+		"name" : "Trường Cao đẳng nghề Cơ giới và Thủy lợi"
+	},
+	{
+		"id" : 704,
+		"name" : "Trường Cao đẳng Nghề Khách sạn Du lịch Quốc tế IMPERIAL"
+	},
+	{
+		"id" : 705,
+		"name" : "Trường Cao đẳng nghề Quốc tế Vabis Hồng Lam"
+	},
+	{
+		"id" : 706,
+		"name" : "Trường Cao đẳng Dầu khí"
+	},
+	{
+		"id" : 707,
+		"name" : "Trường Cao đẳng nghề Du lịch Vũng Tàu"
+	},
+	{
+		"id" : 708,
+		"name" : "Trường Cao đẳng nghề Bà Rịa - Vũng Tàu"
+	},
+	{
+		"id" : 709,
+		"name" : "Trường Cao đẳng nghề Bình Phước"
+	},
+	{
+		"id" : 710,
+		"name" : "Trường Cao đẳng nghề Tây Ninh"
+	},
+	{
+		"id" : 711,
+		"name" : "Trường Cao đẳng nghề Tây Sài Gòn"
+	},
+	{
+		"id" : 712,
+		"name" : "Trường Cao đẳng nghề Kỹ thuật Công nghệ LADEC"
+	},
+	{
+		"id" : 713,
+		"name" : "Trường Cao đẳng nghề Long An"
+	},
+	{
+		"id" : 714,
+		"name" : "Trường Cao đẳng nghề Đồng Khởi"
+	},
+	{
+		"id" : 715,
+		"name" : "Trường Cao đẳng nghề Đồng Tháp"
+	},
+	{
+		"id" : 716,
+		"name" : "Trường Cao đẳng nghề Vĩnh Long"
+	},
+	{
+		"id" : 717,
+		"name" : "Trường Cao đẳng nghề Trà Vinh"
+	},
+	{
+		"id" : 718,
+		"name" : "Trường Cao đẳng nghề Tiền Giang"
+	},
+	{
+		"id" : 719,
+		"name" : "Trường Cao đẳng nghề An Giang"
+	},
+	{
+		"id" : 720,
+		"name" : "Trường Cao đẳng nghề Công nghệ Sài Gòn"
+	},
+	{
+		"id" : 721,
+		"name" : "Trường Cao đẳng nghề Cần Thơ"
+	},
+	{
+		"id" : 722,
+		"name" : "Trường Cao đẳng nghề Du lịch Cần Thơ"
+	},
+	{
+		"id" : 723,
+		"name" : "Trường Cao đẳng nghề Trần Đại Nghĩa"
+	},
+	{
+		"id" : 724,
+		"name" : "Trường Cao đẳng nghề Sóc Trăng"
+	},
+	{
+		"id" : 725,
+		"name" : "Trường Cao đẳng nghề Bạc Liêu"
+	},
+	{
+		"id" : 726,
+		"name" : "Trường Cao đẳng nghề Kiên Giang"
+	},
+	{
+		"id" : 727,
+		"name" : "Trường Cao đẳng nghề Việt Nam - Hàn Quốc Cà Mau"
+	},
+	{
+		"id" : 728,
+		"name" : "Đại học Công Nghệ - Đại Học quốc gia Hà Nội"
+	},
+	{
+		"id" : 729,
+		"name" : "Trường Đại Học Thương Mại"
+	},
+	{
+		"id" : 730,
+		"name" : "trung cấp bưu chính viễn thông tây sài gòn"
+	},
+	{
+		"id" : 731,
+		"name" : "trung cấp chuyên nghiệp kinh tế kỹ thuật công đoàn"
+	},
+	{
+		"id" : 732,
+		"name" : "trung cấp chính trị tôn đức thắng"
+	},
+	{
+		"id" : 733,
+		"name" : "trung cấp dược y tế an giang"
+	},
+	{
+		"id" : 734,
+		"name" : "trung cấp kinh tế kỹ thuật an giang"
+	},
+	{
+		"id" : 735,
+		"name" : "trung cấp kế toán an giang"
+	},
+	{
+		"id" : 736,
+		"name" : "trung cấp kỹ thuật nghiệp vụ công an nhân dân"
+	},
+	{
+		"id" : 737,
+		"name" : "trung cấp lý luận chính trị hành chính"
+	},
+	{
+		"id" : 738,
+		"name" : "trung cấp nghề dân tộc nội trú an giang"
+	},
+	{
+		"id" : 739,
+		"name" : "trung cấp nghề kinh tế kỹ thuật công đoàn an giang"
+	},
+	{
+		"id" : 740,
+		"name" : "trung cấp nông nghiệp an giang"
+	},
+	{
+		"id" : 741,
+		"name" : "trung cấp quân sự"
+	},
+	{
+		"id" : 742,
+		"name" : "trung cấp tin học kế toán"
+	},
+	{
+		"id" : 743,
+		"name" : "trung cấp tài chính ngân hàng"
+	},
+	{
+		"id" : 744,
+		"name" : "trung cấp y dược an giang"
+	},
+	{
+		"id" : 745,
+		"name" : "trung cấp y phạm ngọc thạch"
+	},
+	{
+		"id" : 746,
+		"name" : "trung cấp y tế an giang"
+	},
+	{
+		"id" : 747,
+		"name" : "trung cấp đông y an giang"
+	},
+	{
+		"id" : 748,
+		"name" : "trung cấp biên phòng bà rịa vũng tàu"
+	},
+	{
+		"id" : 749,
+		"name" : "trung cấp chính trị bà rịa vũng tàu"
+	},
+	{
+		"id" : 750,
+		"name" : "trung cấp chế biến cao su"
+	},
+	{
+		"id" : 751,
+		"name" : "trung cấp công nghệ thông tin bà rịa vũng tàu"
+	},
+	{
+		"id" : 752,
+		"name" : "trung cấp công nghệ thông tin TM. Computer"
+	},
+	{
+		"id" : 753,
+		"name" : "trung cấp du lịch khách sạn"
+	},
+	{
+		"id" : 754,
+		"name" : "trung cấp du lịch và khách sạn SaiGontourist"
+	},
+	{
+		"id" : 755,
+		"name" : "trung cấp dược hồng đức"
+	},
+	{
+		"id" : 756,
+		"name" : "trung cấp kinh tế kỹ thuật phương đông"
+	},
+	{
+		"id" : 757,
+		"name" : "trung cấp kỹ thuật nông nghiệp"
+	},
+	{
+		"id" : 758,
+		"name" : "trung cấp nghề du lịch vũng tàu"
+	},
+	{
+		"id" : 759,
+		"name" : "trung cấp nghề giao thông vận tải bà rịa vũng tàu"
+	},
+	{
+		"id" : 760,
+		"name" : "trung cấp nghề kinh tế kỹ thuật công đoàn bà rịa vũng tàu"
+	},
+	{
+		"id" : 761,
+		"name" : "trung cấp nghề kỹ thuật bảo trì điện"
+	},
+	{
+		"id" : 762,
+		"name" : "trung cấp y hồng đức"
+	},
+	{
+		"id" : 763,
+		"name" : "trung cấp y tế bà rịa vũng tàu"
+	},
+	{
+		"id" : 764,
+		"name" : "trung cấp điện tử công nghiệp"
+	},
+	{
+		"id" : 765,
+		"name" : "trung cấp bách khoa bình dương"
+	},
+	{
+		"id" : 766,
+		"name" : "trung cấp nghề khu công nghiệp bình dương"
+	},
+	{
+		"id" : 767,
+		"name" : "trung cấp công nghiệp bình dương"
+	},
+	{
+		"id" : 768,
+		"name" : "trung cấp công nghiệp bình dương cơ sở 1"
+	},
+	{
+		"id" : 769,
+		"name" : "trung cấp công nghiệp bình dương cơ sở 2"
+	},
+	{
+		"id" : 770,
+		"name" : "trung cấp dược bình dương"
+	},
+	{
+		"id" : 771,
+		"name" : "trung cấp kinh tế bình dương"
+	},
+	{
+		"id" : 772,
+		"name" : "trung cấp kinh tế công nghệ đông nam"
+	},
+	{
+		"id" : 773,
+		"name" : "trung cấp kinh tế công nghệ đại việt"
+	},
+	{
+		"id" : 774,
+		"name" : "trung cấp kinh tế kỹ thuật bình dương"
+	},
+	{
+		"id" : 775,
+		"name" : "trung cấp kinh tế sài gòn"
+	},
+	{
+		"id" : 776,
+		"name" : "trung cấp kinh tế tài chính bình dương"
+	},
+	{
+		"id" : 777,
+		"name" : "trung cấp kỹ thuật và nghiệp vụ công đoàn bình dương"
+	},
+	{
+		"id" : 778,
+		"name" : "trung cấp kế toán bình dương"
+	},
+	{
+		"id" : 779,
+		"name" : "trung cấp kế toán doanh nghiệp bình dương"
+	},
+	{
+		"id" : 780,
+		"name" : "trung cấp kỹ thuật bình dương"
+	},
+	{
+		"id" : 781,
+		"name" : "trung cấp mỹ thuật văn hóa bình dương"
+	},
+	{
+		"id" : 782,
+		"name" : "trung cấp nghề kỹ thuật và nghiệp vụ công đoàn bình dương"
+	},
+	{
+		"id" : 783,
+		"name" : "trung cấp nghề liên đoàn lao động và nghiệp vụ bình dương"
+	},
+	{
+		"id" : 784,
+		"name" : "trung cấp nghề nghiệp vụ bình dương"
+	},
+	{
+		"id" : 785,
+		"name" : "trung cấp nghề tư thục bình dương"
+	},
+	{
+		"id" : 786,
+		"name" : "trung cấp nghề việt hàn bình dương"
+	},
+	{
+		"id" : 787,
+		"name" : "trung cấp nông lâm bình dương"
+	},
+	{
+		"id" : 788,
+		"name" : "trung cấp tài chính kế toán bình dương"
+	},
+	{
+		"id" : 789,
+		"name" : "trung cấp và đào tạo nghề việt nam singapore"
+	},
+	{
+		"id" : 790,
+		"name" : "trung cấp văn hóa nghệ thuật và du lịch bình dương"
+	},
+	{
+		"id" : 791,
+		"name" : "trung cấp y tế bình dương"
+	},
+	{
+		"id" : 792,
+		"name" : "trung cấp điện việt nam singapore bình dương"
+	},
+	{
+		"id" : 793,
+		"name" : "trung cấp công nghiệp cao su bình phước"
+	},
+	{
+		"id" : 794,
+		"name" : "trung cấp dược bình phước"
+	},
+	{
+		"id" : 795,
+		"name" : "trung cấp kinh tế kĩ thuật bình phước"
+	},
+	{
+		"id" : 796,
+		"name" : "trung cấp kinh tế kỹ thuật cửu long"
+	},
+	{
+		"id" : 797,
+		"name" : "trung cấp lý luận chính trị hành chính bình phước"
+	},
+	{
+		"id" : 798,
+		"name" : "trung cấp nghề tôn đức thắng bình phước"
+	},
+	{
+		"id" : 799,
+		"name" : "trung cấp quân sự bình phước"
+	},
+	{
+		"id" : 800,
+		"name" : "trung cấp sư phạm miền đông"
+	},
+	{
+		"id" : 801,
+		"name" : "trung cấp y dược bình phước"
+	},
+	{
+		"id" : 802,
+		"name" : "trung cấp y tế bình phước"
+	},
+	{
+		"id" : 803,
+		"name" : "trung cấp công đoàn bình thuận"
+	},
+	{
+		"id" : 804,
+		"name" : "trung cấp dược bình thuận"
+	},
+	{
+		"id" : 805,
+		"name" : "trung cấp kinh tế kĩ thuật liên đoàn bình thuận"
+	},
+	{
+		"id" : 806,
+		"name" : "trung cấp nghề kinh tế kỹ thuật công đoàn bình thuận"
+	},
+	{
+		"id" : 807,
+		"name" : "trung cấp kỹ thuật và nghiệp vụ thủy sản 2"
+	},
+	{
+		"id" : 808,
+		"name" : "trung cấp lí luận chính trị bình thuận"
+	},
+	{
+		"id" : 809,
+		"name" : "trung cấp nghề bình thuận"
+	},
+	{
+		"id" : 810,
+		"name" : "trung cấp sư phạm bình thuận"
+	},
+	{
+		"id" : 811,
+		"name" : "trung cấp tôn đức thắng"
+	},
+	{
+		"id" : 812,
+		"name" : "trung cấp y tế bình thuận"
+	},
+	{
+		"id" : 813,
+		"name" : "trung cấp chính trị bình định"
+	},
+	{
+		"id" : 814,
+		"name" : "trung cấp dân lập công nghệ thông tin sài gòn"
+	},
+	{
+		"id" : 815,
+		"name" : "trung cấp kinh tế kĩ thuật bình định"
+	},
+	{
+		"id" : 816,
+		"name" : "trung cấp mỹ thuật bình định"
+	},
+	{
+		"id" : 817,
+		"name" : "trung cấp nghề nông nghiệp 4 trung ương"
+	},
+	{
+		"id" : 818,
+		"name" : "trung cấp nghề thủ công mỹ nghệ bình định"
+	},
+	{
+		"id" : 819,
+		"name" : "trung cấp nghệ thuật bình định"
+	},
+	{
+		"id" : 820,
+		"name" : "trung cấp nông lâm nghiệp bình định"
+	},
+	{
+		"id" : 821,
+		"name" : "trung cấp phật học bình định"
+	},
+	{
+		"id" : 822,
+		"name" : "trung cấp quân sự bình định"
+	},
+	{
+		"id" : 823,
+		"name" : "trung cấp thủy lợi 2 bình định"
+	},
+	{
+		"id" : 824,
+		"name" : "trung cấp tư thục điều dưỡng và kỹ thuật y tế hồng đức"
+	},
+	{
+		"id" : 825,
+		"name" : "trung cấp văn hóa nghệ thuật bình định"
+	},
+	{
+		"id" : 826,
+		"name" : "đại học xây dựng miền trung"
+	},
+	{
+		"id" : 827,
+		"name" : "trung cấp y dược hồng đức hồ chí minh"
+	},
+	{
+		"id" : 828,
+		"name" : "trung cấp y tế bình định"
+	},
+	{
+		"id" : 829,
+		"name" : "trung cấp y tế trung ương 2"
+	},
+	{
+		"id" : 830,
+		"name" : "trung cấp dược bạc liêu"
+	},
+	{
+		"id" : 831,
+		"name" : "trung cấp kinh tế kỹ thuật bạc liêu"
+	},
+	{
+		"id" : 832,
+		"name" : "trung cấp kinh tế và du lịch hồ chí minh"
+	},
+	{
+		"id" : 833,
+		"name" : "trung cấp kế toán bạc liêu"
+	},
+	{
+		"id" : 834,
+		"name" : "trung cấp kỹ thuật nghề bạc liêu"
+	},
+	{
+		"id" : 835,
+		"name" : "trung cấp nghề kinh tế kỹ thuật số 2"
+	},
+	{
+		"id" : 836,
+		"name" : "trung cấp văn hóa nghệ thuật bạc liêu"
+	},
+	{
+		"id" : 837,
+		"name" : "trung cấp y tế bạc liêu"
+	},
+	{
+		"id" : 838,
+		"name" : "trung cấp biên phòng 1 bắc giang"
+	},
+	{
+		"id" : 839,
+		"name" : "trung cấp chính trị bắc giang"
+	},
+	{
+		"id" : 840,
+		"name" : "trung cấp cơ điện hoá chất bắc giang"
+	},
+	{
+		"id" : 841,
+		"name" : "trung cấp du lịch và khách sạn"
+	},
+	{
+		"id" : 842,
+		"name" : "trung cấp dạy nghề giao thông vận tải bắc giang"
+	},
+	{
+		"id" : 843,
+		"name" : "trung cấp kinh tế kỹ thuật bắc giang"
+	},
+	{
+		"id" : 844,
+		"name" : "trung cấp kinh tế kỹ thuật thăng long"
+	},
+	{
+		"id" : 845,
+		"name" : "trung cấp kinh tế và du lịch hoa sữa"
+	},
+	{
+		"id" : 846,
+		"name" : "trung cấp kế toán bắc giang"
+	},
+	{
+		"id" : 847,
+		"name" : "trung cấp kỹ thuật 2 bắc giang"
+	},
+	{
+		"id" : 848,
+		"name" : "trung cấp kỹ thuật công nghiệp bắc giang"
+	},
+	{
+		"id" : 849,
+		"name" : "trung cấp kỹ thuật mật mã quân đội"
+	},
+	{
+		"id" : 850,
+		"name" : "trung cấp kỹ thuật tăng thiết giáp"
+	},
+	{
+		"id" : 851,
+		"name" : "trung cấp kỹ thuật y bắc giang"
+	},
+	{
+		"id" : 852,
+		"name" : "trung cấp lâm nghiệp bắc giang"
+	},
+	{
+		"id" : 853,
+		"name" : "trung cấp nghề cơ khí bắc giang"
+	},
+	{
+		"id" : 854,
+		"name" : "trung cấp nghề giao thông vận tải bắc giang"
+	},
+	{
+		"id" : 855,
+		"name" : "trung cấp nghề lái xe số 1 bắc giang"
+	},
+	{
+		"id" : 856,
+		"name" : "trung cấp nông lâm bắc giang"
+	},
+	{
+		"id" : 857,
+		"name" : "trung cấp sư phạm bắc giang"
+	},
+	{
+		"id" : 858,
+		"name" : "trung cấp sư phạm miền núi bắc giang"
+	},
+	{
+		"id" : 859,
+		"name" : "trung cấp tài chính kinh tế bắc giang"
+	},
+	{
+		"id" : 860,
+		"name" : "trung cấp tài chính kế toán bắc giang"
+	},
+	{
+		"id" : 861,
+		"name" : "trung cấp văn hóa nghệ thuật du lịch bắc giang"
+	},
+	{
+		"id" : 862,
+		"name" : "trung cấp văn hóa thể thao và du lịch bắc giang"
+	},
+	{
+		"id" : 863,
+		"name" : "trung cấp y dược bắc giang"
+	},
+	{
+		"id" : 864,
+		"name" : "trung cấp y tế và điều dưỡng bắc giang"
+	},
+	{
+		"id" : 865,
+		"name" : "trung cấp công nghiệp bắc kạn"
+	},
+	{
+		"id" : 866,
+		"name" : "trung cấp dược quang trung hồ chí minh"
+	},
+	{
+		"id" : 867,
+		"name" : "trung cấp kỹ thuật và nghiệp vụ sông hồng"
+	},
+	{
+		"id" : 868,
+		"name" : "trung cấp quân sự bắc kạn"
+	},
+	{
+		"id" : 869,
+		"name" : "trung cấp quân y 2 hồ chí minh"
+	},
+	{
+		"id" : 870,
+		"name" : "trung cấp xây dựng công trình đô thị"
+	},
+	{
+		"id" : 871,
+		"name" : "trung cấp y tế bắc kạn"
+	},
+	{
+		"id" : 872,
+		"name" : "trung cấp bách khoa bắc ninh"
+	},
+	{
+		"id" : 873,
+		"name" : "trung cấp ca múa kịch việt nam"
+	},
+	{
+		"id" : 874,
+		"name" : "trung cấp chính trị nguyễn văn cừ"
+	},
+	{
+		"id" : 875,
+		"name" : "trung cấp dược bắc ninh"
+	},
+	{
+		"id" : 876,
+		"name" : "trung cấp kinh tế kĩ thuật bắc ninh"
+	},
+	{
+		"id" : 877,
+		"name" : "trung cấp kinh tế kĩ thuật công nghiệp"
+	},
+	{
+		"id" : 878,
+		"name" : "trung cấp kinh tế kĩ thuật công thương cci"
+	},
+	{
+		"id" : 879,
+		"name" : "trung cấp kinh tế kỹ thuật nông nghiệp"
+	},
+	{
+		"id" : 880,
+		"name" : "trung cấp kinh tế kỹ thuật phan chu trinh"
+	},
+	{
+		"id" : 881,
+		"name" : "trung cấp kinh tế kỹ thuật thủ công bắc ninh"
+	},
+	{
+		"id" : 882,
+		"name" : "trung cấp kinh tế nông lâm hà bắc"
+	},
+	{
+		"id" : 883,
+		"name" : "trung cấp kinh tế kỹ thuật dược tuệ tĩnh bắc ninh"
+	},
+	{
+		"id" : 884,
+		"name" : "trung cấp kinh tế kỹ thuật thương mại số 1"
+	},
+	{
+		"id" : 885,
+		"name" : "trung cấp kế toán bắc ninh"
+	},
+	{
+		"id" : 886,
+		"name" : "trung cấp kế toán trung ương bắc ninh"
+	},
+	{
+		"id" : 887,
+		"name" : "trung cấp kế toán tại bắc ninh"
+	},
+	{
+		"id" : 888,
+		"name" : "trung cấp nghề bách khoa bắc ninh"
+	},
+	{
+		"id" : 889,
+		"name" : "trung cấp nghề cơ điện và xây dựng bắc ninh"
+	},
+	{
+		"id" : 890,
+		"name" : "trung cấp nghề kinh tế kỹ thuật bắc ninh"
+	},
+	{
+		"id" : 891,
+		"name" : "trung cấp nghề điện bắc ninh"
+	},
+	{
+		"id" : 892,
+		"name" : "trung cấp nghệ thuật bắc ninh"
+	},
+	{
+		"id" : 893,
+		"name" : "trung cấp ngân hàng bắc ninh"
+	},
+	{
+		"id" : 894,
+		"name" : "trung cấp ngân hàng phân viện bắc ninh"
+	},
+	{
+		"id" : 895,
+		"name" : "trung cấp quản lý kinh tế công nghiệp bắc ninh"
+	},
+	{
+		"id" : 896,
+		"name" : "trung cấp quản lý kinh tế hóa chất từ sơn"
+	},
+	{
+		"id" : 897,
+		"name" : "trung cấp sư phạm bắc ninh"
+	},
+	{
+		"id" : 898,
+		"name" : "trung cấp sư phạm mầm non bắc ninh"
+	},
+	{
+		"id" : 899,
+		"name" : "trung cấp thống kê trung ương bắc ninh"
+	},
+	{
+		"id" : 900,
+		"name" : "trung cấp thủy sản 4 bắc ninh"
+	},
+	{
+		"id" : 901,
+		"name" : "trung cấp tài chính kế toán"
+	},
+	{
+		"id" : 902,
+		"name" : "trung cấp văn hoá nghệ thuật và du lịch bắc ninh"
+	},
+	{
+		"id" : 903,
+		"name" : "trung cấp xây dựng thủy lợi bắc ninh"
+	},
+	{
+		"id" : 904,
+		"name" : "trung cấp y dược bắc ninh"
+	},
+	{
+		"id" : 905,
+		"name" : "trung cấp y dược tuệ tĩnh bắc ninh"
+	},
+	{
+		"id" : 906,
+		"name" : "trung cấp y tế bắc ninh"
+	},
+	{
+		"id" : 907,
+		"name" : "trung cấp y tế giao thông vận tải"
+	},
+	{
+		"id" : 908,
+		"name" : "trung cấp y tế trung ương"
+	},
+	{
+		"id" : 909,
+		"name" : "trung cấp chính trị bến tre"
+	},
+	{
+		"id" : 910,
+		"name" : "trung cấp chính trị bến tre"
+	},
+	{
+		"id" : 911,
+		"name" : "trung cấp công nghệ bách khoa hồ chí minh"
+	},
+	{
+		"id" : 912,
+		"name" : "trung cấp cơ khí nông nghiệp"
+	},
+	{
+		"id" : 913,
+		"name" : "trung cấp dược cửu long"
+	},
+	{
+		"id" : 914,
+		"name" : "trung cấp kinh tế kỹ thuật bến tre"
+	},
+	{
+		"id" : 915,
+		"name" : "trung cấp kinh tế kỹ thuật củ chi"
+	},
+	{
+		"id" : 916,
+		"name" : "trung cấp kinh tế kỹ thuật nguyễn hữu cảnh"
+	},
+	{
+		"id" : 917,
+		"name" : "trung cấp kinh tế kỹ thuật âu việt"
+	},
+	{
+		"id" : 918,
+		"name" : "trung cấp kinh tế quốc dân"
+	},
+	{
+		"id" : 919,
+		"name" : "trung cấp kinh tế và du lịch hồ chí minh"
+	},
+	{
+		"id" : 920,
+		"name" : "trung cấp kế toán bến tre"
+	},
+	{
+		"id" : 921,
+		"name" : "trung cấp kỹ thuật công nghiệp cửu long"
+	},
+	{
+		"id" : 922,
+		"name" : "trung cấp kỹ thuật hùng vương"
+	},
+	{
+		"id" : 923,
+		"name" : "trung cấp nghề số 22 bộ quốc phòng"
+	},
+	{
+		"id" : 924,
+		"name" : "trung cấp nghề số 9 bộ quốc phòng"
+	},
+	{
+		"id" : 925,
+		"name" : "trung cấp nghề đồng khởi bến tre"
+	},
+	{
+		"id" : 926,
+		"name" : "trung cấp tin học kỹ thuật nghiệp vụ thủ đức"
+	},
+	{
+		"id" : 927,
+		"name" : "trung cấp văn hóa nghệ thuật bến tre"
+	},
+	{
+		"id" : 928,
+		"name" : "trung cấp xây dựng bến tre"
+	},
+	{
+		"id" : 929,
+		"name" : "trung cấp y dược bến tre"
+	},
+	{
+		"id" : 930,
+		"name" : "trung cấp y tế bến tre"
+	},
+	{
+		"id" : 931,
+		"name" : "trung cấp kinh tế bắc hà"
+	},
+	{
+		"id" : 932,
+		"name" : "trung cấp kinh tế kĩ thuật cao bằng"
+	},
+	{
+		"id" : 933,
+		"name" : "trung cấp kế toán cao bằng"
+	},
+	{
+		"id" : 934,
+		"name" : "trung cấp kế toán đông đô"
+	},
+	{
+		"id" : 935,
+		"name" : "trung cấp luật cao bằng"
+	},
+	{
+		"id" : 936,
+		"name" : "trung cấp luật thái nguyên tại cao bằng"
+	},
+	{
+		"id" : 937,
+		"name" : "trung cấp lý luận chính trị cao bằng"
+	},
+	{
+		"id" : 938,
+		"name" : "trung cấp nghề công nghệ ôtô việt đức"
+	},
+	{
+		"id" : 939,
+		"name" : "trung cấp nông lâm cao bằng"
+	},
+	{
+		"id" : 940,
+		"name" : "trung cấp quân sự cao bằng"
+	},
+	{
+		"id" : 941,
+		"name" : "trung cấp sư phạm cao bằng"
+	},
+	{
+		"id" : 942,
+		"name" : "trung cấp văn hóa việt bắc"
+	},
+	{
+		"id" : 943,
+		"name" : "trung cấp y không quân"
+	},
+	{
+		"id" : 944,
+		"name" : "trung cấp y tế cao bằng"
+	},
+	{
+		"id" : 945,
+		"name" : "trung cấp chính trị cà mau"
+	},
+	{
+		"id" : 946,
+		"name" : "trung cấp công nghệ thông tin sài gòn"
+	},
+	{
+		"id" : 947,
+		"name" : "trung cấp cộng đồng cà mau"
+	},
+	{
+		"id" : 948,
+		"name" : "trung cấp học viện mật mã"
+	},
+	{
+		"id" : 949,
+		"name" : "trung cấp kinh tế kĩ thuật cà mau"
+	},
+	{
+		"id" : 950,
+		"name" : "trung cấp kế toán cà mau"
+	},
+	{
+		"id" : 951,
+		"name" : "trung cấp kỹ thuật và công nghệ cà mau"
+	},
+	{
+		"id" : 952,
+		"name" : "trung cấp nghề kinh tế kỹ thuật"
+	},
+	{
+		"id" : 953,
+		"name" : "trung cấp quân sự cà mau"
+	},
+	{
+		"id" : 954,
+		"name" : "trung cấp tin học văn phòng cà mau"
+	},
+	{
+		"id" : 955,
+		"name" : "trung cấp tôn đức thắng cà mau"
+	},
+	{
+		"id" : 956,
+		"name" : "trung cấp văn hóa thể thao và du lịch cà mau"
+	},
+	{
+		"id" : 957,
+		"name" : "trung cấp y dược cà mau"
+	},
+	{
+		"id" : 958,
+		"name" : "trung cấp y tế cà mau"
+	},
+	{
+		"id" : 959,
+		"name" : "trung cấp y tế kỹ thuật dược hồng đức"
+	},
+	{
+		"id" : 960,
+		"name" : "trung cấp chuyên nghiệp du lịch vũng tàu"
+	},
+	{
+		"id" : 961,
+		"name" : "trung cấp cơ điện cần thơ"
+	},
+	{
+		"id" : 962,
+		"name" : "trung cấp du lịch cần thơ"
+	},
+	{
+		"id" : 963,
+		"name" : "trung cấp dân lập bách nghệ cần thơ"
+	},
+	{
+		"id" : 964,
+		"name" : "trung cấp dược cần thơ"
+	},
+	{
+		"id" : 965,
+		"name" : "trung cấp dược phạm ngọc thạch cần thơ"
+	},
+	{
+		"id" : 966,
+		"name" : "trung cấp giao thông vận tải cần thơ"
+	},
+	{
+		"id" : 967,
+		"name" : "trung cấp hồng hà cần thơ"
+	},
+	{
+		"id" : 968,
+		"name" : "trung cấp kinh tế kĩ thuật cần thơ"
+	},
+	{
+		"id" : 969,
+		"name" : "trung cấp kinh tế và kỹ thuật âu việt"
+	},
+	{
+		"id" : 970,
+		"name" : "trung cấp kế toán nha trang"
+	},
+	{
+		"id" : 971,
+		"name" : "trung cấp miền tây cần thơ"
+	},
+	{
+		"id" : 972,
+		"name" : "trung cấp nông nghiệp cần thơ"
+	},
+	{
+		"id" : 973,
+		"name" : "trung cấp phạm ngọc thạch cần thơ"
+	},
+	{
+		"id" : 974,
+		"name" : "trung cấp quân y 2 cần thơ"
+	},
+	{
+		"id" : 975,
+		"name" : "trung cấp quản lý và công nghệ cần thơ"
+	},
+	{
+		"id" : 976,
+		"name" : "trung cấp thể dục thể thao cần thơ"
+	},
+	{
+		"id" : 977,
+		"name" : "trung cấp thống kê vũng tàu"
+	},
+	{
+		"id" : 978,
+		"name" : "trung cấp tài chính kế toán cần thơ"
+	},
+	{
+		"id" : 979,
+		"name" : "trung cấp văn hoá nghệ thuật cần thơ"
+	},
+	{
+		"id" : 980,
+		"name" : "trung cấp y dược mê kông cần thơ"
+	},
+	{
+		"id" : 981,
+		"name" : "trung cấp y dược phạm ngọc thạch cần thơ"
+	},
+	{
+		"id" : 982,
+		"name" : "trung cấp y quân y cần thơ"
+	},
+	{
+		"id" : 983,
+		"name" : "trung cấp y sĩ phạm ngọc thạch cần thơ"
+	},
+	{
+		"id" : 984,
+		"name" : "trung cấp y sĩ đại việt cần thơ"
+	},
+	{
+		"id" : 985,
+		"name" : "trung cấp y tế cần thơ"
+	},
+	{
+		"id" : 986,
+		"name" : "trung cấp điện cần thơ"
+	},
+	{
+		"id" : 987,
+		"name" : "trung cấp công nghệ và kinh doanh việt tiến"
+	},
+	{
+		"id" : 988,
+		"name" : "trung cấp dược gia lai"
+	},
+	{
+		"id" : 989,
+		"name" : "trung cấp kinh tế kỹ thuật nam gia lai"
+	},
+	{
+		"id" : 990,
+		"name" : "trung cấp kinh tế kỹ thuật đông gia lai"
+	},
+	{
+		"id" : 991,
+		"name" : "trung cấp kế toán thương mại gia lai"
+	},
+	{
+		"id" : 992,
+		"name" : "trung cấp kỹ thuật chuyên nghiệp quy nhơn"
+	},
+	{
+		"id" : 993,
+		"name" : "trung cấp kỹ thuật công nghiệp gia lai"
+	},
+	{
+		"id" : 994,
+		"name" : "trung cấp lâm nghiệp tây nguyên"
+	},
+	{
+		"id" : 995,
+		"name" : "trung cấp nghề gia lai"
+	},
+	{
+		"id" : 996,
+		"name" : "trung cấp nghề số 21 bộ quốc phòng gia lai"
+	},
+	{
+		"id" : 997,
+		"name" : "trung cấp nông lâm gia lai"
+	},
+	{
+		"id" : 998,
+		"name" : "trung cấp nông nghiệp gia lai"
+	},
+	{
+		"id" : 999,
+		"name" : "trung cấp pasteur nha trang"
+	},
+	{
+		"id" : 1000,
+		"name" : "trung cấp thông tin truyền thông gia lai"
+	},
+	{
+		"id" : 1001,
+		"name" : "trung cấp tài chính gia lai"
+	},
+	{
+		"id" : 1002,
+		"name" : "trung cấp văn hóa nghệ thuật gia lai"
+	},
+	{
+		"id" : 1003,
+		"name" : "trung cấp y tế gia lai"
+	},
+	{
+		"id" : 1004,
+		"name" : "trung cấp kinh tế kĩ thuật hà giang"
+	},
+	{
+		"id" : 1005,
+		"name" : "trung cấp luật hà giang"
+	},
+	{
+		"id" : 1006,
+		"name" : "trung cấp lý luận chính trị hành chính hà giang"
+	},
+	{
+		"id" : 1007,
+		"name" : "trung cấp may thời trang và thiết kế"
+	},
+	{
+		"id" : 1008,
+		"name" : "trung cấp nghề than khoáng sản việt nam"
+	},
+	{
+		"id" : 1009,
+		"name" : "trung cấp ngân hàng 4 sơn tây"
+	},
+	{
+		"id" : 1010,
+		"name" : "trung cấp quân sự hà giang"
+	},
+	{
+		"id" : 1011,
+		"name" : "trung cấp văn hóa nghệ thuật hà giang"
+	},
+	{
+		"id" : 1012,
+		"name" : "trung cấp y tế hà giang"
+	},
+	{
+		"id" : 1013,
+		"name" : "trung cấp bưu chính viễn thông và công nghệ thông tin hà nam"
+	},
+	{
+		"id" : 1014,
+		"name" : "trung cấp bưu điện hà nam ninh"
+	},
+	{
+		"id" : 1015,
+		"name" : "trung cấp chính trị hà nam"
+	},
+	{
+		"id" : 1016,
+		"name" : "trung cấp công nghệ thông tin hồng hà"
+	},
+	{
+		"id" : 1017,
+		"name" : "trung cấp công nghệ thăng long"
+	},
+	{
+		"id" : 1018,
+		"name" : "trung cấp công nghệ và quản trị đông đô"
+	},
+	{
+		"id" : 1019,
+		"name" : "trung cấp cơ điện tây bắc"
+	},
+	{
+		"id" : 1020,
+		"name" : "trung cấp dược hà nam"
+	},
+	{
+		"id" : 1021,
+		"name" : "trung cấp kĩ thuật mật mã hà nam"
+	},
+	{
+		"id" : 1022,
+		"name" : "trung cấp kỹ thuật kinh tế"
+	},
+	{
+		"id" : 1023,
+		"name" : "trung cấp kỹ thuật thông tin"
+	},
+	{
+		"id" : 1024,
+		"name" : "trung cấp mật mã hà nam ninh"
+	},
+	{
+		"id" : 1025,
+		"name" : "trung cấp mỹ nghệ hà nam"
+	},
+	{
+		"id" : 1026,
+		"name" : "trung cấp nghề công nghệ hà nam"
+	},
+	{
+		"id" : 1027,
+		"name" : "trung cấp nghề cơ điện xây dựng việt xô"
+	},
+	{
+		"id" : 1028,
+		"name" : "trung cấp nghề kinh tế kỹ thuật hà nam"
+	},
+	{
+		"id" : 1029,
+		"name" : "trung cấp nông nghiệp hà nam ninh"
+	},
+	{
+		"id" : 1030,
+		"name" : "trung cấp phát thanh truyền hình hà nam"
+	},
+	{
+		"id" : 1031,
+		"name" : "trung cấp sư phạm hà nam ninh"
+	},
+	{
+		"id" : 1032,
+		"name" : "trung cấp sư phạm mầm non hà nam"
+	},
+	{
+		"id" : 1033,
+		"name" : "trung cấp thủy lợi 1 hà nam"
+	},
+	{
+		"id" : 1034,
+		"name" : "trung cấp thủy lợi hà nam"
+	},
+	{
+		"id" : 1035,
+		"name" : "trung cấp xây dựng hà nam ninh"
+	},
+	{
+		"id" : 1036,
+		"name" : "trung cấp y dược hà nam"
+	},
+	{
+		"id" : 1037,
+		"name" : "trung cấp y dược hà nam phân hiệu nha trang"
+	},
+	{
+		"id" : 1038,
+		"name" : "trung cấp an ninh hà nội"
+	},
+	{
+		"id" : 1039,
+		"name" : "trung cấp bách khoa hà nội"
+	},
+	{
+		"id" : 1040,
+		"name" : "trung cấp bách nghệ hà nội"
+	},
+	{
+		"id" : 1041,
+		"name" : "trung cấp bán công kỹ thuật bắc thăng long"
+	},
+	{
+		"id" : 1042,
+		"name" : "trung cấp bưu điện hà đông hà nội"
+	},
+	{
+		"id" : 1043,
+		"name" : "trung cấp chế biến lương thực thực phẩm hà nội"
+	},
+	{
+		"id" : 1044,
+		"name" : "trung cấp chính trị hà nội"
+	},
+	{
+		"id" : 1045,
+		"name" : "trung cấp chế tạo máy công ty cơ khí hà nội"
+	},
+	{
+		"id" : 1046,
+		"name" : "trung cấp cán bộ quản lý giao thông vận tải"
+	},
+	{
+		"id" : 1047,
+		"name" : "trung cấp công nghiệp hà nội"
+	},
+	{
+		"id" : 1048,
+		"name" : "trung cấp công nghiệp quốc phòng"
+	},
+	{
+		"id" : 1049,
+		"name" : "trung cấp công nghệ bách khoa hà nội"
+	},
+	{
+		"id" : 1050,
+		"name" : "trung cấp công nghệ chế tạo máy hà nội"
+	},
+	{
+		"id" : 1051,
+		"name" : "trung cấp công nghệ kinh tế đối ngoại hà nội"
+	},
+	{
+		"id" : 1052,
+		"name" : "trung cấp công nghệ và kinh tế hà nội"
+	},
+	{
+		"id" : 1053,
+		"name" : "trung cấp công nghệ và nghiệp vụ tổng hợp hà nội"
+	},
+	{
+		"id" : 1054,
+		"name" : "trung cấp công nghệ và quản trị kinh doanh hà nội"
+	},
+	{
+		"id" : 1055,
+		"name" : "trung cấp công nghệ và y tế pastuer hà nội"
+	},
+	{
+		"id" : 1056,
+		"name" : "trung cấp công thương hà nội"
+	},
+	{
+		"id" : 1057,
+		"name" : "trung cấp cơ khí kỹ thuật hà nội"
+	},
+	{
+		"id" : 1058,
+		"name" : "trung cấp cơ khí xây dựng hà nội"
+	},
+	{
+		"id" : 1059,
+		"name" : "trung cấp cơ khí điện sóc sơn"
+	},
+	{
+		"id" : 1060,
+		"name" : "trung cấp cơ điện chế biến thực phẩm"
+	},
+	{
+		"id" : 1061,
+		"name" : "trung cấp cơ điện hà nội"
+	},
+	{
+		"id" : 1062,
+		"name" : "trung cấp cảnh sát cơ động hà nội"
+	},
+	{
+		"id" : 1063,
+		"name" : "trung cấp cảnh sát vũ trang hà nội"
+	},
+	{
+		"id" : 1064,
+		"name" : "trung cấp cổ truyền hà nội"
+	},
+	{
+		"id" : 1065,
+		"name" : "trung cấp cộng đồng hà nội"
+	},
+	{
+		"id" : 1066,
+		"name" : "trung cấp cộng đồng hà nội cơ sở ba vì"
+	},
+	{
+		"id" : 1067,
+		"name" : "trung cấp du lịch hà nội"
+	},
+	{
+		"id" : 1068,
+		"name" : "trung cấp du lịch miền trung"
+	},
+	{
+		"id" : 1069,
+		"name" : "trung cấp du lịch và khách sạn sheration hà nội"
+	},
+	{
+		"id" : 1070,
+		"name" : "trung cấp du lịch văn hóa hà nội"
+	},
+	{
+		"id" : 1071,
+		"name" : "trung cấp dân lập bách nghệ hà nội"
+	},
+	{
+		"id" : 1072,
+		"name" : "trung cấp dân lập kinh tế kỹ thuật hà nội 1"
+	},
+	{
+		"id" : 1073,
+		"name" : "trung cấp dược hà nội"
+	},
+	{
+		"id" : 1074,
+		"name" : "trung cấp dược hà tây"
+	},
+	{
+		"id" : 1075,
+		"name" : "trung cấp dược học hà nội"
+	},
+	{
+		"id" : 1076,
+		"name" : "trung cấp dược sơn tây"
+	},
+	{
+		"id" : 1077,
+		"name" : "trung cấp dạy nghề nấu ăn và nghiệp vụ khách sạn hà nội"
+	},
+	{
+		"id" : 1078,
+		"name" : "trung cấp giao thông vận tải hà nội"
+	},
+	{
+		"id" : 1079,
+		"name" : "trung cấp giao thông vận tải thăng long"
+	},
+	{
+		"id" : 1080,
+		"name" : "trung cấp học viện cảnh sát hà nội"
+	},
+	{
+		"id" : 1081,
+		"name" : "trung cấp học viện quân y hà tây"
+	},
+	{
+		"id" : 1082,
+		"name" : "trung cấp khí tượng thủy văn sơn tây hà nội"
+	},
+	{
+		"id" : 1083,
+		"name" : "trung cấp kinh doanh và công nghệ hà nội"
+	},
+	{
+		"id" : 1084,
+		"name" : "trung cấp kinh tế kỹ thuật bắc thăng long"
+	},
+	{
+		"id" : 1085,
+		"name" : "trung cấp kinh tế công nghiệp hà nội"
+	},
+	{
+		"id" : 1086,
+		"name" : "trung cấp kinh tế công nghệ giao thông vận tải"
+	},
+	{
+		"id" : 1087,
+		"name" : "trung cấp kinh tế công nghệ nguyễn bỉnh khiêm"
+	},
+	{
+		"id" : 1088,
+		"name" : "trung cấp kinh tế du lịch"
+	},
+	{
+		"id" : 1089,
+		"name" : "trung cấp kinh tế du lịch hoa sữa"
+	},
+	{
+		"id" : 1090,
+		"name" : "trung cấp kinh tế du lịch hoa sữa hà nội"
+	},
+	{
+		"id" : 1091,
+		"name" : "trung cấp kinh tế hà nội"
+	},
+	{
+		"id" : 1092,
+		"name" : "trung cấp kinh tế kĩ thuật công nghệ hà nội"
+	},
+	{
+		"id" : 1093,
+		"name" : "trung cấp kinh tế kĩ thuật hà nội"
+	},
+	{
+		"id" : 1094,
+		"name" : "trung cấp kinh tế kĩ thuật thương mại số 1"
+	},
+	{
+		"id" : 1095,
+		"name" : "trung cấp kinh tế kĩ thuật đa ngành hà nội"
+	},
+	{
+		"id" : 1096,
+		"name" : "trung cấp kinh tế kỹ thuật bắc thăng long"
+	},
+	{
+		"id" : 1097,
+		"name" : "trung cấp kinh tế kỹ thuật công nghệ hà nội"
+	},
+	{
+		"id" : 1098,
+		"name" : "trung cấp kinh tế kỹ thuật dược hà nội"
+	},
+	{
+		"id" : 1099,
+		"name" : "trung cấp kinh tế kỹ thuật hà nội 1"
+	},
+	{
+		"id" : 1100,
+		"name" : "trung cấp kinh tế kỹ thuật phan chu trinh hà nội"
+	},
+	{
+		"id" : 1101,
+		"name" : "trung cấp kinh tế kỹ thuật thương mại hà nội"
+	},
+	{
+		"id" : 1102,
+		"name" : "trung cấp kinh tế kỹ thuật thương mại hà nội"
+	},
+	{
+		"id" : 1103,
+		"name" : "trung cấp kinh tế kỹ thuật tổng hợp hà nội"
+	},
+	{
+		"id" : 1104,
+		"name" : "trung cấp kinh tế kỹ thuật xăng dầu"
+	},
+	{
+		"id" : 1105,
+		"name" : "trung cấp kinh tế kỹ thuật y dược hà nội"
+	},
+	{
+		"id" : 1106,
+		"name" : "trung cấp kinh tế kỹ thuật y tế trung ương 1"
+	},
+	{
+		"id" : 1107,
+		"name" : "trung cấp kinh tế kỹ thuật á châu"
+	},
+	{
+		"id" : 1108,
+		"name" : "trung cấp kinh tế kỹ thuật đa nghành hà nội"
+	},
+	{
+		"id" : 1109,
+		"name" : "trung cấp kinh tế kỹ thuật đa ngành sóc sơn"
+	},
+	{
+		"id" : 1110,
+		"name" : "trung cấp kinh tế kỹ thuật đinh tiên hoàng hà nội"
+	},
+	{
+		"id" : 1111,
+		"name" : "trung cấp kinh tế lạc hồng"
+	},
+	{
+		"id" : 1112,
+		"name" : "trung cấp kinh tế năng lượng hà nội"
+	},
+	{
+		"id" : 1113,
+		"name" : "trung cấp kinh tế thương mại hà nội"
+	},
+	{
+		"id" : 1114,
+		"name" : "trung cấp kinh tế tài chính kế toán hà nội"
+	},
+	{
+		"id" : 1115,
+		"name" : "trung cấp kinh tế tài nguyên và môi trường hà nội"
+	},
+	{
+		"id" : 1116,
+		"name" : "trung cấp kiến trúc hà đông"
+	},
+	{
+		"id" : 1117,
+		"name" : "trung cấp kinh tế kỹ thuật công nghệ hà nội"
+	},
+	{
+		"id" : 1118,
+		"name" : "trung cấp kỹ thuật điện sóc sơn hà nội"
+	},
+	{
+		"id" : 1119,
+		"name" : "trung cấp kinh tế kĩ thuật quang trung"
+	},
+	{
+		"id" : 1120,
+		"name" : "trung cấp kinh tế kỹ thuật thương mại hà nội"
+	},
+	{
+		"id" : 1121,
+		"name" : "trung cấp kỹ thuật y dược hà nội"
+	},
+	{
+		"id" : 1122,
+		"name" : "trung cấp kĩ thuật công nghiệp hà nội"
+	},
+	{
+		"id" : 1123,
+		"name" : "trung cấp kĩ thuật dược hà nội"
+	},
+	{
+		"id" : 1124,
+		"name" : "trung cấp kĩ thuật nghiệp vụ hà nội"
+	},
+	{
+		"id" : 1125,
+		"name" : "trung cấp kĩ thuật phòng không hà nội"
+	},
+	{
+		"id" : 1126,
+		"name" : "trung cấp kĩ thuật quân sự miền trung"
+	},
+	{
+		"id" : 1127,
+		"name" : "trung cấp kĩ thuật thiết bị y tế"
+	},
+	{
+		"id" : 1128,
+		"name" : "trung cấp kĩ thuật tin học hà nội"
+	},
+	{
+		"id" : 1129,
+		"name" : "trung cấp kĩ thuật và nghiệp vụ hà nội"
+	},
+	{
+		"id" : 1130,
+		"name" : "trung cấp kĩ thuật xây dựng hà nội"
+	},
+	{
+		"id" : 1131,
+		"name" : "trung cấp kĩ thuật y dược hà nội"
+	},
+	{
+		"id" : 1132,
+		"name" : "trung cấp kế toán hà nội"
+	},
+	{
+		"id" : 1133,
+		"name" : "trung cấp kế toán cấp tốc tại hà nội"
+	},
+	{
+		"id" : 1134,
+		"name" : "trung cấp kế toán hà tây"
+	},
+	{
+		"id" : 1135,
+		"name" : "trung cấp kế toán tin học hà nội"
+	},
+	{
+		"id" : 1136,
+		"name" : "trung cấp kế toán tài chính hà tây"
+	},
+	{
+		"id" : 1137,
+		"name" : "trung cấp kế toán tài chính hà nội"
+	},
+	{
+		"id" : 1138,
+		"name" : "trung cấp kỹ nghệ thực hành bồi dưỡng xuất khẩu lao động"
+	},
+	{
+		"id" : 1139,
+		"name" : "trung cấp kỹ thuật bộ giao thông hà nội"
+	},
+	{
+		"id" : 1140,
+		"name" : "trung cấp kỹ thuật chỉnh hình hà nội"
+	},
+	{
+		"id" : 1141,
+		"name" : "trung cấp kỹ thuật công nghiệp hà nội"
+	},
+	{
+		"id" : 1142,
+		"name" : "trung cấp kỹ thuật hà nội"
+	},
+	{
+		"id" : 1143,
+		"name" : "trung cấp kỹ thuật in hà nội"
+	},
+	{
+		"id" : 1144,
+		"name" : "trung cấp kỹ thuật kinh tế quang trung hà nội"
+	},
+	{
+		"id" : 1145,
+		"name" : "trung cấp kỹ thuật miền trung nha trang"
+	},
+	{
+		"id" : 1146,
+		"name" : "trung cấp kỹ thuật phòng không không quân hà nội"
+	},
+	{
+		"id" : 1147,
+		"name" : "trung cấp kỹ thuật quang trung"
+	},
+	{
+		"id" : 1148,
+		"name" : "trung cấp kỹ thuật tin học"
+	},
+	{
+		"id" : 1149,
+		"name" : "trung cấp kỹ thuật tin học hà nội"
+	},
+	{
+		"id" : 1150,
+		"name" : "trung cấp kỹ thuật tin học hà nội"
+	},
+	{
+		"id" : 1151,
+		"name" : "trung cấp kỹ thuật tổng hợp hà nội"
+	},
+	{
+		"id" : 1152,
+		"name" : "trung cấp kỹ thuật và nghiệp vụ hà nội"
+	},
+	{
+		"id" : 1153,
+		"name" : "trung cấp kỹ thuật và điều dưỡng hà nội"
+	},
+	{
+		"id" : 1154,
+		"name" : "trung cấp kỹ thuật vạn xuân hà nội"
+	},
+	{
+		"id" : 1155,
+		"name" : "trung cấp kỹ thuật xây dựng hà nội"
+	},
+	{
+		"id" : 1156,
+		"name" : "trung cấp kỹ thuật đa ngành hà nội"
+	},
+	{
+		"id" : 1157,
+		"name" : "trung cấp kỹ thuật điện lạnh hà nội"
+	},
+	{
+		"id" : 1158,
+		"name" : "trung cấp luật hà nội"
+	},
+	{
+		"id" : 1159,
+		"name" : "trung cấp lâm nghiệp trung ương 2"
+	},
+	{
+		"id" : 1160,
+		"name" : "trung cấp lí luận chính trị hành chính"
+	},
+	{
+		"id" : 1161,
+		"name" : "trung cấp lương thực thực phẩm hà nội"
+	},
+	{
+		"id" : 1162,
+		"name" : "trung cấp may thời trang tại hà nội"
+	},
+	{
+		"id" : 1163,
+		"name" : "trung cấp mầm non hà nội"
+	},
+	{
+		"id" : 1164,
+		"name" : "trung cấp mỹ thuật tổng hợp hà nội"
+	},
+	{
+		"id" : 1165,
+		"name" : "trung cấp nghiệp vụ công đoàn giao thông vận tải"
+	},
+	{
+		"id" : 1166,
+		"name" : "trung cấp nghiệp vụ du lịch hà nội"
+	},
+	{
+		"id" : 1167,
+		"name" : "trung cấp nghiệp vụ khách sạn hà nội"
+	},
+	{
+		"id" : 1168,
+		"name" : "trung cấp nghiệp vụ kỹ thuật hà nội"
+	},
+	{
+		"id" : 1169,
+		"name" : "trung cấp nghiệp vụ văn phòng 1 hà nội"
+	},
+	{
+		"id" : 1170,
+		"name" : "trung cấp nghề bắc thăng long hà nội"
+	},
+	{
+		"id" : 1171,
+		"name" : "trung cấp nghề công nghiệp hà nội"
+	},
+	{
+		"id" : 1172,
+		"name" : "trung cấp nghề công nghệ thăng long"
+	},
+	{
+		"id" : 1173,
+		"name" : "trung cấp nghề công đoàn hà nội"
+	},
+	{
+		"id" : 1174,
+		"name" : "trung cấp nghề công đoàn việt nam"
+	},
+	{
+		"id" : 1175,
+		"name" : "trung cấp nghề cơ khí 1 hà nội"
+	},
+	{
+		"id" : 1176,
+		"name" : "trung cấp nghề cơ khí 2 hà nội"
+	},
+	{
+		"id" : 1177,
+		"name" : "trung cấp nghề cơ khí xây dựng"
+	},
+	{
+		"id" : 1178,
+		"name" : "trung cấp nghề cơ điện và chế biến thực phẩm hà tây"
+	},
+	{
+		"id" : 1179,
+		"name" : "trung cấp nghề du lịch hà nội"
+	},
+	{
+		"id" : 1180,
+		"name" : "trung cấp nghề giao thông công chính hà nội"
+	},
+	{
+		"id" : 1181,
+		"name" : "trung cấp nghề giao thông vận tải sơn tây"
+	},
+	{
+		"id" : 1182,
+		"name" : "trung cấp nghề kinh tế kỹ thuật hà nội 1"
+	},
+	{
+		"id" : 1183,
+		"name" : "trung cấp nghề kỹ thuật công đoàn hà nội"
+	},
+	{
+		"id" : 1184,
+		"name" : "trung cấp nghề kỹ thuật và nghiệp vụ du lịch"
+	},
+	{
+		"id" : 1185,
+		"name" : "trung cấp nghề may và thời trang hà nội"
+	},
+	{
+		"id" : 1186,
+		"name" : "trung cấp nghề nghiệp vụ khách sạn hà nội"
+	},
+	{
+		"id" : 1187,
+		"name" : "trung cấp nghề nấu ăn và nghiệp vụ khách sạn hà nội"
+	},
+	{
+		"id" : 1188,
+		"name" : "trung cấp nghề phòng không không quân"
+	},
+	{
+		"id" : 1189,
+		"name" : "trung cấp nghề sơn tây hà nội"
+	},
+	{
+		"id" : 1190,
+		"name" : "trung cấp nghề số 1 hà nội"
+	},
+	{
+		"id" : 1191,
+		"name" : "trung cấp nghề số 17 bộ quốc phòng"
+	},
+	{
+		"id" : 1192,
+		"name" : "trung cấp nghề số 20 bộ quốc phòng"
+	},
+	{
+		"id" : 1193,
+		"name" : "trung cấp nghề thương mại du lịch hà nội"
+	},
+	{
+		"id" : 1194,
+		"name" : "trung cấp nghề việt hung sơn tây"
+	},
+	{
+		"id" : 1195,
+		"name" : "trung cấp nghề và nghiệp vụ khách sạn hà nội"
+	},
+	{
+		"id" : 1196,
+		"name" : "trung cấp nghề điện tử tin học đồng hồ"
+	},
+	{
+		"id" : 1197,
+		"name" : "trung cấp nghệ thuật xiếc tạp kĩ việt nam"
+	},
+	{
+		"id" : 1198,
+		"name" : "trung cấp nghiệp vụ du lịch khách sạn hà nội"
+	},
+	{
+		"id" : 1199,
+		"name" : "trung cấp mầm non nhà trẻ mẫu giáo hà nội"
+	},
+	{
+		"id" : 1200,
+		"name" : "trung cấp y dược"
+	},
+	{
+		"id" : 1201,
+		"name" : "trung cấp ngân hàng tại hà nội"
+	},
+	{
+		"id" : 1202,
+		"name" : "trung cấp nghề nghiệp vụ nấu ăn và khách sạn hà nội"
+	},
+	{
+		"id" : 1203,
+		"name" : "trung cấp nhạc viện hà nội"
+	},
+	{
+		"id" : 1204,
+		"name" : "trung cấp nông nghiệp hà nội"
+	},
+	{
+		"id" : 1205,
+		"name" : "trung cấp nấu ăn nghiệp vụ và khách sạn"
+	},
+	{
+		"id" : 1206,
+		"name" : "trung cấp nấu ăn và nghiệp vụ khách sạn hà nội"
+	},
+	{
+		"id" : 1207,
+		"name" : "trung cấp phòng không không quân"
+	},
+	{
+		"id" : 1208,
+		"name" : "trung cấp quân sự bộ tư lệnh thủ đô hà nội"
+	},
+	{
+		"id" : 1209,
+		"name" : "trung cấp quân y 1 sơn tây"
+	},
+	{
+		"id" : 1210,
+		"name" : "trung cấp quản lý kinh tế hà nội"
+	},
+	{
+		"id" : 1211,
+		"name" : "trung cấp quản lý văn hóa"
+	},
+	{
+		"id" : 1212,
+		"name" : "trung cấp sư phạm hà nội"
+	},
+	{
+		"id" : 1213,
+		"name" : "trung cấp sư phạm mẫu giáo và nhà trẻ hà nội"
+	},
+	{
+		"id" : 1214,
+		"name" : "trung cấp số 10 bộ quốc phòng hà nội"
+	},
+	{
+		"id" : 1215,
+		"name" : "trung cấp thiết bị y tế hà nội"
+	},
+	{
+		"id" : 1216,
+		"name" : "trung cấp thiết bị y tế phương mai"
+	},
+	{
+		"id" : 1217,
+		"name" : "trung cấp thông tin truyền thông hà nội"
+	},
+	{
+		"id" : 1218,
+		"name" : "trung cấp thăng long hà nội"
+	},
+	{
+		"id" : 1219,
+		"name" : "trung cấp thương mại du lịch hà nội"
+	},
+	{
+		"id" : 1220,
+		"name" : "trung cấp thương mại trung ương 1 hà nội"
+	},
+	{
+		"id" : 1221,
+		"name" : "trung cấp thương nghiệp hà nội"
+	},
+	{
+		"id" : 1222,
+		"name" : "trung cấp thường mại và du lịch hà nội"
+	},
+	{
+		"id" : 1223,
+		"name" : "trung cấp thực hành fpt"
+	},
+	{
+		"id" : 1224,
+		"name" : "trung cấp tin học hà nội"
+	},
+	{
+		"id" : 1225,
+		"name" : "trung cấp tin học tài chính kế toán hà nội"
+	},
+	{
+		"id" : 1226,
+		"name" : "trung cấp trinh sát sơn tây hà nội"
+	},
+	{
+		"id" : 1227,
+		"name" : "trung cấp truyền hình hà nội"
+	},
+	{
+		"id" : 1228,
+		"name" : "trung cấp truyền hình hà tây"
+	},
+	{
+		"id" : 1229,
+		"name" : "trung cấp tài chính hà nội"
+	},
+	{
+		"id" : 1230,
+		"name" : "trung cấp tài chính kinh tế hà nội"
+	},
+	{
+		"id" : 1231,
+		"name" : "trung cấp tài chính kế toán bưu chính viễn thông"
+	},
+	{
+		"id" : 1232,
+		"name" : "trung cấp tài chính kế toán hà nội"
+	},
+	{
+		"id" : 1233,
+		"name" : "trung cấp tài chính kế toán hà tây"
+	},
+	{
+		"id" : 1234,
+		"name" : "trung cấp tài chính kế toán đông đô"
+	},
+	{
+		"id" : 1235,
+		"name" : "trung cấp tài nguyên và môi trường hà nội"
+	},
+	{
+		"id" : 1236,
+		"name" : "trung cấp tư pháp hà nội"
+	},
+	{
+		"id" : 1237,
+		"name" : "trung cấp tư thục công nghệ hà nội"
+	},
+	{
+		"id" : 1238,
+		"name" : "trung cấp tổng hợp công nghiệp hà nội"
+	},
+	{
+		"id" : 1239,
+		"name" : "trung cấp tổng hợp đông đô hà nội"
+	},
+	{
+		"id" : 1240,
+		"name" : "trung cấp văn hoá nghệ thuật và du lịch"
+	},
+	{
+		"id" : 1241,
+		"name" : "trung cấp văn hóa nghệ thuật quân đội"
+	},
+	{
+		"id" : 1242,
+		"name" : "trung cấp xây dựng dân dụng"
+	},
+	{
+		"id" : 1243,
+		"name" : "trung cấp xây dựng hà nội"
+	},
+	{
+		"id" : 1244,
+		"name" : "trung cấp xây dựng hà đông"
+	},
+	{
+		"id" : 1245,
+		"name" : "trung cấp xây dựng sóc sơn"
+	},
+	{
+		"id" : 1246,
+		"name" : "trung cấp xây dựng số 1 hà nội"
+	},
+	{
+		"id" : 1247,
+		"name" : "trung cấp xây dựng tam điệp"
+	},
+	{
+		"id" : 1248,
+		"name" : "trung cấp xây dựng và kỹ thuật"
+	},
+	{
+		"id" : 1249,
+		"name" : "trung cấp xây dựng xuân hòa hà nội"
+	},
+	{
+		"id" : 1250,
+		"name" : "trung cấp y bạch mai"
+	},
+	{
+		"id" : 1251,
+		"name" : "trung cấp y dược bắc ninh cơ sở hà nội"
+	},
+	{
+		"id" : 1252,
+		"name" : "trung cấp y dược hà nội"
+	},
+	{
+		"id" : 1253,
+		"name" : "trung cấp y dược hà đông"
+	},
+	{
+		"id" : 1254,
+		"name" : "trung cấp y dược cổ truyền việt nam"
+	},
+	{
+		"id" : 1255,
+		"name" : "trung cấp y dược học hà nội"
+	},
+	{
+		"id" : 1256,
+		"name" : "trung cấp y dược pasteur hà nội"
+	},
+	{
+		"id" : 1257,
+		"name" : "trung cấp y dược phạm ngọc thạch hà nội"
+	},
+	{
+		"id" : 1258,
+		"name" : "trung cấp y dược tuệ tĩnh hà nội"
+	},
+	{
+		"id" : 1259,
+		"name" : "trung cấp y hà nội"
+	},
+	{
+		"id" : 1260,
+		"name" : "trung cấp y hà đông"
+	},
+	{
+		"id" : 1261,
+		"name" : "trung cấp y học cổ truyền hà nội"
+	},
+	{
+		"id" : 1262,
+		"name" : "trung cấp y sĩ đa khoa hà đông"
+	},
+	{
+		"id" : 1263,
+		"name" : "trung cấp y sỹ đa khoa quân đội"
+	},
+	{
+		"id" : 1264,
+		"name" : "trung cấp y tuệ tĩnh hà nội"
+	},
+	{
+		"id" : 1265,
+		"name" : "trung cấp y tế hà nội"
+	},
+	{
+		"id" : 1266,
+		"name" : "trung cấp y tế hà tây"
+	},
+	{
+		"id" : 1267,
+		"name" : "trung cấp y tế trung ương hà nội"
+	},
+	{
+		"id" : 1268,
+		"name" : "trung cấp âm nhạc hà nội"
+	},
+	{
+		"id" : 1269,
+		"name" : "trung cấp ăn uống và phục vụ khách sạn hà nội"
+	},
+	{
+		"id" : 1270,
+		"name" : "trung cấp điện công nghiệp sài gòn"
+	},
+	{
+		"id" : 1271,
+		"name" : "trung cấp điện lực hà nội"
+	},
+	{
+		"id" : 1272,
+		"name" : "trung cấp điện tử viễn thông hà nội"
+	},
+	{
+		"id" : 1273,
+		"name" : "trung cấp điện tử điện lạnh hà nội"
+	},
+	{
+		"id" : 1274,
+		"name" : "trung cấp đào tạo lái xe sóc sơn hà nội"
+	},
+	{
+		"id" : 1275,
+		"name" : "trung cấp đào tạo và bồi dưỡng cán bộ hà nội"
+	},
+	{
+		"id" : 1276,
+		"name" : "trung cấp đô thị hà nội"
+	},
+	{
+		"id" : 1277,
+		"name" : "trung cấp đường sắt gia lâm hà nội"
+	},
+	{
+		"id" : 1278,
+		"name" : "trung cấp chính trị hà tĩnh"
+	},
+	{
+		"id" : 1279,
+		"name" : "trung cấp cơ điện nghi xuân hà tĩnh"
+	},
+	{
+		"id" : 1280,
+		"name" : "trung cấp du lịch khách sạn saigontourist"
+	},
+	{
+		"id" : 1281,
+		"name" : "trung cấp dược hà tĩnh"
+	},
+	{
+		"id" : 1282,
+		"name" : "trung cấp kinh tế hà tĩnh"
+	},
+	{
+		"id" : 1283,
+		"name" : "trung cấp kinh tế kĩ thuật công nghiệp vinh"
+	},
+	{
+		"id" : 1284,
+		"name" : "trung cấp kinh tế kỹ thuật hà tĩnh"
+	},
+	{
+		"id" : 1285,
+		"name" : "trung cấp kinh tế kỹ thuật thương mại"
+	},
+	{
+		"id" : 1286,
+		"name" : "trung cấp kinh tế nông nghiệp hà tĩnh"
+	},
+	{
+		"id" : 1287,
+		"name" : "trung cấp kỹ thuật nông nghiệp hà tĩnh"
+	},
+	{
+		"id" : 1288,
+		"name" : "trung cấp kỹ nghệ hà tĩnh"
+	},
+	{
+		"id" : 1289,
+		"name" : "trung cấp kỹ thuật nông nghiệp và phát triển nông thôn hà tĩnh"
+	},
+	{
+		"id" : 1290,
+		"name" : "trung cấp lâm nghiệp số 2"
+	},
+	{
+		"id" : 1291,
+		"name" : "trung cấp lý luận chính trị hà tĩnh"
+	},
+	{
+		"id" : 1292,
+		"name" : "trung cấp nghề lý tự trọng hà tĩnh"
+	},
+	{
+		"id" : 1293,
+		"name" : "trung cấp nghề số 5 hà tĩnh"
+	},
+	{
+		"id" : 1294,
+		"name" : "trung cấp nghề việt đức hà tĩnh"
+	},
+	{
+		"id" : 1295,
+		"name" : "trung cấp nghề xây dựng miền trung"
+	},
+	{
+		"id" : 1296,
+		"name" : "trung cấp nông lâm hà tĩnh"
+	},
+	{
+		"id" : 1297,
+		"name" : "trung cấp nông nghiệp hà tĩnh"
+	},
+	{
+		"id" : 1298,
+		"name" : "trung cấp quân đội nhân dân việt nam"
+	},
+	{
+		"id" : 1299,
+		"name" : "trung cấp thiết kế thời trang"
+	},
+	{
+		"id" : 1300,
+		"name" : "trung cấp thú y hà tĩnh"
+	},
+	{
+		"id" : 1301,
+		"name" : "trung cấp tài chính hà tĩnh"
+	},
+	{
+		"id" : 1302,
+		"name" : "trung cấp văn hóa nghệ thuật hà tĩnh"
+	},
+	{
+		"id" : 1303,
+		"name" : "trung cấp y dược cổ truyền tuệ tĩnh"
+	},
+	{
+		"id" : 1304,
+		"name" : "trung cấp y dược hà tĩnh"
+	},
+	{
+		"id" : 1305,
+		"name" : "trung cấp y quân sự quân khu 5"
+	},
+	{
+		"id" : 1306,
+		"name" : "trung cấp y tế hà tĩnh"
+	},
+	{
+		"id" : 1307,
+		"name" : "trung cấp báo chí truyền thông"
+	},
+	{
+		"id" : 1308,
+		"name" : "trung cấp chính trị hòa bình"
+	},
+	{
+		"id" : 1309,
+		"name" : "trung cấp chế biến gỗ trung ương"
+	},
+	{
+		"id" : 1310,
+		"name" : "trung cấp công nghệ kinh tế việt hàn"
+	},
+	{
+		"id" : 1311,
+		"name" : "trung cấp công nghệ thông tin"
+	},
+	{
+		"id" : 1312,
+		"name" : "trung cấp dược hòa bình"
+	},
+	{
+		"id" : 1313,
+		"name" : "trung cấp kinh tế kĩ thuật hòa bình"
+	},
+	{
+		"id" : 1314,
+		"name" : "trung cấp kinh tế kỹ thuật hà nội 1"
+	},
+	{
+		"id" : 1315,
+		"name" : "trung cấp kế toán quản lý tổng cục hậu cần"
+	},
+	{
+		"id" : 1316,
+		"name" : "trung cấp nghề kinh tế kỹ thuật công nghiệp hoà bình"
+	},
+	{
+		"id" : 1317,
+		"name" : "trung cấp quân sự hòa bình"
+	},
+	{
+		"id" : 1318,
+		"name" : "trung cấp sư phạm hòa bình"
+	},
+	{
+		"id" : 1319,
+		"name" : "trung cấp sửa chữa ô tô hòa bình"
+	},
+	{
+		"id" : 1320,
+		"name" : "trung cấp văn hóa nghệ thuật y hòa bình"
+	},
+	{
+		"id" : 1321,
+		"name" : "trung cấp y dược hòa bình"
+	},
+	{
+		"id" : 1322,
+		"name" : "trung cấp y hòa bình"
+	},
+	{
+		"id" : 1323,
+		"name" : "trung cấp y học cổ truyền"
+	},
+	{
+		"id" : 1324,
+		"name" : "trung cấp y tế hòa bình"
+	},
+	{
+		"id" : 1325,
+		"name" : "trung cấp bưu chính viễn thông"
+	},
+	{
+		"id" : 1326,
+		"name" : "trung cấp chính trị hành chính"
+	},
+	{
+		"id" : 1327,
+		"name" : "trung cấp cơ điện và thủy lợi hưng yên"
+	},
+	{
+		"id" : 1328,
+		"name" : "trung cấp dược bộ y tế"
+	},
+	{
+		"id" : 1329,
+		"name" : "trung cấp dược hưng yên"
+	},
+	{
+		"id" : 1330,
+		"name" : "trung cấp giao thông vận tải hưng yên"
+	},
+	{
+		"id" : 1331,
+		"name" : "trung cấp kinh tế hưng yên"
+	},
+	{
+		"id" : 1332,
+		"name" : "trung cấp kinh tế kĩ thuật số 2"
+	},
+	{
+		"id" : 1333,
+		"name" : "trung cấp kinh tế kỹ thuật tô hiệu"
+	},
+	{
+		"id" : 1334,
+		"name" : "trung cấp kinh tế và công nghệ lương tài"
+	},
+	{
+		"id" : 1335,
+		"name" : "trung cấp kinh tế điện than"
+	},
+	{
+		"id" : 1336,
+		"name" : "trung cấp kĩ thuật công nghệ hùng vương"
+	},
+	{
+		"id" : 1337,
+		"name" : "trung cấp kế toán phố nối hưng yên"
+	},
+	{
+		"id" : 1338,
+		"name" : "trung cấp kế toán thương mại"
+	},
+	{
+		"id" : 1339,
+		"name" : "trung cấp kỹ thuật nấu ăn hưng yên"
+	},
+	{
+		"id" : 1340,
+		"name" : "trung cấp lao động tiền lương"
+	},
+	{
+		"id" : 1341,
+		"name" : "trung cấp luật kinh tế"
+	},
+	{
+		"id" : 1342,
+		"name" : "trung cấp nghiệp vụ thủy lợi 1"
+	},
+	{
+		"id" : 1343,
+		"name" : "trung cấp nghề giao thông vận tải hưng yên"
+	},
+	{
+		"id" : 1344,
+		"name" : "trung cấp quân sự hưng yên"
+	},
+	{
+		"id" : 1345,
+		"name" : "trung cấp quản lý kinh tế hưng yên"
+	},
+	{
+		"id" : 1346,
+		"name" : "trung cấp quản lý kinh tế quân khu 3"
+	},
+	{
+		"id" : 1347,
+		"name" : "trung cấp quản lý kinh tế tài chính hải hưng"
+	},
+	{
+		"id" : 1348,
+		"name" : "trung cấp sư phạm hưng yên"
+	},
+	{
+		"id" : 1349,
+		"name" : "trung cấp thông tin liên lạc"
+	},
+	{
+		"id" : 1350,
+		"name" : "trung cấp thư viện thiết bị trường học"
+	},
+	{
+		"id" : 1351,
+		"name" : "trung cấp tài chính kế toán hưng yên"
+	},
+	{
+		"id" : 1352,
+		"name" : "trung cấp văn hoá nghệ thuật và du lịch hưng yên"
+	},
+	{
+		"id" : 1353,
+		"name" : "trung cấp xây dựng hà tây"
+	},
+	{
+		"id" : 1354,
+		"name" : "trung cấp y hưng yên"
+	},
+	{
+		"id" : 1355,
+		"name" : "trung cấp y học cổ truyền lê hữu trác"
+	},
+	{
+		"id" : 1356,
+		"name" : "trung cấp y học cổ truyền tuệ tĩnh"
+	},
+	{
+		"id" : 1357,
+		"name" : "trung cấp y tế hưng yên"
+	},
+	{
+		"id" : 1358,
+		"name" : "trung cấp điện công nghiệp hưng yên"
+	},
+	{
+		"id" : 1359,
+		"name" : "trung cấp chính trị hành chính hải dương"
+	},
+	{
+		"id" : 1360,
+		"name" : "trung cấp công nghệ và kinh tế đối ngoại"
+	},
+	{
+		"id" : 1361,
+		"name" : "trung cấp cơ giới và xây dựng"
+	},
+	{
+		"id" : 1362,
+		"name" : "trung cấp cơ điện hải dương"
+	},
+	{
+		"id" : 1363,
+		"name" : "trung cấp du lịch và khách sạn hải dương"
+	},
+	{
+		"id" : 1364,
+		"name" : "trung cấp du lịch và nghệ thuật quân đội"
+	},
+	{
+		"id" : 1365,
+		"name" : "trung cấp dược bộ y tế hải dương"
+	},
+	{
+		"id" : 1366,
+		"name" : "trung cấp dược trung ương hải dương"
+	},
+	{
+		"id" : 1367,
+		"name" : "trung cấp kinh tế kỹ thuật công thương"
+	},
+	{
+		"id" : 1368,
+		"name" : "trung cấp kinh tế tài chính hải dương"
+	},
+	{
+		"id" : 1369,
+		"name" : "trung cấp kĩ thuật phòng không không quân"
+	},
+	{
+		"id" : 1370,
+		"name" : "trung cấp kĩ thuật y tế hải dương"
+	},
+	{
+		"id" : 1371,
+		"name" : "trung cấp kế toán hải dương"
+	},
+	{
+		"id" : 1372,
+		"name" : "trung cấp kế toán lạc hồng"
+	},
+	{
+		"id" : 1373,
+		"name" : "trung cấp kế toán thương nghiệp"
+	},
+	{
+		"id" : 1374,
+		"name" : "trung cấp kỹ thuật và công nghệ hải dương"
+	},
+	{
+		"id" : 1375,
+		"name" : "trung cấp kỹ thuật vật tư hải dương"
+	},
+	{
+		"id" : 1376,
+		"name" : "trung cấp kỹ thuật y tế hải dương"
+	},
+	{
+		"id" : 1377,
+		"name" : "trung cấp nghề cơ giới học viện licogi 18"
+	},
+	{
+		"id" : 1378,
+		"name" : "trung cấp nghề cơ giới xây dựng hải dương"
+	},
+	{
+		"id" : 1379,
+		"name" : "trung cấp nghề cơ giới đường bộ hải dương"
+	},
+	{
+		"id" : 1380,
+		"name" : "trung cấp nghề kỹ thuật và nghiệp vụ du lịch quang minh"
+	},
+	{
+		"id" : 1381,
+		"name" : "trung cấp nghề nấu ăn và nghiệp vụ khách sạn hải dương"
+	},
+	{
+		"id" : 1382,
+		"name" : "trung cấp nông nghiệp và phát triển nông thôn hải dương"
+	},
+	{
+		"id" : 1383,
+		"name" : "trung cấp nấu ăn cẩm phả hải dương"
+	},
+	{
+		"id" : 1384,
+		"name" : "trung cấp nấu ăn và nghiệp vụ khách sạn"
+	},
+	{
+		"id" : 1385,
+		"name" : "trung cấp phát thanh truyền hình"
+	},
+	{
+		"id" : 1386,
+		"name" : "trung cấp phật học hải dương"
+	},
+	{
+		"id" : 1387,
+		"name" : "trung cấp quân sự hải dương"
+	},
+	{
+		"id" : 1388,
+		"name" : "trung cấp quân y 1 học viện quân y"
+	},
+	{
+		"id" : 1389,
+		"name" : "trung cấp sư phạm hải dương"
+	},
+	{
+		"id" : 1390,
+		"name" : "trung cấp thú y hải dương"
+	},
+	{
+		"id" : 1391,
+		"name" : "trung cấp tài chính hải dương"
+	},
+	{
+		"id" : 1392,
+		"name" : "trung cấp tư thục điều dưỡng và kĩ thuật y tế hồng đức"
+	},
+	{
+		"id" : 1393,
+		"name" : "trung cấp văn hóa nghệ thuật và du lịch hải dương"
+	},
+	{
+		"id" : 1394,
+		"name" : "trung cấp y hải dương"
+	},
+	{
+		"id" : 1395,
+		"name" : "trung cấp y tế hải dương"
+	},
+	{
+		"id" : 1396,
+		"name" : "trung cấp điện sơn tây"
+	},
+	{
+		"id" : 1397,
+		"name" : "trung cấp bách khoa hải phòng"
+	},
+	{
+		"id" : 1398,
+		"name" : "trung cấp bồi dưỡng nghiệp vụ an dương"
+	},
+	{
+		"id" : 1399,
+		"name" : "trung cấp chính trị tô hiệu hải phòng"
+	},
+	{
+		"id" : 1400,
+		"name" : "trung cấp công nghiệp hải phòng"
+	},
+	{
+		"id" : 1401,
+		"name" : "trung cấp công nghệ hải phòng"
+	},
+	{
+		"id" : 1402,
+		"name" : "trung cấp cơ điện hải phòng"
+	},
+	{
+		"id" : 1403,
+		"name" : "trung cấp du lịch hải phòng"
+	},
+	{
+		"id" : 1404,
+		"name" : "trung cấp dược hải phòng"
+	},
+	{
+		"id" : 1405,
+		"name" : "trung cấp dược y hải phòng"
+	},
+	{
+		"id" : 1406,
+		"name" : "trung cấp giao thông vận tải hải phòng"
+	},
+	{
+		"id" : 1407,
+		"name" : "trung cấp hàng hải 1 hải phòng"
+	},
+	{
+		"id" : 1408,
+		"name" : "trung cấp kỹ thuật phòng không không quân"
+	},
+	{
+		"id" : 1409,
+		"name" : "trung cấp kinh tế kĩ thuật hải phòng"
+	},
+	{
+		"id" : 1410,
+		"name" : "trung cấp kinh tế kỹ thuật công nghệ hải phòng"
+	},
+	{
+		"id" : 1411,
+		"name" : "trung cấp kinh tế kỹ thuật hải phòng"
+	},
+	{
+		"id" : 1412,
+		"name" : "trung cấp kinh tế kỹ thuật và công nghệ hải phòng"
+	},
+	{
+		"id" : 1413,
+		"name" : "trung cấp kinh tế tài nguyên và môi trường"
+	},
+	{
+		"id" : 1414,
+		"name" : "trung cấp kĩ thuật nghiệp vụ hải phòng"
+	},
+	{
+		"id" : 1415,
+		"name" : "trung cấp kĩ thuật và nghiệp vụ hải phòng"
+	},
+	{
+		"id" : 1416,
+		"name" : "trung cấp kế toán doanh nghiệp"
+	},
+	{
+		"id" : 1417,
+		"name" : "trung cấp kế toán hải phòng"
+	},
+	{
+		"id" : 1418,
+		"name" : "trung cấp kế toán nghiệp vụ đồ sơn"
+	},
+	{
+		"id" : 1419,
+		"name" : "trung cấp kế toán tài chính"
+	},
+	{
+		"id" : 1420,
+		"name" : "trung cấp kỹ thuật nghiệp vụ cảng hải phòng"
+	},
+	{
+		"id" : 1421,
+		"name" : "trung cấp kỹ thuật nghiệp vụ hải phòng"
+	},
+	{
+		"id" : 1422,
+		"name" : "trung cấp kỹ thuật phòng không"
+	},
+	{
+		"id" : 1423,
+		"name" : "trung cấp kỹ thuật thủy sản 1 hải phòng"
+	},
+	{
+		"id" : 1424,
+		"name" : "trung cấp kỹ thuật và nghiệp vụ hải phòng"
+	},
+	{
+		"id" : 1425,
+		"name" : "trung cấp kỹ thuật xi măng hải phòng"
+	},
+	{
+		"id" : 1426,
+		"name" : "trung cấp lương thực thực phẩm hải phòng"
+	},
+	{
+		"id" : 1427,
+		"name" : "trung cấp nghiệp vụ quản lý lương thực thực phẩm"
+	},
+	{
+		"id" : 1428,
+		"name" : "trung cấp nghiệp vụ và công nghệ"
+	},
+	{
+		"id" : 1429,
+		"name" : "trung cấp nghiệp vụ và công nghệ hải phòng"
+	},
+	{
+		"id" : 1430,
+		"name" : "trung cấp nghề cơ điện điện"
+	},
+	{
+		"id" : 1431,
+		"name" : "trung cấp nghề du lịch và dịch vụ thăng long"
+	},
+	{
+		"id" : 1432,
+		"name" : "trung cấp nghề giao thông vận tải hải phòng"
+	},
+	{
+		"id" : 1433,
+		"name" : "trung cấp nghề hồng bàng hải phòng"
+	},
+	{
+		"id" : 1434,
+		"name" : "trung cấp nghề kỹ thuật nghiệp vụ cảng hải phòng"
+	},
+	{
+		"id" : 1435,
+		"name" : "trung cấp nghề kỹ thuật xi măng hải phòng"
+	},
+	{
+		"id" : 1436,
+		"name" : "trung cấp nghề nghiệp vụ cảng hải phòng"
+	},
+	{
+		"id" : 1437,
+		"name" : "trung cấp nghề thủy sản hải phòng"
+	},
+	{
+		"id" : 1438,
+		"name" : "trung cấp nghề xây dựng hải phòng"
+	},
+	{
+		"id" : 1439,
+		"name" : "trung cấp nghề kĩ thuật nghiệp vụ cảng hải phòng"
+	},
+	{
+		"id" : 1440,
+		"name" : "trung cấp nghệ thuật hải phòng"
+	},
+	{
+		"id" : 1441,
+		"name" : "trung cấp nông nghiệp và phát triển nông thôn hải phòng"
+	},
+	{
+		"id" : 1442,
+		"name" : "trung cấp nấu ăn và nghiệp vụ hải phòng"
+	},
+	{
+		"id" : 1443,
+		"name" : "trung cấp quân y 1 viện 5"
+	},
+	{
+		"id" : 1444,
+		"name" : "trung cấp quản lý lương thực thực phẩm đồ sơn"
+	},
+	{
+		"id" : 1445,
+		"name" : "trung cấp sư phạm hải phòng"
+	},
+	{
+		"id" : 1446,
+		"name" : "trung cấp thủy sản hải phòng"
+	},
+	{
+		"id" : 1447,
+		"name" : "trung cấp tin học kinh tế"
+	},
+	{
+		"id" : 1448,
+		"name" : "trung cấp tài chính hải phòng"
+	},
+	{
+		"id" : 1449,
+		"name" : "trung cấp tài chính kế toán hải phòng"
+	},
+	{
+		"id" : 1450,
+		"name" : "trung cấp tệ nạn xã hội hải phòng"
+	},
+	{
+		"id" : 1451,
+		"name" : "trung cấp văn hoá nghệ thuật và du lịch hải phòng"
+	},
+	{
+		"id" : 1452,
+		"name" : "trung cấp xây dựng hải phòng"
+	},
+	{
+		"id" : 1453,
+		"name" : "trung cấp y dược bắc ninh cơ sở hải phòng"
+	},
+	{
+		"id" : 1454,
+		"name" : "trung cấp y dược hải phòng"
+	},
+	{
+		"id" : 1455,
+		"name" : "trung cấp y tế hải phòng"
+	},
+	{
+		"id" : 1456,
+		"name" : "trung cấp âm nhạc hải phòng"
+	},
+	{
+		"id" : 1457,
+		"name" : "trung cấp dược hậu giang"
+	},
+	{
+		"id" : 1458,
+		"name" : "trung cấp kinh tế kỹ thuật hậu giang"
+	},
+	{
+		"id" : 1459,
+		"name" : "trung cấp kỹ thuật công nghệ hậu giang"
+	},
+	{
+		"id" : 1460,
+		"name" : "trung cấp luật hậu giang"
+	},
+	{
+		"id" : 1461,
+		"name" : "trung cấp luật vị thanh hậu giang"
+	},
+	{
+		"id" : 1462,
+		"name" : "trung cấp thống kê trung ương 2"
+	},
+	{
+		"id" : 1463,
+		"name" : "trung cấp xây dựng hậu giang"
+	},
+	{
+		"id" : 1464,
+		"name" : "trung cấp y dược hậu giang"
+	},
+	{
+		"id" : 1465,
+		"name" : "trung cấp an ninh hồ chí minh"
+	},
+	{
+		"id" : 1466,
+		"name" : "trung cấp bách nghệ hồ chí minh"
+	},
+	{
+		"id" : 1467,
+		"name" : "trung cấp kinh tế kỹ thuật vạn tường"
+	},
+	{
+		"id" : 1468,
+		"name" : "trung cấp chuyên nghiệp hồ chí minh"
+	},
+	{
+		"id" : 1469,
+		"name" : "trung cấp chính trị hành chính thanh vận"
+	},
+	{
+		"id" : 1470,
+		"name" : "trung cấp chính trị quân sự"
+	},
+	{
+		"id" : 1471,
+		"name" : "trung cấp cảnh sát nhân dân 2 hồ chí minh"
+	},
+	{
+		"id" : 1472,
+		"name" : "trung cấp công an hồ chí minh"
+	},
+	{
+		"id" : 1473,
+		"name" : "trung cấp công nghệ kỹ thuật cửu long"
+	},
+	{
+		"id" : 1474,
+		"name" : "trung cấp công nghệ lương thực thực phẩm"
+	},
+	{
+		"id" : 1475,
+		"name" : "trung cấp cảnh sát nhân dân"
+	},
+	{
+		"id" : 1476,
+		"name" : "trung cấp du lịch và khách sạn nhà hàng saigontourist"
+	},
+	{
+		"id" : 1477,
+		"name" : "trung cấp du lịch và tiếp thị quốc tế"
+	},
+	{
+		"id" : 1478,
+		"name" : "trung cấp dược hồ chí minh"
+	},
+	{
+		"id" : 1479,
+		"name" : "trung cấp dược đại việt"
+	},
+	{
+		"id" : 1480,
+		"name" : "trung cấp giao thông vận tải 6 hồ chí minh"
+	},
+	{
+		"id" : 1481,
+		"name" : "trung cấp học viện hàng không"
+	},
+	{
+		"id" : 1482,
+		"name" : "trung cấp kinh tế công nghệ"
+	},
+	{
+		"id" : 1483,
+		"name" : "trung cấp kinh tế du lịch hồ chí minh"
+	},
+	{
+		"id" : 1484,
+		"name" : "trung cấp kinh tế du lịch tân thanh"
+	},
+	{
+		"id" : 1485,
+		"name" : "trung cấp kinh tế kỹ thuật hóc môn"
+	},
+	{
+		"id" : 1486,
+		"name" : "trung cấp kinh tế kỹ thuật hồng hà"
+	},
+	{
+		"id" : 1487,
+		"name" : "trung cấp kinh tế kỹ thuật quang trung"
+	},
+	{
+		"id" : 1488,
+		"name" : "trung cấp kinh tế kỹ thuật quận 12"
+	},
+	{
+		"id" : 1489,
+		"name" : "trung cấp kinh tế kỹ thuật việt khoa"
+	},
+	{
+		"id" : 1490,
+		"name" : "trung cấp kinh tế hồ chí minh"
+	},
+	{
+		"id" : 1491,
+		"name" : "trung cấp kinh tế và du lịch hồ chí minh"
+	},
+	{
+		"id" : 1492,
+		"name" : "trung cấp kinh tế đối ngoại hồ chí minh"
+	},
+	{
+		"id" : 1493,
+		"name" : "trung cấp kĩ thuật hải quân hồ chí minh"
+	},
+	{
+		"id" : 1494,
+		"name" : "trung cấp kĩ thuật nông nghiệp hồ chí minh"
+	},
+	{
+		"id" : 1495,
+		"name" : "trung cấp kế toán miền nam"
+	},
+	{
+		"id" : 1496,
+		"name" : "trung cấp kế toán nông lâm"
+	},
+	{
+		"id" : 1497,
+		"name" : "trung cấp kế toán hồ chí minh"
+	},
+	{
+		"id" : 1498,
+		"name" : "trung cấp kỹ thuật công nghệ hùng vương"
+	},
+	{
+		"id" : 1499,
+		"name" : "trung cấp kỹ thuật hải quân hồ chí minh"
+	},
+	{
+		"id" : 1500,
+		"name" : "trung cấp kỹ thuật nghiệp vụ cao su đồng xoài"
+	},
+	{
+		"id" : 1501,
+		"name" : "trung cấp kỹ thuật nghiệp vụ nam sài gòn"
+	},
+	{
+		"id" : 1502,
+		"name" : "trung cấp kỹ thuật nghiệp vụ nam sài gòn cơ sở 2"
+	},
+	{
+		"id" : 1503,
+		"name" : "trung cấp kỹ thuật nghiệp vụ nguyễn hữu cảnh"
+	},
+	{
+		"id" : 1504,
+		"name" : "trung cấp kỹ thuật nghiệp vụ phú lâm"
+	},
+	{
+		"id" : 1505,
+		"name" : "trung cấp kỹ thuật nông nghiệp hồ chí minh"
+	},
+	{
+		"id" : 1506,
+		"name" : "trung cấp kỹ thuật nông nghiệp hồ chí minh"
+	},
+	{
+		"id" : 1507,
+		"name" : "trung cấp kỹ thuật nông nghiệp hồ chí minh"
+	},
+	{
+		"id" : 1508,
+		"name" : "trung cấp kỹ thuật và nghiệp vụ phú lâm"
+	},
+	{
+		"id" : 1509,
+		"name" : "trung cấp kỹ thuật y tế hồng đức"
+	},
+	{
+		"id" : 1510,
+		"name" : "trung cấp múa hồ chí minh"
+	},
+	{
+		"id" : 1511,
+		"name" : "trung cấp mỹ thuật văn hóa"
+	},
+	{
+		"id" : 1512,
+		"name" : "trung cấp mỹ thuật văn hóa hồ chí minh"
+	},
+	{
+		"id" : 1513,
+		"name" : "trung cấp nghiệp vụ du lịch việt giao"
+	},
+	{
+		"id" : 1514,
+		"name" : "trung cấp nghiệp vụ du lịch và khách sạn saigontourist"
+	},
+	{
+		"id" : 1515,
+		"name" : "trung cấp nghiệp vụ du lịch và khách sạn hồ chí minh"
+	},
+	{
+		"id" : 1516,
+		"name" : "trung cấp nghiệp vụ xây dựng hồ chí minh"
+	},
+	{
+		"id" : 1517,
+		"name" : "trung cấp nghề công nghiệp thủ đức"
+	},
+	{
+		"id" : 1518,
+		"name" : "trung cấp nghề du lịch ngoại ngữ khôi việt"
+	},
+	{
+		"id" : 1519,
+		"name" : "trung cấp nghề du lịch và khách sạn khôi việt"
+	},
+	{
+		"id" : 1520,
+		"name" : "trung cấp nghề kĩ thuật công nghệ hùng vương"
+	},
+	{
+		"id" : 1521,
+		"name" : "trung cấp nghề kỹ thuật nghiệp vụ tôn đức thắng"
+	},
+	{
+		"id" : 1522,
+		"name" : "trung cấp nghề lương thực thực phẩm"
+	},
+	{
+		"id" : 1523,
+		"name" : "trung cấp nghề nấu ăn và dạy nghề ánh sáng hồ chí minh"
+	},
+	{
+		"id" : 1524,
+		"name" : "trung cấp nghề tư thục du lịch khôi việt"
+	},
+	{
+		"id" : 1525,
+		"name" : "trung cấp nghề điện tử hồ chí minh"
+	},
+	{
+		"id" : 1526,
+		"name" : "trung cấp sư phạm mầm non"
+	},
+	{
+		"id" : 1527,
+		"name" : "trung cấp ngân hàng hồ chí minh"
+	},
+	{
+		"id" : 1528,
+		"name" : "trung cấp nhạc viện hồ chí minh"
+	},
+	{
+		"id" : 1529,
+		"name" : "trung cấp phật học hồ chí minh"
+	},
+	{
+		"id" : 1530,
+		"name" : "trung cấp quân y 2"
+	},
+	{
+		"id" : 1531,
+		"name" : "trung cấp quân y bệnh viện 175"
+	},
+	{
+		"id" : 1532,
+		"name" : "trung cấp quản lý khách sạn việt úc"
+	},
+	{
+		"id" : 1533,
+		"name" : "trung cấp quốc tế bách nghệ"
+	},
+	{
+		"id" : 1534,
+		"name" : "trung cấp sư phạm kỹ thuật"
+	},
+	{
+		"id" : 1535,
+		"name" : "trung cấp thủy sản hồ chí minh"
+	},
+	{
+		"id" : 1536,
+		"name" : "trung cấp thông tin truyền thông hồ chí minh"
+	},
+	{
+		"id" : 1537,
+		"name" : "trung cấp thủy sản hồ chí minh"
+	},
+	{
+		"id" : 1538,
+		"name" : "trung cấp tin học kinh tế sài gòn"
+	},
+	{
+		"id" : 1539,
+		"name" : "trung cấp tài chính kế toán tin học sài gòn"
+	},
+	{
+		"id" : 1540,
+		"name" : "trung cấp tư thục kinh tế kỹ thuật phương đông"
+	},
+	{
+		"id" : 1541,
+		"name" : "trung cấp tổng hợp hồ chí minh"
+	},
+	{
+		"id" : 1542,
+		"name" : "trung cấp văn thư lưu trữ trung ương bộ nội vụ"
+	},
+	{
+		"id" : 1543,
+		"name" : "trung cấp xây dựng hồ chí minh"
+	},
+	{
+		"id" : 1544,
+		"name" : "trung cấp xây dựng hồ chí minh"
+	},
+	{
+		"id" : 1545,
+		"name" : "trung cấp y dược hồ chí minh"
+	},
+	{
+		"id" : 1546,
+		"name" : "trung cấp y tế phạm ngọc thạch"
+	},
+	{
+		"id" : 1547,
+		"name" : "trung cấp y tế hồ chí minh"
+	},
+	{
+		"id" : 1548,
+		"name" : "trung cấp điện tử điện lạnh"
+	},
+	{
+		"id" : 1549,
+		"name" : "trung cấp đại việt"
+	},
+	{
+		"id" : 1550,
+		"name" : "trung cấp cơ điện thủy lợi đông nam bộ"
+	},
+	{
+		"id" : 1551,
+		"name" : "trung cấp du lịch nha trang"
+	},
+	{
+		"id" : 1552,
+		"name" : "trung cấp kinh tế khánh hòa"
+	},
+	{
+		"id" : 1553,
+		"name" : "trung cấp kinh tế kĩ thuật trần đại nghĩa"
+	},
+	{
+		"id" : 1554,
+		"name" : "trung cấp kĩ thuật miền trung"
+	},
+	{
+		"id" : 1555,
+		"name" : "trung cấp kế toán đại học mở cơ sở 5"
+	},
+	{
+		"id" : 1556,
+		"name" : "trung cấp kỹ thuật công nghiệp tuy hòa"
+	},
+	{
+		"id" : 1557,
+		"name" : "trung cấp kỹ thuật nghiệp vụ khánh hòa"
+	},
+	{
+		"id" : 1558,
+		"name" : "trung cấp kỹ thuật thông tin bộ quốc phòng"
+	},
+	{
+		"id" : 1559,
+		"name" : "trung cấp kỹ thuật và nghiệp vụ đào tạo nghề khánh hòa"
+	},
+	{
+		"id" : 1560,
+		"name" : "trung cấp nghề đồng đế"
+	},
+	{
+		"id" : 1561,
+		"name" : "trung cấp thủy lợi phú lâm tuy hòa"
+	},
+	{
+		"id" : 1562,
+		"name" : "trung cấp tôn đức thắng nha trang"
+	},
+	{
+		"id" : 1563,
+		"name" : "trung cấp văn hóa nghệ thuật nha trang"
+	},
+	{
+		"id" : 1564,
+		"name" : "trung cấp y dược yersin nha trang"
+	},
+	{
+		"id" : 1565,
+		"name" : "trung cấp y tế khánh hòa"
+	},
+	{
+		"id" : 1566,
+		"name" : "trung cấp chính trị kiên giang"
+	},
+	{
+		"id" : 1567,
+		"name" : "trung cấp dược tại đại học võ trường toản"
+	},
+	{
+		"id" : 1568,
+		"name" : "trung cấp kinh tế kỹ thuật nghiệp vụ kiên giang"
+	},
+	{
+		"id" : 1569,
+		"name" : "trung cấp kinh tế kỹ thuật đa ngành"
+	},
+	{
+		"id" : 1570,
+		"name" : "trung cấp kĩ thuật nghiệp vụ kiên giang"
+	},
+	{
+		"id" : 1571,
+		"name" : "trung cấp kĩ thuật và công nghệ cửu long"
+	},
+	{
+		"id" : 1572,
+		"name" : "trung cấp kỹ thuật nghiệp vụ kiên giang"
+	},
+	{
+		"id" : 1573,
+		"name" : "trung cấp kỹ thuật nghiệp vụ kiên giang"
+	},
+	{
+		"id" : 1574,
+		"name" : "trung cấp nghề dân tộc nội trú kiên giang"
+	},
+	{
+		"id" : 1575,
+		"name" : "trung cấp nghề kỹ thuật hùng vương"
+	},
+	{
+		"id" : 1576,
+		"name" : "trung cấp xây dựng miền tây"
+	},
+	{
+		"id" : 1577,
+		"name" : "trung cấp y dược kiên giang"
+	},
+	{
+		"id" : 1578,
+		"name" : "trung cấp y tế kiên giang"
+	},
+	{
+		"id" : 1579,
+		"name" : "trung cấp kinh tế kỹ thuật kon tum"
+	},
+	{
+		"id" : 1580,
+		"name" : "trung cấp kinh tế kon tum"
+	},
+	{
+		"id" : 1581,
+		"name" : "trung cấp kế toán kĩ thuật kon tum"
+	},
+	{
+		"id" : 1582,
+		"name" : "trung cấp nông lâm kon tum"
+	},
+	{
+		"id" : 1583,
+		"name" : "trung cấp sư phạm gia lai kon tum"
+	},
+	{
+		"id" : 1584,
+		"name" : "trung cấp y tế kon tum"
+	},
+	{
+		"id" : 1585,
+		"name" : "trung cấp tài chính kế toán kon tum"
+	},
+	{
+		"id" : 1586,
+		"name" : "trung cấp xây dựng kon tum"
+	},
+	{
+		"id" : 1587,
+		"name" : "trung cấp y tế kon tum"
+	},
+	{
+		"id" : 1588,
+		"name" : "trung cấp y tế kon tum"
+	},
+	{
+		"id" : 1589,
+		"name" : "trung cấp chính trị lai châu"
+	},
+	{
+		"id" : 1590,
+		"name" : "trung cấp chính trị lai châu"
+	},
+	{
+		"id" : 1591,
+		"name" : "trung cấp kế toán xuân mai hà tây"
+	},
+	{
+		"id" : 1592,
+		"name" : "trung cấp lý luận chính trị hành chính lai châu"
+	},
+	{
+		"id" : 1593,
+		"name" : "trung cấp nghề dân tộc nội trú lai châu"
+	},
+	{
+		"id" : 1594,
+		"name" : "trung cấp y tế lai châu"
+	},
+	{
+		"id" : 1595,
+		"name" : "trung cấp chính trị long an"
+	},
+	{
+		"id" : 1596,
+		"name" : "trung cấp công nghệ thông tin đại học quốc gia hồ chí minh"
+	},
+	{
+		"id" : 1597,
+		"name" : "trung cấp dược long an"
+	},
+	{
+		"id" : 1598,
+		"name" : "trung cấp dược nguyễn tất thành"
+	},
+	{
+		"id" : 1599,
+		"name" : "trung cấp kinh tế công nghệ gia định"
+	},
+	{
+		"id" : 1600,
+		"name" : "trung cấp kinh tế kỹ thuật công nghiệp long an"
+	},
+	{
+		"id" : 1601,
+		"name" : "trung cấp kĩ thuật kinh tế long an"
+	},
+	{
+		"id" : 1602,
+		"name" : "trung cấp kỹ thuật nghiệp vụ xây dựng"
+	},
+	{
+		"id" : 1603,
+		"name" : "trung cấp kỹ thuật nông nghiệp long an"
+	},
+	{
+		"id" : 1604,
+		"name" : "trung cấp quân sự long an"
+	},
+	{
+		"id" : 1605,
+		"name" : "trung cấp tài chính kế toán long an"
+	},
+	{
+		"id" : 1606,
+		"name" : "trung cấp việt nhật long an"
+	},
+	{
+		"id" : 1607,
+		"name" : "trung cấp y tế long an"
+	},
+	{
+		"id" : 1608,
+		"name" : "trung cấp chính trị lào cai"
+	},
+	{
+		"id" : 1609,
+		"name" : "trung cấp du lịch lào cai"
+	},
+	{
+		"id" : 1610,
+		"name" : "trung cấp kinh tế kỹ thuật lào cai"
+	},
+	{
+		"id" : 1611,
+		"name" : "trung cấp kinh tế kỹ thuật lào cai"
+	},
+	{
+		"id" : 1612,
+		"name" : "trung cấp kinh tế nghiệp vụ sông hồng"
+	},
+	{
+		"id" : 1613,
+		"name" : "trung cấp kinh tế và kỹ nghệ thực hành"
+	},
+	{
+		"id" : 1614,
+		"name" : "trung cấp nghiệp vụ công an xã"
+	},
+	{
+		"id" : 1615,
+		"name" : "trung cấp nghề apatít lào cai"
+	},
+	{
+		"id" : 1616,
+		"name" : "trung cấp ngoại ngữ lào cai"
+	},
+	{
+		"id" : 1617,
+		"name" : "trung cấp sư phạm lào cai"
+	},
+	{
+		"id" : 1618,
+		"name" : "trung cấp tài nguyên môi trường"
+	},
+	{
+		"id" : 1619,
+		"name" : "trung cấp văn hóa thể thao và du lịch lào cai"
+	},
+	{
+		"id" : 1620,
+		"name" : "trung cấp vận tải đường sắt"
+	},
+	{
+		"id" : 1621,
+		"name" : "trung cấp y tế lào cai"
+	},
+	{
+		"id" : 1622,
+		"name" : "trung cấp bách khoa sài gòn"
+	},
+	{
+		"id" : 1623,
+		"name" : "trung cấp kinh tế kỹ thuật lâm đồng"
+	},
+	{
+		"id" : 1624,
+		"name" : "trung cấp kinh tế kỹ thuật quốc việt"
+	},
+	{
+		"id" : 1625,
+		"name" : "trung cấp kỹ thuật nông nghiệp bảo lộc"
+	},
+	{
+		"id" : 1626,
+		"name" : "trung cấp nghề và kinh tế bảo lộc"
+	},
+	{
+		"id" : 1627,
+		"name" : "trung cấp nông lâm tây nguyên"
+	},
+	{
+		"id" : 1628,
+		"name" : "trung cấp nông nghiệp bảo lộc lâm đồng"
+	},
+	{
+		"id" : 1629,
+		"name" : "trung cấp pháp lý lâm đồng"
+	},
+	{
+		"id" : 1630,
+		"name" : "trung cấp phật học lâm đồng đà lạt"
+	},
+	{
+		"id" : 1631,
+		"name" : "trung cấp y tế lâm đồng"
+	},
+	{
+		"id" : 1632,
+		"name" : "trung cấp y đà lạt"
+	},
+	{
+		"id" : 1633,
+		"name" : "trung cấp bưu chính viễn thông và công nghệ thông tin"
+	},
+	{
+		"id" : 1634,
+		"name" : "trung cấp công nghiệp việt đức"
+	},
+	{
+		"id" : 1635,
+		"name" : "trung cấp cộng đồng hà nội phân hiệu lạng sơn"
+	},
+	{
+		"id" : 1636,
+		"name" : "trung cấp dược lạng sơn"
+	},
+	{
+		"id" : 1637,
+		"name" : "trung cấp kinh tế kĩ thuật lạng sơn"
+	},
+	{
+		"id" : 1638,
+		"name" : "trung cấp kinh tế kỹ thuật lạng sơn"
+	},
+	{
+		"id" : 1639,
+		"name" : "trung cấp kinh tế lạng sơn"
+	},
+	{
+		"id" : 1640,
+		"name" : "trung cấp kinh tế tài chính lạng sơn"
+	},
+	{
+		"id" : 1641,
+		"name" : "trung cấp lí luận chính trị và nghiệp vụ đoàn hội đội lạng sơn"
+	},
+	{
+		"id" : 1642,
+		"name" : "trung cấp nghề cơ điện"
+	},
+	{
+		"id" : 1643,
+		"name" : "trung cấp nghề việt đức lạng sơn"
+	},
+	{
+		"id" : 1644,
+		"name" : "trung cấp nông lâm cơ điện hồng cẩm"
+	},
+	{
+		"id" : 1645,
+		"name" : "trung cấp pháp luật lạng sơn"
+	},
+	{
+		"id" : 1646,
+		"name" : "trung cấp sư phạm lạng sơn"
+	},
+	{
+		"id" : 1647,
+		"name" : "trung cấp tài chính kinh tế lạng sơn"
+	},
+	{
+		"id" : 1648,
+		"name" : "trung cấp tài chính kế toán doanh nghiệp lạng sơn"
+	},
+	{
+		"id" : 1649,
+		"name" : "trung cấp văn hoá nghệ thuật lạng sơn"
+	},
+	{
+		"id" : 1650,
+		"name" : "trung cấp y lạng sơn"
+	},
+	{
+		"id" : 1651,
+		"name" : "trung cấp an ninh công an nam định"
+	},
+	{
+		"id" : 1652,
+		"name" : "trung cấp chuyên nghiệp kinh tế kỹ thuật"
+	},
+	{
+		"id" : 1653,
+		"name" : "trung cấp chính trị trường chinh nam định"
+	},
+	{
+		"id" : 1654,
+		"name" : "trung cấp công nghiệp nam định"
+	},
+	{
+		"id" : 1655,
+		"name" : "trung cấp công nghiệp nhẹ nam định"
+	},
+	{
+		"id" : 1656,
+		"name" : "trung cấp công nghệ và truyền thông nam định"
+	},
+	{
+		"id" : 1657,
+		"name" : "trung cấp công đoàn nam định"
+	},
+	{
+		"id" : 1658,
+		"name" : "trung cấp cơ khí nam định"
+	},
+	{
+		"id" : 1659,
+		"name" : "trung cấp cơ khí việt xô"
+	},
+	{
+		"id" : 1660,
+		"name" : "trung cấp cơ điện nam định"
+	},
+	{
+		"id" : 1661,
+		"name" : "trung cấp dược nam định"
+	},
+	{
+		"id" : 1662,
+		"name" : "trung cấp dạy nghề số 13 bộ quốc phòng"
+	},
+	{
+		"id" : 1663,
+		"name" : "trung cấp kinh tế kĩ thuật nam định"
+	},
+	{
+		"id" : 1664,
+		"name" : "trung cấp kinh tế kĩ thuật nông nghiệp nam định"
+	},
+	{
+		"id" : 1665,
+		"name" : "trung cấp kinh tế kỹ thuật và dạy nghề"
+	},
+	{
+		"id" : 1666,
+		"name" : "trung cấp kỹ thuật cơ điện nam định"
+	},
+	{
+		"id" : 1667,
+		"name" : "trung cấp kỹ thuật may nam định bộ quốc phòng"
+	},
+	{
+		"id" : 1668,
+		"name" : "trung cấp kỹ thuật mật mã"
+	},
+	{
+		"id" : 1669,
+		"name" : "trung cấp kỹ thuật phòng không không quân"
+	},
+	{
+		"id" : 1670,
+		"name" : "trung cấp kỹ thuật tàu hải quân"
+	},
+	{
+		"id" : 1671,
+		"name" : "trung cấp nghề cơ khí nam định"
+	},
+	{
+		"id" : 1672,
+		"name" : "trung cấp nghề cơ điện nam định"
+	},
+	{
+		"id" : 1673,
+		"name" : "trung cấp nghề du lịch thương mại dịch vụ nam định"
+	},
+	{
+		"id" : 1674,
+		"name" : "trung cấp nghề giao thông vận tải nam định"
+	},
+	{
+		"id" : 1675,
+		"name" : "trung cấp nghề kỹ thuật công nghiệp nam định"
+	},
+	{
+		"id" : 1676,
+		"name" : "trung cấp nghề thương mại du lịch và dịch vụ nam định"
+	},
+	{
+		"id" : 1677,
+		"name" : "trung cấp nông nghiệp nam định"
+	},
+	{
+		"id" : 1678,
+		"name" : "trung cấp phát thanh và truyền hình nam định"
+	},
+	{
+		"id" : 1679,
+		"name" : "trung cấp sân khấu điện ảnh"
+	},
+	{
+		"id" : 1680,
+		"name" : "trung cấp sư phạm nam định"
+	},
+	{
+		"id" : 1681,
+		"name" : "trung cấp thú y nam định"
+	},
+	{
+		"id" : 1682,
+		"name" : "trung cấp thương mại du lịch và dịch vụ"
+	},
+	{
+		"id" : 1683,
+		"name" : "trung cấp thương mại và du lịch nam định"
+	},
+	{
+		"id" : 1684,
+		"name" : "trung cấp thủy lợi bắc bộ"
+	},
+	{
+		"id" : 1685,
+		"name" : "trung cấp thủy lợi nam định"
+	},
+	{
+		"id" : 1686,
+		"name" : "trung cấp tài chính kế toán bộ quốc phòng"
+	},
+	{
+		"id" : 1687,
+		"name" : "trung cấp văn hóa nghệ thuật và du lịch nam định"
+	},
+	{
+		"id" : 1688,
+		"name" : "trung cấp xây dựng nam định"
+	},
+	{
+		"id" : 1689,
+		"name" : "trung cấp y dược nam định"
+	},
+	{
+		"id" : 1690,
+		"name" : "trung cấp y nghề số 21"
+	},
+	{
+		"id" : 1691,
+		"name" : "trung cấp y quân đội 1"
+	},
+	{
+		"id" : 1692,
+		"name" : "trung cấp y tế nam định"
+	},
+	{
+		"id" : 1693,
+		"name" : "trung cấp điện nam định"
+	},
+	{
+		"id" : 1694,
+		"name" : "trung cấp chính trị nghệ an"
+	},
+	{
+		"id" : 1695,
+		"name" : "trung cấp công nghệ và y tế paster"
+	},
+	{
+		"id" : 1696,
+		"name" : "trung cấp cơ điện vinh"
+	},
+	{
+		"id" : 1697,
+		"name" : "trung cấp cơ điện và thủy lợi đông nam bộ"
+	},
+	{
+		"id" : 1698,
+		"name" : "trung cấp du lịch thương mại nghệ an"
+	},
+	{
+		"id" : 1699,
+		"name" : "trung cấp dược nghệ an"
+	},
+	{
+		"id" : 1700,
+		"name" : "trung cấp dạy nghề kinh tế miền tây"
+	},
+	{
+		"id" : 1701,
+		"name" : "trung cấp dạy nghề kinh tế kỹ thuật công nghiệp vinh"
+	},
+	{
+		"id" : 1702,
+		"name" : "trung cấp dạy nghề nấu ăn và nghiệp vụ khách sạn"
+	},
+	{
+		"id" : 1703,
+		"name" : "trung cấp dạy nghề số 4 nghệ an"
+	},
+	{
+		"id" : 1704,
+		"name" : "trung cấp giao thông 4 nghệ an"
+	},
+	{
+		"id" : 1705,
+		"name" : "trung cấp giao thông vận tải miền trung"
+	},
+	{
+		"id" : 1706,
+		"name" : "trung cấp kinh tế bắc thăng long"
+	},
+	{
+		"id" : 1707,
+		"name" : "trung cấp kinh tế công nghiệp thủ công nghiệp nghệ an"
+	},
+	{
+		"id" : 1708,
+		"name" : "trung cấp kinh tế kĩ thuật công nghệ việt anh"
+	},
+	{
+		"id" : 1709,
+		"name" : "trung cấp kinh tế kĩ thuật tây nam nghệ an"
+	},
+	{
+		"id" : 1710,
+		"name" : "trung cấp kinh tế kế toán vinh"
+	},
+	{
+		"id" : 1711,
+		"name" : "trung cấp kinh tế kỹ thuật công nghiệp vinh"
+	},
+	{
+		"id" : 1712,
+		"name" : "trung cấp kinh tế kỹ thuật hồng lam"
+	},
+	{
+		"id" : 1713,
+		"name" : "trung cấp kinh tế kỹ thuật miền trung"
+	},
+	{
+		"id" : 1714,
+		"name" : "trung cấp kinh tế kỹ thuật nghệ an"
+	},
+	{
+		"id" : 1715,
+		"name" : "trung cấp kinh tế nghề miền tây nghệ an"
+	},
+	{
+		"id" : 1716,
+		"name" : "trung cấp kinh tế tài chính nghệ an"
+	},
+	{
+		"id" : 1717,
+		"name" : "trung cấp kĩ thuật và nghiệp vụ vinh"
+	},
+	{
+		"id" : 1718,
+		"name" : "trung cấp kỹ thuật công nghệ"
+	},
+	{
+		"id" : 1719,
+		"name" : "trung cấp kỹ thuật quy nhơn"
+	},
+	{
+		"id" : 1720,
+		"name" : "trung cấp kỹ thuật quân khí cục quân khí tổng cục kỹ thuật"
+	},
+	{
+		"id" : 1721,
+		"name" : "trung cấp kỹ thuật việt hàn"
+	},
+	{
+		"id" : 1722,
+		"name" : "trung cấp kỹ thuật và nghiệp vụ vinh"
+	},
+	{
+		"id" : 1723,
+		"name" : "trung cấp múa việt nam"
+	},
+	{
+		"id" : 1724,
+		"name" : "trung cấp nghề an nhất vinh"
+	},
+	{
+		"id" : 1725,
+		"name" : "trung cấp nghề công nghiệp và thủ công nghiệp nghệ an"
+	},
+	{
+		"id" : 1726,
+		"name" : "trung cấp nghề công nghệ ô tô"
+	},
+	{
+		"id" : 1727,
+		"name" : "trung cấp nghề cơ điện đông nam bộ"
+	},
+	{
+		"id" : 1728,
+		"name" : "trung cấp nghề dân tộc nội trú nghệ an"
+	},
+	{
+		"id" : 1729,
+		"name" : "trung cấp nghề giao thông vận tải miền trung"
+	},
+	{
+		"id" : 1730,
+		"name" : "trung cấp nghề kinh tế công nghiệp thủ công nghiệp"
+	},
+	{
+		"id" : 1731,
+		"name" : "trung cấp nghề kinh tế kĩ thuật miền tây nghệ an"
+	},
+	{
+		"id" : 1732,
+		"name" : "trung cấp nghề kinh tế kỹ thuật công nghiệp vinh"
+	},
+	{
+		"id" : 1733,
+		"name" : "trung cấp nghề kinh tế kỹ thuật số 1"
+	},
+	{
+		"id" : 1734,
+		"name" : "trung cấp nghề kinh tế kỹ thuật tây nam nghệ an"
+	},
+	{
+		"id" : 1735,
+		"name" : "trung cấp nghề kinh tế kỹ thuật đô lương"
+	},
+	{
+		"id" : 1736,
+		"name" : "trung cấp nghề kỹ thuật công nông nghiệp"
+	},
+	{
+		"id" : 1737,
+		"name" : "trung cấp nghề kỹ thuật miền tây nghệ an"
+	},
+	{
+		"id" : 1738,
+		"name" : "trung cấp nghề số 4 nghệ an"
+	},
+	{
+		"id" : 1739,
+		"name" : "trung cấp nghề vinh"
+	},
+	{
+		"id" : 1740,
+		"name" : "trung cấp nghề thương mại du lịch"
+	},
+	{
+		"id" : 1741,
+		"name" : "trung cấp nghề việt hàn vinh"
+	},
+	{
+		"id" : 1742,
+		"name" : "trung cấp nghề việt xô số 1"
+	},
+	{
+		"id" : 1743,
+		"name" : "trung cấp nghề kỹ thuật công nghiệp hùng vương"
+	},
+	{
+		"id" : 1744,
+		"name" : "trung cấp nông lâm ngư nghiệp nghệ an"
+	},
+	{
+		"id" : 1745,
+		"name" : "trung cấp nông nghiệp nghệ an"
+	},
+	{
+		"id" : 1746,
+		"name" : "trung cấp nông nghiệp phát triển nông thôn"
+	},
+	{
+		"id" : 1747,
+		"name" : "trung cấp quân y số 21"
+	},
+	{
+		"id" : 1748,
+		"name" : "trung cấp sĩ quan hải quân"
+	},
+	{
+		"id" : 1749,
+		"name" : "trung cấp sĩ quan quân sự"
+	},
+	{
+		"id" : 1750,
+		"name" : "trung cấp sư phạm mầm non nghệ an"
+	},
+	{
+		"id" : 1751,
+		"name" : "trung cấp sư phạm nghệ an"
+	},
+	{
+		"id" : 1752,
+		"name" : "trung cấp sư phạm nha trang"
+	},
+	{
+		"id" : 1753,
+		"name" : "trung cấp tài chính nghệ an"
+	},
+	{
+		"id" : 1754,
+		"name" : "trung cấp việt anh nghệ an"
+	},
+	{
+		"id" : 1755,
+		"name" : "trung cấp văn hóa nghệ thuật nghệ an"
+	},
+	{
+		"id" : 1756,
+		"name" : "trung cấp văn hóa nghệ thuật quân đội việt nam cam pu chia"
+	},
+	{
+		"id" : 1757,
+		"name" : "trung cấp xây dựng số 1 hà sơn bình"
+	},
+	{
+		"id" : 1758,
+		"name" : "trung cấp y dược nghệ an"
+	},
+	{
+		"id" : 1759,
+		"name" : "trung cấp y khoa miền trung"
+	},
+	{
+		"id" : 1760,
+		"name" : "trung cấp y kỹ thuật vinh"
+	},
+	{
+		"id" : 1761,
+		"name" : "trung cấp y quân sự 1"
+	},
+	{
+		"id" : 1762,
+		"name" : "trung cấp bưu chính viễn thông và công nghệ thông tin 1"
+	},
+	{
+		"id" : 1763,
+		"name" : "trung cấp chính trị ninh bình"
+	},
+	{
+		"id" : 1764,
+		"name" : "trung cấp công nghiệp rừng cúc phương ninh bình"
+	},
+	{
+		"id" : 1765,
+		"name" : "trung cấp công nghệ y tế pasteur"
+	},
+	{
+		"id" : 1766,
+		"name" : "trung cấp cơ điện phát triển nông thôn"
+	},
+	{
+		"id" : 1767,
+		"name" : "trung cấp cầu đường lâm nghiệp cúc phương"
+	},
+	{
+		"id" : 1768,
+		"name" : "trung cấp dược thăng long"
+	},
+	{
+		"id" : 1769,
+		"name" : "trung cấp dược y tế ninh bình"
+	},
+	{
+		"id" : 1770,
+		"name" : "trung cấp giao thông vận tải miền nam"
+	},
+	{
+		"id" : 1771,
+		"name" : "trung cấp kinh tế kĩ thuật tại chức ninh bình"
+	},
+	{
+		"id" : 1772,
+		"name" : "trung cấp kinh tế kỹ thuật tài chính ninh bình"
+	},
+	{
+		"id" : 1773,
+		"name" : "trung cấp kinh tế ninh bình"
+	},
+	{
+		"id" : 1774,
+		"name" : "trung cấp kinh tế hà nam ninh tại ninh bình"
+	},
+	{
+		"id" : 1775,
+		"name" : "trung cấp kế toán ninh bình"
+	},
+	{
+		"id" : 1776,
+		"name" : "trung cấp kỹ thuật hậu cần"
+	},
+	{
+		"id" : 1777,
+		"name" : "trung cấp nghiệp vụ ăn uống sài gòn"
+	},
+	{
+		"id" : 1778,
+		"name" : "trung cấp nghề cơ khí nông nghiệp"
+	},
+	{
+		"id" : 1779,
+		"name" : "trung cấp nghề cơ điện việt xô ninh bình"
+	},
+	{
+		"id" : 1780,
+		"name" : "trung cấp nghề h13 bộ quốc phòng ninh bình"
+	},
+	{
+		"id" : 1781,
+		"name" : "trung cấp nghề số 1 bộ quốc phòng"
+	},
+	{
+		"id" : 1782,
+		"name" : "trung cấp nghề số 14 ninh bình"
+	},
+	{
+		"id" : 1783,
+		"name" : "trung cấp nghề số 8 ninh bình"
+	},
+	{
+		"id" : 1784,
+		"name" : "trung cấp nghề tam điệp ninh bình"
+	},
+	{
+		"id" : 1785,
+		"name" : "trung cấp sư phạm ninh bình"
+	},
+	{
+		"id" : 1786,
+		"name" : "trung cấp tin học tài chính kế toán"
+	},
+	{
+		"id" : 1787,
+		"name" : "trung cấp tài chính kinh tế hà nam ninh"
+	},
+	{
+		"id" : 1788,
+		"name" : "trung cấp tài chính kế toán ninh bình"
+	},
+	{
+		"id" : 1789,
+		"name" : "trung cấp việt xô tam điệp ninh bình"
+	},
+	{
+		"id" : 1790,
+		"name" : "trung cấp y dược ninh bình"
+	},
+	{
+		"id" : 1791,
+		"name" : "trung cấp y tế và công nghệ pauster"
+	},
+	{
+		"id" : 1792,
+		"name" : "trung cấp kỹ thuật cao thắng"
+	},
+	{
+		"id" : 1793,
+		"name" : "trung cấp kỹ thuật sài gòn"
+	},
+	{
+		"id" : 1794,
+		"name" : "trung cấp quân sự ninh thuận"
+	},
+	{
+		"id" : 1795,
+		"name" : "trung cấp sư phạm ninh thuận"
+	},
+	{
+		"id" : 1796,
+		"name" : "trung cấp y dược hà nam phân hiệu ninh thuận"
+	},
+	{
+		"id" : 1797,
+		"name" : "trung cấp y tế ninh thuận"
+	},
+	{
+		"id" : 1798,
+		"name" : "trung cấp bách khoa phú thọ"
+	},
+	{
+		"id" : 1799,
+		"name" : "trung cấp chuyên ngành quân sự phú thọ"
+	},
+	{
+		"id" : 1800,
+		"name" : "trung cấp công nghiệp thực phẩm việt trì phú thọ"
+	},
+	{
+		"id" : 1801,
+		"name" : "trung cấp công nghệ quản trị đông đô"
+	},
+	{
+		"id" : 1802,
+		"name" : "trung cấp công nghệ vận tải phú thọ"
+	},
+	{
+		"id" : 1803,
+		"name" : "trung cấp cơ điện 1 phú thọ"
+	},
+	{
+		"id" : 1804,
+		"name" : "trung cấp dược phú thọ"
+	},
+	{
+		"id" : 1805,
+		"name" : "trung cấp hóa thực phẩm việt trì phú thọ"
+	},
+	{
+		"id" : 1806,
+		"name" : "trung cấp kinh tế kỹ thuật ba đình"
+	},
+	{
+		"id" : 1807,
+		"name" : "trung cấp kinh tế phú thọ"
+	},
+	{
+		"id" : 1808,
+		"name" : "trung cấp kinh tế và kỹ nghệ thực hành phú thọ"
+	},
+	{
+		"id" : 1809,
+		"name" : "trung cấp kế toán phú thọ"
+	},
+	{
+		"id" : 1810,
+		"name" : "trung cấp kỹ thuật hải quân"
+	},
+	{
+		"id" : 1811,
+		"name" : "trung cấp kỹ thuật nghiệp vụ sông hồng"
+	},
+	{
+		"id" : 1812,
+		"name" : "trung cấp lí luận chính trị"
+	},
+	{
+		"id" : 1813,
+		"name" : "trung cấp nghề công nghệ và vận tải phú thọ"
+	},
+	{
+		"id" : 1814,
+		"name" : "trung cấp nghề cơ khí xây dựng coma"
+	},
+	{
+		"id" : 1815,
+		"name" : "trung cấp nghề dân tộc nội trú phú thọ"
+	},
+	{
+		"id" : 1816,
+		"name" : "trung cấp nghề nông lâm phú thọ"
+	},
+	{
+		"id" : 1817,
+		"name" : "trung cấp nghề bách khoa phú thọ"
+	},
+	{
+		"id" : 1818,
+		"name" : "trung cấp nghề xây dựng kỹ thuật và nghiệp vụ vinaconex"
+	},
+	{
+		"id" : 1819,
+		"name" : "trung cấp nông nghiệp phú thọ"
+	},
+	{
+		"id" : 1820,
+		"name" : "trung cấp sư phạm phú thọ"
+	},
+	{
+		"id" : 1821,
+		"name" : "trung cấp thống kê kế toán"
+	},
+	{
+		"id" : 1822,
+		"name" : "trung cấp thực phẩm việt trì"
+	},
+	{
+		"id" : 1823,
+		"name" : "trung cấp văn hoá nghệ thuật phú thọ"
+	},
+	{
+		"id" : 1824,
+		"name" : "trung cấp văn hóa nghệ thuật và du lịch phú thọ"
+	},
+	{
+		"id" : 1825,
+		"name" : "trung cấp xây dựng nghiệp vụ sông hồng"
+	},
+	{
+		"id" : 1826,
+		"name" : "trung cấp y dược phú thọ"
+	},
+	{
+		"id" : 1827,
+		"name" : "trung cấp y số 2 bộ quốc phòng"
+	},
+	{
+		"id" : 1828,
+		"name" : "trung cấp y tế phú thọ"
+	},
+	{
+		"id" : 1829,
+		"name" : "trung cấp điện phú thọ"
+	},
+	{
+		"id" : 1830,
+		"name" : "trung cấp chính trị phân viện miền nam"
+	},
+	{
+		"id" : 1831,
+		"name" : "trung cấp dược phú yên"
+	},
+	{
+		"id" : 1832,
+		"name" : "trung cấp kinh tế kỹ thuật phú yên"
+	},
+	{
+		"id" : 1833,
+		"name" : "trung cấp kế toán phú yên"
+	},
+	{
+		"id" : 1834,
+		"name" : "trung cấp kế toán trần đại nghĩa"
+	},
+	{
+		"id" : 1835,
+		"name" : "trung cấp kỹ thuật phú yên"
+	},
+	{
+		"id" : 1836,
+		"name" : "trung cấp nghiệp vụ 2 thủy lợi"
+	},
+	{
+		"id" : 1837,
+		"name" : "trung cấp nghề số 21 bộ quốc phòng"
+	},
+	{
+		"id" : 1838,
+		"name" : "trung cấp nghề ẩm thực khôi việt"
+	},
+	{
+		"id" : 1839,
+		"name" : "trung cấp ngân hàng phú yên"
+	},
+	{
+		"id" : 1840,
+		"name" : "trung cấp quân sự phú yên"
+	},
+	{
+		"id" : 1841,
+		"name" : "trung cấp xây dựng số 6 phú yên"
+	},
+	{
+		"id" : 1842,
+		"name" : "trung cấp xét nghiệm y học dự phòng viện pasteur nha trang"
+	},
+	{
+		"id" : 1843,
+		"name" : "trung cấp y dược phú yên"
+	},
+	{
+		"id" : 1844,
+		"name" : "trung cấp y phú yên"
+	},
+	{
+		"id" : 1845,
+		"name" : "trung cấp công nông nghiệp quảng bình"
+	},
+	{
+		"id" : 1846,
+		"name" : "trung cấp cơ khí giao thông 2"
+	},
+	{
+		"id" : 1847,
+		"name" : "trung cấp du lịch công nghệ số 9"
+	},
+	{
+		"id" : 1848,
+		"name" : "trung cấp du lịch quảng bình"
+	},
+	{
+		"id" : 1849,
+		"name" : "trung cấp dược quảng bình"
+	},
+	{
+		"id" : 1850,
+		"name" : "trung cấp kinh tế quảng bình"
+	},
+	{
+		"id" : 1851,
+		"name" : "trung cấp kinh tế quảng bình"
+	},
+	{
+		"id" : 1852,
+		"name" : "trung cấp kinh tế du lịch huế"
+	},
+	{
+		"id" : 1853,
+		"name" : "trung cấp kĩ thuật nghiệp vụ thăng long"
+	},
+	{
+		"id" : 1854,
+		"name" : "trung cấp kế toán quảng bình"
+	},
+	{
+		"id" : 1855,
+		"name" : "trung cấp kế toán tin học"
+	},
+	{
+		"id" : 1856,
+		"name" : "trung cấp kỹ thuật công nông nghiệp quảng bình"
+	},
+	{
+		"id" : 1857,
+		"name" : "trung cấp kỹ thuật in"
+	},
+	{
+		"id" : 1858,
+		"name" : "trung cấp kỹ thuật quảng bình"
+	},
+	{
+		"id" : 1859,
+		"name" : "trung cấp luật quảng bình"
+	},
+	{
+		"id" : 1860,
+		"name" : "trung cấp lâm nghiệp quảng bình"
+	},
+	{
+		"id" : 1861,
+		"name" : "trung cấp nghiệp vụ 2 bộ thủy lợi"
+	},
+	{
+		"id" : 1862,
+		"name" : "trung cấp nghề số 9 quảng bình"
+	},
+	{
+		"id" : 1863,
+		"name" : "trung cấp nghề số 5 bộ quốc phòng"
+	},
+	{
+		"id" : 1864,
+		"name" : "trung cấp quản lý kinh tế quảng bình"
+	},
+	{
+		"id" : 1865,
+		"name" : "trung cấp quân sự quảng bình"
+	},
+	{
+		"id" : 1866,
+		"name" : "trung cấp quân y huế"
+	},
+	{
+		"id" : 1867,
+		"name" : "trung cấp tin học huế"
+	},
+	{
+		"id" : 1868,
+		"name" : "trung cấp y quảng bình"
+	},
+	{
+		"id" : 1869,
+		"name" : "trung cấp y tế quảng bình"
+	},
+	{
+		"id" : 1870,
+		"name" : "trung cấp âu lạc huế"
+	},
+	{
+		"id" : 1871,
+		"name" : "trung cấp bách khoa quảng nam"
+	},
+	{
+		"id" : 1872,
+		"name" : "trung cấp bưu chính viễn thông và công nghệ thông tin 2"
+	},
+	{
+		"id" : 1873,
+		"name" : "trung cấp chính trị quảng nam"
+	},
+	{
+		"id" : 1874,
+		"name" : "trường quân sự quân khu 5"
+	},
+	{
+		"id" : 1875,
+		"name" : "trung cấp cơ điện quảng nam"
+	},
+	{
+		"id" : 1876,
+		"name" : "trung cấp cảnh sát giao thông quảng nam"
+	},
+	{
+		"id" : 1877,
+		"name" : "trung cấp du lịch việt úc"
+	},
+	{
+		"id" : 1878,
+		"name" : "trung cấp hành chính văn thư quảng nam"
+	},
+	{
+		"id" : 1879,
+		"name" : "trung cấp kinh tế kỹ thuật quảng đông"
+	},
+	{
+		"id" : 1880,
+		"name" : "trung cấp kinh tế kỹ thuật đức minh"
+	},
+	{
+		"id" : 1881,
+		"name" : "trung cấp kĩ thuật nghiệp vụ thăng long"
+	},
+	{
+		"id" : 1882,
+		"name" : "trung cấp lao động và bảo trợ xã hội"
+	},
+	{
+		"id" : 1883,
+		"name" : "trung cấp nghề kỹ thuật miền trung tây nguyên"
+	},
+	{
+		"id" : 1884,
+		"name" : "trung cấp nghề kỹ thuật nghiệp vụ công đoàn"
+	},
+	{
+		"id" : 1885,
+		"name" : "trung cấp nghề quản lý khách sạn việt úc"
+	},
+	{
+		"id" : 1886,
+		"name" : "trung cấp nghề quản trị khách sạn"
+	},
+	{
+		"id" : 1887,
+		"name" : "trung cấp nghề số 5 bộ quốc phòng"
+	},
+	{
+		"id" : 1888,
+		"name" : "trung cấp nghề đồng hồ điện tử tin học"
+	},
+	{
+		"id" : 1889,
+		"name" : "trung cấp nghệ thuật quảng nam"
+	},
+	{
+		"id" : 1890,
+		"name" : "trung cấp nông nghiệp vĩnh điện"
+	},
+	{
+		"id" : 1891,
+		"name" : "trung cấp thủy lợi 2 quảng nam"
+	},
+	{
+		"id" : 1892,
+		"name" : "trung cấp thủy lợi miền trung"
+	},
+	{
+		"id" : 1893,
+		"name" : "trung cấp văn hóa nghệ thuật và du lịch quảng nam"
+	},
+	{
+		"id" : 1894,
+		"name" : "trung cấp xây dựng số 5 hội an"
+	},
+	{
+		"id" : 1895,
+		"name" : "trung cấp y dược quảng nam"
+	},
+	{
+		"id" : 1896,
+		"name" : "trung cấp điện 3 hội an quảng nam"
+	},
+	{
+		"id" : 1897,
+		"name" : "trung cấp điện quảng nam"
+	},
+	{
+		"id" : 1898,
+		"name" : "trung cấp chính quy dược sĩ tại quảng ngãi"
+	},
+	{
+		"id" : 1899,
+		"name" : "trung cấp cơ điện quy nhơn"
+	},
+	{
+		"id" : 1900,
+		"name" : "trung cấp hóa thực phẩm việt trì"
+	},
+	{
+		"id" : 1901,
+		"name" : "trung cấp hậu cần quân đội"
+	},
+	{
+		"id" : 1902,
+		"name" : "trung cấp kinh tế kĩ thuật bảo lộc"
+	},
+	{
+		"id" : 1903,
+		"name" : "trung cấp kinh tế kỹ thuật quảng ngãi"
+	},
+	{
+		"id" : 1904,
+		"name" : "trung cấp kế toán 3 quảng ngãi"
+	},
+	{
+		"id" : 1905,
+		"name" : "trung cấp kỹ thuật may và thời trang"
+	},
+	{
+		"id" : 1906,
+		"name" : "trung cấp kỹ thuật và nghiệp vụ nam sài gòn"
+	},
+	{
+		"id" : 1907,
+		"name" : "trung cấp nghề công nghệ kinh tế dung quất"
+	},
+	{
+		"id" : 1908,
+		"name" : "trung cấp nghề cơ giới quảng ngãi"
+	},
+	{
+		"id" : 1909,
+		"name" : "trung cấp nghề xây dựng và nông nghiệp trung bộ"
+	},
+	{
+		"id" : 1910,
+		"name" : "trung cấp nông nghiệp quảng ngãi"
+	},
+	{
+		"id" : 1911,
+		"name" : "trung cấp quản lý kinh tế"
+	},
+	{
+		"id" : 1912,
+		"name" : "trung cấp thể dục thể thao"
+	},
+	{
+		"id" : 1913,
+		"name" : "trung cấp tài chính kế toán 3"
+	},
+	{
+		"id" : 1914,
+		"name" : "trung cấp tài chính kế toán quảng ngãi"
+	},
+	{
+		"id" : 1915,
+		"name" : "trung cấp tư thục kinh tế kỹ thuật âu việt"
+	},
+	{
+		"id" : 1916,
+		"name" : "trung cấp y dược quảng ngãi"
+	},
+	{
+		"id" : 1917,
+		"name" : "trung cấp y đặng thùy trâm"
+	},
+	{
+		"id" : 1918,
+		"name" : "trung cấp điện quảng ngãi"
+	},
+	{
+		"id" : 1919,
+		"name" : "trung cấp bách khoa sài gòn cơ sở 2"
+	},
+	{
+		"id" : 1920,
+		"name" : "trung cấp chính trị và nghiệp vụ đoàn"
+	},
+	{
+		"id" : 1921,
+		"name" : "trung cấp công nghiệp quảng ninh"
+	},
+	{
+		"id" : 1922,
+		"name" : "trung cấp công nghệ kinh tế và đối ngoại"
+	},
+	{
+		"id" : 1923,
+		"name" : "trung cấp cơ giới và xây dựng uông bí quảng ninh"
+	},
+	{
+		"id" : 1924,
+		"name" : "trung cấp cơ điện cẩm phả quảng ninh"
+	},
+	{
+		"id" : 1925,
+		"name" : "trung cấp du lịch hạ long"
+	},
+	{
+		"id" : 1926,
+		"name" : "trung cấp dược quảng ninh"
+	},
+	{
+		"id" : 1927,
+		"name" : "trung cấp giao thông cơ điện quảng ninh"
+	},
+	{
+		"id" : 1928,
+		"name" : "trung cấp kinh tế quảng ninh"
+	},
+	{
+		"id" : 1929,
+		"name" : "trung cấp kế toán quản trị doanh nghiệp"
+	},
+	{
+		"id" : 1930,
+		"name" : "trung cấp kế toán quảng ninh"
+	},
+	{
+		"id" : 1931,
+		"name" : "trung cấp kỹ thuật công nghiệp nhẹ"
+	},
+	{
+		"id" : 1932,
+		"name" : "trung cấp kỹ thuật phòng không không quân phân hiệu 2"
+	},
+	{
+		"id" : 1933,
+		"name" : "trung cấp kỹ thuật quân sự"
+	},
+	{
+		"id" : 1934,
+		"name" : "trung cấp lâm nghiệp trung ương quảng ninh"
+	},
+	{
+		"id" : 1935,
+		"name" : "trung cấp lâm nghiệp yên hưng quảng ninh"
+	},
+	{
+		"id" : 1936,
+		"name" : "trung cấp lí luận chính trị quảng ninh"
+	},
+	{
+		"id" : 1937,
+		"name" : "trung cấp múa tại đại học hạ long"
+	},
+	{
+		"id" : 1938,
+		"name" : "trung cấp mỏ hồng cẩm quảng ninh"
+	},
+	{
+		"id" : 1939,
+		"name" : "trung cấp mỏ quảng ninh"
+	},
+	{
+		"id" : 1940,
+		"name" : "trung cấp nghề giao thông cơ điện quảng ninh"
+	},
+	{
+		"id" : 1941,
+		"name" : "trung cấp nghề và công nghiệp quảng ninh"
+	},
+	{
+		"id" : 1942,
+		"name" : "trung cấp nghề xây dựng và công nghiệp quảng ninh"
+	},
+	{
+		"id" : 1943,
+		"name" : "trung cấp nông lâm quảng ninh"
+	},
+	{
+		"id" : 1944,
+		"name" : "trung cấp quân sự quảng ninh"
+	},
+	{
+		"id" : 1945,
+		"name" : "trung cấp bệnh viện quân y 268"
+	},
+	{
+		"id" : 1946,
+		"name" : "trung cấp sư phạm quảng ninh"
+	},
+	{
+		"id" : 1947,
+		"name" : "trung cấp xây dựng nam khê uông bí quảng ninh"
+	},
+	{
+		"id" : 1948,
+		"name" : "trung cấp xây dựng quảng ninh"
+	},
+	{
+		"id" : 1949,
+		"name" : "trung cấp y tế quảng ninh"
+	},
+	{
+		"id" : 1950,
+		"name" : "trung cấp điện quảng ninh"
+	},
+	{
+		"id" : 1951,
+		"name" : "trung cấp kinh tế kỹ thuật thủy lợi miền trung"
+	},
+	{
+		"id" : 1952,
+		"name" : "trung cấp lương thực thực phẩm hồ chí minh"
+	},
+	{
+		"id" : 1953,
+		"name" : "trung cấp nghề số 23 bộ quốc phòng"
+	},
+	{
+		"id" : 1954,
+		"name" : "trung cấp nghề số 5 bộ quốc phòng"
+	},
+	{
+		"id" : 1955,
+		"name" : "trung cấp nghề tư thục kỹ thuật kinh tế sài gòn 3"
+	},
+	{
+		"id" : 1956,
+		"name" : "trung cấp nông lâm quảng trị"
+	},
+	{
+		"id" : 1957,
+		"name" : "trung cấp nông nghiệp và phát triển nông thôn quảng trị"
+	},
+	{
+		"id" : 1958,
+		"name" : "trung cấp sư phạm quảng trị"
+	},
+	{
+		"id" : 1959,
+		"name" : "trung cấp y tế quảng trị"
+	},
+	{
+		"id" : 1960,
+		"name" : "trung cấp chế biến thủy sản"
+	},
+	{
+		"id" : 1961,
+		"name" : "trung cấp dược sóc trăng"
+	},
+	{
+		"id" : 1962,
+		"name" : "trung cấp kế toán sóc trăng"
+	},
+	{
+		"id" : 1963,
+		"name" : "trung cấp luật sóc trăng"
+	},
+	{
+		"id" : 1964,
+		"name" : "trung cấp nghề số 9"
+	},
+	{
+		"id" : 1965,
+		"name" : "trung cấp nghề tư thục"
+	},
+	{
+		"id" : 1966,
+		"name" : "trung cấp văn hóa nghệ thuật sóc trăng"
+	},
+	{
+		"id" : 1967,
+		"name" : "trung cấp y tế sóc trăng"
+	},
+	{
+		"id" : 1968,
+		"name" : "trung cấp chính trị sơn la"
+	},
+	{
+		"id" : 1969,
+		"name" : "trung cấp công nghệ thông tin sơn la"
+	},
+	{
+		"id" : 1970,
+		"name" : "trung cấp công tác xã hội"
+	},
+	{
+		"id" : 1971,
+		"name" : "trung cấp dược sơn la"
+	},
+	{
+		"id" : 1972,
+		"name" : "trung cấp kinh tế kĩ thuật sơn la"
+	},
+	{
+		"id" : 1973,
+		"name" : "trung cấp kinh tế kĩ thuật số 1"
+	},
+	{
+		"id" : 1974,
+		"name" : "trung cấp kinh tế kỹ thuật sơn la"
+	},
+	{
+		"id" : 1975,
+		"name" : "trung cấp luật tây bắc"
+	},
+	{
+		"id" : 1976,
+		"name" : "trung cấp nghệ thuật sơn la"
+	},
+	{
+		"id" : 1977,
+		"name" : "trung cấp nghề số 2 bộ quốc phòng"
+	},
+	{
+		"id" : 1978,
+		"name" : "trung cấp nông lâm nghiệp sơn la"
+	},
+	{
+		"id" : 1979,
+		"name" : "trung cấp nông lâm sơn la"
+	},
+	{
+		"id" : 1980,
+		"name" : "trung cấp quân sự sơn la"
+	},
+	{
+		"id" : 1981,
+		"name" : "trung cấp sư phạm mầm non sơn la"
+	},
+	{
+		"id" : 1982,
+		"name" : "trung cấp sư phạm sơn la"
+	},
+	{
+		"id" : 1983,
+		"name" : "trung cấp thư viện sơn la"
+	},
+	{
+		"id" : 1984,
+		"name" : "trung cấp tài chính kế toán sơn la"
+	},
+	{
+		"id" : 1985,
+		"name" : "trung cấp văn hoá nghệ thuật và du lịch sơn la"
+	},
+	{
+		"id" : 1986,
+		"name" : "trung cấp y dược sơn la"
+	},
+	{
+		"id" : 1987,
+		"name" : "trung cấp bách nghệ thanh hóa"
+	},
+	{
+		"id" : 1988,
+		"name" : "trung cấp chính trị thanh hóa"
+	},
+	{
+		"id" : 1989,
+		"name" : "trung cấp công nghiệp dệt may"
+	},
+	{
+		"id" : 1990,
+		"name" : "trung cấp công nghệ thông tin thanh hóa"
+	},
+	{
+		"id" : 1991,
+		"name" : "trung cấp cơ khí vũng tàu"
+	},
+	{
+		"id" : 1992,
+		"name" : "trung cấp du lịch thanh hóa"
+	},
+	{
+		"id" : 1993,
+		"name" : "trung cấp dược y tế thanh hoa"
+	},
+	{
+		"id" : 1994,
+		"name" : "trung cấp giao thông vận tải trung ương 1"
+	},
+	{
+		"id" : 1995,
+		"name" : "trung cấp hành chính thanh hóa"
+	},
+	{
+		"id" : 1996,
+		"name" : "trung cấp kinh tế công nghệ lương tài"
+	},
+	{
+		"id" : 1997,
+		"name" : "trung cấp kinh tế kế hoạch thanh hóa"
+	},
+	{
+		"id" : 1998,
+		"name" : "trung cấp kinh tế kỹ thuật bắc thăng long"
+	},
+	{
+		"id" : 1999,
+		"name" : "trung cấp kinh tế kỹ thuật bán công"
+	},
+	{
+		"id" : 2000,
+		"name" : "trung cấp kinh tế kỹ thuật vistco"
+	},
+	{
+		"id" : 2001,
+		"name" : "trung cấp kinh tế đối ngoại"
+	},
+	{
+		"id" : 2002,
+		"name" : "trung cấp kiến trúc thanh hóa"
+	},
+	{
+		"id" : 2003,
+		"name" : "trung cấp kĩ thuật y dược thanh hóa"
+	},
+	{
+		"id" : 2004,
+		"name" : "trung cấp kế toán tài chính thanh hóa"
+	},
+	{
+		"id" : 2005,
+		"name" : "trung cấp kế toán tối học"
+	},
+	{
+		"id" : 2006,
+		"name" : "trung cấp kỹ nghệ thanh hóa"
+	},
+	{
+		"id" : 2007,
+		"name" : "trung cấp kỹ thuật công nghệ lê quý đôn"
+	},
+	{
+		"id" : 2008,
+		"name" : "trung cấp kỹ thuật mật mã"
+	},
+	{
+		"id" : 2009,
+		"name" : "trung cấp kỹ thuật nghiệp vụ cand t36"
+	},
+	{
+		"id" : 2010,
+		"name" : "trung cấp kỹ thuật y dược thanh hóa"
+	},
+	{
+		"id" : 2011,
+		"name" : "trung cấp kỹ thuật ô tô"
+	},
+	{
+		"id" : 2012,
+		"name" : "trung cấp lâm nghiệp thanh hóa"
+	},
+	{
+		"id" : 2013,
+		"name" : "trung cấp lí luận chính trị thanh hóa"
+	},
+	{
+		"id" : 2014,
+		"name" : "trung cấp nghiệp vụ giao thông vận tải thanh hóa"
+	},
+	{
+		"id" : 2015,
+		"name" : "trung cấp nghiệp vụ phúc yên"
+	},
+	{
+		"id" : 2016,
+		"name" : "trung cấp nghề công nghiệp thanh hóa"
+	},
+	{
+		"id" : 2017,
+		"name" : "trung cấp nghề cơ điện thanh hóa"
+	},
+	{
+		"id" : 2018,
+		"name" : "trung cấp nghề du lịch và thương mại thanh hóa"
+	},
+	{
+		"id" : 2019,
+		"name" : "trung cấp nghề giao thông vận tải thanh hoá"
+	},
+	{
+		"id" : 2020,
+		"name" : "trung cấp nghề giao thông vận tải trung ương 1"
+	},
+	{
+		"id" : 2021,
+		"name" : "trung cấp nghề hưng đô"
+	},
+	{
+		"id" : 2022,
+		"name" : "trung cấp nghề kĩ thuật cơ khí xây dựng"
+	},
+	{
+		"id" : 2023,
+		"name" : "trung cấp nghề kĩ thuật nghiệp vụ và du lịch quang minh"
+	},
+	{
+		"id" : 2024,
+		"name" : "trung cấp nghề kĩ thuật và nghiệp vụ công đoàn"
+	},
+	{
+		"id" : 2025,
+		"name" : "trung cấp nghề kỹ nghệ thanh hóa"
+	},
+	{
+		"id" : 2026,
+		"name" : "trung cấp nghề kỹ thuật nghiệp vụ đường bộ miền bắc"
+	},
+	{
+		"id" : 2027,
+		"name" : "trung cấp nghề kỹ thuật xây dựng bỉm sơn"
+	},
+	{
+		"id" : 2028,
+		"name" : "trung cấp nghề kỹ thuật xây dựng và nghiệp vụ"
+	},
+	{
+		"id" : 2029,
+		"name" : "trung cấp nghề nông nghiệp và phát triển nông thôn"
+	},
+	{
+		"id" : 2030,
+		"name" : "trung cấp nghề phát thanh và truyền hình thanh hoá"
+	},
+	{
+		"id" : 2031,
+		"name" : "trung cấp nghề số 1 thanh hóa"
+	},
+	{
+		"id" : 2032,
+		"name" : "trung cấp nghề số 1 thanh hóa"
+	},
+	{
+		"id" : 2033,
+		"name" : "trung cấp nghề số 13 bộ quốc phòng"
+	},
+	{
+		"id" : 2034,
+		"name" : "trung cấp nghề số 4 bộ quốc phòng"
+	},
+	{
+		"id" : 2035,
+		"name" : "trung cấp nghề thanh thiếu niên đặc biệt khó khăn thanh hóa"
+	},
+	{
+		"id" : 2036,
+		"name" : "trung cấp nghề thương mại du lịch thanh hóa"
+	},
+	{
+		"id" : 2037,
+		"name" : "trung cấp nghề thương mại và du lịch thanh hóa"
+	},
+	{
+		"id" : 2038,
+		"name" : "trung cấp ngân hàng 4 trung ương"
+	},
+	{
+		"id" : 2039,
+		"name" : "trung cấp nông lâm nghiệp thanh hóa"
+	},
+	{
+		"id" : 2040,
+		"name" : "trung cấp nông lâm triệu sơn thanh hóa"
+	},
+	{
+		"id" : 2041,
+		"name" : "trung cấp nông nghiệp ngọc lặc thanh hóa"
+	},
+	{
+		"id" : 2042,
+		"name" : "trung cấp nông nghiệp triệu sơn thanh hóa"
+	},
+	{
+		"id" : 2043,
+		"name" : "trung cấp nông nghiệp và phát triển nông thôn thanh hoá"
+	},
+	{
+		"id" : 2044,
+		"name" : "trung cấp phát thanh truyền hình thanh hóa"
+	},
+	{
+		"id" : 2045,
+		"name" : "trung cấp quân sự thanh hoá"
+	},
+	{
+		"id" : 2046,
+		"name" : "trung cấp quân y hà tây"
+	},
+	{
+		"id" : 2047,
+		"name" : "trung cấp quản lý hành chính"
+	},
+	{
+		"id" : 2048,
+		"name" : "trung cấp quản lý ruộng đất bỉm sơn thanh hóa"
+	},
+	{
+		"id" : 2049,
+		"name" : "trung cấp sư phạm thanh hoá"
+	},
+	{
+		"id" : 2050,
+		"name" : "trung cấp thương mại du lịch thanh hóa"
+	},
+	{
+		"id" : 2051,
+		"name" : "trung cấp thương mại trung ương 5"
+	},
+	{
+		"id" : 2052,
+		"name" : "trung cấp thủy lợi thanh hóa"
+	},
+	{
+		"id" : 2053,
+		"name" : "trung cấp thủy sản sầm sơn thanh hóa"
+	},
+	{
+		"id" : 2054,
+		"name" : "trung cấp thủy sản thanh hóa"
+	},
+	{
+		"id" : 2055,
+		"name" : "trung cấp tin học lắp ráp và sửa chữa máy tính thanh hóa"
+	},
+	{
+		"id" : 2056,
+		"name" : "trung cấp tin học thanh hóa"
+	},
+	{
+		"id" : 2057,
+		"name" : "trung cấp tài chính thanh hóa"
+	},
+	{
+		"id" : 2058,
+		"name" : "trung cấp tài chính thống kê thanh hóa"
+	},
+	{
+		"id" : 2059,
+		"name" : "trung cấp tài chính quản lý 251"
+	},
+	{
+		"id" : 2060,
+		"name" : "trung cấp tài nguyên và môi trường"
+	},
+	{
+		"id" : 2061,
+		"name" : "trung cấp xây dựng bỉm sơn thanh hoá"
+	},
+	{
+		"id" : 2062,
+		"name" : "trung cấp xây dựng thanh hoá"
+	},
+	{
+		"id" : 2063,
+		"name" : "trung cấp xây dựng thanh hóa vinaconex"
+	},
+	{
+		"id" : 2064,
+		"name" : "trung cấp xây dựng thanh hóa"
+	},
+	{
+		"id" : 2065,
+		"name" : "trung cấp xây dựng vinatex"
+	},
+	{
+		"id" : 2066,
+		"name" : "trung cấp y dược văn hiến"
+	},
+	{
+		"id" : 2067,
+		"name" : "trung cấp y dược hợp lực thanh hóa"
+	},
+	{
+		"id" : 2068,
+		"name" : "trung cấp y dược thanh hoá"
+	},
+	{
+		"id" : 2069,
+		"name" : "trung cấp y dược tuệ tĩnh việt nam"
+	},
+	{
+		"id" : 2070,
+		"name" : "trung cấp y dược tại hợp lực thanh hóa"
+	},
+	{
+		"id" : 2071,
+		"name" : "trung cấp y dược văn hiến thanh hóa"
+	},
+	{
+		"id" : 2072,
+		"name" : "trung cấp y học cổ truyền bảo long"
+	},
+	{
+		"id" : 2073,
+		"name" : "trung cấp y học dân tộc cổ truyền"
+	},
+	{
+		"id" : 2074,
+		"name" : "trung cấp y thanh hoá"
+	},
+	{
+		"id" : 2075,
+		"name" : "trung cấp y tế quang trung"
+	},
+	{
+		"id" : 2076,
+		"name" : "trung cấp y tế thanh hóa"
+	},
+	{
+		"id" : 2077,
+		"name" : "trung cấp y văn hiến thanh hóa"
+	},
+	{
+		"id" : 2078,
+		"name" : "trung cấp y đại việt"
+	},
+	{
+		"id" : 2079,
+		"name" : "trung cấp chính trị công thương"
+	},
+	{
+		"id" : 2080,
+		"name" : "trung cấp chính trị thái bình"
+	},
+	{
+		"id" : 2081,
+		"name" : "trung cấp chính trị thái bình"
+	},
+	{
+		"id" : 2082,
+		"name" : "trung cấp công nghiệp tàu thủy thái bình"
+	},
+	{
+		"id" : 2083,
+		"name" : "trung cấp công nhân kỹ thuật dầu khí"
+	},
+	{
+		"id" : 2084,
+		"name" : "trung cấp cơ khí tam điệp"
+	},
+	{
+		"id" : 2085,
+		"name" : "trung cấp cơ khí xây dựng thái bình"
+	},
+	{
+		"id" : 2086,
+		"name" : "trung cấp cơ điện sao đỏ"
+	},
+	{
+		"id" : 2087,
+		"name" : "trung cấp dược quân y"
+	},
+	{
+		"id" : 2088,
+		"name" : "trung cấp dược thái bình"
+	},
+	{
+		"id" : 2089,
+		"name" : "trung cấp giao thông vận tải thái bình"
+	},
+	{
+		"id" : 2090,
+		"name" : "trung cấp hành chính văn thư"
+	},
+	{
+		"id" : 2091,
+		"name" : "trung cấp kinh tế kĩ thuật thái bình"
+	},
+	{
+		"id" : 2092,
+		"name" : "trung cấp kinh tế kỹ thuật công nghiệp bắc thăng long"
+	},
+	{
+		"id" : 2093,
+		"name" : "trung cấp kinh tế kỹ thuật đông á"
+	},
+	{
+		"id" : 2094,
+		"name" : "trung cấp kế toán thái bình"
+	},
+	{
+		"id" : 2095,
+		"name" : "trung cấp kỹ thuật miền trung tổng cục kỹ thuật"
+	},
+	{
+		"id" : 2096,
+		"name" : "trung cấp kỹ thuật nha trang"
+	},
+	{
+		"id" : 2097,
+		"name" : "trung cấp kỹ thuật thông tin bộ quốc phòng"
+	},
+	{
+		"id" : 2098,
+		"name" : "trung cấp kỹ thuật điện"
+	},
+	{
+		"id" : 2099,
+		"name" : "trung cấp nghề cơ điện tây bắc"
+	},
+	{
+		"id" : 2100,
+		"name" : "trung cấp nghề giao thông vận tải thái bình"
+	},
+	{
+		"id" : 2101,
+		"name" : "trung cấp nghề kinh tế kỹ thuật công nghiệp thái bình"
+	},
+	{
+		"id" : 2102,
+		"name" : "trung cấp nghề kĩ thuật xây dựng và nghiệp vụ vinaconex"
+	},
+	{
+		"id" : 2103,
+		"name" : "trung cấp nghề kỹ thuật miền trung"
+	},
+	{
+		"id" : 2104,
+		"name" : "trung cấp nghề mỏ hữu nghị vinacomin"
+	},
+	{
+		"id" : 2105,
+		"name" : "trung cấp nghề số 19 bộ quốc phòng"
+	},
+	{
+		"id" : 2106,
+		"name" : "trung cấp nông nghiệp thái bình"
+	},
+	{
+		"id" : 2107,
+		"name" : "trung cấp quân sự thái bình"
+	},
+	{
+		"id" : 2108,
+		"name" : "trung cấp quản lý kỹ thuật nông nghiệp quỳnh côi"
+	},
+	{
+		"id" : 2109,
+		"name" : "trung cấp quản lý và công nghệ"
+	},
+	{
+		"id" : 2110,
+		"name" : "trung cấp quốc tế việt úc"
+	},
+	{
+		"id" : 2111,
+		"name" : "trung cấp sài gòn cơ sở 4"
+	},
+	{
+		"id" : 2112,
+		"name" : "trung cấp sư phạm mầm non thái bình"
+	},
+	{
+		"id" : 2113,
+		"name" : "trung cấp tài chính kế toán 2 yên dũng"
+	},
+	{
+		"id" : 2114,
+		"name" : "trung cấp tài chính thái bình"
+	},
+	{
+		"id" : 2115,
+		"name" : "trung cấp xây dựng thái bình"
+	},
+	{
+		"id" : 2116,
+		"name" : "trung cấp y thái bình"
+	},
+	{
+		"id" : 2117,
+		"name" : "trung cấp y tế thái bình"
+	},
+	{
+		"id" : 2118,
+		"name" : "trung cấp điện tầu thủy thái bình"
+	},
+	{
+		"id" : 2119,
+		"name" : "trung cấp điện điện tử"
+	},
+	{
+		"id" : 2120,
+		"name" : "trung cấp đặc nhiệm trinh sát quân đội nhân dân việt nam"
+	},
+	{
+		"id" : 2121,
+		"name" : "trung cấp bưu chính viễn thông và công nghệ thông tin miền núi"
+	},
+	{
+		"id" : 2122,
+		"name" : "trung cấp bưu điện thái nguyên"
+	},
+	{
+		"id" : 2123,
+		"name" : "trung cấp công nghiệp thái nguyên"
+	},
+	{
+		"id" : 2124,
+		"name" : "trung cấp cơ khí luyện kim thái nguyên"
+	},
+	{
+		"id" : 2125,
+		"name" : "trung cấp cơ khí tổng hợp thái nguyên"
+	},
+	{
+		"id" : 2126,
+		"name" : "trung cấp cơ khí và luyện kim"
+	},
+	{
+		"id" : 2127,
+		"name" : "trung cấp cơ điện nam thái nguyên"
+	},
+	{
+		"id" : 2128,
+		"name" : "trung cấp dân lập công nghệ và kinh tế đối ngoại"
+	},
+	{
+		"id" : 2129,
+		"name" : "trung cấp dược thái nguyên"
+	},
+	{
+		"id" : 2130,
+		"name" : "trung cấp giao thông vận tải miền núi thái nguyên"
+	},
+	{
+		"id" : 2131,
+		"name" : "trung cấp kinh tế kĩ thuật luyện kim thái nguyên"
+	},
+	{
+		"id" : 2132,
+		"name" : "trung cấp kinh tế kĩ thuật thương mại"
+	},
+	{
+		"id" : 2133,
+		"name" : "trung cấp kinh tế tài chính thái nguyên"
+	},
+	{
+		"id" : 2134,
+		"name" : "trung cấp kỹ thuật công nghiệp"
+	},
+	{
+		"id" : 2135,
+		"name" : "trung cấp kỹ thuật nông nghiệp hồ chí minh"
+	},
+	{
+		"id" : 2136,
+		"name" : "trung cấp luyện kim thái nguyên"
+	},
+	{
+		"id" : 2137,
+		"name" : "trung cấp nghề cơ khí xây dựng thái nguyên"
+	},
+	{
+		"id" : 2138,
+		"name" : "trung cấp nghề dân tộc nội trú thái nguyên"
+	},
+	{
+		"id" : 2139,
+		"name" : "trung cấp nghề kinh tế kĩ thuật luyện kim thái nguyên"
+	},
+	{
+		"id" : 2140,
+		"name" : "trung cấp nghề điện thái nguyên"
+	},
+	{
+		"id" : 2141,
+		"name" : "trung cấp nông lâm thái nguyên"
+	},
+	{
+		"id" : 2142,
+		"name" : "trung cấp nông nghiệp thái nguyên"
+	},
+	{
+		"id" : 2143,
+		"name" : "trung cấp quân sự cơ sở thái nguyên"
+	},
+	{
+		"id" : 2144,
+		"name" : "trung cấp sư phạm thái nguyên"
+	},
+	{
+		"id" : 2145,
+		"name" : "trung cấp sửa chữa ô tô thái nguyên"
+	},
+	{
+		"id" : 2146,
+		"name" : "trung cấp thú y thái nguyên"
+	},
+	{
+		"id" : 2147,
+		"name" : "trung cấp thương mại thái nguyên"
+	},
+	{
+		"id" : 2148,
+		"name" : "trung cấp thủy lợi 1 trung ương"
+	},
+	{
+		"id" : 2149,
+		"name" : "trung cấp tài chính kế toán thái nguyên"
+	},
+	{
+		"id" : 2150,
+		"name" : "trung cấp tài chính thái nguyên"
+	},
+	{
+		"id" : 2151,
+		"name" : "trung cấp xây dựng bộ quốc phòng"
+	},
+	{
+		"id" : 2152,
+		"name" : "trung cấp xây dựng thái nguyên"
+	},
+	{
+		"id" : 2153,
+		"name" : "trung cấp xây lắp điện phổ yên thái nguyên"
+	},
+	{
+		"id" : 2154,
+		"name" : "trung cấp xây lắp điện thái nguyên"
+	},
+	{
+		"id" : 2155,
+		"name" : "trung cấp y dược thái nguyên"
+	},
+	{
+		"id" : 2156,
+		"name" : "trung cấp y tế thái nguyên"
+	},
+	{
+		"id" : 2157,
+		"name" : "trung cấp điện thái nguyên"
+	},
+	{
+		"id" : 2158,
+		"name" : "trung cấp chế biến thừa thiên huế"
+	},
+	{
+		"id" : 2159,
+		"name" : "trung cấp du lịch huế"
+	},
+	{
+		"id" : 2160,
+		"name" : "trung cấp giao thông vận tải thừa thiên huế"
+	},
+	{
+		"id" : 2161,
+		"name" : "trung cấp thiết kế thời trang"
+	},
+	{
+		"id" : 2162,
+		"name" : "trung cấp kinh tế bộ điện và than hải hưng"
+	},
+	{
+		"id" : 2163,
+		"name" : "trung cấp kinh tế du lịch duy tân huế"
+	},
+	{
+		"id" : 2164,
+		"name" : "trung cấp kế toán thừa thiên huế"
+	},
+	{
+		"id" : 2165,
+		"name" : "trung cấp kỹ thuật viên tin học"
+	},
+	{
+		"id" : 2166,
+		"name" : "trung cấp kỹ thuật và nghiệp vụ thăng long"
+	},
+	{
+		"id" : 2167,
+		"name" : "trung cấp nghiệp vụ du lịch huế"
+	},
+	{
+		"id" : 2168,
+		"name" : "trung cấp nông nghiệp tây nguyên"
+	},
+	{
+		"id" : 2169,
+		"name" : "trung cấp quân sự huế"
+	},
+	{
+		"id" : 2170,
+		"name" : "trung cấp thể dục thể thao huế"
+	},
+	{
+		"id" : 2171,
+		"name" : "trung cấp tài chính kế toán 2"
+	},
+	{
+		"id" : 2172,
+		"name" : "trung cấp văn hóa nghệ thuật thừa thiên huế"
+	},
+	{
+		"id" : 2173,
+		"name" : "trung cấp xây dựng dân dụng và công nghiệp"
+	},
+	{
+		"id" : 2174,
+		"name" : "trung cấp y bệnh viện 268"
+	},
+	{
+		"id" : 2175,
+		"name" : "trung cấp y dược huế"
+	},
+	{
+		"id" : 2176,
+		"name" : "trung cấp y tế thừa thiên huế"
+	},
+	{
+		"id" : 2177,
+		"name" : "trung cấp bưu chính viễn thông tiền giang"
+	},
+	{
+		"id" : 2178,
+		"name" : "trung cấp công nghệ và kỹ thuật cửu long"
+	},
+	{
+		"id" : 2179,
+		"name" : "trung cấp dược tiền giang"
+	},
+	{
+		"id" : 2180,
+		"name" : "trung cấp giao thông vận tải tiền giang"
+	},
+	{
+		"id" : 2181,
+		"name" : "trung cấp huấn luyện chó nghiệp vụ bộ đội biên phòng"
+	},
+	{
+		"id" : 2182,
+		"name" : "trung cấp kinh tế công nghệ việt khoa"
+	},
+	{
+		"id" : 2183,
+		"name" : "trung cấp kinh tế kĩ thuật tiền giang"
+	},
+	{
+		"id" : 2184,
+		"name" : "trung cấp kinh tế kỹ thuật và du lịch phương nam"
+	},
+	{
+		"id" : 2185,
+		"name" : "trung cấp kinh tế nghiệp vụ nam sài gòn"
+	},
+	{
+		"id" : 2186,
+		"name" : "trung cấp kinh tế tiền giang"
+	},
+	{
+		"id" : 2187,
+		"name" : "trung cấp kỹ thuật công nghệ cửu long"
+	},
+	{
+		"id" : 2188,
+		"name" : "trung cấp kỹ thuật nghiệp vụ cái bè"
+	},
+	{
+		"id" : 2189,
+		"name" : "trung cấp kỹ thuật và công nghệ cửu long"
+	},
+	{
+		"id" : 2190,
+		"name" : "trung cấp nghề giao thông vận tải tiền giang"
+	},
+	{
+		"id" : 2191,
+		"name" : "trung cấp nghề giao thông vận tải vũng tàu"
+	},
+	{
+		"id" : 2192,
+		"name" : "trung cấp nghề kinh tế kỹ thuật công đoàn tiền giang"
+	},
+	{
+		"id" : 2193,
+		"name" : "trung cấp nghề kinh tế kỹ thuật tiền giang"
+	},
+	{
+		"id" : 2194,
+		"name" : "trung cấp nông nghiệp long định tiền giang"
+	},
+	{
+		"id" : 2195,
+		"name" : "trung cấp quân y bệnh viện 120"
+	},
+	{
+		"id" : 2196,
+		"name" : "trung cấp văn hóa nghệ thuật tiền giang"
+	},
+	{
+		"id" : 2197,
+		"name" : "trung cấp y tế tiền giang"
+	},
+	{
+		"id" : 2198,
+		"name" : "trung cấp bách khoa sài gòn official"
+	},
+	{
+		"id" : 2199,
+		"name" : "trung cấp văn hóa nghệ thuật trà vinh"
+	},
+	{
+		"id" : 2200,
+		"name" : "trung cấp công nghệ tuyên quang"
+	},
+	{
+		"id" : 2201,
+		"name" : "trung cấp cơ khí điện ảnh"
+	},
+	{
+		"id" : 2202,
+		"name" : "trung cấp giao thông vận tải miền núi"
+	},
+	{
+		"id" : 2203,
+		"name" : "trung cấp kinh tế kĩ thuật tuyên quang"
+	},
+	{
+		"id" : 2204,
+		"name" : "trung cấp kinh tế tuyên quang"
+	},
+	{
+		"id" : 2205,
+		"name" : "trung cấp kĩ thuật miền trung bộ quốc phòng"
+	},
+	{
+		"id" : 2206,
+		"name" : "trung cấp kĩ thuật nghiệp vụ xây dựng sông hồng"
+	},
+	{
+		"id" : 2207,
+		"name" : "trung cấp kế toán hành chính sự nghiệp tuyên quang"
+	},
+	{
+		"id" : 2208,
+		"name" : "trung cấp kỹ thuật phòng không không quân phân hiệu 1"
+	},
+	{
+		"id" : 2209,
+		"name" : "trung cấp kỹ thuật tuyên quang"
+	},
+	{
+		"id" : 2210,
+		"name" : "trung cấp luật tuyên quang"
+	},
+	{
+		"id" : 2211,
+		"name" : "trung cấp nghề công nghiệp quốc phòng"
+	},
+	{
+		"id" : 2212,
+		"name" : "trung cấp nghề học viện an ninh"
+	},
+	{
+		"id" : 2213,
+		"name" : "trung cấp nghề nấu ăn và nghiệp vụ nhà hàng khách sạn"
+	},
+	{
+		"id" : 2214,
+		"name" : "trung cấp nông lâm tuyên quang"
+	},
+	{
+		"id" : 2215,
+		"name" : "trung cấp quân sự tuyên quang"
+	},
+	{
+		"id" : 2216,
+		"name" : "trung cấp sư phạm tuyên quang"
+	},
+	{
+		"id" : 2217,
+		"name" : "trung cấp thú y tuyên quang"
+	},
+	{
+		"id" : 2218,
+		"name" : "trung cấp văn hóa nghệ thuật hà bắc"
+	},
+	{
+		"id" : 2219,
+		"name" : "trung cấp y khoa pasteur"
+	},
+	{
+		"id" : 2220,
+		"name" : "trung cấp y tế tuyên quang"
+	},
+	{
+		"id" : 2221,
+		"name" : "trung cấp chính trị tây ninh"
+	},
+	{
+		"id" : 2222,
+		"name" : "trung cấp dược tây ninh"
+	},
+	{
+		"id" : 2223,
+		"name" : "trung cấp kinh tế kĩ thuật tân bách khoa tây ninh"
+	},
+	{
+		"id" : 2224,
+		"name" : "trung cấp kinh tế kỹ thuật phương nam"
+	},
+	{
+		"id" : 2225,
+		"name" : "trung cấp kinh tế kỹ thuật tây ninh"
+	},
+	{
+		"id" : 2226,
+		"name" : "trung cấp kỹ thuật cao su tây ninh"
+	},
+	{
+		"id" : 2227,
+		"name" : "trung cấp kỹ thuật nghiệp vụ việt xô tây ninh"
+	},
+	{
+		"id" : 2228,
+		"name" : "trung cấp lý luận chính trị hành chính tây ninh"
+	},
+	{
+		"id" : 2229,
+		"name" : "trung cấp nghề công nghiệp và xây dựng fico"
+	},
+	{
+		"id" : 2230,
+		"name" : "trung cấp nghề công nghệ bách khoa"
+	},
+	{
+		"id" : 2231,
+		"name" : "trung cấp nghề kỹ thuật công nghệ tây ninh"
+	},
+	{
+		"id" : 2232,
+		"name" : "trung cấp nghề thú y tây ninh"
+	},
+	{
+		"id" : 2233,
+		"name" : "trung cấp quân sự tây ninh"
+	},
+	{
+		"id" : 2234,
+		"name" : "trung cấp sư phạm tây ninh"
+	},
+	{
+		"id" : 2235,
+		"name" : "trung cấp tài chính kế toán tin học"
+	},
+	{
+		"id" : 2236,
+		"name" : "trung cấp tân bách khoa tây ninh"
+	},
+	{
+		"id" : 2237,
+		"name" : "trung cấp tư thục kinh tế kỹ thuật phương nam"
+	},
+	{
+		"id" : 2238,
+		"name" : "trung cấp tư thục điều dưỡng và kỹ thuật y tế hồng đức"
+	},
+	{
+		"id" : 2239,
+		"name" : "trung cấp y dược tây ninh"
+	},
+	{
+		"id" : 2240,
+		"name" : "trung cấp y tế tây ninh"
+	},
+	{
+		"id" : 2241,
+		"name" : "trung cấp điện tây ninh"
+	},
+	{
+		"id" : 2242,
+		"name" : "trung cấp du lịch tôn đức thắng"
+	},
+	{
+		"id" : 2243,
+		"name" : "trung cấp dược vĩnh long"
+	},
+	{
+		"id" : 2244,
+		"name" : "trung cấp giáo dục mầm non"
+	},
+	{
+		"id" : 2245,
+		"name" : "trung cấp kinh tế tài chính kế toán vĩnh long"
+	},
+	{
+		"id" : 2246,
+		"name" : "trung cấp kỹ thuật lý tự trọng"
+	},
+	{
+		"id" : 2247,
+		"name" : "trung cấp kỹ thuật lương thực thực phẩm vĩnh long"
+	},
+	{
+		"id" : 2248,
+		"name" : "trung cấp nghề số 9 quân khu 9 vĩnh long"
+	},
+	{
+		"id" : 2249,
+		"name" : "trung cấp quân y 2 vĩnh long"
+	},
+	{
+		"id" : 2250,
+		"name" : "trung cấp thủy sản cửu long"
+	},
+	{
+		"id" : 2251,
+		"name" : "trung cấp tài chính kế toán cửu long"
+	},
+	{
+		"id" : 2252,
+		"name" : "trung cấp tài chính kế toán vĩnh long"
+	},
+	{
+		"id" : 2253,
+		"name" : "trung cấp y tế vĩnh long"
+	},
+	{
+		"id" : 2254,
+		"name" : "trung cấp công nghiệp vĩnh phúc"
+	},
+	{
+		"id" : 2255,
+		"name" : "trung cấp công nghệ và kỹ thuật vĩnh phúc"
+	},
+	{
+		"id" : 2256,
+		"name" : "trung cấp công nghệ vĩnh phúc"
+	},
+	{
+		"id" : 2257,
+		"name" : "trung cấp kinh tế kỹ thuật vĩnh phúc"
+	},
+	{
+		"id" : 2258,
+		"name" : "trung cấp kĩ thuật xây dựng và nghiệp vụ vinaconex"
+	},
+	{
+		"id" : 2259,
+		"name" : "trung cấp kỹ thuật công nghệ vĩnh phúc"
+	},
+	{
+		"id" : 2260,
+		"name" : "trung cấp kỹ thuật dân lập vĩnh phúc"
+	},
+	{
+		"id" : 2261,
+		"name" : "trung cấp nghiệp vụ 1 phúc yên"
+	},
+	{
+		"id" : 2262,
+		"name" : "trung cấp nghề biên phòng tại vĩnh phúc"
+	},
+	{
+		"id" : 2263,
+		"name" : "trung cấp nghề việt đức vĩnh phúc"
+	},
+	{
+		"id" : 2264,
+		"name" : "trung cấp nghệ thuật vĩnh phúc"
+	},
+	{
+		"id" : 2265,
+		"name" : "trung cấp quân sự vĩnh phúc"
+	},
+	{
+		"id" : 2266,
+		"name" : "trung cấp quân y vĩnh phúc"
+	},
+	{
+		"id" : 2267,
+		"name" : "trung cấp thủy lợi 1"
+	},
+	{
+		"id" : 2268,
+		"name" : "trung cấp văn hoá nghệ thuật vĩnh phúc"
+	},
+	{
+		"id" : 2269,
+		"name" : "trung cấp xây dựng số 4"
+	},
+	{
+		"id" : 2270,
+		"name" : "trung cấp xây dựng việt nhật"
+	},
+	{
+		"id" : 2271,
+		"name" : "trung cấp y dược học cổ truyền tuệ tĩnh"
+	},
+	{
+		"id" : 2272,
+		"name" : "trung cấp y dược pasteur"
+	},
+	{
+		"id" : 2273,
+		"name" : "trung cấp y dược vĩnh phúc"
+	},
+	{
+		"id" : 2274,
+		"name" : "trung cấp y tế vĩnh phúc"
+	},
+	{
+		"id" : 2275,
+		"name" : "trung cấp bách khoa yên bái"
+	},
+	{
+		"id" : 2276,
+		"name" : "trung cấp chính trị yên bái"
+	},
+	{
+		"id" : 2277,
+		"name" : "trung cấp dược yên bái"
+	},
+	{
+		"id" : 2278,
+		"name" : "trung cấp học viện cảnh sát nhân dân việt nam"
+	},
+	{
+		"id" : 2279,
+		"name" : "trung cấp học viện y tế yên bái"
+	},
+	{
+		"id" : 2280,
+		"name" : "trung cấp kinh tế kỹ thuật yên bái"
+	},
+	{
+		"id" : 2281,
+		"name" : "trung cấp kinh tế kỹ thuật yên bái"
+	},
+	{
+		"id" : 2282,
+		"name" : "trung cấp nghề số 2 bộ quốc phòng"
+	},
+	{
+		"id" : 2283,
+		"name" : "trung cấp nông lâm nghiệp yên bái"
+	},
+	{
+		"id" : 2284,
+		"name" : "trung cấp nông nghiệp yên bái"
+	},
+	{
+		"id" : 2285,
+		"name" : "trung cấp sư phạm yên bái"
+	},
+	{
+		"id" : 2286,
+		"name" : "trung cấp thể dục thể thao yên bái"
+	},
+	{
+		"id" : 2287,
+		"name" : "trung cấp tài chính kế toán hà bắc"
+	},
+	{
+		"id" : 2288,
+		"name" : "trung cấp văn hóa nghệ thuật yên bái"
+	},
+	{
+		"id" : 2289,
+		"name" : "trung cấp xây dựng yên bái"
+	},
+	{
+		"id" : 2290,
+		"name" : "trung cấp y dược yên bái"
+	},
+	{
+		"id" : 2291,
+		"name" : "trung cấp y tế yên bái"
+	},
+	{
+		"id" : 2292,
+		"name" : "trung cấp chính trị điện biên"
+	},
+	{
+		"id" : 2293,
+		"name" : "trung cấp du lịch điện biên"
+	},
+	{
+		"id" : 2294,
+		"name" : "trung cấp kinh tế kỹ thuật tổng hợp điện biên"
+	},
+	{
+		"id" : 2295,
+		"name" : "trung cấp kinh tế kỹ thuật điện biên"
+	},
+	{
+		"id" : 2296,
+		"name" : "trung cấp quân sự điện biên"
+	},
+	{
+		"id" : 2297,
+		"name" : "trung cấp y dược điện biên"
+	},
+	{
+		"id" : 2298,
+		"name" : "trung cấp y tế điện biên"
+	},
+	{
+		"id" : 2299,
+		"name" : "trung cấp bưu chính viễn thông và công nghệ thông tin 2 đà nẵng"
+	},
+	{
+		"id" : 2300,
+		"name" : "trung cấp bưu điện đà nẵng"
+	},
+	{
+		"id" : 2301,
+		"name" : "trung cấp công kỹ nghệ việt tiến đà nẵng"
+	},
+	{
+		"id" : 2302,
+		"name" : "trung cấp công nhân bưu điện đà nẵng"
+	},
+	{
+		"id" : 2303,
+		"name" : "trung cấp cơ khí đóng tàu đà nẵng"
+	},
+	{
+		"id" : 2304,
+		"name" : "trung cấp du lịch thăng long"
+	},
+	{
+		"id" : 2305,
+		"name" : "trung cấp du lịch đà nẵng"
+	},
+	{
+		"id" : 2306,
+		"name" : "trung cấp dược quang trung"
+	},
+	{
+		"id" : 2307,
+		"name" : "trung cấp dược đà nẵng"
+	},
+	{
+		"id" : 2308,
+		"name" : "trung cấp giao thông vận tải khu vực 2 đà nẵng"
+	},
+	{
+		"id" : 2309,
+		"name" : "trung cấp giao thông vận tải đà nẵng"
+	},
+	{
+		"id" : 2310,
+		"name" : "trung cấp hướng dẫn viên du lịch đà nẵng"
+	},
+	{
+		"id" : 2311,
+		"name" : "trung cấp kinh tế kĩ thuật đức minh đà nẵng"
+	},
+	{
+		"id" : 2312,
+		"name" : "trung cấp kinh tế kế hoạch đà nẵng"
+	},
+	{
+		"id" : 2313,
+		"name" : "trung cấp kinh tế kỹ thuật cao thắng đà nẵng"
+	},
+	{
+		"id" : 2314,
+		"name" : "trung cấp kinh tế kỹ thuật phương đông đà nẵng"
+	},
+	{
+		"id" : 2315,
+		"name" : "trung cấp kinh tế kỹ thuật thương mại đà nẵng"
+	},
+	{
+		"id" : 2316,
+		"name" : "trung cấp kinh tế kỹ thuật đức minh đà nẵng"
+	},
+	{
+		"id" : 2317,
+		"name" : "trung cấp kinh tế nghiệp vụ thăng long"
+	},
+	{
+		"id" : 2318,
+		"name" : "trung cấp kĩ thuật công nghệ đà nẵng"
+	},
+	{
+		"id" : 2319,
+		"name" : "trung cấp kế hoạch kinh doanh đà nẵng"
+	},
+	{
+		"id" : 2320,
+		"name" : "trung cấp kế toán thương mại đà nẵng"
+	},
+	{
+		"id" : 2321,
+		"name" : "trung cấp kế toán đà nẵng"
+	},
+	{
+		"id" : 2322,
+		"name" : "trung cấp kế toán đức minh đà nẵng"
+	},
+	{
+		"id" : 2323,
+		"name" : "trung cấp kỹ thuật việt tiến đà nẵng"
+	},
+	{
+		"id" : 2324,
+		"name" : "trung cấp kỹ thuật công nghệ đà nẵng"
+	},
+	{
+		"id" : 2325,
+		"name" : "trung cấp kỹ thuật nghiệp vụ du lịch thăng long"
+	},
+	{
+		"id" : 2326,
+		"name" : "trung cấp kỹ thuật phòng không không quân đà nẵng"
+	},
+	{
+		"id" : 2327,
+		"name" : "trung cấp kỹ thuật thăng long đà nẵng"
+	},
+	{
+		"id" : 2328,
+		"name" : "trung cấp kỹ thuật và kinh tế đức minh"
+	},
+	{
+		"id" : 2329,
+		"name" : "trung cấp kỹ thuật và nghiệp vụ du lịch thăng long đà nẵng"
+	},
+	{
+		"id" : 2330,
+		"name" : "trung cấp kỹ thuật y tế đà nẵng"
+	},
+	{
+		"id" : 2331,
+		"name" : "trung cấp lương thực 2 đà nẵng"
+	},
+	{
+		"id" : 2332,
+		"name" : "trung cấp lương thực thực phẩm đà nẵng"
+	},
+	{
+		"id" : 2333,
+		"name" : "trung cấp nghiệp vụ bưu điện"
+	},
+	{
+		"id" : 2334,
+		"name" : "trung cấp nghề công nghiệp tàu thủy đà nẵng"
+	},
+	{
+		"id" : 2335,
+		"name" : "trung cấp nghề giao thông công chính đà nẵng"
+	},
+	{
+		"id" : 2336,
+		"name" : "trung cấp nghề giao thông vận tải đà nẵng"
+	},
+	{
+		"id" : 2337,
+		"name" : "trung cấp nghề kỹ thuật công nghệ đà nẵng"
+	},
+	{
+		"id" : 2338,
+		"name" : "trung cấp nghề số 5 đà nẵng"
+	},
+	{
+		"id" : 2339,
+		"name" : "trung cấp nghề việt úc đà nẵng"
+	},
+	{
+		"id" : 2340,
+		"name" : "trung cấp nghệ thuật đà nẵng"
+	},
+	{
+		"id" : 2341,
+		"name" : "trung cấp ngoại thương 3 đà nẵng"
+	},
+	{
+		"id" : 2342,
+		"name" : "trung cấp nông nghiệp thực phẩm đà nẵng"
+	},
+	{
+		"id" : 2343,
+		"name" : "trung cấp phương đông đà nẵng"
+	},
+	{
+		"id" : 2344,
+		"name" : "trung cấp quân y quân khu 5 đà nẵng"
+	},
+	{
+		"id" : 2345,
+		"name" : "trung cấp sư phạm mầm non đà nẵng"
+	},
+	{
+		"id" : 2346,
+		"name" : "trung cấp sư phạm đà nẵng"
+	},
+	{
+		"id" : 2347,
+		"name" : "trung cấp thăng long đà nẵng"
+	},
+	{
+		"id" : 2348,
+		"name" : "trung cấp thương mại trung ương 3 đà nẵng"
+	},
+	{
+		"id" : 2349,
+		"name" : "trung cấp thương nghiệp trung ương 2 đà nẵng"
+	},
+	{
+		"id" : 2350,
+		"name" : "trung cấp thống kê 3 đà nẵng"
+	},
+	{
+		"id" : 2351,
+		"name" : "trung cấp thống kê kế toán đà nẵng"
+	},
+	{
+		"id" : 2352,
+		"name" : "trung cấp văn hóa nghệ thuật đà nẵng"
+	},
+	{
+		"id" : 2353,
+		"name" : "trung cấp xây dựng đà nẵng"
+	},
+	{
+		"id" : 2354,
+		"name" : "trung cấp y dược đà nẵng"
+	},
+	{
+		"id" : 2355,
+		"name" : "trung cấp y tế đà nẵng"
+	},
+	{
+		"id" : 2356,
+		"name" : "trung cấp đông du đà nẵng"
+	},
+	{
+		"id" : 2357,
+		"name" : "trung cấp đường sắt đà nẵng"
+	},
+	{
+		"id" : 2358,
+		"name" : "trung cấp bách nghệ thanh hóa phân hiệu tại đắk lắk"
+	},
+	{
+		"id" : 2359,
+		"name" : "trung cấp du lịch đắk lắk"
+	},
+	{
+		"id" : 2360,
+		"name" : "trung cấp dược nha trang"
+	},
+	{
+		"id" : 2361,
+		"name" : "trung cấp kinh tế công nghệ tây nguyên"
+	},
+	{
+		"id" : 2362,
+		"name" : "trung cấp kinh tế kĩ thuật đắk lắk"
+	},
+	{
+		"id" : 2363,
+		"name" : "trung cấp kinh tế kỹ thuật tây nguyên"
+	},
+	{
+		"id" : 2364,
+		"name" : "trung cấp sư phạm mầm non nguyễn tất thành"
+	},
+	{
+		"id" : 2365,
+		"name" : "trung cấp sư phạm mầm non đắk lắk"
+	},
+	{
+		"id" : 2366,
+		"name" : "trung cấp thái nguyên cơ sở đắk lắk"
+	},
+	{
+		"id" : 2367,
+		"name" : "trung cấp văn hóa nghệ thuật Đắk Lắk"
+	},
+	{
+		"id" : 2368,
+		"name" : "trung cấp y dược hà nam phân hiệu đắk lắk"
+	},
+	{
+		"id" : 2369,
+		"name" : "trung cấp y học dân tộc việt nam"
+	},
+	{
+		"id" : 2370,
+		"name" : "trung cấp y tế đắk lắk"
+	},
+	{
+		"id" : 2371,
+		"name" : "trung cấp điện"
+	},
+	{
+		"id" : 2372,
+		"name" : "trung cấp an ninh đồng nai"
+	},
+	{
+		"id" : 2373,
+		"name" : "trung cấp bách khoa đồng nai"
+	},
+	{
+		"id" : 2374,
+		"name" : "trung cấp bưu chính viễn thông đồng nai"
+	},
+	{
+		"id" : 2375,
+		"name" : "trung cấp chuyên nghiệp bưu chính viễn thông đồng nai"
+	},
+	{
+		"id" : 2376,
+		"name" : "trung cấp chuyên nghiệp công nghệ tin học viễn thông đồng nai"
+	},
+	{
+		"id" : 2377,
+		"name" : "trung cấp chuyên nghiệp quân sự cơ sở"
+	},
+	{
+		"id" : 2378,
+		"name" : "trung cấp chuyên nghiệp tin học viễn thông đồng nai"
+	},
+	{
+		"id" : 2379,
+		"name" : "trung cấp chính trị đồng nai"
+	},
+	{
+		"id" : 2380,
+		"name" : "trung cấp công nghệ thông tin biên hòa"
+	},
+	{
+		"id" : 2381,
+		"name" : "trung cấp công nghệ tin học viễn thông"
+	},
+	{
+		"id" : 2382,
+		"name" : "trung cấp công nghệ tin học viễn thông đồng nai"
+	},
+	{
+		"id" : 2383,
+		"name" : "trung cấp cơ khí đồng nai"
+	},
+	{
+		"id" : 2384,
+		"name" : "trung cấp dược đồng nai"
+	},
+	{
+		"id" : 2385,
+		"name" : "trung cấp giao thông vận tải đồng nai"
+	},
+	{
+		"id" : 2386,
+		"name" : "trung cấp kinh tế biên hòa đồng nai"
+	},
+	{
+		"id" : 2387,
+		"name" : "trung cấp kinh tế kỹ thuật đồng nai"
+	},
+	{
+		"id" : 2388,
+		"name" : "trung cấp kĩ thuật công nghiệp đồng nai"
+	},
+	{
+		"id" : 2389,
+		"name" : "trung cấp kĩ thuật và nghiệp vụ dương thuy sài gòn"
+	},
+	{
+		"id" : 2390,
+		"name" : "trung cấp kế toán thống kê t 2"
+	},
+	{
+		"id" : 2391,
+		"name" : "trung cấp kế toán đồng nai"
+	},
+	{
+		"id" : 2392,
+		"name" : "trung cấp kỹ thuật công nghiệp nhơn trạch"
+	},
+	{
+		"id" : 2393,
+		"name" : "trung cấp kỹ thuật công nghiệp đồng nai"
+	},
+	{
+		"id" : 2394,
+		"name" : "trung cấp kỹ thuật nghề đồng nai"
+	},
+	{
+		"id" : 2395,
+		"name" : "trung cấp kỹ thuật đồng nai"
+	},
+	{
+		"id" : 2396,
+		"name" : "trung cấp luật đồng nai"
+	},
+	{
+		"id" : 2397,
+		"name" : "trung cấp lâm nghiệp biên hòa đồng nai"
+	},
+	{
+		"id" : 2398,
+		"name" : "trung cấp lâm nghiệp đồng nai"
+	},
+	{
+		"id" : 2399,
+		"name" : "trung cấp lý luận chính trị đồng nai"
+	},
+	{
+		"id" : 2400,
+		"name" : "trung cấp mỹ thuật đồng nai"
+	},
+	{
+		"id" : 2401,
+		"name" : "trung cấp nghề cơ giới 3 đồng nai"
+	},
+	{
+		"id" : 2402,
+		"name" : "trung cấp nghề giao thông vận tải đồng nai"
+	},
+	{
+		"id" : 2403,
+		"name" : "trung cấp nghề kĩ thuật kinh tế kỹ thuật số 2"
+	},
+	{
+		"id" : 2404,
+		"name" : "trung cấp nghề kỹ thuật công nghệ hùng vương"
+	},
+	{
+		"id" : 2405,
+		"name" : "trung cấp nghề số 8 đồng nai"
+	},
+	{
+		"id" : 2406,
+		"name" : "trung cấp nông nghiệp đồng nai"
+	},
+	{
+		"id" : 2407,
+		"name" : "trung cấp sư phạm mầm non đồng nai"
+	},
+	{
+		"id" : 2408,
+		"name" : "trung cấp sư phạm đồng nai"
+	},
+	{
+		"id" : 2409,
+		"name" : "trung cấp thống kê biên hòa đồng nai"
+	},
+	{
+		"id" : 2410,
+		"name" : "trung cấp thống kê đồng nai"
+	},
+	{
+		"id" : 2411,
+		"name" : "trung cấp tin học viễn thông đồng nai"
+	},
+	{
+		"id" : 2412,
+		"name" : "trung cấp tài chính kế toán đồng nai"
+	},
+	{
+		"id" : 2413,
+		"name" : "trung cấp tài chính đồng nai"
+	},
+	{
+		"id" : 2414,
+		"name" : "trung cấp văn hoá nghệ thuật đồng nai"
+	},
+	{
+		"id" : 2415,
+		"name" : "trung cấp văn hóa nghệ thuật đồng nai"
+	},
+	{
+		"id" : 2416,
+		"name" : "trung cấp y tế đồng nai"
+	},
+	{
+		"id" : 2417,
+		"name" : "trung cấp điện đồng nai"
+	},
+	{
+		"id" : 2418,
+		"name" : "trung cấp giao thông vận tải đồng tháp"
+	},
+	{
+		"id" : 2419,
+		"name" : "trung cấp kĩ thuật công nghệ cửu long"
+	},
+	{
+		"id" : 2420,
+		"name" : "trung cấp kĩ thuật và nghiệp vụ nam sài gòn"
+	},
+	{
+		"id" : 2421,
+		"name" : "trung cấp kỹ thuật đồng tháp mười"
+	},
+	{
+		"id" : 2422,
+		"name" : "trung cấp nghề giao thông vận tải đồng tháp"
+	},
+	{
+		"id" : 2423,
+		"name" : "trung cấp quân sự đồng tháp"
+	},
+	{
+		"id" : 2424,
+		"name" : "trung cấp y tế cửu long"
+	},
+	{
+		"id" : 2425,
+		"name" : "trung cấp y tế đồng tháp"
+	}
+]
