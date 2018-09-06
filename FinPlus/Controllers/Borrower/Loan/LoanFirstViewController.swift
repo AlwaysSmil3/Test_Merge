@@ -34,6 +34,8 @@ class LoanFirstViewController: BaseViewController {
     @IBOutlet var lblTempTotalAmount: UILabel!
     @IBOutlet var lblLeftTempTotalAmount: UILabel!
     
+    @IBOutlet var lblPayTermTotal: UILabel!
+    @IBOutlet var lblLeftPayTermTotal: UILabel!
     var loanCategory: LoanCategories? {
         didSet {
             self.setupInit()
@@ -157,10 +159,14 @@ class LoanFirstViewController: BaseViewController {
         
         if let value_ = value {
             self.termSlider?.value = value_
+            self.updatePayTerm(term: value_)
         }
+        
+        self.lblLeftTempTotalAmount?.text = "Số kỳ thanh toán"
         
         
         if loan.id == Loan_Student_Category_ID {
+            
             self.lblTermSlider?.text = "\(Int(loan.termMin!))" + " Ngày"
             if let value_ = value {
                 self.lblTermSlider?.text = "\(Int(value_))" + " Ngày"
@@ -171,6 +177,8 @@ class LoanFirstViewController: BaseViewController {
             self.lblMaxTermSlider?.text = "\(Int(loan.termMax!)) NGÀY"
             
             self.lblLeftTempTotalAmount?.text = "Thanh toán dự kiến"
+            
+            
         } else {
             self.lblTermSlider?.text = "\(Int(loan.termMin! / 30))" + " Tháng"
             if let value_ = value {
@@ -262,14 +270,33 @@ class LoanFirstViewController: BaseViewController {
         self.updateTotalAmountMounth()
     }
     
+    func updatePayTerm(term: Float) {
+        var payTerm = Int(term / 30)
+        if payTerm < 1 {
+            payTerm = 1
+        }
+        self.lblPayTermTotal.text = "\(payTerm)"
+    }
+    
     @IBAction func termSliderValueChanged(_ sender: Any) {
         guard let loan = self.loanCategory else { return }
         //Cho set step
+        let termValue = self.termSlider.value
         if loan.id == Loan_Student_Category_ID {
+            if termValue > 30 {
+                self.termSlider.increment = 30
+            } else {
+                self.termSlider.increment = 10
+            }
+//            if termValue == 70 || termValue == 80 {
+//                self.termSlider.value = 90
+//            }
             self.lblTermSlider.text = "\(Int(self.termSlider.value / 10) * 10)" + " Ngày"
         } else {
+            self.termSlider.increment = 30
             self.lblTermSlider.text = "\(Int(self.termSlider.value / 30))" + " Tháng"
         }
+        self.updatePayTerm(term: self.termSlider.value)
         self.updateTotalAmountMounth()
     }
     
