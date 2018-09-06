@@ -136,7 +136,14 @@ class DataManager {
     var isNoShowAlertTimeout: Bool?
     
     //CurrentLocation
-    var currentLocation: CLLocationCoordinate2D?
+    var currentLocation: CLLocationCoordinate2D? {
+        didSet {
+            guard let location = self.currentLocation else { return }
+            
+            DataManager.shared.loanInfo.longitude = location.longitude
+            DataManager.shared.loanInfo.latitude = location.latitude
+        }
+    }
     
     /// Get Data from JSON
     func getDataLoanFromJSON() {

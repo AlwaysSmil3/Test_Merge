@@ -17,6 +17,8 @@ class LoanInfoJobVC: LoanBaseViewController {
         
         self.currentStep = 1
         self.updateDataToServer()
+        
+        self.initLocationManager()
     }
     
     override func viewWillAppear(_ animated: Bool) {
