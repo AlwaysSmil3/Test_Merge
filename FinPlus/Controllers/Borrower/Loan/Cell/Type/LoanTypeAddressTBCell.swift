@@ -211,6 +211,31 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 self.isNeedUpdate = false
             }
             
+        } else if id.contains("academicName") {
+            var value = ""
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.academicName , data.length() > 0 {
+                value = data
+            }
+            
+            if DataManager.shared.loanInfo.jobInfo.academicName.length() > 0 {
+                value = DataManager.shared.loanInfo.jobInfo.academicName
+            }
+            
+            if value.length() > 0 {
+                self.lblValue?.text = value
+                DataManager.shared.loanInfo.jobInfo.academicName = value
+            }
+            
+            if DataManager.shared.checkFieldIsMissing(key: "academicName", parentKey: "jobInfo", currentValue: value) {
+                //Cap nhat thong tin khong hop le
+                //self.updateInfoFalse(pre: title)
+                if self.valueTemp == nil {
+                    self.updateInfoFalse(pre: title)
+                }
+                self.valueTemp = value
+            }
+            
+            
         }
         
     }

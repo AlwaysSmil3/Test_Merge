@@ -26,6 +26,9 @@ class LoanSummaryInfoVC: BaseViewController {
         LoanSummaryModel(name: "Phí dịch vụ", value: "", attributed: nil),
         LoanSummaryModel(name: "Trả góp dự kiến hàng tháng", value: "", attributed: nil),
         LoanSummaryModel(name: "Mục đích vay", value: "", attributed: nil),
+        LoanSummaryModel(name: "Ngân hàng / Ví", value: "", attributed: nil),
+        LoanSummaryModel(name: "Chủ tài khoản", value: "", attributed: nil),
+        LoanSummaryModel(name: "Số tài khoản", value: "", attributed: nil),
         
     ]
     
@@ -88,7 +91,6 @@ class LoanSummaryInfoVC: BaseViewController {
         
         amountDouble = FinPlusHelper.CalculateMoneyPayMonth(month: amountDouble, term: Double(term/30), rate: cate.interestRate!)
         
-        
         dataSource = [
             LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
             LoanSummaryModel(name: "Ngày tạo đơn", value: date, attributed: nil),
@@ -97,8 +99,31 @@ class LoanSummaryInfoVC: BaseViewController {
             LoanSummaryModel(name: "Lãi suất dự kiến", value: "\(Int(cate.interestRate!))%/năm", attributed: nil),
             LoanSummaryModel(name: "Phí dịch vụ", value: feeStr, attributed: nil),
             LoanSummaryModel(name: labelStudentLoan, value: FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ", attributed: nil),
-            LoanSummaryModel(name: "Mục đích vay", value: cate.title!, attributed: nil)
+            LoanSummaryModel(name: "Mục đích vay", value: cate.title!, attributed: nil),
         ]
+        // get loan bank
+        let loanBankId = DataManager.shared.loanInfo.bankId
+        if let userBanks = DataManager.shared.browwerInfo?.banks {
+            for bank in userBanks {
+                if let bankId = bank.id {
+                    if bankId == loanBankId {
+                        var accountNumber = ""
+                        if let number = bank.accountBankNumber, number.count > 4 {
+                             accountNumber = String(number.suffix(4))
+                        } else {
+                            accountNumber = bank.accountBankNumber ?? ""
+                        }
+                        accountNumber = "● ● ● ● \(accountNumber)"
+                        let subtitleParameters = [NSAttributedStringKey.font : UIFont(name: FONT_FAMILY_REGULAR, size: 12)]
+                        
+                        dataSource.append(LoanSummaryModel(name: "Ngân hàng / Ví", value: "\(bank.bankName ?? "")", attributed: nil))
+                        dataSource.append(LoanSummaryModel(name: "Chủ tài khoản", value: "\(bank.accountBankName ?? "None")", attributed: nil))
+                        dataSource.append(LoanSummaryModel(name: "Số tài khoản", value: accountNumber, attributed: NSAttributedString(string: "● ● ● ●", attributes: subtitleParameters)))
+
+                    }
+                }
+            }
+        }
         
     }
     

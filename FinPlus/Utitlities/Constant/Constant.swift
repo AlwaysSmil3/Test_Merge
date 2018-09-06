@@ -11,6 +11,8 @@ import Foundation
 //Set time request TimeOut
 let REQUEST_TIMEOUT: Double = 30
 
+let UserDefaultShowGuideCameraView = "kUserDefaultShowGuideCameraView"
+
 let Notification_Have_New = "kNotification_Have_New"
 
 //Set Key Missing Data khi User Đã cập nhật
@@ -164,7 +166,7 @@ enum DATA_TYPE_TB_CELL {
     static let File = "file"
     static let MultipleFile = "multiple_file"
     static let Choice = "choice"
-    
+    static let DropDownSearch = "dropdown_search"
 }
 
 let InValidMissingDataColor = UIColor(hexString: "#DA3535")
