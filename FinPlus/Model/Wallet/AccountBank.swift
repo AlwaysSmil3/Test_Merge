@@ -26,6 +26,7 @@ public struct AccountBank {
     static let id = "id"
     static let bankType = "type"
     static let district = "branch"
+    static let verified = "verified"
   }
 
   // MARK: Properties
@@ -36,6 +37,9 @@ public struct AccountBank {
   public var bankType: Int?
   public var district: String?
     public var icon: UIImage?
+    
+    public var verified: Bool?
+    
     public init() {
         accountBankName = ""
         accountBankNumber = ""
@@ -44,6 +48,7 @@ public struct AccountBank {
         bankType = 0
         district = ""
         icon = nil
+        verified = false
     }
     // MARK: SwiftyJSON manual
     /// Initiates the instance based on the object.
@@ -78,6 +83,7 @@ public struct AccountBank {
     bankName = json[SerializationKeys.bankName].string ?? ""
     id = json[SerializationKeys.id].int32 ?? 0
     district = json[SerializationKeys.district].string ?? ""
+    verified = json[SerializationKeys.verified].bool
     
     if bankName == "Vietcombank" || bankName == "VCB" {
         bankType = 1
@@ -111,6 +117,8 @@ public struct AccountBank {
     if let value = id { dictionary[SerializationKeys.id] = value }
     if let value = bankType { dictionary[SerializationKeys.bankType] = value }
     if let value = district { dictionary[SerializationKeys.district] = value }
+    if let value = verified { dictionary[SerializationKeys.verified] = value }
+    
     return dictionary
   }
 
