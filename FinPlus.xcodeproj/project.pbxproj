@@ -29,6 +29,7 @@
 		6304AC77211955C80052C29C /* Relationships.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304AC74211955C80052C29C /* Relationships.swift */; };
 		6304AC78211955C80052C29C /* DateLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304AC75211955C80052C29C /* DateLimit.swift */; };
 		6304AC79211955C80052C29C /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304AC76211955C80052C29C /* Role.swift */; };
+		6304FFBB2140250400834C09 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304FFBA2140250400834C09 /* Contact.swift */; };
 		630532E321251CE400C808A2 /* APIClient+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630532E221251CE400C808A2 /* APIClient+Notifications.swift */; };
 		630532E6212526C100C808A2 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630532E5212526C100C808A2 /* NotificationModel.swift */; };
 		630597442123FFD800EEADEF /* SBMessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630597432123FFD800EEADEF /* SBMessageInputView.swift */; };
@@ -196,6 +197,7 @@
 		639C9E2020A18A7500F2CF5E /* Oswald-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0D20A18A7500F2CF5E /* Oswald-ExtraLight.ttf */; };
 		639C9E2120A18A7500F2CF5E /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0E20A18A7500F2CF5E /* Oswald-Light.ttf */; };
 		639C9E2420A1A4FF00F2CF5E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9E2320A1A4FF00F2CF5E /* Constant.swift */; };
+		63B49D40213FEFC300C7B999 /* GuideCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B49D3F213FEFC300C7B999 /* GuideCaptureViewController.swift */; };
 		63B833CA20CE79C400416596 /* LoanBuilder.json in Resources */ = {isa = PBXBuildFile; fileRef = 63B833C920CE79C400416596 /* LoanBuilder.json */; };
 		63C5C8E520AC183D00F65068 /* FacebookSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C5C8E420AC183D00F65068 /* FacebookSignInManager.swift */; };
 		63D170EF2111AF8200990A60 /* CollectionPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D170EE2111AF8200990A60 /* CollectionPay.swift */; };
@@ -362,6 +364,7 @@
 		6304AC74211955C80052C29C /* Relationships.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relationships.swift; sourceTree = "<group>"; };
 		6304AC75211955C80052C29C /* DateLimit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateLimit.swift; sourceTree = "<group>"; };
 		6304AC76211955C80052C29C /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
+		6304FFBA2140250400834C09 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		630532E221251CE400C808A2 /* APIClient+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Notifications.swift"; sourceTree = "<group>"; };
 		630532E5212526C100C808A2 /* NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		630597432123FFD800EEADEF /* SBMessageInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBMessageInputView.swift; sourceTree = "<group>"; };
@@ -536,6 +539,7 @@
 		639C9E0D20A18A7500F2CF5E /* Oswald-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-ExtraLight.ttf"; sourceTree = "<group>"; };
 		639C9E0E20A18A7500F2CF5E /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
 		639C9E2320A1A4FF00F2CF5E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		63B49D3F213FEFC300C7B999 /* GuideCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideCaptureViewController.swift; sourceTree = "<group>"; };
 		63B833C920CE79C400416596 /* LoanBuilder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoanBuilder.json; sourceTree = "<group>"; };
 		63C5C8E420AC183D00F65068 /* FacebookSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSignInManager.swift; sourceTree = "<group>"; };
 		63C5C8E620AC26DA00F65068 /* FinPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinPlus.entitlements; sourceTree = "<group>"; };
@@ -759,6 +763,14 @@
 			path = Address;
 			sourceTree = "<group>";
 		};
+		6304FFB9214024F600834C09 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				6304FFBA2140250400834C09 /* Contact.swift */,
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
 		630532E4212526A700C808A2 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -846,6 +858,7 @@
 		6308DF6E20A4553E001DC320 /* Loan */ = {
 			isa = PBXGroup;
 			children = (
+				63B49D3E213FEF9600C7B999 /* GuideCapture */,
 				6397B1B520CFB436009BAF33 /* Popup */,
 				630D983D20CF6B8600994D81 /* Success */,
 				63EFBD9620C01441001381A9 /* Base */,
@@ -1169,6 +1182,7 @@
 		639C9DCB20A14A7900F2CF5E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6304FFB9214024F600834C09 /* Contact */,
 				630532E4212526A700C808A2 /* Notification */,
 				63037F5021119A7A002CE49B /* Transaction */,
 				633415B420E1E0AC004B95C0 /* Investor */,
@@ -1337,6 +1351,14 @@
 				E73BBE9220E0EF6C00045265 /* Constant+Mode.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		63B49D3E213FEF9600C7B999 /* GuideCapture */ = {
+			isa = PBXGroup;
+			children = (
+				63B49D3F213FEFC300C7B999 /* GuideCaptureViewController.swift */,
+			);
+			path = GuideCapture;
 			sourceTree = "<group>";
 		};
 		63D49DAB20D3994C00114AFA /* Popup */ = {
@@ -1887,6 +1909,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FinPlus/Pods-FinPlus-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/APAddressBook/APAddressBook.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/DateToolsSwift/DateToolsSwift.framework",
@@ -1909,6 +1932,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/APAddressBook.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateToolsSwift.framework",
@@ -2073,6 +2097,7 @@
 				6361E09720D7550F005D2C7A /* LoanSumnaryModel.swift in Sources */,
 				639C9DF820A189E600F2CF5E /* ToastCenter.swift in Sources */,
 				6307D3BF20AD2F0500055F5C /* FacebookInfo.swift in Sources */,
+				63B49D40213FEFC300C7B999 /* GuideCaptureViewController.swift in Sources */,
 				6385D951212D0E0F00151B3A /* BrowwerCollections.swift in Sources */,
 				6357824F20C2330800DE09A0 /* KeychainPasswordItem.swift in Sources */,
 				84CBBE5620CF85610058C834 /* NotificationTableViewCell.swift in Sources */,
@@ -2132,6 +2157,7 @@
 				635B5E0620B6B3A500F02132 /* LoanInfo.swift in Sources */,
 				636C535D2138E918005D24A2 /* LPSnackbar.swift in Sources */,
 				633AF9AF20A988A600BAE2BB /* EnterPhoneNumberAuthenVC.swift in Sources */,
+				6304FFBB2140250400834C09 /* Contact.swift in Sources */,
 				6374FC4F20BBC3E200E4BC38 /* AccountBank.swift in Sources */,
 				630F684320F45F97004FF32E /* LoanBuilderOptions.swift in Sources */,
 				6336D5C820B27B7500A6C38A /* LoanFirstViewController.swift in Sources */,
