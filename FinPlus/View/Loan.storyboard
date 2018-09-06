@@ -240,7 +240,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trả góp dự kiến hàng tháng" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lg3-1Q-ADa">
-                                                                <rect key="frame" x="16" y="397" width="156" height="41"/>
+                                                                <rect key="frame" x="16" y="447.5" width="156" height="41"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="156" id="OlQ-Zm-QT0"/>
                                                                 </constraints>
@@ -249,13 +249,35 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.000.000 đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Shx-s2-nPh">
-                                                                <rect key="frame" x="262" y="407.5" width="97" height="20"/>
+                                                                <rect key="frame" x="262" y="458" width="97" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
                                                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số kỳ thanh toán" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2a-JC-s53">
+                                                                <rect key="frame" x="16" y="397" width="156" height="20.5"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="156" id="BCK-xj-gmG"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                                                <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBn-8h-DqH">
+                                                                <rect key="frame" x="351" y="398" width="8" height="20"/>
+                                                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
+                                                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NfA-kU-eFU">
+                                                                <rect key="frame" x="16" y="430.5" width="343" height="1"/>
+                                                                <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="41W-e8-0fB"/>
+                                                                </constraints>
+                                                            </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xw9-rX-nHa">
-                                                                <rect key="frame" x="16" y="446" width="233" height="53"/>
+                                                                <rect key="frame" x="16" y="496.5" width="233" height="53"/>
                                                                 <string key="text">Kết quả tính toán chỉ mang tính chất tham khảo. Khoản thanh toán thực tế có thể điều chỉnh và có thể được đưa ra sau khi khoản vay của bạn được phê duyệt.</string>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                                                 <color key="textColor" red="0.55686274509803924" green="0.63921568627450975" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
@@ -294,7 +316,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXC-YK-PlF">
-                                                                <rect key="frame" x="16" y="499" width="97" height="26"/>
+                                                                <rect key="frame" x="16" y="549.5" width="97" height="26"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                                                 <state key="normal" title="Tính toán lịch trả nợ ▸">
                                                                     <color key="titleColor" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
@@ -380,6 +402,7 @@
                                                             <constraint firstAttribute="height" constant="556" id="0FV-9O-rcE"/>
                                                             <constraint firstAttribute="trailing" secondItem="6mn-F6-a4F" secondAttribute="trailing" constant="16" id="0ls-Hk-s3i"/>
                                                             <constraint firstItem="eNp-G9-cel" firstAttribute="leading" secondItem="ag6-DH-F3M" secondAttribute="trailing" constant="5" id="2W6-6Y-kIc"/>
+                                                            <constraint firstItem="Lg3-1Q-ADa" firstAttribute="top" secondItem="NfA-kU-eFU" secondAttribute="bottom" constant="16" id="3Co-Am-Aif"/>
                                                             <constraint firstItem="EZP-n4-S6m" firstAttribute="height" secondItem="kPf-c6-T5S" secondAttribute="height" id="4PE-XS-dU7"/>
                                                             <constraint firstItem="Xw9-rX-nHa" firstAttribute="trailing" secondItem="4Zx-nD-No8" secondAttribute="trailing" constant="-110" id="4Qw-pv-uH5"/>
                                                             <constraint firstItem="kPf-c6-T5S" firstAttribute="trailing" secondItem="Q9g-DB-Kdb" secondAttribute="trailing" id="5uo-zK-dKF"/>
@@ -387,6 +410,7 @@
                                                             <constraint firstItem="eNp-G9-cel" firstAttribute="top" secondItem="ag6-DH-F3M" secondAttribute="top" id="7Ch-4a-qz1"/>
                                                             <constraint firstItem="Xw9-rX-nHa" firstAttribute="leading" secondItem="Lg3-1Q-ADa" secondAttribute="leading" id="8kq-qD-uEX"/>
                                                             <constraint firstItem="skB-Mw-d2D" firstAttribute="trailing" secondItem="9yV-0a-d2U" secondAttribute="trailing" id="B1Y-la-Gx4"/>
+                                                            <constraint firstItem="V2a-JC-s53" firstAttribute="top" secondItem="4Zx-nD-No8" secondAttribute="bottom" constant="16" id="CJ7-rU-Tre"/>
                                                             <constraint firstItem="ag6-DH-F3M" firstAttribute="top" secondItem="Gmv-is-5m0" secondAttribute="bottom" constant="16" id="D0t-wM-QQY"/>
                                                             <constraint firstItem="Shx-s2-nPh" firstAttribute="centerY" secondItem="Lg3-1Q-ADa" secondAttribute="centerY" id="D4x-Gl-wnG"/>
                                                             <constraint firstItem="ag6-DH-F3M" firstAttribute="leading" secondItem="Gmv-is-5m0" secondAttribute="leading" id="EfA-5U-Fod"/>
@@ -427,21 +451,26 @@
                                                             <constraint firstItem="gXC-YK-PlF" firstAttribute="top" secondItem="Xw9-rX-nHa" secondAttribute="bottom" id="cyW-LB-DIV"/>
                                                             <constraint firstItem="VaD-OT-06j" firstAttribute="leading" secondItem="hbT-WT-5p9" secondAttribute="leading" id="dDB-Sn-5Nf"/>
                                                             <constraint firstItem="yhH-ic-4pr" firstAttribute="top" secondItem="kPf-c6-T5S" secondAttribute="bottom" constant="4" id="dDU-PJ-enA"/>
+                                                            <constraint firstAttribute="trailing" secondItem="NfA-kU-eFU" secondAttribute="trailing" constant="16" id="dJw-l9-Pbw"/>
+                                                            <constraint firstItem="MBn-8h-DqH" firstAttribute="centerY" secondItem="V2a-JC-s53" secondAttribute="centerY" id="eFA-BX-K1g"/>
                                                             <constraint firstItem="hbT-WT-5p9" firstAttribute="leading" secondItem="cU2-FB-6X7" secondAttribute="leading" id="eYH-eI-IDU"/>
                                                             <constraint firstItem="cU2-FB-6X7" firstAttribute="trailing" secondItem="Q9g-DB-Kdb" secondAttribute="trailing" id="gfe-wn-sea"/>
+                                                            <constraint firstItem="NfA-kU-eFU" firstAttribute="leading" secondItem="W1Q-bF-jiO" secondAttribute="leading" constant="16" id="gjM-Bk-z2p"/>
                                                             <constraint firstItem="Q9g-DB-Kdb" firstAttribute="leading" secondItem="W1Q-bF-jiO" secondAttribute="leading" constant="16" id="gtl-Jh-97C"/>
-                                                            <constraint firstItem="Lg3-1Q-ADa" firstAttribute="top" secondItem="4Zx-nD-No8" secondAttribute="bottom" constant="16" id="h4m-x1-NbM"/>
                                                             <constraint firstItem="6mn-F6-a4F" firstAttribute="centerY" secondItem="aBh-VA-gIl" secondAttribute="centerY" id="hDO-XS-Wk9"/>
                                                             <constraint firstItem="EZP-n4-S6m" firstAttribute="leading" secondItem="Q9g-DB-Kdb" secondAttribute="leading" id="hLB-rb-uSN"/>
                                                             <constraint firstItem="aBh-VA-gIl" firstAttribute="leading" secondItem="W1Q-bF-jiO" secondAttribute="leading" constant="16" id="iob-MX-lSv"/>
+                                                            <constraint firstItem="V2a-JC-s53" firstAttribute="leading" secondItem="ULe-Vo-VnA" secondAttribute="leading" id="lSg-Vl-U8B"/>
                                                             <constraint firstItem="O5a-OV-xow" firstAttribute="centerX" secondItem="XNz-IP-fs2" secondAttribute="centerX" id="mcM-kZ-Pm6"/>
                                                             <constraint firstItem="Xw9-rX-nHa" firstAttribute="leading" secondItem="4Zx-nD-No8" secondAttribute="leading" id="nbI-7k-WML"/>
                                                             <constraint firstItem="eNp-G9-cel" firstAttribute="centerY" secondItem="eey-sE-88Q" secondAttribute="centerY" id="o8e-8m-bXU"/>
                                                             <constraint firstItem="Gmv-is-5m0" firstAttribute="leading" secondItem="cU2-FB-6X7" secondAttribute="leading" id="o9C-Ej-wTp"/>
+                                                            <constraint firstAttribute="trailing" secondItem="MBn-8h-DqH" secondAttribute="trailing" constant="16" id="oNu-CH-2Sa"/>
                                                             <constraint firstItem="Shx-s2-nPh" firstAttribute="trailing" secondItem="4Zx-nD-No8" secondAttribute="trailing" id="oyF-kY-sY5"/>
                                                             <constraint firstItem="cU2-FB-6X7" firstAttribute="top" secondItem="yhH-ic-4pr" secondAttribute="bottom" constant="16" id="pDs-6I-6We"/>
                                                             <constraint firstItem="Xw9-rX-nHa" firstAttribute="top" secondItem="Lg3-1Q-ADa" secondAttribute="bottom" constant="8" id="pFi-Ps-IGD"/>
                                                             <constraint firstItem="Gmv-is-5m0" firstAttribute="trailing" secondItem="cU2-FB-6X7" secondAttribute="trailing" id="pkQ-iO-Kfq"/>
+                                                            <constraint firstItem="NfA-kU-eFU" firstAttribute="bottom" secondItem="V2a-JC-s53" secondAttribute="bottom" constant="14" id="q9o-Nc-sJn"/>
                                                             <constraint firstItem="63Q-rJ-cWq" firstAttribute="centerY" secondItem="VaD-OT-06j" secondAttribute="centerY" id="qOi-Op-cfj"/>
                                                             <constraint firstItem="Og5-0H-BcY" firstAttribute="centerY" secondItem="Mrz-W4-uFO" secondAttribute="centerY" id="quD-a1-5he"/>
                                                             <constraint firstItem="ULe-Vo-VnA" firstAttribute="top" secondItem="R1b-FN-b5R" secondAttribute="bottom" constant="16" id="rGX-mV-VAe"/>
@@ -609,12 +638,14 @@
                         <outlet property="amountSlider" destination="kPf-c6-T5S" id="P9G-2z-cbu"/>
                         <outlet property="lblCategoriesName" destination="Og5-0H-BcY" id="kgT-vr-ckP"/>
                         <outlet property="lblInterestRate" destination="6oP-Za-zo3" id="ldL-Mj-bN6"/>
+                        <outlet property="lblLeftPayTermTotal" destination="V2a-JC-s53" id="m2e-3V-qXQ"/>
                         <outlet property="lblLeftTempTotalAmount" destination="Lg3-1Q-ADa" id="Cdj-EN-IGK"/>
                         <outlet property="lblMaxAmounSlider" destination="skB-Mw-d2D" id="5rH-Oz-Ur9"/>
                         <outlet property="lblMaxTermSlider" destination="63Q-rJ-cWq" id="dkc-xX-uNR"/>
                         <outlet property="lblMinAmountSlider" destination="yhH-ic-4pr" id="j6Q-yo-9WX"/>
                         <outlet property="lblMinTermSlider" destination="VaD-OT-06j" id="Bx4-BX-Lx7"/>
                         <outlet property="lblMoneySlider" destination="9yV-0a-d2U" id="dSt-dM-drW"/>
+                        <outlet property="lblPayTermTotal" destination="MBn-8h-DqH" id="MOz-Ru-oy9"/>
                         <outlet property="lblTempFee" destination="fhh-0G-UGH" id="WfY-OE-4i4"/>
                         <outlet property="lblTempTotalAmount" destination="Shx-s2-nPh" id="bH9-s0-fOI"/>
                         <outlet property="lblTermSlider" destination="syZ-mG-CQB" id="oZj-e9-jCR"/>
