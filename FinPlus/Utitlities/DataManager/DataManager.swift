@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class DataManager {
     // Singeton
@@ -133,6 +134,9 @@ class DataManager {
     
     
     var isNoShowAlertTimeout: Bool?
+    
+    //CurrentLocation
+    var currentLocation: CLLocationCoordinate2D?
     
     /// Get Data from JSON
     func getDataLoanFromJSON() {

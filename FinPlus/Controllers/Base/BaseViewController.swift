@@ -8,12 +8,14 @@
 
 import Foundation
 
+
 class BaseViewController: UIViewController {
     
     @IBOutlet var btnContinue: UIButton?
     @IBOutlet var imgBgBtnContinue: UIImageView?
     
     @IBOutlet var errorConnectView: UIView?
+    
     
     func setupTitleView(title: String, subTitle: String? = nil) {
         let topText = NSLocalizedString(title, comment: "")

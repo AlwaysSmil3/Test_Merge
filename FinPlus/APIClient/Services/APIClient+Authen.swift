@@ -34,13 +34,25 @@ extension APIClient {
         
         let id = UIDevice.current.identifierForVendor!.uuidString
         
-        let params: JSONDictionary = [
+        var params: JSONDictionary = [
             "phoneNumber": phoneNumber,
             "uuid": id,
             "deviceType": API_DEVICE_TYPE_OS,
             "password": pass,
             "appType": 0
         ]
+        
+        if pass.count > 0 {
+            params = [
+            "phoneNumber": phoneNumber,
+            "uuid": id,
+            "deviceType": API_DEVICE_TYPE_OS,
+            "password": pass,
+            "appType": 0,
+            "deviceName": UIDevice.modelName,
+            "deviceEmail": "",
+            ]
+        }
         
         return Promise<AuthenticationBase> { seal in
             requestWithEndPoint(endPoint: EndPoint.Authen.Authen, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST)
