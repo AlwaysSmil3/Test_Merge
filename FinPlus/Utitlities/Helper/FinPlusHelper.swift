@@ -249,14 +249,22 @@ class FinPlusHelper {
     ///   - mounth: Số tiền
     ///   - term: Kỳ hạn
     ///   - rate: lãi xuất
-    class func CalculateMoneyPayMonth(month: Double, term: Double, rate: Double) -> Double {
+    class func CalculateMoneyPayMonth(month: Double, term: Double, rate: Double, isSlider: Bool = false, sliderValue: Double = 0) -> Double {
         
         var value = term
         
         if value < 1 {
             value = 1
-            if let terms = DataManager.shared.browwerInfo?.activeLoan?.term {
-                return (month + Double(terms) * month * rate/(100 * 12 * 30)) / value
+//            if let terms = DataManager.shared.browwerInfo?.activeLoan?.term {
+//                return (month + Double(terms) * month * rate/(100 * 12 * 30)) / value
+//            }
+            
+            if isSlider {
+                return (month + Double(sliderValue) * month * rate/(100 * 12 * 30)) / value
+            }
+            
+            if DataManager.shared.loanInfo.term > 0 {
+                return (month + Double(DataManager.shared.loanInfo.term) * month * rate/(100 * 12 * 30)) / value
             }
         }
         
