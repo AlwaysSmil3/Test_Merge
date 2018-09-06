@@ -222,6 +222,7 @@
 		63FAF5532140C9DD00985B92 /* university.json in Resources */ = {isa = PBXBuildFile; fileRef = 63FAF5522140C9DD00985B92 /* university.json */; };
 		63FAF5562140CDAB00985B92 /* UniversityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FAF5552140CDAB00985B92 /* UniversityViewController.swift */; };
 		63FAF5582140DD9500985B92 /* UniversityDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FAF5572140DD9500985B92 /* UniversityDataSource.swift */; };
+		63FAF55A21410E2500985B92 /* LoanBaseViewController+LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FAF55921410E2500985B92 /* LoanBaseViewController+LocationManager.swift */; };
 		63FD80C920C0E13D004BD22A /* LoanBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FD80C820C0E13D004BD22A /* LoanBaseViewController.swift */; };
 		84114BC620D79464005026DF /* TestBorrowingPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84114BB420D79464005026DF /* TestBorrowingPayViewController.swift */; };
 		84114BC720D79464005026DF /* AddNewWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84114BB620D79464005026DF /* AddNewWalletTableViewCell.swift */; };
@@ -569,6 +570,7 @@
 		63FAF5522140C9DD00985B92 /* university.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = university.json; sourceTree = "<group>"; };
 		63FAF5552140CDAB00985B92 /* UniversityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityViewController.swift; sourceTree = "<group>"; };
 		63FAF5572140DD9500985B92 /* UniversityDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityDataSource.swift; sourceTree = "<group>"; };
+		63FAF55921410E2500985B92 /* LoanBaseViewController+LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoanBaseViewController+LocationManager.swift"; sourceTree = "<group>"; };
 		63FD80C820C0E13D004BD22A /* LoanBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanBaseViewController.swift; sourceTree = "<group>"; };
 		84114BB420D79464005026DF /* TestBorrowingPayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestBorrowingPayViewController.swift; sourceTree = "<group>"; };
 		84114BB620D79464005026DF /* AddNewWalletTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewWalletTableViewCell.swift; sourceTree = "<group>"; };
@@ -1404,6 +1406,7 @@
 			isa = PBXGroup;
 			children = (
 				63FD80C820C0E13D004BD22A /* LoanBaseViewController.swift */,
+				63FAF55921410E2500985B92 /* LoanBaseViewController+LocationManager.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -2118,6 +2121,7 @@
 				84114BCD20D79464005026DF /* SubInfoTableViewCell.swift in Sources */,
 				E75B705F20DA3963007D158D /* TitleTableViewCell.swift in Sources */,
 				6355279C21300DA800F2CDA1 /* ExUIPageControl.swift in Sources */,
+				63FAF55A21410E2500985B92 /* LoanBaseViewController+LocationManager.swift in Sources */,
 				63748C06210ADC5400E79EB6 /* MonyBankTableViewCell.swift in Sources */,
 				E7F51A2F20CE6D3F00F72682 /* LoanTypeDropdownTBCell.swift in Sources */,
 				63037F5221119A93002CE49B /* Transaction.swift in Sources */,

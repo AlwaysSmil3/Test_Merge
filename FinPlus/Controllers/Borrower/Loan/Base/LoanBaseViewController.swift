@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 /// Identifier TB Cell For Loan
 enum Loan_Identifier_TB_Cell {
@@ -31,6 +32,9 @@ class LoanBaseViewController: BaseViewController {
     @IBOutlet var contentInputView: UIView?
     @IBOutlet var sbInputView: SBMessageInputView?
     @IBOutlet var bottomConstraintContentInputView: NSLayoutConstraint?
+    
+    //Current Location
+    var locationManager: CLLocationManager?
     
     //DataSource cho main tablview, dữ liệu tuỳ theo index màn hình
     var dataSource: LoanBuilderBase?
