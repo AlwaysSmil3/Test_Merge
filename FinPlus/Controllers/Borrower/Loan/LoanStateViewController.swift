@@ -1032,10 +1032,33 @@ class LoanStateViewController: UIViewController {
             isEnableFooterView = true
             break
             
-            
-            
         default:
             break
+        }
+        
+        // get loan bank
+        let loanBankId = DataManager.shared.loanInfo.bankId
+        if let userBanks = DataManager.shared.browwerInfo?.banks {
+            for bank in userBanks {
+                if let bankId = bank.id {
+                    if bankId == loanBankId {
+                        var accountNumber = ""
+                        if let number = bank.accountBankNumber, number.count > 4 {
+                            accountNumber = String(number.suffix(4))
+                        } else {
+                            accountNumber = bank.accountBankNumber ?? ""
+                        }
+                        accountNumber = "● ● ● ● \(accountNumber)"
+                        
+                        let subtitleParameters = [NSAttributedStringKey.font : UIFont(name: FONT_FAMILY_REGULAR, size: 12)]
+
+                        dataSource.append(LoanSummaryModel(name: "Ngân hàng / Ví", value: "\(bank.bankName ?? "")", attributed: nil))
+                        dataSource.append(LoanSummaryModel(name: "Chủ tài khoản", value: "\(bank.accountBankName ?? "None")", attributed: nil))
+                        dataSource.append(LoanSummaryModel(name: "Số tài khoản", value: accountNumber, attributed: NSAttributedString(string: "● ● ● ●", attributes: subtitleParameters)))
+
+                    }
+                }
+            }
         }
         
         if self.isFromManagerLoan {
@@ -1544,9 +1567,20 @@ extension LoanStateViewController: UITableViewDataSource {
             cell?.nameLabel.text = NSLocalizedString(item.name, comment: "")
             cell?.desLabel.text = item.value
             
+//            if (item.attributed != nil)
+//            {
+//                cell?.desLabel.attributedText = item.attributed!
+//            }
+            
             if (item.attributed != nil)
             {
-                cell?.desLabel.attributedText = item.attributed!
+                let oldAttributed = NSMutableAttributedString(attributedString: (cell?.desLabel?.attributedText)!)
+                
+                if let range = item.value.range(of: item.attributed!.string)  {
+                    oldAttributed.addAttributes(item.attributed!.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, item.attributed!.length)), range: NSRange(range, in: item.value))
+                }
+                
+                cell?.desLabel.attributedText = oldAttributed
             }
             
 //            switch indexPath.row {
