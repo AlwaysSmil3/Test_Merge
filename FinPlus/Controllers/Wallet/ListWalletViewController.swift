@@ -355,6 +355,10 @@ extension ListWalletViewController: UITableViewDataSource {
             cell?.optionBtn.setImage(UIImage(named: "option_icon"), for: .normal)
             cell?.delegate = self
             
+            if let verified = item.verified, verified {
+                cell?.optionBtn.setImage(UIImage(named: "option_icon"), for: .normal)
+            }
+            
             if self.walletAction == .LoanNation {
                 
                 cell?.optionBtn.setImage(#imageLiteral(resourceName: "ic_radio_off"), for: .normal)
@@ -405,6 +409,10 @@ extension ListWalletViewController: EditWalletDelegate {
     func editWallet(index: IndexPath) {
         let bank = self.listWallet[index.row] as! AccountBank
         if self.walletAction == .LoanNation && !DataManager.shared.checkMissingBankData(key: "bank", currentBankHolder: bank.accountBankName, currenAccount: bank.accountBankNumber) {
+            return
+        }
+        
+        if let verified = bank.verified, verified {
             return
         }
         

@@ -70,6 +70,9 @@ struct LoanInfo: Encodable {
     var optionalText: [String]
     var optionalMedia:  [[String]]
     
+    var longitude: Double
+    var latitude: Double
+    
     init() {
         
         self.loanCategoryID = 0
@@ -93,6 +96,9 @@ struct LoanInfo: Encodable {
         self.optionalMedia = [[]]
         self.userID = 0
         self.intRate = 0
+        
+        self.longitude = 0
+        self.latitude = 0
     }
     
     enum CodingKeys: String, CodingKey {
@@ -112,6 +118,8 @@ struct LoanInfo: Encodable {
         case optionalMedia
         case userId
         case intRate
+        case longitude
+        case latitude
     }
     
     func encode(to encoder: Encoder) throws {
@@ -132,6 +140,8 @@ struct LoanInfo: Encodable {
         try container.encode(optionalMedia, forKey: .optionalMedia)
         try container.encode(userID, forKey: .userId)
         try container.encode(intRate, forKey: .intRate)
+        try container.encode(longitude, forKey: .longitude)
+        try container.encode(latitude, forKey: .latitude)
         
     }
     
