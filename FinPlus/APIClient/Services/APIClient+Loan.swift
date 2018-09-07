@@ -311,7 +311,7 @@ extension APIClient {
         let endPoint = "loans/" + "\(loanID)/contract"
 
         return Promise<APIResponseGeneral> { seal in
-            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
                 .done { json in
                     
                     let model = APIResponseGeneral(object: json)
@@ -343,7 +343,9 @@ extension APIClient {
 
         let endPoint = "loans/" + "\(loanID)/contract/otp"
         let params: JSONDictionary = [
-            "otp": otp
+            "otp": otp,
+            "longitude": DataManager.shared.currentLocation?.longitude ?? 0,
+            "latitude": DataManager.shared.currentLocation?.latitude ?? 0
         ]
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)

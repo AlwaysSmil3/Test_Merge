@@ -4,6 +4,8 @@
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Sử dụng vị trí cho tạo khoản vay</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Sử dụng vị trí cho tạo khoản vay</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Sử dụng liên hệ cho tạo khoản vay</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
