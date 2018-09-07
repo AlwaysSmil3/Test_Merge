@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ConfirmRateSuccessViewController: BaseViewController {
     
@@ -17,8 +18,6 @@ class ConfirmRateSuccessViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.initLocationManager()
 
         // Do any additional setup after loading the view.
         self.btnComeHome.layer.cornerRadius = 8
@@ -29,35 +28,82 @@ class ConfirmRateSuccessViewController: BaseViewController {
         self.desLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_SEMIMALL)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.initLocationManager()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
-    @IBAction func comHome(_ sender: Any) {
-        DataManager.shared.loanInfo.status = STATUS_LOAN.RAISING_CAPITAL.rawValue
-        APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
-            .done(on: DispatchQueue.global()) { model in
-                DataManager.shared.loanID = model.loanId!
+    func getPermissionLocation(completion: () -> Void) {
+        let status = CLLocationManager.authorizationStatus()
+        
+        if status == .notDetermined {
+            // For use in foreground
+            self.initLocationManager()
+            return
+        }
+        
+        if status == .denied || status == .restricted {
+            let message = "Để xác nhận lãi suất, Mony cần biết chính xác vị trí hiện tại của bạn. Vui lòng bật các dịch vụ định vị GPS để hoàn thiện đơn vay."
+            
+            self.showAlertView(title: "Không tìm thấy địa điểm", message: message, okTitle: "Bật định vị", cancelTitle: nil, completion: { (bool) in
                 
-                //Lay thong tin nguoi dung
-                APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
-                    .done(on: DispatchQueue.main) { model in
-                        DataManager.shared.browwerInfo = model
-                        
-                        let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-                        if let window = UIApplication.shared.delegate?.window, let win = window {
-                            win.rootViewController = tabbarVC
-                        }
-                        
-                    }
-                    .catch { error in
-                        
+                guard bool else {
+                    return
                 }
                 
-            }
-            .catch { error in }
+                DispatchQueue.main.async {
+                    guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                        return
+                    }
+                    
+                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                            print("Settings opened: \(success)") // Prints true
+                        })
+                    }
+                }
+                
+            })
+            
+            
+            return
+        }
+        
+        completion()
+    }
+    
+    
+    @IBAction func comHome(_ sender: Any) {
+        self.getPermissionLocation {
+            DataManager.shared.loanInfo.status = STATUS_LOAN.RAISING_CAPITAL.rawValue
+            APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
+                .done(on: DispatchQueue.main) { model in
+                    DataManager.shared.loanID = model.loanId!
+                    
+                    //Lay thong tin nguoi dung
+                    APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
+                        .done(on: DispatchQueue.main) { model in
+                            DataManager.shared.browwerInfo = model
+                            
+                            let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+                            if let window = UIApplication.shared.delegate?.window, let win = window {
+                                win.rootViewController = tabbarVC
+                            }
+                            
+                        }
+                        .catch { error in
+                            
+                    }
+                    
+                }
+                .catch { error in }
+        }
         
     }
     

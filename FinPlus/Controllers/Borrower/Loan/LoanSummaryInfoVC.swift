@@ -40,7 +40,6 @@ class LoanSummaryInfoVC: BaseViewController {
         self.mainTBView.tableFooterView = UIView()
         self.mainTBView.allowsSelection = false
         
-        self.initLocationManager()
         
         self.btnContinue?.dropShadow(color: MAIN_COLOR)
 
@@ -64,6 +63,12 @@ class LoanSummaryInfoVC: BaseViewController {
             self.navigationController?.isNavigationBarHidden = true
         }
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.initLocationManager()
     }
     
     func getPermissionLocation(completion: () -> Void) {
@@ -227,7 +232,7 @@ class LoanSummaryInfoVC: BaseViewController {
     @IBAction func btnLoanTapped(_ sender: Any) {
         
         guard self.btnAgreeTerm!.isSelected else {
-            self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Vui lòng đồng ý với điều khoản sử dụng của chúng tôi để tiếp tục", okTitle: "OK", cancelTitle: nil)
+            self.showGreenBtnMessage(title: "Tôi đồng ý điều khoản sử dụng", message: "Vui lòng đồng ý điều khoản sử dụng để gửi đơn vay của bạn.", okTitle: "Đóng", cancelTitle: nil)
             
             return
         }

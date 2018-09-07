@@ -111,11 +111,11 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="szN-YA-crS">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n6g-vh-mLP">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6g-vh-mLP">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1Q-bF-jiO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="556"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="586"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số tiền vay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Puc-Pg-gNE">
                                                                 <rect key="frame" x="16" y="77" width="343" height="20"/>
@@ -399,7 +399,7 @@
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="556" id="0FV-9O-rcE"/>
+                                                            <constraint firstAttribute="height" constant="586" id="0FV-9O-rcE"/>
                                                             <constraint firstAttribute="trailing" secondItem="6mn-F6-a4F" secondAttribute="trailing" constant="16" id="0ls-Hk-s3i"/>
                                                             <constraint firstItem="eNp-G9-cel" firstAttribute="leading" secondItem="ag6-DH-F3M" secondAttribute="trailing" constant="5" id="2W6-6Y-kIc"/>
                                                             <constraint firstItem="Lg3-1Q-ADa" firstAttribute="top" secondItem="NfA-kU-eFU" secondAttribute="bottom" constant="16" id="3Co-Am-Aif"/>
@@ -489,7 +489,7 @@
                                                 <constraints>
                                                     <constraint firstItem="W1Q-bF-jiO" firstAttribute="leading" secondItem="n6g-vh-mLP" secondAttribute="leading" id="Kuw-hv-DFe"/>
                                                     <constraint firstItem="W1Q-bF-jiO" firstAttribute="top" secondItem="n6g-vh-mLP" secondAttribute="top" id="VkB-OR-EKf"/>
-                                                    <constraint firstAttribute="bottom" secondItem="W1Q-bF-jiO" secondAttribute="bottom" constant="-39" id="XQm-g3-mfL"/>
+                                                    <constraint firstAttribute="bottom" secondItem="W1Q-bF-jiO" secondAttribute="bottom" id="XQm-g3-mfL"/>
                                                     <constraint firstAttribute="trailing" secondItem="W1Q-bF-jiO" secondAttribute="trailing" id="zVQ-9w-1Yy"/>
                                                 </constraints>
                                             </scrollView>

@@ -8,11 +8,6 @@
 
 import Foundation
 
-/*
- Với khoản vay sinh viên chỉ cho vay 10-20-30 ngày nhé. Không phỉa từ 10-30 đâu.
- Các khoản khác 1-12 tháng. Không chia theo ngày
-
- */
 
 class LoanFirstViewController: BaseViewController {
     
@@ -177,6 +172,10 @@ class LoanFirstViewController: BaseViewController {
             
             self.lblLeftTempTotalAmount?.text = "Thanh toán dự kiến"
             
+            if let term = self.termSlider?.value, term >= 30 {
+                self.lblLeftTempTotalAmount?.text = "Trả góp dự kiến hàng tháng"
+            }
+            
             
         } else {
             self.lblTermSlider?.text = "\(Int(loan.termMin! / 30))" + " Tháng"
@@ -291,6 +290,12 @@ class LoanFirstViewController: BaseViewController {
 //                self.termSlider.value = 90
 //            }
             self.lblTermSlider.text = "\(Int(self.termSlider.value / 10) * 10)" + " Ngày"
+            
+            if let term = self.termSlider?.value, term >= 30 {
+                self.lblLeftTempTotalAmount?.text = "Trả góp dự kiến hàng tháng"
+            } else {
+                self.lblLeftTempTotalAmount?.text = "Thanh toán dự kiến"
+            }
         } else {
             self.termSlider.increment = 30
             self.lblTermSlider.text = "\(Int(self.termSlider.value / 30))" + " Tháng"
@@ -313,6 +318,8 @@ class LoanFirstViewController: BaseViewController {
         amountDouble = FinPlusHelper.CalculateMoneyPayMonth(month: amountDouble, term: Double(term/30), rate: loan.interestRate!, isSlider: true, sliderValue: Double(term))
         
         self.lblTempTotalAmount.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ"
+        
+        self.updatePayTerm(term: term)
     }
     
     @IBAction func btnContinueTapped(_ sender: Any) {
