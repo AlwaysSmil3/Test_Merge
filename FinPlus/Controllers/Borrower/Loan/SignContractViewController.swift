@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import CoreLocation
 
-class SignContractViewController: UIViewController, UIWebViewDelegate {
+
+class SignContractViewController: BaseViewController, UIWebViewDelegate {
 
     @IBOutlet weak var btnSign: UIButton!
     @IBOutlet weak var webView: UIWebView!
@@ -18,8 +18,6 @@ class SignContractViewController: UIViewController, UIWebViewDelegate {
     var isSigned = false
     var activeLoan: BrowwerActiveLoan?
     
-    //Current Location
-    var locationManager: CLLocationManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,24 +72,6 @@ class SignContractViewController: UIViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func initLocationManager() {
-        if self.locationManager == nil {
-            self.locationManager = CLLocationManager()
-        }
-        
-        // Ask for Authorisation from the User.
-        self.locationManager?.requestAlwaysAuthorization()
-        
-        // For use in foreground
-        self.locationManager?.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager?.delegate = self
-            locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager?.startUpdatingLocation()
-        }
-        
-    }
     
     @IBAction func navi_back() {
         self.navigationController?.isNavigationBarHidden = isSigned
@@ -140,12 +120,4 @@ class SignContractViewController: UIViewController, UIWebViewDelegate {
 
 }
 
-//MARK: CLLocationManagerDelegate
-extension SignContractViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        //print("locations = \(locValue.latitude) \(locValue.longitude)")
-        DataManager.shared.currentLocation = locValue
-    }
-}
 

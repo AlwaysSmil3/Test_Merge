@@ -113,10 +113,11 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         let currentDate = Date()
         
         if currentDate.hours(from: date) < 24 {
-            var hours = currentDate.hours(from: date)
+            let hours = currentDate.hours(from: date)
             
             if hours == 0 {
-                hours = 1
+                let minute = currentDate.minutes(from: date)
+                return "\(minute) phút trước"
             }
             
             return "\(hours) giờ trước"

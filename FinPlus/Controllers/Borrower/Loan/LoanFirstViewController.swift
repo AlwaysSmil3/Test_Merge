@@ -49,7 +49,6 @@ class LoanFirstViewController: BaseViewController {
         
         self.setupInit()
         self.updateData()
-
         
         for cate in DataManager.shared.loanCategories {
             var loan = LoanBuilderData(object: NSObject())
@@ -311,7 +310,7 @@ class LoanFirstViewController: BaseViewController {
         var amountDouble = Double(amountInt)
         
         let term = self.termSlider.value
-        amountDouble = FinPlusHelper.CalculateMoneyPayMonth(month: amountDouble, term: Double(term/30), rate: loan.interestRate!)
+        amountDouble = FinPlusHelper.CalculateMoneyPayMonth(month: amountDouble, term: Double(term/30), rate: loan.interestRate!, isSlider: true, sliderValue: Double(term))
         
         self.lblTempTotalAmount.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ"
     }

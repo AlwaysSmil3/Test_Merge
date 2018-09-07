@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class LoanSummaryInfoVC: BaseViewController {
     
@@ -39,6 +40,8 @@ class LoanSummaryInfoVC: BaseViewController {
         self.mainTBView.tableFooterView = UIView()
         self.mainTBView.allowsSelection = false
         
+        self.initLocationManager()
+        
         self.btnContinue?.dropShadow(color: MAIN_COLOR)
 
         DataManager.shared.loanInfo.currentStep = 5
@@ -61,6 +64,45 @@ class LoanSummaryInfoVC: BaseViewController {
             self.navigationController?.isNavigationBarHidden = true
         }
         
+    }
+    
+    func getPermissionLocation(completion: () -> Void) {
+        let status = CLLocationManager.authorizationStatus()
+        
+        if status == .notDetermined {
+            // For use in foreground
+            self.initLocationManager()
+            return
+        }
+        
+        if status == .denied || status == .restricted {
+            let message = "Để gửi đơn vay, Mony cần biết chính xác vị trí hiện tại của bạn. Vui lòng bật các dịch vụ định vị GPS để hoàn thiện đơn vay."
+            
+            self.showAlertView(title: "Không tìm thấy địa điểm", message: message, okTitle: "Bật định vị", cancelTitle: nil, completion: { (bool) in
+                
+                guard bool else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                        return
+                    }
+                    
+                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                            print("Settings opened: \(success)") // Prints true
+                        })
+                    }
+                }
+                
+            })
+            
+            
+            return
+        }
+        
+        completion()
     }
     
     private func setupData() {
@@ -190,17 +232,22 @@ class LoanSummaryInfoVC: BaseViewController {
             return
         }
         
-//        guard DataManager.shared.listKeyMissingLoanKey == nil || DataManager.shared.listKeyMissingLoanKey!.count == 0 else {
-//            self.updateLoanStatus()
-//            return
-//        }
-        
-
-        let messeage = "Mã xác thực sẽ được gửi tới " + DataManager.shared.currentAccount + " qua tin nhắn SMS sau khi bạn đồng ý. Bạn có chắc chắn không?"
-        self.showGreenBtnMessage(title: "Gửi đơn vay", message: messeage, okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ") { (status) in
-            if status {
-                self.loan()
-            }
+        self.getPermissionLocation {
+            
+            DataManager.shared.loanInfo.currentStep = 5
+            APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
+                .done(on: DispatchQueue.main) { model in
+                    DataManager.shared.loanID = model.loanId!
+                    
+                    let messeage = "Mã xác thực sẽ được gửi tới " + DataManager.shared.currentAccount + " qua tin nhắn SMS sau khi bạn đồng ý. Bạn có chắc chắn không?"
+                    self.showGreenBtnMessage(title: "Gửi đơn vay", message: messeage, okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ") { (status) in
+                        if status {
+                            self.loan()
+                        }
+                    }
+                }
+                .catch { error in }
+            
         }
         
     }
