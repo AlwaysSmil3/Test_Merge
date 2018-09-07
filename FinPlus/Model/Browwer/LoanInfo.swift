@@ -140,8 +140,14 @@ struct LoanInfo: Encodable {
         try container.encode(optionalMedia, forKey: .optionalMedia)
         try container.encode(userID, forKey: .userId)
         try container.encode(intRate, forKey: .intRate)
-        try container.encode(longitude, forKey: .longitude)
-        try container.encode(latitude, forKey: .latitude)
+        
+        if self.longitude > 0 {
+            try container.encode(longitude, forKey: .longitude)
+        }
+        
+        if self.latitude > 0 {
+            try container.encode(latitude, forKey: .latitude)
+        }
         
     }
     
