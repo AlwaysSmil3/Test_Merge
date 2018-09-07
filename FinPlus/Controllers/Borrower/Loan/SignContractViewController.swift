@@ -89,7 +89,7 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         }
         
         if status == .denied || status == .restricted {
-            let message = "Để xác nhận lãi suất, Mony cần biết chính xác vị trí hiện tại của bạn. Vui lòng bật các dịch vụ định vị GPS để hoàn thiện đơn vay."
+            let message = "Để ký hợp đồng giải ngân, Mony cần biết chính xác vị trí hiện tại của bạn. Vui lòng bật các dịch vụ định vị GPS để hoàn thiện đơn vay."
             
             self.showAlertView(title: "Không tìm thấy địa điểm", message: message, okTitle: "Bật định vị", cancelTitle: nil, completion: { (bool) in
                 
