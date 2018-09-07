@@ -144,7 +144,9 @@ extension LoanSocialInfoViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.facebookSignIn()
+        if self.faceBookInfo == nil {
+            self.facebookSignIn()
+        }
     }
     
     
