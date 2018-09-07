@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 
 class SignContractViewController: BaseViewController, UIWebViewDelegate {
@@ -31,7 +32,6 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         self.webView.scrollView.showsVerticalScrollIndicator = false;
         self.webView.scrollView.showsHorizontalScrollIndicator = false;
         
-        self.initLocationManager()
         
         if (isSigned)
         {
@@ -65,11 +65,57 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         let url = URL(fileURLWithPath: htmlPath)
         let request = URLRequest(url: url)
         self.webView.loadRequest(request)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.initLocationManager()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getPermissionLocation(completion: () -> Void) {
+        let status = CLLocationManager.authorizationStatus()
+        
+        if status == .notDetermined {
+            // For use in foreground
+            self.initLocationManager()
+            return
+        }
+        
+        if status == .denied || status == .restricted {
+            let message = "Để xác nhận lãi suất, Mony cần biết chính xác vị trí hiện tại của bạn. Vui lòng bật các dịch vụ định vị GPS để hoàn thiện đơn vay."
+            
+            self.showAlertView(title: "Không tìm thấy địa điểm", message: message, okTitle: "Bật định vị", cancelTitle: nil, completion: { (bool) in
+                
+                guard bool else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                        return
+                    }
+                    
+                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                            print("Settings opened: \(success)") // Prints true
+                        })
+                    }
+                }
+                
+            })
+            
+            
+            return
+        }
+        
+        completion()
     }
     
     
@@ -83,29 +129,30 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         self.sendOTP()
     }
     
+    
     func sendOTP() {
-        
-        self.handleLoadingView(isShow: true)
-        
-        APIClient.shared.getOTPContract(loanID: (self.activeLoan?.loanId)!)
-        .done(on: DispatchQueue.main) { model in
-            self.handleLoadingView(isShow: false)
+        self.getPermissionLocation {
             
-            let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
-            verifyVC.verifyType = .SignContract
-            verifyVC.loanId = self.activeLoan?.loanId
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.pushViewController(verifyVC, animated: true)
-        }
-        .catch { error in
-            self.handleLoadingView(isShow: false)
-            self.showAlertView(title: "Có lỗi", message: "Đã có lỗi trong quá trình gửi mã xác thực. Vui lòng thử lại.", okTitle: "Thử lại", cancelTitle: "Hủy", completion: { (okAction) in
-                if (okAction)
-                {
-                    self.sendOTP()
+            APIClient.shared.getOTPContract(loanID: (self.activeLoan?.loanId)!)
+                .done(on: DispatchQueue.main) { model in
+                    
+                    let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
+                    verifyVC.verifyType = .SignContract
+                    verifyVC.loanId = self.activeLoan?.loanId
+                    self.navigationController?.isNavigationBarHidden = true
+                    self.navigationController?.pushViewController(verifyVC, animated: true)
                 }
-            })
+                .catch { error in
+                    self.showAlertView(title: "Có lỗi", message: "Đã có lỗi trong quá trình gửi mã xác thực. Vui lòng thử lại.", okTitle: "Thử lại", cancelTitle: "Hủy", completion: { (okAction) in
+                        if (okAction)
+                        {
+                            self.sendOTP()
+                        }
+                    })
+            }
+            
         }
+        
     }
     
     /*
