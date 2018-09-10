@@ -76,7 +76,7 @@ class CameraViewController: BaseViewController {
             
             // Set delegate and use the default dispatch queue to execute the call back
             //captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
+            //captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
             
             //Initialise the video preview layer and add it as a sublayer to the viewPreview view's layer
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)

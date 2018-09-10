@@ -66,15 +66,23 @@
                                 <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đã xác thực" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYp-2a-eog">
+                                <rect key="frame" x="48" y="40" width="54.5" height="13.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="sYp-2a-eog" firstAttribute="leading" secondItem="kPi-IM-7NL" secondAttribute="leading" id="1XP-4x-Jw2"/>
+                            <constraint firstItem="sYp-2a-eog" firstAttribute="top" secondItem="kPi-IM-7NL" secondAttribute="bottom" id="5XQ-Wl-gXY"/>
                             <constraint firstAttribute="bottom" secondItem="VQ4-zw-JW6" secondAttribute="bottom" constant="14" id="NDi-EQ-jB5"/>
                             <constraint firstItem="kPi-IM-7NL" firstAttribute="leading" secondItem="VQ4-zw-JW6" secondAttribute="trailing" constant="8" id="Z1I-E7-Rts"/>
+                            <constraint firstItem="kPi-IM-7NL" firstAttribute="centerY" secondItem="d4H-VU-cb2" secondAttribute="centerY" id="aoI-to-Zds"/>
                             <constraint firstItem="bin-wS-inM" firstAttribute="leading" secondItem="kPi-IM-7NL" secondAttribute="trailing" constant="4" id="c1g-er-pL6"/>
                             <constraint firstItem="vFZ-d8-6l1" firstAttribute="centerY" secondItem="bin-wS-inM" secondAttribute="centerY" id="cPS-x9-25F"/>
                             <constraint firstItem="VQ4-zw-JW6" firstAttribute="top" secondItem="d4H-VU-cb2" secondAttribute="top" constant="14" id="dhy-Lj-p6W"/>
-                            <constraint firstItem="kPi-IM-7NL" firstAttribute="centerY" secondItem="VQ4-zw-JW6" secondAttribute="centerY" id="fPa-4o-N5V"/>
                             <constraint firstItem="a3m-U1-xVo" firstAttribute="leading" secondItem="vFZ-d8-6l1" secondAttribute="trailing" id="fx2-eh-5kx"/>
                             <constraint firstItem="vFZ-d8-6l1" firstAttribute="leading" secondItem="bin-wS-inM" secondAttribute="trailing" id="fyl-uI-BL9"/>
                             <constraint firstItem="vFZ-d8-6l1" firstAttribute="centerY" secondItem="VQ4-zw-JW6" secondAttribute="centerY" id="kYI-IF-kF2"/>
@@ -100,10 +108,12 @@
                 <outlet property="borderView" destination="d4H-VU-cb2" id="hm6-2p-6FO"/>
                 <outlet property="desLabel" destination="vFZ-d8-6l1" id="61F-Rm-qvb"/>
                 <outlet property="hiddenCharLabel" destination="bin-wS-inM" id="yR5-it-hmT"/>
+                <outlet property="lblVerified" destination="sYp-2a-eog" id="jr1-pw-b38"/>
                 <outlet property="nameLabel" destination="kPi-IM-7NL" id="CZt-tM-n4W"/>
+                <outlet property="nameLabelCenterYConstraint" destination="aoI-to-Zds" id="N2n-3i-XHA"/>
                 <outlet property="optionBtn" destination="a3m-U1-xVo" id="xtv-PF-UDJ"/>
             </connections>
-            <point key="canvasLocation" x="35" y="23.5"/>
+            <point key="canvasLocation" x="35" y="23"/>
         </tableViewCell>
     </objects>
     <resources>
