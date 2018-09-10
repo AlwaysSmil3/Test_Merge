@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Kingfisher
 
 class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     
@@ -282,8 +283,8 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
         }
         
         if let data = self.dataSourceCollection[indexPath.row] as? String {
-            //cell.imgValue.sd_setImage(with: URL(string: hostLoan + data), completed: nil)
-            cell.imgValue.sd_setImage(with: URL(string: data), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: nil)
+            //cell.imgValue.sd_setImage(with: URL(string: data), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: nil)
+            cell.imgValue.kf.setImage(with: URL(string: data), placeholder: #imageLiteral(resourceName: "imagefirstOnboard"), options: nil, progressBlock: nil, completionHandler: nil)
             cell.imgAdd.isHidden = true
             cell.btnDelete.isHidden = false
             cell.urlImg = data

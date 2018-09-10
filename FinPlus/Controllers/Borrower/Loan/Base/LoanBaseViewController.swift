@@ -187,29 +187,37 @@ class LoanBaseViewController: BaseViewController {
 
     
     //Chọn ảnh
-    func selectedFile() {
-        CameraHandler.shared.showCamera(vc: self)
-        CameraHandler.shared.imagePickedBlock = { (image) in
-            //let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
-            
-            self.uploadData(img: image)
+//    func selectedFile() {
+//        CameraHandler.shared.showCamera(vc: self)
+//        CameraHandler.shared.imagePickedBlock = { (image) in
+//            //let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
+//
+//            self.uploadData(img: image)
+//
+//        }
+//    }
+    
+    func showCameraView() {
+//        let guideVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "GuideCaptureViewController") as! GuideCaptureViewController
+//        guideVC.delegate = self
+//        self.present(guideVC, animated: true, completion: {
+//
+//        })
+        
+        let cameraVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "CameraViewController") as! CameraViewController
+        cameraVC.delegateCamera = self
+        cameraVC.typeImgFile = self.typeImgFile
+        
+        self.present(cameraVC, animated: true) {
             
         }
-    }
-    
-    func showGuideCaptureView() {
-        let guideVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "GuideCaptureViewController") as! GuideCaptureViewController
-        guideVC.delegate = self
-        self.present(guideVC, animated: true, completion: {
-            
-        })
         
     }
     
     //Upload Data Image
-    func uploadData(img: UIImage) {
+    func uploadData(img: UIImage, typeImg: FILE_TYPE_IMG?) {
         
-        guard let type = self.typeImgFile else { return }
+        guard let type = typeImg else { return }
 //
 //        let dataImg = UIImagePNGRepresentation(img)
         
@@ -510,17 +518,20 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
                 self.typeImgFile = .Optional
             }
             
-            if self.typeImgFile == .ALL {
-                
-                if let value = userDefault.value(forKey: UserDefaultShowGuideCameraView) as? Bool, value {
-                    self.selectedFile()
-                } else {
-                    self.showGuideCaptureView()
-                }
-                
-            } else {
-               self.selectedFile()
-            }
+            self.showCameraView()
+            
+//            if self.typeImgFile == .ALL {
+//
+//                if let value = userDefault.value(forKey: UserDefaultShowGuideCameraView) as? Bool, value {
+//                    self.selectedFile()
+//                } else {
+//                    self.showGuideCaptureView()
+//                }
+//
+//
+//            } else {
+//               self.selectedFile()
+//            }
         
             
             break
@@ -560,13 +571,20 @@ extension LoanBaseViewController: UniversitySelectionDelegate {
     }
 }
 
-//MARK: GuideCaptureDelegate
-extension LoanBaseViewController: GuideCaptureDelegate {
-    func showCamera() {
-        self.selectedFile()
+//MARK: DataImageFromCameraCaptureDelegate
+extension LoanBaseViewController: DataImageFromCameraCaptureDelegate {
+    func getImage(image: UIImage, type: FILE_TYPE_IMG?) {
+        self.uploadData(img: image, typeImg: type)
     }
-    
 }
+
+////MARK: GuideCaptureDelegate
+//extension LoanBaseViewController: GuideCaptureDelegate {
+//    func showCamera() {
+//        self.selectedFile()
+//    }
+//
+//}
 
 //MARK: SBMessageInputViewDelegate
 extension LoanBaseViewController: SBMessageInputViewDelegate {

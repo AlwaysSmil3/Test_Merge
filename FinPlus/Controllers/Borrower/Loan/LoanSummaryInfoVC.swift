@@ -232,7 +232,7 @@ class LoanSummaryInfoVC: BaseViewController {
     @IBAction func btnLoanTapped(_ sender: Any) {
         
         guard self.btnAgreeTerm!.isSelected else {
-            self.showGreenBtnMessage(title: "Tôi đồng ý điều khoản sử dụng", message: "Vui lòng đồng ý điều khoản sử dụng để gửi đơn vay của bạn.", okTitle: "Đóng", cancelTitle: nil)
+            self.showGreenBtnMessage(title: "Điều khoản sử dụng", message: "Vui lòng đồng ý điều khoản sử dụng để gửi đơn vay của bạn.", okTitle: "Đóng", cancelTitle: nil)
             
             return
         }

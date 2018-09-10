@@ -47,6 +47,7 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - IBAnimatable (5.1.0)
   - JSONWebToken (2.2.0)
+  - Kingfisher (4.8.1)
   - MYTableViewIndex (0.6.1)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -88,6 +89,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - IBAnimatable
   - JSONWebToken
+  - Kingfisher
   - MYTableViewIndex
   - NVActivityIndicatorView
   - PinCodeTextField
@@ -117,6 +119,7 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - IBAnimatable
     - JSONWebToken
+    - Kingfisher
     - MYTableViewIndex
     - nanopb
     - NVActivityIndicatorView
@@ -147,6 +150,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   IBAnimatable: dd81f8f22e9982b05e8ac50794e4c8988cc300f2
   JSONWebToken: 6fae32489632658d563dd6952a5c34020ea813e4
+  Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
   MYTableViewIndex: adc397809c76413bc7d117f95c7fce18a1282014
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   NVActivityIndicatorView: 8068ba3ad39cb44cbaab25d89ff2546b3f092681
@@ -159,6 +163,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: dc03630fec9b2d9215381e03b5ad4bfd6954ffb6
+PODFILE CHECKSUM: 6a07351c622ef95c1506ba50a50b430adb752fdc
 
 COCOAPODS: 1.5.3
