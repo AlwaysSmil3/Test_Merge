@@ -852,7 +852,7 @@
                                     <constraint firstAttribute="height" constant="44" id="ct6-GJ-Tiv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="Đồng ý ký"/>
+                                <state key="normal" title="Đồng ý ký hợp đồng"/>
                                 <connections>
                                     <action selector="sign_contract:" destination="bUq-XX-aPo" eventType="touchUpInside" id="Zmc-ig-3Fx"/>
                                 </connections>
@@ -2367,7 +2367,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="46"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
-                                                <state key="normal" title="Gửi đơn vay">
+                                                <state key="normal" title="Gửi hồ sơ vay tiền">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -2460,21 +2460,21 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_bg_verify_fb" translatesAutoresizingMaskIntoConstraints="NO" id="g2O-yu-bxu">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gửi đơn vay thành công!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hUI-yM-oQU">
-                                <rect key="frame" x="32" y="112" width="311" height="31.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gửi hồ sơ vay tiền thành công!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hUI-yM-oQU">
+                                <rect key="frame" x="32" y="112" width="311" height="62.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vv-LJ-Yww">
-                                <rect key="frame" x="32" y="159.5" width="311" height="72"/>
+                                <rect key="frame" x="32" y="190.5" width="311" height="72"/>
                                 <string key="text">Đơn vay của bạn đã được gửi đi thành công. Hệ thống sẽ tiến hành phê duyệt và đưa ra mức lãi suất, khoản thanh toán phù hợp nhất với bạn. Hãy bật thông báo để nhận kết quả sớm nhất!</string>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJo-Nm-bh4" customClass="AnimatableView" customModule="IBAnimatable">
-                                <rect key="frame" x="32" y="263.5" width="311" height="46"/>
+                                <rect key="frame" x="32" y="294.5" width="311" height="46"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9n-Yy-Mnd">
                                         <rect key="frame" x="0.0" y="0.0" width="311" height="46"/>
