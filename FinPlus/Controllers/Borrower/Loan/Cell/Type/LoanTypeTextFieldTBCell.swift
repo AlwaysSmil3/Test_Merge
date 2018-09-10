@@ -78,6 +78,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
     @IBAction func tfEditEnd(_ sender: Any) {
         
+        if let temp = self.valueTemp {
+            if self.tfValue?.text! != temp {
+                self.isNeedUpdate = false
+            } else {
+                self.isNeedUpdate = true
+            }
+        }
+        
         guard let field_ = self.field, let id = field_.id else { return }
         guard let parent = self.parent else {
             if id.contains("optionalText") {
@@ -384,18 +392,18 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Giới hạn ký tự nhập vào
         
+        let maxLength = self.getMaxLength()
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        
         if let temp = self.valueTemp {
-            if textField.text! != temp {
+            if newString as String != temp {
                 self.isNeedUpdate = false
             } else {
                 self.isNeedUpdate = true
             }
         }
-        
-        let maxLength = self.getMaxLength()
-        let currentString: NSString = textField.text! as NSString
-        let newString: NSString =
-            currentString.replacingCharacters(in: range, with: string) as NSString
         
         if newString.length > maxLength { return false }
         

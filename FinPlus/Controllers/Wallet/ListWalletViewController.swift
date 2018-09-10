@@ -131,10 +131,33 @@ class ListWalletViewController: BaseViewController {
         }
     }
     
+    private func getCurrentLoanBank() -> AccountBank? {
+        let loanBankId = DataManager.shared.loanInfo.bankId
+            for bank in self.listWallet {
+                if let bank_ = bank as? AccountBank {
+                    if let bankId = bank_.id {
+                        if bankId == loanBankId {
+                            return bank_
+                        }
+                    }
+                }
+                
+            }
+        
+        return nil
+        
+    }
+    
     @IBAction func raightBarButtonTapped(_ sender: Any) {
         
         guard self.walletAction == .LoanNation, let bankId = self.currentBankIdSelected else {
             self.showToastWithMessage(message: "Vui lòng chọn tài khoản nhận tiền")
+            return
+        }
+        
+        if !DataManager.shared.checkDataInvalidChangedInStepBank(currentBank: self.getCurrentLoanBank()) {
+            //For Missing Data
+            self.showToastWithMessage(message: "Vui lòng thay đổi các thông tin không chính xác.")
             return
         }
         
