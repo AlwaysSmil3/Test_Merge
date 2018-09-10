@@ -4088,13 +4088,103 @@
             </objects>
             <point key="canvasLocation" x="3334" y="243"/>
         </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="pmw-TU-adr">
+            <objects>
+                <viewController storyboardIdentifier="CameraViewController" id="PMd-UU-FwF" customClass="CameraViewController" customModule="FinPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lxs-TE-Xuh"/>
+                        <viewControllerLayoutGuide type="bottom" id="efY-iz-gI1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="06e-Qu-eZv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KXg-3e-eq2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_nationalID_All" translatesAutoresizingMaskIntoConstraints="NO" id="2Vq-bc-UIG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAV-iQ-Siv">
+                                <rect key="frame" x="159" y="589" width="58" height="58"/>
+                                <state key="normal" image="ic_capture_camera"/>
+                                <connections>
+                                    <action selector="btnCaptureTapped:" destination="PMd-UU-FwF" eventType="touchUpInside" id="Df2-Ly-95q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ed6-P1-YpA">
+                                <rect key="frame" x="8" y="20" width="26" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="26" id="VZU-h9-dqt"/>
+                                    <constraint firstAttribute="width" secondItem="Ed6-P1-YpA" secondAttribute="height" multiplier="1:1" id="fBQ-HM-kWY"/>
+                                </constraints>
+                                <state key="normal" image="ic_close1"/>
+                                <connections>
+                                    <action selector="btnExitsTapped:" destination="PMd-UU-FwF" eventType="touchUpInside" id="MKC-Z1-XzJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đứng trước máy ảnh, cầm thẻ của bạn để phía trước sao cho để mặt và thẻ được hiển thị rõ ràng." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wjm-JK-1bk">
+                                <rect key="frame" x="32" y="542.5" width="311" height="26.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Kv-jU-rgn">
+                                <rect key="frame" x="268" y="601.5" width="91" height="33"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                <state key="normal" title="Sử dụng ảnh">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnUsePhotoTapped:" destination="PMd-UU-FwF" eventType="touchUpInside" id="iRB-Pr-piu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2Vq-bc-UIG" firstAttribute="top" secondItem="06e-Qu-eZv" secondAttribute="top" id="05r-v2-J7l"/>
+                            <constraint firstItem="2Kv-jU-rgn" firstAttribute="centerY" secondItem="vAV-iQ-Siv" secondAttribute="centerY" id="6PZ-yT-317"/>
+                            <constraint firstAttribute="trailing" secondItem="Wjm-JK-1bk" secondAttribute="trailing" constant="32" id="LdP-1v-4lO"/>
+                            <constraint firstItem="vAV-iQ-Siv" firstAttribute="centerX" secondItem="06e-Qu-eZv" secondAttribute="centerX" id="QIa-DK-peK"/>
+                            <constraint firstItem="Wjm-JK-1bk" firstAttribute="leading" secondItem="06e-Qu-eZv" secondAttribute="leading" constant="32" id="TkK-EQ-BW7"/>
+                            <constraint firstAttribute="trailing" secondItem="2Kv-jU-rgn" secondAttribute="trailing" constant="16" id="VCq-S0-iDF"/>
+                            <constraint firstItem="2Vq-bc-UIG" firstAttribute="leading" secondItem="06e-Qu-eZv" secondAttribute="leading" id="Xd7-Lz-Bje"/>
+                            <constraint firstItem="efY-iz-gI1" firstAttribute="top" secondItem="vAV-iQ-Siv" secondAttribute="bottom" constant="20" id="Xyc-bj-Zyv"/>
+                            <constraint firstItem="KXg-3e-eq2" firstAttribute="top" secondItem="06e-Qu-eZv" secondAttribute="top" id="cy7-F2-pFW"/>
+                            <constraint firstAttribute="trailing" secondItem="KXg-3e-eq2" secondAttribute="trailing" id="dGf-wk-dDQ"/>
+                            <constraint firstAttribute="bottom" secondItem="2Vq-bc-UIG" secondAttribute="bottom" id="h3m-LU-EG9"/>
+                            <constraint firstItem="Ed6-P1-YpA" firstAttribute="leading" secondItem="06e-Qu-eZv" secondAttribute="leading" constant="8" id="h5k-ju-VRr"/>
+                            <constraint firstItem="efY-iz-gI1" firstAttribute="top" secondItem="KXg-3e-eq2" secondAttribute="bottom" id="jWz-Ux-UPi"/>
+                            <constraint firstItem="Ed6-P1-YpA" firstAttribute="top" secondItem="06e-Qu-eZv" secondAttribute="top" constant="20" id="lRr-pe-sKW"/>
+                            <constraint firstAttribute="trailing" secondItem="2Vq-bc-UIG" secondAttribute="trailing" id="mVK-rR-0h1"/>
+                            <constraint firstItem="vAV-iQ-Siv" firstAttribute="top" secondItem="Wjm-JK-1bk" secondAttribute="bottom" constant="20" id="o71-xH-J8q"/>
+                            <constraint firstItem="KXg-3e-eq2" firstAttribute="leading" secondItem="06e-Qu-eZv" secondAttribute="leading" id="tiZ-CT-kRt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnCapture" destination="vAV-iQ-Siv" id="C1Z-G3-zep"/>
+                        <outlet property="btnExits" destination="Ed6-P1-YpA" id="sXY-80-7Mr"/>
+                        <outlet property="btnUsePhoto" destination="2Kv-jU-rgn" id="hDH-7Y-wnT"/>
+                        <outlet property="imgBackgound" destination="2Vq-bc-UIG" id="S4i-eX-Id0"/>
+                        <outlet property="lblDescription" destination="Wjm-JK-1bk" id="ym4-P8-2nz"/>
+                        <outlet property="previewView" destination="KXg-3e-eq2" id="wCP-af-fDs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RI0-up-8nM" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4057" y="243"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bg_button_enable_login" width="311" height="44"/>
         <image name="ic_accept_policy" width="14" height="14"/>
         <image name="ic_back" width="20" height="18"/>
+        <image name="ic_capture_camera" width="58" height="58"/>
         <image name="ic_checkbox_checked" width="14" height="14"/>
         <image name="ic_close" width="16" height="16"/>
+        <image name="ic_close1" width="16" height="16"/>
         <image name="ic_disclosureIndicator1" width="8" height="13"/>
         <image name="ic_disclosureIndicator2" width="5" height="7"/>
         <image name="ic_disclosureIndicator3" width="5" height="7"/>
@@ -4102,6 +4192,7 @@
         <image name="ic_questInfo" width="8" height="9"/>
         <image name="img_bg_verify_fb" width="375" height="667"/>
         <image name="img_guide_capture" width="162" height="194"/>
+        <image name="img_nationalID_All" width="375" height="667"/>
         <image name="option_icon" width="4" height="14"/>
     </resources>
 </document>

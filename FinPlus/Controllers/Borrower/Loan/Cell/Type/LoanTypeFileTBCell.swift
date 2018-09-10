@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Kingfisher
 
 class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
@@ -78,11 +79,15 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             
             if value.length() > 0 {
                 self.activityIndicator.startAnimating()
-                //self.imgValue?.sd_setImage(with: URL(string: hostLoan + value), completed: nil)
-                //self.imgValue?.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: nil)
-                self.imgValue?.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: { (image, error, type, url) in
+                
+//                self.imgValue?.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: { (image, error, type, url) in
+//                    self.activityIndicator.stopAnimating()
+//                })
+                
+                self.imgValue?.kf.setImage(with: URL(string: value), placeholder: #imageLiteral(resourceName: "imagefirstOnboard"), options: nil, progressBlock: nil, completionHandler: { (image, error, type, url) in
                     self.activityIndicator.stopAnimating()
                 })
+                
                 DataManager.shared.loanInfo.nationalIdAllImg = value
                 self.imgAdd?.isHidden = true
                 self.lblDescription?.isHidden = true
@@ -114,7 +119,10 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             
             if value.length() > 0 {
                 self.activityIndicator.startAnimating()
-                self.imgValue?.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: { (image, error, type, url) in
+//                self.imgValue?.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: { (image, error, type, url) in
+//                    self.activityIndicator.stopAnimating()
+//                })
+                self.imgValue?.kf.setImage(with: URL(string: value), placeholder: #imageLiteral(resourceName: "imagefirstOnboard"), options: nil, progressBlock: nil, completionHandler: { (image, error, type, url) in
                     self.activityIndicator.stopAnimating()
                 })
                 DataManager.shared.loanInfo.nationalIdFrontImg = value
@@ -146,9 +154,13 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             
             if value.length() > 0 {
                 self.activityIndicator.startAnimating()
-                self.imgValue?.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: { (image, error, type, url) in
+//                self.imgValue?.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: { (image, error, type, url) in
+//                    self.activityIndicator.stopAnimating()
+//                })
+                self.imgValue?.kf.setImage(with: URL(string: value), placeholder: #imageLiteral(resourceName: "imagefirstOnboard"), options: nil, progressBlock: nil, completionHandler: { (image, error, type, url) in
                     self.activityIndicator.stopAnimating()
                 })
+                
                 DataManager.shared.loanInfo.nationalIdBackImg = value
                 self.imgAdd?.isHidden = true
                 self.lblDescription?.isHidden = true
