@@ -378,10 +378,16 @@ extension ListWalletViewController: UITableViewDataSource {
             cell?.optionBtn.setImage(UIImage(named: "option_icon"), for: .normal)
             cell?.delegate = self
             
-            if let verified = item.verified, verified {
-                cell?.optionBtn.setImage(UIImage(named: "option_icon"), for: .normal)
+            if let verified = item.verified, verified == 1 {
+                cell?.optionBtn.isHidden = true
+                cell?.lblVerified?.isHidden = false
+                cell?.nameLabelCenterYConstraint.constant = -7
+            } else {
+                cell?.optionBtn.isHidden = false
+                cell?.lblVerified?.isHidden = true
+                cell?.nameLabelCenterYConstraint.constant = 0
             }
-            
+        
             if self.walletAction == .LoanNation {
                 
                 cell?.optionBtn.setImage(#imageLiteral(resourceName: "ic_radio_off"), for: .normal)
@@ -435,7 +441,7 @@ extension ListWalletViewController: EditWalletDelegate {
             return
         }
         
-        if let verified = bank.verified, verified {
+        if let verified = bank.verified, verified == 1 {
             return
         }
         

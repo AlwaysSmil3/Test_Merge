@@ -100,7 +100,10 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
     
     private func updateNoti(index: Int) {
         APIClient.shared.updateNotification(notiID: index)
-            .done(on: DispatchQueue.global()) { model in }
+            .done(on: DispatchQueue.global()) { model in
+                
+                
+            }
             .catch { error in}
     }
     

@@ -21,6 +21,9 @@ class WalletTableViewCell: UITableViewCell {
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var hiddenCharLabel: UILabel?
     
+    @IBOutlet weak var lblVerified: UILabel?
+    @IBOutlet var nameLabelCenterYConstraint: NSLayoutConstraint!
+    
     var currentIndex: IndexPath?
     var delegate: EditWalletDelegate?
     
