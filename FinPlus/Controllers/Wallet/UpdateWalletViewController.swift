@@ -89,6 +89,14 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
             
         }
         
+        if let verified = self.wallet?.verified, verified == 1 {
+            //Da verified thi k cho sữa nữa
+            self.navigationItem.rightBarButtonItem = nil
+            
+            self.accTextField.isEnabled = false
+            self.nameTextField.isEnabled = false
+        }
+        
 
     }
     
