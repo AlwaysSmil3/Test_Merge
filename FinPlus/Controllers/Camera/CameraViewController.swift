@@ -9,19 +9,34 @@
 import Foundation
 import AVFoundation
 
+protocol DataImageFromCameraCaptureDelegate {
+    func getImage(image: UIImage, type: FILE_TYPE_IMG?)
+}
+
 class CameraViewController: BaseViewController {
     
     @IBOutlet var previewView: UIView!
     @IBOutlet var btnCapture: UIButton!
     @IBOutlet var lblDescription: UILabel!
+    @IBOutlet var btnExits: UIButton!
+    @IBOutlet var imgBackgound: UIImageView!
+    @IBOutlet var btnUsePhoto: UIButton!
+    
+    // Kiểu File Img
+    var typeImgFile: FILE_TYPE_IMG?
+    var currentPhoto: UIImage?
     
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var capturePhotoOutput: AVCapturePhotoOutput?
     
+    var delegateCamera: DataImageFromCameraCaptureDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.btnUsePhoto.isHidden = true
+        self.initCamera()
     }
     
     override func viewDidLayoutSubviews() {
@@ -72,11 +87,28 @@ class CameraViewController: BaseViewController {
             //start video capture
             captureSession?.startRunning()
             
-            self.setTypeCamera(position: .back)
         } catch {
             //If any error occurs, simply print it out
             print(error)
             return
+        }
+        
+        
+        if let type = self.typeImgFile {
+            if type == .ALL {
+                self.setTypeCamera(position: .front)
+            } else if type == .BACK {
+                self.imgBackgound.image = #imageLiteral(resourceName: "img_nationalID_Back")
+                self.setTypeCamera(position: .back)
+                self.lblDescription.isHidden = true
+            } else if type == .FRONT {
+                self.imgBackgound.image = #imageLiteral(resourceName: "img_nationalID_Front")
+                self.setTypeCamera(position: .back)
+                self.lblDescription.isHidden = true
+            } else {
+                self.setTypeCamera(position: .back)
+                self.lblDescription.isHidden = true
+            }
         }
         
         
@@ -176,6 +208,34 @@ class CameraViewController: BaseViewController {
         }
     }
     
+    @IBAction func btnCaptureTapped(_ sender: Any) {
+        guard let capturePhotoOutput = self.capturePhotoOutput else { return }
+        
+        // Get an instance of AVCapturePhotoSettings class
+        let photoSettings = AVCapturePhotoSettings()
+        
+        // Set photo settings for our need
+        photoSettings.isAutoStillImageStabilizationEnabled = true
+        photoSettings.isHighResolutionPhotoEnabled = true
+        photoSettings.flashMode = .auto
+        
+        // Call capturePhoto method by passing our photo settings and a delegate implementing AVCapturePhotoCaptureDelegate
+        capturePhotoOutput.capturePhoto(with: photoSettings, delegate: self)
+    }
+    
+    @IBAction func btnExitsTapped(_ sender: Any) {
+        self.dismiss(animated: true) {
+            
+        }
+    }
+    
+    @IBAction func btnUsePhotoTapped(_ sender: Any) {
+        if let img = self.currentPhoto {
+            self.dismiss(animated: true) {
+                self.delegateCamera?.getImage(image: img, type: self.typeImgFile)
+            }
+        }
+    }
     
     
 }
@@ -202,10 +262,23 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         
         // Initialise an UIImage with our image data
         let capturedImage = UIImage.init(data: imageData , scale: 1.0)
+        
+        
         if let image = capturedImage {
             // Save our captured image to photos album
             print("image capture succeess")
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            
+            if let type = self.typeImgFile, type == .FRONT || type == .BACK {
+                self.currentPhoto = image.rotate(radians: .pi * 3/2)
+            } else {
+                self.currentPhoto = image
+            }
+        
+            
+            if self.btnUsePhoto.isHidden {
+                self.btnUsePhoto.isHidden = false
+            }
+            //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         }
     }
     

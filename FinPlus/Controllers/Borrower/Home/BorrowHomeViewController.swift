@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-import SDWebImage
+import Kingfisher
 
 class BorrowHomeViewController: BaseViewController {
     
@@ -120,7 +120,8 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
         
         let urlString = Host.productURL + model.imageUrl!
         let url = URL(string: urlString)
-        cell.imgIcon.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic_homeBrower_group1"))
+        //cell.imgIcon.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic_homeBrower_group1"))
+        cell.imgIcon.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "ic_homeBrower_group1"), options: nil, progressBlock: nil, completionHandler: nil)
         cell.lblName.text = FinPlusHelper.addCharactorToString(input: model.title!)
         cell.lblDistanceAmount.text = "\(model.min! / MONEY_TERM_DISPLAY)-\(model.max! / MONEY_TERM_DISPLAY) triệu"
         
