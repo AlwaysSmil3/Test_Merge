@@ -517,10 +517,23 @@ extension DataManager {
     /// Check Invalid Data in step Bank did changed
     ///
     /// - Returns: <#return value description#>
-    func checkDataInvalidChangedInStepBank() -> Bool {
+    func checkDataInvalidChangedInStepBank(currentBank: AccountBank?) -> Bool {
+        guard let data = self.missingLoanDataDictionary, let bank = data["bank"] as? JSONDictionary else { return true }
+        
+        guard let currbank = currentBank else { return true }
+        
+        if let value = bank["accountHolder"] as? String, value == currbank.accountBankName {
+            return false
+        }
+        
+        if let value = bank["accountNumber"] as? String, value == currbank.accountBankNumber {
+            return false
+        }
+        
         
         return true
     }
+    
     
     
     /// Check Invalid Data in step NationalID did changed
