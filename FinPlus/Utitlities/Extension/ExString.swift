@@ -19,7 +19,8 @@ extension String {
     ///
     /// - Returns: <#return value description#>
     func removeVietnameseMark() -> String {
-        return self.folding(options: .diacriticInsensitive, locale: .current)
+        //return self.folding(options: .diacriticInsensitive, locale: .current)
+        return self.folding(options: [.diacriticInsensitive, .widthInsensitive, .caseInsensitive], locale: .current)
     }
     
     
