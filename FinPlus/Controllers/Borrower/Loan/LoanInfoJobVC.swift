@@ -49,6 +49,11 @@ class LoanInfoJobVC: LoanBaseViewController {
                 return
             }
             
+            if DataManager.shared.loanInfo.jobInfo.positionTitle.length() == 0 {
+                self.showToastWithMessage(message: "Vui lòng nhập vị trí làm việc để tiếp tục.")
+                return
+            }
+            
             if DataManager.shared.loanInfo.jobInfo.salary == 0 {
                 self.showToastWithMessage(message: "Vui lòng nhập mức thu nhập hàng tháng để tiếp tục.")
                 return

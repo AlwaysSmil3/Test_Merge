@@ -1168,16 +1168,26 @@ class LoanStateViewController: UIViewController {
     // MARK: Action
     
     @IBAction func create_New_Loan() {
-        
-        let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
-        
-        loanFirstVC.hidesBottomBarWhenPushed = true
-        
-        DataManager.shared.reloadOptionalData()
-        DataManager.shared.currentIndexCategoriesSelectedPopup = Int(DataManager.shared.loanCategories[0].id ?? 0)
-        loanFirstVC.loanCategory = DataManager.shared.getCurrentCategory()
-        
-        self.navigationController?.pushViewController(loanFirstVC, animated: true)
+        DataManager.shared.loanInfo.status = STATUS_LOAN.CANCELED.rawValue
+        APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
+            .done(on: DispatchQueue.global()) { model in
+                //DataManager.shared.loanID = model.loanId!
+                DataManager.shared.browwerInfo?.activeLoan = nil
+                
+                let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
+                
+                loanFirstVC.hidesBottomBarWhenPushed = true
+                
+                DataManager.shared.reloadOptionalData()
+                DataManager.shared.reloadDataFirstLoanVC()
+                DataManager.shared.loanInfo.status = 0
+                DataManager.shared.currentIndexCategoriesSelectedPopup = Int(DataManager.shared.loanCategories[0].id ?? 0)
+                loanFirstVC.loanCategory = DataManager.shared.getCurrentCategory()
+                
+                self.navigationController?.pushViewController(loanFirstVC, animated: true)
+                
+            }
+            .catch { error in }
         
         
     }
