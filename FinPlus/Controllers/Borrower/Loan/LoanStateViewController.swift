@@ -198,6 +198,7 @@ class LoanStateViewController: UIViewController {
         //Ngày huy động còn lại
         var acceptedDate = "30"
         var acceptedDateTemp = 0
+        var limitFunding = ""
         
         if let acceptedDateStr = loan.acceptedAt {
             let calendar = NSCalendar.current
@@ -212,8 +213,14 @@ class LoanStateViewController: UIViewController {
             }
         }
         
-        if let rasingCapital = DataManager.shared.config?.dateLimit?.rAISINGCAPITAL, rasingCapital > acceptedDateTemp {
-            acceptedDate = "\(rasingCapital - acceptedDateTemp)"
+        if let rasingCapital = DataManager.shared.config?.dateLimit?.rAISINGCAPITAL {
+            let raisingDay = self.convertHourToDay(hour: rasingCapital)
+            if raisingDay > acceptedDateTemp {
+                acceptedDate = "\(rasingCapital - acceptedDateTemp)"
+            }
+            
+            let datelimit = Date().dateByAddingHours(rasingCapital)
+            limitFunding = datelimit.toString(.custom("dd/MM/yyyy HH:mm"))
         }
         
         dataSource = [
@@ -506,7 +513,7 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Ngày duyệt đơn", value: dateString, attributed: nil),
                     LoanSummaryModel(name: "Số tiền vay được duyệt", value: amountString, attributed: NSAttributedString(string: amountString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Số tiền huy động được", value: funded, attributed: NSAttributedString(string: funded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
-                    LoanSummaryModel(name: "Ngày huy động còn lại", value: "\(acceptedDate) Ngày", attributed: NSAttributedString(string: "\(acceptedDate) Ngày", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: "Hạn huy động", value: limitFunding, attributed: nil),
                     LoanSummaryModel(name: "Kỳ hạn vay được duyệt", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Trạng thái", value: "Đang huy động", attributed: NSAttributedString(string: "Đang huy động", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
                     LoanSummaryModel(name: "Lãi suất", value: "\(rate)%/năm", attributed: nil),
@@ -1165,26 +1172,42 @@ class LoanStateViewController: UIViewController {
         return value
     }
     
+    
+    /// Convert Hour to Day
+    ///
+    /// - Parameter hour: <#hour description#>
+    /// - Returns: <#return value description#>
+    private func convertHourToDay(hour: Int) -> Int {
+        if hour % 24 == 0 {
+            return Int(hour / 24)
+        }
+        
+        return Int(hour / 24) + 1
+    }
+    
     // MARK: Action
     
     @IBAction func create_New_Loan() {
         DataManager.shared.loanInfo.status = STATUS_LOAN.CANCELED.rawValue
         APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
-            .done(on: DispatchQueue.global()) { model in
+            .done(on: DispatchQueue.main) { [weak self]model in
+                
+                self?.moveHome()
+                
                 //DataManager.shared.loanID = model.loanId!
-                DataManager.shared.browwerInfo?.activeLoan = nil
-                
-                let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
-                
-                loanFirstVC.hidesBottomBarWhenPushed = true
-                
-                DataManager.shared.reloadOptionalData()
-                DataManager.shared.reloadDataFirstLoanVC()
-                DataManager.shared.loanInfo.status = 0
-                DataManager.shared.currentIndexCategoriesSelectedPopup = Int(DataManager.shared.loanCategories[0].id ?? 0)
-                loanFirstVC.loanCategory = DataManager.shared.getCurrentCategory()
-                
-                self.navigationController?.pushViewController(loanFirstVC, animated: true)
+//                DataManager.shared.browwerInfo?.activeLoan = nil
+//
+//                let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
+//
+//                loanFirstVC.hidesBottomBarWhenPushed = true
+//
+//                DataManager.shared.reloadOptionalData()
+//                DataManager.shared.reloadDataFirstLoanVC()
+//                DataManager.shared.loanInfo.status = 0
+//                DataManager.shared.currentIndexCategoriesSelectedPopup = Int(DataManager.shared.loanCategories[0].id ?? 0)
+//                loanFirstVC.loanCategory = DataManager.shared.getCurrentCategory()
+//
+//                self.navigationController?.pushViewController(loanFirstVC, animated: true)
                 
             }
             .catch { error in }
