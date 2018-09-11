@@ -1137,7 +1137,7 @@ class LoanStateViewController: UIViewController {
         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
             .done(on: DispatchQueue.main) { model in
                 self.refresher.endRefreshing()
-                guard let status = model.activeLoan?.status, let currentStatus = DataManager.shared.browwerInfo?.activeLoan?.status, status != currentStatus else { return }
+                if let status = model.activeLoan?.status, let currentStatus = DataManager.shared.browwerInfo?.activeLoan?.status, status == currentStatus { return }
                 DataManager.shared.isNeedReloadLoanStatusVC = false
                 DataManager.shared.browwerInfo = model
                 
