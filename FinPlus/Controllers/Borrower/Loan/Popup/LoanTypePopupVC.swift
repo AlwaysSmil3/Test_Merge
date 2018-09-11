@@ -260,6 +260,12 @@ class LoanTypePopupVC: BasePopup {
         
         if index == self.dataSource.count - 1 {
             if let cell = self.mainTBView?.cellForRow(at: IndexPath(row: index, section: 0)) as? LoanTypePopupAddTextTBCell {
+                
+                guard let text = cell.tfValue?.text, text.count > 0 else {
+                    self.showToastWithMessage(message: "Vui lòng nhập thông tin với lựa chọn \"Khác\"")
+                    return
+                }
+                
                 self.dataSource[index].textValue = cell.tfValue?.text
             }
         } else {
