@@ -21,6 +21,10 @@ class CameraViewController: BaseViewController {
     @IBOutlet var btnExits: UIButton!
     @IBOutlet var imgBackgound: UIImageView!
     @IBOutlet var btnUsePhoto: UIButton!
+    @IBOutlet var btnExitsRight: UIButton!
+    
+    @IBOutlet var contentCurrentImage: UIView!
+    @IBOutlet var imgCurrentCapture: UIImageView!
     
     // Kiểu File Img
     var typeImgFile: FILE_TYPE_IMG?
@@ -101,10 +105,14 @@ class CameraViewController: BaseViewController {
                 self.imgBackgound.image = #imageLiteral(resourceName: "img_nationalID_Back")
                 self.setTypeCamera(position: .back)
                 self.lblDescription.isHidden = true
+                self.btnExits.isHidden = true
+                self.btnExitsRight.isHidden = false
             } else if type == .FRONT {
                 self.imgBackgound.image = #imageLiteral(resourceName: "img_nationalID_Front")
                 self.setTypeCamera(position: .back)
                 self.lblDescription.isHidden = true
+                self.btnExits.isHidden = true
+                self.btnExitsRight.isHidden = false
             } else {
                 self.setTypeCamera(position: .back)
                 self.lblDescription.isHidden = true
