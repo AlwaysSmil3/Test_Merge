@@ -154,18 +154,18 @@ class LoanSummaryInfoVC: BaseViewController {
             for bank in userBanks {
                 if let bankId = bank.id {
                     if bankId == loanBankId {
-                        var accountNumber = ""
-                        if let number = bank.accountBankNumber, number.count > 4 {
-                             accountNumber = String(number.suffix(4))
-                        } else {
-                            accountNumber = bank.accountBankNumber ?? ""
-                        }
-                        accountNumber = "● ● ● ● \(accountNumber)"
-                        let subtitleParameters = [NSAttributedStringKey.font : UIFont(name: FONT_FAMILY_REGULAR, size: 12)]
+                        var accountNumber = bank.accountBankNumber ?? ""
+//                        if let number = bank.accountBankNumber, number.count > 4 {
+//                             accountNumber = String(number.suffix(4))
+//                        } else {
+//                            accountNumber = bank.accountBankNumber ?? ""
+//                        }
+//                        accountNumber = "● ● ● ● \(accountNumber)"
+//                        let subtitleParameters = [NSAttributedStringKey.font : UIFont(name: FONT_FAMILY_REGULAR, size: 12)]
                         
                         dataSource.append(LoanSummaryModel(name: "Ngân hàng / Ví", value: "\(bank.bankName ?? "")", attributed: nil))
                         dataSource.append(LoanSummaryModel(name: "Chủ tài khoản", value: "\(bank.accountBankName ?? "None")", attributed: nil))
-                        dataSource.append(LoanSummaryModel(name: "Số tài khoản", value: accountNumber, attributed: NSAttributedString(string: "● ● ● ●", attributes: subtitleParameters)))
+                        dataSource.append(LoanSummaryModel(name: "Số tài khoản", value: accountNumber, attributed: nil))
 
                     }
                 }
