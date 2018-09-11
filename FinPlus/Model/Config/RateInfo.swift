@@ -13,7 +13,7 @@ public struct RateInfo {
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
     static let name = "name"
-    static let rate = "rate"
+    static let rate = "interestRate"
   }
 
   // MARK: Properties

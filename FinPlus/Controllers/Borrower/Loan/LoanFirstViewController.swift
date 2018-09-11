@@ -173,6 +173,9 @@ class LoanFirstViewController: BaseViewController {
             self.lblLeftTempTotalAmount?.text = "Thanh toán dự kiến"
             
             if let term = self.termSlider?.value, term > 30 {
+                if let va = value {
+                    self.lblTermSlider?.text = "\(Int(va / 30))" + " Tháng"
+                }
                 self.lblLeftTempTotalAmount?.text = "Trả góp dự kiến hàng tháng"
             }
             
@@ -286,12 +289,19 @@ class LoanFirstViewController: BaseViewController {
             } else {
                 self.termSlider.increment = 10
             }
-//            if termValue == 70 || termValue == 80 {
-//                self.termSlider.value = 90
-//            }
+            
             self.lblTermSlider.text = "\(Int(self.termSlider.value / 10) * 10)" + " Ngày"
             
-            if let term = self.termSlider?.value, term > 30 {
+            if let term = self.termSlider?.value, term > 45 {
+                
+                if term >= 45 && term < 75 {
+                    self.lblTermSlider.text = "2 Tháng"
+                } else if term >= 75 && term < 105 {
+                    self.lblTermSlider.text = "3 Tháng"
+                } else {
+                    self.lblTermSlider.text = "\(Int(self.termSlider.value / 30))" + " Tháng"
+                }
+                
                 self.lblLeftTempTotalAmount?.text = "Trả góp dự kiến hàng tháng"
             } else {
                 self.lblLeftTempTotalAmount?.text = "Thanh toán dự kiến"
