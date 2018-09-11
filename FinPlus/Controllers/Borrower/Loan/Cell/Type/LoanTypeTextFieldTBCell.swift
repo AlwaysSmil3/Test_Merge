@@ -46,7 +46,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
             if let id = field_.id {
-                if id.contains("nationalId") || id.contains("salary") || id.contains("companyPhoneNumber") || id.contains("studentId") || id.contains("experienceYear") {
+                if id.contains("salary") || id.contains("companyPhoneNumber") || id.contains("studentId") || id.contains("experienceYear") {
                     self.tfValue?.keyboardType = .numberPad
                 }
             }
