@@ -23,8 +23,14 @@ class CameraViewController: BaseViewController {
     @IBOutlet var btnUsePhoto: UIButton!
     @IBOutlet var btnExitsRight: UIButton!
     
-    @IBOutlet var contentCurrentImage: UIView!
-    @IBOutlet var imgCurrentCapture: UIImageView!
+    @IBOutlet var contentCurrentImageAll: UIView!
+    @IBOutlet var imgCurrentCaptureAll: UIImageView!
+    
+    @IBOutlet var contentCurrentImageOther: UIView!
+    @IBOutlet var imgCurrentCaptureOther: UIImageView!
+    
+    @IBOutlet var btnRetakeOhter: UIButton!
+    @IBOutlet var btnCaptureOhter: UIButton!
     
     // Kiểu File Img
     var typeImgFile: FILE_TYPE_IMG?
@@ -38,8 +44,8 @@ class CameraViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.contentCurrentImageAll.isHidden = true
         
-        self.btnUsePhoto.isHidden = true
         self.initCamera()
     }
     
@@ -107,12 +113,16 @@ class CameraViewController: BaseViewController {
                 self.lblDescription.isHidden = true
                 self.btnExits.isHidden = true
                 self.btnExitsRight.isHidden = false
+                self.btnCaptureOhter.transform = CGAffineTransform(rotationAngle: .pi/2)
+                self.btnRetakeOhter.transform = CGAffineTransform(rotationAngle: .pi/2)
             } else if type == .FRONT {
                 self.imgBackgound.image = #imageLiteral(resourceName: "img_nationalID_Front")
                 self.setTypeCamera(position: .back)
                 self.lblDescription.isHidden = true
                 self.btnExits.isHidden = true
                 self.btnExitsRight.isHidden = false
+                self.btnCaptureOhter.transform = CGAffineTransform(rotationAngle: .pi/2)
+                self.btnRetakeOhter.transform = CGAffineTransform(rotationAngle: .pi/2)
             } else {
                 self.setTypeCamera(position: .back)
                 self.lblDescription.isHidden = true
@@ -245,6 +255,33 @@ class CameraViewController: BaseViewController {
         }
     }
     
+    @IBAction func btnRetakeTapped(_ sender: Any) {
+        if !self.contentCurrentImageAll.isHidden {
+            //self.contentCurrentImageAll.isHidden = true
+            self.animationShowHideView(isHidden: true, currentView: self.contentCurrentImageAll) {
+                
+            }
+        }
+        
+        if !self.contentCurrentImageOther.isHidden {
+            //self.contentCurrentImageOther.isHidden = true
+            self.animationShowHideView(isHidden: true, currentView: self.contentCurrentImageOther) {
+                
+            }
+        }
+        
+    }
+    
+    private func animationShowHideView(isHidden: Bool, currentView: UIView, completion: @escaping() -> Void) {
+        UIView.animate(withDuration: 0.5, delay: 0.2, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            currentView.isHidden = isHidden
+            self.view.layoutIfNeeded()
+        }) { (status) in
+            completion()
+        }
+    }
+    
+    
     
 }
 
@@ -278,14 +315,29 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
             
             if let type = self.typeImgFile, type == .FRONT || type == .BACK {
                 self.currentPhoto = image.rotate(radians: .pi * 3/2)
+                
+                if self.contentCurrentImageOther.isHidden {
+                    //self.contentCurrentImageOther.isHidden = false
+                    self.imgCurrentCaptureOther.image = image.rotate(radians: .pi * 2)
+                    self.animationShowHideView(isHidden: false, currentView: self.contentCurrentImageOther) {
+                    }
+                    
+                }
+            
             } else {
                 self.currentPhoto = image
+                
+                if self.contentCurrentImageAll.isHidden {
+                    //self.contentCurrentImageAll.isHidden = false
+                    self.imgCurrentCaptureAll.image = image
+                    self.animationShowHideView(isHidden: false, currentView: self.contentCurrentImageAll) {
+                        
+                    }
+                    
+                }
+                
             }
-        
             
-            if self.btnUsePhoto.isHidden {
-                self.btnUsePhoto.isHidden = false
-            }
             //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         }
     }
