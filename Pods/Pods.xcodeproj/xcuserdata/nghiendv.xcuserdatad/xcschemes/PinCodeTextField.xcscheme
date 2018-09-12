@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "874E480F85CBAA6C9526C6C5FBDD8AB4"
+               BlueprintIdentifier = "6A4953280BDF9AD09FDEE7C232777B1E"
                BlueprintName = "PinCodeTextField"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "PinCodeTextField.framework">

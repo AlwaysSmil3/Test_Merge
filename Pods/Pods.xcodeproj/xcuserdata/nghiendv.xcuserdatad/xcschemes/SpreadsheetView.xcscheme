@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CBF96E32686E9C5DD6802CF5A7FCA22B"
+               BlueprintIdentifier = "6ABA128E92BF9322116D846BA4CB3BDA"
                BlueprintName = "SpreadsheetView"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "SpreadsheetView.framework">

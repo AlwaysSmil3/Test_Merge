@@ -266,7 +266,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chọn ngân hàng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAN-dt-hxv">
-                                                <rect key="frame" x="16" y="30" width="81.5" height="13"/>
+                                                <rect key="frame" x="16" y="30" width="80" height="13"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="11"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -468,7 +468,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngân hàng được chọn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXJ-3U-8hK">
-                                                <rect key="frame" x="16" y="30" width="112" height="13"/>
+                                                <rect key="frame" x="16" y="30" width="107.5" height="13"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="11"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
