@@ -15,7 +15,7 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
     
     var notificationList: [NotificationModel] = [] {
         didSet{
-            self.tableView.reloadData()
+            //            self.tableView.reloadData()
         }
     }
     
@@ -57,13 +57,13 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
     @objc func completeRefresh() {
         self.reloadData()
     }
-
+    
     func configTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "NotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationCell")
     }
-
+    
     func updateData() {
         // update get notification list
         self.tableView.reloadData()
@@ -74,7 +74,7 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         self.notificationList.removeAll()
         self.getListNotification()
     }
-
+    
     private func getListNotification() {
         APIClient.shared.getListNotifications(after: self.currentAfter)
             .done(on: DispatchQueue.main) { model in
@@ -83,7 +83,7 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
                 if model.count > 0{
                     self.noNotificationView.isHidden = true
                     self.notificationList.append(contentsOf: model)
-                    
+                    self.tableView.reloadData()
                     self.currentAfter = self.notificationList.last?.id ?? 0
                 } else {
                     self.noNotificationView.isHidden = false
@@ -93,16 +93,19 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
             .catch { error in
                 self.refresher.endRefreshing()
                 self.noNotificationView.isHidden = false
-            }
+        }
         
         
     }
     
-    private func updateNoti(index: Int) {
-        APIClient.shared.updateNotification(notiID: index)
+    private func updateNoti(index: IndexPath) {
+        
+        var data = self.notificationList[index.row]
+        
+        APIClient.shared.updateNotification(notiID: data.id!)
             .done(on: DispatchQueue.global()) { model in
-                
-                
+                data.status = false
+                self.notificationList[index.row] = data
             }
             .catch { error in}
     }
@@ -139,11 +142,11 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notificationList.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellData = notificationList[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationCell") as? NotificationTableViewCell {
@@ -177,8 +180,11 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         }
         return UITableViewCell()
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         if let cell = tableView.cellForRow(at: indexPath) as? NotificationTableViewCell {
             
             cell.containView.layer.borderColor = UIColor.lightGray.cgColor
@@ -189,13 +195,11 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         
         let data = self.notificationList[indexPath.row]
         if let status = data.status, status == true {
-            self.updateNoti(index: data.id!)
-            
-            return
+            self.updateNoti(index: indexPath)
         }
-
+        
     }
-
+    
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? NotificationTableViewCell {
             cell.containView.layer.borderColor = UIColor.lightGray.cgColor
@@ -217,21 +221,21 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
     }
     
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
