@@ -57,7 +57,7 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
         accTextField.delegate = self
         
         
-        self.title = "Thêm tài khoản ngân hàng"
+        self.title = "Thay đổi thông tin tài khoản"
         
         if let wallet_ = self.wallet
         {
@@ -232,6 +232,10 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
             self.vcbBtn.setImage(#imageLiteral(resourceName: "agri_selected"), for: UIControlState.selected)
             break
         case .ViettelPay?:
+            self.vcbBtn.setImage(#imageLiteral(resourceName: "viettelPay_selected"), for: UIControlState.normal)
+            self.vcbBtn.setImage(#imageLiteral(resourceName: "viettelPay_selected"), for: UIControlState.selected)
+            break
+        case .Momo?:
             self.vcbBtn.setImage(#imageLiteral(resourceName: "viettelPay_selected"), for: UIControlState.normal)
             self.vcbBtn.setImage(#imageLiteral(resourceName: "viettelPay_selected"), for: UIControlState.selected)
             break

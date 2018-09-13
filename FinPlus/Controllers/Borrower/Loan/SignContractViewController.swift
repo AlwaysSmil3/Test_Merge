@@ -24,6 +24,7 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.webView.delegate = self
         
         self.borderView.layer.borderWidth = 0.5
         self.borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
@@ -120,7 +121,7 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
     
     
     @IBAction func navi_back() {
-        self.navigationController?.isNavigationBarHidden = isSigned
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -165,6 +166,13 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
     }
     */
 
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
 }
 
 

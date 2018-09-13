@@ -1375,7 +1375,9 @@ class LoanStateViewController: UIViewController {
     // Xác nhận lãi suất
     @IBAction func confirm_rate()
     {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoanSummaryViewController") as! LoanSummaryViewController
+
         vc.bottom_state = .CONFIRM_RATE
         vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
@@ -1404,7 +1406,8 @@ class LoanStateViewController: UIViewController {
     // Giải ngân khi quá hạn huy động vốn
     @IBAction func disburse_expried()
     {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoanSummaryViewController") as! LoanSummaryViewController
         vc.bottom_state = .DISBURSEMENT_ONTIME
         vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
@@ -1415,7 +1418,9 @@ class LoanStateViewController: UIViewController {
     // Ký hợp đồng
     @IBAction func signContract()
     {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoanSummaryViewController") as! LoanSummaryViewController
+        
         vc.bottom_state = .SIGN_CONTRACT
         vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
