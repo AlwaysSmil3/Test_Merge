@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		15942B202105B32300591BA4 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15942B1F2105B32300591BA4 /* PaymentMethod.swift */; };
 		48D46DDE05C608E1D160EC14 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
-		5B8E528DCDF8C9224FACB09D /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633AF97220A96F1B00BAE2BB /* Pods_FinPlus.framework */; };
 		6302C10721393DA90037277E /* DataManager+MissingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302C10621393DA90037277E /* DataManager+MissingData.swift */; };
 		63037F4F21115531002CE49B /* APIClient+Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63037F4E21115531002CE49B /* APIClient+Payment.swift */; };
 		63037F5221119A93002CE49B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63037F5121119A93002CE49B /* Transaction.swift */; };
@@ -313,7 +312,6 @@
 		E7BC259320CFDACA001FF0F4 /* KaedeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC258320CFDACA001FF0F4 /* KaedeTextField.swift */; };
 		E7BC259420CFDACA001FF0F4 /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC258420CFDACA001FF0F4 /* AkiraTextField.swift */; };
 		E7BC259520CFDACA001FF0F4 /* IsaoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC258520CFDACA001FF0F4 /* IsaoTextField.swift */; };
-		E7C0BC252149040D0042771F /* Pods_FinPlus.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 633AF97220A96F1B00BAE2BB /* Pods_FinPlus.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E7C4DDED213402E800055944 /* SCP_SCNormal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4DDE8213402E800055944 /* SCP_SCNormal.swift */; };
 		E7C4DDEE213402E800055944 /* SCPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4DDE9213402E800055944 /* SCPageControlView.swift */; };
 		E7C4DDEF213402E800055944 /* SCP_SCJAMoveCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4DDEA213402E800055944 /* SCP_SCJAMoveCircle.swift */; };
@@ -346,20 +344,6 @@
 		E7F51A3720CE6DE700F72682 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F51A3420CE6DE700F72682 /* TutorialViewController.swift */; };
 		E7F51A3820CE6DE700F72682 /* OnBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F51A3520CE6DE700F72682 /* OnBoardViewController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		E7C0BC262149040D0042771F /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				E7C0BC252149040D0042771F /* Pods_FinPlus.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		15942B1F2105B32300591BA4 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
@@ -717,7 +701,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				48D46DDE05C608E1D160EC14 /* Pods_FinPlus.framework in Frameworks */,
-				5B8E528DCDF8C9224FACB09D /* Pods_FinPlus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1744,7 +1727,6 @@
 				639C9DAC20A1498A00F2CF5E /* Frameworks */,
 				639C9DAD20A1498A00F2CF5E /* Resources */,
 				B3A1CE4B20E0AC2500BA4D36 /* ShellScript */,
-				E7C0BC262149040D0042771F /* Embed Frameworks */,
 				C28DE16AF73311862FAD2122 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -1943,8 +1925,6 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FinPlus/Pods-FinPlus-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/APAddressBook/APAddressBook.framework",
@@ -1971,8 +1951,6 @@
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/APAddressBook.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
