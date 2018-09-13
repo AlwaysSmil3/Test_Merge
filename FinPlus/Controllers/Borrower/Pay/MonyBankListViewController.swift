@@ -21,6 +21,7 @@ class MonyBankListViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.allowsSelection = false
         self.title = "Chuyển khoản/tiền mặt"
         let leftBtnBar = UIButton(type: .custom)
         leftBtnBar.frame = CGRect(x: 0, y: 0, width: 44, height: 36)
@@ -44,7 +45,7 @@ class MonyBankListViewController: UIViewController, UITableViewDelegate, UITable
             navi.navigationBar.shadowImage = UIImage()
         }
         
-
+        
         // add left button
         self.tableView.registerNibCell(type: MonyBankTableViewCell.self)
         self.createBankList()
@@ -56,15 +57,17 @@ class MonyBankListViewController: UIViewController, UITableViewDelegate, UITable
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.popViewController(animated: true)
     }
-
+    
     
     func createBankList() {
         self.bankList.removeAll()
-        let vietcombank = MonyBankAccount(bankType: 1, bankNameDetail: "Vietcombank Thái Hà", bankNumber: "1452 3665 2556 3321", bankUsername: "CÔNG TY CỔ PHẦN FINPLUS", amount: self.amount, content: "\(DataManager.shared.currentAccount) chuyển tiền")
-        let vietinbank = MonyBankAccount(bankType: 2, bankNameDetail: "Nam Thăng Long", bankNumber: "1180 0264 8142", bankUsername: "CÔNG TY CỔ PHẦN FINPLUS", amount: self.amount, content: "\(DataManager.shared.currentAccount) chuyển tiền")
+        let vietcombank = MonyBankAccount(bankType: 1, bankName:"Vietcombank" , bankNameDetail: "CN Hà Nội", bankNumber: "0021000444319", bankUsername: "Công ty Cổ phần Finplus", amount: self.amount, content: "\(DataManager.shared.currentAccount) chuyển tiền")
+        let vietinbank = MonyBankAccount(bankType: 2, bankName:"Vietinbank" , bankNameDetail: "Nam Thăng Long", bankNumber: "1180 0264 8142", bankUsername: "Công ty Cổ phần Finplus", amount: self.amount, content: "\(DataManager.shared.currentAccount) chuyển tiền")
+        let agribank = MonyBankAccount(bankType: 4, bankName:"Agribank" , bankNameDetail: "Nam Hà Nội", bankNumber: "1460201035289", bankUsername: "Công ty Cổ phần Finplus", amount: self.amount, content: "\(DataManager.shared.currentAccount) chuyển tiền")
         
         self.bankList.append(vietinbank)
-        //self.bankList.append(vietcombank)
+        self.bankList.append(vietcombank)
+        self.bankList.append(agribank)
         
         self.tableView.reloadData()
     }
@@ -102,7 +105,7 @@ class MonyBankListViewController: UIViewController, UITableViewDelegate, UITable
         self.bankSelected = self.bankList[indexPath.row]
         self.tableView.reloadData()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -110,21 +113,21 @@ class MonyBankListViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBAction func payBtnAction(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
-//        let successVC = BudgetRewardSuccessViewController(nibName: "BudgetRewardSuccessViewController", bundle: nil)
-////        self.present(successVC, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(successVC, animated: true)
+        //        let successVC = BudgetRewardSuccessViewController(nibName: "BudgetRewardSuccessViewController", bundle: nil)
+        ////        self.present(successVC, animated: true, completion: nil)
+        //        self.navigationController?.pushViewController(successVC, animated: true)
     }
     
     
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
