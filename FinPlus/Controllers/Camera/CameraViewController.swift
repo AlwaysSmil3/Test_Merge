@@ -58,6 +58,40 @@ class CameraViewController: BaseViewController {
     
     //MARK: Camera
     private func initCamera() {
+        guard AVCaptureDevice.authorizationStatus(for: .video) == .authorized else {
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
+                if granted {
+                    //access allowed
+                } else {
+                    //access denied
+                    let message = "Đang không có quyền truy cập Camera. Vui lòng vào: Cài đặt -> Mony -> và cho phép Camera."
+                    
+                    self.showAlertView(title: "Camera", message: message, okTitle: "Huỷ", cancelTitle: "Đồng ý", completion: { (bool) in
+                        
+                        guard !bool else {
+                            return
+                        }
+                        
+                        DispatchQueue.main.async {
+                            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                                return
+                            }
+                            
+                            if UIApplication.shared.canOpenURL(settingsUrl) {
+                                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                    print("Settings opened: \(success)") // Prints true
+                                })
+                            }
+                        }
+                        
+                    })
+                }
+            })
+            
+            return
+        }
+        
+        
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video as the media type parameter
         guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
             fatalError("No video device found")

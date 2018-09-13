@@ -52,7 +52,7 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         }
         
         self.btnSign.titleLabel?.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)
-        self.title = NSLocalizedString("Hợp đồng vay", comment: "")
+        self.title = "Ký hợp đồng"
     }
     
     override func viewWillAppear(_ animated: Bool) {

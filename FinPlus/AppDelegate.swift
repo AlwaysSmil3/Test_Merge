@@ -275,7 +275,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func getVersion() {
         APIClient.shared.getConfigs()
             .done(on: DispatchQueue.main) { model in
-                print("Version\(model)")
+                
                 DataManager.shared.config = model
                 
                 guard let version = userDefault.value(forKey: fVERSION_CONFIG) as? String else {
