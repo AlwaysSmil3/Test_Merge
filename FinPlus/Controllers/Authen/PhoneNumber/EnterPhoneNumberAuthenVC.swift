@@ -37,7 +37,7 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
     /// Set link cho UITextView
     private func setupTextView() {
         
-        let policyStr : String = "Bằng cách ấn nút \"Tiếp tục\" ở trên, tôi đã hiểu và đồng ý với điều khoản sử dụng"
+        let policyStr : String = "Bằng cách ấn nút \"Tiếp tục\" ở trên, tôi đã hiểu và đồng ý với Điều khoản & Điều kiện vay"
         
         var myMutableString = NSMutableAttributedString()
         myMutableString = NSMutableAttributedString(string: policyStr, attributes: [ NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: 11)!,NSAttributedStringKey.foregroundColor:TEXT_NORMAL_COLOR])
@@ -45,7 +45,7 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
         myMutableString.addAttribute(
             NSAttributedStringKey.link,
             value: "more://",
-            range: (myMutableString.string as NSString).range(of: "điều khoản sử dụng"))
+            range: (myMutableString.string as NSString).range(of: "Điều khoản & Điều kiện vay"))
         myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(hexString: "#4D6678"), range: myRange)
         
         let string2 = NSMutableAttributedString(string: " của Mony.", attributes: [ NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: 11)!,NSAttributedStringKey.foregroundColor:TEXT_NORMAL_COLOR])
