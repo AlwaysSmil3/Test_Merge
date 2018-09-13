@@ -10,6 +10,7 @@ import UIKit
 
 class MonyBankAccount {
     var bankType : Int = 0
+    var bankName : String?
     var bankNameDetail : String?
     var bankNumber : String?
     var bankUsername : String?
@@ -18,8 +19,9 @@ class MonyBankAccount {
     init() {
         
     }
-    init(bankType : Int, bankNameDetail : String, bankNumber: String, bankUsername : String, amount : Double, content : String) {
+    init(bankType : Int, bankName: String, bankNameDetail : String, bankNumber: String, bankUsername : String, amount : Double, content : String) {
         self.bankType = bankType
+        self.bankName = bankName
         self.bankNameDetail = bankNameDetail
         self.bankNumber = bankNumber
         self.bankUsername = bankUsername
@@ -52,6 +54,17 @@ class MonyBankTableViewCell: UITableViewCell {
         // switch and set bank name by bank type
         
         self.bankNameDetailLb.text = bankData.bankNameDetail
+        self.bankNameLb.text = bankData.bankName
+        switch bankData.bankName {
+        case "Vietcombank":
+            self.bankIcon.image = #imageLiteral(resourceName: "vcb_selected")
+        case "Vietinbank":
+            self.bankIcon.image = #imageLiteral(resourceName: "viettin_selected")
+        case "Agribank":
+            self.bankIcon.image = #imageLiteral(resourceName: "agri_selected")
+        default:
+            self.bankIcon.image = #imageLiteral(resourceName: "vcb_selected")
+        }
         self.bankNumber.text = bankData.bankNumber
         self.bankUsernameLb.text = bankData.bankUsername
         self.amountLb.text = FinPlusHelper.formatDisplayCurrency(bankData.amount) + "đ"
@@ -62,10 +75,10 @@ class MonyBankTableViewCell: UITableViewCell {
             containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
         }
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

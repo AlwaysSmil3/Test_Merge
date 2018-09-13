@@ -188,7 +188,7 @@ class LoanSummaryInfoVC: BaseViewController {
     /// Set link cho UITextView
     private func setupTextView() {
         
-        let policyStr : String = "Tôi đã hiểu và đồng ý với điều khoản sử dụng."
+        let policyStr : String = "Tôi đã hiểu và đồng ý với Điều khoản & Điều kiện vay."
         
         var myMutableString = NSMutableAttributedString()
         myMutableString = NSMutableAttributedString(string: policyStr, attributes: [ NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: 15)!,NSAttributedStringKey.foregroundColor:TEXT_NORMAL_COLOR])
@@ -196,7 +196,7 @@ class LoanSummaryInfoVC: BaseViewController {
         myMutableString.addAttribute(
             NSAttributedStringKey.link,
             value: "more://",
-            range: (myMutableString.string as NSString).range(of: "điều khoản sử dụng."))
+            range: (myMutableString.string as NSString).range(of: "Điều khoản & Điều kiện vay."))
         myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(hexString: "#4D6678"), range: myRange)
         
 //        let string2 = NSMutableAttributedString(string: " của Mony", attributes: [ NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: 11)!,NSAttributedStringKey.foregroundColor:TEXT_NORMAL_COLOR])
@@ -232,7 +232,7 @@ class LoanSummaryInfoVC: BaseViewController {
     @IBAction func btnLoanTapped(_ sender: Any) {
         
         guard self.btnAgreeTerm!.isSelected else {
-            self.showGreenBtnMessage(title: "Điều khoản sử dụng", message: "Vui lòng đồng ý điều khoản sử dụng để gửi đơn vay của bạn.", okTitle: "Đóng", cancelTitle: nil)
+            self.showGreenBtnMessage(title: "Điều khoản & Điều kiện vay", message: "Vui lòng đồng ý Điều khoản & Điều kiện vay để gửi đơn vay của bạn.", okTitle: "Đóng", cancelTitle: nil)
             
             return
         }
