@@ -24,6 +24,7 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.webView.delegate = self
         
         self.borderView.layer.borderWidth = 0.5
         self.borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
@@ -60,11 +61,15 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         self.navigationController?.isNavigationBarHidden = false
         
         super.viewWillAppear(animated)
-        
-        let htmlPath = Bundle.main.path(forResource: "hop-dong", ofType: "html")!
-        let url = URL(fileURLWithPath: htmlPath)
-        let request = URLRequest(url: url)
-        self.webView.loadRequest(request)
+        if let pdf = Bundle.main.path(forResource: "contract", ofType: "pdf") {
+            let url = URL(fileURLWithPath: pdf)
+            let request = URLRequest(url: url)
+            self.webView.loadRequest(request)
+        }
+        // let htmlPath = Bundle.main.path(forResource: "hop-dong", ofType: "html")!
+        // let url = URL(fileURLWithPath: htmlPath)
+        // let request = URLRequest(url: url)
+        // self.webView.loadRequest(request)
         
     }
     
@@ -120,7 +125,7 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
     
     
     @IBAction func navi_back() {
-        self.navigationController?.isNavigationBarHidden = isSigned
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -165,6 +170,13 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
     }
     */
 
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
 }
 
 

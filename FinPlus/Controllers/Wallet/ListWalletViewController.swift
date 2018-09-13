@@ -362,6 +362,7 @@ extension ListWalletViewController: UITableViewDataSource {
                 case .Techcombank?: cell?.avatar.image = UIImage(named: "tech_selected")
                 case .Agribank?: cell?.avatar.image = UIImage(named: "agri_selected")
                 case .ViettelPay?: cell?.avatar.image = #imageLiteral(resourceName: "viettelPay_selected")
+                case .Momo?: cell?.avatar.image = #imageLiteral(resourceName: "viettelPay_selected")
                 case .none:
                     break
             }
