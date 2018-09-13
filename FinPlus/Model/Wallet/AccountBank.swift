@@ -14,6 +14,7 @@ enum BankName: Int {
     case Techcombank = 3
     case Agribank = 4
     case ViettelPay = 5
+    case Momo = 6
 }
 
 public struct AccountBank {
@@ -99,6 +100,9 @@ public struct AccountBank {
     }
     else if bankName == "ViettelPay" {
         bankType = 5
+    }
+    else if bankName == "Momo" {
+        bankType = 6
     }
     else {
         bankType = 1
