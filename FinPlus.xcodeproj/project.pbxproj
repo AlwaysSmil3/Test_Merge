@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		15942B202105B32300591BA4 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15942B1F2105B32300591BA4 /* PaymentMethod.swift */; };
+		159F1504214A5AD8006B15FF /* contract.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 159F1503214A5AD8006B15FF /* contract.pdf */; };
 		48D46DDE05C608E1D160EC14 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
 		6302C10721393DA90037277E /* DataManager+MissingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302C10621393DA90037277E /* DataManager+MissingData.swift */; };
 		63037F4F21115531002CE49B /* APIClient+Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63037F4E21115531002CE49B /* APIClient+Payment.swift */; };
@@ -347,6 +348,7 @@
 
 /* Begin PBXFileReference section */
 		15942B1F2105B32300591BA4 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
+		159F1503214A5AD8006B15FF /* contract.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = contract.pdf; sourceTree = "<group>"; };
 		6302C10621393DA90037277E /* DataManager+MissingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+MissingData.swift"; sourceTree = "<group>"; };
 		63037F4E21115531002CE49B /* APIClient+Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Payment.swift"; sourceTree = "<group>"; };
 		63037F5121119A93002CE49B /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -1113,6 +1115,7 @@
 		639C9DB120A1498A00F2CF5E /* FinPlus */ = {
 			isa = PBXGroup;
 			children = (
+				159F1503214A5AD8006B15FF /* contract.pdf */,
 				639C9DC820A14A5900F2CF5E /* APIClient */,
 				639C9DB220A1498A00F2CF5E /* AppDelegate.swift */,
 				639C9DBC20A1498A00F2CF5E /* Assets.xcassets */,
@@ -1850,6 +1853,7 @@
 				E75B706020DA3963007D158D /* TitleTableViewCell.xib in Resources */,
 				84114BCF20D79464005026DF /* PayAllTableViewCell.xib in Resources */,
 				63D4CB6A20F2FFB900519FFB /* LoanTypePhoneRelationTBCell.xib in Resources */,
+				159F1504214A5AD8006B15FF /* contract.pdf in Resources */,
 				63D49DAD20D3997A00114AFA /* Popup.storyboard in Resources */,
 				63748C01210ADBEC00E79EB6 /* MonyBankListViewController.xib in Resources */,
 				6339D24B20BCF312008B40F8 /* GoogleService-Info.plist in Resources */,
