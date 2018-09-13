@@ -219,7 +219,7 @@ class LoanStateViewController: UIViewController {
                 acceptedDate = "\(rasingCapital - acceptedDateTemp)"
             }
             
-            let datelimit = Date().dateByAddingHours(rasingCapital)
+            let datelimit = Date(fromString: loan.acceptedAt ?? "", format: .iso8601(ISO8601Format.DateTimeSec)).dateByAddingHours(rasingCapital)
             limitFunding = datelimit.toString(.custom("dd/MM/yyyy HH:mm"))
         }
         
