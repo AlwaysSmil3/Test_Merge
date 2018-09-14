@@ -110,7 +110,9 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             } else {
                 userDefault.set("", forKey: UserDefaultInValidResidentAddress)
                 userDefault.synchronize()
-                self.isNeedUpdate = false
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
             }
             
         } else if id.contains("currentAddress") {
@@ -144,7 +146,9 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             } else {
                 userDefault.set("", forKey: UserDefaultInValidCurrentAddress)
                 userDefault.synchronize()
-                self.isNeedUpdate = false
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
             }
             
         } else if id.contains("jobAddress") {
@@ -178,7 +182,9 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             } else {
                 userDefault.set("", forKey: UserDefaultInValidJobAddress)
                 userDefault.synchronize()
-                self.isNeedUpdate = false
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
             }
             
         } else if id.contains("academicAddress") {
@@ -212,7 +218,9 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             } else {
                 userDefault.set("", forKey: UserDefaultInValidAcademicAddress)
                 userDefault.synchronize()
-                self.isNeedUpdate = false
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
             }
             
         } else if id.contains("academicName") {
@@ -230,14 +238,6 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 DataManager.shared.loanInfo.jobInfo.academicName = value
             }
             
-//            if DataManager.shared.checkFieldIsMissing(key: "academicName", parentKey: "jobInfo", currentValue: value) {
-//                //Cap nhat thong tin khong hop le
-//                //self.updateInfoFalse(pre: title)
-//                if self.valueTemp == nil {
-//                    self.updateInfoFalse(pre: title)
-//                }
-//                self.valueTemp = value
-//            }
             
             if DataManager.shared.checkFieldIsMissing(key: "academicName") && self.checkMissingData(parentKey: "jobInfo", key: "academicName", currentValue: value) {
                 //Cap nhat thong tin khong hop le
@@ -247,7 +247,9 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 self.updateInfoFalse(pre: title)
                 
             } else {
-                self.isNeedUpdate = false
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
             }
             
             

@@ -173,9 +173,10 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                     self.valueTemp = value
                     self.updateInfoFalse(pre: title)
                 }
-                
-                
-                
+            } else {
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
             }
             
         } else if id.contains("birthday") {
@@ -276,6 +277,10 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                     self.updateInfoFalse(pre: title)
                 }
                 self.valueTemp = self.lblValue?.text
+            } else {
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
             }
         } else if id.contains("academicLevel") {
             
@@ -310,6 +315,10 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                     self.updateInfoFalse(pre: title)
                 }
                 self.valueTemp = self.lblValue?.text
+            } else {
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
             }
         }  else if id.contains("optionalText") {
             //thông tin khác
@@ -345,22 +354,21 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             
             if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
                 //Cap nhat thong tin khong hop le
-//                if self.valueTemp == nil {
-//                    self.updateInfoFalse(pre: title)
-//                }
-//                self.valueTemp = self.lblValue?.text
-                
                 
                 if let arrayIndex = field_.arrayIndex, let data = DataManager.shared.missingOptionalText {
                     
-                    if let text = data["\(arrayIndex)"] as? String {
+                    if let text = data["\(arrayIndex)"] as? String, DataManager.shared.loanInfo.optionalText[index] == text {
                         //Cap nhat thong tin khong hop le
                         print("OptionalText \(text)")
                         if self.valueTemp == nil {
-                            self.updateInfoFalse(pre: title)
+                            self.valueTemp = self.lblValue?.text
                         }
+                        self.updateInfoFalse(pre: title)
                         
-                        self.valueTemp = self.lblValue?.text
+                    } else {
+                        if let need = self.isNeedUpdate, need {
+                            self.isNeedUpdate = false
+                        }
                     }
                 }
                 

@@ -161,14 +161,18 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     if let arrayIndex = field_.arrayIndex, let data = DataManager.shared.missingOptionalText {
                         
-                        if let text = data["\(arrayIndex)"] as? String {
+                        if let text = data["\(arrayIndex)"] as? String, text == DataManager.shared.loanInfo.optionalText[index] {
                             //Cap nhat thong tin khong hop le
                             print("OptionalText \(text)")
                             if self.valueTemp == nil {
-                                self.updateInfoFalse(pre: title)
+                                self.valueTemp = value
                             }
+                            self.updateInfoFalse(pre: title)
                             
-                            self.valueTemp = value
+                        } else {
+                            if let need = self.isNeedUpdate, need {
+                                self.isNeedUpdate = false
+                            }
                         }
                     }
                     
