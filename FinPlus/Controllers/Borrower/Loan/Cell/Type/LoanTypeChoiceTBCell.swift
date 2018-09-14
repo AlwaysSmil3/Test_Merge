@@ -120,10 +120,11 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             if DataManager.shared.checkFieldIsMissing(key: "gender") {
                 //Cap nhat thong tin khong hop le
                 if self.valueTemp == nil {
+                    self.valueTemp = value
                     self.updateInfoFalse(pre: title)
                 }
                 
-                self.valueTemp = value
+                
             }
             
             
@@ -164,14 +165,16 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                         //Cap nhat thong tin khong hop le
                         print("OptionalText \(text)")
                         if self.valueTemp == nil {
+                            
+                            if value == "Nam" || value == "0" {
+                                self.valueTemp = "0"
+                            } else {
+                                self.valueTemp = "1"
+                            }
+                            
                             self.updateInfoFalse(pre: title)
                         }
                         
-                        if value == "Nam" || value == "0" {
-                            self.valueTemp = "0"
-                        } else {
-                            self.valueTemp = "1"
-                        }
                     }
                 }
             }

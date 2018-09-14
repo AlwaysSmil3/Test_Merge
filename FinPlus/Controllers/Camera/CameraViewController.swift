@@ -22,6 +22,7 @@ class CameraViewController: BaseViewController {
     @IBOutlet var imgBackgound: UIImageView!
     @IBOutlet var btnUsePhoto: UIButton!
     @IBOutlet var btnExitsRight: UIButton!
+    @IBOutlet var btnSwitchCamera: UIButton!
     
     @IBOutlet var contentCurrentImageAll: UIView!
     @IBOutlet var imgCurrentCaptureAll: UIImageView!
@@ -31,10 +32,12 @@ class CameraViewController: BaseViewController {
     
     @IBOutlet var btnRetakeOhter: UIButton!
     @IBOutlet var btnCaptureOhter: UIButton!
+    @IBOutlet var lblDescriptionOther: UILabel!
     
     // Kiểu File Img
     var typeImgFile: FILE_TYPE_IMG?
     var currentPhoto: UIImage?
+    var descriptionText: String?
     
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
@@ -137,6 +140,7 @@ class CameraViewController: BaseViewController {
             return
         }
         
+        self.lblDescriptionOther.isHidden = true
         
         if let type = self.typeImgFile {
             if type == .ALL {
@@ -149,17 +153,26 @@ class CameraViewController: BaseViewController {
                 self.btnExitsRight.isHidden = false
                 self.btnCaptureOhter.transform = CGAffineTransform(rotationAngle: .pi/2)
                 self.btnRetakeOhter.transform = CGAffineTransform(rotationAngle: .pi/2)
+                self.lblDescriptionOther.isHidden = false
+                self.lblDescriptionOther.transform = CGAffineTransform(rotationAngle: .pi/2)
+                self.lblDescriptionOther.text = self.descriptionText
             } else if type == .FRONT {
                 self.imgBackgound.image = #imageLiteral(resourceName: "img_nationalID_Front")
                 self.setTypeCamera(position: .back)
                 self.lblDescription.isHidden = true
                 self.btnExits.isHidden = true
                 self.btnExitsRight.isHidden = false
+                self.lblDescriptionOther.isHidden = false
                 self.btnCaptureOhter.transform = CGAffineTransform(rotationAngle: .pi/2)
                 self.btnRetakeOhter.transform = CGAffineTransform(rotationAngle: .pi/2)
+                self.lblDescriptionOther.transform = CGAffineTransform(rotationAngle: .pi/2)
+                self.lblDescriptionOther.text = self.descriptionText
             } else {
+                self.btnSwitchCamera.isHidden = false
                 self.setTypeCamera(position: .back)
-                self.lblDescription.isHidden = true
+                self.lblDescription.isHidden = false
+                self.lblDescription.text = self.descriptionText
+                self.imgBackgound.isHidden = true
             }
         }
         
@@ -258,6 +271,11 @@ class CameraViewController: BaseViewController {
             //Commit all the configuration changes at once
             session.commitConfiguration()
         }
+    }
+    
+    @IBAction func btnSwitchCameraTapped(_ sender: Any) {
+        self.changeCamera()
+        
     }
     
     @IBAction func btnCaptureTapped(_ sender: Any) {

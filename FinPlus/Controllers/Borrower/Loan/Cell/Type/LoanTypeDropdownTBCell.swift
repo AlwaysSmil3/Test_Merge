@@ -140,9 +140,10 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             if DataManager.shared.checkFieldIsMissing(key: "jobTitle", parentKey: "jobInfo", currentValue: value) || DataManager.shared.checkFieldIsMissing(key: "jobType", parentKey: "jobInfo", currentValue: "", currentValueIndex: type) {
                 //Cap nhat thong tin khong hop le
                 if self.valueTemp == nil {
+                    self.valueTemp = value
                     self.updateInfoFalse(pre: title)
                 }
-                self.valueTemp = value
+                
             }
             
         } else if id.contains("position") {
@@ -169,9 +170,12 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             if DataManager.shared.checkFieldIsMissing(key: "positionTitle", parentKey: "jobInfo", currentValue: value) || DataManager.shared.checkFieldIsMissing(key: "position", parentKey: "jobInfo", currentValue: "", currentValueIndex: idInt) {
                 //Cap nhat thong tin khong hop le
                 if self.valueTemp == nil {
+                    self.valueTemp = value
                     self.updateInfoFalse(pre: title)
                 }
-                self.valueTemp = value
+                
+                
+                
             }
             
         } else if id.contains("birthday") {
@@ -203,9 +207,16 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             if DataManager.shared.checkFieldIsMissing(key: "birthday") {
                 //Cap nhat thong tin khong hop le
                 if self.valueTemp == nil {
+                    self.valueTemp = self.lblValue?.text
                     self.updateInfoFalse(pre: title)
                 }
-                self.valueTemp = self.lblValue?.text
+                
+                if let miss = DataManager.shared.missingLoanDataDictionary, let userInfo = miss["userInfo"] as? JSONDictionary, let birtDay = userInfo["birthday"] as? String, DataManager.shared.loanInfo.userInfo.birthDay == birtDay {
+                    self.updateInfoFalse(pre: title)
+                } else {
+                    self.isNeedUpdate = false
+                }
+                
             }
             
         } else if id.contains("gender") {

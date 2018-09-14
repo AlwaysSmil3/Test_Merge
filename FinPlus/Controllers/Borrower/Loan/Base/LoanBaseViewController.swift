@@ -197,7 +197,7 @@ class LoanBaseViewController: BaseViewController {
 //        }
 //    }
     
-    func showCameraView() {
+    func showCameraView(descriptionStr: String? = nil) {
 //        let guideVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "GuideCaptureViewController") as! GuideCaptureViewController
 //        guideVC.delegate = self
 //        self.present(guideVC, animated: true, completion: {
@@ -207,6 +207,7 @@ class LoanBaseViewController: BaseViewController {
         let cameraVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "CameraViewController") as! CameraViewController
         cameraVC.delegateCamera = self
         cameraVC.typeImgFile = self.typeImgFile
+        cameraVC.descriptionText = descriptionStr
         
         self.present(cameraVC, animated: true) {
             
@@ -518,7 +519,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
                 self.typeImgFile = .Optional
             }
             
-            self.showCameraView()
+            self.showCameraView(descriptionStr: model.descriptionValue)
             
 //            if self.typeImgFile == .ALL {
 //

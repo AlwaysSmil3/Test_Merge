@@ -113,9 +113,9 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
     
     //MARK: TFAction
     
-    private func checkinputAccText() {
+    private func checkinputAccText(text: String) {
         guard let miss = self.missBank else { return }
-        if self.accTextField.text != miss.accountNumber {
+        if text != miss.accountNumber {
             accTextField.borderActiveColor = UIColor(hexString: "#E3EBF0")
             accTextField.borderInactiveColor = UIColor(hexString: "#E3EBF0")
             accTextField.textColor = UIColor(hexString: "#08121E")
@@ -130,9 +130,9 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
         
     }
     
-    private func checkInputNameText() {
+    private func checkInputNameText(text: String) {
         guard let miss = self.missBank else { return }
-        if self.nameTextField.text != miss.accountHolder {
+        if text != miss.accountHolder {
             nameTextField.borderActiveColor = UIColor(hexString: "#E3EBF0")
             nameTextField.borderInactiveColor = UIColor(hexString: "#E3EBF0")
             nameTextField.textColor = UIColor(hexString: "#08121E")
@@ -156,12 +156,18 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
     //MARK: TF Delegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if textField == self.nameTextField {
-            self.checkInputNameText()
-        }
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
         
-        if textField == self.accTextField {
-            self.checkinputAccText()
+        if let _ = self.missBank {
+            if textField == self.nameTextField {
+                self.checkInputNameText(text: newString as String)
+            }
+            
+            if textField == self.accTextField {
+                self.checkinputAccText(text: newString as String)
+            }
         }
         
         
