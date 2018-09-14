@@ -34,7 +34,7 @@ class PayHistoryTableViewCell: UITableViewCell {
         timeLb.text = "Đợt \(index)"
         payDateLb.text = timeDisplay
         
-        amountLb.text = FinPlusHelper.formatDisplayCurrency(cellData.principal! + cellData.interest!) + "đ"
+        amountLb.text = FinPlusHelper.formatDisplayCurrency(cellData.principal! + cellData.interest! + cellData.overdue! + cellData.feeOverdue!) + "đ"
         
 
         // set theme cell

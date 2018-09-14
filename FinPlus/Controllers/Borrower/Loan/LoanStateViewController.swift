@@ -866,6 +866,8 @@ class LoanStateViewController: UIViewController {
                 
                 self.navigationItem.rightBarButtonItem = nil
                 
+                let amountOvertime = FinPlusHelper.formatDisplayCurrency(self.getAmountDebtOvertime()) + "đ"
+                
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
@@ -874,7 +876,7 @@ class LoanStateViewController: UIViewController {
                         ],
                     [
                         "type": HeaderCellType.TextType,
-                        "text": "Bạn cần thanh toán \(payMounthStringWithFunded) ngay nếu không sẽ chịu phạt theo như hợp đồng.",
+                        "text": "Bạn cần thanh toán \(amountOvertime) ngay nếu không sẽ chịu phạt theo như hợp đồng.",
                         "attributed": NSAttributedString(string: "chịu phạt theo như hợp đồng", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!]),
                         "subType": TextCellType.DesType,
                         ],
@@ -1331,6 +1333,24 @@ class LoanStateViewController: UIViewController {
 
         
         return value
+    }
+    
+    
+    /// Get số tiền khi nợ quá hạn
+    ///
+    /// - Returns: <#return value description#>
+    func getAmountDebtOvertime() -> Double {
+        guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return 0 }
+        var amount: Double = 0
+        for col in collections {
+            if col.status == 3 {
+                let temp = Double(col.principal! + col.feeOverdue! + col.overdue! + col.interest!)
+                amount += temp
+            }
+            
+        }
+        
+        return amount
     }
     
     //Lấy ngày quá hạn
