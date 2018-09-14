@@ -198,7 +198,7 @@ class LoanStateViewController: UIViewController {
         //Ngày huy động còn lại
         var acceptedDate = "30"
         var acceptedDateTemp = 0
-        var limitFunding = ""
+        var limitFunding = "Đang cập nhật"
         
         if let acceptedDateStr = loan.acceptedAt {
             let calendar = NSCalendar.current
@@ -804,7 +804,7 @@ class LoanStateViewController: UIViewController {
                 if self.checkCollectionRightPayForStatusTimelyDebt() {
                     array = [
                         "type": HeaderCellType.TextType,
-                        "text": "Bạn đã thanh toán cho kỳ thanh toán ngày \(nextPaymentDate). Xin cảm ơn",
+                        "text": "Bạn đã thanh toán cho kỳ thanh toán ngày \(nextPaymentDate). Xin cảm ơn.",
                         "subType": TextCellType.DesType,
                     ]
                     
@@ -1049,7 +1049,7 @@ class LoanStateViewController: UIViewController {
             for bank in userBanks {
                 if let bankId = bank.id {
                     if bankId == loanBankId {
-                        var accountNumber = bank.accountBankNumber ?? ""
+                        let accountNumber = bank.accountBankNumber ?? ""
 //                        if let number = bank.accountBankNumber, number.count > 4 {
 //                            accountNumber = String(number.suffix(4))
 //                        } else {
@@ -1057,7 +1057,7 @@ class LoanStateViewController: UIViewController {
 //                        }
 //                        accountNumber = "● ● ● ● \(accountNumber)"
                         
-                        let subtitleParameters = [NSAttributedStringKey.font : UIFont(name: FONT_FAMILY_REGULAR, size: 12)]
+//                        let subtitleParameters = [NSAttributedStringKey.font : UIFont(name: FONT_FAMILY_REGULAR, size: 12)]
 
                         dataSource.append(LoanSummaryModel(name: "Ngân hàng / Ví", value: "\(bank.bankName ?? "")", attributed: nil))
                         dataSource.append(LoanSummaryModel(name: "Chủ tài khoản", value: "\(bank.accountBankName ?? "None")", attributed: nil))
