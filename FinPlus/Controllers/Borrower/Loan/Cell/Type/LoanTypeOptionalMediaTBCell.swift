@@ -170,6 +170,20 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         }
     }
     
+    func showCameraView() {
+        
+        let cameraVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "CameraViewController") as! CameraViewController
+        cameraVC.delegateCamera = self
+        cameraVC.typeImgFile = self.typeImgFile
+        cameraVC.descriptionText = self.field?.title ?? ""
+        
+        guard let topVC = UIApplication.shared.topViewController() else { return }
+        topVC.present(cameraVC, animated: true) {
+            
+        }
+        
+    }
+    
     //Upload Data Image
     func uploadData(img: UIImage) {
         //let dataImg = UIImagePNGRepresentation(img)
@@ -242,6 +256,14 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     
 }
 
+//MARK: DataImageFromCameraCaptureDelegate
+extension LoanTypeOptionalMediaTBCell: DataImageFromCameraCaptureDelegate {
+    func getImage(image: UIImage, type: FILE_TYPE_IMG?) {
+        self.uploadData(img: image)
+    }
+}
+
+//MARK: UICollectionViewDataSource, UICollectionViewDelegate
 extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -308,7 +330,8 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.currentSelectedCollection = indexPath
-        self.showLibrary()
+        //self.showLibrary()
+        self.showCameraView()
         
     }
     
