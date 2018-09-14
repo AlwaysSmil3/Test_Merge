@@ -401,7 +401,8 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
             if newString as String != temp {
                 self.isNeedUpdate = false
             } else {
-                self.isNeedUpdate = true
+                //self.isNeedUpdate = true
+                self.updateInfoFalse(pre: self.field?.title ?? "")
             }
         }
         
