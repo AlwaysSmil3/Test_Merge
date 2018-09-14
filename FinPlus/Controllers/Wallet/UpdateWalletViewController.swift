@@ -242,8 +242,12 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
             self.vcbBtn.setImage(#imageLiteral(resourceName: "viettelPay_selected"), for: UIControlState.selected)
             break
         case .Momo?:
-            self.vcbBtn.setImage(#imageLiteral(resourceName: "viettelPay_selected"), for: UIControlState.normal)
-            self.vcbBtn.setImage(#imageLiteral(resourceName: "viettelPay_selected"), for: UIControlState.selected)
+            self.vcbBtn.setImage(#imageLiteral(resourceName: "momo_selected"), for: UIControlState.normal)
+            self.vcbBtn.setImage(#imageLiteral(resourceName: "momo_selected"), for: UIControlState.selected)
+            break
+        case .Bidv?:
+            self.vcbBtn.setImage(#imageLiteral(resourceName: "bidv_selected"), for: UIControlState.normal)
+            self.vcbBtn.setImage(#imageLiteral(resourceName: "bidv_selected"), for: UIControlState.selected)
             break
         case .none:
             break

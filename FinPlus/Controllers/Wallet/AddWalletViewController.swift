@@ -18,6 +18,7 @@ class AddWalletViewController: UIViewController {
     
     @IBOutlet weak var viettelPayBtn: UIButton!
     @IBOutlet weak var btnMomo: UIButton!
+    @IBOutlet weak var btnBidv: UIButton!
     
     @IBOutlet weak var nameTextField: HoshiTextField!
     @IBOutlet weak var accTextField: HoshiTextField!
@@ -66,6 +67,12 @@ class AddWalletViewController: UIViewController {
         agriBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         agriBtn.setTitle(NSLocalizedString("Agribank", comment: ""), for: .normal)
         
+        btnBidv.layer.borderWidth = 0.5
+        btnBidv.layer.cornerRadius = 8
+        btnBidv.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
+        btnBidv.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        btnBidv.setTitle("Bidv", for: .normal)
+        
         viettelPayBtn.layer.borderWidth = 0.5
         viettelPayBtn.layer.cornerRadius = 8
         viettelPayBtn.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
@@ -76,7 +83,8 @@ class AddWalletViewController: UIViewController {
         btnMomo.layer.cornerRadius = 8
         btnMomo.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         btnMomo.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
-        btnMomo.setTitle("Momo", for: .normal)
+        btnMomo.setTitle("Ví Momo", for: .normal)
+    
         
         nameTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         nameTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_SMALL)
@@ -107,6 +115,7 @@ class AddWalletViewController: UIViewController {
             case .Agribank?: setBorderColor(button: agriBtn, isSelect: true)
             case .ViettelPay?: setBorderColor(button: viettelPayBtn, isSelect: true)
             case .Momo?: setBorderColor(button: btnMomo, isSelect: true)
+            case .Bidv?: setBorderColor(button: btnBidv, isSelect: true)
             case .none:
                 break
             }
@@ -170,6 +179,8 @@ class AddWalletViewController: UIViewController {
             bankName = "ViettelPay"
         } else if self.btnMomo.isSelected {
             bankName = "Momo"
+        } else if self.btnBidv.isSelected {
+            bankName = "Bidv"
         }
         
         let params: JSONDictionary = [
@@ -243,6 +254,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: agriBtn, isSelect: false)
         setBorderColor(button: viettelPayBtn, isSelect: false)
         setBorderColor(button: btnMomo, isSelect: false)
+        setBorderColor(button: btnBidv, isSelect: false)
     }
     
     @IBAction func techBtn_selected(sender: UIButton)
@@ -253,6 +265,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: agriBtn, isSelect: false)
         setBorderColor(button: viettelPayBtn, isSelect: false)
         setBorderColor(button: btnMomo, isSelect: false)
+        setBorderColor(button: btnBidv, isSelect: false)
     }
     
     @IBAction func agriBtn_selected(sender: UIButton)
@@ -263,6 +276,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: agriBtn, isSelect: true)
         setBorderColor(button: viettelPayBtn, isSelect: false)
         setBorderColor(button: btnMomo, isSelect: false)
+        setBorderColor(button: btnBidv, isSelect: false)
     }
     @IBAction func viettelPayBtn_Selected(_ sender: Any) {
         setBorderColor(button: vcbBtn, isSelect: false)
@@ -271,6 +285,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: agriBtn, isSelect: false)
         setBorderColor(button: viettelPayBtn, isSelect: true)
         setBorderColor(button: btnMomo, isSelect: false)
+        setBorderColor(button: btnBidv, isSelect: false)
     }
     
     @IBAction func btnMomoTapped(_ sender: Any) {
@@ -280,6 +295,17 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: agriBtn, isSelect: false)
         setBorderColor(button: viettelPayBtn, isSelect: false)
         setBorderColor(button: btnMomo, isSelect: true)
+        setBorderColor(button: btnBidv, isSelect: false)
+    }
+    
+    @IBAction func btnBidvTapped(_ sender: Any) {
+        setBorderColor(button: vcbBtn, isSelect: false)
+        setBorderColor(button: viettinBtn, isSelect: false)
+        setBorderColor(button: techBtn, isSelect: false)
+        setBorderColor(button: agriBtn, isSelect: false)
+        setBorderColor(button: viettelPayBtn, isSelect: false)
+        setBorderColor(button: btnMomo, isSelect: false)
+        setBorderColor(button: btnBidv, isSelect: true)
     }
     
     
