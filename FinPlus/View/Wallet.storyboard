@@ -243,9 +243,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JA1-Xq-HwQ">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNx-k4-LtW">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNx-k4-LtW">
                                                 <rect key="frame" x="195.5" y="59" width="163.5" height="56"/>
                                                 <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Button" image="viettin">
                                                     <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -254,9 +255,10 @@
                                                     <action selector="viettinBtn_selectedWithSender:" destination="71L-If-6xU" eventType="touchUpInside" id="B8d-IA-lLp"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCW-bE-9Ch">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCW-bE-9Ch">
                                                 <rect key="frame" x="195.5" y="131" width="163.5" height="56"/>
                                                 <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Button" image="agri">
                                                     <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -266,17 +268,18 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chọn ngân hàng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAN-dt-hxv">
-                                                <rect key="frame" x="16" y="30" width="81.5" height="13"/>
+                                                <rect key="frame" x="16" y="30" width="80" height="13"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="11"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPW-Rv-tUB">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPW-Rv-tUB">
                                                 <rect key="frame" x="16" y="131" width="164" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="VHB-g7-wiM"/>
                                                 </constraints>
                                                 <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Button" image="tech">
                                                     <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -285,12 +288,13 @@
                                                     <action selector="techBtn_selectedWithSender:" destination="71L-If-6xU" eventType="touchUpInside" id="xsS-9e-8eX"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQF-Rq-arJ">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQF-Rq-arJ">
                                                 <rect key="frame" x="16" y="59" width="164" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="ffX-ie-1LK"/>
                                                 </constraints>
                                                 <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Button" image="vcb">
                                                     <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -300,7 +304,7 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ví dụ: 2880CUHY770" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OLB-Sh-PDf" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="359.5" width="343" height="56"/>
+                                                <rect key="frame" x="16" y="433.5" width="343" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="P8d-cG-big"/>
                                                 </constraints>
@@ -328,7 +332,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Họ và tên chủ tài khoản" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pUK-xc-opj" customClass="HoshiTextField" customModule="FinPlus" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="283.5" width="343" height="56"/>
+                                                <rect key="frame" x="16" y="357.5" width="343" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="BMn-kl-5na"/>
                                                 </constraints>
@@ -355,40 +359,59 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLp-5d-8jK">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLp-5d-8jK">
                                                 <rect key="frame" x="16" y="203.5" width="164" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="MeW-81-Eqi"/>
                                                 </constraints>
                                                 <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Button" image="viettelPay">
+                                                <inset key="imageEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Bidv" image="bidv">
                                                     <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
-                                                <state key="selected" image="viettelPay_selected"/>
+                                                <state key="selected" image="bidv_selected"/>
                                                 <connections>
-                                                    <action selector="viettelPayBtn_Selected:" destination="71L-If-6xU" eventType="touchUpInside" id="27Z-dJ-9jf"/>
+                                                    <action selector="btnBidvTapped:" destination="71L-If-6xU" eventType="touchUpInside" id="bSk-vy-HKK"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LvR-SY-oxE">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LvR-SY-oxE">
                                                 <rect key="frame" x="195" y="203" width="164" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="X1Z-iP-6Oo"/>
                                                 </constraints>
                                                 <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Momo" image="viettelPay">
+                                                <inset key="imageEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="ViettelPay" image="viettelPay">
                                                     <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <state key="selected" image="viettelPay_selected"/>
                                                 <connections>
-                                                    <action selector="btnMomoTapped:" destination="71L-If-6xU" eventType="touchUpInside" id="rz5-cl-vr8"/>
+                                                    <action selector="viettelPayBtn_Selected:" destination="71L-If-6xU" eventType="touchUpInside" id="s4D-hm-VXy"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEl-VY-ZE8">
+                                                <rect key="frame" x="16" y="275.5" width="164" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="Pz6-rL-yiQ"/>
+                                                </constraints>
+                                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Ví Momo" image="momo">
+                                                    <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="selected" image="momo_selected"/>
+                                                <connections>
+                                                    <action selector="btnMomoTapped:" destination="71L-If-6xU" eventType="touchUpInside" id="FFJ-QD-T1p"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="LvR-SY-oxE" firstAttribute="top" secondItem="CLp-5d-8jK" secondAttribute="top" id="150-QZ-F47"/>
+                                            <constraint firstItem="KEl-VY-ZE8" firstAttribute="width" secondItem="CLp-5d-8jK" secondAttribute="width" id="3HW-bv-clQ"/>
                                             <constraint firstItem="FAN-dt-hxv" firstAttribute="top" secondItem="JA1-Xq-HwQ" secondAttribute="top" constant="30" id="3OL-9f-ZcV"/>
                                             <constraint firstItem="dPW-Rv-tUB" firstAttribute="top" secondItem="TQF-Rq-arJ" secondAttribute="bottom" constant="16" id="494-UF-8QH"/>
+                                            <constraint firstItem="KEl-VY-ZE8" firstAttribute="top" secondItem="CLp-5d-8jK" secondAttribute="bottom" constant="16" id="4Bi-0l-0Sh"/>
                                             <constraint firstItem="TQF-Rq-arJ" firstAttribute="top" secondItem="FAN-dt-hxv" secondAttribute="bottom" constant="16" id="4b5-CB-h3y"/>
                                             <constraint firstItem="FAN-dt-hxv" firstAttribute="leading" secondItem="JA1-Xq-HwQ" secondAttribute="leading" constant="16" id="5Ym-j9-dfO"/>
                                             <constraint firstItem="XCW-bE-9Ch" firstAttribute="width" secondItem="dPW-Rv-tUB" secondAttribute="width" id="7kU-lJ-uik"/>
@@ -399,16 +422,18 @@
                                             <constraint firstItem="XCW-bE-9Ch" firstAttribute="height" secondItem="dPW-Rv-tUB" secondAttribute="height" id="Hwr-Fg-BJ2"/>
                                             <constraint firstItem="LvR-SY-oxE" firstAttribute="width" secondItem="CLp-5d-8jK" secondAttribute="width" id="JeW-22-xFk"/>
                                             <constraint firstItem="XCW-bE-9Ch" firstAttribute="leading" secondItem="dPW-Rv-tUB" secondAttribute="trailing" constant="16" id="Jv0-rb-XCd"/>
+                                            <constraint firstItem="KEl-VY-ZE8" firstAttribute="height" secondItem="CLp-5d-8jK" secondAttribute="height" id="K05-TT-I7v"/>
                                             <constraint firstAttribute="trailing" secondItem="pUK-xc-opj" secondAttribute="trailing" constant="16" id="MHu-T1-NPm"/>
                                             <constraint firstItem="TQF-Rq-arJ" firstAttribute="leading" secondItem="FAN-dt-hxv" secondAttribute="leading" id="Pg9-zT-HzV"/>
-                                            <constraint firstItem="pUK-xc-opj" firstAttribute="top" secondItem="CLp-5d-8jK" secondAttribute="bottom" constant="24" id="QAF-11-wRR"/>
                                             <constraint firstItem="pUK-xc-opj" firstAttribute="leading" secondItem="JA1-Xq-HwQ" secondAttribute="leading" constant="16" id="SPJ-6H-xvV"/>
                                             <constraint firstItem="MNx-k4-LtW" firstAttribute="height" secondItem="TQF-Rq-arJ" secondAttribute="height" id="TvJ-20-MGY"/>
                                             <constraint firstItem="MNx-k4-LtW" firstAttribute="leading" secondItem="TQF-Rq-arJ" secondAttribute="trailing" constant="16" id="WVs-QS-4bQ"/>
+                                            <constraint firstItem="KEl-VY-ZE8" firstAttribute="leading" secondItem="CLp-5d-8jK" secondAttribute="leading" id="ZTS-k6-aTp"/>
                                             <constraint firstItem="XCW-bE-9Ch" firstAttribute="centerY" secondItem="dPW-Rv-tUB" secondAttribute="centerY" id="ZyQ-QO-bEI"/>
                                             <constraint firstAttribute="trailing" secondItem="MNx-k4-LtW" secondAttribute="trailing" constant="16" id="cAN-BH-qWx"/>
                                             <constraint firstItem="MNx-k4-LtW" firstAttribute="width" secondItem="TQF-Rq-arJ" secondAttribute="width" id="cOV-ty-3u7"/>
                                             <constraint firstItem="dPW-Rv-tUB" firstAttribute="leading" secondItem="TQF-Rq-arJ" secondAttribute="leading" id="d3l-Ue-Kpo"/>
+                                            <constraint firstItem="pUK-xc-opj" firstAttribute="top" secondItem="KEl-VY-ZE8" secondAttribute="bottom" constant="26" id="eMx-PD-gHz"/>
                                             <constraint firstItem="MNx-k4-LtW" firstAttribute="centerY" secondItem="TQF-Rq-arJ" secondAttribute="centerY" id="lbH-oO-2i2"/>
                                             <constraint firstItem="OLB-Sh-PDf" firstAttribute="top" secondItem="pUK-xc-opj" secondAttribute="bottom" constant="20" id="sQC-ME-A82"/>
                                             <constraint firstItem="OLB-Sh-PDf" firstAttribute="leading" secondItem="pUK-xc-opj" secondAttribute="leading" id="tqw-Xd-tR4"/>
@@ -453,14 +478,15 @@
                     <connections>
                         <outlet property="accTextField" destination="OLB-Sh-PDf" id="0Ke-T5-w6Z"/>
                         <outlet property="agriBtn" destination="XCW-bE-9Ch" id="suN-aO-owO"/>
-                        <outlet property="btnMomo" destination="LvR-SY-oxE" id="iFp-2K-rfT"/>
+                        <outlet property="btnBidv" destination="CLp-5d-8jK" id="nqa-QE-w7t"/>
+                        <outlet property="btnMomo" destination="KEl-VY-ZE8" id="Zvq-mW-XBv"/>
                         <outlet property="leftBarBtn" destination="exK-B4-094" id="WQl-BI-Bns"/>
                         <outlet property="nameTextField" destination="pUK-xc-opj" id="dxC-PR-MVo"/>
                         <outlet property="rightBarBtn" destination="84J-9Q-Veo" id="EXE-87-Mh5"/>
                         <outlet property="techBtn" destination="dPW-Rv-tUB" id="bij-eR-lIT"/>
                         <outlet property="typeLabel" destination="FAN-dt-hxv" id="gSS-6r-Sid"/>
                         <outlet property="vcbBtn" destination="TQF-Rq-arJ" id="lB1-xY-whw"/>
-                        <outlet property="viettelPayBtn" destination="CLp-5d-8jK" id="YPJ-ak-ZVR"/>
+                        <outlet property="viettelPayBtn" destination="LvR-SY-oxE" id="SIu-0y-6MY"/>
                         <outlet property="viettinBtn" destination="MNx-k4-LtW" id="OKb-n3-fQg"/>
                     </connections>
                 </viewController>
@@ -487,18 +513,19 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngân hàng được chọn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXJ-3U-8hK">
-                                                <rect key="frame" x="16" y="30" width="112" height="13"/>
+                                                <rect key="frame" x="16" y="30" width="107.5" height="13"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="11"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRk-Ie-4Et">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRk-Ie-4Et">
                                                 <rect key="frame" x="16" y="59" width="164" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="M5m-UO-QOZ"/>
                                                     <constraint firstAttribute="width" constant="164" id="peg-2M-atx"/>
                                                 </constraints>
                                                 <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Button" image="vcb">
                                                     <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -631,10 +658,14 @@
     <resources>
         <image name="agri" width="25" height="25"/>
         <image name="agri_selected" width="25" height="25"/>
+        <image name="bidv" width="25" height="25"/>
+        <image name="bidv_selected" width="25" height="25"/>
         <image name="ic_back" width="20" height="18"/>
         <image name="ic_close" width="16" height="16"/>
         <image name="ic_disclosureIndicator2" width="5" height="7"/>
         <image name="ic_disclosureIndicator3" width="5" height="7"/>
+        <image name="momo" width="25" height="25"/>
+        <image name="momo_selected" width="25" height="25"/>
         <image name="tech" width="25" height="16"/>
         <image name="tech_selected" width="25" height="16"/>
         <image name="vcb" width="24" height="24"/>

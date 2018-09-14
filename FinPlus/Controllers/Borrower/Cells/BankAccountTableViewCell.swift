@@ -34,7 +34,8 @@ class BankAccountTableViewCell: UITableViewCell {
             case .Techcombank?: self.walletImg.image = #imageLiteral(resourceName: "tech")
             case .Agribank?: self.walletImg.image = #imageLiteral(resourceName: "agri")
             case .ViettelPay?: self.walletImg.image = #imageLiteral(resourceName: "viettelPay_selected")
-            case .Momo?: self.walletImg.image = #imageLiteral(resourceName: "viettelPay_selected")
+            case .Momo?: self.walletImg.image = #imageLiteral(resourceName: "momo")
+            case .Bidv?: self.walletImg.image = #imageLiteral(resourceName: "bidv")
             case .none:
                 break
             }
@@ -54,7 +55,8 @@ class BankAccountTableViewCell: UITableViewCell {
                 case .Techcombank?: self.walletImg.image = #imageLiteral(resourceName: "tech_selected")
                 case .Agribank?: self.walletImg.image = #imageLiteral(resourceName: "agri_selected")
                 case .ViettelPay?: self.walletImg.image = #imageLiteral(resourceName: "viettelPay_selected")
-                case .Momo?: self.walletImg.image = #imageLiteral(resourceName: "viettelPay_selected")
+                case .Momo?: self.walletImg.image = #imageLiteral(resourceName: "momo_selected")
+                case .Bidv?: self.walletImg.image = #imageLiteral(resourceName: "bidv_selected")
                 case .none:
                     break
                 }
@@ -72,7 +74,8 @@ class BankAccountTableViewCell: UITableViewCell {
                 case .Techcombank?: self.walletImg.image = #imageLiteral(resourceName: "tech")
                 case .Agribank?: self.walletImg.image = #imageLiteral(resourceName: "agri")
                 case .ViettelPay?: self.walletImg.image = #imageLiteral(resourceName: "viettelPay_selected")
-                case .Momo?: self.walletImg.image = #imageLiteral(resourceName: "viettelPay_selected")
+                case .Momo?: self.walletImg.image = #imageLiteral(resourceName: "momo")
+                case .Bidv?: self.walletImg.image = #imageLiteral(resourceName: "bidv")
                 case .none:
                     break
                 }
