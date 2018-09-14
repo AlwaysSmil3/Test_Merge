@@ -187,13 +187,17 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     //Upload Data Image
     func uploadData(img: UIImage) {
         //let dataImg = UIImagePNGRepresentation(img)
-        guard let imgResize = img.resizeMonyImage(originSize: img.size), let data = imgResize.jpeg(.lowest) else { return }
+        UIApplication.shared.topViewController()!.handleLoadingView(isShow: true)
+        guard let imgResize = img.resizeMonyImage(originSize: img.size), let data = imgResize.jpeg(.lowest) else {
+            UIApplication.shared.topViewController()!.handleLoadingView(isShow: false)
+            return
+        }
         
         let loanID = DataManager.shared.loanID ?? 0
         //guard let data = dataImg else { return }
         let endPoint = "loans/" + "\(loanID)/" + "file"
         
-        UIApplication.shared.topViewController()!.handleLoadingView(isShow: true)
+        
         APIClient.shared.upload(type: self.typeImgFile, typeMedia: "image", endPoint: endPoint, imagesData: [data], parameters: ["" : ""], onCompletion: { (response) in
             UIApplication.shared.topViewController()!.handleLoadingView(isShow: false)
             print("Upload \(String(describing: response))")
