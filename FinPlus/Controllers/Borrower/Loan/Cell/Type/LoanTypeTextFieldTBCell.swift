@@ -80,9 +80,13 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         
         if let temp = self.valueTemp {
             if self.tfValue?.text! != temp {
-                self.isNeedUpdate = false
+                if self.isNeedUpdate == true {
+                    self.isNeedUpdate = false
+                }
+                
             } else {
-                self.isNeedUpdate = true
+                //self.isNeedUpdate = true
+                self.updateInfoFalse(pre: self.field?.title ?? "")
             }
         }
         
