@@ -198,7 +198,6 @@ extension LoanTypePhoneRelationSubTBCell: DataSelectedFromPopupProtocol {
     func dataSelected(data: LoanBuilderData) {
         self.tfTypeRelation?.text = data.title!
         self.tfRelationPhone?.placeholder = "Số điện thoại của " + data.title!
-        //DataManager.shared.loanInfo.userInfo.relationships.type = data.id!
         
         //guard let data_ = self.data, let placeHolder = data_.placeholder else { return }
         if self.currentIndex == 0 {
