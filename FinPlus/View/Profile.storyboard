@@ -138,6 +138,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bK1-0Q-Cyx">
                         <barButtonItem key="leftBarButtonItem" image="ic_back" id="7VV-8H-Z0f">
+                            <color key="tintColor" red="0.0" green="0.078431372549019607" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="navi_backWithSender:" destination="Rb0-Hp-gWo" id="bYJ-qZ-AeC"/>
                             </connections>
