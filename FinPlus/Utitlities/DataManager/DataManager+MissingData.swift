@@ -19,7 +19,15 @@ extension DataManager {
         }
         
         if let relation = relationPhone[index] as? JSONDictionary, let phone_ = relation["phoneNumber"] as? String {
-            phone = phone_
+            if phone_.contains("_") {
+                let array = phone_.components(separatedBy: "_")
+                if array.count > 0 {
+                    phone = array[0]
+                }
+            } else {
+                phone = phone_
+            }
+            
         }
         
         

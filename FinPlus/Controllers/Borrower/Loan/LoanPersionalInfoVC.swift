@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import DropDown
 import APAddressBook
 
 class LoanPersionalInfoVC: LoanBaseViewController {
@@ -163,8 +162,8 @@ class LoanPersionalInfoVC: LoanBaseViewController {
                 return tempContact
             }
             
-            tempContact.fullName = firstName + " " + lastName
-            tempContact.nameDisplay = firstName + " " + lastName
+            tempContact.fullName = (firstName + " " + lastName).trimmingCharacters(in: .whitespacesAndNewlines)
+            tempContact.nameDisplay = (firstName + " " + lastName).trimmingCharacters(in: .whitespacesAndNewlines)
             
             return tempContact
         }
