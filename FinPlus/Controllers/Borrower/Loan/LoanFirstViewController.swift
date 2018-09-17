@@ -7,9 +7,13 @@
 //
 
 import Foundation
+import PulsingHalo
 
 
 class LoanFirstViewController: BaseViewController {
+    
+    @IBOutlet var contentBtnContinueView: UIView!
+    @IBOutlet var btnContinueRight: UIButton!
     
     @IBOutlet var lblCategoriesName: UILabel!
     
@@ -31,6 +35,12 @@ class LoanFirstViewController: BaseViewController {
     
     @IBOutlet var lblPayTermTotal: UILabel!
     @IBOutlet var lblLeftPayTermTotal: UILabel!
+    
+    var halo: PulsingHaloLayer?
+    
+    var isChangedTerm: Bool?
+    var isChangedAmount: Bool?
+    
     var loanCategory: LoanCategories? {
         didSet {
             self.setupInit()
@@ -53,6 +63,11 @@ class LoanFirstViewController: BaseViewController {
             self.listDataCategoriesForPopup.append(loan)
         }
         
+        if DataManager.shared.browwerInfo?.activeLoan?.loanId == nil || DataManager.shared.browwerInfo?.activeLoan?.loanId == 0 {
+            self.initPlusingHalo()
+        }
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +78,27 @@ class LoanFirstViewController: BaseViewController {
         
         super.viewWillAppear(animated)
         
+    }
+    
+    private func initPlusingHalo() {
+        halo = PulsingHaloLayer()
+        let position: CGPoint = CGPoint(x: self.btnContinueRight!.center.x + 10, y: self.btnContinueRight!.center.y + 2)
+        halo?.position = position
+        halo?.haloLayerNumber = 3
+        halo?.radius = 26
+        halo?.backgroundColor = MAIN_COLOR.cgColor
+        self.contentBtnContinueView.layer.addSublayer(halo!)
+        self.halo?.start()
+        self.halo?.isHidden = true
+    }
+    
+    private func checkStartHalo() {
+        guard DataManager.shared.browwerInfo?.activeLoan?.loanId == nil || DataManager.shared.browwerInfo?.activeLoan?.loanId == 0 else { return }
+        if let changed1 = self.isChangedTerm, let changed2 = self.isChangedAmount, changed1, changed2 {
+            if let hide = self.halo?.isHidden, hide {
+                self.halo?.isHidden = false
+            }
+        }
     }
     
     
@@ -192,6 +228,7 @@ class LoanFirstViewController: BaseViewController {
             
             self.lblLeftTempTotalAmount?.text = "Trả góp dự kiến hàng tháng"
         }
+        
     }
     
     
@@ -269,6 +306,14 @@ class LoanFirstViewController: BaseViewController {
         self.lblMoneySlider.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ"
         
         self.updateTotalAmountMounth()
+        
+        if DataManager.shared.browwerInfo?.activeLoan?.loanId == nil || DataManager.shared.browwerInfo?.activeLoan?.loanId == 0 {
+            if self.isChangedAmount == nil {
+                self.isChangedAmount = true
+            }
+            self.checkStartHalo()
+        }
+        
     }
     
     func updatePayTerm(term: Float) {
@@ -312,6 +357,13 @@ class LoanFirstViewController: BaseViewController {
         }
         self.updatePayTerm(term: self.termSlider.value)
         self.updateTotalAmountMounth()
+        
+        if DataManager.shared.browwerInfo?.activeLoan?.loanId == nil || DataManager.shared.browwerInfo?.activeLoan?.loanId == 0 {
+            if self.isChangedTerm == nil {
+                self.isChangedTerm = true
+            }
+            self.checkStartHalo()
+        }
     }
     
     
@@ -380,8 +432,11 @@ class LoanFirstViewController: BaseViewController {
     
 }
 
+//MARK: DataSelectedFromPopupProtocol
 extension LoanFirstViewController: DataSelectedFromPopupProtocol {
     func dataSelected(data: LoanBuilderData) {
+        guard data.id != self.loanCategory?.id else { return }
+        
         DataManager.shared.reloadOptionalData()
         DataManager.shared.loanInfo.loanCategoryID = data.id!
         self.loanCategory = DataManager.shared.getCurrentCategory()

@@ -636,6 +636,8 @@
                     </view>
                     <connections>
                         <outlet property="amountSlider" destination="kPf-c6-T5S" id="P9G-2z-cbu"/>
+                        <outlet property="btnContinueRight" destination="0To-CR-R1F" id="OYH-Ab-4gT"/>
+                        <outlet property="contentBtnContinueView" destination="nJm-gZ-qBg" id="Btf-EE-uOf"/>
                         <outlet property="lblCategoriesName" destination="Og5-0H-BcY" id="kgT-vr-ckP"/>
                         <outlet property="lblInterestRate" destination="6oP-Za-zo3" id="ldL-Mj-bN6"/>
                         <outlet property="lblLeftPayTermTotal" destination="V2a-JC-s53" id="m2e-3V-qXQ"/>
