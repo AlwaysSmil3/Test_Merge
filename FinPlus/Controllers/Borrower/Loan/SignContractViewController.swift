@@ -54,6 +54,19 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         
         self.btnSign.titleLabel?.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)
         self.title = "Ký hợp đồng"
+        
+        //Load ContractURL
+        if let contractURL = DataManager.shared.browwerInfo?.activeLoan?.contractUrl, let url = URL(string: contractURL) {
+            let request = URLRequest(url: url)
+            self.webView.loadRequest(request)
+        }
+//        else {
+//            if let pdf = Bundle.main.path(forResource: "contract", ofType: "pdf") {
+//                let url = URL(fileURLWithPath: pdf)
+//                let request = URLRequest(url: url)
+//                self.webView.loadRequest(request)
+//            }
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,15 +74,6 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         self.navigationController?.isNavigationBarHidden = false
         
         super.viewWillAppear(animated)
-        if let pdf = Bundle.main.path(forResource: "contract", ofType: "pdf") {
-            let url = URL(fileURLWithPath: pdf)
-            let request = URLRequest(url: url)
-            self.webView.loadRequest(request)
-        }
-        // let htmlPath = Bundle.main.path(forResource: "hop-dong", ofType: "html")!
-        // let url = URL(fileURLWithPath: htmlPath)
-        // let request = URLRequest(url: url)
-        // self.webView.loadRequest(request)
         
     }
     

@@ -87,7 +87,6 @@ class LoanStateViewController: UIViewController {
 //
 //            }
 //        }
-        self.initRefresher()
         
         self.getLoanCategories()
         
@@ -1073,6 +1072,8 @@ class LoanStateViewController: UIViewController {
         if self.isFromManagerLoan {
             self.navigationItem.rightBarButtonItem = nil
             self.headerData = []
+        } else {
+            self.initRefresher()
         }
         
         let textCellNib = UINib(nibName: "TitleTableViewCell", bundle: nil)
