@@ -139,6 +139,10 @@ extension LoanTypePhoneRelationTBCell: UITableViewDelegate, UITableViewDataSourc
 //MARK: UpdateStatusInvalidRelationPhoneDelegate
 extension LoanTypePhoneRelationTBCell: UpdateStatusInvalidRelationPhoneDelegate {
     func update(isNeed: Bool) {
+        if isNeed {
+            self.updateInfoFalse(pre: self.field?.title ?? "")
+            return
+        }
         self.isNeedUpdate = isNeed
     }
 }

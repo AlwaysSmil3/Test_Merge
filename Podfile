@@ -11,7 +11,8 @@ pod 'SwiftyJSON'
 pod 'PromiseKit'
 pod 'TPKeyboardAvoiding'
 
-pod 'DropDown'
+pod 'PulsingHalo'
+
 
 pod 'Alamofire'
 pod 'NVActivityIndicatorView'

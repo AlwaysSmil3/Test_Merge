@@ -154,11 +154,14 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
 //MARK: TextField Delegate
 extension LoanTypePhoneRelationSubTBCell: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // Giới hạn ký tự nhập vào
+        
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
         
         if DataManager.shared.missingRelationsShip != nil {
             if self.currentIndex == 0 {
-                if textField.text != DataManager.shared.getPhoneInValid(index: "0") {
+                if (newString as String) != DataManager.shared.getPhoneInValid(index: "0") {
                     DataManager.shared.isRelationPhone1Invalid = false
                     self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
                     
@@ -167,7 +170,7 @@ extension LoanTypePhoneRelationSubTBCell: UITextFieldDelegate {
                     self.tfRelationPhone?.textColor = UIColor(hexString: "#DA3535")
                 }
             } else {
-                if textField.text != DataManager.shared.getPhoneInValid(index: "1") {
+                if (newString as String) != DataManager.shared.getPhoneInValid(index: "1") {
                     DataManager.shared.isRelationPhone2Invalid = false
                     self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
                 } else {
@@ -178,11 +181,8 @@ extension LoanTypePhoneRelationSubTBCell: UITextFieldDelegate {
             self.updateStatus()
         }
         
-        
+        // Giới hạn ký tự nhập vào
         let maxLength = 11
-        let currentString: NSString = textField.text! as NSString
-        let newString: NSString =
-            currentString.replacingCharacters(in: range, with: string) as NSString
         
         if newString.length > maxLength { return false }
         
@@ -198,7 +198,6 @@ extension LoanTypePhoneRelationSubTBCell: DataSelectedFromPopupProtocol {
     func dataSelected(data: LoanBuilderData) {
         self.tfTypeRelation?.text = data.title!
         self.tfRelationPhone?.placeholder = "Số điện thoại của " + data.title!
-        //DataManager.shared.loanInfo.userInfo.relationships.type = data.id!
         
         //guard let data_ = self.data, let placeHolder = data_.placeholder else { return }
         if self.currentIndex == 0 {
