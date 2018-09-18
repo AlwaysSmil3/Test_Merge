@@ -18,6 +18,7 @@ class ListLoanViewController: BaseViewController {
     let cellIdentifier = "cell"
     private var listLoan: NSMutableArray = []
     
+    var isCanReload: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,13 +63,22 @@ class ListLoanViewController: BaseViewController {
     
     
     private func getAllLoans() {
+        guard self.isCanReload else { return }
+        
         DataManager.shared.isNoShowAlertTimeout = true
-        self.listLoan.removeAllObjects()
+        self.isCanReload = false
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         APIClient.shared.getUserLoans()
-            .done(on: DispatchQueue.main) { model in
+            .done(on: DispatchQueue.global()) { model in
                 
-                self.errorConnectView?.isHidden = true
+                DispatchQueue.main.async {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    self.errorConnectView?.isHidden = true
+                }
+                self.listLoan.removeAllObjects()
                 
+                self.isCanReload = true
                 let completeArr:NSMutableArray = []
                 let unCompleteArr:NSMutableArray = []
                 
@@ -94,15 +104,19 @@ class ListLoanViewController: BaseViewController {
                     self.listLoan.add(["title" : "END_LOAN", "sub_array" : completeArr])
                 }
                 
-                self.tableview.reloadData()
-
-                self.tableview.isHidden = self.listLoan.count < 1
-                self.noWalletLabel.isHidden = self.listLoan.count > 0
-                self.addBtn.isHidden = self.listLoan.count > 0
+                DispatchQueue.main.async {
+                    self.tableview.reloadData()
+                    
+                    self.tableview.isHidden = self.listLoan.count < 1
+                    self.noWalletLabel.isHidden = self.listLoan.count > 0
+                    self.addBtn.isHidden = self.listLoan.count > 0
+                }
+                
             }
             .catch { error in
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 let err = error as NSError
-            
+                self.isCanReload = true
                 if err.code == NSURLErrorTimedOut {
                     
                     guard self.listLoan.count > 0 else {

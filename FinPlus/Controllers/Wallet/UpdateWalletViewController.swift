@@ -284,6 +284,7 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
                         return
                     }
                     
+                    self?.delegate?.isReloadBankData(isReload: true)
                     self?.navigationController?.popToRootViewController(animated: true)
                 })
                 
