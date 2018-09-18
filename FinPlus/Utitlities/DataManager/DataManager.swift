@@ -140,8 +140,14 @@ class DataManager {
         didSet {
             guard let location = self.currentLocation else { return }
             
-            DataManager.shared.loanInfo.longitude = location.longitude
-            DataManager.shared.loanInfo.latitude = location.latitude
+            if DataManager.shared.loanInfo.status == 0 {
+                DataManager.shared.loanInfo.longitudeCreateLoan = location.longitude
+                DataManager.shared.loanInfo.latitudeCreateLoan = location.latitude
+            } else if DataManager.shared.loanInfo.status == STATUS_LOAN.INTEREST_CONFIRM.rawValue || DataManager.shared.loanInfo.status == STATUS_LOAN.INTEREST_CONFIRM_EXPIRED.rawValue || DataManager.shared.loanInfo.status == STATUS_LOAN.RAISING_CAPITAL.rawValue {
+                DataManager.shared.loanInfo.longitudeAccepted = location.longitude
+                DataManager.shared.loanInfo.latitudeAccepted = location.latitude
+            }
+            
         }
     }
     

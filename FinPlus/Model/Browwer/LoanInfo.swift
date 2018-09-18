@@ -70,8 +70,11 @@ struct LoanInfo: Encodable {
     var optionalText: [String]
     var optionalMedia:  [[String]]
     
-    var longitude: Double
-    var latitude: Double
+    var longitudeCreateLoan: Double
+    var latitudeCreateLoan: Double
+    
+    var longitudeAccepted: Double
+    var latitudeAccepted: Double
     
     init() {
         
@@ -97,8 +100,11 @@ struct LoanInfo: Encodable {
         self.userID = 0
         self.intRate = 0
         
-        self.longitude = 0
-        self.latitude = 0
+        self.longitudeCreateLoan = 0
+        self.latitudeCreateLoan = 0
+        
+        self.longitudeAccepted = 0
+        self.latitudeAccepted = 0
     }
     
     enum CodingKeys: String, CodingKey {
@@ -118,8 +124,10 @@ struct LoanInfo: Encodable {
         case optionalMedia
         case userId
         case intRate
-        case longitude
-        case latitude
+        case longitudeCreateLoan
+        case latitudeCreateLoan
+        case longitudeAccepted
+        case latitudeAccepted
     }
     
     func encode(to encoder: Encoder) throws {
@@ -141,13 +149,24 @@ struct LoanInfo: Encodable {
         try container.encode(userID, forKey: .userId)
         try container.encode(intRate, forKey: .intRate)
         
-        if self.longitude > 0 {
-            try container.encode(longitude, forKey: .longitude)
+        if status == 0 {
+            if self.longitudeCreateLoan > 0 {
+                try container.encode(longitudeCreateLoan, forKey: .longitudeCreateLoan)
+            }
+            
+            if self.latitudeCreateLoan > 0 {
+                try container.encode(latitudeCreateLoan, forKey: .latitudeCreateLoan)
+            }
+        } else if status == STATUS_LOAN.RAISING_CAPITAL.rawValue {
+            if self.longitudeAccepted > 0 {
+                try container.encode(longitudeAccepted, forKey: .longitudeAccepted)
+            }
+            
+            if self.latitudeAccepted > 0 {
+                try container.encode(latitudeAccepted, forKey: .latitudeAccepted)
+            }
         }
         
-        if self.latitude > 0 {
-            try container.encode(latitude, forKey: .latitude)
-        }
         
     }
     
