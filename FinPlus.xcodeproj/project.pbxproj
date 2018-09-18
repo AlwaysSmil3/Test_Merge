@@ -299,12 +299,8 @@
 		E7A4A0A520E6321600B5F7ED /* terms-and-conditions.html in Resources */ = {isa = PBXBuildFile; fileRef = E7A4A0A320E6321500B5F7ED /* terms-and-conditions.html */; };
 		E7A4A0A720E65B9500B5F7ED /* hop-dong.html in Resources */ = {isa = PBXBuildFile; fileRef = E7A4A0A620E65B9400B5F7ED /* hop-dong.html */; };
 		E7BC256F20CF8096001FF0F4 /* SpreadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC256E20CF8095001FF0F4 /* SpreadCell.swift */; };
-		E7BC258620CFDACA001FF0F4 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E7BC257120CFDACA001FF0F4 /* LICENSE */; };
 		E7BC258720CFDACA001FF0F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7BC257420CFDACA001FF0F4 /* Assets.xcassets */; };
 		E7BC258820CFDACA001FF0F4 /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC257520CFDACA001FF0F4 /* FAQView.swift */; };
-		E7BC258920CFDACA001FF0F4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E7BC257620CFDACA001FF0F4 /* README.md */; };
-		E7BC258A20CFDACA001FF0F4 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E7BC257820CFDACA001FF0F4 /* LICENSE */; };
-		E7BC258B20CFDACA001FF0F4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E7BC257920CFDACA001FF0F4 /* README.md */; };
 		E7BC258C20CFDACA001FF0F4 /* YoshikoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC257C20CFDACA001FF0F4 /* YoshikoTextField.swift */; };
 		E7BC258D20CFDACA001FF0F4 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC257D20CFDACA001FF0F4 /* HoshiTextField.swift */; };
 		E7BC258E20CFDACA001FF0F4 /* MinoruTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC257E20CFDACA001FF0F4 /* MinoruTextField.swift */; };
@@ -1841,7 +1837,6 @@
 				630BA62020C22A4100880DAE /* SF-Pro-Display-BlackItalic.otf in Resources */,
 				63FAF5532140C9DD00985B92 /* university.json in Resources */,
 				630F684720F4664D004FF32E /* LoanTypePhoneRelationSubTBCell.xib in Resources */,
-				E7BC258920CFDACA001FF0F4 /* README.md in Resources */,
 				639C9E1120A18A7500F2CF5E /* Roboto-Regular.ttf in Resources */,
 				63748BFE210ADB8000E79EB6 /* PaymentMethodTableViewCell.xib in Resources */,
 				630BA61E20C22A4100880DAE /* SF-Pro-Display-UltralightItalic.otf in Resources */,
@@ -1853,7 +1848,6 @@
 				630BA61020C22A4100880DAE /* SF-Pro-Display-RegularItalic.otf in Resources */,
 				630BA61920C22A4100880DAE /* SF-Pro-Text-Regular.otf in Resources */,
 				630BA61C20C22A4100880DAE /* SF-Pro-Display-HeavyItalic.otf in Resources */,
-				E7BC258620CFDACA001FF0F4 /* LICENSE in Resources */,
 				639C9E1020A18A7500F2CF5E /* Roboto-Light.ttf in Resources */,
 				639C9E1720A18A7500F2CF5E /* Roboto-BlackItalic.ttf in Resources */,
 				630BA61D20C22A4100880DAE /* SF-Pro-Display-Ultralight.otf in Resources */,
@@ -1898,7 +1892,6 @@
 				635732FA2109A83800F6CD04 /* LoanTypeTextViewTBCell.xib in Resources */,
 				630BA61720C22A4100880DAE /* SF-Pro-Text-Light.otf in Resources */,
 				639C9E2020A18A7500F2CF5E /* Oswald-ExtraLight.ttf in Resources */,
-				E7BC258B20CFDACA001FF0F4 /* README.md in Resources */,
 				639C9E1E20A18A7500F2CF5E /* Oswald-Regular.ttf in Resources */,
 				630BA62520C22A4100880DAE /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				84114BC920D79464005026DF /* SubInfoLastTableViewCell.xib in Resources */,
@@ -1906,7 +1899,6 @@
 				639C9E1320A18A7500F2CF5E /* Roboto-ThinItalic.ttf in Resources */,
 				639C9DDD20A15E3500F2CF5E /* Authen.storyboard in Resources */,
 				E7A4A0A720E65B9500B5F7ED /* hop-dong.html in Resources */,
-				E7BC258A20CFDACA001FF0F4 /* LICENSE in Resources */,
 				6358EC7020F4BB9F002858C8 /* LoanTypePopupAddTextTBCell.xib in Resources */,
 				84114BD420D79464005026DF /* AddNewWalletTableViewCell.xib in Resources */,
 				84B7B33D20D12F2A006CADA1 /* Invest.storyboard in Resources */,
