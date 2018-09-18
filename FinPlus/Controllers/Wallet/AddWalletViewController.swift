@@ -208,6 +208,7 @@ class AddWalletViewController: UIViewController {
                     return
                 }
                 //self?.showToastWithMessage(message: model.returnMsg ?? "")
+                self?.delegate?.isReloadBankData(isReload: true)
                 self?.navigationController?.popViewController(animated: true)
             }
             .catch { error in

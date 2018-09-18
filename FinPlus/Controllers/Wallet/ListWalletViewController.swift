@@ -16,7 +16,7 @@ enum WalletAction {
 
 //CaoHai tra ve du lieu bank khi chon bank
 protocol BankDataDelegate {
-    func getBankAccountData(bank: AccountBank)
+    func isReloadBankData(isReload: Bool)
 }
 
 class ListWalletViewController: BaseViewController {
@@ -72,6 +72,7 @@ class ListWalletViewController: BaseViewController {
         let cellNib = UINib(nibName: "WalletTableViewCell", bundle: nil)
         self.tableview.register(cellNib, forCellReuseIdentifier: cellIdentifier)
         
+        self.loadListBank()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,7 +87,6 @@ class ListWalletViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.loadListBank()
     }
     
     private func updateDataFromServer() {
@@ -215,8 +215,8 @@ class ListWalletViewController: BaseViewController {
     }
 
     @IBAction func addNewWallet() {
-        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ADD_WALLET") as! AddWalletViewController
+        vc.delegate = self
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -225,6 +225,7 @@ class ListWalletViewController: BaseViewController {
         guard let bank = self.listWallet[index] as? AccountBank else { return }
         let vc = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "UpdateWalletViewController") as! UpdateWalletViewController
         vc.wallet = bank
+        vc.delegate = self
         vc.hidesBottomBarWhenPushed = true
         vc.walletAction = self.walletAction
         
@@ -254,6 +255,7 @@ class ListWalletViewController: BaseViewController {
     
 }
 
+//MARK: UITableViewDelegate
 extension ListWalletViewController: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -290,9 +292,9 @@ extension ListWalletViewController: UITableViewDelegate {
                 break
             case .RegisterInvestor:
                 //Cho đăng ký làm nhà đầu tư
-                guard let bank = self.listWallet[indexPath.row] as? AccountBank else { return }
-                self.delegate?.getBankAccountData(bank: bank)
-                self.navigationController?.popViewController(animated: true)
+//                guard let bank = self.listWallet[indexPath.row] as? AccountBank else { return }
+//                self.delegate?.getBankAccountData(bank: bank)
+//                self.navigationController?.popViewController(animated: true)
                 break
             }
         
@@ -303,6 +305,7 @@ extension ListWalletViewController: UITableViewDelegate {
     
 }
 
+//MARK: UITableViewDataSource
 extension ListWalletViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -436,6 +439,15 @@ extension ListWalletViewController: UITableViewDataSource {
     
 }
 
+//MARK: BankDataDelegate
+extension ListWalletViewController: BankDataDelegate {
+    func isReloadBankData(isReload: Bool) {
+        guard isReload else { return }
+        self.loadListBank()
+    }
+}
+
+//MARK: EditWalletDelegate
 extension ListWalletViewController: EditWalletDelegate {
     func editWallet(index: IndexPath) {
         let bank = self.listWallet[index.row] as! AccountBank
