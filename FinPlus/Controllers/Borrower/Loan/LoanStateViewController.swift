@@ -614,7 +614,7 @@ class LoanStateViewController: UIViewController {
                         ],
                     [
                         "type": HeaderCellType.TextType,
-                        "text": "Hãy ấn nút 'Giải ngân' để ký hợp đồng và lấy tiền ngay.",
+                        "text": "Hãy ấn nút 'Giải ngân' để ký hợp đồng và nhận tiền ngay.",
                         "subType": TextCellType.DesType,
                         ],
                     [
