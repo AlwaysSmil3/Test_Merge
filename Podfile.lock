@@ -67,7 +67,6 @@ PODS:
   - GoogleUtilities/Reachability (5.2.3):
     - GoogleUtilities/Logger
   - IBAnimatable (5.1.0)
-  - JSONWebToken (2.2.0)
   - Kingfisher (4.9.0)
   - MYTableViewIndex (0.6.1)
   - nanopb (0.3.8):
@@ -109,7 +108,6 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Messaging
   - IBAnimatable
-  - JSONWebToken
   - Kingfisher
   - MYTableViewIndex
   - NVActivityIndicatorView
@@ -140,7 +138,6 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - IBAnimatable
-    - JSONWebToken
     - Kingfisher
     - MYTableViewIndex
     - nanopb
@@ -172,7 +169,6 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: f7507b39b70ad0bd80b3d81518b2f43868974307
   GoogleUtilities: 6f681e27050c5e130325e89fa0316dfca826f954
   IBAnimatable: dd81f8f22e9982b05e8ac50794e4c8988cc300f2
-  JSONWebToken: 6fae32489632658d563dd6952a5c34020ea813e4
   Kingfisher: 64539b51826b778206daa6ed815d12653caa69dd
   MYTableViewIndex: adc397809c76413bc7d117f95c7fce18a1282014
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
@@ -187,6 +183,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 7b59a648ead5c7fac8b75ae14c32e3824360a531
+PODFILE CHECKSUM: 5ffad075425860a4a973368a804a4cc10f61dc1f
 
 COCOAPODS: 1.5.3

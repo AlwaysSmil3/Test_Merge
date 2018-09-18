@@ -714,7 +714,7 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
-                self.navigationItem.rightBarButtonItem = nil
+                //self.navigationItem.rightBarButtonItem = nil
                 
                 headerData = [
                     [
@@ -741,7 +741,7 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
-                self.navigationItem.rightBarButtonItem = nil
+                //self.navigationItem.rightBarButtonItem = nil
                 
                 headerData = [
                     [
@@ -787,7 +787,7 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
-                self.navigationItem.rightBarButtonItem = nil
+                //self.navigationItem.rightBarButtonItem = nil
                 
                 var array: [String: Any] = [
                     "type": HeaderCellType.TextType,
@@ -863,7 +863,7 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
-                self.navigationItem.rightBarButtonItem = nil
+                //self.navigationItem.rightBarButtonItem = nil
                 
                 let amountOvertime = FinPlusHelper.formatDisplayCurrency(self.getAmountDebtOvertime()) + "đ"
                 
@@ -942,7 +942,7 @@ class LoanStateViewController: UIViewController {
         
         switch bottom_state {
             
-        case .DISBURSEMENT_SOON:
+        case .DISBURSEMENT_SOON?:
             //Giai ngan som
             let fullName = loan.userInfo?.fullName ?? ""
             
@@ -973,7 +973,7 @@ class LoanStateViewController: UIViewController {
             
             isEnableFooterView = true
             
-        case .DISBURSEMENT_ONTIME:
+        case .DISBURSEMENT_ONTIME?:
             //Giai ngan dung han
             //let funded = FinPlusHelper.formatDisplayCurrency(Double(loan.funded ?? 0)) + "đ"
             let fullName = loan.userInfo?.fullName ?? ""
@@ -995,7 +995,7 @@ class LoanStateViewController: UIViewController {
             self.labelBottomView.text = "Khoản vay của bạn đã được huy động đủ số tiền. Chỉ còn một bước ký hợp đồng để nhận tiền."
             isEnableFooterView = true
             
-        case .SIGN_CONTRACT:
+        case .SIGN_CONTRACT?:
             //Ky hop dong
             //let funded = FinPlusHelper.formatDisplayCurrency(Double(loan.funded ?? 0)) + "đ"
             let fullName = loan.userInfo?.fullName ?? ""
@@ -1018,7 +1018,7 @@ class LoanStateViewController: UIViewController {
             self.labelBottomView.text = "Nếu bạn đồng ý vay với số tiền huy động được. Vui lòng tiến hành ký hợp đồng để giải ngân."
             isEnableFooterView = true
             
-        case .CONFIRM_RATE:
+        case .CONFIRM_RATE?:
             //Xac nhan lai suat
             self.navigationItem.rightBarButtonItem = nil
             
@@ -1274,7 +1274,7 @@ class LoanStateViewController: UIViewController {
 //                })
 //            }))
             
-        case .CONTRACT_SIGNED?, .DISBURSAL?:
+        case .CONTRACT_SIGNED?, .DISBURSAL?, .OVERDUE_DEPT?, .TIMELY_DEPT?:
             alert.addAction(UIAlertAction(title: "Xem hợp đồng", style: .default , handler:{ (UIAlertAction)in
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SIGN") as! SignContractViewController
                 vc.isSigned = true
