@@ -141,7 +141,7 @@ class LoanSummaryViewController: BaseViewController {
         
         switch bottom_state {
             
-        case .DISBURSEMENT_SOON:
+        case .DISBURSEMENT_SOON?:
             //Giai ngan som
             let fullName = loan.userInfo?.fullName ?? ""
             
@@ -172,7 +172,7 @@ class LoanSummaryViewController: BaseViewController {
 //
 //            isEnableFooterView = true
             
-        case .DISBURSEMENT_ONTIME:
+        case .DISBURSEMENT_ONTIME?:
             //Giai ngan dung han
             //let funded = FinPlusHelper.formatDisplayCurrency(Double(loan.funded ?? 0)) + "đ"
             let fullName = loan.userInfo?.fullName ?? ""
@@ -196,7 +196,7 @@ class LoanSummaryViewController: BaseViewController {
 //            self.labelBottomView.text = "Khoản vay của bạn đã được huy động đủ số tiền. Chỉ còn một bước ký hợp đồng để nhận tiền."
 //            isEnableFooterView = true
             
-        case .SIGN_CONTRACT:
+        case .SIGN_CONTRACT?:
             //Ky hop dong
             //let funded = FinPlusHelper.formatDisplayCurrency(Double(loan.funded ?? 0)) + "đ"
             let fullName = loan.userInfo?.fullName ?? ""
@@ -223,7 +223,7 @@ class LoanSummaryViewController: BaseViewController {
 //            self.labelBottomView.text = "Nếu bạn đồng ý vay với số tiền huy động được. Vui lòng tiến hành ký hợp đồng để giải ngân."
 //            isEnableFooterView = true
             
-        case .CONFIRM_RATE:
+        case .CONFIRM_RATE?:
             //Xac nhan lai suat
             self.navigationItem.rightBarButtonItem = nil
             
@@ -342,18 +342,18 @@ class LoanSummaryViewController: BaseViewController {
     @IBAction func btnNextTapped(_ sender: Any) {
         
         switch bottom_state {
-        case .DISBURSEMENT_SOON:
+        case .DISBURSEMENT_SOON?:
             self.confirmSignContract()
             break
-        case .DISBURSEMENT_ONTIME:
-            self.confirmSignContract()
-            break
-            
-        case .SIGN_CONTRACT:
+        case .DISBURSEMENT_ONTIME?:
             self.confirmSignContract()
             break
             
-        case .CONFIRM_RATE:
+        case .SIGN_CONTRACT?:
+            self.confirmSignContract()
+            break
+            
+        case .CONFIRM_RATE?:
             self.confirmRate()
             break
         default:

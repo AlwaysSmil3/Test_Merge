@@ -85,6 +85,8 @@ class LoginViewController: BaseAuthenViewController {
                     print("Notification not Determined")
                     
                     break
+                case .provisional:
+                    break
                     
                 }
                 DispatchQueue.main.async {
