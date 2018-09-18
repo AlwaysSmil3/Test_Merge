@@ -143,6 +143,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     break
                     
+                case .provisional:
+                    break
+                    
                 }
             }
         } else {

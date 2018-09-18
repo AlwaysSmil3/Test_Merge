@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import JWT
+//import JWT
 
 // Type User: Investor or Browwer
 enum TypeAccount: Int {

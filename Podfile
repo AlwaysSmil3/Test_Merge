@@ -18,7 +18,6 @@ pod 'Alamofire'
 pod 'NVActivityIndicatorView'
 
 pod 'SDWebImage', '~> 4.0'
-pod 'JSONWebToken'
 pod 'Kingfisher'
 
 pod 'FBSDKCoreKit'
