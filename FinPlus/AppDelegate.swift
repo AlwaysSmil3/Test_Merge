@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UINavigationBar.appearance().tintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.85)
         
         // Override point for customization after application launch.
-        self.getLoanCategories()
+        
         
         if userDefault.value(forKey: Notification_Have_New) == nil {
             userDefault.set(false, forKey: Notification_Have_New)
@@ -70,14 +70,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         
-        // Get Version
-        self.getVersion()
-        
         // Init FireBase
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         
         print("UIDevice.modelName\(UIDevice.modelName)")
+        
+        if FinPlusHelper.isConnectedToNetwork() {
+            self.getLoanCategories()
+            // Get Version
+            self.getVersion()
+        }
         
         return true
     }
@@ -303,7 +306,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func getLoanCategories() {
         APIClient.shared.getLoanCategories()
             .done(on: DispatchQueue.main) { model in
-                self.updateCountOptionalData(model: model, completion: {
+                FinPlusHelper.updateCountOptionalData(model: model, completion: {
                     DataManager.shared.loanCategories.append(contentsOf: model)
                 })
                 
@@ -315,156 +318,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    private func updateCount(fields: [LoanBuilderFields]) -> [Int] {
-        var countOptionalText = 0
-        var countOptionalMedia = 0
-        
-        for field in fields {
-            if field.id!.contains("optionalText") {
-                countOptionalText += 1
-            } else if field.id!.contains("optionalMedia") {
-                countOptionalMedia += 1
-            }
-            
-        }
-        
-        return [countOptionalText, countOptionalMedia]
-    }
-    
-    private func updateCountOptionalData(model: [LoanCategories], completion: () -> Void) {
-        
-        for mo in model {
-            if let id = mo.id {
-                switch id {
-                case 1:
-                    //sinhVien
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = self.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVaySinhVien = counts[0]
-                        CountOptionMediaVaySinhView = counts[1]
 
-                    }
-                    
-                    break
-                case 2:
-                    //dien Thoai
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = self.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVayMuaDienThoai = counts[0]
-                        CountOptionMediaVayMuaDienThoai = counts[1]
-
-                    }
-                    
-                    break
-                    
-                case 3:
-                    //Mua xe may
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = self.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVayMuaXeMay = counts[0]
-                        CountOptionMediaVayMuaXeMay = counts[1]
-
-                    }
-                    
-                    break
-                case 4:
-                    //Vay dam cuoi
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = self.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVayDamCuoi = counts[0]
-                        CountOptionMediaVayDamCuoi = counts[1]
-                    }
-                    
-                    break
-                    
-                case 5:
-                    //Vay ba bau
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = self.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVayBaBau = counts[0]
-                        CountOptionMediaVayBaBau = counts[1]
-                    }
-                    
-                    break
-                    
-                case 6:
-                    //Vay nuoi be
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = self.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVayNuoiBe = counts[0]
-                        CountOptionMediaVayNuoiBe = counts[1]
-                    }
-                    
-                    break
-                    
-                case 7:
-                    //Vay mua do noi that
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = self.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVayMuaDoNoiThat = counts[0]
-                        CountOptionMediaVayMuaDoNoiThat = counts[1]
-                    }
-                    
-                    break
-                    
-                case 8:
-                    //Vay thanh toan no
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = self.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVayThanhToanNo = counts[0]
-                        CountOptionMediaVayThanhToanNo = counts[1]
-                    }
-                    
-                    break
-                    
-                    
-                case 9:
-                    //Vay khac
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = self.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVayKhac = counts[0]
-                        CountOptionMediaVayKhac = counts[1]
-                    }
-                    
-                    break
-                    
-                    
-                case 10:
-
-                    
-                    break
-                    
-                default:
-                    break
-                    
-                    
-                }
-
-            }
-        
-        }
-        
-        completion()
-    }
-    
     // MARK: - Core Data stack
     lazy var applicationDocumentsDirectory: URL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "caohai.PresentationSkill" in the application's documents Application Support directory.

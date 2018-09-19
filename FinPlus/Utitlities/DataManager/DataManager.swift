@@ -131,6 +131,9 @@ class DataManager {
     
     var isNoShowAlertTimeout: Bool?
     
+    //Show error when call api Error
+    var isCanShowAlertAPIError: Bool = true
+    
     //CurrentLocation
     var currentLocation: CLLocationCoordinate2D? {
         didSet {
