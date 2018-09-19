@@ -35,11 +35,15 @@ class PayAllTableViewCell: UITableViewCell {
                 self.lblLeftDebt?.isHidden = true
                 self.originMoneyLb.isHidden = true
                 
-                self.interestMoneyLb?.text = "Tiền gốc phải trả: " + FinPlusHelper.formatDisplayCurrency(data.outstanding!) + "đ"
-                
                 if data.interest! > 0 && data.fee! > 0 {
-                    self.feeReturnBeforeDueDateLb?.text = "Phí tất toán: " + FinPlusHelper.formatDisplayCurrency(data.interest! + data.fee!) + "đ"
+                    self.originMoneyLb.isHidden = false
+                    self.originMoneyLb.text = "Tiền gốc phải trả: " + FinPlusHelper.formatDisplayCurrency(data.outstanding!) + "đ"
+                    
+                    self.interestMoneyLb?.text = "Tiền lãi cộng dồn trong kỳ: " + FinPlusHelper.formatDisplayCurrency(data.interest!) + "đ"
+                    
+                    self.feeReturnBeforeDueDateLb?.text = "Phí tất toán: " + FinPlusHelper.formatDisplayCurrency(data.fee!) + "đ"
                 } else {
+                    self.interestMoneyLb?.text = "Tiền gốc phải trả: " + FinPlusHelper.formatDisplayCurrency(data.outstanding!) + "đ"
                     if data.interest! > 0 {
                         self.feeReturnBeforeDueDateLb?.text = "Tiền lãi cộng dồn trong kỳ: " + FinPlusHelper.formatDisplayCurrency(data.interest!) + "đ"
                     }
