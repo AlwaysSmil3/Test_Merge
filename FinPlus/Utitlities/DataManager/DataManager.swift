@@ -48,10 +48,6 @@ class DataManager {
     // Cần cập nhật data khi có thay đổi version ở api Config
     var isUpdateFromConfig: Bool = true
     
-    //Data from LoanBuilder json
-    //var loanBuilder: [LoanBuilderBase] = []
-    //var loanBuilder: [LoanCategories] = []
-    
     //List Lãi xuất dự kiến
     var listRateInfo: [RateInfo] = []
     

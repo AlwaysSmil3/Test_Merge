@@ -1147,7 +1147,20 @@ class LoanStateViewController: UIViewController {
         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
             .done(on: DispatchQueue.main) { model in
                 self.refresher.endRefreshing()
+                
+                if let status = model.activeLoan?.status, status == STATUS_LOAN.SALE_PENDING.rawValue || status == STATUS_LOAN.RISK_PENDING.rawValue {
+                    DataManager.shared.isNeedReloadLoanStatusVC = false
+                    
+                    let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+                    if let window = UIApplication.shared.delegate?.window, let win = window {
+                        win.rootViewController = tabbarVC
+                    }
+                    
+                    return
+                }
+                
                 if let status = model.activeLoan?.status, let currentStatus = DataManager.shared.browwerInfo?.activeLoan?.status, status == currentStatus { return }
+                
                 DataManager.shared.isNeedReloadLoanStatusVC = false
                 DataManager.shared.browwerInfo = model
                 
@@ -1383,8 +1396,13 @@ class LoanStateViewController: UIViewController {
                 if let monthPayed = col.dueDatetime {
                     let date = Date(fromString: monthPayed, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
                     let month = date.month()
+                    
                     if monthCurrent + 1 == month || monthCurrent == month {
-                        value = true
+                        //value = true
+                        let days = date.days(from: Date())
+                        if days > 0 && days < 30 {
+                            value = true
+                        }
                     }
                 }
             }

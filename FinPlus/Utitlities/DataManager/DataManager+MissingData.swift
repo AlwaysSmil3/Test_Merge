@@ -196,11 +196,48 @@ extension DataManager {
                 missingListKey.append("optionalMedia")
             }
             
-            missingListTitle.append("Thông tin bổ sung")
+            //missingListTitle.append("Thông tin bổ sung")
         }
         
         self.listKeyMissingLoanKey = missingListKey
         self.listKeyMissingLoanTitle = missingListTitle
+        
+        self.getListTitleMissingOptionalData()
+    }
+    
+    func getListTitleMissingOptionalData() {
+        guard let data = self.missingLoanDataDictionary else { return }
+        
+        var missingListTitle : [String] = []
+        
+        guard let loanCateId = self.browwerInfo?.activeLoan?.loanCategoryId else { return }
+        
+        var loanCate: LoanCategories?
+        
+        var temp = self.loanCategories.filter { $0.id == loanCateId }
+        
+        if temp.count > 0 {
+            loanCate = temp[0]
+        }
+        
+        guard let builder = loanCate?.builders, builder.count > 3, let listField = builder[3].fields else { return }
+        
+        if let optionalText = data["optionalText"] as? JSONDictionary {
+            for field in listField {
+                if (field.id ?? "").contains("optionalText"), let arrayIndex = field.arrayIndex, let _ = optionalText["\(arrayIndex)"] as? String {
+                    missingListTitle.append(field.title ?? "")
+                }
+            }
+        }
+        
+        if let _ = data["optionalMedia"] as? JSONDictionary {
+            missingListTitle.append("Ảnh cung cấp ở thông tin bổ sung")
+        }
+        
+        if missingListTitle.count > 0 {
+            self.listKeyMissingLoanTitle?.append(contentsOf: missingListTitle)
+        }
+        
     }
     
     
