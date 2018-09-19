@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UINavigationBar.appearance().tintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.85)
         
         // Override point for customization after application launch.
-        self.getLoanCategories()
+        
         
         if userDefault.value(forKey: Notification_Have_New) == nil {
             userDefault.set(false, forKey: Notification_Have_New)
@@ -70,14 +70,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         
-        // Get Version
-        self.getVersion()
-        
         // Init FireBase
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         
         print("UIDevice.modelName\(UIDevice.modelName)")
+        
+        if FinPlusHelper.isConnectedToNetwork() {
+            self.getLoanCategories()
+            // Get Version
+            self.getVersion()
+        }
         
         return true
     }
@@ -303,7 +306,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func getLoanCategories() {
         APIClient.shared.getLoanCategories()
             .done(on: DispatchQueue.main) { model in
-                self.updateCountOptionalData(model: model, completion: {
+                FinPlusHelper.updateCountOptionalData(model: model, completion: {
                     DataManager.shared.loanCategories.append(contentsOf: model)
                 })
                 
@@ -315,6 +318,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    /*
     private func updateCount(fields: [LoanBuilderFields]) -> [Int] {
         var countOptionalText = 0
         var countOptionalMedia = 0
@@ -464,7 +468,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         completion()
     }
-    
+    */
     // MARK: - Core Data stack
     lazy var applicationDocumentsDirectory: URL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "caohai.PresentationSkill" in the application's documents Application Support directory.
