@@ -1159,6 +1159,18 @@ class LoanStateViewController: UIViewController {
                     return
                 }
                 
+                if let status = model.activeLoan?.status, status == STATUS_LOAN.OVERDUE_DEPT.rawValue || status == STATUS_LOAN.TIMELY_DEPT.rawValue {
+                    DataManager.shared.isNeedReloadLoanStatusVC = false
+                    DataManager.shared.browwerInfo = model
+                    
+                    let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
+                    if let window = UIApplication.shared.delegate?.window, let win = window {
+                        win.rootViewController = tabbarVC
+                    }
+                    
+                    return
+                }
+                
                 if let status = model.activeLoan?.status, let currentStatus = DataManager.shared.browwerInfo?.activeLoan?.status, status == currentStatus { return }
                 
                 DataManager.shared.isNeedReloadLoanStatusVC = false
