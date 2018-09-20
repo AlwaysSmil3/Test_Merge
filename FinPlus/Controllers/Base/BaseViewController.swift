@@ -29,11 +29,11 @@ class BaseViewController: UIViewController {
         let subtitleParameters = [NSAttributedStringKey.foregroundColor : UIColor(hexString: "#4D6678"),
                                   NSAttributedStringKey.font : UIFont(name: FONT_FAMILY_REGULAR, size: 11)]
         
-        let title:NSMutableAttributedString = NSMutableAttributedString(string: topText, attributes: titleParameters)
+        let title:NSMutableAttributedString = NSMutableAttributedString(string: topText, attributes: titleParameters as [NSAttributedStringKey : Any])
         
         if let sub = subTitle {
             let bottomText = NSLocalizedString(sub, comment: "")
-            let subtitle:NSAttributedString = NSAttributedString(string: bottomText, attributes: subtitleParameters)
+            let subtitle:NSAttributedString = NSAttributedString(string: bottomText, attributes: subtitleParameters as [NSAttributedStringKey : Any])
             
             title.append(NSAttributedString(string: "\n"))
             title.append(subtitle)
