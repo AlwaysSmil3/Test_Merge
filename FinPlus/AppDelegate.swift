@@ -306,10 +306,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func getLoanCategories() {
         APIClient.shared.getLoanCategories()
             .done(on: DispatchQueue.main) { model in
-                FinPlusHelper.updateCountOptionalData(model: model, completion: {
-                    DataManager.shared.loanCategories.append(contentsOf: model)
-                })
-                
+                DataManager.shared.loanCategories.append(contentsOf: model)
             }
             .catch { error in
                 // Get Loan Data from Json

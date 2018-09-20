@@ -500,6 +500,9 @@ class FinPlusHelper {
                     
                     
                 case 9:
+                    
+                    break
+                case 10:
                     //Vay khac
                     guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
                     let counts = FinPlusHelper.updateCount(fields: fields)
@@ -508,12 +511,6 @@ class FinPlusHelper {
                         CountOptionTextVayKhac = counts[0]
                         CountOptionMediaVayKhac = counts[1]
                     }
-                    
-                    break
-                    
-                    
-                case 10:
-                    
                     
                     break
                     
