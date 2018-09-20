@@ -154,7 +154,7 @@ class LoanSummaryInfoVC: BaseViewController {
             for bank in userBanks {
                 if let bankId = bank.id {
                     if bankId == loanBankId {
-                        var accountNumber = bank.accountBankNumber ?? ""
+                        let accountNumber = bank.accountBankNumber ?? ""
 //                        if let number = bank.accountBankNumber, number.count > 4 {
 //                             accountNumber = String(number.suffix(4))
 //                        } else {

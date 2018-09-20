@@ -135,7 +135,7 @@ class BorrowerTabBarController: UITabBarController {
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:LIGHT_MODE_SUB_TEXT_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_SMALL)!], for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:MAIN_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_SMALL)!], for: .selected)
         
-        UIApplication.shared.statusBarStyle = .default
+        //UIApplication.shared.statusBarStyle = .default
         let attributes = [NSAttributedStringKey.foregroundColor: LIGHT_MODE_MAIN_TEXT_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL) as Any]
         UINavigationBar.appearance().titleTextAttributes = attributes
         UINavigationBar.appearance().barTintColor = LIGHT_MODE_NAVI_COLOR
@@ -164,13 +164,10 @@ class BorrowerTabBarController: UITabBarController {
     //Add Badge Custom
     func addRedDotAtTabBarItemIndex(index: Int) {
         for subview in self.tabBar.subviews {
-            
-            if let subview = subview as? UIView {
-                
-                if subview.tag == 1234 {
-                    subview.removeFromSuperview()
-                    break
-                }
+        
+            if subview.tag == 1234 {
+                subview.removeFromSuperview()
+                break
             }
         }
         
@@ -186,7 +183,7 @@ class BorrowerTabBarController: UITabBarController {
         
         let  xOffset = HalfItemWidth * CGFloat(index * 2 + 1)
         
-        let imageHalfWidth: CGFloat = (self.tabBar.items![index] as! UITabBarItem).selectedImage!.size.width / 2
+        let imageHalfWidth: CGFloat = (self.tabBar.items![index]).selectedImage!.size.width / 2
         
         self.redDot = UIView(frame: CGRect(x: xOffset + imageHalfWidth - 7, y: TopMargin, width: RedDotDiameter, height: RedDotDiameter))
         
