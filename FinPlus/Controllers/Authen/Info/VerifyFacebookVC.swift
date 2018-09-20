@@ -35,7 +35,7 @@ class VerifyFacebookVC: BaseViewController {
         var accessToken = ""
         var fullName = ""
         var avatar = ""
-        var facebookId = ""
+        let facebookId = ""
         
         if let picture = data["picture"], let data = picture["data"] as? FacebookDataType, let url = data["url"] as? String {
             avatar = url

@@ -85,10 +85,6 @@ extension APIClient {
                             let model1 = BrowwerActiveLoan(object: d)
                             array.append(model1)
                         }
-                    } else if let data = json[API_RESPONSE_RETURN_DATA] as? [BrowwerActiveLoan] {
-                        print("123")
-                    } else {
-                        print(json[API_RESPONSE_RETURN_DATA].self)
                     }
                     seal.fulfill(array)
 

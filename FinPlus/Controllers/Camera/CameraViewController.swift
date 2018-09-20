@@ -225,7 +225,7 @@ class CameraViewController: BaseViewController {
             }
             
             if newVideoInput == nil || err != nil {
-                print("Error creating capture device input: \(err?.localizedDescription)")
+                print("Error creating capture device input: \(err?.localizedDescription ?? "")")
             } else {
                 session.addInput(newVideoInput)
             }
@@ -263,7 +263,7 @@ class CameraViewController: BaseViewController {
             }
             
             if newVideoInput == nil || err != nil {
-                print("Error creating capture device input: \(err?.localizedDescription)")
+                print("Error creating capture device input: \(err?.localizedDescription ?? "")")
             } else {
                 session.addInput(newVideoInput)
             }

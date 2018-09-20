@@ -97,7 +97,7 @@ class LoanSummaryViewController: BaseViewController {
             payMounthStringWithFunded = FinPlusHelper.formatDisplayCurrency(payMounthWithFunded) + "đ"
             
         }
-        
+        /*
         //Ngay thanh toán tiếp theo
         var nextPaymentDate = "Đang cập nhật"
         if let nextDateString = loan.nextPaymentDate {
@@ -110,11 +110,11 @@ class LoanSummaryViewController: BaseViewController {
         if let paid = loan.paidMonth {
             paidMonth = "\(paid) tháng"
         }
-        
+        */
         //Ngày huy động còn lại
         var acceptedDate = "30"
         var acceptedDateTemp = 0
-        var limitFunding = "Đang cập nhật"
+        //var limitFunding = "Đang cập nhật"
         
         if let acceptedDateStr = loan.acceptedAt {
             let calendar = NSCalendar.current
@@ -135,9 +135,10 @@ class LoanSummaryViewController: BaseViewController {
                 acceptedDate = "\(rasingCapital - acceptedDateTemp)"
             }
             
-            let datelimit = Date(fromString: loan.acceptedAt ?? "", format: .iso8601(ISO8601Format.DateTimeSec)).dateByAddingHours(rasingCapital)
-            limitFunding = datelimit.toString(.custom("dd/MM/yyyy HH:mm"))
+//            let datelimit = Date(fromString: loan.acceptedAt ?? "", format: .iso8601(ISO8601Format.DateTimeSec)).dateByAddingHours(rasingCapital)
+//            limitFunding = datelimit.toString(.custom("dd/MM/yyyy HH:mm"))
         }
+ 
         
         switch bottom_state {
             

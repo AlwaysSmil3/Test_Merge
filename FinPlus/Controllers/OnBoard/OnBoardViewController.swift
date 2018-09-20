@@ -29,7 +29,6 @@ class OnBoardViewController: UIViewController, UIScrollViewDelegate {
             self.present(enterPhoneVC, animated: true, completion: nil)
             return
         }
-        print("account \(userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME))")
         let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewControllerNavi") as! UINavigationController
         self.present(loginVC, animated: true, completion: nil)
     }

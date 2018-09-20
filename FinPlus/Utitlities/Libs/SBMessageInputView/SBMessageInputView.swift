@@ -210,7 +210,7 @@ class SBMessageInputView: UIView {
     }
     
     @objc fileprivate func didTapButton(sender: UIButton) {
-        if let delegate = delegate {
+        if let _ = delegate {
             //delegate.inputViewDidTapButton(button: sender)
         }
     }
