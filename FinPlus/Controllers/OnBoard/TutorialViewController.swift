@@ -48,7 +48,6 @@ class TutorialViewController: UIViewController {
         }
 
 //        Đã có account Login
-        print("account \(userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME))")
         let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewControllerNavi") as! UINavigationController
         self.present(loginVC, animated: true, completion: nil)
     }

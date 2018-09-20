@@ -147,7 +147,15 @@ class BaseViewController: UIViewController {
             } else {
                 //chua cai app
                 if let link = URL(string: "https://itunes.apple.com/vn/app/facebook/id284882215") {
-                    UIApplication.shared.openURL(link)
+                    if #available(iOS 10, *) {
+                        UIApplication.shared.open(link, options: [:],
+                                                  completionHandler: {
+                                                    (success) in
+                                                    
+                        })
+                    } else {
+                        UIApplication.shared.openURL(link)
+                    }
                 }
                 
             }

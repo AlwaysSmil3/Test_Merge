@@ -260,8 +260,8 @@ class TestBorrowingPayViewController: UIViewController {
         self.payTypeSelected = payType1
         
         let cashInPayment = PaymentMethod(wID: 1, wMethodTitle: "Chuyển khoản/tiền mặt", wMethodDescription: "Chuyển khoản qua internet hoặc đến ngân hàng để chuyển tiền mặt đến một trong những tài khoản ngân hàng của chúng tôi.", wMethodType: 1)
-        let ATMPayment = PaymentMethod(wID: 2, wMethodTitle: "Sử dụng ATM nội địa", wMethodDescription: "Bạn sẽ được chuyển qua website napas.com.vn để hoàn tất quá trình thanh toán.", wMethodType: 2)
-        let viettelPayPayment = PaymentMethod(wID: 3, wMethodTitle: "Thanh toán qua ví ViettelPay", wMethodDescription: "Chuyển qua ứng dụng ViettelPay để thanh toán. Bạn sẽ được chuyển về Mony sau khi hoàn thành.", wMethodType: 3)
+//        let ATMPayment = PaymentMethod(wID: 2, wMethodTitle: "Sử dụng ATM nội địa", wMethodDescription: "Bạn sẽ được chuyển qua website napas.com.vn để hoàn tất quá trình thanh toán.", wMethodType: 2)
+//        let viettelPayPayment = PaymentMethod(wID: 3, wMethodTitle: "Thanh toán qua ví ViettelPay", wMethodDescription: "Chuyển qua ứng dụng ViettelPay để thanh toán. Bạn sẽ được chuyển về Mony sau khi hoàn thành.", wMethodType: 3)
         paymentList.append(cashInPayment)
         //paymentList.append(ATMPayment)
         //paymentList.append(viettelPayPayment)
@@ -401,7 +401,10 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
 
         let cell = tableView.dequeueReusableNibCell(type: cellData.cellType.cellType)
         if let cell = cell as? BorrowingPayInfoTableViewCell {
-            cell.tableData = cellData.data as! BorrowingInfoBasicData
+            if let d = cellData.data as? BorrowingInfoBasicData {
+                cell.tableData = d
+            }
+            
             
         } else if let cell = cell as? PayTypeTableViewCell {
             let data = cellData.data as! PayType
@@ -437,7 +440,7 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             cell.updateCellView()
             cell.paymentData = self.paymentInfo?.liquidation
 
-        } else if let cell = cell as? BankAccountTableViewCell {
+        } else if let _ = cell as? BankAccountTableViewCell {
 //            let data = cellData.data as! AccountBank
 //            if let selected = self.walletSelected {
 //                if selected.accountBankNumber == data.accountBankNumber {
@@ -449,7 +452,7 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
 //            cell.cellData = data
 //            cell.updateCellView()
 
-        } else if let cell = cell as? AddNewWalletTableViewCell {
+        } else if let _ = cell as? AddNewWalletTableViewCell {
             // add taget for cell
 //            cell.updateCellView()
         } else if let cell = cell as? PayBtnTableViewCell {
@@ -459,7 +462,10 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             
             if data.id == 1 {
                 let cellData = sections[indexPath.section].cells[indexPath.row]
-                self.methodSelected = cellData.data  as! PaymentMethod
+                if let d = cellData.data as? PaymentMethod {
+                    self.methodSelected = d
+                }
+                
                 cell.isSelectedCell = true
             }
             
@@ -502,11 +508,17 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
 
         let cell = tableView.cellForRow(at: indexPath)
         if let _ = cell as? PayTypeTableViewCell {
-            self.payTypeSelected = cellData.data as! PayType
+            if let d = cellData.data as? PayType {
+                self.payTypeSelected = d
+            }
+            
             payAllSelected = nil
 
         } else if let _ = cell as? PayAllTableViewCell {
-            self.payAllSelected = cellData.data as! PayAllBefore
+            if let d = cellData.data as? PayAllBefore {
+                self.payAllSelected = d
+            }
+            
             self.payTypeSelected = nil
 
         } else if let _ = cell as? BankAccountTableViewCell {
@@ -518,7 +530,10 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         } else if let _ = cell as? PaymentMethodTableViewCell {
-            self.methodSelected = cellData.data as! PaymentMethod
+            if let d = cellData.data as? PaymentMethod {
+                self.methodSelected = d
+            }
+            
         }
         tableView.reloadData()
     }

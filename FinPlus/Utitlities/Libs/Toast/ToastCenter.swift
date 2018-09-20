@@ -33,7 +33,7 @@ open class ToastCenter {
     return self.queue.operations.first as? Toast
   }
 
-  open static let `default` = ToastCenter()
+  public static let `default` = ToastCenter()
 
 
   // MARK: Initializing
