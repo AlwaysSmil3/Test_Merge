@@ -40,6 +40,9 @@ class ListLoanViewController: BaseViewController {
         let cellNib = UINib(nibName: "LoanTableViewCell", bundle: nil)
         self.tableview.register(cellNib, forCellReuseIdentifier: cellIdentifier)
         
+        let loadCellNib = UINib(nibName: "FetchingDataTableViewCell", bundle: nil)
+        self.tableview.register(loadCellNib, forCellReuseIdentifier: "FetchingDataTableViewCell")
+        
         // self.getAllLoans(isShowLoading: true)
     }
     
@@ -149,11 +152,13 @@ class ListLoanViewController: BaseViewController {
 extension ListLoanViewController: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        guard listLoan.count > 0 else { return 1 }
         return listLoan.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        guard listLoan.count > 0 else { return 1 }
         let sectionItem = listLoan[section] as! NSDictionary
         return (sectionItem["sub_array"] as! NSArray).count
 
@@ -162,6 +167,7 @@ extension ListLoanViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         tableView.deselectRow(at: indexPath, animated: true)
+        guard listLoan.count > 0 else { return }
         
         let sectionItem = listLoan[indexPath.section] as! NSDictionary
         let item = (sectionItem["sub_array"] as! NSArray)[indexPath.row] as! BrowwerActiveLoan
@@ -187,6 +193,7 @@ extension ListLoanViewController: UITableViewDelegate {
 extension ListLoanViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard listLoan.count > 0 else { return }
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.font = FONT_CAPTION
         header.textLabel?.textColor = TEXT_NORMAL_COLOR
@@ -196,11 +203,18 @@ extension ListLoanViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
+        guard listLoan.count > 0 else { return nil }
         let sectionItem = listLoan[section] as! NSDictionary
         return NSLocalizedString((sectionItem["title"] as? String)!, comment: "")
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard listLoan.count > 0 else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FetchingDataTableViewCell", for: indexPath) as! FetchingDataTableViewCell
+            
+            return cell
+        }
         
         let sectionItem = listLoan[indexPath.section] as! NSDictionary
         let item = (sectionItem["sub_array"] as! NSArray)[indexPath.row] as! BrowwerActiveLoan
@@ -211,12 +225,12 @@ extension ListLoanViewController: UITableViewDataSource {
             cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? LoanTableViewCell
         }
         
-        let state = item.status
+        let state = item.status ?? 0
         
         cell?.dateLabel.text = Date.init(fromString: item.createdTime ?? "", format: DateFormat.custom(DATE_FORMATTER_FROM_SERVER)).toString(DateFormat.custom(kDisplayFormat))
         cell?.statusLabel.text = NSLocalizedString("STATUS", comment: "") + ":"
-        cell?.statusValueLabel.text = getState(type: STATUS_LOAN(rawValue: state!)!)
-        cell?.statusValueLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: state!)!)
+        cell?.statusValueLabel.text = getState(type: STATUS_LOAN(rawValue: state)!)
+        cell?.statusValueLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: state)!)
         let amount = FinPlusHelper.formatDisplayCurrency(Double(item.amount?.description ?? "") ?? 0) + " đ"
         cell?.moneyLabel.text = amount
         
