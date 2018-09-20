@@ -45,6 +45,7 @@ class LoginViewController: BaseAuthenViewController {
         super.viewDidAppear(animated)
         
         self.getNotificationSettings()
+        self.checkConnectedToNetwork()
     }
     
     //Check cai dat notification

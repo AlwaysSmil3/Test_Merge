@@ -48,10 +48,6 @@ class DataManager {
     // Cần cập nhật data khi có thay đổi version ở api Config
     var isUpdateFromConfig: Bool = true
     
-    //Data from LoanBuilder json
-    //var loanBuilder: [LoanBuilderBase] = []
-    //var loanBuilder: [LoanCategories] = []
-    
     //List Lãi xuất dự kiến
     var listRateInfo: [RateInfo] = []
     
@@ -134,6 +130,9 @@ class DataManager {
     
     
     var isNoShowAlertTimeout: Bool?
+    
+    //Show error when call api Error
+    var isCanShowAlertAPIError: Bool = true
     
     //CurrentLocation
     var currentLocation: CLLocationCoordinate2D? {

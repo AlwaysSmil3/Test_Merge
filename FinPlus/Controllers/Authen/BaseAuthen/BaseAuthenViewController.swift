@@ -26,7 +26,87 @@ class BaseAuthenViewController: BaseViewController {
         
     }
     
+
+    func checkConnectedToNetwork() {
+        if !FinPlusHelper.isConnectedToNetwork() {
+            self.showAlertView(title: "Lỗi kết nối", message: "Ứng dụng này cần có kết nối internet để hoạt động. Vui lòng kiểm tra kết nối internet và thử lại.", okTitle: "Thử lại", cancelTitle: nil) { (status) in
+                
+                if FinPlusHelper.isConnectedToNetwork() {
+                    self.getLoanCategories {
+                        
+                    }
+                } else {
+                    self.checkConnectedToNetwork()
+                }
+                
+            }
+        }
+    }
+    
+    func getVersion(completion: @escaping() -> Void) {
+        APIClient.shared.getConfigs()
+            .done(on: DispatchQueue.main) { model in
+                
+                DataManager.shared.config = model
+                
+                guard let version = userDefault.value(forKey: fVERSION_CONFIG) as? String else {
+                    userDefault.set(model.version!, forKey: fVERSION_CONFIG)
+                    userDefault.synchronize()
+                    completion()
+                    return
+                }
+                
+                if version == model.version! {
+                    //Không cần thay đổi dữ liệu local
+                    DataManager.shared.isUpdateFromConfig = false
+                } else {
+                    userDefault.set(model.version!, forKey: fVERSION_CONFIG)
+                    userDefault.synchronize()
+                }
+                completion()
+            }
+            .catch { error in
+                completion()
+        }
+    }
+    
+    func getLoanCategories(completion: @escaping() -> Void) {
+        SVProgressHUD.show(withStatus: "Đang lấy dữ liệu hệ thống...")
+        APIClient.shared.getLoanCategories()
+            .done(on: DispatchQueue.main) { model in
+                FinPlusHelper.updateCountOptionalData(model: model, completion: {
+                    DataManager.shared.loanCategories.append(contentsOf: model)
+                    self.getVersion {
+                        SVProgressHUD.dismiss()
+                    }
+                })
+                
+            }
+            .catch { error in
+                SVProgressHUD.dismiss()
+                // Get Loan Data from Json
+        }
+    }
+    
+    
     func login(account: String, pass: String) {
+        if DataManager.shared.config == nil || DataManager.shared.loanCategories.count == 0 {
+            if FinPlusHelper.isConnectedToNetwork() {
+                self.getLoanCategories {
+                    self.handleLogin(account: account, pass: pass)
+                }
+            } else {
+                self.checkConnectedToNetwork()
+            }
+            
+            return
+        }
+        
+        self.handleLogin(account: account, pass: pass)
+        
+    }
+    
+    func handleLogin(account: String, pass: String) {
         APIClient.shared.authentication(phoneNumber: account, pass: pass)
             .done(on: DispatchQueue.main) { [weak self] model in
                 // go to choice VC of back to enter phone number
@@ -58,7 +138,7 @@ class BaseAuthenViewController: BaseViewController {
                             }
                         }
                     }
-
+                    
                     self?.getUserInfo()
                     break
                 case 1:
@@ -101,7 +181,6 @@ class BaseAuthenViewController: BaseViewController {
                 error in
                 self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: API_MESSAGE.OTHER_ERROR, okTitle: "OK", cancelTitle: nil)
         }
-        
     }
     
     func getUserInfo() {

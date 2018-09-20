@@ -114,7 +114,7 @@ extension APIClient {
         return Promise<[AccountBank]> { seal in
             let endPoint = EndPoint.User.User + "\(uId)/bank-account"
             
-            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
 
                         var array: [AccountBank] = []

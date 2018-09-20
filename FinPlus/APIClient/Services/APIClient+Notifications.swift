@@ -19,7 +19,7 @@ extension APIClient {
             let uID = DataManager.shared.userID
             let endPoint = "/users/\(uID)/notifications?after=\(after)&limit=\(20)"
             
-            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
                     
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode == 1 else {

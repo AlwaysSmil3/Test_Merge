@@ -166,19 +166,12 @@ class APIClient {
                     
                     seal.reject(error)
                     print(error)
-                    UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: self.getDisplayMessage(error: error), okTitle: "OK", cancelTitle: nil)
+                    self.showAlertError(error: error)
+                    
                     
                 case .success(let responseObject):
                     DataManager.shared.isNoShowAlertTimeout = nil
                     if let responseDataDict = responseObject as? JSONDictionary {
-                        
-//                        guard let returnCode = responseDataDict[API_RESPONSE_RETURN_CODE] as? Int, returnCode == 1 else {
-//                            if let returnMessage = responseDataDict[API_RESPONSE_RETURN_MESSAGE] as? String {
-//                                UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
-//                            }
-//                            
-//                            return
-//                        }
                         
                         seal.fulfill(responseDataDict)
                     }
@@ -188,7 +181,7 @@ class APIClient {
                         let error = NSError(domain: "BackendManager", code: 0,
                                             userInfo: [NSLocalizedDescriptionKey: API_MESSAGE.OTHER_ERROR])
                         seal.reject(error)
-                        UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: API_MESSAGE.DATA_FORMART_ERROR, okTitle: "OK", cancelTitle: nil)
+                        self.showAlertError(error: error)
                     }
                 }
             }
@@ -239,7 +232,8 @@ class APIClient {
                     }
                     
                     seal.reject(error)
-                    UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: self.getDisplayMessage(error: error), okTitle: "OK", cancelTitle: nil)
+//                    UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: self.getDisplayMessage(error: error), okTitle: "OK", cancelTitle: nil)
+                    self.showAlertError(error: error)
                     
                 case .success(let responseObject):
                     DataManager.shared.isNoShowAlertTimeout = nil
@@ -253,7 +247,8 @@ class APIClient {
                         let error = NSError(domain: "BackendManager", code: 0,
                                             userInfo: [NSLocalizedDescriptionKey: API_MESSAGE.OTHER_ERROR])
                         seal.reject(error)
-                        UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: API_MESSAGE.DATA_FORMART_ERROR, okTitle: "OK", cancelTitle: nil)
+//                        UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: API_MESSAGE.DATA_FORMART_ERROR, okTitle: "OK", cancelTitle: nil)
+                        self.showAlertError(error: error)
                     }
                 }
             }
@@ -329,6 +324,17 @@ class APIClient {
         }
     }
     
+    
+    func showAlertError(error: Error) {
+        if DataManager.shared.isCanShowAlertAPIError {
+            DataManager.shared.isCanShowAlertAPIError = false
+            
+            UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: self.getDisplayMessage(error: error), okTitle: "Xong", cancelTitle: nil) { status in
+                DataManager.shared.isCanShowAlertAPIError = true
+            }
+            
+        }
+    }
     
     
     // Display message

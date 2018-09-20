@@ -27,6 +27,12 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.checkConnectedToNetwork()
+    }
+    
     private func setupUI() {
         if let accountName = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String {
             self.tfPhoneNumber.text = accountName

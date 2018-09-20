@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-import CloudKit
+import SystemConfiguration
 
 class FinPlusHelper {
     
@@ -326,26 +326,209 @@ class FinPlusHelper {
     }
     
     
-    /// Get info user phone
-    class func getPersionalInfo() {
-        let defaultContainer = CKContainer.default()
-        let publicDatabase = defaultContainer.publicCloudDatabase
+//    /// Get info user phone
+//    class func getPersionalInfo() {
+//        let defaultContainer = CKContainer.default()
+//        let publicDatabase = defaultContainer.publicCloudDatabase
+//
+//        if #available(iOS 10.0, *) {
+//            defaultContainer.discoverUserIdentity(withPhoneNumber: DataManager.shared.currentAccount) { (info, error) in
+//                guard let componentName = info?.nameComponents else { return }
+//
+//                print("InfoCloud familyName \(componentName.familyName)")
+//                print("InfoCloud givenName \(componentName.givenName)")
+//                print("InfoCloud middleName \(componentName.middleName)")
+//
+//            }
+//        } else {
+//            // Fallback on earlier versions
+//        }
+//
+//    }
+    
+    
+    class func isConnectedToNetwork() -> Bool {
         
-        if #available(iOS 10.0, *) {
-            defaultContainer.discoverUserIdentity(withPhoneNumber: DataManager.shared.currentAccount) { (info, error) in
-                guard let componentName = info?.nameComponents else { return }
-                
-                print("InfoCloud familyName \(componentName.familyName)")
-                print("InfoCloud givenName \(componentName.givenName)")
-                print("InfoCloud middleName \(componentName.middleName)")
-                
+        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
             }
-        } else {
-            // Fallback on earlier versions
         }
+        
+        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
+        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
+            return false
+        }
+        
+        /* Only Working for WIFI
+         let isReachable = flags == .reachable
+         let needsConnection = flags == .connectionRequired
+         
+         return isReachable && !needsConnection
+         */
+        
+        // Working for Cellular and WIFI
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        let ret = (isReachable && !needsConnection)
+        
+        return ret
         
     }
     
+    class func updateCount(fields: [LoanBuilderFields]) -> [Int] {
+        var countOptionalText = 0
+        var countOptionalMedia = 0
+        
+        for field in fields {
+            if field.id!.contains("optionalText") {
+                countOptionalText += 1
+            } else if field.id!.contains("optionalMedia") {
+                countOptionalMedia += 1
+            }
+            
+        }
+        
+        return [countOptionalText, countOptionalMedia]
+    }
+    
+    class func updateCountOptionalData(model: [LoanCategories], completion: () -> Void) {
+        
+        for mo in model {
+            if let id = mo.id {
+                switch id {
+                case 1:
+                    //sinhVien
+                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
+                    let counts = FinPlusHelper.updateCount(fields: fields)
+                    
+                    if counts.count > 1 {
+                        CountOptionTextVaySinhVien = counts[0]
+                        CountOptionMediaVaySinhView = counts[1]
+                        
+                    }
+                    
+                    break
+                case 2:
+                    //dien Thoai
+                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
+                    let counts = FinPlusHelper.updateCount(fields: fields)
+                    
+                    if counts.count > 1 {
+                        CountOptionTextVayMuaDienThoai = counts[0]
+                        CountOptionMediaVayMuaDienThoai = counts[1]
+                        
+                    }
+                    
+                    break
+                    
+                case 3:
+                    //Mua xe may
+                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
+                    let counts = FinPlusHelper.updateCount(fields: fields)
+                    
+                    if counts.count > 1 {
+                        CountOptionTextVayMuaXeMay = counts[0]
+                        CountOptionMediaVayMuaXeMay = counts[1]
+                        
+                    }
+                    
+                    break
+                case 4:
+                    //Vay dam cuoi
+                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
+                    let counts = FinPlusHelper.updateCount(fields: fields)
+                    
+                    if counts.count > 1 {
+                        CountOptionTextVayDamCuoi = counts[0]
+                        CountOptionMediaVayDamCuoi = counts[1]
+                    }
+                    
+                    break
+                    
+                case 5:
+                    //Vay ba bau
+                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
+                    let counts = FinPlusHelper.updateCount(fields: fields)
+                    
+                    if counts.count > 1 {
+                        CountOptionTextVayBaBau = counts[0]
+                        CountOptionMediaVayBaBau = counts[1]
+                    }
+                    
+                    break
+                    
+                case 6:
+                    //Vay nuoi be
+                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
+                    let counts = FinPlusHelper.updateCount(fields: fields)
+                    
+                    if counts.count > 1 {
+                        CountOptionTextVayNuoiBe = counts[0]
+                        CountOptionMediaVayNuoiBe = counts[1]
+                    }
+                    
+                    break
+                    
+                case 7:
+                    //Vay mua do noi that
+                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
+                    let counts = FinPlusHelper.updateCount(fields: fields)
+                    
+                    if counts.count > 1 {
+                        CountOptionTextVayMuaDoNoiThat = counts[0]
+                        CountOptionMediaVayMuaDoNoiThat = counts[1]
+                    }
+                    
+                    break
+                    
+                case 8:
+                    //Vay thanh toan no
+                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
+                    let counts = FinPlusHelper.updateCount(fields: fields)
+                    
+                    if counts.count > 1 {
+                        CountOptionTextVayThanhToanNo = counts[0]
+                        CountOptionMediaVayThanhToanNo = counts[1]
+                    }
+                    
+                    break
+                    
+                    
+                case 9:
+                    //Vay khac
+                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
+                    let counts = FinPlusHelper.updateCount(fields: fields)
+                    
+                    if counts.count > 1 {
+                        CountOptionTextVayKhac = counts[0]
+                        CountOptionMediaVayKhac = counts[1]
+                    }
+                    
+                    break
+                    
+                    
+                case 10:
+                    
+                    
+                    break
+                    
+                default:
+                    break
+                    
+                    
+                }
+                
+            }
+            
+        }
+        
+        completion()
+    }
     
     
     
