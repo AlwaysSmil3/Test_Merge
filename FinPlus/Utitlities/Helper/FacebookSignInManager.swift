@@ -48,7 +48,7 @@ class FacebookSignInManager: NSObject {
                 })
             
         } else {
-            FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: fromViewController as! UIViewController, handler: { (result, error) -> Void in
+            FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: fromViewController as? UIViewController, handler: { (result, error) -> Void in
                 if error != nil {
                     // Error
                     FBSDKLoginManager().logOut()

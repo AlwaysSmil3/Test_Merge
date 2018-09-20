@@ -457,7 +457,7 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
             if let textWithoutGroupingSeparator = textField.text?.replacingOccurrences(of: groupingSeparator, with: "") {
                 var totalTextWithoutGroupingSeparators = textWithoutGroupingSeparator + string
                 if string == "" { // pressed Backspace key
-                    totalTextWithoutGroupingSeparators.characters.removeLast()
+                    totalTextWithoutGroupingSeparators = String(totalTextWithoutGroupingSeparators.dropLast())
                 }
                 if let numberWithoutGroupingSeparator = formatter.number(from: totalTextWithoutGroupingSeparators),
                     let formattedText = formatter.string(from: numberWithoutGroupingSeparator) {

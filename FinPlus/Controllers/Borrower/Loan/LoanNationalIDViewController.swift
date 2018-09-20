@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import AVFoundation
 
 class LoanNationalIDViewController: LoanBaseViewController {
     
@@ -21,6 +21,8 @@ class LoanNationalIDViewController: LoanBaseViewController {
         if let bottomView = self.bottomScrollView {
             bottomView.setContentOffset(CGPoint(x: 100, y: 0), animated: true)
         }
+        
+        self.requestInitPermissionCamera()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,6 +32,25 @@ class LoanNationalIDViewController: LoanBaseViewController {
             self.navigationController?.isNavigationBarHidden = true
         }
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
+    private func requestInitPermissionCamera() {
+        guard AVCaptureDevice.authorizationStatus(for: .video) == .authorized else {
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
+                if granted {
+                    //access allowed
+                } else {
+                    //access denied
+                }
+            })
+            
+            return
+        }
     }
 
     //MARK: Actions

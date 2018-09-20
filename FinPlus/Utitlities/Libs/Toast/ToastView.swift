@@ -149,16 +149,16 @@ open class ToastView: UIView {
     var x: CGFloat
     var y: CGFloat
     var width: CGFloat
-    var height: CGFloat
+    //var height: CGFloat
 
     let orientation = UIApplication.shared.statusBarOrientation
     if orientation.isPortrait || !ToastWindow.shared.shouldRotateManually {
       width = containerSize.width
-      height = containerSize.height
+      //height = containerSize.height
       y = self.bottomOffsetPortrait
     } else {
       width = containerSize.height
-      height = containerSize.width
+      //height = containerSize.width
       y = self.bottomOffsetLandscape
     }
 

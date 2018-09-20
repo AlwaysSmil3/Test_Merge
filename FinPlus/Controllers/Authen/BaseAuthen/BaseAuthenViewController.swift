@@ -74,13 +74,10 @@ class BaseAuthenViewController: BaseViewController {
         SVProgressHUD.show(withStatus: "Đang lấy dữ liệu hệ thống...")
         APIClient.shared.getLoanCategories()
             .done(on: DispatchQueue.main) { model in
-                FinPlusHelper.updateCountOptionalData(model: model, completion: {
-                    DataManager.shared.loanCategories.append(contentsOf: model)
-                    self.getVersion {
-                        SVProgressHUD.dismiss()
-                    }
-                })
-                
+                DataManager.shared.loanCategories.append(contentsOf: model)
+                self.getVersion {
+                    SVProgressHUD.dismiss()
+                }
             }
             .catch { error in
                 SVProgressHUD.dismiss()

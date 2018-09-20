@@ -183,10 +183,30 @@ let VayBaBau_Category_ID: Int16 = 5 // Id cua vay ba bau
 let VayNuoiBe_Category_ID: Int16 = 6 // Id cua vay Nuoi be
 let VayMuaDoNoiThat_Category_ID: Int16 = 7 // Id cua vay Mua do noi that
 let VayThanhToanNo_Category_ID: Int16 = 8 // Id cua vay thanh toan no
-let VayKhac_Category_ID: Int16 = 9 // Id cua vay khac
+let VayKhac_Category_ID: Int16 = 10 // Id cua vay khac
 
 //Get CountOptionalText
 func getCountOptionalText(cateId: Int16) -> Int {
+    
+    var loanCate: LoanCategories?
+    
+    var temp = DataManager.shared.loanCategories.filter { $0.id == cateId }
+    
+    if temp.count > 0 {
+        loanCate = temp[0]
+    }
+    
+    guard let builder = loanCate?.builders, builder.count > 3, let listField = builder[3].fields else { return 6 }
+    var count = 0
+    for field in listField {
+        if (field.id ?? "").contains("optionalText") {
+            count += 1
+        }
+    }
+    
+    return count
+    
+    /*
     switch cateId {
     case Loan_Student_Category_ID:
         return CountOptionTextVaySinhVien
@@ -208,13 +228,33 @@ func getCountOptionalText(cateId: Int16) -> Int {
         return CountOptionTextVayKhac
         
     default:
-        return 4
+        return 6
         
     }
+    */
 }
 
 //Get CountOptionalMedia
 func getCountOptionalMedia(cateId: Int16) -> Int {
+    var loanCate: LoanCategories?
+    
+    var temp = DataManager.shared.loanCategories.filter { $0.id == cateId }
+    
+    if temp.count > 0 {
+        loanCate = temp[0]
+    }
+    
+    guard let builder = loanCate?.builders, builder.count > 3, let listField = builder[3].fields else { return 6 }
+    var count = 0
+    for field in listField {
+        if (field.id ?? "").contains("optionalMedia") {
+            count += 1
+        }
+    }
+    
+    return count
+    
+    /*
     switch cateId {
     case Loan_Student_Category_ID:
         return CountOptionMediaVaySinhView
@@ -236,9 +276,10 @@ func getCountOptionalMedia(cateId: Int16) -> Int {
         return CountOptionMediaVayKhac
         
     default:
-        return 2
+        return 6
         
     }
+    */
 }
 
 
