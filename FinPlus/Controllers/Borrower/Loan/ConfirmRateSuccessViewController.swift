@@ -82,7 +82,7 @@ class ConfirmRateSuccessViewController: BaseViewController {
     @IBAction func comHome(_ sender: Any) {
         self.getPermissionLocation {
             DataManager.shared.loanInfo.status = STATUS_LOAN.RAISING_CAPITAL.rawValue
-            APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
+            APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
                 .done(on: DispatchQueue.main) { model in
                     DataManager.shared.loanID = model.loanId!
                     
