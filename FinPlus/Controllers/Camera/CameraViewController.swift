@@ -301,7 +301,13 @@ class CameraViewController: BaseViewController {
     
     @IBAction func btnUsePhotoTapped(_ sender: Any) {
         if let img = self.currentPhoto {
+            if self.typeImgFile == FILE_TYPE_IMG.Optional {
+                SVProgressHUD.show(withStatus: "Mony...")
+            }
             self.dismiss(animated: true) {
+                if self.typeImgFile == FILE_TYPE_IMG.Optional {
+                    SVProgressHUD.dismiss()
+                }
                 self.delegateCamera?.getImage(image: img, type: self.typeImgFile)
             }
         }
