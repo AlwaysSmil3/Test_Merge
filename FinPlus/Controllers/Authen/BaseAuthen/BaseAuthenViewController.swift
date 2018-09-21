@@ -74,6 +74,7 @@ class BaseAuthenViewController: BaseViewController {
         SVProgressHUD.show(withStatus: "Đang lấy dữ liệu hệ thống...")
         APIClient.shared.getLoanCategories()
             .done(on: DispatchQueue.main) { model in
+                DataManager.shared.loanCategories.removeAll()
                 DataManager.shared.loanCategories.append(contentsOf: model)
                 self.getVersion {
                     SVProgressHUD.dismiss()

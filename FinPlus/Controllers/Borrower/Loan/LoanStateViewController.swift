@@ -147,7 +147,10 @@ class LoanStateViewController: UIViewController {
             term = "\((loan.term ?? 0)) ngày"
         }
         
-        titleCate = loan.loanCategory?.title ?? ""
+        titleCate = loan.loanCategory?.title ?? "Đang cập nhật"
+        if titleCate.count == 0 {
+            titleCate = "Đang cập nhật"
+        }
         
         //Lãi suất
         if let inRate = loan.inRate, inRate > 0 {
@@ -162,7 +165,7 @@ class LoanStateViewController: UIViewController {
         
         
         //Ngày tạo đơn
-        var dateString = " "
+        var dateString = "Đang cập nhật"
         if let date_ = loan.createdAt, date_.length() > 0 {
             let date = Date.init(fromString: date_, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
             dateString = date.toString(.custom(kDisplayFormat))

@@ -53,7 +53,10 @@ class LoanSummaryViewController: BaseViewController {
             term = "\((loan.term ?? 0)) ngày"
         }
         
-        titleCate = loan.loanCategory?.title ?? ""
+        titleCate = loan.loanCategory?.title ?? "Đang cập nhật"
+        if titleCate.count == 0 {
+            titleCate = "Đang cập nhật"
+        }
         
         //Lãi suất
         if let inRate = loan.inRate, inRate > 0 {

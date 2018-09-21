@@ -306,6 +306,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func getLoanCategories() {
         APIClient.shared.getLoanCategories()
             .done(on: DispatchQueue.main) { model in
+                DataManager.shared.loanCategories.removeAll()
                 DataManager.shared.loanCategories.append(contentsOf: model)
             }
             .catch { error in

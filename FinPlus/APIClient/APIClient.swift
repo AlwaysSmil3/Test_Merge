@@ -106,7 +106,11 @@ class APIClient {
     // MARK: - Common function
     // Request post, Put, Delete
     public func requestWithEndPoint(host: String? = nil, endPoint: String, params: [String : Any], isShowLoadingView: Bool, httpType: HTTPMethodType, jsonData: Data? = nil) -> Promise<JSONDictionary> {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        }
+        
         
         var mutableURLRequest = self.postRequest!
         
@@ -190,7 +194,9 @@ class APIClient {
     
     // Request get
     public func getDataWithEndPoint(host: String? = nil, endPoint: String, isShowLoadingView: Bool) -> Promise<JSONDictionary> {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        }
         
         let mutableURLRequest = self.getRequest!
         
