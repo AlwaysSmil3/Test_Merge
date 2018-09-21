@@ -254,7 +254,12 @@ extension ListLoanViewController: UITableViewDataSource {
             term = "\(termInt) ngày"
         }
         
-        cell?.disLabel.text = "Thời hạn: \(term) - \(item.loanCategory?.title ?? "")"
+        var titleCate = item.loanCategory?.title ?? "Đang cập nhật"
+        if titleCate.count == 0 {
+            titleCate = "Đang cập nhật"
+        }
+        
+        cell?.disLabel.text = "Thời hạn: \(term) - \(titleCate)"
         
         return cell!
     }
