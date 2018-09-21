@@ -180,6 +180,8 @@ class DataManager {
         DataManager.shared.missingLoanData = nil
         DataManager.shared.listKeyMissingLoanKey = nil
         DataManager.shared.listKeyMissingLoanTitle = nil
+        DataManager.shared.isRelationPhone1Invalid = false
+        DataManager.shared.isRelationPhone2Invalid = false
     }
     
     func reloadOptionalData() {

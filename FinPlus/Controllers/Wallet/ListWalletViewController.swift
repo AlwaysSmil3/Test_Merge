@@ -396,11 +396,13 @@ extension ListWalletViewController: UITableViewDataSource {
             if self.walletAction == .LoanNation {
                 
                 cell?.optionBtn.setImage(#imageLiteral(resourceName: "ic_radio_off"), for: .normal)
+                cell?.optionBtn.isHidden = false
                 
                 if let id = item.id {
                     if let bankIdSelected = self.currentBankIdSelected,  bankIdSelected > 0 && id == bankIdSelected {
                         cell?.borderView.layer.borderColor = MAIN_COLOR.cgColor
                         cell?.optionBtn.setImage(#imageLiteral(resourceName: "ic_radio_on"), for: .normal)
+                        
                         
                         if DataManager.shared.checkMissingBankData(key: "bank", currentBankHolder: item.accountBankName, currenAccount: item.accountBankNumber) {
                             //Cap nhat thong tin khong hop le
