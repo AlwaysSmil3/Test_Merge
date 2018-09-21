@@ -250,7 +250,7 @@ extension ListLoanViewController: UITableViewDataSource {
         
         let termInt = item.term ?? 0
         var term = "\(termInt/30) tháng"
-        if termInt <= 30 {
+        if termInt < 30 {
             term = "\(termInt) ngày"
         }
         
