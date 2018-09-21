@@ -44,7 +44,8 @@ enum EndPoint {
     enum Loan {
         static let CreateLoans = "loans"
         static let InvesableLoans = "loans?page=1&limit=50&sort=status.asc&filter=status.8,9"
-        static let Loans = "loans?page=1&limit=30&sort=createdDate.desc"
+        //static let Loans = "loans?page=1&limit=30&sort=createdDate.desc"
+        static let Loans = "&sort=createdDate.desc"
         static let LoanOTP = "loans/:loanId/otp"
         static let Loan = "loan"
         static let LoanCategories = "loan-categories"
