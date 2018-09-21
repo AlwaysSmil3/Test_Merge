@@ -97,11 +97,11 @@ extension APIClient {
      GET Lấy danh sách khoản vay của người dùng
 
      */
-    func getUserLoans() -> Promise<[BrowwerActiveLoan]> {
+    func getUserLoans(currentPage: Int, pageSize: Int = 30) -> Promise<[BrowwerActiveLoan]> {
         return Promise<[BrowwerActiveLoan]> { seal in
 
             let uid = DataManager.shared.userID
-            let endPoint = "users/\(uid)/" + EndPoint.Loan.Loans
+            let endPoint = "users/\(uid)/" + "loans?page=\(currentPage)" + "&limit=\(pageSize)" + EndPoint.Loan.Loans
 
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in

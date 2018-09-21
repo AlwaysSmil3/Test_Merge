@@ -131,15 +131,20 @@ class LoanStateViewController: UIViewController {
         var payMounthTitle = "Trả góp hàng tháng"
         var term = "\((loan.term ?? 0)/30) tháng"
         
-        if let cate  = DataManager.shared.getCurrentCategory() {
-            titleCate = cate.title!
-            rate = Int(cate.interestRate!)
-            
-            if cate.id == Loan_Student_Category_ID {
-                payMounthTitle = "Thanh toán dự kiến"
-                term = "\((loan.term ?? 0)) ngày"
-            }
-            
+//        if let cate  = DataManager.shared.getCurrentCategory() {
+//            titleCate = cate.title!
+//            rate = Int(cate.interestRate!)
+//
+//            if cate.id == Loan_Student_Category_ID && ((loan.term ?? 0) <= 30) {
+//                payMounthTitle = "Thanh toán dự kiến"
+//                term = "\((loan.term ?? 0)) ngày"
+//            }
+//
+//        }
+        
+        if (loan.loanCategoryId == Loan_Student_Category_ID) && (loan.term ?? 0) <= 30 {
+            payMounthTitle = "Thanh toán dự kiến"
+            term = "\((loan.term ?? 0)) ngày"
         }
         
         titleCate = loan.loanCategory?.title ?? ""
