@@ -113,8 +113,51 @@ class AddressFirstViewController: BaseViewController {
         
         self.cityModel = Model1(object: NSObject())
         self.cityModel?.name = address.city
+        self.getCities(city: address.city, district: address.district, comune: address.commune)
+    }
+    
+    //MAKR: Call API map id
+    private func getCities(city: String, district: String, comune: String) {
+        APIClient.shared.getCities()
+            .done(on: DispatchQueue.global()) { [weak self]model in
+                guard model.count > 0 else { return }
+                let temp = model.filter { $0.name == city }
+                if temp.count > 0 {
+                    self?.cityModel?.id = temp[0].id!
+                    self?.getDistricts(cityID: temp[0].id!, district: district, comune: comune)
+                }
+            }
+            .catch { error in }
+    }
+    
+    private func getDistricts(cityID: Int16, district: String, comune: String) {
+        APIClient.shared.getDistricts(cityID: cityID)
+            .done(on: DispatchQueue.global()) { [weak self]model in
+                guard model.count > 0 else { return }
+                let temp = model.filter { $0.name == district }
+                if temp.count > 0 {
+                    self?.districtModel?.id = temp[0].id!
+                    self?.getComunes(districtsID: temp[0].id!, comune: comune)
+                }
+                
+            }
+            .catch{ error in }
+    }
+    
+    private func getComunes(districtsID: Int16, comune: String) {
+        APIClient.shared.getCommunes(districtID: districtsID)
+            .done(on: DispatchQueue.global()) { [weak self]model in
+                guard model.count > 0 else { return }
+                let temp = model.filter { $0.name == comune }
+                if temp.count > 0 {
+                    self?.communeModel?.id = temp[0].id
+                }
+            }
+            .catch { error in }
         
     }
+    
+    
     
     /// Setup cho tableView
     func setupMainTBView() {
