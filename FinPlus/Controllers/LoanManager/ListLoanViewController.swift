@@ -17,8 +17,15 @@ class ListLoanViewController: BaseViewController {
     
     let cellIdentifier = "cell"
     private var listLoan: NSMutableArray = []
+    private var pageSize = 30
     
     var isCanReload: Bool = true
+    var currentPage: Int = 1
+//    var isCanClearData: Bool = false
+//    var totalCountItems = 0
+//
+//    var completeArray:NSMutableArray = []
+//    var unCompleteArray:NSMutableArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +50,6 @@ class ListLoanViewController: BaseViewController {
         let loadCellNib = UINib(nibName: "FetchingDataTableViewCell", bundle: nil)
         self.tableview.register(loadCellNib, forCellReuseIdentifier: "FetchingDataTableViewCell")
         
-        // self.getAllLoans(isShowLoading: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -58,11 +64,13 @@ class ListLoanViewController: BaseViewController {
             DataManager.shared.isBackFromLoanStatusVC = nil
             return
         }
-        
+
         // reload data
         self.getAllLoans()
         
     }
+    
+    
     
     
     private func getAllLoans() {
@@ -72,14 +80,16 @@ class ListLoanViewController: BaseViewController {
         self.isCanReload = false
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        APIClient.shared.getUserLoans()
+        APIClient.shared.getUserLoans(currentPage: self.currentPage, pageSize: self.pageSize)
             .done(on: DispatchQueue.global()) { model in
                 
                 DispatchQueue.main.async {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     self.errorConnectView?.isHidden = true
                 }
-                self.listLoan.removeAllObjects()
+                
+                self.currentPage += 1
+                
                 
                 self.isCanReload = true
                 let completeArr:NSMutableArray = []
@@ -97,15 +107,19 @@ class ListLoanViewController: BaseViewController {
     
                 })
                 
-                if (unCompleteArr.count > 0)
-                {
-                    self.listLoan.add(["title" : "CURRENT_LOAN", "sub_array" : unCompleteArr])
+                
+                if self.currentPage == 2 {
+                    if (unCompleteArr.count > 0)
+                    {
+                        self.listLoan.add(["title" : "CURRENT_LOAN", "sub_array" : unCompleteArr])
+                    }
+                    
+                    if (completeArr.count > 0)
+                    {
+                        self.listLoan.add(["title" : "END_LOAN", "sub_array" : completeArr])
+                    }
                 }
                 
-                if (completeArr.count > 0)
-                {
-                    self.listLoan.add(["title" : "END_LOAN", "sub_array" : completeArr])
-                }
                 
                 DispatchQueue.main.async {
                     self.tableview.reloadData()
@@ -234,14 +248,28 @@ extension ListLoanViewController: UITableViewDataSource {
         let amount = FinPlusHelper.formatDisplayCurrency(Double(item.amount?.description ?? "") ?? 0) + " đ"
         cell?.moneyLabel.text = amount
         
-        var term = "\((item.term ?? 0)/30) tháng"
-        if item.loanCategory?.id == Loan_Student_Category_ID {
-            term = "\((item.term ?? 0)) ngày"
+        let termInt = item.term ?? 0
+        var term = "\(termInt/30) tháng"
+        if termInt <= 30 {
+            term = "\(termInt) ngày"
         }
         
         cell?.disLabel.text = "Thời hạn: \(term) - \(item.loanCategory?.title ?? "")"
         
         return cell!
     }
+    
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//
+//        if self.listLoan.count > 0 && indexPath.section + 1 == self.listLoan.count {
+//            if let sectionItem = listLoan[indexPath.section] as? NSDictionary, let items = sectionItem["sub_array"] as? NSArray {
+//
+//                if indexPath.row == items.count - 2, self.totalCountItems % self.pageSize == 0 {
+//                    self.getAllLoans()
+//                }
+//
+//            }
+//        }
+    
     
 }
