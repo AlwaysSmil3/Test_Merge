@@ -63,22 +63,22 @@ class BorrowerTabBarController: UITabBarController {
 //        self.tabBar.selectionIndicatorImage = indicatorImage
     }
     
-    func updateBadge(isShow: Bool)
-    {
-        self.tabBar.items?[3].badgeValue = isShow ? "" : nil
-    }
+//    func updateBadge(isShow: Bool)
+//    {
+//        self.tabBar.items?[3].badgeValue = isShow ? "" : nil
+//    }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: ShowNotificationIdentifier), object: nil, queue: nil, using: { (notification) in
-            //self.updateBadge(isShow: true)
+            
             self.handleShowRedDot(isShow: true)
         })
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: HiddenNotificationIdentifier), object: nil, queue: nil, using: { (notification) in
-            //self.updateBadge(isShow: false)
+            
             self.handleShowRedDot(isShow: false)
         })
         
@@ -140,6 +140,8 @@ class BorrowerTabBarController: UITabBarController {
         UINavigationBar.appearance().titleTextAttributes = attributes
         UINavigationBar.appearance().barTintColor = LIGHT_MODE_NAVI_COLOR
         UINavigationBar.appearance().tintColor = LIGHT_MODE_MAIN_TEXT_COLOR
+        
+        
         UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .normal)
         
         self.addRedDotAtTabBarItemIndex(index: 3)

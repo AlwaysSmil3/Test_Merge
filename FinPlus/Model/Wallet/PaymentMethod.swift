@@ -12,6 +12,7 @@ enum MethodType: Int {
     case CashIn = 1
     case ATM = 2
     case ViettelPay = 3
+    case Momo = 4
 }
 
 public struct PaymentMethod {

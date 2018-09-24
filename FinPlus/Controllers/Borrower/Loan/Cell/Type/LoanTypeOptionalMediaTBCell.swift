@@ -249,9 +249,9 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
             
         }) { (error) in
             UIApplication.shared.topViewController()!.handleLoadingView(isShow: false)
+            UIApplication.shared.topViewController()!.showToastWithMessage(message: "Có lỗi xảy ra, vui lòng thử lại" )
             
             if let error = error {
-                UIApplication.shared.topViewController()!.showToastWithMessage(message: error.localizedDescription)
                 print("error \(error.localizedDescription)")
             }
         }

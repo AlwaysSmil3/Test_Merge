@@ -14,11 +14,13 @@ public struct APIResponseGeneral {
   private struct SerializationKeys {
     static let returnMsg = "returnMsg"
     static let returnCode = "returnCode"
+    static let data = "data"
   }
 
   // MARK: Properties
     public var returnMsg: String?
     public var returnCode: Int?
+    public var data: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -35,6 +37,7 @@ public struct APIResponseGeneral {
   public init(json: JSON) {
     returnMsg = json[SerializationKeys.returnMsg].string ?? ""
     returnCode = json[SerializationKeys.returnCode].int ?? 0
+    data = json[SerializationKeys.data].string ?? ""
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -44,6 +47,7 @@ public struct APIResponseGeneral {
     var dictionary: [String: Any] = [:]
     if let value = returnMsg { dictionary[SerializationKeys.returnMsg] = value }
     if let value = returnCode { dictionary[SerializationKeys.returnCode] = value }
+    if let value = data { dictionary[SerializationKeys.data] = value }
     return dictionary
   }
 

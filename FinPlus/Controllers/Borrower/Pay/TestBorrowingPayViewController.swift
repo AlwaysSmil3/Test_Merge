@@ -262,11 +262,15 @@ class TestBorrowingPayViewController: UIViewController {
         let cashInPayment = PaymentMethod(wID: 1, wMethodTitle: "Chuyển khoản/tiền mặt", wMethodDescription: "Chuyển khoản qua internet hoặc đến ngân hàng để chuyển tiền mặt đến một trong những tài khoản ngân hàng của chúng tôi.", wMethodType: 1)
 //        let ATMPayment = PaymentMethod(wID: 2, wMethodTitle: "Sử dụng ATM nội địa", wMethodDescription: "Bạn sẽ được chuyển qua website napas.com.vn để hoàn tất quá trình thanh toán.", wMethodType: 2)
 //        let viettelPayPayment = PaymentMethod(wID: 3, wMethodTitle: "Thanh toán qua ví ViettelPay", wMethodDescription: "Chuyển qua ứng dụng ViettelPay để thanh toán. Bạn sẽ được chuyển về Mony sau khi hoàn thành.", wMethodType: 3)
+        let momoPayment = PaymentMethod(wID: 4, wMethodTitle: "Thanh toán qua ví Momo", wMethodDescription: "Chuyển qua ứng dụng Momo để thanh toán. Bạn sẽ được chuyển về Mony sau khi hoàn thành.", wMethodType: 4)
         paymentList.append(cashInPayment)
         //paymentList.append(ATMPayment)
         //paymentList.append(viettelPayPayment)
+        paymentList.append(momoPayment)
         
-        //self.methodSelected = paymentList[0]
+        if paymentList.count > 0 {
+            self.methodSelected = paymentList[0]
+        }
         
         // borrowingPay = BorrowingData(basicInfo: infoData, payType: payTypeArray, payAll: payAll, walletList: self.bankList)
         newBorrowingPay = NewBorrowingData(payType: payTypeArray, payAll: payAll, paymentMethod: paymentList)
@@ -334,28 +338,28 @@ class TestBorrowingPayViewController: UIViewController {
     @objc func payBtnAction() {
         // check and show mony bank list
         if self.methodSelected != nil {
-            if (self.methodSelected.id == 1) {
-                let monyBankListVC = MonyBankListViewController(nibName: "MonyBankListViewController", bundle: nil)
+            
+            let monyBankListVC = MonyBankListViewController(nibName: "MonyBankListViewController", bundle: nil)
+            
+            if self.payAllSelected != nil {
+                monyBankListVC.amount = self.payTotalAmount
+            } else {
                 
-                if self.payAllSelected != nil {
-                    monyBankListVC.amount = self.payTotalAmount
-                } else {
+                if self.payAmountPresent == 0 {
+                    self.showGreenBtnMessage(title: "Thông báo", message: "Bạn đã thanh toán cho kỳ thanh toán ngày \(self.expireDateString). Bạn có thể lựa chọn tất toán toàn bộ khoản vay trước hạn. Xin cảm ơn.", okTitle: "Đóng", cancelTitle: nil)
                     
-                    if self.payAmountPresent == 0 {
-                        self.showGreenBtnMessage(title: "Thông báo", message: "Bạn đã thanh toán cho kỳ thanh toán ngày \(self.expireDateString). Bạn có thể lựa chọn tất toán toàn bộ khoản vay trước hạn. Xin cảm ơn.", okTitle: "Đóng", cancelTitle: nil)
-                        
-                        return
-                    }
-                    
-                    monyBankListVC.amount = self.payAmountPresent
+                    return
                 }
                 
-                if let navi = self.navigationController {
-                    navi.pushViewController(monyBankListVC, animated: true)
-                } else {
-                    self.present(monyBankListVC, animated: true, completion: nil)
-                }
+                monyBankListVC.amount = self.payAmountPresent
             }
+            
+            if let navi = self.navigationController {
+                navi.pushViewController(monyBankListVC, animated: true)
+            } else {
+                self.present(monyBankListVC, animated: true, completion: nil)
+            }
+            
         } else {
             self.showGreenBtnMessage(title: "Không thể thanh toán", message: "Bạn cần chọn hình thức thanh toán trước khi tiến hành thanh toán", okTitle: "Ok", cancelTitle: nil)
         }
@@ -460,22 +464,22 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
         } else if let cell = cell as? PaymentMethodTableViewCell {
             let data = cellData.data as! PaymentMethod
             
-            if data.id == 1 {
-                let cellData = sections[indexPath.section].cells[indexPath.row]
-                if let d = cellData.data as? PaymentMethod {
-                    self.methodSelected = d
-                }
-                
-                cell.isSelectedCell = true
-            }
-            
-//            if let selected = self.methodSelected {
-//                if selected.id == 1 && selected.id == data.id {
-//                    cell.isSelectedCell = true
-//                } else {
-//                    //cell.isSelectedCell = false
+//            if data.id == 1 {
+//                let cellData = sections[indexPath.section].cells[indexPath.row]
+//                if let d = cellData.data as? PaymentMethod {
+//                    self.methodSelected = d
 //                }
+//
+//                cell.isSelectedCell = true
 //            }
+            
+            if let selected = self.methodSelected {
+                if selected.id == data.id {
+                    cell.isSelectedCell = true
+                } else {
+                    cell.isSelectedCell = false
+                }
+            }
             cell.cellData = data
             cell.updateCellView()
         }
