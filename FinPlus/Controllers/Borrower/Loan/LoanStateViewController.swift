@@ -808,10 +808,10 @@ class LoanStateViewController: UIViewController {
                 
                 var currentAmount = funded
                 
-                if self.checkCollectionRightPayForStatusTimelyDebt() {
+                if let date = self.checkCollectionRightPayForStatusTimelyDebt() {
                     array = [
                         "type": HeaderCellType.TextType,
-                        "text": "Bạn đã thanh toán cho kỳ thanh toán ngày \(nextPaymentDate). Xin cảm ơn.",
+                        "text": "Bạn đã thanh toán cho kỳ thanh toán ngày \(date). Xin cảm ơn.",
                         "subType": TextCellType.DesType,
                     ]
                     
@@ -914,7 +914,7 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: "Trạng thái", value: "Đã tất toán", attributed: NSAttributedString(string: "Đã tất toán", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
                     LoanSummaryModel(name: "Lãi suất dự kiến", value: "\(rate)%/năm", attributed: nil),
                     LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFee) + "đ", attributed: nil),
-                    LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                    LoanSummaryModel(name: payMounthTitle, value: payMounthStringWithFunded, attributed: NSAttributedString(string: payMounthStringWithFunded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
                 
@@ -1067,8 +1067,12 @@ class LoanStateViewController: UIViewController {
 //                        accountNumber = "● ● ● ● \(accountNumber)"
                         
 //                        let subtitleParameters = [NSAttributedStringKey.font : UIFont(name: FONT_FAMILY_REGULAR, size: 12)]
+                        
+                        let bankName = bank.bankName ?? ""
+                        let prefixBankName = FinPlusHelper.getPrefixBankName(bankName: bankName)
+                        
 
-                        dataSource.append(LoanSummaryModel(name: "Ngân hàng / Ví", value: "\(bank.bankName ?? "")", attributed: nil))
+                        dataSource.append(LoanSummaryModel(name: "Tài khoản nhận tiền", value: prefixBankName + bankName, attributed: nil))
                         dataSource.append(LoanSummaryModel(name: "Chủ tài khoản", value: "\(bank.accountBankName ?? "None")", attributed: nil))
                         dataSource.append(LoanSummaryModel(name: "Số tài khoản", value: accountNumber, attributed: nil))
 
@@ -1167,7 +1171,7 @@ class LoanStateViewController: UIViewController {
                     return
                 }
                 
-                if let status = model.activeLoan?.status, status == STATUS_LOAN.OVERDUE_DEPT.rawValue || status == STATUS_LOAN.TIMELY_DEPT.rawValue {
+                if let status = model.activeLoan?.status, status == STATUS_LOAN.OVERDUE_DEPT.rawValue || status == STATUS_LOAN.TIMELY_DEPT.rawValue || status == STATUS_LOAN.SALE_REVIEW.rawValue || status == STATUS_LOAN.RISK_REVIEW.rawValue {
                     DataManager.shared.isNeedReloadLoanStatusVC = false
                     DataManager.shared.browwerInfo = model
                     
@@ -1405,9 +1409,9 @@ class LoanStateViewController: UIViewController {
     
     
     //Check đã thanh toán kỳ nào chưa
-    func checkCollectionRightPayForStatusTimelyDebt() -> Bool {
-        var value = false
-        guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return value }
+    func checkCollectionRightPayForStatusTimelyDebt() -> String? {
+        
+        guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return nil }
         
         let monthCurrent = Date().month()
         
@@ -1421,14 +1425,14 @@ class LoanStateViewController: UIViewController {
                         //value = true
                         let days = date.days(from: Date())
                         if days > 0 && days < 30 {
-                            value = true
+                            return date.toString(.custom(kDisplayFormat))
                         }
                     }
                 }
             }
         }
         
-        return value
+        return nil
     }
     
     // Xác nhận lãi suất

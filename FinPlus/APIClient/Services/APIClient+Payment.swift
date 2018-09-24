@@ -101,7 +101,7 @@ extension APIClient {
             let loanId = DataManager.shared.loanID ?? 0
             let endPoint = "loans/\(loanId)/collections"
             
-            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
                     
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode == 1 else {

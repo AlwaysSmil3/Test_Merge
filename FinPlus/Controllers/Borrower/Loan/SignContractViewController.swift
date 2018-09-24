@@ -50,6 +50,7 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
             self.btnSign?.tintColor = .white
             self.btnSign.layer.cornerRadius = 8
             self.btnSign.layer.masksToBounds = true
+            self.getContractSign()
         }
         
         self.btnSign.titleLabel?.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)
@@ -76,9 +77,11 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         super.viewDidAppear(animated)
         
         //Load ContractURL
-        if let contractURL = DataManager.shared.browwerInfo?.activeLoan?.contractUrl, let url = URL(string: contractURL) {
-            let request = URLRequest(url: url)
-            self.webView.loadRequest(request)
+        if self.isSigned {
+            if let contractURL = DataManager.shared.browwerInfo?.activeLoan?.contractUrl, let url = URL(string: contractURL) {
+                let request = URLRequest(url: url)
+                self.webView.loadRequest(request)
+            }
         }
         
         self.initLocationManager()
@@ -88,6 +91,28 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func getContractSign() {
+        SVProgressHUD.show(withStatus: "Đang lấy hợp đồng...")
+        APIClient.shared.getContractWhenSign()
+            .done(on: DispatchQueue.global()) { [weak self]model in
+                SVProgressHUD.dismiss()
+                if let url = URL(string: model.data!) {
+                    let request = URLRequest(url: url)
+                    DispatchQueue.main.async {
+                        self?.webView.loadRequest(request)
+                    }
+                    
+                }
+            }
+            .catch { error in
+                SVProgressHUD.dismiss()
+        }
+        
+    }
+    
+    
+    
     
     func getPermissionLocation(completion: () -> Void) {
         let status = CLLocationManager.authorizationStatus()

@@ -249,7 +249,6 @@ class LoanBaseViewController: BaseViewController {
                 
                 return
             }
-            //self.showToastWithMessage(message: "Upload thành công")
             
             cell.imgValue?.image = img
             cell.imgAdd?.isHidden = true
@@ -293,9 +292,10 @@ class LoanBaseViewController: BaseViewController {
             
         }) { (error) in
             self.handleLoadingView(isShow: false)
+            cell.activityIndicator.stopAnimating()
             
+            self.showToastWithMessage(message: "Có lỗi xảy ra, vui lòng thử lại")
             if let error = error {
-                self.showToastWithMessage(message: error.localizedDescription)
                 print("error \(error.localizedDescription)")
             }
         }

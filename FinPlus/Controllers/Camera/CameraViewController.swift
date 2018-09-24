@@ -141,6 +141,7 @@ class CameraViewController: BaseViewController {
         }
         
         self.lblDescriptionOther.isHidden = true
+        self.btnSwitchCamera.isHidden = false
         
         if let type = self.typeImgFile {
             if type == .ALL {
@@ -156,6 +157,7 @@ class CameraViewController: BaseViewController {
                 self.lblDescriptionOther.isHidden = false
                 self.lblDescriptionOther.transform = CGAffineTransform(rotationAngle: .pi/2)
                 self.lblDescriptionOther.text = self.descriptionText
+                self.btnSwitchCamera.transform = CGAffineTransform(rotationAngle: .pi/2)
             } else if type == .FRONT {
                 self.imgBackgound.image = #imageLiteral(resourceName: "img_nationalID_Front")
                 self.setTypeCamera(position: .back)
@@ -167,8 +169,9 @@ class CameraViewController: BaseViewController {
                 self.btnRetakeOhter.transform = CGAffineTransform(rotationAngle: .pi/2)
                 self.lblDescriptionOther.transform = CGAffineTransform(rotationAngle: .pi/2)
                 self.lblDescriptionOther.text = self.descriptionText
+                self.btnSwitchCamera.transform = CGAffineTransform(rotationAngle: .pi/2)
             } else {
-                self.btnSwitchCamera.isHidden = false
+                
                 self.setTypeCamera(position: .back)
                 self.lblDescription.isHidden = false
                 self.lblDescription.text = self.descriptionText
