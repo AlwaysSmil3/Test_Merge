@@ -272,6 +272,11 @@ class APIClient {
             "Authorization": "\(DataManager.shared.token ?? "")"
         ]
         
+//        let configuration = URLSessionConfiguration.default
+//        configuration.timeoutIntervalForRequest = 30
+//        configuration.timeoutIntervalForResource = 30
+//        let alamofireUpload = Alamofire.SessionManager(configuration: configuration)
+        
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             for (key, value) in parameters {
                 multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)

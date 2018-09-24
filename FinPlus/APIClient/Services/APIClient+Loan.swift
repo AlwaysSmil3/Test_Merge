@@ -367,5 +367,39 @@ extension APIClient {
         }
 
     }
+    
+    
+    /// lấy hợp đồng
+    ///
+    /// - Parameter loanID: <#loanID description#>
+    /// - Returns: <#return value description#>
+    func getContractWhenSign() -> Promise<APIResponseGeneral> {
+        
+        let endPoint = "loans/" + "\(DataManager.shared.loanID ?? 0)/contract/sign"
+        let params: JSONDictionary = [:]
+        return Promise<APIResponseGeneral> { seal in
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: false, httpType: .POST)
+                .done { json in
+                    
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+                        if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
+                                if status {
+                                }
+                                
+                                
+                            })
+                        }
+                        
+                        return
+                    }
+                    
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in seal.reject(error)}
+        }
+        
+    }
 
 }

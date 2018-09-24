@@ -33,6 +33,7 @@ class PaymentMethodTableViewCell: UITableViewCell {
             case .CashIn? : self.methodImg.image = #imageLiteral(resourceName: "cashin_payment_img")
             case .ATM?: self.methodImg.image = #imageLiteral(resourceName: "atm_payment_img")
             case .ViettelPay?: self.methodImg.image = #imageLiteral(resourceName: "viettel_payment_img")
+            case .Momo?: self.methodImg.image = UIImage(named: "momo_selected")
             case .none:
                 break
             }
