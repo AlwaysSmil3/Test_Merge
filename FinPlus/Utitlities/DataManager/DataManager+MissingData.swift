@@ -203,6 +203,9 @@ extension DataManager {
         self.listKeyMissingLoanTitle = missingListTitle
         
         self.getListTitleMissingOptionalData()
+        
+    
+        self.listKeyMissingLoanTitle?.append(DataManager.shared.browwerInfo?.activeLoan?.note ?? "")
     }
     
     func getListTitleMissingOptionalData() {

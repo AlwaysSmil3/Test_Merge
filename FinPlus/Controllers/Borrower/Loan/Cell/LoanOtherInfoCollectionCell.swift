@@ -14,10 +14,10 @@ protocol OptionMediaDelegate {
 
 class LoanOtherInfoCollectionCell: UICollectionViewCell {
     
-    @IBOutlet var errorView: AnimatableView!
-    @IBOutlet var imgValue: UIImageView!
-    @IBOutlet var imgAdd: UIImageView!
-    @IBOutlet var btnDelete: UIButton!
+    @IBOutlet weak var errorView: AnimatableView!
+    @IBOutlet weak var imgValue: UIImageView!
+    @IBOutlet weak var imgAdd: UIImageView!
+    @IBOutlet weak var btnDelete: UIButton!
     
     var currentSelectedCollection: IndexPath?
     var urlImg: String?
