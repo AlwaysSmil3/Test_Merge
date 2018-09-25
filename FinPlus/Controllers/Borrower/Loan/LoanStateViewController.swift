@@ -1203,10 +1203,16 @@ class LoanStateViewController: UIViewController {
     private func formatTitleMissingKey() -> String {
         var value = "Để được duyệt, hãy bổ sung các thông tin sau:"
         guard let listTitle = DataManager.shared.listKeyMissingLoanTitle else { return value }
+        var index = 0
         for i in listTitle {
             //Để được duyệt, hãy bổ sung các thông tin sau:\n• Số chứng minh thư.\n• Ảnh chứng minh thư.\n• Bảng lương.
-            value.append("\n• \(i)")
-
+            if index == listTitle.count - 1 {
+                value.append("\n\(i)")
+            } else {
+                value.append("\n• \(i)")
+            }
+            
+            index += 1
         }
         
         return value

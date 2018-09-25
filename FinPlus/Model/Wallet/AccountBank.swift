@@ -106,7 +106,7 @@ public struct AccountBank {
     else if bankName == "ViettelPay" {
         bankType = 6
     }
-    else if bankName == "Momo" {
+    else if bankName == "MoMo" {
         bankType = 7
     }
 

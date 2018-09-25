@@ -178,7 +178,7 @@ class AddWalletViewController: UIViewController {
         } else if self.viettelPayBtn.isSelected {
             bankName = "ViettelPay"
         } else if self.btnMomo.isSelected {
-            bankName = "Momo"
+            bankName = "MoMo"
         } else if self.btnBidv.isSelected {
             bankName = "Bidv"
         }
