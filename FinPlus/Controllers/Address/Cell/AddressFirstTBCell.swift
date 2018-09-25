@@ -11,7 +11,7 @@ import Foundation
 class AddressFirstTBCell: UITableViewCell {
     
     
-    @IBOutlet var lblTitleCell: UILabel!
+    @IBOutlet weak var lblTitleCell: UILabel!
     
 }
 

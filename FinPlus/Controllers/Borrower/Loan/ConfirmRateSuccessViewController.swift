@@ -75,7 +75,9 @@ class ConfirmRateSuccessViewController: BaseViewController {
             return
         }
         
-        completion()
+        self.checkLocationsIsValid {
+            completion()
+        }
     }
     
     

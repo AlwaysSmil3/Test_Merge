@@ -66,6 +66,12 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
             accTextField.text = wallet_.accountBankNumber
             self.vcbBtn.setTitle(wallet_.bankName, for: UIControlState.normal)
             
+            var typeString = "Ngân hàng được chọn"
+            if FinPlusHelper.checkIsWallet(bankName: wallet_.bankName ?? "") {
+                typeString = "Ví được chọn"
+            }
+            self.typeLabel.text = typeString
+            
             self.setBtnVCB(wallet: wallet_)
             
             if self.walletAction == .LoanNation {

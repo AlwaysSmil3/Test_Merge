@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,14 +28,14 @@
                         <rect key="frame" x="12" y="4" width="366" height="84.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qbj-JV-xEv">
-                                <rect key="frame" x="8" y="16" width="20" height="20"/>
+                                <rect key="frame" x="16" y="16" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="Bnu-Ql-Jed"/>
                                     <constraint firstAttribute="width" secondItem="Qbj-JV-xEv" secondAttribute="height" multiplier="1:1" id="nBd-bG-obw"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chuyển khoản/tiền mặt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XP7-t1-MH0">
-                                <rect key="frame" x="44" y="16" width="282" height="20"/>
+                                <rect key="frame" x="52" y="16" width="274" height="20"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -48,7 +47,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chuyển khoản qua internet hoặc đến ngân hàng để chuyển tiền mặt đến một trong những tài khoản ngân hàng của chúng tôi." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7PX-5i-cjN">
-                                <rect key="frame" x="44" y="42" width="282" height="39.5"/>
+                                <rect key="frame" x="52" y="42" width="274" height="39.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -58,7 +57,7 @@
                         <constraints>
                             <constraint firstItem="XP7-t1-MH0" firstAttribute="leading" secondItem="Qbj-JV-xEv" secondAttribute="trailing" constant="16" id="0Xk-XA-hgH"/>
                             <constraint firstItem="XP7-t1-MH0" firstAttribute="centerY" secondItem="Qbj-JV-xEv" secondAttribute="centerY" id="ICF-uj-MmV"/>
-                            <constraint firstItem="Qbj-JV-xEv" firstAttribute="leading" secondItem="WbN-qB-W5t" secondAttribute="leading" constant="8" id="UkW-5C-aTU"/>
+                            <constraint firstItem="Qbj-JV-xEv" firstAttribute="leading" secondItem="WbN-qB-W5t" secondAttribute="leading" constant="16" id="UkW-5C-aTU"/>
                             <constraint firstItem="qnj-hD-Yky" firstAttribute="width" secondItem="qnj-hD-Yky" secondAttribute="height" multiplier="1:1" id="WWs-hW-s7e"/>
                             <constraint firstItem="Qbj-JV-xEv" firstAttribute="top" secondItem="WbN-qB-W5t" secondAttribute="top" constant="16" id="dr8-L4-dH3"/>
                             <constraint firstAttribute="trailing" secondItem="qnj-hD-Yky" secondAttribute="trailing" constant="8" id="fcR-PS-V4M"/>
