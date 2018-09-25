@@ -74,7 +74,7 @@ class PayAllTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.selectionStyle = .none
         self.containView.layer.borderWidth = 1
-        self.containView.layer.cornerRadius = 5
+        self.containView.layer.cornerRadius = 8
         // Initialization code
         self.titleLb.text = "Thanh toán trước toàn bộ"
     }

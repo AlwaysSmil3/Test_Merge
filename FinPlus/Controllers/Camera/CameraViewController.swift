@@ -42,6 +42,7 @@ class CameraViewController: BaseViewController {
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var capturePhotoOutput: AVCapturePhotoOutput?
+    var currentDevice: AVCaptureDevice?
     
     var delegateCamera: DataImageFromCameraCaptureDelegate?
     
@@ -50,6 +51,7 @@ class CameraViewController: BaseViewController {
         self.contentCurrentImageAll.isHidden = true
         
         self.initCamera()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -58,6 +60,12 @@ class CameraViewController: BaseViewController {
             previewLayer.connection?.videoOrientation = UIApplication.shared.statusBarOrientation.videoOrientation ?? .portrait
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
     
     //MARK: Camera
     private func initCamera() {
@@ -101,8 +109,20 @@ class CameraViewController: BaseViewController {
         }
         
         do {
+            
+//            if captureDevice.isFocusModeSupported(.continuousAutoFocus) {
+//                try captureDevice.lockForConfiguration()
+//
+//                captureDevice.isSubjectAreaChangeMonitoringEnabled = true
+//                captureDevice.focusMode = .continuousAutoFocus
+//                captureDevice.exposureMode = .continuousAutoExposure
+//                captureDevice.unlockForConfiguration()
+//            }
+            
+            
             // Get an instance of the AVCaptureDeviceInput class using the previous deivce object
             let input = try AVCaptureDeviceInput(device: captureDevice)
+            
             
             // Initialize the captureSession object
             captureSession = AVCaptureSession()
@@ -196,84 +216,87 @@ class CameraViewController: BaseViewController {
     
     func changeCamera() {
         //Change camera source
-        if let session = captureSession {
-            //Indicate that some changes will be made to the session
-            session.beginConfiguration()
-            
-            //Remove existing input
-            guard let currentCameraInput: AVCaptureInput = session.inputs.first else {
-                return
-            }
-            
-            session.removeInput(currentCameraInput)
-            
-            //Get new input
-            var newCamera: AVCaptureDevice! = nil
-            if let input = currentCameraInput as? AVCaptureDeviceInput {
-                if (input.device.position == .back) {
-                    newCamera = cameraWithPosition(position: .front)
-                } else {
-                    newCamera = cameraWithPosition(position: .back)
-                }
-            }
-            
-            //Add input to session
-            var err: NSError?
-            var newVideoInput: AVCaptureDeviceInput!
-            do {
-                newVideoInput = try AVCaptureDeviceInput(device: newCamera)
-            } catch let err1 as NSError {
-                err = err1
-                newVideoInput = nil
-            }
-            
-            if newVideoInput == nil || err != nil {
-                print("Error creating capture device input: \(err?.localizedDescription ?? "")")
+        guard let session = captureSession else { return }
+        guard let currentCameraInput: AVCaptureInput = session.inputs.first else {
+            return
+        }
+        
+        if let input = currentCameraInput as? AVCaptureDeviceInput {
+            if (input.device.position == .back) {
+                //self.currentDevice = cameraWithPosition(position: .front)
+                self.setTypeCamera(position: .front)
             } else {
-                session.addInput(newVideoInput)
+                //self.currentDevice = cameraWithPosition(position: .back)
+                self.setTypeCamera(position: .back)
             }
-            
-            //Commit all the configuration changes at once
-            session.commitConfiguration()
         }
     }
     
     private func setTypeCamera(position: AVCaptureDevice.Position) {
         //Change camera source
-        if let session = captureSession {
-            //Indicate that some changes will be made to the session
-            session.beginConfiguration()
-            
-            //Remove existing input
-            guard let currentCameraInput: AVCaptureInput = session.inputs.first else {
-                return
-            }
-            
-            session.removeInput(currentCameraInput)
-            
-            //Get new input
-            var newCamera: AVCaptureDevice! = nil
-            newCamera = cameraWithPosition(position: position)
-            
-            //Add input to session
-            var err: NSError?
-            var newVideoInput: AVCaptureDeviceInput!
-            do {
-                newVideoInput = try AVCaptureDeviceInput(device: newCamera)
-            } catch let err1 as NSError {
-                err = err1
-                newVideoInput = nil
-            }
-            
-            if newVideoInput == nil || err != nil {
-                print("Error creating capture device input: \(err?.localizedDescription ?? "")")
-            } else {
-                session.addInput(newVideoInput)
-            }
-            
-            //Commit all the configuration changes at once
-            session.commitConfiguration()
+        guard let session = captureSession else { return }
+        //Indicate that some changes will be made to the session
+        session.beginConfiguration()
+        
+        //Remove existing input
+        guard let currentCameraInput: AVCaptureInput = session.inputs.first else {
+            return
         }
+        
+        session.removeInput(currentCameraInput)
+        
+        //Get new input
+        //var newCamera: AVCaptureDevice! = nil
+        self.currentDevice = cameraWithPosition(position: position)
+        
+        guard let camera = self.currentDevice else { return }
+        do {
+            try camera.lockForConfiguration()
+            if camera.isFocusModeSupported(.continuousAutoFocus) {
+                
+                camera.focusMode = .continuousAutoFocus
+                if camera.isSmoothAutoFocusSupported {
+                    camera.isSmoothAutoFocusEnabled = true
+                }
+            }
+            
+            
+            if camera.isExposureModeSupported(.continuousAutoExposure) {
+                camera.exposureMode = .continuousAutoExposure
+            }
+            
+            if camera.isWhiteBalanceModeSupported(.continuousAutoWhiteBalance) {
+                camera.whiteBalanceMode = .continuousAutoWhiteBalance
+            }
+            
+            if camera.isLowLightBoostSupported {
+                camera.automaticallyEnablesLowLightBoostWhenAvailable = true
+            }
+            
+            
+            camera.unlockForConfiguration()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        
+        //Add input to session
+        var err: NSError?
+        var newVideoInput: AVCaptureDeviceInput!
+        do {
+            newVideoInput = try AVCaptureDeviceInput(device: self.currentDevice!)
+        } catch let err1 as NSError {
+            err = err1
+            newVideoInput = nil
+        }
+        
+        if newVideoInput == nil || err != nil {
+            print("Error creating capture device input: \(err?.localizedDescription ?? "")")
+        } else {
+            session.addInput(newVideoInput)
+        }
+        
+        //Commit all the configuration changes at once
+        session.commitConfiguration()
     }
     
     @IBAction func btnSwitchCameraTapped(_ sender: Any) {

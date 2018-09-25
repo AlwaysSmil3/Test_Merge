@@ -21,7 +21,7 @@ class PayHistoryTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        mainBackgroundView.layer.cornerRadius = 5
+        mainBackgroundView.layer.cornerRadius = 8
         mainBackgroundView.layer.borderWidth = 1
         imgBackgroundView.layer.cornerRadius = 15
         imgBackgroundView.layer.borderWidth = 1

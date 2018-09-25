@@ -2868,9 +2868,13 @@
                                     <action selector="btnCaptureTapped:" destination="PMd-UU-FwF" eventType="touchUpInside" id="Df2-Ly-95q"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFe-SG-xDG">
-                                <rect key="frame" x="279" y="603" width="80" height="30"/>
-                                <state key="normal" title="Đổi Camera">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFe-SG-xDG">
+                                <rect key="frame" x="325" y="603" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="617-La-XXd"/>
+                                    <constraint firstAttribute="height" constant="30" id="Ke9-OL-BqR"/>
+                                </constraints>
+                                <state key="normal" image="ic_change_camera">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -3082,7 +3086,7 @@
                             <constraint firstItem="TFl-bb-9jc" firstAttribute="width" secondItem="Ed6-P1-YpA" secondAttribute="width" id="XBc-4b-Eru"/>
                             <constraint firstItem="2Vq-bc-UIG" firstAttribute="leading" secondItem="06e-Qu-eZv" secondAttribute="leading" id="Xd7-Lz-Bje"/>
                             <constraint firstItem="efY-iz-gI1" firstAttribute="top" secondItem="vAV-iQ-Siv" secondAttribute="bottom" constant="20" id="Xyc-bj-Zyv"/>
-                            <constraint firstAttribute="trailing" secondItem="XFe-SG-xDG" secondAttribute="trailing" constant="16" id="YNx-h7-1kE"/>
+                            <constraint firstAttribute="trailing" secondItem="XFe-SG-xDG" secondAttribute="trailing" constant="20" id="YNx-h7-1kE"/>
                             <constraint firstAttribute="trailing" secondItem="pgg-0w-Ozi" secondAttribute="trailing" id="ZEp-uM-6iI"/>
                             <constraint firstItem="Lxt-S2-b6l" firstAttribute="leading" secondItem="06e-Qu-eZv" secondAttribute="leading" constant="-127" id="asF-gc-ENJ"/>
                             <constraint firstItem="KXg-3e-eq2" firstAttribute="top" secondItem="06e-Qu-eZv" secondAttribute="top" id="cy7-F2-pFW"/>
@@ -3358,6 +3362,7 @@
         <image name="ic_accept_policy" width="14" height="14"/>
         <image name="ic_back" width="20" height="18"/>
         <image name="ic_capture_camera" width="58" height="58"/>
+        <image name="ic_change_camera" width="22" height="26"/>
         <image name="ic_checkbox_checked" width="14" height="14"/>
         <image name="ic_close" width="16" height="16"/>
         <image name="ic_close1" width="16" height="16"/>
