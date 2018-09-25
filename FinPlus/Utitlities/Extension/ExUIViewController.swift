@@ -164,31 +164,3 @@ extension UIViewController {
     
 }
 
-/*
-extension UIViewController: NVActivityIndicatorViewable {
-    
-    // MARK: Indicator view
-    func handleLoadingView(isShow: Bool) {
-        if isShow {
-            self.showLoadingView()
-        } else {
-            self.hideLoadingView()
-        }
-    }
-    
-    // Show loading view
-    private func showLoadingView() {
-        SVProgressHUD.show(withStatus: "Mony...")
-//        let size = CGSize(width: 30, height:30)
-//        startAnimating(size, message: "", type: .ballScaleMultiple)
-    }
-    
-    // Hide
-    private func hideLoadingView() {
-        //stopAnimating()
-        SVProgressHUD.dismiss()
-    }
-    
-    
-}
-*/

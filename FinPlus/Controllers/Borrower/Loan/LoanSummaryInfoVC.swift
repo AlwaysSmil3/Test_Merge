@@ -107,7 +107,9 @@ class LoanSummaryInfoVC: BaseViewController {
             return
         }
         
-        completion()
+        self.checkLocationsIsValid {
+            completion()
+        }
     }
     
     private func setupData() {

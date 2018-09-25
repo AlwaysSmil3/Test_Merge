@@ -79,7 +79,7 @@ class BorrowHomeViewController: BaseViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        self.heightConstraintContentView.constant = self.headerView.frame.size.height + self.contentLoanView.frame.size.height - BOUND_SCREEN.size.height + 10
+        self.heightConstraintContentView.constant = self.headerView.frame.size.height + self.getHeightCollectionView() - BOUND_SCREEN.size.height + 10
     }
     
     private func setupUI() {
@@ -92,6 +92,15 @@ class BorrowHomeViewController: BaseViewController {
         }
         
         self.lblTitle.text = "Xin chào " + name + "!"
+        
+    }
+    
+    private func getHeightCollectionView() -> CGFloat {
+        if DataManager.shared.loanCategories.count % 3 == 0 {
+            return CGFloat((DataManager.shared.loanCategories.count / 3) * 146 + 16)
+        }
+        
+        return CGFloat(((DataManager.shared.loanCategories.count / 3) + 1) * 146 + 16)
         
     }
     
@@ -120,7 +129,6 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
         
         let urlString = Host.productURL + model.imageUrl!
         let url = URL(string: urlString)
-        //cell.imgIcon.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic_homeBrower_group1"))
         cell.imgIcon.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "ic_homeBrower_group1"), options: nil, progressBlock: nil, completionHandler: nil)
         cell.lblName.text = FinPlusHelper.addCharactorToString(input: model.title!)
         cell.lblDistanceAmount.text = "\(model.min! / MONEY_TERM_DISPLAY)-\(model.max! / MONEY_TERM_DISPLAY) triệu"
@@ -160,7 +168,6 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
         let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
         
         loanFirstVC.hidesBottomBarWhenPushed = true
-//        loanFirstVC.loanCategory = DataManager.shared.loanCategories[DataManager.shared.currentIndexCategoriesSelectedPopup ?? 0]
         loanFirstVC.loanCategory = DataManager.shared.getCurrentCategory()
         
         self.navigationController?.pushViewController(loanFirstVC, animated: true)

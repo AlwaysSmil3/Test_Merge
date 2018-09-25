@@ -534,12 +534,23 @@ class FinPlusHelper {
     /// - Returns: <#return value description#>
     class func getPrefixBankName(bankName: String) -> String {
         var prefixBankName = "TK ngân hàng "
-        if bankName.removeVietnameseMark().contains("momo") || bankName.removeVietnameseMark().contains("viettelpay") {
+        if FinPlusHelper.checkIsWallet(bankName: bankName) {
             prefixBankName = "Ví "
         }
         return prefixBankName
     }
     
+    
+    /// Check is Wallet
+    ///
+    /// - Parameter bankName: <#bankName description#>
+    /// - Returns: <#return value description#>
+    class func checkIsWallet(bankName: String) -> Bool {
+        if bankName.removeVietnameseMark().contains("momo") || bankName.removeVietnameseMark().contains("viettelpay") {
+            return true
+        }
+        return false
+    }
     
     
 }
