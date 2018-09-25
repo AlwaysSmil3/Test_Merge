@@ -23,7 +23,7 @@ class PaymentMethodTableViewCell: UITableViewCell {
         // Initialization code
         self.selectionStyle = .none
         self.containView.layer.borderWidth = 1
-        self.containView.layer.cornerRadius = 5
+        self.containView.layer.cornerRadius = 8
     }
     
     func updateCellView() {

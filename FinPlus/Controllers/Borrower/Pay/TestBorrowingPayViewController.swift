@@ -390,7 +390,7 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
         }
         
         let cellData = sections[indexPath.section].cells[indexPath.row]
-        return cellData.cellHeight
+        return cellData.cellHeight + 12
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -504,7 +504,7 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
         }
         
         let cellData = sections[indexPath.section].cells[indexPath.row]
-        return cellData.cellHeight
+        return cellData.cellHeight + 12
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
