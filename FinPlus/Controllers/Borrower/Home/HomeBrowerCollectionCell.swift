@@ -10,9 +10,9 @@ import Foundation
 
 class HomeBrowerCollectionCell: UICollectionViewCell {
     
-    @IBOutlet var imgIcon: UIImageView!
-    @IBOutlet var lblName: UILabel!
-    @IBOutlet var lblDistanceAmount: UILabel!
+    @IBOutlet weak var imgIcon: UIImageView!
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblDistanceAmount: UILabel!
     
     
 }
