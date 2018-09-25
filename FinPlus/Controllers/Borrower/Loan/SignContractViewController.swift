@@ -150,7 +150,10 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
             return
         }
         
-        completion()
+        self.checkLocationsIsValid {
+            completion()
+        }
+        
     }
     
     

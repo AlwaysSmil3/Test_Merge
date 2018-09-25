@@ -184,7 +184,16 @@ class BaseViewController: UIViewController {
         }
     }
     
-    
+    func checkLocationsIsValid(completion: () -> Void) {
+        guard let _ = DataManager.shared.currentLocation else {
+            
+            self.showGreenBtnMessage(title: "Không thể xác minh vị trí", message: "Rất tiếc! thiết bị không thể lấy được vị trí hiện tại của bạn. Vui lòng thử lại sau!", okTitle: "Đóng", cancelTitle: nil)
+            
+            return
+            
+        }
+        completion()
+    }
     
 }
 
