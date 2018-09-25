@@ -11,7 +11,7 @@ import Kingfisher
 
 class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     
-    @IBOutlet var mainCollectionView: UICollectionView?
+    @IBOutlet weak var mainCollectionView: UICollectionView?
     
     var currentSelectedCollection: IndexPath?
     
