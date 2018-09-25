@@ -74,7 +74,7 @@ class PayTypeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.containView.layer.borderWidth = 1
-        self.containView.layer.cornerRadius = 5
+        self.containView.layer.cornerRadius = 8
         self.selectionStyle = .none
         // Initialization code
         
