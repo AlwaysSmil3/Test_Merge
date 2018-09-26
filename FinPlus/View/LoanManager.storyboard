@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -47,18 +46,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bạn chưa có khoản vay nào. Vui lòng tạo một đơn vay mới để bắt đầu vay tiền." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24l-Wz-1SQ">
-                                <rect key="frame" x="46" y="321" width="283" height="26.5"/>
+                                <rect key="frame" x="46" y="320.5" width="283" height="26.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
-                                <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.55686274509803924" green="0.63921568627450975" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DxA-1t-Zf1">
-                                <rect key="frame" x="16" y="603" width="343" height="44"/>
+                                <rect key="frame" x="16" y="568" width="343" height="44"/>
                                 <color key="backgroundColor" red="0.0" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="qc0-4a-m5o"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
                                 <state key="normal" title="+ Tạo đơn vay">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -115,7 +114,7 @@
                             <constraint firstItem="IGa-gg-0OM" firstAttribute="leading" secondItem="I1u-1r-uff" secondAttribute="leading" id="6Uv-qS-DTb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DxA-1t-Zf1" secondAttribute="trailing" id="8UD-sW-NOr"/>
                             <constraint firstAttribute="trailing" secondItem="A1B-jr-6bw" secondAttribute="trailing" id="9Wa-Sc-LaG"/>
-                            <constraint firstItem="l4s-vS-cBs" firstAttribute="top" secondItem="DxA-1t-Zf1" secondAttribute="bottom" constant="20" id="HUz-86-54r"/>
+                            <constraint firstItem="l4s-vS-cBs" firstAttribute="top" secondItem="DxA-1t-Zf1" secondAttribute="bottom" constant="55" id="HUz-86-54r"/>
                             <constraint firstItem="l4s-vS-cBs" firstAttribute="top" secondItem="A1B-jr-6bw" secondAttribute="bottom" id="JtT-jz-UH5"/>
                             <constraint firstItem="A1B-jr-6bw" firstAttribute="top" secondItem="YeS-49-7xM" secondAttribute="bottom" id="LBN-pv-l2d"/>
                             <constraint firstItem="DxA-1t-Zf1" firstAttribute="leading" secondItem="I1u-1r-uff" secondAttribute="leadingMargin" id="Sxa-FH-pLW"/>

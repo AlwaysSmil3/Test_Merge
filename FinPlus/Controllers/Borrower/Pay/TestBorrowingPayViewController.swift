@@ -149,14 +149,12 @@ class TestBorrowingPayViewController: UIViewController {
     var paymentInfo: PaymentInfoMoney? {
         didSet {
             guard let pay  = self.paymentInfo else { return }
-            self.tableView.reloadData()
             
             if let period = pay.paymentPeriod {
                 self.payAmountPresent = period.feeOverdue! + period.interest! + period.overdue! + period.principal!
                 
                 if period.overdue! > 0 {
                     self.isOntime = false
-                    self.tableView?.reloadData()
                 }
             }
             
@@ -165,11 +163,10 @@ class TestBorrowingPayViewController: UIViewController {
                 
                 if total.debt! > 0 {
                     self.isDebt = true
-                    self.tableView?.reloadData()
                 }
                 
             }
-            
+            self.tableView?.reloadData()
         }
     }
     
@@ -181,7 +178,6 @@ class TestBorrowingPayViewController: UIViewController {
         self.updateData()
         
         self.getPaymentInfo()
-        
         // Do any additional setup after loading the view.
     }
     
@@ -262,7 +258,7 @@ class TestBorrowingPayViewController: UIViewController {
         let cashInPayment = PaymentMethod(wID: 1, wMethodTitle: "Chuyển khoản/tiền mặt", wMethodDescription: "Chuyển khoản qua internet hoặc đến ngân hàng để chuyển tiền mặt đến một trong những tài khoản ngân hàng của chúng tôi.", wMethodType: 1)
 //        let ATMPayment = PaymentMethod(wID: 2, wMethodTitle: "Sử dụng ATM nội địa", wMethodDescription: "Bạn sẽ được chuyển qua website napas.com.vn để hoàn tất quá trình thanh toán.", wMethodType: 2)
 //        let viettelPayPayment = PaymentMethod(wID: 3, wMethodTitle: "Thanh toán qua ví ViettelPay", wMethodDescription: "Chuyển qua ứng dụng ViettelPay để thanh toán. Bạn sẽ được chuyển về Mony sau khi hoàn thành.", wMethodType: 3)
-        let momoPayment = PaymentMethod(wID: 4, wMethodTitle: "Thanh toán qua ví Momo", wMethodDescription: "Chuyển qua ứng dụng Momo để thanh toán. Bạn sẽ được chuyển về Mony sau khi hoàn thành.", wMethodType: 4)
+        let momoPayment = PaymentMethod(wID: 4, wMethodTitle: "Thanh toán qua ví MoMo", wMethodDescription: "Chuyển qua ứng dụng MoMo để thanh toán. Bạn sẽ được chuyển về Mony sau khi hoàn thành.", wMethodType: 4)
         paymentList.append(cashInPayment)
         //paymentList.append(ATMPayment)
         //paymentList.append(viettelPayPayment)
@@ -273,7 +269,17 @@ class TestBorrowingPayViewController: UIViewController {
         }
         
         // borrowingPay = BorrowingData(basicInfo: infoData, payType: payTypeArray, payAll: payAll, walletList: self.bankList)
-        newBorrowingPay = NewBorrowingData(payType: payTypeArray, payAll: payAll, paymentMethod: paymentList)
+        
+        if let liqui = self.paymentInfo?.liquidation, liqui.outstanding == 0 {
+            newBorrowingPay = NewBorrowingData(payType: payTypeArray, payAll: nil, paymentMethod: paymentList)
+        } else {
+            if let term = DataManager.shared.browwerInfo?.activeLoan?.term, term <= 30 {
+                newBorrowingPay = NewBorrowingData(payType: payTypeArray, payAll: nil, paymentMethod: paymentList)
+            } else {
+                newBorrowingPay = NewBorrowingData(payType: payTypeArray, payAll: payAll, paymentMethod: paymentList)
+            }
+        }
+        
         self.sections.removeAll()
 //        let sectionBasicData = SectionData()
 //        sectionBasicData.title = "Thông tin khoản vay"
@@ -321,14 +327,16 @@ class TestBorrowingPayViewController: UIViewController {
 //        self.sections.append(sectionBasicData)
         self.sections.append(sectionPayTypeData)
         self.sections.append(sectionWalletData)
-        tableView.reloadData()
+        //tableView.reloadData()
     }
     
     func getPaymentInfo() {
         APIClient.shared.getPaymentMoneyInfo()
-            .done(on: DispatchQueue.main) { model in
+            .done(on: DispatchQueue.global()) { [weak self]model in
                 
-                self.paymentInfo = model
+                DispatchQueue.main.async {
+                    self?.paymentInfo = model
+                }
                 
         }
             .catch { error in}
@@ -337,6 +345,7 @@ class TestBorrowingPayViewController: UIViewController {
 
     @objc func payBtnAction() {
         // check and show mony bank list
+        guard let _ = self.paymentInfo else { return }
         if self.methodSelected != nil {
             
             let monyBankListVC = MonyBankListViewController(nibName: "MonyBankListViewController", bundle: nil)

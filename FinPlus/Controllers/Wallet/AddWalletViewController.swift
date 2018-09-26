@@ -83,7 +83,7 @@ class AddWalletViewController: UIViewController {
         btnMomo.layer.cornerRadius = 8
         btnMomo.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         btnMomo.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
-        btnMomo.setTitle("Ví Momo", for: .normal)
+        btnMomo.setTitle("Ví MoMo", for: .normal)
     
         
         nameTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)

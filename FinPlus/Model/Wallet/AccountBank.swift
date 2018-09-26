@@ -109,6 +109,13 @@ public struct AccountBank {
     else if bankName == "MoMo" {
         bankType = 7
     }
+    else if bankName!.removeVietnameseMark().contains("viettelpay") {
+        bankType = 6
+    }
+    else if bankName!.removeVietnameseMark().contains("momo") {
+        bankType = 7
+    }
+
 
     else {
         bankType = 1
