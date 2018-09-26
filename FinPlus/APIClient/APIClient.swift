@@ -238,7 +238,6 @@ class APIClient {
                     }
                     
                     seal.reject(error)
-//                    UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: self.getDisplayMessage(error: error), okTitle: "OK", cancelTitle: nil)
                     self.showAlertError(error: error)
                     
                 case .success(let responseObject):
@@ -253,7 +252,6 @@ class APIClient {
                         let error = NSError(domain: "BackendManager", code: 0,
                                             userInfo: [NSLocalizedDescriptionKey: API_MESSAGE.OTHER_ERROR])
                         seal.reject(error)
-//                        UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: API_MESSAGE.DATA_FORMART_ERROR, okTitle: "OK", cancelTitle: nil)
                         self.showAlertError(error: error)
                     }
                 }

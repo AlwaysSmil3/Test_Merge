@@ -20,7 +20,7 @@
 "MOMO_WALLET" = "Ví MoMo";
 "ADD_NEW_WALLET" = "Thêm tài khoản mới";
 "PAYPAL_ACCOUNT" = "Tài khoản PayPal";
-"NO_ACCOUNT_BANK" = "Bạn chưa có tài khoản nhận tiền nào. Vui lòng ấn nút \"Thêm tài khoản ngân hàng\" bên dưới để tiếp tục đăng ký vay";
+"NO_ACCOUNT_BANK" = "Bạn chưa có tài khoản nhận tiền nào. Vui lòng ấn nút \"Thêm tài khoản ngân hàng\" bên dưới để tiếp tục đăng ký vay.";
 
 "STATUS" = "Trạng thái";
 "DETAIL_LOAN" = "Chi tiết đơn vay";

@@ -75,6 +75,50 @@ extension LoanStateViewController {
         }
     }
     
+    func getPaymentInfo(completion: @escaping() -> Void) {
+        APIClient.shared.getPaymentMoneyInfo()
+            .done(on: DispatchQueue.global()) { [weak self]model in
+                
+                DispatchQueue.main.async {
+                    self?.paymentInfo = model
+                    completion()
+                }
+                
+            }
+            .catch { error in completion() }
+    }
+    
+    func addBankTotDataSource() {
+        // get loan bank
+        let loanBankId = DataManager.shared.loanInfo.bankId
+        if let userBanks = DataManager.shared.browwerInfo?.banks {
+            for bank in userBanks {
+                if let bankId = bank.id {
+                    if bankId == loanBankId {
+                        let accountNumber = bank.accountBankNumber ?? ""
+                        //                        if let number = bank.accountBankNumber, number.count > 4 {
+                        //                            accountNumber = String(number.suffix(4))
+                        //                        } else {
+                        //                            accountNumber = bank.accountBankNumber ?? ""
+                        //                        }
+                        //                        accountNumber = "● ● ● ● \(accountNumber)"
+                        
+                        //                        let subtitleParameters = [NSAttributedStringKey.font : UIFont(name: FONT_FAMILY_REGULAR, size: 12)]
+                        
+                        let bankName = bank.bankName ?? ""
+                        let prefixBankName = FinPlusHelper.getPrefixBankName(bankName: bankName)
+                        
+                        
+                        dataSource.append(LoanSummaryModel(name: "Tài khoản nhận tiền", value: prefixBankName + bankName, attributed: nil))
+                        dataSource.append(LoanSummaryModel(name: "Chủ tài khoản", value: "\(bank.accountBankName ?? "None")", attributed: nil))
+                        dataSource.append(LoanSummaryModel(name: "Số tài khoản", value: accountNumber, attributed: nil))
+                        
+                    }
+                }
+            }
+        }
+    }
+    
     // Hoan thien don
     @IBAction func update_loan()
     {

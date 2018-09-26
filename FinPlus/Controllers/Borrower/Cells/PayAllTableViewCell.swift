@@ -55,6 +55,9 @@ class PayAllTableViewCell: UITableViewCell {
                 
 
             } else {
+                self.lblDebt?.isHidden = false
+                self.lblLeftDebt?.isHidden = false
+                
                 self.lblDebt?.text = FinPlusHelper.formatDisplayCurrency(data.debt!) + "đ"
                  self.originMoneyLb.text = "Tiền gốc phải trả: " + FinPlusHelper.formatDisplayCurrency(data.outstanding!) + "đ"
                 
@@ -76,6 +79,8 @@ class PayAllTableViewCell: UITableViewCell {
         self.containView.layer.borderWidth = 1
         self.containView.layer.cornerRadius = 8
         // Initialization code
+        self.lblLeftDebt?.isHidden = true
+        self.lblDebt?.isHidden = true
         self.titleLb.text = "Thanh toán trước toàn bộ"
     }
 

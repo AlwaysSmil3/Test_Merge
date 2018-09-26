@@ -44,6 +44,7 @@ class PayTypeTableViewCell: UITableViewCell {
                 
                 return
             }
+            self.originMoneyLb.isHidden = false
             
             self.originMoneyLb.text = "Tiền gốc: " + FinPlusHelper.formatDisplayCurrency(data.principal!) + "đ"
             self.interestMoneyLb.text = "Tiền lãi: " + FinPlusHelper.formatDisplayCurrency(data.interest!) + "đ"
@@ -77,7 +78,7 @@ class PayTypeTableViewCell: UITableViewCell {
         self.containView.layer.cornerRadius = 8
         self.selectionStyle = .none
         // Initialization code
-        
+        self.originMoneyLb.isHidden = true
         self.titleLb.text = "Thanh toán tháng này"
         if let loan = DataManager.shared.browwerInfo?.activeLoan {
             self.dateLb.text = Date.init(fromString: loan.nextPaymentDate ?? "", format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER)).toString(.custom(kDisplayFormat))
