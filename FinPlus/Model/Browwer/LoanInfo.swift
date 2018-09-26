@@ -15,38 +15,17 @@ struct LoanInfo: Encodable {
         didSet {
             guard self.loanCategoryID > 0 else { return }
             //OptionalText
-            if self.optionalText.count == 0 {
-                self.optionalText = self.initOptionalText(cateId: loanCategoryID)
-            }
-            
-            if self.optionalText.count > 0, self.optionalText[0].length() == 0 {
-                self.optionalText = self.initOptionalText(cateId: loanCategoryID)
-            }
-            
             if self.optionalText.count < self.initOptionalText(cateId: loanCategoryID).count {
-                let range = self.initOptionalText(cateId: loanCategoryID).count - self.optionalText.count
-                for _ in 0...range - 1 {
-                    self.optionalText.append("")
-                }
+                self.optionalText = self.initOptionalText(cateId: loanCategoryID)
             }
+            
             
             //OptionalMedia
-            if self.optionalMedia.count == 0 {
+            
+            if self.optionalMedia.count < self.initOptionalMedia(cateId: loanCategoryID).count  {
                 self.optionalMedia = self.initOptionalMedia(cateId: loanCategoryID)
             }
-            
-            if self.optionalMedia.count > 0, self.optionalMedia[0].count == 0 {
-                self.optionalMedia = self.initOptionalMedia(cateId: loanCategoryID)
-            }
-            
-            if self.optionalMedia.count < self.initOptionalMedia(cateId: loanCategoryID).count {
-                let range = self.initOptionalMedia(cateId: loanCategoryID).count - self.optionalMedia.count
-                for _ in 0...range - 1 {
-                    self.optionalMedia.append([])
-                }
-            }
-
-            
+    
         }
     }
     
