@@ -67,7 +67,7 @@ class ListWalletViewController: BaseViewController {
         self.addBtn.layer.cornerRadius = 8
         self.addBtn.layer.masksToBounds = false
         self.addBtn.layer.borderColor = MAIN_COLOR.cgColor
-        self.addBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+        //self.addBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         
         let cellNib = UINib(nibName: "WalletTableViewCell", bundle: nil)
         self.tableview.register(cellNib, forCellReuseIdentifier: cellIdentifier)
