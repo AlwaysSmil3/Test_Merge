@@ -206,10 +206,9 @@ class AddWalletViewController: UIViewController {
             .done(on: DispatchQueue.main) { [weak self]model in
                 
                 guard let code = model.returnCode, code > 0 else {
-                    self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg ?? "", okTitle: "OK", cancelTitle: nil)
+                    self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg!, okTitle: "OK", cancelTitle: nil)
                     return
                 }
-                //self?.showToastWithMessage(message: model.returnMsg ?? "")
                 self?.delegate?.isReloadBankData(isReload: true)
                 self?.navigationController?.popViewController(animated: true)
             }
