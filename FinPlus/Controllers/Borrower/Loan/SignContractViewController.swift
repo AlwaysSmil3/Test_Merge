@@ -20,6 +20,8 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
     var activeLoan: BrowwerActiveLoan?
     var data: APIResponseGeneral?
     
+    var contractUrl: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,7 +79,10 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         
         //Load ContractURL
         if self.isSigned {
-            if let contractURL = DataManager.shared.browwerInfo?.activeLoan?.contractUrl, let url = URL(string: contractURL) {
+            if let urlString = self.contractUrl, let url = URL(string: urlString) {
+                let request = URLRequest(url: url)
+                self.webView.loadRequest(request)
+            } else if let urlString = DataManager.shared.browwerInfo?.activeLoan?.contractUrl, let url = URL(string: urlString) {
                 let request = URLRequest(url: url)
                 self.webView.loadRequest(request)
             }
