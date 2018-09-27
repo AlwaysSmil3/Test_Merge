@@ -286,7 +286,12 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
         APIClient.shared.updateBankAccount(bankAccountID: bankId, params: params)
             .done(on: DispatchQueue.main) { [weak self]model in
                 
-                self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg!, okTitle: "OK", cancelTitle: nil, completion: { (status) in
+                var messeage = model.returnMsg!
+                if messeage.removeVietnameseMark().contains("success") {
+                    messeage = "Thay đổi thông tin thành công!"
+                }
+                
+                self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: messeage, okTitle: "OK", cancelTitle: nil, completion: { (status) in
                     
                     if self?.walletAction == .LoanNation {
                         self?.delegate?.isReloadBankData(isReload: true)
