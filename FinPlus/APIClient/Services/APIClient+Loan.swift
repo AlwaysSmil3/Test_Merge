@@ -136,6 +136,8 @@ extension APIClient {
         if let data = loanInfoData {
             dataAPI = data
         }
+        
+        print("optionalMedia.count \(DataManager.shared.loanInfo.optionalMedia.count)")
 
         //let uid = DataManager.shared.userID
         var endPoint = EndPoint.Loan.CreateLoans

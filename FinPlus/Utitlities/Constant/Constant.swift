@@ -205,33 +205,7 @@ func getCountOptionalText(cateId: Int16) -> Int {
     }
     
     return count
-    
-    /*
-    switch cateId {
-    case Loan_Student_Category_ID:
-        return CountOptionTextVaySinhVien
-    case VayMuaDienThoai_Category_ID:
-        return CountOptionTextVayMuaDienThoai
-    case VayMuaXeMay_Category_ID:
-        return CountOptionTextVayMuaXeMay
-    case VayDamCuoi_Category_ID:
-        return CountOptionTextVayDamCuoi
-    case VayBaBau_Category_ID:
-        return CountOptionTextVayBaBau
-    case VayNuoiBe_Category_ID:
-        return CountOptionTextVayNuoiBe
-    case VayMuaDoNoiThat_Category_ID:
-        return CountOptionTextVayMuaDoNoiThat
-    case VayThanhToanNo_Category_ID:
-        return CountOptionTextVayThanhToanNo
-    case VayKhac_Category_ID:
-        return CountOptionTextVayKhac
-        
-    default:
-        return 6
-        
-    }
-    */
+
 }
 
 //Get CountOptionalMedia
@@ -254,32 +228,6 @@ func getCountOptionalMedia(cateId: Int16) -> Int {
     
     return count
     
-    /*
-    switch cateId {
-    case Loan_Student_Category_ID:
-        return CountOptionMediaVaySinhView
-    case VayMuaDienThoai_Category_ID:
-        return CountOptionMediaVayMuaDienThoai
-    case VayMuaXeMay_Category_ID:
-        return CountOptionMediaVayMuaXeMay
-    case VayDamCuoi_Category_ID:
-        return CountOptionMediaVayDamCuoi
-    case VayBaBau_Category_ID:
-        return CountOptionMediaVayBaBau
-    case VayNuoiBe_Category_ID:
-        return CountOptionMediaVayNuoiBe
-    case VayMuaDoNoiThat_Category_ID:
-        return CountOptionMediaVayMuaDoNoiThat
-    case VayThanhToanNo_Category_ID:
-        return CountOptionMediaVayThanhToanNo
-    case VayKhac_Category_ID:
-        return CountOptionMediaVayKhac
-        
-    default:
-        return 6
-        
-    }
-    */
 }
 
 

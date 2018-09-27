@@ -188,8 +188,13 @@ class LoanStateViewController: UIViewController {
         }
         
         if let collections = loan.collections, collections.count > 0 {
-            var temp = collections[0].interest! + collections[0].principal!
-            payMounthStringWithFunded = FinPlusHelper.formatDisplayCurrency(Double(temp)) + "đ"
+            var temp: Double = Double(collections[0].interest! + collections[0].principal!)
+            if temp == 0 {
+                temp = collections[0].repayInterest! + collections[0].repayPrincipal!
+            }
+            if temp > 0 {
+                payMounthStringWithFunded = FinPlusHelper.formatDisplayCurrency(temp) + "đ"
+            }
         }
         
         
@@ -539,7 +544,7 @@ class LoanStateViewController: UIViewController {
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
-                        "text": "FinSmart đang huy động cho khoản vay của bạn.",
+                        "text": "Mony đang huy động cho khoản vay của bạn.",
                         "subType": TextCellType.TitleType,
                         ],
                     [
@@ -573,7 +578,7 @@ class LoanStateViewController: UIViewController {
                 headerData = [
                     [
                         "type": HeaderCellType.TextType,
-                        "text": "FinSmart đang huy động cho khoản vay của bạn.",
+                        "text": "Mony đang huy động cho khoản vay của bạn.",
                         "subType": TextCellType.TitleType,
                         ],
                     [

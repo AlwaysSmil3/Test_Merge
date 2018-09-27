@@ -104,6 +104,8 @@ class LoanBaseViewController: BaseViewController {
     //Cell đang chọn hiện tại
     var currentIndexSelected: IndexPath?
     
+    var loanCate: LoanCategories?
+    
     var isMuiltiLineText: Bool = false
     
     override func viewDidLoad() {
@@ -144,6 +146,15 @@ class LoanBaseViewController: BaseViewController {
         tableView.tableFooterView = UIView()
         
         
+    }
+    
+    func initLoanCate() {
+        guard self.loanCate == nil else { return }
+        var temp = DataManager.shared.loanCategories.filter { $0.id == DataManager.shared.loanInfo.loanCategoryID }
+        
+        if temp.count > 0 {
+            self.loanCate = temp[0]
+        }
     }
     
     
