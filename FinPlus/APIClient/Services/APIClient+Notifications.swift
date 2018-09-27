@@ -54,7 +54,7 @@ extension APIClient {
         ]
         
         return Promise<APIResponseGeneral> { seal in
-            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .PUT)
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: false, httpType: .PUT)
                 .done { json in
                     
                     let model = APIResponseGeneral(object: json)
