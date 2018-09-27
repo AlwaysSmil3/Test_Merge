@@ -18,7 +18,7 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
     
     var isSigned = false
     var activeLoan: BrowwerActiveLoan?
-    
+    var data: APIResponseGeneral?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,6 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
             self.btnSign?.tintColor = .white
             self.btnSign.layer.cornerRadius = 8
             self.btnSign.layer.masksToBounds = true
-            self.getContractSign()
         }
         
         self.btnSign.titleLabel?.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)
@@ -82,6 +81,10 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
                 let request = URLRequest(url: url)
                 self.webView.loadRequest(request)
             }
+        } else {
+            if self.data == nil {
+                self.getContractSign()
+            }
         }
         
         self.initLocationManager()
@@ -97,6 +100,8 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         APIClient.shared.getContractWhenSign()
             .done(on: DispatchQueue.global()) { [weak self]model in
                 SVProgressHUD.dismiss()
+                self?.data = model
+                
                 if let url = URL(string: model.data!) {
                     let request = URLRequest(url: url)
                     DispatchQueue.main.async {

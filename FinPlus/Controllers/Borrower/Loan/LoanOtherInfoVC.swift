@@ -27,6 +27,7 @@ class LoanOtherInfoVC: LoanBaseViewController {
         
         self.configTextMesseageView()
         
+        self.initLoanCate()
         //NotificationCenter.default.addObserver(self, selector: #selector(showInputMesseage(notification:)), name: .showMuiltiLineInputText, object: nil)
     }
     
@@ -63,39 +64,58 @@ class LoanOtherInfoVC: LoanBaseViewController {
     }
     
     
-    
-    
     @objc func showInputMesseage(notification: NSNotification) {
         self.isMuiltiLineText = true
         self.sbInputView?.textView.becomeFirstResponder()
     }
     
+    
+    /// check input with field is Required
+    ///
+    /// - Returns: <#return value description#>
+    private func checkIsReqruiedOptionalText() -> Bool {
+        guard let builder = self.loanCate?.builders, builder.count > 3, let listField = builder[3].fields else { return true }
+        
+        var index = 0
+        for text in DataManager.shared.loanInfo.optionalText {
+            if text.count == 0 &&  listField.count > index && listField[index].isRequired == true {
+                return false
+            }
+            index += 1
+        }
+        return true
+    }
+    
+    
+    /// check input with field is Required
+    ///
+    /// - Returns: <#return value description#>
+    private func checkIsReqruiedOptionalMedia() -> Bool {
+        guard let builder = self.loanCate?.builders, builder.count > 3, let listField = builder[3].fields else { return true }
+        
+        var index = 0
+        let totalCount = DataManager.shared.loanInfo.optionalMedia.count
+        
+        for media in DataManager.shared.loanInfo.optionalMedia {
+            
+            if index < totalCount - 1 && media.count == 0 && listField.count > (index + DataManager.shared.loanInfo.optionalText.count) && listField[index + DataManager.shared.loanInfo.optionalText.count].isRequired == true {
+                
+                return false
+            }
+            index += 1
+        }
+        return true
+    }
+    
     private func validateInput(completion: () -> Void) {
         
-        var optionalTextIsDone = true
-        for text in DataManager.shared.loanInfo.optionalText {
-            if text.count == 0 {
-                optionalTextIsDone = false
-                break
-            }
-        }
-
-        if !optionalTextIsDone {
+        if !self.checkIsReqruiedOptionalText() {
             self.showToastWithMessage(message: "Vui lòng nhập đầy đủ thông tin để sang bước tiếp theo")
             return
         }
 
-        var optionalMediaIsDone = true
-        var index = 0
-        for media in DataManager.shared.loanInfo.optionalMedia {
-            if index == 0 && media.count == 0 {
-                optionalMediaIsDone = false
-                break
-            }
-            index += 1
-        }
 
-        if !optionalMediaIsDone {
+        if !self.checkIsReqruiedOptionalMedia() {
             self.showToastWithMessage(message: "Vui lòng upload đầy đủ ảnh để sang bước tiếp theo")
             return
         }
@@ -144,45 +164,6 @@ class LoanOtherInfoVC: LoanBaseViewController {
         
     }
     
-    /*
-    private func updateLoanStatus() {
-        DataManager.shared.loanInfo.status = DataManager.shared.loanInfo.status - 1
-
-        clearValueInValidUserDefaultData()
-
-        APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
-            .done(on: DispatchQueue.main) { model in
-                DataManager.shared.loanID = model.loanId!
-
-                //Lay thong tin nguoi dung
-                APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
-                    .done(on: DispatchQueue.main) { model in
-                        DataManager.shared.browwerInfo = model
-
-                        self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Bạn đã cập nhật thông tin xong!", okTitle: "Về trang chủ", cancelTitle: nil) { (status) in
-                            if status {
-                                if let info = DataManager.shared.browwerInfo?.activeLoan,  let loanId = info.loanId, loanId > 0 {
-                                    let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-                                    if let window = UIApplication.shared.delegate?.window, let win = window {
-                                        win.rootViewController = tabbarVC
-                                    }
-                                } else {
-                                    self.navigationController?.popToRootViewController(animated: true)
-                                }
-                            }
-                        }
-
-                    }
-                    .catch { error in
-                        self.navigationController?.popToRootViewController(animated: true)
-                }
-
-            }
-            .catch { error in }
-
-
-    }
-    */
     
     
 }

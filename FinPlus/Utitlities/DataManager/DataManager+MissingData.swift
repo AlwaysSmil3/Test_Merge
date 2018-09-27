@@ -56,10 +56,6 @@ extension DataManager {
                 missingListTitle.append("Giới tính")
             }
             
-            //            if let relationShip = userInfo.relationships, relationShip.count > 0 {
-            //                missingListKey.append("relationships")
-            //                missingListTitle.append("Số điện thoại liên lạc của người thân")
-            //            }
             
             if let birthday = userInfo.birthday, birthday.length() > 0, birthday == self.browwerInfo?.activeLoan?.userInfo?.birthday {
                 missingListKey.append("birthday")
@@ -76,10 +72,6 @@ extension DataManager {
                 missingListTitle.append("Số điện thoại liên lạc của người thân")
             }
             
-            //            if let relationPhones = userInfo.relationships, relationPhones.count > 0 {
-            //                missingListKey.append("relationships")
-            //                missingListTitle.append("Số điện thoại liên lạc của người thân")
-            //            }
             
             if let add = userInfo.residentAddress, let city = add.city, city.length() > 0, userDefault.value(forKey: UserDefaultInValidResidentAddress) == nil {
                 missingListKey.append("residentAddress")

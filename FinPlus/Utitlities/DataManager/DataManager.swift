@@ -260,7 +260,7 @@ class DataManager {
         guard let brow = self.browwerInfo, let activeLoan = brow.activeLoan,let loanId = activeLoan.loanId, loanId > 0 else { return }
         
         if let cateID = activeLoan.loanCategoryId, cateID > 0 {
-            DataManager.shared.loanInfo.loanCategoryID = cateID
+            //DataManager.shared.loanInfo.loanCategoryID = cateID
             self.currentIndexCategoriesSelectedPopup = Int(cateID)
         }
         
@@ -407,12 +407,19 @@ class DataManager {
         }
         
         if let optionMedia = activeLoan.optionalMedia {
-            DataManager.shared.loanInfo.optionalMedia.removeAll()
+            
+            var temp: [[String]] = []
             for i in optionMedia {
-                if i.count > 0 {
-                    DataManager.shared.loanInfo.optionalMedia.append(i as! [String])
+                if let item = i as? [String] {
+                    temp.append(item)
                 }
             }
+            
+            if temp.count > 0 {
+                DataManager.shared.loanInfo.optionalMedia.removeAll()
+                DataManager.shared.loanInfo.optionalMedia = temp
+            }
+            
         }
         
         
