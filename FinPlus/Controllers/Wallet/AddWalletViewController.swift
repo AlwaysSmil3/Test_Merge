@@ -35,6 +35,8 @@ class AddWalletViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
@@ -341,6 +343,13 @@ extension AddWalletViewController: UITextFieldDelegate {
             currentString.replacingCharacters(in: range, with: string) as NSString
         
         if newString.length > maxLength { return false }
+        
+        return true
+    }
+}
+
+extension AddWalletViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         
         return true
     }

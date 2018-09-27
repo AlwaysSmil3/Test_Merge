@@ -33,6 +33,9 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
         
         // Do any additional setup after loading the view.
         
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         self.rightBarBtn.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : MAIN_COLOR], for: .normal)
@@ -312,4 +315,11 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
     
     
     
+}
+
+extension UpdateWalletViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+
+        return true
+    }
 }

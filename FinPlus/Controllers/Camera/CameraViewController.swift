@@ -167,6 +167,7 @@ class CameraViewController: BaseViewController {
             if type == .ALL {
                 self.setTypeCamera(position: .front)
             } else if type == .BACK {
+                self.btnSwitchCamera.isHidden = true
                 self.imgBackgound.image = #imageLiteral(resourceName: "img_nationalID_Back")
                 self.setTypeCamera(position: .back)
                 self.lblDescription.isHidden = true
@@ -179,6 +180,7 @@ class CameraViewController: BaseViewController {
                 self.lblDescriptionOther.text = self.descriptionText
                 self.btnSwitchCamera.transform = CGAffineTransform(rotationAngle: .pi/2)
             } else if type == .FRONT {
+                self.btnSwitchCamera.isHidden = true
                 self.imgBackgound.image = #imageLiteral(resourceName: "img_nationalID_Front")
                 self.setTypeCamera(position: .back)
                 self.lblDescription.isHidden = true

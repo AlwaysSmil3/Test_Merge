@@ -219,3 +219,10 @@ extension LoanStateViewController {
     
     
 }
+
+extension LoanStateViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        
+        return true
+    }
+}
