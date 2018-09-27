@@ -15,6 +15,8 @@ class ContractSuccessViewController: UIViewController {
     @IBOutlet weak var btnComeHome: UIButton!
     @IBOutlet weak var btnReviewContract: UIButton!
     
+    var contractUrl: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,20 +36,40 @@ class ContractSuccessViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    private func updateContractURL(completion: @escaping() -> Void) {
+        guard self.contractUrl == nil else {
+            completion()
+            return
+        }
+        //Lay thong tin nguoi dung
+        APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
+            .done(on: DispatchQueue.main) { [weak self]model in
+                
+                DataManager.shared.browwerInfo = model
+                self?.contractUrl = model.activeLoan?.contractUrl
+                completion()
+            }
+            .catch { error in
+                
+        }
+    }
+    
     @IBAction func comHome(_ sender: Any) {
         
         self.reLoadStatusLoanVC()
         
-//        let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-//        self.navigationController?.isNavigationBarHidden = true
-//        self.navigationController?.pushViewController(tabbarVC, animated: true)
     }
     
     @IBAction func reviewContract(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SIGN") as! SignContractViewController
-        vc.isSigned = true
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        self.updateContractURL {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SIGN") as! SignContractViewController
+            vc.isSigned = true
+            vc.contractUrl = self.contractUrl
+            self.navigationController?.isNavigationBarHidden = false
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
     
     /*
