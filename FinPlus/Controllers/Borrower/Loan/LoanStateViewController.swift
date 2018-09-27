@@ -109,6 +109,7 @@ class LoanStateViewController: UIViewController {
         if (hiddenBack)
         {
             self.navigationItem.leftBarButtonItem = nil
+            
         }
         
         self.btnBottomView.setBackgroundColor(color: MAIN_COLOR, forState: .normal)
@@ -1111,6 +1112,8 @@ class LoanStateViewController: UIViewController {
         self.addBankTotDataSource()
         
         if self.isFromManagerLoan {
+            self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
             self.navigationItem.rightBarButtonItem = nil
             self.headerData = []
         } else {
