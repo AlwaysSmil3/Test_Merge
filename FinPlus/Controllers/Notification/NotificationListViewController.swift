@@ -103,9 +103,9 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         var data = self.notificationList[index.row]
         
         APIClient.shared.updateNotification(notiID: data.id!)
-            .done(on: DispatchQueue.global()) { model in
+            .done(on: DispatchQueue.global()) { [weak self]model in
                 data.status = false
-                self.notificationList[index.row] = data
+                self?.notificationList[index.row] = data
             }
             .catch { error in}
     }
