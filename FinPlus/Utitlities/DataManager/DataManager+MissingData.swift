@@ -620,12 +620,10 @@ extension DataManager {
         if let optionalMedia = data["optionalMedia"] as? JSONDictionary {
             var index2 = 0
             for media in DataManager.shared.loanInfo.optionalMedia {
-                if let value = optionalMedia["\(index2)"] as? [String] {
-                    for value_ in value {
-                        for media_ in media {
-                            if media_ == value_ {
-                                return false
-                            }
+                if let value = optionalMedia["\(index2)"] as? JSONDictionary, media.count > 0 {
+                    for i in 0...media.count - 1 {
+                        if let mediaIn = value["\(i)"] as? String, media[i] == mediaIn {
+                            return false
                         }
                     }
                 }

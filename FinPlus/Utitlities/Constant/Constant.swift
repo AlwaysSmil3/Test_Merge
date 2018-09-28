@@ -8,6 +8,9 @@
 
 import Foundation
 
+//Title alert lỗi kết nối
+let TITLE_ALERT_ERROR_CONNECTION = "Lỗi kết nối"
+
 //Set time request TimeOut
 let REQUEST_TIMEOUT: Double = 30
 
@@ -93,8 +96,8 @@ enum UserRole: String {
 // MARK: API Constant
 enum API_MESSAGE {
     static let Request_Timeout = "Lỗi timeout đường truyền. Vui lòng thử lại sau."
-    static let NO_INTERNET = "Không thể kết nối tới ứng dụng Mony, có thể do các nguyên nhân:\n- Thiết bị của bạn không có kết nối mạng.\n- Hệ thống Mony đang bảo trì.\nBạn vui lòng kiểm tra kết nối mạng hoặc thử lại sau ít phút."
-    static let OTHER_ERROR = "Không thể kết nối tới ứng dụng Mony, có thể do các nguyên nhân:\n- Thiết bị của bạn không có kết nối mạng.\n- Hệ thống Mony đang bảo trì.\nBạn vui lòng kiểm tra kết nối mạng hoặc thử lại sau ít phút."
+    static let NO_INTERNET = "Có lỗi xảy ra do không có kết nối internet. Vui lòng kiểm tra lại kết nối của bạn."
+    static let OTHER_ERROR = "Không thể kết nối tới hệ thống Mony. Vui lòng thử lại sau."
     static let DATA_FORMART_ERROR = "Không xử lý được dữ liệu nhận được"
 }
 
