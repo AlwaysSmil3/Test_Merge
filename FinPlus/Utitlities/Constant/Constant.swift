@@ -93,8 +93,8 @@ enum UserRole: String {
 // MARK: API Constant
 enum API_MESSAGE {
     static let Request_Timeout = "Lỗi timeout đường truyền. Vui lòng thử lại sau."
-    static let NO_INTERNET = "Vui lòng kiểm tra lại kết nối mạng của bạn"
-    static let OTHER_ERROR = "Lỗi không xác định. Vui lòng thử lại sau"
+    static let NO_INTERNET = "Không thể kết nối tới ứng dụng Mony, có thể do các nguyên nhân:\n- Thiết bị của bạn không có kết nối mạng.\n- Hệ thống Mony đang bảo trì.\nBạn vui lòng kiểm tra kết nối mạng hoặc thử lại sau ít phút."
+    static let OTHER_ERROR = "Không thể kết nối tới ứng dụng Mony, có thể do các nguyên nhân:\n- Thiết bị của bạn không có kết nối mạng.\n- Hệ thống Mony đang bảo trì.\nBạn vui lòng kiểm tra kết nối mạng hoặc thử lại sau ít phút."
     static let DATA_FORMART_ERROR = "Không xử lý được dữ liệu nhận được"
 }
 
