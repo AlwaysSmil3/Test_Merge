@@ -123,7 +123,7 @@ extension APIClient {
      PUT Cập nhật khoản vay
 
      */
-    func loan(isShowLoandingView: Bool = true, httpType: HTTPMethodType = .POST) -> Promise<LoanResponseModel> {
+    func loan(isShowLoandingView: Bool = true, httpType: HTTPMethodType = .POST) -> Promise<BrowwerActiveLoan> {
         let params: JSONDictionary = [
             "": ""
         ]
@@ -137,7 +137,6 @@ extension APIClient {
             dataAPI = data
         }
         
-        print("optionalMedia.count \(DataManager.shared.loanInfo.optionalMedia.count)")
 
         //let uid = DataManager.shared.userID
         var endPoint = EndPoint.Loan.CreateLoans
@@ -146,7 +145,7 @@ extension APIClient {
             endPoint = "loans/" + "\(DataManager.shared.loanID ?? 0)"
         }
 
-        return Promise<LoanResponseModel> { seal in
+        return Promise<BrowwerActiveLoan> { seal in
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: isShowLoandingView, httpType: httpType, jsonData: dataAPI)
                 .done { json in
 
@@ -165,7 +164,7 @@ extension APIClient {
                     }
 
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
-                        let model = LoanResponseModel(object: data)
+                        let model = BrowwerActiveLoan(object: data)
                         seal.fulfill(model)
                     }
                 }

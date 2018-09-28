@@ -132,7 +132,7 @@ class ChoiceKindUserVC: BaseViewController {
             self.accountType = .Investor
         }
 
-        self.showGreenBtnMessage(title: "Chuyển app", message: "Bạn sẽ được chuyển sang app phiên bản nhà đầu tư. Bạn có chắc chắn không?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
+        self.showGreenBtnMessage(title: "Chuyển app", message: "Bạn sẽ được chuyển sang app phiên bản bên cho vay. Bạn có chắc chắn không?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
             if status {
                self.gotoAppInvestor()
                 

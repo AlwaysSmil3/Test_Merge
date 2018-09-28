@@ -15,16 +15,16 @@ struct LoanInfo: Encodable {
         didSet {
             guard self.loanCategoryID > 0 else { return }
             //OptionalText
-            if self.optionalText.count < self.initOptionalText(cateId: loanCategoryID).count {
+            //if self.optionalText.count < self.initOptionalText(cateId: loanCategoryID).count {
                 self.optionalText = self.initOptionalText(cateId: loanCategoryID)
-            }
+            //}
             
             
             //OptionalMedia
             
-            if self.optionalMedia.count < self.initOptionalMedia(cateId: loanCategoryID).count  {
+            //if self.optionalMedia.count < self.initOptionalMedia(cateId: loanCategoryID).count  {
                 self.optionalMedia = self.initOptionalMedia(cateId: loanCategoryID)
-            }
+            //}
     
         }
     }
