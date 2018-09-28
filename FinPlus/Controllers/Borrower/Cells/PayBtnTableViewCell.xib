@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +25,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94Y-Va-KMn">
-                        <rect key="frame" x="8" y="8" width="327" height="43.5"/>
+                        <rect key="frame" x="8" y="16" width="327" height="46"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="46" id="aB1-mF-BL4"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
                         <state key="normal" title="Thanh toán" backgroundImage="bg_button_enable_login">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -40,8 +43,7 @@
                 <constraints>
                     <constraint firstItem="94Y-Va-KMn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="KmS-vU-HJY"/>
                     <constraint firstAttribute="trailing" secondItem="94Y-Va-KMn" secondAttribute="trailing" constant="8" id="Rr9-rE-WJm"/>
-                    <constraint firstAttribute="bottom" secondItem="94Y-Va-KMn" secondAttribute="bottom" constant="8" id="qnT-Q5-xCS"/>
-                    <constraint firstItem="94Y-Va-KMn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="t0U-0A-BOl"/>
+                    <constraint firstItem="94Y-Va-KMn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="t0U-0A-BOl"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

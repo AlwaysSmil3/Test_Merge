@@ -38,7 +38,7 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         
         if (isSigned)
         {
-            self.btnSign.setTitle("Đã ký", for: .normal)
+            self.btnSign.setTitle("Đã ký hợp đồng", for: .normal)
             self.btnSign.backgroundColor = UIColor(hexString: "#B8C9D3")
             self.btnSign?.tintColor = .white
             self.btnSign.isEnabled = true

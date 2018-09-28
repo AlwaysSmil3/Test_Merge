@@ -21,7 +21,7 @@ class BasePopup : BaseViewController {
         
         centerView.animationType = .zoom(way: .in)
         
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         
     }
     
@@ -91,8 +91,9 @@ class BasePopup : BaseViewController {
             .completion({
                 self.view.removeFromSuperview()
                 self.removeFromParentViewController()
-                //return
+                
             })
+        
     }
     
     // hide with completion handle

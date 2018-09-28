@@ -337,7 +337,7 @@ class APIClient {
         if DataManager.shared.isCanShowAlertAPIError {
             DataManager.shared.isCanShowAlertAPIError = false
             
-            UIApplication.shared.topViewController()?.showAlertView(title: "Lỗi kết nối", message: self.getDisplayMessage(error: error), okTitle: "Đóng", cancelTitle: nil) { status in
+            UIApplication.shared.topViewController()?.showAlertView(title: TITLE_ALERT_ERROR_CONNECTION, message: self.getDisplayMessage(error: error), okTitle: "Đóng", cancelTitle: nil) { status in
                 DataManager.shared.isCanShowAlertAPIError = true
             }
             

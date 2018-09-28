@@ -29,7 +29,11 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             guard let field_ = self.field else { return }
             
             if let title = field_.title {
-                self.lblTitle?.text = title
+                if field_.isRequired! {
+                    self.lblTitle?.attributedText = FinPlusHelper.setAttributeTextForLoan(text: title)
+                } else {
+                    self.lblTitle?.text = title
+                }
                 
                 if let need = self.isNeedUpdate, need {
                     self.updateInfoFalse(pre: title)
