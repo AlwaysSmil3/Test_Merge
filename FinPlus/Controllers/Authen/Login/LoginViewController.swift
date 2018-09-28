@@ -106,11 +106,12 @@ class LoginViewController: BaseAuthenViewController {
     }
     
     private func updateUI() {
+        self.lblHeaderAccount.text = "Xin chào! Vui lòng nhập mật khẩu của bạn để tiếp tục."
         if let account = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String {
-            self.lblHeaderAccount.text = "Xin chào \(account), vui lòng nhập mật khẩu của bạn để tiếp tục."
+            
             DataManager.shared.currentAccount = account
         } else if let account = userDefault.value(forKey: fNEW_ACCOUNT_NAME) as? String {
-            self.lblHeaderAccount.text = "Xin chào \(account), vui lòng nhập mật khẩu của bạn để tiếp tục."
+            //self.lblHeaderAccount.text = "Xin chào \(account), vui lòng nhập mật khẩu của bạn để tiếp tục."
             DataManager.shared.currentAccount = account
         }
     }

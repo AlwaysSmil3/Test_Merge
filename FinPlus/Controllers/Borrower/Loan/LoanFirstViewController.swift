@@ -268,7 +268,10 @@ class LoanFirstViewController: BaseViewController {
     private func updateDataToLoanAPI(completion: () -> Void) {
         guard let loan = self.loanCategory else { return }
         
-        DataManager.shared.loanInfo.loanCategoryID = loan.id!
+        if DataManager.shared.loanInfo.loanCategoryID != loan.id! {
+            DataManager.shared.loanInfo.loanCategoryID = loan.id!
+        }
+        
         DataManager.shared.loanInfo.amount = Int32(Int32(self.amountSlider.value) * MONEY_TERM_DISPLAY)
         
         if loan.id == Loan_Student_Category_ID {

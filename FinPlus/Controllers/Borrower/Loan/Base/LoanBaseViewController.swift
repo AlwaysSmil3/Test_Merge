@@ -173,6 +173,7 @@ class LoanBaseViewController: BaseViewController {
         APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
             .done(on: DispatchQueue.global()) { model in
                 DataManager.shared.loanID = model.loanId!
+                DataManager.shared.browwerInfo?.activeLoan = model
             }
             .catch { error in }
     }
@@ -195,18 +196,6 @@ class LoanBaseViewController: BaseViewController {
         self.navigationController?.pushViewController(universityVC, animated: true)
     }
     
-
-    
-    //Chọn ảnh
-//    func selectedFile() {
-//        CameraHandler.shared.showCamera(vc: self)
-//        CameraHandler.shared.imagePickedBlock = { (image) in
-//            //let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
-//
-//            self.uploadData(img: image)
-//
-//        }
-//    }
     
     func showCameraView(descriptionStr: String? = nil) {
 //        let guideVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "GuideCaptureViewController") as! GuideCaptureViewController

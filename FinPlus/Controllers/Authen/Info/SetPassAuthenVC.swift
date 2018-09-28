@@ -58,9 +58,9 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
         switch setPassOrResetPass {
         case .SetPass:
             self.lblTitle.text = "Tạo tài khoản mới"
-            if let account = userDefault.value(forKey: fNEW_ACCOUNT_NAME) as? String {
-                self.lblHeader.text = "Xin chào \(account), bạn chưa có tài khoản. Vui lòng thiết lập mật khẩu để bắt đầu."
-            }
+            //if let account = userDefault.value(forKey: fNEW_ACCOUNT_NAME) as? String {
+            self.lblHeader.text = "Xin chào! Bạn chưa có tài khoản. Vui lòng thiết lập mật khẩu để bắt đầu."
+            //}
             break
         case .ResetPass:
             self.lblTitle.text = "Thiết lập mật khẩu mới"
