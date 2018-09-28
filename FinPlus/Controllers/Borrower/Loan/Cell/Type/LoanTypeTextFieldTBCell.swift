@@ -277,7 +277,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 }
                 
                 if value > 0 {
-                    self.tfValue?.text = FinPlusHelper.formatDisplayCurrency(Double(value))
+                    self.tfValue?.text = self.formatDisplayCurrency(Double(value))
                     DataManager.shared.loanInfo.jobInfo.salary = Int32(value)
                 }
                 
@@ -287,7 +287,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     if self.valueTemp == nil {
                         self.updateInfoFalse(pre: title)
                     }
-                    self.valueTemp = FinPlusHelper.formatDisplayCurrency(Double(value))
+                    self.valueTemp = self.formatDisplayCurrency(Double(value))
                 }
                 
             } else if id == "companyPhoneNumber" {
@@ -390,7 +390,18 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         
     }
     
-    
+     func formatDisplayCurrency(_ value: Double) -> String {
+        let valueNumber = value as NSNumber
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 0;
+        
+        let stringFormatVND = formatter.string(from: valueNumber)!
+        //let stringFormatVNDResult = stringFormatVND.replacingOccurrences(of: ",", with: ".")
+        
+        return stringFormatVND
+    }
     
     
 }
