@@ -422,6 +422,24 @@ class DataManager {
                     DataManager.shared.loanInfo.optionalMedia = temp
                 }
                 
+            } else {
+                
+                let count = getCountOptionalMedia(cateId: DataManager.shared.loanInfo.loanCategoryID)
+                guard count > 0 else { return }
+                
+                var temp: [[String]] = []
+                for i in 0...count - 1 {
+                    if let item = optionMedia[i] as? [String] {
+                        temp.append(item)
+                    }
+                }
+                
+                if temp.count > 0 {
+                    DataManager.shared.loanInfo.optionalMedia.removeAll()
+                    DataManager.shared.loanInfo.optionalMedia = temp
+                }
+                
+                
             }
             
         }
