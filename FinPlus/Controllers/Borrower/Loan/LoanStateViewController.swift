@@ -455,7 +455,7 @@ class LoanStateViewController: UIViewController {
                         ],
                     [
                         "type": HeaderCellType.TextType,
-                        "text": "Hãy ấn 'Xác nhận lãi suất' để bắt đầu huy động tiền từ các nhà đầu tư.",
+                        "text": "Hãy ấn 'Xác nhận lãi suất' để bắt đầu huy động tiền từ các bên cho vay.",
                         "subType": TextCellType.DesType,
                         ],
                     [
@@ -550,7 +550,7 @@ class LoanStateViewController: UIViewController {
                         ],
                     [
                         "type": HeaderCellType.TextType,
-                        "text": "Xin vui lòng chờ, khoản vay của bạn đang được huy động vốn từ các nhà đầu tư.",
+                        "text": "Xin vui lòng chờ, khoản vay của bạn đang được huy động vốn từ các bên cho vay.",
                         "subType": TextCellType.DesType,
                         ],
                 ]
@@ -584,7 +584,7 @@ class LoanStateViewController: UIViewController {
                         ],
                     [
                         "type": HeaderCellType.TextType,
-                        "text": "Xin vui lòng chờ, khoản vay của bạn đang được huy động vốn từ các nhà đầu tư.",
+                        "text": "Xin vui lòng chờ, khoản vay của bạn đang được huy động vốn từ các bên cho vay.",
                         "subType": TextCellType.DesType,
                         ],
                 ]

@@ -238,7 +238,7 @@ class BaseAuthenViewController: BaseViewController {
     
     //Confirm Goto app Investor
     func confirmGotoAppInvestor() {
-        self.showGreenBtnMessage(title: "Khác loại tài khoản", message: "Số điện thoại \(DataManager.shared.currentAccount) đã được đăng ký làm nhà đầu tư, bạn có muốn chuyển sang app cho nhà đầu tư không?", okTitle: "Chuyển", cancelTitle: "Không") { (status) in
+        self.showGreenBtnMessage(title: "Khác loại tài khoản", message: "Số điện thoại \(DataManager.shared.currentAccount) đã được đăng ký làm bên cho vay, bạn có muốn chuyển sang app cho bên cho vay không?", okTitle: "Chuyển", cancelTitle: "Không") { (status) in
             if status {
                 self.gotoAppInvestor()
             }
