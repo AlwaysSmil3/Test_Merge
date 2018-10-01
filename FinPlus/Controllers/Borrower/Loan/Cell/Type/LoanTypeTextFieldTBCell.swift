@@ -120,7 +120,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }  else if id == "salary" {
                 let tempAmount1 = self.tfValue?.text?.replacingOccurrences(of: ",", with: "") ?? ""
                 let tempAmount2 = tempAmount1.replacingOccurrences(of: ".", with: "")
-                DataManager.shared.loanInfo.jobInfo.salary = Int32(tempAmount2) ?? 0
+                DataManager.shared.loanInfo.jobInfo.salary = Double(tempAmount2) ?? 0
             } else if id == "companyPhoneNumber"  {
                 DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = self.tfValue?.text ?? ""
             } else if id == "experienceYear"  {
@@ -267,9 +267,9 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 
             }  else if id == "salary" {
                 
-                var value: Int32 = 0
+                var value: Double = 0
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.salary, data > 0 {
-                    value = Int32(data)
+                    value = data
                 }
                 
                 if DataManager.shared.loanInfo.jobInfo.salary > 0 {
@@ -278,7 +278,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 
                 if value > 0 {
                     self.tfValue?.text = self.formatDisplayCurrency(Double(value))
-                    DataManager.shared.loanInfo.jobInfo.salary = Int32(value)
+                    DataManager.shared.loanInfo.jobInfo.salary = value
                 }
                 
                 if DataManager.shared.checkFieldIsMissing(key: "salary") {
@@ -489,7 +489,7 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
         
         if let field_ = self.field, let id = field_.id {
             if let parent = self.parent, parent.contains("jobInfo") ,id.contains("salary") {
-                DataManager.shared.loanInfo.jobInfo.salary = Int32(tempAmount2) ?? 0
+                DataManager.shared.loanInfo.jobInfo.salary = Double(tempAmount2) ?? 0
                 return
             }
             
