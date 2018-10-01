@@ -182,7 +182,7 @@ extension LoanTypePhoneRelationSubTBCell: UITextFieldDelegate {
         }
         
         // Giới hạn ký tự nhập vào
-        let maxLength = 11
+        let maxLength = 13
         
         if newString.length > maxLength { return false }
         

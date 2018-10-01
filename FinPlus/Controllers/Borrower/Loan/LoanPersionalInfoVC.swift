@@ -135,7 +135,10 @@ class LoanPersionalInfoVC: LoanBaseViewController {
                 
                 let numberTemp = number.trimmingCharacters(in: CharacterSet.whitespaces)
                 
-                let numberPhone = numberTemp.replacingOccurrences(of: "\\s", with: "", options: .regularExpression, range: nil)
+                var numberPhone = numberTemp.replacingOccurrences(of: "\\s", with: "", options: .regularExpression, range: nil)
+                if numberPhone.contains("+84") {
+                    numberPhone = numberPhone.replacingOccurrences(of: "+84", with: "0")
+                }
                 
                 tempContact.phoneNumber = numberPhone
             }
@@ -194,6 +197,10 @@ class LoanPersionalInfoVC: LoanBaseViewController {
             if array.count > 0 {
                 phone = array[0]
             }
+        }
+        
+        if phone.contains("+84") {
+            phone = phone.replacingOccurrences(of: "+84", with: "0")
         }
         
         let list = self.contacts.filter { ($0.phoneNumber ?? "") == phone }
