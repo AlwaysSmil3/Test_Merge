@@ -24,7 +24,12 @@ class PayTypeTableViewCell: UITableViewCell {
     var cellData : PayType!
     var isSelectedCell: Bool = false
     
-    var dateExpire: String?
+    var dateExpire: String? {
+        didSet {
+            guard let date = self.dateExpire else { return }
+            self.dateLb.text = date
+        }
+    }
     
     var isOnTime: Bool = true
     
