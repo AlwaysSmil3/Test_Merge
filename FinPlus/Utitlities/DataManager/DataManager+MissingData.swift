@@ -471,7 +471,7 @@ extension DataManager {
             return false
         }
         
-        if let value = jobInfo["salary"] as? Int32, value == DataManager.shared.loanInfo.jobInfo.salary {
+        if let value = jobInfo["salary"] as? Double, value == DataManager.shared.loanInfo.jobInfo.salary {
             return false
         }
         
