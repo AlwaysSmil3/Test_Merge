@@ -1448,7 +1448,7 @@ class LoanStateViewController: UIViewController {
                     if monthCurrent + 1 == month || monthCurrent == month {
                         //value = true
                         let days = date.days(from: Date())
-                        if days > 0 && days < 30 {
+                        if days > 0 && days <= 31 {
                             return date.toString(.custom(kDisplayFormat))
                         }
                     }
