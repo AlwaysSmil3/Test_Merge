@@ -98,7 +98,7 @@ class LoanOtherInfoVC: LoanBaseViewController {
         
         for media in DataManager.shared.loanInfo.optionalMedia {
             
-            if index < totalCount - 1 && media.count == 0 && listField.count > (index + DataManager.shared.loanInfo.optionalText.count) && listField[index + DataManager.shared.loanInfo.optionalText.count].isRequired == true {
+            if index < totalCount && media.count == 0 && listField.count > (index + DataManager.shared.loanInfo.optionalText.count) && listField[index + DataManager.shared.loanInfo.optionalText.count].isRequired == true {
                 
                 return false
             }
