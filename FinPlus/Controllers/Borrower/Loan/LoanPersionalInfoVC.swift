@@ -22,10 +22,10 @@ class LoanPersionalInfoVC: LoanBaseViewController {
                 self.contacts.append(self.updateContact(apContact: apContact))
             }
             
-            print("contact.count \(aPContacts.count)")
         }
     }
     var contacts = [Contact]()
+    var isLoadedContact: Bool = false
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
@@ -44,7 +44,9 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         addressBook.startObserveChanges
             {
                 [unowned self] in
-                self.loadContacts()
+                self.loadContacts {
+                    
+                }
         }
     }
     
@@ -63,7 +65,9 @@ class LoanPersionalInfoVC: LoanBaseViewController {
             self.updateDataToServer()
         }
         
-        self.loadContacts()
+        self.loadContacts {
+            
+        }
         
     }
     
@@ -80,7 +84,7 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     //MARK: Contacts
     /// Load Contact
     
-    func loadContacts()
+    func loadContacts(completion: @escaping() -> Void)
     {
         
         addressBook.loadContacts
@@ -90,7 +94,8 @@ class LoanPersionalInfoVC: LoanBaseViewController {
                 if let contacts = contacts
                 {
                     self.aPContacts = contacts
-                    
+                    self.isLoadedContact = true
+                    completion()
                     return
                 }
                 
@@ -98,7 +103,7 @@ class LoanPersionalInfoVC: LoanBaseViewController {
                     return
                 }
                 
-                let message = "Đang không có quyền truy cập danh bạ. Vui lòng vào: Cài đặt -> Mony -> và cho phép danh bạ."
+                let message = "Đang không có quyền truy cập danh bạ. Để thực hiện tạo đơn vay, bạn vui lòng vào: Cài đặt -> Mony -> và cho phép danh bạ."
                 
                 self.showAlertView(title: "Danh bạ", message: message, okTitle: "Huỷ", cancelTitle: "Đồng ý", completion: { (bool) in
                     
@@ -285,11 +290,7 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         completion()
     }
     
-    @IBAction func btnContinueTapped(_ sender: Any) {
-        
-        self.view.endEditing(true)
-
-        
+    private func updateLoanData() {
         self.updateDataForLoanAPI {
             
             if DataManager.shared.listKeyMissingLoanKey != nil && DataManager.shared.listKeyMissingLoanKey!.count > 0  {
@@ -304,6 +305,19 @@ class LoanPersionalInfoVC: LoanBaseViewController {
             
             self.navigationController?.pushViewController( loanInfoJobVC, animated: true)
         }
+    }
+    
+    @IBAction func btnContinueTapped(_ sender: Any) {
+        self.view.endEditing(true)
+
+        guard self.isLoadedContact else {
+            self.loadContacts {
+                self.updateLoanData()
+            }
+            return
+        }
+        
+        self.updateLoanData()
     }
     
     
