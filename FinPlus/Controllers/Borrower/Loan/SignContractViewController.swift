@@ -100,6 +100,14 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    /// Zoom webView
+    func enableZoomPageWebView() {
+        self.webView.scrollView.minimumZoomScale = 1.0
+        self.webView.scrollView.maximumZoomScale = 5.0
+        self.webView.stringByEvaluatingJavaScript(from: "document.querySelector('meta[name=viewport]').setAttribute('content', 'user-scalable = 1;', false); ")
+    }
+    
     func getContractSign() {
         SVProgressHUD.show(withStatus: "Đang lấy hợp đồng...")
         APIClient.shared.getContractWhenSign()
@@ -177,30 +185,38 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         self.sendOTP()
     }
     
+    private func toReadContract() {
+        
+        let readContract = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "ReadContractViewController") as! ReadContractViewController
+        self.present(readContract, animated: true, completion: nil)
+        
+    }
+    
+    func getOTPContract() {
+        APIClient.shared.getOTPContract(loanID: (self.activeLoan?.loanId)!)
+            .done(on: DispatchQueue.main) { model in
+                
+                let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
+                verifyVC.verifyType = .SignContract
+                verifyVC.loanId = self.activeLoan?.loanId
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.pushViewController(verifyVC, animated: true)
+            }
+            .catch { error in
+                self.showAlertView(title: "Có lỗi", message: "Đã có lỗi trong quá trình gửi mã xác thực. Vui lòng thử lại.", okTitle: "Thử lại", cancelTitle: "Hủy", completion: { (okAction) in
+                    if (okAction)
+                    {
+                        self.sendOTP()
+                    }
+                })
+        }
+    }
+    
     
     func sendOTP() {
         self.getPermissionLocation {
-            
-            APIClient.shared.getOTPContract(loanID: (self.activeLoan?.loanId)!)
-                .done(on: DispatchQueue.main) { model in
-                    
-                    let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
-                    verifyVC.verifyType = .SignContract
-                    verifyVC.loanId = self.activeLoan?.loanId
-                    self.navigationController?.isNavigationBarHidden = true
-                    self.navigationController?.pushViewController(verifyVC, animated: true)
-                }
-                .catch { error in
-                    self.showAlertView(title: "Có lỗi", message: "Đã có lỗi trong quá trình gửi mã xác thực. Vui lòng thử lại.", okTitle: "Thử lại", cancelTitle: "Hủy", completion: { (okAction) in
-                        if (okAction)
-                        {
-                            self.sendOTP()
-                        }
-                    })
-            }
-            
+            self.getOTPContract()
         }
-        
     }
     
     /*
@@ -219,6 +235,7 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        self.enableZoomPageWebView()
     }
 }
 

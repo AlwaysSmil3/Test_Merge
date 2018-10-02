@@ -91,7 +91,7 @@ public struct AccountBank {
     if bankName == "Vietcombank" || bankName == "VCB" {
         bankType = 1
     }
-    else if bankName == "Viettinbank" {
+    else if bankName == "Vietinbank" {
         bankType = 2
     }
     else if bankName == "Techcombank" {

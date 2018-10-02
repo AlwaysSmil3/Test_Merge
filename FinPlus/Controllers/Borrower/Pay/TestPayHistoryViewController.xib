@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -77,11 +77,11 @@
             <constraints>
                 <constraint firstItem="SAR-Kp-nEr" firstAttribute="top" secondItem="dbj-e9-uUw" secondAttribute="bottom" id="4iY-vH-kcD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SAR-Kp-nEr" secondAttribute="trailing" id="I2e-7o-iL5"/>
+                <constraint firstItem="dbj-e9-uUw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="-20" id="Iyp-pR-85F"/>
                 <constraint firstItem="SAR-Kp-nEr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LWp-7s-Gig"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="SAR-Kp-nEr" secondAttribute="bottom" id="ViF-cE-fzO"/>
                 <constraint firstItem="dbj-e9-uUw" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="rUS-HN-tN3"/>
                 <constraint firstItem="dbj-e9-uUw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yNO-U9-tFd"/>
-                <constraint firstItem="dbj-e9-uUw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yjl-az-H4K"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="95.5" y="84.5"/>
