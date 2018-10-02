@@ -100,6 +100,14 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    /// Zoom webView
+    func enableZoomPageWebView() {
+        self.webView.scrollView.minimumZoomScale = 1.0
+        self.webView.scrollView.maximumZoomScale = 5.0
+        self.webView.stringByEvaluatingJavaScript(from: "document.querySelector('meta[name=viewport]').setAttribute('content', 'user-scalable = 1;', false); ")
+    }
+    
     func getContractSign() {
         SVProgressHUD.show(withStatus: "Đang lấy hợp đồng...")
         APIClient.shared.getContractWhenSign()
@@ -227,6 +235,7 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        self.enableZoomPageWebView()
     }
 }
 

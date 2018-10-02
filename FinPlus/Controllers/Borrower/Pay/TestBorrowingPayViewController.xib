@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -76,10 +76,10 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="cpv-BG-FD7" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="4Sp-SE-9ww"/>
+                <constraint firstItem="cpv-BG-FD7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="-20" id="5M3-pP-Joq"/>
                 <constraint firstItem="cpv-BG-FD7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="CcN-Ih-44d"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sh9-mu-YYs" secondAttribute="trailing" constant="8" id="JMq-au-jqa"/>
                 <constraint firstItem="sh9-mu-YYs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="df1-gY-8yK"/>
-                <constraint firstItem="cpv-BG-FD7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qgW-Cq-YgB"/>
                 <constraint firstItem="sh9-mu-YYs" firstAttribute="top" secondItem="cpv-BG-FD7" secondAttribute="bottom" id="tPo-nE-dS6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="sh9-mu-YYs" secondAttribute="bottom" constant="8" id="ybi-xO-u1d"/>
             </constraints>

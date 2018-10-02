@@ -13,7 +13,7 @@ extension APIClient {
 
     /* Đăng ký số điện thoại mới
      phoneNumber
-     0966003631
+     
      
      Số điện thoại đăng ký
      uuid
@@ -23,7 +23,7 @@ extension APIClient {
      deviceType
      0
      
-     0: iOS, 1 : android
+     1: iOS, 0 : android
      password
      xxxxxxxxxxxxxxxxxxxxxxx
      

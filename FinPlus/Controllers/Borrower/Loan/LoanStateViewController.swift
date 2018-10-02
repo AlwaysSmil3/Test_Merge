@@ -1190,8 +1190,8 @@ class LoanStateViewController: UIViewController {
     private func refreshData() {
         //Lay thong tin nguoi dung
         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
-            .done(on: DispatchQueue.main) { model in
-                self.refresher.endRefreshing()
+            .done(on: DispatchQueue.main) { [weak self]model in
+                self?.refresher.endRefreshing()
                 
                 if let status = model.activeLoan?.status, status == STATUS_LOAN.SALE_PENDING.rawValue || status == STATUS_LOAN.RISK_PENDING.rawValue {
                     DataManager.shared.isNeedReloadLoanStatusVC = false
@@ -1216,7 +1216,7 @@ class LoanStateViewController: UIViewController {
                     return
                 }
                 
-                if let status = model.activeLoan?.status, let currentStatus = DataManager.shared.browwerInfo?.activeLoan?.status, status == currentStatus { return }
+//                if let status = model.activeLoan?.status, let currentStatus = DataManager.shared.browwerInfo?.activeLoan?.status, status == currentStatus { return }
                 
                 DataManager.shared.isNeedReloadLoanStatusVC = false
                 DataManager.shared.browwerInfo = model
@@ -1547,10 +1547,10 @@ class LoanStateViewController: UIViewController {
         DataManager.shared.loanInfo.status = STATUS_LOAN.RAISING_CAPITAL.rawValue
         
         APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
-            .done(on: DispatchQueue.main) { model in
+            .done(on: DispatchQueue.main) { [weak self]model in
                 DataManager.shared.loanID = model.loanId!
                 
-                self.confirm_rate_success()
+                self?.confirm_rate_success()
             }
             .catch { error in }
         
@@ -1559,26 +1559,33 @@ class LoanStateViewController: UIViewController {
     // Xóa đơn vay
     func delLoan() {
         
-        self.handleLoadingView(isShow: true)
-        
         APIClient.shared.delLoan(loanID: (self.activeLoan?.loanId)!)
-            .done(on: DispatchQueue.main) { model in
+            .done(on: DispatchQueue.main) { [weak self]model in
                 
-                self.handleLoadingView(isShow: false)
+                guard let code = model.returnCode, code > 0 else {
+                    self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg!, okTitle: "Đồng ý", cancelTitle: nil, completion: { (okAction) in
+                        
+                        DataManager.shared.loanInfo.amount = 0
+                        DataManager.shared.loanInfo.term = 0
+                        
+                        self?.moveHome()
+                    })
+                    
+                    return
+                }
                 
-                self.showGreenBtnMessage(title: "", message: "Đơn vay của bạn đã được xóa. Bạn có thể tạo một đơn mới.", okTitle: "ok", cancelTitle: nil, completion: { (okAction) in
+                self?.showGreenBtnMessage(title: "", message: "Đơn vay của bạn đã được xóa. Bạn có thể tạo một đơn mới.", okTitle: "Đồng ý", cancelTitle: nil, completion: { (okAction) in
                     
                     DataManager.shared.loanInfo.amount = 0
                     DataManager.shared.loanInfo.term = 0
                     
-                    self.moveHome()
+                    self?.moveHome()
                     
                     
                 })
             }
             .catch { error in
                 
-                self.handleLoadingView(isShow: false)
                 
                 self.showGreenBtnMessage(title: "Có lỗi", message: "Đã có lỗi trong quá trình xóa đơn vay. Vui lòng thử lại.", okTitle: "Thử lại", cancelTitle: "Hủy", completion: { (okAction) in
                     if (okAction)
