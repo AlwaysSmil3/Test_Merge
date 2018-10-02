@@ -260,7 +260,6 @@ class DataManager {
         guard let brow = self.browwerInfo, let activeLoan = brow.activeLoan,let loanId = activeLoan.loanId, loanId > 0 else { return }
         
         if let cateID = activeLoan.loanCategoryId, cateID > 0 {
-            //DataManager.shared.loanInfo.loanCategoryID = cateID
             self.currentIndexCategoriesSelectedPopup = Int(cateID)
         }
         
@@ -361,7 +360,7 @@ class DataManager {
             }
             
             if let salary = jobInfo.salary {
-                DataManager.shared.loanInfo.jobInfo.salary = Int32(salary)
+                DataManager.shared.loanInfo.jobInfo.salary = salary
             }
             
             if let phone = jobInfo.companyPhoneNumber {
@@ -403,21 +402,44 @@ class DataManager {
         }
         
         if let text = activeLoan.optionalText {
-            DataManager.shared.loanInfo.optionalText = text
+            if text.count <= getCountOptionalText(cateId: DataManager.shared.loanInfo.loanCategoryID) {
+                DataManager.shared.loanInfo.optionalText = text
+            }
         }
         
         if let optionMedia = activeLoan.optionalMedia {
-            
-            var temp: [[String]] = []
-            for i in optionMedia {
-                if let item = i as? [String] {
-                    temp.append(item)
+            if optionMedia.count <= getCountOptionalMedia(cateId: DataManager.shared.loanInfo.loanCategoryID) {
+                
+                var temp: [[String]] = []
+                for i in optionMedia {
+                    if let item = i as? [String] {
+                        temp.append(item)
+                    }
                 }
-            }
-            
-            if temp.count > 0 {
-                DataManager.shared.loanInfo.optionalMedia.removeAll()
-                DataManager.shared.loanInfo.optionalMedia = temp
+                
+                if temp.count > 0 {
+                    DataManager.shared.loanInfo.optionalMedia.removeAll()
+                    DataManager.shared.loanInfo.optionalMedia = temp
+                }
+                
+            } else {
+                
+                let count = getCountOptionalMedia(cateId: DataManager.shared.loanInfo.loanCategoryID)
+                guard count > 0 else { return }
+                
+                var temp: [[String]] = []
+                for i in 0...count - 1 {
+                    if let item = optionMedia[i] as? [String] {
+                        temp.append(item)
+                    }
+                }
+                
+                if temp.count > 0 {
+                    DataManager.shared.loanInfo.optionalMedia.removeAll()
+                    DataManager.shared.loanInfo.optionalMedia = temp
+                }
+                
+                
             }
             
         }

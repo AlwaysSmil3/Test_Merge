@@ -15,7 +15,7 @@ struct LoanJobInfo: Encodable {
     var position: Int
     var positionTitle: String
     var company: String
-    var salary: Int32
+    var salary: Double
     var companyPhoneNumber: String
     
     var studentId: String

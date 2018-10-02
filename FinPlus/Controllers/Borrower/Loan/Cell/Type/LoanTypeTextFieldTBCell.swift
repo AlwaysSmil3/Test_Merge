@@ -94,11 +94,15 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         guard let parent = self.parent else {
             if id.contains("optionalText") {
                 //thông tin khác
-//                let tempAmount1 = self.tfValue?.text?.replacingOccurrences(of: ",", with: "") ?? ""
-//                let tempAmount2 = tempAmount1.replacingOccurrences(of: ".", with: "")
-                
                 if let index = field_.arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
-                    DataManager.shared.loanInfo.optionalText[index] = self.tfValue?.text ?? ""
+                    if let keyboard = self.field?.keyboard, keyboard.contains("money") {
+                        let temp = (self.tfValue?.text ?? "").replacingOccurrences(of: ",", with: "")
+                        let temp1 = temp.replacingOccurrences(of: ".", with: "")
+                        DataManager.shared.loanInfo.optionalText[index] = temp1
+                    } else {
+                        DataManager.shared.loanInfo.optionalText[index] = self.tfValue?.text ?? ""
+                    }
+                    
                 }
                 
             }
@@ -120,7 +124,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }  else if id == "salary" {
                 let tempAmount1 = self.tfValue?.text?.replacingOccurrences(of: ",", with: "") ?? ""
                 let tempAmount2 = tempAmount1.replacingOccurrences(of: ".", with: "")
-                DataManager.shared.loanInfo.jobInfo.salary = Int32(tempAmount2) ?? 0
+                DataManager.shared.loanInfo.jobInfo.salary = Double(tempAmount2) ?? 0
             } else if id == "companyPhoneNumber"  {
                 DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = self.tfValue?.text ?? ""
             } else if id == "experienceYear"  {
@@ -157,8 +161,27 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 }
                 
                 if value.length() > 0 {
-                    self.tfValue?.text = value
-                    DataManager.shared.loanInfo.optionalText[index] = value
+                    
+                    if let keyboard = self.field?.keyboard, keyboard.contains("money") {
+                        if !value.contains(",") && !value.contains(".") {
+                            let temp = value
+                            DataManager.shared.loanInfo.optionalText[index] = temp
+                            value = self.formatDisplayCurrency(Double(temp) ?? 0)
+                            self.tfValue?.text = value
+                            
+                        } else {
+                            self.tfValue?.text = value
+                            let temp = value.replacingOccurrences(of: ",", with: "")
+                            let temp1 = temp.replacingOccurrences(of: ".", with: "")
+                            DataManager.shared.loanInfo.optionalText[index] = temp1
+                        }
+                    } else {
+                        self.tfValue?.text = value
+                        let temp = value.replacingOccurrences(of: ",", with: "")
+                        let temp1 = temp.replacingOccurrences(of: ".", with: "")
+                        DataManager.shared.loanInfo.optionalText[index] = temp1
+                    }
+                    
                 }
                 
                 if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
@@ -267,9 +290,9 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 
             }  else if id == "salary" {
                 
-                var value: Int32 = 0
+                var value: Double = 0
                 if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.salary, data > 0 {
-                    value = Int32(data)
+                    value = data
                 }
                 
                 if DataManager.shared.loanInfo.jobInfo.salary > 0 {
@@ -278,7 +301,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 
                 if value > 0 {
                     self.tfValue?.text = self.formatDisplayCurrency(Double(value))
-                    DataManager.shared.loanInfo.jobInfo.salary = Int32(value)
+                    DataManager.shared.loanInfo.jobInfo.salary = value
                 }
                 
                 if DataManager.shared.checkFieldIsMissing(key: "salary") {
@@ -489,7 +512,7 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
         
         if let field_ = self.field, let id = field_.id {
             if let parent = self.parent, parent.contains("jobInfo") ,id.contains("salary") {
-                DataManager.shared.loanInfo.jobInfo.salary = Int32(tempAmount2) ?? 0
+                DataManager.shared.loanInfo.jobInfo.salary = Double(tempAmount2) ?? 0
                 return
             }
             
@@ -527,11 +550,11 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
             if id.contains("salary") {
                 maxLength = 13
             } else if id.contains("companyPhoneNumber") {
-                maxLength = 11
+                maxLength = 13
             } else if id.contains("experienceYear") {
                 maxLength = 3
             } else if id.contains("studentId") {
-                maxLength = 12
+                maxLength = 16
             }
         }
         

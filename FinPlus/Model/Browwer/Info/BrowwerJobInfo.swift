@@ -31,7 +31,7 @@ public struct BrowwerJobInfo {
   // MARK: Properties
   public var position: Int?
   public var companyPhoneNumber: String?
-  public var salary: Int?
+  public var salary: Double?
   public var company: String?
   public var jobType: Int?
   public var jobAddress: BrowwerAddress?
@@ -59,7 +59,7 @@ public struct BrowwerJobInfo {
   public init(json: JSON) {
     position = json[SerializationKeys.position].int
     companyPhoneNumber = json[SerializationKeys.companyPhoneNumber].string
-    salary = json[SerializationKeys.salary].int
+    salary = json[SerializationKeys.salary].double
     company = json[SerializationKeys.company].string
     jobType = json[SerializationKeys.jobType].int
     jobAddress = BrowwerAddress(json: json[SerializationKeys.jobAddress])

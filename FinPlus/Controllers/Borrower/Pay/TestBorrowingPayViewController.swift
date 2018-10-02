@@ -245,9 +245,14 @@ class TestBorrowingPayViewController: UIViewController {
 //        self.payAmountPresent = Double(originAmount + interestAmount)
 //        self.payTotalAmount = Double(interestTotalAmount + feePayBefore + amount)
         
-        let expireDate = Date.init(fromString: loan.nextPaymentDate ?? "", format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
+        var expireDate = Date.init(fromString: loan.nextPaymentDate ?? "", format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
         
         self.expireDateString = expireDate.toString(.custom(kDisplayFormat))
+        
+        if self.payAmountPresent == 0, let dateString = self.checkCollectionRightPayForStatusTimelyDebt() {
+            self.expireDateString = dateString
+            expireDate = Date(fromString: dateString, format: DateFormat.custom(kDisplayFormat))
+        }
         
         let payType1 = PayType(id: 1, typeTitle: "Phai tra thang nay", expireDate: expireDate, originAmount: originAmount, interestAmount: interestAmount, sumAmount: originAmount + interestAmount)
         let payAll = PayAllBefore(id: 1, typeTitle: "Tra tat ca luon", originAmount: Float(amount), interestAmount: interestTotalAmount, feeToPayBefore: feePayBefore, sumAmount: Float(self.payTotalAmount))
@@ -342,6 +347,33 @@ class TestBorrowingPayViewController: UIViewController {
             .catch { error in}
     }
     
+    
+    //Check đã thanh toán kỳ nào chưa
+    func checkCollectionRightPayForStatusTimelyDebt() -> String? {
+        
+        guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return nil }
+        
+        let monthCurrent = Date().month()
+        
+        for col in collections {
+            if let status = col.status, status == 2 {
+                if let monthPayed = col.dueDatetime {
+                    let date = Date(fromString: monthPayed, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
+                    let month = date.month()
+                    
+                    if monthCurrent + 1 == month || monthCurrent == month {
+                        //value = true
+                        let days = date.days(from: Date())
+                        if days > 0 && days <= 31 {
+                            return date.toString(.custom(kDisplayFormat))
+                        }
+                    }
+                }
+            }
+        }
+        
+        return nil
+    }
 
     @objc func payBtnAction() {
         // check and show mony bank list
@@ -432,7 +464,7 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             }
             
             cell.isOnTime = self.isOntime
-            
+            cell.dateExpire = self.expireDateString
             cell.updateCellView()
             cell.paymentData = self.paymentInfo?.paymentPeriod
 
