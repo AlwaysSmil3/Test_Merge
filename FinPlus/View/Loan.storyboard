@@ -949,7 +949,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZoT-1o-egI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2606" y="1672"/>
+            <point key="canvasLocation" x="3220" y="1672"/>
         </scene>
         <!--Loan Summary InfoVC-->
         <scene sceneID="Eb5-54-ykX">
@@ -1409,34 +1409,34 @@
                                                         <rect key="frame" x="146" y="14.5" width="5" height="7"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NGHỀ NGHIỆP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mc-fA-nwf">
-                                                        <rect key="frame" x="157" y="11.5" width="76.5" height="13"/>
+                                                        <rect key="frame" x="157" y="11.5" width="72.5" height="13"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="11"/>
                                                         <color key="textColor" red="0.55686274509803924" green="0.63921568627450975" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_disclosureIndicator3" translatesAutoresizingMaskIntoConstraints="NO" id="PZN-LW-69Y">
-                                                        <rect key="frame" x="239.5" y="14.5" width="5" height="7"/>
+                                                        <rect key="frame" x="235.5" y="14.5" width="5" height="7"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TÀI KHOẢN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLv-2M-5mE">
-                                                        <rect key="frame" x="250.5" y="11.5" width="58.5" height="13"/>
+                                                        <rect key="frame" x="246.5" y="11.5" width="57" height="13"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="11"/>
                                                         <color key="textColor" red="0.5568627451" green="0.63921568630000003" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_disclosureIndicator3" translatesAutoresizingMaskIntoConstraints="NO" id="GXD-rU-sUa">
-                                                        <rect key="frame" x="315" y="14.5" width="5" height="7"/>
+                                                        <rect key="frame" x="309.5" y="14.5" width="5" height="7"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NHÂN THÂN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sru-O3-rWh">
-                                                        <rect key="frame" x="326" y="11.5" width="64" height="13"/>
+                                                        <rect key="frame" x="320.5" y="11.5" width="64" height="13"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="11"/>
                                                         <color key="textColor" red="0.5568627451" green="0.63921568630000003" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_disclosureIndicator3" translatesAutoresizingMaskIntoConstraints="NO" id="hWe-7h-3xz">
-                                                        <rect key="frame" x="396" y="14.5" width="5" height="7"/>
+                                                        <rect key="frame" x="390.5" y="14.5" width="5" height="7"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BỔ SUNG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0Q-gL-Tb3">
-                                                        <rect key="frame" x="407" y="11.5" width="51" height="13"/>
+                                                        <rect key="frame" x="401.5" y="11.5" width="48.5" height="13"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="11"/>
                                                         <color key="textColor" red="0.5568627451" green="0.63921568630000003" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2464,7 +2464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uan-KV-COe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3393" y="1672"/>
+            <point key="canvasLocation" x="4057" y="1672"/>
         </scene>
         <!--Loan Social Info View Controller-->
         <scene sceneID="P3c-eR-QKS">
@@ -2893,7 +2893,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đứng trước máy ảnh, cầm thẻ của bạn để phía trước sao cho để mặt và thẻ được hiển thị rõ ràng." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wjm-JK-1bk">
-                                <rect key="frame" x="32" y="543" width="311" height="26"/>
+                                <rect key="frame" x="32" y="542.5" width="311" height="26.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -2906,7 +2906,7 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxt-S2-b6l">
-                                <rect key="frame" x="-127" y="327" width="346" height="13"/>
+                                <rect key="frame" x="-127" y="327" width="346" height="13.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="346" id="mVh-ob-oGF"/>
                                 </constraints>
@@ -3355,6 +3355,100 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j1B-tU-546" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6252" y="941.37931034482767"/>
+        </scene>
+        <!--Read Contract View Controller-->
+        <scene sceneID="2Rq-FI-xek">
+            <objects>
+                <viewController storyboardIdentifier="ReadContractViewController" id="042-sQ-Anw" customClass="ReadContractViewController" customModule="FinPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qBX-f6-aXu"/>
+                        <viewControllerLayoutGuide type="bottom" id="dpa-h9-J1X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VWv-lF-EAo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WkW-RP-7Zx">
+                                <rect key="frame" x="16" y="607" width="343" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="hL8-hu-kHg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Tiếp tục ký hợp đồng"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xác thực nội dung hợp đồng bằng Clip" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neg-v2-VFE">
+                                <rect key="frame" x="56" y="30" width="303" height="20.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
+                                <color key="textColor" red="0.031372549019607843" green="0.070588235294117646" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nội dung hợp đồng" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ope-wT-Ouw">
+                                <rect key="frame" x="16" y="122.5" width="343" height="18"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
+                                <color key="textColor" red="0.031372549019607843" green="0.070588235294117646" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doM-Py-d1i">
+                                <rect key="frame" x="8" y="25" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="GN8-gc-p3t"/>
+                                    <constraint firstAttribute="width" secondItem="doM-Py-d1i" secondAttribute="height" multiplier="1:1" id="bTP-PJ-TNM"/>
+                                </constraints>
+                                <state key="normal" image="ic_close"/>
+                                <connections>
+                                    <action selector="btnCloseTapped:" destination="042-sQ-Anw" eventType="touchUpInside" id="GAq-Gi-JhS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYk-8p-D9l">
+                                <rect key="frame" x="147" y="554" width="81" height="33"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                <state key="normal" title="Quay video"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCg-s5-f9d">
+                                <rect key="frame" x="16" y="156.5" width="343" height="361.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Để ký hợp đồng. Vui lòng ngồi trước camera đọc rõ ràng nội dung hợp đồng với nội dung sau đây:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDf-JA-cic">
+                                <rect key="frame" x="16" y="70.5" width="343" height="36"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
+                                <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TYk-8p-D9l" firstAttribute="centerX" secondItem="VWv-lF-EAo" secondAttribute="centerX" id="2wh-BA-ZcT"/>
+                            <constraint firstItem="TYk-8p-D9l" firstAttribute="top" secondItem="bCg-s5-f9d" secondAttribute="bottom" constant="36" id="5bQ-pA-VSB"/>
+                            <constraint firstItem="ope-wT-Ouw" firstAttribute="top" secondItem="sDf-JA-cic" secondAttribute="bottom" constant="16" id="8bK-vZ-oPM"/>
+                            <constraint firstItem="sDf-JA-cic" firstAttribute="leading" secondItem="VWv-lF-EAo" secondAttribute="leading" constant="16" id="GC3-dq-zKf"/>
+                            <constraint firstAttribute="trailing" secondItem="WkW-RP-7Zx" secondAttribute="trailing" constant="16" id="GnG-g2-SZS"/>
+                            <constraint firstItem="WkW-RP-7Zx" firstAttribute="top" secondItem="TYk-8p-D9l" secondAttribute="bottom" constant="20" id="IK9-Co-Okf"/>
+                            <constraint firstAttribute="trailing" secondItem="sDf-JA-cic" secondAttribute="trailing" constant="16" id="JKv-l6-jc4"/>
+                            <constraint firstItem="neg-v2-VFE" firstAttribute="top" secondItem="qBX-f6-aXu" secondAttribute="bottom" constant="10" id="KIs-PR-I5J"/>
+                            <constraint firstItem="bCg-s5-f9d" firstAttribute="top" secondItem="ope-wT-Ouw" secondAttribute="bottom" constant="16" id="MJe-e8-FOc"/>
+                            <constraint firstItem="dpa-h9-J1X" firstAttribute="top" secondItem="WkW-RP-7Zx" secondAttribute="bottom" constant="16" id="QIj-dl-g2W"/>
+                            <constraint firstAttribute="trailing" secondItem="neg-v2-VFE" secondAttribute="trailing" constant="16" id="TSa-Ud-u3o"/>
+                            <constraint firstItem="sDf-JA-cic" firstAttribute="top" secondItem="neg-v2-VFE" secondAttribute="bottom" constant="20" id="V2p-vQ-us2"/>
+                            <constraint firstItem="bCg-s5-f9d" firstAttribute="leading" secondItem="VWv-lF-EAo" secondAttribute="leading" constant="16" id="iQj-Wd-bHH"/>
+                            <constraint firstItem="ope-wT-Ouw" firstAttribute="leading" secondItem="sDf-JA-cic" secondAttribute="leading" id="nDZ-wv-MdE"/>
+                            <constraint firstItem="WkW-RP-7Zx" firstAttribute="leading" secondItem="VWv-lF-EAo" secondAttribute="leading" constant="16" id="qyI-MP-tru"/>
+                            <constraint firstItem="doM-Py-d1i" firstAttribute="top" secondItem="qBX-f6-aXu" secondAttribute="bottom" constant="5" id="r4V-Wl-jfw"/>
+                            <constraint firstItem="ope-wT-Ouw" firstAttribute="trailing" secondItem="sDf-JA-cic" secondAttribute="trailing" id="t6q-Xx-bkt"/>
+                            <constraint firstAttribute="trailing" secondItem="bCg-s5-f9d" secondAttribute="trailing" constant="16" id="tzc-WX-Vin"/>
+                            <constraint firstItem="doM-Py-d1i" firstAttribute="leading" secondItem="VWv-lF-EAo" secondAttribute="leading" constant="8" id="uE2-U6-qhF"/>
+                            <constraint firstItem="neg-v2-VFE" firstAttribute="leading" secondItem="VWv-lF-EAo" secondAttribute="leadingMargin" constant="40" id="wXe-lG-fNU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnSign" destination="WkW-RP-7Zx" id="AMh-j2-Ekg"/>
+                        <outlet property="btnStartRecordVideo" destination="TYk-8p-D9l" id="3A2-YY-ar1"/>
+                        <outlet property="contentVideoView" destination="bCg-s5-f9d" id="usM-2N-faJ"/>
+                        <outlet property="lblContentContract" destination="ope-wT-Ouw" id="wLI-nd-tF0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NWD-KL-usg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2559.1999999999998" y="1671.8140929535234"/>
         </scene>
     </scenes>
     <resources>

@@ -55,7 +55,7 @@ class AddWalletViewController: UIViewController {
         viettinBtn.layer.cornerRadius = 8
         viettinBtn.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         viettinBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
-        viettinBtn.setTitle(NSLocalizedString("Viettinbank", comment: ""), for: .normal)
+        viettinBtn.setTitle(NSLocalizedString("Vietinbank", comment: ""), for: .normal)
         
         techBtn.layer.borderWidth = 0.5
         techBtn.layer.cornerRadius = 8
@@ -170,7 +170,7 @@ class AddWalletViewController: UIViewController {
             bankName = "Vietcombank"
         }
         else if self.viettinBtn.isSelected {
-            bankName = "Viettinbank"
+            bankName = "Vietinbank"
         }
         else if self.techBtn.isSelected {
             bankName = "Techcombank"

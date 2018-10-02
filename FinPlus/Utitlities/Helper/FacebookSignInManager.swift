@@ -18,6 +18,7 @@ class FacebookSignInManager: NSObject {
     //MARK:- Public functions
     class func basicInfoWithCompletionHandler(_ fromViewController:AnyObject, onCompletion: @escaping LoginCompletionBlock) -> Void {
         
+        logoutFromFacebook()
         //Check internet connection if no internet connection then return
         
         self.getBaicInfoWithCompletionHandler(fromViewController) { (dataDictionary:FacebookDataType?, error: NSError?) -> Void in
