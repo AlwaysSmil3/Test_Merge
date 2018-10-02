@@ -242,7 +242,7 @@ let API_RESPONSE_RETURN_CODE = "returnCode"
 let API_RESPONSE_RETURN_MESSAGE = "returnMsg"
 let API_RESPONSE_RETURN_DATA = "data"
 
-let API_DEVICE_TYPE_OS = 0 // ios 0, android: 1
+let API_DEVICE_TYPE_OS = 1 // ios 1, android: 0
 
 
 
