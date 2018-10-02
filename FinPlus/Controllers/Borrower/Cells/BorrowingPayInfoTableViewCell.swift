@@ -60,7 +60,7 @@ class BorrowingPayInfoTableViewCell: UITableViewCell, UITableViewDataSource, UIT
                 cell.titleLb.text = "Mã hợp đồng"
                 cell.valueLb.text = tableData.contractCode
             case 1:
-                cell.titleLb.text = "Số tiền vay"
+                cell.titleLb.text = LoanAmount
                 let formatter = NumberFormatter()
                 formatter.locale = Locale.current
                 formatter.numberStyle = .currency

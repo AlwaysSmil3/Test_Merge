@@ -27,7 +27,11 @@ let UserDefaultInValidAcademicAddress = "kUserDefaultInValidAcademicAddress"
 let UserDefaultInValidOptionalText = "kUserDefaultInValidOptionalText"
 let UserDefaultInValidOptionalMedia = "kUserDefaultInValidOptionalMedia"
 let UserDefaultInValidBank = "kUserDefaultInValidBank"
-
+// title key
+let MobilizedAmount = "Số tiền đã cam kết cho vay"
+let LoanAmount = "Số tiền vay theo hợp đồng"
+let LoanMobiExpDay = "Thời gian chuẩn bị tiền còn lại"
+let MobilizingStatus = "Đang chuẩn bị tiền"
 
 func clearValueInValidUserDefaultData() {
     userDefault.set(nil, forKey: UserDefaultInValidRelationPhone)
@@ -332,11 +336,12 @@ func getState(type: STATUS_LOAN) -> String {
     case .INTEREST_CONFIRM_EXPIRED:
         return "Quá hạn xác nhận lãi suất"
     case .RAISING_CAPITAL:
-        return "Đang huy động"
+        return MobilizingStatus
     case .PARTIAL_FILLED:
         return "Huy động được một phần"
     case .FILLED:
-        return "Đã huy động đủ 100%"
+//        return "Đã huy động đủ 100%"
+        return "Chờ giải ngân"
     case .CONTRACT_READY:
         return "Chờ ký hợp đồng"
     case .EXPIRED:
