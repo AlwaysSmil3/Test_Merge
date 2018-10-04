@@ -150,8 +150,8 @@ class APIClient {
             
             
             Alamofire.request(mutableURLRequest as URLRequest).responseJSON { (response) in
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 if isShowLoadingView {
                     self.hanldeShowLoadingView(isShow: false)
                 }
@@ -218,8 +218,8 @@ class APIClient {
             mutableURLRequest.url = URL(string: baseURL + endPoint)
             
             Alamofire.request(mutableURLRequest as URLRequest).responseJSON { response in
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 if isShowLoadingView {
                     self.hanldeShowLoadingView(isShow: false)
                 }

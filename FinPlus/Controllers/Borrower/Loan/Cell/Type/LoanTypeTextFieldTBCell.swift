@@ -527,7 +527,14 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
     }
     
     fileprivate func getMaxLength() -> Int {
+        
         var maxLength = 100
+        
+        if let length = self.field?.maxLenght {
+            maxLength = length
+        }
+        
+        /*
         guard let field_ = self.field, let id = field_.id else { return maxLength }
         guard let parent = self.parent else {
             if id.contains("optionalText") {
@@ -557,7 +564,7 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
                 maxLength = 16
             }
         }
-        
+        */
         
         return maxLength
     }

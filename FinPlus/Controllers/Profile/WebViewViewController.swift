@@ -35,9 +35,6 @@ class WebViewViewController: UIViewController, UIWebViewDelegate {
         self.webView.scrollView.showsVerticalScrollIndicator = false;
         self.webView.scrollView.showsHorizontalScrollIndicator = false;
         
-//        let url = URL(string: "http://five9.vn/about-us")
-//        let requestObj = URLRequest(url: url!)
-//        self.webView.loadRequest(requestObj)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,15 +51,16 @@ class WebViewViewController: UIViewController, UIWebViewDelegate {
         case .termView:
             self.title = NSLocalizedString("TERMS_OF_USE", comment: "")
             url = URL(string: DataManager.shared.config?.policy ?? "")
-        //            htmlPath = Bundle.main.path(forResource: "terms-and-conditions", ofType: "html")!
+            break
         case .aboutView:
             self.title = NSLocalizedString("ABOUT_FINSMART", comment: "")
             url = URL(string: DataManager.shared.config?.about ?? "")
-        //            htmlPath = Bundle.main.path(forResource: "about", ofType: "html")!
-        default:
-            self.title = NSLocalizedString("CONTRACT", comment: "")
-            url = URL(string: DataManager.shared.config?.policy ?? "")
-            //            htmlPath = Bundle.main.path(forResource: "terms-and-conditions", ofType: "html")!
+            break
+        case .contractView:
+            self.title = "Điều khoản & Điều kiện vay"
+            url = URL(string: DataManager.shared.config?.policyBorrow ?? "")
+            break
+
         }
         
         //        let url = URL(fileURLWithPath: htmlPath)

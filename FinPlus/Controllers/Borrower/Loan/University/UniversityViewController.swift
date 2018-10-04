@@ -128,7 +128,7 @@ extension UniversityViewController: UITableViewDataSource, UITableViewDelegate {
 extension UniversityViewController: TableViewIndexDataSource, TableViewIndexDelegate {
     
     func indexItems(for tableViewIndex: TableViewIndex) -> [UIView] {
-        var items = UILocalizedIndexedCollation.current().sectionIndexTitles.map{ title -> UIView in
+        let items = UILocalizedIndexedCollation.current().sectionIndexTitles.map{ title -> UIView in
             return StringItem(text: title)
         }
 //        if hasSearchIndex {

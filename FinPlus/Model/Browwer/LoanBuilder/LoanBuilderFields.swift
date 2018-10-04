@@ -28,6 +28,7 @@ public struct LoanBuilderFields {
     static let showTime = "show_time"
     static let arrayIndex = "array_index"
     static let dataName = "data_name"
+    static let maxLength = "max_length"
   }
 
   // MARK: Properties
@@ -49,6 +50,7 @@ public struct LoanBuilderFields {
     public var arrayIndex: Int?
     public var textInputMuiltiline: String?
     public var dataName: String?
+    public var maxLenght: Int?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -80,6 +82,7 @@ public struct LoanBuilderFields {
     showTime = json[SerializationKeys.showTime].boolValue
     arrayIndex = json[SerializationKeys.arrayIndex].int
     dataName = json[SerializationKeys.dataName].string
+    maxLenght = json[SerializationKeys.maxLength].int
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -105,6 +108,7 @@ public struct LoanBuilderFields {
     
     if let value = arrayIndex { dictionary[SerializationKeys.arrayIndex] = value }
     if let value = dataName { dictionary[SerializationKeys.dataName] = value }
+    if let value = maxLenght { dictionary[SerializationKeys.maxLength] = value }
     
     return dictionary
   }

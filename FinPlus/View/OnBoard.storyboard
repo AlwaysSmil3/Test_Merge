@@ -87,9 +87,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="465"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IWf-lw-PU7">
-                                                        <rect key="frame" x="16" y="554" width="343" height="55"/>
+                                                        <rect key="frame" x="16" y="533" width="343" height="76"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="55" id="YTN-eQ-h3x"/>
+                                                            <constraint firstAttribute="height" constant="76" id="YTN-eQ-h3x"/>
                                                         </constraints>
                                                         <string key="text">Nhu cầu vay tiền của bạn sẽ được đáp ứng trực tiếp bởi nhiều bên có tiền nhàn rỗi thông qua nền tảng công nghệ hỗ trợ dịch vụ tài chính của chúng tôi.</string>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
@@ -97,7 +97,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vay trực tiếp từ bên cho vay tiền" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="urr-P8-Xcd">
-                                                        <rect key="frame" x="8" y="508" width="359" height="30"/>
+                                                        <rect key="frame" x="8" y="495" width="359" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="1Ll-jQ-fI9"/>
                                                         </constraints>
@@ -109,7 +109,7 @@
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="Ech-ST-wc9" firstAttribute="leading" secondItem="3Au-6Z-ADy" secondAttribute="leading" id="6iF-nE-aIx"/>
-                                                    <constraint firstItem="urr-P8-Xcd" firstAttribute="top" secondItem="Ech-ST-wc9" secondAttribute="bottom" constant="43" id="FmR-8Q-Oxp"/>
+                                                    <constraint firstItem="urr-P8-Xcd" firstAttribute="top" secondItem="Ech-ST-wc9" secondAttribute="bottom" constant="30" id="FmR-8Q-Oxp"/>
                                                     <constraint firstAttribute="bottom" secondItem="IWf-lw-PU7" secondAttribute="bottom" constant="8" id="MRd-KL-XLT"/>
                                                     <constraint firstItem="urr-P8-Xcd" firstAttribute="leading" secondItem="3Au-6Z-ADy" secondAttribute="leading" constant="8" id="Oh8-bx-cYX"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ech-ST-wc9" secondAttribute="trailing" id="gbH-hO-3Im"/>
@@ -117,7 +117,7 @@
                                                     <constraint firstItem="IWf-lw-PU7" firstAttribute="leading" secondItem="3Au-6Z-ADy" secondAttribute="leading" constant="16" id="prJ-Ll-Jrt"/>
                                                     <constraint firstItem="Ech-ST-wc9" firstAttribute="top" secondItem="3Au-6Z-ADy" secondAttribute="top" id="rOg-11-47z"/>
                                                     <constraint firstAttribute="trailing" secondItem="IWf-lw-PU7" secondAttribute="trailing" constant="16" id="rxa-s4-SYP"/>
-                                                    <constraint firstItem="IWf-lw-PU7" firstAttribute="top" secondItem="urr-P8-Xcd" secondAttribute="bottom" constant="16" id="zwz-zY-aI7"/>
+                                                    <constraint firstItem="IWf-lw-PU7" firstAttribute="top" secondItem="urr-P8-Xcd" secondAttribute="bottom" constant="8" id="zwz-zY-aI7"/>
                                                 </constraints>
                                             </view>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wvZ-eI-nwq">
@@ -127,16 +127,16 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="465"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Một người bạn đồng hành, nhiệt tình như người thân và luôn giữ bí mật như những người lạ. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CK7-nM-A2B">
-                                                        <rect key="frame" x="16" y="554" width="343" height="55"/>
+                                                        <rect key="frame" x="16" y="533" width="343" height="76"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="55" id="wUM-5s-5ZT"/>
+                                                            <constraint firstAttribute="height" constant="76" id="wUM-5s-5ZT"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
                                                         <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cho và Nhận" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPZ-49-fpw">
-                                                        <rect key="frame" x="30" y="508" width="315" height="30"/>
+                                                        <rect key="frame" x="30" y="495" width="315" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="Ge5-cW-FPI"/>
                                                         </constraints>
@@ -154,8 +154,8 @@
                                                     <constraint firstAttribute="bottom" secondItem="CK7-nM-A2B" secondAttribute="bottom" constant="8" id="Pgz-p1-r9Y"/>
                                                     <constraint firstAttribute="trailing" secondItem="CK7-nM-A2B" secondAttribute="trailing" constant="16" id="SvB-WR-Ygi"/>
                                                     <constraint firstAttribute="trailing" secondItem="173-f7-8xY" secondAttribute="trailing" id="X2G-4a-EeL"/>
-                                                    <constraint firstItem="CK7-nM-A2B" firstAttribute="top" secondItem="yPZ-49-fpw" secondAttribute="bottom" constant="16" id="bfv-zE-kRq"/>
-                                                    <constraint firstItem="yPZ-49-fpw" firstAttribute="top" secondItem="173-f7-8xY" secondAttribute="bottom" constant="43" id="ysZ-m8-ctP"/>
+                                                    <constraint firstItem="CK7-nM-A2B" firstAttribute="top" secondItem="yPZ-49-fpw" secondAttribute="bottom" constant="8" id="bfv-zE-kRq"/>
+                                                    <constraint firstItem="yPZ-49-fpw" firstAttribute="top" secondItem="173-f7-8xY" secondAttribute="bottom" constant="30" id="ysZ-m8-ctP"/>
                                                     <constraint firstItem="173-f7-8xY" firstAttribute="leading" secondItem="wvZ-eI-nwq" secondAttribute="leading" id="znh-Zq-KZN"/>
                                                 </constraints>
                                             </view>
@@ -166,9 +166,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="465"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IMH-ea-QnT">
-                                                        <rect key="frame" x="16" y="554" width="343" height="55"/>
+                                                        <rect key="frame" x="16" y="533" width="343" height="76"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="55" id="HR5-1x-zjZ"/>
+                                                            <constraint firstAttribute="height" constant="76" id="HR5-1x-zjZ"/>
                                                         </constraints>
                                                         <string key="text">Lãi suất và phí được thông báo công khai và do chính bạn quyết định. Chia sẻ với bạn là sứ mệnh của chúng tôi. Thay đổi cách mà các bạn vay tiền hoặc đầu tư là điều chúng tôi đang hướng đến những giá trị Tài Chính Nhân Văn.</string>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
@@ -176,7 +176,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minh bạch, chia sẻ và nhân văn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="A0e-fl-rYk">
-                                                        <rect key="frame" x="8" y="508" width="359" height="30"/>
+                                                        <rect key="frame" x="8" y="495" width="359" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="TY2-mr-l8j"/>
                                                         </constraints>
@@ -190,9 +190,9 @@
                                                     <constraint firstItem="IMH-ea-QnT" firstAttribute="leading" secondItem="yde-Sa-oCp" secondAttribute="leading" constant="16" id="Bds-QX-gXa"/>
                                                     <constraint firstAttribute="trailing" secondItem="ynz-EM-weS" secondAttribute="trailing" id="I79-Ha-QFT"/>
                                                     <constraint firstAttribute="trailing" secondItem="A0e-fl-rYk" secondAttribute="trailing" constant="8" id="JgA-JY-W8O"/>
-                                                    <constraint firstItem="IMH-ea-QnT" firstAttribute="top" secondItem="A0e-fl-rYk" secondAttribute="bottom" constant="16" id="P4C-II-8Eq"/>
+                                                    <constraint firstItem="IMH-ea-QnT" firstAttribute="top" secondItem="A0e-fl-rYk" secondAttribute="bottom" constant="8" id="P4C-II-8Eq"/>
                                                     <constraint firstAttribute="trailing" secondItem="IMH-ea-QnT" secondAttribute="trailing" constant="16" id="Pah-6B-DXn"/>
-                                                    <constraint firstItem="A0e-fl-rYk" firstAttribute="top" secondItem="ynz-EM-weS" secondAttribute="bottom" constant="43" id="Rdd-f6-xAZ"/>
+                                                    <constraint firstItem="A0e-fl-rYk" firstAttribute="top" secondItem="ynz-EM-weS" secondAttribute="bottom" constant="30" id="Rdd-f6-xAZ"/>
                                                     <constraint firstItem="A0e-fl-rYk" firstAttribute="leading" secondItem="yde-Sa-oCp" secondAttribute="leading" constant="8" id="SBV-3U-f0l"/>
                                                     <constraint firstItem="ynz-EM-weS" firstAttribute="leading" secondItem="yde-Sa-oCp" secondAttribute="leading" id="ibB-IZ-fgr"/>
                                                     <constraint firstAttribute="bottom" secondItem="IMH-ea-QnT" secondAttribute="bottom" constant="8" id="rlb-os-YEF"/>
