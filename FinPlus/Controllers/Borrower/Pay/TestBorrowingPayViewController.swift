@@ -263,11 +263,11 @@ class TestBorrowingPayViewController: UIViewController {
         let cashInPayment = PaymentMethod(wID: 1, wMethodTitle: "Chuyển khoản/tiền mặt", wMethodDescription: "Chuyển khoản qua internet hoặc đến ngân hàng để chuyển tiền mặt đến một trong những tài khoản ngân hàng của chúng tôi.", wMethodType: 1)
 //        let ATMPayment = PaymentMethod(wID: 2, wMethodTitle: "Sử dụng ATM nội địa", wMethodDescription: "Bạn sẽ được chuyển qua website napas.com.vn để hoàn tất quá trình thanh toán.", wMethodType: 2)
 //        let viettelPayPayment = PaymentMethod(wID: 3, wMethodTitle: "Thanh toán qua ví ViettelPay", wMethodDescription: "Chuyển qua ứng dụng ViettelPay để thanh toán. Bạn sẽ được chuyển về Mony sau khi hoàn thành.", wMethodType: 3)
-        let momoPayment = PaymentMethod(wID: 4, wMethodTitle: "Thanh toán qua ví MoMo", wMethodDescription: "Chuyển qua ứng dụng MoMo để thanh toán. Bạn sẽ được chuyển về Mony sau khi hoàn thành.", wMethodType: 4)
+//        let momoPayment = PaymentMethod(wID: 4, wMethodTitle: "Thanh toán qua ví MoMo", wMethodDescription: "Chuyển qua ứng dụng MoMo để thanh toán. Bạn sẽ được chuyển về Mony sau khi hoàn thành.", wMethodType: 4)
         paymentList.append(cashInPayment)
         //paymentList.append(ATMPayment)
         //paymentList.append(viettelPayPayment)
-        paymentList.append(momoPayment)
+//        paymentList.append(momoPayment)
         
         if paymentList.count > 0 {
             self.methodSelected = paymentList[0]
