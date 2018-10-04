@@ -150,16 +150,14 @@ extension APIClient {
                 .done { json in
 
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
-                        if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
-                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
-                                if status {
-                                    UIApplication.shared.topViewController()?.navigationController?.popViewController(animated: true)
-                                }
-
-
-                            })
-                        }
-
+                        let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
+                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil, completion: { (status) in
+                            if status {
+                                UIApplication.shared.topViewController()?.navigationController?.popViewController(animated: true)
+                            }
+                            
+                        })
+                        
                         return
                     }
 
@@ -208,6 +206,50 @@ extension APIClient {
                 .catch { error in seal.reject(error)}
         }
 
+    }
+    
+    
+    /// Upload contact
+    ///
+    /// - Parameter list: <#list description#>
+    /// - Returns: <#return value description#>
+    func uploadContacts(list: ContactParamsList) -> Promise<APIResponseGeneral> {
+        
+        let endPoint = "loans/contacts/" + "\(DataManager.shared.userID)"
+        let params: JSONDictionary = [
+            "": ""
+        ]
+        
+        let contactData = try? JSONEncoder().encode(list)
+        
+        var dataAPI = Data()
+        
+        if let data = contactData {
+            dataAPI = data
+        }
+        
+        return Promise<APIResponseGeneral> { seal in
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST, jsonData: dataAPI)
+                .done { json in
+                    
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+                        let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
+                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil, completion: { (status) in
+                            if status {
+                            }
+                            
+                            
+                        })
+                        
+                        return
+                    }
+                    
+                    let model = APIResponseGeneral(object: json)
+                    seal.fulfill(model)
+                }
+                .catch { error in seal.reject(error)}
+        }
+        
     }
     
     /* GET [Done]Y/c gửi lại OTP xác thực khoản vay

@@ -175,7 +175,9 @@ class LoanBaseViewController: BaseViewController {
                 DataManager.shared.loanID = model.loanId!
                 DataManager.shared.browwerInfo?.activeLoan = model
             }
-            .catch { error in }
+            .catch { error in
+                self.showGreenBtnMessage(title: TITLE_ALERT_ERROR_CONNECTION, message: API_MESSAGE.OTHER_ERROR, okTitle: "Đóng", cancelTitle: nil)
+        }
     }
     
     
