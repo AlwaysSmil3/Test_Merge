@@ -24,6 +24,7 @@ public struct Config {
     static let role = "role"
     static let dateLimit = "dateLimit"
     static let relationships = "relationships"
+    static let policyBorrow = "policy_borrow"
   }
 
   // MARK: Properties
@@ -39,6 +40,7 @@ public struct Config {
   public var role: [Role]?
   public var dateLimit: DateLimit?
   public var relationships: [Relationships]?
+    public var policyBorrow: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -62,6 +64,7 @@ public struct Config {
     loanStatus = LoanStatus(json: json[SerializationKeys.loanStatus])
     policy = json[SerializationKeys.policy].string
     serviceFee = json[SerializationKeys.serviceFee].int
+    policyBorrow = json[SerializationKeys.policyBorrow].string
     if let items = json[SerializationKeys.role].array { role = items.map { Role(json: $0) } }
     dateLimit = DateLimit(json: json[SerializationKeys.dateLimit])
     if let items = json[SerializationKeys.relationships].array { relationships = items.map { Relationships(json: $0) } }
@@ -84,6 +87,9 @@ public struct Config {
     if let value = role { dictionary[SerializationKeys.role] = value.map { $0.dictionaryRepresentation() } }
     if let value = dateLimit { dictionary[SerializationKeys.dateLimit] = value.dictionaryRepresentation() }
     if let value = relationships { dictionary[SerializationKeys.relationships] = value.map { $0.dictionaryRepresentation() } }
+    
+    if let value = policyBorrow { dictionary[SerializationKeys.policyBorrow] = value }
+    
     return dictionary
   }
 

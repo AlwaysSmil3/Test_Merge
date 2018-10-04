@@ -16,7 +16,7 @@ class AddWalletViewController: UIViewController {
     @IBOutlet weak var techBtn: UIButton!
     @IBOutlet weak var agriBtn: UIButton!
     
-    @IBOutlet weak var viettelPayBtn: UIButton!
+    //@IBOutlet weak var viettelPayBtn: UIButton!
     @IBOutlet weak var btnMomo: UIButton!
     @IBOutlet weak var btnBidv: UIButton!
     
@@ -75,11 +75,11 @@ class AddWalletViewController: UIViewController {
         btnBidv.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         btnBidv.setTitle("Bidv", for: .normal)
         
-        viettelPayBtn.layer.borderWidth = 0.5
-        viettelPayBtn.layer.cornerRadius = 8
-        viettelPayBtn.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
-        viettelPayBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
-        viettelPayBtn.setTitle("ViettelPay", for: .normal)
+//        viettelPayBtn.layer.borderWidth = 0.5
+//        viettelPayBtn.layer.cornerRadius = 8
+//        viettelPayBtn.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
+//        viettelPayBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
+//        viettelPayBtn.setTitle("ViettelPay", for: .normal)
         
         btnMomo.layer.borderWidth = 0.5
         btnMomo.layer.cornerRadius = 8
@@ -115,7 +115,9 @@ class AddWalletViewController: UIViewController {
             case .Viettinbank?: setBorderColor(button: viettinBtn, isSelect: true)
             case .Techcombank?: setBorderColor(button: techBtn, isSelect: true)
             case .Agribank?: setBorderColor(button: agriBtn, isSelect: true)
-            case .ViettelPay?: setBorderColor(button: viettelPayBtn, isSelect: true)
+            case .ViettelPay?:
+                //setBorderColor(button: viettelPayBtn, isSelect: true)
+                break
             case .Momo?: setBorderColor(button: btnMomo, isSelect: true)
             case .Bidv?: setBorderColor(button: btnBidv, isSelect: true)
             case .none:
@@ -177,9 +179,11 @@ class AddWalletViewController: UIViewController {
         }
         else if self.agriBtn.isSelected {
             bankName = "Agribank"
-        } else if self.viettelPayBtn.isSelected {
-            bankName = "ViettelPay"
-        } else if self.btnMomo.isSelected {
+        }
+//        else if self.viettelPayBtn.isSelected {
+//            bankName = "ViettelPay"
+//        }
+        else if self.btnMomo.isSelected {
             bankName = "MoMo"
         } else if self.btnBidv.isSelected {
             bankName = "Bidv"
@@ -244,7 +248,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: viettinBtn, isSelect: false)
         setBorderColor(button: techBtn, isSelect: false)
         setBorderColor(button: agriBtn, isSelect: false)
-        setBorderColor(button: viettelPayBtn, isSelect: false)
+        //setBorderColor(button: viettelPayBtn, isSelect: false)
         setBorderColor(button: btnMomo, isSelect: false)
     }
     
@@ -254,7 +258,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: viettinBtn, isSelect: true)
         setBorderColor(button: techBtn, isSelect: false)
         setBorderColor(button: agriBtn, isSelect: false)
-        setBorderColor(button: viettelPayBtn, isSelect: false)
+        //setBorderColor(button: viettelPayBtn, isSelect: false)
         setBorderColor(button: btnMomo, isSelect: false)
         setBorderColor(button: btnBidv, isSelect: false)
     }
@@ -265,7 +269,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: viettinBtn, isSelect: false)
         setBorderColor(button: techBtn, isSelect: true)
         setBorderColor(button: agriBtn, isSelect: false)
-        setBorderColor(button: viettelPayBtn, isSelect: false)
+        //setBorderColor(button: viettelPayBtn, isSelect: false)
         setBorderColor(button: btnMomo, isSelect: false)
         setBorderColor(button: btnBidv, isSelect: false)
     }
@@ -276,7 +280,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: viettinBtn, isSelect: false)
         setBorderColor(button: techBtn, isSelect: false)
         setBorderColor(button: agriBtn, isSelect: true)
-        setBorderColor(button: viettelPayBtn, isSelect: false)
+        //setBorderColor(button: viettelPayBtn, isSelect: false)
         setBorderColor(button: btnMomo, isSelect: false)
         setBorderColor(button: btnBidv, isSelect: false)
     }
@@ -285,7 +289,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: viettinBtn, isSelect: false)
         setBorderColor(button: techBtn, isSelect: false)
         setBorderColor(button: agriBtn, isSelect: false)
-        setBorderColor(button: viettelPayBtn, isSelect: true)
+        //setBorderColor(button: viettelPayBtn, isSelect: true)
         setBorderColor(button: btnMomo, isSelect: false)
         setBorderColor(button: btnBidv, isSelect: false)
     }
@@ -295,7 +299,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: viettinBtn, isSelect: false)
         setBorderColor(button: techBtn, isSelect: false)
         setBorderColor(button: agriBtn, isSelect: false)
-        setBorderColor(button: viettelPayBtn, isSelect: false)
+        //setBorderColor(button: viettelPayBtn, isSelect: false)
         setBorderColor(button: btnMomo, isSelect: true)
         setBorderColor(button: btnBidv, isSelect: false)
     }
@@ -305,7 +309,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: viettinBtn, isSelect: false)
         setBorderColor(button: techBtn, isSelect: false)
         setBorderColor(button: agriBtn, isSelect: false)
-        setBorderColor(button: viettelPayBtn, isSelect: false)
+        //setBorderColor(button: viettelPayBtn, isSelect: false)
         setBorderColor(button: btnMomo, isSelect: false)
         setBorderColor(button: btnBidv, isSelect: true)
     }
