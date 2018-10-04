@@ -71,22 +71,25 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
     
     private func reloadData() {
         self.currentAfter = 0
-        self.notificationList.removeAll()
         self.getListNotification()
     }
     
     private func getListNotification() {
         APIClient.shared.getListNotifications(after: self.currentAfter)
-            .done(on: DispatchQueue.main) { model in
-                self.refresher.endRefreshing()
+            .done(on: DispatchQueue.main) { [weak self]model in
+                self?.refresher.endRefreshing()
                 
                 if model.count > 0{
-                    self.noNotificationView.isHidden = true
-                    self.notificationList.append(contentsOf: model)
-                    self.tableView.reloadData()
-                    self.currentAfter = self.notificationList.last?.id ?? 0
+                    if self?.currentAfter == 0 && (self?.notificationList.count ?? 0) > 0 {
+                        self?.notificationList.removeAll()
+                    }
+                    
+                    self?.noNotificationView.isHidden = true
+                    self?.notificationList.append(contentsOf: model)
+                    self?.tableView.reloadData()
+                    self?.currentAfter = self?.notificationList.last?.id ?? 0
                 } else {
-                    self.noNotificationView.isHidden = false
+                    self?.noNotificationView.isHidden = false
                 }
                 
             }

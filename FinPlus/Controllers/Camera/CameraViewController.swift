@@ -110,16 +110,6 @@ class CameraViewController: BaseViewController {
         
         do {
             
-//            if captureDevice.isFocusModeSupported(.continuousAutoFocus) {
-//                try captureDevice.lockForConfiguration()
-//
-//                captureDevice.isSubjectAreaChangeMonitoringEnabled = true
-//                captureDevice.focusMode = .continuousAutoFocus
-//                captureDevice.exposureMode = .continuousAutoExposure
-//                captureDevice.unlockForConfiguration()
-//            }
-            
-            
             // Get an instance of the AVCaptureDeviceInput class using the previous deivce object
             let input = try AVCaptureDeviceInput(device: captureDevice)
             
