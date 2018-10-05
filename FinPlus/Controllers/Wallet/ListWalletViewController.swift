@@ -16,7 +16,7 @@ enum WalletAction {
 
 //CaoHai tra ve du lieu bank khi chon bank
 protocol BankDataDelegate {
-    func isReloadBankData(isReload: Bool)
+    func isReloadBankData(isReload: Bool, newAccountNumber: String)
 }
 
 class ListWalletViewController: BaseViewController {
@@ -72,7 +72,7 @@ class ListWalletViewController: BaseViewController {
         let cellNib = UINib(nibName: "WalletTableViewCell", bundle: nil)
         self.tableview.register(cellNib, forCellReuseIdentifier: cellIdentifier)
         
-        self.loadListBank()
+        self.loadListBank(newAccountNumber: "")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,7 +107,7 @@ class ListWalletViewController: BaseViewController {
     }
     
     /// Cho Loan - Xong mỗi bước là gửi api put cập nhật dữ liệu cho mỗi bước
-    func loadListBank() {
+    func loadListBank(newAccountNumber: String) {
         
         APIClient.shared.getListBank(uId: DataManager.shared.userID)
             .done(on: DispatchQueue.main) { model in
@@ -118,6 +118,16 @@ class ListWalletViewController: BaseViewController {
                 {
                     if let id = model[0].id, id > 0 {
                         self.listWallet.addObjects(from: model)
+                        if newAccountNumber != "" {
+                            for bank in self.listWallet {
+                                if let bank_ = bank as? AccountBank {
+                                    if bank_.accountBankNumber == newAccountNumber {
+                                        self.currentBankIdSelected = bank_.id
+                                    }
+                                }
+                            }
+                        }
+                        
                         self.tableview.reloadData()
                     }
                 }
@@ -443,9 +453,9 @@ extension ListWalletViewController: UITableViewDataSource {
 
 //MARK: BankDataDelegate
 extension ListWalletViewController: BankDataDelegate {
-    func isReloadBankData(isReload: Bool) {
+    func isReloadBankData(isReload: Bool, newAccountNumber: String) {
         guard isReload else { return }
-        self.loadListBank()
+        self.loadListBank(newAccountNumber: newAccountNumber)
     }
 }
 

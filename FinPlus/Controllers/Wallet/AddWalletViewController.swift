@@ -213,7 +213,8 @@ class AddWalletViewController: UIViewController {
                     self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg!, okTitle: "OK", cancelTitle: nil)
                     return
                 }
-                self?.delegate?.isReloadBankData(isReload: true)
+                
+                self?.delegate?.isReloadBankData(isReload: true, newAccountNumber: params["accountNumber"] as! String)
                 self?.navigationController?.popViewController(animated: true)
             }
             .catch { error in

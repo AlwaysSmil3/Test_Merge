@@ -8,13 +8,30 @@
 
 import Foundation
 import CoreLocation
+import APAddressBook
 
 class LoanSummaryInfoVC: BaseViewController {
     
     @IBOutlet var mainTBView: UITableView!
     @IBOutlet var footerTextView: UITextView!
     @IBOutlet var btnAgreeTerm: UIButton?
-
+    
+    let addressBook = APAddressBook()
+    var aPContacts = [APContact]() {
+        didSet {
+            if self.aPContacts.count == 0 {
+                return
+            }
+            
+            self.aPContacts.forEach {
+                self.contactsAPI.contacts.append(self.updateContact(apContact: $0))
+            }
+            
+        }
+    }
+    
+    var contactsAPI: ContactParamsList = ContactParamsList()
+    var isLoadedContact: Bool = false
     
     let currentCategory: LoanCategories? = DataManager.shared.getCurrentCategory()
     
@@ -32,6 +49,29 @@ class LoanSummaryInfoVC: BaseViewController {
         LoanSummaryModel(name: "Số tài khoản", value: "", attributed: nil),
         
     ]
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder);
+        addressBook.fieldsMask = [APContactField.default, APContactField.thumbnail]
+        addressBook.sortDescriptors = [NSSortDescriptor(key: "name.firstName", ascending: true),
+                                       NSSortDescriptor(key: "name.lastName", ascending: true)]
+        addressBook.filterBlock =
+            {
+                (contact: APContact) -> Bool in
+                if let phones = contact.phones
+                {
+                    return phones.count > 0
+                }
+                return false
+        }
+        addressBook.startObserveChanges
+            {
+                [unowned self] in
+                self.loadContacts {
+                    
+                }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +93,9 @@ class LoanSummaryInfoVC: BaseViewController {
         self.setupTextView()
         
         self.updateDataLoan()
+        self.loadContacts {
+            
+        }
         
     }
     
@@ -70,6 +113,109 @@ class LoanSummaryInfoVC: BaseViewController {
         
         self.initLocationManager()
     }
+    
+    //MARK: Contacts
+    /// Load Contact
+    
+    func loadContacts(completion: @escaping() -> Void)
+    {
+        
+        addressBook.loadContacts
+            {
+                [unowned self] (contacts: [APContact]?, error: Error?) in
+                
+                if let contacts = contacts
+                {
+                    self.aPContacts = contacts
+                    self.isLoadedContact = true
+                    completion()
+                    return
+                }
+                
+                guard error != nil else {
+                    return
+                }
+                
+                let message = "Đang không có quyền truy cập danh bạ. Để thực hiện tạo đơn vay, bạn vui lòng vào: Cài đặt -> Mony -> và cho phép danh bạ."
+                
+                self.showAlertView(title: "Danh bạ", message: message, okTitle: "Huỷ", cancelTitle: "Đồng ý", completion: { (bool) in
+                    
+                    guard !bool else {
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                            return
+                        }
+                        
+                        if UIApplication.shared.canOpenURL(settingsUrl) {
+                            UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                print("Settings opened: \(success)") // Prints true
+                            })
+                        }
+                    }
+                    
+                })
+        }
+    }
+    
+    /// Get Account Name Contact
+    ///
+    /// - Returns: <#return value description#>
+    func updateContact(apContact: APContact) -> ContactParams {
+        
+        //self.contact.initData()
+        var tempContact: ContactParams = ContactParams()
+        
+        if let phone = apContact.phones {
+            if let number = phone.first?.number {
+                
+                let numberTemp = number.trimmingCharacters(in: CharacterSet.whitespaces)
+                
+                var numberPhone = numberTemp.replacingOccurrences(of: "\\s", with: "", options: .regularExpression, range: nil)
+                if numberPhone.contains("+84") {
+                    numberPhone = numberPhone.replacingOccurrences(of: "+84", with: "0")
+                }
+                
+                tempContact.contactPhoneNumber = numberPhone
+            }
+        }
+        
+        if let name = apContact.name {
+            guard let lastName = name.lastName, let firstName = name.firstName else {
+                
+                if let lastName = name.lastName {
+                    tempContact.contactName = lastName
+                }
+                
+                if let firstName = name.firstName {
+                    tempContact.contactName = firstName
+                }
+                
+                return tempContact
+            }
+            
+            tempContact.contactName = (firstName + " " + lastName).trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            return tempContact
+        }
+        
+        return tempContact
+    }
+    
+    private func uploadContact() {
+        APIClient.shared.uploadContacts(list: self.contactsAPI)
+            .done(on: DispatchQueue.main) { [weak self] model in
+                self?.checkPermisssionCreateLoan()
+            }
+            .catch { error in
+                self.showGreenBtnMessage(title: TITLE_ALERT_ERROR_CONNECTION, message: API_MESSAGE.OTHER_ERROR, okTitle: "Đóng", cancelTitle: nil)
+                
+        }
+        
+    }
+    
     
     func getPermissionLocation(completion: () -> Void) {
         let status = CLLocationManager.authorizationStatus()
@@ -182,7 +328,7 @@ class LoanSummaryInfoVC: BaseViewController {
     private func updateDataLoan() {
         DataManager.shared.loanInfo.currentStep = 5
         APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
-            .done(on: DispatchQueue.main) { model in
+            .done(on: DispatchQueue.global()) { model in
                 DataManager.shared.loanID = model.loanId!
 
             }
@@ -242,6 +388,24 @@ class LoanSummaryInfoVC: BaseViewController {
             return
         }
         
+        guard DataManager.shared.loanInfo.status == 0 else {
+            self.checkPermisssionCreateLoan()
+            return
+        }
+        //Khi tao loan moi upload
+        if self.isLoadedContact {
+            //Contact da duoc lay
+            self.uploadContact()
+        } else {
+            //Contact chua duoc lay
+            self.loadContacts {
+                self.uploadContact()
+            }
+        }
+    
+    }
+    
+    private func checkPermisssionCreateLoan() {
         self.getPermissionLocation {
             
             DataManager.shared.loanInfo.currentStep = 5
@@ -259,8 +423,8 @@ class LoanSummaryInfoVC: BaseViewController {
                 .catch { error in }
             
         }
-        
     }
+    
     
     private func updateLoanStatus() {
         DataManager.shared.loanInfo.status = DataManager.shared.loanInfo.status - 1
