@@ -294,12 +294,12 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
                 self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: messeage, okTitle: "OK", cancelTitle: nil, completion: { (status) in
                     
                     if self?.walletAction == .LoanNation {
-                        self?.delegate?.isReloadBankData(isReload: true)
+                        self?.delegate?.isReloadBankData(isReload: true, newAccountNumber: "")
                         self?.navigationController?.popViewController(animated: true)
                         return
                     }
                     
-                    self?.delegate?.isReloadBankData(isReload: true)
+                    self?.delegate?.isReloadBankData(isReload: true, newAccountNumber: "")
                     self?.navigationController?.popToRootViewController(animated: true)
                 })
                 
