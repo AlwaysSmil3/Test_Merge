@@ -67,18 +67,18 @@ extension DataManager {
                 missingListTitle.append("Số CMND/thẻ căn cước")
             }
             
-            if self.missingRelationsShip != nil, userDefault.value(forKey: UserDefaultInValidRelationPhone) == nil {
+            if self.missingRelationsShip != nil {
                 missingListKey.append("relationships")
                 missingListTitle.append("Số điện thoại liên lạc của người thân")
             }
             
             
-            if let add = userInfo.residentAddress, let city = add.city, city.length() > 0, userDefault.value(forKey: UserDefaultInValidResidentAddress) == nil {
+            if let add = userInfo.residentAddress, let city = add.city {
                 missingListKey.append("residentAddress")
                 missingListTitle.append("Địa chỉ nhà thường trú")
             }
             
-            if let add = userInfo.currentAddress, let city = add.city, city.length() > 0, userDefault.value(forKey: UserDefaultInValidCurrentAddress) == nil {
+            if let add = userInfo.currentAddress, let city = add.city {
                 missingListKey.append("currentAddress")
                 missingListTitle.append("Địa chỉ nhà tạm trú")
             }
@@ -135,12 +135,12 @@ extension DataManager {
                 missingListTitle.append("SĐT cơ quan")
             }
             
-            if let add = jobInfo.jobAddress, let city = add.city, city.length() > 0, userDefault.value(forKey: UserDefaultInValidJobAddress) == nil {
+            if let add = jobInfo.jobAddress, let city = add.city, city.length() > 0 {
                 missingListKey.append("jobAddress")
                 missingListTitle.append("Địa chỉ cơ quan")
             }
             
-            if let add = jobInfo.academicAddress, let city = add.city, city.length() > 0, userDefault.value(forKey: UserDefaultInValidAcademicAddress) == nil {
+            if let add = jobInfo.academicAddress, let city = add.city, city.length() > 0 {
                 missingListKey.append("academicAddress")
                 missingListTitle.append("Địa chỉ trường học")
             }
@@ -148,7 +148,7 @@ extension DataManager {
         }
         
         //if let bank = miss.bank,
-        if let bank = miss.bank, userDefault.value(forKey: UserDefaultInValidBank) == nil {
+        if let bank = miss.bank {
             var isAdd = false
             if let accountHolder = bank.accountHolder, accountHolder.count > 0 {
                 isAdd = true
@@ -526,7 +526,7 @@ extension DataManager {
         }
         
         
-        if let value = userInfo["birthday"] as? String, value == DataManager.shared.loanInfo.userInfo.birthDay {
+        if let value = userInfo["birthday"] as? String, Date.init(fromString: value, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER)).toString(.custom(kDisplayFormat)) ==  Date.init(fromString: DataManager.shared.loanInfo.userInfo.birthDay, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER)).toString(.custom(kDisplayFormat)) {
             return false
         }
         
