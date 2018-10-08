@@ -74,7 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         
-        print("UIDevice.modelName\(UIDevice.modelName)")
         
         if FinPlusHelper.isConnectedToNetwork() {
             self.getLoanCategories()
