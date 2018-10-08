@@ -50,6 +50,7 @@ class LoanTypePopupVC: BasePopup {
     var type: TypePopup?
     
     var titleString: String = "Thông báo"
+    var otherTextSelection: String?
     
     var indexRelationPhone: Int = 0
 
@@ -130,6 +131,11 @@ class LoanTypePopupVC: BasePopup {
             }
             if update {
                 self.currentIndex = index
+                
+                if index < self.dataSource.count, self.dataSource[index].isTextInput == true {
+                    self.otherTextSelection = DataManager.shared.loanInfo.jobInfo.jobTitle
+                }
+                
             }
             
             
@@ -147,6 +153,10 @@ class LoanTypePopupVC: BasePopup {
             }
             if update {
                 self.currentIndex = index
+                
+                if index < self.dataSource.count, self.dataSource[index].isTextInput == true {
+                    self.otherTextSelection = DataManager.shared.loanInfo.jobInfo.positionTitle
+                }
             }
             break
         case .Strength:
@@ -226,12 +236,25 @@ class LoanTypePopupVC: BasePopup {
             self.titleString = "Nghề nhiệp"
             if let current = DataManager.shared.currentIndexJobSelectedPopup {
                 self.currentIndex = current
+                
+                if let index = self.currentIndex {
+                    if index < self.dataSource.count, self.dataSource[index].isTextInput == true {
+                        self.otherTextSelection = DataManager.shared.loanInfo.jobInfo.jobTitle
+                    }
+                }
+                
             }
             break
         case .JobPosition:
             self.titleString = "Cấp bậc"
             if let current = DataManager.shared.currentIndexJobPositionSelectedPopup {
                 self.currentIndex = current
+                
+                if let index = self.currentIndex {
+                    if index < self.dataSource.count, self.dataSource[index].isTextInput == true {
+                        self.otherTextSelection = DataManager.shared.loanInfo.jobInfo.positionTitle
+                    }
+                }
             }
             break
         case .Strength:
@@ -325,6 +348,9 @@ extension LoanTypePopupVC: UITableViewDelegate, UITableViewDataSource {
             let cell_ = tableView.dequeueReusableCell(withIdentifier: "Loan_Type_Popup_Add_Text_TB_Cell", for: indexPath) as! LoanTypePopupAddTextTBCell
             cell_.data = data
             cell_.delegate = self
+            if let otherText = self.otherTextSelection {
+                cell_.tfValue?.text = otherText
+            }
             return cell_
         }
         
