@@ -250,7 +250,6 @@ class BaseAuthenViewController: BaseViewController {
     
     
     func pushToHomeVC(accountType: AccountType) {
-        print("Push to user home viewcontroller")
         switch accountType {
         case .None:
             self.pushToChoiceKindUserVC()
