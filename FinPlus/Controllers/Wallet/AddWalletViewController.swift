@@ -214,8 +214,11 @@ class AddWalletViewController: UIViewController {
                     return
                 }
                 
-                self?.delegate?.isReloadBankData(isReload: true, newAccountNumber: params["accountNumber"] as! String)
-                self?.navigationController?.popViewController(animated: true)
+                if let accountNumber = params["accountNumber"] as? String {
+                    self?.delegate?.isReloadBankData(isReload: true, newAccountNumber: accountNumber)
+                    self?.navigationController?.popViewController(animated: true)
+                }
+                
             }
             .catch { error in
         }

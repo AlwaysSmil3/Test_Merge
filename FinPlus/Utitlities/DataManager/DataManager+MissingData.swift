@@ -73,12 +73,12 @@ extension DataManager {
             }
             
             
-            if let add = userInfo.residentAddress, let city = add.city {
+            if let add = userInfo.residentAddress, let city = add.city, city.count > 0 {
                 missingListKey.append("residentAddress")
                 missingListTitle.append("Địa chỉ nhà thường trú")
             }
             
-            if let add = userInfo.currentAddress, let city = add.city {
+            if let add = userInfo.currentAddress, let city = add.city, city.count > 0 {
                 missingListKey.append("currentAddress")
                 missingListTitle.append("Địa chỉ nhà tạm trú")
             }
