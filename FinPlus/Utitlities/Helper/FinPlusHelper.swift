@@ -260,11 +260,11 @@ class FinPlusHelper {
 //            }
             
             if isSlider {
-                return (month + Double(sliderValue) * month * rate/(100 * 12 * 30)) / value
+                return (month + Double(sliderValue) * month * rate/(100 * 365)) / value
             }
             
             if DataManager.shared.loanInfo.term > 0 {
-                return (month + Double(DataManager.shared.loanInfo.term) * month * rate/(100 * 12 * 30)) / value
+                return (month + Double(DataManager.shared.loanInfo.term) * month * rate/(100 * 365)) / value
             }
         }
         
