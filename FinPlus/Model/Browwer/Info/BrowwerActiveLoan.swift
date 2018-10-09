@@ -46,6 +46,7 @@ public struct BrowwerActiveLoan {
     
     static let contractUrl = "contractUrl"
     static let note = "note"
+    static let expectedPaymentAmount = "expectedPaymentAmount"
   }
 
   // MARK: Properties
@@ -84,6 +85,7 @@ public struct BrowwerActiveLoan {
     
     public var contractUrl: String?
     public var note: String?
+    public var expectedPaymentAmount: Double?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -135,6 +137,7 @@ public struct BrowwerActiveLoan {
     if let items = json[SerializationKeys.collections].array { collections = items.map { BrowwerCollections(json: $0) } }
     contractUrl = json[SerializationKeys.contractUrl].string
     note = json[SerializationKeys.note].string
+    expectedPaymentAmount = json[SerializationKeys.expectedPaymentAmount].double
     
   }
 
@@ -176,6 +179,7 @@ public struct BrowwerActiveLoan {
     
     if let value = contractUrl { dictionary[SerializationKeys.contractUrl] = value }
     if let value = note { dictionary[SerializationKeys.note] = value }
+    if let value = expectedPaymentAmount { dictionary[SerializationKeys.expectedPaymentAmount] = value }
     
     if let value = collections { dictionary[SerializationKeys.collections] = value.map { $0.dictionaryRepresentation() } }
     

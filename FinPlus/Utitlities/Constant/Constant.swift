@@ -8,6 +8,11 @@
 
 import Foundation
 
+let TitleAmountTempUnderAMounth = "Thanh toán dự kiến"
+let TitleAmountUnderAMounth = "Thanh toán tháng này"
+let TitleAmountTempAboveAMounth = "Số tiền trả góp dự kiến một kỳ"
+let TitleAmountAboveAMounth = "Số tiền trả góp một kỳ"
+
 //Title alert lỗi kết nối
 let TITLE_ALERT_ERROR_CONNECTION = "Lỗi kết nối"
 
