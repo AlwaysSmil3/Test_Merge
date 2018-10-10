@@ -273,12 +273,12 @@ class LoanSummaryInfoVC: BaseViewController {
         
         var labelStudentLoan = ""
         var termDisplay = ""
-        if cate.id == Loan_Student_Category_ID {
-            labelStudentLoan = "Thanh toán dự kiến"
-            termDisplay = "\(term) Ngày"
+        if term < 30 {
+            labelStudentLoan = TitleAmountTempUnderAMounth
+            termDisplay = "\(term) ngày"
         } else {
-            labelStudentLoan = "Trả góp dự kiến hàng tháng"
-            termDisplay = "\(term / 30) Tháng"
+            labelStudentLoan = TitleAmountTempAboveAMounth
+            termDisplay = "\(term / 30) tháng"
         }
         
         var amountDouble = Double(DataManager.shared.loanInfo.amount)

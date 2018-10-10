@@ -206,13 +206,13 @@ class LoanFirstViewController: BaseViewController {
             self.lblMinTermSlider?.text = "\(Int(loan.termMin!)) NGÀY"
             self.lblMaxTermSlider?.text = "\(Int(loan.termMax!)) NGÀY"
             
-            self.lblLeftTempTotalAmount?.text = "Thanh toán dự kiến"
+            self.lblLeftTempTotalAmount?.text = TitleAmountTempUnderAMounth
             
             if let term = self.termSlider?.value, term > 30 {
                 if let va = value {
                     self.lblTermSlider?.text = "\(Int(va / 30))" + " Tháng"
                 }
-                self.lblLeftTempTotalAmount?.text = "Trả góp dự kiến hàng tháng"
+                self.lblLeftTempTotalAmount?.text = TitleAmountTempAboveAMounth
             }
             
             
@@ -226,7 +226,19 @@ class LoanFirstViewController: BaseViewController {
             self.lblMinTermSlider?.text = "\(Int(loan.termMin! / 30)) THÁNG"
             self.lblMaxTermSlider?.text = "\(Int(loan.termMax! / 30)) THÁNG"
             
-            self.lblLeftTempTotalAmount?.text = "Trả góp dự kiến hàng tháng"
+            self.lblLeftTempTotalAmount?.text = TitleAmountTempAboveAMounth
+            
+            if let term = self.termSlider?.value, term < 30 {
+                self.lblTermSlider?.text = "\(Int(loan.termMin!))" + " Ngày"
+                if let va = value {
+                    self.lblTermSlider?.text = "\(Int(va))" + " Ngày"
+                }
+                
+                self.lblMinTermSlider?.text = "\(Int(loan.termMin!)) NGÀY"
+                
+                self.lblLeftTempTotalAmount?.text = TitleAmountTempUnderAMounth
+            }
+            
         }
         
     }
@@ -274,10 +286,15 @@ class LoanFirstViewController: BaseViewController {
         
         DataManager.shared.loanInfo.amount = Int32(Int32(self.amountSlider.value) * MONEY_TERM_DISPLAY)
         
-        if loan.id == Loan_Student_Category_ID {
+        if self.termSlider.value < 30 {
             DataManager.shared.loanInfo.term = Int(self.termSlider.value / 10) * 10
         } else {
             DataManager.shared.loanInfo.term = Int(self.termSlider.value / 30) * 30
+        }
+        
+        guard DataManager.shared.loanInfo.term > 0 else {
+            self.showToastWithMessage(message: "Kỳ hạn vay phải lớn hơn 0")
+            return
         }
         
         completion()
@@ -350,13 +367,21 @@ class LoanFirstViewController: BaseViewController {
                     self.lblTermSlider.text = "\(Int(self.termSlider.value / 30))" + " Tháng"
                 }
                 
-                self.lblLeftTempTotalAmount?.text = "Trả góp dự kiến hàng tháng"
+                self.lblLeftTempTotalAmount?.text = TitleAmountTempAboveAMounth
             } else {
-                self.lblLeftTempTotalAmount?.text = "Thanh toán dự kiến"
+                self.lblLeftTempTotalAmount?.text = TitleAmountTempUnderAMounth
             }
         } else {
             self.termSlider.increment = 30
-            self.lblTermSlider.text = "\(Int(self.termSlider.value / 30))" + " Tháng"
+            
+            if self.termSlider.value < 30 {
+                self.lblTermSlider.text = "\(Int(self.termSlider.value / 10) * 10)" + " Ngày"
+                self.lblLeftTempTotalAmount?.text = TitleAmountTempUnderAMounth
+            } else {
+                self.lblTermSlider.text = "\(Int(self.termSlider.value / 30))" + " Tháng"
+                self.lblLeftTempTotalAmount?.text = TitleAmountTempAboveAMounth
+            }
+            
         }
         self.updatePayTerm(term: self.termSlider.value)
         self.updateTotalAmountMounth()
