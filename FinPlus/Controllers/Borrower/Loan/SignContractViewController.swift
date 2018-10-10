@@ -24,6 +24,10 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.timeCount = 60
+        }
 
         // Do any additional setup after loading the view.
         self.webView.delegate = self
@@ -194,13 +198,9 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
     
     func getOTPContract() {
         APIClient.shared.getOTPContract(loanID: (self.activeLoan?.loanId)!)
-            .done(on: DispatchQueue.main) { model in
+            .done(on: DispatchQueue.main) { [weak self]model in
+                self?.toVerifyVC()
                 
-                let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
-                verifyVC.verifyType = .SignContract
-                verifyVC.loanId = self.activeLoan?.loanId
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.pushViewController(verifyVC, animated: true)
             }
             .catch { error in
                 self.showAlertView(title: "Có lỗi", message: "Đã có lỗi trong quá trình gửi mã xác thực. Vui lòng thử lại.", okTitle: "Thử lại", cancelTitle: "Hủy", completion: { (okAction) in
@@ -215,8 +215,25 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
     
     func sendOTP() {
         self.getPermissionLocation {
-            self.getOTPContract()
+            if let delegate = UIApplication.shared.delegate as? AppDelegate {
+                if delegate.timeCount == 60 {
+                    delegate.timeCount = 0
+                    self.getOTPContract()
+                } else {
+                    self.toVerifyVC()
+                }
+            } else {
+                self.getOTPContract()
+            }
         }
+    }
+    
+    func toVerifyVC() {
+        let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
+        verifyVC.verifyType = .SignContract
+        verifyVC.loanId = self.activeLoan?.loanId
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(verifyVC, animated: true)
     }
     
     /*
