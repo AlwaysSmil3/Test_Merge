@@ -25,6 +25,10 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
         self.setupUI()
         self.setupTextView()
         
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.timeCount = 60
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -120,7 +124,7 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
                     case 0:
                         // code 0.
                         if let returnMessage = model.returnMsg {
-                            self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
+                            self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "Đóng", cancelTitle: nil)
                             return
                         }
                         break
