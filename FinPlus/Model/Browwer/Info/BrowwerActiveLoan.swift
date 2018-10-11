@@ -40,6 +40,8 @@ public struct BrowwerActiveLoan {
     static let approvedAt = "approvedAt"
     static let acceptedAt = "acceptedAt"
     static let nextPaymentDate = "nextPaymentDate"
+    static let disbursementDate = "disbursementDate"
+    
     static let bank = "bank"
     static let bankId = "bankId"
     static let collections = "collections"
@@ -73,7 +75,7 @@ public struct BrowwerActiveLoan {
     public var contractId: Int32?
     public var paidMonth: Int?
     
-    
+    public var disbursementDate: String?
     public var createdAt: String?
     public var approvedAt: String?
     public var acceptedAt: String?
@@ -126,6 +128,7 @@ public struct BrowwerActiveLoan {
     contractId = json[SerializationKeys.contractId].int32
     paidMonth = json[SerializationKeys.paidMonth].int
     
+    disbursementDate = json[SerializationKeys.disbursementDate].string
     createdAt = json[SerializationKeys.createdAt].string
     approvedAt = json[SerializationKeys.approvedAt].string
     acceptedAt = json[SerializationKeys.acceptedAt].string
@@ -169,6 +172,7 @@ public struct BrowwerActiveLoan {
     if let value = contractId { dictionary[SerializationKeys.contractId] = value }
     if let value = paidMonth { dictionary[SerializationKeys.paidMonth] = value }
     
+    if let value = disbursementDate { dictionary[SerializationKeys.disbursementDate] = value }
     if let value = createdAt { dictionary[SerializationKeys.createdAt] = value }
     if let value = approvedAt { dictionary[SerializationKeys.approvedAt] = value }
     if let value = paidMonth { dictionary[SerializationKeys.paidMonth] = value }

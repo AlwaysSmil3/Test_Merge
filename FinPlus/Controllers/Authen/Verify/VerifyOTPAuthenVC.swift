@@ -40,7 +40,7 @@ class VerifyOTPAuthenVC: BaseViewController {
         self.setupPinView()
         
         appDelegate.timer.invalidate()
-        if verifyType != .Login && verifyType != .SignContract {
+        if verifyType != .Login && verifyType != .SignContract && verifyType != .Loan {
             appDelegate.timeCount = 0
         }
         self.lblLimitTime.text = "\(60 - appDelegate.timeCount) " + "giây"

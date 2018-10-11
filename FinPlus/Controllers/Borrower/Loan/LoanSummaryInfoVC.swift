@@ -76,6 +76,10 @@ class LoanSummaryInfoVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.timeCount = 60
+        }
+        
         self.mainTBView.separatorColor = UIColor.clear
         self.mainTBView.tableFooterView = UIView()
         self.mainTBView.allowsSelection = false
@@ -365,10 +369,7 @@ class LoanSummaryInfoVC: BaseViewController {
     private func loan() {
         APIClient.shared.getLoanOTP(loanID: DataManager.shared.loanID ?? 0)
             .done(on: DispatchQueue.main) { [weak self] model in
-
-                let otpVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
-                otpVC.verifyType = .Loan
-                self?.navigationController?.pushViewController(otpVC, animated: true)
+                self?.toVerifyVC()
             }
             .catch { error in }
         
@@ -410,57 +411,41 @@ class LoanSummaryInfoVC: BaseViewController {
             
             DataManager.shared.loanInfo.currentStep = 5
             APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
-                .done(on: DispatchQueue.main) { model in
+                .done(on: DispatchQueue.main) { [weak self]model in
                     DataManager.shared.loanID = model.loanId!
                     
-                    let messeage = "Mã xác thực sẽ được gửi tới " + DataManager.shared.currentAccount + " qua tin nhắn SMS sau khi bạn đồng ý. Bạn có chắc chắn không?"
-                    self.showGreenBtnMessage(title: "Gửi đơn vay", message: messeage, okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ") { (status) in
-                        if status {
-                            self.loan()
+                    if let delegate = UIApplication.shared.delegate as? AppDelegate {
+                        if delegate.timeCount == 60 {
+                            delegate.timeCount = 0
+                            self?.confirmSendOTP()
+                        } else {
+                            self?.toVerifyVC()
                         }
+                    } else {
+                        self?.confirmSendOTP()
                     }
+                    
                 }
                 .catch { error in }
             
         }
     }
     
-    
-    private func updateLoanStatus() {
-        DataManager.shared.loanInfo.status = DataManager.shared.loanInfo.status - 1
-        
-        APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
-            .done(on: DispatchQueue.main) { model in
-                DataManager.shared.loanID = model.loanId!
-                
-                //Lay thong tin nguoi dung
-                APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
-                    .done(on: DispatchQueue.main) { model in
-                        DataManager.shared.browwerInfo = model
-                        
-                        self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Bạn đã cập nhật thông tin xong!", okTitle: "Về trang chủ", cancelTitle: nil) { (status) in
-                            if status {
-                                if let info = DataManager.shared.browwerInfo?.activeLoan,  let loanId = info.loanId, loanId > 0 {
-                                    let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-                                    if let window = UIApplication.shared.delegate?.window, let win = window {
-                                        win.rootViewController = tabbarVC
-                                    }
-                                } else {
-                                    self.navigationController?.popToRootViewController(animated: true)
-                                }
-                            }
-                        }
-                        
-                    }
-                    .catch { error in
-                        self.navigationController?.popToRootViewController(animated: true)
-                }
-                
+    private func confirmSendOTP() {
+        let messeage = "Mã xác thực sẽ được gửi tới " + DataManager.shared.currentAccount + " qua tin nhắn SMS sau khi bạn đồng ý. Bạn có chắc chắn không?"
+        self.showGreenBtnMessage(title: "Gửi đơn vay", message: messeage, okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ") { (status) in
+            if status {
+                self.loan()
             }
-            .catch { error in }
-        
-        
+        }
     }
+    
+    private func toVerifyVC() {
+        let otpVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
+        otpVC.verifyType = .Loan
+        self.navigationController?.pushViewController(otpVC, animated: true)
+    }
+    
     
 }
 

@@ -257,6 +257,23 @@ class LoanStateViewController: UIViewController {
             limitFunding = datelimit.toString(.custom("dd/MM/yyyy HH:mm"))
         }
         
+        //Ngày duyệt đơn
+        func updateApprovedAtDate() {
+            if let date_ = loan.approvedAt, date_.length() > 0 {
+                let date = Date.init(fromString: date_, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
+                dateString = date.toString(.custom(kDisplayFormat))
+            }
+        }
+        
+        //Ngày giải ngân
+        func updateDisbursementDate() {
+            if let date_ = loan.disbursementDate, date_.length() > 0 {
+                let date = Date.init(fromString: date_, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
+                dateString = date.toString(.custom(kDisplayFormat))
+            }
+        }
+        
+        
         dataSource = [
             LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
             LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
@@ -536,6 +553,7 @@ class LoanStateViewController: UIViewController {
             case .RAISING_CAPITAL?:
                 //Đang huy động vốn - 8
                 updateMounthTitle()
+                updateApprovedAtDate()
                 
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -569,6 +587,7 @@ class LoanStateViewController: UIViewController {
             case .PARTIAL_FILLED?:
                 //Huy động được 1 phần - 9
                 updateMounthTitle()
+                updateApprovedAtDate()
                 
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -621,6 +640,7 @@ class LoanStateViewController: UIViewController {
             case .FILLED?:
                 //Đơn vay huy động đủ tiền, chờ ký hợp đồng - 10
                 updateMounthTitle()
+                updateApprovedAtDate()
                 
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -659,6 +679,7 @@ class LoanStateViewController: UIViewController {
             case .CONTRACT_READY? :
                 //Số tiền huy động > 50% và hết thời gian huy động - 11
                 updateMounthTitle()
+                updateApprovedAtDate()
                 
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -698,6 +719,7 @@ class LoanStateViewController: UIViewController {
             case .EXPIRED? :
                 //Đơn vay quá hạn huy động - 12
                 updateMounthTitle()
+                updateApprovedAtDate()
                 
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -737,6 +759,7 @@ class LoanStateViewController: UIViewController {
             case .CONTRACT_SIGNED?:
                 // Đã ký hợp đồng - 13
                 updateMounthTitle()
+                updateApprovedAtDate()
                 
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -762,6 +785,7 @@ class LoanStateViewController: UIViewController {
                 
             case .DISBURSAL?:
                 //đã giải ngân - 14
+                updateDisbursementDate()
                 
                 func reloadDisbusal() {
                     dataSource = [
@@ -823,6 +847,7 @@ class LoanStateViewController: UIViewController {
                 
             case .TIMELY_DEPT?:
                 //Nợ đúng hạn - 16
+                updateDisbursementDate()
                 
                 func reloadTimelyDept() {
                     self.dataSource = [
@@ -900,6 +925,7 @@ class LoanStateViewController: UIViewController {
                 
             case .OVERDUE_DEPT?:
                 //Nợ quá hạn - 15
+                updateDisbursementDate()
                 
                 func reloadOverdueDept() {
                     var overDate = "0"
