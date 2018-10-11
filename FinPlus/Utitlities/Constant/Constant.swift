@@ -8,6 +8,19 @@
 
 import Foundation
 
+//MARK: Version App
+let VERSION_APP = "1.0.0"
+
+func getUserAgent() -> String {
+    let agent = UIWebView().stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
+    return agent
+}
+
+let TitleAmountTempUnderAMounth = "Thanh toán dự kiến"
+let TitleAmountUnderAMounth = "Thanh toán tháng này"
+let TitleAmountTempAboveAMounth = "Số tiền trả góp dự kiến một kỳ"
+let TitleAmountAboveAMounth = "Số tiền trả góp một kỳ"
+
 //Title alert lỗi kết nối
 let TITLE_ALERT_ERROR_CONNECTION = "Lỗi kết nối"
 

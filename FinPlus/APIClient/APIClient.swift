@@ -33,6 +33,11 @@ class APIClient {
             let _deleteRequest = NSMutableURLRequest()
             _deleteRequest.httpMethod = "DELETE"
             _deleteRequest.timeoutInterval = REQUEST_TIMEOUT
+            
+            _deleteRequest.setValue("iOS", forHTTPHeaderField: "X-Client")
+            _deleteRequest.setValue(VERSION_APP, forHTTPHeaderField: "X-App-Version")
+            _deleteRequest.setValue(getUserAgent(), forHTTPHeaderField: "User-Agent")
+            
             _deleteRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _deleteRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
             return _deleteRequest
@@ -48,6 +53,10 @@ class APIClient {
             
             _postRequest.timeoutInterval = REQUEST_TIMEOUT
             
+            _postRequest.setValue("iOS", forHTTPHeaderField: "X-Client")
+            _postRequest.setValue(VERSION_APP, forHTTPHeaderField: "X-App-Version")
+            _postRequest.setValue(getUserAgent(), forHTTPHeaderField: "User-Agent")
+            
             _postRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _postRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
             return _postRequest
@@ -61,8 +70,11 @@ class APIClient {
             let _getRequest = NSMutableURLRequest()
             _getRequest.httpMethod = "GET"
             _getRequest.timeoutInterval = REQUEST_TIMEOUT
-//            _getRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-//            _getRequest.setValue("application/json, text/javascript, */*; q=0.01", forHTTPHeaderField: "Accept")
+            
+            _getRequest.setValue("iOS", forHTTPHeaderField: "X-Client")
+            _getRequest.setValue(VERSION_APP, forHTTPHeaderField: "X-App-Version")
+            _getRequest.setValue(getUserAgent(), forHTTPHeaderField: "User-Agent")
+            
             _getRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _getRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
             return _getRequest
@@ -76,6 +88,11 @@ class APIClient {
             let _putRequest = NSMutableURLRequest()
             _putRequest.httpMethod = "PUT"
             _putRequest.timeoutInterval = REQUEST_TIMEOUT
+            
+            _putRequest.setValue("iOS", forHTTPHeaderField: "X-Client")
+            _putRequest.setValue(VERSION_APP, forHTTPHeaderField: "X-App-Version")
+            _putRequest.setValue(getUserAgent(), forHTTPHeaderField: "User-Agent")
+            
             _putRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _putRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
             return _putRequest

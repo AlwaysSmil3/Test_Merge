@@ -26,6 +26,8 @@ class LoanSendSuccessVC: BaseViewController {
     
     @IBAction func btnGoHomeTapped(_ sender: Any) {
         //Lay thong tin nguoi dung
+        clearValueInValidUserDefaultData()
+        
         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
             .done(on: DispatchQueue.main) { model in
                 DataManager.shared.browwerInfo = model

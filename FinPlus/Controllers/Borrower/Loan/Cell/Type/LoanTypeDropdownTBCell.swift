@@ -183,6 +183,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             
             var value = ""
             var dateTemp = Date()
+            
             if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.birthday, data.length() > 0 {
                 value = data
                 dateTemp = Date.init(fromString: value, format: DateFormat.custom("yyyy-MM-dd HH:mm:ssZ"))
@@ -212,7 +213,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                     self.updateInfoFalse(pre: title)
                 }
                 
-                if let miss = DataManager.shared.missingLoanDataDictionary, let userInfo = miss["userInfo"] as? JSONDictionary, let birtDay = userInfo["birthday"] as? String, DataManager.shared.loanInfo.userInfo.birthDay == birtDay {
+                if let miss = DataManager.shared.missingLoanDataDictionary, let userInfo = miss["userInfo"] as? JSONDictionary, let birtDay = userInfo["birthday"] as? String, Date.init(fromString: birtDay, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER)).toString(.custom(kDisplayFormat)) == self.lblValue?.text {
                     self.updateInfoFalse(pre: title)
                 } else {
                     self.isNeedUpdate = false

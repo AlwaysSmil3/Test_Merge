@@ -72,7 +72,6 @@ class ListLoanViewController: BaseViewController {
     
     
     
-    
     private func getAllLoans() {
         guard self.isCanReload else { return }
         

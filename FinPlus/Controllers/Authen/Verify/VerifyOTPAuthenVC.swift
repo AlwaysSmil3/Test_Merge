@@ -40,7 +40,7 @@ class VerifyOTPAuthenVC: BaseViewController {
         self.setupPinView()
         
         appDelegate.timer.invalidate()
-        if verifyType != .Login {
+        if verifyType != .Login && verifyType != .SignContract {
             appDelegate.timeCount = 0
         }
         self.lblLimitTime.text = "\(60 - appDelegate.timeCount) " + "giây"
@@ -103,9 +103,14 @@ class VerifyOTPAuthenVC: BaseViewController {
         appDelegate.timeCount = 0
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
+        self.clearOTP()
+    }
+    
+    private func clearOTP() {
         for _ in 0...6 {
             self.pinCodeTextField.deleteBackward()
         }
+        self.otp = ""
     }
     
     private func getOTPLoan() {
@@ -267,6 +272,8 @@ class VerifyOTPAuthenVC: BaseViewController {
             break
 
         }
+        
+        self.clearOTP()
     }
     
     //MARK: forgot password

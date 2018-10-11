@@ -99,8 +99,6 @@ class LoanStateViewController: UIViewController {
         self.getLoanCategories()
         
         self.handleDataNoti()
-//        //Map DataLoan
-//        DataManager.shared.mapDataBrowwerAndLoan()
         
         let id = activeLoan?.status
         var isEnableFooterView = false
@@ -137,13 +135,27 @@ class LoanStateViewController: UIViewController {
         }
         
         var rate = 0
-        var payMounthTitle = "Trả góp hàng tháng"
+        var payMounthTitle = TitleAmountAboveAMounth
         var term = "\((loan.term ?? 0)/30) tháng"
         
-        
         if (loan.loanCategoryId == Loan_Student_Category_ID) && (loan.term ?? 0) <= 30 {
-            payMounthTitle = "Thanh toán dự kiến"
+            payMounthTitle = TitleAmountUnderAMounth
             term = "\((loan.term ?? 0)) ngày"
+        } else {
+            if (loan.term ?? 0) < 30 {
+                payMounthTitle = TitleAmountUnderAMounth
+                term = "\((loan.term ?? 0)) ngày"
+            }
+        }
+        
+        func updateMounthTitle() {
+            if payMounthTitle == TitleAmountAboveAMounth {
+                payMounthTitle = TitleAmountTempAboveAMounth
+            }
+            
+            if payMounthTitle == TitleAmountUnderAMounth {
+                payMounthTitle = TitleAmountTempUnderAMounth
+            }
         }
         
         titleCate = loan.loanCategory?.title ?? "Đang cập nhật"
@@ -160,7 +172,7 @@ class LoanStateViewController: UIViewController {
         
         //Số tiên thanh toán hàng tháng
         let payMounth = FinPlusHelper.CalculateMoneyPayMonth(month: Double(loan.amount ?? 0), term: Double((loan.term ?? 0)/30), rate: Double(rate))
-        let payMounthString = FinPlusHelper.formatDisplayCurrency(payMounth) + "đ"
+        var payMounthString = FinPlusHelper.formatDisplayCurrency(payMounth) + "đ"
         
         
         //Ngày tạo đơn
@@ -198,6 +210,10 @@ class LoanStateViewController: UIViewController {
             }
         }
         
+        if let expectedAmount = loan.expectedPaymentAmount, expectedAmount > 0 {
+            payMounthString = FinPlusHelper.formatDisplayCurrency(expectedAmount) + "đ"
+            payMounthStringWithFunded = FinPlusHelper.formatDisplayCurrency(expectedAmount) + "đ"
+        }
         
         
         //Ngay thanh toán tiếp theo
@@ -258,9 +274,7 @@ class LoanStateViewController: UIViewController {
             switch(STATUS_LOAN(rawValue: id!)) {
             case .DRAFT?:
                 //Trang thai Draft = 0
-                if payMounthTitle == "Trả góp hàng tháng" {
-                    payMounthTitle = "Trả góp dự kiến hàng tháng"
-                }
+                updateMounthTitle()
                 
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -290,9 +304,8 @@ class LoanStateViewController: UIViewController {
                 
             case .SALE_REVIEW?:
                 //Kinh doanh duyệt = 1
-                if payMounthTitle == "Trả góp hàng tháng" {
-                    payMounthTitle = "Trả góp dự kiến hàng tháng"
-                }
+                updateMounthTitle()
+                
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
@@ -316,9 +329,8 @@ class LoanStateViewController: UIViewController {
                 
             case .RISK_REVIEW?:
                 // Thẩm định viên duyệt = 3
-                if payMounthTitle == "Trả góp hàng tháng" {
-                    payMounthTitle = "Trả góp dự kiến hàng tháng"
-                }
+                updateMounthTitle()
+                
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
@@ -347,9 +359,8 @@ class LoanStateViewController: UIViewController {
                     self.navigationController?.isNavigationBarHidden = true
                 }
                 
-                if payMounthTitle == "Trả góp hàng tháng" {
-                    payMounthTitle = "Trả góp dự kiến hàng tháng"
-                }
+                updateMounthTitle()
+                
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
@@ -390,9 +401,8 @@ class LoanStateViewController: UIViewController {
                     self.navigationController?.isNavigationBarHidden = true
                 }
                 
-                if payMounthTitle == "Trả góp hàng tháng" {
-                    payMounthTitle = "Trả góp dự kiến hàng tháng"
-                }
+                updateMounthTitle()
+                
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
@@ -427,9 +437,7 @@ class LoanStateViewController: UIViewController {
                 
             case .INTEREST_CONFIRM?, .INTEREST_CONFIRM_EXPIRED?:
                 //Cho xác nhận lãi xuất, qúa hạn xác nhận lãi xuất, 6 - 7
-                if payMounthTitle == "Trả góp hàng tháng" {
-                    payMounthTitle = "Trả góp dự kiến hàng tháng"
-                }
+                updateMounthTitle()
                 
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -469,6 +477,7 @@ class LoanStateViewController: UIViewController {
             case .REJECTED?:
                 //Bị từ chối - 5
                 DataManager.shared.reloadDataFirstLoanVC()
+                updateMounthTitle()
                 
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -526,6 +535,8 @@ class LoanStateViewController: UIViewController {
                 
             case .RAISING_CAPITAL?:
                 //Đang huy động vốn - 8
+                updateMounthTitle()
+                
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày duyệt đơn", value: dateString, attributed: nil),
@@ -557,8 +568,7 @@ class LoanStateViewController: UIViewController {
                 
             case .PARTIAL_FILLED?:
                 //Huy động được 1 phần - 9
-                
-                //let funded = FinPlusHelper.formatDisplayCurrency(Double(loan.funded ?? 0)) + "đ"
+                updateMounthTitle()
                 
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -610,6 +620,8 @@ class LoanStateViewController: UIViewController {
                 
             case .FILLED?:
                 //Đơn vay huy động đủ tiền, chờ ký hợp đồng - 10
+                updateMounthTitle()
+                
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày duyệt đơn", value: dateString, attributed: nil),
@@ -646,6 +658,8 @@ class LoanStateViewController: UIViewController {
                 
             case .CONTRACT_READY? :
                 //Số tiền huy động > 50% và hết thời gian huy động - 11
+                updateMounthTitle()
+                
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày duyệt đơn", value: dateString, attributed: nil),
@@ -683,6 +697,7 @@ class LoanStateViewController: UIViewController {
                 
             case .EXPIRED? :
                 //Đơn vay quá hạn huy động - 12
+                updateMounthTitle()
                 
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -721,6 +736,8 @@ class LoanStateViewController: UIViewController {
                 
             case .CONTRACT_SIGNED?:
                 // Đã ký hợp đồng - 13
+                updateMounthTitle()
+                
                 dataSource = [
                     LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
                     LoanSummaryModel(name: "Ngày duyệt đơn", value: dateString, attributed: nil),
