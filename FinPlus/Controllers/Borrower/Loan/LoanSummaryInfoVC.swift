@@ -410,13 +410,13 @@ class LoanSummaryInfoVC: BaseViewController {
             
             DataManager.shared.loanInfo.currentStep = 5
             APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
-                .done(on: DispatchQueue.main) { model in
+                .done(on: DispatchQueue.main) { [weak self]model in
                     DataManager.shared.loanID = model.loanId!
                     
                     let messeage = "Mã xác thực sẽ được gửi tới " + DataManager.shared.currentAccount + " qua tin nhắn SMS sau khi bạn đồng ý. Bạn có chắc chắn không?"
-                    self.showGreenBtnMessage(title: "Gửi đơn vay", message: messeage, okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ") { (status) in
+                    self?.showGreenBtnMessage(title: "Gửi đơn vay", message: messeage, okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ") { (status) in
                         if status {
-                            self.loan()
+                            self?.loan()
                         }
                     }
                 }
@@ -426,6 +426,7 @@ class LoanSummaryInfoVC: BaseViewController {
     }
     
     
+    /*
     private func updateLoanStatus() {
         DataManager.shared.loanInfo.status = DataManager.shared.loanInfo.status - 1
         
@@ -461,6 +462,7 @@ class LoanSummaryInfoVC: BaseViewController {
         
         
     }
+    */
     
 }
 
