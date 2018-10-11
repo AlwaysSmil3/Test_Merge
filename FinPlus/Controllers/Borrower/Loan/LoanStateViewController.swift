@@ -762,6 +762,10 @@ class LoanStateViewController: UIViewController {
                 
             case .DISBURSAL?:
                 //đã giải ngân - 14
+                if let date_ = loan.disbursementDate, date_.length() > 0 {
+                    let date = Date.init(fromString: date_, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
+                    dateString = date.toString(.custom(kDisplayFormat))
+                }
                 
                 func reloadDisbusal() {
                     dataSource = [
@@ -823,6 +827,10 @@ class LoanStateViewController: UIViewController {
                 
             case .TIMELY_DEPT?:
                 //Nợ đúng hạn - 16
+                if let date_ = loan.disbursementDate, date_.length() > 0 {
+                    let date = Date.init(fromString: date_, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
+                    dateString = date.toString(.custom(kDisplayFormat))
+                }
                 
                 func reloadTimelyDept() {
                     self.dataSource = [
@@ -900,6 +908,10 @@ class LoanStateViewController: UIViewController {
                 
             case .OVERDUE_DEPT?:
                 //Nợ quá hạn - 15
+                if let date_ = loan.disbursementDate, date_.length() > 0 {
+                    let date = Date.init(fromString: date_, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
+                    dateString = date.toString(.custom(kDisplayFormat))
+                }
                 
                 func reloadOverdueDept() {
                     var overDate = "0"
