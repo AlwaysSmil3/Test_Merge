@@ -51,6 +51,11 @@ class LoanSummaryViewController: BaseViewController {
         if (loan.loanCategoryId == Loan_Student_Category_ID) && (loan.term ?? 0) <= 30 {
             payMounthTitle = "Thanh toán dự kiến"
             term = "\((loan.term ?? 0)) ngày"
+        } else {
+            if (loan.term ?? 0) < 30 {
+                payMounthTitle = TitleAmountUnderAMounth
+                term = "\((loan.term ?? 0)) ngày"
+            }
         }
         
         titleCate = loan.loanCategory?.title ?? "Đang cập nhật"

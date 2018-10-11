@@ -141,6 +141,11 @@ class LoanStateViewController: UIViewController {
         if (loan.loanCategoryId == Loan_Student_Category_ID) && (loan.term ?? 0) <= 30 {
             payMounthTitle = TitleAmountUnderAMounth
             term = "\((loan.term ?? 0)) ngày"
+        } else {
+            if (loan.term ?? 0) < 30 {
+                payMounthTitle = TitleAmountUnderAMounth
+                term = "\((loan.term ?? 0)) ngày"
+            }
         }
         
         func updateMounthTitle() {
