@@ -36,7 +36,9 @@ class APIClient {
             
             _deleteRequest.setValue("iOS", forHTTPHeaderField: "X-Client")
             _deleteRequest.setValue(VERSION_APP, forHTTPHeaderField: "X-App-Version")
-            _deleteRequest.setValue(getUserAgent(), forHTTPHeaderField: "User-Agent")
+            DispatchQueue.main.async {
+                _deleteRequest.setValue(getUserAgent(), forHTTPHeaderField: "User-Agent")
+            }
             
             _deleteRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _deleteRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
@@ -55,7 +57,10 @@ class APIClient {
             
             _postRequest.setValue("iOS", forHTTPHeaderField: "X-Client")
             _postRequest.setValue(VERSION_APP, forHTTPHeaderField: "X-App-Version")
-            _postRequest.setValue(getUserAgent(), forHTTPHeaderField: "User-Agent")
+            DispatchQueue.main.async {
+                _postRequest.setValue(getUserAgent(), forHTTPHeaderField: "User-Agent")
+            }
+            
             
             _postRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _postRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
@@ -73,7 +78,9 @@ class APIClient {
             
             _getRequest.setValue("iOS", forHTTPHeaderField: "X-Client")
             _getRequest.setValue(VERSION_APP, forHTTPHeaderField: "X-App-Version")
-            _getRequest.setValue(getUserAgent(), forHTTPHeaderField: "User-Agent")
+            DispatchQueue.main.async {
+                _getRequest.setValue(getUserAgent(), forHTTPHeaderField: "User-Agent")
+            }
             
             _getRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _getRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
@@ -91,7 +98,9 @@ class APIClient {
             
             _putRequest.setValue("iOS", forHTTPHeaderField: "X-Client")
             _putRequest.setValue(VERSION_APP, forHTTPHeaderField: "X-App-Version")
-            _putRequest.setValue(getUserAgent(), forHTTPHeaderField: "User-Agent")
+            DispatchQueue.main.async {
+                _putRequest.setValue(getUserAgent(), forHTTPHeaderField: "User-Agent")
+            }
             
             _putRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _putRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
