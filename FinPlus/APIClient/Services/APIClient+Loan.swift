@@ -30,10 +30,8 @@ extension APIClient {
                     var array: [LoanCategories] = []
 
                     if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
-                        for d in data {
-                            let loan = LoanCategories(object: d)
-                            array.append(loan)
-                        }
+                        array = data.compactMap {LoanCategories(object: $0)}
+
                     }
 
                     seal.fulfill(array)
@@ -56,10 +54,8 @@ extension APIClient {
                     var array: [BrowwerActiveLoan] = []
 
                     if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
-                        for d in data {
-                            let model1 = BrowwerActiveLoan(object: d)
-                            array.append(model1)
-                        }
+                        array = data.compactMap {BrowwerActiveLoan(object: $0)}
+
                     }
                     seal.fulfill(array)
 
@@ -78,13 +74,9 @@ extension APIClient {
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
                     var array: [BrowwerActiveLoan] = []
-                    print(endPoint)
-                    print("jsondata: \(json)")
+                    
                     if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
-                        for d in data {
-                            let model1 = BrowwerActiveLoan(object: d)
-                            array.append(model1)
-                        }
+                        array = data.compactMap {BrowwerActiveLoan(object: $0)}
                     }
                     seal.fulfill(array)
 
@@ -108,10 +100,8 @@ extension APIClient {
                     var array: [BrowwerActiveLoan] = []
 
                     if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
-                        for d in data {
-                            let model1 = BrowwerActiveLoan(object: d)
-                            array.append(model1)
-                        }
+                        array = data.compactMap {BrowwerActiveLoan(object: $0)}
+
                     }
                     seal.fulfill(array)
                 }

@@ -2807,7 +2807,7 @@
                                     <outlet property="delegate" destination="EXJ-hi-ThY" id="gzM-01-5wC"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ULC-QB-a0r" customClass="MYTableViewIndex">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ULC-QB-a0r">
                                 <rect key="frame" x="331" y="110" width="44" height="557"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2835,7 +2835,6 @@
                     <connections>
                         <outlet property="mainTableView" destination="MVW-FD-OId" id="0lm-ey-kh1"/>
                         <outlet property="searchBar" destination="S4Z-mh-hc4" id="wlI-XV-iXp"/>
-                        <outlet property="tableViewIndex" destination="ULC-QB-a0r" id="Oih-Te-oz2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sis-ZX-dsi" userLabel="First Responder" sceneMemberID="firstResponder"/>
