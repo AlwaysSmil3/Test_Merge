@@ -13,15 +13,13 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
     
     var currentAfter: Int = 0
     
-    var notificationList: [NotificationModel] = [] {
-        didSet{
-            //            self.tableView.reloadData()
-        }
-    }
+    var notificationList: [NotificationModel] = []
+    
+    let countItemsOnAPage = 20
     
     var refresher: UIRefreshControl!
     
-    @IBOutlet var noNotificationView: UIView!
+    @IBOutlet weak var noNotificationView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -75,7 +73,7 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
     }
     
     private func getListNotification() {
-        APIClient.shared.getListNotifications(after: self.currentAfter)
+        APIClient.shared.getListNotifications(after: self.currentAfter, limit: self.countItemsOnAPage)
             .done(on: DispatchQueue.main) { [weak self]model in
                 self?.refresher.endRefreshing()
                 
@@ -216,8 +214,7 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         
         if indexPath.row == self.notificationList.count - 1 {
             
-            if self.notificationList.count % 20 == 0 {
-                //self.currentAfter += self.notificationList.last?.id ?? 0
+            if self.notificationList.count % countItemsOnAPage == 0 {
                 self.getListNotification()
             }
         }
