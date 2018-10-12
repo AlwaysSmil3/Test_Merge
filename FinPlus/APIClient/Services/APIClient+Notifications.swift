@@ -14,10 +14,10 @@ extension APIClient {
     /// <#Description#>
     ///
     /// - Returns: <#return value description#>
-    func getListNotifications(after: Int) -> Promise<[NotificationModel]> {
+    func getListNotifications(after: Int, limit: Int = 20) -> Promise<[NotificationModel]> {
         return Promise<[NotificationModel]> { seal in
             let uID = DataManager.shared.userID
-            let endPoint = "/users/\(uID)/notifications?after=\(after)&limit=\(20)"
+            let endPoint = "/users/\(uID)/notifications?after=\(after)&limit=\(limit)"
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
