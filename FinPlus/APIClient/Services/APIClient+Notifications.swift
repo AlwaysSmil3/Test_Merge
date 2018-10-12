@@ -30,10 +30,8 @@ extension APIClient {
                     var array: [NotificationModel] = []
                     
                     if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
-                        for d in data {
-                            let model1 = NotificationModel(object: d)
-                            array.append(model1)
-                        }
+                        array = data.compactMap {NotificationModel(object: $0)}
+
                     }
                     seal.fulfill(array)
                 }

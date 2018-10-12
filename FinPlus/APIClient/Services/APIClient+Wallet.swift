@@ -24,10 +24,8 @@ extension APIClient {
                 .done(on: DispatchQueue.main) { json in
                     var array: [AccountBank] = []
                     if let dataArray = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
-                        for d in dataArray {
-                            let wal = AccountBank(object: d)
-                            array.append(wal)
-                        }
+                        array = dataArray.compactMap { AccountBank(object: $0) }
+
                     }
                     
                     seal.fulfill(array)
@@ -58,10 +56,8 @@ extension APIClient {
                     
                     var array: [AccountBank] = []
                     if let dataArray = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
-                        for d in dataArray {
-                            let wal = AccountBank(object: d)
-                            array.append(wal)
-                        }
+                        array = dataArray.compactMap { AccountBank(object: $0) }
+
                     }
                     
                     seal.fulfill(array)
