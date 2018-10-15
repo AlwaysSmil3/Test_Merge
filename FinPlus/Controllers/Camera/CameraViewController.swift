@@ -80,6 +80,7 @@ class CameraViewController: BaseViewController {
                     self.showAlertView(title: "Camera", message: message, okTitle: "Huỷ", cancelTitle: "Đồng ý", completion: { (bool) in
                         
                         guard !bool else {
+                            self.dismiss(animated: true, completion: nil)
                             return
                         }
                         
