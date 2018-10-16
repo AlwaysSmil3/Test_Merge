@@ -34,28 +34,39 @@ class LoanInfoJobVC: LoanBaseViewController {
     private func updateDataForLoanAPI(completion: () -> Void) {
         
         if  !DataManager.shared.isLendingforStudent() {
-            if DataManager.shared.loanInfo.jobInfo.jobTitle.length() == 0 {
-                self.showToastWithMessage(message: "Vui lòng chọn nghề nghiệp")
+            
+            if DataManager.shared.loanInfo.jobInfo.jobTitle.count == 0 {
+                self.showToastWithMessage(message: "Vui lòng chọn loại hình hoạt động")
                 return
             }
             
-            if DataManager.shared.loanInfo.jobInfo.jobAddress.city.length() == 0 {
-                self.showToastWithMessage(message: "Vui lòng chọn địa chỉ cơ quan.")
+            if DataManager.shared.loanInfo.jobInfo.academicLevel < 0 {
+                self.showToastWithMessage(message: "Vui lòng chọn trình độ học vấn")
                 return
             }
             
-            if DataManager.shared.loanInfo.jobInfo.company.length() == 0 {
-                self.showToastWithMessage(message: "Vui lòng nhập tên cơ quan để tiếp tục.")
-                return
-            }
-            
-            if DataManager.shared.loanInfo.jobInfo.positionTitle.length() == 0 {
+            if DataManager.shared.loanInfo.jobInfo.positionTitle.count == 0 {
                 self.showToastWithMessage(message: "Vui lòng nhập vị trí làm việc để tiếp tục.")
                 return
             }
             
+            if DataManager.shared.loanInfo.jobInfo.company.count == 0 {
+                self.showToastWithMessage(message: "Vui lòng nhập nơi làm việc để tiếp tục.")
+                return
+            }
+            
+            if DataManager.shared.loanInfo.jobInfo.experienceYear < 0 {
+                self.showToastWithMessage(message: "Vui lòng nhập số năm kinh nghiệm để tiếp tục.")
+                return
+            }
+            
             if DataManager.shared.loanInfo.jobInfo.salary == 0 {
-                self.showToastWithMessage(message: "Vui lòng nhập mức thu nhập hàng tháng để tiếp tục.")
+                self.showToastWithMessage(message: "Vui lòng nhập tổng thu nhập hàng tháng để tiếp tục.")
+                return
+            }
+            
+            if DataManager.shared.loanInfo.jobInfo.jobAddress.city.count == 0 {
+                self.showToastWithMessage(message: "Vui lòng chọn địa chỉ làm việc.")
                 return
             }
             
@@ -65,6 +76,11 @@ class LoanInfoJobVC: LoanBaseViewController {
             
             if DataManager.shared.loanInfo.jobInfo.academicName.length() == 0 {
                 self.showToastWithMessage(message: "Vui lòng nhập tên trường học để tiếp tục.")
+                return
+            }
+            
+            if DataManager.shared.loanInfo.jobInfo.strength < 0 {
+                self.showToastWithMessage(message: "Vui lòng chọn học lực của bạn để tiếp tục.")
                 return
             }
             
