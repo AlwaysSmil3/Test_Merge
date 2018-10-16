@@ -167,7 +167,7 @@ struct LoanInfo: Encodable {
     ///
     /// - Parameter cateId: <#cateId description#>
     func initOptionalMedia(cateId: Int16) -> [[String]] {
-        var value: [[String]] = [[]]
+        var value: [[String]] = []
         for _ in 0...getCountOptionalMedia(cateId: cateId) - 1 {
             value.append([])
         }
