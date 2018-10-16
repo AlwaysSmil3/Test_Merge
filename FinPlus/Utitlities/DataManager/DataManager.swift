@@ -402,7 +402,7 @@ class DataManager {
         }
         
         if let text = activeLoan.optionalText {
-            if text.count <= getCountOptionalText(cateId: DataManager.shared.loanInfo.loanCategoryID) {
+            if text.count > 0 && text.count <= getCountOptionalText(cateId: DataManager.shared.loanInfo.loanCategoryID) {
                 DataManager.shared.loanInfo.optionalText = text
             }
         }

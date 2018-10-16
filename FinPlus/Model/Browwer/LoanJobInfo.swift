@@ -42,7 +42,7 @@ struct LoanJobInfo: Encodable {
         self.studentId = ""
         self.strength = -1
         self.academicLevel = -1
-        self.experienceYear = 0
+        self.experienceYear = -1
         self.academicName = ""
         
     }
