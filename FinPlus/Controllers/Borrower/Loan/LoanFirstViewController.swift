@@ -120,14 +120,6 @@ class LoanFirstViewController: BaseViewController {
             
         }
         
-//        if let loan = DataManager.shared.browwerInfo?.activeLoan, let status = loan.status, status != STATUS_LOAN.REJECTED.rawValue, let term_ = loan.term, term_ > 0 {
-//            term = Float(term_)
-//        }
-//
-//        if let loan = DataManager.shared.browwerInfo?.activeLoan, let amount_ = loan.amount, amount_ > 0 {
-//            amount = Double(amount_)
-//        }
-        
         if let loan = DataManager.shared.browwerInfo?.activeLoan, let cateId_ = loan.loanCategoryId, cateId_ > 0 {
             cateID = cateId_
         }
@@ -215,7 +207,6 @@ class LoanFirstViewController: BaseViewController {
                 self.lblLeftTempTotalAmount?.text = TitleAmountTempAboveAMounth
             }
             
-            
         } else {
             self.lblTermSlider?.text = "\(Int(loan.termMin! / 30))" + " Tháng"
             if let value_ = value {
@@ -223,7 +214,12 @@ class LoanFirstViewController: BaseViewController {
             }
             self.termSlider?.increment = 30
             
-            self.lblMinTermSlider?.text = "\(Int(loan.termMin! / 30)) THÁNG"
+            if loan.termMin! < 30 {
+                self.lblMinTermSlider?.text = "\(Int(loan.termMin!)) NGÀY"
+            } else {
+                self.lblMinTermSlider?.text = "\(Int(loan.termMin! / 30)) THÁNG"
+            }
+            
             self.lblMaxTermSlider?.text = "\(Int(loan.termMax! / 30)) THÁNG"
             
             self.lblLeftTempTotalAmount?.text = TitleAmountTempAboveAMounth
@@ -233,8 +229,6 @@ class LoanFirstViewController: BaseViewController {
                 if let va = value {
                     self.lblTermSlider?.text = "\(Int(va))" + " Ngày"
                 }
-                
-                self.lblMinTermSlider?.text = "\(Int(loan.termMin!)) NGÀY"
                 
                 self.lblLeftTempTotalAmount?.text = TitleAmountTempUnderAMounth
             }
