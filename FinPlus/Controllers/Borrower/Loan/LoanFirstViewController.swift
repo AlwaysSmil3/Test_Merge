@@ -348,12 +348,19 @@ class LoanFirstViewController: BaseViewController {
         guard let loan = self.loanCategory else { return }
         //Cho set step
         let termValue = self.termSlider.value
+        
+        if termValue > 30 {
+            self.termSlider.increment = 30
+        } else {
+            self.termSlider.increment = 10
+        }
+        
         if loan.id == Loan_Student_Category_ID {
-            if termValue > 30 {
-                self.termSlider.increment = 30
-            } else {
-                self.termSlider.increment = 10
-            }
+//            if termValue > 30 {
+//                self.termSlider.increment = 30
+//            } else {
+//                self.termSlider.increment = 10
+//            }
             
             self.lblTermSlider.text = "\(Int(self.termSlider.value / 10) * 10)" + " Ngày"
             
@@ -372,7 +379,7 @@ class LoanFirstViewController: BaseViewController {
                 self.lblLeftTempTotalAmount?.text = TitleAmountTempUnderAMounth
             }
         } else {
-            self.termSlider.increment = 30
+            //self.termSlider.increment = 30
             
             if self.termSlider.value < 30 {
                 self.lblTermSlider.text = "\(Int(self.termSlider.value / 10) * 10)" + " Ngày"

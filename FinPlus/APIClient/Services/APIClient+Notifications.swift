@@ -14,10 +14,10 @@ extension APIClient {
     /// <#Description#>
     ///
     /// - Returns: <#return value description#>
-    func getListNotifications(after: Int) -> Promise<[NotificationModel]> {
+    func getListNotifications(after: Int, limit: Int = 20) -> Promise<[NotificationModel]> {
         return Promise<[NotificationModel]> { seal in
             let uID = DataManager.shared.userID
-            let endPoint = "/users/\(uID)/notifications?after=\(after)&limit=\(20)"
+            let endPoint = "/users/\(uID)/notifications?after=\(after)&limit=\(limit)"
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
@@ -30,10 +30,8 @@ extension APIClient {
                     var array: [NotificationModel] = []
                     
                     if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
-                        for d in data {
-                            let model1 = NotificationModel(object: d)
-                            array.append(model1)
-                        }
+                        array = data.compactMap {NotificationModel(object: $0)}
+
                     }
                     seal.fulfill(array)
                 }

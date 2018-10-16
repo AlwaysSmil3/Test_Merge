@@ -120,11 +120,7 @@ extension APIClient {
                         var array: [AccountBank] = []
                         
                         if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
-                            
-                            for d in data {
-                                let model1 = AccountBank(object: d)
-                                array.append(model1)
-                            }
+                            array = data.compactMap{ AccountBank(object: $0) }
                             
                         }
                         

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import MYTableViewIndex
 
 protocol UniversitySelectionDelegate {
     func universitySelected(model: UniversityModel)
@@ -17,7 +16,6 @@ class UniversityViewController: BaseViewController {
     
     @IBOutlet var mainTableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
-    @IBOutlet var tableViewIndex: TableViewIndex!
     
     var dataSource: [UniversityModel] = [] {
         didSet {
@@ -45,9 +43,6 @@ class UniversityViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.tableViewIndex.delegate = self
-//        self.tableViewIndex.dataSource = self
-        self.tableViewIndex.isHidden = true
         self.mainTableView.tableFooterView = UIView()
         
         self.getDataUniversityFromJSON()
@@ -124,36 +119,6 @@ extension UniversityViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-//MARK: TableViewIndexDataSource, TableViewIndexDelegate
-extension UniversityViewController: TableViewIndexDataSource, TableViewIndexDelegate {
-    
-    func indexItems(for tableViewIndex: TableViewIndex) -> [UIView] {
-        let items = UILocalizedIndexedCollation.current().sectionIndexTitles.map{ title -> UIView in
-            return StringItem(text: title)
-        }
-//        if hasSearchIndex {
-//            items.insert(SearchItem(), at: 0)
-//        }
-        return items
-    }
-    
-    func tableViewIndex(_ tableViewIndex: TableViewIndex, didSelect item: UIView, at index: Int) -> Bool {
-        let originalOffset = self.mainTableView.contentOffset
-        
-//        if item is SearchItem {
-//            self.mainTableView.scrollRectToVisible(searchController.searchBar.frame, animated: false)
-//        } else {
-            //let sectionIndex = hasSearchIndex ? index - 1 : index
-            let sectionIndex = index
-            let rowCount = self.mainTableView.numberOfRows(inSection: sectionIndex)
-            let indexPath = IndexPath(row: rowCount > 0 ? 0 : NSNotFound, section: sectionIndex)
-            self.mainTableView.scrollToRow(at: indexPath, at: .top, animated: false)
-        //}
-        return self.mainTableView.contentOffset != originalOffset
-    }
-    
-    
-}
 
 //MARK: UISearchBarDelegate
 extension UniversityViewController: UISearchBarDelegate {
