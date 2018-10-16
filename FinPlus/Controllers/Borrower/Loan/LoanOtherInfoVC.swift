@@ -76,12 +76,10 @@ class LoanOtherInfoVC: LoanBaseViewController {
     private func checkIsReqruiedOptionalText() -> Bool {
         guard let builder = self.loanCate?.builders, builder.count > 3, let listField = builder[3].fields else { return true }
         
-        var index = 0
-        for text in DataManager.shared.loanInfo.optionalText {
+        for (index, text) in DataManager.shared.loanInfo.optionalText.enumerated() {
             if text.count == 0 &&  listField.count > index && listField[index].isRequired == true {
                 return false
             }
-            index += 1
         }
         return true
     }
@@ -93,16 +91,19 @@ class LoanOtherInfoVC: LoanBaseViewController {
     private func checkIsReqruiedOptionalMedia() -> Bool {
         guard let builder = self.loanCate?.builders, builder.count > 3, let listField = builder[3].fields else { return true }
         
-        var index = 0
         let totalCount = DataManager.shared.loanInfo.optionalMedia.count
+        var optionTextCount = DataManager.shared.loanInfo.optionalText.count
+        if optionTextCount == 0 {
+            optionTextCount = getCountOptionalText(cateId: DataManager.shared.loanInfo.loanCategoryID)
+        }
         
-        for media in DataManager.shared.loanInfo.optionalMedia {
+        for (index, media) in DataManager.shared.loanInfo.optionalMedia.enumerated() {
             
-            if index < totalCount && media.count == 0 && listField.count > (index + DataManager.shared.loanInfo.optionalText.count) && listField[index + DataManager.shared.loanInfo.optionalText.count].isRequired == true {
+            if index < totalCount && media.count == 0 && listField.count > (index + optionTextCount) && listField[index + optionTextCount].isRequired == true {
                 
                 return false
             }
-            index += 1
+            
         }
         return true
     }
