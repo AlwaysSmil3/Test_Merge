@@ -290,6 +290,10 @@ class LoanSummaryInfoVC: BaseViewController {
         
         amountDouble = FinPlusHelper.CalculateMoneyPayMonth(month: amountDouble, term: Double(term/30), rate: cate.interestRate!)
         
+        if let expectedAmount = DataManager.shared.browwerInfo?.activeLoan?.expectedPaymentAmount, expectedAmount > 0 {
+            amountDouble = expectedAmount
+        }
+        
         dataSource = [
             LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
             LoanSummaryModel(name: "Ngày tạo đơn", value: date, attributed: nil),
