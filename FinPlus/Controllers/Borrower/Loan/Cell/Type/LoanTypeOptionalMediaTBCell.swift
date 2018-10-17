@@ -309,8 +309,11 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
         }
         
         if let data = self.dataSourceCollection[indexPath.row] as? String {
-            //cell.imgValue.sd_setImage(with: URL(string: data), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), completed: nil)
-            cell.imgValue.kf.setImage(with: URL(string: data), placeholder: #imageLiteral(resourceName: "imagefirstOnboard"), options: nil, progressBlock: nil, completionHandler: nil)
+            
+//            cell.imgValue.kf.setImage(with: URL(string: data), placeholder: #imageLiteral(resourceName: "imagefirstOnboard"), options: nil, progressBlock: nil, completionHandler: nil)
+            
+            cell.imgValue.kf.setImage(with: URL(string: data), placeholder: #imageLiteral(resourceName: "imagefirstOnboard"), options: [.transition(ImageTransition.fade(1))], progressBlock: nil, completionHandler: nil)
+            
             cell.imgAdd.isHidden = true
             cell.btnDelete.isHidden = false
             cell.urlImg = data
