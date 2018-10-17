@@ -72,7 +72,7 @@ class LoanSummaryViewController: BaseViewController {
         
         //Số tiên thanh toán hàng tháng
         let payMounth = FinPlusHelper.CalculateMoneyPayMonth(month: Double(loan.amount ?? 0), term: Double((loan.term ?? 0)/30), rate: Double(rate))
-        let payMounthString = FinPlusHelper.formatDisplayCurrency(payMounth) + "đ"
+        var payMounthString = FinPlusHelper.formatDisplayCurrency(payMounth) + "đ"
         
         
         //Ngày tạo đơn
@@ -98,6 +98,11 @@ class LoanSummaryViewController: BaseViewController {
             let payMounthWithFunded = FinPlusHelper.CalculateMoneyPayMonth(month: Double(fun), term: Double((loan.term ?? 0)/30), rate: Double(rate))
             payMounthStringWithFunded = FinPlusHelper.formatDisplayCurrency(payMounthWithFunded) + "đ"
             
+        }
+        
+        if let expectedAmount = loan.expectedPaymentAmount, expectedAmount > 0 {
+            payMounthString = FinPlusHelper.formatDisplayCurrency(expectedAmount) + "đ"
+            payMounthStringWithFunded = FinPlusHelper.formatDisplayCurrency(expectedAmount) + "đ"
         }
         /*
         //Ngay thanh toán tiếp theo
