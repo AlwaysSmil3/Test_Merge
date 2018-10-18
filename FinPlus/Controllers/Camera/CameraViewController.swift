@@ -306,7 +306,13 @@ class CameraViewController: BaseViewController {
         // Set photo settings for our need
         photoSettings.isAutoStillImageStabilizationEnabled = true
         photoSettings.isHighResolutionPhotoEnabled = true
-        photoSettings.flashMode = .auto
+        
+        if let device = self.currentDevice, device.hasFlash {
+            let position = device.position
+            
+            photoSettings.flashMode = position == .front || position == .unspecified ? .off : .auto
+        }
+        
         
         // Call capturePhoto method by passing our photo settings and a delegate implementing AVCapturePhotoCaptureDelegate
         capturePhotoOutput.capturePhoto(with: photoSettings, delegate: self)
