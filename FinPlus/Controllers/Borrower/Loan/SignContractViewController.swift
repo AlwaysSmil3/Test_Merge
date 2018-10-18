@@ -62,12 +62,6 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         self.title = "Ký hợp đồng"
         
 
-//            if let pdf = Bundle.main.path(forResource: "contract", ofType: "pdf") {
-//                let url = URL(fileURLWithPath: pdf)
-//                let request = URLRequest(url: url)
-//                self.webView.loadRequest(request)
-//            }
-
     }
     
     override func viewWillAppear(_ animated: Bool) {

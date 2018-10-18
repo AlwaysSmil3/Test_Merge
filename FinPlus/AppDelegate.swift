@@ -309,9 +309,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 DataManager.shared.loanCategories.append(contentsOf: model)
             }
             .catch { error in
-                // Get Loan Data from Json
-                DataManager.shared.getDataLoanFromJSON()
-            }
+                
+        }
         
     }
     

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		15942B202105B32300591BA4 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15942B1F2105B32300591BA4 /* PaymentMethod.swift */; };
-		159F1504214A5AD8006B15FF /* contract.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 159F1503214A5AD8006B15FF /* contract.pdf */; };
 		48D46DDE05C608E1D160EC14 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
 		6302C10721393DA90037277E /* DataManager+MissingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302C10621393DA90037277E /* DataManager+MissingData.swift */; };
 		63037F4F21115531002CE49B /* APIClient+Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63037F4E21115531002CE49B /* APIClient+Payment.swift */; };
@@ -206,7 +205,6 @@
 		639C9E2120A18A7500F2CF5E /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0E20A18A7500F2CF5E /* Oswald-Light.ttf */; };
 		639C9E2420A1A4FF00F2CF5E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9E2320A1A4FF00F2CF5E /* Constant.swift */; };
 		63B49D40213FEFC300C7B999 /* GuideCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B49D3F213FEFC300C7B999 /* GuideCaptureViewController.swift */; };
-		63B833CA20CE79C400416596 /* LoanBuilder.json in Resources */ = {isa = PBXBuildFile; fileRef = 63B833C920CE79C400416596 /* LoanBuilder.json */; };
 		63C5C8E520AC183D00F65068 /* FacebookSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C5C8E420AC183D00F65068 /* FacebookSignInManager.swift */; };
 		63D170EF2111AF8200990A60 /* CollectionPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D170EE2111AF8200990A60 /* CollectionPay.swift */; };
 		63D49DAD20D3997A00114AFA /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D49DAC20D3997A00114AFA /* Popup.storyboard */; };
@@ -300,9 +298,6 @@
 		E774D30B20CA2F7B00F7696D /* ListWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774D30A20CA2F7B00F7696D /* ListWalletViewController.swift */; };
 		E774D31120CA398300F7696D /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774D30F20CA398300F7696D /* WalletTableViewCell.swift */; };
 		E774D31220CA398300F7696D /* WalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E774D31020CA398300F7696D /* WalletTableViewCell.xib */; };
-		E7A4A0A420E6321600B5F7ED /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = E7A4A0A220E6321500B5F7ED /* about.html */; };
-		E7A4A0A520E6321600B5F7ED /* terms-and-conditions.html in Resources */ = {isa = PBXBuildFile; fileRef = E7A4A0A320E6321500B5F7ED /* terms-and-conditions.html */; };
-		E7A4A0A720E65B9500B5F7ED /* hop-dong.html in Resources */ = {isa = PBXBuildFile; fileRef = E7A4A0A620E65B9400B5F7ED /* hop-dong.html */; };
 		E7BC256F20CF8096001FF0F4 /* SpreadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC256E20CF8095001FF0F4 /* SpreadCell.swift */; };
 		E7BC258720CFDACA001FF0F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7BC257420CFDACA001FF0F4 /* Assets.xcassets */; };
 		E7BC258820CFDACA001FF0F4 /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC257520CFDACA001FF0F4 /* FAQView.swift */; };
@@ -351,7 +346,6 @@
 
 /* Begin PBXFileReference section */
 		15942B1F2105B32300591BA4 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
-		159F1503214A5AD8006B15FF /* contract.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = contract.pdf; sourceTree = "<group>"; };
 		6302C10621393DA90037277E /* DataManager+MissingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+MissingData.swift"; sourceTree = "<group>"; };
 		63037F4E21115531002CE49B /* APIClient+Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Payment.swift"; sourceTree = "<group>"; };
 		63037F5121119A93002CE49B /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -555,7 +549,6 @@
 		639C9E0E20A18A7500F2CF5E /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
 		639C9E2320A1A4FF00F2CF5E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		63B49D3F213FEFC300C7B999 /* GuideCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideCaptureViewController.swift; sourceTree = "<group>"; };
-		63B833C920CE79C400416596 /* LoanBuilder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoanBuilder.json; sourceTree = "<group>"; };
 		63C5C8E420AC183D00F65068 /* FacebookSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSignInManager.swift; sourceTree = "<group>"; };
 		63C5C8E620AC26DA00F65068 /* FinPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinPlus.entitlements; sourceTree = "<group>"; };
 		63D170EE2111AF8200990A60 /* CollectionPay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionPay.swift; sourceTree = "<group>"; };
@@ -653,9 +646,6 @@
 		E774D30A20CA2F7B00F7696D /* ListWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWalletViewController.swift; sourceTree = "<group>"; };
 		E774D30F20CA398300F7696D /* WalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewCell.swift; sourceTree = "<group>"; };
 		E774D31020CA398300F7696D /* WalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletTableViewCell.xib; sourceTree = "<group>"; };
-		E7A4A0A220E6321500B5F7ED /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
-		E7A4A0A320E6321500B5F7ED /* terms-and-conditions.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "terms-and-conditions.html"; sourceTree = "<group>"; };
-		E7A4A0A620E65B9400B5F7ED /* hop-dong.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "hop-dong.html"; sourceTree = "<group>"; };
 		E7BC256E20CF8095001FF0F4 /* SpreadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpreadCell.swift; sourceTree = "<group>"; };
 		E7BC257120CFDACA001FF0F4 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E7BC257420CFDACA001FF0F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1145,7 +1135,6 @@
 		639C9DB120A1498A00F2CF5E /* FinPlus */ = {
 			isa = PBXGroup;
 			children = (
-				159F1503214A5AD8006B15FF /* contract.pdf */,
 				639C9DC820A14A5900F2CF5E /* APIClient */,
 				639C9DB220A1498A00F2CF5E /* AppDelegate.swift */,
 				639C9DBC20A1498A00F2CF5E /* Assets.xcassets */,
@@ -1156,7 +1145,6 @@
 				6339D24A20BCF312008B40F8 /* GoogleService-Info.plist */,
 				639C9DC120A1498A00F2CF5E /* Info.plist */,
 				639C9DBE20A1498A00F2CF5E /* LaunchScreen.storyboard */,
-				63B833C920CE79C400416596 /* LoanBuilder.json */,
 				E774D30820CA2C6400F7696D /* Localizable.strings */,
 				639C9DB620A1498A00F2CF5E /* Main.storyboard */,
 				639C9DCB20A14A7900F2CF5E /* Model */,
@@ -1611,9 +1599,6 @@
 			isa = PBXGroup;
 			children = (
 				63FAF5522140C9DD00985B92 /* university.json */,
-				E7A4A0A620E65B9400B5F7ED /* hop-dong.html */,
-				E7A4A0A220E6321500B5F7ED /* about.html */,
-				E7A4A0A320E6321500B5F7ED /* terms-and-conditions.html */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1844,7 +1829,6 @@
 				84114BDA20D79A6F005026DF /* TestPayHistoryViewController.xib in Resources */,
 				E76AF6AC20DB4F7700C71305 /* FooterButtonView.xib in Resources */,
 				639C9E2120A18A7500F2CF5E /* Oswald-Light.ttf in Resources */,
-				E7A4A0A520E6321600B5F7ED /* terms-and-conditions.html in Resources */,
 				84CBBE5720CF85610058C834 /* NotificationTableViewCell.xib in Resources */,
 				84CBBE4D20CF82A40058C834 /* Notification.storyboard in Resources */,
 				639C9E0F20A18A7500F2CF5E /* Roboto-Medium.ttf in Resources */,
@@ -1853,7 +1837,6 @@
 				639C9E1620A18A7500F2CF5E /* Roboto-Italic.ttf in Resources */,
 				630BA61620C22A4100880DAE /* SF-Pro-Display-Heavy.otf in Resources */,
 				63D4CB6420F2FFB900519FFB /* LoanOtherInfoCollectionCell.xib in Resources */,
-				E7A4A0A420E6321600B5F7ED /* about.html in Resources */,
 				639C9E1520A18A7500F2CF5E /* Roboto-LightItalic.ttf in Resources */,
 				630BA61F20C22A4100880DAE /* SF-Pro-Display-LightItalic.otf in Resources */,
 				E772D77420CA7C86001F0B8E /* LoanTableViewCell.xib in Resources */,
@@ -1884,13 +1867,11 @@
 				E75B706020DA3963007D158D /* TitleTableViewCell.xib in Resources */,
 				84114BCF20D79464005026DF /* PayAllTableViewCell.xib in Resources */,
 				63D4CB6A20F2FFB900519FFB /* LoanTypePhoneRelationTBCell.xib in Resources */,
-				159F1504214A5AD8006B15FF /* contract.pdf in Resources */,
 				63D49DAD20D3997A00114AFA /* Popup.storyboard in Resources */,
 				63748C01210ADBEC00E79EB6 /* MonyBankListViewController.xib in Resources */,
 				6339D24B20BCF312008B40F8 /* GoogleService-Info.plist in Resources */,
 				639C9E1220A18A7500F2CF5E /* Roboto-MediumItalic.ttf in Resources */,
 				630BA62720C22A4100880DAE /* SF-Pro-Text-LightItalic.otf in Resources */,
-				63B833CA20CE79C400416596 /* LoanBuilder.json in Resources */,
 				84114BD220D79464005026DF /* BorrowingPayInfoTableViewCell.xib in Resources */,
 				63D4CB6820F2FFB900519FFB /* LoanTypeFooterTBView.xib in Resources */,
 				639C9DBD20A1498A00F2CF5E /* Assets.xcassets in Resources */,
@@ -1922,7 +1903,6 @@
 				630BA61A20C22A4100880DAE /* SF-Pro-Text-Bold.otf in Resources */,
 				639C9E1320A18A7500F2CF5E /* Roboto-ThinItalic.ttf in Resources */,
 				639C9DDD20A15E3500F2CF5E /* Authen.storyboard in Resources */,
-				E7A4A0A720E65B9500B5F7ED /* hop-dong.html in Resources */,
 				6358EC7020F4BB9F002858C8 /* LoanTypePopupAddTextTBCell.xib in Resources */,
 				84114BD420D79464005026DF /* AddNewWalletTableViewCell.xib in Resources */,
 				84B7B33D20D12F2A006CADA1 /* Invest.storyboard in Resources */,
