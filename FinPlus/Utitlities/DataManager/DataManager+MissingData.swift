@@ -513,6 +513,10 @@ extension DataManager {
         
         guard let userInfo = data["userInfo"] as? JSONDictionary else { return true }
         
+        if DataManager.shared.isRelationPhone1Invalid || DataManager.shared.isRelationPhone2Invalid {
+            return false
+        }
+        
         if let value = userInfo["fullName"] as? String, value == DataManager.shared.loanInfo.userInfo.fullName {
             return false
         }
