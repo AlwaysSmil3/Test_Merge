@@ -55,7 +55,7 @@ class LoanInfoJobVC: LoanBaseViewController {
                 return
             }
             
-            if DataManager.shared.loanInfo.jobInfo.experienceYear < 0 {
+            if DataManager.shared.loanInfo.jobInfo.experienceYear <= 0 {
                 self.showToastWithMessage(message: "Vui lòng nhập số năm kinh nghiệm để tiếp tục.")
                 return
             }

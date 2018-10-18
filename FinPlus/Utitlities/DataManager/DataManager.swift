@@ -151,26 +151,26 @@ class DataManager {
     }
     
     /// Get Data from JSON
-    func getDataLoanFromJSON() {
-        if let path = Bundle.main.path(forResource: "LoanBuilder", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                if let jsonResult = jsonResult as? [Any] {
-                    // do stuff
-                    
-                    jsonResult.forEach({ (data) in
-                        let toll = LoanCategories(object: data)
-                        //self.loanBuilder.append(toll)
-                        self.loanCategories.append(toll)
-                    })
-
-                }
-            } catch {
-                // handle error
-            }
-        }
-    }
+//    func getDataLoanFromJSON() {
+//        if let path = Bundle.main.path(forResource: "LoanBuilder", ofType: "json") {
+//            do {
+//                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+//                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+//                if let jsonResult = jsonResult as? [Any] {
+//                    // do stuff
+//
+//                    jsonResult.forEach({ (data) in
+//                        let toll = LoanCategories(object: data)
+//                        //self.loanBuilder.append(toll)
+//                        self.loanCategories.append(toll)
+//                    })
+//
+//                }
+//            } catch {
+//                // handle error
+//            }
+//        }
+//    }
     
     func clearMissingLoanData() {
         DataManager.shared.missingRelationsShip = nil
