@@ -332,7 +332,7 @@ extension DataManager {
     ///   - currentBankHolder: <#currentBankHolder description#>
     ///   - currenAccount: <#currenAccount description#>
     /// - Returns: <#return value description#>
-    func checkMissingBankData(key: String, currentBankHolder: String? = nil, currenAccount: String? = nil) -> Bool {
+    func checkMissingBankData(key: String, currentBankHolder: String? = nil, currenAccount: String? = nil, id: Int? = nil) -> Bool {
         guard let list = self.listKeyMissingLoanKey else { return false }
         guard let data = self.missingLoanDataDictionary, let bankData = data["bank"] as? JSONDictionary else { return false }
         
@@ -341,6 +341,8 @@ extension DataManager {
         if listFields.count == 0 {
             return false
         }
+        
+        guard let idBank = bankData["id"] as? Int, id == idBank else { return false }
         
         if let invalidValue = bankData["accountHolder"] as? String, currentBankHolder == invalidValue {
             return true
