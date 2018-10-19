@@ -165,14 +165,14 @@ class ListWalletViewController: BaseViewController {
             return
         }
         
+        DataManager.shared.loanInfo.walletId = bankId
+        DataManager.shared.loanInfo.bankId = bankId
+        
         if !DataManager.shared.checkDataInvalidChangedInStepBank(currentBank: self.getCurrentLoanBank()) {
             //For Missing Data
             self.showToastWithMessage(message: "Vui lòng thay đổi các thông tin không chính xác.")
             return
         }
-        
-        DataManager.shared.loanInfo.walletId = bankId
-        DataManager.shared.loanInfo.bankId = bankId
         
         
         if DataManager.shared.listKeyMissingLoanKey != nil && DataManager.shared.listKeyMissingLoanKey!.count > 0  {
