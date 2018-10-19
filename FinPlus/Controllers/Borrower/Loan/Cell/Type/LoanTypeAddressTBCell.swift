@@ -239,7 +239,7 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
             
-            if DataManager.shared.checkFieldIsMissing(key: "academicName") && self.checkMissingData(parentKey: "jobInfo", key: "academicName", currentValue: value) {
+            if DataManager.shared.checkFieldIsMissing(key: "academicName", parentKey: "jobInfo", currentValue: value) {
                 //Cap nhat thong tin khong hop le
                 if self.valueTemp == nil {
                     self.valueTemp = value

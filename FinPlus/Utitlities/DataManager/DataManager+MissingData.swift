@@ -90,13 +90,18 @@ extension DataManager {
             if let value = jobInfo.jobTitle, value.length() > 0, value == self.browwerInfo?.activeLoan?.jobInfo?.jobTitle {
                 missingListKey.append("jobType")
                 missingListKey.append("jobTitle")
-                missingListTitle.append("Nghề nghiệp")
+                missingListTitle.append("Loại hình hoạt động")
             }
             
             if let value = jobInfo.positionTitle, value.length() > 0, value == self.browwerInfo?.activeLoan?.jobInfo?.positionTitle {
                 missingListKey.append("position")
                 missingListKey.append("positionTitle")
-                missingListTitle.append("Cấp bậc")
+                missingListTitle.append("Vị trí làm việc")
+            }
+            
+            if let studentId = jobInfo.studentId, studentId == self.browwerInfo?.activeLoan?.jobInfo?.studentId {
+                missingListKey.append("studentId")
+                missingListTitle.append("Mã sinh viên")
             }
             
             
@@ -105,7 +110,7 @@ extension DataManager {
                 missingListTitle.append("Học lực")
             }
             
-            if let ace = jobInfo.academicLevel, ace != self.browwerInfo?.activeLoan?.jobInfo?.academicLevel {
+            if let ace = jobInfo.academicLevel, ace == self.browwerInfo?.activeLoan?.jobInfo?.academicLevel {
                 missingListKey.append("academicLevel")
                 missingListTitle.append("Trình độ học vấn")
             }
@@ -130,7 +135,7 @@ extension DataManager {
                 missingListTitle.append("Thu nhập hàng tháng")
             }
             
-            if let value = jobInfo.companyPhoneNumber, value.length() > 0, value == self.browwerInfo?.activeLoan?.jobInfo?.companyPhoneNumber {
+            if let value = jobInfo.companyPhoneNumber, value == self.browwerInfo?.activeLoan?.jobInfo?.companyPhoneNumber {
                 missingListKey.append("companyPhoneNumber")
                 missingListTitle.append("SĐT cơ quan")
             }
@@ -565,6 +570,8 @@ extension DataManager {
         guard let data = self.missingLoanDataDictionary, let bank = data["bank"] as? JSONDictionary else { return true }
         
         guard let currbank = currentBank else { return true }
+        
+        guard let id = bank["id"] as? Int, Int(currbank.id!) == id else { return true }
         
         if let value = bank["accountHolder"] as? String, value == currbank.accountBankName {
             return false
