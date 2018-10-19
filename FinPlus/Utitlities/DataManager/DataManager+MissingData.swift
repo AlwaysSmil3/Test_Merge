@@ -90,13 +90,18 @@ extension DataManager {
             if let value = jobInfo.jobTitle, value.length() > 0, value == self.browwerInfo?.activeLoan?.jobInfo?.jobTitle {
                 missingListKey.append("jobType")
                 missingListKey.append("jobTitle")
-                missingListTitle.append("Nghề nghiệp")
+                missingListTitle.append("Loại hình hoạt động")
             }
             
             if let value = jobInfo.positionTitle, value.length() > 0, value == self.browwerInfo?.activeLoan?.jobInfo?.positionTitle {
                 missingListKey.append("position")
                 missingListKey.append("positionTitle")
-                missingListTitle.append("Cấp bậc")
+                missingListTitle.append("Vị trí làm việc")
+            }
+            
+            if let studentId = jobInfo.studentId, studentId == self.browwerInfo?.activeLoan?.jobInfo?.studentId {
+                missingListKey.append("studentId")
+                missingListTitle.append("Mã sinh viên")
             }
             
             
