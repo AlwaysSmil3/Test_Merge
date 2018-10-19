@@ -463,7 +463,7 @@ extension ListWalletViewController: BankDataDelegate {
 extension ListWalletViewController: EditWalletDelegate {
     func editWallet(index: IndexPath) {
         let bank = self.listWallet[index.row] as! AccountBank
-        if self.walletAction == .LoanNation && !DataManager.shared.checkMissingBankData(key: "bank", currentBankHolder: bank.accountBankName, currenAccount: bank.accountBankNumber) {
+        if self.walletAction == .LoanNation && !DataManager.shared.checkMissingBankData(key: "bank", currentBankHolder: bank.accountBankName, currenAccount: bank.accountBankNumber, id: Int(bank.id!)) {
             return
         }
         
