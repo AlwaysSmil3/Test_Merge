@@ -272,7 +272,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 DataManager.shared.loanInfo.jobInfo.strength = idInt
             }
             
-            if DataManager.shared.checkFieldIsMissing(key: "strength", parentKey: "jobInfo", currentValue: value) {
+            if DataManager.shared.checkFieldIsMissing(key: "strength", parentKey: "jobInfo", currentValue: value, currentValueIndex: idInt) {
                 //Cap nhat thong tin khong hop le
                 if self.valueTemp == nil {
                     self.updateInfoFalse(pre: title)
@@ -309,7 +309,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 DataManager.shared.loanInfo.jobInfo.academicLevel = idInt
             }
             
-            if DataManager.shared.checkFieldIsMissing(key: "academicLevel", parentKey: "jobInfo", currentValue: value) {
+            if DataManager.shared.checkFieldIsMissing(key: "academicLevel", parentKey: "jobInfo", currentValue: value, currentValueIndex: idInt) {
                 //Cap nhat thong tin khong hop le
                 //self.updateInfoFalse(pre: title)
                 if self.valueTemp == nil {

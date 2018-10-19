@@ -105,7 +105,7 @@ extension DataManager {
                 missingListTitle.append("Học lực")
             }
             
-            if let ace = jobInfo.academicLevel, ace != self.browwerInfo?.activeLoan?.jobInfo?.academicLevel {
+            if let ace = jobInfo.academicLevel, ace == self.browwerInfo?.activeLoan?.jobInfo?.academicLevel {
                 missingListKey.append("academicLevel")
                 missingListTitle.append("Trình độ học vấn")
             }
@@ -130,7 +130,7 @@ extension DataManager {
                 missingListTitle.append("Thu nhập hàng tháng")
             }
             
-            if let value = jobInfo.companyPhoneNumber, value.length() > 0, value == self.browwerInfo?.activeLoan?.jobInfo?.companyPhoneNumber {
+            if let value = jobInfo.companyPhoneNumber, value == self.browwerInfo?.activeLoan?.jobInfo?.companyPhoneNumber {
                 missingListKey.append("companyPhoneNumber")
                 missingListTitle.append("SĐT cơ quan")
             }
@@ -565,6 +565,8 @@ extension DataManager {
         guard let data = self.missingLoanDataDictionary, let bank = data["bank"] as? JSONDictionary else { return true }
         
         guard let currbank = currentBank else { return true }
+        
+        guard let id = bank["id"] as? Int, Int(currbank.id!) == id else { return true }
         
         if let value = bank["accountHolder"] as? String, value == currbank.accountBankName {
             return false
