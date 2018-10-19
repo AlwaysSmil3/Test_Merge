@@ -414,7 +414,7 @@ extension ListWalletViewController: UITableViewDataSource {
                         cell?.optionBtn.setImage(#imageLiteral(resourceName: "ic_radio_on"), for: .normal)
                         
                         
-                        if DataManager.shared.checkMissingBankData(key: "bank", currentBankHolder: item.accountBankName, currenAccount: item.accountBankNumber) {
+                        if DataManager.shared.checkMissingBankData(key: "bank", currentBankHolder: item.accountBankName, currenAccount: item.accountBankNumber, id: Int(item.id!)) {
                             //Cap nhat thong tin khong hop le
                             cell?.optionBtn.setImage(UIImage(named: "option_icon"), for: .normal)
                             cell?.borderView.layer.borderColor = UIColor.red.cgColor
