@@ -171,17 +171,19 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     }
     
     func showCameraView() {
-        
-        let cameraVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "CameraViewController") as! CameraViewController
-        cameraVC.delegateCamera = self
-        cameraVC.typeImgFile = self.typeImgFile
-        cameraVC.descriptionText = self.field?.title ?? ""
-        
-        guard let topVC = UIApplication.shared.topViewController() else { return }
-        topVC.present(cameraVC, animated: true) {
+        if #available(iOS 10.0, *) {
+            let cameraVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "CameraViewController") as! CameraViewController
+            cameraVC.delegateCamera = self
+            cameraVC.typeImgFile = self.typeImgFile
+            cameraVC.descriptionText = self.field?.title ?? ""
             
+            guard let topVC = UIApplication.shared.topViewController() else { return }
+            topVC.present(cameraVC, animated: true) {
+                
+            }
+        } else {
+            self.showLibrary()
         }
-        
     }
     
     //Upload Data Image

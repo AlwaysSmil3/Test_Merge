@@ -26,10 +26,12 @@ class GuideCaptureViewController: BaseViewController {
         
         if userDefault.value(forKey: UserDefaultShowGuideCameraView) == nil  {
             userDefault.set(true, forKey: UserDefaultShowGuideCameraView)
+            userDefault.synchronize()
         }
         
         if let value = userDefault.value(forKey: UserDefaultShowGuideCameraView) as? Bool, !value {
             userDefault.set(true, forKey: UserDefaultShowGuideCameraView)
+            userDefault.synchronize()
         }
         
     }
@@ -49,6 +51,7 @@ class GuideCaptureViewController: BaseViewController {
     @IBAction func btnDisplayAgainTapped(_ sender: Any) {
         self.btnDisplayAgain.isSelected = !self.btnDisplayAgain.isSelected
         userDefault.set(self.btnDisplayAgain.isSelected, forKey: UserDefaultShowGuideCameraView)
+        userDefault.synchronize()
     }
     
     
