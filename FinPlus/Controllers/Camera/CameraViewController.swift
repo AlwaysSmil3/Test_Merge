@@ -13,6 +13,8 @@ protocol DataImageFromCameraCaptureDelegate {
     func getImage(image: UIImage, type: FILE_TYPE_IMG?)
 }
 
+
+@available(iOS 10.0, *)
 class CameraViewController: BaseViewController {
     
     @IBOutlet var previewView: UIView!
@@ -41,6 +43,7 @@ class CameraViewController: BaseViewController {
     
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    
     var capturePhotoOutput: AVCapturePhotoOutput?
     var currentDevice: AVCaptureDevice?
     
@@ -90,9 +93,14 @@ class CameraViewController: BaseViewController {
                             }
                             
                             if UIApplication.shared.canOpenURL(settingsUrl) {
-                                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                                    print("Settings opened: \(success)") // Prints true
-                                })
+                                if #available(iOS 10.0, *) {
+                                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                        print("Settings opened: \(success)") // Prints true
+                                    })
+                                } else {
+                                    UIApplication.shared.openURL(settingsUrl)
+                                }
+                                
                             }
                         }
                         
@@ -369,6 +377,7 @@ class CameraViewController: BaseViewController {
 }
 
 //MARK: AVCapturePhotoCaptureDelegate
+@available(iOS 10.0, *)
 extension CameraViewController: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ captureOutput: AVCapturePhotoOutput,
                      didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?,
