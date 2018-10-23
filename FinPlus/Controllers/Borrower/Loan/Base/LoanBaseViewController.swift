@@ -200,21 +200,46 @@ class LoanBaseViewController: BaseViewController {
     
     
     func showCameraView(descriptionStr: String? = nil) {
-//        let guideVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "GuideCaptureViewController") as! GuideCaptureViewController
-//        guideVC.delegate = self
-//        self.present(guideVC, animated: true, completion: {
-//
-//        })
         
-        let cameraVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "CameraViewController") as! CameraViewController
-        cameraVC.delegateCamera = self
-        cameraVC.typeImgFile = self.typeImgFile
-        cameraVC.descriptionText = descriptionStr
-        
-        self.present(cameraVC, animated: true) {
+        if #available(iOS 10.0, *) {
+            let cameraVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "CameraViewController") as! CameraViewController
+            cameraVC.delegateCamera = self
+            cameraVC.typeImgFile = self.typeImgFile
+            cameraVC.descriptionText = descriptionStr
             
+            self.present(cameraVC, animated: true) {
+                
+            }
+        } else {
+            if self.typeImgFile == .ALL {
+                if let value = userDefault.value(forKey: UserDefaultShowGuideCameraView) as? Bool, value {
+                    self.selectedFile()
+                } else {
+                    self.showGuideCaptureView()
+                }
+                
+            } else {
+                self.selectedFile()
+            }
         }
         
+    }
+    
+    func selectedFile() {
+        CameraHandler.shared.showCamera(vc: UIApplication.shared.topViewController()!)
+        CameraHandler.shared.imagePickedBlock = { (image) in
+            //let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
+            
+            self.uploadData(img: image, typeImg: self.typeImgFile)
+        }
+    }
+    
+    func showGuideCaptureView() {
+        let guideVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "GuideCaptureViewController") as! GuideCaptureViewController
+        guideVC.delegate = self
+        self.present(guideVC, animated: true, completion: {
+            
+        })
     }
     
     //Upload Data Image
@@ -523,18 +548,6 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             
             self.showCameraView(descriptionStr: model.descriptionValue)
             
-//            if self.typeImgFile == .ALL {
-//
-//                if let value = userDefault.value(forKey: UserDefaultShowGuideCameraView) as? Bool, value {
-//                    self.selectedFile()
-//                } else {
-//                    self.showGuideCaptureView()
-//                }
-//
-//
-//            } else {
-//               self.selectedFile()
-//            }
         
             
             break
@@ -582,12 +595,12 @@ extension LoanBaseViewController: DataImageFromCameraCaptureDelegate {
 }
 
 ////MARK: GuideCaptureDelegate
-//extension LoanBaseViewController: GuideCaptureDelegate {
-//    func showCamera() {
-//        self.selectedFile()
-//    }
-//
-//}
+extension LoanBaseViewController: GuideCaptureDelegate {
+    func showCamera() {
+        self.selectedFile()
+    }
+
+}
 
 //MARK: SBMessageInputViewDelegate
 extension LoanBaseViewController: SBMessageInputViewDelegate {
