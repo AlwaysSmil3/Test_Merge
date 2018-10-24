@@ -59,7 +59,7 @@ class CameraViewController: BaseViewController {
     
     override func viewDidLayoutSubviews() {
         videoPreviewLayer?.frame = view.bounds
-        if let previewLayer = videoPreviewLayer ,(previewLayer.connection?.isVideoOrientationSupported)! {
+        if let previewLayer = videoPreviewLayer , let orientationSupport = previewLayer.connection?.isVideoOrientationSupported, orientationSupport {
             previewLayer.connection?.videoOrientation = UIApplication.shared.statusBarOrientation.videoOrientation ?? .portrait
         }
     }
