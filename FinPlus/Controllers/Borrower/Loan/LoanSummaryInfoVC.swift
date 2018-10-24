@@ -450,6 +450,10 @@ class LoanSummaryInfoVC: BaseViewController {
         self.showGreenBtnMessage(title: "Gửi đơn vay", message: messeage, okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ") { (status) in
             if status {
                 self.loan()
+            } else {
+                if let delegate = UIApplication.shared.delegate as? AppDelegate {
+                    delegate.timeCount = 60
+                }
             }
         }
     }
