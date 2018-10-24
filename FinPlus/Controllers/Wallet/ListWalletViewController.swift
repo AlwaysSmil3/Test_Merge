@@ -214,6 +214,11 @@ class ListWalletViewController: BaseViewController {
             print("User click Dismiss button")
         }))
         
+        if let popoverPresentationController = alert.popoverPresentationController {
+            popoverPresentationController.sourceView = self.view
+            popoverPresentationController.sourceRect = sender.bounds
+        }
+        
         self.present(alert, animated: true, completion: {
             print("completion block")
         })
