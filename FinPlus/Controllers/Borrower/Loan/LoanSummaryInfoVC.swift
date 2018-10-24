@@ -316,27 +316,25 @@ class LoanSummaryInfoVC: BaseViewController {
         ]
         // get loan bank
         let loanBankId = DataManager.shared.loanInfo.bankId
-        if let userBanks = DataManager.shared.browwerInfo?.banks {
-            for bank in userBanks {
-                if let bankId = bank.id {
-                    if bankId == loanBankId {
-                        let accountNumber = bank.accountBankNumber ?? ""
-//                        if let number = bank.accountBankNumber, number.count > 4 {
-//                             accountNumber = String(number.suffix(4))
-//                        } else {
-//                            accountNumber = bank.accountBankNumber ?? ""
-//                        }
-//                        accountNumber = "● ● ● ● \(accountNumber)"
-//                        let subtitleParameters = [NSAttributedStringKey.font : UIFont(name: FONT_FAMILY_REGULAR, size: 12)]
-                        let bankName = bank.bankName ?? ""
-                        let prefixBankName = FinPlusHelper.getPrefixBankName(bankName: bankName)
-                        
-                        
-                        dataSource.append(LoanSummaryModel(name: "Tài khoản nhận tiền", value: prefixBankName + bankName, attributed: nil))
-                        dataSource.append(LoanSummaryModel(name: "Chủ tài khoản", value: "\(bank.accountBankName ?? "None")", attributed: nil))
-                        dataSource.append(LoanSummaryModel(name: "Số tài khoản", value: accountNumber, attributed: nil))
-
-                    }
+        if let bank = DataManager.shared.browwerInfo?.activeLoan?.bank {
+            if let bankId = bank.id {
+                if bankId == loanBankId {
+                    let accountNumber = bank.accountNumber ?? ""
+                    //                        if let number = bank.accountBankNumber, number.count > 4 {
+                    //                             accountNumber = String(number.suffix(4))
+                    //                        } else {
+                    //                            accountNumber = bank.accountBankNumber ?? ""
+                    //                        }
+                    //                        accountNumber = "● ● ● ● \(accountNumber)"
+                    //                        let subtitleParameters = [NSAttributedStringKey.font : UIFont(name: FONT_FAMILY_REGULAR, size: 12)]
+                    let bankName = bank.type ?? ""
+                    let prefixBankName = FinPlusHelper.getPrefixBankName(bankName: bankName)
+                    
+                    
+                    dataSource.append(LoanSummaryModel(name: "Tài khoản nhận tiền", value: prefixBankName + bankName, attributed: nil))
+                    dataSource.append(LoanSummaryModel(name: "Chủ tài khoản", value: "\(bank.accountHolder ?? "None")", attributed: nil))
+                    dataSource.append(LoanSummaryModel(name: "Số tài khoản", value: accountNumber, attributed: nil))
+                    
                 }
             }
         }
