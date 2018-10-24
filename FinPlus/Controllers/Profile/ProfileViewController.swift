@@ -97,6 +97,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.data = self.isInvestor ? self.data_investor as NSArray : self.data_borrower as NSArray
         
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.configTBView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,8 +106,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.isNavigationBarHidden = true
         
         self.mode = UserDefaults.standard.bool(forKey: APP_MODE)
-        //self.isInvestor = UserDefaults.standard.bool(forKey: IS_INVESTOR)
-        
         setupMode()
     }
     
@@ -120,68 +119,50 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
-    func setupMode() {
+    
+    func configTBView() {
+        self.tableView.tableFooterView = UIView()
         
-        let header: ProfileHeaderView = Bundle.main.loadNibNamed("ProfileHeaderView", owner: nil, options: nil)![0] as! ProfileHeaderView
+        let cellNib = UINib(nibName: "ProfileTableViewCell", bundle: nil)
+        self.tableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
+        
+        self.tableView.estimatedRowHeight = 44
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.tableView.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
+        self.view.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
+        
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = LIGHT_MODE_NAVI_COLOR
+        self.navigationController?.navigationBar.tintColor = LIGHT_MODE_MAIN_TEXT_COLOR
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: LIGHT_MODE_MAIN_TEXT_COLOR]
+    }
+    
+    func setupMode() {
+        guard let bundleNib = Bundle.main.loadNibNamed("ProfileHeaderView", owner: nil, options: nil), bundleNib.count > 0, let header = bundleNib[0] as? ProfileHeaderView else { return }
+        
+        if #available(iOS 10.0, *) {
+            
+        } else {
+//            let tempRect = header.frame
+//            header.frame = CGRect(x: tempRect.origin.x, y: tempRect.origin.y, width: BOUND_SCREEN.size.width, height: tempRect.size.height)
+//            header.layoutIfNeeded()
+        }
         
         if let info = DataManager.shared.browwerInfo {
             header.usernameLabel.text = info.fullName ?? info.displayName
             header.phoneLabel.text = info.phoneNumber ?? ""
-            //header.avatarBtn.sd_setImage(with: URL(string: info.avatar ?? ""), for: .normal, completed: nil)
-            header.avatarBtn.sd_setImage(with: URL(string: info.avatar ?? ""), for: .normal, placeholderImage: UIImage(named: "user-default")!, options: SDWebImageOptions.cacheMemoryOnly, completed: nil)
-        }
-        
-//        header.usernameLabel.text = "+84988xxxxxx"
-//        header.phoneLabel.text = "+84988xxxxxx"
-//        header.avatarBtn.setBackgroundImage(UIImage(named: "avatar_default"), for: .normal)
-        header.delegate = self
-        
-        if (self.mode && self.isInvestor)
-        {
-            header.avatarBtn.tintColor = DARK_MODE_MAIN_TEXT_COLOR
-            header.usernameLabel.textColor = DARK_MODE_MAIN_TEXT_COLOR
-            header.phoneLabel.textColor = DARK_MODE_SUB_TEXT_COLOR
-            
-            self.tableView.tableHeaderView = header
-            self.tableView.tableFooterView = UIView()
-            
-            let cellNib = UINib(nibName: "ProfileTableViewCell", bundle: nil)
-            self.tableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
-            
-            self.tableView.estimatedRowHeight = 44
-            self.tableView.rowHeight = UITableViewAutomaticDimension
-            
-            self.tableView.backgroundColor = DARK_MODE_BACKGROUND_COLOR
-            self.view.backgroundColor = DARK_MODE_BACKGROUND_COLOR
-            
-            self.navigationController?.navigationBar.isTranslucent = false
-            self.navigationController?.navigationBar.barTintColor = DARK_MODE_NAVI_COLOR
-            self.navigationController?.navigationBar.tintColor = DARK_MODE_MAIN_TEXT_COLOR
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: DARK_MODE_MAIN_TEXT_COLOR]
-        }
-        else
-        {
-            header.avatarBtn.tintColor = LIGHT_MODE_MAIN_TEXT_COLOR
-            header.usernameLabel.textColor = LIGHT_MODE_MAIN_TEXT_COLOR
-            header.phoneLabel.textColor = LIGHT_MODE_SUB_TEXT_COLOR
 
-            self.tableView.tableHeaderView = header
-            self.tableView.tableFooterView = UIView()
-            
-            let cellNib = UINib(nibName: "ProfileTableViewCell", bundle: nil)
-            self.tableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
-            
-            self.tableView.estimatedRowHeight = 44
-            self.tableView.rowHeight = UITableViewAutomaticDimension
-            
-            self.tableView.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
-            self.view.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
-            
-            self.navigationController?.navigationBar.isTranslucent = false
-            self.navigationController?.navigationBar.barTintColor = LIGHT_MODE_NAVI_COLOR
-            self.navigationController?.navigationBar.tintColor = LIGHT_MODE_MAIN_TEXT_COLOR
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: LIGHT_MODE_MAIN_TEXT_COLOR]
+            header.avatarBtn.sd_setImage(with: URL(string: info.avatar ?? ""), for: .normal, placeholderImage: UIImage(named: "user-default"), options: SDWebImageOptions.cacheMemoryOnly, completed: nil)
         }
+        
+        //header.delegate = self
+        
+        header.avatarBtn.tintColor = LIGHT_MODE_MAIN_TEXT_COLOR
+        header.usernameLabel.textColor = LIGHT_MODE_MAIN_TEXT_COLOR
+        header.phoneLabel.textColor = LIGHT_MODE_SUB_TEXT_COLOR
+        
+        self.tableView.tableHeaderView = header
         
         self.tableView.reloadData()
     }
@@ -204,8 +185,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         cell.accessoryType = .disclosureIndicator
-        cell.icon.image = UIImage(named: (item["icon"] as? String)!)
-        cell.nameLabel.text = NSLocalizedString((item["name"] as? String)!, comment: "")
+        cell.icon.image = UIImage(named: (item["icon"] as? String) ?? "")
+        cell.nameLabel.text = NSLocalizedString((item["name"] as? String) ?? "", comment: "")
         cell.desLabel.text = ""
         
         if (self.mode && self.isInvestor)
