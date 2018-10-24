@@ -1400,6 +1400,11 @@ class LoanStateViewController: UIViewController {
             print("User click Dismiss button")
         }))
         
+        if let popoverPresentationController = alert.popoverPresentationController {
+            popoverPresentationController.sourceView = self.view
+            popoverPresentationController.sourceRect = CGRect(x: 20, y: 20, width: 64, height: 64)
+        }
+        
         self.present(alert, animated: true, completion: {
             print("completion block")
         })

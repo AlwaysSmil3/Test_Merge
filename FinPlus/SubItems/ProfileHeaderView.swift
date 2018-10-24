@@ -18,6 +18,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     
+    
     var delegate: ProfileHeaderViewDelegate?
     
     override func awakeFromNib() {
