@@ -11,14 +11,22 @@ import Foundation
 extension DataManager {
     
     //Get phone invalid from missing Data
-    func getPhoneInValid(index: String) -> String {
+    func getPhoneInValid(type: Int) -> String {
         var phone = ""
         
         guard let data = DataManager.shared.missingLoanDataDictionary, let userInfo = data["userInfo"] as? JSONDictionary, let relationPhone = userInfo["relationships"] as? JSONDictionary else {
             return phone
         }
         
-        if let relation = relationPhone[index] as? JSONDictionary, let phone_ = relation["phoneNumber"] as? String {
+        var relation: JSONDictionary?
+        if let relation1 = relationPhone["0"] as? JSONDictionary, let typeRe = relation1["type"] as? Int, type == typeRe {
+            relation = relation1
+        }
+        if let relation2 = relationPhone["1"] as? JSONDictionary, let typeRe = relation2["type"] as? Int, type == typeRe {
+            relation = relation2
+        }
+        
+        if let re = relation, let phone_ = re["phoneNumber"] as? String {
             if phone_.contains("_") {
                 let array = phone_.components(separatedBy: "_")
                 if array.count > 0 {

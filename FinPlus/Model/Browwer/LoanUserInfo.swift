@@ -16,7 +16,13 @@ struct LoanUserInfo: Encodable {
     var birthDay: String
     var nationalID: String
     
-    var relationships: [RelationShipPhone]
+    var relationships: [RelationShipPhone] {
+        didSet {
+            if relationships.count > 1, relationships[0].type > relationships[1].type {
+                self.relationships.reverse()
+            }
+        }
+    }
     var residentAddress: Address
     var temporaryAddress: Address
     

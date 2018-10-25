@@ -103,7 +103,7 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
                 }
                 
                 if DataManager.shared.missingRelationsShip != nil {
-                    if value != DataManager.shared.getPhoneInValid(index: "0") {
+                    if value != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0) {
                         DataManager.shared.isRelationPhone1Invalid = false
                         self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
                     }
@@ -117,7 +117,7 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
                 }
                 
                 if DataManager.shared.missingRelationsShip != nil {
-                    if value != DataManager.shared.getPhoneInValid(index: "1") {
+                    if value != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0) {
                         DataManager.shared.isRelationPhone2Invalid = false
                         self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
                     }
@@ -161,7 +161,7 @@ extension LoanTypePhoneRelationSubTBCell: UITextFieldDelegate {
         
         if DataManager.shared.missingRelationsShip != nil {
             if self.currentIndex == 0 {
-                if (newString as String) != DataManager.shared.getPhoneInValid(index: "0") {
+                if (newString as String) != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0) {
                     DataManager.shared.isRelationPhone1Invalid = false
                     self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
                     
@@ -170,7 +170,7 @@ extension LoanTypePhoneRelationSubTBCell: UITextFieldDelegate {
                     self.tfRelationPhone?.textColor = UIColor(hexString: "#DA3535")
                 }
             } else {
-                if (newString as String) != DataManager.shared.getPhoneInValid(index: "1") {
+                if (newString as String) != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0) {
                     DataManager.shared.isRelationPhone2Invalid = false
                     self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
                 } else {
