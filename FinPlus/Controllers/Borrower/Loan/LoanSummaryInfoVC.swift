@@ -96,7 +96,7 @@ class LoanSummaryInfoVC: BaseViewController {
         self.setupData()
         self.setupTextView()
         
-        self.updateDataLoan()
+        //self.updateDataLoan()
         self.loadContacts {
             
         }
@@ -341,15 +341,15 @@ class LoanSummaryInfoVC: BaseViewController {
         
     }
     
-    private func updateDataLoan() {
-        DataManager.shared.loanInfo.currentStep = 5
-        APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
-            .done(on: DispatchQueue.global()) { model in
-                DataManager.shared.loanID = model.loanId!
-
-            }
-            .catch { error in }
-    }
+//    private func updateDataLoan() {
+//        DataManager.shared.loanInfo.currentStep = 5
+//        APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
+//            .done(on: DispatchQueue.global()) { model in
+//                DataManager.shared.loanID = model.loanId!
+//
+//            }
+//            .catch { error in }
+//    }
     
     
     /// Set link cho UITextView

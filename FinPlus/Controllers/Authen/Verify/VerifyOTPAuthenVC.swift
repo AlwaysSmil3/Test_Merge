@@ -21,7 +21,7 @@ class VerifyOTPAuthenVC: BaseViewController {
     @IBOutlet weak var descriptionLb: UILabel!
     @IBOutlet weak var resendCodeBtn: UIButton!
     @IBOutlet var lblLimitTime: UILabel!
-    @IBOutlet var pinCodeTextField: PinCodeTextField!
+    @IBOutlet var pinCodeTextField: KAPinField!
     var verifyType: VerifyType = .Login
     
     var loanId: Int32!
@@ -48,6 +48,7 @@ class VerifyOTPAuthenVC: BaseViewController {
         
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,22 +59,29 @@ class VerifyOTPAuthenVC: BaseViewController {
     }
     
     private func setupPinView() {
-        pinCodeTextField.delegate = self
-        pinCodeTextField.keyboardType = .numberPad
-        pinCodeTextField.becomeFirstResponder()
-        
-//        let toolbar = UIToolbar()
-//        let nextButtonItem = UIBarButtonItem(title: NSLocalizedString("Tiếp theo",
-//                                                                      comment: ""),
-//                                             style: .done,
-//                                             target: self,
-//                                             action: #selector(pinCodeNextAction))
-//        toolbar.items = [nextButtonItem]
-//        toolbar.barStyle = .default
-//        toolbar.sizeToFit()
-//        pinCodeTextField.inputAccessoryView = toolbar
-        
+
         resendCodeBtn.isHidden = true
+        // -- Delegation --
+        pinCodeTextField.ka_delegate = self
+        
+        // -- Properties --
+        self.refreshPinField()
+        
+        // -- Styling --
+        pinCodeTextField.ka_tokenColor = UIColor.black.withAlphaComponent(0.4)
+        pinCodeTextField.ka_textColor = MAIN_COLOR
+        pinCodeTextField.ka_font = .menlo(36)
+        pinCodeTextField.ka_kerning = 20
+        
+        // Get focus
+        _ = pinCodeTextField.becomeFirstResponder()
+    }
+    
+    func refreshPinField() {
+        // Random ka_token and ka_numberOfCharacters
+        pinCodeTextField.ka_token = "—"
+        pinCodeTextField.ka_numberOfCharacters = 6
+        
     }
     
     // Update timer
@@ -107,9 +115,8 @@ class VerifyOTPAuthenVC: BaseViewController {
     }
     
     private func clearOTP() {
-        for _ in 0...6 {
-            self.pinCodeTextField.deleteBackward()
-        }
+
+        self.pinCodeTextField.ka_text = ""
         self.otp = ""
     }
     
@@ -319,6 +326,27 @@ class VerifyOTPAuthenVC: BaseViewController {
 
 }
 
+//MARK: KAPinFieldDelegate
+extension VerifyOTPAuthenVC: KAPinFieldDelegate {
+    
+    func ka_pinField(_ field: KAPinField, didFinishWith code: String) {
+        
+        if code.count >= 6 {
+            self.otp = code
+            self.imgBgBtnContinue!.image = #imageLiteral(resourceName: "bg_button_enable_login")
+            self.btnContinue!.dropShadow(color: MAIN_COLOR)
+            self.btnContinue!.isEnabled = true
+            self.view.endEditing(true)
+            self.btnVerifyTapped(btnContinue!)
+        } else {
+            self.imgBgBtnContinue!.image = #imageLiteral(resourceName: "bg_button_disable_login")
+            self.btnContinue!.dropShadow(color: DISABLE_BUTTON_COLOR)
+            self.btnContinue!.isEnabled = false
+        }
+    }
+}
+
+/*
 extension VerifyOTPAuthenVC: PinCodeTextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: PinCodeTextField) -> Bool {
         return true
@@ -355,3 +383,4 @@ extension VerifyOTPAuthenVC: PinCodeTextFieldDelegate {
     }
     
 }
+*/
