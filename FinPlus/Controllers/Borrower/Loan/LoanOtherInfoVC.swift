@@ -18,8 +18,8 @@ class LoanOtherInfoVC: LoanBaseViewController {
         self.index = 3
         super.viewDidLoad()
         
-        self.currentStep = 4
-        self.updateDataToServer()
+        self.currentStep = 5
+        //self.updateDataToServer()
         
         if let bottomView = self.bottomScrollView {
             bottomView.setContentOffset(CGPoint(x: 100, y: 0), animated: true)
@@ -146,20 +146,23 @@ class LoanOtherInfoVC: LoanBaseViewController {
                 return
             }
             
-            if let avatar = DataManager.shared.browwerInfo?.avatar, avatar.count > 0 {
-                //Đã có thông tin Facebook
-                let loanSummaryInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSummaryInfoVC") as! LoanSummaryInfoVC
+            self.updateDataToServer(step: 5, completion: {
+                if let avatar = DataManager.shared.browwerInfo?.avatar, avatar.count > 0 {
+                    //Đã có thông tin Facebook
+                    let loanSummaryInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSummaryInfoVC") as! LoanSummaryInfoVC
+                    
+                    self.navigationController?.pushViewController(loanSummaryInfoVC, animated: true)
+                    
+                    return
+                }
                 
-                self.navigationController?.pushViewController(loanSummaryInfoVC, animated: true)
+                //Chưa có thông tin Facebook
                 
-                return
-            }
+                let socialInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSocialInfoViewController") as! LoanSocialInfoViewController
+                
+                self.navigationController?.pushViewController(socialInfoVC, animated: true)
+            })
             
-            //Chưa có thông tin Facebook
-            
-            let socialInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSocialInfoViewController") as! LoanSocialInfoViewController
-            
-            self.navigationController?.pushViewController(socialInfoVC, animated: true)
         }
         
         

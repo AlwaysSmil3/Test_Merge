@@ -15,8 +15,8 @@ class LoanInfoJobVC: LoanBaseViewController {
         self.index = 1
         super.viewDidLoad()
         
-        self.currentStep = 1
-        self.updateDataToServer()
+        self.currentStep = 2
+        //self.updateDataToServer()
         
     }
     
@@ -119,10 +119,13 @@ class LoanInfoJobVC: LoanBaseViewController {
                 }
             }
             
-            let loanWalletVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "LIST_WALLET") as! ListWalletViewController
-            loanWalletVC.walletAction = .LoanNation
+            self.updateDataToServer(step: 2, completion: {
+                let loanWalletVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "LIST_WALLET") as! ListWalletViewController
+                loanWalletVC.walletAction = .LoanNation
+                
+                self.navigationController?.pushViewController(loanWalletVC, animated: true)
+            })
             
-            self.navigationController?.pushViewController(loanWalletVC, animated: true)
         }
         
     }

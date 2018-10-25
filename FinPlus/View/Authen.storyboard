@@ -261,34 +261,6 @@
                                                         <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjd-xn-ibq" customClass="PinCodeTextField" customModule="PinCodeTextField">
-                                                        <rect key="frame" x="79.5" y="211" width="216" height="50"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="7qK-vY-GXS"/>
-                                                            <constraint firstAttribute="width" constant="216" id="P2H-4v-zJF"/>
-                                                        </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="underlineColor">
-                                                                <color key="value" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="characterLimit">
-                                                                <integer key="value" value="6"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="underlineHeight">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="underlineWidth">
-                                                                <real key="value" value="21"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                                <color key="value" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                                                <real key="value" value="34"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcb-Qb-zm0">
                                                         <rect key="frame" x="32" y="281" width="311" height="46"/>
                                                         <subviews>
@@ -335,15 +307,23 @@
                                                             <action selector="resendCodeBtnAction:" destination="bTK-Lz-kYc" eventType="touchUpInside" id="ABc-ZT-7l8"/>
                                                         </connections>
                                                     </button>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xzg-An-taw" customClass="KAPinField" customModule="FinPlus" customModuleProvider="target">
+                                                        <rect key="frame" x="29.5" y="211" width="316" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="316" id="EEz-sE-9uP"/>
+                                                            <constraint firstAttribute="height" constant="50" id="hgy-ZB-4it"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.24313725490196078" green="0.66666666666666663" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" textContentType="one-time-code"/>
+                                                    </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="hcb-Qb-zm0" firstAttribute="top" secondItem="xjd-xn-ibq" secondAttribute="bottom" constant="20" id="2bB-Pm-wqv"/>
                                                     <constraint firstItem="NAe-OX-Fg0" firstAttribute="leading" secondItem="RlW-yj-ABe" secondAttribute="leading" constant="32" id="8Ax-YK-3Go"/>
+                                                    <constraint firstItem="Xzg-An-taw" firstAttribute="top" secondItem="JHo-y8-NZJ" secondAttribute="bottom" constant="20" id="9zf-9a-iZC"/>
                                                     <constraint firstItem="JHo-y8-NZJ" firstAttribute="trailing" secondItem="qNd-TF-SJl" secondAttribute="trailing" id="AIm-ud-li7"/>
                                                     <constraint firstItem="Gnw-V3-fgW" firstAttribute="top" secondItem="hcb-Qb-zm0" secondAttribute="bottom" constant="16" id="Fu1-MD-wHc"/>
-                                                    <constraint firstItem="xjd-xn-ibq" firstAttribute="top" secondItem="JHo-y8-NZJ" secondAttribute="bottom" constant="20" id="Iyu-hW-4VV"/>
-                                                    <constraint firstItem="xjd-xn-ibq" firstAttribute="centerX" secondItem="RlW-yj-ABe" secondAttribute="centerX" id="VDn-Wq-lTF"/>
                                                     <constraint firstItem="JHo-y8-NZJ" firstAttribute="leading" secondItem="qNd-TF-SJl" secondAttribute="leading" id="VeP-mv-WKx"/>
                                                     <constraint firstItem="Gnw-V3-fgW" firstAttribute="centerX" secondItem="RlW-yj-ABe" secondAttribute="centerX" id="VoJ-B5-pGZ"/>
                                                     <constraint firstItem="qNd-TF-SJl" firstAttribute="leading" secondItem="NAe-OX-Fg0" secondAttribute="leading" id="VrQ-gY-EVj"/>
@@ -352,7 +332,9 @@
                                                     <constraint firstItem="qNd-TF-SJl" firstAttribute="top" secondItem="NAe-OX-Fg0" secondAttribute="bottom" constant="16" id="ch7-Jb-IxD"/>
                                                     <constraint firstItem="JHo-y8-NZJ" firstAttribute="top" secondItem="qNd-TF-SJl" secondAttribute="bottom" constant="2" id="iwd-UW-D5K"/>
                                                     <constraint firstItem="NAe-OX-Fg0" firstAttribute="top" secondItem="RlW-yj-ABe" secondAttribute="top" constant="60" id="l5r-Y9-M5i"/>
+                                                    <constraint firstItem="Xzg-An-taw" firstAttribute="centerX" secondItem="RlW-yj-ABe" secondAttribute="centerX" id="tuF-69-JrE"/>
                                                     <constraint firstItem="qNd-TF-SJl" firstAttribute="trailing" secondItem="NAe-OX-Fg0" secondAttribute="trailing" id="uAL-Ve-Ywa"/>
+                                                    <constraint firstItem="hcb-Qb-zm0" firstAttribute="top" secondItem="Xzg-An-taw" secondAttribute="bottom" constant="20" id="xsN-Wd-cJZ"/>
                                                     <constraint firstItem="hcb-Qb-zm0" firstAttribute="trailing" secondItem="qNd-TF-SJl" secondAttribute="trailing" id="yBr-oh-Kx3"/>
                                                 </constraints>
                                             </view>
@@ -392,7 +374,7 @@
                         <outlet property="descriptionLb" destination="qNd-TF-SJl" id="cg6-z3-1Tn"/>
                         <outlet property="imgBgBtnContinue" destination="jAh-Qp-M3K" id="OEx-Fl-jdu"/>
                         <outlet property="lblLimitTime" destination="JHo-y8-NZJ" id="NyN-kt-BTQ"/>
-                        <outlet property="pinCodeTextField" destination="xjd-xn-ibq" id="Tz0-SF-kwN"/>
+                        <outlet property="pinCodeTextField" destination="Xzg-An-taw" id="Gah-MA-qor"/>
                         <outlet property="resendCodeBtn" destination="Gnw-V3-fgW" id="f2y-V6-lEd"/>
                     </connections>
                 </viewController>
