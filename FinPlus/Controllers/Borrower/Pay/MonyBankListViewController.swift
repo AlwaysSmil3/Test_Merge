@@ -63,9 +63,9 @@ class MonyBankListViewController: UIViewController, UITableViewDelegate, UITable
         self.bankList.removeAll()
 //        let vietcombank = MonyBankAccount(bankType: 1, bankName:"Vietcombank" , bankNameDetail: "CN Hà Nội", bankNumber: "0021000444319", bankUsername: "Công ty Cổ phần Finplus", amount: self.amount, content: "\(DataManager.shared.currentAccount) chuyển tiền")
         let vietinbank = MonyBankAccount(bankType: 2, bankName:"Vietinbank" , bankNameDetail: "Hoàng Mai", bankNumber: "115002671451", bankUsername: "Công ty Cổ phần Finplus", amount: self.amount, content: "\(DataManager.shared.currentAccount) chuyển tiền")
-        let agribank = MonyBankAccount(bankType: 4, bankName:"Agribank" , bankNameDetail: "Nam Hà Nội", bankNumber: "1460201035289", bankUsername: "Công ty Cổ phần Finplus", amount: self.amount, content: "\(DataManager.shared.currentAccount) chuyển tiền")
+//        let agribank = MonyBankAccount(bankType: 4, bankName:"Agribank" , bankNameDetail: "Nam Hà Nội", bankNumber: "1460201035289", bankUsername: "Công ty Cổ phần Finplus", amount: self.amount, content: "\(DataManager.shared.currentAccount) chuyển tiền")
         
-        self.bankList.append(agribank)
+        //self.bankList.append(agribank)
         self.bankList.append(vietinbank)
         //self.bankList.append(vietcombank)
         

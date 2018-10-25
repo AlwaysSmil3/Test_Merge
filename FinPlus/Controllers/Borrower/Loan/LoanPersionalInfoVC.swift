@@ -58,11 +58,11 @@ class LoanPersionalInfoVC: LoanBaseViewController {
 //        
 //        self.setupTitleView(title: "Test", subTitle: "test")
         
-        self.currentStep = 0
+        self.currentStep = 1
         
         if let info = DataManager.shared.browwerInfo?.activeLoan,  let loanId = info.loanId, loanId > 0 {
             //Cập nhật
-            self.updateDataToServer()
+            //self.updateDataToServer()
         }
         
         self.loadContacts {
@@ -306,9 +306,12 @@ class LoanPersionalInfoVC: LoanBaseViewController {
                 }
             }
             
-            let loanInfoJobVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanInfoJobVC") as! LoanInfoJobVC
+            self.updateDataToServer(step: 1, completion: {
+                let loanInfoJobVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanInfoJobVC") as! LoanInfoJobVC
+                
+                self.navigationController?.pushViewController( loanInfoJobVC, animated: true)
+            })
             
-            self.navigationController?.pushViewController( loanInfoJobVC, animated: true)
         }
     }
     

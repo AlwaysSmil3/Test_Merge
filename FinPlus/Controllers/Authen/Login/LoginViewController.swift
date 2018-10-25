@@ -36,7 +36,6 @@ class LoginViewController: BaseAuthenViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tfPass?.delegate = self
-        
 
         self.updateUI()
     }

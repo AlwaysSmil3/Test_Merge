@@ -10,7 +10,7 @@ import Foundation
 import PulsingHalo
 
 
-class LoanFirstViewController: BaseViewController {
+class LoanFirstViewController: LoanBaseViewController {
     
     @IBOutlet var contentBtnContinueView: UIView!
     @IBOutlet var btnContinueRight: UIButton!
@@ -417,9 +417,13 @@ class LoanFirstViewController: BaseViewController {
         self.updateDataToLoanAPI {
             if let info = DataManager.shared.browwerInfo?.activeLoan,  let loanId = info.loanId, loanId > 0 {
                 //Cập nhật
-                let loanPersionalInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanPersionalInfoVC") as! LoanPersionalInfoVC
                 
-                self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
+                self.updateDataToServer(step: 0, completion: {
+                    let loanPersionalInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanPersionalInfoVC") as! LoanPersionalInfoVC
+                    
+                    self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
+                })
+                
             } else {
                 //chua có thì tạo
                 APIClient.shared.loan(isShowLoandingView: true, httpType: .POST)

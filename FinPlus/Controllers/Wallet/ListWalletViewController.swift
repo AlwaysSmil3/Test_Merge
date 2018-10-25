@@ -54,8 +54,8 @@ class ListWalletViewController: BaseViewController {
             //self.navigationController?.navigationBar.shadowImage = UIImage()
             self.bottomView.isHidden = false
             self.updateDataFromServer()
-            DataManager.shared.loanInfo.currentStep = 2
-            self.updateDataToServer()
+            DataManager.shared.loanInfo.currentStep = 3
+            //self.updateDataToServer()
         } else {
             self.navigationItem.rightBarButtonItem = nil
             self.setupTitleView(title: "Quản lý tài khoản")
@@ -98,10 +98,12 @@ class ListWalletViewController: BaseViewController {
     }
     
     /// Cho Loan - Xong mỗi bước là gửi api put cập nhật dữ liệu cho mỗi bước
-    func updateDataToServer() {
-        APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
-            .done(on: DispatchQueue.global()) { model in
+    func updateDataToServer(completion: @escaping() -> Void) {
+        DataManager.shared.loanInfo.currentStep = 3
+        APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
+            .done(on: DispatchQueue.main) { model in
                 DataManager.shared.loanID = model.loanId!
+                completion()
             }
             .catch { error in }
     }
@@ -183,10 +185,17 @@ class ListWalletViewController: BaseViewController {
             }
         }
         
-        let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
+        self.updateDataToServer {
+            let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
+            
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
+        }
         
-        self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
+//        let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
+//
+//        self.navigationController?.isNavigationBarHidden = true
+//        self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
 
     }
     

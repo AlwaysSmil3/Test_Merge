@@ -169,11 +169,17 @@ class LoanBaseViewController: BaseViewController {
     }
 
     /// Xong mỗi bước là gửi api put cập nhật dữ liệu cho mỗi bước
-    func updateDataToServer() {
-        APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
-            .done(on: DispatchQueue.global()) { model in
+    func updateDataToServer(step: Int? = nil, completion: @escaping() -> Void) {
+        
+        if let step_ = step {
+            self.currentStep = step_
+        }
+        
+        APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
+            .done(on: DispatchQueue.main) { model in
                 DataManager.shared.loanID = model.loanId!
                 DataManager.shared.browwerInfo?.activeLoan = model
+                completion()
             }
             .catch { error in
                 self.showGreenBtnMessage(title: TITLE_ALERT_ERROR_CONNECTION, message: API_MESSAGE.OTHER_ERROR, okTitle: "Đóng", cancelTitle: nil)

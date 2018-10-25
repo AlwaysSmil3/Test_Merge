@@ -10,6 +10,7 @@
 		15942B202105B32300591BA4 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15942B1F2105B32300591BA4 /* PaymentMethod.swift */; };
 		48D46DDE05C608E1D160EC14 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
 		6302C10721393DA90037277E /* DataManager+MissingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302C10621393DA90037277E /* DataManager+MissingData.swift */; };
+		630341EA218172A7008C541E /* KAPinField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630341E9218172A7008C541E /* KAPinField.swift */; };
 		63037F4F21115531002CE49B /* APIClient+Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63037F4E21115531002CE49B /* APIClient+Payment.swift */; };
 		63037F5221119A93002CE49B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63037F5121119A93002CE49B /* Transaction.swift */; };
 		6303923020E8B108000C422D /* VSSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303922D20E8B108000C422D /* VSSlider.swift */; };
@@ -347,6 +348,7 @@
 /* Begin PBXFileReference section */
 		15942B1F2105B32300591BA4 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		6302C10621393DA90037277E /* DataManager+MissingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+MissingData.swift"; sourceTree = "<group>"; };
+		630341E9218172A7008C541E /* KAPinField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAPinField.swift; sourceTree = "<group>"; };
 		63037F4E21115531002CE49B /* APIClient+Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Payment.swift"; sourceTree = "<group>"; };
 		63037F5121119A93002CE49B /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		6303922D20E8B108000C422D /* VSSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSSlider.swift; sourceTree = "<group>"; };
@@ -709,6 +711,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		630341E821817260008C541E /* KAPinField */ = {
+			isa = PBXGroup;
+			children = (
+				630341E9218172A7008C541E /* KAPinField.swift */,
+			);
+			path = KAPinField;
+			sourceTree = "<group>";
+		};
 		63037F5021119A7A002CE49B /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
@@ -1253,6 +1263,7 @@
 		639C9DD120A14B6F00F2CF5E /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				630341E821817260008C541E /* KAPinField */,
 				636C53592138E918005D24A2 /* LPSnackbar */,
 				E7C4DDE7213402E800055944 /* SCPageControl */,
 				630597422123FFD800EEADEF /* SBMessageInputView */,
@@ -2086,6 +2097,7 @@
 				84114BD920D79A6F005026DF /* TestPayHistoryViewController.swift in Sources */,
 				633415B220E1D6E8004B95C0 /* RateInfo.swift in Sources */,
 				E7BC259320CFDACA001FF0F4 /* KaedeTextField.swift in Sources */,
+				630341EA218172A7008C541E /* KAPinField.swift in Sources */,
 				6377342621070A39000889F2 /* BrowwerBank.swift in Sources */,
 				6387D11B20D9008F008AC08C /* LoanTypeOptionalMediaTBCell.swift in Sources */,
 				633AF9B720A98A7D00BAE2BB /* SetPassAuthenVC.swift in Sources */,

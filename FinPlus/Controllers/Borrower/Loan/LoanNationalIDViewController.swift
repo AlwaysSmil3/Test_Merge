@@ -15,8 +15,8 @@ class LoanNationalIDViewController: LoanBaseViewController {
         self.index = 2
         super.viewDidLoad()
         
-        self.currentStep = 3
-        self.updateDataToServer()
+        self.currentStep = 4
+        //self.updateDataToServer()
     
         if let bottomView = self.bottomScrollView {
             bottomView.setContentOffset(CGPoint(x: 100, y: 0), animated: true)
@@ -88,10 +88,12 @@ class LoanNationalIDViewController: LoanBaseViewController {
             }
         }
         
-        
-        let loanOtherInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanOtherInfoVC") as! LoanOtherInfoVC
-        
-        self.navigationController?.pushViewController(loanOtherInfoVC, animated: true)
+        self.updateDataToServer(step: 4) {
+            let loanOtherInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanOtherInfoVC") as! LoanOtherInfoVC
+            
+            self.navigationController?.pushViewController(loanOtherInfoVC, animated: true)
+        }
+
         
     }
 }
