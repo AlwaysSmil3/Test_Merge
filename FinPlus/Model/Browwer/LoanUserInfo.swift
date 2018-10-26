@@ -18,7 +18,7 @@ struct LoanUserInfo: Encodable {
     
     var relationships: [RelationShipPhone] {
         didSet {
-            if relationships.count > 1, relationships[0].type > relationships[1].type {
+            if relationships.count > 1, relationships[0].type > -1, relationships[1].type > -1, relationships[0].type > relationships[1].type {
                 self.relationships.reverse()
             }
         }
