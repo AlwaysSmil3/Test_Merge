@@ -1,27 +1,20 @@
 //
-//  VerifyOTPAuthenVC.swift
+//  VerifyOTPAuthenVCUnderIOS12.swift
 //  FinPlus
 //
-//  Created by Cao Van Hai on 5/14/18.
+//  Created by Cao Van Hai on 10/26/18.
 //  Copyright © 2018 Cao Van Hai. All rights reserved.
 //
 
 import Foundation
+import PinCodeTextField
 
-
-enum VerifyType {
-    case Login
-    case Loan
-    case Forgot
-    case RegisInvest
-    case SignContract
-}
-class VerifyOTPAuthenVC: BaseViewController {
-
+class VerifyOTPAuthenVCUnderIOS12: BaseViewController {
+    
     @IBOutlet weak var descriptionLb: UILabel!
     @IBOutlet weak var resendCodeBtn: UIButton!
     @IBOutlet var lblLimitTime: UILabel!
-    @IBOutlet var pinCodeTextField: KAPinField!
+    @IBOutlet var pinCodeTextField: PinCodeTextField!
     var verifyType: VerifyType = .Login
     
     var loanId: Int32!
@@ -30,13 +23,13 @@ class VerifyOTPAuthenVC: BaseViewController {
     var timer = Timer()
     var otp: String = ""
     
-    //Cho Tạo Loan  
+    //Cho Tạo Loan
     var loanResponseModel: LoanResponseModel?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.setupPinView()
         
         appDelegate.timer.invalidate()
@@ -59,29 +52,22 @@ class VerifyOTPAuthenVC: BaseViewController {
     }
     
     private func setupPinView() {
-
+        pinCodeTextField.delegate = self
+        pinCodeTextField.keyboardType = .numberPad
+        pinCodeTextField.becomeFirstResponder()
+        
+        //        let toolbar = UIToolbar()
+        //        let nextButtonItem = UIBarButtonItem(title: NSLocalizedString("Tiếp theo",
+        //                                                                      comment: ""),
+        //                                             style: .done,
+        //                                             target: self,
+        //                                             action: #selector(pinCodeNextAction))
+        //        toolbar.items = [nextButtonItem]
+        //        toolbar.barStyle = .default
+        //        toolbar.sizeToFit()
+        //        pinCodeTextField.inputAccessoryView = toolbar
+        
         resendCodeBtn.isHidden = true
-        // -- Delegation --
-        pinCodeTextField.ka_delegate = self
-        
-        // -- Properties --
-        self.refreshPinField()
-        
-        // -- Styling --
-        pinCodeTextField.ka_tokenColor = UIColor.black.withAlphaComponent(0.4)
-        pinCodeTextField.ka_textColor = MAIN_COLOR
-        pinCodeTextField.ka_font = .menlo(36)
-        pinCodeTextField.ka_kerning = 20
-        
-        // Get focus
-        _ = pinCodeTextField.becomeFirstResponder()
-    }
-    
-    func refreshPinField() {
-        // Random ka_token and ka_numberOfCharacters
-        pinCodeTextField.ka_token = "—"
-        pinCodeTextField.ka_numberOfCharacters = 6
-        
     }
     
     // Update timer
@@ -115,8 +101,9 @@ class VerifyOTPAuthenVC: BaseViewController {
     }
     
     private func clearOTP() {
-
-        self.pinCodeTextField.ka_text = ""
+        for _ in 0...6 {
+            self.pinCodeTextField.deleteBackward()
+        }
         self.otp = ""
     }
     
@@ -157,7 +144,7 @@ class VerifyOTPAuthenVC: BaseViewController {
             self.getOTPForgetPass()
             
             break
-
+            
         }
         
     }
@@ -213,13 +200,24 @@ class VerifyOTPAuthenVC: BaseViewController {
                             self.showGreenBtnMessage(title: "Thất bại", message: API_MESSAGE.OTHER_ERROR, okTitle: "OK", cancelTitle: nil)
                         }
                     }
-                }
+                    }
                     .catch { (error) in
                         self.showGreenBtnMessage(title: "Thất bại", message: API_MESSAGE.OTHER_ERROR, okTitle: "OK", cancelTitle: nil)
                 }
             }
         }
         
+    }
+    
+    //MARK: Verify Loan
+    func verifyOTPLoan() {
+        APIClient.shared.loanVerify(otp: self.otp, loanID: DataManager.shared.loanID ?? 0)
+            .done(on: DispatchQueue.main) { [weak self] model in
+                let successVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSendSuccessVC") as! LoanSendSuccessVC
+                self?.navigationController?.pushViewController(successVC, animated: true)
+                
+            }
+            .catch { error in }
     }
     
     
@@ -255,7 +253,7 @@ class VerifyOTPAuthenVC: BaseViewController {
                         }
                         self?.pushToSetPassword()
                     }
-            }
+                }
                 .catch { error in}
             break
             
@@ -265,7 +263,7 @@ class VerifyOTPAuthenVC: BaseViewController {
             break
         case .Loan:
             self.verifyOTPLoan()
-        
+            
             break
         case .RegisInvest:
             print("Register Inves")
@@ -277,7 +275,7 @@ class VerifyOTPAuthenVC: BaseViewController {
             self.verifyOTPForgotPass()
             
             break
-
+            
         }
         
         self.clearOTP()
@@ -306,12 +304,12 @@ class VerifyOTPAuthenVC: BaseViewController {
     func verifyOTPSignContract() {
         guard let loanId = self.loanId else { return }
         APIClient.shared.signContract(otp: self.otp, loanID: loanId)
-        .done(on: DispatchQueue.main) { [weak self] model in
-            let vc = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "CONTRACT_SUCCESS")
-            self?.navigationController?.isNavigationBarHidden = true
-            self?.navigationController?.pushViewController(vc, animated: true)
-        }
-        .catch { error in }
+            .done(on: DispatchQueue.main) { [weak self] model in
+                let vc = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "CONTRACT_SUCCESS")
+                self?.navigationController?.isNavigationBarHidden = true
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+            .catch { error in }
     }
     
     func pushToLoginVC() {
@@ -323,31 +321,10 @@ class VerifyOTPAuthenVC: BaseViewController {
         updatePassVC.setPassOrResetPass = .SetPass
         self.navigationController?.pushViewController(updatePassVC, animated: true)
     }
-
-}
-
-//MARK: KAPinFieldDelegate
-extension VerifyOTPAuthenVC: KAPinFieldDelegate {
     
-    func ka_pinField(_ field: KAPinField, didFinishWith code: String) {
-        
-        if code.count >= 6 {
-            self.otp = code
-            self.imgBgBtnContinue!.image = #imageLiteral(resourceName: "bg_button_enable_login")
-            self.btnContinue!.dropShadow(color: MAIN_COLOR)
-            self.btnContinue!.isEnabled = true
-            self.view.endEditing(true)
-            self.btnVerifyTapped(btnContinue!)
-        } else {
-            self.imgBgBtnContinue!.image = #imageLiteral(resourceName: "bg_button_disable_login")
-            self.btnContinue!.dropShadow(color: DISABLE_BUTTON_COLOR)
-            self.btnContinue!.isEnabled = false
-        }
-    }
 }
 
-/*
-extension VerifyOTPAuthenVC: PinCodeTextFieldDelegate {
+extension VerifyOTPAuthenVCUnderIOS12: PinCodeTextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: PinCodeTextField) -> Bool {
         return true
     }
@@ -383,4 +360,3 @@ extension VerifyOTPAuthenVC: PinCodeTextFieldDelegate {
     }
     
 }
-*/
