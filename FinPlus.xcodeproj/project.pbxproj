@@ -84,6 +84,7 @@
 		630F684720F4664D004FF32E /* LoanTypePhoneRelationSubTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630F684620F4664D004FF32E /* LoanTypePhoneRelationSubTBCell.xib */; };
 		6311C4F021660A2D005EA2D8 /* ContactParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311C4EF21660A2D005EA2D8 /* ContactParams.swift */; };
 		6311C4F221660A6E005EA2D8 /* ContactParamsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311C4F121660A6E005EA2D8 /* ContactParamsList.swift */; };
+		63170E782182D2AD00A83705 /* VerifyOTPAuthenVCUnderIOS12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63170E772182D2AD00A83705 /* VerifyOTPAuthenVCUnderIOS12.swift */; };
 		631A2DA420F60C6800D8D9B8 /* BorrowerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631A2DA220F60C6800D8D9B8 /* BorrowerTabBarController.swift */; };
 		632FD02120AAC3CC00D9399C /* APIResponseGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */; };
 		632FD02420AADF3C00D9399C /* VerifyAuthenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */; };
@@ -422,6 +423,7 @@
 		630F684620F4664D004FF32E /* LoanTypePhoneRelationSubTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoanTypePhoneRelationSubTBCell.xib; sourceTree = "<group>"; };
 		6311C4EF21660A2D005EA2D8 /* ContactParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactParams.swift; sourceTree = "<group>"; };
 		6311C4F121660A6E005EA2D8 /* ContactParamsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactParamsList.swift; sourceTree = "<group>"; };
+		63170E772182D2AD00A83705 /* VerifyOTPAuthenVCUnderIOS12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPAuthenVCUnderIOS12.swift; sourceTree = "<group>"; };
 		631A2DA220F60C6800D8D9B8 /* BorrowerTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorrowerTabBarController.swift; sourceTree = "<group>"; };
 		632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponseGeneral.swift; sourceTree = "<group>"; };
 		632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyAuthenData.swift; sourceTree = "<group>"; };
@@ -1035,6 +1037,7 @@
 			isa = PBXGroup;
 			children = (
 				633AF9B220A9894500BAE2BB /* VerifyOTPAuthenVC.swift */,
+				63170E772182D2AD00A83705 /* VerifyOTPAuthenVCUnderIOS12.swift */,
 			);
 			path = Verify;
 			sourceTree = "<group>";
@@ -2224,6 +2227,7 @@
 				6338F3F920BE602C005777E2 /* BrowwerJobInfo.swift in Sources */,
 				632FD02120AAC3CC00D9399C /* APIResponseGeneral.swift in Sources */,
 				630467B620B50B5C0069469A /* AddressFirstViewController.swift in Sources */,
+				63170E782182D2AD00A83705 /* VerifyOTPAuthenVCUnderIOS12.swift in Sources */,
 				84114BCC20D79464005026DF /* PayAllTableViewCell.swift in Sources */,
 				84647A8020E0E89B0053DD0D /* UICircularProgressRingLayer.swift in Sources */,
 				635B5E0620B6B3A500F02132 /* LoanInfo.swift in Sources */,

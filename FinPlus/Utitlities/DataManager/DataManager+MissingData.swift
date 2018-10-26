@@ -19,11 +19,13 @@ extension DataManager {
         }
         
         var relation: JSONDictionary?
-        if let relation1 = relationPhone["0"] as? JSONDictionary, let typeRe = relation1["type"] as? Int, type == typeRe {
-            relation = relation1
-        }
-        if let relation2 = relationPhone["1"] as? JSONDictionary, let typeRe = relation2["type"] as? Int, type == typeRe {
-            relation = relation2
+        let count = DataManager.shared.loanInfo.userInfo.relationships.count > 1 ? DataManager.shared.loanInfo.userInfo.relationships.count : 2
+        
+        for i in 0...count - 1 {
+            if let relation1 = relationPhone["\(i)"] as? JSONDictionary, let typeRe = relation1["type"] as? Int, type == typeRe {
+                relation = relation1
+                break
+            }
         }
         
         if let re = relation, let phone_ = re["phoneNumber"] as? String {

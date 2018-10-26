@@ -205,10 +205,19 @@ class LoginViewController: BaseAuthenViewController {
                     return
                 }
                 
-                let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
-                verifyVC.verifyType = verifyType
-                verifyVC.account = account
-                self?.navigationController?.pushViewController(verifyVC, animated: true)
+                if #available(iOS 12.0, *) {
+                    let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
+                    verifyVC.verifyType = verifyType
+                    verifyVC.account = account
+                    self?.navigationController?.pushViewController(verifyVC, animated: true)
+                } else {
+                    let verifyVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVCUnderIOS12") as! VerifyOTPAuthenVCUnderIOS12
+                    verifyVC.verifyType = verifyType
+                    verifyVC.account = account
+                    self?.navigationController?.pushViewController(verifyVC, animated: true)
+                }
+                
+                
                 
         }
             .catch { errror in }
