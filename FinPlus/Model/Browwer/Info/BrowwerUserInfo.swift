@@ -22,7 +22,12 @@ public struct BrowwerUserInfo {
   }
 
   // MARK: Properties
-  public var relationships: [BrowwerRelationships]?
+    public var relationships: [BrowwerRelationships]? {
+        didSet {
+            guard let relations = relationships, relations.count > 1, (relations[0].type ?? 0) > (relations[1].type ?? 0) else { return }
+            self.relationships?.reverse()
+        }
+    }
   public var fullName: String?
   public var residentAddress: BrowwerResidentAddress?
   public var currentAddress: BrowwerCurrentAddress?

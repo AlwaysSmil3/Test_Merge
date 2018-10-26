@@ -35,7 +35,7 @@ class BasePopup : BaseViewController {
     // MARK: Method
     
     func show() {
-        
+        guard DataManager.shared.isCanShowPopup else { return }
         if let appDelegate = UIApplication.shared.delegate, let window = appDelegate.window, let rootViewController = window?.rootViewController {
             
             var topViewController = rootViewController
@@ -53,12 +53,13 @@ class BasePopup : BaseViewController {
             view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             view.frame = topViewController.view.bounds
             
+            DataManager.shared.isCanShowPopup = false
         }
     }
     
     func show(completion: (() -> Void)?)
     {
-        
+        guard DataManager.shared.isCanShowPopup else { return }
         if let appDelegate = UIApplication.shared.delegate, let window = appDelegate.window, let rootViewController = window?.rootViewController {
             
             var topViewController = rootViewController
@@ -76,6 +77,7 @@ class BasePopup : BaseViewController {
             view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             view.frame = topViewController.view.bounds
             
+            DataManager.shared.isCanShowPopup = false
         }
         
         completionHandler = completion
@@ -91,7 +93,7 @@ class BasePopup : BaseViewController {
             .completion({
                 self.view.removeFromSuperview()
                 self.removeFromParentViewController()
-                
+                DataManager.shared.isCanShowPopup = true
             })
         
     }
@@ -105,7 +107,7 @@ class BasePopup : BaseViewController {
             .completion({
                 self.view.removeFromSuperview()
                 self.removeFromParentViewController()
-                
+                DataManager.shared.isCanShowPopup = true
                 competionHandle()
             })
     }
