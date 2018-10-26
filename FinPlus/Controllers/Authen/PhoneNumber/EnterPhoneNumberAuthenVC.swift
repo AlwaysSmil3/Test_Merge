@@ -29,6 +29,10 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
             delegate.timeCount = 60
         }
         
+        if #available(iOS 11.0, *) {
+            self.tfPhoneNumber.textContentType = .username
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

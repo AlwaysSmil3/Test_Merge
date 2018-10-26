@@ -49,7 +49,12 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         self.tfPass?.delegate = self
-        self.tfRePass.delegate = self
+        self.tfRePass?.delegate = self
+        
+        if #available(iOS 11.0, *) {
+            self.tfPass?.textContentType = .password
+            self.tfRePass?.textContentType = .password
+        }
         
     }
 
