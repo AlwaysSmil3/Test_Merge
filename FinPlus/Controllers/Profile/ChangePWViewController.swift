@@ -37,6 +37,13 @@ class ChangePWViewController: UIViewController, UITextFieldDelegate {
         
         renewPass.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         renewPass.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_SMALL)
+        
+        
+        if #available(iOS 11.0, *) {
+            self.currentPass?.textContentType = .password
+            self.newPass?.textContentType = .password
+            self.renewPass?.textContentType = .password
+        }
     }
 
     override func didReceiveMemoryWarning() {
