@@ -457,9 +457,16 @@ class LoanSummaryInfoVC: BaseViewController {
     }
     
     private func toVerifyVC() {
-        let otpVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
-        otpVC.verifyType = .Loan
-        self.navigationController?.pushViewController(otpVC, animated: true)
+        if #available(iOS 12.0, *) {
+            let otpVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVC") as! VerifyOTPAuthenVC
+            otpVC.verifyType = .Loan
+            self.navigationController?.pushViewController(otpVC, animated: true)
+        } else {
+            let otpVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "VerifyOTPAuthenVCUnderIOS12") as! VerifyOTPAuthenVCUnderIOS12
+            otpVC.verifyType = .Loan
+            self.navigationController?.pushViewController(otpVC, animated: true)
+        }
+        
     }
     
     
