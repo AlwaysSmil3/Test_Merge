@@ -68,6 +68,9 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
         super.awakeFromNib()
         
         self.tfRelationPhone?.delegate = self
+        if #available(iOS 11.0, *) {
+            self.tfRelationPhone?.textContentType = .username
+        }
     }
     
     func updateStatus() {

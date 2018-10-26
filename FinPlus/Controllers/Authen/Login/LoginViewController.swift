@@ -36,9 +36,15 @@ class LoginViewController: BaseAuthenViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tfPass?.delegate = self
-
+        self.tfPass?.keyboardType = .numberPad
         self.updateUI()
+        
+        if #available(iOS 11.0, *) {
+            self.tfPass?.textContentType = .password
+        }
+        
     }
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

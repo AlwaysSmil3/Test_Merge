@@ -55,6 +55,10 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 self.tfValue?.keyboardType = .numberPad
             }
             
+            if #available(iOS 11.0, *) {
+                self.tfValue?.textContentType = .username
+            }
+            
             
             if let value = field_.placeholder {
                 self.tfValue?.placeholder = value
