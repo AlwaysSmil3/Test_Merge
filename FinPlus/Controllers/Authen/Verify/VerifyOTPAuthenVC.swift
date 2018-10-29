@@ -237,10 +237,9 @@ class VerifyOTPAuthenVC: BaseViewController {
                     if model.returnCode != 1 {
                         self?.otp = ""
                         // show alert
-                        if let returnMessage = model.returnMsg {
-                            self?.showGreenBtnMessage(title: "Verify OTP Failed", message: returnMessage, okTitle: "OK", cancelTitle: nil)
-                            return
-                        }
+                        let returnMessage = model.returnMsg ?? API_MESSAGE.OTHER_ERROR
+                        self?.showGreenBtnMessage(title: "Lỗi", message: returnMessage, okTitle: "Đồng ý", cancelTitle: nil)
+                        return
                     } else {
                         
                         guard let isNew = model.data?.isNew, isNew else {

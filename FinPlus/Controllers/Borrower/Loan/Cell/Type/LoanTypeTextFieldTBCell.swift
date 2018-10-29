@@ -532,43 +532,11 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
     
     fileprivate func getMaxLength() -> Int {
         
-        var maxLength = 100
+        var maxLength = 50
         
         if let length = self.field?.maxLenght {
             maxLength = length
         }
-        
-        /*
-        guard let field_ = self.field, let id = field_.id else { return maxLength }
-        guard let parent = self.parent else {
-            if id.contains("optionalText") {
-                maxLength = 50
-            }
-            
-            return maxLength
-        }
-        
-        if parent.contains("userInfo") {
-            // thông tin user
-            if id.contains("fullName") {
-                maxLength = 50
-            } else if id.contains("nationalId") {
-                maxLength = 15
-            }
-            
-        } else if parent.contains("jobInfo") {
-            // Thông tin nghề nghiêp
-            if id.contains("salary") {
-                maxLength = 13
-            } else if id.contains("companyPhoneNumber") {
-                maxLength = 13
-            } else if id.contains("experienceYear") {
-                maxLength = 3
-            } else if id.contains("studentId") {
-                maxLength = 16
-            }
-        }
-        */
         
         return maxLength
     }
