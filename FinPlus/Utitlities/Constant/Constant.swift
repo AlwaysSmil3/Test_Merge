@@ -45,6 +45,8 @@ let MobilizedAmount = "Số tiền đã cam kết cho vay"
 let LoanAmount = "Số tiền vay theo hợp đồng"
 let LoanMobiExpDay = "Thời gian chuẩn bị tiền còn lại"
 let MobilizingStatus = "Đang chuẩn bị tiền"
+let LoanAmountBeforeSigned = "Số tiền vay được duyệt"
+let LoanAmountBase = "Số tiền vay"
 
 func clearValueInValidUserDefaultData() {
     userDefault.set(nil, forKey: UserDefaultInValidRelationPhone)

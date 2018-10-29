@@ -122,9 +122,9 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         
         let noneText = text.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
         if(noneText.count > 0) {
-            let number = Int(noneText)
-            let formattedString = formatter.string(from: NSNumber(value: number! > 0 ? number! : 0))
-            return formattedString!
+            let number = Int(noneText) ?? 0
+            let formattedString = formatter.string(from: NSNumber(value: number > 0 ? number : 0))
+            return formattedString ?? ""
         }
         else
         {
@@ -142,29 +142,29 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         
         dateFormatter.dateFormat = "dd/MM/yyyy"
         
-        if (self.moneyTextField.text?.count)! < 4 {
+        if (self.moneyTextField.text?.count ?? 0) < 4 {
             showAlertView(title: "Lỗi", message: "Số tiền không được nhỏ hơn 1000000", okTitle: "Đồng ý", cancelTitle: nil)
             return
         }
-        else if ((self.monthTextField.text?.count)! < 1 || Int(self.monthTextField.text!)! < 1) {
+        else if ((self.monthTextField.text?.count ?? 0) < 1 || Int(self.monthTextField.text ?? "") ?? 0 < 1) {
             showAlertView(title: "Lỗi", message: "Thời hạn vay phải lớn hơn 1 tháng", okTitle: "Đồng ý", cancelTitle: nil)
             return
         }
-        else if ((self.rateTextField.text?.count)! < 1 ||  Float(self.rateTextField.text!)! <= 0) {
+        else if ((self.rateTextField.text?.count ?? 0) < 1 ||  Float(self.rateTextField.text ?? "") ?? 0 <= 0) {
             showAlertView(title: "Lỗi", message: "Lãi suất phải lớn hơn 0", okTitle: "Đồng ý", cancelTitle: nil)
             return
         }
 
-        let money = Int(self.moneyTextField.text!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: ""))!
-        let monthCount = Int(self.monthTextField.text ?? "0")
-        let rate = Int(self.rateTextField.text ?? "0")
+        let money = Int(self.moneyTextField.text!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")) ?? 0
+        let monthCount = Int(self.monthTextField.text ?? "0") ?? 0
+        let rate = Int(self.rateTextField.text ?? "0") ?? 0
         let date = self.dateFormatter.date(from: self.dateTextField.text ?? "")
-        let beginData = date?.toString(.custom(kDisplayFormatCalculatorPay))
+        let beginData = date?.toString(.custom(kDisplayFormatCalculatorPay)) ?? ""
         
-        APIClient.shared.calculatorPay(amount: money, term: monthCount!*30, intRate: rate!, disbursalDate: beginData!)
-        .done(on: DispatchQueue.main) { model in
-            self.data = model
-            self.spreadsheetView.reloadData()
+        APIClient.shared.calculatorPay(amount: money, term: monthCount*30, intRate: rate, disbursalDate: beginData)
+        .done(on: DispatchQueue.main) { [weak self]model in
+            self?.data = model
+            self?.spreadsheetView.reloadData()
         }
         .catch { error in
             
@@ -177,7 +177,7 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
     }
     
     func validateData() {
-        if ((self.moneyTextField.text?.count)! > 0 && (self.monthTextField.text?.count)! > 0 && (self.rateTextField.text?.count)! > 0 && ((self.dateTextField.text?.count)! > 0)) {
+        if ((self.moneyTextField.text?.count ?? 0) > 0 && (self.monthTextField.text?.count ?? 0) > 0 && (self.rateTextField.text?.count ?? 0) > 0 && ((self.dateTextField.text?.count ?? 0) > 0)) {
             self.calBtn.isEnabled = true
         }
         else
