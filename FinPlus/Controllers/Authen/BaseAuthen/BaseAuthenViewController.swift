@@ -161,6 +161,7 @@ class BaseAuthenViewController: BaseViewController {
                 case 3:
                     // đang đăng nhập trên 1 thiết bị khác -> push home investor or borrwer
                     userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+                    userDefault.synchronize()
                     DataManager.shared.currentAccount = account
                     DataManager.shared.updatePushNotificationToken()
                     
@@ -168,6 +169,7 @@ class BaseAuthenViewController: BaseViewController {
                     if let data = model.data {
                         if let token = data.accessToken {
                             userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
+                            userDefault.synchronize()
                         }
                         if let accountType = data.accountType {
                             if accountType == UserRole.Investor.rawValue {
@@ -182,12 +184,14 @@ class BaseAuthenViewController: BaseViewController {
                 case 1:
                     DataManager.shared.updatePushNotificationToken()
                     userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+                    userDefault.synchronize()
                     DataManager.shared.currentAccount = account
                     
                     // save token
                     if let data = model.data {
                         if let token = data.accessToken {
                             userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
+                            userDefault.synchronize()
                         }
                         if let accountType = data.accountType {
                             if accountType == UserRole.Investor.rawValue {

@@ -156,6 +156,7 @@ class DataManager {
         guard account.count > 0 else { return }
         DataManager.shared.currentAccount = account
         userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+        userDefault.synchronize()
     }
     
     /// Get Data from JSON
