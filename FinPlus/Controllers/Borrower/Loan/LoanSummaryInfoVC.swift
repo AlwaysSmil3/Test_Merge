@@ -307,7 +307,7 @@ class LoanSummaryInfoVC: BaseViewController {
         dataSource = [
             LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
             LoanSummaryModel(name: "Ngày tạo đơn", value: date, attributed: nil),
-            LoanSummaryModel(name: LoanAmount, value: FinPlusHelper.formatDisplayCurrency(Double(DataManager.shared.loanInfo.amount)) + "đ", attributed: nil),
+            LoanSummaryModel(name: LoanAmountBase, value: FinPlusHelper.formatDisplayCurrency(Double(DataManager.shared.loanInfo.amount)) + "đ", attributed: nil),
             LoanSummaryModel(name: "Kỳ hạn vay", value: termDisplay, attributed: nil),
             LoanSummaryModel(name: "Lãi suất dự kiến", value: "\(Int(cate.interestRate!))%/năm", attributed: nil),
             LoanSummaryModel(name: "Phí dịch vụ", value: feeStr, attributed: nil),
