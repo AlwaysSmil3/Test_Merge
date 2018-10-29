@@ -152,6 +152,13 @@ class DataManager {
         }
     }
     
+    func setCurrentAccount(account: String) {
+        guard account.count > 0 else { return }
+        DataManager.shared.currentAccount = account
+        userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+        userDefault.synchronize()
+    }
+    
     /// Get Data from JSON
 //    func getDataLoanFromJSON() {
 //        if let path = Bundle.main.path(forResource: "LoanBuilder", ofType: "json") {

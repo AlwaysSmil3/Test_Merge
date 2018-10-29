@@ -24,6 +24,10 @@ extension APIClient {
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = BrowwerInfo(object: data)
                         
+                        if let phone = model.phoneNumber, phone.count > 0, phone != DataManager.shared.currentAccount {
+                            DataManager.shared.setCurrentAccount(account: phone)
+                        }
+                        
                         if let activeLoan = model.activeLoan,let status = activeLoan.status, status == STATUS_LOAN.SALE_PENDING.rawValue || status == STATUS_LOAN.RISK_PENDING.rawValue {
                             if let activeLoan = data["activeLoan"] as? JSONDictionary, let missingData = activeLoan["missingData"] as? JSONDictionary {
                                 
