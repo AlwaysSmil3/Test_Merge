@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Sử dụng vị trí cho tạo khoản vay</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Sử dụng vị trí cho tạo khoản vay</string>
-	<key>NSContactsUsageDescription</key>
-	<string>Sử dụng liên hệ cho tạo khoản vay</string>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -25,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -37,7 +29,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -56,6 +48,8 @@
 	<string>243505112873077</string>
 	<key>FacebookDisplayName</key>
 	<string>Mony</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -73,6 +67,12 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Sử dụng camera cho tạo khoản vay</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Sử dụng liên hệ cho tạo khoản vay</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Sử dụng vị trí cho tạo khoản vay</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Sử dụng vị trí cho tạo khoản vay</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Sử dụng ảnh cho tạo khoản vay</string>
 	<key>UIAppFonts</key>
@@ -128,8 +128,8 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-        <string>UIInterfaceOrientationLandscapeLeft</string>
-        <string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

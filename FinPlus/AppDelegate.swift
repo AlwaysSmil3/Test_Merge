@@ -13,6 +13,7 @@ import UserNotifications
 import CoreData
 import Fabric
 import Crashlytics
+import FirebaseRemoteConfig
 
 
 //Cho optionalText trong tạo loan
@@ -73,13 +74,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Init FireBase
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
-        
+        self.loadConfigFromFireBase()
         
         if FinPlusHelper.isConnectedToNetwork() {
             self.getLoanCategories()
             // Get Version
             self.getVersion()
         }
+        
+//        let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
+//        print("Bundle Version \(version)")
+//        let build = Bundle.main.infoDictionary!["CFBundleVersion"] as? String
+//        print("Bundle Build \(build)")
         
         return true
     }
@@ -216,6 +222,66 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    func loadConfigFromFireBase() {
+        
+        let fetchDuration: TimeInterval = 0
+        // WARNING: Don't actually do this in production!
+        self.activeDebugMode()
+        
+        RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { [weak self](status, error) in
+            if let error = error {
+                print("Fetch firebase config fail \(error.localizedDescription)")
+                return
+            }
+            
+            RemoteConfig.remoteConfig().activateFetched()
+            
+            do {
+                let data = RemoteConfig.remoteConfig().configValue(forKey: "minBorrowerAppVersion").dataValue
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves)
+
+                if let jsonDict = jsonResult as? JSONDictionary, let model = jsonDict["ios"] as? JSONDictionary {
+                    
+                    guard let version = model["versionCode"] as? String, FinPlusHelper.checkVersionFromConfig(versionConfig: version) else {
+                        return
+                    }
+                    
+                    let title = model["title"] as? String ?? ""
+                    let messeage = model["message"] as? String ?? ""
+                    self?.showAlertNeedUpdate(title: title, message: messeage)
+                    
+                }
+                
+            } catch {
+                // handle error
+                print("remote config hanle error")
+            }
+        }
+        
+    }
+    
+    func activeDebugMode() {
+        let debugSetting = RemoteConfigSettings(developerModeEnabled: true)
+        RemoteConfig.remoteConfig().configSettings = debugSetting
+    }
+    
+    func showAlertNeedUpdate(title: String, message: String) {
+        guard let topVC = UIApplication.shared.topViewController() else { return }
+        
+        topVC.showAlertView(title: title, message: message, okTitle: "Cập nhật", cancelTitle: "Đóng") { (status) in
+            if status {
+                if let url = URL(string: "https://itunes.apple.com/au/app/mony/id1433420009?mt=8"), UIApplication.shared.canOpenURL(url) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
+                    
+                }
+            }
+            
+        }
+    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
