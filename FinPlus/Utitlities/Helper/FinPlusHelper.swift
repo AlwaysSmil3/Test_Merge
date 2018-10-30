@@ -553,5 +553,41 @@ class FinPlusHelper {
     }
     
     
+    /// Check current version with fireBase Remote Config
+    ///
+    /// - Parameter versionConfig: <#versionConfig description#>
+    /// - Returns: <#return value description#>
+    class func checkVersionFromConfig(versionConfig: String) -> Bool {
+        let configList = versionConfig.components(separatedBy: ".")
+        
+        guard let dict = Bundle.main.infoDictionary, let currentVersionString = dict["CFBundleShortVersionString"] as? String  else {
+            return false
+        }
+        let versionList = currentVersionString.components(separatedBy: ".")
+        guard configList.count > 2, versionList.count > 2 else {
+            return false
+        }
+        
+        guard let x0 = Int(configList[0]), let y0 = Int(versionList[0]), let x1 = Int(configList[1]), let y1 = Int(versionList[1]), let x2 = Int(configList[2]), let y2 = Int(versionList[2]) else {
+            return false
+        }
+        
+        if x0 > y0 {
+            return true
+        }
+        
+        if x0 == y0, x1 > y1 {
+            return true
+        }
+        
+        if x0 == y0, x1 == y1, x2 > y2 {
+            return true
+        }
+        
+        return false
+    }
+    
+    
+    
 }
 
