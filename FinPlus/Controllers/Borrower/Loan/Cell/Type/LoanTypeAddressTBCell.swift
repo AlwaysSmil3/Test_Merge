@@ -65,7 +65,7 @@ class LoanTypeAddressTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
     private func checkMissingData(parentKey: String, key: String, currentValue: String) -> Bool {
         let missAddress = self.getAddressFromMissingData(parentKey: parentKey, key: key)
-        if currentValue.contains(missAddress) {
+        if currentValue == missAddress {
             return true
         }
         

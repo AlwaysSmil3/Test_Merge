@@ -35,6 +35,8 @@ class LoanTypePopupAddTextTBCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.tfValue?.delegate = self
+        
         let toolbar = UIToolbar()
         let nextButtonItem = UIBarButtonItem(title: NSLocalizedString("Xong",
                                                                       comment: ""),
@@ -64,5 +66,23 @@ class LoanTypePopupAddTextTBCell: UITableViewCell {
     }
     
     
+    
+}
+
+//MARK: UITextFieldDelegate
+extension LoanTypePopupAddTextTBCell: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Giới hạn ký tự nhập vào
+        let maxLength = 50
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        
+        if newString.length > maxLength { return false }
+        
+        return true
+        
+    }
     
 }
