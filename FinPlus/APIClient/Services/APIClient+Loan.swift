@@ -281,7 +281,7 @@ extension APIClient {
 
     func delLoan(loanID: Int32) -> Promise<APIResponseGeneral> {
 
-        let endPoint = "loans/" + "\(loanID)/"
+        let endPoint = "loans/" + "\(loanID)"
 
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: endPoint, params: [:], isShowLoadingView: true, httpType: .DELETE)
