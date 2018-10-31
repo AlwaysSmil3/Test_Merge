@@ -135,6 +135,7 @@ class DataManager {
     var isCanShowAlertAPIError: Bool = true
     //Show popup Select
     var isCanShowPopup: Bool = true
+    var isCanShowPopupNeedUpdate: Bool = true
     
     //CurrentLocation
     var currentLocation: CLLocationCoordinate2D? {

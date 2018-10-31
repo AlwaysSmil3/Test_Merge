@@ -627,10 +627,12 @@ class FinPlusHelper {
                     return
                 }
                 
-                guard let topVC = UIApplication.shared.topViewController() else { return }
+                guard let topVC = UIApplication.shared.topViewController(), DataManager.shared.isCanShowPopupNeedUpdate else { return }
                 let title = model["title"] as? String ?? ""
                 let messeage = model["message"] as? String ?? ""
-                topVC.showAlertView(title: title, message: messeage, okTitle: "Cập nhật", cancelTitle: "Đóng") { (status) in
+                DataManager.shared.isCanShowPopupNeedUpdate = false
+                topVC.showAlertView(title: title, message: messeage, okTitle: "Cập nhật", cancelTitle: nil) { (status) in
+                    DataManager.shared.isCanShowPopupNeedUpdate = true
                     if status {
                         if let url = URL(string: "https://itunes.apple.com/au/app/mony/id1433420009?mt=8"), UIApplication.shared.canOpenURL(url) {
                             if #available(iOS 10.0, *) {
