@@ -162,6 +162,8 @@ class LoginViewController: BaseAuthenViewController {
     
     
     @IBAction func tfEditChanged(_ sender: Any) {
+        guard !FinPlusHelper.checkStatusVersionIsNeedUpdate() else { return }
+        
         if let text = self.tfPass?.text, text.length() >= 6 {
             self.isEnableContinueButton(isEnable: true)
             self.view.endEditing(true)
