@@ -51,9 +51,7 @@ class LoginViewController: BaseAuthenViewController {
         
         self.getNotificationSettings()
         self.checkConnectedToNetwork()
-        FinPlusHelper.checkVersionWithFireBaseConfigAndShowAlert {
-            
-        }
+
     }
     
     //Check cai dat notification

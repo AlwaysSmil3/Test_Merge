@@ -617,6 +617,7 @@ class FinPlusHelper {
     
     /// Show alert Need Update
     class func checkVersionWithFireBaseConfigAndShowAlert(completion: @escaping () -> Void) {
+        guard FinPlusHelper.isConnectedToNetwork() else { return }
         do {
             let data = RemoteConfig.remoteConfig().configValue(forKey: "minBorrowerAppVersion").dataValue
             let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves)

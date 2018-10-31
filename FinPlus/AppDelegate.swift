@@ -18,6 +18,7 @@ import FirebaseRemoteConfig
 
 //Cho optionalText trong tạo loan
 var optionalTextCount = 10
+var countCheckVersionFirst = 0
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -226,7 +227,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let fetchDuration: TimeInterval = 0
         // WARNING: Don't actually do this in production!
-        self.activeDebugMode()
+        //self.activeDebugMode()
         
         RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { (status, error) in
             if let error = error {
@@ -264,6 +265,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        guard countCheckVersionFirst > 0 else {
+            if countCheckVersionFirst == 0 {
+                countCheckVersionFirst = 1
+            }
+            return
+            
+        }
         
         FinPlusHelper.checkVersionWithFireBaseConfigAndShowAlert {
             

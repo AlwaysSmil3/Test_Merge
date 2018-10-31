@@ -39,9 +39,7 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
         super.viewDidAppear(animated)
         
         self.checkConnectedToNetwork()
-        FinPlusHelper.checkVersionWithFireBaseConfigAndShowAlert {
-            
-        }
+
     }
     
     private func setupUI() {
