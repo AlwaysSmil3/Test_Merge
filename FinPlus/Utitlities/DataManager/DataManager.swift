@@ -137,6 +137,9 @@ class DataManager {
     var isCanShowPopup: Bool = true
     var isCanShowPopupNeedUpdate: Bool = true
     
+    //Data Vercode from Config
+    var jsonDataVercodeFromConfig: JSONDictionary?
+    
     //CurrentLocation
     var currentLocation: CLLocationCoordinate2D? {
         didSet {

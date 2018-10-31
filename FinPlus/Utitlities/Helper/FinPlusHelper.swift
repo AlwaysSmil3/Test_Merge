@@ -559,12 +559,29 @@ class FinPlusHelper {
     /// - Parameter versionConfig: <#versionConfig description#>
     /// - Returns: <#return value description#>
     class func checkVersionFromConfig(versionConfig: String) -> Bool {
-        let configList = versionConfig.components(separatedBy: ".")
+        var configList = versionConfig.components(separatedBy: ".")
         
         guard let dict = Bundle.main.infoDictionary, let currentVersionString = dict["CFBundleShortVersionString"] as? String  else {
             return false
         }
-        let versionList = currentVersionString.components(separatedBy: ".")
+        var versionList = currentVersionString.components(separatedBy: ".")
+        
+        if configList.count == 1 {
+            configList.append("0")
+            configList.append("0")
+        }
+        else if configList.count == 2 {
+            configList.append("0")
+        }
+        
+        if versionList.count == 1 {
+            versionList.append("0")
+            versionList.append("0")
+        }
+        else if versionList.count == 2 {
+            versionList.append("0")
+        }
+        
         guard configList.count > 2, versionList.count > 2 else {
             return false
         }
@@ -612,6 +629,40 @@ class FinPlusHelper {
             return false
         }
         return false
+    }
+    
+    
+    /// Show alert Need Update
+    class func checkVersionWithConfigAndShowAlert(completion: @escaping () -> Void) {
+        guard FinPlusHelper.isConnectedToNetwork() else { return }
+        guard let model = DataManager.shared.jsonDataVercodeFromConfig else { return }
+        
+        guard let version = model["versionCode"] as? String, FinPlusHelper.checkVersionFromConfig(versionConfig: version) else {
+            return
+        }
+        
+        guard let topVC = UIApplication.shared.topViewController(), DataManager.shared.isCanShowPopupNeedUpdate else { return }
+        
+        let title = model["title"] as? String ?? ""
+        let messeage = model["message"] as? String ?? ""
+        DataManager.shared.isCanShowPopupNeedUpdate = false
+        topVC.showAlertView(title: title, message: messeage, okTitle: "Cập nhật", cancelTitle: nil) { (status) in
+            DataManager.shared.isCanShowPopupNeedUpdate = true
+            if status {
+                if let url = URL(string: "https://itunes.apple.com/au/app/mony/id1433420009?mt=8"), UIApplication.shared.canOpenURL(url) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
+                }
+                completion()
+            } else {
+                completion()
+            }
+            
+        }
+        
     }
     
     
