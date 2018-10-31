@@ -610,6 +610,7 @@ class FinPlusHelper {
     ///
     /// - Returns: <#return value description#>
     class func checkStatusVersionIsNeedUpdate() -> Bool {
+        return false
         do {
             let data = RemoteConfig.remoteConfig().configValue(forKey: "minBorrowerAppVersion").dataValue
             let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves)
