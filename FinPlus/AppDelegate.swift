@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Init FireBase
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
-        self.loadConfigFromFireBase()
+        //self.loadConfigFromFireBase()
         
         if FinPlusHelper.isConnectedToNetwork() {
             self.getLoanCategories()
@@ -266,17 +266,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        guard countCheckVersionFirst > 0 else {
-            if countCheckVersionFirst == 0 {
-                countCheckVersionFirst = 1
-            }
-            return
-            
-        }
-        
-        FinPlusHelper.checkVersionWithFireBaseConfigAndShowAlert {
-            
-        }
+//        guard countCheckVersionFirst > 0 else {
+//            if countCheckVersionFirst == 0 {
+//                countCheckVersionFirst = 1
+//            }
+//            return
+//            
+//        }
+//        
+//        FinPlusHelper.checkVersionWithFireBaseConfigAndShowAlert {
+//            
+//        }
         
         //With get file config from Server
         //self.checkVersion()
