@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import SystemConfiguration
+import FirebaseRemoteConfig
 
 class FinPlusHelper {
     
@@ -585,6 +586,72 @@ class FinPlusHelper {
         }
         
         return false
+    }
+    
+    
+    /// Check status need Update App
+    ///
+    /// - Returns: <#return value description#>
+    class func checkStatusVersionIsNeedUpdate() -> Bool {
+        do {
+            let data = RemoteConfig.remoteConfig().configValue(forKey: "minBorrowerAppVersion").dataValue
+            let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves)
+            
+            if let jsonDict = jsonResult as? JSONDictionary, let model = jsonDict["ios"] as? JSONDictionary {
+                
+                guard let version = model["versionCode"] as? String, FinPlusHelper.checkVersionFromConfig(versionConfig: version) else {
+                    return false
+                }
+                
+                return true
+            }
+            
+        } catch {
+            // handle error
+            print("remote config hanle error")
+            return false
+        }
+        return false
+    }
+    
+    
+    /// Show alert Need Update
+    class func checkVersionWithFireBaseConfigAndShowAlert(completion: @escaping () -> Void) {
+        do {
+            let data = RemoteConfig.remoteConfig().configValue(forKey: "minBorrowerAppVersion").dataValue
+            let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves)
+            
+            if let jsonDict = jsonResult as? JSONDictionary, let model = jsonDict["ios"] as? JSONDictionary {
+                
+                guard let version = model["versionCode"] as? String, FinPlusHelper.checkVersionFromConfig(versionConfig: version) else {
+                    return
+                }
+                
+                guard let topVC = UIApplication.shared.topViewController() else { return }
+                let title = model["title"] as? String ?? ""
+                let messeage = model["message"] as? String ?? ""
+                topVC.showAlertView(title: title, message: messeage, okTitle: "Cập nhật", cancelTitle: "Đóng") { (status) in
+                    if status {
+                        if let url = URL(string: "https://itunes.apple.com/au/app/mony/id1433420009?mt=8"), UIApplication.shared.canOpenURL(url) {
+                            if #available(iOS 10.0, *) {
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            } else {
+                                UIApplication.shared.openURL(url)
+                            }
+                        }
+                        completion()
+                    } else {
+                        completion()
+                    }
+                    
+                }
+            }
+            
+        } catch {
+            // handle error
+            print("remote config hanle error")
+           
+        }
     }
     
     
