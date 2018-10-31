@@ -30,6 +30,11 @@ extension APIClient {
                     }
                     
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
+                        
+                        if let versionData = data["minBorrowerAppVersion"] as? JSONDictionary, let versionDataIOS = versionData["ios"] as? JSONDictionary {
+                            DataManager.shared.jsonDataVercodeFromConfig = versionDataIOS
+                        }
+                        
                         let model = Config(object: data)
                         seal.fulfill(model)
                     }

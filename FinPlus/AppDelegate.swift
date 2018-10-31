@@ -277,6 +277,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FinPlusHelper.checkVersionWithFireBaseConfigAndShowAlert {
             
         }
+        
+        //With get file config from Server
+        //self.checkVersion()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -327,6 +330,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 DataManager.shared.config = model
                 
+//                FinPlusHelper.checkVersionWithConfigAndShowAlert {
+//
+//                }
+                
                 guard let version = userDefault.value(forKey: fVERSION_CONFIG) as? String else {
                     userDefault.set(model.version!, forKey: fVERSION_CONFIG)
                     userDefault.synchronize()
@@ -356,6 +363,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
         }
         
+    }
+    
+    //Check version From server config
+    private func checkVersion() {
+        APIClient.shared.getConfigs()
+            .done(on: DispatchQueue.global()) { model in
+                DispatchQueue.main.async {
+                    FinPlusHelper.checkVersionWithConfigAndShowAlert {
+                        
+                    }
+                }
+            }
+            .catch { error in
+        }
     }
     
 
