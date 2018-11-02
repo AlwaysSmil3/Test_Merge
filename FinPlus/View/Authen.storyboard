@@ -111,7 +111,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="1QY-9T-iAF" secondAttribute="bottom" id="wyZ-6Z-HwG"/>
                                                 </constraints>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Bằng cách ấn nút 'Tiếp tục' ở trên, tôi đã hiểu và đồng ý với Điều khoản &amp; Điều kiện sử dụng của Mony." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Dd5-xh-kMJ">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Bằng cách ấn nút 'Tiếp tục' ở trên, tôi đã hiểu và đồng ý với Điều khoản sử dụng của Mony." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Dd5-xh-kMJ">
                                                 <rect key="frame" x="28" y="397.5" width="319" height="68"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
