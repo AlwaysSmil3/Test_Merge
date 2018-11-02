@@ -95,72 +95,95 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
     }
     
     @IBAction func btnContinueTapped(_ sender: Any) {
-        var phone = self.tfPhoneNumber.text!
-        if phone.hasPrefix("0") {
-
-        } else {
-            phone = "0" + phone
+        
+        func continueAction() {
+            var phone = self.tfPhoneNumber.text!
+            if phone.hasPrefix("0") {
+                
+            } else {
+                phone = "0" + phone
+            }
+            
+            if self.tfPhoneNumber.text?.length() == 0 {
+                self.showToastWithMessage(message: "Vui lòng nhập số điện thoại để tiếp tục.")
+                return
+            } else if phone.length() < 10 {
+                self.showToastWithMessage(message: "Số điện thoại phải chứa 10 hoặc 11 số. Vui lòng kiểm tra lại.")
+                return
+            }
+            
+            if (phone != DataManager.shared.currentAccount || appDelegate.timeCount == 60)
+            {
+                appDelegate.timeCount = 0
+                
+                var accountTemp = phone
+                APIClient.shared.authentication(phoneNumber: phone)
+                    .done(on: DispatchQueue.main) { [weak self]model in
+                        guard let strongSelf = self else { return }
+                        
+                        if let acc = model.data?.phoneNumber, acc.count > 0 {
+                            accountTemp = acc
+                        }
+                        
+                        DataManager.shared.userID = model.data?.id ?? 0
+                        DataManager.shared.currentAccount = accountTemp
+                        
+                        if let type = model.data?.accountType, type == "1" {
+                            //Investor
+                            self?.confirmGotoAppInvestor()
+                            return
+                        }
+                        
+                        switch model.returnCode {
+                        case 0:
+                            // code 0.
+                            if let returnMessage = model.returnMsg {
+                                self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "Đóng", cancelTitle: nil)
+                                return
+                            }
+                            break
+                        default :
+                            // new account
+                            DataManager.shared.currentAccount = accountTemp
+                            
+                            // save token
+                            if let data = model.data {
+                                if let token = data.accessToken {
+                                    userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
+                                }
+                            }
+                            //Cap nhat push notification token
+                            DataManager.shared.updatePushNotificationToken()
+                            // get config
+                            userDefault.set(accountTemp, forKey: fNEW_ACCOUNT_NAME)
+                            break
+                        }
+                        
+                        strongSelf.pushToVerifyVC(verifyType: .Login, phone: accountTemp)
+                    }.catch { error in
+                        print(error)
+                }
+            }
+            else
+            {
+                self.pushToVerifyVC(verifyType: .Login, phone: phone)
+            }
         }
-
-        if self.tfPhoneNumber.text?.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại để tiếp tục.")
-            return
-        } else if phone.length() < 10 {
-            self.showToastWithMessage(message: "Số điện thoại phải chứa 10 hoặc 11 số. Vui lòng kiểm tra lại.")
+        
+        if DataManager.shared.config == nil || DataManager.shared.loanCategories.count == 0 {
+            if FinPlusHelper.isConnectedToNetwork() {
+                self.getLoanCategories {
+                    continueAction()
+                }
+            } else {
+                self.checkConnectedToNetwork()
+            }
+            
             return
         }
         
-        if (phone != DataManager.shared.currentAccount || appDelegate.timeCount == 60)
-        {
-            appDelegate.timeCount = 0
-            
-            APIClient.shared.authentication(phoneNumber: phone)
-                .done(on: DispatchQueue.main) { [weak self]model in
-                    guard let strongSelf = self else { return }
-                    
-                    DataManager.shared.userID = model.data?.id ?? 0
-                    DataManager.shared.currentAccount = phone
-                    
-                    if let type = model.data?.accountType, type == "1" {
-                        //Investor
-                        self?.confirmGotoAppInvestor()
-                        return
-                    }
-                    
-                    switch model.returnCode {
-                    case 0:
-                        // code 0.
-                        if let returnMessage = model.returnMsg {
-                            self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "Đóng", cancelTitle: nil)
-                            return
-                        }
-                        break
-                    default :
-                        // new account
-                        DataManager.shared.currentAccount = phone
-                        
-                        // save token
-                        if let data = model.data {
-                            if let token = data.accessToken {
-                                userDefault.set(token, forKey: fUSER_DEFAUT_TOKEN)
-                            }
-                        }
-                        //Cap nhat push notification token
-                        DataManager.shared.updatePushNotificationToken()
-                        // get config
-                        userDefault.set(phone, forKey: fNEW_ACCOUNT_NAME)
-                        break
-                    }
-
-                    strongSelf.pushToVerifyVC(verifyType: .Login, phone: phone)
-                }.catch { error in
-                    print(error)
-                }
-        }
-        else
-        {
-            self.pushToVerifyVC(verifyType: .Login, phone: phone)
-        }
+        continueAction()
+        
     }
 
 
