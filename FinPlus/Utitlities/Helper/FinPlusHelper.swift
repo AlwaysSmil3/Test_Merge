@@ -712,7 +712,7 @@ class FinPlusHelper {
     
     //MARK: Kiểm tra cập nhật đầu số mới
     class func updatePhoneNumber(phone: String) -> String {
-        guard phone.count > 5 else { return phone }
+        guard phone.count > 6 else { return phone }
         
         let headSixNumber = phone.prefix(6)
         let lastSixNumber = phone.suffix(phone.count - 6)

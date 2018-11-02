@@ -24,7 +24,11 @@ class LoanSummaryInfoVC: BaseViewController {
             }
             
             self.aPContacts.forEach {
-                self.contactsAPI.contacts.append(self.updateContact(apContact: $0))
+                let contact = self.updateContact(apContact: $0)
+                if contact.contactPhoneNumber.count > 8 {
+                    self.contactsAPI.contacts.append(contact)
+                }
+                
             }
             
         }
