@@ -116,12 +116,17 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
             {
                 appDelegate.timeCount = 0
                 
+                var accountTemp = phone
                 APIClient.shared.authentication(phoneNumber: phone)
                     .done(on: DispatchQueue.main) { [weak self]model in
                         guard let strongSelf = self else { return }
                         
+                        if let acc = model.data?.phoneNumber, acc.count > 0 {
+                            accountTemp = acc
+                        }
+                        
                         DataManager.shared.userID = model.data?.id ?? 0
-                        DataManager.shared.currentAccount = phone
+                        DataManager.shared.currentAccount = accountTemp
                         
                         if let type = model.data?.accountType, type == "1" {
                             //Investor
@@ -139,7 +144,7 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
                             break
                         default :
                             // new account
-                            DataManager.shared.currentAccount = phone
+                            DataManager.shared.currentAccount = accountTemp
                             
                             // save token
                             if let data = model.data {
@@ -150,11 +155,11 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
                             //Cap nhat push notification token
                             DataManager.shared.updatePushNotificationToken()
                             // get config
-                            userDefault.set(phone, forKey: fNEW_ACCOUNT_NAME)
+                            userDefault.set(accountTemp, forKey: fNEW_ACCOUNT_NAME)
                             break
                         }
                         
-                        strongSelf.pushToVerifyVC(verifyType: .Login, phone: phone)
+                        strongSelf.pushToVerifyVC(verifyType: .Login, phone: accountTemp)
                     }.catch { error in
                         print(error)
                 }

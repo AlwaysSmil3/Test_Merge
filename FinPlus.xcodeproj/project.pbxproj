@@ -86,6 +86,7 @@
 		6311C4F221660A6E005EA2D8 /* ContactParamsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311C4F121660A6E005EA2D8 /* ContactParamsList.swift */; };
 		63170E782182D2AD00A83705 /* VerifyOTPAuthenVCUnderIOS12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63170E772182D2AD00A83705 /* VerifyOTPAuthenVCUnderIOS12.swift */; };
 		631A2DA420F60C6800D8D9B8 /* BorrowerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631A2DA220F60C6800D8D9B8 /* BorrowerTabBarController.swift */; };
+		632E71EE218BF28A005D4945 /* Constant+UpdatePhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632E71ED218BF289005D4945 /* Constant+UpdatePhoneNumber.swift */; };
 		632FD02120AAC3CC00D9399C /* APIResponseGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */; };
 		632FD02420AADF3C00D9399C /* VerifyAuthenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */; };
 		632FD02620AAE15800D9399C /* ExString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02520AAE15800D9399C /* ExString.swift */; };
@@ -425,6 +426,7 @@
 		6311C4F121660A6E005EA2D8 /* ContactParamsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactParamsList.swift; sourceTree = "<group>"; };
 		63170E772182D2AD00A83705 /* VerifyOTPAuthenVCUnderIOS12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPAuthenVCUnderIOS12.swift; sourceTree = "<group>"; };
 		631A2DA220F60C6800D8D9B8 /* BorrowerTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorrowerTabBarController.swift; sourceTree = "<group>"; };
+		632E71ED218BF289005D4945 /* Constant+UpdatePhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant+UpdatePhoneNumber.swift"; sourceTree = "<group>"; };
 		632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponseGeneral.swift; sourceTree = "<group>"; };
 		632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyAuthenData.swift; sourceTree = "<group>"; };
 		632FD02520AAE15800D9399C /* ExString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExString.swift; sourceTree = "<group>"; };
@@ -1398,6 +1400,7 @@
 			isa = PBXGroup;
 			children = (
 				639C9E2320A1A4FF00F2CF5E /* Constant.swift */,
+				632E71ED218BF289005D4945 /* Constant+UpdatePhoneNumber.swift */,
 				633AE0B520B428C6007AB0D1 /* Constant+DateFormat.swift */,
 				638DDC9920D78CD900CB927D /* Constant+CoreData.swift */,
 				E73BBE9220E0EF6C00045265 /* Constant+Mode.swift */,
@@ -2248,6 +2251,7 @@
 				6303923020E8B108000C422D /* VSSlider.swift in Sources */,
 				84D73FFF20D0BC5600770FB5 /* LoanStatus.swift in Sources */,
 				63D4CB6D20F3009200519FFB /* LoanTypeChoiceTBCell.swift in Sources */,
+				632E71EE218BF28A005D4945 /* Constant+UpdatePhoneNumber.swift in Sources */,
 				633AE0B620B428C6007AB0D1 /* Constant+DateFormat.swift in Sources */,
 				63D170EF2111AF8200990A60 /* CollectionPay.swift in Sources */,
 				6338F3FA20BE602C005777E2 /* BrowwerCurrentAddress.swift in Sources */,

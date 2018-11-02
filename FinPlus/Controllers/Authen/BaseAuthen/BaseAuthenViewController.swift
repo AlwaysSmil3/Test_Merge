@@ -145,11 +145,18 @@ class BaseAuthenViewController: BaseViewController {
     }
     
     func handleLogin(account: String, pass: String) {
+        
+        var accountTemp = account
+        
         APIClient.shared.authentication(phoneNumber: account, pass: pass)
             .done(on: DispatchQueue.main) { [weak self] model in
                 // go to choice VC of back to enter phone number
+                if let acc = model.data?.phoneNumber, acc.count > 0 {
+                    accountTemp = acc
+                }
+                
                 DataManager.shared.userID = model.data?.id ?? 0
-                DataManager.shared.currentAccount = account
+                DataManager.shared.currentAccount = accountTemp
                 
                 if let type = model.data?.accountType, type == "1" {
                     //Investor
@@ -160,9 +167,9 @@ class BaseAuthenViewController: BaseViewController {
                 switch model.returnCode {
                 case 3:
                     // đang đăng nhập trên 1 thiết bị khác -> push home investor or borrwer
-                    userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+                    userDefault.set(accountTemp, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
                     userDefault.synchronize()
-                    DataManager.shared.currentAccount = account
+                    DataManager.shared.currentAccount = accountTemp
                     DataManager.shared.updatePushNotificationToken()
                     
                     //save token
@@ -183,9 +190,9 @@ class BaseAuthenViewController: BaseViewController {
                     break
                 case 1:
                     DataManager.shared.updatePushNotificationToken()
-                    userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
+                    userDefault.set(accountTemp, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
                     userDefault.synchronize()
-                    DataManager.shared.currentAccount = account
+                    DataManager.shared.currentAccount = accountTemp
                     
                     // save token
                     if let data = model.data {
