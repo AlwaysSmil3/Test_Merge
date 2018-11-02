@@ -187,7 +187,7 @@ class LoanSummaryInfoVC: BaseViewController {
                     numberPhone = numberPhone.replacingOccurrences(of: "+84", with: "0")
                 }
                 
-                tempContact.contactPhoneNumber = numberPhone
+                tempContact.contactPhoneNumber = FinPlusHelper.updatePhoneNumber(phone: numberPhone)
             }
         }
         

@@ -397,6 +397,7 @@ class FinPlusHelper {
         return [countOptionalText, countOptionalMedia]
     }
     
+    /*
     class func updateCountOptionalData(model: [LoanCategories], completion: () -> Void) {
         
         for mo in model {
@@ -527,7 +528,7 @@ class FinPlusHelper {
         
         completion()
     }
-    
+    */
     
     /// Return Prefix BankName
     ///
@@ -709,6 +710,33 @@ class FinPlusHelper {
         }
     }
     
+    //MARK: Kiểm tra cập nhật đầu số mới
+    class func updatePhoneNumber(phone: String) -> String {
+        guard phone.count > 5 else { return phone }
+        
+        let headSixNumber = phone.prefix(6)
+        let lastSixNumber = phone.suffix(phone.count - 6)
+        
+        if let temp = ListHeadPhoneUpdate["\(headSixNumber)"] as? String, temp.count > 0 {
+            return temp + lastSixNumber
+        }
+        
+        let headFiveNumber = phone.prefix(5)
+        let lastFiveNumber = phone.suffix(phone.count - 5)
+        
+        if let temp = ListHeadPhoneUpdate["\(headFiveNumber)"] as? String, temp.count > 0 {
+            return temp + lastFiveNumber
+        }
+        
+        let headFourNumber = phone.prefix(4)
+        let lastFourNumber = phone.suffix(phone.count - 4)
+        
+        if let temp = ListHeadPhoneUpdate["\(headFourNumber)"] as? String, temp.count > 0 {
+            return temp + lastFourNumber
+        }
+        
+        return phone
+    }
     
     
 }
