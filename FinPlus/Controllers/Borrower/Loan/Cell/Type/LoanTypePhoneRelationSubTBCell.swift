@@ -158,6 +158,13 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
 extension LoanTypePhoneRelationSubTBCell: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
+        if self.currentIndex < DataManager.shared.loanInfo.userInfo.relationships.count {
+            if DataManager.shared.loanInfo.userInfo.relationships[self.currentIndex].type < 0 {
+                UIApplication.shared.topViewController()?.showToastWithMessage(message: "Vui lòng chọn người thân \(self.currentIndex + 1) để tiếp tục.")
+                return false
+            }
+        }
+        
         let currentString: NSString = textField.text! as NSString
         let newString: NSString =
             currentString.replacingCharacters(in: range, with: string) as NSString
