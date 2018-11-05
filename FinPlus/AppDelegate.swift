@@ -75,18 +75,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Init FireBase
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
-        //self.loadConfigFromFireBase()
         
         if FinPlusHelper.isConnectedToNetwork() {
             self.getLoanCategories()
             // Get Version
             self.getVersion()
         }
-        
-//        let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
-//        print("Bundle Version \(version)")
-//        let build = Bundle.main.infoDictionary!["CFBundleVersion"] as? String
-//        print("Bundle Build \(build)")
         
         return true
     }
@@ -223,31 +217,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    func loadConfigFromFireBase() {
-        
-        let fetchDuration: TimeInterval = 0
-        // WARNING: Don't actually do this in production!
-        //self.activeDebugMode()
-        
-        RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { (status, error) in
-            if let error = error {
-                print("Fetch firebase config fail \(error.localizedDescription)")
-                return
-            }
-            
-            RemoteConfig.remoteConfig().activateFetched()
-            FinPlusHelper.checkVersionWithFireBaseConfigAndShowAlert {
-                print("Need update App")
-            }
-
-        }
-        
-    }
-    
-    func activeDebugMode() {
-        let debugSetting = RemoteConfigSettings(developerModeEnabled: true)
-        RemoteConfig.remoteConfig().configSettings = debugSetting
-    }
+//    func loadConfigFromFireBase() {
+//
+//        let fetchDuration: TimeInterval = 0
+//        // WARNING: Don't actually do this in production!
+//        //self.activeDebugMode()
+//
+//        RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { (status, error) in
+//            if let error = error {
+//                print("Fetch firebase config fail \(error.localizedDescription)")
+//                return
+//            }
+//
+//            RemoteConfig.remoteConfig().activateFetched()
+//            FinPlusHelper.checkVersionWithFireBaseConfigAndShowAlert {
+//                print("Need update App")
+//            }
+//
+//        }
+//
+//    }
+//
+//    func activeDebugMode() {
+//        let debugSetting = RemoteConfigSettings(developerModeEnabled: true)
+//        RemoteConfig.remoteConfig().configSettings = debugSetting
+//    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -266,20 +260,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-//        guard countCheckVersionFirst > 0 else {
-//            if countCheckVersionFirst == 0 {
-//                countCheckVersionFirst = 1
-//            }
-//            return
-//            
-//        }
-//        
-//        FinPlusHelper.checkVersionWithFireBaseConfigAndShowAlert {
-//            
-//        }
+        guard countCheckVersionFirst > 0 else {
+            if countCheckVersionFirst == 0 {
+                countCheckVersionFirst = 1
+            }
+            return
+            
+        }
         
+        guard DataManager.shared.isCanShowPopupNeedUpdate else { return }
         //With get file config from Server
-        //self.checkVersion()
+        self.checkVersion()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -330,9 +321,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 DataManager.shared.config = model
                 
-//                FinPlusHelper.checkVersionWithConfigAndShowAlert {
-//
-//                }
+                FinPlusHelper.checkVersionWithConfigAndShowAlert {
+
+                }
                 
                 guard let version = userDefault.value(forKey: fVERSION_CONFIG) as? String else {
                     userDefault.set(model.version!, forKey: fVERSION_CONFIG)
