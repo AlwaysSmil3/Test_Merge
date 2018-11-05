@@ -245,11 +245,6 @@ class LoanPersionalInfoVC: LoanBaseViewController {
             return
         }
         
-        if DataManager.shared.loanInfo.userInfo.relationships.count < 2 {
-            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại người thân để tiếp tục.")
-            return
-        }
-        
         if DataManager.shared.loanInfo.userInfo.relationships[0].type < 0 {
             self.showToastWithMessage(message: "Vui lòng chọn người thân 1 để tiếp tục.")
             return
