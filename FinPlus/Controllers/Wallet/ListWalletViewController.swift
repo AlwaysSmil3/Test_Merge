@@ -15,7 +15,7 @@ enum WalletAction {
 }
 
 //CaoHai tra ve du lieu bank khi chon bank
-protocol BankDataDelegate {
+protocol BankDataDelegate: class {
     func isReloadBankData(isReload: Bool, newAccountNumber: String)
 }
 
@@ -239,7 +239,8 @@ class ListWalletViewController: BaseViewController {
     }
 
     @IBAction func addNewWallet() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ADD_WALLET") as! AddWalletViewController
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ADD_WALLET") as! AddWalletViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddWalletNewViewController") as! AddWalletNewViewController
         vc.delegate = self
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)

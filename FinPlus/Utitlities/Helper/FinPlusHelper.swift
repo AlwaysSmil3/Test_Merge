@@ -397,138 +397,6 @@ class FinPlusHelper {
         return [countOptionalText, countOptionalMedia]
     }
     
-    /*
-    class func updateCountOptionalData(model: [LoanCategories], completion: () -> Void) {
-        
-        for mo in model {
-            if let id = mo.id {
-                switch id {
-                case 1:
-                    //sinhVien
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = FinPlusHelper.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVaySinhVien = counts[0]
-                        CountOptionMediaVaySinhView = counts[1]
-                        
-                    }
-                    
-                    break
-                case 2:
-                    //dien Thoai
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = FinPlusHelper.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVayMuaDienThoai = counts[0]
-                        CountOptionMediaVayMuaDienThoai = counts[1]
-                        
-                    }
-                    
-                    break
-                    
-                case 3:
-                    //Mua xe may
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = FinPlusHelper.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVayMuaXeMay = counts[0]
-                        CountOptionMediaVayMuaXeMay = counts[1]
-                        
-                    }
-                    
-                    break
-                case 4:
-                    //Vay dam cuoi
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = FinPlusHelper.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVayDamCuoi = counts[0]
-                        CountOptionMediaVayDamCuoi = counts[1]
-                    }
-                    
-                    break
-                    
-                case 5:
-                    //Vay ba bau
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = FinPlusHelper.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVayBaBau = counts[0]
-                        CountOptionMediaVayBaBau = counts[1]
-                    }
-                    
-                    break
-                    
-                case 6:
-                    //Vay nuoi be
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = FinPlusHelper.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVayNuoiBe = counts[0]
-                        CountOptionMediaVayNuoiBe = counts[1]
-                    }
-                    
-                    break
-                    
-                case 7:
-                    //Vay mua do noi that
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = FinPlusHelper.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVayMuaDoNoiThat = counts[0]
-                        CountOptionMediaVayMuaDoNoiThat = counts[1]
-                    }
-                    
-                    break
-                    
-                case 8:
-                    //Vay thanh toan no
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = FinPlusHelper.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVayThanhToanNo = counts[0]
-                        CountOptionMediaVayThanhToanNo = counts[1]
-                    }
-                    
-                    break
-                    
-                    
-                case 9:
-                    
-                    break
-                case 10:
-                    //Vay khac
-                    guard let builder = mo.builders, builder.count > 3, let fields = builder[3].fields else { return }
-                    let counts = FinPlusHelper.updateCount(fields: fields)
-                    
-                    if counts.count > 1 {
-                        CountOptionTextVayKhac = counts[0]
-                        CountOptionMediaVayKhac = counts[1]
-                    }
-                    
-                    break
-                    
-                default:
-                    break
-                    
-                    
-                }
-                
-            }
-            
-        }
-        
-        completion()
-    }
-    */
     
     /// Return Prefix BankName
     ///
@@ -736,6 +604,28 @@ class FinPlusHelper {
         }
         
         return phone
+    }
+    
+    
+    /// Get Max Length Phone
+    ///
+    /// - Parameter phoneNumber: <#phoneNumber description#>
+    /// - Returns: <#return value description#>
+    class func getMaxLengthPhone(phoneNumber: String?) -> Int {
+        var maxLength = 10
+        guard let phone = phoneNumber, phone.count > 2 else { return maxLength }
+        
+        let first1 = phone.prefix(1)
+        let first2 = phone.prefix(2)
+        guard first2 == "01" else {
+            if first1 != "0" && first1 != "1" {
+                maxLength = 9
+            }
+            
+            return maxLength
+        }
+        maxLength = 11
+        return maxLength
     }
     
     

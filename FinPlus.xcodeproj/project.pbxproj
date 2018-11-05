@@ -207,6 +207,10 @@
 		639C9E2020A18A7500F2CF5E /* Oswald-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0D20A18A7500F2CF5E /* Oswald-ExtraLight.ttf */; };
 		639C9E2120A18A7500F2CF5E /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639C9E0E20A18A7500F2CF5E /* Oswald-Light.ttf */; };
 		639C9E2420A1A4FF00F2CF5E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C9E2320A1A4FF00F2CF5E /* Constant.swift */; };
+		63AF62E3218FFC62001816FB /* AddWalletNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF62E2218FFC62001816FB /* AddWalletNewViewController.swift */; };
+		63AF62E521901DEF001816FB /* BankPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF62E421901DEF001816FB /* BankPopupViewController.swift */; };
+		63AF62E721901E4E001816FB /* BankPopupTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF62E621901E4E001816FB /* BankPopupTBCell.swift */; };
+		63AF62E921901E7D001816FB /* BankPopupTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63AF62E821901E7D001816FB /* BankPopupTBCell.xib */; };
 		63B49D40213FEFC300C7B999 /* GuideCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B49D3F213FEFC300C7B999 /* GuideCaptureViewController.swift */; };
 		63C5C8E520AC183D00F65068 /* FacebookSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C5C8E420AC183D00F65068 /* FacebookSignInManager.swift */; };
 		63D170EF2111AF8200990A60 /* CollectionPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D170EE2111AF8200990A60 /* CollectionPay.swift */; };
@@ -554,6 +558,10 @@
 		639C9E0D20A18A7500F2CF5E /* Oswald-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-ExtraLight.ttf"; sourceTree = "<group>"; };
 		639C9E0E20A18A7500F2CF5E /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
 		639C9E2320A1A4FF00F2CF5E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		63AF62E2218FFC62001816FB /* AddWalletNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWalletNewViewController.swift; sourceTree = "<group>"; };
+		63AF62E421901DEF001816FB /* BankPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankPopupViewController.swift; sourceTree = "<group>"; };
+		63AF62E621901E4E001816FB /* BankPopupTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankPopupTBCell.swift; sourceTree = "<group>"; };
+		63AF62E821901E7D001816FB /* BankPopupTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankPopupTBCell.xib; sourceTree = "<group>"; };
 		63B49D3F213FEFC300C7B999 /* GuideCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideCaptureViewController.swift; sourceTree = "<group>"; };
 		63C5C8E420AC183D00F65068 /* FacebookSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSignInManager.swift; sourceTree = "<group>"; };
 		63C5C8E620AC26DA00F65068 /* FinPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinPlus.entitlements; sourceTree = "<group>"; };
@@ -1020,6 +1028,7 @@
 		633AE0AE20B3FED4007AB0D1 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				63AF62E1218FFBF2001816FB /* Add */,
 				E772D76F20CA7939001F0B8E /* AddWalletViewController.swift */,
 				E774D30A20CA2F7B00F7696D /* ListWalletViewController.swift */,
 				635DC11E20FEEA5500AA84DF /* UpdateWalletViewController.swift */,
@@ -1406,6 +1415,17 @@
 				E73BBE9220E0EF6C00045265 /* Constant+Mode.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		63AF62E1218FFBF2001816FB /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				63AF62E2218FFC62001816FB /* AddWalletNewViewController.swift */,
+				63AF62E421901DEF001816FB /* BankPopupViewController.swift */,
+				63AF62E621901E4E001816FB /* BankPopupTBCell.swift */,
+				63AF62E821901E7D001816FB /* BankPopupTBCell.xib */,
+			);
+			path = Add;
 			sourceTree = "<group>";
 		};
 		63B49D3E213FEF9600C7B999 /* GuideCapture */ = {
@@ -1910,6 +1930,7 @@
 				84114BD520D79464005026DF /* TestBorrowingPayViewController.xib in Resources */,
 				84114BCA20D79464005026DF /* PayTypeTableViewCell.xib in Resources */,
 				6336D5C620B2750A00A6C38A /* Loan.storyboard in Resources */,
+				63AF62E921901E7D001816FB /* BankPopupTBCell.xib in Resources */,
 				63D4CB6920F2FFB900519FFB /* LoanTypeOptionalMediaTBCell.xib in Resources */,
 				635732FA2109A83800F6CD04 /* LoanTypeTextViewTBCell.xib in Resources */,
 				630BA61720C22A4100880DAE /* SF-Pro-Text-Light.otf in Resources */,
@@ -2176,6 +2197,7 @@
 				6307D3BF20AD2F0500055F5C /* FacebookInfo.swift in Sources */,
 				63B49D40213FEFC300C7B999 /* GuideCaptureViewController.swift in Sources */,
 				63FAF5512140C96D00985B92 /* UniversityModel.swift in Sources */,
+				63AF62E521901DEF001816FB /* BankPopupViewController.swift in Sources */,
 				6385D951212D0E0F00151B3A /* BrowwerCollections.swift in Sources */,
 				6357824F20C2330800DE09A0 /* KeychainPasswordItem.swift in Sources */,
 				84CBBE5620CF85610058C834 /* NotificationTableViewCell.swift in Sources */,
@@ -2220,6 +2242,7 @@
 				E7BC258E20CFDACA001FF0F4 /* MinoruTextField.swift in Sources */,
 				E7F519F820CE176700F72682 /* ProfileHeaderView.swift in Sources */,
 				6338F40320BE602C005777E2 /* BrowwerUserInfo.swift in Sources */,
+				63AF62E721901E4E001816FB /* BankPopupTBCell.swift in Sources */,
 				E7F51A2B20CE6D3F00F72682 /* LoanTypePhoneRelationTBCell.swift in Sources */,
 				6338F3FC20BE602C005777E2 /* BrowwerContacts.swift in Sources */,
 				E7C4DDF321340DC300055944 /* CalculatorPay.swift in Sources */,
@@ -2249,6 +2272,7 @@
 				630467C720B56DD40069469A /* Address.swift in Sources */,
 				E7C4DDF0213402E800055944 /* SCP_SCJAFlatBar.swift in Sources */,
 				6303923020E8B108000C422D /* VSSlider.swift in Sources */,
+				63AF62E3218FFC62001816FB /* AddWalletNewViewController.swift in Sources */,
 				84D73FFF20D0BC5600770FB5 /* LoanStatus.swift in Sources */,
 				63D4CB6D20F3009200519FFB /* LoanTypeChoiceTBCell.swift in Sources */,
 				632E71EE218BF28A005D4945 /* Constant+UpdatePhoneNumber.swift in Sources */,
