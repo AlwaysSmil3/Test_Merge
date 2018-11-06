@@ -615,16 +615,26 @@ class FinPlusHelper {
         var maxLength = 10
         guard let phone = phoneNumber, phone.count > 2 else { return maxLength }
         
-        let first1 = phone.prefix(1)
-        let first2 = phone.prefix(2)
-        guard first2 == "01" else {
-            if first1 != "0" && first1 != "1" {
-                maxLength = 9
-            }
-            
-            return maxLength
+        if phone.hasPrefix("1") || phone.hasPrefix("01") {
+            UIApplication.shared.topViewController()?.showToastWithMessage(message: "Vui lòng nhập số điện thoại theo chuyển đổi mới!")
+            return 3
         }
-        maxLength = 11
+        
+        if phone.hasPrefix("0") {
+        } else {
+            maxLength = 9
+        }
+        
+//        let first1 = phone.prefix(1)
+//        let first2 = phone.prefix(2)
+//        guard first2 == "01" else {
+//            if first1 != "0" && first1 != "1" {
+//                maxLength = 9
+//            }
+//
+//            return maxLength
+//        }
+//        maxLength = 11
         return maxLength
     }
     

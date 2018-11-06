@@ -9,7 +9,7 @@
 import Foundation
 
 protocol BankPopupSelectedProtocol: class {
-    func bankSelected(name: String, index: Int)
+    func bankSelected(bank: Bank, index: Int)
 }
 
 class BankPopupViewController: BasePopup {
@@ -19,6 +19,8 @@ class BankPopupViewController: BasePopup {
     
     /// Cell đang chọn
     var currentIndex: Int?
+    var dataSource: [Bank] = []
+    
     weak var bankSelectedDelegate: BankPopupSelectedProtocol?
     
     override func viewDidLoad() {
@@ -29,9 +31,34 @@ class BankPopupViewController: BasePopup {
         self.mainTBView.rowHeight = UITableViewAutomaticDimension
         self.mainTBView.tableFooterView = UIView()
         
-    
+        if let data = DataManager.shared.listBankData {
+            self.dataSource = data
+        } else {
+            self.getBanks()
+        }
+        
     }
     
+    private func getBanks() {
+        
+        APIClient.shared.getBanks()
+            .done(on: DispatchQueue.main) { [weak self]model in
+                self?.dataSource.append(contentsOf: model)
+                self?.mainTBView.reloadData()
+                self?.scrollToSelection()
+                DataManager.shared.listBankData = model
+            }
+            .catch { error in }
+        
+    }
+    
+    func scrollToSelection() {
+        if let index = self.currentIndex {
+            self.mainTBView.scrollToRow(at: IndexPath(row: index, section: 0), at: UITableViewScrollPosition.middle, animated: true)
+        }
+    }
+    
+    //MARK: Actions
     @IBAction func btnExistTapped(_ sender: Any) {
         self.hide {
             
@@ -44,7 +71,8 @@ class BankPopupViewController: BasePopup {
             return
         }
         self.hide {
-            self.bankSelectedDelegate?.bankSelected(name: "Bidv", index: index)
+            guard index < self.dataSource.count else { return }
+            self.bankSelectedDelegate?.bankSelected(bank: self.dataSource[index], index: index)
         }
     }
     
@@ -54,13 +82,13 @@ class BankPopupViewController: BasePopup {
 extension BankPopupViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return self.dataSource.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BankPopupTBCell", for: indexPath) as! BankPopupTBCell
-        
+        cell.data = self.dataSource[indexPath.row]
         guard let i = self.currentIndex, i == indexPath.row else {
             cell.iconSelected?.image = #imageLiteral(resourceName: "ic_radio_off")
             return cell

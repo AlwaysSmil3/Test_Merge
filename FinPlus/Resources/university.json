@@ -9666,5 +9666,9 @@
 	{
 		"id" : 2425,
 		"name" : "trung cấp y tế đồng tháp"
-	}
+    },
+    {
+        "id" : 2426,
+        "name" : "Đại học Cần Thơ"
+    }
 ]

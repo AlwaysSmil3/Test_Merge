@@ -156,6 +156,9 @@ class DataManager {
         }
     }
     
+    //List Bank
+    var listBankData: [Bank]?
+    
     func setCurrentAccount(account: String) {
         guard account.count > 0 else { return }
         DataManager.shared.currentAccount = account
