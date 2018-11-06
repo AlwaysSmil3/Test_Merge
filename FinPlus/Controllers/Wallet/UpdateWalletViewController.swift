@@ -7,11 +7,16 @@
 //
 
 import Foundation
+import Kingfisher
 
 class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
     
     @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var vcbBtn: UIButton!
+    //@IBOutlet weak var vcbBtn: UIButton!
+    
+    @IBOutlet weak var iconBank: UIImageView!
+    
+    @IBOutlet weak var lblBankName: UILabel!
     
     @IBOutlet weak var nameTextField: HoshiTextField!
     @IBOutlet weak var accTextField: HoshiTextField!
@@ -41,15 +46,6 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
         self.rightBarBtn.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : MAIN_COLOR], for: .normal)
         self.leftBarBtn.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : MAIN_COLOR], for: .normal)
         
-        vcbBtn.layer.borderWidth = 0.5
-        vcbBtn.layer.cornerRadius = 8
-        vcbBtn.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
-        vcbBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
-        vcbBtn.setTitle(NSLocalizedString("Vietcombank", comment: ""), for: .normal)
-        
-        self.setBorderColor(button: vcbBtn, isSelect: true)
-        
-        
         nameTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         nameTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_SMALL)
         
@@ -67,7 +63,6 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
 
             nameTextField.text = wallet_.accountBankName
             accTextField.text = wallet_.accountBankNumber
-            self.vcbBtn.setTitle(wallet_.bankName, for: UIControlState.normal)
             
             var typeString = "Ngân hàng được chọn"
             if FinPlusHelper.checkIsWallet(bankName: wallet_.bankName ?? "") {
@@ -75,7 +70,9 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
             }
             self.typeLabel.text = typeString
             
-            self.setBtnVCB(wallet: wallet_)
+            
+            self.iconBank.kf.setImage(with: URL(string: FinPlusHelper.getStringURLIconBank(type: wallet_.bankName ?? "")))
+            self.lblBankName.text = wallet_.bankName
             
             if self.walletAction == .LoanNation {
                 if DataManager.shared.checkFieldIsMissing(key: "bank"), let missData = DataManager.shared.missingLoanData, let bank = missData.bank {
@@ -225,14 +222,15 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
         
     }
     
+    /*
     private func setBtnVCB(wallet: AccountBank) {
-        
+
         switch(BankName(rawValue: wallet.bankType!))
         {
         case .Vietcombank?:
             self.vcbBtn.setImage(#imageLiteral(resourceName: "vcb_selected"), for: UIControlState.normal)
             self.vcbBtn.setImage(#imageLiteral(resourceName: "vcb_selected"), for: UIControlState.selected)
-            
+
             break
         case .Viettinbank?:
             self.vcbBtn.setImage(#imageLiteral(resourceName: "viettin_selected"), for: UIControlState.normal)
@@ -261,8 +259,8 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
         case .none:
             break
         }
-        
-        
+
+
     }
     
     func setBorderColor(button: UIButton, isSelect: Bool) {
@@ -278,7 +276,7 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
             button.isSelected = false
         }
     }
-
+*/
     
 
     
