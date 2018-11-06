@@ -233,7 +233,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.navigationController?.pushViewController(vc, animated: true)
             case 2:
                 // call to hotline
-                call(phoneNumber: "1900232389")
+                
+                FinPlusHelper.makeCall(forPhoneNumber: phoneNumberMony)
             case 3:
                 sendEmail()
             case 4:
@@ -293,13 +294,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-    func call(phoneNumber: String) {
-        //        let phoneNumber = "1900232389"
-        guard let number = URL(string: "tel://" + phoneNumber) else {
-            return
-        }
-        UIApplication.shared.openURL(number)
-    }
     
     func sendEmail() {
         let mailComposeViewController = configuredMailComposeViewController()

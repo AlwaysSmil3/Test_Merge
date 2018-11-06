@@ -245,7 +245,7 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate, MFMailComp
         let alertController = UIAlertController(title: nil, message: "Trợ giúp", preferredStyle: .actionSheet)
         
         let emailAction = UIAlertAction(title: "Email hỗ trợ: support@mony.vn", style: .default, handler: { (alert: UIAlertAction!) -> Void in
-            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {
+            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let _ = win else {
                 return
             }
             let mailComposeViewController = self.configuredMailComposeViewController()
@@ -259,15 +259,12 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate, MFMailComp
         })
         
         let hotLineAction = UIAlertAction(title: "Gọi hotline: 1900 232 389", style: .default, handler: { (alert: UIAlertAction!) -> Void in
-            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {
+            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let _ = win else {
                 return
             }
             // show call popup
-            let phoneNumber = "1900232389"
-            guard let number = URL(string: "tel://" + phoneNumber) else {
-                return
-            }
-            UIApplication.shared.openURL(number)
+            FinPlusHelper.makeCall(forPhoneNumber: phoneNumberMony)
+
         })
         
         
@@ -289,45 +286,6 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate, MFMailComp
         
         self.present(alertController, animated: true, completion: nil)
         
-        //        if UserIdiom == .pad
-        //        {
-        //            if let currentPopoverpresentioncontroller = alertController.popoverPresentationController{
-        //                currentPopoverpresentioncontroller.sourceView = self.btnContinue
-        //                currentPopoverpresentioncontroller.sourceRect = self.btnContinue!.bounds;
-        //                currentPopoverpresentioncontroller.permittedArrowDirections = UIPopoverArrowDirection.up;
-        //                self.present(alertController, animated: true, completion: nil)
-        //            }
-        //        } else {
-        //            self.present(alertController, animated: true, completion: nil)
-        //        }
-        
-        //        if let popoverController = alertController.popoverPresentationController {
-        //            popoverController.sourceView = self.view
-        //            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
-        //        }
-        //
-        //        self.present(alertController, animated: true, completion: nil)
-        
-        //        let alert = UIAlertController(title: "", message: "Lựa chọn", preferredStyle: .actionSheet)
-        //        alert.addAction(UIAlertAction(title: "Đăng xuất", style: .destructive , handler:{ (UIAlertAction)in
-        //        guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {
-        //                return
-        //            }
-        //            //Clear Data and Login
-        //            DataManager.shared.clearData {
-        //                let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
-        //                window.rootViewController = enterPhoneVC
-        //            }
-        //
-        //        }))
-        //
-        //        alert.addAction(UIAlertAction(title: "Hủy", style: .cancel, handler:{ (UIAlertAction)in
-        //            print("User click Dismiss button")
-        //        }))
-        //        alert.view.tintColor = UIColor(hexString: "#08121E")
-        //        self.present(alert, animated: true, completion: {
-        //            print("completion block")
-        //        })
     }
 
 
