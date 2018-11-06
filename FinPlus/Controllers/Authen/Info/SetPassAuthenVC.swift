@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import MessageUI
 
 enum SetPassOrResetPass {
     case SetPass
     case ResetPass
 }
-class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
+class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
     var phone : String!
     var setPassOrResetPass: SetPassOrResetPass = SetPassOrResetPass.SetPass
     @IBOutlet weak var lblTitle: UILabel!
@@ -208,6 +209,125 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
         }
             .catch { model in }
 
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func showSendMailErrorAlert() {
+        
+        let alert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler:{ (UIAlertAction) in
+            print("User click Dismiss button")
+        }))
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+        
+    }
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        
+        mailComposerVC.setToRecipients(["support@mony.vn"])
+        mailComposerVC.setSubject("[Mony - Hỗ trợ \(DataManager.shared.currentAccount)]")
+        mailComposerVC.setMessageBody("Hi Mony,\n", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    @IBAction func optionAction(_ sender: Any) {
+        let alertController = UIAlertController(title: nil, message: "Trợ giúp", preferredStyle: .actionSheet)
+        
+        let emailAction = UIAlertAction(title: "Email hỗ trợ: support@mony.vn", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {
+                return
+            }
+            let mailComposeViewController = self.configuredMailComposeViewController()
+            if MFMailComposeViewController.canSendMail() {
+                self.present(mailComposeViewController, animated: true, completion: nil)
+            } else {
+                self.showSendMailErrorAlert()
+            }
+            // go to email form
+            
+        })
+        
+        let hotLineAction = UIAlertAction(title: "Gọi hotline: 1900 232 389", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {
+                return
+            }
+            // show call popup
+            let phoneNumber = "1900232389"
+            guard let number = URL(string: "tel://" + phoneNumber) else {
+                return
+            }
+            UIApplication.shared.openURL(number)
+        })
+        
+        
+        
+        let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: { (alert: UIAlertAction!) -> Void in
+            //  Do something here upon cancellation.
+        })
+        
+        alertController.view.tintColor = UIColor(hexString: "#08121E")
+        alertController.addAction(emailAction)
+        alertController.addAction(hotLineAction)
+        alertController.addAction(cancelAction)
+        
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.height - 150, width: 0, height: 150)
+            popoverController.permittedArrowDirections = []
+        }
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+        //        if UserIdiom == .pad
+        //        {
+        //            if let currentPopoverpresentioncontroller = alertController.popoverPresentationController{
+        //                currentPopoverpresentioncontroller.sourceView = self.btnContinue
+        //                currentPopoverpresentioncontroller.sourceRect = self.btnContinue!.bounds;
+        //                currentPopoverpresentioncontroller.permittedArrowDirections = UIPopoverArrowDirection.up;
+        //                self.present(alertController, animated: true, completion: nil)
+        //            }
+        //        } else {
+        //            self.present(alertController, animated: true, completion: nil)
+        //        }
+        
+        //        if let popoverController = alertController.popoverPresentationController {
+        //            popoverController.sourceView = self.view
+        //            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+        //        }
+        //
+        //        self.present(alertController, animated: true, completion: nil)
+        
+        //        let alert = UIAlertController(title: "", message: "Lựa chọn", preferredStyle: .actionSheet)
+        //        alert.addAction(UIAlertAction(title: "Đăng xuất", style: .destructive , handler:{ (UIAlertAction)in
+        //        guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {
+        //                return
+        //            }
+        //            //Clear Data and Login
+        //            DataManager.shared.clearData {
+        //                let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
+        //                window.rootViewController = enterPhoneVC
+        //            }
+        //
+        //        }))
+        //
+        //        alert.addAction(UIAlertAction(title: "Hủy", style: .cancel, handler:{ (UIAlertAction)in
+        //            print("User click Dismiss button")
+        //        }))
+        //        alert.view.tintColor = UIColor(hexString: "#08121E")
+        //        self.present(alert, animated: true, completion: {
+        //            print("completion block")
+        //        })
     }
 
 
