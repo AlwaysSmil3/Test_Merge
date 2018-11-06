@@ -132,8 +132,8 @@ class LoginViewController: BaseAuthenViewController, MFMailComposeViewController
     
     func showSendMailErrorAlert() {
         
-        let alert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler:{ (UIAlertAction) in
+        let alert = UIAlertController(title: "Không thể gửi e-mail", message: "Thiết bị của bạn không thể gửi e-mail. Vui lòng kiểm tra lại cài đặt và thử lại.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Đồng ý", style: .cancel, handler:{ (UIAlertAction) in
             print("User click Dismiss button")
         }))
         
@@ -160,7 +160,7 @@ class LoginViewController: BaseAuthenViewController, MFMailComposeViewController
         let alert = UIAlertController(title: "", message: "Lựa chọn", preferredStyle: .actionSheet)
         
         let emailAction = UIAlertAction(title: "Email hỗ trợ: support@mony.vn", style: .default, handler: { (alert: UIAlertAction!) -> Void in
-            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {
+            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let _ = win else {
                 return
             }
             let mailComposeViewController = self.configuredMailComposeViewController()
@@ -174,15 +174,13 @@ class LoginViewController: BaseAuthenViewController, MFMailComposeViewController
         })
         
         let hotLineAction = UIAlertAction(title: "Gọi hotline: 1900 232 389", style: .default, handler: { (alert: UIAlertAction!) -> Void in
-            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {
+            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let _ = win else {
                 return
             }
             // show call popup
-            let phoneNumber = "1900232389"
-            guard let number = URL(string: "tel://" + phoneNumber) else {
-                return
-            }
-            UIApplication.shared.openURL(number)
+            FinPlusHelper.makeCall(forPhoneNumber: phoneNumberMony)
+            
+            
         })
         
         alert.addAction(emailAction)

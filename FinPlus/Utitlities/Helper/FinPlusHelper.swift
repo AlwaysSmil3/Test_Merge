@@ -14,6 +14,7 @@ import FirebaseRemoteConfig
 class FinPlusHelper {
     
     
+    
     /// Display Current Money
     ///
     /// - Parameter value: <#value description#>
@@ -64,12 +65,14 @@ class FinPlusHelper {
     }
     
     //MARK: Make Call
-    static func isMakeCallAvailable() -> Bool {
+    class func isMakeCallAvailable() -> Bool {
         
-        return UIApplication.shared.canOpenURL(URL.init(string: "tel://")!)
+        guard let url = URL.init(string: "tel://") else { return false }
+        
+        return UIApplication.shared.canOpenURL(url)
     }
     
-    static func makeCall(forPhoneNumber number: String) {
+    class func makeCall(forPhoneNumber number: String) {
         let mHotline = number.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ".", with: "").replacingOccurrences(of: ",", with: "")
         
         if let url = URL(string: String(format: "tel://%@", mHotline)) {
