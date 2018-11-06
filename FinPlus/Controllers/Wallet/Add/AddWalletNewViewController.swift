@@ -67,13 +67,13 @@ class AddWalletNewViewController: BaseViewController {
         
         if ((self.nameTextField.text?.count ?? 0) < 1)
         {
-            self.showToastWithMessage(message: "Bạn chưa điền thông tin họ và tên chủ tài khoản")
+            self.showToastWithMessage(message: "Bạn chưa nhập thông tin họ và tên chủ tài khoản")
             return
         }
         
         if ((self.accTextField.text?.count ?? 0) < 1)
         {
-            self.showToastWithMessage(message: "Bạn chưa điền số tài khoản")
+            self.showToastWithMessage(message: "Bạn chưa nhập số tài khoản")
             return
         }
         
