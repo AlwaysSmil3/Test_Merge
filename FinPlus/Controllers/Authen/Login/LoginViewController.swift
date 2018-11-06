@@ -53,6 +53,9 @@ class LoginViewController: BaseAuthenViewController, MFMailComposeViewController
         self.getNotificationSettings()
         self.checkConnectedToNetwork()
 
+        DataManager.shared.getListBank {
+            
+        }
     }
     
     //Check cai dat notification

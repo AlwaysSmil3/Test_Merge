@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 enum WalletAction {
     case WalletDetail
@@ -383,18 +384,21 @@ extension ListWalletViewController: UITableViewDataSource {
             cell?.tag = indexPath.row
             cell?.currentIndex = indexPath
             
-            switch(BankName(rawValue: item.bankType!))
-            {
-                case .Vietcombank?: cell?.avatar.image = UIImage(named: "vcb_selected")
-                case .Viettinbank?: cell?.avatar.image = UIImage(named: "viettin_selected")
-                case .Techcombank?: cell?.avatar.image = UIImage(named: "tech_selected")
-                case .Agribank?: cell?.avatar.image = UIImage(named: "agri_selected")
-                case .ViettelPay?: cell?.avatar.image = #imageLiteral(resourceName: "viettelPay_selected")
-                case .Momo?: cell?.avatar.image = #imageLiteral(resourceName: "momo_selected")
-                case .Bidv?: cell?.avatar.image = #imageLiteral(resourceName: "bidv_selected")
-                case .none:
-                    break
-            }
+//            switch(BankName(rawValue: item.bankType!))
+//            {
+//                case .Vietcombank?: cell?.avatar.image = UIImage(named: "vcb_selected")
+//                case .Viettinbank?: cell?.avatar.image = UIImage(named: "viettin_selected")
+//                case .Techcombank?: cell?.avatar.image = UIImage(named: "tech_selected")
+//                case .Agribank?: cell?.avatar.image = UIImage(named: "agri_selected")
+//                case .ViettelPay?: cell?.avatar.image = #imageLiteral(resourceName: "viettelPay_selected")
+//                case .Momo?: cell?.avatar.image = #imageLiteral(resourceName: "momo_selected")
+//                case .Bidv?: cell?.avatar.image = #imageLiteral(resourceName: "bidv_selected")
+//                case .none:
+//                    break
+//            }
+            
+            cell?.avatar.kf.setImage(with: URL(string: FinPlusHelper.getStringURLIconBank(type: item.bankName ?? "")))
+            
             cell?.nameLabel.text = item.bankName
             
             if let number = item.accountBankNumber, number.count > 4 {

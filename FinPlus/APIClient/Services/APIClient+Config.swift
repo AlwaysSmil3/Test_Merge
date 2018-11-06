@@ -192,17 +192,17 @@ extension APIClient {
             getDataWithEndPoint(endPoint: EndPoint.Config.Banks, isShowLoadingView: false)
                 .done { json in
                     
-                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
-                        let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
-                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil, completion: { (status) in
-                            if status {
-                                
-                            }
-                            
-                        })
-                        
-                        return
-                    }
+//                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+//                        let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
+//                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil, completion: { (status) in
+//                            if status {
+//
+//                            }
+//
+//                        })
+//
+//                        return
+//                    }
                     
                     var array: [Bank] = []
                     

@@ -166,6 +166,25 @@ class DataManager {
         userDefault.synchronize()
     }
     
+    
+    /// Get List Bank
+    ///
+    /// - Parameter completion: <#completion description#>
+    func getListBank(completion: @escaping() -> Void) {
+        guard DataManager.shared.listBankData == nil else {
+            completion()
+            return
+        }
+        APIClient.shared.getBanks()
+            .done(on: DispatchQueue.global(qos: .utility)) { model in
+                guard model.count > 0 else { return }
+                DataManager.shared.listBankData = model
+                completion()
+            }
+            .catch { error in }
+        
+    }
+    
     /// Get Data from JSON
 //    func getDataLoanFromJSON() {
 //        if let path = Bundle.main.path(forResource: "LoanBuilder", ofType: "json") {

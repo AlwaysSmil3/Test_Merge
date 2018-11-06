@@ -639,5 +639,23 @@ class FinPlusHelper {
     }
     
     
+    /// URL string icon bank
+    ///
+    /// - Parameter type: <#type description#>
+    /// - Returns: <#return value description#>
+    class func getStringURLIconBank(type: String) -> String {
+        guard let list = DataManager.shared.listBankData else {
+            DataManager.shared.getListBank {
+                
+            }
+            return ""
+        }
+        
+        let temp = list.filter { $0.type?.removeVietnameseMark() == type.removeVietnameseMark() }
+        guard temp.count > 0 else { return "" }
+        
+        return temp[0].image!
+    }
+    
 }
 
