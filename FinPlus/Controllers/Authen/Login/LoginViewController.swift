@@ -52,6 +52,9 @@ class LoginViewController: BaseAuthenViewController {
         self.getNotificationSettings()
         self.checkConnectedToNetwork()
 
+        DataManager.shared.getListBank {
+            
+        }
     }
     
     //Check cai dat notification

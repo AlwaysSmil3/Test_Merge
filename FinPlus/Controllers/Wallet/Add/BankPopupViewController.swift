@@ -39,10 +39,20 @@ class BankPopupViewController: BasePopup {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.scrollToSelection()
+        }
+        
+    }
+    
     private func getBanks() {
         
         APIClient.shared.getBanks()
             .done(on: DispatchQueue.main) { [weak self]model in
+                guard model.count > 0 else { return }
                 self?.dataSource.append(contentsOf: model)
                 self?.mainTBView.reloadData()
                 self?.scrollToSelection()
@@ -54,7 +64,7 @@ class BankPopupViewController: BasePopup {
     
     func scrollToSelection() {
         if let index = self.currentIndex {
-            self.mainTBView.scrollToRow(at: IndexPath(row: index, section: 0), at: UITableViewScrollPosition.middle, animated: true)
+            self.mainTBView?.scrollToRow(at: IndexPath(row: index, section: 0), at: UITableViewScrollPosition.middle, animated: true)
         }
     }
     

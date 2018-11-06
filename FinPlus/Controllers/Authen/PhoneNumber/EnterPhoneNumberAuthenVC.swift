@@ -39,7 +39,10 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
         super.viewDidAppear(animated)
         
         self.checkConnectedToNetwork()
-
+        
+        DataManager.shared.getListBank {
+            
+        }
     }
     
     private func setupUI() {
