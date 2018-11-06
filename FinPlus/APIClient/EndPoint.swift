@@ -58,6 +58,7 @@ enum EndPoint {
         static let Communes = "communes"
         static let Job = "jobs"
         static let Position = "positions"
+        static let Banks = "configs/banks"
     }
     
     enum Wallet {

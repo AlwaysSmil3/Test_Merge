@@ -23,6 +23,7 @@ class AddWalletNewViewController: BaseViewController {
     //CaoHai tra ve du lieu bank khi chon bank
     weak var delegate: BankDataDelegate?
     var currentIndexSelected: Int?
+    var currentBank: Bank?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,14 +60,14 @@ class AddWalletNewViewController: BaseViewController {
     
     func addNewBank() {
         
-        if self.currentIndexSelected == nil {
+        guard let bank = self.currentBank else {
             self.showToastWithMessage(message: "Vui lòng chọn ngân hàng")
             return
         }
         
         if ((self.nameTextField.text?.count ?? 0) < 1)
         {
-            self.showToastWithMessage(message: "Bạn chưa điền thông tin họ và tên")
+            self.showToastWithMessage(message: "Bạn chưa điền thông tin họ và tên chủ tài khoản")
             return
         }
         
@@ -82,7 +83,7 @@ class AddWalletNewViewController: BaseViewController {
         }
         
         
-        var bankName = "Bidv"
+        let bankName = bank.type!
         
         let params: JSONDictionary = [
             "type": bankName,
@@ -132,7 +133,9 @@ class AddWalletNewViewController: BaseViewController {
         if let index = self.currentIndexSelected {
             bankPopup.currentIndex = index
         }
-        bankPopup.show()
+        bankPopup.show {
+            //bankPopup.scrollToSelection()
+        }
         
     }
     
@@ -143,9 +146,10 @@ class AddWalletNewViewController: BaseViewController {
 
 //MARK: BankPopupSelectedProtocol
 extension AddWalletNewViewController: BankPopupSelectedProtocol {
-    func bankSelected(name: String, index: Int) {
-        self.lblBankName?.text = name
+    func bankSelected(bank: Bank, index: Int) {
+        self.lblBankName?.text = bank.type
         self.currentIndexSelected = index
+        self.currentBank = bank
     }
 }
 

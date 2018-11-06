@@ -87,10 +87,10 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
             phone = "0" + phone
         }
         
-        var length = 10
-        if phone.hasPrefix("01") {
-            length = 11
-        }
+        let length = 10
+//        if phone.hasPrefix("01") {
+//            length = 11
+//        }
         
         if phone.length() >= length {
             self.isEnableContinueButton(isEnable: true)

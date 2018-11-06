@@ -183,7 +183,43 @@ extension APIClient {
     }
     
     
-    
+    /*
+     GET Lấy danh sách ngan hang
+     
+     */
+    func getBanks() -> Promise<[Bank]> {
+        return Promise<[Bank]> { seal in
+            getDataWithEndPoint(endPoint: EndPoint.Config.Banks, isShowLoadingView: false)
+                .done { json in
+                    
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+                        let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
+                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil, completion: { (status) in
+                            if status {
+                                
+                            }
+                            
+                        })
+                        
+                        return
+                    }
+                    
+                    var array: [Bank] = []
+                    
+                    if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
+                        for d in data {
+                            let model1 = Bank(object: d)
+                            array.append(model1)
+                        }
+                    }
+                    
+                    seal.fulfill(array)
+                }
+                .catch { error in
+                    seal.reject(error)
+            }
+        }
+    }
     
     
     

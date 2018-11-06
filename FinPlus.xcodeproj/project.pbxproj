@@ -86,6 +86,7 @@
 		6311C4F221660A6E005EA2D8 /* ContactParamsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311C4F121660A6E005EA2D8 /* ContactParamsList.swift */; };
 		63170E782182D2AD00A83705 /* VerifyOTPAuthenVCUnderIOS12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63170E772182D2AD00A83705 /* VerifyOTPAuthenVCUnderIOS12.swift */; };
 		631A2DA420F60C6800D8D9B8 /* BorrowerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631A2DA220F60C6800D8D9B8 /* BorrowerTabBarController.swift */; };
+		632382DB219139130023FDC0 /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632382DA219139130023FDC0 /* Bank.swift */; };
 		632E71EE218BF28A005D4945 /* Constant+UpdatePhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632E71ED218BF289005D4945 /* Constant+UpdatePhoneNumber.swift */; };
 		632FD02120AAC3CC00D9399C /* APIResponseGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */; };
 		632FD02420AADF3C00D9399C /* VerifyAuthenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */; };
@@ -430,6 +431,7 @@
 		6311C4F121660A6E005EA2D8 /* ContactParamsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactParamsList.swift; sourceTree = "<group>"; };
 		63170E772182D2AD00A83705 /* VerifyOTPAuthenVCUnderIOS12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPAuthenVCUnderIOS12.swift; sourceTree = "<group>"; };
 		631A2DA220F60C6800D8D9B8 /* BorrowerTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorrowerTabBarController.swift; sourceTree = "<group>"; };
+		632382DA219139130023FDC0 /* Bank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
 		632E71ED218BF289005D4945 /* Constant+UpdatePhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant+UpdatePhoneNumber.swift"; sourceTree = "<group>"; };
 		632FD02020AAC3CC00D9399C /* APIResponseGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponseGeneral.swift; sourceTree = "<group>"; };
 		632FD02320AADF3C00D9399C /* VerifyAuthenData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyAuthenData.swift; sourceTree = "<group>"; };
@@ -1101,6 +1103,7 @@
 		6374FC4B20BBC1EE00E4BC38 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				632382DA219139130023FDC0 /* Bank.swift */,
 				15942B1F2105B32300591BA4 /* PaymentMethod.swift */,
 				6374FC4E20BBC3E200E4BC38 /* AccountBank.swift */,
 			);
@@ -2195,6 +2198,7 @@
 				6361E09720D7550F005D2C7A /* LoanSumnaryModel.swift in Sources */,
 				639C9DF820A189E600F2CF5E /* ToastCenter.swift in Sources */,
 				6307D3BF20AD2F0500055F5C /* FacebookInfo.swift in Sources */,
+				632382DB219139130023FDC0 /* Bank.swift in Sources */,
 				63B49D40213FEFC300C7B999 /* GuideCaptureViewController.swift in Sources */,
 				63FAF5512140C96D00985B92 /* UniversityModel.swift in Sources */,
 				63AF62E521901DEF001816FB /* BankPopupViewController.swift in Sources */,
