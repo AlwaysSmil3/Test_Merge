@@ -91,7 +91,7 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
                 phone = array[0]
             }
         }
-        return phone
+        return FinPlusHelper.updatePhoneNumber(phone:phone)
     }
     
     
@@ -100,13 +100,15 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
     @IBAction func tfEditEnd(_ sender: Any) {
         if let value = self.tfRelationPhone?.text {
             //guard let data_ = data, let placeHolder = data_.placeholder else { return }
+            let valueTemp = FinPlusHelper.updatePhoneNumber(phone: value)
+            
             if self.currentIndex == 0 {
                 if DataManager.shared.loanInfo.userInfo.relationships.count > 0 {
-                    DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber = value
+                    DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber = valueTemp
                 }
                 
                 if DataManager.shared.missingRelationsShip != nil {
-                    if value != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0) {
+                    if valueTemp != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0) {
                         DataManager.shared.isRelationPhone1Invalid = false
                         self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
                     }
@@ -116,11 +118,11 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
                 
             } else {
                 if DataManager.shared.loanInfo.userInfo.relationships.count > 1 {
-                    DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber = value
+                    DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber = valueTemp
                 }
                 
                 if DataManager.shared.missingRelationsShip != nil {
-                    if value != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0) {
+                    if valueTemp != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0) {
                         DataManager.shared.isRelationPhone2Invalid = false
                         self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
                     }
@@ -165,13 +167,15 @@ extension LoanTypePhoneRelationSubTBCell: UITextFieldDelegate {
             }
         }
         
+        
         let currentString: NSString = textField.text! as NSString
         let newString: NSString =
             currentString.replacingCharacters(in: range, with: string) as NSString
         
         if DataManager.shared.missingRelationsShip != nil {
+            let phoneFormatted = FinPlusHelper.updatePhoneNumber(phone: newString as String)
             if self.currentIndex == 0 {
-                if (newString as String) != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0) {
+                if phoneFormatted != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0) {
                     DataManager.shared.isRelationPhone1Invalid = false
                     self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
                     
@@ -180,7 +184,7 @@ extension LoanTypePhoneRelationSubTBCell: UITextFieldDelegate {
                     self.tfRelationPhone?.textColor = UIColor(hexString: "#DA3535")
                 }
             } else {
-                if (newString as String) != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0) {
+                if phoneFormatted != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0) {
                     DataManager.shared.isRelationPhone2Invalid = false
                     self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
                 } else {
@@ -192,7 +196,7 @@ extension LoanTypePhoneRelationSubTBCell: UITextFieldDelegate {
         }
         
         // Giới hạn ký tự nhập vào
-        let maxLength = 13
+        let maxLength = FinPlusHelper.getMaxLengthPhone1(phoneNumber: textField.text)
         
         if newString.length > maxLength { return false }
         
