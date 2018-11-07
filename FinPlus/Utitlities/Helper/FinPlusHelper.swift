@@ -583,30 +583,35 @@ class FinPlusHelper {
     
     //MARK: Kiểm tra cập nhật đầu số mới
     class func updatePhoneNumber(phone: String) -> String {
-        guard phone.count > 6 else { return phone }
+        var phoneTemp = phone
+        if phone.contains("+84") {
+            phoneTemp = phone.replacingOccurrences(of: "+84", with: "0")
+        }
         
-        let headSixNumber = phone.prefix(6)
-        let lastSixNumber = phone.suffix(phone.count - 6)
+        guard phoneTemp.count > 6 else { return phoneTemp }
+        
+        let headSixNumber = phoneTemp.prefix(6)
+        let lastSixNumber = phoneTemp.suffix(phoneTemp.count - 6)
         
         if let temp = ListHeadPhoneUpdate["\(headSixNumber)"] as? String, temp.count > 0 {
             return temp + lastSixNumber
         }
         
-        let headFiveNumber = phone.prefix(5)
-        let lastFiveNumber = phone.suffix(phone.count - 5)
+        let headFiveNumber = phoneTemp.prefix(5)
+        let lastFiveNumber = phoneTemp.suffix(phoneTemp.count - 5)
         
         if let temp = ListHeadPhoneUpdate["\(headFiveNumber)"] as? String, temp.count > 0 {
             return temp + lastFiveNumber
         }
         
-        let headFourNumber = phone.prefix(4)
-        let lastFourNumber = phone.suffix(phone.count - 4)
+        let headFourNumber = phoneTemp.prefix(4)
+        let lastFourNumber = phoneTemp.suffix(phoneTemp.count - 4)
         
         if let temp = ListHeadPhoneUpdate["\(headFourNumber)"] as? String, temp.count > 0 {
             return temp + lastFourNumber
         }
         
-        return phone
+        return phoneTemp
     }
     
     
@@ -638,6 +643,28 @@ class FinPlusHelper {
 //            return maxLength
 //        }
 //        maxLength = 11
+        return maxLength
+    }
+    
+    
+    /// check nhập số điện thoại theo đầu số mới ở nhập sdt ngừoi thân
+    ///
+    /// - Parameter phoneNumber: <#phoneNumber description#>
+    /// - Returns: <#return value description#>
+    class func getMaxLengthPhone1(phoneNumber: String?) -> Int {
+        let maxLength = 13
+        guard let phone = phoneNumber, phone.count > 2 else { return maxLength }
+        
+        if phone.hasPrefix("1") || phone.hasPrefix("01") {
+            UIApplication.shared.topViewController()?.showToastWithMessage(message: "Vui lòng nhập số điện thoại theo chuyển đổi mới!")
+            return 3
+        }
+        
+        if phone.hasPrefix("+841") {
+            UIApplication.shared.topViewController()?.showToastWithMessage(message: "Vui lòng nhập số điện thoại theo chuyển đổi mới!")
+            return 6
+        }
+    
         return maxLength
     }
     
