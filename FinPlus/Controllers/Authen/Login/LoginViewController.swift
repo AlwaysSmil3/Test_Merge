@@ -9,13 +9,14 @@
 import Foundation
 import UIKit
 import UserNotifications
+import MessageUI
 
 enum AccountType {
     case None
     case Investor
     case Borrower
 }
-class LoginViewController: BaseAuthenViewController {
+class LoginViewController: BaseAuthenViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet var lblHeaderAccount: UILabel!
     //@IBOutlet var tfPass: UITextField!
@@ -52,6 +53,9 @@ class LoginViewController: BaseAuthenViewController {
         self.getNotificationSettings()
         self.checkConnectedToNetwork()
 
+        DataManager.shared.getListBank {
+            
+        }
     }
     
     //Check cai dat notification
@@ -107,8 +111,6 @@ class LoginViewController: BaseAuthenViewController {
                 self.tfPass?.becomeFirstResponder()
             }
         }
-        
-        
     }
     
     private func updateUI() {
@@ -122,12 +124,68 @@ class LoginViewController: BaseAuthenViewController {
         }
     }
     
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
     
+    
+    func showSendMailErrorAlert() {
+        
+        let alert = UIAlertController(title: "Không thể gửi e-mail", message: "Thiết bị của bạn không thể gửi e-mail. Vui lòng kiểm tra lại cài đặt và thử lại.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Đồng ý", style: .cancel, handler:{ (UIAlertAction) in
+            print("User click Dismiss button")
+        }))
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+        
+    }
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        
+        mailComposerVC.setToRecipients(["support@mony.vn"])
+        mailComposerVC.setSubject("[Mony - Hỗ trợ \(DataManager.shared.currentAccount)]")
+        mailComposerVC.setMessageBody("Hi Mony,\n", isHTML: false)
+        
+        return mailComposerVC
+    }
     
     //MARK: Actions
     
     @IBAction func btnLogoutTapped(_ sender: Any) {
         let alert = UIAlertController(title: "", message: "Lựa chọn", preferredStyle: .actionSheet)
+        
+        let emailAction = UIAlertAction(title: "Email hỗ trợ: support@mony.vn", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let _ = win else {
+                return
+            }
+            let mailComposeViewController = self.configuredMailComposeViewController()
+            if MFMailComposeViewController.canSendMail() {
+                self.present(mailComposeViewController, animated: true, completion: nil)
+            } else {
+                self.showSendMailErrorAlert()
+            }
+            // go to email form
+            
+        })
+        
+        let hotLineAction = UIAlertAction(title: "Gọi hotline: 1900 232 389", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let _ = win else {
+                return
+            }
+            // show call popup
+            FinPlusHelper.makeCall(forPhoneNumber: phoneNumberMony)
+            
+            
+        })
+        
+        alert.addAction(emailAction)
+        alert.addAction(hotLineAction)
+
         
         alert.addAction(UIAlertAction(title: "Đăng xuất", style: .destructive , handler:{ (UIAlertAction)in
             

@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import MessageUI
 
 enum SetPassOrResetPass {
     case SetPass
     case ResetPass
 }
-class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
+class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
     var phone : String!
     var setPassOrResetPass: SetPassOrResetPass = SetPassOrResetPass.SetPass
     @IBOutlet weak var lblTitle: UILabel!
@@ -208,6 +209,83 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
         }
             .catch { model in }
 
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func showSendMailErrorAlert() {
+        
+        let alert = UIAlertController(title: "Không thể gửi e-mail", message: "Thiết bị của bạn không thể gửi e-mail. Vui lòng kiểm tra lại cài đặt và thử lại.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Đồng ý", style: .cancel, handler:{ (UIAlertAction) in
+            print("User click Dismiss button")
+        }))
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+        
+    }
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        
+        mailComposerVC.setToRecipients(["support@mony.vn"])
+        mailComposerVC.setSubject("[Mony - Hỗ trợ \(DataManager.shared.currentAccount)]")
+        mailComposerVC.setMessageBody("Hi Mony,\n", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    @IBAction func optionAction(_ sender: Any) {
+        let alertController = UIAlertController(title: nil, message: "Trợ giúp", preferredStyle: .actionSheet)
+        
+        let emailAction = UIAlertAction(title: "Email hỗ trợ: support@mony.vn", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let _ = win else {
+                return
+            }
+            let mailComposeViewController = self.configuredMailComposeViewController()
+            if MFMailComposeViewController.canSendMail() {
+                self.present(mailComposeViewController, animated: true, completion: nil)
+            } else {
+                self.showSendMailErrorAlert()
+            }
+            // go to email form
+            
+        })
+        
+        let hotLineAction = UIAlertAction(title: "Gọi hotline: 1900 232 389", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let _ = win else {
+                return
+            }
+            // show call popup
+            FinPlusHelper.makeCall(forPhoneNumber: phoneNumberMony)
+
+        })
+        
+        
+        
+        let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: { (alert: UIAlertAction!) -> Void in
+            //  Do something here upon cancellation.
+        })
+        
+        alertController.view.tintColor = UIColor(hexString: "#08121E")
+        alertController.addAction(emailAction)
+        alertController.addAction(hotLineAction)
+        alertController.addAction(cancelAction)
+        
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.height - 150, width: 0, height: 150)
+            popoverController.permittedArrowDirections = []
+        }
+        
+        self.present(alertController, animated: true, completion: nil)
+        
     }
 
 

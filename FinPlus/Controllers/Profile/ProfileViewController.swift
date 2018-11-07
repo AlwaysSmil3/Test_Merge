@@ -27,6 +27,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             "name": "CALCULATE_PAY",
         ],
         [
+            "icon": "hotline",
+            "name": "HOTLINE",
+        ],
+        [
             "icon": "mail",
             "name": "SUPPORT_FROM_FINSMART",
         ],
@@ -228,23 +232,27 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
             case 2:
-                sendEmail()
+                // call to hotline
+                
+                FinPlusHelper.makeCall(forPhoneNumber: phoneNumberMony)
             case 3:
+                sendEmail()
+            case 4:
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "FAQ") as! FAQViewController
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
-            case 4:
+            case 5:
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "WEBVIEW") as! WebViewViewController
                 vc.webViewType = .termView
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
-            case 5:
+            case 6:
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "WEBVIEW") as! WebViewViewController
                 vc.webViewType = .aboutView
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
                 
-            case 6:
+            case 7:
                 //LogOut
                 self.showAlertView(title: "Đăng xuất", message: "Bạn có chắc chắn muốn đăng xuất tài khoản này?", okTitle: "Đồng ý", cancelTitle: "Huỷ") { (status) in
                     
@@ -285,6 +293,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         
     }
+    
     
     func sendEmail() {
         let mailComposeViewController = configuredMailComposeViewController()

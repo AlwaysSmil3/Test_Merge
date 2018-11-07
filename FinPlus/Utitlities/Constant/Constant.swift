@@ -8,6 +8,9 @@
 
 import Foundation
 
+//Số điện thoại hỗ trợ của Mony
+let phoneNumberMony = "1900232389"
+
 //MARK: Version App
 let VERSION_APP = "1.0.0"
 

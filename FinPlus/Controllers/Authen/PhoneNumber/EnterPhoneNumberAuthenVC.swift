@@ -39,7 +39,10 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
         super.viewDidAppear(animated)
         
         self.checkConnectedToNetwork()
-
+        
+        DataManager.shared.getListBank {
+            
+        }
     }
     
     private func setupUI() {
@@ -87,7 +90,12 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
             phone = "0" + phone
         }
         
-        if phone.length() >= 10 {
+        let length = 10
+//        if phone.hasPrefix("01") {
+//            length = 11
+//        }
+        
+        if phone.length() >= length {
             self.isEnableContinueButton(isEnable: true)
         } else {
             self.isEnableContinueButton(isEnable: false)
@@ -108,7 +116,7 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
                 self.showToastWithMessage(message: "Vui lòng nhập số điện thoại để tiếp tục.")
                 return
             } else if phone.length() < 10 {
-                self.showToastWithMessage(message: "Số điện thoại phải chứa 10 hoặc 11 số. Vui lòng kiểm tra lại.")
+                self.showToastWithMessage(message: "Vui lòng nhập số điện thoại hợp lệ.")
                 return
             }
             
@@ -218,7 +226,7 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
 extension EnterPhoneNumberAuthenVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Giới hạn ký tự nhập vào
-        let maxLength = 11
+        let maxLength = FinPlusHelper.getMaxLengthPhone(phoneNumber: textField.text)
         let currentString: NSString = textField.text! as NSString
         let newString: NSString =
             currentString.replacingCharacters(in: range, with: string) as NSString

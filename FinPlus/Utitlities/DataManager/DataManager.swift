@@ -156,11 +156,33 @@ class DataManager {
         }
     }
     
+    //List Bank
+    var listBankData: [Bank]?
+    
     func setCurrentAccount(account: String) {
         guard account.count > 0 else { return }
         DataManager.shared.currentAccount = account
         userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
         userDefault.synchronize()
+    }
+    
+    
+    /// Get List Bank
+    ///
+    /// - Parameter completion: <#completion description#>
+    func getListBank(completion: @escaping() -> Void) {
+        guard DataManager.shared.listBankData == nil else {
+            completion()
+            return
+        }
+        APIClient.shared.getBanks()
+            .done(on: DispatchQueue.global(qos: .utility)) { model in
+                guard model.count > 0 else { return }
+                DataManager.shared.listBankData = model
+                completion()
+            }
+            .catch { error in }
+        
     }
     
     /// Get Data from JSON

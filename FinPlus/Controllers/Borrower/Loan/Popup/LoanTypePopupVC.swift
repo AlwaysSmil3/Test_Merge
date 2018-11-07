@@ -379,6 +379,12 @@ extension LoanTypePopupVC: UITableViewDelegate, UITableViewDataSource {
         
         if self.currentIndex == self.dataSource.count - 1 {
             self.mainTBView?.reloadData()
+            
+            if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypePopupAddTextTBCell {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    cell.tfValue?.becomeFirstResponder()
+                }
+            }
         }
         
     }
