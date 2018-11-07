@@ -40,8 +40,7 @@ extension DataManager {
             
         }
         
-        
-        return phone
+        return FinPlusHelper.updatePhoneNumber(phone: phone)
     }
     
     
