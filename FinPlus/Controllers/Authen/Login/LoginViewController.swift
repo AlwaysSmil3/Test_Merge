@@ -221,7 +221,7 @@ class LoginViewController: BaseAuthenViewController, MFMailComposeViewController
     
     
     @IBAction func tfEditChanged(_ sender: Any) {
-        guard !FinPlusHelper.checkStatusVersionIsNeedUpdate() else { return }
+        //guard !FinPlusHelper.checkStatusVersionIsNeedUpdate() else { return }
         
         if let text = self.tfPass?.text, text.length() >= 6 {
             self.isEnableContinueButton(isEnable: true)
@@ -253,7 +253,7 @@ class LoginViewController: BaseAuthenViewController, MFMailComposeViewController
 
     
     @IBAction func btnForgotPassTapped(_ sender: Any) {
-        guard !FinPlusHelper.checkStatusVersionIsNeedUpdate() else { return }
+        //guard !FinPlusHelper.checkStatusVersionIsNeedUpdate() else { return }
         // show alert confirm
         if let account = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String {
             self.self.showGreenBtnMessage(title: "Đặt lại mật khẩu", message: "Mã xác thực sẽ được gửi tới \(account) qua tin nhắn SMS sau khi bạn đồng ý. Bạn chắc chắn không?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in

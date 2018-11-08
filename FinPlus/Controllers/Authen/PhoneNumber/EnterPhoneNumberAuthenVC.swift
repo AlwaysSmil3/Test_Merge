@@ -81,7 +81,7 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
     //MARK: Actions
     
     @IBAction func tfPhoneNumberEditChanged(_ sender: Any) {
-        guard !FinPlusHelper.checkStatusVersionIsNeedUpdate() else { return }
+        //guard !FinPlusHelper.checkStatusVersionIsNeedUpdate() else { return }
         
         var phone = self.tfPhoneNumber.text!
         if phone.hasPrefix("0") {
