@@ -384,6 +384,7 @@ class TestBorrowingPayViewController: UIViewController {
             
             if self.payAllSelected != nil {
                 monyBankListVC.amount = self.payTotalAmount
+                monyBankListVC.isTotalPayed = true
             } else {
                 
                 if self.payAmountPresent == 0 {
@@ -393,6 +394,7 @@ class TestBorrowingPayViewController: UIViewController {
                 }
                 
                 monyBankListVC.amount = self.payAmountPresent
+                monyBankListVC.isTotalPayed = false
             }
             
             if let navi = self.navigationController {
