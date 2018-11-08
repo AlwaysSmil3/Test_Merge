@@ -16,6 +16,7 @@ class MonyBankListViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var titleLb: UILabel!
     
     var amount: Double = 0
+    var isTotalPayed: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +63,14 @@ class MonyBankListViewController: UIViewController, UITableViewDelegate, UITable
     func createBankList() {
         self.bankList.removeAll()
 //        let vietcombank = MonyBankAccount(bankType: 1, bankName:"Vietcombank" , bankNameDetail: "CN Hà Nội", bankNumber: "0021000444319", bankUsername: "Công ty Cổ phần Finplus", amount: self.amount, content: "\(DataManager.shared.currentAccount) chuyển tiền")
-        let vietinbank = MonyBankAccount(bankType: 2, bankName:"Vietinbank" , bankNameDetail: "Hoàng Mai", bankNumber: "115002671451", bankUsername: "Công ty Cổ phần Finplus", amount: self.amount, content: "\(DataManager.shared.currentAccount) chuyển tiền")
+        
+        //var content = "\(DataManager.shared.currentAccount) chuyển tiền"
+        var content = "THANHTOAN \(DataManager.shared.currentAccount)"
+        if let isTotal = self.isTotalPayed, isTotal {
+            content = "TATTOAN \(DataManager.shared.currentAccount)"
+        }
+        
+        let vietinbank = MonyBankAccount(bankType: 2, bankName:"Vietinbank" , bankNameDetail: "Hoàng Mai", bankNumber: "115002671451", bankUsername: "Công ty Cổ phần Finplus", amount: self.amount, content: content)
 //        let agribank = MonyBankAccount(bankType: 4, bankName:"Agribank" , bankNameDetail: "Nam Hà Nội", bankNumber: "1460201035289", bankUsername: "Công ty Cổ phần Finplus", amount: self.amount, content: "\(DataManager.shared.currentAccount) chuyển tiền")
         
         //self.bankList.append(agribank)
