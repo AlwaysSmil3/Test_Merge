@@ -23,21 +23,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logosplash_logo" translatesAutoresizingMaskIntoConstraints="NO" id="n3i-FH-3nv">
-                                <rect key="frame" x="106.5" y="306" width="162" height="55"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© Five9 Vietnam Corporation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPf-ub-2K5">
                                 <rect key="frame" x="120.5" y="629.5" width="134.5" height="13.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logosplash_logo1" translatesAutoresizingMaskIntoConstraints="NO" id="bJI-nS-BGl">
+                                <rect key="frame" x="106.5" y="304" width="162" height="59"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="n3i-FH-3nv" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="OKd-d4-E9U"/>
-                            <constraint firstItem="n3i-FH-3nv" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="P06-PW-N76"/>
+                            <constraint firstItem="bJI-nS-BGl" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="OzJ-li-fOH"/>
                             <constraint firstItem="DPf-ub-2K5" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="QJj-8H-djq"/>
+                            <constraint firstItem="bJI-nS-BGl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="TzW-s6-4NX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DPf-ub-2K5" secondAttribute="bottom" constant="24" id="ZM5-yw-2NU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -49,6 +49,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logosplash_logo" width="162" height="55"/>
+        <image name="logosplash_logo1" width="162" height="59"/>
     </resources>
 </document>

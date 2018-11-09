@@ -60,7 +60,7 @@ public struct Config {
     if let items = json[SerializationKeys.faq].array { faq = items.map { Faq(json: $0) } }
     if let items = json[SerializationKeys.rateInfo].array { rateInfo = items.map { RateInfo(json: $0) } }
     about = json[SerializationKeys.about].string
-    version = json[SerializationKeys.version].string
+    version = json[SerializationKeys.version].string ?? ""
     loanStatus = LoanStatus(json: json[SerializationKeys.loanStatus])
     policy = json[SerializationKeys.policy].string
     serviceFee = json[SerializationKeys.serviceFee].int
