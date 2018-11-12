@@ -281,7 +281,14 @@ class TestBorrowingPayViewController: UIViewController {
             if let term = DataManager.shared.browwerInfo?.activeLoan?.term, term <= 30 {
                 newBorrowingPay = NewBorrowingData(payType: payTypeArray, payAll: nil, paymentMethod: paymentList)
             } else {
-                newBorrowingPay = NewBorrowingData(payType: payTypeArray, payAll: payAll, paymentMethod: paymentList)
+                
+                if self.checkTimeIsInLastCollection() {
+                    newBorrowingPay = NewBorrowingData(payType: payTypeArray, payAll: nil, paymentMethod: paymentList)
+                } else {
+                    newBorrowingPay = NewBorrowingData(payType: payTypeArray, payAll: payAll, paymentMethod: paymentList)
+                }
+                
+                
             }
         }
         
@@ -345,6 +352,25 @@ class TestBorrowingPayViewController: UIViewController {
                 
         }
             .catch { error in}
+    }
+    
+    
+    /// Check  xem có đang ở thời gian của kỳ trả cuối không
+    ///
+    /// - Returns: <#return value description#>
+    func checkTimeIsInLastCollection() -> Bool {
+        guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections, collections.count > 1 else { return false }
+        
+        let count = collections.count
+        if let monthPayedString = collections[count - 1].dueDatetime, monthPayedString.count > 0 {
+            let monthPayed = Date(fromString: monthPayedString, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
+            
+            if Date() >= monthPayed {
+                return true
+            }
+        }
+        
+        return false
     }
     
     
