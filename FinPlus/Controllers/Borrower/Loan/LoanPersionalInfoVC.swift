@@ -213,6 +213,11 @@ class LoanPersionalInfoVC: LoanBaseViewController {
             phone = phone.replacingOccurrences(of: "+84", with: "0")
         }
         
+        if !self.isLoadedContact {
+            //Khong cung cap quyen danh ba
+            return "\(phone)_2_UNKNOWN"
+        }
+        
         let list = self.contacts.filter { ($0.phoneNumber ?? "") == phone }
         
         if list.count > 0 {
@@ -313,12 +318,12 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     @IBAction func btnContinueTapped(_ sender: Any) {
         self.view.endEditing(true)
 
-        guard self.isLoadedContact else {
-            self.loadContacts {
-                self.updateLoanData()
-            }
-            return
-        }
+//        guard self.isLoadedContact else {
+//            self.loadContacts {
+//                self.updateLoanData()
+//            }
+//            return
+//        }
         
         self.updateLoanData()
     }
