@@ -248,7 +248,7 @@ class ListWalletViewController: BaseViewController {
     }
     
     func editWallet(index: Int) {
-        guard let bank = self.listWallet[index] as? AccountBank else { return }
+        guard index < self.listWallet.count, let bank = self.listWallet[index] as? AccountBank else { return }
         let vc = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "UpdateWalletViewController") as! UpdateWalletViewController
         vc.wallet = bank
         vc.delegate = self
@@ -481,7 +481,7 @@ extension ListWalletViewController: BankDataDelegate {
 //MARK: EditWalletDelegate
 extension ListWalletViewController: EditWalletDelegate {
     func editWallet(index: IndexPath) {
-        let bank = self.listWallet[index.row] as! AccountBank
+        guard index.row < self.listWallet.count, let bank = self.listWallet[index.row] as? AccountBank else { return }
         if self.walletAction == .LoanNation && !DataManager.shared.checkMissingBankData(key: "bank", currentBankHolder: bank.accountBankName, currenAccount: bank.accountBankNumber, id: Int(bank.id!)) {
             return
         }

@@ -10,9 +10,9 @@ import Foundation
 
 class LoanTypeBaseTBCell: UITableViewCell {
     
-    @IBOutlet var lblTitle: UILabel?
-    @IBOutlet var underLine: UIView?
-    @IBOutlet var lblDescriptionNeedUpdate: UILabel?
+    @IBOutlet weak var lblTitle: UILabel?
+    @IBOutlet weak var underLine: UIView?
+    @IBOutlet weak var lblDescriptionNeedUpdate: UILabel?
     
     var valueTemp: String?
     
