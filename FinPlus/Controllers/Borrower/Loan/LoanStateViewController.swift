@@ -885,6 +885,10 @@ class LoanStateViewController: UIViewController {
                         ]
                         
                         currentAmount = temptString
+                    } else {
+                        if temp > 0 {
+                            currentAmount = temptString
+                        }
                     }
                     
                     
