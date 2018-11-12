@@ -12,7 +12,7 @@ import Foundation
 class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol, LoanTypeTBCellProtocol {
     
 
-    @IBOutlet var lblValue: UILabel?
+    @IBOutlet weak var lblValue: UILabel?
     
     var field: LoanBuilderFields? {
         didSet {

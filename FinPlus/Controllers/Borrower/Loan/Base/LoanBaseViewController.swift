@@ -529,6 +529,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         case DATA_TYPE_TB_CELL.DropDown:
             //Chức vụ
             //Nghề nghiệp
+            tableView.deselectRow(at: indexPath, animated: true)
             
             break
         case DATA_TYPE_TB_CELL.DateTime:
@@ -572,8 +573,6 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
-        
-        
         
     }
     
