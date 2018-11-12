@@ -323,6 +323,18 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         self.updateLoanData()
     }
     
+    @IBAction func btnBackTapped(_ sender: Any) {
+        
+        for (i, data) in DataManager.shared.loanInfo.userInfo.relationships.enumerated() {
+            if data.phoneNumber.count == 0 {
+                DataManager.shared.loanInfo.userInfo.relationships[i].type = -1
+            }
+        }
+        
+        _ = self.navigationController?.popViewController(animated: true)
+        
+    }
+    
     
     
 }
