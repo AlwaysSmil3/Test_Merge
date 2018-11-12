@@ -24,9 +24,9 @@ class LoanSummaryInfoVC: BaseViewController {
             }
             
             self.aPContacts.forEach {
-                let contact = self.updateContact(apContact: $0)
-                if contact.contactPhoneNumber.count > 8 {
-                    self.contactsAPI.contacts.append(contact)
+                let contacts = self.updateContact(apContact: $0)
+                if contacts.count > 0 {
+                    self.contactsAPI.contacts.append(contentsOf: contacts)
                 }
                 
             }
@@ -176,45 +176,57 @@ class LoanSummaryInfoVC: BaseViewController {
     /// Get Account Name Contact
     ///
     /// - Returns: <#return value description#>
-    func updateContact(apContact: APContact) -> ContactParams {
+    func updateContact(apContact: APContact) -> [ContactParams] {
         
-        //self.contact.initData()
-        var tempContact: ContactParams = ContactParams()
-        
-        if let phone = apContact.phones {
-            if let number = phone.first?.number {
-                
-                let numberTemp = number.trimmingCharacters(in: CharacterSet.whitespaces)
-                
-                var numberPhone = numberTemp.replacingOccurrences(of: "\\s", with: "", options: .regularExpression, range: nil)
-                if numberPhone.contains("+84") {
-                    numberPhone = numberPhone.replacingOccurrences(of: "+84", with: "0")
-                }
-                
-                tempContact.contactPhoneNumber = FinPlusHelper.updatePhoneNumber(phone: numberPhone)
-            }
-        }
-        
+        var contactName = ""
         if let name = apContact.name {
-            guard let lastName = name.lastName, let firstName = name.firstName else {
+            if let lastName = name.lastName, let firstName = name.firstName {
                 
+                contactName = (firstName + " " + lastName).trimmingCharacters(in: .whitespacesAndNewlines)
+                
+            } else {
                 if let lastName = name.lastName {
-                    tempContact.contactName = lastName
+                    contactName = lastName
                 }
                 
                 if let firstName = name.firstName {
-                    tempContact.contactName = firstName
+                    contactName = firstName
                 }
-                
-                return tempContact
             }
-            
-            tempContact.contactName = (firstName + " " + lastName).trimmingCharacters(in: .whitespacesAndNewlines)
-            
-            return tempContact
         }
         
-        return tempContact
+        guard contactName.count > 0 else {
+            return []
+        }
+        
+        var listContactParams: [ContactParams] = []
+        
+        if let phone = apContact.phones {
+            
+            for p in phone {
+                if let number = p.number {
+                    var numberResult = ""
+                    let numberTemp = number.trimmingCharacters(in: CharacterSet.whitespaces)
+                    
+                    var numberPhone = numberTemp.replacingOccurrences(of: "\\s", with: "", options: .regularExpression, range: nil)
+                    if numberPhone.contains("+84") {
+                        numberPhone = numberPhone.replacingOccurrences(of: "+84", with: "0")
+                    }
+                    
+                    numberResult = FinPlusHelper.updatePhoneNumber(phone: numberPhone)
+                    
+                    if numberResult.count > 8 {
+                        var tempContact: ContactParams = ContactParams()
+                        tempContact.contactName = contactName
+                        tempContact.contactPhoneNumber = numberResult
+                        listContactParams.append(tempContact)
+                    }
+                }
+            }
+            
+        }
+        
+        return listContactParams
     }
     
     private func uploadContact() {
