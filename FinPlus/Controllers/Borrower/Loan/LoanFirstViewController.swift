@@ -304,6 +304,12 @@ class LoanFirstViewController: LoanBaseViewController {
     }
     
     @IBAction func btnListCategoriesShow(_ sender: Any) {
+        
+        if let status = DataManager.shared.browwerInfo?.activeLoan?.status, status >= 1 {
+            //Gói vay đã được summit k dc đổi gói vay
+            return
+        }
+        
         let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
         popup.setDataSource(data: listDataCategoriesForPopup, type: .Categories)
         popup.titleString = "Mục đích vay"
