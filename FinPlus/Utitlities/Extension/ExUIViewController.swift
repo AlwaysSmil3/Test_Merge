@@ -153,7 +153,7 @@ extension UIViewController {
                 print("Cancel")
                 completion?(false)
             })
-            
+            cancelAction.setValue(MAIN_COLOR, forKey: "titleTextColor")
             alert.addAction(cancelAction)
         }
         if (okTitle != nil) {
@@ -161,7 +161,7 @@ extension UIViewController {
                 print("OK")
                 completion?(true)
             })
-            
+            okAction.setValue(MAIN_COLOR, forKey: "titleTextColor")
             alert.addAction(okAction)
         }
         
