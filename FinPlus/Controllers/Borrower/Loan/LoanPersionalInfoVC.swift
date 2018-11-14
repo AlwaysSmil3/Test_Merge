@@ -329,10 +329,27 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     }
     
     @IBAction func btnBackTapped(_ sender: Any) {
+        self.view.endEditing(true)
         
-        for (i, data) in DataManager.shared.loanInfo.userInfo.relationships.enumerated() {
+        let relationships = DataManager.shared.loanInfo.userInfo.relationships
+        
+        var isReloadRelationData = false
+        for data in relationships {
             if data.phoneNumber.count == 0 {
+                isReloadRelationData = true
+                break
+            }
+            
+            if data.type == -1 {
+                isReloadRelationData = true
+                break
+            }
+        }
+        
+        if isReloadRelationData, relationships.count > 0 {
+            for i in 0...relationships.count - 1 {
                 DataManager.shared.loanInfo.userInfo.relationships[i].type = -1
+                DataManager.shared.loanInfo.userInfo.relationships[i].phoneNumber = ""
             }
         }
         

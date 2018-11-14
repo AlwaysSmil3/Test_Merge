@@ -488,7 +488,30 @@ class DataManager {
     /// - Parameter id: <#id description#>
     /// - Returns: <#return value description#>
     class func getTitleRelationShip(id: Int) -> String {
+        guard let cate = DataManager.shared.getCurrentCategory(), (cate.builders?.count ?? 0) > 0, let fields = cate.builders![0].fields else { return "Người thân" }
         
+        var field: LoanBuilderFields?
+        for f in fields {
+            if f.id == "relationships" {
+                field = f
+                break
+            }
+        }
+        
+        guard let muiltiData = field?.multipleData else { return "Người thân" }
+        
+        for mu in muiltiData {
+            if let options = mu.options {
+                for op in options {
+                    if id == Int(op.id ?? 0) {
+                        return op.title ?? "Người thân"
+                    }
+                }
+            }
+        }
+        return "Người thân"
+        
+        /*
         switch id {
         case 0:
             return "Bố"
@@ -506,7 +529,7 @@ class DataManager {
         default:
             return "Người thân"
         }
-        
+        */
         
     }
     

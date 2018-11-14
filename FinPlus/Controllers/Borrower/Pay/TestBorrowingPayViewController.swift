@@ -362,10 +362,16 @@ class TestBorrowingPayViewController: UIViewController {
         guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections, collections.count > 1 else { return false }
         
         let count = collections.count
-        if let monthPayedString = collections[count - 1].dueDatetime, monthPayedString.count > 0 {
+        if let monthPayedString = collections[count - 2].dueDatetime, monthPayedString.count > 0 {
             let monthPayed = Date(fromString: monthPayedString, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
             
-            if Date() >= monthPayed {
+            let dateFormatString = monthPayed.toString(DateFormat.custom(kDisplayFormat))
+            let dateFormatStringCurrent = Date().toString(DateFormat.custom(kDisplayFormat))
+            
+            let datePayedResult = Date(fromString: dateFormatString, format: .custom(kDisplayFormat)).dateByAddingDays(1)
+            let dateCurrentResult = Date(fromString: dateFormatStringCurrent, format: .custom(kDisplayFormat))
+            
+            if dateCurrentResult >= datePayedResult {
                 return true
             }
         }
