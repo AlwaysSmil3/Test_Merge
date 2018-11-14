@@ -78,6 +78,10 @@ class LoanFirstViewController: LoanBaseViewController {
         
         super.viewWillAppear(animated)
         
+        if let status = DataManager.shared.browwerInfo?.activeLoan?.status, status >= 1 {
+            //Gói vay đã được summit k dc đổi gói vay
+            self.lblCategoriesName?.textColor = UIColor(hexString: "#8EA3AF")
+        }
     }
     
     private func initPlusingHalo() {

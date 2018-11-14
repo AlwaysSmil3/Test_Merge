@@ -360,10 +360,30 @@ class APIClient {
     
     
     func showAlertError(error: Error) {
+        
+        let err = error as NSError
+        
+        if err.code != NSURLErrorTimedOut  {
+            self.showAlertErrorMony(error: error)
+            
+            return
+        }
+        
         if DataManager.shared.isCanShowAlertAPIError {
             DataManager.shared.isCanShowAlertAPIError = false
             
             UIApplication.shared.topViewController()?.showAlertView(title: TITLE_ALERT_ERROR_CONNECTION, message: self.getDisplayMessage(error: error), okTitle: "Đóng", cancelTitle: nil) { status in
+                DataManager.shared.isCanShowAlertAPIError = true
+            }
+            
+        }
+    }
+    
+    func showAlertErrorMony(error: Error) {
+        if DataManager.shared.isCanShowAlertAPIError {
+            DataManager.shared.isCanShowAlertAPIError = false
+            
+            UIApplication.shared.topViewController()?.showAlertViewNoConnect(title: TITLE_ALERT_ERROR_CONNECTION, message: API_MESSAGE.MONY_MESSEAGE_ERROR, okTitle: "Đóng", cancelTitle: nil) { status in
                 DataManager.shared.isCanShowAlertAPIError = true
             }
             

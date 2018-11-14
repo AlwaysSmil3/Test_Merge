@@ -29,59 +29,25 @@ class BaseAuthenViewController: BaseViewController {
 
     func checkConnectedToNetwork() {
         if !FinPlusHelper.isConnectedToNetwork() {
-            self.showAlertViewNoConnect(title: TITLE_ALERT_ERROR_CONNECTION, message: "\nKhông thể kết nối tới hệ thống Mony, có thể do các nguyên nhân:\n\n- Thiết bị của bạn không có kết nối mạng.\n- Hệ thống Mony đang bảo trì.\n\nBạn vui lòng kiểm tra kết nối mạng hoặc thử lại sau ít phút.", okTitle: "Thử lại", cancelTitle: nil) { (status) in
+            if DataManager.shared.isCanShowAlertAPIError {
+                DataManager.shared.isCanShowAlertAPIError = false
                 
-                if FinPlusHelper.isConnectedToNetwork() {
-                    self.getLoanCategories {
-                        
+                self.showAlertViewNoConnect(title: TITLE_ALERT_ERROR_CONNECTION, message: API_MESSAGE.MONY_MESSEAGE_ERROR, okTitle: "Thử lại", cancelTitle: nil) { (status) in
+                    DataManager.shared.isCanShowAlertAPIError = true
+                    if FinPlusHelper.isConnectedToNetwork() {
+                        self.getLoanCategories {
+                            
+                        }
+                    } else {
+                        self.checkConnectedToNetwork()
                     }
-                } else {
-                    self.checkConnectedToNetwork()
+                    
                 }
-                
             }
+            
         }
     }
     
-    func showAlertViewNoConnect(title: String, message: String, okTitle: String?, cancelTitle: String?, completion:((_ isPressedOK: Bool) -> Swift.Void)? = nil) {
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        if (cancelTitle != nil) {
-            let cancelAction = UIAlertAction(title: cancelTitle, style: .default, handler: { (result: UIAlertAction) in
-                print("Cancel")
-                completion?(false)
-            })
-            
-            alert.addAction(cancelAction)
-        }
-        if (okTitle != nil) {
-            let okAction = UIAlertAction(title: okTitle, style: .destructive, handler: { (result: UIAlertAction) in
-                print("OK")
-                completion?(true)
-            })
-            
-            alert.addAction(okAction)
-        }
-        
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = NSTextAlignment.left
-        
-        let messageText = NSMutableAttributedString(
-            string: message,
-            attributes: [
-                NSAttributedStringKey.paragraphStyle: paragraphStyle,
-                NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: 15) ?? UIFont.systemFont(ofSize: 15),
-                NSAttributedStringKey.foregroundColor: UIColor.black
-            ]
-        )
-        
-        alert.setValue(messageText, forKey: "attributedMessage")
-        
-        
-        self.present(alert, animated: true, completion: nil)
-    }
     
     func getVersion(completion: @escaping() -> Void) {
         APIClient.shared.getConfigs()

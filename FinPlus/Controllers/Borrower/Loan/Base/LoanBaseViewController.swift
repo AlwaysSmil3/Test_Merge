@@ -160,7 +160,10 @@ class LoanBaseViewController: BaseViewController {
     
     /// Show date time Picker
     func showDateDialog() {
-        DatePickerDialog().show("Ngày sinh", doneButtonTitle: "Đồng ý", cancelButtonTitle: "Huỷ", defaultDate: Date() , minimumDate: nil, maximumDate: Date(), datePickerMode: UIDatePickerMode.date) { (date) in
+        
+        let defaultDate = Date(fromString: "01/01/2000", format: DateFormat.custom(kDisplayFormat))
+        
+        DatePickerDialog().show("Ngày sinh", doneButtonTitle: "Đồng ý", cancelButtonTitle: "Huỷ", defaultDate: defaultDate , minimumDate: nil, maximumDate: Date(), datePickerMode: UIDatePickerMode.date) { (date) in
             
             if let date = date {
                 self.birthDay = date
