@@ -143,6 +143,47 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    
+    func showAlertViewNoConnect(title: String, message: String, okTitle: String?, cancelTitle: String?, completion:((_ isPressedOK: Bool) -> Swift.Void)? = nil) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        if (cancelTitle != nil) {
+            let cancelAction = UIAlertAction(title: cancelTitle, style: .default, handler: { (result: UIAlertAction) in
+                print("Cancel")
+                completion?(false)
+            })
+            
+            alert.addAction(cancelAction)
+        }
+        if (okTitle != nil) {
+            let okAction = UIAlertAction(title: okTitle, style: .destructive, handler: { (result: UIAlertAction) in
+                print("OK")
+                completion?(true)
+            })
+            
+            alert.addAction(okAction)
+        }
+        
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.left
+        
+        let messageText = NSMutableAttributedString(
+            string: message,
+            attributes: [
+                NSAttributedStringKey.paragraphStyle: paragraphStyle,
+                NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: 15) ?? UIFont.systemFont(ofSize: 15),
+                NSAttributedStringKey.foregroundColor: UIColor.black
+            ]
+        )
+        
+        alert.setValue(messageText, forKey: "attributedMessage")
+        
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func handleLoadingView(isShow: Bool) {
         if isShow {
             self.showLoadingView()

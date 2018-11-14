@@ -121,6 +121,8 @@ enum API_MESSAGE {
     static let NO_INTERNET = "Có lỗi xảy ra do không có kết nối internet. Vui lòng kiểm tra lại kết nối của bạn."
     static let OTHER_ERROR = "Không thể kết nối tới hệ thống Mony. Vui lòng thử lại sau."
     static let DATA_FORMART_ERROR = "Không xử lý được dữ liệu nhận được"
+    
+    static let MONY_MESSEAGE_ERROR = "\nKhông thể kết nối tới hệ thống Mony, có thể do các nguyên nhân:\n\n- Thiết bị của bạn không có kết nối mạng.\n- Hệ thống Mony đang bảo trì.\n\nBạn vui lòng kiểm tra kết nối mạng hoặc thử lại sau ít phút."
 }
 
 // Giới tính

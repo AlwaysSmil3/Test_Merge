@@ -104,7 +104,8 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
     }
     
     @IBAction func showDateDialog() {
-        DatePickerDialog().show("Ngày giải ngân", doneButtonTitle: "Đồng ý", cancelButtonTitle: "Huỷ", defaultDate: Date() , minimumDate: Date(), maximumDate: nil, datePickerMode: UIDatePickerMode.date) { (date) in
+        
+        DatePickerDialog().show("Ngày giải ngân", doneButtonTitle: "Đồng ý", cancelButtonTitle: "Huỷ", defaultDate: Date() , minimumDate: nil, maximumDate: nil, datePickerMode: UIDatePickerMode.date) { (date) in
             if let date = date {
                 self.currentDate = date
                 self.dateFormatter.dateFormat = "dd/MM/YYYY"
