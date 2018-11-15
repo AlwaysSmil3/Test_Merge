@@ -22,7 +22,7 @@ class ListLoanViewController: BaseViewController {
     var isCanReload: Bool = true
     var currentPage: Int = 1
 //    var isCanClearData: Bool = false
-//    var totalCountItems = 0
+    var totalCountItems = 0
 //
 //    var completeArray:NSMutableArray = []
 //    var unCompleteArray:NSMutableArray = []
@@ -70,6 +70,12 @@ class ListLoanViewController: BaseViewController {
         
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.currentPage = 1
+    }
+    
     
     
     private func getAllLoans() {
@@ -80,17 +86,90 @@ class ListLoanViewController: BaseViewController {
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         APIClient.shared.getUserLoans(currentPage: self.currentPage, pageSize: self.pageSize)
-            .done(on: DispatchQueue.global()) { model in
+            .done(on: DispatchQueue.global()) { json in
                 
                 DispatchQueue.main.async {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     self.errorConnectView?.isHidden = true
                 }
                 
-                self.currentPage += 1
+                guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+                    let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
+                    UIApplication.shared.topViewController()?.showGreenBtnMessage(title: "Lấy danh sách khoản vay của bạn", message: message, okTitle: "Thử lại", cancelTitle: "Đóng", completion: { (status) in
+                        if status {
+                            self.isCanReload = true
+                            self.getAllLoans()
+                        } else {
+                            self.isCanReload = true
+                        }
+                    })
+                    
+                    return
+                }
+                
+                
+                var model: [BrowwerActiveLoan] = []
+                
+                if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
+                    model = data.compactMap {BrowwerActiveLoan(object: $0)}
+                    
+                }
                 
                 
                 self.isCanReload = true
+                
+                if self.currentPage >= 2 {
+                    //Handle LoadMore
+                    guard model.count > 0 else {
+                        self.isCanReload = true
+                        return
+                    }
+                    self.currentPage += 1
+                    
+                    let completeArr:NSMutableArray = []
+                    //let unCompleteArr:NSMutableArray = []
+                    if let sectionItem = self.listLoan.lastObject as? NSDictionary, let items = sectionItem["sub_array"] as? [BrowwerActiveLoan] {
+                        completeArr.addObjects(from: items)
+                        
+                    }
+                    
+                    model.forEach({ (loan) in
+                        
+                        if let status = loan.status {
+                            if status == 17 || status == 18 || status == 5 {
+                                completeArr.add(loan)
+                            } else {
+                                //unCompleteArr.add(loan)
+                            }
+                        }
+                        
+                    })
+                    
+                    
+                    if (completeArr.count > 0)
+                    {
+                        self.listLoan.removeLastObject()
+                        self.listLoan.add(["title" : "END_LOAN", "sub_array" : completeArr])
+                    }
+                    
+                    self.totalCountItems += completeArr.count
+                    
+                    DispatchQueue.main.async {
+                        self.tableview.reloadData()
+                        
+                        self.tableview.isHidden = self.listLoan.count < 1
+                        self.noWalletLabel.isHidden = self.listLoan.count > 0
+                        self.addBtn.isHidden = self.listLoan.count > 0
+                    }
+                    
+                    
+                    return
+                }
+                
+                if model.count > 0 {
+                    self.currentPage += 1
+                }
+                
                 let completeArr:NSMutableArray = []
                 let unCompleteArr:NSMutableArray = []
                 
@@ -108,6 +187,11 @@ class ListLoanViewController: BaseViewController {
                 
                 
                 if self.currentPage == 2 {
+                    
+                    if unCompleteArr.count > 0 || completeArr.count > 0 {
+                        self.listLoan.removeAllObjects()
+                    }
+                    
                     if (unCompleteArr.count > 0)
                     {
                         self.listLoan.add(["title" : "CURRENT_LOAN", "sub_array" : unCompleteArr])
@@ -119,6 +203,7 @@ class ListLoanViewController: BaseViewController {
                     }
                 }
                 
+                self.totalCountItems = unCompleteArr.count + completeArr.count
                 
                 DispatchQueue.main.async {
                     self.tableview.reloadData()
@@ -263,17 +348,17 @@ extension ListLoanViewController: UITableViewDataSource {
         return cell!
     }
     
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//
-//        if self.listLoan.count > 0 && indexPath.section + 1 == self.listLoan.count {
-//            if let sectionItem = listLoan[indexPath.section] as? NSDictionary, let items = sectionItem["sub_array"] as? NSArray {
-//
-//                if indexPath.row == items.count - 2, self.totalCountItems % self.pageSize == 0 {
-//                    self.getAllLoans()
-//                }
-//
-//            }
-//        }
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+        if self.listLoan.count > 0 && indexPath.section + 1 == self.listLoan.count {
+            if let sectionItem = listLoan[indexPath.section] as? NSDictionary, let items = sectionItem["sub_array"] as? NSArray {
+
+                if self.totalCountItems > 2, self.totalCountItems % self.pageSize == 0, indexPath.row == items.count - 2 {
+                    self.getAllLoans()
+                }
+
+            }
+        }
+    }
     
 }

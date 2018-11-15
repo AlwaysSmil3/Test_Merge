@@ -89,21 +89,34 @@ extension APIClient {
      GET Lấy danh sách khoản vay của người dùng
 
      */
-    func getUserLoans(currentPage: Int, pageSize: Int = 30) -> Promise<[BrowwerActiveLoan]> {
-        return Promise<[BrowwerActiveLoan]> { seal in
+    func getUserLoans(currentPage: Int, pageSize: Int = 20) -> Promise<JSONDictionary> {
+        return Promise<JSONDictionary> { seal in
 
             let uid = DataManager.shared.userID
             let endPoint = "users/\(uid)/" + "loans?page=\(currentPage)" + "&limit=\(pageSize)" + EndPoint.Loan.Loans
 
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
-                    var array: [BrowwerActiveLoan] = []
-
-                    if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
-                        array = data.compactMap {BrowwerActiveLoan(object: $0)}
-
-                    }
-                    seal.fulfill(array)
+                    
+//                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+//                        let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
+//                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil, completion: { (status) in
+//                            if status {
+//                                seal.fulfill([])
+//                            }
+//
+//                        })
+//
+//                        return
+//                    }
+                    
+//                    var array: [BrowwerActiveLoan] = []
+//
+//                    if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
+//                        array = data.compactMap {BrowwerActiveLoan(object: $0)}
+//
+//                    }
+                    seal.fulfill(json)
                 }
                 .catch { error in seal.reject(error)}
         }
