@@ -20,6 +20,19 @@ extension APIClient {
             getDataWithEndPoint(endPoint: EndPoint.Config.Configs, isShowLoadingView: false)
                 .done { json in
                     
+                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
+                        SVProgressHUD.dismiss()
+                        let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
+                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil, completion: { (status) in
+                            if status {
+                                
+                            }
+                            
+                        })
+                        
+                        return
+                    }
+                    
                     //Tỷ giá lãi xuất
                     if DataManager.shared.listRateInfo.count == 0, let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary, let listRate = data["rateInfo"] as? [JSONDictionary] {
                         for d in listRate {

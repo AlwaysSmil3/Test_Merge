@@ -173,7 +173,7 @@ class LoginViewController: BaseAuthenViewController, MFMailComposeViewController
             
         })
         
-        let hotLineAction = UIAlertAction(title: "Gọi hotline: 1900 232 389", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+        let hotLineAction = UIAlertAction(title: "Gọi hotline: \(phoneNumberMony)", style: .default, handler: { (alert: UIAlertAction!) -> Void in
             guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let _ = win else {
                 return
             }
