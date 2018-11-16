@@ -89,7 +89,7 @@ extension APIClient {
      GET Lấy danh sách khoản vay của người dùng
 
      */
-    func getUserLoans(currentPage: Int, pageSize: Int = 20) -> Promise<JSONDictionary> {
+    func getUserLoans(currentPage: Int, pageSize: Int = 30) -> Promise<JSONDictionary> {
         return Promise<JSONDictionary> { seal in
 
             let uid = DataManager.shared.userID
