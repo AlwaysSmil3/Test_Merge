@@ -283,8 +283,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if ((vc is LoginViewController) || (vc is EnterPhoneNumberAuthenVC) || (vc is SetPassAuthenVC)) {
                     //do something if it's an instance of that class
                 } else {
-                    let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                    self.window?.rootViewController = loginVC
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                        let navi = UINavigationController(rootViewController: loginVC)
+                        navi.isNavigationBarHidden = true
+                        self.window?.rootViewController = navi
+                    }
+                    
                 }
             }
             
