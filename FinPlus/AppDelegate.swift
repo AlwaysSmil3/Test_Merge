@@ -22,10 +22,14 @@ var countCheckVersionFirst = 0
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     var timeCount = 0
     var timer = Timer()
+    
+    var backgroundTimer : Timer!
+    var isShowLogin = false
+    
     
     func createTimer() {
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
@@ -48,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 10, *) {
             UITabBarItem.appearance().badgeColor = UIColor(hexString: "#DA3535")
         }
-//        UINavigationBar.appearance().tintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.85)
+        //        UINavigationBar.appearance().tintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.85)
         
         // Override point for customization after application launch.
         
@@ -99,16 +103,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     print("Permission granted: \(granted)")
                     
                     
-//                    let viewAction = UNNotificationAction(identifier: viewActionIdentifier,
-//                                                          title: "View",
-//                                                          options: [.foreground])
-//
-//                    let newsCategory = UNNotificationCategory(identifier: newsCategoryIdentifier,
-//                                                              actions: [viewAction],
-//                                                              intentIdentifiers: [],
-//                                                              options: [])
-//
-//                    UNUserNotificationCenter.current().setNotificationCategories([newsCategory])
+                    //                    let viewAction = UNNotificationAction(identifier: viewActionIdentifier,
+                    //                                                          title: "View",
+                    //                                                          options: [.foreground])
+                    //
+                    //                    let newsCategory = UNNotificationCategory(identifier: newsCategoryIdentifier,
+                    //                                                              actions: [viewAction],
+                    //                                                              intentIdentifiers: [],
+                    //                                                              options: [])
+                    //
+                    //                    UNUserNotificationCenter.current().setNotificationCategories([newsCategory])
                     
                     self.getNotificationSettings()
                     
@@ -127,7 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func getNotificationSettings() {
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-
+                
                 switch settings.authorizationStatus {
                 case .authorized:
                     print("Notification authorized")
@@ -217,51 +221,75 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-//    func loadConfigFromFireBase() {
-//
-//        let fetchDuration: TimeInterval = 0
-//        // WARNING: Don't actually do this in production!
-//        //self.activeDebugMode()
-//
-//        RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { (status, error) in
-//            if let error = error {
-//                print("Fetch firebase config fail \(error.localizedDescription)")
-//                return
-//            }
-//
-//            RemoteConfig.remoteConfig().activateFetched()
-//            FinPlusHelper.checkVersionWithFireBaseConfigAndShowAlert {
-//                print("Need update App")
-//            }
-//
-//        }
-//
-//    }
-//
-//    func activeDebugMode() {
-//        let debugSetting = RemoteConfigSettings(developerModeEnabled: true)
-//        RemoteConfig.remoteConfig().configSettings = debugSetting
-//    }
+    //    func loadConfigFromFireBase() {
+    //
+    //        let fetchDuration: TimeInterval = 0
+    //        // WARNING: Don't actually do this in production!
+    //        //self.activeDebugMode()
+    //
+    //        RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { (status, error) in
+    //            if let error = error {
+    //                print("Fetch firebase config fail \(error.localizedDescription)")
+    //                return
+    //            }
+    //
+    //            RemoteConfig.remoteConfig().activateFetched()
+    //            FinPlusHelper.checkVersionWithFireBaseConfigAndShowAlert {
+    //                print("Need update App")
+    //            }
+    //
+    //        }
+    //
+    //    }
+    //
+    //    func activeDebugMode() {
+    //        let debugSetting = RemoteConfigSettings(developerModeEnabled: true)
+    //        RemoteConfig.remoteConfig().configSettings = debugSetting
+    //    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
         print("applicationWillResignActive")
     }
-
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         print("applicationDidEnterBackground")
+        backgroundTimer = Timer.scheduledTimer(timeInterval: BACKGROUND_TIME, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+        
     }
-
+    
+    @objc func runTimedCode() {
+        self.isShowLogin = true
+    }
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         print("applicationWillEnterForeground")
+        self.backgroundTimer.invalidate()
     }
-
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        if self.isShowLogin == true {
+            if let wd = UIApplication.shared.delegate?.window {
+                var vc = wd!.rootViewController
+                if(vc is UINavigationController) {
+                    vc = (vc as! UINavigationController).visibleViewController
+                }
+                
+                if ((vc is LoginViewController) || (vc is EnterPhoneNumberAuthenVC) || (vc is SetPassAuthenVC)) {
+                    //do something if it's an instance of that class
+                } else {
+                    let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                    self.window?.rootViewController = loginVC
+                }
+            }
+            
+        }
+        self.isShowLogin = false
         
         guard countCheckVersionFirst > 0 else {
             if countCheckVersionFirst == 0 {
@@ -275,7 +303,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //With get file config from Server
         self.checkVersion()
     }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
@@ -298,20 +326,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if isFirstLaunch == true {
             let enterPhoneVC = UIStoryboard(name: "OnBoard", bundle: nil).instantiateInitialViewController()
             self.window?.rootViewController = enterPhoneVC
-
+            
             return
         } else {
             guard let _ = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String else {
                 // chưa có account Login
                 let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
-
+                
                 self.window?.rootViewController = enterPhoneVC
-
+                
                 return
             }
             //Đã có account Login
             let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewControllerNavi") as! UINavigationController
-
+            
             self.window?.rootViewController = loginVC
         }
         
@@ -326,7 +354,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 DataManager.shared.config = model
                 
                 FinPlusHelper.checkVersionWithConfigAndShowAlert {
-
+                    
                 }
                 
                 guard let version = userDefault.value(forKey: fVERSION_CONFIG) as? String else {
@@ -345,7 +373,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
             }
             .catch { error in
-            }
+        }
     }
     
     private func getLoanCategories() {
@@ -374,7 +402,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-
+    
     // MARK: - Core Data stack
     lazy var applicationDocumentsDirectory: URL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "caohai.PresentationSkill" in the application's documents Application Support directory.
@@ -394,7 +422,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.appendingPathComponent("SingleViewCoreData.sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
-
+        
         do {
             let options = [ NSInferMappingModelAutomaticallyOption : true,
                             NSMigratePersistentStoresAutomaticallyOption : true]
@@ -433,8 +461,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
-
+    
+    
 }
 
 
@@ -467,9 +495,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
         // Print message ID.
-//        if let messageID = userInfo[gcmMessageIDKey] {
-//            print("Message ID: \(messageID)")
-//        }
+        //        if let messageID = userInfo[gcmMessageIDKey] {
+        //            print("Message ID: \(messageID)")
+        //        }
         
         // Print full message.
         //Khi app đang dứoi background
@@ -480,7 +508,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
     
     
-
+    
     
     
     
