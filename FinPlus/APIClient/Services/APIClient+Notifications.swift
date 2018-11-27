@@ -17,7 +17,7 @@ extension APIClient {
     func getListNotifications(after: Int, limit: Int = 20) -> Promise<[NotificationModel]> {
         return Promise<[NotificationModel]> { seal in
             let uID = DataManager.shared.userID
-            let endPoint = "/users/\(uID)/notifications?after=\(after)&limit=\(limit)"
+            let endPoint = "\(APIService.AccountService)/users/\(uID)/notifications?after=\(after)&limit=\(limit)"
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
@@ -46,7 +46,7 @@ extension APIClient {
     /// - Returns: <#return value description#>
     func updateNotification(notiID: Int) -> Promise<APIResponseGeneral> {
         let userID = DataManager.shared.userID
-        let endPoint = "users/\(userID)/notification"
+        let endPoint = "\(APIService.AccountService)users/\(userID)/notification"
         let params: JSONDictionary = ["id": notiID,
                       "status": false
         ]

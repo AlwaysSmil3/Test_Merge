@@ -93,7 +93,7 @@ extension APIClient {
         return Promise<JSONDictionary> { seal in
 
             let uid = DataManager.shared.userID
-            let endPoint = "users/\(uid)/" + "loans?page=\(currentPage)" + "&limit=\(pageSize)" + EndPoint.Loan.Loans
+            let endPoint = "\(APIService.AccountService)users/\(uid)/" + "loans?page=\(currentPage)" + "&limit=\(pageSize)" + "&sort=createdDate.desc"
 
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
@@ -145,7 +145,7 @@ extension APIClient {
         var endPoint = EndPoint.Loan.CreateLoans
 
         if httpType == .PUT {
-            endPoint = "loans/" + "\(DataManager.shared.loanID ?? 0)"
+            endPoint = "\(APIService.LoanService)loans/" + "\(DataManager.shared.loanID ?? 0)"
         }
 
         return Promise<BrowwerActiveLoan> { seal in
@@ -217,7 +217,7 @@ extension APIClient {
     /// - Returns: <#return value description#>
     func uploadContacts(list: ContactParamsList) -> Promise<APIResponseGeneral> {
         
-        let endPoint = "loans/contacts/" + "\(DataManager.shared.userID)"
+        let endPoint = "\(APIService.LoanService)loans/contacts/" + "\(DataManager.shared.userID)"
         let params: JSONDictionary = [
             "": ""
         ]
@@ -261,7 +261,7 @@ extension APIClient {
     
     func getLoanOTP(loanID: Int32) -> Promise<APIResponseGeneral> {
         
-        let endPoint = "loans/" + "\(loanID)/" + "otp"
+        let endPoint = "\(APIService.LoanService)loans/" + "\(loanID)/" + "otp"
         
         return Promise<APIResponseGeneral> { seal in
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
@@ -294,7 +294,7 @@ extension APIClient {
 
     func delLoan(loanID: Int32) -> Promise<APIResponseGeneral> {
 
-        let endPoint = "loans/" + "\(loanID)"
+        let endPoint = "\(APIService.LoanService)loans/" + "\(loanID)"
 
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: endPoint, params: [:], isShowLoadingView: true, httpType: .DELETE)
@@ -314,7 +314,7 @@ extension APIClient {
     func investLoan(loanId: Int32, investorId: Int32, notes: Int32) -> Promise<InvestLoanBaseClass> {
 
 
-        let endPoint = "loans/" + "\(loanId)/" + "notes"
+        let endPoint = "\(APIService.LoanService)loans/" + "\(loanId)/" + "notes"
         // fix wallet
         let walletId : Int32 = 1
         let params = [ "investorId" : investorId, "notes" : notes, "bankId" : walletId]
@@ -337,7 +337,7 @@ extension APIClient {
 
     func investLoanOTP(loanId: Int32, noteId: Int) -> Promise<APIResponseGeneral> {
         return Promise<APIResponseGeneral> { seal in
-            let endPoint = "loans/" + "\(loanId)/" + "notes/" + "\(noteId)/" + "otp"
+            let endPoint = "\(APIService.LoanService)loans/" + "\(loanId)/" + "notes/" + "\(noteId)/" + "otp"
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
                     let model = APIResponseGeneral(object: json)
@@ -349,7 +349,7 @@ extension APIClient {
 
     func getOTPContract(loanID: Int32) -> Promise<APIResponseGeneral> {
 
-        let endPoint = "loans/" + "\(loanID)/contract"
+        let endPoint = "\(APIService.LoanService)loans/" + "\(loanID)/contract"
 
         return Promise<APIResponseGeneral> { seal in
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
@@ -380,7 +380,7 @@ extension APIClient {
 
     func confirmOTPInvestLoan(loanId: Int32, noteId: Int32, OTP: String) -> Promise<APIResponseGeneral> {
 //        /loans/604/notes/3/otp
-        let endPoint = "loans/" + "\(loanId)/" + "notes/" + "\(noteId)/" + "otp"
+        let endPoint = "\(APIService.LoanService)loans/" + "\(loanId)/" + "notes/" + "\(noteId)/" + "otp"
         let params = ["otp" : OTP]
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST).done{ json in
@@ -394,7 +394,7 @@ extension APIClient {
 
     func signContract(otp: String, loanID: Int32) -> Promise<APIResponseGeneral> {
 
-        let endPoint = "loans/" + "\(loanID)/contract/otp"
+        let endPoint = "\(APIService.LoanService)loans/" + "\(loanID)/contract/otp"
         let params: JSONDictionary = [
             "otp": otp,
             "longitude": DataManager.shared.currentLocation?.longitude ?? 0,
@@ -431,7 +431,7 @@ extension APIClient {
     /// - Returns: <#return value description#>
     func getContractWhenSign() -> Promise<APIResponseGeneral> {
         
-        let endPoint = "loans/" + "\(DataManager.shared.loanID ?? 0)/contract/sign"
+        let endPoint = "\(APIService.LoanService)loans/" + "\(DataManager.shared.loanID ?? 0)/contract/sign"
         let params: JSONDictionary = [:]
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: false, httpType: .POST)

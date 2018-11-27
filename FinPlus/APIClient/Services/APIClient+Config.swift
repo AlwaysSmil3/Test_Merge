@@ -92,7 +92,7 @@ extension APIClient {
     func getDistricts(cityID: Int16) -> Promise<[Model1]> {
         return Promise<[Model1]> { seal in
             
-            let endPoint = "cities/\(cityID)/" + EndPoint.Config.Districts
+            let endPoint = "\(APIService.LoanService)cities/\(cityID)/" + EndPoint.Config.Districts
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
@@ -122,7 +122,7 @@ extension APIClient {
     func getCommunes(districtID: Int16) -> Promise<[Model1]> {
         return Promise<[Model1]> { seal in
             
-            let endPoint = "districts/\(districtID)/" + EndPoint.Config.Communes
+            let endPoint = "\(APIService.LoanService)districts/\(districtID)/" + EndPoint.Config.Communes
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in

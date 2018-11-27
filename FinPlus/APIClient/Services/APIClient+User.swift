@@ -95,7 +95,7 @@ extension APIClient {
         return Promise<APIResponseGeneral> { seal in
             
             let uID = DataManager.shared.userID
-            let endPoint = "users/" + "\(uID)" + "/push-token"
+            let endPoint = "\(APIService.AccountService)users/" + "\(uID)" + "/push-token"
             
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: false, httpType: HTTPMethodType.PUT)
                 .done { json in
@@ -270,7 +270,7 @@ extension APIClient {
             ]
         
         let uID = DataManager.shared.userID
-        let endPoint = "users/" + "\(uID)" + "/change-password"
+        let endPoint = "\(APIService.AccountService)users/" + "\(uID)" + "/change-password"
         
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: HTTPMethodType.PUT)
