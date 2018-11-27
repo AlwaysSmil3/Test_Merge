@@ -95,14 +95,18 @@ class ListLoanViewController: BaseViewController {
                 
                 guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
                     let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
-                    UIApplication.shared.topViewController()?.showGreenBtnMessage(title: "Lấy danh sách khoản vay của bạn", message: message, okTitle: "Thử lại", cancelTitle: "Đóng", completion: { (status) in
-                        if status {
+                    
+                    DispatchQueue.main.async {
+                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: "Lấy danh sách khoản vay của bạn", message: message, okTitle: "Thử lại", cancelTitle: "Đóng", completion: { (status) in
+                            
                             self.isCanReload = true
-                            self.getAllLoans()
-                        } else {
-                            self.isCanReload = true
-                        }
-                    })
+                            if status {
+                                self.getAllLoans()
+                            } else {
+                                
+                            }
+                        })
+                    }
                     
                     return
                 }

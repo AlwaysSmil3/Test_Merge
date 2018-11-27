@@ -67,7 +67,7 @@ extension APIClient {
         return Promise<[Transaction]> { seal in
             
             let uid = DataManager.shared.userID
-            let endPoint = "transactions/\(uid)"
+            let endPoint = "\(APIService.LoanService)transactions/\(uid)"
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
                 .done { json in
@@ -99,7 +99,7 @@ extension APIClient {
         return Promise<[CollectionPay]> { seal in
             
             let loanId = DataManager.shared.loanID ?? 0
-            let endPoint = "loans/\(loanId)/collections"
+            let endPoint = "\(APIService.LoanService)loans/\(loanId)/collections"
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
@@ -131,7 +131,7 @@ extension APIClient {
         
         let dateString = Date().toString(DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
         
-        let endPoint = "loans/" + "\(DataManager.shared.loanID ?? 0)/" + "transactions/payment-info?paymentDate=" + dateString
+        let endPoint = "\(APIService.LoanService)loans/" + "\(DataManager.shared.loanID ?? 0)/" + "transactions/payment-info?paymentDate=" + dateString
         
         return Promise<PaymentInfoMoney> { seal in
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)

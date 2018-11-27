@@ -197,7 +197,7 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         
         let loanID = DataManager.shared.loanID ?? 0
         //guard let data = dataImg else { return }
-        let endPoint = "loans/" + "\(loanID)/" + "file"
+        let endPoint = "\(APIService.LoanService)loans/" + "\(loanID)/" + "file"
         
         
         APIClient.shared.upload(type: self.typeImgFile, typeMedia: "image", endPoint: endPoint, imagesData: [data], parameters: ["" : ""], onCompletion: { (response) in

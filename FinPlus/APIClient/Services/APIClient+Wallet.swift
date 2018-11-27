@@ -18,7 +18,7 @@ extension APIClient {
         
         return Promise<[AccountBank]> { seal in
             let uID = DataManager.shared.userID
-            let endPoint = "users/" + "\(uID)/" + "wallets"
+            let endPoint = "\(APIService.AccountService)users/" + "\(uID)/" + "wallets"
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
                 .done(on: DispatchQueue.main) { json in
@@ -44,7 +44,7 @@ extension APIClient {
         return Promise<[AccountBank]> { seal in
             
             let uID = DataManager.shared.userID
-            let endPoint = "users/" + "\(uID)/" + "wallets"
+            let endPoint = "\(APIService.AccountService)users/" + "\(uID)/" + "wallets"
             
             let params: JSONDictionary = [
                 "walletNumber": walletNumber,
@@ -73,7 +73,7 @@ extension APIClient {
     /// - Returns: <#return value description#>
     func deleteBankAccount(bankAccountID: Int32) -> Promise<APIResponseGeneral> {
         let userID = DataManager.shared.userID
-        let endPoint = "users/\(userID)" + "/bank-account/\(bankAccountID)/"
+        let endPoint = "\(APIService.AccountService)users/\(userID)" + "/bank-account/\(bankAccountID)/"
         
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: endPoint, params: [:], isShowLoadingView: true, httpType: .DELETE)
@@ -106,7 +106,7 @@ extension APIClient {
     /// - Returns: <#return value description#>
     func updateBankAccount(bankAccountID: Int32, params: JSONDictionary) -> Promise<APIResponseGeneral> {
         let userID = DataManager.shared.userID
-        let endPoint = "users/\(userID)" + "/bank-account/\(bankAccountID)/"
+        let endPoint = "\(APIService.AccountService)users/\(userID)" + "/bank-account/\(bankAccountID)/"
         
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .PUT)

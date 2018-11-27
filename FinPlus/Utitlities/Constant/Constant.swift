@@ -30,6 +30,7 @@ let TITLE_ALERT_ERROR_CONNECTION = "Lỗi kết nối"
 
 //Set time request TimeOut
 let REQUEST_TIMEOUT: Double = 30
+let BACKGROUND_TIME: TimeInterval = 60
 
 let UserDefaultShowGuideCameraView = "kUserDefaultShowGuideCameraView"
 

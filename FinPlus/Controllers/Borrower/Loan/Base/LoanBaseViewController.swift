@@ -262,7 +262,7 @@ class LoanBaseViewController: BaseViewController {
         
         let loanID = DataManager.shared.loanID ?? 0
         //guard let data = dataImg else { return }
-        let endPoint = "loans/" + "\(loanID)/" + "file"
+        let endPoint = "\(APIService.LoanService)loans/" + "\(loanID)/" + "file"
         
         guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
         self.mainTBView?.deselectRow(at: indexPath, animated: true)
