@@ -60,8 +60,8 @@ enum EndPoint {
     enum Config {
         static let Configs = "\(APIService.LoanService)configs"
         static let Cities = "\(APIService.LoanService)cities"
-        static let Districts = "\(APIService.LoanService)districts"
-        static let Communes = " \(APIService.LoanService)communes"
+        static let Districts = "districts"
+        static let Communes = "communes"
         static let Job = "\(APIService.LoanService)jobs"
         static let Position = "\(APIService.LoanService)positions"
         static let Banks = "\(APIService.LoanService)configs/banks"
