@@ -203,6 +203,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 DataManager.shared.notificationData = alert
                 return
             }
+            guard !self.isShowLogin else { return }
             
             if let tabbar = topVC as? BorrowerTabBarController, let currentNavi = tabbar.selectedViewController as? UINavigationController, let currentVC = currentNavi.topViewController as? LoanStateViewController  {
                 
@@ -282,8 +283,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if ((vc is LoginViewController) || (vc is EnterPhoneNumberAuthenVC) || (vc is SetPassAuthenVC)) {
                     //do something if it's an instance of that class
+                    self.isShowLogin = false
+                    
                 } else {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.isShowLogin = false
+                        
                         let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
                         let navi = UINavigationController(rootViewController: loginVC)
                         navi.isNavigationBarHidden = true
@@ -294,7 +299,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
         }
-        self.isShowLogin = false
+        
         
         guard countCheckVersionFirst > 0 else {
             if countCheckVersionFirst == 0 {
