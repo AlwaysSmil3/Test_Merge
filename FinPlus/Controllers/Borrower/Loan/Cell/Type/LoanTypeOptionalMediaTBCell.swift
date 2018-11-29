@@ -15,7 +15,7 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     
     var currentSelectedCollection: IndexPath?
     
-    var MAX_COUNT_IMAGE = 5
+    var MAX_COUNT_IMAGE = 20
     
     var field: LoanBuilderFields? {
         didSet {
