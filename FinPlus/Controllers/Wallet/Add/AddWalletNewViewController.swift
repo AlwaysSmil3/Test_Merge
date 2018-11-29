@@ -78,7 +78,7 @@ class AddWalletNewViewController: BaseViewController {
         }
         
         if self.accTextField.text!.count < 9 {
-            self.showToastWithMessage(message: "Số tài khoản từ 9 -> 15 ký tự")
+            self.showToastWithMessage(message: "Vui lòng nhập đúng số tài khoản")
             return
         }
         
