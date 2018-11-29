@@ -157,7 +157,7 @@ extension AddWalletNewViewController: BankPopupSelectedProtocol {
 extension AddWalletNewViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Giới hạn ký tự nhập vào
-        var maxLength = 15
+        var maxLength = 20
         
         if textField == self.nameTextField {
             maxLength = 50
