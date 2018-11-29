@@ -125,6 +125,7 @@ class BorrowerTabBarController: UITabBarController {
         self.onTopIndicator = true
         self.indicatorColor = .clear
         self.tabBar.tintColor = MAIN_COLOR
+        self.tabBar.isTranslucent = false
         
         if #available(iOS 10.0, *) {
             self.tabBar.unselectedItemTintColor = LIGHT_MODE_SUB_TEXT_COLOR
