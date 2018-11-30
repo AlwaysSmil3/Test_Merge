@@ -79,7 +79,8 @@ class BorrowHomeViewController: BaseViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        self.heightConstraintContentView.constant = self.headerView.frame.size.height + self.getHeightCollectionView() - BOUND_SCREEN.size.height + 10
+        // nếu self.tabBar.isTranslucent = false thì + 64
+        self.heightConstraintContentView.constant = self.headerView.frame.size.height + self.getHeightCollectionView() - BOUND_SCREEN.size.height + 10 + 64
     }
     
     private func setupUI() {
