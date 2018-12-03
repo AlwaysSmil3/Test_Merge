@@ -275,8 +275,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         if self.isShowLogin == true {
-            if let wd = UIApplication.shared.delegate?.window {
-                var vc = wd!.rootViewController
+            if let wd = UIApplication.shared.delegate?.window, let wd_ = wd {
+                var vc = wd_.rootViewController
                 if(vc is UINavigationController) {
                     vc = (vc as! UINavigationController).visibleViewController
                 }
@@ -292,7 +292,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
                         let navi = UINavigationController(rootViewController: loginVC)
                         navi.isNavigationBarHidden = true
-                        self.window?.rootViewController = navi
+                        
+                        UIView.transition(with: wd_, duration: 0.3, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+                            
+                            self.window?.rootViewController = navi
+                        }, completion: { (status) in
+                            
+                        })
+                        
                     }
                     
                 }
