@@ -34,6 +34,43 @@ extension UIViewController {
     }
     
     
+    /// Set animation fro setRootViewController
+    ///
+    /// - Parameter rootVC: <#rootView description#>
+    func addAnimationForSetRootView(rootVC: UIViewController) {
+        guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {
+            return
+        }
+        UIView.transition(with: window, duration: 0.3, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+            
+            window.rootViewController = rootVC
+        }, completion: { (status) in
+            
+        })
+    }
+    
+    
+    /// Log out and set rootVC with animation
+    func logoutAndSetRootVCIsEnterPhone() {
+        guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {
+            return
+        }
+        
+        //Clear Data and Login
+        DataManager.shared.clearData {
+            let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
+            
+            UIView.transition(with: window, duration: 0.3, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+                
+                window.rootViewController = enterPhoneVC
+            }, completion: { (status) in
+                
+            })
+            
+        }
+    }
+    
+    
     func reLoadStatusLoanVC() {
         //Lay thong tin nguoi dung
         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)

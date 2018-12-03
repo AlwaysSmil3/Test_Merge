@@ -189,16 +189,7 @@ class LoginViewController: BaseAuthenViewController, MFMailComposeViewController
         
         alert.addAction(UIAlertAction(title: "Đăng xuất", style: .destructive , handler:{ (UIAlertAction)in
             
-            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {
-                return
-            }
-            
-            //Clear Data and Login
-            DataManager.shared.clearData {
-                let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
-                
-                window.rootViewController = enterPhoneVC
-            }
+            self.logoutAndSetRootVCIsEnterPhone()
         
         }))
         
