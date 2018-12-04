@@ -286,21 +286,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.isShowLogin = false
                     
                 } else {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.isShowLogin = false
+                    
+                    self.isShowLogin = false
+                    
+                    let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                    let navi = UINavigationController(rootViewController: loginVC)
+                    navi.isNavigationBarHidden = true
+                    
+                    UIView.transition(with: wd_, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
                         
-                        let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                        let navi = UINavigationController(rootViewController: loginVC)
-                        navi.isNavigationBarHidden = true
+                        self.window?.rootViewController = navi
+                    }, completion: { (status) in
                         
-                        UIView.transition(with: wd_, duration: 0.3, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
-                            
-                            self.window?.rootViewController = navi
-                        }, completion: { (status) in
-                            
-                        })
-                        
-                    }
+                    })
+                    
                     
                 }
             }
