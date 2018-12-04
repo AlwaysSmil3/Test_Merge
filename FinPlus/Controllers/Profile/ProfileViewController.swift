@@ -266,16 +266,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                                     return
                                 }
                                 
-                                guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {
-                                    return
-                                }
-                                
-                                //Clear Data and Login
-                                DataManager.shared.clearData {
-                                    let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
-                                    
-                                    window.rootViewController = enterPhoneVC
-                                }
+                                self?.logoutAndSetRootVCIsEnterPhone()
                                 
                         }
                             .catch { error in}

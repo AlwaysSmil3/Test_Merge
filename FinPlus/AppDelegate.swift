@@ -275,8 +275,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         if self.isShowLogin == true {
-            if let wd = UIApplication.shared.delegate?.window {
-                var vc = wd!.rootViewController
+            if let wd = UIApplication.shared.delegate?.window, let wd_ = wd {
+                var vc = wd_.rootViewController
                 if(vc is UINavigationController) {
                     vc = (vc as! UINavigationController).visibleViewController
                 }
@@ -286,14 +286,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.isShowLogin = false
                     
                 } else {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.isShowLogin = false
+                    
+                    self.isShowLogin = false
+                    
+                    let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                    let navi = UINavigationController(rootViewController: loginVC)
+                    navi.isNavigationBarHidden = true
+                    
+                    UIView.transition(with: wd_, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
                         
-                        let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                        let navi = UINavigationController(rootViewController: loginVC)
-                        navi.isNavigationBarHidden = true
                         self.window?.rootViewController = navi
-                    }
+                    }, completion: { (status) in
+                        
+                    })
+                    
                     
                 }
             }

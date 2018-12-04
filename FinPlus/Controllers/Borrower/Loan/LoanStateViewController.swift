@@ -1245,7 +1245,8 @@ class LoanStateViewController: UIViewController {
                     
                     let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
                     if let window = UIApplication.shared.delegate?.window, let win = window {
-                        win.rootViewController = tabbarVC
+                        //win.rootViewController = tabbarVC
+                        self?.addAnimationForSetRootView(rootVC: tabbarVC)
                     }
                     
                     return
@@ -1257,7 +1258,8 @@ class LoanStateViewController: UIViewController {
                     
                     let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
                     if let window = UIApplication.shared.delegate?.window, let win = window {
-                        win.rootViewController = tabbarVC
+                        //win.rootViewController = tabbarVC
+                        self?.addAnimationForSetRootView(rootVC: tabbarVC)
                     }
                     
                     return
@@ -1270,7 +1272,8 @@ class LoanStateViewController: UIViewController {
                 
                 let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
                 if let window = UIApplication.shared.delegate?.window, let win = window {
-                    win.rootViewController = tabbarVC
+                    //win.rootViewController = tabbarVC
+                    self?.addAnimationForSetRootView(rootVC: tabbarVC)
                 }
                 
             }
