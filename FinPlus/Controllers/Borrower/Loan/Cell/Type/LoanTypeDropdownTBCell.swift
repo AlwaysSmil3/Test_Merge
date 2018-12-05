@@ -186,22 +186,21 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             
             if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.birthday, data.length() > 0 {
                 value = data
-                dateTemp = Date.init(fromString: value, format: DateFormat.custom("yyyy-MM-dd HH:mm:ssZ"))
+                dateTemp = Date.init(fromString: value, format: DateFormat.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER))
             }
             
             if DataManager.shared.loanInfo.userInfo.birthDay.length() > 0 {
                 value = DataManager.shared.loanInfo.userInfo.birthDay
-                dateTemp = Date.init(fromString: value, format: DateFormat.custom(ISO8601Format.DateTimeSec.rawValue))
+                dateTemp = Date.init(fromString: value, format: DateFormat.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER))
             }
             
             if value.length() > 0 {
-                //let date1 = Date.init(fromString: value, format: DateFormat.custom("yyyy-MM-dd HH:mm:ssZ"))
                 
                 let date = dateTemp.toString(.custom(kDisplayFormat))
                 //DateTime ISO 8601
                 
                 //let timeISO8601 = dateTemp.toString(.iso8601(ISO8601Format.DateTimeSec))
-                let timeISO8601 = dateTemp.toString(.custom(DATE_FORMATTER_WITH_SERVER))
+                let timeISO8601 = dateTemp.toString(.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER))
                 DataManager.shared.loanInfo.userInfo.birthDay = timeISO8601
                 self.lblValue?.text = date
             }
@@ -213,7 +212,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                     self.updateInfoFalse(pre: title)
                 }
                 
-                if let miss = DataManager.shared.missingLoanDataDictionary, let userInfo = miss["userInfo"] as? JSONDictionary, let birtDay = userInfo["birthday"] as? String, Date.init(fromString: birtDay, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER)).toString(.custom(kDisplayFormat)) == self.lblValue?.text {
+                if let miss = DataManager.shared.missingLoanDataDictionary, let userInfo = miss["userInfo"] as? JSONDictionary, let birtDay = userInfo["birthday"] as? String, Date.init(fromString: birtDay, format: DateFormat.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER)).toString(.custom(kDisplayFormat)) == self.lblValue?.text {
                     self.updateInfoFalse(pre: title)
                 } else {
                     self.isNeedUpdate = false
@@ -343,12 +342,11 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             if value.length() > 0 {
                 //self.lblValue?.text = value
                 
-                let dateTemp = Date.init(fromString: value, format: DateFormat.custom(ISO8601Format.DateTimeSec.rawValue))
+                let dateTemp = Date.init(fromString: value, format: DateFormat.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER))
                 let date = dateTemp.toString(.custom(kDisplayFormat))
                 //DateTime ISO 8601
                 
-                //let timeISO8601 = dateTemp.toString(.iso8601(ISO8601Format.DateTimeSec))
-                let timeISO8601 = dateTemp.toString(.custom(DATE_FORMATTER_WITH_SERVER))
+                let timeISO8601 = dateTemp.toString(.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER))
                 DataManager.shared.loanInfo.optionalText[index] = timeISO8601
                 self.lblValue?.text = date
             }
