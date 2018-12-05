@@ -58,7 +58,8 @@ class LoanBaseViewController: BaseViewController {
                 self.mainTBView?.deselectRow(at: indexPath, animated: true)
                 if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeDropdownTBCell {
                     //DateTime ISO 8601
-                    let timeISO8601 = date1.toString(.iso8601(ISO8601Format.DateTimeSec))
+                    //let timeISO8601 = date1.toString(.iso8601(ISO8601Format.DateTimeSec))
+                    let timeISO8601 = date1.toString(.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER))
                     
                     
                     guard let id = cell.field?.id else { return }
