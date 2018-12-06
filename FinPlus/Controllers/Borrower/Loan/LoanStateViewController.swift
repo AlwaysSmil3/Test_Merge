@@ -1244,7 +1244,7 @@ class LoanStateViewController: UIViewController {
                     DataManager.shared.isNeedReloadLoanStatusVC = false
                     
                     let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-                    if let window = UIApplication.shared.delegate?.window, let win = window {
+                    if let window = UIApplication.shared.delegate?.window, let _ = window {
                         //win.rootViewController = tabbarVC
                         self?.addAnimationForSetRootView(rootVC: tabbarVC)
                     }
@@ -1257,7 +1257,7 @@ class LoanStateViewController: UIViewController {
                     DataManager.shared.browwerInfo = model
                     
                     let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-                    if let window = UIApplication.shared.delegate?.window, let win = window {
+                    if let window = UIApplication.shared.delegate?.window, let _ = window {
                         //win.rootViewController = tabbarVC
                         self?.addAnimationForSetRootView(rootVC: tabbarVC)
                     }
@@ -1271,7 +1271,7 @@ class LoanStateViewController: UIViewController {
                 DataManager.shared.browwerInfo = model
                 
                 let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-                if let window = UIApplication.shared.delegate?.window, let win = window {
+                if let window = UIApplication.shared.delegate?.window, let _ = window {
                     //win.rootViewController = tabbarVC
                     self?.addAnimationForSetRootView(rootVC: tabbarVC)
                 }
@@ -1500,11 +1500,12 @@ class LoanStateViewController: UIViewController {
                 if let monthPayed = col.dueDatetime {
                     let date = Date(fromString: monthPayed, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
                     let month = date.month()
+                    let totalDays = date.monthDays()
                     
                     if monthCurrent + 1 == month || monthCurrent == month {
                         //value = true
                         let days = date.days(from: Date())
-                        if days > 0 && days <= 31 {
+                        if days > 0 && days <= totalDays {
                             return date.toString(.custom(kDisplayFormat))
                         }
                     }
