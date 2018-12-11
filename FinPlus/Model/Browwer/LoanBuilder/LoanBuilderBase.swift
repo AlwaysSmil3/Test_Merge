@@ -23,6 +23,8 @@ public struct LoanBuilderBase {
   public var title: String?
   public var id: String?
   public var index: Int?
+    
+    public var fieldsDisplay: [LoanBuilderFields]?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -41,7 +43,15 @@ public struct LoanBuilderBase {
     title = json[SerializationKeys.title].string
     id = json[SerializationKeys.id].string
     index = json[SerializationKeys.index].int
+    
+    self.updateFieldsDisplay()
   }
+    
+    mutating func updateFieldsDisplay() {
+        
+        self.fieldsDisplay = self.fields?.filter { $0.isCanDisplay }
+        
+    }
 
   /// Generates description of the object in the form of a NSDictionary.
   ///

@@ -18,6 +18,7 @@
 		6303ECC0213509A1002C4C03 /* PaymentPaymentPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303ECBD213509A0002C4C03 /* PaymentPaymentPeriod.swift */; };
 		6303ECC1213509A1002C4C03 /* PaymentLiquidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303ECBE213509A1002C4C03 /* PaymentLiquidation.swift */; };
 		6303ECC2213509A1002C4C03 /* PaymentInfoMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303ECBF213509A1002C4C03 /* PaymentInfoMoney.swift */; };
+		6303EE1821BE119A0094C443 /* LoanBuilder.json in Resources */ = {isa = PBXBuildFile; fileRef = 6303EE1721BE119A0094C443 /* LoanBuilder.json */; };
 		6303F00B21534BAC00B2191D /* FetchingDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303F00A21534BAC00B2191D /* FetchingDataTableViewCell.swift */; };
 		6303F00D21534BD500B2191D /* FetchingDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6303F00C21534BD500B2191D /* FetchingDataTableViewCell.xib */; };
 		630467B320B5094F0069469A /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630467B220B5094F0069469A /* Address.storyboard */; };
@@ -363,6 +364,7 @@
 		6303ECBD213509A0002C4C03 /* PaymentPaymentPeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentPaymentPeriod.swift; sourceTree = "<group>"; };
 		6303ECBE213509A1002C4C03 /* PaymentLiquidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentLiquidation.swift; sourceTree = "<group>"; };
 		6303ECBF213509A1002C4C03 /* PaymentInfoMoney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentInfoMoney.swift; sourceTree = "<group>"; };
+		6303EE1721BE119A0094C443 /* LoanBuilder.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LoanBuilder.json; sourceTree = "<group>"; };
 		6303F00A21534BAC00B2191D /* FetchingDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingDataTableViewCell.swift; sourceTree = "<group>"; };
 		6303F00C21534BD500B2191D /* FetchingDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FetchingDataTableViewCell.xib; sourceTree = "<group>"; };
 		630467B220B5094F0069469A /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
@@ -1639,6 +1641,7 @@
 			isa = PBXGroup;
 			children = (
 				63FAF5522140C9DD00985B92 /* university.json */,
+				6303EE1721BE119A0094C443 /* LoanBuilder.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1905,6 +1908,7 @@
 				E772D77820CA8A46001F0B8E /* DoubleTextTableViewCell.xib in Resources */,
 				639C9E1920A18A7500F2CF5E /* Roboto-Thin.ttf in Resources */,
 				E75B706020DA3963007D158D /* TitleTableViewCell.xib in Resources */,
+				6303EE1821BE119A0094C443 /* LoanBuilder.json in Resources */,
 				84114BCF20D79464005026DF /* PayAllTableViewCell.xib in Resources */,
 				63D4CB6A20F2FFB900519FFB /* LoanTypePhoneRelationTBCell.xib in Resources */,
 				63D49DAD20D3997A00114AFA /* Popup.storyboard in Resources */,

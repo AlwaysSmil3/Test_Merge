@@ -14,6 +14,8 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
 
     @IBOutlet weak var lblValue: UILabel?
     
+    weak var parentVC: LoanBaseViewController?
+    
     var field: LoanBuilderFields? {
         didSet {
             guard let field_ = self.field else { return }
@@ -56,7 +58,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
         
         guard let field_ = self.field, let data = field_.data, let id = field_.id else { return }
         
-        if id.contains("position") || id.contains("jobType") || id.contains("strength") || id.contains("academicLevel") {
+        if id.contains("position") || id.contains("jobType") || id.contains("strength") || id.contains("academicLevel") || id.contains("typeMobilePhone") {
             let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
             
             if id.contains("position") {
@@ -67,6 +69,8 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 popup.setDataSource(data: data, type: .Strength)
             } else if id.contains("academicLevel") {
                 popup.setDataSource(data: data, type: .AcademicLevel)
+            } else if id.contains("typeMobilePhone") {
+                popup.setDataSource(data: data, type: .TypeMobilePhone)
             }
             
             popup.delegate = self
@@ -102,6 +106,11 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
         if id.contains("jobType") {
             DataManager.shared.loanInfo.jobInfo.jobType = Int(data.id ?? 0)
             DataManager.shared.loanInfo.jobInfo.jobTitle = value
+            
+            DataManager.shared.updateFieldsDisplay {
+                self.parentVC?.reloadFieldsData()
+            }
+            
         } else if id.contains("position") {
             DataManager.shared.loanInfo.jobInfo.position = Int(data.id ?? 0)
             DataManager.shared.loanInfo.jobInfo.positionTitle = value

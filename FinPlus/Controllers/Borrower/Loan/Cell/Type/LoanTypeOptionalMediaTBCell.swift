@@ -188,10 +188,11 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     
     //Upload Data Image
     func uploadData(img: UIImage) {
-        //let dataImg = UIImagePNGRepresentation(img)
-        UIApplication.shared.topViewController()!.handleLoadingView(isShow: true)
+        
+        guard let topVC = UIApplication.shared.topViewController() else { return }
+        topVC.handleLoadingView(isShow: true)
         guard let imgResize = img.resizeMonyImage(originSize: img.size), let data = imgResize.jpeg(.lowest) else {
-            UIApplication.shared.topViewController()!.handleLoadingView(isShow: false)
+            topVC.handleLoadingView(isShow: false)
             return
         }
         
@@ -200,37 +201,33 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         let endPoint = "\(APIService.LoanService)loans/" + "\(loanID)/" + "file"
         
         
-        APIClient.shared.upload(type: self.typeImgFile, typeMedia: "image", endPoint: endPoint, imagesData: [data], parameters: ["" : ""], onCompletion: { (response) in
-            UIApplication.shared.topViewController()!.handleLoadingView(isShow: false)
-            print("Upload \(String(describing: response))")
+        APIClient.shared.upload(type: self.typeImgFile, typeMedia: "image", endPoint: endPoint, imagesData: [data], parameters: ["" : ""], onCompletion: { [weak self](response) in
+            topVC.handleLoadingView(isShow: false)
+            
             
             guard let res = response, let data = res["data"] as? [JSONDictionary], data.count > 0 else {
-                //if let re = response {
-                UIApplication.shared.topViewController()!.showToastWithMessage(message: "Có lỗi xảy ra, vui lòng thử lại" )
-                //}
+                topVC.showToastWithMessage(message: "Có lỗi xảy ra, vui lòng thử lại" )
                 
                 return
             }
-            //UIApplication.shared.topViewController()!.showToastWithMessage(message: "Upload thành công")
+            guard let strongSelf = self else { return }
             
-            //self.dataSourceCollection.append(img)
-            if let current = self.currentSelectedCollection, current.row < self.dataSourceCollection.count {
+            if let current = strongSelf.currentSelectedCollection, current.row < strongSelf.dataSourceCollection.count {
                 
-                if let cell = self.mainCollectionView?.cellForItem(at: current) as? LoanOtherInfoCollectionCell, let hidden = cell.errorView?.isHidden, !hidden {
+                if let cell = strongSelf.mainCollectionView?.cellForItem(at: current) as? LoanOtherInfoCollectionCell, let hidden = cell.errorView?.isHidden, !hidden {
                     //remove key url invalid
-                    self.removeUrlInValidInList(url: cell.urlImg)
+                    strongSelf.removeUrlInValidInList(url: cell.urlImg)
                     if let urlImg = cell.urlImg {
-                        self.addToListURLInvalid(url: urlImg)
+                        strongSelf.addToListURLInvalid(url: urlImg)
                     }
                 }
                 
-                 self.dataSourceCollection[current.row] = img
+                strongSelf.dataSourceCollection[current.row] = img
                 
             } else {
-                self.dataSourceCollection.append(img)
+                strongSelf.dataSourceCollection.append(img)
             }
             
-            //DataManager.shared.loanInfo.optionalMedia.removeAll()
             for d in data {
                 if let url = d["url"] as? String {
                     
@@ -238,9 +235,9 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
                         DataManager.shared.loanInfo.optionalMedia = DataManager.shared.loanInfo.initOptionalMedia(cateId: DataManager.shared.loanInfo.loanCategoryID)
                     }
                     
-                    if let indexArray = self.field?.arrayIndex, DataManager.shared.loanInfo.optionalMedia.count > indexArray {
+                    if let indexArray = strongSelf.field?.arrayIndex, DataManager.shared.loanInfo.optionalMedia.count > indexArray {
                         
-                        if let current = self.currentSelectedCollection, current.row < DataManager.shared.loanInfo.optionalMedia[indexArray].count {
+                        if let current = strongSelf.currentSelectedCollection, current.row < DataManager.shared.loanInfo.optionalMedia[indexArray].count {
                             DataManager.shared.loanInfo.optionalMedia[indexArray][current.row] = url
                         } else {
                             DataManager.shared.loanInfo.optionalMedia[indexArray].append(url)
@@ -250,8 +247,8 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
             }
             
         }) { (error) in
-            UIApplication.shared.topViewController()!.handleLoadingView(isShow: false)
-            UIApplication.shared.topViewController()!.showToastWithMessage(message: "Có lỗi xảy ra, vui lòng thử lại" )
+            topVC.handleLoadingView(isShow: false)
+            topVC.showToastWithMessage(message: "Có lỗi xảy ra, vui lòng thử lại" )
             
             if let error = error {
                 print("error \(error.localizedDescription)")
@@ -296,14 +293,6 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
             return cell
         }
         
-//        guard indexPath.row < self.dataSourceCollection.count else {
-//            cell.imgValue.image = #imageLiteral(resourceName: "ic_loan_rectangle1")
-//            cell.imgAdd.isHidden = false
-//            cell.btnDelete.isHidden = true
-//            return cell
-//        }
-        
-        
         if let data = self.dataSourceCollection[indexPath.row] as? UIImage {
             cell.imgValue.image = data
             cell.imgAdd.isHidden = true
@@ -311,8 +300,6 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
         }
         
         if let data = self.dataSourceCollection[indexPath.row] as? String {
-            
-//            cell.imgValue.kf.setImage(with: URL(string: data), placeholder: #imageLiteral(resourceName: "imagefirstOnboard"), options: nil, progressBlock: nil, completionHandler: nil)
             
             cell.imgValue.kf.setImage(with: URL(string: data), placeholder: #imageLiteral(resourceName: "imagefirstOnboard"), options: [.transition(ImageTransition.fade(1))], progressBlock: nil, completionHandler: nil)
             

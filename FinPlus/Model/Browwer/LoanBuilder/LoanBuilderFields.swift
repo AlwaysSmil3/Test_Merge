@@ -29,6 +29,10 @@ public struct LoanBuilderFields {
     static let arrayIndex = "array_index"
     static let dataName = "data_name"
     static let maxLength = "max_length"
+    
+    static let display_if_loan_over = "display_if_loan_over"
+    static let display_if_job_type_is = "display_if_job_type_is"
+    
   }
 
   // MARK: Properties
@@ -51,6 +55,10 @@ public struct LoanBuilderFields {
     public var textInputMuiltiline: String?
     public var dataName: String?
     public var maxLenght: Int?
+    
+    public var displayIfLoanOver: Double?
+    public var displayIfJobTypeIs: [Int]?
+    public var isCanDisplay: Bool = true
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -83,7 +91,31 @@ public struct LoanBuilderFields {
     arrayIndex = json[SerializationKeys.arrayIndex].int
     dataName = json[SerializationKeys.dataName].string
     maxLenght = json[SerializationKeys.maxLength].int
+    
+    self.displayIfLoanOver = json[SerializationKeys.display_if_loan_over].double
+    if let items = json[SerializationKeys.display_if_job_type_is].array { displayIfJobTypeIs = items.map { $0.intValue } }
+    
+    self.checkCanDisplay()
+    
   }
+    
+    mutating func checkCanDisplay() {
+        
+        if let id_ = self.id, id_ == "optionalMedia", let amount = self.displayIfLoanOver, amount > Double(DataManager.shared.loanInfo.amount) {
+            self.isCanDisplay = false
+            return
+        }
+        
+        if let listJob = self.displayIfJobTypeIs, listJob.count > 0 {
+            
+            let temp = listJob.filter { $0 == DataManager.shared.loanInfo.jobInfo.jobType }
+            if temp.count == 0 {
+                self.isCanDisplay = false
+            }
+            
+        }
+        
+    }
 
   /// Generates description of the object in the form of a NSDictionary.
   ///

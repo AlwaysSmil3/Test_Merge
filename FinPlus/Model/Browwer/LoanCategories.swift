@@ -37,6 +37,8 @@ public struct LoanCategories {
   public var termMax: Int16?
     
    public var builders: [LoanBuilderBase]?
+    
+    public var json: JSON?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -61,7 +63,13 @@ public struct LoanCategories {
     imageUrl = json[SerializationKeys.imageUrl].string ?? ""
     termMax = json[SerializationKeys.termMax].int16 ?? 0
     if let items = json[SerializationKeys.builder].array { builders = items.map { LoanBuilderBase(json: $0) } }
+    self.json = json
   }
+    
+    public mutating func updateFieldsDisplay() {
+        guard let json_ = self.json else { return }
+        if let items = json_[SerializationKeys.builder].array { builders = items.map { LoanBuilderBase(json: $0) } }
+    }
 
   /// Generates description of the object in the form of a NSDictionary.
   ///
