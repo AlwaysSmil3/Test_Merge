@@ -21,6 +21,7 @@ enum TypePopup: Int {
     case JobPosition // chức vụ
     case Strength // Học lực
     case AcademicLevel // Trinh độ học vấn
+    case TypeMobilePhone // Loai dien thoai su dung
 }
 
 class LoanTypePopupVC: BasePopup {
@@ -73,6 +74,21 @@ class LoanTypePopupVC: BasePopup {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.scrollToSelection()
+        }
+        
+    }
+    
+    func scrollToSelection() {
+        if let index = self.currentIndex {
+            self.mainTBView?.scrollToRow(at: IndexPath(row: index, section: 0), at: UITableViewScrollPosition.middle, animated: true)
+        }
+    }
+    
     
     /// set DataSource for tableView
     ///
@@ -88,18 +104,7 @@ class LoanTypePopupVC: BasePopup {
         guard let type_ = self.type else { return }
         switch type_ {
         case .Categories:
-            var index = 0
-            var update = false
-            for d in dataSource {
-                if let id = d.id, id == Int16(DataManager.shared.loanInfo.loanCategoryID) {
-                    update = true
-                    break
-                }
-                index += 1
-            }
-            if update {
-                self.currentIndex = index
-            }
+            self.updateCurrentIndex(i: Int(DataManager.shared.loanInfo.loanCategoryID))
             
             break
         case .RelationShipPhone:
@@ -120,78 +125,73 @@ class LoanTypePopupVC: BasePopup {
             break
             
         case .Job:
-            var index = 0
-            var update = false
-            for d in dataSource {
-                if let id = d.id, id == Int16(DataManager.shared.loanInfo.jobInfo.jobType) {
-                    update = true
-                    break
-                }
-                index += 1
-            }
-            if update {
-                self.currentIndex = index
-                
-                if index < self.dataSource.count, self.dataSource[index].isTextInput == true {
-                    self.otherTextSelection = DataManager.shared.loanInfo.jobInfo.jobTitle
-                }
-                
-            }
-            
+            self.updateCurrentWithOtherOption(i: DataManager.shared.loanInfo.jobInfo.jobType, otherText: DataManager.shared.loanInfo.jobInfo.jobTitle)
             
             break
         case .JobPosition:
+            self.updateCurrentWithOtherOption(i: DataManager.shared.loanInfo.jobInfo.position, otherText: DataManager.shared.loanInfo.jobInfo.positionTitle)
             
-            var index = 0
-            var update = false
-            for d in dataSource {
-                if let id = d.id, id == Int16(DataManager.shared.loanInfo.jobInfo.position) {
-                    update = true
-                    break
-                }
-                index += 1
-            }
-            if update {
-                self.currentIndex = index
-                
-                if index < self.dataSource.count, self.dataSource[index].isTextInput == true {
-                    self.otherTextSelection = DataManager.shared.loanInfo.jobInfo.positionTitle
-                }
-            }
             break
         case .Strength:
-            
-            var index = 0
-            var update = false
-            for d in dataSource {
-                if let id = d.id, id == Int16(DataManager.shared.loanInfo.jobInfo.strength) {
-                    update = true
-                    break
-                }
-                index += 1
-            }
-            if update {
-                self.currentIndex = index
-            }
+            self.updateCurrentIndex(i: DataManager.shared.loanInfo.jobInfo.strength)
             
             break
             
         case .AcademicLevel:
-            var index = 0
-            var update = false
-            for d in dataSource {
-                if let id = d.id, id == Int16(DataManager.shared.loanInfo.jobInfo.academicLevel) {
-                    update = true
-                    break
-                }
-                index += 1
-            }
-            if update {
-                self.currentIndex = index
-            }
+            self.updateCurrentIndex(i: DataManager.shared.loanInfo.jobInfo.academicLevel)
             
             break
             
+        case .TypeMobilePhone:
+            //self.updateCurrentIndex(i: )
+            
+            break
+            
+        }
+    }
+    
+    
+    /// Update current Index selected
+    ///
+    /// - Parameter i: <#i description#>
+    private func updateCurrentIndex(i: Int) {
+        var index = 0
+        var update = false
+        for d in dataSource {
+            if let id = d.id, id == Int16(i) {
+                update = true
+                break
+            }
+            index += 1
+        }
+        if update {
+            self.currentIndex = index
+        }
+    }
+    
+    
+    /// Update current Selecttion with other Selection
+    ///
+    /// - Parameters:
+    ///   - i: <#i description#>
+    ///   - otherText: <#otherText description#>
+    private func updateCurrentWithOtherOption(i: Int, otherText: String) {
+        
+        var index = 0
+        var update = false
+        for d in dataSource {
+            if let id = d.id, id == Int16(i) {
+                update = true
+                break
+            }
+            index += 1
+        }
+        if update {
+            self.currentIndex = index
+            
+            if index < self.dataSource.count, self.dataSource[index].isTextInput == true {
+                self.otherTextSelection = otherText
+            }
         }
     }
     
@@ -200,21 +200,7 @@ class LoanTypePopupVC: BasePopup {
         guard let type_ = self.type else { return }
         switch type_ {
         case .Categories:
-//            if let current = DataManager.shared.currentIndexCategoriesSelectedPopup {
-//                self.currentIndex = current
-//            }
-            var index = 0
-            var update = false
-            for d in dataSource {
-                if let id = d.id, id == Int16(DataManager.shared.loanInfo.loanCategoryID) {
-                    update = true
-                    break
-                }
-                index += 1
-            }
-            if update {
-                self.currentIndex = index
-            }
+            self.updateCurrentIndex(i: Int(DataManager.shared.loanInfo.loanCategoryID))
             
             break
         case .RelationShipPhone:
@@ -273,6 +259,14 @@ class LoanTypePopupVC: BasePopup {
             
             break
             
+        case .TypeMobilePhone:
+            self.titleString = "Loại điện thoại"
+            if let current = DataManager.shared.currentIndexTypeMobilePhoneSelectedPopup {
+                self.currentIndex = current
+            }
+            
+            break
+            
         }
         
     }
@@ -321,6 +315,10 @@ class LoanTypePopupVC: BasePopup {
                 
             case .AcademicLevel:
                 DataManager.shared.currentIndexAcedemicLevelSelectedPopup = self.currentIndex
+                break
+                
+            case .TypeMobilePhone:
+                DataManager.shared.currentIndexTypeMobilePhoneSelectedPopup = self.currentIndex
                 break
             }
         }

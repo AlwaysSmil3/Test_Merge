@@ -28,7 +28,8 @@ class LoanOtherInfoVC: LoanBaseViewController {
         self.configTextMesseageView()
         
         self.initLoanCate()
-        //NotificationCenter.default.addObserver(self, selector: #selector(showInputMesseage(notification:)), name: .showMuiltiLineInputText, object: nil)
+        
+        self.mainTBView?.showsVerticalScrollIndicator = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,43 +42,15 @@ class LoanOtherInfoVC: LoanBaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: Notification.Name.UIKeyboardWillShow, object: nil)
     }
     
-    //MARK: For catch event show hidden keyboard
-    @objc func keyboardWillAppear(notification: NSNotification) {
-        guard self.isMuiltiLineText else { return }
-        self.isMuiltiLineText = false
-        //Do something here
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            let keyboardHeight = keyboardSize.height
-            print(keyboardHeight)
-            self.contentInputView?.isHidden = false
-            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseOut, animations: {
-                self.bottomConstraintContentInputView?.constant = keyboardHeight
-                self.view.layoutIfNeeded()
-            }) { (status) in
-            }
-        }
-    }
-    
-    @objc func keyboardWillDisappear(notification: NSNotification) {
-        //Do something here
-        self.hideInputMessageView()
-    }
-    
-    
-    @objc func showInputMesseage(notification: NSNotification) {
-        self.isMuiltiLineText = true
-        self.sbInputView?.textView.becomeFirstResponder()
-    }
-    
     
     /// check input with field is Required
     ///
     /// - Returns: <#return value description#>
     private func checkIsReqruiedOptionalText() -> Bool {
-        guard let builder = self.loanCate?.builders, builder.count > 3, let listField = builder[3].fields else { return true }
+        guard let builder = self.loanCate?.builders, builder.count > 3, let listField = builder[3].fieldsDisplay else { return true }
         
         for (index, text) in DataManager.shared.loanInfo.optionalText.enumerated() {
-            if text.count == 0 &&  listField.count > index && listField[index].isRequired == true {
+            if text.count == 0, listField.count > index, index == listField[index].arrayIndex, listField[index].isRequired == true {
                 return false
             }
         }
@@ -89,7 +62,7 @@ class LoanOtherInfoVC: LoanBaseViewController {
     ///
     /// - Returns: <#return value description#>
     private func checkIsReqruiedOptionalMedia() -> Bool {
-        guard let builder = self.loanCate?.builders, builder.count > 3, let listField = builder[3].fields else { return true }
+        guard let builder = self.loanCate?.builders, builder.count > 3, let listField = builder[3].fieldsDisplay else { return true }
         
         let totalCount = DataManager.shared.loanInfo.optionalMedia.count
         var optionTextCount = DataManager.shared.loanInfo.optionalText.count
@@ -99,7 +72,7 @@ class LoanOtherInfoVC: LoanBaseViewController {
         
         for (index, media) in DataManager.shared.loanInfo.optionalMedia.enumerated() {
             
-            if index < totalCount && media.count == 0 && listField.count > (index + optionTextCount) && listField[index + optionTextCount].isRequired == true {
+            if index < totalCount, media.count == 0, listField.count > (index + optionTextCount), index == listField[index + optionTextCount].arrayIndex, listField[index + optionTextCount].isRequired == true {
                 
                 return false
             }
@@ -114,7 +87,6 @@ class LoanOtherInfoVC: LoanBaseViewController {
             self.showToastWithMessage(message: "Vui lòng nhập đầy đủ thông tin để sang bước tiếp theo")
             return
         }
-
 
         if !self.checkIsReqruiedOptionalMedia() {
             self.showToastWithMessage(message: "Vui lòng upload đầy đủ ảnh để sang bước tiếp theo")

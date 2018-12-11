@@ -82,7 +82,7 @@ class LoanBaseViewController: BaseViewController {
     var gender: Gender? {
         didSet {
             guard let g = self.gender else { return }
-            guard let i = self.currentIndexSelected, let field_ = self.dataSource?.fields![i.row], let id = field_.id else { return }
+            guard let i = self.currentIndexSelected, let field_ = self.dataSource?.fieldsDisplay![i.row], let id = field_.id else { return }
             
             if id.contains("gender") {
                 DataManager.shared.loanInfo.userInfo.gender = "\(g.rawValue)"
@@ -118,14 +118,8 @@ class LoanBaseViewController: BaseViewController {
     /// Setup cho tableView
     func setupMainTBView() {
         guard let tableView = self.mainTBView else { return }
-//        guard self.index < DataManager.shared.loanBuilder.count else { return }
-//
-//        self.dataSource = DataManager.shared.loanBuilder[self.index]
         
-        guard let cate = DataManager.shared.getCurrentCategory(), let builders = cate.builders else { return }
-        guard self.index < builders.count else { return }
-        self.dataSource = builders[self.index]
-        
+        self.initFieldsData()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -156,6 +150,17 @@ class LoanBaseViewController: BaseViewController {
         if temp.count > 0 {
             self.loanCate = temp[0]
         }
+    }
+    
+    private func initFieldsData() {
+        guard let cate = DataManager.shared.getCurrentCategory(), let builders = cate.builders else { return }
+        guard self.index < builders.count else { return }
+        self.dataSource = builders[self.index]
+    }
+    
+    func reloadFieldsData() {
+        self.initFieldsData()
+        self.mainTBView?.reloadData()
     }
     
     
@@ -256,13 +261,10 @@ class LoanBaseViewController: BaseViewController {
     func uploadData(img: UIImage, typeImg: FILE_TYPE_IMG?) {
         
         guard let type = typeImg else { return }
-//
-//        let dataImg = UIImagePNGRepresentation(img)
         
         guard let imgResize = img.resizeMonyImage(originSize: img.size), let data = imgResize.jpeg(.lowest) else { return }
         
         let loanID = DataManager.shared.loanID ?? 0
-        //guard let data = dataImg else { return }
         let endPoint = "\(APIService.LoanService)loans/" + "\(loanID)/" + "file"
         
         guard let indexPath = self.mainTBView?.indexPathForSelectedRow else { return }
@@ -272,17 +274,13 @@ class LoanBaseViewController: BaseViewController {
         }
         cell.activityIndicator.startAnimating()
 
-        APIClient.shared.upload(type: type, typeMedia: "image", endPoint: endPoint, imagesData: [data], parameters: ["" : ""], onCompletion: { (response) in
+        APIClient.shared.upload(type: type, typeMedia: "image", endPoint: endPoint, imagesData: [data], parameters: ["" : ""], onCompletion: { [weak self](response) in
 
             cell.activityIndicator.stopAnimating()
-            print("Upload \(String(describing: response))")
             
             guard let res = response, let data = res["data"] as? [JSONDictionary], data.count > 0 else {
-//                if let re = response, let message = re[API_RESPONSE_RETURN_MESSAGE] as? String {
-//                    self.showToastWithMessage(message: message)
-//                }
                 
-                self.showToastWithMessage(message: "Có lỗi xảy ra, vui lòng thử lại")
+                self?.showToastWithMessage(message: "Có lỗi xảy ra, vui lòng thử lại")
                 
                 return
             }
@@ -404,15 +402,43 @@ class LoanBaseViewController: BaseViewController {
         self.view.endEditing(true)
         guard let index = self.currentIndexSelected, let text = self.sbInputView?.textView.text, text.count > 0 else { return }
         
-        if let index = self.dataSource?.fields![index.row].arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
+        if let index = self.dataSource?.fieldsDisplay![index.row].arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
             DataManager.shared.loanInfo.optionalText[index] = text
         }
         
-        self.dataSource?.fields![index.row].textInputMuiltiline = text
+        self.dataSource?.fieldsDisplay![index.row].textInputMuiltiline = text
         
         self.mainTBView?.reloadRows(at: [index], with: UITableViewRowAnimation.automatic)
         
         
+    }
+    
+    //MARK: For TextInputMuiltiline
+    //MARK: For catch event show hidden keyboard
+    @objc func keyboardWillAppear(notification: NSNotification) {
+        guard self.isMuiltiLineText else { return }
+        self.isMuiltiLineText = false
+        //Do something here
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            self.contentInputView?.isHidden = false
+            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseOut, animations: {
+                self.bottomConstraintContentInputView?.constant = keyboardHeight
+                self.view.layoutIfNeeded()
+            }) { (status) in
+            }
+        }
+    }
+    
+    @objc func keyboardWillDisappear(notification: NSNotification) {
+        //Do something here
+        self.hideInputMessageView()
+    }
+    
+    
+    @objc func showInputMesseage(notification: NSNotification) {
+        self.isMuiltiLineText = true
+        self.sbInputView?.textView.becomeFirstResponder()
     }
     
     
@@ -422,13 +448,13 @@ class LoanBaseViewController: BaseViewController {
 extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let data = self.dataSource, let fields = data.fields else { return 0 }
+        guard let data = self.dataSource, let fields = data.fieldsDisplay else { return 0 }
         return fields.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let data = self.dataSource, let fields = data.fields else { return UITableViewCell() }
+        guard let data = self.dataSource, let fields = data.fieldsDisplay else { return UITableViewCell() }
         let model = fields[indexPath.row]
         
         switch model.type! {
@@ -463,6 +489,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         case DATA_TYPE_TB_CELL.DropDown:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.DropDown, for: indexPath) as! LoanTypeDropdownTBCell
             cell.field = model
+            cell.parentVC = self
             return cell
             
         case DATA_TYPE_TB_CELL.DateTime:
@@ -517,7 +544,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let data = self.dataSource, let fields = data.fields else { return }
+        guard let data = self.dataSource, let fields = data.fieldsDisplay else { return }
         let model = fields[indexPath.row]
         self.currentIndexSelected = indexPath
         

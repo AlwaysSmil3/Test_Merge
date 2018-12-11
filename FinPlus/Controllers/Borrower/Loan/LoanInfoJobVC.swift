@@ -17,6 +17,7 @@ class LoanInfoJobVC: LoanBaseViewController {
         
         self.currentStep = 2
         //self.updateDataToServer()
+        self.configTextMesseageView()
         
     }
     
@@ -26,6 +27,9 @@ class LoanInfoJobVC: LoanBaseViewController {
         if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
             self.navigationController?.isNavigationBarHidden = true
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: Notification.Name.UIKeyboardWillShow, object: nil)
         
     }
     

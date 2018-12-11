@@ -45,14 +45,10 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 
             }
             
-            if let id = field_.id {
-                if id.contains("salary") || id.contains("companyPhoneNumber") || id.contains("experienceYear") {
-                    self.tfValue?.keyboardType = .numberPad
-                }
-            }
-            
-            if let keyboard = field_.keyboard, keyboard.contains("money") || keyboard.contains("numeric") {
+            if let keyboard = field_.keyboard, keyboard.contains("money") || keyboard.contains("numeric") || keyboard.contains("phone_pad") {
                 self.tfValue?.keyboardType = .numberPad
+            } else {
+                self.tfValue?.keyboardType = .default
             }
             
             if #available(iOS 11.0, *) {
@@ -233,7 +229,7 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 
                 if DataManager.shared.checkFieldIsMissing(key: "fullName", parentKey: "userInfo", currentValue: value) {
                     //Cap nhat thong tin khong hop le
-                    //self.updateInfoFalse(pre: title)
+                    
                     if self.valueTemp == nil {
                         self.updateInfoFalse(pre: title)
                     }
@@ -263,6 +259,8 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     }
                     self.valueTemp = value
                 }
+            } else {
+                self.tfValue?.text = ""
             }
             
         } else if parent.contains("jobInfo") {

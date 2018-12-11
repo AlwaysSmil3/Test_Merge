@@ -78,6 +78,9 @@ class DataManager {
     //Hoc luc hien tai dang chon
     var currentIndexStrengthSelectedPopup: Int?
     
+    //Loai dien thoai hien tai dang chon
+    var currentIndexTypeMobilePhoneSelectedPopup: Int?
+    
     //Các trường không hợp lệ của loan
     var missingLoanData: BrowwerActiveLoan? {
         didSet {
@@ -186,26 +189,26 @@ class DataManager {
     }
     
     /// Get Data from JSON
-//    func getDataLoanFromJSON() {
-//        if let path = Bundle.main.path(forResource: "LoanBuilder", ofType: "json") {
-//            do {
-//                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-//                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-//                if let jsonResult = jsonResult as? [Any] {
-//                    // do stuff
-//
-//                    jsonResult.forEach({ (data) in
-//                        let toll = LoanCategories(object: data)
-//                        //self.loanBuilder.append(toll)
-//                        self.loanCategories.append(toll)
-//                    })
-//
-//                }
-//            } catch {
-//                // handle error
-//            }
-//        }
-//    }
+    func getDataLoanFromJSON() {
+        if let path = Bundle.main.path(forResource: "LoanBuilder", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? [Any] {
+                    // do stuff
+
+                    jsonResult.forEach({ (data) in
+                        let toll = LoanCategories(object: data)
+                        //self.loanBuilder.append(toll)
+                        self.loanCategories.append(toll)
+                    })
+
+                }
+            } catch {
+                // handle error
+            }
+        }
+    }
     
     func clearMissingLoanData() {
         DataManager.shared.missingRelationsShip = nil
@@ -443,7 +446,10 @@ class DataManager {
         }
         
         if let optionMedia = activeLoan.optionalMedia {
-            if optionMedia.count <= getCountOptionalMedia(cateId: DataManager.shared.loanInfo.loanCategoryID) {
+            
+            let countInit = getCountOptionalMedia(cateId: DataManager.shared.loanInfo.loanCategoryID)
+            
+            if optionMedia.count == countInit {
                 
                 var temp: [[String]] = []
                 for i in optionMedia {
@@ -457,28 +463,32 @@ class DataManager {
                     DataManager.shared.loanInfo.optionalMedia = temp
                 }
                 
+            } else if optionMedia.count < countInit {
+                
             } else {
                 
-                let count = getCountOptionalMedia(cateId: DataManager.shared.loanInfo.loanCategoryID)
-                guard count > 0 else { return }
-                
-                var temp: [[String]] = []
-                for i in 0...count - 1 {
-                    if let item = optionMedia[i] as? [String] {
-                        temp.append(item)
+                let count = countInit
+                if count > 0 {
+                    var temp: [[String]] = []
+                    for i in 0...count - 1 {
+                        if let item = optionMedia[i] as? [String] {
+                            temp.append(item)
+                        }
+                    }
+                    
+                    if temp.count > 0 {
+                        DataManager.shared.loanInfo.optionalMedia.removeAll()
+                        DataManager.shared.loanInfo.optionalMedia = temp
                     }
                 }
-                
-                if temp.count > 0 {
-                    DataManager.shared.loanInfo.optionalMedia.removeAll()
-                    DataManager.shared.loanInfo.optionalMedia = temp
-                }
-                
                 
             }
             
         }
         
+        self.updateFieldsDisplay {
+            
+        }
         
     }
     
@@ -511,28 +521,24 @@ class DataManager {
         }
         return "Người thân"
         
-        /*
-        switch id {
-        case 0:
-            return "Bố"
-        case 1:
-            return "Mẹ"
-        case 2:
-            return "Vợ"
-        case 3:
-            return "Chồng"
-        case 4:
-            return "Bạn bè"
-        case 5:
-            return "Đồng nghiệp"
-            
-        default:
-            return "Người thân"
-        }
-        */
         
     }
     
+    
+    /// Update LoanCategories for dynamic ui display
+    ///
+    /// - Parameter completion: <#completion description#>
+    func updateFieldsDisplay(completion: @escaping () -> Void) {
+        for (index, value) in self.loanCategories.enumerated() {
+            if value.id == self.loanInfo.loanCategoryID {
+                self.loanCategories[index].updateFieldsDisplay()
+                break
+            }
+        }
+        
+        completion()
+        
+    }
     
     
     

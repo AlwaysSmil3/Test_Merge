@@ -64,7 +64,7 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
     
     @objc func tapFunction(sender:UITapGestureRecognizer) {
         guard let index = self.currentIndex else { return }
-        //NotificationCenter.default.post(name: .showMuiltiLineInputText, object: nil)
+        
         self.showInputViewDelegate?.showTextInput(indexPath: index)
         
     }
