@@ -402,11 +402,11 @@ class LoanBaseViewController: BaseViewController {
         self.view.endEditing(true)
         guard let index = self.currentIndexSelected, let text = self.sbInputView?.textView.text, text.count > 0 else { return }
         
-        if let index = self.dataSource?.fieldsDisplay![index.row].arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
+        if let index = self.dataSource?.fieldsDisplay?[index.row].arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
             DataManager.shared.loanInfo.optionalText[index] = text
         }
         
-        self.dataSource?.fieldsDisplay![index.row].textInputMuiltiline = text
+        self.dataSource?.fieldsDisplay?[index.row].textInputMuiltiline = text
         
         self.mainTBView?.reloadRows(at: [index], with: UITableViewRowAnimation.automatic)
         

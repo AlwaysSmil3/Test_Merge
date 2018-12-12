@@ -10,7 +10,7 @@ import Foundation
 
 
 /// Data trả về sau khi chọn
-protocol DataSelectedFromPopupProtocol {
+protocol DataSelectedFromPopupProtocol: class {
     func dataSelected(data: LoanBuilderData)
 }
 
@@ -22,6 +22,7 @@ enum TypePopup: Int {
     case Strength // Học lực
     case AcademicLevel // Trinh độ học vấn
     case TypeMobilePhone // Loai dien thoai su dung
+    case CareerHusbandOrWife // Nghề nghiệp của vợ hoặc chồng
 }
 
 class LoanTypePopupVC: BasePopup {
@@ -30,7 +31,7 @@ class LoanTypePopupVC: BasePopup {
     @IBOutlet var mainTBView: UITableView?
     @IBOutlet weak var centerYConstraint: NSLayoutConstraint!
     
-    var delegate: DataSelectedFromPopupProtocol?
+    weak var delegate: DataSelectedFromPopupProtocol?
     
     
     //Dữ liệu đầu vào
@@ -144,6 +145,9 @@ class LoanTypePopupVC: BasePopup {
             
         case .TypeMobilePhone:
             //self.updateCurrentIndex(i: )
+            
+            break
+        case .CareerHusbandOrWife:
             
             break
             
@@ -267,6 +271,14 @@ class LoanTypePopupVC: BasePopup {
             
             break
             
+        case .CareerHusbandOrWife:
+            self.titleString = "Nghề nhiệp"
+            if let current = DataManager.shared.currentIndexCareerHusbandOrWifeSelectedPopup {
+                self.currentIndex = current
+            }
+            
+            break
+            
         }
         
     }
@@ -319,6 +331,10 @@ class LoanTypePopupVC: BasePopup {
                 
             case .TypeMobilePhone:
                 DataManager.shared.currentIndexTypeMobilePhoneSelectedPopup = self.currentIndex
+                break
+                
+            case .CareerHusbandOrWife:
+                DataManager.shared.currentIndexCareerHusbandOrWifeSelectedPopup = self.currentIndex
                 break
             }
         }

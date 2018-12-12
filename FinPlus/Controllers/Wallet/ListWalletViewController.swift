@@ -51,7 +51,7 @@ class ListWalletViewController: BaseViewController {
         
         if self.walletAction == .LoanNation {
             self.rightBarButtonItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : MAIN_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_SEMIBOLD, size: 17) ?? UIFont.boldSystemFont(ofSize: 17)], for: .normal)
-            self.setupTitleView(title: "Tạo yêu cầu vay", subTitle: "Bước 4: Tài khoản nhận tiền")
+            self.setupTitleView(title: "Tạo yêu cầu vay", subTitle: "Bước 4: Thông tin tài chính")
             //self.navigationController?.navigationBar.shadowImage = UIImage()
             self.bottomView.isHidden = false
             self.updateDataFromServer()
@@ -113,31 +113,31 @@ class ListWalletViewController: BaseViewController {
     func loadListBank(newAccountNumber: String) {
         
         APIClient.shared.getListBank(uId: DataManager.shared.userID)
-            .done(on: DispatchQueue.main) { model in
-
-                self.listWallet.removeAllObjects()
+            .done(on: DispatchQueue.main) { [weak self]model in
+                guard let strongSelf = self else { return }
+                strongSelf.listWallet.removeAllObjects()
                 
                 if (model.count > 0 )
                 {
                     if let id = model[0].id, id > 0 {
-                        self.listWallet.addObjects(from: model)
+                        strongSelf.listWallet.addObjects(from: model)
                         if newAccountNumber != "" {
-                            for bank in self.listWallet {
+                            for bank in strongSelf.listWallet {
                                 if let bank_ = bank as? AccountBank {
                                     if bank_.accountBankNumber == newAccountNumber {
-                                        self.currentBankIdSelected = bank_.id
+                                        strongSelf.currentBankIdSelected = bank_.id
                                     }
                                 }
                             }
                         }
                         
-                        self.tableview.reloadData()
+                        strongSelf.tableview.reloadData()
                     }
                 }
                 
-                self.tableview.isHidden = self.listWallet.count < 1
-                self.noWalletLabel.isHidden = self.listWallet.count > 0
-                self.addBtn.isHidden = self.listWallet.count > 0
+                strongSelf.tableview.isHidden = strongSelf.listWallet.count < 1
+                strongSelf.noWalletLabel.isHidden = strongSelf.listWallet.count > 0
+                strongSelf.addBtn.isHidden = strongSelf.listWallet.count > 0
                 
             }
             .catch { error in
@@ -193,10 +193,6 @@ class ListWalletViewController: BaseViewController {
             self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
         }
         
-//        let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
-//
-//        self.navigationController?.isNavigationBarHidden = true
-//        self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
 
     }
     
@@ -383,19 +379,7 @@ extension ListWalletViewController: UITableViewDataSource {
             
             cell?.tag = indexPath.row
             cell?.currentIndex = indexPath
-            
-//            switch(BankName(rawValue: item.bankType!))
-//            {
-//                case .Vietcombank?: cell?.avatar.image = UIImage(named: "vcb_selected")
-//                case .Viettinbank?: cell?.avatar.image = UIImage(named: "viettin_selected")
-//                case .Techcombank?: cell?.avatar.image = UIImage(named: "tech_selected")
-//                case .Agribank?: cell?.avatar.image = UIImage(named: "agri_selected")
-//                case .ViettelPay?: cell?.avatar.image = #imageLiteral(resourceName: "viettelPay_selected")
-//                case .Momo?: cell?.avatar.image = #imageLiteral(resourceName: "momo_selected")
-//                case .Bidv?: cell?.avatar.image = #imageLiteral(resourceName: "bidv_selected")
-//                case .none:
-//                    break
-//            }
+
             
             cell?.avatar.kf.setImage(with: URL(string: FinPlusHelper.getStringURLIconBank(type: item.bankName ?? "")))
             

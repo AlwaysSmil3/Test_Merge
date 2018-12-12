@@ -21,15 +21,15 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         didSet {
             guard let field_ = self.field else { return }
             
-            if let title = field_.title {
-                if field_.isRequired! {
-                    self.lblTitle?.attributedText = FinPlusHelper.setAttributeTextForLoan(text: title)
-                } else {
-                    self.lblTitle?.text = title
-                }
-                
-                self.updateData()
+            let title = field_.title ?? "Khác"
+            if field_.isRequired! {
+                self.lblTitle?.attributedText = FinPlusHelper.setAttributeTextForLoan(text: title)
+            } else {
+                self.lblTitle?.text = title
             }
+            
+            self.updateData()
+            
         }
     }
     
@@ -60,7 +60,7 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     }
     
     private func updateData() {
-        guard let field_ = self.field, let indexArray = field_.arrayIndex, let _ = field_.title else { return }
+        guard let field_ = self.field, let indexArray = field_.arrayIndex else { return }
         var temp: [String] = []
         
         if DataManager.shared.checkFieldIsMissing(key: "optionalMedia") {

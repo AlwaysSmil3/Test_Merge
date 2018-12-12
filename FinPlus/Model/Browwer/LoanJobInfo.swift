@@ -23,6 +23,7 @@ struct LoanJobInfo: Encodable {
     var academicLevel: Int
     var experienceYear: Float
     var academicName: String
+    var jobDescription: String?
     
     
     var jobAddress: Address
@@ -62,6 +63,7 @@ struct LoanJobInfo: Encodable {
         case studentId
         case academicAddress
         case academicName
+        case jobDescription
     }
     
     func encode(to encoder: Encoder) throws {
@@ -83,6 +85,9 @@ struct LoanJobInfo: Encodable {
         try container.encode(academicLevel, forKey: .academicLevel)
         try container.encode(experienceYear, forKey: .experienceYear)
         
+        if let jobDesc = self.jobDescription {
+            try container.encode(jobDesc, forKey: .jobDescription)
+        }
         
     }
     

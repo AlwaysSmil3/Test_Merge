@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -196,10 +196,10 @@
                             <constraint firstItem="DxA-1t-Zf1" firstAttribute="leading" secondItem="I1u-1r-uff" secondAttribute="leadingMargin" id="Sxa-FH-pLW"/>
                             <constraint firstItem="24l-Wz-1SQ" firstAttribute="leading" secondItem="I1u-1r-uff" secondAttribute="leadingMargin" constant="30" id="Xjr-xU-UZK"/>
                             <constraint firstItem="A1B-jr-6bw" firstAttribute="leading" secondItem="I1u-1r-uff" secondAttribute="leading" id="jru-6p-D17"/>
+                            <constraint firstItem="l4s-vS-cBs" firstAttribute="top" secondItem="Whj-Oy-eL8" secondAttribute="bottom" id="kNn-7w-aGY"/>
                             <constraint firstItem="Whj-Oy-eL8" firstAttribute="leading" secondItem="I1u-1r-uff" secondAttribute="leading" id="ljz-8R-XhI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="24l-Wz-1SQ" secondAttribute="trailing" constant="30" id="nlg-f5-hPo"/>
                             <constraint firstItem="24l-Wz-1SQ" firstAttribute="centerX" secondItem="I1u-1r-uff" secondAttribute="centerX" id="wnf-dX-Jqc"/>
-                            <constraint firstAttribute="bottom" secondItem="Whj-Oy-eL8" secondAttribute="bottom" id="zQh-bN-b7c"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vh1-os-igC">
@@ -1020,10 +1020,10 @@
         <image name="bidv" width="25" height="25"/>
         <image name="bidv_selected" width="25" height="25"/>
         <image name="ic_add_Bank_Dropdown" width="7" height="4"/>
-        <image name="ic_add_bank" width="17" height="17"/>
-        <image name="ic_add_bank_selected" width="17" height="17"/>
-        <image name="ic_add_wallet" width="17" height="14"/>
-        <image name="ic_add_wallet_selected" width="17" height="14"/>
+        <image name="ic_add_bank" width="17.5" height="17.5"/>
+        <image name="ic_add_bank_selected" width="17.5" height="17.5"/>
+        <image name="ic_add_wallet" width="17.5" height="14"/>
+        <image name="ic_add_wallet_selected" width="17.5" height="14"/>
         <image name="ic_back" width="20" height="18"/>
         <image name="ic_close" width="16" height="16"/>
         <image name="ic_disclosureIndicator2" width="5" height="7"/>
