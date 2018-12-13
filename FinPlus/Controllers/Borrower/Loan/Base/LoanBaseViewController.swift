@@ -452,6 +452,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         return fields.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let data = self.dataSource, let fields = data.fieldsDisplay else { return UITableViewCell() }
@@ -502,6 +503,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         case DATA_TYPE_TB_CELL.DropdownTexBox:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.PhoneRelation, for: indexPath) as! LoanTypePhoneRelationTBCell
              cell.field = model
+            cell.parentVC = self
             return cell
             
         case DATA_TYPE_TB_CELL.Address:

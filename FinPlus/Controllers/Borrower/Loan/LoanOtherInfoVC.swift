@@ -50,9 +50,15 @@ class LoanOtherInfoVC: LoanBaseViewController {
         guard let builder = self.loanCate?.builders, builder.count > 3, let listField = builder[3].fieldsDisplay else { return true }
         
         for (index, text) in DataManager.shared.loanInfo.optionalText.enumerated() {
-            if text.count == 0, listField.count > index, index == listField[index].arrayIndex, listField[index].isRequired == true {
-                return false
+
+            if text.count == 0 {
+                for fi in listField {
+                    if fi.id == "optionalText", let arrayIndex = fi.arrayIndex, arrayIndex == index, fi.isRequired == true {
+                        return false
+                    }
+                }
             }
+            
         }
         return true
     }
@@ -63,20 +69,16 @@ class LoanOtherInfoVC: LoanBaseViewController {
     /// - Returns: <#return value description#>
     private func checkIsReqruiedOptionalMedia() -> Bool {
         guard let builder = self.loanCate?.builders, builder.count > 3, let listField = builder[3].fieldsDisplay else { return true }
-        
-        let totalCount = DataManager.shared.loanInfo.optionalMedia.count
-        var optionTextCount = DataManager.shared.loanInfo.optionalText.count
-        if optionTextCount == 0 {
-            optionTextCount = getCountOptionalText(cateId: DataManager.shared.loanInfo.loanCategoryID)
-        }
-        
-        for (index, media) in DataManager.shared.loanInfo.optionalMedia.enumerated() {
-            
-            if index < totalCount, media.count == 0, listField.count > (index + optionTextCount), index == listField[index + optionTextCount].arrayIndex, listField[index + optionTextCount].isRequired == true {
                 
-                return false
+        for (index, media) in DataManager.shared.loanInfo.optionalMedia.enumerated() {
+
+            if media.count == 0 {
+                for fi in listField {
+                    if fi.id == "optionalMedia", let arrayIndex = fi.arrayIndex, arrayIndex == index, fi.isRequired == true {
+                        return false
+                    }
+                }
             }
-            
         }
         return true
     }

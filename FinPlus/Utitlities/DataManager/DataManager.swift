@@ -501,7 +501,7 @@ class DataManager {
     /// - Parameter id: <#id description#>
     /// - Returns: <#return value description#>
     class func getTitleRelationShip(id: Int) -> String {
-        guard let cate = DataManager.shared.getCurrentCategory(), (cate.builders?.count ?? 0) > 0, let fields = cate.builders![0].fields else { return "Người thân" }
+        guard let cate = DataManager.shared.getCurrentCategory(), (cate.builders?.count ?? 0) > 0, let fields = cate.builders![0].fieldsDisplay else { return "Người thân" }
         
         var field: LoanBuilderFields?
         for f in fields {

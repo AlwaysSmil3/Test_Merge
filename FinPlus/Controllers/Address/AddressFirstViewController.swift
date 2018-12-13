@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol AddressDelegate {
+protocol AddressDelegate: class {
     func getAddress(address: Address, type: Int, title: String, id: String)
 }
 
 class AddressFirstViewController: BaseViewController {
     
-    var delegate: AddressDelegate?
+    weak var delegate: AddressDelegate?
     
     var dataSource : [LoanBuilderFields] = []
     
