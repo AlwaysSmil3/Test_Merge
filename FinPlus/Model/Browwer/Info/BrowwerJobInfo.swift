@@ -26,6 +26,7 @@ public struct BrowwerJobInfo {
     static let positionTitle = "positionTitle"
     static let academicAddress = "academicAddress"
     static let academicName = "academicName"
+    static let jobDescription = "jobDescription"
   }
 
   // MARK: Properties
@@ -43,6 +44,7 @@ public struct BrowwerJobInfo {
     public var studentId: String?
     public var positionTitle: String?
     public var academicName: String?
+    public var jobDescription: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -71,6 +73,7 @@ public struct BrowwerJobInfo {
     studentId = json[SerializationKeys.studentId].string
     positionTitle = json[SerializationKeys.positionTitle].string
     academicName = json[SerializationKeys.academicName].string
+    jobDescription = json[SerializationKeys.jobDescription].string
   }
     
 
@@ -93,6 +96,7 @@ public struct BrowwerJobInfo {
     if let value = studentId { dictionary[SerializationKeys.studentId] = value }
     if let value = positionTitle { dictionary[SerializationKeys.positionTitle] = value }
     if let value = academicName { dictionary[SerializationKeys.academicName] = value }
+    if let value = jobDescription { dictionary[SerializationKeys.jobDescription] = value }
     return dictionary
   }
 

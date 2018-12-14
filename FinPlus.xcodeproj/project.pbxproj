@@ -47,6 +47,7 @@
 		6307D3BD20AD2BF000055F5C /* HomeBrowwer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6307D3BC20AD2BF000055F5C /* HomeBrowwer.storyboard */; };
 		6307D3BF20AD2F0500055F5C /* FacebookInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6307D3BE20AD2F0500055F5C /* FacebookInfo.swift */; };
 		6307D3CD20AD817300055F5C /* APIClient+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6307D3CC20AD817300055F5C /* APIClient+User.swift */; };
+		6307F4CE21C21E0A00B5F6D9 /* LoanTypePhoneRelationSubNewTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6307F4CD21C21E0A00B5F6D9 /* LoanTypePhoneRelationSubNewTBCell.xib */; };
 		6308DF6520A3FE90001DC320 /* BasePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6308DF6420A3FE90001DC320 /* BasePopup.swift */; };
 		630BA60D20C22A4100880DAE /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 630BA5EF20C22A4100880DAE /* SF-Pro-Display-Thin.otf */; };
 		630BA60E20C22A4100880DAE /* SF-Pro-Display-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 630BA5F020C22A4100880DAE /* SF-Pro-Display-SemiboldItalic.otf */; };
@@ -393,6 +394,7 @@
 		6307D3BC20AD2BF000055F5C /* HomeBrowwer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeBrowwer.storyboard; sourceTree = "<group>"; };
 		6307D3BE20AD2F0500055F5C /* FacebookInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookInfo.swift; sourceTree = "<group>"; };
 		6307D3CC20AD817300055F5C /* APIClient+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+User.swift"; sourceTree = "<group>"; };
+		6307F4CD21C21E0A00B5F6D9 /* LoanTypePhoneRelationSubNewTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoanTypePhoneRelationSubNewTBCell.xib; sourceTree = "<group>"; };
 		6308DF6420A3FE90001DC320 /* BasePopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePopup.swift; sourceTree = "<group>"; };
 		630BA5EF20C22A4100880DAE /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		630BA5F020C22A4100880DAE /* SF-Pro-Display-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-SemiboldItalic.otf"; sourceTree = "<group>"; };
@@ -1466,6 +1468,7 @@
 				635732F92109A83800F6CD04 /* LoanTypeTextViewTBCell.xib */,
 				6305B9FC21213705007CA452 /* LoanTypeSocialTBCell.xib */,
 				630597472124093200EEADEF /* LoanTypeInputTextMuiltiLineTBCell.xib */,
+				6307F4CD21C21E0A00B5F6D9 /* LoanTypePhoneRelationSubNewTBCell.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -1943,6 +1946,7 @@
 				630BA61720C22A4100880DAE /* SF-Pro-Text-Light.otf in Resources */,
 				639C9E2020A18A7500F2CF5E /* Oswald-ExtraLight.ttf in Resources */,
 				639C9E1E20A18A7500F2CF5E /* Oswald-Regular.ttf in Resources */,
+				6307F4CE21C21E0A00B5F6D9 /* LoanTypePhoneRelationSubNewTBCell.xib in Resources */,
 				630BA62520C22A4100880DAE /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				84114BC920D79464005026DF /* SubInfoLastTableViewCell.xib in Resources */,
 				630BA61A20C22A4100880DAE /* SF-Pro-Text-Bold.otf in Resources */,

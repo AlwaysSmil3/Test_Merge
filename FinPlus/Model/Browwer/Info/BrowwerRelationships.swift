@@ -14,11 +14,17 @@ public struct BrowwerRelationships {
   private struct SerializationKeys {
     static let type = "type"
     static let phoneNumber = "phoneNumber"
+    
+    static let name = "name"
+    static let address = "address"
   }
 
   // MARK: Properties
   public var type: Int?
   public var phoneNumber: String?
+    
+    public var name: String?
+    public var address: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -35,6 +41,8 @@ public struct BrowwerRelationships {
   public init(json: JSON) {
     type = json[SerializationKeys.type].int
     phoneNumber = json[SerializationKeys.phoneNumber].string
+    name = json[SerializationKeys.name].string
+    address = json[SerializationKeys.address].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -44,6 +52,8 @@ public struct BrowwerRelationships {
     var dictionary: [String: Any] = [:]
     if let value = type { dictionary[SerializationKeys.type] = value }
     if let value = phoneNumber { dictionary[SerializationKeys.phoneNumber] = value }
+    if let value = name { dictionary[SerializationKeys.name] = value }
+    if let value = address { dictionary[SerializationKeys.address] = value }
     return dictionary
   }
 

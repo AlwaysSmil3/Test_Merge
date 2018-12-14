@@ -402,11 +402,11 @@ class LoanBaseViewController: BaseViewController {
         self.view.endEditing(true)
         guard let index = self.currentIndexSelected, let text = self.sbInputView?.textView.text, text.count > 0 else { return }
         
-        if let index = self.dataSource?.fieldsDisplay![index.row].arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
+        if let index = self.dataSource?.fieldsDisplay?[index.row].arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
             DataManager.shared.loanInfo.optionalText[index] = text
         }
         
-        self.dataSource?.fieldsDisplay![index.row].textInputMuiltiline = text
+        self.dataSource?.fieldsDisplay?[index.row].textInputMuiltiline = text
         
         self.mainTBView?.reloadRows(at: [index], with: UITableViewRowAnimation.automatic)
         
@@ -451,6 +451,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         guard let data = self.dataSource, let fields = data.fieldsDisplay else { return 0 }
         return fields.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -502,6 +503,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         case DATA_TYPE_TB_CELL.DropdownTexBox:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.PhoneRelation, for: indexPath) as! LoanTypePhoneRelationTBCell
              cell.field = model
+            cell.parentVC = self
             return cell
             
         case DATA_TYPE_TB_CELL.Address:

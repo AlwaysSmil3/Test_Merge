@@ -32,6 +32,7 @@ public struct LoanBuilderFields {
     
     static let display_if_loan_over = "display_if_loan_over"
     static let display_if_job_type_is = "display_if_job_type_is"
+    static let display_if_need_additional_missing_data = "display_if_need_additional_missing_data"
     
   }
 
@@ -59,6 +60,7 @@ public struct LoanBuilderFields {
     public var displayIfLoanOver: Double?
     public var displayIfJobTypeIs: [Int]?
     public var isCanDisplay: Bool = true
+    public var displayIfNeedAdditionalMissingData: Bool?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -94,6 +96,7 @@ public struct LoanBuilderFields {
     
     self.displayIfLoanOver = json[SerializationKeys.display_if_loan_over].double
     if let items = json[SerializationKeys.display_if_job_type_is].array { displayIfJobTypeIs = items.map { $0.intValue } }
+    self.displayIfNeedAdditionalMissingData = json[SerializationKeys.display_if_need_additional_missing_data].boolValue
     
     self.checkCanDisplay()
     
@@ -101,9 +104,18 @@ public struct LoanBuilderFields {
     
     mutating func checkCanDisplay() {
         
-        if let id_ = self.id, id_ == "optionalMedia", let amount = self.displayIfLoanOver, amount > Double(DataManager.shared.loanInfo.amount) {
-            self.isCanDisplay = false
-            return
+        if let id_ = self.id, id_ == "optionalMedia" {
+            if let amount = self.displayIfLoanOver, amount > Double(DataManager.shared.loanInfo.amount) {
+                self.isCanDisplay = false
+                return
+            }
+            
+            if self.title == nil {
+                //Check display when have missing Data
+                self.isCanDisplay = false
+                return
+            }
+            
         }
         
         if let listJob = self.displayIfJobTypeIs, listJob.count > 0 {

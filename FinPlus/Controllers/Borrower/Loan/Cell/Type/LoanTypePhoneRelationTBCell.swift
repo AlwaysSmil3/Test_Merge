@@ -13,13 +13,16 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
 
     @IBOutlet weak var mainTableView: UITableView?
     
+    weak var parentVC: LoanBaseViewController?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.lblTitle?.font = FONT_CAPTION
         
         self.mainTableView?.delegate = self
         self.mainTableView?.dataSource = self
-        self.mainTableView?.register(UINib(nibName: "LoanTypePhoneRelationSubTBCell", bundle: nil), forCellReuseIdentifier: "Loan_Type_Phone_Relation_Sub_TB_Cell")
+        self.mainTableView?.register(UINib(nibName: "LoanTypePhoneRelationSubNewTBCell", bundle: nil), forCellReuseIdentifier: "Loan_Type_Phone_Relation_Sub_TB_Cell")
+        self.mainTableView?.rowHeight = 216
         self.mainTableView?.tableFooterView = UIView()
         
     }
@@ -129,6 +132,7 @@ extension LoanTypePhoneRelationTBCell: UITableViewDelegate, UITableViewDataSourc
         cell.delegateUpdateStatusInvalid = self
         cell.currentIndex = indexPath.row
         cell.data = self.dataSource[indexPath.row]
+        cell.parentVC = self.parentVC
         
         return cell
     }

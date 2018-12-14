@@ -81,6 +81,9 @@ class DataManager {
     //Loai dien thoai hien tai dang chon
     var currentIndexTypeMobilePhoneSelectedPopup: Int?
     
+    //Loai dien thoai hien tai dang chon
+    var currentIndexCareerHusbandOrWifeSelectedPopup: Int?
+    
     //Các trường không hợp lệ của loan
     var missingLoanData: BrowwerActiveLoan? {
         didSet {
@@ -440,7 +443,7 @@ class DataManager {
         }
         
         if let text = activeLoan.optionalText {
-            if text.count > 0 && text.count <= getCountOptionalText(cateId: DataManager.shared.loanInfo.loanCategoryID) {
+            if text.count > 0 && text.count == getCountOptionalText(cateId: DataManager.shared.loanInfo.loanCategoryID) {
                 DataManager.shared.loanInfo.optionalText = text
             }
         }
@@ -498,7 +501,7 @@ class DataManager {
     /// - Parameter id: <#id description#>
     /// - Returns: <#return value description#>
     class func getTitleRelationShip(id: Int) -> String {
-        guard let cate = DataManager.shared.getCurrentCategory(), (cate.builders?.count ?? 0) > 0, let fields = cate.builders![0].fields else { return "Người thân" }
+        guard let cate = DataManager.shared.getCurrentCategory(), (cate.builders?.count ?? 0) > 0, let fields = cate.builders![0].fieldsDisplay else { return "Người thân" }
         
         var field: LoanBuilderFields?
         for f in fields {

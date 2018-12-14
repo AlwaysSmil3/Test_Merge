@@ -58,7 +58,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
         
         guard let field_ = self.field, let data = field_.data, let id = field_.id else { return }
         
-        if id.contains("position") || id.contains("jobType") || id.contains("strength") || id.contains("academicLevel") || id.contains("typeMobilePhone") {
+        if id.contains("position") || id.contains("jobType") || id.contains("strength") || id.contains("academicLevel") || id.contains("typeMobilePhone") || id.contains("optionalText") {
             let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
             
             if id.contains("position") {
@@ -71,6 +71,8 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 popup.setDataSource(data: data, type: .AcademicLevel)
             } else if id.contains("typeMobilePhone") {
                 popup.setDataSource(data: data, type: .TypeMobilePhone)
+            } else if id.contains("optionalText") {
+                popup.setDataSource(data: data, type: .CareerHusbandOrWife)
             }
             
             popup.delegate = self
@@ -118,6 +120,18 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             DataManager.shared.loanInfo.jobInfo.academicLevel = Int(data.id ?? 0)
         } else if id.contains("strength") {
             DataManager.shared.loanInfo.jobInfo.strength = Int(data.id ?? 0)
+        } else if id.contains("typeMobilePhone") {
+            DataManager.shared.loanInfo.userInfo.typeMobilePhone = Int(data.id ?? 0)
+            if value.count > 0 {
+                DataManager.shared.loanInfo.userInfo.typeMobilePhoneTitle = value
+            }
+            
+        } else if id.contains("optionalText") {
+            let optionalText = value.count > 0 ? "\(Int(data.id ?? 0))\(keyComponentSeparateOptionalText)\(value)" : "\(Int(data.id ?? 0))"
+            if let arrayIndex = self.field?.arrayIndex, arrayIndex < DataManager.shared.loanInfo.optionalText.count {
+                DataManager.shared.loanInfo.optionalText[arrayIndex] = optionalText
+            }
+            
         }
         
     }
@@ -349,15 +363,23 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             }
             
             if value.length() > 0 {
-                //self.lblValue?.text = value
-                
+
+                /*
+                //For key DateTime
                 let dateTemp = Date.init(fromString: value, format: DateFormat.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER))
                 let date = dateTemp.toString(.custom(kDisplayFormat))
                 //DateTime ISO 8601
                 
                 let timeISO8601 = dateTemp.toString(.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER))
                 DataManager.shared.loanInfo.optionalText[index] = timeISO8601
-                self.lblValue?.text = date
+                */
+                let arrayValue = value.components(separatedBy: keyComponentSeparateOptionalText)
+                if arrayValue.count > 1 {
+                    self.lblValue?.text = arrayValue[1]
+                } else if arrayValue.count == 1 {
+                    self.lblValue?.text = arrayValue[0]
+                }
+                
             }
             
             if DataManager.shared.checkFieldIsMissing(key: "optionalText") {

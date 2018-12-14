@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol UpdateStatusInvalidRelationPhoneDelegate {
+protocol UpdateStatusInvalidRelationPhoneDelegate: class {
     func update(isNeed: Bool)
 }
 
@@ -17,11 +17,21 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
     
     @IBOutlet weak var tfTypeRelation: UITextField?
     
+    @IBOutlet weak var lblTitlePhone: UILabel?
     @IBOutlet weak var tfRelationPhone: UITextField?
+    
+    @IBOutlet weak var lblNameRelationTitle: UILabel?
+    @IBOutlet weak var tfNameRelation: UITextField?
+    
+    @IBOutlet weak var lblAddressRelationTitle: UILabel?
+    @IBOutlet weak var lblAddressRelation: UILabel?
+    
     
     var currentIndex: Int = 0
     
-    var delegateUpdateStatusInvalid: UpdateStatusInvalidRelationPhoneDelegate?
+    weak var parentVC: LoanBaseViewController?
+    
+    weak var delegateUpdateStatusInvalid: UpdateStatusInvalidRelationPhoneDelegate?
     
     var data: LoanBuilderMultipleData? {
         didSet {
@@ -31,6 +41,7 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
             self.tfRelationPhone?.text = self.getDisplayPhone(relationPhone: data_.phoneNumber ?? "")
             
             self.tfTypeRelation?.text = DataManager.getTitleRelationShip(id: data_.type ?? -1)
+            self.setupUI(id: data_.type ?? -1)
             
             if self.currentIndex == 0 {
                 if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup1 {
@@ -59,9 +70,7 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
                 }
             }
             
-
         }
-        
     }
     
     override func awakeFromNib() {
@@ -71,6 +80,55 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
         if #available(iOS 11.0, *) {
             self.tfRelationPhone?.textContentType = .username
         }
+        
+        self.lblAddressRelationTitle?.font = FONT_CAPTION
+        self.lblAddressRelationTitle?.textColor = TEXT_NORMAL_COLOR
+    }
+    
+    private func setupUI(id: Int) {
+        let number = self.getTitleTypeRelation(id: id)
+        let text = number == "1" || number == "2" ? "người thân \(number)" : "của \(number)"
+        
+        self.lblTitlePhone?.attributedText = FinPlusHelper.setAttributeTextForLoan(text: "Số điện thoại liên lạc \(text)")
+        self.lblNameRelationTitle?.attributedText = FinPlusHelper.setAttributeTextForLoan(text: "Họ và tên \(text)")
+        self.tfNameRelation?.placeholder = "Nhập họ và tên \(text)"
+        
+        self.lblAddressRelationTitle?.text = "Địa chỉ \(text)"
+        
+        if DataManager.shared.loanInfo.userInfo.relationships.count > self.currentIndex, let add = DataManager.shared.loanInfo.userInfo.relationships[self.currentIndex].address, add.count > 0  {
+            self.lblAddressRelation?.text = add
+        } else {
+            self.lblAddressRelation?.text = "Nhấn để chọn địa chỉ \(text)"
+        }
+        
+        
+    }
+    
+    private func getTitleTypeRelation(id: Int) -> String {
+        let text = self.currentIndex == 0 ? "1" : "2"
+        guard let cate = DataManager.shared.getCurrentCategory(), (cate.builders?.count ?? 0) > 0, let fields = cate.builders![0].fieldsDisplay else { return text }
+        
+        var field: LoanBuilderFields?
+        for f in fields {
+            if f.id == "relationships" {
+                field = f
+                break
+            }
+        }
+        
+        guard let muiltiData = field?.multipleData else { return text }
+        
+        for mu in muiltiData {
+            if let options = mu.options {
+                for op in options {
+                    if id == Int(op.id ?? 0) {
+                        return op.title ?? text
+                    }
+                }
+            }
+        }
+        
+        return text
     }
     
     func updateStatus() {
@@ -94,8 +152,29 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
         return FinPlusHelper.updatePhoneNumber(phone:phone)
     }
     
+    /// Sang màn chọn địa chỉ
+    private func gotoAddressVC(title: String, id: String) {
+        let firstAddressVC = UIStoryboard(name: "Address", bundle: nil).instantiateViewController(withIdentifier: "AddressFirstViewController") as! AddressFirstViewController
+        firstAddressVC.delegate = self
+        firstAddressVC.titleString = title
+        firstAddressVC.id = id
+        
+        self.parentVC?.show(firstAddressVC, sender: nil)
+    }
+    
     
     //MARK: Actions
+    
+    @IBAction func btnAddressTapped(_ sender: Any) {
+        let title = self.lblAddressRelationTitle?.text ?? "Địa chỉ người thân \(self.currentIndex + 1)"
+        let id = "RelationAddress\(self.currentIndex + 1)"
+        self.gotoAddressVC(title: title, id: id)
+    }
+    
+    @IBAction func tfNameEditEnd(_ sender: Any) {
+        
+        
+    }
     
     @IBAction func tfEditEnd(_ sender: Any) {
         if let value = self.tfRelationPhone?.text {
@@ -212,6 +291,7 @@ extension LoanTypePhoneRelationSubTBCell: DataSelectedFromPopupProtocol {
     func dataSelected(data: LoanBuilderData) {
         self.tfTypeRelation?.text = data.title!
         self.tfRelationPhone?.placeholder = "Số điện thoại của " + data.title!
+        self.setupUI(id: Int(data.id ?? -1))
         
         //guard let data_ = self.data, let placeHolder = data_.placeholder else { return }
         if self.currentIndex == 0 {
@@ -225,7 +305,20 @@ extension LoanTypePhoneRelationSubTBCell: DataSelectedFromPopupProtocol {
         }
     }
     
+}
 
+//MARK: Address Delegate
+extension LoanTypePhoneRelationSubTBCell: AddressDelegate {
+    func getAddress(address: Address, type: Int, title: String, id: String) {
+        let add = address.street + ", " + address.commune + ", " + address.district + ", " + address.city
+        
+        if DataManager.shared.loanInfo.userInfo.relationships.count > self.currentIndex {
+            DataManager.shared.loanInfo.userInfo.relationships[self.currentIndex].address = add
+            self.lblAddressRelation?.text = add
+        }
+        
+        
+    }
 }
 
 
