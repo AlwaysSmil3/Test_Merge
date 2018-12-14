@@ -72,6 +72,9 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     
                     d.phoneNumber = pho.phoneNumber
                     d.type = pho.type
+                    d.name = pho.name
+                    d.address = pho.address
+                    
                     value.append(d)
                 }
             }
@@ -85,6 +88,9 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     
                     d.phoneNumber = pho.phoneNumber
                     d.type = Int(pho.type)
+                    d.name = pho.name
+                    d.address = pho.address
+                    
                     tempValue.append(d)
                 }
             }
@@ -108,6 +114,9 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 
                 d.phoneNumber = pho.phoneNumber ?? ""
                 d.type = Int16(pho.type ?? 0)
+                d.name = pho.name
+                d.address = pho.address
+                
                 DataManager.shared.loanInfo.userInfo.relationships.append(d)
             }
             

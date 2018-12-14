@@ -354,6 +354,16 @@ class DataManager {
                     
                 }
                 
+                if let name1 = relationShips[0].name, name1.count > 0, let name2 = relationShips[1].name, name2.count > 0 {
+                    DataManager.shared.loanInfo.userInfo.relationships[0].name = name1
+                    DataManager.shared.loanInfo.userInfo.relationships[1].name = name2
+                }
+                
+                if let add1 = relationShips[0].address, add1.count > 0, let add2 = relationShips[1].address, add2.count > 0 {
+                    DataManager.shared.loanInfo.userInfo.relationships[0].address = add1
+                    DataManager.shared.loanInfo.userInfo.relationships[1].address = add2
+                }
+                
             }
             
             if let birthDay = userInfo.birthday {

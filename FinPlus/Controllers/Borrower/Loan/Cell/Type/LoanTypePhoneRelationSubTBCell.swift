@@ -95,6 +95,10 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
         
         self.lblAddressRelationTitle?.text = "Địa chỉ \(text)"
         
+        if DataManager.shared.loanInfo.userInfo.relationships.count > self.currentIndex, let name = DataManager.shared.loanInfo.userInfo.relationships[self.currentIndex].name, name.count > 0 {
+            self.tfNameRelation?.text = name
+        }
+        
         if DataManager.shared.loanInfo.userInfo.relationships.count > self.currentIndex, let add = DataManager.shared.loanInfo.userInfo.relationships[self.currentIndex].address, add.count > 0  {
             self.lblAddressRelation?.text = add
         } else {
@@ -173,6 +177,11 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
     
     @IBAction func tfNameEditEnd(_ sender: Any) {
         
+        guard let value = self.tfNameRelation?.text else { return }
+        
+        if DataManager.shared.loanInfo.userInfo.relationships.count > self.currentIndex {
+            DataManager.shared.loanInfo.userInfo.relationships[self.currentIndex].name = value
+        }
         
     }
     
