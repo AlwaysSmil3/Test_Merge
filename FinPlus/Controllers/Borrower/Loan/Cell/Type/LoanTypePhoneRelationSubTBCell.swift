@@ -46,7 +46,7 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
             if self.currentIndex == 0 {
                 if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup1 {
                     if let options = data_.options, current < options.count {
-                        self.tfRelationPhone?.text = options[current].title
+                        //self.tfRelationPhone?.text = options[current].title
                     }
                 }
                 
@@ -59,7 +59,7 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
             } else {
                 if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup2 {
                     if let options = data_.options, current < options.count {
-                        self.tfRelationPhone?.text = options[current].title
+                        //self.tfRelationPhone?.text = options[current].title
                     }
                 }
                 
@@ -234,8 +234,8 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
         }
         
         let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
-        popup.setDataSource(data: dataSource, type: .RelationShipPhone)
         popup.indexRelationPhone = self.currentIndex
+        popup.setDataSource(data: dataSource, type: .RelationShipPhone)
         popup.delegate = self
         
         popup.show()
@@ -312,6 +312,10 @@ extension LoanTypePhoneRelationSubTBCell: DataSelectedFromPopupProtocol {
                 DataManager.shared.loanInfo.userInfo.relationships[1].type = data.id!
             }
         }
+    }
+    
+    func multiDataSelected(value: String, listIndex: String) {
+        
     }
     
 }

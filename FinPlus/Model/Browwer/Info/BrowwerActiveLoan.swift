@@ -44,6 +44,8 @@ public struct BrowwerActiveLoan {
     
     static let bank = "bank"
     static let bankId = "bankId"
+    static let borrowedPlace = "borrowedPlace"
+    static let totalBorrowedAmount = "totalBorrowedAmount"
     static let collections = "collections"
     
     static let contractUrl = "contractUrl"
@@ -83,6 +85,9 @@ public struct BrowwerActiveLoan {
     
     public var bank: BrowwerBank?
     public var bankId: Int32?
+    public var borrowedPlace: String?
+    public var totalBorrowedAmount: Double?
+    
     public var collections: [BrowwerCollections]?
     
     public var contractUrl: String?
@@ -136,6 +141,8 @@ public struct BrowwerActiveLoan {
     
     bank = BrowwerBank(json: json[SerializationKeys.bank])
     bankId = json[SerializationKeys.bankId].int32
+    borrowedPlace = json[SerializationKeys.borrowedPlace].string
+    totalBorrowedAmount = json[SerializationKeys.totalBorrowedAmount].double
     
     if let items = json[SerializationKeys.collections].array { collections = items.map { BrowwerCollections(json: $0) } }
     contractUrl = json[SerializationKeys.contractUrl].string
@@ -180,6 +187,9 @@ public struct BrowwerActiveLoan {
     
     if let value = bank { dictionary[SerializationKeys.bank] = value.dictionaryRepresentation() }
     if let value = bankId { dictionary[SerializationKeys.bankId] = value }
+    
+    if let value = borrowedPlace { dictionary[SerializationKeys.borrowedPlace] = value }
+    if let value = totalBorrowedAmount { dictionary[SerializationKeys.totalBorrowedAmount] = value }
     
     if let value = contractUrl { dictionary[SerializationKeys.contractUrl] = value }
     if let value = note { dictionary[SerializationKeys.note] = value }

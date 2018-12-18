@@ -109,7 +109,7 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             value[1].placeholder = data_[1].placeholder
             
             DataManager.shared.loanInfo.userInfo.relationships.removeAll()
-            for pho in value {
+            for (i, pho) in value.enumerated() {
                 var d = RelationShipPhone()
                 
                 d.phoneNumber = pho.phoneNumber ?? ""
@@ -118,11 +118,39 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 d.address = pho.address
                 
                 DataManager.shared.loanInfo.userInfo.relationships.append(d)
+                
+                if i == 0 {
+                    if DataManager.shared.currentIndexRelationPhoneSelectedPopup1 == nil {
+                        if let index = self.getIndexFromType(type: Int16(pho.type ?? 0)) {
+                            DataManager.shared.currentIndexRelationPhoneSelectedPopup1 = index
+                        }
+                    }
+                } else if i == 1 {
+                    if DataManager.shared.currentIndexRelationPhoneSelectedPopup2 == nil {
+                        if let index = self.getIndexFromType(type: Int16(pho.type ?? 0)) {
+                            DataManager.shared.currentIndexRelationPhoneSelectedPopup2 = index
+                        }
+                    }
+                }
+                
+                
             }
             
             self.dataSource = value
 
         }
+    }
+    
+    private func getIndexFromType(type: Int16) -> Int? {
+         guard let field_ = self.field, let data_ = field_.multipleData, data_.count == 2, let options = data_[0].options else { return nil}
+        
+        for (i, d) in options.enumerated() {
+            if type == d.id {
+                return i
+            }
+        }
+        
+        return nil
     }
     
     

@@ -26,8 +26,7 @@ struct LoanUserInfo: Encodable {
     var residentAddress: Address
     var temporaryAddress: Address
     
-    var typeMobilePhone: Int?
-    var typeMobilePhoneTitle: String?
+    var typeMobilePhone: String?
     var phoneUsageTime: Int?
     
     init() {
@@ -51,8 +50,7 @@ struct LoanUserInfo: Encodable {
         case relationships
         case residentAddress
         case currentAddress
-        case typeMobilePhone
-        case typeMobilePhoneTitle
+        case mobilePhoneType
         case phoneUsageTime
     }
     
@@ -72,11 +70,7 @@ struct LoanUserInfo: Encodable {
         }
         
         if let type_ = self.typeMobilePhone {
-            try container.encode(type_, forKey: .typeMobilePhone)
-        }
-        
-        if let type_ = self.typeMobilePhoneTitle {
-            try container.encode(type_, forKey: .typeMobilePhoneTitle)
+            try container.encode(type_, forKey: .mobilePhoneType)
         }
         
         if let useTime = self.phoneUsageTime {

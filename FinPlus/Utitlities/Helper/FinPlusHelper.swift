@@ -15,6 +15,71 @@ class FinPlusHelper {
     
     
     
+    /// get indexValue
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
+    class func getIndexWithOtherSelection(value: String) -> Int? {
+        let list = value.components(separatedBy: keyComponentSeparateOptionalText)
+        guard list.count > 1, let index = Int(list[0]) else { return nil }
+        return index
+        
+    }
+    
+    
+    /// Get title value
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
+    class func getTitleWithOtherSelection(value: String) -> String? {
+        let list = value.components(separatedBy: keyComponentSeparateOptionalText)
+        
+        guard list.count > 1 else { return nil }
+        
+        var titleValue = ""
+        var temp = list
+        temp.removeFirst()
+        
+        if temp.count > 0 {
+            titleValue = temp[0]
+        }
+        if temp.count > 1 {
+            titleValue = temp.joined(separator: keyComponentSeparateOptionalText)
+        }
+        
+        return titleValue
+    }
+    
+    /// Update title Value wiht muilte selectionIndex
+    ///
+    /// - Parameters:
+    ///   - selections: <#selections description#>
+    ///   - dataSource: <#dataSource description#>
+    /// - Returns: <#return value description#>
+    class func getListTitleValue(selections: String, dataSource: [LoanBuilderData]) -> String {
+        var listTitle = ""
+        let listIndex = selections.components(separatedBy: keyComponentSeparateOptionalText)
+        
+        for (i, l) in listIndex.enumerated() {
+            for d in dataSource {
+                if let id = d.id, id == Int16(l), let title = d.title {
+                    if i == listIndex.count - 1 {
+                        listTitle.append("\(title)")
+                    } else {
+                        listTitle.append("\(title), ")
+                    }
+                    
+                    break
+                }
+            }
+        }
+        
+        return listTitle
+        
+    }
+    
+    
+    
     /// Display Current Money
     ///
     /// - Parameter value: <#value description#>

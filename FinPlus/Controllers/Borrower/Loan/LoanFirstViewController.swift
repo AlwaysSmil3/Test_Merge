@@ -484,4 +484,8 @@ extension LoanFirstViewController: DataSelectedFromPopupProtocol {
         DataManager.shared.loanInfo.loanCategoryID = data.id!
         self.loanCategory = DataManager.shared.getCurrentCategory()
     }
+    
+    func multiDataSelected(value: String, listIndex: String) {
+        
+    }
 }

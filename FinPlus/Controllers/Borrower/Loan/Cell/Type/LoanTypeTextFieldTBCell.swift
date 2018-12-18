@@ -105,6 +105,10 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     
                 }
                 
+            } else if id.contains("totalAmountLoaned") {
+                
+                DataManager.shared.loanInfo.totalBorrowedAmount = self.getAmountMoney()
+                
             }
             return
         }
@@ -115,6 +119,11 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 DataManager.shared.loanInfo.userInfo.fullName = self.tfValue?.text ?? ""
             } else if id.contains("nationalId") {
                 DataManager.shared.loanInfo.userInfo.nationalID = self.tfValue?.text ?? ""
+            } else if id.contains("phoneUsageTime") {
+                if let text = self.tfValue?.text, text.count > 0 {
+                    DataManager.shared.loanInfo.userInfo.phoneUsageTime = Int(text)
+                }
+                
             }
             
         } else if parent.contains("jobInfo") {
@@ -202,8 +211,31 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                             }
                         }
                     }
-                    
                 }
+            } else if id.contains("totalAmountLoaned") {
+                var valueTemp: Double?
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.totalBorrowedAmount {
+                    valueTemp = data
+                }
+                
+                if let total = DataManager.shared.loanInfo.totalBorrowedAmount {
+                    valueTemp = total
+                }
+                
+                guard let value = valueTemp else { return }
+                
+                self.tfValue?.text = self.formatDisplayCurrency(Double(value))
+                DataManager.shared.loanInfo.totalBorrowedAmount = value
+                
+                if DataManager.shared.checkFieldIsMissing(key: "totalAmountLoaned") {
+                    //Cap nhat thong tin khong hop le
+                    //self.updateInfoFalse(pre: title)
+                    if self.valueTemp == nil {
+                        self.updateInfoFalse(pre: title)
+                    }
+                    self.valueTemp = self.formatDisplayCurrency(Double(value))
+                }
+                
             }
             
             return
@@ -258,6 +290,30 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                         self.updateInfoFalse(pre: title)
                     }
                     self.valueTemp = value
+                }
+            } else if id.contains("phoneUsageTime") {
+                var valueInt: Int = -1
+                if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.phoneUsageTime {
+                    valueInt = data
+                }
+                
+                if let uses = DataManager.shared.loanInfo.userInfo.phoneUsageTime {
+                    valueInt = uses
+                }
+                
+                if valueInt > 0 {
+                    self.tfValue?.text = "\(valueInt)"
+                    DataManager.shared.loanInfo.userInfo.phoneUsageTime = valueInt
+                } else {
+                    self.tfValue?.text = ""
+                }
+                if DataManager.shared.checkFieldIsMissing(key: "phoneUsageTime", parentKey: "userInfo", currentValueIndex: valueInt) {
+                    //Cap nhat thong tin khong hop le
+                    //self.updateInfoFalse(pre: title)
+                    if self.valueTemp == nil {
+                        self.updateInfoFalse(pre: title)
+                    }
+                    self.valueTemp = "\(Int(valueInt))"
                 }
             } else {
                 self.tfValue?.text = ""
@@ -413,6 +469,16 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
         }
         
+    }
+    
+    
+    /// Lấy số tiền double
+    ///
+    /// - Returns: <#return value description#>
+    private func getAmountMoney() -> Double {
+        let tempAmount1 = self.tfValue?.text?.replacingOccurrences(of: ",", with: "") ?? ""
+        let tempAmount2 = tempAmount1.replacingOccurrences(of: ".", with: "")
+        return Double(tempAmount2) ?? 0
     }
     
      func formatDisplayCurrency(_ value: Double) -> String {

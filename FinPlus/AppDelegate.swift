@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Override point for customization after application launch.
         //Get loan Data from json
-        DataManager.shared.getDataLoanFromJSON()
+        //DataManager.shared.getDataLoanFromJSON()
         
         if userDefault.value(forKey: Notification_Have_New) == nil {
             userDefault.set(false, forKey: Notification_Have_New)
@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         
         if FinPlusHelper.isConnectedToNetwork() {
-            //self.getLoanCategories()
+            self.getLoanCategories()
             // Get Version
             self.getVersion()
         }

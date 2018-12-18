@@ -402,8 +402,14 @@ class LoanBaseViewController: BaseViewController {
         self.view.endEditing(true)
         guard let index = self.currentIndexSelected, let text = self.sbInputView?.textView.text, text.count > 0 else { return }
         
-        if let index = self.dataSource?.fieldsDisplay?[index.row].arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
-            DataManager.shared.loanInfo.optionalText[index] = text
+        guard let field = self.dataSource?.fieldsDisplay?[index.row], let id = field.id else { return }
+        
+        if id.contains("optionalText") {
+            if let index = field.arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
+                DataManager.shared.loanInfo.optionalText[index] = text
+            }
+        } else if id.contains("jobDescription") {
+            DataManager.shared.loanInfo.jobInfo.jobDescription = text
         }
         
         self.dataSource?.fieldsDisplay?[index.row].textInputMuiltiline = text
