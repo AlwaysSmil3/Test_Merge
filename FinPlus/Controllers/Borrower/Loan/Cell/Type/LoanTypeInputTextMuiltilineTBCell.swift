@@ -131,6 +131,29 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
                 self.isNeedUpdate = false
             }
             
+        } else if id.contains("jobDescription") {
+            var valueTemp: String?
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.jobDescription {
+                valueTemp = data
+            }
+            
+            if let desc = DataManager.shared.loanInfo.jobInfo.jobDescription {
+                valueTemp = desc
+            }
+            guard let value = valueTemp else { return }
+            self.lblValue?.textColor = UIColor(hexString: "#08121E")
+            self.lblValue?.text = value
+            DataManager.shared.loanInfo.jobInfo.jobDescription = value
+            
+            
+            if DataManager.shared.checkFieldIsMissing(key: "jobDescription", parentKey: "jobInfo", currentValue: value) {
+                //Cap nhat thong tin khong hop le
+                //self.updateInfoFalse(pre: title)
+                if self.valueTemp == nil {
+                    self.updateInfoFalse(pre: title)
+                }
+                self.valueTemp = value
+            }
         }
         
         

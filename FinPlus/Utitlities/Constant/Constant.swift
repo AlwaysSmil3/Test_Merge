@@ -10,7 +10,7 @@ import Foundation
 
 
 /// Key for append value to api server
-let keyComponentSeparateOptionalText = ";"
+let keyComponentSeparateOptionalText = ","
 
 //Số điện thoại hỗ trợ của Mony
 //old 1900232389

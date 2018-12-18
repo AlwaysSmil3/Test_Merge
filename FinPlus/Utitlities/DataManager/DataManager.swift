@@ -39,6 +39,9 @@ class DataManager {
     // Danh sách các loại khoản vay
     var loanCategories: [LoanCategories] = []
     
+    //thêm field cho step 4
+    var listFieldForStep4: [LoanBuilderFields]?
+    
     // ID của Loan
     var loanID: Int32?
     
@@ -83,6 +86,9 @@ class DataManager {
     
     //Loai dien thoai hien tai dang chon
     var currentIndexCareerHusbandOrWifeSelectedPopup: Int?
+    
+    //Loai dien thoai hien tai dang chon
+    var currentListIndexLoanedFromSelectedPopup: String?
     
     //Các trường không hợp lệ của loan
     var missingLoanData: BrowwerActiveLoan? {
@@ -312,7 +318,7 @@ class DataManager {
             DataManager.shared.loanInfo.status = status
         }
         
-        if let loanId = activeLoan.loanId, loanId > 0 {
+        if let loanId = activeLoan.loanId {
             DataManager.shared.loanID = loanId
         }
         
@@ -329,8 +335,16 @@ class DataManager {
             
         }
         
-        if let bankId = activeLoan.bankId, bankId > 0 {
+        if let bankId = activeLoan.bankId {
             DataManager.shared.loanInfo.bankId = bankId
+        }
+        
+        if let value = activeLoan.borrowedPlace {
+            DataManager.shared.loanInfo.borrowedPlace = value
+        }
+        
+        if let value = activeLoan.totalBorrowedAmount {
+            DataManager.shared.loanInfo.totalBorrowedAmount = value
         }
         
         
@@ -380,6 +394,14 @@ class DataManager {
             
             if let add = userInfo.currentAddress, let city = add.city, let dis = add.district, let commue = add.commune, let street = add.street {
                 DataManager.shared.loanInfo.userInfo.temporaryAddress = Address(city: city, district: dis, commune: commue, street: street, zipCode: "", long: 0, lat: 0)
+            }
+            
+            if let value = userInfo.mobilePhoneType {
+                DataManager.shared.loanInfo.userInfo.typeMobilePhone = value
+            }
+            
+            if let value = userInfo.phoneUsageTime {
+                DataManager.shared.loanInfo.userInfo.phoneUsageTime = value
             }
             
             
@@ -436,6 +458,10 @@ class DataManager {
             
             if let add = jobInfo.academicAddress, let city = add.city, let dis = add.district, let commue = add.commune, let street = add.street {
                 DataManager.shared.loanInfo.jobInfo.academicAddress = Address(city: city, district: dis, commune: commue, street: street, zipCode: "", long: 0, lat: 0)
+            }
+            
+            if let value = jobInfo.jobDescription {
+                DataManager.shared.loanInfo.jobInfo.jobDescription = value
             }
             
         }

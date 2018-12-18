@@ -20,8 +20,7 @@ public struct BrowwerUserInfo {
     static let birthday = "birthday"
     static let nationalId = "nationalId"
     
-    static let typeMobilePhone = "typeMobilePhone"
-    static let typeMobilePhoneTitle = "typeMobilePhoneTitle"
+    static let mobilePhoneType = "mobilePhoneType"
     static let phoneUsageTime = "phoneUsageTime"
   }
 
@@ -39,8 +38,7 @@ public struct BrowwerUserInfo {
   public var birthday: String?
   public var nationalId: String?
     
-    public var typeMobilePhone: Int?
-    public var typeMobilePhoneTitle: String?
+    public var mobilePhoneType: String?
     public var phoneUsageTime: Int?
 
   // MARK: SwiftyJSON Initializers
@@ -65,8 +63,7 @@ public struct BrowwerUserInfo {
     birthday = json[SerializationKeys.birthday].string
     nationalId = json[SerializationKeys.nationalId].string
     
-    typeMobilePhone = json[SerializationKeys.typeMobilePhone].int
-    typeMobilePhoneTitle = json[SerializationKeys.typeMobilePhoneTitle].string
+    mobilePhoneType = json[SerializationKeys.mobilePhoneType].string
     phoneUsageTime = json[SerializationKeys.phoneUsageTime].int
     
   }
@@ -84,8 +81,7 @@ public struct BrowwerUserInfo {
     if let value = gender { dictionary[SerializationKeys.gender] = value }
     if let value = birthday { dictionary[SerializationKeys.birthday] = value }
     if let value = nationalId { dictionary[SerializationKeys.nationalId] = value }
-    if let value = typeMobilePhone { dictionary[SerializationKeys.typeMobilePhone] = value }
-    if let value = typeMobilePhoneTitle { dictionary[SerializationKeys.typeMobilePhoneTitle] = value }
+    if let value = mobilePhoneType { dictionary[SerializationKeys.mobilePhoneType] = value }
     if let value = phoneUsageTime { dictionary[SerializationKeys.phoneUsageTime] = value }
     
     return dictionary

@@ -12,6 +12,7 @@ import Foundation
 /// Data trả về sau khi chọn
 protocol DataSelectedFromPopupProtocol: class {
     func dataSelected(data: LoanBuilderData)
+    func multiDataSelected(value: String, listIndex: String)
 }
 
 enum TypePopup: Int {
@@ -23,6 +24,7 @@ enum TypePopup: Int {
     case AcademicLevel // Trinh độ học vấn
     case TypeMobilePhone // Loai dien thoai su dung
     case CareerHusbandOrWife // Nghề nghiệp của vợ hoặc chồng
+    case TypeLoanedFrom // Đã từng vay tiền ở đâu
 }
 
 class LoanTypePopupVC: BasePopup {
@@ -54,7 +56,7 @@ class LoanTypePopupVC: BasePopup {
     var titleString: String = "Thông báo"
     var otherTextSelection: String?
     
-    var indexRelationPhone: Int = 0
+    var indexRelationPhone: Int?
 
     
     override func viewDidLoad() {
@@ -91,6 +93,30 @@ class LoanTypePopupVC: BasePopup {
     }
     
     
+    /// Check index Selection Relation Phone
+    ///
+    /// - Parameter index: <#index description#>
+    /// - Returns: <#return value description#>
+    private func checkSelectionRelationPhone(index: Int) -> Bool {
+        guard let type_ = self.type, type_ == TypePopup.RelationShipPhone else { return true }
+        
+        if self.indexRelationPhone == 0 {
+            if DataManager.shared.currentIndexRelationPhoneSelectedPopup2 == index {
+                self.showToastWithMessage(message: "Không được chọn trùng lặp loại người thân")
+                return false
+            }
+        } else {
+            if DataManager.shared.currentIndexRelationPhoneSelectedPopup1 == index {
+                self.showToastWithMessage(message: "Không được chọn trùng lặp loại người thân")
+                return false
+            }
+        }
+        
+        
+        return true
+    }
+    
+    
     /// set DataSource for tableView
     ///
     /// - Parameter data: <#data description#>
@@ -99,6 +125,19 @@ class LoanTypePopupVC: BasePopup {
             self.type = type_
         }
         self.dataSource = data
+        
+        guard let type_ = type, type_ == TypePopup.RelationShipPhone, let indexRelation = self.indexRelationPhone, let currentIndex_ = self.currentIndex else { return }
+        
+        if indexRelation == 0 {
+            if DataManager.shared.currentIndexRelationPhoneSelectedPopup1 == nil {
+                DataManager.shared.currentIndexRelationPhoneSelectedPopup1 = currentIndex_
+            }
+        } else {
+            if DataManager.shared.currentIndexRelationPhoneSelectedPopup2 == nil {
+                DataManager.shared.currentIndexRelationPhoneSelectedPopup2 = currentIndex_
+            }
+        }
+        
     }
     
     private func updateDataSelectedFromServer() {
@@ -109,11 +148,12 @@ class LoanTypePopupVC: BasePopup {
             
             break
         case .RelationShipPhone:
-            guard self.indexRelationPhone < DataManager.shared.loanInfo.userInfo.relationships.count else { return }
+            
+            guard let indexRelation = self.indexRelationPhone, indexRelation < DataManager.shared.loanInfo.userInfo.relationships.count else { return }
             var index = 0
             var update = false
             for d in dataSource {
-                if let id = d.id, id == Int16(DataManager.shared.loanInfo.userInfo.relationships[self.indexRelationPhone].type) {
+                if let id = d.id, id == Int16(DataManager.shared.loanInfo.userInfo.relationships[indexRelation].type) {
                     update = true
                     break
                 }
@@ -121,6 +161,12 @@ class LoanTypePopupVC: BasePopup {
             }
             if update {
                 self.currentIndex = index
+                
+                if indexRelation == 0 {
+                    DataManager.shared.currentIndexRelationPhoneSelectedPopup1 = index
+                } else {
+                    DataManager.shared.currentIndexRelationPhoneSelectedPopup2 = index
+                }
             }
         
             break
@@ -144,11 +190,28 @@ class LoanTypePopupVC: BasePopup {
             break
             
         case .TypeMobilePhone:
-            //self.updateCurrentIndex(i: )
+            
+            guard let value = DataManager.shared.loanInfo.userInfo.typeMobilePhone else { return }
+            
+            if !value.contains(keyComponentSeparateOptionalText) {
+                if let index = Int(value) {
+                    self.updateCurrentIndex(i: index)
+                }
+            } else {
+                
+                guard let index = FinPlusHelper.getIndexWithOtherSelection(value: value), let title = FinPlusHelper.getTitleWithOtherSelection(value: value) else { return }
+                
+                self.updateCurrentWithOtherOption(i: index, otherText: title)
+                
+            }
+            
             
             break
         case .CareerHusbandOrWife:
             
+            break
+            
+        case .TypeLoanedFrom:
             break
             
         }
@@ -279,6 +342,9 @@ class LoanTypePopupVC: BasePopup {
             
             break
             
+        default:
+            break
+            
         }
         
     }
@@ -313,7 +379,12 @@ class LoanTypePopupVC: BasePopup {
                 
                 break
             case .RelationShipPhone:
-                //DataManager.shared.currentIndexRelationPhoneSelectedPopup = self.currentIndex
+                if self.indexRelationPhone == 0 {
+                    DataManager.shared.currentIndexRelationPhoneSelectedPopup1 = self.currentIndex
+                } else {
+                    DataManager.shared.currentIndexRelationPhoneSelectedPopup2 = self.currentIndex
+                }
+                
                 break
             case .Job:
                 DataManager.shared.currentIndexJobSelectedPopup = self.currentIndex
@@ -335,6 +406,8 @@ class LoanTypePopupVC: BasePopup {
                 
             case .CareerHusbandOrWife:
                 DataManager.shared.currentIndexCareerHusbandOrWifeSelectedPopup = self.currentIndex
+                break
+            default:
                 break
             }
         }
@@ -389,6 +462,9 @@ extension LoanTypePopupVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard self.checkSelectionRelationPhone(index: indexPath.row) else { return }
+        
         self.currentIndex = indexPath.row
         
         if self.currentIndex == self.dataSource.count - 1 {

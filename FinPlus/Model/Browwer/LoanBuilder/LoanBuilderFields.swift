@@ -113,6 +113,10 @@ public struct LoanBuilderFields {
             if self.title == nil {
                 //Check display when have missing Data
                 self.isCanDisplay = false
+                guard let data = DataManager.shared.missingLoanDataDictionary, let value = data["addtionalImage"] as? String else { return }
+                self.isCanDisplay = true
+                self.title = value
+                
                 return
             }
             
