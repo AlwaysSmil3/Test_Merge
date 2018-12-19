@@ -141,6 +141,8 @@ class LoanSummaryInfoVC: BaseViewController {
                 }
                 
                 guard error != nil else {
+                    self.isLoadedContact = true
+                    completion()
                     return
                 }
                 

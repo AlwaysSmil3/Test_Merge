@@ -39,6 +39,9 @@ class AddressFirstViewController: BaseViewController {
     
     var valueTemp: String?
     
+    
+    var addressStringValue: String?
+    
     @IBOutlet var lblTitleHeader: UILabel!
     @IBOutlet var mainTableView: TPKeyboardAvoidingTableView!
     
@@ -96,7 +99,31 @@ class AddressFirstViewController: BaseViewController {
             self.mapData(address: DataManager.shared.loanInfo.userInfo.temporaryAddress)
         } else if id.contains("residentAddress") {
             self.mapData(address: DataManager.shared.loanInfo.userInfo.residentAddress)
+        } else {
+            guard let valueString = self.addressStringValue else {
+                return
+            }
+            self.mapDataWith(value: valueString)
         }
+    }
+    
+    private func mapDataWith(value: String) {
+        let listValue = value.components(separatedBy: KeySeparateAddressFormatString)
+        
+        guard listValue.count > 3 else { return }
+        
+        self.numberHouse = listValue[0]
+        
+        self.communeModel = Model1(object: NSObject())
+        self.communeModel?.name = listValue[1]
+        
+        self.districtModel = Model1(object: NSObject())
+        self.districtModel?.name = listValue[2]
+        
+        self.cityModel = Model1(object: NSObject())
+        self.cityModel?.name = listValue[3]
+        self.getCities(city: listValue[3], district: listValue[2], comune: listValue[1])
+        
     }
     
     

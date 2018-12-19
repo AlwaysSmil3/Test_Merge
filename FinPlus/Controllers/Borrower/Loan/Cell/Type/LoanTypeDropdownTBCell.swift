@@ -250,7 +250,6 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     }
                 }
                 
-                
                 self.lblValue?.text = value
                 DataManager.shared.loanInfo.jobInfo.strength = idInt
             }
@@ -323,14 +322,13 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
             DataManager.shared.loanInfo.userInfo.typeMobilePhone = value
-
             
             if DataManager.shared.checkFieldIsMissing(key: "mobilePhoneType", parentKey: "userInfo", currentValue: value) {
                 //Cap nhat thong tin khong hop le
                 if self.valueTemp == nil {
                     self.valueTemp = value
-                    self.updateInfoFalse(pre: title)
                 }
+                self.updateInfoFalse(pre: title)
             } else {
                 if let need = self.isNeedUpdate, need {
                     self.isNeedUpdate = false
@@ -367,11 +365,12 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 let timeISO8601 = dateTemp.toString(.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER))
                 DataManager.shared.loanInfo.optionalText[index] = timeISO8601
                 */
-                let arrayValue = value.components(separatedBy: keyComponentSeparateOptionalText)
-                if arrayValue.count > 1 {
-                    self.lblValue?.text = arrayValue[1]
-                } else if arrayValue.count == 1 {
-                    self.lblValue?.text = arrayValue[0]
+                
+                
+                if !value.contains(keyComponentSeparateOptionalText) {
+                    self.lblValue?.text = value
+                } else {
+                    self.lblValue?.text = FinPlusHelper.getTitleWithOtherSelection(value: value)
                 }
                 
             }
@@ -416,8 +415,8 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 //Cap nhat thong tin khong hop le
                 if self.valueTemp == nil {
                     self.valueTemp = value
-                    self.updateInfoFalse(pre: title)
                 }
+                self.updateInfoFalse(pre: title)
             } else {
                 if let need = self.isNeedUpdate, need {
                     self.isNeedUpdate = false

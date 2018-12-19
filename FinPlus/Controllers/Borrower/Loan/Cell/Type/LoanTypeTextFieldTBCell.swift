@@ -231,9 +231,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     //self.updateInfoFalse(pre: title)
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = self.formatDisplayCurrency(Double(value))
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
                 
             }
@@ -263,9 +268,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = value
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
                 
             } else if id.contains("nationalId") {
@@ -287,9 +297,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     //self.updateInfoFalse(pre: title)
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = value
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
             } else if id.contains("phoneUsageTime") {
                 var valueInt: Int = -1
@@ -314,6 +329,10 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                         self.updateInfoFalse(pre: title)
                     }
                     self.valueTemp = "\(Int(valueInt))"
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
             } else {
                 self.tfValue?.text = ""
@@ -341,9 +360,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     //self.updateInfoFalse(pre: title)
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = value
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
                 
             }  else if id == "salary" {
@@ -366,9 +390,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     //self.updateInfoFalse(pre: title)
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = self.formatDisplayCurrency(Double(value))
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
                 
             } else if id == "companyPhoneNumber" {
@@ -391,9 +420,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     //self.updateInfoFalse(pre: title)
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = value
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
             } else if id == "experienceYear" {
                 
@@ -414,9 +448,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     //self.updateInfoFalse(pre: title)
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = "\(Int(valueFloat))"
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
             } else if id == "studentId" {
                 
@@ -438,9 +477,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     //self.updateInfoFalse(pre: title)
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = value
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
             } else if id == "academicName" {
                 
@@ -462,9 +506,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     //self.updateInfoFalse(pre: title)
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = value
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
             }
         }

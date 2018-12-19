@@ -698,16 +698,6 @@ class FinPlusHelper {
             maxLength = 9
         }
         
-//        let first1 = phone.prefix(1)
-//        let first2 = phone.prefix(2)
-//        guard first2 == "01" else {
-//            if first1 != "0" && first1 != "1" {
-//                maxLength = 9
-//            }
-//
-//            return maxLength
-//        }
-//        maxLength = 11
         return maxLength
     }
     

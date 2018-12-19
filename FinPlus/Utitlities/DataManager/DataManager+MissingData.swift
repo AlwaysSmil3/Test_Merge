@@ -10,6 +10,43 @@ import Foundation
 
 extension DataManager {
     
+    
+    /// Check name Relation Invalid
+    ///
+    /// - Parameter name: <#name description#>
+    /// - Returns: <#return value description#>
+    func checkNameRelationInvalid(name: String, index: Int) -> Bool {
+        
+        guard let data = DataManager.shared.missingLoanDataDictionary, let userInfo = data["userInfo"] as? JSONDictionary, let relationPhone = userInfo["relationships"] as? JSONDictionary, let relation = relationPhone["\(index)"] as? JSONDictionary else {
+            return true
+        }
+        
+        if let nameValid = relation["name"] as? String, name == nameValid {
+            return false
+        }
+        
+        return true
+    }
+    
+    /// Check address relation invalid
+    ///
+    /// - Parameters:
+    ///   - address: <#address description#>
+    ///   - index: <#index description#>
+    /// - Returns: <#return value description#>
+    func checkAddressRelationInvalid(address: String, index: Int) -> Bool {
+        
+        guard let data = DataManager.shared.missingLoanDataDictionary, let userInfo = data["userInfo"] as? JSONDictionary, let relationPhone = userInfo["relationships"] as? JSONDictionary, let relation = relationPhone["\(index)"] as? JSONDictionary else {
+            return true
+        }
+        
+        if let addValid = relation["address"] as? String, address == addValid {
+            return false
+        }
+        
+        return true
+    }
+    
     //Get phone invalid from missing Data
     func getPhoneInValid(type: Int) -> String {
         var phone = ""
@@ -78,7 +115,7 @@ extension DataManager {
             
             if self.missingRelationsShip != nil {
                 missingListKey.append("relationships")
-                missingListTitle.append("Số điện thoại liên lạc của người thân")
+                missingListTitle.append("Thông tin liên lạc của người thân")
             }
             
             
@@ -90,6 +127,16 @@ extension DataManager {
             if let add = userInfo.currentAddress, let city = add.city, city.count > 0 {
                 missingListKey.append("currentAddress")
                 missingListTitle.append("Địa chỉ nhà tạm trú")
+            }
+            
+            if let _ = userInfo.mobilePhoneType {
+                missingListKey.append("mobilePhoneType")
+                missingListTitle.append("Loại điện thọai bạn đang sử dụng")
+            }
+            
+            if let _ = userInfo.phoneUsageTime {
+                missingListKey.append("phoneUsageTime")
+                missingListTitle.append("Bạn đã sử dụng lọai điện thoại này bao lâu")
             }
             
         }
@@ -159,6 +206,11 @@ extension DataManager {
                 missingListTitle.append("Địa chỉ trường học")
             }
             
+            if let _ = jobInfo.jobDescription {
+                missingListKey.append("jobDescription")
+                missingListTitle.append("Mô tả công việc của bạn")
+            }
+            
         }
         
         //if let bank = miss.bank,
@@ -176,6 +228,16 @@ extension DataManager {
                 missingListKey.append("bank")
                 missingListTitle.append("Tài khoản nhận tiền")
             }
+        }
+        
+        if let _ = miss.borrowedPlace {
+            missingListKey.append("typeloanedfrom")
+            missingListTitle.append("Bạn đã từng vay tiền ở đâu")
+        }
+        
+        if let _ = miss.totalBorrowedAmount {
+            missingListKey.append("totalAmountLoaned")
+            missingListTitle.append("Tổng số tiền bạn đã vay là bao nhiêu?")
         }
         
         if let value = miss.nationalIdAllImg, value.length() > 0, value == self.browwerInfo?.activeLoan?.nationalIdAllImg {
@@ -515,6 +577,10 @@ extension DataManager {
             }
         }
         
+        if let value = jobInfo["jobDescription"] as? String, value == DataManager.shared.loanInfo.jobInfo.jobDescription {
+            return false
+        }
+        
         return true
         
     }
@@ -542,6 +608,14 @@ extension DataManager {
         }
         
         if let value = userInfo["nationalId"] as? String, value == DataManager.shared.loanInfo.userInfo.nationalID {
+            return false
+        }
+        
+        if let value = userInfo["mobilePhoneType"] as? String, value == DataManager.shared.loanInfo.userInfo.typeMobilePhone {
+            return false
+        }
+        
+        if let value = userInfo["phoneUsageTime"] as? Int, value == DataManager.shared.loanInfo.userInfo.phoneUsageTime {
             return false
         }
         
