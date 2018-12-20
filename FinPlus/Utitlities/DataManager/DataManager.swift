@@ -114,6 +114,9 @@ class DataManager {
         }
     }
     
+    //For additional missingData
+    var titleAdditionalOptinalMediaMissingData: String?
+    
     //MissingData optionalText
     var missingOptionalText: JSONDictionary?
     
@@ -229,6 +232,7 @@ class DataManager {
         DataManager.shared.listKeyMissingLoanTitle = nil
         DataManager.shared.isRelationPhone1Invalid = false
         DataManager.shared.isRelationPhone2Invalid = false
+        DataManager.shared.titleAdditionalOptinalMediaMissingData = nil
     }
     
     func reloadOptionalData() {

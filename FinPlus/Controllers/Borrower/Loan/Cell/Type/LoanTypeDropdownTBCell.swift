@@ -125,9 +125,14 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 //Cap nhat thong tin khong hop le
                 if self.valueTemp == nil {
                     self.valueTemp = value
-                    self.updateInfoFalse(pre: title)
+                    
                 }
                 
+                self.updateInfoFalse(pre: title)
+            } else {
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
             }
             
         } else if id.contains("position") {
@@ -155,8 +160,8 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 //Cap nhat thong tin khong hop le
                 if self.valueTemp == nil {
                     self.valueTemp = value
-                    self.updateInfoFalse(pre: title)
                 }
+                self.updateInfoFalse(pre: title)
             } else {
                 if let need = self.isNeedUpdate, need {
                     self.isNeedUpdate = false
@@ -208,6 +213,10 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             if DataManager.shared.checkFieldIsMissing(key: "gender") {
                 //Cap nhat thong tin khong hop le
                 self.updateInfoFalse(pre: title)
+            } else {
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
             }
             
             var value = ""
@@ -257,9 +266,10 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             if DataManager.shared.checkFieldIsMissing(key: "strength", parentKey: "jobInfo", currentValue: value, currentValueIndex: idInt) {
                 //Cap nhat thong tin khong hop le
                 if self.valueTemp == nil {
-                    self.updateInfoFalse(pre: title)
+                    
                 }
                 self.valueTemp = self.lblValue?.text
+                self.updateInfoFalse(pre: title)
             } else {
                 if let need = self.isNeedUpdate, need {
                     self.isNeedUpdate = false
@@ -295,8 +305,9 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 //Cap nhat thong tin khong hop le
                 //self.updateInfoFalse(pre: title)
                 if self.valueTemp == nil {
-                    self.updateInfoFalse(pre: title)
+                    
                 }
+                self.updateInfoFalse(pre: title)
                 self.valueTemp = self.lblValue?.text
             } else {
                 if let need = self.isNeedUpdate, need {
@@ -411,7 +422,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 DataManager.shared.loanInfo.borrowedPlace = value
             }
             
-            if DataManager.shared.checkFieldIsMissing(key: "typeloanedfrom", currentValue: value) {
+            if DataManager.shared.checkFieldIsMissing(key: "borrowedPlace", currentValue: value) {
                 //Cap nhat thong tin khong hop le
                 if self.valueTemp == nil {
                     self.valueTemp = value
@@ -463,7 +474,12 @@ extension LoanTypeDropdownTBCell: DataSelectedFromPopupProtocol {
             DataManager.shared.loanInfo.jobInfo.jobTitle = value
             
             DataManager.shared.updateFieldsDisplay {
+                
+                DataManager.shared.loanInfo.jobInfo.jobDescription = ""
+                DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = ""
+                
                 self.parentVC?.reloadFieldsData()
+                
             }
             
         } else if id.contains("position") {

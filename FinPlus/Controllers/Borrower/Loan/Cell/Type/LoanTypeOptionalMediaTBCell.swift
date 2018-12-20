@@ -68,7 +68,6 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
             if let optionalMedia = DataManager.shared.missingOptionalMedia {
                 if let listUrlJSON = optionalMedia["\(indexArray)"] as? JSONDictionary {
                     
-                    //if self.listURLInValid == nil {
                     var listUrl: [String] = []
                     
                     for i in 0...MAX_COUNT_IMAGE {
@@ -79,7 +78,6 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
                     
                     self.listURLInValid = listUrl
                     self.updateListURLInvalid()
-                    //}
                     
                     if let list = self.listURLInValid, list.count > 0 {
                         self.updateInfoFalse(pre: "Ảnh cung cấp")
@@ -90,6 +88,14 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
                 } else {
                     self.isNeedUpdate = false
                 }
+            } else {
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
+            }
+        } else {
+            if let need = self.isNeedUpdate, need {
+                self.isNeedUpdate = false
             }
         }
         
@@ -111,12 +117,12 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         if let list = self.listURLInValid {
             var index = 0
             var isRemove = false
-            for i in list {
+            for (index_, i) in list.enumerated() {
                 if i == url {
+                    index = index_
                     isRemove = true
                     break
                 }
-                index += 1
             }
             if isRemove {
                 self.listURLInValid?.remove(at: index)
@@ -136,19 +142,18 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     }
     
     private func updateListURLInvalid() {
-        //guard let list = self.listURLInValid else { return }
+        
         self.listRemovedURLInvalid.forEach { (url) in
             var index = 0
             var isRemove = false
             
             if let list = self.listURLInValid {
-                for i in list {
+                for (index_, i) in list.enumerated() {
                     if i == url {
+                        index = index_
                         isRemove = true
                         break
                     }
-                    
-                    index += 1
                 }
                 
                 if isRemove {
