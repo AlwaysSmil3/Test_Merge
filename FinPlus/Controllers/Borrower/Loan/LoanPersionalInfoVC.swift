@@ -27,6 +27,8 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     var contacts = [Contact]()
     var isLoadedContact: Bool = false
     
+    var isCheckPermission: Bool = false
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         addressBook.fieldsMask = [APContactField.default, APContactField.thumbnail]
@@ -44,9 +46,11 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         addressBook.startObserveChanges
             {
                 [unowned self] in
+                
                 self.loadContacts {
                     
                 }
+                
         }
     }
     
@@ -60,14 +64,12 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         
         self.currentStep = 1
         
-        if let info = DataManager.shared.browwerInfo?.activeLoan,  let loanId = info.loanId, loanId > 0 {
-            //Cập nhật
-            //self.updateDataToServer()
+        FinPlusHelper.checkContactPermission { (status) in
+            self.loadContacts {
+                
+            }
         }
         
-        self.loadContacts {
-            
-        }
         
     }
     
@@ -79,6 +81,22 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         
         super.viewWillAppear(animated)
         
+    }
+    
+    private func checkPermissionAndLoadContact() {
+        if !self.isCheckPermission {
+            self.isCheckPermission = true
+            FinPlusHelper.checkContactPermission { (status) in
+                self.loadContacts {
+                    
+                }
+            }
+        } else {
+            self.loadContacts {
+                
+            }
+        }
+    
     }
     
     //MARK: Contacts

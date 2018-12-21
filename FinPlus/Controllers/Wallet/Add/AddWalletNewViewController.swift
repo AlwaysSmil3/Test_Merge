@@ -77,7 +77,7 @@ class AddWalletNewViewController: BaseViewController {
             return
         }
         
-        if self.accTextField.text!.count < 9 {
+        if self.accTextField.text!.count < 5 {
             self.showToastWithMessage(message: "Vui lòng nhập đúng số tài khoản")
             return
         }
@@ -157,7 +157,7 @@ extension AddWalletNewViewController: BankPopupSelectedProtocol {
 extension AddWalletNewViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Giới hạn ký tự nhập vào
-        var maxLength = 20
+        var maxLength = 30
         
         if textField == self.nameTextField {
             maxLength = 50

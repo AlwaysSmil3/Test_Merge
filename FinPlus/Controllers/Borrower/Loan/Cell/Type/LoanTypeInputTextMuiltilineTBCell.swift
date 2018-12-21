@@ -121,23 +121,25 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
                         print(text)
                         
                         if self.valueTemp == nil {
-                            self.updateInfoFalse(pre: title)
+                            
                         }
-                        
+                        self.updateInfoFalse(pre: title)
                         self.valueTemp = value
                     }
                 }
             } else {
-                self.isNeedUpdate = false
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
             }
             
         } else if id.contains("jobDescription") {
             var valueTemp: String?
-            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.jobDescription {
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.jobInfo?.jobDescription, data.count > 0 {
                 valueTemp = data
             }
             
-            if let desc = DataManager.shared.loanInfo.jobInfo.jobDescription {
+            if let desc = DataManager.shared.loanInfo.jobInfo.jobDescription, desc.count > 0 {
                 valueTemp = desc
             }
             guard let value = valueTemp else { return }
@@ -150,9 +152,14 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
                 //Cap nhat thong tin khong hop le
                 //self.updateInfoFalse(pre: title)
                 if self.valueTemp == nil {
-                    self.updateInfoFalse(pre: title)
+                    
                 }
+                self.updateInfoFalse(pre: title)
                 self.valueTemp = value
+            } else {
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
             }
         }
         
