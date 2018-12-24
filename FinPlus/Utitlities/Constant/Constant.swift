@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Key separate format Address String
+let KeySeparateAddressFormatString = ", "
 
 /// Key for append value to api server
 let keyComponentSeparateOptionalText = ","

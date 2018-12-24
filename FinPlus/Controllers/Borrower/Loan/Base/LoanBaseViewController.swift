@@ -356,14 +356,25 @@ class LoanBaseViewController: BaseViewController {
     func showInputMesseageView() {
         self.isMuiltiLineText = true
         
-        self.checkValueOptionalTextMuiltiLine {
+        guard let index = self.currentIndexSelected?.row, let field = self.dataSource?.fieldsDisplay?[index], let id = field.id else {
             self.sbInputView?.textView.becomeFirstResponder()
+            return
+        }
+        
+        if id.contains("optionalText") {
+            self.checkValueOptionalTextMuiltiLine {
+                self.sbInputView?.textView.becomeFirstResponder()
+            }
+        } else {
+            self.checkOtherTextMuiltiline(id: id) {
+                self.sbInputView?.textView.becomeFirstResponder()
+            }
         }
         
     }
     
     //Check nếu có text nhập rồi thì input vào cho edit từ đã có
-    func checkValueOptionalTextMuiltiLine(completion: () -> Void) {
+    private func checkValueOptionalTextMuiltiLine(completion: () -> Void) {
         guard let index = self.currentIndexSelected?.row else {
             completion()
             return
@@ -378,6 +389,25 @@ class LoanBaseViewController: BaseViewController {
         self.sbInputView?.lineHeight = 20
         self.sbInputView?.numberOfLines = CGFloat(self.getCountLine(text: text))
         self.sbInputView?.tempValue = text
+        completion()
+    }
+    
+    
+    /// Check nếu có text nhập rồi thì input vào cho edit từ đã có
+    ///
+    /// - Parameter completion: <#completion description#>
+    private func checkOtherTextMuiltiline(id: String, completion: () -> Void) {
+        
+        if id.contains("jobDescription") {
+            guard let text = DataManager.shared.loanInfo.jobInfo.jobDescription else {
+                completion()
+                return }
+            
+            self.sbInputView?.lineHeight = 20
+            self.sbInputView?.numberOfLines = CGFloat(self.getCountLine(text: text))
+            self.sbInputView?.tempValue = text
+        
+        }
         completion()
     }
     
@@ -696,7 +726,7 @@ extension LoanBaseViewController: TextFieldEditDidBeginDelegate {
 //MARK: Address Delegate
 extension LoanBaseViewController: AddressDelegate {
     func getAddress(address: Address, type: Int, title: String, id: String) {
-        let add = address.street + ", " + address.commune + ", " + address.district + ", " + address.city
+        let add = address.street + KeySeparateAddressFormatString + address.commune + KeySeparateAddressFormatString + address.district + KeySeparateAddressFormatString + address.city
         
         if id.contains("residentAddress") {
             DataManager.shared.loanInfo.userInfo.residentAddress = address

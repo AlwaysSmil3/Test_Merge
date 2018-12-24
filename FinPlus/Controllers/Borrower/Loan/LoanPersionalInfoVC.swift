@@ -27,6 +27,8 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     var contacts = [Contact]()
     var isLoadedContact: Bool = false
     
+    var isCheckPermission: Bool = false
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         addressBook.fieldsMask = [APContactField.default, APContactField.thumbnail]
@@ -44,9 +46,11 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         addressBook.startObserveChanges
             {
                 [unowned self] in
+                
                 self.loadContacts {
                     
                 }
+                
         }
     }
     
@@ -60,14 +64,12 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         
         self.currentStep = 1
         
-        if let info = DataManager.shared.browwerInfo?.activeLoan,  let loanId = info.loanId, loanId > 0 {
-            //Cập nhật
-            //self.updateDataToServer()
+        FinPlusHelper.checkContactPermission { (status) in
+            self.loadContacts {
+                
+            }
         }
         
-        self.loadContacts {
-            
-        }
         
     }
     
@@ -79,6 +81,22 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         
         super.viewWillAppear(animated)
         
+    }
+    
+    private func checkPermissionAndLoadContact() {
+        if !self.isCheckPermission {
+            self.isCheckPermission = true
+            FinPlusHelper.checkContactPermission { (status) in
+                self.loadContacts {
+                    
+                }
+            }
+        } else {
+            self.loadContacts {
+                
+            }
+        }
+    
     }
     
     //MARK: Contacts
@@ -227,6 +245,43 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         return "\(phone)_0_UNKNOWN"
     }
     
+    private func checkPersionalRelationInfo() -> Bool {
+        
+        if DataManager.shared.loanInfo.userInfo.relationships[0].type < 0 {
+            self.showToastWithMessage(message: "Vui lòng chọn người thân 1 để tiếp tục.")
+            return false
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại người thân 1 để tiếp tục.")
+            return false
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.relationships[0].name == nil || (DataManager.shared.loanInfo.userInfo.relationships[0].name ?? "").count == 0 {
+            self.showToastWithMessage(message: "Vui lòng nhập họ tên người thân 1 để tiếp tục.")
+            return false
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.relationships[1].type < 0 {
+            self.showToastWithMessage(message: "Vui lòng chọn người thân 2 để tiếp tục.")
+            return false
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber.length() == 0 {
+            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại người thân 2 để tiếp tục.")
+            return false
+        }
+        
+        if DataManager.shared.loanInfo.userInfo.relationships[1].name == nil || (DataManager.shared.loanInfo.userInfo.relationships[1].name ?? "").count == 0 {
+            self.showToastWithMessage(message: "Vui lòng nhập họ tên người thân 2 để tiếp tục.")
+            return false
+        }
+        
+        
+        
+        return true
+    }
+    
     private func updateDataForLoanAPI(completion: () -> Void) {
         
         
@@ -250,25 +305,7 @@ class LoanPersionalInfoVC: LoanBaseViewController {
             return
         }
         
-        if DataManager.shared.loanInfo.userInfo.relationships[0].type < 0 {
-            self.showToastWithMessage(message: "Vui lòng chọn người thân 1 để tiếp tục.")
-            return
-        }
-        
-        if DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại người thân 1 để tiếp tục.")
-            return
-        }
-        
-        if DataManager.shared.loanInfo.userInfo.relationships[1].type < 0 {
-            self.showToastWithMessage(message: "Vui lòng chọn người thân 2 để tiếp tục.")
-            return
-        }
-        
-        if DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại người thân 2 để tiếp tục.")
-            return
-        }
+        guard self.checkPersionalRelationInfo() else { return }
         
         if DataManager.shared.loanInfo.userInfo.residentAddress.city.length() == 0 {
             self.showToastWithMessage(message: "Vui lòng nhập địa chỉ thường trú của bạn để tiếp tục.")

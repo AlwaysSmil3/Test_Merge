@@ -126,18 +126,6 @@ class LoanTypePopupVC: BasePopup {
         }
         self.dataSource = data
         
-        guard let type_ = type, type_ == TypePopup.RelationShipPhone, let indexRelation = self.indexRelationPhone, let currentIndex_ = self.currentIndex else { return }
-        
-        if indexRelation == 0 {
-            if DataManager.shared.currentIndexRelationPhoneSelectedPopup1 == nil {
-                DataManager.shared.currentIndexRelationPhoneSelectedPopup1 = currentIndex_
-            }
-        } else {
-            if DataManager.shared.currentIndexRelationPhoneSelectedPopup2 == nil {
-                DataManager.shared.currentIndexRelationPhoneSelectedPopup2 = currentIndex_
-            }
-        }
-        
     }
     
     private func updateDataSelectedFromServer() {
@@ -152,20 +140,22 @@ class LoanTypePopupVC: BasePopup {
             guard let indexRelation = self.indexRelationPhone, indexRelation < DataManager.shared.loanInfo.userInfo.relationships.count else { return }
             var index = 0
             var update = false
-            for d in dataSource {
-                if let id = d.id, id == Int16(DataManager.shared.loanInfo.userInfo.relationships[indexRelation].type) {
+            var id: Int?
+            for (i, d) in dataSource.enumerated() {
+                if let id_ = d.id, id_ == Int16(DataManager.shared.loanInfo.userInfo.relationships[indexRelation].type) {
                     update = true
+                    index = i
+                    id = Int(id_)
                     break
                 }
-                index += 1
             }
             if update {
                 self.currentIndex = index
                 
                 if indexRelation == 0 {
-                    DataManager.shared.currentIndexRelationPhoneSelectedPopup1 = index
+                    DataManager.shared.currentIndexRelationPhoneSelectedPopup1 = id
                 } else {
-                    DataManager.shared.currentIndexRelationPhoneSelectedPopup2 = index
+                    DataManager.shared.currentIndexRelationPhoneSelectedPopup2 = id
                 }
             }
         
@@ -262,6 +252,23 @@ class LoanTypePopupVC: BasePopup {
         }
     }
     
+    
+    /// Get index from id
+    ///
+    /// - Parameter id: <#id description#>
+    /// - Returns: <#return value description#>
+    private func getIndexfromID(id: Int) -> Int? {
+        var temp: Int?
+        for (index, value) in self.dataSource.enumerated() {
+            if value.id == Int16(id) {
+                temp = index
+                break
+            }
+        }
+        
+        return temp
+    }
+    
     /// Update index hiện tại đang chọn
     func updateSelected() {
         guard let type_ = self.type else { return }
@@ -275,11 +282,11 @@ class LoanTypePopupVC: BasePopup {
             
             if self.indexRelationPhone == 0 {
                 if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup1 {
-                    self.currentIndex = current
+                    self.currentIndex = self.getIndexfromID(id: current)
                 }
             } else {
                 if let current = DataManager.shared.currentIndexRelationPhoneSelectedPopup2 {
-                    self.currentIndex = current
+                    self.currentIndex = self.getIndexfromID(id: current)
                 }
             }
             
@@ -380,9 +387,15 @@ class LoanTypePopupVC: BasePopup {
                 break
             case .RelationShipPhone:
                 if self.indexRelationPhone == 0 {
-                    DataManager.shared.currentIndexRelationPhoneSelectedPopup1 = self.currentIndex
+                    if let id = self.dataSource[index].id {
+                        DataManager.shared.currentIndexRelationPhoneSelectedPopup1 = Int(id)
+                    }
+                    
                 } else {
-                    DataManager.shared.currentIndexRelationPhoneSelectedPopup2 = self.currentIndex
+                    
+                    if let id = self.dataSource[index].id {
+                        DataManager.shared.currentIndexRelationPhoneSelectedPopup2 = Int(id)
+                    }
                 }
                 
                 break
@@ -462,8 +475,6 @@ extension LoanTypePopupVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        guard self.checkSelectionRelationPhone(index: indexPath.row) else { return }
         
         self.currentIndex = indexPath.row
         

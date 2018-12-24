@@ -119,7 +119,10 @@ class LoanSummaryInfoVC: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.initLocationManager()
+        FinPlusHelper.checkLocationPermission { (status) in
+            self.initLocationManager()
+        }
+        
     }
     
     //MARK: Contacts
@@ -141,6 +144,8 @@ class LoanSummaryInfoVC: BaseViewController {
                 }
                 
                 guard error != nil else {
+                    self.isLoadedContact = true
+                    completion()
                     return
                 }
                 

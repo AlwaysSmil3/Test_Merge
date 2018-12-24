@@ -75,6 +75,7 @@ class LoanOtherInfoVC: LoanBaseViewController {
             if media.count == 0 {
                 for fi in listField {
                     if fi.id == "optionalMedia", let arrayIndex = fi.arrayIndex, arrayIndex == index, fi.isRequired == true {
+                        print(arrayIndex)
                         return false
                     }
                 }

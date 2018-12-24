@@ -227,13 +227,18 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 self.tfValue?.text = self.formatDisplayCurrency(Double(value))
                 DataManager.shared.loanInfo.totalBorrowedAmount = value
                 
-                if DataManager.shared.checkFieldIsMissing(key: "totalAmountLoaned") {
+                if DataManager.shared.checkFieldIsMissing(key: "totalBorrowedAmount", currentDoubleValue: value) {
                     //Cap nhat thong tin khong hop le
                     //self.updateInfoFalse(pre: title)
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        self.valueTemp = self.formatDisplayCurrency(Double(value))
                     }
-                    self.valueTemp = self.formatDisplayCurrency(Double(value))
+                    self.updateInfoFalse(pre: title)
+                    
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
                 
             }
@@ -263,9 +268,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = value
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
                 
             } else if id.contains("nationalId") {
@@ -287,9 +297,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     //self.updateInfoFalse(pre: title)
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = value
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
             } else if id.contains("phoneUsageTime") {
                 var valueInt: Int = -1
@@ -314,6 +329,10 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                         self.updateInfoFalse(pre: title)
                     }
                     self.valueTemp = "\(Int(valueInt))"
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
             } else {
                 self.tfValue?.text = ""
@@ -341,9 +360,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     //self.updateInfoFalse(pre: title)
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = value
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
                 
             }  else if id == "salary" {
@@ -366,9 +390,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     //self.updateInfoFalse(pre: title)
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = self.formatDisplayCurrency(Double(value))
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
                 
             } else if id == "companyPhoneNumber" {
@@ -391,9 +420,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     //self.updateInfoFalse(pre: title)
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = value
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
             } else if id == "experienceYear" {
                 
@@ -414,9 +448,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     //self.updateInfoFalse(pre: title)
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = "\(Int(valueFloat))"
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
             } else if id == "studentId" {
                 
@@ -438,9 +477,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     //self.updateInfoFalse(pre: title)
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = value
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
             } else if id == "academicName" {
                 
@@ -462,9 +506,14 @@ class LoanTypeTextFieldTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     //Cap nhat thong tin khong hop le
                     //self.updateInfoFalse(pre: title)
                     if self.valueTemp == nil {
-                        self.updateInfoFalse(pre: title)
+                        
                     }
+                    self.updateInfoFalse(pre: title)
                     self.valueTemp = value
+                } else {
+                    if let need = self.isNeedUpdate, need {
+                        self.isNeedUpdate = false
+                    }
                 }
             }
         }
@@ -508,11 +557,14 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
             currentString.replacingCharacters(in: range, with: string) as NSString
         
         if let temp = self.valueTemp {
-            if newString as String != temp {
-                self.isNeedUpdate = false
-            } else {
-                //self.isNeedUpdate = true
+            let newStr = newString as String
+            
+            if newStr == temp {
+                
                 self.updateInfoFalse(pre: self.field?.title ?? "")
+            } else {
+                self.isNeedUpdate = false
+                
             }
         }
         
@@ -530,6 +582,19 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
             }
             
             if bool {
+                if let temp = self.valueTemp {
+                    let newStr = newString as String
+                    let newStr1 = newStr.replacingOccurrences(of: ",", with: "").replacingOccurrences(of: ".", with: "")
+                    let temp1 = temp.replacingOccurrences(of: ",", with: "").replacingOccurrences(of: ".", with: "")
+                    if newStr1 == temp1 {
+                        
+                        self.updateInfoFalse(pre: self.field?.title ?? "")
+                    } else {
+                        self.isNeedUpdate = false
+                        
+                    }
+                }
+                
                 return self.formatTFSalary(textField, shouldChangeCharactersIn: range, replacementString: string)
             }
         }
@@ -589,6 +654,8 @@ extension LoanTypeTextFieldTBCell: UITextFieldDelegate {
                     DataManager.shared.loanInfo.optionalText[index] = tempAmount2
                 }
                 
+            } else if id.contains("totalAmountLoaned") {
+                DataManager.shared.loanInfo.totalBorrowedAmount = Double(tempAmount2) ?? 0
             }
         }
 

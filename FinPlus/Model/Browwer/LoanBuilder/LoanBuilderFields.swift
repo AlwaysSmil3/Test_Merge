@@ -106,14 +106,20 @@ public struct LoanBuilderFields {
         
         if let id_ = self.id, id_ == "optionalMedia" {
             if let amount = self.displayIfLoanOver, amount > Double(DataManager.shared.loanInfo.amount) {
-                self.isCanDisplay = false
-                return
+                
+                if let listJob = self.displayIfJobTypeIs, listJob.count > 0 {
+                    let temp = listJob.filter { $0 == DataManager.shared.loanInfo.jobInfo.jobType }
+                    if temp.count == 0 {
+                        self.isCanDisplay = false
+                        return
+                    }
+                }
             }
             
             if self.title == nil {
                 //Check display when have missing Data
                 self.isCanDisplay = false
-                guard let data = DataManager.shared.missingLoanDataDictionary, let value = data["addtionalImage"] as? String else { return }
+                guard let value = DataManager.shared.titleAdditionalOptinalMediaMissingData else { return }
                 self.isCanDisplay = true
                 self.title = value
                 
@@ -127,10 +133,12 @@ public struct LoanBuilderFields {
             let temp = listJob.filter { $0 == DataManager.shared.loanInfo.jobInfo.jobType }
             if temp.count == 0 {
                 self.isCanDisplay = false
+                return
             }
             
         }
         
+        self.isCanDisplay = true
     }
 
   /// Generates description of the object in the form of a NSDictionary.

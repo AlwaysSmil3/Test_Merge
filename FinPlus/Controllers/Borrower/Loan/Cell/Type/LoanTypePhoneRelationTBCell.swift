@@ -121,13 +121,13 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 
                 if i == 0 {
                     if DataManager.shared.currentIndexRelationPhoneSelectedPopup1 == nil {
-                        if let index = self.getIndexFromType(type: Int16(pho.type ?? 0)) {
+                        if let index = pho.type {
                             DataManager.shared.currentIndexRelationPhoneSelectedPopup1 = index
                         }
                     }
                 } else if i == 1 {
                     if DataManager.shared.currentIndexRelationPhoneSelectedPopup2 == nil {
-                        if let index = self.getIndexFromType(type: Int16(pho.type ?? 0)) {
+                        if let index = pho.type {
                             DataManager.shared.currentIndexRelationPhoneSelectedPopup2 = index
                         }
                     }
@@ -141,8 +141,13 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         }
     }
     
+    /*
+    /// Get index from Type(id)
+    ///
+    /// - Parameter type: <#type description#>
+    /// - Returns: <#return value description#>
     private func getIndexFromType(type: Int16) -> Int? {
-         guard let field_ = self.field, let data_ = field_.multipleData, data_.count == 2, let options = data_[0].options else { return nil}
+         guard let field_ = self.field, let data_ = field_.multipleData, data_.count > 1, let options = data_[0].options else { return nil}
         
         for (i, d) in options.enumerated() {
             if type == d.id {
@@ -152,7 +157,7 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         
         return nil
     }
-    
+    */
     
 }
 

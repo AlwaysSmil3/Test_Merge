@@ -9,10 +9,102 @@
 import Foundation
 import CoreData
 import SystemConfiguration
-import FirebaseRemoteConfig
+//import FirebaseRemoteConfig
+import ContactsUI
+import AVFoundation
+import CoreLocation
+
 
 class FinPlusHelper {
     
+    
+    //MARK: Check permissions
+    
+    
+    /// Check permission Contact
+    ///
+    /// - Parameter completion: <#completion description#>
+    class func checkContactPermission(completion: @escaping(_ accessGranted: Bool) -> Void) {
+        
+        switch CNContactStore.authorizationStatus(for: .contacts) {
+        case .authorized:
+            completion(true)
+            break
+        case .denied:
+            completion(true)
+            break
+        case .notDetermined, .restricted:
+            
+            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: "Bạn cần cung cấp quyền truy cập danh bạ để tiếp tục hoàn thiện đơn vay", message: "Chúng tôi cần bạn cấp quyền truy cập danh bạ để xác thực sim điện thoại bạn đang sử dụng. Vui lòng bấm đồng ý để hồ sơ vay tiền của bạn được xử lý nhanh nhất.", okTitle: "Đồng ý", cancelTitle: "Bỏ qua", completion: { (status) in
+                if status {
+                    completion(true)
+                }
+            })
+            
+            break
+        }
+        
+        
+    }
+    
+    
+    
+    /// Check Camera Permission
+    ///
+    /// - Parameter completion: <#completion description#>
+    class func checkCameraPermission(completion: @escaping(_ accessGranted: Bool) -> Void) {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+            
+        case .authorized:
+            completion(true)
+            break
+        case .denied:
+            completion(true)
+            break
+        case .notDetermined, .restricted:
+            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: "Bạn cần cung cấp quyền truy cập Camera để tiếp tục hoàn thiện đơn vay", message: "Chúng tôi cần bạn cấp quyền chụp ảnh trực tiếp từ điện thoại để bạn chụp và đăng tải hồ sơ giấy tờ tùy thân. Vui lòng bấm đồng ý để hồ sơ vay tiền của bạn được hoàn thiện nhanh nhất.", okTitle: "Đồng ý", cancelTitle: "Bỏ qua", completion: { (status) in
+                if status {
+                    completion(true)
+                }
+            })
+            break
+            
+        }
+    
+    }
+    
+    
+    /// Check Location Permission
+    ///
+    /// - Parameter completion: <#completion description#>
+    class func checkLocationPermission(completion: @escaping(_ accessGranted: Bool) -> Void) {
+        switch CLLocationManager.authorizationStatus() {
+            
+        case .authorized:
+            completion(true)
+            break
+        case .denied:
+            completion(true)
+            break
+        case .notDetermined, .restricted:
+            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: "Bạn cần cung cấp quyền truy cập Vị trí để tiếp tục hoàn thiện đơn vay", message: "Chúng tôi cần bạn cấp quyền truy cập vị trí để xác thực khu vực hỗ trợ cho vay. Vui lòng bấm đồng ý để hồ sơ vay tiền của bạn được xử lý nhanh nhất.", okTitle: "Đồng ý", cancelTitle: "Bỏ qua", completion: { (status) in
+                if status {
+                    completion(true)
+                }
+            })
+            break
+            
+        case .authorizedAlways:
+            completion(true)
+            break
+        case .authorizedWhenInUse:
+            completion(true)
+            break
+        }
+        
+        
+        
+    }
     
     
     /// get indexValue
@@ -543,6 +635,7 @@ class FinPlusHelper {
     }
     
     
+    /*
     /// Check status need Update App
     ///
     /// - Returns: <#return value description#>
@@ -568,7 +661,7 @@ class FinPlusHelper {
         }
         return false
     }
-    
+    */
     
     /// Show alert Need Update
     class func checkVersionWithConfigAndShowAlert(completion: @escaping () -> Void) {
@@ -603,7 +696,7 @@ class FinPlusHelper {
         
     }
     
-    
+    /*
     /// Show alert Need Update
     class func checkVersionWithFireBaseConfigAndShowAlert(completion: @escaping () -> Void) {
         guard FinPlusHelper.isConnectedToNetwork() else { return }
@@ -645,6 +738,7 @@ class FinPlusHelper {
            
         }
     }
+    */
     
     //MARK: Kiểm tra cập nhật đầu số mới
     class func updatePhoneNumber(phone: String) -> String {
@@ -698,16 +792,6 @@ class FinPlusHelper {
             maxLength = 9
         }
         
-//        let first1 = phone.prefix(1)
-//        let first2 = phone.prefix(2)
-//        guard first2 == "01" else {
-//            if first1 != "0" && first1 != "1" {
-//                maxLength = 9
-//            }
-//
-//            return maxLength
-//        }
-//        maxLength = 11
         return maxLength
     }
     
