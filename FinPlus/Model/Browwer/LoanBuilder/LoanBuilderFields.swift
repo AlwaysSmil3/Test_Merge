@@ -113,7 +113,11 @@ public struct LoanBuilderFields {
                         self.isCanDisplay = false
                         return
                     }
+                } else {
+                    self.isCanDisplay = false
+                    return
                 }
+                
             }
             
             if self.title == nil {

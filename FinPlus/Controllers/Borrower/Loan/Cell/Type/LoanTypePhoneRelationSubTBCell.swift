@@ -43,25 +43,6 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
             self.tfTypeRelation?.text = DataManager.getTitleRelationShip(id: data_.type ?? -1)
             self.setupUI(id: data_.type ?? -1)
             
-            /*
-            if self.currentIndex == 0 {
-                
-                if DataManager.shared.isRelationPhone1Invalid {
-                    self.tfRelationPhone?.textColor = UIColor(hexString: "#DA3535")
-                } else {
-                    self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
-                }
-                
-            } else {
-                
-                if DataManager.shared.isRelationPhone2Invalid {
-                    self.tfRelationPhone?.textColor = UIColor(hexString: "#DA3535")
-                } else {
-                    self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
-                }
-            }
-            */
-            
             self.checkInvalidPersionalRelationData()
             
         }
@@ -251,6 +232,7 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
     //MARK: Actions
     
     @IBAction func btnAddressTapped(_ sender: Any) {
+        self.parentVC?.view.endEditing(true)
         let title = self.lblAddressRelationTitle?.text ?? "Địa chỉ người thân \(self.currentIndex + 1)"
         let id = "RelationAddress\(self.currentIndex + 1)"
         self.gotoAddressVC(title: title, id: id)
