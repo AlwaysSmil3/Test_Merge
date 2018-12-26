@@ -118,6 +118,8 @@ public struct LoanBuilderFields {
                     return
                 }
                 
+            } else {
+                self.isCanDisplay = true
             }
             
             if self.title == nil {
@@ -129,7 +131,7 @@ public struct LoanBuilderFields {
                 
                 return
             }
-            
+            return
         }
         
         if let listJob = self.displayIfJobTypeIs, listJob.count > 0 {
