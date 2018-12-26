@@ -104,12 +104,36 @@ class DataManager {
             
             guard let userInfo = miss["userInfo"] as? JSONDictionary, let relationShip = userInfo["relationships"] as? JSONDictionary else { return }
             
-            if let relation = relationShip["0"] as? JSONDictionary, let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
-                self.isRelationPhone1Invalid = true
+            if let relation = relationShip["0"] as? JSONDictionary {
+                
+                if let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
+                    self.isRelationPhone1Invalid = true
+                }
+                
+                if let value = relation["checkname"] as? Bool, value {
+                    self.isRelationPhone1Invalid = true
+                }
+                
+                if let value = relation["checkaddress"] as? Bool, value {
+                    self.isRelationPhone1Invalid = true
+                }
+                
             }
             
-            if let relation = relationShip["1"] as? JSONDictionary, let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
-                self.isRelationPhone2Invalid = true
+            if let relation = relationShip["1"] as? JSONDictionary {
+                
+                if let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
+                    self.isRelationPhone2Invalid = true
+                }
+                
+                if let value = relation["checkname"] as? Bool, value {
+                    self.isRelationPhone2Invalid = true
+                }
+                
+                if let value = relation["checkaddress"] as? Bool, value {
+                    self.isRelationPhone2Invalid = true
+                }
+                
             }
         }
     }
