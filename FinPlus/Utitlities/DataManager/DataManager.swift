@@ -39,6 +39,9 @@ class DataManager {
     // Danh sách các loại khoản vay
     var loanCategories: [LoanCategories] = []
     
+    //thêm field cho step 4
+    var listFieldForStep4: [LoanBuilderFields]?
+    
     // ID của Loan
     var loanID: Int32?
     
@@ -78,6 +81,15 @@ class DataManager {
     //Hoc luc hien tai dang chon
     var currentIndexStrengthSelectedPopup: Int?
     
+    //Loai dien thoai hien tai dang chon
+    var currentIndexTypeMobilePhoneSelectedPopup: Int?
+    
+    //Loai dien thoai hien tai dang chon
+    var currentIndexCareerHusbandOrWifeSelectedPopup: Int?
+    
+    //Loai dien thoai hien tai dang chon
+    var currentListIndexLoanedFromSelectedPopup: String?
+    
     //Các trường không hợp lệ của loan
     var missingLoanData: BrowwerActiveLoan? {
         didSet {
@@ -92,15 +104,42 @@ class DataManager {
             
             guard let userInfo = miss["userInfo"] as? JSONDictionary, let relationShip = userInfo["relationships"] as? JSONDictionary else { return }
             
-            if let relation = relationShip["0"] as? JSONDictionary, let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
-                self.isRelationPhone1Invalid = true
+            if let relation = relationShip["0"] as? JSONDictionary {
+                
+                if let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
+                    self.isRelationPhone1Invalid = true
+                }
+                
+                if let value = relation["checkname"] as? Bool, value {
+                    self.isRelationPhone1Invalid = true
+                }
+                
+                if let value = relation["checkaddress"] as? Bool, value {
+                    self.isRelationPhone1Invalid = true
+                }
+                
             }
             
-            if let relation = relationShip["1"] as? JSONDictionary, let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
-                self.isRelationPhone2Invalid = true
+            if let relation = relationShip["1"] as? JSONDictionary {
+                
+                if let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
+                    self.isRelationPhone2Invalid = true
+                }
+                
+                if let value = relation["checkname"] as? Bool, value {
+                    self.isRelationPhone2Invalid = true
+                }
+                
+                if let value = relation["checkaddress"] as? Bool, value {
+                    self.isRelationPhone2Invalid = true
+                }
+                
             }
         }
     }
+    
+    //For additional missingData
+    var titleAdditionalOptinalMediaMissingData: String?
     
     //MissingData optionalText
     var missingOptionalText: JSONDictionary?
@@ -186,26 +225,26 @@ class DataManager {
     }
     
     /// Get Data from JSON
-//    func getDataLoanFromJSON() {
-//        if let path = Bundle.main.path(forResource: "LoanBuilder", ofType: "json") {
-//            do {
-//                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-//                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-//                if let jsonResult = jsonResult as? [Any] {
-//                    // do stuff
-//
-//                    jsonResult.forEach({ (data) in
-//                        let toll = LoanCategories(object: data)
-//                        //self.loanBuilder.append(toll)
-//                        self.loanCategories.append(toll)
-//                    })
-//
-//                }
-//            } catch {
-//                // handle error
-//            }
-//        }
-//    }
+    func getDataLoanFromJSON() {
+        if let path = Bundle.main.path(forResource: "LoanBuilder", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? [Any] {
+                    // do stuff
+
+                    jsonResult.forEach({ (data) in
+                        let toll = LoanCategories(object: data)
+                        //self.loanBuilder.append(toll)
+                        self.loanCategories.append(toll)
+                    })
+
+                }
+            } catch {
+                // handle error
+            }
+        }
+    }
     
     func clearMissingLoanData() {
         DataManager.shared.missingRelationsShip = nil
@@ -217,6 +256,7 @@ class DataManager {
         DataManager.shared.listKeyMissingLoanTitle = nil
         DataManager.shared.isRelationPhone1Invalid = false
         DataManager.shared.isRelationPhone2Invalid = false
+        DataManager.shared.titleAdditionalOptinalMediaMissingData = nil
     }
     
     func reloadOptionalData() {
@@ -306,7 +346,7 @@ class DataManager {
             DataManager.shared.loanInfo.status = status
         }
         
-        if let loanId = activeLoan.loanId, loanId > 0 {
+        if let loanId = activeLoan.loanId {
             DataManager.shared.loanID = loanId
         }
         
@@ -323,8 +363,16 @@ class DataManager {
             
         }
         
-        if let bankId = activeLoan.bankId, bankId > 0 {
+        if let bankId = activeLoan.bankId {
             DataManager.shared.loanInfo.bankId = bankId
+        }
+        
+        if let value = activeLoan.borrowedPlace {
+            DataManager.shared.loanInfo.borrowedPlace = value
+        }
+        
+        if let value = activeLoan.totalBorrowedAmount {
+            DataManager.shared.loanInfo.totalBorrowedAmount = value
         }
         
         
@@ -348,6 +396,16 @@ class DataManager {
                     
                 }
                 
+                if let name1 = relationShips[0].name, name1.count > 0, let name2 = relationShips[1].name, name2.count > 0 {
+                    DataManager.shared.loanInfo.userInfo.relationships[0].name = name1
+                    DataManager.shared.loanInfo.userInfo.relationships[1].name = name2
+                }
+                
+                if let add1 = relationShips[0].address, add1.count > 0, let add2 = relationShips[1].address, add2.count > 0 {
+                    DataManager.shared.loanInfo.userInfo.relationships[0].address = add1
+                    DataManager.shared.loanInfo.userInfo.relationships[1].address = add2
+                }
+                
             }
             
             if let birthDay = userInfo.birthday {
@@ -364,6 +422,14 @@ class DataManager {
             
             if let add = userInfo.currentAddress, let city = add.city, let dis = add.district, let commue = add.commune, let street = add.street {
                 DataManager.shared.loanInfo.userInfo.temporaryAddress = Address(city: city, district: dis, commune: commue, street: street, zipCode: "", long: 0, lat: 0)
+            }
+            
+            if let value = userInfo.mobilePhoneType {
+                DataManager.shared.loanInfo.userInfo.typeMobilePhone = value
+            }
+            
+            if let value = userInfo.phoneUsageTime {
+                DataManager.shared.loanInfo.userInfo.phoneUsageTime = value
             }
             
             
@@ -422,6 +488,10 @@ class DataManager {
                 DataManager.shared.loanInfo.jobInfo.academicAddress = Address(city: city, district: dis, commune: commue, street: street, zipCode: "", long: 0, lat: 0)
             }
             
+            if let value = jobInfo.jobDescription {
+                DataManager.shared.loanInfo.jobInfo.jobDescription = value
+            }
+            
         }
         
         if let url = activeLoan.nationalIdAllImg {
@@ -437,13 +507,16 @@ class DataManager {
         }
         
         if let text = activeLoan.optionalText {
-            if text.count > 0 && text.count <= getCountOptionalText(cateId: DataManager.shared.loanInfo.loanCategoryID) {
+            if text.count > 0 && text.count == getCountOptionalText(cateId: DataManager.shared.loanInfo.loanCategoryID) {
                 DataManager.shared.loanInfo.optionalText = text
             }
         }
         
         if let optionMedia = activeLoan.optionalMedia {
-            if optionMedia.count <= getCountOptionalMedia(cateId: DataManager.shared.loanInfo.loanCategoryID) {
+            
+            let countInit = getCountOptionalMedia(cateId: DataManager.shared.loanInfo.loanCategoryID)
+            
+            if optionMedia.count == countInit {
                 
                 var temp: [[String]] = []
                 for i in optionMedia {
@@ -457,28 +530,32 @@ class DataManager {
                     DataManager.shared.loanInfo.optionalMedia = temp
                 }
                 
+            } else if optionMedia.count < countInit {
+                
             } else {
                 
-                let count = getCountOptionalMedia(cateId: DataManager.shared.loanInfo.loanCategoryID)
-                guard count > 0 else { return }
-                
-                var temp: [[String]] = []
-                for i in 0...count - 1 {
-                    if let item = optionMedia[i] as? [String] {
-                        temp.append(item)
+                let count = countInit
+                if count > 0 {
+                    var temp: [[String]] = []
+                    for i in 0...count - 1 {
+                        if let item = optionMedia[i] as? [String] {
+                            temp.append(item)
+                        }
+                    }
+                    
+                    if temp.count > 0 {
+                        DataManager.shared.loanInfo.optionalMedia.removeAll()
+                        DataManager.shared.loanInfo.optionalMedia = temp
                     }
                 }
-                
-                if temp.count > 0 {
-                    DataManager.shared.loanInfo.optionalMedia.removeAll()
-                    DataManager.shared.loanInfo.optionalMedia = temp
-                }
-                
                 
             }
             
         }
         
+        self.updateFieldsDisplay {
+            
+        }
         
     }
     
@@ -488,7 +565,7 @@ class DataManager {
     /// - Parameter id: <#id description#>
     /// - Returns: <#return value description#>
     class func getTitleRelationShip(id: Int) -> String {
-        guard let cate = DataManager.shared.getCurrentCategory(), (cate.builders?.count ?? 0) > 0, let fields = cate.builders![0].fields else { return "Người thân" }
+        guard let cate = DataManager.shared.getCurrentCategory(), (cate.builders?.count ?? 0) > 0, let fields = cate.builders![0].fieldsDisplay else { return "Người thân" }
         
         var field: LoanBuilderFields?
         for f in fields {
@@ -511,28 +588,24 @@ class DataManager {
         }
         return "Người thân"
         
-        /*
-        switch id {
-        case 0:
-            return "Bố"
-        case 1:
-            return "Mẹ"
-        case 2:
-            return "Vợ"
-        case 3:
-            return "Chồng"
-        case 4:
-            return "Bạn bè"
-        case 5:
-            return "Đồng nghiệp"
-            
-        default:
-            return "Người thân"
-        }
-        */
         
     }
     
+    
+    /// Update LoanCategories for dynamic ui display
+    ///
+    /// - Parameter completion: <#completion description#>
+    func updateFieldsDisplay(completion: @escaping () -> Void) {
+        for (index, value) in self.loanCategories.enumerated() {
+            if value.id == self.loanInfo.loanCategoryID {
+                self.loanCategories[index].updateFieldsDisplay()
+                break
+            }
+        }
+        
+        completion()
+        
+    }
     
     
     

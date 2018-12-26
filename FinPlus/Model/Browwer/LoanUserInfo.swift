@@ -26,6 +26,9 @@ struct LoanUserInfo: Encodable {
     var residentAddress: Address
     var temporaryAddress: Address
     
+    var typeMobilePhone: String?
+    var phoneUsageTime: Int?
+    
     init() {
         
         self.fullName = ""
@@ -47,6 +50,8 @@ struct LoanUserInfo: Encodable {
         case relationships
         case residentAddress
         case currentAddress
+        case mobilePhoneType
+        case phoneUsageTime
     }
     
     func encode(to encoder: Encoder) throws {
@@ -62,6 +67,14 @@ struct LoanUserInfo: Encodable {
         var sizes = container.nestedUnkeyedContainer(forKey: .relationships)
         try relationships.forEach {
             try sizes.encode($0)
+        }
+        
+        if let type_ = self.typeMobilePhone {
+            try container.encode(type_, forKey: .mobilePhoneType)
+        }
+        
+        if let useTime = self.phoneUsageTime {
+            try container.encode(useTime, forKey: .phoneUsageTime)
         }
         
     }

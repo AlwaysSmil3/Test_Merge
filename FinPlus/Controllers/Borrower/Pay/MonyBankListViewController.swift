@@ -70,7 +70,7 @@ class MonyBankListViewController: UIViewController, UITableViewDelegate, UITable
             content = "TATTOAN \(DataManager.shared.currentAccount)"
         }
         
-        let vietinbank = MonyBankAccount(bankType: 2, bankName:"Vietinbank" , bankNameDetail: "Hoàng Mai", bankNumber: "115002671451", bankUsername: "Công ty Cổ phần Finplus", amount: self.amount, content: content)
+        let vietinbank = MonyBankAccount(bankType: 2, bankName:"Vietinbank" , bankNameDetail: "Hoàng Mai", bankNumber: "115002671451", bankUsername: "CÔNG TY CỔ PHẦN MONY", amount: self.amount, content: content)
 //        let agribank = MonyBankAccount(bankType: 4, bankName:"Agribank" , bankNameDetail: "Nam Hà Nội", bankNumber: "1460201035289", bankUsername: "Công ty Cổ phần Finplus", amount: self.amount, content: "\(DataManager.shared.currentAccount) chuyển tiền")
         
         //self.bankList.append(agribank)

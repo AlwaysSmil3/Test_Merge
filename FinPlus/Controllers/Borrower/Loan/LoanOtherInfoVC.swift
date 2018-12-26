@@ -28,7 +28,8 @@ class LoanOtherInfoVC: LoanBaseViewController {
         self.configTextMesseageView()
         
         self.initLoanCate()
-        //NotificationCenter.default.addObserver(self, selector: #selector(showInputMesseage(notification:)), name: .showMuiltiLineInputText, object: nil)
+        
+        self.mainTBView?.showsVerticalScrollIndicator = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,45 +42,23 @@ class LoanOtherInfoVC: LoanBaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: Notification.Name.UIKeyboardWillShow, object: nil)
     }
     
-    //MARK: For catch event show hidden keyboard
-    @objc func keyboardWillAppear(notification: NSNotification) {
-        guard self.isMuiltiLineText else { return }
-        self.isMuiltiLineText = false
-        //Do something here
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            let keyboardHeight = keyboardSize.height
-            print(keyboardHeight)
-            self.contentInputView?.isHidden = false
-            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseOut, animations: {
-                self.bottomConstraintContentInputView?.constant = keyboardHeight
-                self.view.layoutIfNeeded()
-            }) { (status) in
-            }
-        }
-    }
-    
-    @objc func keyboardWillDisappear(notification: NSNotification) {
-        //Do something here
-        self.hideInputMessageView()
-    }
-    
-    
-    @objc func showInputMesseage(notification: NSNotification) {
-        self.isMuiltiLineText = true
-        self.sbInputView?.textView.becomeFirstResponder()
-    }
-    
     
     /// check input with field is Required
     ///
     /// - Returns: <#return value description#>
     private func checkIsReqruiedOptionalText() -> Bool {
-        guard let builder = self.loanCate?.builders, builder.count > 3, let listField = builder[3].fields else { return true }
+        guard let builder = self.loanCate?.builders, builder.count > 3, let listField = builder[3].fieldsDisplay else { return true }
         
         for (index, text) in DataManager.shared.loanInfo.optionalText.enumerated() {
-            if text.count == 0 &&  listField.count > index && listField[index].isRequired == true {
-                return false
+
+            if text.count == 0 {
+                for fi in listField {
+                    if fi.id == "optionalText", let arrayIndex = fi.arrayIndex, arrayIndex == index, fi.isRequired == true {
+                        return false
+                    }
+                }
             }
+            
         }
         return true
     }
@@ -89,21 +68,18 @@ class LoanOtherInfoVC: LoanBaseViewController {
     ///
     /// - Returns: <#return value description#>
     private func checkIsReqruiedOptionalMedia() -> Bool {
-        guard let builder = self.loanCate?.builders, builder.count > 3, let listField = builder[3].fields else { return true }
-        
-        let totalCount = DataManager.shared.loanInfo.optionalMedia.count
-        var optionTextCount = DataManager.shared.loanInfo.optionalText.count
-        if optionTextCount == 0 {
-            optionTextCount = getCountOptionalText(cateId: DataManager.shared.loanInfo.loanCategoryID)
-        }
-        
-        for (index, media) in DataManager.shared.loanInfo.optionalMedia.enumerated() {
-            
-            if index < totalCount && media.count == 0 && listField.count > (index + optionTextCount) && listField[index + optionTextCount].isRequired == true {
+        guard let builder = self.loanCate?.builders, builder.count > 3, let listField = builder[3].fieldsDisplay else { return true }
                 
-                return false
+        for (index, media) in DataManager.shared.loanInfo.optionalMedia.enumerated() {
+
+            if media.count == 0 {
+                for fi in listField {
+                    if fi.id == "optionalMedia", let arrayIndex = fi.arrayIndex, arrayIndex == index, fi.isRequired == true {
+                        print(arrayIndex)
+                        return false
+                    }
+                }
             }
-            
         }
         return true
     }
@@ -114,7 +90,6 @@ class LoanOtherInfoVC: LoanBaseViewController {
             self.showToastWithMessage(message: "Vui lòng nhập đầy đủ thông tin để sang bước tiếp theo")
             return
         }
-
 
         if !self.checkIsReqruiedOptionalMedia() {
             self.showToastWithMessage(message: "Vui lòng upload đầy đủ ảnh để sang bước tiếp theo")

@@ -22,7 +22,12 @@ class LoanNationalIDViewController: LoanBaseViewController {
             bottomView.setContentOffset(CGPoint(x: 100, y: 0), animated: true)
         }
         
-        self.requestInitPermissionCamera()
+        FinPlusHelper.checkCameraPermission { (status) in
+            
+            self.requestInitPermissionCamera()
+            
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

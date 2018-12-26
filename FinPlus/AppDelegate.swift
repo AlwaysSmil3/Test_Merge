@@ -13,7 +13,7 @@ import UserNotifications
 import CoreData
 import Fabric
 import Crashlytics
-import FirebaseRemoteConfig
+
 
 
 //Cho optionalText trong tạo loan
@@ -55,7 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        UINavigationBar.appearance().tintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.85)
         
         // Override point for customization after application launch.
-        
+        //Get loan Data from json
+        //DataManager.shared.getDataLoanFromJSON()
         
         if userDefault.value(forKey: Notification_Have_New) == nil {
             userDefault.set(false, forKey: Notification_Have_New)

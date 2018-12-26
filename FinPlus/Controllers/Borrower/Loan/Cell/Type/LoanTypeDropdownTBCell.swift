@@ -9,10 +9,12 @@
 import Foundation
 
 
-class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol, LoanTypeTBCellProtocol {
+class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
 
     @IBOutlet weak var lblValue: UILabel?
+    
+    weak var parentVC: LoanBaseViewController?
     
     var field: LoanBuilderFields? {
         didSet {
@@ -56,7 +58,18 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
         
         guard let field_ = self.field, let data = field_.data, let id = field_.id else { return }
         
-        if id.contains("position") || id.contains("jobType") || id.contains("strength") || id.contains("academicLevel") {
+        if id.contains("position") || id.contains("jobType") || id.contains("strength") || id.contains("academicLevel") || id.contains("mobilePhoneType") || id.contains("optionalText") || id.contains("typeloanedfrom") {
+            
+            if id.contains("typeloanedfrom") {
+                let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupWithMuiltiSelectionVC") as! LoanTypePopupWithMuiltiSelectionVC
+                popup.setDataSource(data: data, type: .TypeLoanedFrom)
+                popup.delegate = self
+                
+                popup.show()
+                
+                return
+            }
+            
             let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
             
             if id.contains("position") {
@@ -67,6 +80,12 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 popup.setDataSource(data: data, type: .Strength)
             } else if id.contains("academicLevel") {
                 popup.setDataSource(data: data, type: .AcademicLevel)
+            } else if id.contains("mobilePhoneType") {
+                popup.setDataSource(data: data, type: .TypeMobilePhone)
+            } else if id.contains("optionalText") {
+                popup.setDataSource(data: data, type: .CareerHusbandOrWife)
+            } else if id.contains("typeloanedfrom") {
+                popup.setDataSource(data: data, type: .TypeLoanedFrom)
             }
             
             popup.delegate = self
@@ -77,41 +96,6 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
     }
     
     
-    //MARK: Data Selected
-    func dataSelected(data: LoanBuilderData) {
-        self.isSelected = false
-        
-        var value = data.title ?? ""
-        if let textValue = data.textValue {
-            value = textValue
-        }
-        
-        
-        self.lblValue?.text = value
-        
-        guard let field_ = self.field, let id = field_.id else { return }
-        
-        if let temp = self.valueTemp {
-            if temp == value {
-                self.updateInfoFalse(pre: field_.title ?? "")
-            } else {
-                self.isNeedUpdate = false
-            }
-        }
-        
-        if id.contains("jobType") {
-            DataManager.shared.loanInfo.jobInfo.jobType = Int(data.id ?? 0)
-            DataManager.shared.loanInfo.jobInfo.jobTitle = value
-        } else if id.contains("position") {
-            DataManager.shared.loanInfo.jobInfo.position = Int(data.id ?? 0)
-            DataManager.shared.loanInfo.jobInfo.positionTitle = value
-        } else if id.contains("academicLevel") {
-            DataManager.shared.loanInfo.jobInfo.academicLevel = Int(data.id ?? 0)
-        } else if id.contains("strength") {
-            DataManager.shared.loanInfo.jobInfo.strength = Int(data.id ?? 0)
-        }
-        
-    }
     
     //Update Data khi co khoan vay
     func getData() {
@@ -141,9 +125,14 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 //Cap nhat thong tin khong hop le
                 if self.valueTemp == nil {
                     self.valueTemp = value
-                    self.updateInfoFalse(pre: title)
+                    
                 }
                 
+                self.updateInfoFalse(pre: title)
+            } else {
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
             }
             
         } else if id.contains("position") {
@@ -171,8 +160,8 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 //Cap nhat thong tin khong hop le
                 if self.valueTemp == nil {
                     self.valueTemp = value
-                    self.updateInfoFalse(pre: title)
                 }
+                self.updateInfoFalse(pre: title)
             } else {
                 if let need = self.isNeedUpdate, need {
                     self.isNeedUpdate = false
@@ -224,6 +213,10 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             if DataManager.shared.checkFieldIsMissing(key: "gender") {
                 //Cap nhat thong tin khong hop le
                 self.updateInfoFalse(pre: title)
+            } else {
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
             }
             
             var value = ""
@@ -266,7 +259,6 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                     }
                 }
                 
-                
                 self.lblValue?.text = value
                 DataManager.shared.loanInfo.jobInfo.strength = idInt
             }
@@ -274,9 +266,10 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             if DataManager.shared.checkFieldIsMissing(key: "strength", parentKey: "jobInfo", currentValue: value, currentValueIndex: idInt) {
                 //Cap nhat thong tin khong hop le
                 if self.valueTemp == nil {
-                    self.updateInfoFalse(pre: title)
+                    
                 }
                 self.valueTemp = self.lblValue?.text
+                self.updateInfoFalse(pre: title)
             } else {
                 if let need = self.isNeedUpdate, need {
                     self.isNeedUpdate = false
@@ -312,15 +305,48 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 //Cap nhat thong tin khong hop le
                 //self.updateInfoFalse(pre: title)
                 if self.valueTemp == nil {
-                    self.updateInfoFalse(pre: title)
+                    
                 }
+                self.updateInfoFalse(pre: title)
                 self.valueTemp = self.lblValue?.text
             } else {
                 if let need = self.isNeedUpdate, need {
                     self.isNeedUpdate = false
                 }
             }
-        }  else if id.contains("optionalText") {
+        } else if id.contains("mobilePhoneType") {
+            var valueTemp: String?
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.mobilePhoneType, data.count > 0 {
+                valueTemp = data
+            }
+            
+            if let type = DataManager.shared.loanInfo.userInfo.typeMobilePhone, type.count > 0 {
+                valueTemp = type
+            }
+            
+            guard let value = valueTemp else { return }
+            
+            if !value.contains(keyComponentSeparateOptionalText) {
+                self.lblValue?.text = value
+            } else {
+                self.lblValue?.text = FinPlusHelper.getTitleWithOtherSelection(value: value)
+            }
+            
+            DataManager.shared.loanInfo.userInfo.typeMobilePhone = value
+            
+            if DataManager.shared.checkFieldIsMissing(key: "mobilePhoneType", parentKey: "userInfo", currentValue: value) {
+                //Cap nhat thong tin khong hop le
+                if self.valueTemp == nil {
+                    self.valueTemp = value
+                }
+                self.updateInfoFalse(pre: title)
+            } else {
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
+            }
+            
+        } else if id.contains("optionalText") {
             //thông tin khác
             
             var index = 0
@@ -340,15 +366,24 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
             }
             
             if value.length() > 0 {
-                //self.lblValue?.text = value
-                
+
+                /*
+                //For key DateTime
                 let dateTemp = Date.init(fromString: value, format: DateFormat.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER))
                 let date = dateTemp.toString(.custom(kDisplayFormat))
                 //DateTime ISO 8601
                 
                 let timeISO8601 = dateTemp.toString(.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER))
                 DataManager.shared.loanInfo.optionalText[index] = timeISO8601
-                self.lblValue?.text = date
+                */
+                
+                
+                if !value.contains(keyComponentSeparateOptionalText) {
+                    self.lblValue?.text = value
+                } else {
+                    self.lblValue?.text = FinPlusHelper.getTitleWithOtherSelection(value: value)
+                }
+                
             }
             
             if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
@@ -372,14 +407,121 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, DataSelectedFromPopupProtocol,
                 }
                 
             }
+        } else if id.contains("typeloanedfrom") {
+            var value = ""
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.borrowedPlace {
+                value = data
+            }
+            
+            if let type = DataManager.shared.loanInfo.borrowedPlace {
+                value = type
+            }
+            
+            if value.count > 0, let dataSource = self.field?.data {
+                self.lblValue?.text = FinPlusHelper.getListTitleValue(selections: value, dataSource: dataSource)
+                DataManager.shared.loanInfo.borrowedPlace = value
+            }
+            
+            if DataManager.shared.checkFieldIsMissing(key: "borrowedPlace", currentValue: value) {
+                //Cap nhat thong tin khong hop le
+                if self.valueTemp == nil {
+                    self.valueTemp = value
+                }
+                self.updateInfoFalse(pre: title)
+            } else {
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
+            }
+            
         }
         
     }
+    
+    
+    
+    
+}
+
+
+//MARK: DataSelectedFromPopupProtocol
+extension LoanTypeDropdownTBCell: DataSelectedFromPopupProtocol {
+    
+    //MARK: Data Selected
+    func dataSelected(data: LoanBuilderData) {
+        self.isSelected = false
         
+        var value = data.title ?? ""
+        if let textValue = data.textValue {
+            value = textValue
+        }
+        
+        
+        self.lblValue?.text = value
+        
+        guard let field_ = self.field, let id = field_.id else { return }
+        
+        if let temp = self.valueTemp {
+            if temp == value {
+                self.updateInfoFalse(pre: field_.title ?? "")
+            } else {
+                self.isNeedUpdate = false
+            }
+        }
+        
+        if id.contains("jobType") {
+            DataManager.shared.loanInfo.jobInfo.jobType = Int(data.id ?? 0)
+            DataManager.shared.loanInfo.jobInfo.jobTitle = value
+            
+            DataManager.shared.updateFieldsDisplay {
+                
+                DataManager.shared.loanInfo.jobInfo.jobDescription = ""
+                DataManager.shared.loanInfo.jobInfo.companyPhoneNumber = ""
+                
+                self.parentVC?.reloadFieldsData()
+                
+            }
+            
+        } else if id.contains("position") {
+            DataManager.shared.loanInfo.jobInfo.position = Int(data.id ?? 0)
+            DataManager.shared.loanInfo.jobInfo.positionTitle = value
+        } else if id.contains("academicLevel") {
+            DataManager.shared.loanInfo.jobInfo.academicLevel = Int(data.id ?? 0)
+        } else if id.contains("strength") {
+            DataManager.shared.loanInfo.jobInfo.strength = Int(data.id ?? 0)
+        } else if id.contains("mobilePhoneType") {
+            let type = "\(Int(data.id ?? 0))\(keyComponentSeparateOptionalText)\(value)"
+            DataManager.shared.loanInfo.userInfo.typeMobilePhone = type
+            
+        } else if id.contains("optionalText") {
+            let optionalText = value.count > 0 ? "\(Int(data.id ?? 0))\(keyComponentSeparateOptionalText)\(value)" : "\(Int(data.id ?? 0))"
+            if let arrayIndex = self.field?.arrayIndex, arrayIndex < DataManager.shared.loanInfo.optionalText.count {
+                DataManager.shared.loanInfo.optionalText[arrayIndex] = optionalText
+            }
+            
+        }
+        
+    }
     
-    
-    
-    
-    
+    //MARK: muiltiData Selected
+    func multiDataSelected(value: String, listIndex: String) {
+        self.isSelected = false
+        self.lblValue?.text = value
+        
+        guard let field_ = self.field, let id = field_.id else { return }
+        
+        if let temp = self.valueTemp {
+            if temp == value {
+                self.updateInfoFalse(pre: field_.title ?? "")
+            } else {
+                self.isNeedUpdate = false
+            }
+        }
+        
+        if id.contains("typeloanedfrom") {
+            DataManager.shared.loanInfo.borrowedPlace = listIndex
+        }
+        
+    }
 }
 

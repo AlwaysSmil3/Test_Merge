@@ -41,6 +41,8 @@ struct LoanInfo: Encodable {
     
     var walletId: Int32
     var bankId: Int32
+    var borrowedPlace: String?
+    var totalBorrowedAmount: Double?
     
     var nationalIdAllImg: String
     var nationalIdFrontImg: String
@@ -96,6 +98,8 @@ struct LoanInfo: Encodable {
         case jobInfo
         case walletId
         case bankId
+        case borrowedPlace
+        case totalBorrowedAmount
         case nationalIdAllImg
         case nationalIdFrontImg
         case nationalIdBackImg
@@ -144,6 +148,13 @@ struct LoanInfo: Encodable {
             if self.latitudeAccepted > 0 {
                 try container.encode(latitudeAccepted, forKey: .latitudeAccepted)
             }
+        }
+        
+        if let value = self.borrowedPlace {
+            try container.encode(value, forKey: .borrowedPlace)
+        }
+        if let value = self.totalBorrowedAmount {
+            try container.encode(value, forKey: .totalBorrowedAmount)
         }
         
         

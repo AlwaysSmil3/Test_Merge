@@ -13,13 +13,16 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
 
     @IBOutlet weak var mainTableView: UITableView?
     
+    weak var parentVC: LoanBaseViewController?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.lblTitle?.font = FONT_CAPTION
         
         self.mainTableView?.delegate = self
         self.mainTableView?.dataSource = self
-        self.mainTableView?.register(UINib(nibName: "LoanTypePhoneRelationSubTBCell", bundle: nil), forCellReuseIdentifier: "Loan_Type_Phone_Relation_Sub_TB_Cell")
+        self.mainTableView?.register(UINib(nibName: "LoanTypePhoneRelationSubNewTBCell", bundle: nil), forCellReuseIdentifier: "Loan_Type_Phone_Relation_Sub_TB_Cell")
+        self.mainTableView?.rowHeight = 216
         self.mainTableView?.tableFooterView = UIView()
         
     }
@@ -69,6 +72,9 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     
                     d.phoneNumber = pho.phoneNumber
                     d.type = pho.type
+                    d.name = pho.name
+                    d.address = pho.address
+                    
                     value.append(d)
                 }
             }
@@ -82,6 +88,9 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     
                     d.phoneNumber = pho.phoneNumber
                     d.type = Int(pho.type)
+                    d.name = pho.name
+                    d.address = pho.address
+                    
                     tempValue.append(d)
                 }
             }
@@ -100,12 +109,31 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             value[1].placeholder = data_[1].placeholder
             
             DataManager.shared.loanInfo.userInfo.relationships.removeAll()
-            for pho in value {
+            for (i, pho) in value.enumerated() {
                 var d = RelationShipPhone()
                 
                 d.phoneNumber = pho.phoneNumber ?? ""
                 d.type = Int16(pho.type ?? 0)
+                d.name = pho.name
+                d.address = pho.address
+                
                 DataManager.shared.loanInfo.userInfo.relationships.append(d)
+                
+                if i == 0 {
+                    if DataManager.shared.currentIndexRelationPhoneSelectedPopup1 == nil {
+                        if let index = pho.type {
+                            DataManager.shared.currentIndexRelationPhoneSelectedPopup1 = index
+                        }
+                    }
+                } else if i == 1 {
+                    if DataManager.shared.currentIndexRelationPhoneSelectedPopup2 == nil {
+                        if let index = pho.type {
+                            DataManager.shared.currentIndexRelationPhoneSelectedPopup2 = index
+                        }
+                    }
+                }
+                
+                
             }
             
             self.dataSource = value
@@ -113,6 +141,23 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         }
     }
     
+    /*
+    /// Get index from Type(id)
+    ///
+    /// - Parameter type: <#type description#>
+    /// - Returns: <#return value description#>
+    private func getIndexFromType(type: Int16) -> Int? {
+         guard let field_ = self.field, let data_ = field_.multipleData, data_.count > 1, let options = data_[0].options else { return nil}
+        
+        for (i, d) in options.enumerated() {
+            if type == d.id {
+                return i
+            }
+        }
+        
+        return nil
+    }
+    */
     
 }
 
@@ -129,6 +174,7 @@ extension LoanTypePhoneRelationTBCell: UITableViewDelegate, UITableViewDataSourc
         cell.delegateUpdateStatusInvalid = self
         cell.currentIndex = indexPath.row
         cell.data = self.dataSource[indexPath.row]
+        cell.parentVC = self.parentVC
         
         return cell
     }
