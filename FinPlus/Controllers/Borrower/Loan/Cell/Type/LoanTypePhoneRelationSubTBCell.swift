@@ -188,7 +188,7 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
         }
         
         self.lblAddressRelation?.textColor = UIColor(hexString: "#DA3535")
-        return true
+        return false
     }
     
     
