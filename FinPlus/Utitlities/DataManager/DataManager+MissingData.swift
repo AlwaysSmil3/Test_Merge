@@ -637,7 +637,7 @@ extension DataManager {
         }
         
         
-        if let value = userInfo["birthday"] as? String, Date.init(fromString: value, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER)).toString(.custom(kDisplayFormat)) ==  Date.init(fromString: DataManager.shared.loanInfo.userInfo.birthDay, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER)).toString(.custom(kDisplayFormat)) {
+        if let value = userInfo["birthday"] as? String, Date.init(fromString: value, format: DateFormat.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER)).toString(.custom(kDisplayFormat)) ==  Date.init(fromString: DataManager.shared.loanInfo.userInfo.birthDay, format: DateFormat.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER)).toString(.custom(kDisplayFormat)) {
             return false
         }
         
