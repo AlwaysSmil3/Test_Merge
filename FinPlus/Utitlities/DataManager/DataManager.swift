@@ -531,6 +531,13 @@ class DataManager {
                 }
                 
             } else if optionMedia.count < countInit {
+                for (i, v) in optionMedia.enumerated() {
+                    if let item = v as? [String], item.count > 0 {
+                        if DataManager.shared.loanInfo.optionalMedia.count > i {
+                            DataManager.shared.loanInfo.optionalMedia[i] = item
+                        }
+                    }
+                }
                 
             } else {
                 
