@@ -78,7 +78,7 @@ func clearValueInValidUserDefaultData() {
     userDefault.synchronize()
 }
 
-
+/*
 //Vay sinh vien
 var CountOptionTextVaySinhVien = 1
 var CountOptionMediaVaySinhView = 2
@@ -114,7 +114,7 @@ var CountOptionMediaVayThanhToanNo = 1
 // Vay Khac
 var CountOptionTextVayKhac = 4
 var CountOptionMediaVayKhac = 2
-
+*/
 
 //Type User
 enum UserRole: String {
