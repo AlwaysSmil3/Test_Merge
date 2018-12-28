@@ -105,6 +105,12 @@ public struct LoanBuilderFields {
     mutating func checkCanDisplay() {
         
         if let id_ = self.id, id_ == "optionalMedia" {
+            
+            if self.displayIfLoanOver == nil && self.displayIfJobTypeIs == nil && self.title != nil {
+                self.isCanDisplay = true
+                return
+            }
+            
             if let amount = self.displayIfLoanOver, amount > Double(DataManager.shared.loanInfo.amount) {
                 
                 if let listJob = self.displayIfJobTypeIs, listJob.count > 0 {
@@ -119,7 +125,20 @@ public struct LoanBuilderFields {
                 }
                 
             } else {
-                self.isCanDisplay = true
+                var isCheckCanDisplay = false
+                
+                if let listJob = self.displayIfJobTypeIs, listJob.count > 0 {
+                    let temp = listJob.filter { $0 == DataManager.shared.loanInfo.jobInfo.jobType }
+                    if temp.count > 0 {
+                        isCheckCanDisplay = true
+                    }
+                }
+                
+                if let amount = self.displayIfLoanOver, amount < Double(DataManager.shared.loanInfo.amount) {
+                    isCheckCanDisplay = true
+                }
+                
+                self.isCanDisplay = isCheckCanDisplay
             }
             
             if self.title == nil {
