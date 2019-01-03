@@ -507,6 +507,9 @@ class FinPlusHelper {
 //
 //    }
     
+    /* Check it here
+     https://stackoverflow.com/questions/30743408/check-for-internet-connection-with-swift
+    */
     
     class func isConnectedToNetwork() -> Bool {
         
