@@ -102,39 +102,16 @@ class DataManager {
         didSet {
             guard let miss = self.missingLoanDataDictionary else { return }
             
-            guard let userInfo = miss["userInfo"] as? JSONDictionary, let relationShip = userInfo["relationships"] as? JSONDictionary else { return }
+            guard let userInfo = miss["userInfo"] as? JSONDictionary else { return }
             
-            if let relation = relationShip["0"] as? JSONDictionary {
-                
-                if let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
-                    self.isRelationPhone1Invalid = true
-                }
-                
-                if let value = relation["checkname"] as? Bool, value {
-                    self.isRelationPhone1Invalid = true
-                }
-                
-                if let value = relation["checkaddress"] as? Bool, value {
-                    self.isRelationPhone1Invalid = true
-                }
-                
+            if let relationShip = userInfo["relationships"] as? JSONDictionary {
+                self.checkHaveInvalidDataRelationShips(json: relationShip)
             }
             
-            if let relation = relationShip["1"] as? JSONDictionary {
-                
-                if let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
-                    self.isRelationPhone2Invalid = true
-                }
-                
-                if let value = relation["checkname"] as? Bool, value {
-                    self.isRelationPhone2Invalid = true
-                }
-                
-                if let value = relation["checkaddress"] as? Bool, value {
-                    self.isRelationPhone2Invalid = true
-                }
-                
+            if let referenceFriends = userInfo["referenceFriend"] as? JSONDictionary {
+                self.checkHaveInvalidDataReferenceFriends(json: referenceFriends)
             }
+            
         }
     }
     
@@ -147,6 +124,7 @@ class DataManager {
     //MissingData optionalMedia
     var missingOptionalMedia: [String: Any]?
     var missingRelationsShip: [String: Any]?
+    var missingReferenceFriend: JSONDictionary?
     
     //List Key missing Loan Data
     var listKeyMissingLoanKey: [String]?
@@ -157,6 +135,11 @@ class DataManager {
     //Nếu số có số điện thoại người thân không hợp lệ
     var isRelationPhone1Invalid: Bool = false
     var isRelationPhone2Invalid: Bool = false
+    
+    //Nếu có thông tin người vay cùng không hợp lệ
+    var isReferenceFriend1Invalid: Bool = false
+    var isReferenceFriend2Invalid: Bool = false
+    var isReferenceFriend3Invalid: Bool = false
     
     //Data when push notification
     var notificationData: NSDictionary?
@@ -256,7 +239,11 @@ class DataManager {
         DataManager.shared.listKeyMissingLoanTitle = nil
         DataManager.shared.isRelationPhone1Invalid = false
         DataManager.shared.isRelationPhone2Invalid = false
+        DataManager.shared.isReferenceFriend1Invalid = false
+        DataManager.shared.isReferenceFriend2Invalid = false
+        DataManager.shared.isReferenceFriend3Invalid = false
         DataManager.shared.titleAdditionalOptinalMediaMissingData = nil
+        DataManager.shared.missingReferenceFriend = nil
     }
     
     func reloadOptionalData() {
@@ -386,26 +373,49 @@ class DataManager {
                 DataManager.shared.loanInfo.userInfo.gender = gender
             }
             
-            if let relationShips = userInfo.relationships, relationShips.count > 1 {
+            if let relationShips = userInfo.relationships, relationShips.count > 0 {
                 
-                if let phone1 = relationShips[0].phoneNumber, phone1.length() > 0, let phone2 = relationShips[1].phoneNumber, phone2.length() > 0 {
-                    DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber = phone1
-                    DataManager.shared.loanInfo.userInfo.relationships[0].type = Int16(relationShips[0].type ?? 0)
-                    DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber = phone2
-                    DataManager.shared.loanInfo.userInfo.relationships[1].type = Int16(relationShips[1].type ?? 0)
-                    
+                for (i, relation) in relationShips.enumerated() {
+                    if DataManager.shared.loanInfo.userInfo.relationships.count > i {
+                        if let phone = relation.phoneNumber, phone.length() > 0 {
+                            DataManager.shared.loanInfo.userInfo.relationships[i].phoneNumber = phone
+                            DataManager.shared.loanInfo.userInfo.relationships[i].type = Int16(relation.type ?? 0)
+                        }
+                        
+                        if let name = relation.name, name.count > 0 {
+                            DataManager.shared.loanInfo.userInfo.relationships[i].name = name
+                        }
+                        
+                        if let add = relation.address, add.count > 0 {
+                            DataManager.shared.loanInfo.userInfo.relationships[i].address = add
+                        }
+                    }
                 }
                 
-                if let name1 = relationShips[0].name, name1.count > 0, let name2 = relationShips[1].name, name2.count > 0 {
-                    DataManager.shared.loanInfo.userInfo.relationships[0].name = name1
-                    DataManager.shared.loanInfo.userInfo.relationships[1].name = name2
+            }
+            
+            if let referenceFriend = userInfo.referenceFriend, referenceFriend.count > 0 {
+                self.checkAndInitReferenceFriend()
+                for (i, relation) in referenceFriend.enumerated() {
+                    if let refer = DataManager.shared.loanInfo.userInfo.referenceFriend, refer.count > i {
+                        if let phone = relation.phoneNumber, phone.length() > 0 {
+                            DataManager.shared.loanInfo.userInfo.referenceFriend?[i].phoneNumber = phone
+                            DataManager.shared.loanInfo.userInfo.referenceFriend?[i].type = Int16(relation.type ?? 0)
+                        }
+                        
+                        if let name = relation.name, name.count > 0 {
+                            DataManager.shared.loanInfo.userInfo.referenceFriend?[i].name = name
+                        }
+                        
+                        if let add = relation.address, add.count > 0 {
+                            DataManager.shared.loanInfo.userInfo.referenceFriend?[i].address = add
+                        }
+                        
+                        if let purpose = relation.loanPurpose, purpose.count > 0 {
+                            DataManager.shared.loanInfo.userInfo.referenceFriend?[i].loanPurpose = purpose
+                        }
+                    }
                 }
-                
-                if let add1 = relationShips[0].address, add1.count > 0, let add2 = relationShips[1].address, add2.count > 0 {
-                    DataManager.shared.loanInfo.userInfo.relationships[0].address = add1
-                    DataManager.shared.loanInfo.userInfo.relationships[1].address = add2
-                }
-                
             }
             
             if let birthDay = userInfo.birthday {
@@ -571,12 +581,12 @@ class DataManager {
     ///
     /// - Parameter id: <#id description#>
     /// - Returns: <#return value description#>
-    class func getTitleRelationShip(id: Int) -> String {
+    class func getTitleRelationShip(id: Int, key: String = "relationships") -> String {
         guard let cate = DataManager.shared.getCurrentCategory(), (cate.builders?.count ?? 0) > 0, let fields = cate.builders![0].fieldsDisplay else { return "Người thân" }
         
         var field: LoanBuilderFields?
         for f in fields {
-            if f.id == "relationships" {
+            if f.id == key {
                 field = f
                 break
             }
@@ -612,6 +622,14 @@ class DataManager {
         
         completion()
         
+    }
+    
+    
+    /// Check if nil then init ReferenceFriend
+    func checkAndInitReferenceFriend() {
+        if DataManager.shared.loanInfo.userInfo.referenceFriend == nil {
+            DataManager.shared.loanInfo.userInfo.referenceFriend = [RelationShipPhone(), RelationShipPhone(), RelationShipPhone()]
+        }
     }
     
     

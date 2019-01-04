@@ -22,15 +22,19 @@ public struct BrowwerUserInfo {
     
     static let mobilePhoneType = "mobilePhoneType"
     static let phoneUsageTime = "phoneUsageTime"
+    static let referenceFriend = "referenceFriend"
   }
 
   // MARK: Properties
     public var relationships: [BrowwerRelationships]? {
         didSet {
-            guard let relations = relationships, relations.count > 1, (relations[0].type ?? 0) > (relations[1].type ?? 0) else { return }
-            self.relationships?.reverse()
+//            guard let relations = relationships, relations.count > 1, (relations[0].type ?? 0) > (relations[1].type ?? 0) else { return }
+//            self.relationships?.reverse()
         }
     }
+    
+    public var referenceFriend: [BrowwerRelationships]?
+    
   public var fullName: String?
   public var residentAddress: BrowwerResidentAddress?
   public var currentAddress: BrowwerCurrentAddress?
@@ -55,6 +59,7 @@ public struct BrowwerUserInfo {
   /// - parameter json: JSON object from SwiftyJSON.
   public init(json: JSON) {
     if let items = json[SerializationKeys.relationships].array { relationships = items.map { BrowwerRelationships(json: $0) } }
+    if let items = json[SerializationKeys.referenceFriend].array { referenceFriend = items.map { BrowwerRelationships(json: $0) }}
     //relationships = BrowwerRelationships(json: json[SerializationKeys.relationships])
     fullName = json[SerializationKeys.fullName].string
     residentAddress = BrowwerResidentAddress(json: json[SerializationKeys.residentAddress])
@@ -74,6 +79,8 @@ public struct BrowwerUserInfo {
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
     if let value = relationships { dictionary[SerializationKeys.relationships] = value.map { $0.dictionaryRepresentation() } }
+    if let value = referenceFriend { dictionary[SerializationKeys.referenceFriend] = value.map { $0.dictionaryRepresentation()}}
+    
     //if let value = relationships { dictionary[SerializationKeys.relationships] = value}
     if let value = fullName { dictionary[SerializationKeys.fullName] = value }
     if let value = residentAddress { dictionary[SerializationKeys.residentAddress] = value.dictionaryRepresentation() }

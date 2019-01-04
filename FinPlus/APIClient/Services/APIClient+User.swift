@@ -49,6 +49,10 @@ extension APIClient {
                                     DataManager.shared.missingRelationsShip = relationShip
                                 }
                                 
+                                if let userInfo = missingData["userInfo"] as? JSONDictionary, let reference = userInfo["referenceFriend"] as? JSONDictionary {
+                                    DataManager.shared.missingReferenceFriend = reference
+                                }
+                                
                                 
                                 DataManager.shared.missingLoanDataDictionary = missingData
                                 DataManager.shared.missingLoanData = BrowwerActiveLoan(object: missingData)

@@ -16,6 +16,8 @@ struct RelationShipPhone: Encodable {
     var name: String?
     var address: String?
     
+    var loanPurpose: String?
+    
     init() {
         self.type = -1
         self.phoneNumber = ""
@@ -26,6 +28,7 @@ struct RelationShipPhone: Encodable {
         case phoneNumber
         case name
         case address
+        case loanPurpose
     }
     
     func encode(to encoder: Encoder) throws {
@@ -40,6 +43,11 @@ struct RelationShipPhone: Encodable {
         if let add_ = address {
             try container.encode(add_, forKey: .address)
         }
+        
+        if let loanPurpose_ = loanPurpose {
+            try container.encode(loanPurpose_, forKey: .loanPurpose)
+        }
+        
     }
     
 }

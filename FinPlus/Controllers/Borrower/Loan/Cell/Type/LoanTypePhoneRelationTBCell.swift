@@ -8,12 +8,19 @@
 
 import Foundation
 
+let ROW_HEIGHT_RELATIONSHIP_TB_CELL: CGFloat = 216
+let ROW_HEIGHT_REFERENCEFRIEND_TB_CELL: CGFloat = 291
+
 class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
 
     @IBOutlet weak var mainTableView: UITableView?
     
+    @IBOutlet weak var heightMainTableViewConstraint: NSLayoutConstraint!
+    
     weak var parentVC: LoanBaseViewController?
+    
+    var isRelationShip: Bool = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +29,8 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         self.mainTableView?.delegate = self
         self.mainTableView?.dataSource = self
         self.mainTableView?.register(UINib(nibName: "LoanTypePhoneRelationSubNewTBCell", bundle: nil), forCellReuseIdentifier: "Loan_Type_Phone_Relation_Sub_TB_Cell")
-        self.mainTableView?.rowHeight = 216
+        self.mainTableView?.register(UINib(nibName: "LoanTypeReferenceFriendTBCell", bundle: nil), forCellReuseIdentifier: "LoanTypeReferenceFriendTBCell")
+        self.mainTableView?.rowHeight = ROW_HEIGHT_RELATIONSHIP_TB_CELL
         self.mainTableView?.tableFooterView = UIView()
         
     }
@@ -56,16 +64,57 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     }
     
     func getData() {
+        guard let field_ = self.field, let id = field_.id else { return }
         
+        if id.contains("referenceFriend") {
+            if self.mainTableView?.rowHeight == ROW_HEIGHT_RELATIONSHIP_TB_CELL {
+                self.mainTableView?.rowHeight = ROW_HEIGHT_REFERENCEFRIEND_TB_CELL
+                if self.dataSource.count > 0 {
+                    self.heightMainTableViewConstraint.constant = CGFloat(Int(ROW_HEIGHT_REFERENCEFRIEND_TB_CELL) * self.dataSource.count)
+                }
+                
+                self.parentVC?.mainTBView?.reloadData()
+            }
+            
+            if self.isRelationShip {
+                self.isRelationShip = false
+            }
+            
+            self.getDataForReferenceFriend()
+            
+        } else {
+            if self.mainTableView?.rowHeight == ROW_HEIGHT_REFERENCEFRIEND_TB_CELL || (self.heightMainTableViewConstraint.constant != CGFloat(Int(ROW_HEIGHT_RELATIONSHIP_TB_CELL) * self.dataSource.count)) {
+                self.mainTableView?.rowHeight = ROW_HEIGHT_RELATIONSHIP_TB_CELL
+                if self.dataSource.count > 0 {
+                    self.heightMainTableViewConstraint.constant = CGFloat(Int(ROW_HEIGHT_RELATIONSHIP_TB_CELL) * self.dataSource.count)
+                }
+                self.parentVC?.mainTBView?.reloadData()
+            }
+            
+            if !self.isRelationShip {
+                self.isRelationShip = true
+            }
+            
+            self.getDataForRelationship()
+        }
+        
+    }
+    
+    
+    /// Get Data for relationship
+    private func getDataForRelationship() {
         if DataManager.shared.checkFieldIsMissing(key: "relationships") && (DataManager.shared.isRelationPhone1Invalid || DataManager.shared.isRelationPhone2Invalid) {
             //Cap nhat thong tin khong hop le
             self.updateInfoFalse(pre: self.field?.title ?? "")
         } else {
-            self.isNeedUpdate = false
+            
+            if let need = self.isNeedUpdate, need {
+                self.isNeedUpdate = false
+            }
         }
         
         var value: [LoanBuilderMultipleData] = []
-        if let phones = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.relationships, phones.count >= 2 {
+        if let phones = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.relationships, phones.count > 0 {
             for pho in phones {
                 if let phoneNumber = pho.phoneNumber, phoneNumber.length() > 0 {
                     var d = LoanBuilderMultipleData(object: NSObject())
@@ -79,8 +128,8 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 }
             }
         }
-
-        if DataManager.shared.loanInfo.userInfo.relationships.count >= 2 {
+        
+        if DataManager.shared.loanInfo.userInfo.relationships.count > 0 {
             var tempValue: [LoanBuilderMultipleData] = []
             for pho in DataManager.shared.loanInfo.userInfo.relationships {
                 if pho.phoneNumber.length() > 0 {
@@ -98,15 +147,18 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 value = tempValue
             }
         }
-
-        if value.count >= 2 {
+        
+        if value.count > 0 {
             
-            guard let field_ = self.field, let data_ = field_.multipleData, data_.count >= 2 else { return }
+            guard let field_ = self.field, let data_ = field_.multipleData, data_.count > 0 else { return }
             
-            value[0].options = data_[0].options
-            value[1].options = data_[1].options
-            value[0].placeholder = data_[0].placeholder
-            value[1].placeholder = data_[1].placeholder
+            for (i, d_) in data_.enumerated() {
+                if value.count > i {
+                    value[i].options = d_.options
+                    value[i].placeholder = d_.placeholder
+                }
+                
+            }
             
             DataManager.shared.loanInfo.userInfo.relationships.removeAll()
             for (i, pho) in value.enumerated() {
@@ -137,27 +189,78 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
             self.dataSource = value
-
+            
         }
     }
     
-    /*
-    /// Get index from Type(id)
-    ///
-    /// - Parameter type: <#type description#>
-    /// - Returns: <#return value description#>
-    private func getIndexFromType(type: Int16) -> Int? {
-         guard let field_ = self.field, let data_ = field_.multipleData, data_.count > 1, let options = data_[0].options else { return nil}
+    private func getDataForReferenceFriend() {
         
-        for (i, d) in options.enumerated() {
-            if type == d.id {
-                return i
+        if DataManager.shared.checkFieldIsMissing(key: "referenceFriend") && (DataManager.shared.isReferenceFriend1Invalid || DataManager.shared.isReferenceFriend2Invalid || DataManager.shared.isReferenceFriend3Invalid) {
+            //Cap nhat thong tin khong hop le
+            self.updateInfoFalse(pre: self.field?.title ?? "")
+        } else {
+            if let need = self.isNeedUpdate, need {
+                self.isNeedUpdate = false
             }
         }
         
-        return nil
+        var value: [LoanBuilderMultipleData] = []
+        
+        if let references = DataManager.shared.loanInfo.userInfo.referenceFriend, references.count > 0 {
+            var tempValue: [LoanBuilderMultipleData] = []
+            for pho in references {
+                
+                var d = LoanBuilderMultipleData(object: NSObject())
+                
+                d.phoneNumber = pho.phoneNumber
+                d.type = Int(pho.type)
+                d.name = pho.name
+                d.address = pho.address
+                d.loanPurpose = pho.loanPurpose
+                
+                tempValue.append(d)
+                
+            }
+            if tempValue.count > 0 {
+                value = tempValue
+            }
+        } else {
+            DataManager.shared.checkAndInitReferenceFriend()
+        }
+        
+        
+        if value.count > 0 {
+            
+            guard let field_ = self.field, let data_ = field_.multipleData, data_.count > 0 else { return }
+            
+            for (i, d_) in data_.enumerated() {
+                if value.count > i {
+                    value[i].options = d_.options
+                    value[i].placeholder = d_.placeholder
+                }
+                
+            }
+            
+            /*
+            for (i, pho) in value.enumerated() {
+                var d = RelationShipPhone()
+                
+                d.phoneNumber = pho.phoneNumber ?? ""
+                d.type = Int16(pho.type ?? 0)
+                d.name = pho.name
+                d.address = pho.address
+                d.loanPurpose = pho.loanPurpose
+                
+                DataManager.shared.loanInfo.userInfo.referenceFriend?[i] = d
+            }
+            */
+            
+            self.dataSource = value
+            
+        }
+        
     }
-    */
+    
     
 }
 
@@ -170,6 +273,19 @@ extension LoanTypePhoneRelationTBCell: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard self.isRelationShip else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LoanTypeReferenceFriendTBCell", for: indexPath) as! LoanTypeReferenceFriendTBCell
+            cell.delegateUpdateStatusInvalid = self
+            cell.currentIndex = indexPath.row
+            cell.data = self.dataSource[indexPath.row]
+            cell.parentVC = self.parentVC
+            
+            return cell
+            
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Loan_Type_Phone_Relation_Sub_TB_Cell", for: indexPath) as! LoanTypePhoneRelationSubTBCell
         cell.delegateUpdateStatusInvalid = self
         cell.currentIndex = indexPath.row

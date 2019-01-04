@@ -17,6 +17,7 @@ public struct BrowwerRelationships {
     
     static let name = "name"
     static let address = "address"
+    static let loanPurpose = "loanPurpose"
   }
 
   // MARK: Properties
@@ -25,6 +26,7 @@ public struct BrowwerRelationships {
     
     public var name: String?
     public var address: String?
+    public var loanPurpose: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -43,6 +45,7 @@ public struct BrowwerRelationships {
     phoneNumber = json[SerializationKeys.phoneNumber].string
     name = json[SerializationKeys.name].string
     address = json[SerializationKeys.address].string
+    loanPurpose = json[SerializationKeys.loanPurpose].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -54,6 +57,7 @@ public struct BrowwerRelationships {
     if let value = phoneNumber { dictionary[SerializationKeys.phoneNumber] = value }
     if let value = name { dictionary[SerializationKeys.name] = value }
     if let value = address { dictionary[SerializationKeys.address] = value }
+    if let value = loanPurpose { dictionary[SerializationKeys.loanPurpose] = value }
     return dictionary
   }
 

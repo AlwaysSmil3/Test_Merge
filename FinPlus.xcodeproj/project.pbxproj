@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		15942B202105B32300591BA4 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15942B1F2105B32300591BA4 /* PaymentMethod.swift */; };
 		48D46DDE05C608E1D160EC14 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
+		6300B8F021DCA7530083708E /* LoanTypeReferenceFriendTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6300B8EF21DCA7530083708E /* LoanTypeReferenceFriendTBCell.swift */; };
+		6300B8F221DCA7D40083708E /* LoanTypeReferenceFriendTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6300B8F121DCA7D40083708E /* LoanTypeReferenceFriendTBCell.xib */; };
 		6302C10721393DA90037277E /* DataManager+MissingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302C10621393DA90037277E /* DataManager+MissingData.swift */; };
 		630341EA218172A7008C541E /* KAPinField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630341E9218172A7008C541E /* KAPinField.swift */; };
 		63037F4F21115531002CE49B /* APIClient+Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63037F4E21115531002CE49B /* APIClient+Payment.swift */; };
@@ -131,6 +133,7 @@
 		633AF9BE20A9921B00BAE2BB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9BD20A9921B00BAE2BB /* LoginViewController.swift */; };
 		633AF9C120A992B200BAE2BB /* BorrowHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AF9C020A992B200BAE2BB /* BorrowHomeViewController.swift */; };
 		633B1E5320E6139F000B65F6 /* LoanStateViewController+UpdateLoan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633B1E5220E6139F000B65F6 /* LoanStateViewController+UpdateLoan.swift */; };
+		63418FE821DCB04600B26339 /* LoanTypeBaseRelationTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63418FE721DCB04600B26339 /* LoanTypeBaseRelationTBCell.swift */; };
 		634EEFDC214A1D9100D0F6E2 /* LoanSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634EEFDB214A1D9100D0F6E2 /* LoanSummaryViewController.swift */; };
 		6355279C21300DA800F2CDA1 /* ExUIPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355279B21300DA800F2CDA1 /* ExUIPageControl.swift */; };
 		6355FAEA20B7BEB100038F5B /* LoanResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355FAE920B7BEB000038F5B /* LoanResponseModel.swift */; };
@@ -361,6 +364,8 @@
 
 /* Begin PBXFileReference section */
 		15942B1F2105B32300591BA4 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
+		6300B8EF21DCA7530083708E /* LoanTypeReferenceFriendTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanTypeReferenceFriendTBCell.swift; sourceTree = "<group>"; };
+		6300B8F121DCA7D40083708E /* LoanTypeReferenceFriendTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoanTypeReferenceFriendTBCell.xib; sourceTree = "<group>"; };
 		6302C10621393DA90037277E /* DataManager+MissingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+MissingData.swift"; sourceTree = "<group>"; };
 		630341E9218172A7008C541E /* KAPinField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAPinField.swift; sourceTree = "<group>"; };
 		63037F4E21115531002CE49B /* APIClient+Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Payment.swift"; sourceTree = "<group>"; };
@@ -484,6 +489,7 @@
 		633AF9BD20A9921B00BAE2BB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		633AF9C020A992B200BAE2BB /* BorrowHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowHomeViewController.swift; sourceTree = "<group>"; };
 		633B1E5220E6139F000B65F6 /* LoanStateViewController+UpdateLoan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoanStateViewController+UpdateLoan.swift"; sourceTree = "<group>"; };
+		63418FE721DCB04600B26339 /* LoanTypeBaseRelationTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanTypeBaseRelationTBCell.swift; sourceTree = "<group>"; };
 		634EEFDB214A1D9100D0F6E2 /* LoanSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanSummaryViewController.swift; sourceTree = "<group>"; };
 		6355279B21300DA800F2CDA1 /* ExUIPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExUIPageControl.swift; sourceTree = "<group>"; };
 		6355FAE920B7BEB000038F5B /* LoanResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanResponseModel.swift; sourceTree = "<group>"; };
@@ -1483,6 +1489,7 @@
 				6305B9FC21213705007CA452 /* LoanTypeSocialTBCell.xib */,
 				630597472124093200EEADEF /* LoanTypeInputTextMuiltiLineTBCell.xib */,
 				6307F4CD21C21E0A00B5F6D9 /* LoanTypePhoneRelationSubNewTBCell.xib */,
+				6300B8F121DCA7D40083708E /* LoanTypeReferenceFriendTBCell.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -1775,6 +1782,7 @@
 				E7F51A2920CE6D3F00F72682 /* LoanTypeDropdownTBCell.swift */,
 				6387D11A20D9008F008AC08C /* LoanTypeOptionalMediaTBCell.swift */,
 				6334B60A20DA3E8E009960A5 /* LoanTypeBaseTBCell.swift */,
+				63418FE721DCB04600B26339 /* LoanTypeBaseRelationTBCell.swift */,
 				633ACA8520DB5E1D00020AE6 /* LoanTypeTBCellProtocol.swift */,
 				63D4CB6C20F3009100519FFB /* LoanTypeChoiceTBCell.swift */,
 				63D4CB7220F3080A00519FFB /* LoanTypeChoiceCollectionCell.swift */,
@@ -1782,6 +1790,7 @@
 				635732F72109A6CF00F6CD04 /* LoanTypeTextViewTBCell.swift */,
 				6305B9FA212130E7007CA452 /* LoanTypeSocialTBCell.swift */,
 				630597452124049500EEADEF /* LoanTypeInputTextMuiltilineTBCell.swift */,
+				6300B8EF21DCA7530083708E /* LoanTypeReferenceFriendTBCell.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -1886,6 +1895,7 @@
 				630BA60D20C22A4100880DAE /* SF-Pro-Display-Thin.otf in Resources */,
 				630BA62420C22A4100880DAE /* SF-Pro-Text-Semibold.otf in Resources */,
 				630BA61320C22A4100880DAE /* SF-Pro-Text-MediumItalic.otf in Resources */,
+				6300B8F221DCA7D40083708E /* LoanTypeReferenceFriendTBCell.xib in Resources */,
 				E7F519F020CE159300F72682 /* Profile.storyboard in Resources */,
 				84114BDA20D79A6F005026DF /* TestPayHistoryViewController.xib in Resources */,
 				E76AF6AC20DB4F7700C71305 /* FooterButtonView.xib in Resources */,
@@ -2193,6 +2203,7 @@
 				6338F3FB20BE602C005777E2 /* BrowwerAddress.swift in Sources */,
 				634EEFDC214A1D9100D0F6E2 /* LoanSummaryViewController.swift in Sources */,
 				84647A8220E0E89B0053DD0D /* UICircularProgressRingGradientPosition.swift in Sources */,
+				6300B8F021DCA7530083708E /* LoanTypeReferenceFriendTBCell.swift in Sources */,
 				630D983F20CF6BEB00994D81 /* LoanSendSuccessVC.swift in Sources */,
 				84A4792020E0CDA300F83AF4 /* ExFloat.swift in Sources */,
 				E7C87B2920D3AE2600E55F4E /* LoanDetailBaseViewController.swift in Sources */,
@@ -2305,6 +2316,7 @@
 				E7C4DDF0213402E800055944 /* SCP_SCJAFlatBar.swift in Sources */,
 				6303923020E8B108000C422D /* VSSlider.swift in Sources */,
 				63AF62E3218FFC62001816FB /* AddWalletNewViewController.swift in Sources */,
+				63418FE821DCB04600B26339 /* LoanTypeBaseRelationTBCell.swift in Sources */,
 				84D73FFF20D0BC5600770FB5 /* LoanStatus.swift in Sources */,
 				63D4CB6D20F3009200519FFB /* LoanTypeChoiceTBCell.swift in Sources */,
 				632E71EE218BF28A005D4945 /* Constant+UpdatePhoneNumber.swift in Sources */,

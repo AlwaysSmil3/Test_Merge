@@ -23,8 +23,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="523.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Mx-C7-Jx0">
-                        <rect key="frame" x="16" y="35" width="343" height="14"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Mx-C7-Jx0">
+                        <rect key="frame" x="16" y="35" width="343" height="13.5"/>
                         <attributedString key="attributedText">
                             <fragment content="Số điện thoại liên lạc của người thân ">
                                 <attributes>
@@ -44,13 +44,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWU-Gy-3vA">
-                        <rect key="frame" x="16" y="493" width="343" height="28.5"/>
+                        <rect key="frame" x="16" y="492.5" width="343" height="29"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                         <color key="textColor" red="0.85490196078431369" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gZh-ny-09u">
-                        <rect key="frame" x="0.0" y="57" width="375" height="432"/>
+                        <rect key="frame" x="0.0" y="56.5" width="375" height="432"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wW7-ho-Hpo">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="432"/>
@@ -86,6 +86,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="heightMainTableViewConstraint" destination="ZrK-mk-Eun" id="sc8-d7-DTr"/>
                 <outlet property="lblDescriptionNeedUpdate" destination="jWU-Gy-3vA" id="Ycw-8s-A3A"/>
                 <outlet property="lblTitle" destination="0Mx-C7-Jx0" id="a3D-kw-gHc"/>
                 <outlet property="mainTableView" destination="wW7-ho-Hpo" id="Gxs-rz-rxY"/>
