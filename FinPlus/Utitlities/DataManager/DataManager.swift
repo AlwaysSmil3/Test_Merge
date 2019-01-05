@@ -90,6 +90,9 @@ class DataManager {
     //Loai dien thoai hien tai dang chon
     var currentListIndexLoanedFromSelectedPopup: String?
     
+    //list current Selected Type ReferenceFriend
+    var listCurrentSelectedTypeReferenceFriend: [Int]?
+    
     //Các trường không hợp lệ của loan
     var missingLoanData: BrowwerActiveLoan? {
         didSet {
@@ -187,6 +190,15 @@ class DataManager {
         userDefault.set(account, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
         userDefault.synchronize()
     }
+    
+    
+    /// Check and init list Current Index Reference Friends
+    func checkAndInitListCurrentIndexReferenceFriends() {
+        if self.listCurrentSelectedTypeReferenceFriend == nil {
+            self.listCurrentSelectedTypeReferenceFriend = [-1, -1, -1]
+        }
+    }
+    
     
     
     /// Get List Bank

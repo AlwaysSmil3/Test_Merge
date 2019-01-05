@@ -27,7 +27,6 @@ class LoanTypeReferenceFriendTBCell: LoanTypeBaseRelationTBCell {
             self.setupUI()
             
             self.checkInvalidReferenceFriendData()
-            //self.checkInvalidPersionalRelationData()
             
         }
     }
@@ -75,10 +74,9 @@ class LoanTypeReferenceFriendTBCell: LoanTypeBaseRelationTBCell {
         firstAddressVC.titleString = title
         firstAddressVC.id = id
         
-//        if self.currentIndex < DataManager.shared.loanInfo.userInfo.relationships.count {
-//            firstAddressVC.addressStringValue = DataManager.shared.loanInfo.userInfo.relationships[self.currentIndex].address
-//        }
-        
+        if let references = DataManager.shared.loanInfo.userInfo.referenceFriend, references.count > self.currentIndex {
+            firstAddressVC.addressStringValue = DataManager.shared.loanInfo.userInfo.referenceFriend?[self.currentIndex].address
+        }
         
         self.parentVC?.show(firstAddressVC, sender: nil)
     }
@@ -100,7 +98,6 @@ class LoanTypeReferenceFriendTBCell: LoanTypeBaseRelationTBCell {
         DataManager.shared.loanInfo.userInfo.referenceFriend?[self.currentIndex].name = value
 
         self.checkInvalidReferenceFriendData()
-//        self.checkInvalidPersionalRelationData()
     }
     
     @IBAction func tfEditEnd(_ sender: Any) {
@@ -111,8 +108,6 @@ class LoanTypeReferenceFriendTBCell: LoanTypeBaseRelationTBCell {
         DataManager.shared.loanInfo.userInfo.referenceFriend?[self.currentIndex].phoneNumber = valueTemp
         
         self.checkInvalidReferenceFriendData()
-        // self.checkInvalidPersionalRelationData()
-        
     }
     
     @IBAction func tfLoanPurposeEditEnd(_ sender: Any) {
@@ -127,33 +122,16 @@ class LoanTypeReferenceFriendTBCell: LoanTypeBaseRelationTBCell {
         
         var dataSource: [LoanBuilderData] = []
         
-        var otherSelection: Int?
-        
-//        if self.currentIndex == 0 {
-//            if let value = DataManager.shared.currentIndexRelationPhoneSelectedPopup2 {
-//                otherSelection = value
-//            }
-//        } else {
-//            if let value = DataManager.shared.currentIndexRelationPhoneSelectedPopup1 {
-//                otherSelection = value
-//            }
-//        }
-        
         for op in options {
-            if let other = otherSelection, Int16(other) == op.id {
-                
-            } else {
-                var da = LoanBuilderData(object: NSObject())
-                da.id = op.id
-                da.title = op.title
-                dataSource.append(da)
-            }
-            
+            var da = LoanBuilderData(object: NSObject())
+            da.id = op.id
+            da.title = op.title
+            dataSource.append(da)
         }
         
         let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
         popup.indexRelationPhone = self.currentIndex
-        popup.setDataSource(data: dataSource, type: .RelationShipPhone)
+        popup.setDataSource(data: dataSource, type: .ReferenceFriend)
         popup.delegate = self
         
         popup.show()
@@ -177,14 +155,21 @@ extension LoanTypeReferenceFriendTBCell: UITextFieldDelegate {
         let newString: NSString =
             currentString.replacingCharacters(in: range, with: string) as NSString
         
-        
         guard textField == self.tfRelationPhone else {
-            
-            if DataManager.shared.checkNameRelationInvalid(name: newString as String, index: self.currentIndex) {
-                self.tfNameRelation?.textColor = UIColor(hexString: "#08121E")
-            } else {
-                self.tfNameRelation?.textColor = UIColor(hexString: "#DA3535")
+            if textField == self.tfNameRelation {
+                if DataManager.shared.checkNameRelationInvalid(name: newString as String, index: self.currentIndex, key: "referenceFriend") {
+                    self.tfNameRelation?.textColor = UIColor(hexString: "#08121E")
+                } else {
+                    self.tfNameRelation?.textColor = UIColor(hexString: "#DA3535")
+                }
+            } else if textField == self.tfLoanPurpose {
+                if DataManager.shared.checkNameRelationInvalid(name: newString as String, index: self.currentIndex, key: "referenceFriend", subKey: "loanPurpose") {
+                    self.tfLoanPurpose?.textColor = UIColor(hexString: "#08121E")
+                } else {
+                    self.tfLoanPurpose?.textColor = UIColor(hexString: "#DA3535")
+                }
             }
+            
             
             if newString.length > 50 { return false }
             
@@ -194,13 +179,13 @@ extension LoanTypeReferenceFriendTBCell: UITextFieldDelegate {
         if DataManager.shared.missingReferenceFriend != nil {
             let phoneFormatted = FinPlusHelper.updatePhoneNumber(phone: newString as String)
             if self.currentIndex == 0 {
-                if phoneFormatted != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0) {
+                if phoneFormatted != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0, key: "referenceFriend", countItems: 3) {
                     self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
                 } else {
                     self.tfRelationPhone?.textColor = UIColor(hexString: "#DA3535")
                 }
             } else {
-                if phoneFormatted != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0) {
+                if phoneFormatted != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0, key: "referenceFriend", countItems: 3) {
                     self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
                 } else {
                     self.tfRelationPhone?.textColor = UIColor(hexString: "#DA3535")
@@ -249,7 +234,6 @@ extension LoanTypeReferenceFriendTBCell: AddressDelegate {
         self.lblAddressRelation?.text = add
         
         self.checkInvalidReferenceFriendData()
-        //self.checkInvalidPersionalRelationData()
     }
 }
 
