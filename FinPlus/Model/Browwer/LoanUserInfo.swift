@@ -18,9 +18,9 @@ struct LoanUserInfo: Encodable {
     
     var relationships: [RelationShipPhone] {
         didSet {
-            if relationships.count > 1, relationships[0].type > -1, relationships[1].type > -1, relationships[0].type > relationships[1].type {
-                self.relationships.reverse()
-            }
+//            if relationships.count > 1, relationships[0].type > -1, relationships[1].type > -1, relationships[0].type > relationships[1].type {
+//                self.relationships.reverse()
+//            }
         }
     }
     var residentAddress: Address
@@ -28,6 +28,8 @@ struct LoanUserInfo: Encodable {
     
     var typeMobilePhone: String?
     var phoneUsageTime: Int?
+    
+    var referenceFriend: [RelationShipPhone]?
     
     init() {
         
@@ -52,6 +54,7 @@ struct LoanUserInfo: Encodable {
         case currentAddress
         case mobilePhoneType
         case phoneUsageTime
+        case referenceFriend
     }
     
     func encode(to encoder: Encoder) throws {
@@ -75,6 +78,13 @@ struct LoanUserInfo: Encodable {
         
         if let useTime = self.phoneUsageTime {
             try container.encode(useTime, forKey: .phoneUsageTime)
+        }
+        
+        if let referenceFriend_ = self.referenceFriend {
+            var sizes = container.nestedUnkeyedContainer(forKey: .referenceFriend)
+            try referenceFriend_.forEach {
+                try sizes.encode($0)
+            }
         }
         
     }

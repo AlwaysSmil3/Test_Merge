@@ -262,22 +262,22 @@ class LoanPersionalInfoVC: LoanBaseViewController {
             return false
         }
         
-        if DataManager.shared.loanInfo.userInfo.relationships[1].type < 0 {
-            self.showToastWithMessage(message: "Vui lòng chọn người thân 2 để tiếp tục.")
-            return false
+        if let builders = DataManager.shared.getCurrentCategory()?.builders, builders.count > 0, let fieldDis = builders[0].fieldsDisplay, fieldDis.count > 4, let relationData = fieldDis[4].multipleData, relationData.count > 1 {
+            if DataManager.shared.loanInfo.userInfo.relationships[1].type < 0 {
+                self.showToastWithMessage(message: "Vui lòng chọn người thân 2 để tiếp tục.")
+                return false
+            }
+            
+            if DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber.length() == 0 {
+                self.showToastWithMessage(message: "Vui lòng nhập số điện thoại người thân 2 để tiếp tục.")
+                return false
+            }
+            
+            if DataManager.shared.loanInfo.userInfo.relationships[1].name == nil || (DataManager.shared.loanInfo.userInfo.relationships[1].name ?? "").count == 0 {
+                self.showToastWithMessage(message: "Vui lòng nhập họ tên người thân 2 để tiếp tục.")
+                return false
+            }
         }
-        
-        if DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber.length() == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập số điện thoại người thân 2 để tiếp tục.")
-            return false
-        }
-        
-        if DataManager.shared.loanInfo.userInfo.relationships[1].name == nil || (DataManager.shared.loanInfo.userInfo.relationships[1].name ?? "").count == 0 {
-            self.showToastWithMessage(message: "Vui lòng nhập họ tên người thân 2 để tiếp tục.")
-            return false
-        }
-        
-        
         
         return true
     }
@@ -322,12 +322,16 @@ class LoanPersionalInfoVC: LoanBaseViewController {
             return
         }
         
-        let phone1 = DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber
-        let phone2 = DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber
-        
-        DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber = self.updateRelationPhone(relationPhone: phone1)
-        DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber = self.updateRelationPhone(relationPhone: phone2)
-        
+        if DataManager.shared.loanInfo.userInfo.relationships.count == 1 {
+            let phone1 = DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber
+            DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber = self.updateRelationPhone(relationPhone: phone1)
+        } else if DataManager.shared.loanInfo.userInfo.relationships.count > 1 {
+            let phone1 = DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber
+            let phone2 = DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber
+            
+            DataManager.shared.loanInfo.userInfo.relationships[0].phoneNumber = self.updateRelationPhone(relationPhone: phone1)
+            DataManager.shared.loanInfo.userInfo.relationships[1].phoneNumber = self.updateRelationPhone(relationPhone: phone2)
+        }
         
         completion()
     }

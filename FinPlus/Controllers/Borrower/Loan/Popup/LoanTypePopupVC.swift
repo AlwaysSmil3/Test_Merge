@@ -25,6 +25,7 @@ enum TypePopup: Int {
     case TypeMobilePhone // Loai dien thoai su dung
     case CareerHusbandOrWife // Nghề nghiệp của vợ hoặc chồng
     case TypeLoanedFrom // Đã từng vay tiền ở đâu
+    case ReferenceFriend // Bạn cùng vay
 }
 
 class LoanTypePopupVC: BasePopup {
@@ -204,6 +205,10 @@ class LoanTypePopupVC: BasePopup {
         case .TypeLoanedFrom:
             break
             
+        case .ReferenceFriend:
+            
+            break
+            
         }
     }
     
@@ -349,6 +354,15 @@ class LoanTypePopupVC: BasePopup {
             
             break
             
+        case .ReferenceFriend:
+            self.titleString = "Bạn vay cùng"
+            DataManager.shared.checkAndInitListCurrentIndexReferenceFriends()
+            if let list = DataManager.shared.listCurrentSelectedTypeReferenceFriend, let indexRe = self.indexRelationPhone, list.count > indexRe, list[indexRe] > 0 {
+                self.currentIndex = self.getIndexfromID(id: list[indexRe])
+            }
+            
+            break
+            
         default:
             break
             
@@ -419,6 +433,16 @@ class LoanTypePopupVC: BasePopup {
                 
             case .CareerHusbandOrWife:
                 DataManager.shared.currentIndexCareerHusbandOrWifeSelectedPopup = self.currentIndex
+                break
+            case .ReferenceFriend:
+                DataManager.shared.checkAndInitListCurrentIndexReferenceFriends()
+                if let indexRe = self.indexRelationPhone, let reference = DataManager.shared.listCurrentSelectedTypeReferenceFriend, reference.count > indexRe {
+                    if let id = self.dataSource[index].id {
+                        DataManager.shared.listCurrentSelectedTypeReferenceFriend?[indexRe] = Int(id)
+                    }
+                    
+                }
+                
                 break
             default:
                 break
