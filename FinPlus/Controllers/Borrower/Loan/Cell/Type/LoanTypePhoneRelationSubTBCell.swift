@@ -134,8 +134,8 @@ class LoanTypePhoneRelationSubTBCell: LoanTypeBaseRelationTBCell {
     ///
     /// - Returns: <#return value description#>
     private func checkInvalidAddress() -> Bool {
-        guard self.currentIndex < DataManager.shared.loanInfo.userInfo.relationships.count, let add = DataManager.shared.loanInfo.userInfo.relationships[self.currentIndex].address else { return true }
-        
+        guard self.currentIndex < DataManager.shared.loanInfo.userInfo.relationships.count else { return true }
+        let add = DataManager.shared.loanInfo.userInfo.relationships[self.currentIndex].address ?? ""
         if DataManager.shared.checkAddressRelationInvalid(address: add, index: self.currentIndex) {
             self.lblAddressRelation?.textColor = UIColor(hexString: "#08121E")
             return true

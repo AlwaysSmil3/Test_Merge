@@ -33,7 +33,7 @@ extension APIClient {
                                 
                                 DataManager.shared.browwerInfo = model
                                 
-                                if let titleAdditionalMissingData = activeLoan["additionalImageTitle"] as? String {
+                                if let titleAdditionalMissingData = activeLoan["additionalImageTitle"] as? String, titleAdditionalMissingData.count > 0 {
                                     DataManager.shared.titleAdditionalOptinalMediaMissingData = titleAdditionalMissingData
                                 }
                                 
