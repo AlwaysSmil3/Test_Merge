@@ -134,7 +134,7 @@ public struct LoanBuilderFields {
                     }
                 }
                 
-                if let amount = self.displayIfLoanOver, amount < Double(DataManager.shared.loanInfo.amount) {
+                if let amount = self.displayIfLoanOver, amount <= Double(DataManager.shared.loanInfo.amount) {
                     isCheckCanDisplay = true
                 }
                 

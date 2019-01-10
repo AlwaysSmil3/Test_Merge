@@ -11,17 +11,111 @@ import Foundation
 extension DataManager {
     
     
+    /// Check and change state invalid' RelationShip
+    ///
+    /// - Parameter json: <#json description#>
+    func checkHaveInvalidDataRelationShips(json: JSONDictionary) {
+        if let relation = json["0"] as? JSONDictionary {
+            
+            if let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
+                self.isRelationPhone1Invalid = true
+            }
+            
+            if let value = relation["checkname"] as? Bool, value {
+                self.isRelationPhone1Invalid = true
+            }
+            
+            if let value = relation["checkaddress"] as? Bool, value {
+                self.isRelationPhone1Invalid = true
+            }
+            
+        }
+        
+        if let relation = json["1"] as? JSONDictionary {
+            
+            if let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
+                self.isRelationPhone2Invalid = true
+            }
+            
+            if let value = relation["checkname"] as? Bool, value {
+                self.isRelationPhone2Invalid = true
+            }
+            
+            if let value = relation["checkaddress"] as? Bool, value {
+                self.isRelationPhone2Invalid = true
+            }
+            
+        }
+    }
+    
+    
+    /// Check and change state invalid' ReferenceFriends
+    ///
+    /// - Parameter json: <#json description#>
+    func checkHaveInvalidDataReferenceFriends(json: JSONDictionary) {
+        if let relation = json["0"] as? JSONDictionary {
+            
+            if let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
+                self.isReferenceFriend1Invalid = true
+            }
+            else if let value = relation["checkname"] as? Bool, value {
+                self.isReferenceFriend1Invalid = true
+            }
+            else if let value = relation["checkaddress"] as? Bool, value {
+                self.isReferenceFriend1Invalid = true
+            }
+            else if let loanPurpose = relation["checkloanPurpose"] as? Bool, loanPurpose {
+                self.isReferenceFriend1Invalid = true
+            }
+        }
+        
+        if let relation = json["1"] as? JSONDictionary {
+            
+            if let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
+                self.isReferenceFriend2Invalid = true
+            }
+            else if let value = relation["checkname"] as? Bool, value {
+                self.isReferenceFriend2Invalid = true
+            }
+            else if let value = relation["checkaddress"] as? Bool, value {
+                self.isReferenceFriend2Invalid = true
+            }
+            else if let loanPurpose = relation["checkloanPurpose"] as? Bool, loanPurpose {
+                self.isReferenceFriend2Invalid = true
+            }
+            
+        }
+        
+        if let relation = json["2"] as? JSONDictionary {
+            
+            if let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
+                self.isReferenceFriend3Invalid = true
+            }
+            else if let value = relation["checkname"] as? Bool, value {
+                self.isReferenceFriend3Invalid = true
+            }
+            else if let value = relation["checkaddress"] as? Bool, value {
+                self.isReferenceFriend3Invalid = true
+            }
+            else if let loanPurpose = relation["checkloanPurpose"] as? Bool, loanPurpose {
+                self.isReferenceFriend3Invalid = true
+            }
+            
+        }
+    }
+    
+    
     /// Check name Relation Invalid
     ///
     /// - Parameter name: <#name description#>
     /// - Returns: <#return value description#>
-    func checkNameRelationInvalid(name: String, index: Int) -> Bool {
+    func checkNameRelationInvalid(name: String, index: Int, key: String = "relationships", subKey: String = "name") -> Bool {
         
-        guard let data = DataManager.shared.missingLoanDataDictionary, let userInfo = data["userInfo"] as? JSONDictionary, let relationPhone = userInfo["relationships"] as? JSONDictionary, let relation = relationPhone["\(index)"] as? JSONDictionary else {
+        guard let data = DataManager.shared.missingLoanDataDictionary, let userInfo = data["userInfo"] as? JSONDictionary, let relationPhone = userInfo[key] as? JSONDictionary, let relation = relationPhone["\(index)"] as? JSONDictionary else {
             return true
         }
         
-        if let nameValid = relation["name"] as? String, name == nameValid {
+        if let nameValid = relation[subKey] as? String, name == nameValid {
             return false
         }
         
@@ -34,9 +128,9 @@ extension DataManager {
     ///   - address: <#address description#>
     ///   - index: <#index description#>
     /// - Returns: <#return value description#>
-    func checkAddressRelationInvalid(address: String, index: Int) -> Bool {
+    func checkAddressRelationInvalid(address: String, index: Int, key: String = "relationships") -> Bool {
         
-        guard let data = DataManager.shared.missingLoanDataDictionary, let userInfo = data["userInfo"] as? JSONDictionary, let relationPhone = userInfo["relationships"] as? JSONDictionary, let relation = relationPhone["\(index)"] as? JSONDictionary else {
+        guard let data = DataManager.shared.missingLoanDataDictionary, let userInfo = data["userInfo"] as? JSONDictionary, let relationPhone = userInfo[key] as? JSONDictionary, let relation = relationPhone["\(index)"] as? JSONDictionary else {
             return true
         }
         
@@ -48,15 +142,19 @@ extension DataManager {
     }
     
     //Get phone invalid from missing Data
-    func getPhoneInValid(type: Int) -> String {
+    func getPhoneInValid(type: Int, key: String = "relationships", countItems: Int? = nil) -> String {
         var phone = ""
         
-        guard let data = DataManager.shared.missingLoanDataDictionary, let userInfo = data["userInfo"] as? JSONDictionary, let relationPhone = userInfo["relationships"] as? JSONDictionary else {
+        guard let data = DataManager.shared.missingLoanDataDictionary, let userInfo = data["userInfo"] as? JSONDictionary, let relationPhone = userInfo[key] as? JSONDictionary else {
             return phone
         }
         
         var relation: JSONDictionary?
-        let count = DataManager.shared.loanInfo.userInfo.relationships.count > 1 ? DataManager.shared.loanInfo.userInfo.relationships.count : 2
+        var count = DataManager.shared.loanInfo.userInfo.relationships.count > 1 ? DataManager.shared.loanInfo.userInfo.relationships.count : 2
+        
+        if let counItem_ = countItems {
+            count = counItem_
+        }
         
         for i in 0...count - 1 {
             if let relation1 = relationPhone["\(i)"] as? JSONDictionary, let typeRe = relation1["type"] as? Int, type == typeRe {
@@ -118,6 +216,11 @@ extension DataManager {
                 missingListTitle.append("Thông tin liên lạc của người thân")
             }
             
+            if self.missingReferenceFriend != nil {
+                missingListKey.append("referenceFriend")
+                missingListTitle.append("Thông tin người vay cùng")
+            }
+            
             
             if let add = userInfo.residentAddress, let city = add.city, city.count > 0 {
                 missingListKey.append("residentAddress")
@@ -146,7 +249,7 @@ extension DataManager {
             if let value = jobInfo.jobTitle, value.length() > 0, value == self.browwerInfo?.activeLoan?.jobInfo?.jobTitle {
                 missingListKey.append("jobType")
                 missingListKey.append("jobTitle")
-                missingListTitle.append("Loại hình hoạt động")
+                missingListTitle.append("Nghề nghiệp")
             }
             
             if let value = jobInfo.positionTitle, value.length() > 0, value == self.browwerInfo?.activeLoan?.jobInfo?.positionTitle {
@@ -613,6 +716,10 @@ extension DataManager {
         guard let userInfo = data["userInfo"] as? JSONDictionary else { return true }
         
         if DataManager.shared.isRelationPhone1Invalid || DataManager.shared.isRelationPhone2Invalid {
+            return false
+        }
+        
+        if DataManager.shared.isReferenceFriend1Invalid || DataManager.shared.isReferenceFriend2Invalid || DataManager.shared.isReferenceFriend3Invalid {
             return false
         }
         

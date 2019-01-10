@@ -12,26 +12,8 @@ protocol UpdateStatusInvalidRelationPhoneDelegate: class {
     func update(isNeed: Bool)
 }
 
-class LoanTypePhoneRelationSubTBCell: UITableViewCell {
+class LoanTypePhoneRelationSubTBCell: LoanTypeBaseRelationTBCell {
     
-    
-    @IBOutlet weak var tfTypeRelation: UITextField?
-    
-    @IBOutlet weak var lblTitlePhone: UILabel?
-    @IBOutlet weak var tfRelationPhone: UITextField?
-    
-    @IBOutlet weak var lblNameRelationTitle: UILabel?
-    @IBOutlet weak var tfNameRelation: UITextField?
-    
-    @IBOutlet weak var lblAddressRelationTitle: UILabel?
-    @IBOutlet weak var lblAddressRelation: UILabel?
-    
-    
-    var currentIndex: Int = 0
-    
-    weak var parentVC: LoanBaseViewController?
-    
-    weak var delegateUpdateStatusInvalid: UpdateStatusInvalidRelationPhoneDelegate?
     
     var data: LoanBuilderMultipleData? {
         didSet {
@@ -84,34 +66,6 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
         
         
     }
-    
-    private func getTitleTypeRelation(id: Int) -> String {
-        let text = self.currentIndex == 0 ? "1" : "2"
-        guard let cate = DataManager.shared.getCurrentCategory(), (cate.builders?.count ?? 0) > 0, let fields = cate.builders![0].fieldsDisplay else { return text }
-        
-        var field: LoanBuilderFields?
-        for f in fields {
-            if f.id == "relationships" {
-                field = f
-                break
-            }
-        }
-        
-        guard let muiltiData = field?.multipleData else { return text }
-        
-        for mu in muiltiData {
-            if let options = mu.options {
-                for op in options {
-                    if id == Int(op.id ?? 0) {
-                        return op.title ?? text
-                    }
-                }
-            }
-        }
-        
-        return text
-    }
-    
     
     //MARK: Check invalid
     private func checkInvalidPersionalRelationData() {
@@ -180,8 +134,8 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
     ///
     /// - Returns: <#return value description#>
     private func checkInvalidAddress() -> Bool {
-        guard self.currentIndex < DataManager.shared.loanInfo.userInfo.relationships.count, let add = DataManager.shared.loanInfo.userInfo.relationships[self.currentIndex].address else { return true }
-        
+        guard self.currentIndex < DataManager.shared.loanInfo.userInfo.relationships.count else { return true }
+        let add = DataManager.shared.loanInfo.userInfo.relationships[self.currentIndex].address ?? ""
         if DataManager.shared.checkAddressRelationInvalid(address: add, index: self.currentIndex) {
             self.lblAddressRelation?.textColor = UIColor(hexString: "#08121E")
             return true
@@ -200,17 +154,6 @@ class LoanTypePhoneRelationSubTBCell: UITableViewCell {
         } else {
             self.delegateUpdateStatusInvalid?.update(isNeed: true)
         }
-    }
-    
-    private func getDisplayPhone(relationPhone: String) -> String {
-        var phone = relationPhone
-        if relationPhone.contains("_") {
-            let array = relationPhone.components(separatedBy: "_")
-            if array.count > 0 {
-                phone = array[0]
-            }
-        }
-        return FinPlusHelper.updatePhoneNumber(phone:phone)
     }
     
     /// Sang màn chọn địa chỉ
