@@ -30,7 +30,7 @@ class LoanTypeBaseRelationTBCell: UITableViewCell {
     
     func getTitleTypeRelation(id: Int) -> String {
         let text = self.currentIndex == 0 ? "1" : "2"
-        guard let cate = DataManager.shared.getCurrentCategory(), (cate.builders?.count ?? 0) > 0, let fields = cate.builders![self.currentIndex].fieldsDisplay else { return text }
+        guard let cate = DataManager.shared.getCurrentCategory(), (cate.builders?.count ?? 0) > 0, let fields = cate.builders![0].fieldsDisplay else { return text }
         
         var field: LoanBuilderFields?
         for f in fields {

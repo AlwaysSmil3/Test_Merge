@@ -249,7 +249,7 @@ extension DataManager {
             if let value = jobInfo.jobTitle, value.length() > 0, value == self.browwerInfo?.activeLoan?.jobInfo?.jobTitle {
                 missingListKey.append("jobType")
                 missingListKey.append("jobTitle")
-                missingListTitle.append("Loại hình hoạt động")
+                missingListTitle.append("Nghề nghiệp")
             }
             
             if let value = jobInfo.positionTitle, value.length() > 0, value == self.browwerInfo?.activeLoan?.jobInfo?.positionTitle {
