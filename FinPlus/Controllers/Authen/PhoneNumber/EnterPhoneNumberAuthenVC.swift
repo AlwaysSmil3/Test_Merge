@@ -7,7 +7,7 @@
 //
 
 import Foundation
-//import JWT
+import MessageUI
 
 
 class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
@@ -79,6 +79,53 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
     
     
     //MARK: Actions
+    
+    @IBAction func btnOptionTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "", message: "Lựa chọn", preferredStyle: .actionSheet)
+        
+        let emailAction = UIAlertAction(title: "Email hỗ trợ: support@mony.vn", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let _ = win else {
+                return
+            }
+            let mailComposeViewController = self.configuredMailComposeViewController()
+            if MFMailComposeViewController.canSendMail() {
+                self.present(mailComposeViewController, animated: true, completion: nil)
+            } else {
+                self.showSendMailErrorAlert()
+            }
+            // go to email form
+            
+        })
+        
+        let hotLineAction = UIAlertAction(title: "Gọi hotline: \(phoneNumberMony)", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let _ = win else {
+                return
+            }
+            // show call popup
+            FinPlusHelper.makeCall(forPhoneNumber: phoneNumberMony)
+            
+            
+        })
+        
+        alert.addAction(emailAction)
+        alert.addAction(hotLineAction)
+        
+        alert.addAction(UIAlertAction(title: "Hủy", style: .cancel, handler:{ (UIAlertAction)in
+            print("User click Dismiss button")
+        }))
+        
+        alert.view.tintColor = UIColor(hexString: "#08121E")
+        
+        if let popoverPresentationController = alert.popoverPresentationController {
+            popoverPresentationController.sourceView = self.view
+            popoverPresentationController.sourceRect = CGRect(x: 20, y: 20, width: 64, height: 64)
+        }
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+        
+    }
     
     @IBAction func tfPhoneNumberEditChanged(_ sender: Any) {
         //guard !FinPlusHelper.checkStatusVersionIsNeedUpdate() else { return }
@@ -221,6 +268,7 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
     }
     
 }
+
 
 //MARK: TextField Delegate
 extension EnterPhoneNumberAuthenVC: UITextFieldDelegate {
