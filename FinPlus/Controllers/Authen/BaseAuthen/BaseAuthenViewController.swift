@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MessageUI
 
 class BaseAuthenViewController: BaseViewController {
     
@@ -248,5 +249,37 @@ class BaseAuthenViewController: BaseViewController {
         self.navigationController?.pushViewController(choiceKindUser, animated: true)
     }
     
+    //MARK: Mail config
+    func showSendMailErrorAlert() {
+        
+        let alert = UIAlertController(title: "Không thể gửi e-mail", message: "Thiết bị của bạn không thể gửi e-mail. Vui lòng kiểm tra lại cài đặt và thử lại.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Đồng ý", style: .cancel, handler:{ (UIAlertAction) in
+            print("User click Dismiss button")
+        }))
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+        
+    }
     
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        
+        mailComposerVC.setToRecipients(["support@mony.vn"])
+        mailComposerVC.setSubject("[Mony - Hỗ trợ \(DataManager.shared.currentAccount)]")
+        mailComposerVC.setMessageBody("Hi Mony,\n", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    
+}
+
+//MARK: MFMailComposeViewControllerDelegate
+extension BaseAuthenViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
 }

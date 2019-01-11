@@ -13,7 +13,7 @@ enum SetPassOrResetPass {
     case SetPass
     case ResetPass
 }
-class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
+class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
     var phone : String!
     var setPassOrResetPass: SetPassOrResetPass = SetPassOrResetPass.SetPass
     @IBOutlet weak var lblTitle: UILabel!
@@ -212,34 +212,10 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate, MFMailComp
     }
     
     // MARK: MFMailComposeViewControllerDelegate Method
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
-    }
+//    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+//        controller.dismiss(animated: true, completion: nil)
+//    }
     
-    
-    func showSendMailErrorAlert() {
-        
-        let alert = UIAlertController(title: "Không thể gửi e-mail", message: "Thiết bị của bạn không thể gửi e-mail. Vui lòng kiểm tra lại cài đặt và thử lại.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Đồng ý", style: .cancel, handler:{ (UIAlertAction) in
-            print("User click Dismiss button")
-        }))
-        
-        self.present(alert, animated: true, completion: {
-            print("completion block")
-        })
-        
-    }
-    
-    func configuredMailComposeViewController() -> MFMailComposeViewController {
-        let mailComposerVC = MFMailComposeViewController()
-        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
-        
-        mailComposerVC.setToRecipients(["support@mony.vn"])
-        mailComposerVC.setSubject("[Mony - Hỗ trợ \(DataManager.shared.currentAccount)]")
-        mailComposerVC.setMessageBody("Hi Mony,\n", isHTML: false)
-        
-        return mailComposerVC
-    }
     
     @IBAction func optionAction(_ sender: Any) {
         let alertController = UIAlertController(title: nil, message: "Trợ giúp", preferredStyle: .actionSheet)
