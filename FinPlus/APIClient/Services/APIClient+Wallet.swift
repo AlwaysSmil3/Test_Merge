@@ -73,7 +73,7 @@ extension APIClient {
     /// - Returns: <#return value description#>
     func deleteBankAccount(bankAccountID: Int32) -> Promise<APIResponseGeneral> {
         let userID = DataManager.shared.userID
-        let endPoint = "\(APIService.AccountService)users/\(userID)" + "/bank-account/\(bankAccountID)/"
+        let endPoint = "\(APIService.AccountService)users/\(userID)" + "/bank-account/\(bankAccountID)"
         
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: endPoint, params: [:], isShowLoadingView: true, httpType: .DELETE)
