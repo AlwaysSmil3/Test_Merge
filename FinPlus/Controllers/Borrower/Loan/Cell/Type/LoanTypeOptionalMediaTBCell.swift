@@ -166,8 +166,41 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     }
     
     
+    /// Show Alert for chossen image from galery
+    func showAlertAllowGetImageFromGalery() {
+        
+        let alert = UIAlertController(title: "Chọn ảnh", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Chụp ảnh", style: UIAlertActionStyle.default) { (action) in
+            self.showCameraView()
+        }
+        let galeryAction = UIAlertAction(title: "Chọn ảnh", style: UIAlertActionStyle.default) { (action) in
+            self.showLibrary()
+        }
+        let cancelAction = UIAlertAction(title: "Đóng", style: UIAlertActionStyle.cancel) { (action) in
+            
+        }
+        
+        alert.view.tintColor = MAIN_COLOR
+        
+        alert.addAction(cameraAction)
+        alert.addAction(galeryAction)
+        alert.addAction(cancelAction)
+        
+        if let popoverPresentationController = alert.popoverPresentationController, let topVC = UIApplication.shared.topViewController() {
+            popoverPresentationController.sourceView = topVC.view
+            popoverPresentationController.sourceRect = CGRect(x: 20, y: 20, width: 64, height: 64)
+        }
+        
+        UIApplication.shared.topViewController()?.present(alert, animated: true, completion: {
+            
+        })
+    
+    }
+    
+    
     func showLibrary() {
-        CameraHandler.shared.showCamera(vc: UIApplication.shared.topViewController()!)
+        CameraHandler.shared.photoLibrary(vc: UIApplication.shared.topViewController()!)
         CameraHandler.shared.imagePickedBlock = { (image) in
             //let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
 
@@ -331,8 +364,15 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.currentSelectedCollection = indexPath
+        
+        guard let isAllowGetImageFromGalery = self.field?.allowGetImageFromGalery, isAllowGetImageFromGalery else {
+            self.showCameraView()
+            
+            return
+        }
+        self.showAlertAllowGetImageFromGalery()
         //self.showLibrary()
-        self.showCameraView()
+        //self.showCameraView()
         
     }
     
