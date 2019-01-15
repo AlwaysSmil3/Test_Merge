@@ -33,6 +33,7 @@ public struct LoanBuilderFields {
     static let display_if_loan_over = "display_if_loan_over"
     static let display_if_job_type_is = "display_if_job_type_is"
     static let display_if_need_additional_missing_data = "display_if_need_additional_missing_data"
+    static let allow_get_image_from_galery = "allow_get_image_from_galery"
     
   }
 
@@ -61,6 +62,7 @@ public struct LoanBuilderFields {
     public var displayIfJobTypeIs: [Int]?
     public var isCanDisplay: Bool = true
     public var displayIfNeedAdditionalMissingData: Bool?
+    public var allowGetImageFromGalery: Bool?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -97,6 +99,7 @@ public struct LoanBuilderFields {
     self.displayIfLoanOver = json[SerializationKeys.display_if_loan_over].double
     if let items = json[SerializationKeys.display_if_job_type_is].array { displayIfJobTypeIs = items.map { $0.intValue } }
     self.displayIfNeedAdditionalMissingData = json[SerializationKeys.display_if_need_additional_missing_data].boolValue
+    self.allowGetImageFromGalery = json[SerializationKeys.allow_get_image_from_galery].boolValue
     
     self.checkCanDisplay()
     
@@ -190,6 +193,10 @@ public struct LoanBuilderFields {
     if let value = arrayIndex { dictionary[SerializationKeys.arrayIndex] = value }
     if let value = dataName { dictionary[SerializationKeys.dataName] = value }
     if let value = maxLenght { dictionary[SerializationKeys.maxLength] = value }
+    
+    if let value = self.allowGetImageFromGalery {
+        dictionary[SerializationKeys.allow_get_image_from_galery] = value
+    }
     
     return dictionary
   }

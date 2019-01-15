@@ -186,7 +186,7 @@ class LoanBaseViewController: BaseViewController {
         
         APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
             .done(on: DispatchQueue.main) { model in
-                DataManager.shared.loanID = model.loanId!
+                DataManager.shared.loanID = model.loanId ?? -1
                 DataManager.shared.browwerInfo?.activeLoan = model
                 completion()
             }

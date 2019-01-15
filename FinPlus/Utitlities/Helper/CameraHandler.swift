@@ -41,9 +41,9 @@ class CameraHandler: NSObject{
         
     }
     
-    func photoLibrary()
+    func photoLibrary(vc: UIViewController)
     {
-        
+        self.currentVC = vc
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             let myPickerController = UIImagePickerController()
             myPickerController.delegate = self;
@@ -62,7 +62,7 @@ class CameraHandler: NSObject{
         }))
         
         actionSheet.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { (alert:UIAlertAction!) -> Void in
-            self.photoLibrary()
+            self.photoLibrary(vc: vc)
         }))
         
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
