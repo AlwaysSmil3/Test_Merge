@@ -333,6 +333,7 @@ extension DataManager {
             }
         }
         
+        /*
         if let _ = miss.borrowedPlace {
             missingListKey.append("borrowedPlace")
             missingListTitle.append("Bạn đã từng vay tiền ở đâu")
@@ -342,7 +343,7 @@ extension DataManager {
             missingListKey.append("totalBorrowedAmount")
             missingListTitle.append("Tổng số tiền bạn đã vay là bao nhiêu?")
         }
-        
+        */
         if let value = miss.nationalIdAllImg, value.length() > 0, value == self.browwerInfo?.activeLoan?.nationalIdAllImg {
             missingListKey.append("nationalIdAllImg")
             missingListTitle.append("Ảnh bạn đang cầm CMND")
@@ -430,12 +431,15 @@ extension DataManager {
             if let _ = data["bank"]  {
                 return true
             }
+            
+            /*
             if let _ = data["borrowedPlace"]  {
                 return true
             }
             if let _ = data["totalBorrowedAmount"]  {
                 return true
             }
+            */
         }
         
         if index < 5 {
@@ -483,13 +487,14 @@ extension DataManager {
             return 4
         }
         
+        /*
         if let _ = data["borrowedPlace"]  {
             return 4
         }
         if let _ = data["totalBorrowedAmount"]  {
             return 4
         }
-        
+        */
         if let _ = data["nationalIdAllImg"]  {
             return 5
         }
@@ -778,6 +783,7 @@ extension DataManager {
     func checkDataInvalidChangedInStepBank(currentBank: AccountBank?) -> Bool {
         guard let data = self.missingLoanDataDictionary else { return true }
         
+        /*
         if let value = data["borrowedPlace"] as? String, value == DataManager.shared.loanInfo.borrowedPlace {
             return false
         }
@@ -785,7 +791,7 @@ extension DataManager {
         if let value = data["totalBorrowedAmount"] as? Double, value == DataManager.shared.loanInfo.totalBorrowedAmount {
             return false
         }
-        
+        */
         guard let bank = data["bank"] as? JSONDictionary else { return true }
         
         guard let currbank = currentBank else { return true }
