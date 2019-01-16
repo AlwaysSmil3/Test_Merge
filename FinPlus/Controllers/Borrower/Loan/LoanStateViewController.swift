@@ -298,6 +298,34 @@ class LoanStateViewController: UIViewController {
             ]
         }
         
+        //status = 3
+        func setupForRiskReview() {
+            updateMounthTitle()
+            
+            dataSource = [
+                LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
+                LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
+                LoanSummaryModel(name: LoanAmountBase, value: amountString, attributed: NSAttributedString(string: amountString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                LoanSummaryModel(name: "Kỳ hạn vay", value: term, attributed: NSAttributedString(string: term, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                LoanSummaryModel(name: "Trạng thái", value: "Chờ phê duyệt", attributed: NSAttributedString(string: "Chờ phê duyệt", attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)!, NSAttributedStringKey.foregroundColor : MAIN_COLOR])),
+                LoanSummaryModel(name: "Lãi suất dự kiến", value: "\(rate)%/năm", attributed: nil),
+                LoanSummaryModel(name: "Phí dịch vụ", value: FinPlusHelper.formatDisplayCurrency(serviceFee) + "đ", attributed: nil),
+                LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
+                LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
+            ]
+            
+            self.navigationItem.rightBarButtonItem = nil
+            
+            headerData = [
+                [
+                    "type": HeaderCellType.TextType,
+                    "text": "Đơn vay của bạn đang chờ duyệt.",
+                    "subType": TextCellType.TitleType,
+                    ],
+            ]
+            
+        }
+        
         dataSource = [
             LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
             LoanSummaryModel(name: "Ngày tạo đơn", value: dateString, attributed: nil),
@@ -372,6 +400,9 @@ class LoanStateViewController: UIViewController {
                 
             case .RISK_REVIEW?:
                 // Thẩm định viên duyệt = 3
+                setupForRiskReview()
+                
+                /*
                 updateMounthTitle()
                 
                 dataSource = [
@@ -395,7 +426,7 @@ class LoanStateViewController: UIViewController {
                         "subType": TextCellType.TitleType,
                         ],
                 ]
-                
+                */
             case .SALE_PENDING?:
                 //Can bo sung thong tin, Sale review = 2
                 if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
@@ -1073,7 +1104,7 @@ class LoanStateViewController: UIViewController {
  
                 
             default:
-                setupForSaleReview()
+                setupForRiskReview()
                 
                 break
             }

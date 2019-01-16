@@ -30,7 +30,8 @@ extension ListWalletViewController {
         DataManager.shared.loanInfo.currentStep = 3
         self.listFieldsForLoan.add("no_wallet")
         guard let fields = DataManager.shared.listFieldForStep4 else {
-            self.getDataLoanFromJSONStep4()
+            //Bỏ các thông tin thêm
+            //self.getDataLoanFromJSONStep4()
             return
         }
         
