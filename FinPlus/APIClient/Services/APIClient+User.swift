@@ -35,6 +35,9 @@ extension APIClient {
                                 
                                 if let titleAdditionalMissingData = activeLoan["additionalImageTitle"] as? String, titleAdditionalMissingData.count > 0 {
                                     DataManager.shared.titleAdditionalOptinalMediaMissingData = titleAdditionalMissingData
+                                    DataManager.shared.updateFieldsDisplay {
+                                        
+                                    }
                                 }
                                 
                                 if let optionalData = missingData["optionalText"] as? JSONDictionary {
