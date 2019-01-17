@@ -315,24 +315,28 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 }
             }
         } else if id.contains("mobilePhoneType") {
-            var valueTemp: String?
+            var value: String = ""
             if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.mobilePhoneType, data.count > 0 {
-                valueTemp = data
+                value = data
             }
             
             if let type = DataManager.shared.loanInfo.userInfo.typeMobilePhone, type.count > 0 {
-                valueTemp = type
+                value = type
             }
             
-            guard let value = valueTemp else { return }
+            //guard let value = valueTemp else { return }
             
-            if !value.contains(keyComponentSeparateOptionalText) {
-                self.lblValue?.text = value
-            } else {
-                self.lblValue?.text = FinPlusHelper.getTitleWithOtherSelection(value: value)
+            if !value.isEmpty {
+                if !value.contains(keyComponentSeparateOptionalText) {
+                    self.lblValue?.text = value
+                } else {
+                    self.lblValue?.text = FinPlusHelper.getTitleWithOtherSelection(value: value)
+                }
+                
+                
+                DataManager.shared.loanInfo.userInfo.typeMobilePhone = value
             }
             
-            DataManager.shared.loanInfo.userInfo.typeMobilePhone = value
             
             if DataManager.shared.checkFieldIsMissing(key: "mobilePhoneType", parentKey: "userInfo", currentValue: value) {
                 //Cap nhat thong tin khong hop le
