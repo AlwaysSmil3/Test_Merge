@@ -62,7 +62,7 @@ class FinPlusHelper {
             completion(true)
             break
         case .notDetermined, .restricted:
-            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: "Bạn cần cung cấp quyền truy cập Camera để tiếp tục hoàn thiện đơn vay", message: "Chúng tôi cần bạn cấp quyền chụp ảnh trực tiếp từ điện thoại để bạn chụp và đăng tải hồ sơ giấy tờ tùy thân. Vui lòng bấm đồng ý để hồ sơ vay tiền của bạn được hoàn thiện nhanh nhất.", okTitle: "Đồng ý", cancelTitle: "Bỏ qua", completion: { (status) in
+            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: "Bạn cần cung cấp quyền truy cập Camera để tiếp tục hoàn thiện đơn vay", message: "Chúng tôi cần Bạn cấp quyền truy cập camera để:\nChụp ảnh các loại hồ sơ như sổ hộ khẩu, bảng lương, chứng minh nhân dân.\nChúng tôi cam kết không cung cấp các tài liệu của bạn cho bất kỳ bên thứ ba nào, và sử dụng quyền camera vào các mục đích khác.", okTitle: "Đồng ý", cancelTitle: "Bỏ qua", completion: { (status) in
                 if status {
                     completion(true)
                 }
@@ -87,7 +87,7 @@ class FinPlusHelper {
             completion(true)
             break
         case .notDetermined, .restricted:
-            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: "Bạn cần cung cấp quyền truy cập Vị trí để tiếp tục hoàn thiện đơn vay", message: "Chúng tôi cần bạn cấp quyền truy cập vị trí để xác thực khu vực hỗ trợ cho vay. Vui lòng bấm đồng ý để hồ sơ vay tiền của bạn được xử lý nhanh nhất.", okTitle: "Đồng ý", cancelTitle: "Bỏ qua", completion: { (status) in
+            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: "Bạn cần cung cấp quyền truy cập Vị trí để tiếp tục hoàn thiện đơn vay", message: "Chúng tôi cần Bạn cấp quyền location để:\nXác định vị trí khai báo thường trú của các bạn là chính xác.\nViệc vay tiền là online, nên chúng tôi cần định vị vị trí của Bạn để phục vụ cho việc vay vốn.\nChúng tôi cam kết không cung cấp vị trí của bạn cho bất kỳ bên thứ ba nào, và sử dụng quyền location vào các mục đích khác.", okTitle: "Đồng ý", cancelTitle: "Bỏ qua", completion: { (status) in
                 if status {
                     completion(true)
                 }

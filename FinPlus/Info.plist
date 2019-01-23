@@ -29,7 +29,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>168</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -66,15 +66,15 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Sử dụng camera cho tạo khoản vay</string>
+	<string>Chụp ảnh các loại hồ sơ như sổ hộ khẩu, bảng lương, chứng minh nhân dân. Chúng tôi cam kết không cung cấp các tài liệu của bạn cho bất kỳ bên thứ ba nào, và sử dụng quyền camera vào các mục đích khác.</string>
 	<key>NSContactsUsageDescription</key>
-	<string>Sử dụng liên hệ cho tạo khoản vay</string>
+	<string>Chúng tôi cần bạn cấp quyền truy cập danh bạ để xác thực sim điện thoại bạn đang sử dụng. Vui lòng bấm đồng ý để hồ sơ vay tiền của bạn được xử lý nhanh nhất.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Sử dụng vị trí cho tạo khoản vay</string>
+	<string>Xác định vị trí khai báo thường trú của các bạn là chính xác. Việc vay tiền là online, nên chúng tôi cần định vị vị trí của Bạn để phục vụ cho việc vay vốn. Chúng tôi cam kết không cung cấp vị trí của bạn cho bất kỳ bên thứ ba nào, và sử dụng quyền location vào các mục đích khác.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Sử dụng vị trí cho tạo khoản vay</string>
+	<string>Xác định vị trí khai báo thường trú của các bạn là chính xác. Việc vay tiền là online, nên chúng tôi cần định vị vị trí của Bạn để phục vụ cho việc vay vốn. Chúng tôi cam kết không cung cấp vị trí của bạn cho bất kỳ bên thứ ba nào, và sử dụng quyền location vào các mục đích khác.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Sử dụng ảnh cho tạo khoản vay</string>
+	<string>Chụp ảnh các loại hồ sơ như sổ hộ khẩu, bảng lương, chứng minh nhân dân. Chúng tôi cam kết không cung cấp các tài liệu của bạn cho bất kỳ bên thứ ba nào, và sử dụng quyền camera vào các mục đích khác.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Pro-Display-Black.otf</string>
