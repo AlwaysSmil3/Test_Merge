@@ -169,9 +169,6 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="46" id="0pW-B8-ZaD"/>
                         </constraints>
-                        <connections>
-                            <action selector="btnAddressTapped:" destination="3Dg-tM-cts" eventType="touchUpInside" id="KRl-P3-6MA"/>
-                        </connections>
                     </button>
                 </subviews>
                 <constraints>
