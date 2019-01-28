@@ -39,7 +39,7 @@ extension APIClient {
     /* POST Thêm ví vào tài khoản người dùng
  
      */
-    func addWallet(walletNumber: String, type: Int) -> Promise<[AccountBank]> {
+    func addWallet(walletNumber: String, type: Int, bankNo: String, accType: Int = 0) -> Promise<[AccountBank]> {
         
         return Promise<[AccountBank]> { seal in
             
@@ -48,7 +48,9 @@ extension APIClient {
             
             let params: JSONDictionary = [
                 "walletNumber": walletNumber,
-                "walletType": type
+                "walletType": type,
+                "accType": accType,
+                "bankNo": bankNo
             ]
             
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)

@@ -17,6 +17,7 @@ public struct Bank {
     static let bankName = "bankName"
     static let type = "type" //type
     static let image = "image"
+    static let bankNo = "bankNo"
   }
 
   // MARK: Properties
@@ -25,6 +26,7 @@ public struct Bank {
   public var bankName: String?
   public var type: String?
   public var image: String?
+    public var bankNo: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -44,6 +46,7 @@ public struct Bank {
     bankName = json[SerializationKeys.bankName].string ?? ""
     type = json[SerializationKeys.type].string ?? ""
     image = json[SerializationKeys.image].string ?? ""
+    bankNo = json[SerializationKeys.bankNo].string ?? ""
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -56,6 +59,7 @@ public struct Bank {
     if let value = bankName { dictionary[SerializationKeys.bankName] = value }
     if let value = type { dictionary[SerializationKeys.type] = value }
     if let value = image { dictionary[SerializationKeys.image] = value }
+    if let value = bankNo { dictionary[SerializationKeys.bankNo] = value }
     return dictionary
   }
 

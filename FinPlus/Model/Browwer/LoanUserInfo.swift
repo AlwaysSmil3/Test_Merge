@@ -31,6 +31,9 @@ struct LoanUserInfo: Encodable {
     
     var referenceFriend: [RelationShipPhone]?
     
+    var houseType: String?
+    var maritalStatus: String?
+    
     init() {
         
         self.fullName = ""
@@ -55,6 +58,8 @@ struct LoanUserInfo: Encodable {
         case mobilePhoneType
         case phoneUsageTime
         case referenceFriend
+        case houseType
+        case maritalStatus
     }
     
     func encode(to encoder: Encoder) throws {
@@ -85,6 +90,14 @@ struct LoanUserInfo: Encodable {
             try referenceFriend_.forEach {
                 try sizes.encode($0)
             }
+        }
+        
+        if let type_ = self.houseType {
+            try container.encode(type_, forKey: .houseType)
+        }
+        
+        if let type_ = self.maritalStatus {
+            try container.encode(type_, forKey: .maritalStatus)
         }
         
     }

@@ -26,6 +26,8 @@ enum TypePopup: Int {
     case CareerHusbandOrWife // Nghề nghiệp của vợ hoặc chồng
     case TypeLoanedFrom // Đã từng vay tiền ở đâu
     case ReferenceFriend // Bạn cùng vay
+    case HouseType // Loai hinh so huu nha
+    case MaritalStatus // Tinh trang hon nhan
 }
 
 class LoanTypePopupVC: BasePopup {
@@ -209,6 +211,11 @@ class LoanTypePopupVC: BasePopup {
             
             break
             
+        case .HouseType:
+            break
+        case .MaritalStatus:
+            break
+            
         }
     }
     
@@ -362,6 +369,10 @@ class LoanTypePopupVC: BasePopup {
             }
             
             break
+        case .HouseType:
+            break
+        case .MaritalStatus:
+            break
             
         default:
             break
@@ -443,6 +454,10 @@ class LoanTypePopupVC: BasePopup {
                     
                 }
                 
+                break
+            case .HouseType:
+                break
+            case .MaritalStatus:
                 break
             default:
                 break
