@@ -247,6 +247,8 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     
     private func checkPersionalRelationInfo() -> Bool {
         
+        guard DataManager.shared.loanInfo.userInfo.relationships.count > 0 else { return true }
+        
         if DataManager.shared.loanInfo.userInfo.relationships[0].type < 0 {
             self.showToastWithMessage(message: "Vui lòng chọn người thân 1 để tiếp tục.")
             return false
@@ -261,6 +263,8 @@ class LoanPersionalInfoVC: LoanBaseViewController {
             self.showToastWithMessage(message: "Vui lòng nhập họ tên người thân 1 để tiếp tục.")
             return false
         }
+        
+        guard DataManager.shared.loanInfo.userInfo.relationships.count > 1 else { return true }
         
         if let builders = DataManager.shared.getCurrentCategory()?.builders, builders.count > 0, let fieldDis = builders[0].fieldsDisplay, fieldDis.count > 4, let relationData = fieldDis[4].multipleData, relationData.count > 1 {
             if DataManager.shared.loanInfo.userInfo.relationships[1].type < 0 {
