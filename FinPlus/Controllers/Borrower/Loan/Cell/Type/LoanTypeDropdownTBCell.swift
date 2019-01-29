@@ -58,7 +58,7 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         
         guard let field_ = self.field, let data = field_.data, let id = field_.id else { return }
         
-        if id.contains("position") || id.contains("jobType") || id.contains("strength") || id.contains("academicLevel") || id.contains("mobilePhoneType") || id.contains("optionalText") || id.contains("typeloanedfrom") {
+        if id.contains("position") || id.contains("jobType") || id.contains("strength") || id.contains("academicLevel") || id.contains("mobilePhoneType") || id.contains("optionalText") || id.contains("typeloanedfrom") || id.contains("maritalStatus") || id.contains("houseType") {
             
             if id.contains("typeloanedfrom") {
                 let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupWithMuiltiSelectionVC") as! LoanTypePopupWithMuiltiSelectionVC
@@ -86,7 +86,12 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 popup.setDataSource(data: data, type: .CareerHusbandOrWife)
             } else if id.contains("typeloanedfrom") {
                 popup.setDataSource(data: data, type: .TypeLoanedFrom)
+            } else if id.contains("houseType") {
+                popup.setDataSource(data: data, type: .HouseType)
+            } else if id.contains("maritalStatus") {
+                popup.setDataSource(data: data, type: .MaritalStatus)
             }
+            
             
             popup.delegate = self
             
@@ -350,7 +355,92 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 }
             }
             
-        } else if id.contains("optionalText") {
+        } else if id.contains("houseType") {
+            var value: String = ""
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.houseType, data.count > 0 {
+                value = data
+            }
+            
+            if let type = DataManager.shared.loanInfo.userInfo.houseType, type.count > 0 {
+                value = type
+            }
+            
+            //guard let value = valueTemp else { return }
+            
+            if !value.isEmpty {
+                if !value.contains(keyComponentSeparateOptionalText) {
+                    var valueTemp = value
+                    if let data = field_.data {
+                        for d in data {
+                            if Int(d.id ?? 0) == (Int(value) ?? 0) {
+                                valueTemp = d.title ?? ""
+                                break
+                            }
+                        }
+                    }
+                    self.lblValue?.text = valueTemp
+                    
+                } else {
+                    self.lblValue?.text = FinPlusHelper.getTitleWithOtherSelection(value: value)
+                }
+                
+                
+                DataManager.shared.loanInfo.userInfo.houseType = value
+            }
+            
+            
+            if DataManager.shared.checkFieldIsMissing(key: "houseType", parentKey: "userInfo", currentValue: value) {
+                //Cap nhat thong tin khong hop le
+                if self.valueTemp == nil {
+                    self.valueTemp = value
+                }
+                self.updateInfoFalse(pre: title)
+            } else {
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
+            }
+            
+        }
+        else if id.contains("maritalStatus") {
+            var value: String = ""
+            if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.maritalStatus, data.count > 0 {
+                value = data
+            }
+            
+            if let type = DataManager.shared.loanInfo.userInfo.maritalStatus, type.count > 0 {
+                value = type
+            }
+            
+            //guard let value = valueTemp else { return }
+            
+            if !value.isEmpty {
+                if !value.contains(keyComponentSeparateOptionalText) {
+                    self.lblValue?.text = value
+                } else {
+                    self.lblValue?.text = FinPlusHelper.getTitleWithOtherSelection(value: value)
+                }
+                
+                
+                DataManager.shared.loanInfo.userInfo.maritalStatus = value
+            }
+            
+            
+            if DataManager.shared.checkFieldIsMissing(key: "maritalStatus", parentKey: "userInfo", currentValue: value) {
+                //Cap nhat thong tin khong hop le
+                if self.valueTemp == nil {
+                    self.valueTemp = value
+                }
+                self.updateInfoFalse(pre: title)
+            } else {
+                if let need = self.isNeedUpdate, need {
+                    self.isNeedUpdate = false
+                }
+            }
+            
+        }
+        
+        else if id.contains("optionalText") {
             //thông tin khác
             
             var index = 0
@@ -497,7 +587,16 @@ extension LoanTypeDropdownTBCell: DataSelectedFromPopupProtocol {
             let type = "\(Int(data.id ?? 0))\(keyComponentSeparateOptionalText)\(value)"
             DataManager.shared.loanInfo.userInfo.typeMobilePhone = type
             
-        } else if id.contains("optionalText") {
+        } else if id.contains("houseType") {
+            let type = "\(Int(data.id ?? 0))"
+            DataManager.shared.loanInfo.userInfo.houseType = type
+            
+        } else if id.contains("maritalStatus") {
+            let type = "\(Int(data.id ?? 0))\(keyComponentSeparateOptionalText)\(value)"
+            DataManager.shared.loanInfo.userInfo.maritalStatus = type
+            
+        }
+        else if id.contains("optionalText") {
             let optionalText = value.count > 0 ? "\(Int(data.id ?? 0))\(keyComponentSeparateOptionalText)\(value)" : "\(Int(data.id ?? 0))"
             if let arrayIndex = self.field?.arrayIndex, arrayIndex < DataManager.shared.loanInfo.optionalText.count {
                 DataManager.shared.loanInfo.optionalText[arrayIndex] = optionalText

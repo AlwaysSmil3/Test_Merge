@@ -26,6 +26,8 @@ enum TypePopup: Int {
     case CareerHusbandOrWife // Nghề nghiệp của vợ hoặc chồng
     case TypeLoanedFrom // Đã từng vay tiền ở đâu
     case ReferenceFriend // Bạn cùng vay
+    case HouseType // Loai hinh so huu nha
+    case MaritalStatus // Tinh trang hon nhan
 }
 
 class LoanTypePopupVC: BasePopup {
@@ -209,6 +211,30 @@ class LoanTypePopupVC: BasePopup {
             
             break
             
+        case .HouseType:
+            if let houseType = DataManager.shared.loanInfo.userInfo.houseType {
+                self.updateCurrentIndex(i: Int(houseType) ?? -2)
+            }
+            
+            break
+        case .MaritalStatus:
+            
+            guard let value = DataManager.shared.loanInfo.userInfo.maritalStatus else { return }
+            
+            if !value.contains(keyComponentSeparateOptionalText) {
+                if let index = Int(value) {
+                    self.updateCurrentIndex(i: index)
+                }
+            } else {
+                
+                guard let index = FinPlusHelper.getIndexWithOtherSelection(value: value), let title = FinPlusHelper.getTitleWithOtherSelection(value: value) else { return }
+                
+                self.updateCurrentWithOtherOption(i: index, otherText: title)
+                
+            }
+            
+            break
+            
         }
     }
     
@@ -362,6 +388,18 @@ class LoanTypePopupVC: BasePopup {
             }
             
             break
+        case .HouseType:
+            self.titleString = "Loại hình sở hữu nhà của bạn"
+            if let current = DataManager.shared.currentIndexHouseTypeSelectedPopup {
+                self.currentIndex = current
+            }
+            break
+        case .MaritalStatus:
+            self.titleString = "Tình trạng hôn nhân"
+            if let current = DataManager.shared.currentIndexMaritalStatusSelectedPopup {
+                self.currentIndex = current
+            }
+            break
             
         default:
             break
@@ -443,6 +481,12 @@ class LoanTypePopupVC: BasePopup {
                     
                 }
                 
+                break
+            case .HouseType:
+                DataManager.shared.currentIndexCareerHusbandOrWifeSelectedPopup = self.currentIndex
+                break
+            case .MaritalStatus:
+                DataManager.shared.currentIndexMaritalStatusSelectedPopup = self.currentIndex
                 break
             default:
                 break
