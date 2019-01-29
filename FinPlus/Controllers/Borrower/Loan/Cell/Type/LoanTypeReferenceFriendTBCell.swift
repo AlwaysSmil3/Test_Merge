@@ -63,6 +63,11 @@ class LoanTypeReferenceFriendTBCell: LoanTypeBaseRelationTBCell {
             self.lblAddressRelation?.text = "Nhấn để chọn địa chỉ"
         }
         
+        if let referenceFriend = DataManager.shared.loanInfo.userInfo.referenceFriend, referenceFriend.count > self.currentIndex, let loanPurpose = DataManager.shared.loanInfo.userInfo.referenceFriend?[self.currentIndex].loanPurpose, loanPurpose.count > 0  {
+            self.tfLoanPurpose?.text = loanPurpose
+        } else {
+            self.tfLoanPurpose?.text = ""
+        }
         
     }
     

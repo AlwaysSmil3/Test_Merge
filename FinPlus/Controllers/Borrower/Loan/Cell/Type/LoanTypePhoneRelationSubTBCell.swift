@@ -39,8 +39,8 @@ class LoanTypePhoneRelationSubTBCell: LoanTypeBaseRelationTBCell {
             self.tfRelationPhone?.textContentType = .username
         }
         
-        self.lblAddressRelationTitle?.font = FONT_CAPTION
-        self.lblAddressRelationTitle?.textColor = TEXT_NORMAL_COLOR
+//        self.lblAddressRelationTitle?.font = FONT_CAPTION
+//        self.lblAddressRelationTitle?.textColor = TEXT_NORMAL_COLOR
     }
     
     private func setupUI(id: Int) {
@@ -52,18 +52,19 @@ class LoanTypePhoneRelationSubTBCell: LoanTypeBaseRelationTBCell {
         self.tfNameRelation?.placeholder = "Nhập họ và tên \(text)"
         self.tfRelationPhone?.placeholder = "Số điện thoại của \(text)"
         
-        self.lblAddressRelationTitle?.text = "Địa chỉ \(text)"
+        //self.lblAddressRelationTitle?.text = "Địa chỉ \(text)"
         
         if DataManager.shared.loanInfo.userInfo.relationships.count > self.currentIndex, let name = DataManager.shared.loanInfo.userInfo.relationships[self.currentIndex].name, name.count > 0 {
             self.tfNameRelation?.text = name
         }
         
+        /*
         if DataManager.shared.loanInfo.userInfo.relationships.count > self.currentIndex, let add = DataManager.shared.loanInfo.userInfo.relationships[self.currentIndex].address, add.count > 0  {
             self.lblAddressRelation?.text = add
         } else {
             self.lblAddressRelation?.text = "Nhấn để chọn địa chỉ \(text)"
         }
-        
+        */
         
     }
     
@@ -73,10 +74,10 @@ class LoanTypePhoneRelationSubTBCell: LoanTypeBaseRelationTBCell {
         
         let bool1 = self.checkInvalidPhoneNumber()
         let bool2 = self.checkInvalidName()
-        let bool3 = self.checkInvalidAddress()
+        //let bool3 = self.checkInvalidAddress()
         
         if self.currentIndex == 0 {
-            if bool1, bool2, bool3 {
+            if bool1, bool2 {
                 DataManager.shared.isRelationPhone1Invalid = false
             } else {
                 DataManager.shared.isRelationPhone1Invalid = true
@@ -84,7 +85,7 @@ class LoanTypePhoneRelationSubTBCell: LoanTypeBaseRelationTBCell {
             
         } else {
             
-            if bool1, bool2, bool3 {
+            if bool1, bool2 {
                 DataManager.shared.isRelationPhone2Invalid = false
             } else {
                 DataManager.shared.isRelationPhone2Invalid = true
@@ -156,6 +157,7 @@ class LoanTypePhoneRelationSubTBCell: LoanTypeBaseRelationTBCell {
         }
     }
     
+    /*
     /// Sang màn chọn địa chỉ
     private func gotoAddressVC(title: String, id: String) {
         let firstAddressVC = UIStoryboard(name: "Address", bundle: nil).instantiateViewController(withIdentifier: "AddressFirstViewController") as! AddressFirstViewController
@@ -170,16 +172,18 @@ class LoanTypePhoneRelationSubTBCell: LoanTypeBaseRelationTBCell {
         
         self.parentVC?.show(firstAddressVC, sender: nil)
     }
-    
+    */
     
     //MARK: Actions
     
+    /*
     @IBAction func btnAddressTapped(_ sender: Any) {
         self.parentVC?.view.endEditing(true)
         let title = self.lblAddressRelationTitle?.text ?? "Địa chỉ người thân \(self.currentIndex + 1)"
         let id = "RelationAddress\(self.currentIndex + 1)"
         self.gotoAddressVC(title: title, id: id)
     }
+    */
     
     @IBAction func tfNameEditEnd(_ sender: Any) {
         
@@ -329,6 +333,7 @@ extension LoanTypePhoneRelationSubTBCell: DataSelectedFromPopupProtocol {
     
 }
 
+/*
 //MARK: Address Delegate
 extension LoanTypePhoneRelationSubTBCell: AddressDelegate {
     func getAddress(address: Address, type: Int, title: String, id: String) {
@@ -343,7 +348,7 @@ extension LoanTypePhoneRelationSubTBCell: AddressDelegate {
     }
 }
 
-
+*/
 
 
 

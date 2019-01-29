@@ -23,6 +23,8 @@ public struct BrowwerUserInfo {
     static let mobilePhoneType = "mobilePhoneType"
     static let phoneUsageTime = "phoneUsageTime"
     static let referenceFriend = "referenceFriend"
+    static let houseType = "houseType"
+    static let maritalStatus = "maritalStatus"
   }
 
   // MARK: Properties
@@ -44,6 +46,9 @@ public struct BrowwerUserInfo {
     
     public var mobilePhoneType: String?
     public var phoneUsageTime: Int?
+    
+    public var houseType: String?
+    public var maritalStatus: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -71,6 +76,9 @@ public struct BrowwerUserInfo {
     mobilePhoneType = json[SerializationKeys.mobilePhoneType].string
     phoneUsageTime = json[SerializationKeys.phoneUsageTime].int
     
+    houseType = json[SerializationKeys.houseType].string
+    maritalStatus = json[SerializationKeys.maritalStatus].string
+    
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -90,6 +98,9 @@ public struct BrowwerUserInfo {
     if let value = nationalId { dictionary[SerializationKeys.nationalId] = value }
     if let value = mobilePhoneType { dictionary[SerializationKeys.mobilePhoneType] = value }
     if let value = phoneUsageTime { dictionary[SerializationKeys.phoneUsageTime] = value }
+    
+    if let value = houseType { dictionary[SerializationKeys.houseType] = value }
+    if let value = maritalStatus { dictionary[SerializationKeys.maritalStatus] = value }
     
     return dictionary
   }

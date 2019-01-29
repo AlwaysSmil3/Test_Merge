@@ -8,7 +8,7 @@
 
 import Foundation
 
-let ROW_HEIGHT_RELATIONSHIP_TB_CELL: CGFloat = 216
+let ROW_HEIGHT_RELATIONSHIP_TB_CELL: CGFloat = 146 //old 216
 let ROW_HEIGHT_REFERENCEFRIEND_TB_CELL: CGFloat = 291
 
 class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {

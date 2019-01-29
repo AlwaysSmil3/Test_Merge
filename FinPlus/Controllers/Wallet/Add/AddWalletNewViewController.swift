@@ -89,7 +89,9 @@ class AddWalletNewViewController: BaseViewController {
             "type": bankName,
             "accountHolder": self.nameTextField.text!,
             "accountNumber": self.accTextField.text!,
-            "branch": "Hai Ba Trung"
+            "branch": "Hai Ba Trung",
+            "accType": 0,
+            "bankNo": bank.bankNo ?? ""
         ]
         
         self.addBank(params: params)
