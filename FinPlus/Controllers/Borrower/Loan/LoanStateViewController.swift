@@ -1693,6 +1693,10 @@ class LoanStateViewController: UIViewController {
                     DataManager.shared.loanInfo.amount = 0
                     DataManager.shared.loanInfo.term = 0
                     
+                    DataManager.shared.loanInfo.userInfo.relationships = [RelationShipPhone(), RelationShipPhone()]
+                    DataManager.shared.loanInfo.userInfo.referenceFriend = nil
+                    DataManager.shared.checkAndInitReferenceFriend()
+                    
                     self?.moveHome()
                     
                     
