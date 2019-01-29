@@ -90,6 +90,11 @@ class DataManager {
     //Loai dien thoai hien tai dang chon
     var currentListIndexLoanedFromSelectedPopup: String?
     
+    //Loai hình sở hữu nhà hien tai dang chon
+    var currentIndexHouseTypeSelectedPopup: Int?
+    //Tình trang hôn nhân hien tai dang chon
+    var currentIndexMaritalStatusSelectedPopup: Int?
+    
     //list current Selected Type ReferenceFriend
     var listCurrentSelectedTypeReferenceFriend: [Int]?
     

@@ -369,7 +369,17 @@ class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             
             if !value.isEmpty {
                 if !value.contains(keyComponentSeparateOptionalText) {
-                    self.lblValue?.text = value
+                    var valueTemp = value
+                    if let data = field_.data {
+                        for d in data {
+                            if Int(d.id ?? 0) == (Int(value) ?? 0) {
+                                valueTemp = d.title ?? ""
+                                break
+                            }
+                        }
+                    }
+                    self.lblValue?.text = valueTemp
+                    
                 } else {
                     self.lblValue?.text = FinPlusHelper.getTitleWithOtherSelection(value: value)
                 }
