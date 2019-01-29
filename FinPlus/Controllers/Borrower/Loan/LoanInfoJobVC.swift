@@ -40,7 +40,7 @@ class LoanInfoJobVC: LoanBaseViewController {
         if  !DataManager.shared.isLendingforStudent() {
             
             if DataManager.shared.loanInfo.jobInfo.jobTitle.count == 0 {
-                self.showToastWithMessage(message: "Vui lòng chọn loại hình hoạt động")
+                self.showToastWithMessage(message: "Vui lòng chọn nghề nghiệp")
                 return
             }
             
@@ -50,7 +50,7 @@ class LoanInfoJobVC: LoanBaseViewController {
             }
             
             if DataManager.shared.loanInfo.jobInfo.positionTitle.count == 0 {
-                self.showToastWithMessage(message: "Vui lòng nhập vị trí làm việc để tiếp tục.")
+                self.showToastWithMessage(message: "Vui lòng chọn cấp bậc để tiếp tục.")
                 return
             }
             

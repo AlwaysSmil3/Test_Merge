@@ -55,32 +55,40 @@ extension DataManager {
     func checkHaveInvalidDataReferenceFriends(json: JSONDictionary) {
         if let relation = json["0"] as? JSONDictionary {
             
-            if let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
+            if let value = relation["checkType"] as? Bool, value {
                 self.isReferenceFriend1Invalid = true
             }
-            else if let value = relation["checkname"] as? Bool, value {
+            
+            if let isPhone = relation["checkPhoneNumber"] as? Bool, isPhone {
                 self.isReferenceFriend1Invalid = true
             }
-            else if let value = relation["checkaddress"] as? Bool, value {
+            else if let value = relation["checkName"] as? Bool, value {
                 self.isReferenceFriend1Invalid = true
             }
-            else if let loanPurpose = relation["checkloanPurpose"] as? Bool, loanPurpose {
+            else if let value = relation["checkAddress"] as? Bool, value {
+                self.isReferenceFriend1Invalid = true
+            }
+            else if let loanPurpose = relation["checkLoanPurpose"] as? Bool, loanPurpose {
                 self.isReferenceFriend1Invalid = true
             }
         }
         
         if let relation = json["1"] as? JSONDictionary {
             
-            if let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
+            if let value = relation["checkType"] as? Bool, value {
                 self.isReferenceFriend2Invalid = true
             }
-            else if let value = relation["checkname"] as? Bool, value {
+            
+            if let isPhone = relation["checkPhoneNumber"] as? Bool, isPhone {
                 self.isReferenceFriend2Invalid = true
             }
-            else if let value = relation["checkaddress"] as? Bool, value {
+            else if let value = relation["checkName"] as? Bool, value {
                 self.isReferenceFriend2Invalid = true
             }
-            else if let loanPurpose = relation["checkloanPurpose"] as? Bool, loanPurpose {
+            else if let value = relation["checkAddress"] as? Bool, value {
+                self.isReferenceFriend2Invalid = true
+            }
+            else if let loanPurpose = relation["checkLoanPurpose"] as? Bool, loanPurpose {
                 self.isReferenceFriend2Invalid = true
             }
             
@@ -88,20 +96,46 @@ extension DataManager {
         
         if let relation = json["2"] as? JSONDictionary {
             
-            if let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
+            if let value = relation["checkType"] as? Bool, value {
                 self.isReferenceFriend3Invalid = true
             }
-            else if let value = relation["checkname"] as? Bool, value {
+            
+            if let isPhone = relation["checkPhoneNumber"] as? Bool, isPhone {
                 self.isReferenceFriend3Invalid = true
             }
-            else if let value = relation["checkaddress"] as? Bool, value {
+            else if let value = relation["checkName"] as? Bool, value {
                 self.isReferenceFriend3Invalid = true
             }
-            else if let loanPurpose = relation["checkloanPurpose"] as? Bool, loanPurpose {
+            else if let value = relation["checkAddress"] as? Bool, value {
+                self.isReferenceFriend3Invalid = true
+            }
+            else if let loanPurpose = relation["checkLoanPurpose"] as? Bool, loanPurpose {
                 self.isReferenceFriend3Invalid = true
             }
             
         }
+    }
+    
+    
+    /// Check Type reference friend
+    ///
+    /// - Parameters:
+    ///   - type: <#type description#>
+    ///   - index: <#index description#>
+    ///   - key: <#key description#>
+    ///   - subKey: <#subKey description#>
+    /// - Returns: <#return value description#>
+    func checkTypeRelationReferrenceFriendInvalid(type: Int, index: Int, key: String = "referenceFriend", subKey: String = "type") -> Bool {
+        
+        guard let data = DataManager.shared.missingLoanDataDictionary, let userInfo = data["userInfo"] as? JSONDictionary, let relationPhone = userInfo[key] as? JSONDictionary, let relation = relationPhone["\(index)"] as? JSONDictionary else {
+            return true
+        }
+        
+        if let nameValid = relation[subKey] as? Int, type == nameValid {
+            return false
+        }
+        
+        return true
     }
     
     
@@ -142,7 +176,7 @@ extension DataManager {
     }
     
     //Get phone invalid from missing Data
-    func getPhoneInValid(type: Int, key: String = "relationships", countItems: Int? = nil) -> String {
+    func getPhoneInValid(type: Int, key: String = "relationships", countItems: Int? = nil, index: Int? = nil) -> String {
         var phone = ""
         
         guard let data = DataManager.shared.missingLoanDataDictionary, let userInfo = data["userInfo"] as? JSONDictionary, let relationPhone = userInfo[key] as? JSONDictionary else {
@@ -156,12 +190,23 @@ extension DataManager {
             count = counItem_
         }
         
-        for i in 0...count - 1 {
-            if let relation1 = relationPhone["\(i)"] as? JSONDictionary, let typeRe = relation1["type"] as? Int, type == typeRe {
-                relation = relation1
-                break
+        if let index_ = index {
+            if let relation1 = relationPhone["\(index_)"] as? JSONDictionary, let phone = relation1["phoneNumber"] as? String {
+                return FinPlusHelper.updatePhoneNumber(phone: phone)
+                
+            } else {
+                return "-"
+            }
+        } else {
+            for i in 0...count - 1 {
+                if let relation1 = relationPhone["\(i)"] as? JSONDictionary, let typeRe = relation1["type"] as? Int, type == typeRe {
+                    relation = relation1
+                    break
+                }
             }
         }
+        
+        
         
         if let re = relation, let phone_ = re["phoneNumber"] as? String {
             if phone_.contains("_") {
@@ -240,6 +285,16 @@ extension DataManager {
             if let _ = userInfo.phoneUsageTime {
                 missingListKey.append("phoneUsageTime")
                 missingListTitle.append("Bạn đã sử dụng lọai điện thoại này bao lâu")
+            }
+            
+            if let _ = userInfo.houseType {
+                missingListKey.append("houseType")
+                missingListTitle.append("Loại hình sở hữu nhà ở của bạn?")
+            }
+            
+            if let _ = userInfo.maritalStatus {
+                missingListKey.append("maritalStatus")
+                missingListTitle.append("Tình trạng hôn nhân")
             }
             
         }
@@ -741,6 +796,14 @@ extension DataManager {
         }
         
         if let value = userInfo["mobilePhoneType"] as? String, value == (DataManager.shared.loanInfo.userInfo.typeMobilePhone ?? "") {
+            return false
+        }
+        
+        if let value = userInfo["houseType"] as? String, (value == DataManager.shared.loanInfo.userInfo.houseType || DataManager.shared.loanInfo.userInfo.houseType == nil) {
+            return false
+        }
+        
+        if let value = userInfo["maritalStatus"] as? String, (value == DataManager.shared.loanInfo.userInfo.maritalStatus || DataManager.shared.loanInfo.userInfo.maritalStatus == nil) {
             return false
         }
         
