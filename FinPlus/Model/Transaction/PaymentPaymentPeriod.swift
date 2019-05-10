@@ -16,6 +16,7 @@ public struct PaymentPaymentPeriod {
     static let overdue = "overdue"
     static let feeOverdue = "feeOverdue"
     static let principal = "principal"
+    static let borrowerManagementFee = "borrowerManagementFee"
   }
 
   // MARK: Properties
@@ -23,7 +24,8 @@ public struct PaymentPaymentPeriod {
   public var overdue: Double?
   public var feeOverdue: Double?
   public var principal: Double?
-
+    public var borrowerManagementFee: Double?
+    
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
   ///
@@ -41,7 +43,9 @@ public struct PaymentPaymentPeriod {
     overdue = json[SerializationKeys.overdue].double ?? 0
     feeOverdue = json[SerializationKeys.feeOverdue].double ?? 0
     principal = json[SerializationKeys.principal].double ?? 0
-  }
+    borrowerManagementFee = json[SerializationKeys.borrowerManagementFee].double ?? 0
+
+    }
 
   /// Generates description of the object in the form of a NSDictionary.
   ///
@@ -52,6 +56,8 @@ public struct PaymentPaymentPeriod {
     if let value = overdue { dictionary[SerializationKeys.overdue] = value }
     if let value = feeOverdue { dictionary[SerializationKeys.feeOverdue] = value }
     if let value = principal { dictionary[SerializationKeys.principal] = value }
+    if let value = borrowerManagementFee { dictionary[SerializationKeys.borrowerManagementFee] = value }
+
     return dictionary
   }
 

@@ -34,7 +34,7 @@ class PayHistoryTableViewCell: UITableViewCell {
         timeLb.text = "Đợt \(index)"
         payDateLb.text = timeDisplay
         
-        amountLb.text = FinPlusHelper.formatDisplayCurrency(cellData.principal! + cellData.interest! + cellData.overdue! + cellData.feeOverdue!) + "đ"
+        amountLb.text = FinPlusHelper.formatDisplayCurrency(cellData.principal! + cellData.interest! + cellData.overdue! + cellData.feeOverdue! + cellData.borrowerManagingFee! ) + "đ"
         
 
         // set theme cell
@@ -45,11 +45,12 @@ class PayHistoryTableViewCell: UITableViewCell {
             break
         case 1:
             //Chưa thanh toán
+            amountLb.text = FinPlusHelper.formatDisplayCurrency((cellData.principal! + cellData.interest! + cellData.overdue! + cellData.feeOverdue! + cellData.borrowerManagingFee! ) - (cellData.repayFeeOverdue! + cellData.repayOverdue! + cellData.repayInterest! + cellData.repayPrincipal! + cellData.repayBorrowerManagingFee!)) + "đ"
             self.needToPayCellView()
             break
         case 2:
             //Đã thanh toán
-            amountLb.text = FinPlusHelper.formatDisplayCurrency(cellData.repayFeeOverdue! + cellData.repayOverdue! + cellData.repayInterest! + cellData.repayPrincipal!) + "đ"
+            amountLb.text = "0 đ"
             self.paidViewCell()
             break
         case 3:

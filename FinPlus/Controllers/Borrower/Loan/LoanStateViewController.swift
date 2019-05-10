@@ -62,7 +62,8 @@ class LoanStateViewController: UIViewController {
             guard let pay  = self.paymentInfo else { return }
             
             if let period = pay.paymentPeriod {
-                self.payAmountPresent = period.feeOverdue! + period.interest! + period.overdue! + period.principal!
+                self.payAmountPresent = period.feeOverdue! + period.interest! + period.overdue! + period.principal! +
+                    period.borrowerManagementFee!
                 
             }
             
@@ -1478,7 +1479,7 @@ class LoanStateViewController: UIViewController {
     
     /// Get số tiền đã thanh toán được
     ///
-    /// - Returns: <#return value description#>
+    /// - Returns: return value description
     func getAmountPaided() -> Double {
         guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return 0 }
         var amount: Double = 0

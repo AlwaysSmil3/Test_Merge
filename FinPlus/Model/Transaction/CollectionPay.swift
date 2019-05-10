@@ -27,7 +27,8 @@ public struct CollectionPay {
     static let repayInterest = "repayInterest"
     static let repayOverdue = "repayOverdue"
     static let repayFeeOverdue = "repayFeeOverdue"
-    
+    static let borrowerManagingFee = "borrowerManagingFee"
+    static let repayBorrowerManagingFee = "repayBorrowerManagingFee"
   }
 
   // MARK: Properties
@@ -48,7 +49,10 @@ public struct CollectionPay {
     public var repayInterest: Double?
     public var repayOverdue: Double?
     public var repayFeeOverdue: Double?
-    
+
+    public var borrowerManagingFee: Double?
+    public var repayBorrowerManagingFee: Double?
+
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -79,7 +83,10 @@ public struct CollectionPay {
     repayOverdue = json[SerializationKeys.repayOverdue].double ?? 0
     repayFeeOverdue = json[SerializationKeys.repayFeeOverdue].double ?? 0
     
+    borrowerManagingFee = json[SerializationKeys.borrowerManagingFee].double ?? 0
+    repayBorrowerManagingFee = json[SerializationKeys.repayBorrowerManagingFee].double ?? 0
     
+
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -97,7 +104,9 @@ public struct CollectionPay {
     if let value = overdue { dictionary[SerializationKeys.overdue] = value }
     if let value = loanId { dictionary[SerializationKeys.loanId] = value }
     if let value = feeOverdue { dictionary[SerializationKeys.feeOverdue] = value }
-    
+    if let value = borrowerManagingFee { dictionary[SerializationKeys.borrowerManagingFee] = value }
+    if let value = repayBorrowerManagingFee { dictionary[SerializationKeys.repayBorrowerManagingFee] = value }
+
     if let value = repayFeeOverdue { dictionary[SerializationKeys.repayFeeOverdue] = value }
     if let value = repayOverdue { dictionary[SerializationKeys.repayOverdue] = value }
     if let value = repayInterest { dictionary[SerializationKeys.repayInterest] = value }
