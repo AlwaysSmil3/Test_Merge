@@ -223,6 +223,10 @@
 		63AF62E721901E4E001816FB /* BankPopupTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF62E621901E4E001816FB /* BankPopupTBCell.swift */; };
 		63AF62E921901E7D001816FB /* BankPopupTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63AF62E821901E7D001816FB /* BankPopupTBCell.xib */; };
 		63B49D40213FEFC300C7B999 /* GuideCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B49D3F213FEFC300C7B999 /* GuideCaptureViewController.swift */; };
+		63C466D6229D7E7100BE6625 /* PayTypeOverdueTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C466D5229D7E7100BE6625 /* PayTypeOverdueTBCell.swift */; };
+		63C466D8229D81C700BE6625 /* PayTypeOverdueTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63C466D7229D81C700BE6625 /* PayTypeOverdueTBCell.xib */; };
+		63C466DA229D8C3700BE6625 /* PayAllOverdueTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C466D9229D8C3700BE6625 /* PayAllOverdueTBCell.swift */; };
+		63C466DC229D8CFD00BE6625 /* PayAllOverdueTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63C466DB229D8CFD00BE6625 /* PayAllOverdueTBCell.xib */; };
 		63C5C8E520AC183D00F65068 /* FacebookSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C5C8E420AC183D00F65068 /* FacebookSignInManager.swift */; };
 		63D170EF2111AF8200990A60 /* CollectionPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D170EE2111AF8200990A60 /* CollectionPay.swift */; };
 		63D49DAD20D3997A00114AFA /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D49DAC20D3997A00114AFA /* Popup.storyboard */; };
@@ -585,6 +589,10 @@
 		63AF62E621901E4E001816FB /* BankPopupTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankPopupTBCell.swift; sourceTree = "<group>"; };
 		63AF62E821901E7D001816FB /* BankPopupTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankPopupTBCell.xib; sourceTree = "<group>"; };
 		63B49D3F213FEFC300C7B999 /* GuideCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideCaptureViewController.swift; sourceTree = "<group>"; };
+		63C466D5229D7E7100BE6625 /* PayTypeOverdueTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTypeOverdueTBCell.swift; sourceTree = "<group>"; };
+		63C466D7229D81C700BE6625 /* PayTypeOverdueTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayTypeOverdueTBCell.xib; sourceTree = "<group>"; };
+		63C466D9229D8C3700BE6625 /* PayAllOverdueTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayAllOverdueTBCell.swift; sourceTree = "<group>"; };
+		63C466DB229D8CFD00BE6625 /* PayAllOverdueTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayAllOverdueTBCell.xib; sourceTree = "<group>"; };
 		63C5C8E420AC183D00F65068 /* FacebookSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSignInManager.swift; sourceTree = "<group>"; };
 		63C5C8E620AC26DA00F65068 /* FinPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinPlus.entitlements; sourceTree = "<group>"; };
 		63D170EE2111AF8200990A60 /* CollectionPay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionPay.swift; sourceTree = "<group>"; };
@@ -1565,6 +1573,10 @@
 				84114BC120D79464005026DF /* BorrowingPayInfoTableViewCell.xib */,
 				84114BC220D79464005026DF /* BankAccountTableViewCell.swift */,
 				84114BC320D79464005026DF /* AddNewWalletTableViewCell.xib */,
+				63C466D5229D7E7100BE6625 /* PayTypeOverdueTBCell.swift */,
+				63C466D7229D81C700BE6625 /* PayTypeOverdueTBCell.xib */,
+				63C466D9229D8C3700BE6625 /* PayAllOverdueTBCell.swift */,
+				63C466DB229D8CFD00BE6625 /* PayAllOverdueTBCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1919,6 +1931,7 @@
 				63748BFE210ADB8000E79EB6 /* PaymentMethodTableViewCell.xib in Resources */,
 				630BA61E20C22A4100880DAE /* SF-Pro-Display-UltralightItalic.otf in Resources */,
 				6397B24D21C7931500AE5BD6 /* AddNewWalletTBCell.xib in Resources */,
+				63C466D8229D81C700BE6625 /* PayTypeOverdueTBCell.xib in Resources */,
 				84114BD020D79464005026DF /* BankAccountTableViewCell.xib in Resources */,
 				630BA60E20C22A4100880DAE /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
 				639C9DC020A1498A00F2CF5E /* LaunchScreen.storyboard in Resources */,
@@ -1972,6 +1985,7 @@
 				630BA61720C22A4100880DAE /* SF-Pro-Text-Light.otf in Resources */,
 				639C9E2020A18A7500F2CF5E /* Oswald-ExtraLight.ttf in Resources */,
 				639C9E1E20A18A7500F2CF5E /* Oswald-Regular.ttf in Resources */,
+				63C466DC229D8CFD00BE6625 /* PayAllOverdueTBCell.xib in Resources */,
 				6307F4CE21C21E0A00B5F6D9 /* LoanTypePhoneRelationSubNewTBCell.xib in Resources */,
 				630BA62520C22A4100880DAE /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				84114BC920D79464005026DF /* SubInfoLastTableViewCell.xib in Resources */,
@@ -2129,6 +2143,7 @@
 				6303ECC1213509A1002C4C03 /* PaymentLiquidation.swift in Sources */,
 				E772D77020CA7939001F0B8E /* AddWalletViewController.swift in Sources */,
 				633AF9C120A992B200BAE2BB /* BorrowHomeViewController.swift in Sources */,
+				63C466DA229D8C3700BE6625 /* PayAllOverdueTBCell.swift in Sources */,
 				63D49DAF20D399E400114AFA /* InfoInterestRatePopupVC.swift in Sources */,
 				E7C4DDF1213402E800055944 /* SCP_SCJAFillCircle.swift in Sources */,
 				630597462124049500EEADEF /* LoanTypeInputTextMuiltilineTBCell.swift in Sources */,
@@ -2157,6 +2172,7 @@
 				63FAF5562140CDAB00985B92 /* UniversityViewController.swift in Sources */,
 				6338F3FF20BE602C005777E2 /* BrowwerInfo.swift in Sources */,
 				E7BC259220CFDACA001FF0F4 /* MadokaTextField.swift in Sources */,
+				63C466D6229D7E7100BE6625 /* PayTypeOverdueTBCell.swift in Sources */,
 				E7F51A1220CE6CE800F72682 /* LoanBuilderFields.swift in Sources */,
 				E7F51A3120CE6D8100F72682 /* CameraHandler.swift in Sources */,
 				635B5E0A20B6B3E800F02132 /* LoanJobInfo.swift in Sources */,

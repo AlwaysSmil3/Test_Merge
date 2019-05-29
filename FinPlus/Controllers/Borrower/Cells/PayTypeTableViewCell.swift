@@ -11,6 +11,8 @@ import UIKit
 class PayTypeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var containView: UIView!
+    
+    @IBOutlet weak var lblBorrowerManagingFee: UILabel?
     @IBOutlet weak var borrowingLb: UILabel!
     @IBOutlet weak var interestMoneyLb: UILabel!
     @IBOutlet weak var originMoneyLb: UILabel!
@@ -37,15 +39,17 @@ class PayTypeTableViewCell: UITableViewCell {
         didSet {
             guard let data = self.paymentData else { return }
             
-            self.borrowingLb?.text = FinPlusHelper.formatDisplayCurrency(data.principal! + data.feeOverdue! + data.interest! + data.overdue!) + "đ"
+            self.borrowingLb?.text = FinPlusHelper.formatDisplayCurrency(data.principal! + data.feeOverdue! + data.interest! + data.overdue! + data.borrowerManagingFee!) + "đ"
+            
+            self.lblBorrowerManagingFee?.text = "Phí quản lý khoản vay: " + FinPlusHelper.formatDisplayCurrency(data.borrowerManagingFee!) + "đ"
             
             if self.isOnTime {
-                self.originMoneyLb.isHidden = true
-                self.interestMoneyLb.isHidden = true
+//                self.originMoneyLb.isHidden = true
+//                self.interestMoneyLb.isHidden = true
                 
-                self.lblOverInterest?.text = "Tiền gốc: " + FinPlusHelper.formatDisplayCurrency(data.principal!) + "đ"
+                self.originMoneyLb?.text = "Tiền gốc: " + FinPlusHelper.formatDisplayCurrency(data.principal!) + "đ"
                 
-                self.lblFeeOver?.text = "Tiền lãi: " + FinPlusHelper.formatDisplayCurrency(data.interest!) + "đ"
+                self.interestMoneyLb?.text = "Tiền lãi: " + FinPlusHelper.formatDisplayCurrency(data.interest!) + "đ"
                 
                 return
             }
@@ -83,7 +87,7 @@ class PayTypeTableViewCell: UITableViewCell {
         self.containView.layer.cornerRadius = 8
         self.selectionStyle = .none
         // Initialization code
-        self.originMoneyLb.isHidden = true
+        //self.originMoneyLb.isHidden = true
         self.titleLb.text = "Thanh toán tháng này"
         if let loan = DataManager.shared.browwerInfo?.activeLoan {
             self.dateLb.text = Date.init(fromString: loan.nextPaymentDate ?? "", format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER)).toString(.custom(kDisplayFormat))

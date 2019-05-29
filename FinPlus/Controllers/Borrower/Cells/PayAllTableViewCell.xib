@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="SF-Pro-Display-Regular.otf">
             <string>SFProDisplay-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Semibold.otf">
+            <string>SFProDisplay-Semibold</string>
         </array>
     </customFonts>
     <objects>
@@ -28,7 +30,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygc-eh-jEa">
                         <rect key="frame" x="12" y="4" width="319" height="137.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanh toán tháng này" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhg-Sg-hAX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanh toán trước toàn bộ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhg-Sg-hAX">
                                 <rect key="frame" x="16" y="15" width="271" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="6uQ-Yl-g8w"/>
@@ -43,8 +45,8 @@
                                     <constraint firstAttribute="width" secondItem="IXQ-Kc-S13" secondAttribute="height" multiplier="1:1" id="Nng-Kg-Isc"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền gốc phải trả: 0đ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xa-C4-QoA">
-                                <rect key="frame" x="16" y="75.5" width="94" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền gốc: 0đ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xa-C4-QoA">
+                                <rect key="frame" x="16" y="76.5" width="57.5" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="5WW-WG-v8D"/>
                                 </constraints>
@@ -52,8 +54,8 @@
                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền lãi cộng dồn trong kỳ: 0đ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFc-DC-5RO">
-                                <rect key="frame" x="16" y="91" width="135" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền lãi: 0đ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFc-DC-5RO">
+                                <rect key="frame" x="16" y="91.5" width="50" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="w4N-hx-E6E"/>
                                 </constraints>
@@ -61,8 +63,8 @@
                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phí tất toán: 0đ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ij6-UP-yZH">
-                                <rect key="frame" x="16" y="106" width="69.5" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phí trả nợ trước hạn: 0đ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ij6-UP-yZH">
+                                <rect key="frame" x="16" y="106.5" width="107.5" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="R7I-pq-2L1"/>
                                 </constraints>
@@ -71,16 +73,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0đ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LJ-Qt-Fz6">
-                                <rect key="frame" x="283" y="100" width="20" height="21"/>
+                                <rect key="frame" x="282" y="100.5" width="21" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="xZF-Rl-nb3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
                                 <color key="textColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số tiền:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyR-rd-Gbv">
-                                <rect key="frame" x="268" y="85" width="35" height="15"/>
+                                <rect key="frame" x="268" y="85.5" width="35" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="sJY-rc-Ut5"/>
                                 </constraints>
@@ -88,8 +90,8 @@
                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền nợ quá hạn:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kG4-UB-9di">
-                                <rect key="frame" x="16" y="60.5" width="76" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phí quản lý khoản vay: 0đ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kG4-UB-9di">
+                                <rect key="frame" x="16" y="61.5" width="117" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="LFh-z5-evj"/>
                                 </constraints>
@@ -97,25 +99,17 @@
                                 <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWz-IP-h5W">
-                                <rect key="frame" x="96" y="61" width="13" height="14"/>
-                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
-                                <color key="textColor" red="0.85490196078431369" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="IXQ-Kc-S13" firstAttribute="centerY" secondItem="Qhg-Sg-hAX" secondAttribute="centerY" id="3da-rk-Bqt"/>
                             <constraint firstItem="ij6-UP-yZH" firstAttribute="top" secondItem="OFc-DC-5RO" secondAttribute="bottom" id="7On-k4-RiD"/>
-                            <constraint firstItem="IWz-IP-h5W" firstAttribute="centerY" secondItem="kG4-UB-9di" secondAttribute="centerY" id="BHO-2c-f6w"/>
                             <constraint firstAttribute="trailing" secondItem="6LJ-Qt-Fz6" secondAttribute="trailing" constant="16" id="DmD-o4-ZDh"/>
                             <constraint firstItem="IXQ-Kc-S13" firstAttribute="leading" secondItem="Qhg-Sg-hAX" secondAttribute="trailing" constant="8" id="F3a-Ff-Tx1"/>
                             <constraint firstItem="Qhg-Sg-hAX" firstAttribute="top" secondItem="ygc-eh-jEa" secondAttribute="top" constant="15" id="H4N-mA-hw6"/>
                             <constraint firstItem="3xa-C4-QoA" firstAttribute="top" secondItem="kG4-UB-9di" secondAttribute="bottom" id="Lj3-5c-ngo"/>
                             <constraint firstAttribute="bottom" secondItem="6LJ-Qt-Fz6" secondAttribute="bottom" constant="16" id="NAH-ZK-Qgp"/>
                             <constraint firstItem="Qhg-Sg-hAX" firstAttribute="leading" secondItem="ygc-eh-jEa" secondAttribute="leading" constant="16" id="Pkz-G4-OhB"/>
-                            <constraint firstItem="IWz-IP-h5W" firstAttribute="leading" secondItem="kG4-UB-9di" secondAttribute="trailing" constant="4" id="W0Q-W2-bhA"/>
                             <constraint firstItem="OFc-DC-5RO" firstAttribute="top" secondItem="3xa-C4-QoA" secondAttribute="bottom" id="cdY-rm-n3U"/>
                             <constraint firstItem="3xa-C4-QoA" firstAttribute="leading" secondItem="kG4-UB-9di" secondAttribute="leading" id="dhf-Or-k6t"/>
                             <constraint firstItem="3xa-C4-QoA" firstAttribute="leading" secondItem="ygc-eh-jEa" secondAttribute="leading" constant="16" id="dzT-Ot-KHF"/>
@@ -141,8 +135,7 @@
                 <outlet property="containView" destination="ygc-eh-jEa" id="9PY-gZ-Dgo"/>
                 <outlet property="feeReturnBeforeDueDateLb" destination="ij6-UP-yZH" id="iSK-Yc-5I5"/>
                 <outlet property="interestMoneyLb" destination="OFc-DC-5RO" id="w5c-gc-cY4"/>
-                <outlet property="lblDebt" destination="IWz-IP-h5W" id="17K-ri-lVn"/>
-                <outlet property="lblLeftDebt" destination="kG4-UB-9di" id="eox-SB-6Ag"/>
+                <outlet property="lblBorrowerManagingFee" destination="kG4-UB-9di" id="VGM-m7-QWN"/>
                 <outlet property="originMoneyLb" destination="3xa-C4-QoA" id="UAP-RE-uag"/>
                 <outlet property="selectImg" destination="IXQ-Kc-S13" id="vGl-SQ-Q8B"/>
                 <outlet property="titleLb" destination="Qhg-Sg-hAX" id="ebg-tm-4v7"/>

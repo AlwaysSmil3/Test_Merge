@@ -16,6 +16,12 @@ public struct PaymentLiquidation {
     static let interest = "interest"
     static let fee = "fee"
     static let debt = "debt"
+    static let borrowerManagingFee = "borrowerManagingFee"
+    static let borrowerManagingFeeOverDue = "borrowerManagingFeeOverDue"
+    static let principalOverdue = "principalOverdue"
+    static let interestOverdue = "interestOverdue"
+    static let feeOverdue = "feeOverdue"
+    static let overdue = "overdue"
   }
 
   // MARK: Properties
@@ -23,6 +29,13 @@ public struct PaymentLiquidation {
   public var interest: Double?
   public var fee: Double?
   public var debt: Double?
+    
+    public var borrowerManagingFee: Double?
+    public var borrowerManagingFeeOverDue: Double?
+    public var principalOverdue: Double?
+    public var interestOverdue: Double?
+    public var feeOverdue: Double?
+    public var overdue: Double?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -41,6 +54,12 @@ public struct PaymentLiquidation {
     interest = json[SerializationKeys.interest].double ?? 0
     fee = json[SerializationKeys.fee].double ?? 0
     debt = json[SerializationKeys.debt].double ?? 0
+    borrowerManagingFee = json[SerializationKeys.borrowerManagingFee].double ?? 0
+    borrowerManagingFeeOverDue = json[SerializationKeys.borrowerManagingFeeOverDue].double ?? 0
+    principalOverdue = json[SerializationKeys.principalOverdue].double ?? 0
+    interestOverdue = json[SerializationKeys.interestOverdue].double ?? 0
+    feeOverdue = json[SerializationKeys.feeOverdue].double ?? 0
+    overdue = json[SerializationKeys.overdue].double ?? 0
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -52,6 +71,13 @@ public struct PaymentLiquidation {
     if let value = interest { dictionary[SerializationKeys.interest] = value }
     if let value = fee { dictionary[SerializationKeys.fee] = value }
     if let value = debt { dictionary[SerializationKeys.debt] = value }
+    if let value = borrowerManagingFee { dictionary[SerializationKeys.borrowerManagingFee] = value }
+    if let value = borrowerManagingFeeOverDue { dictionary[SerializationKeys.borrowerManagingFeeOverDue] = value }
+    if let value = principalOverdue { dictionary[SerializationKeys.principalOverdue] = value }
+    if let value = interestOverdue { dictionary[SerializationKeys.interestOverdue] = value }
+    if let value = feeOverdue { dictionary[SerializationKeys.feeOverdue] = value }
+    if let value = overdue { dictionary[SerializationKeys.overdue] = value }
+    
     return dictionary
   }
 

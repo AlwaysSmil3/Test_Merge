@@ -78,6 +78,8 @@ class TestBorrowingPayViewController: UIViewController {
         // case BankAccountCell
         // case AddNewWalletCell
         case PayBtnCell
+        case PayTypeOverdueCell
+        case PayAllOverdueCell
 
         var cellType: UITableViewCell.Type {
             switch self {
@@ -95,6 +97,10 @@ class TestBorrowingPayViewController: UIViewController {
 //                return AddNewWalletTableViewCell.self
             case .PayBtnCell:
                 return PayBtnTableViewCell.self
+            case .PayTypeOverdueCell:
+                return PayTypeOverdueTBCell.self
+            case .PayAllOverdueCell:
+                return PayAllOverdueTBCell.self
             }
         }
     }
@@ -148,25 +154,8 @@ class TestBorrowingPayViewController: UIViewController {
     
     var paymentInfo: PaymentInfoMoney? {
         didSet {
-            guard let pay  = self.paymentInfo else { return }
-            
-            if let period = pay.paymentPeriod {
-                self.payAmountPresent = period.feeOverdue! + period.interest! + period.overdue! + period.principal!
-                
-                if period.overdue! > 0 {
-                    self.isOntime = false
-                }
-            }
-            
-            if let total = pay.liquidation {
-                self.payTotalAmount = total.debt! + total.fee! + total.interest! + total.outstanding!
-                
-                if total.debt! > 0 {
-                    self.isDebt = true
-                }
-                
-            }
-            self.tableView?.reloadData()
+            guard let _  = self.paymentInfo else { return }
+            self.updatePriceData()
         }
     }
     
@@ -198,6 +187,28 @@ class TestBorrowingPayViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    private func updatePriceData() {
+        guard let pay  = self.paymentInfo else { return }
+        
+        if let period = pay.paymentPeriod {
+            self.payAmountPresent = period.feeOverdue! + period.interest! + period.overdue! + period.principal! + period.borrowerManagingFee! + period.borrowerManagingFeeOverdue! + period.principalOverdue! + period.interestOverdue!
+            
+            if period.overdue! > 0 {
+                self.isOntime = false
+            }
+        }
+        
+        if let total = pay.liquidation {
+            self.payTotalAmount = total.debt! + total.fee! + total.interest! + total.outstanding! + total.borrowerManagingFeeOverDue! + total.borrowerManagingFee! + total.principalOverdue! + total.interestOverdue! + total.overdue! + total.feeOverdue!
+            
+            if total.debt! > 0 {
+                self.isDebt = true
+            }
+            
+        }
+        self.tableView?.reloadData()
+    }
+    
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -211,6 +222,9 @@ class TestBorrowingPayViewController: UIViewController {
 //        tableView.registerNibCell(type: BankAccountTableViewCell.self)
 //        tableView.registerNibCell(type: AddNewWalletTableViewCell.self)
         tableView.registerNibCell(type: PayBtnTableViewCell.self)
+        
+        tableView.registerNibCell(type: PayTypeOverdueTBCell.self)
+        tableView.registerNibCell(type: PayAllOverdueTBCell.self)
     }
 
     func updateData() {
@@ -253,6 +267,8 @@ class TestBorrowingPayViewController: UIViewController {
             self.expireDateString = dateString
             expireDate = Date(fromString: dateString, format: DateFormat.custom(kDisplayFormat))
         }
+        
+        self.updatePriceData()
         
         let payType1 = PayType(id: 1, typeTitle: "Phai tra thang nay", expireDate: expireDate, originAmount: originAmount, interestAmount: interestAmount, sumAmount: originAmount + interestAmount)
         let payAll = PayAllBefore(id: 1, typeTitle: "Tra tat ca luon", originAmount: Float(amount), interestAmount: interestTotalAmount, feeToPayBefore: feePayBefore, sumAmount: Float(self.payTotalAmount))
@@ -307,15 +323,26 @@ class TestBorrowingPayViewController: UIViewController {
         if let payTypeArray = newBorrowingPay.payType {
             if payTypeArray.count != 0 {
                 for payType in payTypeArray {
-                    let cellNewPhone = CellData(cellType: .PayTypeCell, data: payType, cellHeight: 126)
-                    sectionPayTypeData.cells.append(cellNewPhone)
+                    if self.isOntime {
+                        let cellNewPhone = CellData(cellType: .PayTypeCell, data: payType, cellHeight: 146)
+                        sectionPayTypeData.cells.append(cellNewPhone)
+                    } else {
+                        let cellNewPhone = CellData(cellType: .PayTypeOverdueCell, data: payType, cellHeight: 258)
+                        sectionPayTypeData.cells.append(cellNewPhone)
+                    }
+                    
                 }
             }
         }
         
         if let payAll = newBorrowingPay.payAll {
-            let cellNewPhone = CellData(cellType: .PayAllCell, data: payAll, cellHeight: 126)
-            sectionPayTypeData.cells.append(cellNewPhone)
+            if !self.isDebt {
+                let cellNewPhone = CellData(cellType: .PayAllCell, data: payAll, cellHeight: 146)
+                sectionPayTypeData.cells.append(cellNewPhone)
+            } else {
+                let cellNewPhone = CellData(cellType: .PayAllOverdueCell, data: payAll, cellHeight: 258)
+                sectionPayTypeData.cells.append(cellNewPhone)
+            }
 
         }
         
@@ -502,7 +529,26 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             cell.updateCellView()
             cell.paymentData = self.paymentInfo?.paymentPeriod
 
-        } else if let cell = cell as? PayAllTableViewCell {
+        }  else if let cell = cell as? PayTypeOverdueTBCell {
+            let data = cellData.data as! PayType
+            if let selected = self.payTypeSelected {
+                if selected.id == data.id {
+                    cell.isSelectedCell = true
+                } else {
+                    cell.isSelectedCell = false
+                }
+            } else {
+                cell.isSelectedCell = false
+            }
+            
+            //cell.isOnTime = self.isOntime
+            cell.dateExpire = self.expireDateString
+            cell.updateCellView()
+            cell.data = self.paymentInfo?.paymentPeriod
+            
+        }
+    
+        else if let cell = cell as? PayAllTableViewCell {
             let data = cellData.data as! PayAllBefore
             if let selected = self.payAllSelected {
                 if selected.id == data.id {
@@ -519,7 +565,27 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             cell.updateCellView()
             cell.paymentData = self.paymentInfo?.liquidation
 
-        } else if let _ = cell as? BankAccountTableViewCell {
+        }
+        else if let cell = cell as? PayAllOverdueTBCell {
+            let data = cellData.data as! PayAllBefore
+            if let selected = self.payAllSelected {
+                if selected.id == data.id {
+                    cell.isSelectedCell = true
+                } else {
+                    cell.isSelectedCell = false
+                }
+            } else {
+                cell.isSelectedCell = false
+            }
+            
+            //cell.isDebt = self.isDebt
+            
+            cell.updateCellView()
+            cell.data = self.paymentInfo?.liquidation
+            
+        }
+        
+        else if let _ = cell as? BankAccountTableViewCell {
 //            let data = cellData.data as! AccountBank
 //            if let selected = self.walletSelected {
 //                if selected.accountBankNumber == data.accountBankNumber {
@@ -566,16 +632,18 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 if isOntime {
-                    return 126
+                    return 146
                 }
-                return 156
+                //return 156
+                return 258
             }
             
             if !isDebt {
-                return 110
+                return 146
             }
             
-            return 136
+            //return 136
+            return 258
         }
         
         let cellData = sections[indexPath.section].cells[indexPath.row]

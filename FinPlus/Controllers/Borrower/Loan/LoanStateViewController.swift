@@ -62,8 +62,7 @@ class LoanStateViewController: UIViewController {
             guard let pay  = self.paymentInfo else { return }
             
             if let period = pay.paymentPeriod {
-                self.payAmountPresent = period.feeOverdue! + period.interest! + period.overdue! + period.principal! +
-                    period.borrowerManagementFee!
+                self.payAmountPresent = period.feeOverdue! + period.interest! + period.overdue! + period.principal! + period.borrowerManagingFee! + period.principalOverdue! + period.interestOverdue! + period.borrowerManagingFeeOverdue!
                 
             }
             
@@ -272,6 +271,14 @@ class LoanStateViewController: UIViewController {
                 let date = Date.init(fromString: date_, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
                 dateString = date.toString(.custom(kDisplayFormat))
             }
+        }
+        
+        //Update số tiền trả hàng tháng khi get xong payment info
+        func updateFundedAmount() {
+            let tempString = payMounthStringWithFunded.replacingOccurrences(of: "đ", with: "").replacingOccurrences(of: ".", with: "").replacingOccurrences(of: ",", with: "")
+            let tempDouble = (Double(tempString) ?? 0) + (self.paymentInfo?.paymentPeriod?.borrowerManagingFee ?? 0)
+            
+            payMounthStringWithFunded = FinPlusHelper.formatDisplayCurrency(tempDouble) + "đ"
         }
         
         func setupForSaleReview() {
@@ -892,6 +899,7 @@ class LoanStateViewController: UIViewController {
                 reloadDisbusal()
                 
                 self.getPaymentInfo {
+                    updateFundedAmount()
                     reloadDisbusal()
                     self.addBankTotDataSource()
                     
@@ -976,6 +984,8 @@ class LoanStateViewController: UIViewController {
                 
                 self.getPaymentInfo {
                     
+                    updateFundedAmount()
+                    
                     reloadTimelyDept()
                     self.addBankTotDataSource()
                     
@@ -1054,6 +1064,7 @@ class LoanStateViewController: UIViewController {
                 reloadOverdueDept()
                 
                 self.getPaymentInfo {
+                    updateFundedAmount()
                     reloadOverdueDept()
                     self.addBankTotDataSource()
                     
