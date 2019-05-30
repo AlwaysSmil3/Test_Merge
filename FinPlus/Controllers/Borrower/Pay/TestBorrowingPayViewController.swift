@@ -199,7 +199,7 @@ class TestBorrowingPayViewController: UIViewController {
         }
         
         if let total = pay.liquidation {
-            self.payTotalAmount = total.debt! + total.fee! + total.interest! + total.outstanding! + total.borrowerManagingFeeOverDue! + total.borrowerManagingFee! + total.principalOverdue! + total.interestOverdue! + total.overdue! + total.feeOverdue!
+            self.payTotalAmount = total.fee! + total.interest! + total.outstanding! + total.borrowerManagingFeeOverDue! + total.borrowerManagingFee! + total.principalOverdue! + total.interestOverdue! + total.overdue! + total.feeOverdue!
             
             if total.debt! > 0 {
                 self.isDebt = true

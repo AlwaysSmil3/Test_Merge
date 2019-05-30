@@ -34,11 +34,11 @@ class PayAllOverdueTBCell: UITableViewCell {
             guard let d = self.data else { return }
             
             self.lblBorrowerManagingFee?.text = FinPlusHelper.formatDisplayCurrency(d.borrowerManagingFee!) + "đ"
-            self.lblPrincipal?.text = FinPlusHelper.formatDisplayCurrency(d.debt!) + "đ"
+            self.lblPrincipal?.text = FinPlusHelper.formatDisplayCurrency(d.outstanding!) + "đ"
             self.lblInterest?.text = FinPlusHelper.formatDisplayCurrency(d.interest!) + "đ"
             self.lblFeePayAll?.text = FinPlusHelper.formatDisplayCurrency(d.fee!) + "đ"
             
-            let totalAmountInTerm = d.borrowerManagingFee! + d.debt! + d.interest! + d.outstanding! + d.fee!
+            let totalAmountInTerm = d.borrowerManagingFee! + d.interest! + d.outstanding! + d.fee!
             
             self.lblBorrowerManagingFeeOverDue?.text = FinPlusHelper.formatDisplayCurrency(d.borrowerManagingFeeOverDue!) + "đ"
             self.lblPrincipalOverDue?.text = FinPlusHelper.formatDisplayCurrency(d.principalOverdue!) + "đ"
