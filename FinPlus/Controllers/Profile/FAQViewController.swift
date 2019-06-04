@@ -10,8 +10,9 @@ import UIKit
 
 class FAQViewController: UIViewController {
     
-    var faqView: FAQView!
     @IBOutlet weak var faqViewContainer: UIView!
+    
+    var faqView: FAQView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,6 @@ class FAQViewController: UIViewController {
                 for item in faq {
                     items.append(FAQItem(question: item.title!, answer: item.descriptionValue!))
                 }
-
             }
         }
         
@@ -39,8 +39,7 @@ class FAQViewController: UIViewController {
         faqView.questionTextFont = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         faqView.answerTextFont = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_SEMIMALL)
         
-        if (mode && isInvestor)
-        {
+        if mode && isInvestor {
             self.view.backgroundColor = DARK_MODE_BACKGROUND_COLOR
             faqView.backgroundColor = DARK_MODE_BACKGROUND_COLOR
             faqView.layer.borderColor = DARK_MODE_BORDER_COLOR.cgColor
@@ -51,9 +50,7 @@ class FAQViewController: UIViewController {
             faqView.cellBackgroundColor = DARK_MODE_BACKGROUND_COLOR
             faqView.tableView.backgroundColor = DARK_MODE_BACKGROUND_COLOR
             faqViewContainer.backgroundColor = DARK_MODE_BACKGROUND_COLOR
-        }
-        else
-        {
+        } else {
             self.view.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
             faqView.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
             faqView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor

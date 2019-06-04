@@ -25,7 +25,5 @@ struct ContactParamsList: Encodable {
         try contacts.forEach {
             try sizes.encode($0)
         }
-        
     }
-    
 }

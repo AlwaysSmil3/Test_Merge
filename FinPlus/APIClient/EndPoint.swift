@@ -10,11 +10,10 @@ import Foundation
 
 //MARK: Base Host
 enum Host {
-    static let alphaURL = ""
-
-    static let productURL = "https://stage-api.mony.vn/"
+    static let productURL = "https://api.mony.vn/"
+    static let stageURL = "https://stage-api.mony.vn/"
+    static let devURL = "https://dev-api.mony.vn/"
 }
-
 
 enum APIService {
     static let AccountService = "account-service/v1/"
@@ -55,6 +54,7 @@ enum EndPoint {
         static let LoanOTP = "\(APIService.LoanService)loans/:loanId/otp"
         static let Loan = "\(APIService.LoanService)loan"
         static let LoanCategories = "\(APIService.LoanService)loan-categories"
+        static let LoanBorrowerFee = "\(APIService.LoanService)configs/get-last-loanBorrowerFee"
     }
     
     enum Config {

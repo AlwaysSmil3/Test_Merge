@@ -7,40 +7,30 @@
 //
 
 import Foundation
-import Kingfisher
+import SDWebImage
 
 class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
     
     @IBOutlet weak var typeLabel: UILabel!
     //@IBOutlet weak var vcbBtn: UIButton!
-    
     @IBOutlet weak var iconBank: UIImageView!
-    
     @IBOutlet weak var lblBankName: UILabel!
-    
     @IBOutlet weak var nameTextField: HoshiTextField!
     @IBOutlet weak var accTextField: HoshiTextField!
-    
     @IBOutlet weak var leftBarBtn: UIBarButtonItem!
     @IBOutlet weak var rightBarBtn: UIBarButtonItem!
     
     //CaoHai tra ve du lieu bank khi chon bank
     var delegate: BankDataDelegate?
-    
     var wallet: AccountBank?
-    
     var missBank: BrowwerBank?
-    
     var walletAction: WalletAction = .WalletDetail
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         self.rightBarBtn.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : MAIN_COLOR], for: .normal)
@@ -55,12 +45,9 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
         nameTextField.delegate = self
         accTextField.delegate = self
         
-        
         self.title = "Thay đổi thông tin tài khoản"
         
-        if let wallet_ = self.wallet
-        {
-
+        if let wallet_ = self.wallet {
             nameTextField.text = wallet_.accountBankName
             accTextField.text = wallet_.accountBankNumber
             
@@ -71,7 +58,7 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
             self.typeLabel.text = typeString
             
             
-            self.iconBank.kf.setImage(with: URL(string: FinPlusHelper.getStringURLIconBank(type: wallet_.bankName ?? "")))
+            self.iconBank.sd_setImage(with: URL(string: FinPlusHelper.getStringURLIconBank(type: wallet_.bankName ?? "")))
             self.lblBankName.text = wallet_.bankName
             
             if self.walletAction == .LoanNation {
@@ -89,51 +76,31 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
                         nameTextField.borderInactiveColor = InValidMissingDataColor
                         nameTextField.textColor = InValidMissingDataColor
                     }
-                    
                 }
             }
-            
         }
         
         if let verified = self.wallet?.verified, verified == 1 {
             //Da verified thi k cho sữa nữa
             self.title = "Chi tiết tài khoản"
             self.navigationItem.rightBarButtonItem = nil
-            
             self.accTextField.isEnabled = false
             self.nameTextField.isEnabled = false
         }
-        
-
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
     }
     
     //MARK: TFAction
-    
     private func checkinputAccText(text: String) {
         guard let miss = self.missBank else { return }
         if text != miss.accountNumber {
             accTextField.borderActiveColor = UIColor(hexString: "#E3EBF0")
             accTextField.borderInactiveColor = UIColor(hexString: "#E3EBF0")
             accTextField.textColor = UIColor(hexString: "#08121E")
-            
         } else {
             accTextField.borderActiveColor = InValidMissingDataColor
             accTextField.borderInactiveColor = InValidMissingDataColor
             accTextField.textColor = InValidMissingDataColor
-            
         }
-        
-        
     }
     
     private func checkInputNameText(text: String) {
@@ -153,15 +120,12 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
         
     }
     
-    
-    
     @IBAction func tfNumberEditDidEnd(_ sender: Any) {
         
     }
     
     //MARK: TF Delegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         let currentString: NSString = textField.text! as NSString
         let newString: NSString =
             currentString.replacingCharacters(in: range, with: string) as NSString
@@ -175,37 +139,29 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
                 self.checkinputAccText(text: newString as String)
             }
         }
-        
-        
         return true
     }
     
-    
     func updateBank() {
         
-        if ((self.nameTextField.text?.length())! < 1)
-        {
+        if self.nameTextField.text?.length() ?? 0 < 1 {
             self.showAlertView(title: "Thông báo", message: "Bạn chưa điền thông tin họ và tên", okTitle: "Đồng ý", cancelTitle: nil)
             self.nameTextField.becomeFirstResponder()
             return
         }
         
-        if ((self.accTextField.text?.length())! < 1)
-        {
+        if self.accTextField.text?.length() ?? 0 < 1 {
             self.showAlertView(title: "Thông báo", message: "Bạn chưa điền số tài khoản", okTitle: "Đồng ý", cancelTitle: nil)
             self.accTextField.becomeFirstResponder()
             return
         }
         
         if let _ = self.missBank {
-            
             if self.accTextField.textColor == InValidMissingDataColor || self.nameTextField.textColor == InValidMissingDataColor {
                 self.showToastWithMessage(message: "Vui lòng cập nhật thông tin mới chính xác!")
                 return
             }
-            
         }
-        
         
         let bankName = self.wallet?.bankName ?? "Vietcombank"
         
@@ -219,7 +175,6 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
         if let wal = self.wallet, let idBank = wal.id {
             self.updateBank(bankId: idBank, params: params)
         }
-        
     }
     
     /*
@@ -259,26 +214,19 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
         case .none:
             break
         }
-
-
     }
     
     func setBorderColor(button: UIButton, isSelect: Bool) {
-        if (isSelect)
-        {
+        if isSelect {
             self.nameTextField.placeholder = "Họ và tên tài khoản \(button.title(for: .normal) ?? "")"
             button.layer.borderColor = MAIN_COLOR.cgColor
             button.isSelected = true
-        }
-        else
-        {
+        } else {
             button.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
             button.isSelected = false
         }
     }
 */
-    
-
     
     private func updateBank(bankId: Int32, params: JSONDictionary) {
         APIClient.shared.updateBankAccount(bankAccountID: bankId, params: params)
@@ -305,7 +253,6 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
             .catch { error in }
     }
     
-    
     //MARK: Actions
     @IBAction func navi_cancel(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -315,14 +262,10 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
         self.updateBank()
     }
     
-    
-    
-    
 }
 
 extension UpdateWalletViewController: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-
         return true
     }
 }

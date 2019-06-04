@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Kingfisher
+import SDWebImage
 
 class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     
@@ -29,7 +29,6 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
             }
             
             self.updateData()
-            
         }
     }
     
@@ -84,7 +83,6 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
                     } else {
                         self.isNeedUpdate = false
                     }
-                    
                 } else {
                     self.isNeedUpdate = false
                 }
@@ -107,10 +105,8 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         
         if DataManager.shared.loanInfo.optionalMedia.count > indexArray {
             temp = DataManager.shared.loanInfo.optionalMedia[indexArray]
-            
             self.dataSourceCollection = temp
         }
-        
     }
     
     func removeUrlInValidInList(url: String?) {
@@ -165,7 +161,6 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         }
     }
     
-    
     /// Show Alert for chossen image from galery
     func showAlertAllowGetImageFromGalery() {
         
@@ -195,9 +190,7 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         UIApplication.shared.topViewController()?.present(alert, animated: true, completion: {
             
         })
-    
     }
-    
     
     func showLibrary() {
         CameraHandler.shared.photoLibrary(vc: UIApplication.shared.topViewController()!)
@@ -216,9 +209,7 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
             cameraVC.descriptionText = self.field?.title ?? ""
             
             guard let topVC = UIApplication.shared.topViewController() else { return }
-            topVC.present(cameraVC, animated: true) {
-                
-            }
+            topVC.present(cameraVC, animated: true)
         } else {
             self.showLibrary()
         }
@@ -238,20 +229,16 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         //guard let data = dataImg else { return }
         let endPoint = "\(APIService.LoanService)loans/" + "\(loanID)/" + "file"
         
-        
         APIClient.shared.upload(type: self.typeImgFile, typeMedia: "image", endPoint: endPoint, imagesData: [data], parameters: ["" : ""], onCompletion: { [weak self](response) in
             topVC.handleLoadingView(isShow: false)
             
-            
             guard let res = response, let data = res["data"] as? [JSONDictionary], data.count > 0 else {
                 topVC.showToastWithMessage(message: "Có lỗi xảy ra, vui lòng thử lại" )
-                
                 return
             }
             guard let strongSelf = self else { return }
             
             if let current = strongSelf.currentSelectedCollection, current.row < strongSelf.dataSourceCollection.count {
-                
                 if let cell = strongSelf.mainCollectionView?.cellForItem(at: current) as? LoanOtherInfoCollectionCell, let hidden = cell.errorView?.isHidden, !hidden {
                     //remove key url invalid
                     strongSelf.removeUrlInValidInList(url: cell.urlImg)
@@ -259,22 +246,18 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
                         strongSelf.addToListURLInvalid(url: urlImg)
                     }
                 }
-                
                 strongSelf.dataSourceCollection[current.row] = img
-                
             } else {
                 strongSelf.dataSourceCollection.append(img)
             }
             
-            for d in data {
-                if let url = d["url"] as? String {
-                    
+            for data in data {
+                if let url = data["url"] as? String {
                     if DataManager.shared.loanInfo.optionalMedia.count == 0 {
                         DataManager.shared.loanInfo.optionalMedia = DataManager.shared.loanInfo.initOptionalMedia(cateId: DataManager.shared.loanInfo.loanCategoryID)
                     }
                     
                     if let indexArray = strongSelf.field?.arrayIndex, DataManager.shared.loanInfo.optionalMedia.count > indexArray {
-                        
                         if let current = strongSelf.currentSelectedCollection, current.row < DataManager.shared.loanInfo.optionalMedia[indexArray].count {
                             DataManager.shared.loanInfo.optionalMedia[indexArray][current.row] = url
                         } else {
@@ -294,7 +277,6 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
         }
     }
     
-    
 }
 
 //MARK: DataImageFromCameraCaptureDelegate
@@ -308,11 +290,9 @@ extension LoanTypeOptionalMediaTBCell: DataImageFromCameraCaptureDelegate {
 extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         if self.dataSourceCollection.count >= MAX_COUNT_IMAGE {
             return self.dataSourceCollection.count
         }
-        
         return self.dataSourceCollection.count + 1
     }
     
@@ -322,7 +302,6 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
         cell.currentSelectedCollection = indexPath
         cell.delegate = self
         cell.errorView.isHidden = true
-        
         
         if self.dataSourceCollection.count < MAX_COUNT_IMAGE && indexPath.row == self.dataSourceCollection.count {
             cell.imgValue.image = #imageLiteral(resourceName: "ic_loan_rectangle1")
@@ -338,27 +317,21 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
         }
         
         if let data = self.dataSourceCollection[indexPath.row] as? String {
-            
-            cell.imgValue.kf.setImage(with: URL(string: data), placeholder: #imageLiteral(resourceName: "imagefirstOnboard"), options: [.transition(ImageTransition.fade(1))], progressBlock: nil, completionHandler: nil)
-            
+//            cell.imgValue.kf.setImage(with: URL(string: data), placeholder: #imageLiteral(resourceName: "imagefirstOnboard"), options: [.transition(ImageTransition.fade(1))], progressBlock: nil, completionHandler: nil)
+            cell.imgValue.sd_setImage(with: URL(string: data), placeholderImage: #imageLiteral(resourceName: "imagefirstOnboard"), options: .transformAnimatedImage)
             cell.imgAdd.isHidden = true
             cell.btnDelete.isHidden = false
             cell.urlImg = data
             
             if let isNeed = self.isNeedUpdate, isNeed, let urls = self.listURLInValid, urls.count > 0 {
                 var isNoShowErrorView = true
-                for url in urls {
-                    if data == url {
-                        isNoShowErrorView = false
-                        break
-                    }
+                for url in urls where data == url {
+                    isNoShowErrorView = false
+                    break
                 }
-                
                 cell.errorView.isHidden = isNoShowErrorView
             }
-            
         }
-        
         return cell
     }
     
@@ -367,13 +340,11 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
         
         guard let isAllowGetImageFromGalery = self.field?.allowGetImageFromGalery, isAllowGetImageFromGalery else {
             self.showCameraView()
-            
             return
         }
         self.showAlertAllowGetImageFromGalery()
         //self.showLibrary()
         //self.showCameraView()
-        
     }
     
 }
@@ -394,8 +365,6 @@ extension LoanTypeOptionalMediaTBCell: OptionMediaDelegate {
                 DataManager.shared.loanInfo.optionalMedia[indexArray].remove(at: index)
             }
         }
-        
-        
     }
     
 }

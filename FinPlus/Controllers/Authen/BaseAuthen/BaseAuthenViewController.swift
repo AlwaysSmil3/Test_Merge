@@ -177,11 +177,9 @@ class BaseAuthenViewController: BaseViewController {
                             self?.pushToChoiceKindUserVC()
                             return
                         }
-                        
                     }
                     
                     self?.getUserInfo()
-                    
                     
                     break
                 default :
@@ -207,7 +205,6 @@ class BaseAuthenViewController: BaseViewController {
                 DataManager.shared.browwerInfo = model
                 
                 strongSelf.pushToHomeVC(accountType: strongSelf.accountType)
-                
             }
             .catch { error in
                 self.pushToHomeVC(accountType: self.accountType)
@@ -224,11 +221,7 @@ class BaseAuthenViewController: BaseViewController {
                 //self.gotoAppInvestor()
             }
         }
-        
-        
     }
-    
-    
     
     func pushToHomeVC(accountType: AccountType) {
         switch accountType {

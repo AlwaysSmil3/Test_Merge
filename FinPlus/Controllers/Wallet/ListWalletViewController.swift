@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kingfisher
+import SDWebImage
 
 enum WalletAction {
     case WalletDetail
@@ -363,17 +363,13 @@ extension ListWalletViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            if (self.walletAction == .LoanNation)
-            {
+            if self.walletAction == .LoanNation {
                 if self.listWallet.count > 0 {
                     return NSLocalizedString("CHOOSE_ACCOUNT", comment: "")
                 } else {
                     return NSLocalizedString("CREATE_NEW_ACCOUNT", comment: "")
                 }
-                
-            }
-            else
-            {
+            } else {
                 return NSLocalizedString("ALL_ACCOUNT_CONNECTED", comment: "")
             }
         default:
@@ -400,10 +396,8 @@ extension ListWalletViewController: UITableViewDataSource {
             
             cell?.tag = indexPath.row
             cell?.currentIndex = indexPath
-            
-            
-            cell?.avatar.kf.setImage(with: URL(string: FinPlusHelper.getStringURLIconBank(type: item.bankName ?? "")))
-            
+//            cell?.avatar.kf.setImage(with: URL(string: FinPlusHelper.getStringURLIconBank(type: item.bankName ?? "")))
+            cell?.avatar.sd_setImage(with: URL(string: FinPlusHelper.getStringURLIconBank(type: item.bankName ?? "")))
             cell?.nameLabel.text = item.bankName
             
             if let number = item.accountBankNumber, number.count > 4 {
@@ -436,7 +430,6 @@ extension ListWalletViewController: UITableViewDataSource {
                     if let bankIdSelected = self.currentBankIdSelected,  bankIdSelected > 0 && id == bankIdSelected {
                         cell?.borderView.layer.borderColor = MAIN_COLOR.cgColor
                         cell?.optionBtn.setImage(#imageLiteral(resourceName: "ic_radio_on"), for: .normal)
-                        
                         
                         if DataManager.shared.checkMissingBankData(key: "bank", currentBankHolder: item.accountBankName, currenAccount: item.accountBankNumber, id: Int(item.id!)) {
                             //Cap nhat thong tin khong hop le
@@ -475,7 +468,6 @@ extension ListWalletViewController: UITableViewDataSource {
             }
             
             return self.getCellForLoan(indexPath: indexPath)
-            
         }
     }
     
@@ -571,6 +563,3 @@ extension ListWalletViewController: EditWalletDelegate {
         })
     }
 }
-
-
-

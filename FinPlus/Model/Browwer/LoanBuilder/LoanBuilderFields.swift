@@ -29,35 +29,32 @@ public struct LoanBuilderFields {
     static let arrayIndex = "array_index"
     static let dataName = "data_name"
     static let maxLength = "max_length"
-    
     static let display_if_loan_over = "display_if_loan_over"
     static let display_if_job_type_is = "display_if_job_type_is"
     static let display_if_need_additional_missing_data = "display_if_need_additional_missing_data"
     static let allow_get_image_from_galery = "allow_get_image_from_galery"
-    
   }
 
   // MARK: Properties
-  public var suffix: String?
-  public var data: [LoanBuilderData]?
-  public var selectorTitle: String?
-  public var multipleLine: Bool? = false
-  public var descriptionValue: String?
-  public var showData: Bool? = false
-  public var type: String?
-  public var multipleData: [LoanBuilderMultipleData]?
-  public var index: Int?
-  public var id: String?
-  public var isRequired: Bool? = false
-  public var title: String?
-  public var placeholder: String?
-  public var keyboard: String?
-  public var showTime: Bool? = false
+    public var suffix: String?
+    public var data: [LoanBuilderData]?
+    public var selectorTitle: String?
+    public var multipleLine: Bool? = false
+    public var descriptionValue: String?
+    public var showData: Bool? = false
+    public var type: String?
+    public var multipleData: [LoanBuilderMultipleData]?
+    public var index: Int?
+    public var id: String?
+    public var isRequired: Bool? = false
+    public var title: String?
+    public var placeholder: String?
+    public var keyboard: String?
+    public var showTime: Bool? = false
     public var arrayIndex: Int?
     public var textInputMuiltiline: String?
     public var dataName: String?
     public var maxLenght: Int?
-    
     public var displayIfLoanOver: Double?
     public var displayIfJobTypeIs: [Int]?
     public var isCanDisplay: Bool = true
@@ -150,55 +147,51 @@ public struct LoanBuilderFields {
                 guard let value = DataManager.shared.titleAdditionalOptinalMediaMissingData else { return }
                 self.isCanDisplay = true
                 self.title = value
-                
                 return
             }
             return
         }
         
         if let listJob = self.displayIfJobTypeIs, listJob.count > 0 {
-            
             let temp = listJob.filter { $0 == DataManager.shared.loanInfo.jobInfo.jobType }
             if temp.count == 0 {
                 self.isCanDisplay = false
                 return
             }
-            
         }
-        
         self.isCanDisplay = true
     }
 
   /// Generates description of the object in the form of a NSDictionary.
   ///
   /// - returns: A Key value pair containing all valid values in the object.
-  public func dictionaryRepresentation() -> [String: Any] {
-    var dictionary: [String: Any] = [:]
-    if let value = suffix { dictionary[SerializationKeys.suffix] = value }
-    if let value = data { dictionary[SerializationKeys.data] = value.map { $0.dictionaryRepresentation() } }
-    if let value = selectorTitle { dictionary[SerializationKeys.selectorTitle] = value }
-    dictionary[SerializationKeys.multipleLine] = multipleLine
-    if let value = descriptionValue { dictionary[SerializationKeys.descriptionValue] = value }
-    dictionary[SerializationKeys.showData] = showData
-    if let value = type { dictionary[SerializationKeys.type] = value }
-    if let value = multipleData { dictionary[SerializationKeys.multipleData] = value.map { $0.dictionaryRepresentation() } }
-    if let value = index { dictionary[SerializationKeys.index] = value }
-    if let value = id { dictionary[SerializationKeys.id] = value }
-    dictionary[SerializationKeys.isRequired] = isRequired
-    if let value = title { dictionary[SerializationKeys.title] = value }
-    if let value = placeholder { dictionary[SerializationKeys.placeholder] = value }
-    if let value = keyboard { dictionary[SerializationKeys.keyboard] = value }
-    dictionary[SerializationKeys.showTime] = showTime
-    
-    if let value = arrayIndex { dictionary[SerializationKeys.arrayIndex] = value }
-    if let value = dataName { dictionary[SerializationKeys.dataName] = value }
-    if let value = maxLenght { dictionary[SerializationKeys.maxLength] = value }
-    
-    if let value = self.allowGetImageFromGalery {
-        dictionary[SerializationKeys.allow_get_image_from_galery] = value
+    public func dictionaryRepresentation() -> [String: Any] {
+        var dictionary: [String: Any] = [:]
+        if let value = suffix { dictionary[SerializationKeys.suffix] = value }
+        if let value = data { dictionary[SerializationKeys.data] = value.map { $0.dictionaryRepresentation() } }
+        if let value = selectorTitle { dictionary[SerializationKeys.selectorTitle] = value }
+        dictionary[SerializationKeys.multipleLine] = multipleLine
+        if let value = descriptionValue { dictionary[SerializationKeys.descriptionValue] = value }
+        dictionary[SerializationKeys.showData] = showData
+        if let value = type { dictionary[SerializationKeys.type] = value }
+        if let value = multipleData { dictionary[SerializationKeys.multipleData] = value.map { $0.dictionaryRepresentation() } }
+        if let value = index { dictionary[SerializationKeys.index] = value }
+        if let value = id { dictionary[SerializationKeys.id] = value }
+        dictionary[SerializationKeys.isRequired] = isRequired
+        if let value = title { dictionary[SerializationKeys.title] = value }
+        if let value = placeholder { dictionary[SerializationKeys.placeholder] = value }
+        if let value = keyboard { dictionary[SerializationKeys.keyboard] = value }
+        dictionary[SerializationKeys.showTime] = showTime
+        
+        if let value = arrayIndex { dictionary[SerializationKeys.arrayIndex] = value }
+        if let value = dataName { dictionary[SerializationKeys.dataName] = value }
+        if let value = maxLenght { dictionary[SerializationKeys.maxLength] = value }
+        
+        if let value = self.allowGetImageFromGalery {
+            dictionary[SerializationKeys.allow_get_image_from_galery] = value
+        }
+        
+        return dictionary
     }
-    
-    return dictionary
-  }
 
 }

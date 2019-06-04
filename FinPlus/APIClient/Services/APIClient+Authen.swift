@@ -10,7 +10,6 @@ import Foundation
 
 extension APIClient {
     
-
     /* Đăng ký số điện thoại mới
      phoneNumber
      
@@ -62,15 +61,15 @@ extension APIClient {
                     
                     if let data = model.data, let token = data.jwtToken {
                         DataManager.shared.token = token
+                        print("token user : \(token)")
                     }
                     
                     seal.fulfill(model)
                 }
-                .catch{ error in
+                .catch { error in
                     seal.reject(error)
-                }
+            }
         }
-        
     }
     
     
@@ -87,10 +86,7 @@ extension APIClient {
      */
     func verifyOTPAuthen(phoneNumber: String, otp: String) -> Promise<OTP> {
         
-        let params: JSONDictionary = [
-            "phoneNumber": phoneNumber,
-            "otp": otp,
-        ]
+        let params = ["phoneNumber": phoneNumber, "otp": otp]
         
         return Promise<OTP> { seal in
             requestWithEndPoint(endPoint: EndPoint.Authen.verifyOTP, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST)
@@ -100,11 +96,9 @@ extension APIClient {
                 }
                 .catch { error in
                     seal.reject(error)
-                }
-        
+            }
         }
     }
-    
     
     /*  Cập nhật thông tin người dùng lần đầu đăng ký SĐT
      
@@ -189,9 +183,8 @@ extension APIClient {
                 }
                 .catch { error in
                     seal.reject(error)
-                }
+            }
         }
-        
     }
     
     
@@ -232,7 +225,6 @@ extension APIClient {
                     seal.reject(error)
             }
         }
-        
     }
     
     
@@ -253,9 +245,7 @@ extension APIClient {
         
         let token = DataManager.shared.pushNotificationToken ?? ""
         
-        let params: JSONDictionary = [
-            "token": token
-        ]
+        let params = ["token": token]
         
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: EndPoint.Authen.Logout, params: params, isShowLoadingView: true, httpType: HTTPMethodType.POST)
@@ -266,7 +256,6 @@ extension APIClient {
                 .catch { error in
                     seal.reject(error)
             }
-            
         }
     }
     
@@ -281,28 +270,21 @@ extension APIClient {
         return Promise<APIResponseGeneral> { seal in
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
                 .done { json in
-                    
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
                         if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
                             UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
                                 if status {
+                                    
                                 }
-                                
                             })
                         }
-                        
                         return
                     }
-                    
                     let model = APIResponseGeneral(object: json)
                     seal.fulfill(model)
                 }
                 .catch { error in seal.reject(error)}
         }
-        
     }
-    
-    
-    
     
 }

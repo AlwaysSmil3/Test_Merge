@@ -45,7 +45,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        Fabric.with([Crashlytics.self])
+        #if DEBUG
+        
+        #else
+            Fabric.with([Crashlytics.self])
+        #endif
         
         UINavigationBar.appearance().backgroundColor = NAVIGATION_BAR_COLOR
         
@@ -83,6 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if FinPlusHelper.isConnectedToNetwork() {
             self.getLoanCategories()
+            self.getLoanBorrowerFee()
             // Get Version
             self.getVersion()
         }
@@ -402,7 +407,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .catch { error in
                 
         }
-        
+    }
+    
+    private func getLoanBorrowerFee() {
+        APIClient.shared.getLoanBorrowerFee()
+            .done(on: DispatchQueue.main) { model in
+                DataManager.shared.loanBorrowerFee.removeAll()
+                DataManager.shared.loanBorrowerFee.append(contentsOf: model)
+            }
+            .catch { error in
+                
+        }
     }
     
     //Check version From server config

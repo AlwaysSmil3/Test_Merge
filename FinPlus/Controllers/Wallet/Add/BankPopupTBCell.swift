@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Kingfisher
+import SDWebImage
 
 class BankPopupTBCell: UITableViewCell {
     
@@ -19,12 +19,14 @@ class BankPopupTBCell: UITableViewCell {
     
     var data: Bank? {
         didSet {
-            guard let d = data else { return }
+            guard let data = data else { return }
             
-            self.lblBankName?.text = d.displayName
-            self.lblBankCode?.text = d.type
-            self.iconBank?.kf.setImage(with: URL(string: d.image!))
-            
+            self.lblBankName?.text = data.displayName
+            self.lblBankCode?.text = data.type
+//            self.iconBank?.kf.setImage(with: URL(string: d.image!))
+            if let image = data.image {
+                self.iconBank?.sd_setImage(with: URL(string: image))
+            }
         }
     }
     

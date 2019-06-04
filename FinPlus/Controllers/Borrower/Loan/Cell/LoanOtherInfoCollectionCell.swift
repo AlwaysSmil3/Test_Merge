@@ -26,14 +26,11 @@ class LoanOtherInfoCollectionCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         self.imgValue.layer.cornerRadius = 3
-        
     }
     
     @IBAction func btnDeleteTapped(_ sender: Any) {
         guard let index = self.currentSelectedCollection else { return }
-        
         delegate?.deleteOptionMedia(index: index.row, urlImg: self.urlImg)
     }
     

@@ -29,5 +29,4 @@ struct ContactParams: Encodable {
         try container.encode(contactPhoneNumber, forKey: .contactPhoneNumber)
     }
     
-
 }

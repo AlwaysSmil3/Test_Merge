@@ -8,21 +8,17 @@
 
 import Foundation
 import CoreData
-import Kingfisher
+import SDWebImage
 
 class BorrowHomeViewController: BaseViewController {
-    
     
     @IBOutlet weak var heightConstraintContentView: NSLayoutConstraint!
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet var lblTitle: UILabel!
-    
     @IBOutlet weak var lblHeader1: UILabel!
     @IBOutlet weak var lblHeader2: UILabel!
-    
     @IBOutlet var contentLoanView: UIView!
     @IBOutlet var mainCollectionView: UICollectionView!
-    
     @IBOutlet var headerView: UIView!
     
     // Loan status cho các trạng thái của Loan
@@ -53,15 +49,12 @@ class BorrowHomeViewController: BaseViewController {
 //        }
 
         self.getLoanCategories()
-
         self.setupUI()
-        
         self.handleDataNoti()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,7 +66,6 @@ class BorrowHomeViewController: BaseViewController {
                 win.rootViewController = tabbarVC
             }
         }
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -93,22 +85,14 @@ class BorrowHomeViewController: BaseViewController {
         }
         
         self.lblTitle.text = "Xin chào " + name + "!"
-        
     }
     
     private func getHeightCollectionView() -> CGFloat {
         if DataManager.shared.loanCategories.count % 3 == 0 {
             return CGFloat((DataManager.shared.loanCategories.count / 3) * 146 + 16)
         }
-        
         return CGFloat(((DataManager.shared.loanCategories.count / 3) + 1) * 146 + 16)
-        
     }
-    
-    
-    //MARK: Actions
-
-    
 
 }
 
@@ -128,9 +112,10 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
         
         let model = DataManager.shared.loanCategories[indexPath.row]
         
-        let urlString = Host.productURL + model.imageUrl!
+        let urlString = APIClient.shared.baseURLString + model.imageUrl!
         let url = URL(string: urlString)
-        cell.imgIcon.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "ic_homeBrower_group1"), options: nil, progressBlock: nil, completionHandler: nil)
+//        cell.imgIcon.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "ic_homeBrower_group1"), options: nil, progressBlock: nil, completionHandler: nil)
+        cell.imgIcon.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic_homeBrower_group1"), options: .transformAnimatedImage)
         cell.lblName.text = FinPlusHelper.addCharactorToString(input: model.title!)
         cell.lblDistanceAmount.text = "\(model.min! / MONEY_TERM_DISPLAY)-\(model.max! / MONEY_TERM_DISPLAY) triệu"
         
@@ -143,7 +128,6 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return FinPlusHelper.setCellSizeDisplayFitThird(indexPath)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -159,10 +143,8 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
         } else {
             let popupConfirm = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "AlertConfirmCreateLoanPopup") as! AlertConfirmCreateLoanPopup
             popupConfirm.delegate = self
-            
             popupConfirm.show()
         }
-
     }
     
     func gotoLoanFirstVC() {
@@ -174,18 +156,11 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
         self.navigationController?.pushViewController(loanFirstVC, animated: true)
     }
     
-    
 }
 
 //MARK: AlertAggreeCreateLoanDelegate
 extension BorrowHomeViewController: AlertAggreeCreateLoanDelegate {
     func confirmAggree() {
         self.gotoLoanFirstVC()
-        
     }
 }
-
-
-
-
-

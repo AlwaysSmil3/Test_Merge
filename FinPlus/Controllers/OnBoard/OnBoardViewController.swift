@@ -14,6 +14,7 @@ class OnBoardViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: SCPageControlView!
     @IBOutlet weak var nextBtn: UIButton!
+    
     let totalPage = 3
     
     override func viewDidAppear(_ animated: Bool) {

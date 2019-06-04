@@ -13,16 +13,11 @@ class Contact: NSObject {
     public var lastName: String?
     public var fullName: String?
     public var phoneNumber: String?
-    
     public var nameDisplay: String?
-    
-    //avata danh bạ
     public var avatar: UIImage?
     
     required override init() {
-        
         super.init()
-        
         self.initData()
     }
     
@@ -31,11 +26,8 @@ class Contact: NSObject {
         lastName = ""
         fullName = ""
         avatar = UIImage()
-        
         nameDisplay = ""
-        
         phoneNumber = ""
     }
-    
     
 }

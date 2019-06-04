@@ -181,7 +181,7 @@ class FinPlusHelper {
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 0;
+        formatter.maximumFractionDigits = 0
         
         let stringFormatVND = formatter.string(from: valueNumber)!
         let stringFormatVNDResult = stringFormatVND.replacingOccurrences(of: ",", with: ".")

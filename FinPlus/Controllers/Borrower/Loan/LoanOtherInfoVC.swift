@@ -125,25 +125,17 @@ class LoanOtherInfoVC: LoanBaseViewController {
                 if let avatar = DataManager.shared.browwerInfo?.avatar, avatar.count > 0 {
                     //Đã có thông tin Facebook
                     let loanSummaryInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSummaryInfoVC") as! LoanSummaryInfoVC
-                    
                     self.navigationController?.pushViewController(loanSummaryInfoVC, animated: true)
-                    
                     return
                 }
                 
                 //Chưa có thông tin Facebook
-                
                 let socialInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSocialInfoViewController") as! LoanSocialInfoViewController
                 
                 self.navigationController?.pushViewController(socialInfoVC, animated: true)
             })
-            
         }
-        
-        
     }
-    
-    
     
 }
 

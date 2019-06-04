@@ -131,16 +131,14 @@ extension APIClient {
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
-
-                        var array: [AccountBank] = []
+                    var array: [AccountBank] = []
+                    
+                    if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
+                        array = data.compactMap{ AccountBank(object: $0) }
                         
-                        if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
-                            array = data.compactMap{ AccountBank(object: $0) }
-                            
-                        }
-                        
-                        seal.fulfill(array)
-            
+                    }
+                    
+                    seal.fulfill(array)
                 }
                 .catch { error in
                     seal.reject(error)
@@ -157,11 +155,10 @@ extension APIClient {
         let endPoint = EndPoint.User.User + "\(uId)/bank-account"
 
         return Promise<APIResponseGeneral> { seal in
-            requestWithEndPoint(host: Host.productURL, endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
+            requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
                 .done { json in
                     let model = APIResponseGeneral(object: json)
                     seal.fulfill(model)
-
                 }
                 .catch { error in seal.reject(error)}
         }
@@ -177,7 +174,6 @@ extension APIClient {
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .DELETE)
                 .done { json in
-                    
                     let model = APIResponseGeneral(object: json)
                     seal.fulfill(model)
                 }

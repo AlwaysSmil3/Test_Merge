@@ -18,13 +18,12 @@ enum HTTPMethodType {
     case DELETE
 }
 
-
 class APIClient {
     
     static let shared = APIClient()
     
     //Host
-    let baseURLString = Host.productURL
+    let baseURLString = Host.stageURL //Host.productURL
     
     // DELETE request
     internal var deleteRequest : NSMutableURLRequest! {
@@ -60,7 +59,6 @@ class APIClient {
             DispatchQueue.main.async {
                 _postRequest.setValue(getUserAgent(), forHTTPHeaderField: "User-Agent")
             }
-            
             
             _postRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             _postRequest.setValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
@@ -128,7 +126,6 @@ class APIClient {
         }
     }
     
-    
     // MARK: - Common function
     // Request post, Put, Delete
     public func requestWithEndPoint(host: String? = nil, endPoint: String, params: [String : Any], isShowLoadingView: Bool, httpType: HTTPMethodType, jsonData: Data? = nil) -> Promise<JSONDictionary> {
@@ -137,17 +134,14 @@ class APIClient {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         }
         
-        
         var mutableURLRequest = self.postRequest!
         
         switch httpType {
         case .DELETE:
             mutableURLRequest = self.deleteRequest
-            break
-        case .POST:
-            break
         case .PUT:
             mutableURLRequest = self.putRequest
+        case .POST:
             break
         }
         
@@ -156,8 +150,8 @@ class APIClient {
         }
         
         var baseURL = self.baseURLString
-        if let host_ = host {
-            baseURL = host_
+        if let host = host {
+            baseURL = host
         }
         
         if let token = DataManager.shared.token {
@@ -173,7 +167,6 @@ class APIClient {
             } else {
                 mutableURLRequest.httpBody = try! JSONSerialization.data(withJSONObject: params, options: [])
             }
-            
             
             Alamofire.request(mutableURLRequest as URLRequest).responseJSON { (response) in
                 
@@ -198,15 +191,11 @@ class APIClient {
                     print(error)
                     self.showAlertError(error: error)
                     
-                    
                 case .success(let responseObject):
                     DataManager.shared.isNoShowAlertTimeout = nil
                     if let responseDataDict = responseObject as? JSONDictionary {
-                        
                         seal.fulfill(responseDataDict)
-                    }
-                    else {
-                        
+                    } else {
                         print("fail to parser data")
                         let error = NSError(domain: "BackendManager", code: 0,
                                             userInfo: [NSLocalizedDescriptionKey: API_MESSAGE.OTHER_ERROR])
@@ -231,8 +220,8 @@ class APIClient {
         }
         
         var baseURL = self.baseURLString
-        if let host_ = host {
-            baseURL = host_
+        if let host = host {
+            baseURL = host
         }
         
         if let token = DataManager.shared.token {
@@ -269,11 +258,8 @@ class APIClient {
                 case .success(let responseObject):
                     DataManager.shared.isNoShowAlertTimeout = nil
                     if let responseDataDict = responseObject as? JSONDictionary {
-                        
                         seal.fulfill(responseDataDict)
-                    }
-                    else {
-                        
+                    } else {
                         print("fail to parser data")
                         let error = NSError(domain: "BackendManager", code: 0,
                                             userInfo: [NSLocalizedDescriptionKey: API_MESSAGE.OTHER_ERROR])
@@ -310,17 +296,13 @@ class APIClient {
             switch type {
             case .ALL:
                 typeExpand = .NATIONALID_ALL
-                break
             case .BACK:
                 typeExpand = .NATIONALID_BACK
-                break
             case .FRONT:
                 typeExpand = .NATIONALID_FRONT
-                break
             case .Optional:
                 typeExpand = .OPTIONAL_MEDIA
                 break
-                
             }
             
             //let name = typeMedia + "_" + typeExpand.rawValue
@@ -329,7 +311,6 @@ class APIClient {
             
             for data in imagesData {
                 multipartFormData.append(data, withName: "files", fileName: fileName, mimeType: mimetype)
-                
             }
             
         }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { (result) in
@@ -343,11 +324,9 @@ class APIClient {
                         if let responseDict = responseObject as? JSONDictionary {
                             onCompletion?(responseDict)
                         }
-                        break
                         
                     case .failure(let error):
                         onError?(error)
-                        break
                     }
                     
                 }
@@ -358,14 +337,12 @@ class APIClient {
         }
     }
     
-    
     func showAlertError(error: Error) {
         
         let err = error as NSError
         
         if err.code != NSURLErrorTimedOut  {
             self.showAlertErrorMony(error: error)
-            
             return
         }
         
@@ -375,7 +352,6 @@ class APIClient {
             UIApplication.shared.topViewController()?.showAlertView(title: TITLE_ALERT_ERROR_CONNECTION, message: self.getDisplayMessage(error: error), okTitle: "Đóng", cancelTitle: nil) { status in
                 DataManager.shared.isCanShowAlertAPIError = true
             }
-            
         }
     }
     
@@ -386,10 +362,8 @@ class APIClient {
             UIApplication.shared.topViewController()?.showAlertViewNoConnect(title: TITLE_ALERT_ERROR_CONNECTION, message: API_MESSAGE.MONY_MESSEAGE_ERROR, okTitle: "Đóng", cancelTitle: nil) { status in
                 DataManager.shared.isCanShowAlertAPIError = true
             }
-            
         }
     }
-    
     
     // Display message
     public func getDisplayMessage(error: Error) -> String {
@@ -413,12 +387,10 @@ class APIClient {
     
     // default error
     public func createUnknowError(forDomain domain: String?) -> NSError {
-        
         return createError(withMessage: API_MESSAGE.OTHER_ERROR, forDomain: domain ?? "")
     }
     
     private func createError(withMessage message: String, forDomain domain: String?) -> NSError {
-        
         return NSError(domain: domain ?? "", code: 0,
                        userInfo: [NSLocalizedDescriptionKey: message])
     }
@@ -447,8 +419,5 @@ class APIClient {
             return (disposition, credential)
         }
     }
-    
-    
-    
     
 }

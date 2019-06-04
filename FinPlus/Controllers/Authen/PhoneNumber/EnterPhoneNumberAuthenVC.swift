@@ -167,8 +167,7 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
                 return
             }
             
-            if (phone != DataManager.shared.currentAccount || appDelegate.timeCount == 60)
-            {
+            if phone != DataManager.shared.currentAccount || appDelegate.timeCount == 60 {
                 appDelegate.timeCount = 0
                 
                 var accountTemp = phone
@@ -219,8 +218,7 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
                         print(error)
                 }
             }
-            else
-            {
+            else {
                 self.pushToVerifyVC(verifyType: .Login, phone: phone)
             }
         }
@@ -238,7 +236,6 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
         }
         
         continueAction()
-        
     }
 
 
@@ -256,8 +253,6 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
             verifyVC.account = phone
             self.navigationController?.pushViewController(verifyVC, animated: true)
         }
-        
-        
     }
 
     func pushToLoginVC() {
@@ -294,8 +289,7 @@ extension EnterPhoneNumberAuthenVC: UITextViewDelegate {
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
             return false
-        }
-        else {
+        } else {
             return true
         }
     }

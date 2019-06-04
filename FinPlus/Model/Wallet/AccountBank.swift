@@ -16,7 +16,6 @@ enum BankName: Int {
     case Bidv = 5
     case ViettelPay = 6
     case Momo = 7
-    
 }
 
 public struct AccountBank {
@@ -33,14 +32,13 @@ public struct AccountBank {
   }
 
   // MARK: Properties
-  public var accountBankName: String?
-  public var accountBankNumber: String?
-  public var bankName: String?
-  public var id: Int32?
-  public var bankType: Int?
-  public var district: String?
+    public var accountBankName: String?
+    public var accountBankNumber: String?
+    public var bankName: String?
+    public var id: Int32?
+    public var bankType: Int?
+    public var district: String?
     public var icon: UIImage?
-    
     public var verified: Int?
     
     public init() {
@@ -73,70 +71,54 @@ public struct AccountBank {
   ///
   /// - parameter object: The object of either Dictionary or Array kind that was passed.
   /// - returns: An initialized instance of the class.
-  public init(object: Any) {
-    self.init(json: JSON(object))
-  }
+    public init(object: Any) {
+        self.init(json: JSON(object))
+    }
 
   /// Initiates the instance based on the JSON that was passed.
   ///
   /// - parameter json: JSON object from SwiftyJSON.
-  public init(json: JSON) {
-    accountBankName = json[SerializationKeys.accountBankName].string ?? ""
-    accountBankNumber = json[SerializationKeys.accountBankNumber].string ?? ""
-    bankName = json[SerializationKeys.bankName].string ?? ""
-    id = json[SerializationKeys.id].int32 ?? 0
-    district = json[SerializationKeys.district].string ?? ""
-    verified = json[SerializationKeys.verified].int ?? 0
-    
-    if bankName == "Vietcombank" || bankName == "VCB" {
-        bankType = 1
+    public init(json: JSON) {
+        accountBankName = json[SerializationKeys.accountBankName].string ?? ""
+        accountBankNumber = json[SerializationKeys.accountBankNumber].string ?? ""
+        bankName = json[SerializationKeys.bankName].string ?? ""
+        id = json[SerializationKeys.id].int32 ?? 0
+        district = json[SerializationKeys.district].string ?? ""
+        verified = json[SerializationKeys.verified].int ?? 0
+        
+        if bankName == "Vietcombank" || bankName == "VCB" {
+            bankType = 1
+        } else if bankName == "Vietinbank" {
+            bankType = 2
+        } else if bankName == "Techcombank" {
+            bankType = 3
+        } else if bankName == "Agribank" {
+            bankType = 4
+        } else if bankName == "Bidv" {
+            bankType = 5
+        } else if bankName == "ViettelPay" || bankName!.removeVietnameseMark().contains("viettelpay") {
+            bankType = 6
+        } else if bankName == "MoMo" || bankName!.removeVietnameseMark().contains("momo") {
+            bankType = 7
+        } else {
+            bankType = 1
+        }
     }
-    else if bankName == "Vietinbank" {
-        bankType = 2
-    }
-    else if bankName == "Techcombank" {
-        bankType = 3
-    }
-    else if bankName == "Agribank" {
-        bankType = 4
-    }
-    else if bankName == "Bidv" {
-        bankType = 5
-    }
-    else if bankName == "ViettelPay" {
-        bankType = 6
-    }
-    else if bankName == "MoMo" {
-        bankType = 7
-    }
-    else if bankName!.removeVietnameseMark().contains("viettelpay") {
-        bankType = 6
-    }
-    else if bankName!.removeVietnameseMark().contains("momo") {
-        bankType = 7
-    }
-
-
-    else {
-        bankType = 1
-    }
-    
-  }
 
   /// Generates description of the object in the form of a NSDictionary.
   ///
   /// - returns: A Key value pair containing all valid values in the object.
-  public func dictionaryRepresentation() -> [String: Any] {
-    var dictionary: [String: Any] = [:]
-    if let value = accountBankName { dictionary[SerializationKeys.accountBankName] = value }
-    if let value = accountBankNumber { dictionary[SerializationKeys.accountBankNumber] = value }
-    if let value = bankName { dictionary[SerializationKeys.bankName] = value }
-    if let value = id { dictionary[SerializationKeys.id] = value }
-    if let value = bankType { dictionary[SerializationKeys.bankType] = value }
-    if let value = district { dictionary[SerializationKeys.district] = value }
-    if let value = verified { dictionary[SerializationKeys.verified] = value }
-    
-    return dictionary
-  }
+    public func dictionaryRepresentation() -> [String: Any] {
+        var dictionary: [String: Any] = [:]
+        if let value = accountBankName { dictionary[SerializationKeys.accountBankName] = value }
+        if let value = accountBankNumber { dictionary[SerializationKeys.accountBankNumber] = value }
+        if let value = bankName { dictionary[SerializationKeys.bankName] = value }
+        if let value = id { dictionary[SerializationKeys.id] = value }
+        if let value = bankType { dictionary[SerializationKeys.bankType] = value }
+        if let value = district { dictionary[SerializationKeys.district] = value }
+        if let value = verified { dictionary[SerializationKeys.verified] = value }
+        
+        return dictionary
+    }
 
 }

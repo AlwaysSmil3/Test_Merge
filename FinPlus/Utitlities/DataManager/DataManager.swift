@@ -39,6 +39,9 @@ class DataManager {
     // Danh sách các loại khoản vay
     var loanCategories: [LoanCategories] = []
     
+    //Danh sách các loại phí cho người vay
+    var loanBorrowerFee: [LoanBorrowerFee] = []
+    
     //thêm field cho step 4
     var listFieldForStep4: [LoanBuilderFields]?
     
@@ -204,8 +207,6 @@ class DataManager {
         }
     }
     
-    
-    
     /// Get List Bank
     ///
     /// - Parameter completion: <#completion description#>
@@ -238,7 +239,6 @@ class DataManager {
                         //self.loanBuilder.append(toll)
                         self.loanCategories.append(toll)
                     })
-
                 }
             } catch {
                 // handle error

@@ -25,12 +25,10 @@ class TutorialPageViewController: UIPageViewController {
         dataSource = self
         delegate = self
 
-
         if let initialViewController = orderedViewControllers.first {
             scrollToViewController(viewController: initialViewController)
         }
         tutorialDelegate?.tutorialPageViewController(tutorialPageViewController: self, didUpdatePageCount: orderedViewControllers.count)
-
     }
 
     /**
@@ -101,7 +99,7 @@ extension TutorialPageViewController: UIPageViewControllerDataSource {
         guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
             return nil
         }
-        print(viewControllerIndex)
+//        print(viewControllerIndex)
         if viewControllerIndex == 0 {
             return nil
         }
@@ -125,9 +123,9 @@ extension TutorialPageViewController: UIPageViewControllerDataSource {
         guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
             return nil
         }
-        print(viewControllerIndex)
-        print(orderedViewControllers.count)
-        if ((viewControllerIndex + 1) >= orderedViewControllers.count) {
+//        print(viewControllerIndex)
+//        print(orderedViewControllers.count)
+        if (viewControllerIndex + 1) >= orderedViewControllers.count {
             return nil
         }
         let nextIndex = viewControllerIndex + 1
@@ -145,7 +143,6 @@ extension TutorialPageViewController: UIPageViewControllerDataSource {
 
         return orderedViewControllers[nextIndex]
     }
-
 
 }
 

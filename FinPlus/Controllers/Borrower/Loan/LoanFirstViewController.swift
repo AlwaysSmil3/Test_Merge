@@ -27,7 +27,7 @@ class LoanFirstViewController: LoanBaseViewController {
     
     @IBOutlet var lblMoneySlider: UILabel!
     @IBOutlet var lblTermSlider: UILabel!
-
+    
     @IBOutlet var lblInterestRate: UILabel!
     @IBOutlet var lblTempFee: UILabel!
     @IBOutlet var lblTempTotalAmount: UILabel!
@@ -49,9 +49,12 @@ class LoanFirstViewController: LoanBaseViewController {
     
     var listDataCategoriesForPopup: [LoanBuilderData] = []
     
+    var listLoanBorrowerFee: [LoanBorrowerFee] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        listLoanBorrowerFee = DataManager.shared.loanBorrowerFee
         self.setupInit()
         self.updateData()
         
@@ -66,8 +69,6 @@ class LoanFirstViewController: LoanBaseViewController {
         if DataManager.shared.browwerInfo?.activeLoan?.loanId == nil || DataManager.shared.browwerInfo?.activeLoan?.loanId == 0 {
             self.initPlusingHalo()
         }
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -168,7 +169,7 @@ class LoanFirstViewController: LoanBaseViewController {
         
         self.updateTearmSlider(loan: loan)
         self.updateAmountSlider(loan: loan)
-
+        
         self.lblInterestRate?.text = "\(Int(loan.interestRate!))%/năm"
         //self.lblTempTotalAmount?.text = "0đ"
         self.updateTotalAmountMounth()
@@ -236,9 +237,7 @@ class LoanFirstViewController: LoanBaseViewController {
                 
                 self.lblLeftTempTotalAmount?.text = TitleAmountTempUnderAMounth
             }
-            
         }
-        
     }
     
     
@@ -252,7 +251,7 @@ class LoanFirstViewController: LoanBaseViewController {
         
         self.updateServiceFee(loan: loan)
         
-         var amountDouble = Double(loan.min!)
+        var amountDouble = Double(loan.min!)
         if let value_ = value {
             self.amountSlider?.value = Float(Int32(value_) / MONEY_TERM_DISPLAY)
             amountDouble = Double(value_)
@@ -360,11 +359,11 @@ class LoanFirstViewController: LoanBaseViewController {
         }
         
         if loan.id == Loan_Student_Category_ID {
-//            if termValue > 30 {
-//                self.termSlider.increment = 30
-//            } else {
-//                self.termSlider.increment = 10
-//            }
+            //            if termValue > 30 {
+            //                self.termSlider.increment = 30
+            //            } else {
+            //                self.termSlider.increment = 10
+            //            }
             
             self.lblTermSlider.text = "\(Int(self.termSlider.value / 10) * 10)" + " Ngày"
             
@@ -417,6 +416,14 @@ class LoanFirstViewController: LoanBaseViewController {
         
         let term = self.termSlider.value
         amountDouble = FinPlusHelper.CalculateMoneyPayMonth(month: amountDouble, term: Double(term/30), rate: loan.interestRate!, isSlider: true, sliderValue: Double(term))
+        print("amountDouble : \(amountDouble)")
+        
+        //ADD FEE LOAN BORROWER
+        let indexMonth = Int(termSlider.value / 30) < 1 ? 1 : Int(termSlider.value / 30)
+        let percent = listLoanBorrowerFee[indexMonth].value
+        let moneyLoan = Int(self.amountSlider.value) / Int(self.amountSlider.minimumValue) * 1000000
+        let feeLoan = CGFloat(moneyLoan) * percent / 100
+        amountDouble += Double(feeLoan)
         
         self.lblTempTotalAmount.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ"
         
@@ -433,7 +440,6 @@ class LoanFirstViewController: LoanBaseViewController {
                     
                     self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
                 })
-                
             } else {
                 //chua có thì tạo
                 APIClient.shared.loan(isShowLoandingView: true, httpType: .POST)
@@ -457,7 +463,6 @@ class LoanFirstViewController: LoanBaseViewController {
                     }
                     .catch { error in }
             }
-            
         }
         
     }

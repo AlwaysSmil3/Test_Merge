@@ -14,13 +14,11 @@ extension UIViewController {
     
     // MARK: ------------Toast------------
     func showToastWithMessage(message: String?) {
-        
         UIViewController.showToastWithMessage(message: message)
     }
     
     static func showToastWithMessage(message: String?) {
         ToastCenter.default.cancelAll()
-        
         let toast = Toast(text: message, delay: 0, duration: Delay.short)
         toast.show()
     }
