@@ -20,6 +20,9 @@ class DataManager {
         }
     }
     
+    //VERSION ON STORE
+    var versionOnStore = "1.0"
+    
     //header token for API
     var token: String?
     

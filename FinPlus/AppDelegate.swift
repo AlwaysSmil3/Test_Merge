@@ -14,8 +14,6 @@ import CoreData
 import Fabric
 import Crashlytics
 
-
-
 //Cho optionalText trong tạo loan
 var optionalTextCount = 10
 var countCheckVersionFirst = 0
@@ -29,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var backgroundTimer : Timer!
     var isShowLogin = false
-    
     
     func createTimer() {
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
@@ -87,9 +84,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if FinPlusHelper.isConnectedToNetwork() {
             self.getLoanCategories()
-            self.getLoanBorrowerFee()
-            // Get Version
             self.getVersion()
+        }
+        
+        //CHECK VERSION ON STORE
+        DispatchQueue.global().async {
+            do {
+                let _ = try self.updateVersionAppCurrent()
+            } catch {
+                print(error)
+            }
         }
         
         return true
@@ -305,20 +309,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }, completion: { (status) in
                         
                     })
-                    
-                    
                 }
             }
-            
         }
-        
         
         guard countCheckVersionFirst > 0 else {
             if countCheckVersionFirst == 0 {
                 countCheckVersionFirst = 1
             }
             return
-            
         }
         
         guard DataManager.shared.isCanShowPopupNeedUpdate else { return }
@@ -392,7 +391,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     userDefault.set(model.version!, forKey: fVERSION_CONFIG)
                     userDefault.synchronize()
                 }
-                
             }
             .catch { error in
         }
@@ -494,10 +492,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    private func updateVersionAppCurrent() throws -> Bool {
+        guard let info = Bundle.main.infoDictionary,
+            let currentVersion = info["CFBundleShortVersionString"] as? String,
+            let identifier = info["CFBundleIdentifier"] as? String,
+            let url = URL(string: "http://itunes.apple.com/lookup?bundleId=\(identifier)") else {
+                throw VersionError.invalidBundleInfo
+        }
+        let data = try Data(contentsOf: url)
+        guard let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any] else {
+            throw VersionError.invalidResponse
+        }
+        if let result = (json["results"] as? [Any])?.first as? [String: Any], let version = result["version"] as? String {
+            print("version : \(version)")
+            DataManager.shared.versionOnStore = version
+        }
+        throw VersionError.invalidResponse
+    }
     
 }
 
-
+enum VersionError: Error {
+    case invalidResponse, invalidBundleInfo
+}
 
 //MARK: UNUser Notification Center Delegate
 @available(iOS 10, *)
@@ -539,23 +556,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         completionHandler()
     }
     
-    
-    
-    
-    
-    
 }
-
-
-
-
 
 // MARK: Messaging Delegate
 extension AppDelegate: MessagingDelegate {
     
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
         print("Messaging \(remoteMessage.appData)")
-        
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {

@@ -22,10 +22,10 @@ class PayAllTableViewCell: UITableViewCell {
     
     @IBOutlet weak var selectImg: UIImageView!
     @IBOutlet weak var titleLb: UILabel!
+    
     var cellData : PayAllBefore!
     var isSelectedCell = false
-    
-    var isDebt: Bool = false
+    var isDebt = false
     
     var paymentData: PaymentLiquidation? {
         didSet {
@@ -46,7 +46,7 @@ class PayAllTableViewCell: UITableViewCell {
                     
                     self.feeReturnBeforeDueDateLb?.text = "Phí trả nợ trước hạn: " + FinPlusHelper.formatDisplayCurrency(data.fee!) + "đ"
                 } else {
-                    self.interestMoneyLb?.text = "Tiền gốc: " + FinPlusHelper.formatDisplayCurrency(data.outstanding!) + "đ"
+                    self.originMoneyLb?.text = "Tiền gốc: " + FinPlusHelper.formatDisplayCurrency(data.outstanding!) + "đ"
                     if data.interest! > 0 {
                         self.feeReturnBeforeDueDateLb?.text = "Tiền lãi: " + FinPlusHelper.formatDisplayCurrency(data.interest!) + "đ"
                     }
@@ -55,8 +55,6 @@ class PayAllTableViewCell: UITableViewCell {
                         self.feeReturnBeforeDueDateLb?.text = "Phí trả nợ trước hạn: " + FinPlusHelper.formatDisplayCurrency(data.fee!) + "đ"
                     }
                 }
-                
-
             } else {
 //                self.lblDebt?.isHidden = false
 //                self.lblLeftDebt?.isHidden = false
@@ -69,10 +67,7 @@ class PayAllTableViewCell: UITableViewCell {
                 self.feeReturnBeforeDueDateLb?.text = "Phí tất toán: " + FinPlusHelper.formatDisplayCurrency(data.fee!) + "đ"
             }
             
-            
-            
             self.borrowingLb.text = FinPlusHelper.formatDisplayCurrency(data.debt! + data.fee! + data.outstanding! + data.interest! + data.borrowerManagingFee!) + "đ"
-            
         }
     }
     
@@ -95,9 +90,7 @@ class PayAllTableViewCell: UITableViewCell {
         } else {
             self.containView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
             self.selectImg.image = #imageLiteral(resourceName: "ic_radio_off")
-            
         }
-
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

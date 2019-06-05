@@ -14,13 +14,25 @@ import ContactsUI
 import AVFoundation
 import CoreLocation
 
-
 class FinPlusHelper {
     
+    /// Show popup holiday
+//    class func showPopupHoliday() {
+//        guard let topVC = UIApplication.shared.topViewController() else { return }
+//        
+//        //let fromDate = Date(fromString: "01/02/2019", format: DateFormat.custom("dd/MM/yyyy"))
+//        let toDate = Date(fromString: "10/02/2019", format: DateFormat.custom("dd/MM/yyyy"))
+//        let currentDate = Date()
+//        
+//        guard currentDate <= toDate else { return }
+//        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//            topVC.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Ứng dụng Mony_Vay tiền Online xin kính chào quý khách! Chúc quý khách 1 năm mới an khang thịnh vượng và tràn ngập niềm vui! Mony sẽ nghỉ Tết Nguyên đán 2019 từ ngày 02/02/2019 tới hết ngày 10/02/2019. Trong thời gian nghỉ Tết, Quý khách vẫn có thể đăng ký đơn vay và các đơn vay này sẽ được kiểm tra và xử lý sau kỳ nghỉ! Xin cảm ơn!", okTitle: "Tiếp tục tạo đơn", cancelTitle: nil) { (status) in
+//            }
+//        }
+//    }
     
     //MARK: Check permissions
-    
-    
     /// Check permission Contact
     ///
     /// - Parameter completion: <#completion description#>
@@ -29,25 +41,16 @@ class FinPlusHelper {
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case .authorized:
             completion(true)
-            break
         case .denied:
             completion(true)
-            break
         case .notDetermined, .restricted:
-            
             UIApplication.shared.topViewController()?.showGreenBtnMessage(title: "Bạn cần cung cấp quyền truy cập danh bạ để tiếp tục hoàn thiện đơn vay", message: "Chúng tôi cần bạn cấp quyền truy cập danh bạ để xác thực sim điện thoại bạn đang sử dụng. Vui lòng bấm đồng ý để hồ sơ vay tiền của bạn được xử lý nhanh nhất.", okTitle: "Đồng ý", cancelTitle: "Bỏ qua", completion: { (status) in
                 if status {
                     completion(true)
                 }
             })
-            
-            break
         }
-        
-        
     }
-    
-    
     
     /// Check Camera Permission
     ///
@@ -57,22 +60,16 @@ class FinPlusHelper {
             
         case .authorized:
             completion(true)
-            break
         case .denied:
             completion(true)
-            break
         case .notDetermined, .restricted:
             UIApplication.shared.topViewController()?.showGreenBtnMessage(title: "Bạn cần cung cấp quyền truy cập Camera để tiếp tục hoàn thiện đơn vay", message: "Chúng tôi cần Bạn cấp quyền truy cập camera để:\nChụp ảnh các loại hồ sơ như sổ hộ khẩu, bảng lương, chứng minh nhân dân.\nChúng tôi cam kết không cung cấp các tài liệu của bạn cho bất kỳ bên thứ ba nào, và sử dụng quyền camera vào các mục đích khác.", okTitle: "Đồng ý", cancelTitle: "Bỏ qua", completion: { (status) in
                 if status {
                     completion(true)
                 }
             })
-            break
-            
         }
-    
     }
-    
     
     /// Check Location Permission
     ///
@@ -82,30 +79,20 @@ class FinPlusHelper {
             
         case .authorized:
             completion(true)
-            break
         case .denied:
             completion(true)
-            break
         case .notDetermined, .restricted:
             UIApplication.shared.topViewController()?.showGreenBtnMessage(title: "Bạn cần cung cấp quyền truy cập Vị trí để tiếp tục hoàn thiện đơn vay", message: "Chúng tôi cần Bạn cấp quyền location để:\nXác định vị trí khai báo thường trú của các bạn là chính xác.\nViệc vay tiền là online, nên chúng tôi cần định vị vị trí của Bạn để phục vụ cho việc vay vốn.\nChúng tôi cam kết không cung cấp vị trí của bạn cho bất kỳ bên thứ ba nào, và sử dụng quyền location vào các mục đích khác.", okTitle: "Đồng ý", cancelTitle: "Bỏ qua", completion: { (status) in
                 if status {
                     completion(true)
                 }
             })
-            break
-            
         case .authorizedAlways:
             completion(true)
-            break
         case .authorizedWhenInUse:
             completion(true)
-            break
         }
-        
-        
-        
     }
-    
     
     /// get indexValue
     ///
@@ -115,9 +102,7 @@ class FinPlusHelper {
         let list = value.components(separatedBy: keyComponentSeparateOptionalText)
         guard list.count > 1, let index = Int(list[0]) else { return nil }
         return index
-        
     }
-    
     
     /// Get title value
     ///
@@ -160,17 +145,12 @@ class FinPlusHelper {
                     } else {
                         listTitle.append("\(title), ")
                     }
-                    
                     break
                 }
             }
         }
-        
         return listTitle
-        
     }
-    
-    
     
     /// Display Current Money
     ///
@@ -191,9 +171,7 @@ class FinPlusHelper {
     
     // Open url
     static func openUrl(stUrl : String) {
-        
         if let url = URL(string: stUrl),  UIApplication.shared.canOpenURL(url) {
-            
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
@@ -234,31 +212,24 @@ class FinPlusHelper {
         
         if let url = URL(string: String(format: "tel://%@", mHotline)) {
             if FinPlusHelper.isMakeCallAvailable() == true {
-                
                 if #available(iOS 10.0, *) {
                     UIApplication.shared.open((url as URL), options: [:], completionHandler: nil)
                 } else {
                     // Fallback on earlier versions
                     UIApplication.shared.openURL(url)
                 }
-            }
-            else {
+            } else {
                 UIViewController.showToastWithMessage(message: "Không thể thực hiện cuộc gọi từ thiết bị này!")
             }
-        }
-        else {
+        } else {
             UIViewController.showToastWithMessage(message: "Số điện thoại không đúng hoặc chưa được cập nhật!")
         }
-        
     }
-    
     
     /**
      Resize image
-     
      - parameter image:    <#image description#>
      - parameter newWidth: <#newWidth description#>
-     
      - returns: <#return value description#>
      */
     static func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
@@ -287,9 +258,7 @@ class FinPlusHelper {
     }
     
     //MARK: Color Gradient
-    
     /// <#Description#>
-    ///
     /// - Parameters:
     ///   - colorBottom: <#colorBottom description#>
     ///   - colorTop: <#colorTop description#>
@@ -299,31 +268,23 @@ class FinPlusHelper {
         gl.colors = [colorTop.cgColor, colorBottom.cgColor]
         gl.locations = [0.0, 1.0]
         gl.frame = frame
-        
         return gl
     }
     
-    
     /// Set Space Display CollectionView similar
-    ///
     /// - Parameter indexPath: <#indexPath description#>
     /// - Returns: <#return value description#>
     class func setCellSizeDisplayFitThird(_ indexPath: IndexPath) -> CGSize {
-        
         let width = UIScreen.main.bounds.width / 3 - 1
-        
         return CGSize(width: width, height: 144)
     }
     
-    
     /// set caption text cho loan
-    ///
     /// - Parameter text: <#text description#>
     /// - Returns: <#return value description#>
     class func setAttributeTextForLoan(text: String) -> NSMutableAttributedString {
         let input = text + " "
         let font = FONT_CAPTION
-        
         let attribute = [ NSAttributedStringKey.font: font,NSAttributedStringKey.foregroundColor:TEXT_NORMAL_COLOR]
         let attribute1 = [ NSAttributedStringKey.font: font,NSAttributedStringKey.foregroundColor:UIColor.red]
         let end = NSAttributedString(string: "*", attributes: attribute1)
@@ -365,7 +326,6 @@ class FinPlusHelper {
             if let records = records as? [NSManagedObject] {
                 result = records
             }
-            
         } catch {
             print("Unable to fetch managed objects for entity \(entity).")
         }
@@ -373,9 +333,7 @@ class FinPlusHelper {
         return result
     }
     
-    
     /// <#Description#>
-    ///
     /// - Parameter input: <#input description#>
     /// - Returns: <#return value description#>
     class func addCharactorToString(input: String) -> String {
@@ -396,13 +354,10 @@ class FinPlusHelper {
             } else {
                 result.append("\(str) ")
             }
-            
            count = count + 1
         }
-        
         return result
     }
-    
     
     /// Tinh số tiền phải trả hàng tháng
     ///
@@ -479,11 +434,8 @@ class FinPlusHelper {
             }
             
             DataManager.shared.loanCategories.append(loan)
-            
         }
-        
         completion()
-        
     }
     
     
@@ -541,7 +493,6 @@ class FinPlusHelper {
         let ret = (isReachable && !needsConnection)
         
         return ret
-        
     }
     
     class func updateCount(fields: [LoanBuilderFields]) -> [Int] {
@@ -554,9 +505,7 @@ class FinPlusHelper {
             } else if field.id!.contains("optionalMedia") {
                 countOptionalMedia += 1
             }
-            
         }
-        
         return [countOptionalText, countOptionalMedia]
     }
     
@@ -573,9 +522,7 @@ class FinPlusHelper {
         return prefixBankName
     }
     
-    
     /// Check is Wallet
-    ///
     /// - Parameter bankName: <#bankName description#>
     /// - Returns: <#return value description#>
     class func checkIsWallet(bankName: String) -> Bool {
@@ -585,9 +532,7 @@ class FinPlusHelper {
         return false
     }
     
-    
     /// Check current version with fireBase Remote Config
-    ///
     /// - Parameter versionConfig: <#versionConfig description#>
     /// - Returns: <#return value description#>
     class func checkVersionFromConfig(versionConfig: String) -> Bool {
@@ -670,6 +615,7 @@ class FinPlusHelper {
     class func checkVersionWithConfigAndShowAlert(completion: @escaping () -> Void) {
         guard FinPlusHelper.isConnectedToNetwork() else { return }
         guard let model = DataManager.shared.jsonDataVercodeFromConfig else { return }
+//        let versionOnStore = DataManager.shared.versionOnStore
         
         guard let version = model["versionCode"] as? String, FinPlusHelper.checkVersionFromConfig(versionConfig: version) else {
             return
@@ -694,9 +640,7 @@ class FinPlusHelper {
             } else {
                 completion()
             }
-            
         }
-        
     }
     
     /*
@@ -731,14 +675,11 @@ class FinPlusHelper {
                     } else {
                         completion()
                     }
-                    
                 }
             }
-            
         } catch {
             // handle error
             print("remote config hanle error")
-           
         }
     }
     */
@@ -791,6 +732,7 @@ class FinPlusHelper {
         }
         
         if phone.hasPrefix("0") {
+            
         } else {
             maxLength = 9
         }

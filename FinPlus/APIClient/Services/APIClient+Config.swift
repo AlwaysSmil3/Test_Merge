@@ -12,9 +12,7 @@ extension APIClient {
     
     /*
      GET Lấy cấu hình hệ thống
-     
      */
-    
     func getConfigs() -> Promise<Config> {
         return Promise<Config> { seal in
             getDataWithEndPoint(endPoint: EndPoint.Config.Configs, isShowLoadingView: false)
@@ -27,9 +25,7 @@ extension APIClient {
                             if status {
                                 
                             }
-                            
                         })
-                        
                         return
                     }
                     
@@ -39,7 +35,6 @@ extension APIClient {
                             let rate = RateInfo(object: d)
                             DataManager.shared.listRateInfo.append(rate)
                         }
-                        
                     }
                     
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
@@ -51,7 +46,6 @@ extension APIClient {
                         let model = Config(object: data)
                         seal.fulfill(model)
                     }
-                    
                 }
                 .catch { error in
                     seal.reject(error)
@@ -61,13 +55,11 @@ extension APIClient {
     
     /*
      GET Lấy danh sách các tỉnh thành phố
-     
      */
     func getCities() -> Promise<[Model1]> {
         return Promise<[Model1]> { seal in
             getDataWithEndPoint(endPoint: EndPoint.Config.Cities, isShowLoadingView: false)
                 .done { json in
-                    
                     var array: [Model1] = []
                     
                     if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
@@ -76,36 +68,6 @@ extension APIClient {
                             array.append(model1)
                         }
                     }
-                    
-                    seal.fulfill(array)
-                }
-                .catch { error in
-                    seal.reject(error)
-                }
-        }
-    }
-    
-    /*
-     GET Lấy danh sách quận/huyện
-     
-     */
-    func getDistricts(cityID: Int16) -> Promise<[Model1]> {
-        return Promise<[Model1]> { seal in
-            
-            let endPoint = "\(APIService.LoanService)cities/\(cityID)/" + EndPoint.Config.Districts
-            
-            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
-                .done { json in
-                    
-                    var array: [Model1] = []
-                    
-                    if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
-                        for d in data {
-                            let model1 = Model1(object: d)
-                            array.append(model1)
-                        }
-                    }
-                    
                     seal.fulfill(array)
                 }
                 .catch { error in
@@ -114,10 +76,33 @@ extension APIClient {
         }
     }
     
+    /*
+     GET Lấy danh sách quận/huyện
+     */
+    func getDistricts(cityID: Int16) -> Promise<[Model1]> {
+        return Promise<[Model1]> { seal in
+            
+            let endPoint = "\(APIService.LoanService)cities/\(cityID)/" + EndPoint.Config.Districts
+            
+            getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
+                .done { json in
+                    var array: [Model1] = []
+                    if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
+                        for d in data {
+                            let model1 = Model1(object: d)
+                            array.append(model1)
+                        }
+                    }
+                    seal.fulfill(array)
+                }
+                .catch { error in
+                    seal.reject(error)
+            }
+        }
+    }
     
     /*
      GET Lấy danh sách xã/phường
-     
      */
     func getCommunes(districtID: Int16) -> Promise<[Model1]> {
         return Promise<[Model1]> { seal in
@@ -135,7 +120,6 @@ extension APIClient {
                             array.append(model1)
                         }
                     }
-                    
                     seal.fulfill(array)
                 }
                 .catch { error in
@@ -144,61 +128,52 @@ extension APIClient {
         }
     }
     
-    /* GET Lấy danh sách nghề nghiệp
- 
+    /*
+     GET Lấy danh sách nghề nghiệp
      */
     func getJobs() -> Promise<[Model1]> {
         return Promise<[Model1]> { seal in
-            
             getDataWithEndPoint(endPoint: EndPoint.Config.Job, isShowLoadingView: false)
                 .done { json in
-                    
                     var array: [Model1] = []
-                    
                     if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
                         for d in data {
                             let model1 = Model1(object: d)
                             array.append(model1)
                         }
                     }
-                    
                     seal.fulfill(array)
                 }
-                .catch { error in seal.reject(error)}
+                .catch { error in
+                    seal.reject(error)
+            }
         }
-        
     }
     
-    /* GET Lấy danh sách vị trí làm việc
-     
+    /*
+     GET Lấy danh sách vị trí làm việc
      */
     func getPositions() -> Promise<[Model1]> {
         return Promise<[Model1]> { seal in
-            
             getDataWithEndPoint(endPoint: EndPoint.Config.Position, isShowLoadingView: false)
                 .done { json in
-                    
                     var array: [Model1] = []
-                    
                     if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
                         for d in data {
                             let model1 = Model1(object: d)
                             array.append(model1)
                         }
                     }
-                    
                     seal.fulfill(array)
                 }
-                .catch { error in seal.reject(error)}
+                .catch { error in
+                    seal.reject(error)
+            }
         }
-        
-        
     }
-    
     
     /*
      GET Lấy danh sách ngan hang
-     
      */
     func getBanks() -> Promise<[Bank]> {
         return Promise<[Bank]> { seal in
@@ -211,9 +186,7 @@ extension APIClient {
 //                            if status {
 //
 //                            }
-//
 //                        })
-//
 //                        return
 //                    }
                     
@@ -233,7 +206,5 @@ extension APIClient {
             }
         }
     }
-    
-    
     
 }

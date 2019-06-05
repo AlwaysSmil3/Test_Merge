@@ -63,9 +63,7 @@ class LoanStateViewController: UIViewController {
             
             if let period = pay.paymentPeriod {
                 self.payAmountPresent = period.feeOverdue! + period.interest! + period.overdue! + period.principal! + period.borrowerManagingFee! + period.principalOverdue! + period.interestOverdue! + period.borrowerManagingFeeOverdue!
-                
             }
-            
         }
     }
     //Tra ky nay
@@ -76,7 +74,6 @@ class LoanStateViewController: UIViewController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return nil
         }
-        
         return appDelegate.managedObjectContext
     }
     
@@ -95,7 +92,6 @@ class LoanStateViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
 //        self.navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.85)
 
-        
         self.getLoanCategories()
         
         self.handleDataNoti()
@@ -104,10 +100,8 @@ class LoanStateViewController: UIViewController {
         var isEnableFooterView = false
         self.userInfo = DataManager.shared.browwerInfo
         
-        if (hiddenBack)
-        {
+        if hiddenBack {
             self.navigationItem.leftBarButtonItem = nil
-            
         }
         
         self.btnBottomView.setBackgroundColor(color: MAIN_COLOR, forState: .normal)
@@ -126,7 +120,6 @@ class LoanStateViewController: UIViewController {
         
         if self.activeLoan != nil {
             loan = self.activeLoan!
-            
         }
         
         var serviceFee: Double = 0
@@ -180,7 +173,6 @@ class LoanStateViewController: UIViewController {
         if let date_ = loan.createdAt, date_.length() > 0 {
             let date = Date.init(fromString: date_, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
             dateString = date.toString(.custom(kDisplayFormat))
-            
         } else {
             dateString = Date().toString(.custom(kDisplayFormat))
         }
@@ -194,10 +186,8 @@ class LoanStateViewController: UIViewController {
         if let config = DataManager.shared.config, let fun = loan.funded, fun > 0 {
             serviceFeeFunded = Double(Int(fun) * (config.serviceFee ?? 0 ) / 100)
             
-            
             let payMounthWithFunded = FinPlusHelper.CalculateMoneyPayMonth(month: Double(fun), term: Double((loan.term ?? 0)/30), rate: Double(rate))
             payMounthStringWithFunded = FinPlusHelper.formatDisplayCurrency(payMounthWithFunded) + "đ"
-            
         }
         
         if let collections = loan.collections, collections.count > 0 {
@@ -214,7 +204,6 @@ class LoanStateViewController: UIViewController {
             payMounthString = FinPlusHelper.formatDisplayCurrency(expectedAmount) + "đ"
             payMounthStringWithFunded = FinPlusHelper.formatDisplayCurrency(expectedAmount) + "đ"
         }
-        
         
         //Ngay thanh toán tiếp theo
         var nextPaymentDate = "Đang cập nhật"
@@ -346,8 +335,7 @@ class LoanStateViewController: UIViewController {
                 LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
             ]
         
-        if (bottom_state == nil)
-        {
+        if bottom_state == nil {
             switch(STATUS_LOAN(rawValue: id!)) {
             case .DRAFT?:
                 //Trang thai Draft = 0
@@ -474,8 +462,6 @@ class LoanStateViewController: UIViewController {
                         "target": "update_loan_MissData"
                     ],
                 ]
-                
-                
                 
             case .RISK_PENDING?:
                 //Cần bổ sung thông tin, risk pending = 4
@@ -605,7 +591,6 @@ class LoanStateViewController: UIViewController {
                     LoanSummaryModel(name: payMounthTitle, value: payMounthString, attributed: NSAttributedString(string: payMounthString, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                     LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                 ]
-                
                 
                 headerData = [
                     [
@@ -1072,7 +1057,6 @@ class LoanStateViewController: UIViewController {
                     self.dataTableView?.reloadData()
                 }
                 
-                
                 break
             case .SETTLED?:
                 //Khoản vay thanh toán thành công - 18
@@ -1111,14 +1095,8 @@ class LoanStateViewController: UIViewController {
                     ],
                 ]
                 */
-                
-                break
- 
-                
             default:
                 setupForRiskReview()
-                
-                break
             }
         }
         
@@ -1221,7 +1199,6 @@ class LoanStateViewController: UIViewController {
             self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.confirmRate), for: .touchUpInside)
             self.labelBottomView.text = "Tiền phí sẽ được trừ ngay sau khi giải ngân tiền vay."
             isEnableFooterView = true
-            break
             
         default:
             break
@@ -1252,8 +1229,7 @@ class LoanStateViewController: UIViewController {
         let cellNib = UINib(nibName: "DoubleTextTableViewCell", bundle: nil)
         self.dataTableView?.register(cellNib, forCellReuseIdentifier: cellIdentifier)
         
-        if (!isEnableFooterView)
-        {
+        if !isEnableFooterView {
             self.bottomView.isHidden = true
             NSLayoutConstraint(item: bottomView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0).isActive = true
         }
@@ -1287,7 +1263,6 @@ class LoanStateViewController: UIViewController {
         
         self.dataTableViewHeightConstraint?.constant = (self.dataTableView?.contentSize.height)!
         self.headerTableViewHeightConstraint?.constant = (self.headerTableView?.contentSize.height)!
-    
     }
     
     private func initRefresher() {
@@ -1389,15 +1364,10 @@ class LoanStateViewController: UIViewController {
     @IBAction func create_New_Loan() {
         DataManager.shared.loanInfo.status = STATUS_LOAN.CANCELED.rawValue
         APIClient.shared.loan(isShowLoandingView: false, httpType: .PUT)
-            .done(on: DispatchQueue.main) { [weak self]model in
-                
+            .done(on: DispatchQueue.main) { [weak self] model in
                 self?.moveHome()
-                
-                
             }
             .catch { error in }
-        
-        
     }
     
     @IBAction func navi_back() {
@@ -1413,8 +1383,7 @@ class LoanStateViewController: UIViewController {
         case .DRAFT?:
             alert.addAction(UIAlertAction(title: "Xóa đơn vay", style: .destructive , handler:{ (UIAlertAction)in
                 self.showGreenBtnMessage(title: "Xóa đơn vay", message: "Bạn có chắc chắn muốn xóa đơn vay chưa hoàn thiện này?", okTitle: "Xóa", cancelTitle: "Không", completion: { (okAction) in
-                    if (okAction)
-                    {
+                    if okAction {
                         self.delLoan()
                     }
                 })
@@ -1427,20 +1396,17 @@ class LoanStateViewController: UIViewController {
             
             alert.addAction(UIAlertAction(title: "Hủy yêu cầu", style: .destructive , handler:{ (UIAlertAction)in
                 self.showGreenBtnMessage(title: "Hủy yêu cầu", message: "Bạn có chắc chắn muốn xóa đơn vay này?", okTitle: "Xóa", cancelTitle: "Không", completion: { (okAction) in
-                    if (okAction)
-                    {
+                    if okAction {
                         self.delLoan()
                     }
                 })
             }))
             
-            
         case .RISK_PENDING?, .SALE_PENDING?:
             
             alert.addAction(UIAlertAction(title: "Hủy yêu cầu", style: .destructive , handler:{ (UIAlertAction)in
                 self.showGreenBtnMessage(title: "Hủy yêu cầu", message: "Bạn có chắc chắn muốn xóa đơn vay này?", okTitle: "Xóa", cancelTitle: "Không", completion: { (okAction) in
-                    if (okAction)
-                    {
+                    if okAction {
                         self.delLoan()
                     }
                 })
@@ -1514,12 +1480,9 @@ class LoanStateViewController: UIViewController {
         for col in collections {
             let temp = col.repayPrincipal!
             amount += temp
-            
         }
         
         let value: Double = Double(activeLoan.amount ?? 0) - amount
-
-        
         return value
     }
     
@@ -1535,9 +1498,7 @@ class LoanStateViewController: UIViewController {
                 let temp = Double(col.principal! + col.feeOverdue! + col.overdue! + col.interest!)
                 amount += temp
             }
-            
         }
-        
         return amount
     }
     
@@ -1587,8 +1548,7 @@ class LoanStateViewController: UIViewController {
     }
     
     // Xác nhận lãi suất
-    @IBAction func confirm_rate()
-    {
+    @IBAction func confirm_rate() {
 //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoanSummaryViewController") as! LoanSummaryViewController
 
@@ -1599,16 +1559,14 @@ class LoanStateViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func confirm_rate_success()
-    {
+    @IBAction func confirm_rate_success() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONFIRM_RATE_SUCCESS")
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     // Giải ngân sớm
-    @IBAction func disburse_soon()
-    {
+    @IBAction func disburse_soon() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
         vc.bottom_state = .DISBURSEMENT_SOON
         vc.activeLoan = self.activeLoan
@@ -1618,8 +1576,7 @@ class LoanStateViewController: UIViewController {
     }
     
     // Giải ngân khi quá hạn huy động vốn
-    @IBAction func disburse_expried()
-    {
+    @IBAction func disburse_expried() {
 //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoanSummaryViewController") as! LoanSummaryViewController
         vc.bottom_state = .DISBURSEMENT_ONTIME
@@ -1630,8 +1587,7 @@ class LoanStateViewController: UIViewController {
     }
     
     // Ký hợp đồng
-    @IBAction func signContract()
-    {
+    @IBAction func signContract() {
 //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoanSummaryViewController") as! LoanSummaryViewController
         
@@ -1643,8 +1599,7 @@ class LoanStateViewController: UIViewController {
     }
     
     // Xác nhận ký hợp đồng
-    @IBAction func confirmSignContract()
-    {
+    @IBAction func confirmSignContract() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SIGN") as! SignContractViewController
         vc.activeLoan = self.activeLoan
         self.navigationController?.isNavigationBarHidden = true
@@ -1679,7 +1634,6 @@ class LoanStateViewController: UIViewController {
                 self?.confirm_rate_success()
             }
             .catch { error in }
-        
     }
     
     // Xóa đơn vay
@@ -1773,8 +1727,7 @@ extension LoanStateViewController: UITableViewDataSource {
             let item = headerData[indexPath.row] as! NSDictionary
             let type = item["type"] as! HeaderCellType
             
-            if (type == .TextType)
-            {
+            if type == .TextType {
                 var cell = tableView.dequeueReusableCell(withIdentifier: textIdentifier) as? TitleTableViewCell
                 if cell == nil {
                     tableView.register(UINib(nibName: "DoubleTextTableViewCell", bundle: nil), forCellReuseIdentifier: textIdentifier)
@@ -1786,8 +1739,7 @@ extension LoanStateViewController: UITableViewDataSource {
                 cell?.setTextCellType(type: item["subType"] as! TextCellType)
                 cell?.label.text = desText
                 
-                if let attributed = item["attributed"] as? NSAttributedString
-                {
+                if let attributed = item["attributed"] as? NSAttributedString {
                     let oldAttributed = NSMutableAttributedString(attributedString: (cell?.label.attributedText)!)
                     
                     if let range = desText?.range(of: attributed.string)  {
@@ -1798,9 +1750,7 @@ extension LoanStateViewController: UITableViewDataSource {
                 }
                 
                 return cell!
-            }
-            else
-            {
+            } else {
                 var cell = tableView.dequeueReusableCell(withIdentifier: buttonIdentifier) as? ButtonTableViewCell
                 if cell == nil {
                     tableView.register(UINib(nibName: "DoubleTextTableViewCell", bundle: nil), forCellReuseIdentifier: buttonIdentifier)
@@ -1811,16 +1761,12 @@ extension LoanStateViewController: UITableViewDataSource {
                 cell?.button.setTitle(item["text"] as? String, for: .normal)
                 
                 let target = item["target"] as? String
-                if ((target?.count)! > 0)
-                {
+                if target?.count ?? 0 > 0 {
                     cell?.button.addTarget(self, action: Selector(target!), for: .touchUpInside)
                 }
-                
                 return cell!
             }
-        }
-        else
-        {
+        } else {
             let item = self.dataSource[indexPath.row]
             var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DoubleTextTableViewCell
             if cell == nil {
@@ -1836,18 +1782,14 @@ extension LoanStateViewController: UITableViewDataSource {
 //                cell?.desLabel.attributedText = item.attributed!
 //            }
             
-            if (item.attributed != nil)
-            {
+            if item.attributed != nil {
                 let oldAttributed = NSMutableAttributedString(attributedString: (cell?.desLabel?.attributedText)!)
                 
                 if let range = item.value.range(of: item.attributed!.string)  {
                     oldAttributed.addAttributes(item.attributed!.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, item.attributed!.length)), range: NSRange(range, in: item.value))
                 }
-                
                 cell?.desLabel.attributedText = oldAttributed
             }
-            
-            
             return cell!
         }
     }
