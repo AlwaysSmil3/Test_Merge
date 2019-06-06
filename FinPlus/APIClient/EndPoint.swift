@@ -11,8 +11,8 @@ import Foundation
 //MARK: Base Host
 enum Host {
 //    static let productURL = "https://api.mony.vn/"
-//    static let productURL = "https://dev-api.mony.vn/"
-    static let productURL = "https://stage-api.mony.vn/"
+//    static let devURL = "https://dev-api.mony.vn/"
+    static let stageURL = "https://stage-api.mony.vn/"
 }
 
 enum APIService {
