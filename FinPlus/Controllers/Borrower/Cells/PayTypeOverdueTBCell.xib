@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Semibold.otf">
+            <string>SFProDisplay-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PayTypeOverdueTBCell" rowHeight="258" id="8dL-YB-7I8" customClass="PayTypeOverdueTBCell" customModule="FinPlus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="258"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8dL-YB-7I8" id="bZF-VR-wGE">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="257.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YcU-ga-8Ka" customClass="AnimatableView" customModule="IBAnimatable">
+                        <rect key="frame" x="12" y="8" width="390" height="241.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanh toán tháng này" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQA-dq-mKl">
+                                <rect key="frame" x="16" y="15" width="334" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="NzX-LH-TGQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_radio_off" translatesAutoresizingMaskIntoConstraints="NO" id="S81-Se-q7k">
+                                <rect key="frame" x="358" y="17.5" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="S81-Se-q7k" secondAttribute="height" multiplier="1:1" id="uh7-SY-PLa"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền gốc:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7c6-k3-AKI">
+                                <rect key="frame" x="16" y="167.5" width="42.5" height="13.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền lãi:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5u-S3-lcu">
+                                <rect key="frame" x="16" y="181" width="35" height="13.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền lãi quá hạn:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpC-WL-e5B">
+                                <rect key="frame" x="16" y="194.5" width="74" height="13.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0đ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TO-jq-KkQ">
+                                <rect key="frame" x="354" y="168.5" width="20" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="GGR-3b-8ag"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                <color key="textColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số tiền quá hạn:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abd-kK-zCV">
+                                <rect key="frame" x="296.5" y="153.5" width="77.5" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="Xzo-Za-6Qg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phí quản lý khoản vay:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlk-ax-q6U">
+                                <rect key="frame" x="16" y="154" width="102" height="13.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmw-tC-v6n">
+                                <rect key="frame" x="122" y="154" width="13" height="14"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.85490196080000003" green="0.20784313730000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hạn:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xP1-dE-rid">
+                                <rect key="frame" x="16" y="41" width="33.5" height="20"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZjZ-5f-Y7j">
+                                <rect key="frame" x="51.5" y="40.5" width="14" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.85490196078431369" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phí quản lý khoản vay:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYD-pz-uWC">
+                                <rect key="frame" x="16" y="69.5" width="102" height="13.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0đ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vkx-fP-Y2e">
+                                <rect key="frame" x="123" y="69.5" width="13" height="13.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền gốc:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbp-xf-0Oa">
+                                <rect key="frame" x="16" y="83" width="42.5" height="13.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0đ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzj-GR-nMI">
+                                <rect key="frame" x="63.5" y="83" width="13" height="13.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền lãi:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZU5-L2-5bE">
+                                <rect key="frame" x="16" y="96.5" width="35" height="13.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0đ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ab-PM-21W">
+                                <rect key="frame" x="56" y="96.5" width="13" height="13.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số tiền trong kỳ:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNK-zq-uya">
+                                <rect key="frame" x="295.5" y="69.5" width="78.5" height="14"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0đ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIT-c1-eRA">
+                                <rect key="frame" x="354" y="83.5" width="20" height="20"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                <color key="textColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Các khoản quá hạn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tU-Qo-SH8">
+                                <rect key="frame" x="16" y="130" width="110" height="16"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XqW-B7-9CH">
+                                <rect key="frame" x="63.5" y="167.5" width="13" height="14"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.85490196080000003" green="0.20784313730000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2T-B6-M5D">
+                                <rect key="frame" x="56" y="181" width="13" height="14"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.85490196080000003" green="0.20784313730000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfe-wG-iPq">
+                                <rect key="frame" x="95" y="194.5" width="13" height="14"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.85490196080000003" green="0.20784313730000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phí phạt quá hạn:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yfh-53-13Q">
+                                <rect key="frame" x="16" y="208" width="80" height="13.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihW-Sz-3u3">
+                                <rect key="frame" x="101" y="208" width="13" height="14"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.85490196080000003" green="0.20784313730000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JCa-ue-bS8">
+                                <rect key="frame" x="349" y="194.5" width="25" height="1"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="MVg-mH-fBz"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0đ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rq4-jG-JsR">
+                                <rect key="frame" x="349" y="200.5" width="25" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="oPz-bh-3IP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="20"/>
+                                <color key="textColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vIT-c1-eRA" firstAttribute="trailing" secondItem="QNK-zq-uya" secondAttribute="trailing" id="06P-Mc-d5a"/>
+                            <constraint firstItem="i5u-S3-lcu" firstAttribute="top" secondItem="7c6-k3-AKI" secondAttribute="bottom" id="1B5-11-dtN"/>
+                            <constraint firstAttribute="trailing" secondItem="5TO-jq-KkQ" secondAttribute="trailing" constant="16" id="7Tq-3K-CK4"/>
+                            <constraint firstItem="ZjZ-5f-Y7j" firstAttribute="leading" secondItem="xP1-dE-rid" secondAttribute="trailing" constant="2" id="7s2-ve-kId"/>
+                            <constraint firstItem="fmw-tC-v6n" firstAttribute="leading" secondItem="wlk-ax-q6U" secondAttribute="trailing" constant="4" id="8KY-Xw-zEx"/>
+                            <constraint firstItem="gzj-GR-nMI" firstAttribute="centerY" secondItem="Cbp-xf-0Oa" secondAttribute="centerY" id="8qg-HD-iIr"/>
+                            <constraint firstItem="XqW-B7-9CH" firstAttribute="leading" secondItem="7c6-k3-AKI" secondAttribute="trailing" constant="5" id="8te-o3-rHs"/>
+                            <constraint firstItem="5TO-jq-KkQ" firstAttribute="top" secondItem="abd-kK-zCV" secondAttribute="bottom" id="92N-e0-FTp"/>
+                            <constraint firstItem="ihW-Sz-3u3" firstAttribute="leading" secondItem="Yfh-53-13Q" secondAttribute="trailing" constant="5" id="A2y-qF-a7D"/>
+                            <constraint firstItem="ZU5-L2-5bE" firstAttribute="top" secondItem="Cbp-xf-0Oa" secondAttribute="bottom" id="APj-ru-llY"/>
+                            <constraint firstItem="tfe-wG-iPq" firstAttribute="centerY" secondItem="OpC-WL-e5B" secondAttribute="centerY" id="Atq-dd-q4R"/>
+                            <constraint firstItem="JCa-ue-bS8" firstAttribute="top" secondItem="5TO-jq-KkQ" secondAttribute="bottom" constant="5" id="B7x-an-PMP"/>
+                            <constraint firstItem="ZU5-L2-5bE" firstAttribute="leading" secondItem="HYD-pz-uWC" secondAttribute="leading" id="BE7-YD-Uyq"/>
+                            <constraint firstAttribute="trailing" secondItem="QNK-zq-uya" secondAttribute="trailing" constant="16" id="Brn-ce-jkn"/>
+                            <constraint firstItem="e2T-B6-M5D" firstAttribute="leading" secondItem="i5u-S3-lcu" secondAttribute="trailing" constant="5" id="E9u-jt-fp6"/>
+                            <constraint firstItem="e2T-B6-M5D" firstAttribute="centerY" secondItem="i5u-S3-lcu" secondAttribute="centerY" id="EYb-uY-62G"/>
+                            <constraint firstItem="HYD-pz-uWC" firstAttribute="leading" secondItem="xP1-dE-rid" secondAttribute="leading" id="EaO-ze-xUR"/>
+                            <constraint firstAttribute="trailing" secondItem="abd-kK-zCV" secondAttribute="trailing" constant="16" id="EuU-uC-FTf"/>
+                            <constraint firstItem="Vkx-fP-Y2e" firstAttribute="centerY" secondItem="HYD-pz-uWC" secondAttribute="centerY" id="GXG-hh-FJA"/>
+                            <constraint firstAttribute="trailing" secondItem="yQA-dq-mKl" secondAttribute="trailing" constant="40" id="IgS-ii-jlY"/>
+                            <constraint firstItem="7c6-k3-AKI" firstAttribute="leading" secondItem="YcU-ga-8Ka" secondAttribute="leading" constant="16" id="JOb-hN-I1S"/>
+                            <constraint firstItem="Cbp-xf-0Oa" firstAttribute="top" secondItem="HYD-pz-uWC" secondAttribute="bottom" id="Li9-fn-1gw"/>
+                            <constraint firstItem="ZjZ-5f-Y7j" firstAttribute="centerY" secondItem="xP1-dE-rid" secondAttribute="centerY" id="Ljn-zc-XlG"/>
+                            <constraint firstItem="wlk-ax-q6U" firstAttribute="top" secondItem="1tU-Qo-SH8" secondAttribute="bottom" constant="8" id="Mrx-gx-ujR"/>
+                            <constraint firstItem="xP1-dE-rid" firstAttribute="leading" secondItem="yQA-dq-mKl" secondAttribute="leading" id="Nef-Xi-Lmd"/>
+                            <constraint firstItem="Rq4-jG-JsR" firstAttribute="leading" secondItem="JCa-ue-bS8" secondAttribute="leading" id="OCP-DZ-dAO"/>
+                            <constraint firstItem="1tU-Qo-SH8" firstAttribute="leading" secondItem="ZU5-L2-5bE" secondAttribute="leading" id="RrJ-Er-aug"/>
+                            <constraint firstItem="7c6-k3-AKI" firstAttribute="top" secondItem="wlk-ax-q6U" secondAttribute="bottom" id="Rs1-3K-Ar9"/>
+                            <constraint firstItem="Yfh-53-13Q" firstAttribute="leading" secondItem="OpC-WL-e5B" secondAttribute="leading" id="Spy-kD-7eL"/>
+                            <constraint firstItem="QNK-zq-uya" firstAttribute="centerY" secondItem="HYD-pz-uWC" secondAttribute="centerY" id="UvF-MR-42S"/>
+                            <constraint firstItem="gzj-GR-nMI" firstAttribute="leading" secondItem="Cbp-xf-0Oa" secondAttribute="trailing" constant="5" id="XTD-XL-xAM"/>
+                            <constraint firstItem="HYD-pz-uWC" firstAttribute="top" secondItem="ZjZ-5f-Y7j" secondAttribute="bottom" constant="8" id="d2O-up-WpC"/>
+                            <constraint firstItem="OpC-WL-e5B" firstAttribute="leading" secondItem="YcU-ga-8Ka" secondAttribute="leading" constant="16" id="eFj-WX-ltT"/>
+                            <constraint firstItem="S81-Se-q7k" firstAttribute="centerY" secondItem="yQA-dq-mKl" secondAttribute="centerY" id="hqG-ls-LQ5"/>
+                            <constraint firstItem="Yfh-53-13Q" firstAttribute="top" secondItem="OpC-WL-e5B" secondAttribute="bottom" id="ihB-eU-b07"/>
+                            <constraint firstItem="tfe-wG-iPq" firstAttribute="leading" secondItem="OpC-WL-e5B" secondAttribute="trailing" constant="5" id="irA-dS-KmX"/>
+                            <constraint firstItem="5TO-jq-KkQ" firstAttribute="trailing" secondItem="JCa-ue-bS8" secondAttribute="trailing" id="kfU-6y-cdl"/>
+                            <constraint firstItem="yQA-dq-mKl" firstAttribute="leading" secondItem="YcU-ga-8Ka" secondAttribute="leading" constant="16" id="lW6-pC-Nx2"/>
+                            <constraint firstItem="Rq4-jG-JsR" firstAttribute="trailing" secondItem="5TO-jq-KkQ" secondAttribute="trailing" id="ln7-vh-TBU"/>
+                            <constraint firstItem="Rq4-jG-JsR" firstAttribute="top" secondItem="JCa-ue-bS8" secondAttribute="bottom" constant="5" id="mmQ-f1-4iX"/>
+                            <constraint firstItem="fmw-tC-v6n" firstAttribute="centerY" secondItem="wlk-ax-q6U" secondAttribute="centerY" id="n2Q-4m-E2C"/>
+                            <constraint firstItem="abd-kK-zCV" firstAttribute="centerY" secondItem="wlk-ax-q6U" secondAttribute="centerY" id="o6J-5i-GYr"/>
+                            <constraint firstItem="yQA-dq-mKl" firstAttribute="top" secondItem="YcU-ga-8Ka" secondAttribute="top" constant="15" id="op4-sG-MOb"/>
+                            <constraint firstItem="XqW-B7-9CH" firstAttribute="centerY" secondItem="7c6-k3-AKI" secondAttribute="centerY" id="pQB-xA-Qe1"/>
+                            <constraint firstItem="OpC-WL-e5B" firstAttribute="top" secondItem="i5u-S3-lcu" secondAttribute="bottom" id="pUI-3K-3eg"/>
+                            <constraint firstAttribute="trailing" secondItem="S81-Se-q7k" secondAttribute="trailing" constant="16" id="rhx-eS-cFv"/>
+                            <constraint firstItem="Cbp-xf-0Oa" firstAttribute="leading" secondItem="HYD-pz-uWC" secondAttribute="leading" id="rvE-3v-QCX"/>
+                            <constraint firstItem="vIT-c1-eRA" firstAttribute="top" secondItem="QNK-zq-uya" secondAttribute="bottom" id="th1-5T-zTS"/>
+                            <constraint firstItem="ihW-Sz-3u3" firstAttribute="centerY" secondItem="Yfh-53-13Q" secondAttribute="centerY" id="uBL-69-Pn2"/>
+                            <constraint firstItem="i5u-S3-lcu" firstAttribute="leading" secondItem="YcU-ga-8Ka" secondAttribute="leading" constant="16" id="vPh-3E-V7C"/>
+                            <constraint firstItem="xP1-dE-rid" firstAttribute="top" secondItem="yQA-dq-mKl" secondAttribute="bottom" constant="5" id="vv6-4e-Q9Z"/>
+                            <constraint firstItem="5ab-PM-21W" firstAttribute="centerY" secondItem="ZU5-L2-5bE" secondAttribute="centerY" id="x7m-oz-NPQ"/>
+                            <constraint firstItem="7c6-k3-AKI" firstAttribute="leading" secondItem="wlk-ax-q6U" secondAttribute="leading" id="xzE-Mt-hYZ"/>
+                            <constraint firstItem="Vkx-fP-Y2e" firstAttribute="leading" secondItem="HYD-pz-uWC" secondAttribute="trailing" constant="5" id="yZ1-8i-WOJ"/>
+                            <constraint firstItem="1tU-Qo-SH8" firstAttribute="top" secondItem="ZU5-L2-5bE" secondAttribute="bottom" constant="20" id="zRE-pQ-Qhl"/>
+                            <constraint firstItem="5ab-PM-21W" firstAttribute="leading" secondItem="ZU5-L2-5bE" secondAttribute="trailing" constant="5" id="zXS-TG-OBM"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.23529411759999999" green="0.6705882353" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="YcU-ga-8Ka" secondAttribute="trailing" constant="12" id="7x7-r6-M07"/>
+                    <constraint firstItem="YcU-ga-8Ka" firstAttribute="leading" secondItem="bZF-VR-wGE" secondAttribute="leading" constant="12" id="JDv-PN-2WL"/>
+                    <constraint firstAttribute="bottom" secondItem="YcU-ga-8Ka" secondAttribute="bottom" constant="8" id="OmD-ck-wCD"/>
+                    <constraint firstItem="YcU-ga-8Ka" firstAttribute="top" secondItem="bZF-VR-wGE" secondAttribute="top" constant="8" id="X75-T2-DEG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="containerView" destination="YcU-ga-8Ka" id="mA9-sS-JOP"/>
+                <outlet property="iconSelected" destination="S81-Se-q7k" id="FUT-ug-vEQ"/>
+                <outlet property="lblAmountInTerm" destination="vIT-c1-eRA" id="MRX-gh-6yp"/>
+                <outlet property="lblBorrowerManagingFee" destination="Vkx-fP-Y2e" id="prg-WW-FmT"/>
+                <outlet property="lblBorrowerManagingFeeOverDue" destination="fmw-tC-v6n" id="8ta-ys-pBY"/>
+                <outlet property="lblDeadlinePayment" destination="ZjZ-5f-Y7j" id="UrL-vq-8KS"/>
+                <outlet property="lblFeeOverdue" destination="ihW-Sz-3u3" id="56h-Iu-uLW"/>
+                <outlet property="lblInterest" destination="5ab-PM-21W" id="cEo-zZ-V3H"/>
+                <outlet property="lblInterestOverDue" destination="e2T-B6-M5D" id="1hg-6u-RmR"/>
+                <outlet property="lblOverdue" destination="tfe-wG-iPq" id="6kY-Am-7fS"/>
+                <outlet property="lblPrincipal" destination="gzj-GR-nMI" id="vgG-Cb-Ayo"/>
+                <outlet property="lblPrincipalOverDue" destination="XqW-B7-9CH" id="65p-Ci-5mZ"/>
+                <outlet property="lblTotalOverdue" destination="5TO-jq-KkQ" id="aqd-pq-oEt"/>
+                <outlet property="lblTotalPay" destination="Rq4-jG-JsR" id="Go7-kZ-D8D"/>
+            </connections>
+            <point key="canvasLocation" x="-13.043478260869566" y="68.303571428571431"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_radio_off" width="16" height="16"/>
+    </resources>
+</document>

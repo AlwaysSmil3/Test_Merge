@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoanTypeInputTextMuiltiLineTBCell" rowHeight="76" id="F85-zO-tjc" customClass="LoanTypeInputTextMuiltiLineTBCell" customModule="FinPlus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F85-zO-tjc" id="Ldp-zA-cNX">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="75.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRD-Ih-zcJ">
+                        <rect key="frame" x="16" y="15" width="343" height="13.5"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Giới tính ">
+                                <attributes>
+                                    <color key="NSColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
+                                </attributes>
+                            </fragment>
+                            <fragment content="*">
+                                <attributes>
+                                    <color key="NSColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FRG-aK-fTk">
+                        <rect key="frame" x="16" y="62.5" width="343" height="1"/>
+                        <color key="backgroundColor" red="0.89019607840000003" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="WQ7-ZO-Aro"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Nhập thông tin thêm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKW-K6-fP4">
+                        <rect key="frame" x="16" y="36.5" width="343" height="18"/>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                        <color key="textColor" red="0.031372549020000001" green="0.070588235289999995" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wy-Ag-Hbx">
+                        <rect key="frame" x="16" y="67.5" width="343" height="0.0"/>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                        <color key="textColor" red="0.85490196080000003" green="0.20784313730000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="FRG-aK-fTk" firstAttribute="top" secondItem="QKW-K6-fP4" secondAttribute="bottom" constant="8" id="6G2-ft-2aS"/>
+                    <constraint firstItem="3wy-Ag-Hbx" firstAttribute="top" secondItem="FRG-aK-fTk" secondAttribute="bottom" constant="4" id="87Y-kW-yxc"/>
+                    <constraint firstItem="QKW-K6-fP4" firstAttribute="top" secondItem="IRD-Ih-zcJ" secondAttribute="bottom" constant="8" id="Cnt-69-DRi"/>
+                    <constraint firstItem="IRD-Ih-zcJ" firstAttribute="leading" secondItem="Ldp-zA-cNX" secondAttribute="leading" constant="16" id="PuS-Sg-mpf"/>
+                    <constraint firstItem="QKW-K6-fP4" firstAttribute="leading" secondItem="IRD-Ih-zcJ" secondAttribute="leading" id="R2I-Qg-3RQ"/>
+                    <constraint firstItem="FRG-aK-fTk" firstAttribute="leading" secondItem="IRD-Ih-zcJ" secondAttribute="leading" id="Yz9-I0-vEf"/>
+                    <constraint firstItem="IRD-Ih-zcJ" firstAttribute="top" secondItem="Ldp-zA-cNX" secondAttribute="topMargin" constant="4" id="c4u-jV-TtJ"/>
+                    <constraint firstItem="FRG-aK-fTk" firstAttribute="trailing" secondItem="IRD-Ih-zcJ" secondAttribute="trailing" id="cOs-cc-zfF"/>
+                    <constraint firstItem="3wy-Ag-Hbx" firstAttribute="leading" secondItem="FRG-aK-fTk" secondAttribute="leading" id="gVH-Rb-VqC"/>
+                    <constraint firstAttribute="bottom" secondItem="3wy-Ag-Hbx" secondAttribute="bottom" constant="8" id="lTg-b0-0vX"/>
+                    <constraint firstItem="FRG-aK-fTk" firstAttribute="trailing" secondItem="3wy-Ag-Hbx" secondAttribute="trailing" id="odE-1V-GwV"/>
+                    <constraint firstItem="QKW-K6-fP4" firstAttribute="trailing" secondItem="IRD-Ih-zcJ" secondAttribute="trailing" id="ubf-KM-YoH"/>
+                    <constraint firstAttribute="trailing" secondItem="IRD-Ih-zcJ" secondAttribute="trailing" constant="16" id="xiT-lh-zlt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lblDescriptionNeedUpdate" destination="3wy-Ag-Hbx" id="jTi-x7-txP"/>
+                <outlet property="lblTitle" destination="IRD-Ih-zcJ" id="Qlq-rR-YCU"/>
+                <outlet property="lblValue" destination="QKW-K6-fP4" id="fj6-XC-4tM"/>
+                <outlet property="underLine" destination="FRG-aK-fTk" id="Wa4-gp-QYg"/>
+            </connections>
+            <point key="canvasLocation" x="-184.5" y="6"/>
+        </tableViewCell>
+    </objects>
+</document>
