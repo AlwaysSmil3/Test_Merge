@@ -1,0 +1,44 @@
+
+[
+    
+    {
+        "id": "typeloanedfrom",
+        "index": 8,
+        "type": "dropdown",
+        "title": "Bạn đã từng vay tiền ở đâu",
+        "is_required": false,
+        "placeholder": "Chọn nơi bạn đã từng vay tiền",
+        "selector_title": "Chọn nơi bạn đã từng vay tiền",
+        "data": [
+            {
+                "id": 0,
+                "title": "Ngân hàng"
+            },
+            {
+                "id": 1,
+                "title": "Công ty tài chính"
+            },
+            {
+                "id": 2,
+                "title": "Ứng dụng online"
+            },
+            {
+                "id": 3,
+                "title": "Không vay"
+            }
+        ]
+    },
+    {
+        "id": "totalAmountLoaned",
+        "index": 1,
+        "max_length": 13,
+        "type": "text_box",
+        "title": "Tổng số tiền bạn đã vay là bao nhiêu?",
+        "is_required": false,
+        "placeholder": "Nhập tổng số tiền bạn đã vay",
+        "multiple_line": false,
+        "keyboard": "money",
+        "suffix":"đ"
+    }
+    
+]

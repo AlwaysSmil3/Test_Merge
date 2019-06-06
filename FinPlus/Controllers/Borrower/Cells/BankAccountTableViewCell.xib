@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="KGk-i7-Jjw" customClass="BankAccountTableViewCell" customModule="FinPlus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="343" height="59.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9O-Xf-P3W">
+                        <rect key="frame" x="12" y="4" width="319" height="51.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GmS-NE-RXS">
+                                <rect key="frame" x="8" y="4" width="43.5" height="43.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="GmS-NE-RXS" secondAttribute="height" multiplier="1:1" id="Tcz-2x-fVn"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ví MoMo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4a-hm-uoX">
+                                <rect key="frame" x="59" y="15" width="64" height="20"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01656229145" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82J-aY-98Y">
+                                <rect key="frame" x="182" y="15" width="105" height="20"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                <color key="textColor" red="0.30196078431372547" green="0.40000000000000002" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_radio_off" translatesAutoresizingMaskIntoConstraints="NO" id="ZN2-Wq-LKX">
+                                <rect key="frame" x="295" y="18" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ZN2-Wq-LKX" secondAttribute="height" multiplier="1:1" id="ZW5-iy-iP9"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GmS-NE-RXS" firstAttribute="leading" secondItem="b9O-Xf-P3W" secondAttribute="leading" constant="8" id="DlD-hd-Dvv"/>
+                            <constraint firstItem="GmS-NE-RXS" firstAttribute="top" secondItem="b9O-Xf-P3W" secondAttribute="top" constant="4" id="Ids-ki-yhY"/>
+                            <constraint firstItem="ZN2-Wq-LKX" firstAttribute="centerY" secondItem="b9O-Xf-P3W" secondAttribute="centerY" id="JOp-aT-riC"/>
+                            <constraint firstItem="82J-aY-98Y" firstAttribute="centerY" secondItem="b9O-Xf-P3W" secondAttribute="centerY" id="Mop-t1-e6O"/>
+                            <constraint firstAttribute="trailing" secondItem="ZN2-Wq-LKX" secondAttribute="trailing" constant="8" id="RI1-bH-HAd"/>
+                            <constraint firstAttribute="bottom" secondItem="GmS-NE-RXS" secondAttribute="bottom" constant="4" id="do4-ao-sTb"/>
+                            <constraint firstItem="A4a-hm-uoX" firstAttribute="centerY" secondItem="b9O-Xf-P3W" secondAttribute="centerY" id="hsi-zn-MvI"/>
+                            <constraint firstItem="ZN2-Wq-LKX" firstAttribute="leading" secondItem="82J-aY-98Y" secondAttribute="trailing" constant="8" id="iHQ-HJ-A08"/>
+                            <constraint firstItem="ZN2-Wq-LKX" firstAttribute="width" secondItem="ZN2-Wq-LKX" secondAttribute="height" multiplier="1:1" id="pTG-N7-DAv"/>
+                            <constraint firstItem="A4a-hm-uoX" firstAttribute="leading" secondItem="GmS-NE-RXS" secondAttribute="trailing" constant="8" id="yYg-eb-JJZ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="b9O-Xf-P3W" secondAttribute="bottom" constant="4" id="E37-zY-R9f"/>
+                    <constraint firstAttribute="trailing" secondItem="b9O-Xf-P3W" secondAttribute="trailing" constant="12" id="ECJ-34-pVp"/>
+                    <constraint firstItem="b9O-Xf-P3W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="VKT-xh-0Fn"/>
+                    <constraint firstItem="b9O-Xf-P3W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="hHu-4N-Idx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="accountNumberLb" destination="82J-aY-98Y" id="krr-vf-C7u"/>
+                <outlet property="containView" destination="b9O-Xf-P3W" id="0gD-lk-sfj"/>
+                <outlet property="selectImg" destination="ZN2-Wq-LKX" id="Tg5-y0-xqr"/>
+                <outlet property="walletImg" destination="GmS-NE-RXS" id="RH0-rn-eDe"/>
+                <outlet property="walletNameLb" destination="A4a-hm-uoX" id="EzA-J2-noH"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_radio_off" width="16" height="16"/>
+    </resources>
+</document>
