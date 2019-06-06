@@ -24,13 +24,15 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
     @IBOutlet weak var calBtn: UIButton!
     @IBOutlet weak var spreadsheetView: SpreadsheetView!
     
+    var listLoanBorrowerFee: [LoanBorrowerFee] = []
+    var managementFee = 0.0
 //    let data = [
 //        ["123.000", "123.000", "123.000", "123.000"],
 //        ["123", "123", "123", "123", "123"],
 //        ["123123", "123123", "123123","123123"],
 //    ]
     
-    let titles = ["Kỳ trả nợ", "Tiền gốc", "Tiền lãi", "Tiền gốc + lãi"]
+    let titles = ["Kỳ trả nợ", "Tiền gốc", "Tiền lãi", "Phí QL", "Tổng"]
     var months: NSMutableArray = []
     var data = [CalculatorPay]()
     
@@ -43,6 +45,8 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         if let ishidden = self.navigationController?.isNavigationBarHidden, ishidden {
             self.navigationController?.isNavigationBarHidden = false
         }
+        
+        listLoanBorrowerFee = DataManager.shared.loanBorrowerFee
 
         // Do any additional setup after loading the view.
         self.title = NSLocalizedString("CALCULATE_PAY", comment: "")
@@ -143,26 +147,38 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         
         dateFormatter.dateFormat = "dd/MM/yyyy"
         
-        if (self.moneyTextField.text?.count ?? 0) < 4 {
-            showAlertView(title: "Lỗi", message: "Số tiền không được nhỏ hơn 1000000", okTitle: "Đồng ý", cancelTitle: nil)
+        guard let moneyCount = self.moneyTextField.text, moneyCount.count > 7 else {
+            showAlertView(title: "Lỗi", message: "Số tiền không được nhỏ hơn 1.000.000", okTitle: "Đồng ý", cancelTitle: nil)
             return
         }
-        else if ((self.monthTextField.text?.count ?? 0) < 1 || Int(self.monthTextField.text ?? "") ?? 0 < 1) {
+        
+        if Int(moneyCount.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")) ?? 0 > 50000000 {
+            showAlertView(title: "Lỗi", message: "Số tiền không được lớn hơn 50.000.000", okTitle: "Đồng ý", cancelTitle: nil)
+            return
+        }
+        
+        guard let month = self.monthTextField.text, month.count > 0, Int(month) ?? 0 > 0 else {
             showAlertView(title: "Lỗi", message: "Thời hạn vay phải lớn hơn 1 tháng", okTitle: "Đồng ý", cancelTitle: nil)
             return
         }
-        else if ((self.rateTextField.text?.count ?? 0) < 1 ||  Float(self.rateTextField.text ?? "") ?? 0 <= 0) {
+        
+        guard let rate = self.rateTextField.text, rate.count > 0, Float(rate) ?? 0 > 0 else {
             showAlertView(title: "Lỗi", message: "Lãi suất phải lớn hơn 0", okTitle: "Đồng ý", cancelTitle: nil)
             return
         }
 
-        let money = Int(self.moneyTextField.text!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")) ?? 0
-        let monthCount = Int(self.monthTextField.text ?? "0") ?? 0
-        let rate = Int(self.rateTextField.text ?? "0") ?? 0
+        let money = Int(moneyCount.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")) ?? 0
+        let monthCount = Int(month) ?? 0
         let date = self.dateFormatter.date(from: self.dateTextField.text ?? "")
         let beginData = date?.toString(.custom(kDisplayFormatCalculatorPay)) ?? ""
         
-        APIClient.shared.calculatorPay(amount: money, term: monthCount*30, intRate: rate, disbursalDate: beginData)
+        if monthCount > 12 {
+            self.managementFee = Double(self.listLoanBorrowerFee[12].value / 100) * Double(money)
+        } else {
+            self.managementFee = Double(self.listLoanBorrowerFee[monthCount - 1].value / 100) * Double(money)
+        }
+        
+        APIClient.shared.calculatorPay(amount: money, term: monthCount*30, intRate: Int(rate) ?? 0, disbursalDate: beginData)
         .done(on: DispatchQueue.main) { [weak self]model in
             self?.data = model
             self?.spreadsheetView.reloadData()
@@ -218,7 +234,7 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
-        return spreadsheetView.frame.size.width/4
+        return spreadsheetView.frame.size.width/5
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, heightForRow row: Int) -> CGFloat {
@@ -249,23 +265,27 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
             
             let item = self.data[indexPath.row - 1]
             
-            if (indexPath.column == 0) {
+            if indexPath.column == 0 {
                 let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MonthCell.self), for: indexPath) as! MonthCell
                 self.dateFormatter.dateFormat = kDisplayFormatCalculatorPay
                 let date = self.dateFormatter.date(from: item.dueDatetime ?? "")
                 cell.label.text = "\(date?.toString(.custom("dd/MM/YY")) ?? "")"
                 return cell
-            } else if (indexPath.column == 1) {
+            } else if indexPath.column == 1 {
                 let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MoneyCell.self), for: indexPath) as! MoneyCell
                 cell.label.text = convertNumberFormat(text: "\(item.principal!/1000)") + "K"
                 return cell
-            } else if (indexPath.column == 2) {
+            } else if indexPath.column == 2 {
                 let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MoneyCell.self), for: indexPath) as! MoneyCell
                 cell.label.text = convertNumberFormat(text: "\(item.interest!/1000)") + "K"
                 return cell
-            } else if (indexPath.column == 3) {
+            } else if indexPath.column == 3 {
+                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: MoneyCell.self), for: indexPath) as! MoneyCell
+                cell.label.text = convertNumberFormat(text: "\(Int(self.managementFee) / 1000)") + "K"
+                return cell
+            } else if indexPath.column == 4 {
                 let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: PayCell.self), for: indexPath) as! PayCell
-                cell.label.text = convertNumberFormat(text: "\((item.interest! + item.principal!)/1000)") + "K"
+                cell.label.text = convertNumberFormat(text: "\((item.interest! + item.principal! + Int(self.managementFee))/1000)") + "K"
                 return cell
             }
         }

@@ -65,23 +65,20 @@ class AddWalletNewViewController: BaseViewController {
             return
         }
         
-        if ((self.nameTextField.text?.count ?? 0) < 1)
-        {
+        guard let nameCustomer = self.nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), nameCustomer.count > 0 else {
             self.showToastWithMessage(message: "Bạn chưa nhập thông tin họ và tên chủ tài khoản")
             return
         }
         
-        if ((self.accTextField.text?.count ?? 0) < 1)
-        {
+        if let accountBanking = self.accTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), accountBanking.count > 0 {
+            if accountBanking.count < 5 {
+                self.showToastWithMessage(message: "Vui lòng nhập đúng số tài khoản")
+                return
+            }
+        } else {
             self.showToastWithMessage(message: "Bạn chưa nhập số tài khoản")
             return
         }
-        
-        if self.accTextField.text!.count < 5 {
-            self.showToastWithMessage(message: "Vui lòng nhập đúng số tài khoản")
-            return
-        }
-        
         
         let bankName = bank.type!
         
@@ -170,6 +167,10 @@ extension AddWalletNewViewController: UITextFieldDelegate {
             currentString.replacingCharacters(in: range, with: string) as NSString
         
         if newString.length > maxLength { return false }
+        
+        if textField == self.accTextField, string == " " {
+            return false
+        }
         
         return true
     }
