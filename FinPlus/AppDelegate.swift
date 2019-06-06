@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if FinPlusHelper.isConnectedToNetwork() {
             self.getLoanCategories()
-            self.getVersion()
+//            self.getVersion()
         }
         
         //CHECK VERSION ON STORE
@@ -95,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(error)
             }
         }
-        
+        getLoanBorrowerFee()
         return true
     }
     

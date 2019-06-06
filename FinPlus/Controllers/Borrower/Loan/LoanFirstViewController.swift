@@ -419,14 +419,15 @@ class LoanFirstViewController: LoanBaseViewController {
         print("amountDouble : \(amountDouble)")
         
         //ADD FEE LOAN BORROWER
-        let indexMonth = Int(termSlider.value / 30) < 1 ? 1 : Int(termSlider.value / 30)
-        let percent = listLoanBorrowerFee[indexMonth].value
-        let moneyLoan = Int(self.amountSlider.value) / Int(self.amountSlider.minimumValue) * 1000000
-        let feeLoan = CGFloat(moneyLoan) * percent / 100
-        amountDouble += Double(feeLoan)
-        
+        var indexMonth = Int(termSlider.value / 30) < 1 ? 1 : Int(termSlider.value / 30)
+        indexMonth = indexMonth > 12 ? 13 : indexMonth
+        if indexMonth < listLoanBorrowerFee.count {
+            let moneyLoan = Int(self.amountSlider.value) / Int(self.amountSlider.minimumValue) * 1000000
+            let feeLoan = CGFloat(moneyLoan) * listLoanBorrowerFee[indexMonth - 1].value / 100
+            amountDouble += Double(feeLoan)
+        }
+            
         self.lblTempTotalAmount.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ"
-        
         self.updatePayTerm(term: term)
     }
     
