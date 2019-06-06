@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Chúng tôi cần bạn cấp quyền truy cập vị trí để xác thực nơi cư trú của bạn. Vui lòng bấm đồng ý để hồ sơ vay tiền của bạn được xử lý nhanh nhất.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -19,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.5</string>
+	<string>1.0.13</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -73,6 +71,8 @@
 	<string>Chúng tôi cần bạn cấp quyền truy cập danh bạ để xác thực sim điện thoại bạn đang sử dụng. Vui lòng bấm đồng ý để hồ sơ vay tiền của bạn được xử lý nhanh nhất.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Xác định vị trí khai báo thường trú của các bạn là chính xác. Việc vay tiền là online, nên chúng tôi cần định vị vị trí của Bạn để phục vụ cho việc vay vốn. Chúng tôi cam kết không cung cấp vị trí của bạn cho bất kỳ bên thứ ba nào, và sử dụng quyền location vào các mục đích khác.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Chúng tôi cần bạn cấp quyền truy cập vị trí để xác thực nơi cư trú của bạn. Vui lòng bấm đồng ý để hồ sơ vay tiền của bạn được xử lý nhanh nhất.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Xác định vị trí khai báo thường trú của các bạn là chính xác. Việc vay tiền là online, nên chúng tôi cần định vị vị trí của Bạn để phục vụ cho việc vay vốn. Chúng tôi cam kết không cung cấp vị trí của bạn cho bất kỳ bên thứ ba nào, và sử dụng quyền location vào các mục đích khác.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
