@@ -3,5 +3,5 @@
 /FinPlus.xcworkspace/xcshareddata/
 /Pods/
 /Podfile.lock
-Pods/
-Podfile.lock
+/FinPlus/.DS_Store
+/.DS_Store
