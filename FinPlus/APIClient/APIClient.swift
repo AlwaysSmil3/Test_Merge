@@ -23,7 +23,7 @@ class APIClient {
     static let shared = APIClient()
     
     //Host
-    let baseURLString = Host.stageURL
+    let baseURLString = Bundle.main.infoDictionary!["MY_API_BASE_URL_ENDPOINT"] as! String
     
     // DELETE request
     internal var deleteRequest : NSMutableURLRequest! {

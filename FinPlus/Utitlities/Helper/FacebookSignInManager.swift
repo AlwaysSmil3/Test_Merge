@@ -27,9 +27,9 @@ class FacebookSignInManager: NSObject {
     }
     
     class func logoutFromFacebook() {
-        FBSDKLoginManager().logOut()
-        FBSDKAccessToken.setCurrent(nil)
-        FBSDKProfile.setCurrent(nil)
+        LoginManager().logOut()
+        AccessToken.current = nil
+        Profile.current = nil
     }
     
     //MARK:- Private functions
@@ -38,8 +38,8 @@ class FacebookSignInManager: NSObject {
             "fields" : "id,name,first_name,last_name,gender,email,birthday,picture.type(large)",
             //"locale" : "en_US"
         ]
-        if FBSDKAccessToken.current() != nil {
-            FBSDKGraphRequest(graphPath: "/me", parameters: permissionDictionary)
+        if AccessToken.current != nil {
+            GraphRequest(graphPath: "/me", parameters: permissionDictionary)
                 .start(completionHandler:  { (connection, result, error) in
                     if error == nil {
                         onCompletion(result as? FacebookDataType, nil)
@@ -49,10 +49,10 @@ class FacebookSignInManager: NSObject {
                 })
             
         } else {
-            FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: fromViewController as? UIViewController, handler: { (result, error) -> Void in
+            LoginManager().logIn(permissions: ["email", "public_profile"], from: fromViewController as? UIViewController, handler: { (result, error) -> Void in
                 if error != nil {
                     // Error
-                    FBSDKLoginManager().logOut()
+                    LoginManager().logOut()
                     if let error = error as NSError? {
                         let errorDetails = [NSLocalizedDescriptionKey : "Processing Error. Please try again!"]
                         let customError = NSError(domain: "Error!", code: error.code, userInfo: errorDetails)
@@ -63,7 +63,7 @@ class FacebookSignInManager: NSObject {
                     
                 } else if (result?.isCancelled)! {
                     // User Cancelled
-                    FBSDKLoginManager().logOut()
+                    LoginManager().logOut()
                     let errorDetails = [NSLocalizedDescriptionKey : "Request cancelled!"]
                     let customError = NSError(domain: "Request cancelled!", code: 1001, userInfo: errorDetails)
                     onCompletion(nil, customError)
@@ -71,8 +71,8 @@ class FacebookSignInManager: NSObject {
                     // Success
                     print("Facebook logged in!")
                     
-                    let pictureRequest = FBSDKGraphRequest(graphPath: "me", parameters: permissionDictionary)
-                    let _ = pictureRequest?.start(completionHandler: {
+                    let pictureRequest = GraphRequest(graphPath: "me", parameters: permissionDictionary)
+                    let _ = pictureRequest.start(completionHandler: {
                         (connection, result, error) -> Void in
                         
                         if error == nil {
