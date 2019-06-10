@@ -88,8 +88,8 @@ public class TableViewIndexController : NSObject {
         }
         
         if let frame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-           let curve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue,
-           let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
+            let curve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue,
+            let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
             
             let convertedFrame = parentView.convert(frame, from: nil)
             
@@ -102,7 +102,7 @@ public class TableViewIndexController : NSObject {
             inset.bottom = max(scrollView.frame.maxY - convertedFrame.minY, safeAreaInsets.bottom)
             
             UIView.animate(withDuration: duration, animations: {
-                UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: curve)!)
+                UIView.setAnimationCurve(UIView.AnimationCurve(rawValue: curve)!)
 
                 self.layout(with: inset)
                 parentView.layoutIfNeeded()

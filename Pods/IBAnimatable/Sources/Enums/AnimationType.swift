@@ -58,6 +58,15 @@ public indirect enum AnimationType {
 
 }
 
+#if swift(>=4.2)
+extension AnimationType.Axis: CaseIterable {}
+extension AnimationType.Direction: CaseIterable {}
+extension AnimationType.FadeWay: CaseIterable {}
+extension AnimationType.RotationDirection: CaseIterable {}
+extension AnimationType.Run: CaseIterable {}
+extension AnimationType.Way: CaseIterable {}
+#endif
+
 extension AnimationType {
 
   public static func scaleTo(x: Double, y: Double) -> AnimationType {
@@ -159,6 +168,45 @@ extension AnimationType: IBEnum {
   }
 
 }
+
+extension AnimationType {
+  public static func + (lhs: inout AnimationType, rhs: AnimationType) -> AnimationType {
+    switch (lhs, rhs) {
+    case (.compound(let lanimation, .parallel), .compound(let ranimation, .parallel)):
+      return .compound(animations: lanimation + ranimation, run: .parallel)
+    case (.compound(let lanimation, .parallel), _):
+      var animation = lanimation
+      animation.append(rhs)
+      return .compound(animations: animation, run: .parallel)
+    case (_, .compound(let ranimation, .parallel)):
+      var animation = ranimation
+      animation.insert(lhs, at: 0)
+      return .compound(animations: animation, run: .parallel)
+    default:
+      return .compound(animations: [lhs, rhs], run: .parallel)
+    }
+  }
+}
+
+extension AnimationType: ExpressibleByArrayLiteral {
+  public typealias ArrayLiteralElement = AnimationType
+
+  public init(arrayLiteral elements: AnimationType...) {
+    if let first = elements.first {
+      if elements.count == 1 {
+        self = first
+      } else if case let .compound(animation, .sequential) = first {
+        self = .compound(animations: animation + Array(elements.dropFirst(1)), run: .sequential)
+      } else {
+        self = .compound(animations: elements, run: .sequential)
+      }
+    } else {
+      self = .none
+    }
+  }
+
+}
+
 private extension String {
 
   var parseNameAndParams: String {

@@ -39,14 +39,21 @@ open class TableViewIndex : UIControl {
     /// Use resetFont to fall back to default font.
     public var font: UIFont {
         get { return style.font }
-        set { style = style.copy(applying: newValue) }
+        set { style = style.copy(applyingFont: newValue) }
+    }
+
+    /// Minimum width of the view. Equals to 44 points by default to enable easy tapping
+    /// Use resetMinWidth to fall back to default spacing.
+    public var minWidth: CGFloat {
+        get { return style.minWidth }
+        set { style = style.copy(applyingMinWidth: minWidth) }
     }
     
     /// Vertical spacing between the items. Equals to 1 point by default to match system appearance.
     /// Use resetItemSpacing to fall back to default spacing.
     public var itemSpacing: CGFloat {
         get { return style.itemSpacing }
-        set { style = style.copy(applying: newValue) }
+        set { style = style.copy(applyingItemSpacing: newValue) }
     }
     
     /// The distance that index items are inset from the enclosing background view. The property
@@ -59,7 +66,7 @@ open class TableViewIndex : UIControl {
     /// Left and right values are flipped when using right-to-left user interface direction.
     public var indexInset: UIEdgeInsets {
         get { return style.indexInset }
-        set { style = style.copy(applying: newValue) }
+        set { style = style.copy(applyingIndexInset: newValue) }
     }
 
     /// The distance from the left (or right in case of right-to-left languages) border of the background view
@@ -69,7 +76,7 @@ open class TableViewIndex : UIControl {
     /// Use resetIndexOffset to fall back to default offset.
     public var indexOffset: UIOffset {
         get { return style.indexOffset }
-        set { style = style.copy(applying: newValue) }
+        set { style = style.copy(applyingIndexOffset: newValue) }
     }
     
     /// The list of all items provided by the data source.
@@ -83,6 +90,10 @@ open class TableViewIndex : UIControl {
     }
     
     private var truncation: Truncation<UIView>?
+    
+    func setStyle(_ style:Style) {
+        self.style = style
+    }
     
     private var style: Style! {
         didSet {
@@ -120,8 +131,6 @@ open class TableViewIndex : UIControl {
         isAccessibilityElement = true
         accessibilityTraits = UIAccessibilityTraitAdjustable
         accessibilityLabel = NSLocalizedString("Table index", comment: "Accessibility title for the section index control")
-        
-        updateAccessibilityValue()
     }
     
     // MARK: - Updates
@@ -166,8 +175,6 @@ open class TableViewIndex : UIControl {
         
         currentIndex = index
         
-        updateAccessibilityValue()
-        
         if let delegate = self.delegate
             , delegate.responds(to: #selector(TableViewIndexDelegate.tableViewIndex(_:didSelect:at:))) {
             
@@ -176,12 +183,8 @@ open class TableViewIndex : UIControl {
                 notifyFeedbackGenerator()
             }
         }
-    }
-    
-    private func updateAccessibilityValue() {
-        guard currentIndex >= 0 && currentIndex < items.count else { return }
         
-        let currentItem = items[currentIndex]
+        let currentItem = items[index]
         
         let titleText: String
         if let labelText = currentItem.accessibilityLabel {
@@ -193,7 +196,7 @@ open class TableViewIndex : UIControl {
         }
         
         let selectedText = NSLocalizedString("Selected", comment: "Accessibility title for the selected state")
-        accessibilityValue = "\(titleText), \(selectedText)"
+//        UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: "\(titleText), \(selectedText)")
     }
         
     // MARK: - Layout
@@ -227,7 +230,7 @@ open class TableViewIndex : UIControl {
     override open var intrinsicContentSize: CGSize {
         let layout = ItemLayout(items: items, style: style)
         let width = layout.size.width + style.indexInset.left + style.indexInset.right
-        let minWidth: CGFloat = 44.0
+        let minWidth: CGFloat = CGFloat(self.minWidth)
         return CGSize(width: max(width, minWidth), height: UIViewNoIntrinsicMetric)
     }
     
@@ -240,7 +243,7 @@ open class TableViewIndex : UIControl {
         get { return super.semanticContentAttribute }
         set {
             super.semanticContentAttribute = newValue
-            style = style.copy(applying: UIView.my_userInterfaceLayoutDirection(for: self))
+            style = style.copy(applyingUserInterfaceDirection: UIView.my_userInterfaceLayoutDirection(for: self))
         }
     }
     
@@ -418,6 +421,8 @@ public protocol TableViewIndexDelegate : NSObjectProtocol {
 
 // MARK: - IB support
 
+private var strongDataSourceKey = 0
+
 @IBDesignable
 extension TableViewIndex {
     
@@ -431,6 +436,8 @@ extension TableViewIndex {
     }
     
     open override func prepareForInterfaceBuilder() {
-        dataSource = TableDataSource()
+        let strongDataSource = TableDataSource()
+        setAssociatedObject(self, key: &strongDataSourceKey, value: strongDataSource, policy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        dataSource = strongDataSource
     }
 }
