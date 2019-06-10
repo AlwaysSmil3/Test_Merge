@@ -45,8 +45,8 @@ class VerifyFacebookVC: BaseViewController {
             fullName = name
         }
         
-        if FBSDKAccessToken.current() != nil {
-            accessToken = FBSDKAccessToken.current().tokenString
+        if AccessToken.current != nil {
+            accessToken = AccessToken.current?.tokenString ?? ""
         }
         
         self.faceBookInfo = FacebookInfo(accessToken: accessToken, fullName: fullName, avatar: avatar, facebookId: facebookId)

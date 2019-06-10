@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.registerForRemoteNotifications(application)
         
         //Facebook init
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         
         // Init FireBase
@@ -334,7 +334,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        let handled = ApplicationDelegate.shared.application(app, open: url, options: options)
         
         return handled
     }
