@@ -35,6 +35,4 @@ let ListHeadPhoneUpdate: JSONDictionary = [
     "01993":"0593",
     "01998":"0598",
     "01999":"0599"
-
-
 ]

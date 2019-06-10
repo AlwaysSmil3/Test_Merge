@@ -18,12 +18,13 @@ public struct BorrowingInfoBasicData {
 }
 
 public class PayType {
-    public var id : Int = 0
+    public var id = 0
     public var typeTitle : String!
     public var expireDate : Date
     public var originAmount : Float = 0
     public var interestAmount : Float = 0
     public var sumAmount : Float = 0
+    
     init(id: Int, typeTitle: String, expireDate: Date, originAmount: Float, interestAmount: Float, sumAmount: Float) {
         self.id = id
         self.typeTitle = typeTitle
@@ -35,12 +36,13 @@ public class PayType {
 }
 
 public class PayAllBefore {
-    public var id : Int = 0
+    public var id = 0
     public var typeTitle : String = ""
     public var originAmount : Float = 0
     public var interestAmount : Float = 0
     public var feeToPayBefore : Float = 0
     public var sumAmount : Float = 0
+    
     init(id: Int, typeTitle: String, originAmount: Float, interestAmount: Float, feeToPayBefore: Float, sumAmount: Float) {
         self.id = id
         self.typeTitle = typeTitle
@@ -70,6 +72,7 @@ class TestBorrowingPayViewController: UIViewController {
         let payHistoryVC = TestPayHistoryViewController(nibName: "TestPayHistoryViewController", bundle: nil)
         self.present(payHistoryVC, animated: true, completion: nil)
     }
+    
     enum Cell {
         // case InfoCell
         case PayTypeCell
@@ -139,7 +142,6 @@ class TestBorrowingPayViewController: UIViewController {
     // var walletSelected : AccountBank!
     var methodSelected : PaymentMethod!
     //var bankList = [AccountBank]()
-    
     var paymentList = [PaymentMethod]()
     
     //Tra ky nay
@@ -147,8 +149,8 @@ class TestBorrowingPayViewController: UIViewController {
     //Tra truoc toan bo
     var payTotalAmount: Double = 0
     
-    var isOntime: Bool = true
-    var isDebt: Bool = false
+    var isOntime = true
+    var isDebt = false
     
     var expireDateString = ""
     
@@ -159,15 +161,11 @@ class TestBorrowingPayViewController: UIViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        // update data
         self.updateData()
-        
         self.getPaymentInfo()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -204,7 +202,6 @@ class TestBorrowingPayViewController: UIViewController {
             if total.debt! > 0 {
                 self.isDebt = true
             }
-            
         }
         self.tableView?.reloadData()
     }
@@ -222,7 +219,6 @@ class TestBorrowingPayViewController: UIViewController {
 //        tableView.registerNibCell(type: BankAccountTableViewCell.self)
 //        tableView.registerNibCell(type: AddNewWalletTableViewCell.self)
         tableView.registerNibCell(type: PayBtnTableViewCell.self)
-        
         tableView.registerNibCell(type: PayTypeOverdueTBCell.self)
         tableView.registerNibCell(type: PayAllOverdueTBCell.self)
     }
@@ -242,7 +238,6 @@ class TestBorrowingPayViewController: UIViewController {
         
         let amount = loan.funded ?? 0
         let originAmount = Float(amount / term)
-        
         
         //Số tiền thanh toán hàng tháng
         let payMounth = FinPlusHelper.CalculateMoneyPayMonth(month: Double(amount), term: Double((loan.term ?? 0)/30), rate: Double(rate))
@@ -297,14 +292,11 @@ class TestBorrowingPayViewController: UIViewController {
             if let term = DataManager.shared.browwerInfo?.activeLoan?.term, term <= 30 {
                 newBorrowingPay = NewBorrowingData(payType: payTypeArray, payAll: nil, paymentMethod: paymentList)
             } else {
-                
                 if self.checkTimeIsInLastCollection() {
                     newBorrowingPay = NewBorrowingData(payType: payTypeArray, payAll: nil, paymentMethod: paymentList)
                 } else {
                     newBorrowingPay = NewBorrowingData(payType: payTypeArray, payAll: payAll, paymentMethod: paymentList)
                 }
-                
-                
             }
         }
         
@@ -330,7 +322,6 @@ class TestBorrowingPayViewController: UIViewController {
                         let cellNewPhone = CellData(cellType: .PayTypeOverdueCell, data: payType, cellHeight: 258)
                         sectionPayTypeData.cells.append(cellNewPhone)
                     }
-                    
                 }
             }
         }
@@ -343,7 +334,6 @@ class TestBorrowingPayViewController: UIViewController {
                 let cellNewPhone = CellData(cellType: .PayAllOverdueCell, data: payAll, cellHeight: 258)
                 sectionPayTypeData.cells.append(cellNewPhone)
             }
-
         }
         
         let sectionWalletData = SectionData()
@@ -371,20 +361,15 @@ class TestBorrowingPayViewController: UIViewController {
     
     func getPaymentInfo() {
         APIClient.shared.getPaymentMoneyInfo()
-            .done(on: DispatchQueue.global()) { [weak self]model in
-                
+            .done(on: DispatchQueue.global()) { [weak self] model in
                 DispatchQueue.main.async {
                     self?.paymentInfo = model
                 }
-                
-        }
-            .catch { error in}
+            }
+            .catch { error in }
     }
     
-    
     /// Check  xem có đang ở thời gian của kỳ trả cuối không
-    ///
-    /// - Returns: <#return value description#>
     func checkTimeIsInLastCollection() -> Bool {
         guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections, collections.count > 1 else { return false }
         
@@ -402,14 +387,11 @@ class TestBorrowingPayViewController: UIViewController {
                 return true
             }
         }
-        
         return false
     }
     
-    
     //Check đã thanh toán kỳ nào chưa
     func checkCollectionRightPayForStatusTimelyDebt() -> String? {
-        
         guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return nil }
         
         let monthCurrent = Date().month()
@@ -419,9 +401,7 @@ class TestBorrowingPayViewController: UIViewController {
                 if let monthPayed = col.dueDatetime {
                     let date = Date(fromString: monthPayed, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
                     let month = date.month()
-                    
                     if monthCurrent + 1 == month || monthCurrent == month {
-                        //value = true
                         let days = date.days(from: Date())
                         if days > 0 && days <= 31 {
                             return date.toString(.custom(kDisplayFormat))
@@ -430,7 +410,6 @@ class TestBorrowingPayViewController: UIViewController {
                 }
             }
         }
-        
         return nil
     }
 
@@ -445,13 +424,10 @@ class TestBorrowingPayViewController: UIViewController {
                 monyBankListVC.amount = self.payTotalAmount
                 monyBankListVC.isTotalPayed = true
             } else {
-                
                 if self.payAmountPresent == 0 {
                     self.showGreenBtnMessage(title: "Thông báo", message: "Bạn đã thanh toán cho kỳ thanh toán ngày \(self.expireDateString). Bạn có thể lựa chọn tất toán toàn bộ khoản vay trước hạn. Xin cảm ơn.", okTitle: "Đóng", cancelTitle: nil)
-                    
                     return
                 }
-                
                 monyBankListVC.amount = self.payAmountPresent
                 monyBankListVC.isTotalPayed = false
             }
@@ -461,34 +437,17 @@ class TestBorrowingPayViewController: UIViewController {
             } else {
                 self.present(monyBankListVC, animated: true, completion: nil)
             }
-            
         } else {
             self.showGreenBtnMessage(title: "Không thể thanh toán", message: "Bạn cần chọn hình thức thanh toán trước khi tiến hành thanh toán", okTitle: "Ok", cancelTitle: nil)
         }
-        
     }
     
-    
-    private func createTransaction() {
-        
-        
-        
-        
-        
-    }
-    
-
 }
 
 extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         if indexPath.section == 0 {
-            if indexPath.row == 0 {
-                return 138
-            }
-            
-            return 126
+            return indexPath.row == 0 ? 138 : 126
         }
         
         let cellData = sections[indexPath.section].cells[indexPath.row]
@@ -498,6 +457,7 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].cells.count
     }
@@ -510,8 +470,6 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             if let d = cellData.data as? BorrowingInfoBasicData {
                 cell.tableData = d
             }
-            
-            
         } else if let cell = cell as? PayTypeTableViewCell {
             let data = cellData.data as! PayType
             if let selected = self.payTypeSelected {
@@ -528,8 +486,7 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             cell.dateExpire = self.expireDateString
             cell.updateCellView()
             cell.paymentData = self.paymentInfo?.paymentPeriod
-
-        }  else if let cell = cell as? PayTypeOverdueTBCell {
+        } else if let cell = cell as? PayTypeOverdueTBCell {
             let data = cellData.data as! PayType
             if let selected = self.payTypeSelected {
                 if selected.id == data.id {
@@ -545,10 +502,7 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             cell.dateExpire = self.expireDateString
             cell.updateCellView()
             cell.data = self.paymentInfo?.paymentPeriod
-            
-        }
-    
-        else if let cell = cell as? PayAllTableViewCell {
+        } else if let cell = cell as? PayAllTableViewCell {
             let data = cellData.data as! PayAllBefore
             if let selected = self.payAllSelected {
                 if selected.id == data.id {
@@ -561,12 +515,9 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             }
             
             cell.isDebt = self.isDebt
-            
             cell.updateCellView()
             cell.paymentData = self.paymentInfo?.liquidation
-
-        }
-        else if let cell = cell as? PayAllOverdueTBCell {
+        } else if let cell = cell as? PayAllOverdueTBCell {
             let data = cellData.data as! PayAllBefore
             if let selected = self.payAllSelected {
                 if selected.id == data.id {
@@ -579,13 +530,9 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             }
             
             //cell.isDebt = self.isDebt
-            
             cell.updateCellView()
             cell.data = self.paymentInfo?.liquidation
-            
-        }
-        
-        else if let _ = cell as? BankAccountTableViewCell {
+        } else if let _ = cell as? BankAccountTableViewCell {
 //            let data = cellData.data as! AccountBank
 //            if let selected = self.walletSelected {
 //                if selected.accountBankNumber == data.accountBankNumber {
@@ -596,7 +543,6 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
 //            }
 //            cell.cellData = data
 //            cell.updateCellView()
-
         } else if let _ = cell as? AddNewWalletTableViewCell {
             // add taget for cell
 //            cell.updateCellView()
@@ -604,13 +550,11 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             cell.payBtn.addTarget(self, action:#selector(payBtnAction), for: .touchUpInside)
         } else if let cell = cell as? PaymentMethodTableViewCell {
             let data = cellData.data as! PaymentMethod
-            
 //            if data.id == 1 {
 //                let cellData = sections[indexPath.section].cells[indexPath.row]
 //                if let d = cellData.data as? PaymentMethod {
 //                    self.methodSelected = d
 //                }
-//
 //                cell.isSelectedCell = true
 //            }
             
@@ -641,7 +585,6 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             if !isDebt {
                 return 146
             }
-            
             //return 136
             return 258
         }
@@ -658,19 +601,14 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             if let d = cellData.data as? PayType {
                 self.payTypeSelected = d
             }
-            
             payAllSelected = nil
-
         } else if let _ = cell as? PayAllTableViewCell {
             if let d = cellData.data as? PayAllBefore {
                 self.payAllSelected = d
             }
-            
             self.payTypeSelected = nil
-
         } else if let _ = cell as? BankAccountTableViewCell {
 //            self.walletSelected = cellData.data as! AccountBank
-
         } else if let _ = cell as? AddNewWalletTableViewCell {
             // push to add new wallet
             let vc = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ADD_WALLET") as! AddWalletViewController
@@ -680,7 +618,6 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
             if let d = cellData.data as? PaymentMethod {
                 self.methodSelected = d
             }
-            
         }
         tableView.reloadData()
     }
@@ -704,7 +641,6 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
         headerView.addSubview(headerLb)
         return headerView
     }
-    
 
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let indexPathsForSelectedRows = tableView.indexPathsForSelectedRows {
@@ -716,8 +652,6 @@ extension TestBorrowingPayViewController : UITableViewDelegate, UITableViewDataS
                 }
             }
         }
-
         return indexPath
     }
 }
-

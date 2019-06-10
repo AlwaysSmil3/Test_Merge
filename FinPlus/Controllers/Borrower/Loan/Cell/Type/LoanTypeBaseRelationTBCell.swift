@@ -11,21 +11,15 @@ import Foundation
 class LoanTypeBaseRelationTBCell: UITableViewCell {
     
     @IBOutlet weak var tfTypeRelation: UITextField?
-    
     @IBOutlet weak var lblTitlePhone: UILabel?
     @IBOutlet weak var tfRelationPhone: UITextField?
-    
     @IBOutlet weak var lblNameRelationTitle: UILabel?
     @IBOutlet weak var tfNameRelation: UITextField?
-    
     @IBOutlet weak var lblAddressRelationTitle: UILabel?
     @IBOutlet weak var lblAddressRelation: UILabel?
     
-    
-    var currentIndex: Int = 0
-    
+    var currentIndex = 0
     weak var parentVC: LoanBaseViewController?
-    
     weak var delegateUpdateStatusInvalid: UpdateStatusInvalidRelationPhoneDelegate?
     
     func getTitleTypeRelation(id: Int) -> String {

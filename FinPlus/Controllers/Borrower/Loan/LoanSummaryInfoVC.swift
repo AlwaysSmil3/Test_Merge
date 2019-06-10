@@ -28,14 +28,12 @@ class LoanSummaryInfoVC: BaseViewController {
                 if contacts.count > 0 {
                     self.contactsAPI.contacts.append(contentsOf: contacts)
                 }
-                
             }
-            
         }
     }
     
     var contactsAPI: ContactParamsList = ContactParamsList()
-    var isLoadedContact: Bool = false
+    var isLoadedContact = false
     
     let currentCategory: LoanCategories? = DataManager.shared.getCurrentCategory()
     
@@ -51,7 +49,6 @@ class LoanSummaryInfoVC: BaseViewController {
         LoanSummaryModel(name: "Ngân hàng / Ví", value: "", attributed: nil),
         LoanSummaryModel(name: "Chủ tài khoản", value: "", attributed: nil),
         LoanSummaryModel(name: "Số tài khoản", value: "", attributed: nil),
-        
     ]
     
     required init?(coder aDecoder: NSCoder) {
@@ -62,8 +59,7 @@ class LoanSummaryInfoVC: BaseViewController {
         addressBook.filterBlock =
             {
                 (contact: APContact) -> Bool in
-                if let phones = contact.phones
-                {
+                if let phones = contact.phones {
                     return phones.count > 0
                 }
                 return false
@@ -88,7 +84,6 @@ class LoanSummaryInfoVC: BaseViewController {
         self.mainTBView.tableFooterView = UIView()
         self.mainTBView.allowsSelection = false
         
-        
         self.btnContinue?.dropShadow(color: MAIN_COLOR)
 
         DataManager.shared.loanInfo.currentStep = 5
@@ -104,39 +99,31 @@ class LoanSummaryInfoVC: BaseViewController {
         self.loadContacts {
             
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
             self.navigationController?.isNavigationBarHidden = true
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         FinPlusHelper.checkLocationPermission { (status) in
             self.initLocationManager()
         }
-        
     }
     
     //MARK: Contacts
     /// Load Contact
     
-    func loadContacts(completion: @escaping() -> Void)
-    {
-        
+    func loadContacts(completion: @escaping() -> Void) {
         addressBook.loadContacts
             {
                 [unowned self] (contacts: [APContact]?, error: Error?) in
                 
-                if let contacts = contacts
-                {
+                if let contacts = contacts {
                     self.aPContacts = contacts
                     self.isLoadedContact = true
                     completion()
@@ -170,25 +157,19 @@ class LoanSummaryInfoVC: BaseViewController {
                             } else {
                                 UIApplication.shared.openURL(settingsUrl)
                             }
-                            
                         }
                     }
-                    
                 })
         }
     }
     
     /// Get Account Name Contact
-    ///
-    /// - Returns: <#return value description#>
     func updateContact(apContact: APContact) -> [ContactParams] {
         
         var contactName = ""
         if let name = apContact.name {
             if let lastName = name.lastName, let firstName = name.firstName {
-                
                 contactName = (firstName + " " + lastName).trimmingCharacters(in: .whitespacesAndNewlines)
-                
             } else {
                 if let lastName = name.lastName {
                     contactName = lastName
@@ -228,9 +209,7 @@ class LoanSummaryInfoVC: BaseViewController {
                     }
                 }
             }
-            
         }
-        
         return listContactParams
     }
     
@@ -241,11 +220,8 @@ class LoanSummaryInfoVC: BaseViewController {
             }
             .catch { error in
                 self.showGreenBtnMessage(title: TITLE_ALERT_ERROR_CONNECTION, message: API_MESSAGE.OTHER_ERROR, okTitle: "Đóng", cancelTitle: nil)
-                
         }
-        
     }
-    
     
     func getPermissionLocation(completion: () -> Void) {
         let status = CLLocationManager.authorizationStatus()
@@ -278,13 +254,9 @@ class LoanSummaryInfoVC: BaseViewController {
                         } else {
                             UIApplication.shared.openURL(settingsUrl)
                         }
-                        
                     }
                 }
-                
             })
-            
-            
             return
         }
         
@@ -317,8 +289,6 @@ class LoanSummaryInfoVC: BaseViewController {
         }
         
         var amountDouble = Double(DataManager.shared.loanInfo.amount)
-        
-        
         amountDouble = FinPlusHelper.CalculateMoneyPayMonth(month: amountDouble, term: Double(term/30), rate: cate.interestRate!)
         
         if let expectedAmount = DataManager.shared.browwerInfo?.activeLoan?.expectedPaymentAmount, expectedAmount > 0 {
@@ -351,15 +321,12 @@ class LoanSummaryInfoVC: BaseViewController {
                     let bankName = bank.type ?? ""
                     let prefixBankName = FinPlusHelper.getPrefixBankName(bankName: bankName)
                     
-                    
                     dataSource.append(LoanSummaryModel(name: "Tài khoản nhận tiền", value: prefixBankName + bankName, attributed: nil))
                     dataSource.append(LoanSummaryModel(name: "Chủ tài khoản", value: "\(bank.accountHolder ?? "None")", attributed: nil))
                     dataSource.append(LoanSummaryModel(name: "Số tài khoản", value: accountNumber, attributed: nil))
-                    
                 }
             }
         }
-        
     }
     
 //    private func updateDataLoan() {
@@ -375,7 +342,6 @@ class LoanSummaryInfoVC: BaseViewController {
     
     /// Set link cho UITextView
     private func setupTextView() {
-        
         let policyStr : String = "Tôi đã hiểu và đồng ý với Điều khoản & Điều kiện vay."
         
         var myMutableString = NSMutableAttributedString()
@@ -391,13 +357,10 @@ class LoanSummaryInfoVC: BaseViewController {
 //
 //        myMutableString.append(string2)
         
-        
         UITextView.appearance().linkTextAttributes = [ NSAttributedStringKey.foregroundColor.rawValue: UIColor(hexString: "#3EAA5F")]
         
         self.footerTextView.attributedText = myMutableString
-        
     }
-    
     
     private func loan() {
         APIClient.shared.getLoanOTP(loanID: DataManager.shared.loanID ?? 0)
@@ -405,20 +368,15 @@ class LoanSummaryInfoVC: BaseViewController {
                 self?.toVerifyVC()
             }
             .catch { error in }
-        
     }
-    
-    //MARK: Actions
     
     @IBAction func btnAgreeTermTapped(_ sender: Any) {
         self.btnAgreeTerm!.isSelected = !self.btnAgreeTerm!.isSelected
     }
     
     @IBAction func btnLoanTapped(_ sender: Any) {
-        
         guard self.btnAgreeTerm!.isSelected else {
             self.showGreenBtnMessage(title: "Điều khoản & Điều kiện vay", message: "Vui lòng đồng ý Điều khoản & Điều kiện vay để gửi đơn vay của bạn.", okTitle: "Đóng", cancelTitle: nil)
-            
             return
         }
         
@@ -436,17 +394,14 @@ class LoanSummaryInfoVC: BaseViewController {
                 self.uploadContact()
             }
         }
-    
     }
     
     private func checkPermisssionCreateLoan() {
         self.getPermissionLocation {
-            
             DataManager.shared.loanInfo.currentStep = 5
             APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
                 .done(on: DispatchQueue.main) { [weak self]model in
                     DataManager.shared.loanID = model.loanId!
-                    
                     if let delegate = UIApplication.shared.delegate as? AppDelegate {
                         if delegate.timeCount == 60 {
                             delegate.timeCount = 0
@@ -457,10 +412,8 @@ class LoanSummaryInfoVC: BaseViewController {
                     } else {
                         self?.confirmSendOTP()
                     }
-                    
                 }
                 .catch { error in }
-            
         }
     }
     
@@ -487,9 +440,7 @@ class LoanSummaryInfoVC: BaseViewController {
             otpVC.verifyType = .Loan
             self.navigationController?.pushViewController(otpVC, animated: true)
         }
-        
     }
-    
     
 }
 
@@ -502,8 +453,7 @@ extension LoanSummaryInfoVC: UITextViewDelegate {
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
             return false
-        }
-        else {
+        } else {
             return true
         }
     }
@@ -517,9 +467,7 @@ extension LoanSummaryInfoVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Loan_Type_Popup_TB_Cell", for: indexPath) as! LoanTypePopupTBCell
-        
         let model = self.dataSource[indexPath.row]
-        
         cell.lblValue.text = model.name
         cell.lblSubTitle.text = model.value
         
@@ -533,5 +481,3 @@ extension LoanSummaryInfoVC: UITableViewDataSource, UITableViewDelegate {
     }
     
 }
-
-

@@ -14,14 +14,17 @@ enum SetPassOrResetPass {
     case ResetPass
 }
 class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
-    var phone : String!
-    var setPassOrResetPass: SetPassOrResetPass = SetPassOrResetPass.SetPass
+    
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblHeader: UILabel!
     @IBOutlet weak var tfRePass: UITextField!
-    
     @IBOutlet var btnHideShowPass: UIButton!
-    var isShowPass: Bool = false {
+    @IBOutlet var btnHideShowRePass: UIButton!
+    
+    var phone : String!
+    var setPassOrResetPass: SetPassOrResetPass = SetPassOrResetPass.SetPass
+    
+    var isShowPass = false {
         didSet {
             if isShowPass {
                 self.btnHideShowPass.setImage(#imageLiteral(resourceName: "ic_hide_pass"), for: .normal)
@@ -33,8 +36,7 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
         }
     }
     
-    @IBOutlet var btnHideShowRePass: UIButton!
-    var isShowRePass: Bool = false {
+    var isShowRePass = false {
         didSet {
             if isShowRePass {
                 self.btnHideShowRePass.setImage(#imageLiteral(resourceName: "ic_hide_pass"), for: .normal)
@@ -48,15 +50,12 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tfPass?.delegate = self
         self.tfRePass?.delegate = self
-        
         if #available(iOS 11.0, *) {
             self.tfPass?.textContentType = .password
             self.tfRePass?.textContentType = .password
         }
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -64,22 +63,17 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
         switch setPassOrResetPass {
         case .SetPass:
             self.lblTitle.text = "Tạo tài khoản mới"
-            //if let account = userDefault.value(forKey: fNEW_ACCOUNT_NAME) as? String {
             self.lblHeader.text = "Xin chào! Bạn chưa có tài khoản. Vui lòng thiết lập mật khẩu để bắt đầu."
-            //}
-            break
         case .ResetPass:
             self.lblTitle.text = "Thiết lập mật khẩu mới"
             if let account = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String {
                 self.lblHeader.text = "Xin chào \(account), bạn đã yêu cầu đặt lại mật khẩu. Vui lòng tạo mật khẩu mới."
             }
-            break
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         self.tfPass?.becomeFirstResponder()
     }
     
@@ -90,28 +84,17 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
         } else {
             self.isEnableContinueButton(isEnable: false)
         }
-        
     }
     
     //MARK: TextFiled Delegate
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // Giới hạn ký tự nhập vào
-        let maxLength = 6
-        let currentString: NSString = textField.text! as NSString
-        let newString: NSString =
-            currentString.replacingCharacters(in: range, with: string) as NSString
-        
-        if newString.length > maxLength { return false }
-        
-        return true
+        guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+        return newLength <= 6
     }
     
-    //MARK: Action
-    
     @IBAction func tfPassEditChanged(_ sender: Any) {
-        self.updateStateBtnContinue()
-        
+        self.updateStateBtnContinue()    
     }
     
     @IBAction func tfRePassEditChanged(_ sender: Any) {
@@ -125,7 +108,6 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
     @IBAction func btnShowRePassTapped(_ sender: Any) {
         self.isShowRePass = !self.isShowRePass
     }
-    
     
     @IBAction func btnConfirmTapped(_ sender: Any) {
         // validate password
@@ -160,17 +142,13 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
             self.setNewPasswordAPI(newPassword: self.tfPass?.text! ?? "")
             //self.pushToChoiceKindUserVC()
             self.updateNewInfo()
-            break
         case .ResetPass:
             self.resetPasswordAPI(newPassword: self.tfPass?.text! ?? "")
-            break
-
         }
     }
 
     func setNewPasswordAPI(newPassword: String) {
         // call to set new password API (update user data)
-
         // success -> save phone
         if let newPhone = userDefault.value(forKey: fNEW_ACCOUNT_NAME) as? String {
             userDefault.set(newPhone, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
@@ -184,7 +162,6 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
                 DataManager.shared.userID = data.id!
                 //Lay thong tin nguoi dung
                 self?.pushToChoiceKindUserVC()
-                
             }
             .catch { error in }
     }
@@ -206,9 +183,8 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
                 
                 self?.login(account: DataManager.shared.currentAccount, pass: newPassword)
                 
-        }
+            }
             .catch { model in }
-
     }
     
     // MARK: MFMailComposeViewControllerDelegate Method
@@ -231,7 +207,6 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
                 self.showSendMailErrorAlert()
             }
             // go to email form
-            
         })
         
         let hotLineAction = UIAlertAction(title: "Gọi hotline: \(phoneNumberMony)", style: .default, handler: { (alert: UIAlertAction!) -> Void in
@@ -240,10 +215,7 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
             }
             // show call popup
             FinPlusHelper.makeCall(forPhoneNumber: phoneNumberMony)
-
         })
-        
-        
         
         let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: { (alert: UIAlertAction!) -> Void in
             //  Do something here upon cancellation.
@@ -261,8 +233,6 @@ class SetPassAuthenVC: BaseAuthenViewController, UITextFieldDelegate {
         }
         
         self.present(alertController, animated: true, completion: nil)
-        
     }
-
 
 }

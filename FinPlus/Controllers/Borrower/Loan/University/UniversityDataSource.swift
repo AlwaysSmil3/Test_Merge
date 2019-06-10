@@ -8,17 +8,12 @@
 
 import Foundation
 
-
 protocol Item {}
 
 protocol UniversityDataSourceProtocol {
-    
     func numberOfSections() -> Int
-    
     func numberOfItemsInSection(_ section: Int) -> Int
-    
     func itemAtIndexPath(_ indexPath: IndexPath) -> Item?
-    
     func titleForHeaderInSection(_ section: Int) -> String?
 }
 
@@ -26,7 +21,6 @@ extension String : Item {}
 
 struct UniversityDataSource : UniversityDataSourceProtocol {
     fileprivate(set) var sections = [[String]]()
-    
     fileprivate let collaction = UILocalizedIndexedCollation.current()
     
     init() {

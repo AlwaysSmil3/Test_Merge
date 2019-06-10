@@ -27,12 +27,6 @@ class LoanTypeSocialTBCell: LoanTypeBaseTBCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
     }
     
 }
-
-
-
-

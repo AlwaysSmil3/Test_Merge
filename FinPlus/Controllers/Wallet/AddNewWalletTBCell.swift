@@ -10,14 +10,8 @@ import Foundation
 
 class AddNewWalletTBCell: UITableViewCell {
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.selectionStyle = .none
     }
-    
-    
-    
     
 }

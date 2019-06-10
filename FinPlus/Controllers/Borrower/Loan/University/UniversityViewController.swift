@@ -30,11 +30,9 @@ class UniversityViewController: BaseViewController {
     
     var delegateUniversity: UniversitySelectionDelegate?
     
-    var isSearch: Bool = false {
-        
+    var isSearch = false {
         didSet {
             guard !self.isSearch else { return }
-            
             self.view.endEditing(true)
             self.dataSourceTemp = self.dataSource
         }
@@ -42,14 +40,10 @@ class UniversityViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.mainTableView.tableFooterView = UIView()
-        
         self.getDataUniversityFromJSON()
-        
         let toolbar = UIToolbar()
-        let nextButtonItem = UIBarButtonItem(title: NSLocalizedString("Xong",
-                                                                      comment: ""),
+        let nextButtonItem = UIBarButtonItem(title: NSLocalizedString("Xong", comment: ""),
                                              style: .done,
                                              target: self,
                                              action: #selector(doneAction))
@@ -72,24 +66,17 @@ class UniversityViewController: BaseViewController {
                 if let jsonResult = jsonResult as? [Any] {
                     // do stuff
                     var list: [UniversityModel] = []
-                    
                     jsonResult.forEach({ (data) in
                         let university = UniversityModel(object: data)
                         list.append(university)
                     })
-                    
                     self.dataSource = list
-                    
                 }
             } catch {
                 // handle error
             }
         }
     }
-    
-    
-    
-    
     
 }
 
@@ -102,29 +89,22 @@ extension UniversityViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Address_First_TB_Cell", for: indexPath) as! AddressFirstTBCell
-        
-        let model = self.dataSourceTemp[indexPath.row]
-        cell.lblTitleCell.text = model.name!
-        
+        cell.lblTitleCell.text = self.dataSourceTemp[indexPath.row].name
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
         self.delegateUniversity?.universitySelected(model: self.dataSourceTemp[indexPath.row])
         self.navigationController?.popViewController(animated: true)
-        
     }
     
 }
-
 
 //MARK: UISearchBarDelegate
 extension UniversityViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         if searchText.length() > 0 {
             //self.searchBar.showsCancelButton = true
             self.dataSourceTemp = self.dataSource.filter({ (model) -> Bool in
@@ -152,6 +132,4 @@ extension UniversityViewController: UISearchBarDelegate {
         self.isSearch = false
     }
     
-    
 }
-

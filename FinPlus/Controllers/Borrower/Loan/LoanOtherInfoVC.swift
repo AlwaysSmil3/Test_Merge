@@ -8,16 +8,13 @@
 
 import Foundation
 
-
 class LoanOtherInfoVC: LoanBaseViewController {
-    
     
     var currentSelectedCollection: IndexPath?
     
     override func viewDidLoad() {
         self.index = 3
         super.viewDidLoad()
-        
         self.currentStep = 5
         //self.updateDataToServer()
         
@@ -26,15 +23,12 @@ class LoanOtherInfoVC: LoanBaseViewController {
         }
         
         self.configTextMesseageView()
-        
         self.initLoanCate()
-        
         self.mainTBView?.showsVerticalScrollIndicator = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,15 +36,11 @@ class LoanOtherInfoVC: LoanBaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: Notification.Name.UIKeyboardWillShow, object: nil)
     }
     
-    
     /// check input with field is Required
-    ///
-    /// - Returns: <#return value description#>
     private func checkIsReqruiedOptionalText() -> Bool {
         guard let builder = self.loanCate?.builders, builder.count > 3, let listField = builder[3].fieldsDisplay else { return true }
         
         for (index, text) in DataManager.shared.loanInfo.optionalText.enumerated() {
-
             if text.count == 0 {
                 for fi in listField {
                     if fi.id == "optionalText", let arrayIndex = fi.arrayIndex, arrayIndex == index, fi.isRequired == true {
@@ -58,20 +48,15 @@ class LoanOtherInfoVC: LoanBaseViewController {
                     }
                 }
             }
-            
         }
         return true
     }
     
-    
     /// check input with field is Required
-    ///
-    /// - Returns: <#return value description#>
     private func checkIsReqruiedOptionalMedia() -> Bool {
         guard let builder = self.loanCate?.builders, builder.count > 3, let listField = builder[3].fieldsDisplay else { return true }
                 
         for (index, media) in DataManager.shared.loanInfo.optionalMedia.enumerated() {
-
             if media.count == 0 {
                 for fi in listField {
                     if fi.id == "optionalMedia", let arrayIndex = fi.arrayIndex, arrayIndex == index, fi.isRequired == true {
@@ -102,10 +87,7 @@ class LoanOtherInfoVC: LoanBaseViewController {
             return
         }
         
-        
         completion()
-        
-        
     }
     
     //MARK: ACtions
@@ -139,16 +121,11 @@ class LoanOtherInfoVC: LoanBaseViewController {
     
 }
 
-
 //MARK: UICollection View Delegate Flow Layout
 extension LoanOtherInfoVC: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let width = (BOUND_SCREEN.size.width - 32) / 3
         return CGSize(width: width, height: width)
     }
     
 }
-
-

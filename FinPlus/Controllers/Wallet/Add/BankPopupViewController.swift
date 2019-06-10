@@ -14,7 +14,6 @@ protocol BankPopupSelectedProtocol: class {
 
 class BankPopupViewController: BasePopup {
     
-    
     @IBOutlet weak var mainTBView: UITableView!
     
     /// Cell đang chọn
@@ -36,22 +35,18 @@ class BankPopupViewController: BasePopup {
         } else {
             self.getBanks()
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.scrollToSelection()
         }
-        
     }
     
     private func getBanks() {
-        
         APIClient.shared.getBanks()
-            .done(on: DispatchQueue.main) { [weak self]model in
+            .done(on: DispatchQueue.main) { [weak self] model in
                 guard model.count > 0 else { return }
                 self?.dataSource.append(contentsOf: model)
                 self?.mainTBView.reloadData()
@@ -59,7 +54,6 @@ class BankPopupViewController: BasePopup {
                 DataManager.shared.listBankData = model
             }
             .catch { error in }
-        
     }
     
     func scrollToSelection() {
@@ -86,7 +80,6 @@ class BankPopupViewController: BasePopup {
         }
     }
     
-    
 }
 
 extension BankPopupViewController: UITableViewDelegate, UITableViewDataSource {
@@ -94,7 +87,6 @@ extension BankPopupViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataSource.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BankPopupTBCell", for: indexPath) as! BankPopupTBCell
@@ -105,18 +97,14 @@ extension BankPopupViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
         cell.iconSelected?.image = #imageLiteral(resourceName: "ic_radio_on")
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if self.currentIndex != indexPath.row {
             self.currentIndex = indexPath.row
             self.mainTBView.reloadData()
         }
-        
-        
     }
     
 }

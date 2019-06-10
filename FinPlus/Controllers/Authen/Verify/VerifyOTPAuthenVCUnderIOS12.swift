@@ -15,13 +15,13 @@ class VerifyOTPAuthenVCUnderIOS12: BaseViewController {
     @IBOutlet weak var resendCodeBtn: UIButton!
     @IBOutlet var lblLimitTime: UILabel!
     @IBOutlet var pinCodeTextField: PinCodeTextField!
-    var verifyType: VerifyType = .Login
     
+    var verifyType: VerifyType = .Login
     var loanId: Int32!
     var noteId: Int!
     var account = ""
     var timer = Timer()
-    var otp: String = ""
+    var otp = ""
     
     //Cho Tạo Loan
     var loanResponseModel: LoanResponseModel?
@@ -29,24 +29,17 @@ class VerifyOTPAuthenVCUnderIOS12: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.setupPinView()
-        
         appDelegate.timer.invalidate()
         if verifyType != .Login && verifyType != .SignContract && verifyType != .Loan {
             appDelegate.timeCount = 0
         }
         self.lblLimitTime.text = "\(60 - appDelegate.timeCount) " + "giây"
-        
-        
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        
         self.timer.invalidate()
         appDelegate.createTimer()
     }
@@ -78,7 +71,7 @@ class VerifyOTPAuthenVCUnderIOS12: BaseViewController {
             return
         }
         
-        if (60 - appDelegate.timeCount) < 15 {
+        if 60 - appDelegate.timeCount < 15 {
             //Gần hết time đổi màu
             self.lblLimitTime.textColor = UIColor(red: 255/255, green: 81/255, blue: 88/255, alpha: 1)
         } else {
@@ -96,7 +89,6 @@ class VerifyOTPAuthenVCUnderIOS12: BaseViewController {
         self.resendCodeBtn.isHidden = true
         appDelegate.timeCount = 0
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-        
         self.clearOTP()
     }
     
@@ -111,7 +103,6 @@ class VerifyOTPAuthenVCUnderIOS12: BaseViewController {
         APIClient.shared.getLoanOTP(loanID: DataManager.shared.loanID ?? 0)
             .done(on: DispatchQueue.main) { [weak self] model in
                 self?.updateOTP()
-                
             }
             .catch { error in }
     }
@@ -126,27 +117,16 @@ class VerifyOTPAuthenVCUnderIOS12: BaseViewController {
         switch verifyType {
         case .Login:
             self.getAuthenOTP()
-            break
-            
         case .SignContract:
             self.getSignContractOTP()
-            
-            break
         case .Loan:
             self.getOTPLoan()
-            
-            break
         case .RegisInvest:
             self.resendInvestCode()
-            break
         case .Forgot:
             //Quen mat khau
             self.getOTPForgetPass()
-            
-            break
-            
         }
-        
     }
     
     //Gui yeu cau gui lai otp login, register
@@ -157,9 +137,7 @@ class VerifyOTPAuthenVCUnderIOS12: BaseViewController {
                 self?.updateOTP()
             }
             .catch { error in }
-        
     }
-    
     
     /// Gui yeu cau gui otp Ky hợp đồng
     private func getSignContractOTP() {
@@ -170,9 +148,7 @@ class VerifyOTPAuthenVCUnderIOS12: BaseViewController {
                 self?.updateOTP()
             }
             .catch { error in }
-        
     }
-    
     
     /// Gửi yêu cầu gửi lại otp phần quên mật khẩu
     private func getOTPForgetPass() {
@@ -182,31 +158,28 @@ class VerifyOTPAuthenVCUnderIOS12: BaseViewController {
                 self?.updateOTP()
             }
             .catch { error in }
-        
-        
     }
-    
     
     func resendInvestCode() {
         if let loanId = self.loanId {
             if let noteId = self.noteId {
-                APIClient.shared.investLoanOTP(loanId: loanId, noteId: noteId).done { (model) in
-                    if let returnCode = model.returnCode, returnCode == 1 {
-                        self.showGreenBtnMessage(title: "Thành công", message: "OTP đã được gửi lại thành công.", okTitle: "OK", cancelTitle: nil)
-                    } else {
-                        if let returnMsg = model.returnMsg {
-                            self.showGreenBtnMessage(title: "Thất bại", message: returnMsg, okTitle: "OK", cancelTitle: nil)
+                APIClient.shared.investLoanOTP(loanId: loanId, noteId: noteId)
+                    .done { (model) in
+                        if let returnCode = model.returnCode, returnCode == 1 {
+                            self.showGreenBtnMessage(title: "Thành công", message: "OTP đã được gửi lại thành công.", okTitle: "OK", cancelTitle: nil)
                         } else {
-                            self.showGreenBtnMessage(title: "Thất bại", message: API_MESSAGE.OTHER_ERROR, okTitle: "OK", cancelTitle: nil)
+                            if let returnMsg = model.returnMsg {
+                                self.showGreenBtnMessage(title: "Thất bại", message: returnMsg, okTitle: "OK", cancelTitle: nil)
+                            } else {
+                                self.showGreenBtnMessage(title: "Thất bại", message: API_MESSAGE.OTHER_ERROR, okTitle: "OK", cancelTitle: nil)
+                            }
                         }
-                    }
                     }
                     .catch { (error) in
                         self.showGreenBtnMessage(title: "Thất bại", message: API_MESSAGE.OTHER_ERROR, okTitle: "OK", cancelTitle: nil)
                 }
             }
         }
-        
     }
     
     //MARK: Verify Loan
@@ -215,11 +188,9 @@ class VerifyOTPAuthenVCUnderIOS12: BaseViewController {
             .done(on: DispatchQueue.main) { [weak self] model in
                 let successVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSendSuccessVC") as! LoanSendSuccessVC
                 self?.navigationController?.pushViewController(successVC, animated: true)
-                
             }
             .catch { error in }
     }
-    
     
     @IBAction func btnVerifyTapped(_ sender: Any) {
         switch verifyType {
@@ -239,7 +210,6 @@ class VerifyOTPAuthenVCUnderIOS12: BaseViewController {
                         self?.showGreenBtnMessage(title: "Lỗi", message: returnMessage, okTitle: "Đồng ý", cancelTitle: nil)
                         return
                     } else {
-                        
                         guard let isNew = model.data?.isNew, isNew else {
                             // Nếu là tài khoản cũ -> sang login
                             // save account
@@ -253,28 +223,18 @@ class VerifyOTPAuthenVCUnderIOS12: BaseViewController {
                         self?.pushToSetPassword()
                     }
                 }
-                .catch { error in}
-            break
-            
+                .catch { error in }
         case .SignContract:
             verifyOTPSignContract()
-            
-            break
         case .Loan:
             self.verifyOTPLoan()
-            
-            break
         case .RegisInvest:
             print("Register Inves")
             // call to api check OTP
             // success
             break
-            
         case .Forgot:
             self.verifyOTPForgotPass()
-            
-            break
-            
         }
         
         self.clearOTP()
@@ -296,7 +256,7 @@ class VerifyOTPAuthenVCUnderIOS12: BaseViewController {
                 updatePassVC.setPassOrResetPass = .ResetPass
                 self?.navigationController?.pushViewController(updatePassVC, animated: true)
             }
-            .catch { error in}
+            .catch { error in }
     }
     
     //MARK: Verify sign contract
@@ -315,6 +275,7 @@ class VerifyOTPAuthenVCUnderIOS12: BaseViewController {
         let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         self.navigationController?.pushViewController(loginVC, animated: true)
     }
+    
     func pushToSetPassword() {
         let updatePassVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "SetPassAuthenVC") as! SetPassAuthenVC
         updatePassVC.setPassOrResetPass = .SetPass
@@ -347,7 +308,6 @@ extension VerifyOTPAuthenVCUnderIOS12: PinCodeTextFieldDelegate {
             self.btnContinue!.dropShadow(color: DISABLE_BUTTON_COLOR)
             self.btnContinue!.isEnabled = false
         }
-        
     }
     
     func textFieldShouldEndEditing(_ textField: PinCodeTextField) -> Bool {

@@ -16,10 +16,8 @@ extension VerifyOTPAuthenVC {
             .done(on: DispatchQueue.main) { [weak self] model in
                 let successVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSendSuccessVC") as! LoanSendSuccessVC
                 self?.navigationController?.pushViewController(successVC, animated: true)
-                
             }
             .catch { error in }
     }
     
-   
 }

@@ -18,17 +18,12 @@ class LoanSocialInfoViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tableView.register(UINib(nibName: "LoanTypeSocialTBCell", bundle: nil), forCellReuseIdentifier: "LoanTypeSocialTBCell")
         self.tableView.register(UINib(nibName: "LoanTypeFooterTBView", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.Footer)
-        
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        
         self.tableView.separatorColor = UIColor.clear
         self.tableView.tableFooterView = UIView()
-        
         self.updateDataLoan()
-        
     }
     
     // Pasre Facebook Data Info
@@ -55,7 +50,6 @@ class LoanSocialInfoViewController: BaseViewController {
         }
         
         self.faceBookInfo = FacebookInfo(accessToken: accessToken, fullName: fullName, avatar: avatar, facebookId: facebookId)
-        
     }
     
     private func facebookSignIn() {
@@ -73,21 +67,15 @@ class LoanSocialInfoViewController: BaseViewController {
                 
                 APIClient.shared.updateInfoFromFacebook(phoneNumber: DataManager.shared.currentAccount, accessToken: fbInfo.accessToken, avatar: fbInfo.avatar, displayName: fbInfo.fullName, facebookId: fbInfo.facebookId)
                     .done(on: DispatchQueue.main) { data in
-                        
                         DataManager.shared.userID = data.id!
-
                         //Lay thong tin nguoi dung
                         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
                             .done(on: DispatchQueue.main) { model in
                                 DataManager.shared.browwerInfo = model
                             }
                             .catch { error in }
-                        
                     }
-                    .catch { error in
-                        
-                }
-                
+                    .catch { error in }
             } else {
                 print(error!)
             }
@@ -112,13 +100,8 @@ class LoanSocialInfoViewController: BaseViewController {
         }
         
         let loanSummaryInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanSummaryInfoVC") as! LoanSummaryInfoVC
-        
         self.navigationController?.pushViewController(loanSummaryInfoVC, animated: true)
-        
     }
-    
-    
-    
     
 }
 
@@ -131,17 +114,12 @@ extension LoanSocialInfoViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LoanTypeSocialTBCell", for: indexPath) as! LoanTypeSocialTBCell
-            
             cell.socialData = self.faceBookInfo
-            
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.Footer, for: indexPath) as! LoanTypeFooterTBView
-        
         cell.lblDesciption?.text = "Chúng tôi cam kết không sử dụng các thông tin Facebook của bạn vào mục đích gì khác ngoài việc xác thực thông tin cá nhân."
-        
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -149,7 +127,5 @@ extension LoanSocialInfoViewController: UITableViewDelegate, UITableViewDataSour
             self.facebookSignIn()
         }
     }
-    
-    
     
 }

@@ -14,11 +14,13 @@ public enum PayHistoryItemStatus: Int {
     case NeedToPayNow
     case Paid
 }
+
 public class PayHistoryItem {
     var time: Int
     var payDate : Date
     var status: PayHistoryItemStatus
     var amount: Float
+    
     init(time: Int, payDate: Date, status: PayHistoryItemStatus, amount: Float) {
         self.time = time
         self.payDate = payDate
@@ -29,6 +31,7 @@ public class PayHistoryItem {
 
 class TestPayHistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
+    
     var payHistoryData = [CollectionPay]() {
         didSet {
             self.tableView.reloadData()
@@ -37,12 +40,7 @@ class TestPayHistoryViewController: UIViewController, UITableViewDataSource, UIT
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
         tableView.registerNibCell(type: PayHistoryTableViewCell.self)
-        //self.updateData()
-        // Do any additional setup after loading the view.
-        
         self.getCollections()
     }
 
@@ -62,18 +60,13 @@ class TestPayHistoryViewController: UIViewController, UITableViewDataSource, UIT
         self.navigationController?.popViewController(animated: true)
     }
 
-    
-    
     private func getCollections() {
         APIClient.shared.getCollections()
             .done(on: DispatchQueue.main) { model in
-                
                 self.payHistoryData = model
-                
             }
             .catch { error in }
     }
-    
     
     //MARK: UITableViewDelegate, UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -98,14 +91,5 @@ class TestPayHistoryViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

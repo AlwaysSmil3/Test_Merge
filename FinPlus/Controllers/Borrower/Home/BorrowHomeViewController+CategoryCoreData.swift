@@ -49,14 +49,11 @@ extension BorrowHomeViewController {
             } catch let error as NSError {
                 print(error)
             }
-
         }
         
         // Cập nhật dữ liệu mới
         for data in DataManager.shared.loanCategories {
-            
             let categoryEntity = NSManagedObject(entity: entity!, insertInto: self.managedContext)
-            
             categoryEntity.setValue(data.id, forKey: CDLoanCategoryID)
             categoryEntity.setValue(data.title, forKey: CDLoanCategoryTitle)
             categoryEntity.setValue(data.descriptionValue, forKey: CDLoanCategoryDescription)
@@ -74,9 +71,5 @@ extension BorrowHomeViewController {
             }
         }
     }
-    
-    
-    
-    
     
 }

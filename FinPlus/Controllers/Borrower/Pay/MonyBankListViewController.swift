@@ -9,20 +9,18 @@
 import UIKit
 
 class MonyBankListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var bankList = [MonyBankAccount]()
-    var bankSelected : MonyBankAccount?
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var payBtn: UIButton!
     @IBOutlet weak var titleLb: UILabel!
     
+    var bankList = [MonyBankAccount]()
+    var bankSelected : MonyBankAccount?
     var amount: Double = 0
     var isTotalPayed: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.allowsSelection = false
         self.title = "Chuyển khoản/tiền mặt"
         let leftBtnBar = UIButton(type: .custom)
         leftBtnBar.frame = CGRect(x: 0, y: 0, width: 44, height: 36)
@@ -46,19 +44,15 @@ class MonyBankListViewController: UIViewController, UITableViewDelegate, UITable
             navi.navigationBar.shadowImage = UIImage()
         }
         
-        
         // add left button
         self.tableView.registerNibCell(type: MonyBankTableViewCell.self)
         self.createBankList()
-        
-        // Do any additional setup after loading the view.
     }
     
     @objc func backAction() {
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.popViewController(animated: true)
     }
-    
     
     func createBankList() {
         self.bankList.removeAll()
@@ -76,7 +70,6 @@ class MonyBankListViewController: UIViewController, UITableViewDelegate, UITable
         //self.bankList.append(agribank)
         self.bankList.append(vietinbank)
         //self.bankList.append(vietcombank)
-        
         
         self.tableView.reloadData()
     }
@@ -126,17 +119,5 @@ class MonyBankListViewController: UIViewController, UITableViewDelegate, UITable
         ////        self.present(successVC, animated: true, completion: nil)
         //        self.navigationController?.pushViewController(successVC, animated: true)
     }
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

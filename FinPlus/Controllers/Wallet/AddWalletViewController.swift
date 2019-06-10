@@ -28,16 +28,13 @@ class AddWalletViewController: UIViewController {
     
     //CaoHai tra ve du lieu bank khi chon bank
     var delegate: BankDataDelegate?
-    
     var wallet: AccountBank?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         self.accTextField.delegate = self
@@ -87,18 +84,15 @@ class AddWalletViewController: UIViewController {
         btnMomo.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         btnMomo.setTitle("Ví MoMo", for: .normal)
     
-        
         nameTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         nameTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_SMALL)
         
         accTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         accTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_SMALL)
         
-        
         self.title = "Thêm tài khoản ngân hàng"
         
-        if (wallet != nil)
-        {
+        if wallet != nil {
             self.rightBarBtn.title = "Lưu"
             
             self.leftBarBtn.image = nil
@@ -109,23 +103,20 @@ class AddWalletViewController: UIViewController {
             nameTextField.text = wallet!.accountBankName
             accTextField.text = wallet!.accountBankNumber
             
-            switch(BankName(rawValue: wallet!.bankType!))
-            {
-            case .Vietcombank?: setBorderColor(button: vcbBtn, isSelect: true)
-            case .Viettinbank?: setBorderColor(button: viettinBtn, isSelect: true)
-            case .Techcombank?: setBorderColor(button: techBtn, isSelect: true)
-            case .Agribank?: setBorderColor(button: agriBtn, isSelect: true)
-            case .ViettelPay?:
-                //setBorderColor(button: viettelPayBtn, isSelect: true)
-                break
-            case .Momo?: setBorderColor(button: btnMomo, isSelect: true)
-            case .Bidv?: setBorderColor(button: btnBidv, isSelect: true)
-            case .none:
-                break
+            switch(BankName(rawValue: wallet!.bankType!)) {
+                case .Vietcombank?: setBorderColor(button: vcbBtn, isSelect: true)
+                case .Viettinbank?: setBorderColor(button: viettinBtn, isSelect: true)
+                case .Techcombank?: setBorderColor(button: techBtn, isSelect: true)
+                case .Agribank?: setBorderColor(button: agriBtn, isSelect: true)
+                case .ViettelPay?:
+                    //setBorderColor(button: viettelPayBtn, isSelect: true)
+                    break
+                case .Momo?: setBorderColor(button: btnMomo, isSelect: true)
+                case .Bidv?: setBorderColor(button: btnBidv, isSelect: true)
+                case .none:
+                    break
             }
-        }
-        else
-        {
+        } else {
             self.vcbBtn_selected(sender: self.vcbBtn)
         }
     }
@@ -145,39 +136,33 @@ class AddWalletViewController: UIViewController {
     
     func addNewBank() {
         
-        if ((self.nameTextField.text?.length())! < 1)
-        {
+        if self.nameTextField.text?.count == 0 {
             self.showAlertView(title: "Thông báo", message: "Bạn chưa điền thông tin họ và tên", okTitle: "Đồng ý", cancelTitle: nil)
             self.nameTextField.becomeFirstResponder()
             return
         }
         
-        if ((self.accTextField.text?.length())! < 1)
-        {
+        if self.accTextField.text?.count == 0 {
             self.showAlertView(title: "Thông báo", message: "Bạn chưa điền số tài khoản", okTitle: "Đồng ý", cancelTitle: nil)
             self.accTextField.becomeFirstResponder()
             return
         }
         
-        if self.accTextField.text!.count < 9 {
+        if self.accTextField.text?.count ?? 0 < 9 {
             self.showToastWithMessage(message: "Số tài khoản từ 9 -> 15 ký tự")
             self.accTextField.becomeFirstResponder()
             return
         }
         
-        
         var bankName = ""
         
         if self.vcbBtn.isSelected {
             bankName = "Vietcombank"
-        }
-        else if self.viettinBtn.isSelected {
+        } else if self.viettinBtn.isSelected {
             bankName = "Vietinbank"
-        }
-        else if self.techBtn.isSelected {
+        } else if self.techBtn.isSelected {
             bankName = "Techcombank"
-        }
-        else if self.agriBtn.isSelected {
+        } else if self.agriBtn.isSelected {
             bankName = "Agribank"
         }
 //        else if self.viettelPayBtn.isSelected {
@@ -201,14 +186,11 @@ class AddWalletViewController: UIViewController {
         } else {
             self.addBank(params: params)
         }
-        
     }
     
     private func addBank(params: JSONDictionary) {
-        
         APIClient.shared.addNewBank(uId: DataManager.shared.userID, params: params)
-            .done(on: DispatchQueue.main) { [weak self]model in
-                
+            .done(on: DispatchQueue.main) { [weak self] model in
                 guard let code = model.returnCode, code > 0 else {
                     self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg!, okTitle: "OK", cancelTitle: nil)
                     return
@@ -218,24 +200,23 @@ class AddWalletViewController: UIViewController {
                     self?.delegate?.isReloadBankData(isReload: true, newAccountNumber: accountNumber)
                     self?.navigationController?.popViewController(animated: true)
                 }
-                
             }
             .catch { error in
+                print("error API addNewBank")
         }
     }
     
     private func updateBank(bankId: Int32, params: JSONDictionary) {
         APIClient.shared.updateBankAccount(bankAccountID: bankId, params: params)
-            .done(on: DispatchQueue.main) { [weak self]model in
-                
+            .done(on: DispatchQueue.main) { [weak self] model in
                 self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg!, okTitle: "OK", cancelTitle: "Cancel", completion: { (status) in
                     self?.navigationController?.popToRootViewController(animated: true)
                 })
-
             }
-            .catch { error in }
+            .catch { error in
+                print("error API updateBankAccount")
+        }
     }
-    
     
     //MARK: Actions
     @IBAction func navi_cancel(sender: UIButton) {
@@ -246,8 +227,7 @@ class AddWalletViewController: UIViewController {
         self.addNewBank()
     }
     
-    @IBAction func vcbBtn_selected(sender: UIButton)
-    {
+    @IBAction func vcbBtn_selected(sender: UIButton) {
         setBorderColor(button: vcbBtn, isSelect: true)
         setBorderColor(button: viettinBtn, isSelect: false)
         setBorderColor(button: techBtn, isSelect: false)
@@ -256,8 +236,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: btnMomo, isSelect: false)
     }
     
-    @IBAction func viettinBtn_selected(sender: UIButton)
-    {
+    @IBAction func viettinBtn_selected(sender: UIButton) {
         setBorderColor(button: vcbBtn, isSelect: false)
         setBorderColor(button: viettinBtn, isSelect: true)
         setBorderColor(button: techBtn, isSelect: false)
@@ -267,8 +246,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: btnBidv, isSelect: false)
     }
     
-    @IBAction func techBtn_selected(sender: UIButton)
-    {
+    @IBAction func techBtn_selected(sender: UIButton) {
         setBorderColor(button: vcbBtn, isSelect: false)
         setBorderColor(button: viettinBtn, isSelect: false)
         setBorderColor(button: techBtn, isSelect: true)
@@ -278,8 +256,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: btnBidv, isSelect: false)
     }
     
-    @IBAction func agriBtn_selected(sender: UIButton)
-    {
+    @IBAction func agriBtn_selected(sender: UIButton) {
         setBorderColor(button: vcbBtn, isSelect: false)
         setBorderColor(button: viettinBtn, isSelect: false)
         setBorderColor(button: techBtn, isSelect: false)
@@ -288,6 +265,7 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: btnMomo, isSelect: false)
         setBorderColor(button: btnBidv, isSelect: false)
     }
+    
     @IBAction func viettelPayBtn_Selected(_ sender: Any) {
         setBorderColor(button: vcbBtn, isSelect: false)
         setBorderColor(button: viettinBtn, isSelect: false)
@@ -318,16 +296,12 @@ class AddWalletViewController: UIViewController {
         setBorderColor(button: btnBidv, isSelect: true)
     }
     
-    
     func setBorderColor(button: UIButton, isSelect: Bool) {
-        if (isSelect)
-        {
+        if isSelect {
             self.nameTextField.placeholder = "Họ và tên tài khoản \(button.title(for: .normal) ?? "")"
             button.layer.borderColor = MAIN_COLOR.cgColor
             button.isSelected = true
-        }
-        else
-        {
+        } else {
             button.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
             button.isSelected = false
         }
@@ -339,25 +313,15 @@ class AddWalletViewController: UIViewController {
 extension AddWalletViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Giới hạn ký tự nhập vào
-        var maxLength = 15
-        
-        if textField == self.nameTextField {
-            maxLength = 50
-        }
-        
-        let currentString: NSString = textField.text! as NSString
-        let newString: NSString =
-            currentString.replacingCharacters(in: range, with: string) as NSString
-        
-        if newString.length > maxLength { return false }
-        
-        return true
+        let maxLength = textField == self.nameTextField ? 50 : 15
+        guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+        return newLength <= maxLength
     }
 }
 
 extension AddWalletViewController: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        
         return true
     }
 }

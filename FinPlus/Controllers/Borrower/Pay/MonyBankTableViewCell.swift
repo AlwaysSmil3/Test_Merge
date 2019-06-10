@@ -16,9 +16,11 @@ class MonyBankAccount {
     var bankUsername : String?
     var amount : Double = 0
     var content : String?
+    
     init() {
         
     }
+    
     init(bankType : Int, bankName: String, bankNameDetail : String, bankNumber: String, bankUsername : String, amount : Double, content : String) {
         self.bankType = bankType
         self.bankName = bankName
@@ -31,7 +33,6 @@ class MonyBankAccount {
 }
 
 class MonyBankTableViewCell: UITableViewCell {
-    var bankData : MonyBankAccount!
     
     @IBOutlet weak var containView: UIView!
     @IBOutlet weak var contentLb: UILabel!
@@ -41,13 +42,14 @@ class MonyBankTableViewCell: UITableViewCell {
     @IBOutlet weak var bankNameDetailLb: UILabel!
     @IBOutlet weak var bankIcon: UIImageView!
     @IBOutlet weak var bankNameLb: UILabel!
+    
+    var bankData : MonyBankAccount!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.selectionStyle = .none
         containView.layer.borderWidth = 1
         containView.layer.cornerRadius = 5
         containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
-        // Initialization code
     }
     
     func updateCellView() {
@@ -69,7 +71,7 @@ class MonyBankTableViewCell: UITableViewCell {
         self.bankUsernameLb.text = bankData.bankUsername
         self.amountLb.text = FinPlusHelper.formatDisplayCurrency(bankData.amount) + "đ"
         self.contentLb.text = bankData.content
-        if self.isSelected == true {
+        if self.isSelected {
             containView.layer.borderColor = UIColor(hexString: "#3BAB63").cgColor
         } else {
             containView.layer.borderColor = UIColor(hexString: "#E3EBF0").cgColor
@@ -81,8 +83,6 @@ class MonyBankTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    
-    //MARK: Actions
     
     @IBAction func btnCopyBankNameTapped(_ sender: Any) {
         UIPasteboard.general.string = bankData.bankNameDetail
@@ -113,7 +113,5 @@ class MonyBankTableViewCell: UITableViewCell {
         guard let topVC = UIApplication.shared.topViewController() else { return }
         topVC.showToastWithMessage(message: "Đã copy thông tin ra clipboard.")
     }
-    
-    
     
 }

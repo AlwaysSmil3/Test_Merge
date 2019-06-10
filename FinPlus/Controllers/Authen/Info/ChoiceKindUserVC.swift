@@ -15,7 +15,6 @@ enum TypeAccount: Int {
     case Investor
 }
 
-
 class ChoiceKindUserVC: BaseViewController {
     
     @IBOutlet var browView: UIView!
@@ -24,8 +23,6 @@ class ChoiceKindUserVC: BaseViewController {
     @IBOutlet var lblBrow2: UILabel!
     @IBOutlet var lblBrow3: UILabel!
     @IBOutlet var imgGrowth: UIImageView!
-    
-    
     @IBOutlet var investView: UIView!
     @IBOutlet var imgBgInvest: UIImageView!
     @IBOutlet var lblInvest1: UILabel!
@@ -33,33 +30,24 @@ class ChoiceKindUserVC: BaseViewController {
     @IBOutlet var lblInvest3: UILabel!
     @IBOutlet var imgGrowth1: UIImageView!
     
-    
     // facebook Info
     var faceBookInfo: FacebookInfo?
-    
-    var pw: String = ""
+    var pw = ""
     
     // Loại user: Browwer hay Investor, browwer = 0, investor = 1
     var accountType: TypeAccount? {
         didSet {
             self.updateUIForSelectedType()
         }
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.browView.dropShadow(color: DROP_SHADOW_COLOR)
         self.browView.layer.cornerRadius = 5
         self.investView.dropShadow(color: DROP_SHADOW_COLOR)
         self.investView.layer.cornerRadius = 5
-        
         self.accountType = .Browwer
-    }
-    
-    override func viewDidLayoutSubviews() {
-        
     }
     
     private func updateUIForSelectedType() {
@@ -80,7 +68,6 @@ class ChoiceKindUserVC: BaseViewController {
             self.lblInvest3.textColor = UIColor(hexString: "#3EAA5F")
             self.investView.dropShadow(color: DROP_SHADOW_COLOR)
             self.imgGrowth1.image = #imageLiteral(resourceName: "ic_growth1")
-            
         } else {
             self.imgBgBrow.image = #imageLiteral(resourceName: "img_bg_growth1")
             self.lblBrow1.textColor = UIColor(hexString: "#08121E")
@@ -108,20 +95,12 @@ class ChoiceKindUserVC: BaseViewController {
                 APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
                     .done(on: DispatchQueue.main) { model in
                         DataManager.shared.browwerInfo = model
-                        
                         let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-                        
-                        self?.navigationController?.present(tabbarVC, animated: true, completion: {
-                            
-                        })
+                        self?.navigationController?.present(tabbarVC, animated: true, completion: nil)
                     }
                     .catch { error in }
-                
             }
-            .catch { error in
-                
-        }
-        
+            .catch { error in }
     }
     
     // MARK Actions
@@ -131,17 +110,9 @@ class ChoiceKindUserVC: BaseViewController {
         if self.accountType != .Investor {
             self.accountType = .Investor
         }
-
         //var mess = "Bạn sẽ được chuyển sang app phiên bản bên cho vay. Bạn có chắc chắn không?"
-        self.showGreenBtnMessage(title: "Chuyển app", message: "Phiên bản cho bên cho vay đang được phát triển. Vui lòng thử lại sau.", okTitle: "Đóng", cancelTitle: nil, completion: { (status) in
-            if status {
-               //self.gotoAppInvestor()
-                
-            }
-        })
-
+        self.showGreenBtnMessage(title: "Chuyển app", message: "Phiên bản cho bên cho vay đang được phát triển. Vui lòng thử lại sau.", okTitle: "Đóng", cancelTitle: nil, completion: nil)
     }
-    
     
     @IBAction func btnBrowwerSelectedTapped(_ sender: Any) {
         
@@ -153,15 +124,12 @@ class ChoiceKindUserVC: BaseViewController {
             self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Bạn chắc chắn muốn trở thành người vay tiền?", okTitle: "Đồng ý", cancelTitle: "Huỷ bỏ", completion: { (status) in
                 if status {
                     self.updateUserInfo()
-                    
                 }
             })
         }
         
         guard self.accountType != .Browwer else { return }
         self.accountType = .Browwer
-    
     }
 
-    
 }

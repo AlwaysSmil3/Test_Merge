@@ -14,8 +14,6 @@ class LoanTypeFooterTBView: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.selectionStyle = .none
     }
     
 }

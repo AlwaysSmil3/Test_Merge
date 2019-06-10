@@ -20,7 +20,6 @@ class WalletTableViewCell: UITableViewCell {
     @IBOutlet weak var optionBtn: UIButton!
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var hiddenCharLabel: UILabel?
-    
     @IBOutlet weak var lblVerified: UILabel?
     @IBOutlet var nameLabelCenterYConstraint: NSLayoutConstraint!
     
@@ -51,6 +50,5 @@ class WalletTableViewCell: UITableViewCell {
         guard let index = self.currentIndex else { return }
         self.delegate?.editWallet(index: index)
     }
-    
     
 }

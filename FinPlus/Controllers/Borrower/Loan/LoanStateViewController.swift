@@ -27,14 +27,11 @@ class LoanStateViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView?
     @IBOutlet weak var containerView: UIView?
     @IBOutlet weak var headerTableView: UITableView?
-    
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var dataTableView: UITableView?
-    
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var btnBottomView: UIButton!
     @IBOutlet weak var labelBottomView: UILabel!
-    
     @IBOutlet weak var dataTableViewHeightConstraint: NSLayoutConstraint?
     @IBOutlet weak var headerTableViewHeightConstraint: NSLayoutConstraint?
     
@@ -53,13 +50,12 @@ class LoanStateViewController: UIViewController {
     var bottom_state: BOTTOM_STATE!
     var userInfo: BrowwerInfo!
     
-    var isFromManagerLoan: Bool = false
+    var isFromManagerLoan = false
     var isFromManagerLoanLoanName: String?
     
     var paymentInfo: PaymentInfoMoney? {
         didSet {
-            guard let pay  = self.paymentInfo else { return }
-            
+            guard let pay = self.paymentInfo else { return }
             if let period = pay.paymentPeriod {
                 self.payAmountPresent = period.feeOverdue! + period.interest! + period.overdue! + period.principal! + period.borrowerManagingFee! + period.principalOverdue! + period.interestOverdue! + period.borrowerManagingFeeOverdue!
             }
@@ -78,7 +74,6 @@ class LoanStateViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         if let isNeedReload = DataManager.shared.isNeedReloadLoanStatusVC, isNeedReload {
             self.reLoadStatusLoanVC()
         }
@@ -86,15 +81,11 @@ class LoanStateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.shadowImage = UIImage()
 //        self.navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.85)
 
         self.getLoanCategories()
-        
         self.handleDataNoti()
-        
         let id = activeLoan?.status
         var isEnableFooterView = false
         self.userInfo = DataManager.shared.browwerInfo
@@ -130,11 +121,11 @@ class LoanStateViewController: UIViewController {
         var payMounthTitle = TitleAmountAboveAMounth
         var term = "\((loan.term ?? 0)/30) tháng"
         
-        if (loan.loanCategoryId == Loan_Student_Category_ID) && (loan.term ?? 0) <= 30 {
+        if loan.loanCategoryId == Loan_Student_Category_ID && loan.term ?? 0 <= 30 {
             payMounthTitle = TitleAmountUnderAMounth
             term = "\((loan.term ?? 0)) ngày"
         } else {
-            if (loan.term ?? 0) < 30 {
+            if loan.term ?? 0 < 30 {
                 payMounthTitle = TitleAmountUnderAMounth
                 term = "\((loan.term ?? 0)) ngày"
             }
@@ -165,7 +156,6 @@ class LoanStateViewController: UIViewController {
         //Số tiên thanh toán hàng tháng
         let payMounth = FinPlusHelper.CalculateMoneyPayMonth(month: Double(loan.amount ?? 0), term: Double((loan.term ?? 0)/30), rate: Double(rate))
         var payMounthString = FinPlusHelper.formatDisplayCurrency(payMounth) + "đ"
-        
         
         //Ngày tạo đơn
         var dateString = "Đang cập nhật"
@@ -319,7 +309,6 @@ class LoanStateViewController: UIViewController {
                     "subType": TextCellType.TitleType,
                     ],
             ]
-            
         }
         
         dataSource = [
@@ -877,7 +866,6 @@ class LoanStateViewController: UIViewController {
                             "target": "pushToPayHistoryVC"
                         ],
                     ]
-                    
                 }
                 
                 reloadDisbusal()
@@ -886,15 +874,9 @@ class LoanStateViewController: UIViewController {
                     updateFundedAmount()
                     reloadDisbusal()
                     self.addBankTotDataSource()
-                    
                     self.headerTableView?.reloadData()
                     self.dataTableView?.reloadData()
-                    
                 }
-                
-                
-                break
-                
             case .TIMELY_DEPT?:
                 //Nợ đúng hạn - 16
                 updateDisbursementDate()
@@ -941,7 +923,6 @@ class LoanStateViewController: UIViewController {
                         }
                     }
                     
-                    
                     self.headerData = [
                         [
                             "type": HeaderCellType.TextType,
@@ -967,18 +948,12 @@ class LoanStateViewController: UIViewController {
                 reloadTimelyDept()
                 
                 self.getPaymentInfo {
-                    
                     updateFundedAmount()
-                    
                     reloadTimelyDept()
                     self.addBankTotDataSource()
-                    
                     self.headerTableView?.reloadData()
                     self.dataTableView?.reloadData()
-                    
                 }
-                
-                
             case .OVERDUE_DEPT?:
                 //Nợ quá hạn - 15
                 updateDisbursementDate()
@@ -996,9 +971,7 @@ class LoanStateViewController: UIViewController {
                             let components = calendar.dateComponents([.day], from: date2, to: date1)
                             overDate = "\(components.day!)"
                         }
-                        
                     }
-                    
                     
                     dataSource = [
                         LoanSummaryModel(name: "Số điện thoại", value: DataManager.shared.currentAccount, attributed: nil),
@@ -1013,7 +986,6 @@ class LoanStateViewController: UIViewController {
                        // LoanSummaryModel(name: payMounthTitle, value: payMounthStringWithFunded, attributed: NSAttributedString(string: payMounthStringWithFunded, attributes: [NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)!])),
                         LoanSummaryModel(name: "Loại gói vay", value: titleCate, attributed: nil),
                     ]
-                    
                     
                     //let amountOvertime = FinPlusHelper.formatDisplayCurrency(self.getAmountDebtOvertime()) + "đ"
                     let amountOvertime = FinPlusHelper.formatDisplayCurrency(self.payAmountPresent) + "đ"
@@ -1051,12 +1023,9 @@ class LoanStateViewController: UIViewController {
                     updateFundedAmount()
                     reloadOverdueDept()
                     self.addBankTotDataSource()
-                    
                     self.headerTableView?.reloadData()
                     self.dataTableView?.reloadData()
                 }
-                
-                break
             case .SETTLED?:
                 //Khoản vay thanh toán thành công - 18
                 
@@ -1214,19 +1183,23 @@ class LoanStateViewController: UIViewController {
             self.initRefresher()
         }
         
-        let textCellNib = UINib(nibName: "TitleTableViewCell", bundle: nil)
-        self.headerTableView?.register(textCellNib, forCellReuseIdentifier: textIdentifier)
-        
-        let buttonCellNib = UINib(nibName: "ButtonTableViewCell", bundle: nil)
-        self.headerTableView?.register(buttonCellNib, forCellReuseIdentifier: buttonIdentifier)
+//        let textCellNib = UINib(nibName: "TitleTableViewCell", bundle: nil)
+//        self.headerTableView?.register(textCellNib, forCellReuseIdentifier: textIdentifier)
+//
+//        let buttonCellNib = UINib(nibName: "ButtonTableViewCell", bundle: nil)
+//        self.headerTableView?.register(buttonCellNib, forCellReuseIdentifier: buttonIdentifier)
         
         self.headerTableView?.tableFooterView = UIView()
         self.headerTableView?.estimatedRowHeight = 123
         self.headerTableView?.rowHeight = UITableViewAutomaticDimension
         self.headerTableView?.alwaysBounceVertical = false;
         
-        let cellNib = UINib(nibName: "DoubleTextTableViewCell", bundle: nil)
-        self.dataTableView?.register(cellNib, forCellReuseIdentifier: cellIdentifier)
+//        let cellNib = UINib(nibName: "DoubleTextTableViewCell", bundle: nil)
+//        self.dataTableView?.register(cellNib, forCellReuseIdentifier: cellIdentifier)
+        
+        headerTableView?.registerCell(TitleTableViewCell.className)
+        headerTableView?.registerCell(ButtonTableViewCell.className)
+        dataTableView?.registerCell(DoubleTextTableViewCell.className)
         
         if !isEnableFooterView {
             self.bottomView.isHidden = true
@@ -1347,18 +1320,12 @@ class LoanStateViewController: UIViewController {
     
     
     /// Convert Hour to Day
-    ///
-    /// - Parameter hour: <#hour description#>
-    /// - Returns: <#return value description#>
     private func convertHourToDay(hour: Int) -> Int {
         if hour % 24 == 0 {
             return Int(hour / 24)
         }
-        
         return Int(hour / 24) + 1
     }
-    
-    // MARK: Action
     
     @IBAction func create_New_Loan() {
         DataManager.shared.loanInfo.status = STATUS_LOAN.CANCELED.rawValue
@@ -1452,10 +1419,7 @@ class LoanStateViewController: UIViewController {
         })
     }
     
-    
     /// Get số tiền đã thanh toán được
-    ///
-    /// - Returns: return value description
     func getAmountPaided() -> Double {
         guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return 0 }
         var amount: Double = 0
@@ -1465,14 +1429,10 @@ class LoanStateViewController: UIViewController {
                 amount += temp
             }
         }
-        
         return amount
     }
     
-    
     /// Get Số tiền nợ
-    ///
-    /// - Returns: <#return value description#>
     func getAmountDebt() -> Double {
         guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return 0 }
         var amount: Double = 0
@@ -1485,10 +1445,7 @@ class LoanStateViewController: UIViewController {
         return value
     }
     
-    
     /// Get số tiền khi nợ quá hạn
-    ///
-    /// - Returns: <#return value description#>
     func getAmountDebtOvertime() -> Double {
         guard let activeLoan = DataManager.shared.browwerInfo?.activeLoan, let collections = activeLoan.collections else { return 0 }
         var amount: Double = 0
@@ -1513,7 +1470,6 @@ class LoanStateViewController: UIViewController {
                 }
             }
         }
-        
         return nil
     }
     
@@ -1542,7 +1498,6 @@ class LoanStateViewController: UIViewController {
                 }
             }
         }
-        
         return nil
     }
     
@@ -1550,7 +1505,6 @@ class LoanStateViewController: UIViewController {
     @IBAction func confirm_rate() {
 //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoanSummaryViewController") as! LoanSummaryViewController
-
         vc.bottom_state = .CONFIRM_RATE
         vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
@@ -1589,7 +1543,6 @@ class LoanStateViewController: UIViewController {
     @IBAction func signContract() {
 //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LOAN_DETAIL_BASE") as! LoanStateViewController
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoanSummaryViewController") as! LoanSummaryViewController
-        
         vc.bottom_state = .SIGN_CONTRACT
         vc.activeLoan = self.activeLoan
         vc.hidesBottomBarWhenPushed = true
@@ -1620,8 +1573,6 @@ class LoanStateViewController: UIViewController {
         self.navigationController?.pushViewController(payHistoryVC, animated: true)
     }
     
-    // MARK: func
-    
     @objc func confirmRate() {
         //Goi api thanh cong xong -> confirm_rate_success
         DataManager.shared.loanInfo.status = STATUS_LOAN.RAISING_CAPITAL.rawValue
@@ -1643,36 +1594,25 @@ class LoanStateViewController: UIViewController {
                 
                 guard let code = model.returnCode, code > 0 else {
                     self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg!, okTitle: "Đồng ý", cancelTitle: nil, completion: { (okAction) in
-                        
                         DataManager.shared.loanInfo.amount = 0
                         DataManager.shared.loanInfo.term = 0
-                        
                         self?.moveHome()
                     })
-                    
                     return
                 }
                 
                 self?.showGreenBtnMessage(title: "", message: "Đơn vay của bạn đã được xóa. Bạn có thể tạo một đơn mới.", okTitle: "Đồng ý", cancelTitle: nil, completion: { (okAction) in
-                    
                     DataManager.shared.loanInfo.amount = 0
                     DataManager.shared.loanInfo.term = 0
-                    
                     DataManager.shared.loanInfo.userInfo.relationships = [RelationShipPhone(), RelationShipPhone()]
                     DataManager.shared.loanInfo.userInfo.referenceFriend = nil
                     DataManager.shared.checkAndInitReferenceFriend()
-                    
                     self?.moveHome()
-                    
-                    
                 })
             }
             .catch { error in
-                
-                
                 self.showGreenBtnMessage(title: "Có lỗi", message: "Đã có lỗi trong quá trình xóa đơn vay. Vui lòng thử lại.", okTitle: "Thử lại", cancelTitle: "Hủy", completion: { (okAction) in
-                    if (okAction)
-                    {
+                    if okAction {
                         self.delLoan()
                     }
                 })
@@ -1684,18 +1624,13 @@ class LoanStateViewController: UIViewController {
         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
             .done(on: DispatchQueue.main) { model in
                 DataManager.shared.browwerInfo = model
-                
                 let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
                 if let window = UIApplication.shared.delegate?.window, let win = window {
                     win.rootViewController = tabbarVC
                 }
-                
             }
-            .catch { error in
-                
-        }
+            .catch { error in }
     }
-    
     
 }
 
@@ -1705,14 +1640,11 @@ extension LoanStateViewController: UITableViewDelegate {
         if tableView == headerTableView {
             return headerData.count
         }
-        
         return self.dataSource.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         tableView.deselectRow(at: indexPath, animated: true)
-        
     }
     
 }
@@ -1727,69 +1659,63 @@ extension LoanStateViewController: UITableViewDataSource {
             let type = item["type"] as! HeaderCellType
             
             if type == .TextType {
-                var cell = tableView.dequeueReusableCell(withIdentifier: textIdentifier) as? TitleTableViewCell
-                if cell == nil {
-                    tableView.register(UINib(nibName: "DoubleTextTableViewCell", bundle: nil), forCellReuseIdentifier: textIdentifier)
-                    cell = tableView.dequeueReusableCell(withIdentifier: textIdentifier) as? TitleTableViewCell
-                }
+                let cell = tableView.dequeueReusableCell(withIdentifier: TitleTableViewCell.className) as! TitleTableViewCell
+//                if cell == nil {
+//                    tableView.register(UINib(nibName: "DoubleTextTableViewCell", bundle: nil), forCellReuseIdentifier: textIdentifier)
+//                    cell = tableView.dequeueReusableCell(withIdentifier: textIdentifier) as? TitleTableViewCell
+//                }
                 
                 let desText = item["text"] as? String
                 
-                cell?.setTextCellType(type: item["subType"] as! TextCellType)
-                cell?.label.text = desText
+                cell.setTextCellType(type: item["subType"] as! TextCellType)
+                cell.label.text = desText
                 
                 if let attributed = item["attributed"] as? NSAttributedString {
-                    let oldAttributed = NSMutableAttributedString(attributedString: (cell?.label.attributedText)!)
+                    let oldAttributed = NSMutableAttributedString(attributedString: (cell.label.attributedText)!)
                     
                     if let range = desText?.range(of: attributed.string)  {
                         oldAttributed.addAttributes(attributed.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, attributed.length)), range: NSRange(range, in: desText!))
                     }
                     
-                    cell?.label.attributedText = oldAttributed
+                    cell.label.attributedText = oldAttributed
                 }
-                
-                return cell!
+                return cell
             } else {
-                var cell = tableView.dequeueReusableCell(withIdentifier: buttonIdentifier) as? ButtonTableViewCell
-                if cell == nil {
-                    tableView.register(UINib(nibName: "DoubleTextTableViewCell", bundle: nil), forCellReuseIdentifier: buttonIdentifier)
-                    cell = tableView.dequeueReusableCell(withIdentifier: buttonIdentifier) as? ButtonTableViewCell
-                }
+                let cell = tableView.dequeueReusableCell(withIdentifier: ButtonTableViewCell.className) as! ButtonTableViewCell
+//                if cell == nil {
+//                    tableView.register(UINib(nibName: "DoubleTextTableViewCell", bundle: nil), forCellReuseIdentifier: buttonIdentifier)
+//                    cell = tableView.dequeueReusableCell(withIdentifier: buttonIdentifier) as? ButtonTableViewCell
+//                }
                 
-                cell?.setButtonCellType(type: item["subType"] as! ButtonCellType)
-                cell?.button.setTitle(item["text"] as? String, for: .normal)
+                cell.setButtonCellType(type: item["subType"] as! ButtonCellType)
+                cell.button.setTitle(item["text"] as? String, for: .normal)
                 
                 let target = item["target"] as? String
                 if target?.count ?? 0 > 0 {
-                    cell?.button.addTarget(self, action: Selector(target!), for: .touchUpInside)
+                    cell.button.addTarget(self, action: Selector(target!), for: .touchUpInside)
                 }
-                return cell!
+                return cell
             }
         } else {
             let item = self.dataSource[indexPath.row]
-            var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DoubleTextTableViewCell
-            if cell == nil {
-                tableView.register(UINib(nibName: "DoubleTextTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-                cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DoubleTextTableViewCell
-            }
-            
-            cell?.nameLabel.text = NSLocalizedString(item.name, comment: "")
-            cell?.desLabel.text = item.value
-            
-//            if (item.attributed != nil)
-//            {
-//                cell?.desLabel.attributedText = item.attributed!
+            let cell = tableView.dequeueReusableCell(withIdentifier: DoubleTextTableViewCell.className) as! DoubleTextTableViewCell
+//            if cell == nil {
+//                tableView.register(UINib(nibName: "DoubleTextTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+//                cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DoubleTextTableViewCell
 //            }
             
+            cell.nameLabel.text = NSLocalizedString(item.name, comment: "")
+            cell.desLabel.text = item.value
+            
             if item.attributed != nil {
-                let oldAttributed = NSMutableAttributedString(attributedString: (cell?.desLabel?.attributedText)!)
+                let oldAttributed = NSMutableAttributedString(attributedString: (cell.desLabel?.attributedText)!)
                 
                 if let range = item.value.range(of: item.attributed!.string)  {
                     oldAttributed.addAttributes(item.attributed!.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, item.attributed!.length)), range: NSRange(range, in: item.value))
                 }
-                cell?.desLabel.attributedText = oldAttributed
+                cell.desLabel.attributedText = oldAttributed
             }
-            return cell!
+            return cell
         }
     }
     

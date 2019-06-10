@@ -12,7 +12,6 @@ class PayAllOverdueTBCell: UITableViewCell {
     
     @IBOutlet weak var containerView: AnimatableView?
     @IBOutlet weak var iconSelected: UIImageView?
-    
     @IBOutlet weak var lblBorrowerManagingFee: UILabel?
     @IBOutlet weak var lblPrincipal: UILabel?
     @IBOutlet weak var lblInterest: UILabel?
@@ -24,10 +23,9 @@ class PayAllOverdueTBCell: UITableViewCell {
     @IBOutlet weak var lblInterestOverDue: UILabel?
     @IBOutlet weak var lblFeeOverdue: UILabel?
     @IBOutlet weak var lblOverdue: UILabel?
-    
     @IBOutlet weak var lblTotalPay: UILabel?
     
-    var isSelectedCell: Bool = false
+    var isSelectedCell = false
     
     var data: PaymentLiquidation? {
         didSet {
@@ -48,31 +46,22 @@ class PayAllOverdueTBCell: UITableViewCell {
             
             let totalOverdue = d.borrowerManagingFeeOverDue! + d.principalOverdue! + d.interestOverdue! + d.overdue! + d.feeOverdue!
             
-            
             self.lblTotalPay?.text = FinPlusHelper.formatDisplayCurrency(totalOverdue + totalAmountInTerm) + "đ"
-            
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.selectionStyle = .none
-        
     }
     
-    
     func updateCellView() {
-        
-        if isSelectedCell == true {
+        if isSelectedCell {
             self.containerView?.layer.borderColor = MAIN_COLOR.cgColor
             self.iconSelected?.image = #imageLiteral(resourceName: "ic_radio_on")
         } else {
             self.containerView?.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
             self.iconSelected?.image = #imageLiteral(resourceName: "ic_radio_off")
         }
-        
     }
-    
     
 }

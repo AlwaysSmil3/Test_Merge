@@ -21,13 +21,11 @@ class LoanPersionalInfoVC: LoanBaseViewController {
             self.aPContacts.forEach { (apContact) in
                 self.contacts.append(self.updateContact(apContact: apContact))
             }
-            
         }
     }
     var contacts = [Contact]()
-    var isLoadedContact: Bool = false
-    
-    var isCheckPermission: Bool = false
+    var isLoadedContact = false
+    var isCheckPermission = false
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
@@ -37,8 +35,7 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         addressBook.filterBlock =
             {
                 (contact: APContact) -> Bool in
-                if let phones = contact.phones
-                {
+                if let phones = contact.phones {
                     return phones.count > 0
                 }
                 return false
@@ -46,41 +43,30 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         addressBook.startObserveChanges
             {
                 [unowned self] in
-                
                 self.loadContacts {
                     
                 }
-                
         }
     }
     
     override func viewDidLoad() {
         self.index = 0
         super.viewDidLoad()
-        
 //        self.navigationController?.isNavigationBarHidden = false
-//        
 //        self.setupTitleView(title: "Test", subTitle: "test")
-        
         self.currentStep = 1
-        
         FinPlusHelper.checkContactPermission { (status) in
             self.loadContacts {
                 
             }
         }
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
             self.navigationController?.isNavigationBarHidden = true
         }
-        
         super.viewWillAppear(animated)
-        
     }
     
     private func checkPermissionAndLoadContact() {
@@ -96,21 +82,16 @@ class LoanPersionalInfoVC: LoanBaseViewController {
                 
             }
         }
-    
     }
     
     //MARK: Contacts
     /// Load Contact
     
-    func loadContacts(completion: @escaping() -> Void)
-    {
-        
+    func loadContacts(completion: @escaping() -> Void) {
         addressBook.loadContacts
             {
                 [unowned self] (contacts: [APContact]?, error: Error?) in
-                
-                if let contacts = contacts
-                {
+                if let contacts = contacts {
                     self.aPContacts = contacts
                     self.isLoadedContact = true
                     completion()
@@ -142,32 +123,24 @@ class LoanPersionalInfoVC: LoanBaseViewController {
                             } else {
                                 UIApplication.shared.openURL(settingsUrl)
                             }
-                            
                         }
                     }
-                    
                 })
         }
     }
     
     /// Get Account Name Contact
-    ///
-    /// - Returns: <#return value description#>
     func updateContact(apContact: APContact) -> Contact {
-        
         //self.contact.initData()
         let tempContact: Contact = Contact()
         
         if let phone = apContact.phones {
             if let number = phone.first?.number {
-                
                 let numberTemp = number.trimmingCharacters(in: CharacterSet.whitespaces)
-                
                 var numberPhone = numberTemp.replacingOccurrences(of: "\\s", with: "", options: .regularExpression, range: nil)
                 if numberPhone.contains("+84") {
                     numberPhone = numberPhone.replacingOccurrences(of: "+84", with: "0")
                 }
-                
                 tempContact.phoneNumber = FinPlusHelper.updatePhoneNumber(phone: numberPhone)
             }
         }
@@ -176,10 +149,8 @@ class LoanPersionalInfoVC: LoanBaseViewController {
             tempContact.avatar = avatar
         }
         
-        
         if let name = apContact.name {
             guard let lastName = name.lastName, let firstName = name.firstName else {
-                
                 if let lastName = name.lastName {
                     tempContact.lastName = lastName
                     tempContact.nameDisplay = lastName
@@ -195,13 +166,10 @@ class LoanPersionalInfoVC: LoanBaseViewController {
             
             tempContact.fullName = (firstName + " " + lastName).trimmingCharacters(in: .whitespacesAndNewlines)
             tempContact.nameDisplay = (firstName + " " + lastName).trimmingCharacters(in: .whitespacesAndNewlines)
-            
             return tempContact
         }
-        
         return tempContact
     }
-    
     
     //Buoc dau tạo loan
     private func createLoan() {
@@ -214,11 +182,7 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     
     
     /// Update format relationPhone to server
-    ///
-    /// - Parameter relationPhone: <#relationPhone description#>
-    /// - Returns: <#return value description#>
     private func updateRelationPhone(relationPhone: String) -> String {
-        
         var phone = relationPhone
         if relationPhone.contains("_") {
             let array = relationPhone.components(separatedBy: "_")
@@ -287,7 +251,6 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     }
     
     private func updateDataForLoanAPI(completion: () -> Void) {
-        
         
         if DataManager.shared.loanInfo.userInfo.fullName.length() == 0 {
             self.showToastWithMessage(message: "Vui lòng nhập họ và tên của bạn để tiếp tục.")
@@ -362,14 +325,12 @@ class LoanPersionalInfoVC: LoanBaseViewController {
     
     @IBAction func btnContinueTapped(_ sender: Any) {
         self.view.endEditing(true)
-
 //        guard self.isLoadedContact else {
 //            self.loadContacts {
 //                self.updateLoanData()
 //            }
 //            return
 //        }
-        
         self.updateLoanData()
     }
     
@@ -399,15 +360,6 @@ class LoanPersionalInfoVC: LoanBaseViewController {
         }
         
         _ = self.navigationController?.popViewController(animated: true)
-        
     }
     
-    
-    
 }
-
-
-
-
-
-

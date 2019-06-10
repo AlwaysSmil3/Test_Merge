@@ -22,23 +22,17 @@ protocol BankDataDelegate: class {
 
 class ListWalletViewController: BaseViewController {
     
-    // MARK: - Outlet
-    
     @IBOutlet var rightBarButtonItem: UIBarButtonItem!
-    
-    
     @IBOutlet weak var tableview: TPKeyboardAvoidingTableView!
     @IBOutlet weak var noWalletLabel: UILabel!
     @IBOutlet weak var addBtn: UIButton!
-    
     @IBOutlet var bottomView: UIView!
     
     var walletAction: WalletAction = .WalletDetail
-    let cellIdentifier = "cell"
+//    let cellIdentifier = "cell"
     private var listWallet: NSMutableArray = []
     var currentSelected: Int?
     var currentBankIdSelected: Int32?
-    
     var listFieldsForLoan: NSMutableArray = []
     
     //CaoHai tra ve du lieu bank khi chon bank
@@ -46,8 +40,6 @@ class ListWalletViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         if self.walletAction == .LoanNation {
@@ -65,24 +57,22 @@ class ListWalletViewController: BaseViewController {
         self.addBtn.layer.borderColor = MAIN_COLOR.cgColor
         //self.addBtn.titleLabel?.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         
-        let cellNib = UINib(nibName: "WalletTableViewCell", bundle: nil)
-        self.tableview.register(cellNib, forCellReuseIdentifier: cellIdentifier)
+//        let cellNib = UINib(nibName: "WalletTableViewCell", bundle: nil)
+//        self.tableview.register(cellNib, forCellReuseIdentifier: cellIdentifier)
+        tableview.registerCell(WalletTableViewCell.className)
         
         self.loadListBank(newAccountNumber: "")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         if let ishidden = self.navigationController?.isNavigationBarHidden, ishidden {
             self.navigationController?.isNavigationBarHidden = false
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
     
     func updateDataFromServer() {
@@ -92,32 +82,25 @@ class ListWalletViewController: BaseViewController {
         }
     }
     
-    
     /// Cho Loan - Xong mỗi bước là gửi api put cập nhật dữ liệu cho mỗi bước
     func loadListBank(newAccountNumber: String) {
-        
         APIClient.shared.getListBank(uId: DataManager.shared.userID)
             .done(on: DispatchQueue.main) { [weak self]model in
                 guard let strongSelf = self else { return }
                 strongSelf.listWallet.removeAllObjects()
                 
-                if (model.count > 0 )
-                {
-                    
+                if model.count > 0 {
                     if strongSelf.walletAction == .LoanNation {
                         strongSelf.listFieldsForLoan.removeAllObjects()
-                        
                         strongSelf.listFieldsForLoan.add("add_wallet")
                         if let fields = DataManager.shared.listFieldForStep4 {
                             strongSelf.listFieldsForLoan.addObjects(from: fields)
                         }
-                        
                     }
-                    
                     
                     if let id = model[0].id, id > 0 {
                         strongSelf.listWallet.addObjects(from: model)
-                        if newAccountNumber != "" {
+                        if !newAccountNumber.isEmpty {
                             for bank in strongSelf.listWallet {
                                 if let bank_ = bank as? AccountBank {
                                     if bank_.accountBankNumber == newAccountNumber {
@@ -126,17 +109,14 @@ class ListWalletViewController: BaseViewController {
                                 }
                             }
                         }
-                        
                         strongSelf.tableview.reloadData()
                     }
                 }
                 
                 guard strongSelf.walletAction == .WalletDetail else { return }
-                
                 strongSelf.tableview.isHidden = strongSelf.listWallet.count < 1
                 strongSelf.noWalletLabel.isHidden = strongSelf.listWallet.count > 0
                 strongSelf.addBtn.isHidden = strongSelf.listWallet.count > 0
-                
             }
             .catch { error in
         }
@@ -152,19 +132,14 @@ class ListWalletViewController: BaseViewController {
                     }
                 }
             }
-            
         }
-        
         return nil
-        
     }
     
     @IBAction func raightBarButtonTapped(_ sender: Any) {
         self.view.endEditing(true)
         self.hanldeLoanDataToServer()
-        
     }
-    
     
     @IBAction func navi_back(sender: UIButton) {
         self.navigationController?.isNavigationBarHidden = true
@@ -217,32 +192,27 @@ class ListWalletViewController: BaseViewController {
         let vc = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "UpdateWalletViewController") as! UpdateWalletViewController
         vc.wallet = bank
         vc.delegate = self
-        vc.hidesBottomBarWhenPushed = true
         vc.walletAction = self.walletAction
-        
+        vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    
     /// Delete Bank
-    ///
-    /// - Parameter bankID: <#bankID description#>
     func deleteBank(bankID: Int32, index: Int) {
         APIClient.shared.deleteBankAccount(bankAccountID: bankID)
             .done(on: DispatchQueue.main) { [weak self]model in
                 guard let strongSelf = self else { return }
                 strongSelf.showToastWithMessage(message: model.returnMsg!)
-                
                 strongSelf.listWallet.removeObject(at: index)
                 strongSelf.tableview.reloadData()
                 strongSelf.tableview.isHidden = strongSelf.listWallet.count < 1
                 strongSelf.noWalletLabel.isHidden = strongSelf.listWallet.count > 0
                 strongSelf.addBtn.isHidden = strongSelf.listWallet.count > 0
             }
-            .catch { error in }
-        
+            .catch { error in
+                print("error API deleteBankAccount")
+        }
     }
-    
     
 }
 
@@ -277,14 +247,11 @@ extension ListWalletViewController: UITableViewDelegate {
         
         self.currentSelected = indexPath.row
         
-        switch indexPath.section {
-        case 0:
+        if indexPath.section == 0 {
             switch walletAction {
             case .WalletDetail:
                 editWallet(index: indexPath.row)
-                break
             case .LoanNation:
-                
                 if self.listWallet.count > 0 {
                     if let wallet = self.listWallet[indexPath.row] as? AccountBank, let bankID = wallet.id {
                         self.currentBankIdSelected = bankID
@@ -292,22 +259,17 @@ extension ListWalletViewController: UITableViewDelegate {
                     }
                 } else {
                     self.hanldeDidSelectLoanCell(indexPath: indexPath)
-                    
                 }
-                
-                break
             case .RegisterInvestor:
                 //Cho đăng ký làm nhà đầu tư
                 break
             }
-            
-        default:
+        } else {
             if walletAction == .WalletDetail {
                 addNewWallet()
                 return
             }
             self.hanldeDidSelectLoanCell(indexPath: indexPath)
-            
         }
     }
     
@@ -319,12 +281,8 @@ extension ListWalletViewController: UITableViewDelegate {
         
         switch model.type! {
         case DATA_TYPE_TB_CELL.TextBox:
-            
-           
             break
-            
         case DATA_TYPE_TB_CELL.DropDown:
-            
             break
         default:
             break
@@ -342,17 +300,13 @@ extension ListWalletViewController: UITableViewDataSource {
         header.textLabel?.textColor = TEXT_NORMAL_COLOR
         switch section {
         case 0:
-            if (self.walletAction == .LoanNation)
-            {
+            if self.walletAction == .LoanNation {
                 if self.listWallet.count > 0 {
                     header.textLabel?.text = NSLocalizedString("CHOOSE_ACCOUNT", comment: "")
                 } else {
                     header.textLabel?.text = NSLocalizedString("CREATE_NEW_ACCOUNT", comment: "")
                 }
-                
-            }
-            else
-            {
+            } else {
                 header.textLabel?.text = NSLocalizedString("ALL_ACCOUNT_CONNECTED", comment: "")
             }
         default:
@@ -379,94 +333,87 @@ extension ListWalletViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: WalletTableViewCell.className) as! WalletTableViewCell
+        
         switch indexPath.section {
         case 0:
-            
             if self.walletAction == .LoanNation, self.listWallet.count == 0 {
                 return self.getCellForLoan(indexPath: indexPath)
             }
             
             let item = listWallet[indexPath.row] as! AccountBank
             
-            var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? WalletTableViewCell
-            if cell == nil {
-                tableView.register(UINib(nibName: "WalletTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-                cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? WalletTableViewCell
-            }
+//            var cell = tableView.dequeueReusableCell(withIdentifier: WalletTableViewCell.className) as! WalletTableViewCell
+//            if cell == nil {
+//                tableView.register(UINib(nibName: "WalletTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+//                cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? WalletTableViewCell
+//            }
             
-            cell?.tag = indexPath.row
-            cell?.currentIndex = indexPath
-//            cell?.avatar.kf.setImage(with: URL(string: FinPlusHelper.getStringURLIconBank(type: item.bankName ?? "")))
-            cell?.avatar.sd_setImage(with: URL(string: FinPlusHelper.getStringURLIconBank(type: item.bankName ?? "")))
-            cell?.nameLabel.text = item.bankName
+            cell.tag = indexPath.row
+            cell.currentIndex = indexPath
+            cell.avatar.sd_setImage(with: URL(string: FinPlusHelper.getStringURLIconBank(type: item.bankName ?? "")))
+            cell.nameLabel.text = item.bankName
             
             if let number = item.accountBankNumber, number.count > 4 {
-                cell?.desLabel.text = String(number.suffix(4))
+                cell.desLabel.text = String(number.suffix(4))
             } else {
-                cell?.desLabel.text = item.accountBankNumber
+                cell.desLabel.text = item.accountBankNumber
             }
             
-            cell?.desLabel.isHidden = false
-            cell?.hiddenCharLabel?.isHidden = false
-            cell?.optionBtn.setImage(UIImage(named: "option_icon"), for: .normal)
-            cell?.delegate = self
+            cell.desLabel.isHidden = false
+            cell.hiddenCharLabel?.isHidden = false
+            cell.optionBtn.setImage(UIImage(named: "option_icon"), for: .normal)
+            cell.delegate = self
             
             if let verified = item.verified, verified == 1 {
-                cell?.optionBtn.isHidden = true
-                cell?.lblVerified?.isHidden = false
-                cell?.nameLabelCenterYConstraint.constant = -7
+                cell.optionBtn.isHidden = true
+                cell.lblVerified?.isHidden = false
+                cell.nameLabelCenterYConstraint.constant = -7
             } else {
-                cell?.optionBtn.isHidden = false
-                cell?.lblVerified?.isHidden = true
-                cell?.nameLabelCenterYConstraint.constant = 0
+                cell.optionBtn.isHidden = false
+                cell.lblVerified?.isHidden = true
+                cell.nameLabelCenterYConstraint.constant = 0
             }
             
             if self.walletAction == .LoanNation {
-                
-                cell?.optionBtn.setImage(#imageLiteral(resourceName: "ic_radio_off"), for: .normal)
-                cell?.optionBtn.isHidden = false
+                cell.optionBtn.setImage(#imageLiteral(resourceName: "ic_radio_off"), for: .normal)
+                cell.optionBtn.isHidden = false
                 
                 if let id = item.id {
                     if let bankIdSelected = self.currentBankIdSelected,  bankIdSelected > 0 && id == bankIdSelected {
-                        cell?.borderView.layer.borderColor = MAIN_COLOR.cgColor
-                        cell?.optionBtn.setImage(#imageLiteral(resourceName: "ic_radio_on"), for: .normal)
+                        cell.borderView.layer.borderColor = MAIN_COLOR.cgColor
+                        cell.optionBtn.setImage(#imageLiteral(resourceName: "ic_radio_on"), for: .normal)
                         
                         if DataManager.shared.checkMissingBankData(key: "bank", currentBankHolder: item.accountBankName, currenAccount: item.accountBankNumber, id: Int(item.id!)) {
                             //Cap nhat thong tin khong hop le
-                            cell?.optionBtn.setImage(UIImage(named: "option_icon"), for: .normal)
-                            cell?.borderView.layer.borderColor = UIColor.red.cgColor
+                            cell.optionBtn.setImage(UIImage(named: "option_icon"), for: .normal)
+                            cell.borderView.layer.borderColor = UIColor.red.cgColor
                         } else {
                             userDefault.set("", forKey: UserDefaultInValidBank)
                             userDefault.synchronize()
                         }
-                        
-                        return cell!
+                        return cell
                     }
                 }
             }
-            
-            cell?.borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
-            
-            return cell!
+            cell.borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
+            return cell
             
         default:
-            
             if self.walletAction == .WalletDetail {
-                var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? WalletTableViewCell
-                if cell == nil {
-                    tableView.register(UINib(nibName: "WalletTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-                    cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? WalletTableViewCell
-                }
+//                var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? WalletTableViewCell
+//                if cell == nil {
+//                    tableView.register(UINib(nibName: "WalletTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+//                    cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? WalletTableViewCell
+//                }
                 
-                cell?.avatar.image = UIImage(named: "add_wallet")
-                cell?.nameLabel.text = NSLocalizedString("ADD_NEW_WALLET", comment: "")
-                cell?.desLabel.isHidden = true
-                cell?.hiddenCharLabel?.isHidden = true
-                cell?.optionBtn.setImage(UIImage(named: "arrow_left"), for: .normal)
-                
-                return cell!
+                cell.avatar.image = UIImage(named: "add_wallet")
+                cell.nameLabel.text = NSLocalizedString("ADD_NEW_WALLET", comment: "")
+                cell.desLabel.isHidden = true
+                cell.hiddenCharLabel?.isHidden = true
+                cell.optionBtn.setImage(UIImage(named: "arrow_left"), for: .normal)
+                return cell
             }
-            
             return self.getCellForLoan(indexPath: indexPath)
         }
     }
@@ -477,23 +424,20 @@ extension ListWalletViewController: UITableViewDataSource {
                 guard let cell = self.tableview.dequeueReusableCell(withIdentifier: "AddNewWalletTBCell", for: indexPath) as? AddNewWalletTBCell else {
                     return UITableViewCell()
                 }
-                
                 return cell
-                
             } else {
-                var cell = self.tableview.dequeueReusableCell(withIdentifier: cellIdentifier) as? WalletTableViewCell
-                if cell == nil {
-                    self.tableview.register(UINib(nibName: "WalletTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-                    cell = self.tableview.dequeueReusableCell(withIdentifier: cellIdentifier) as? WalletTableViewCell
-                }
+                let cell = tableview.dequeueReusableCell(withIdentifier: WalletTableViewCell.className) as! WalletTableViewCell
+//                if cell == nil {
+//                    self.tableview.register(UINib(nibName: "WalletTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+//                    cell = self.tableview.dequeueReusableCell(withIdentifier: cellIdentifier) as? WalletTableViewCell
+//                }
                 
-                cell?.avatar.image = UIImage(named: "add_wallet")
-                cell?.nameLabel.text = NSLocalizedString("ADD_NEW_WALLET", comment: "")
-                cell?.desLabel.isHidden = true
-                cell?.hiddenCharLabel?.isHidden = true
-                cell?.optionBtn.setImage(UIImage(named: "arrow_left"), for: .normal)
-                
-                return cell!
+                cell.avatar.image = UIImage(named: "add_wallet")
+                cell.nameLabel.text = NSLocalizedString("ADD_NEW_WALLET", comment: "")
+                cell.desLabel.isHidden = true
+                cell.hiddenCharLabel?.isHidden = true
+                cell.optionBtn.setImage(UIImage(named: "arrow_left"), for: .normal)
+                return cell
             }
         }
         
@@ -503,17 +447,12 @@ extension ListWalletViewController: UITableViewDataSource {
         
         switch model.type! {
         case DATA_TYPE_TB_CELL.TextBox:
-            
             let cell = self.tableview.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.TextField, for: indexPath) as! LoanTypeTextFieldTBCell
-            
             cell.field = model
-            
             return cell
-            
         case DATA_TYPE_TB_CELL.DropDown:
             let cell = self.tableview.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.DropDown, for: indexPath) as! LoanTypeDropdownTBCell
             cell.field = model
-            
             return cell
         default:
             return UITableViewCell()
@@ -562,4 +501,5 @@ extension ListWalletViewController: EditWalletDelegate {
             print("completion block")
         })
     }
+    
 }

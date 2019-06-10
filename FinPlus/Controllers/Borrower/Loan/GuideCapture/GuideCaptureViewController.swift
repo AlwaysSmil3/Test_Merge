@@ -33,7 +33,6 @@ class GuideCaptureViewController: BaseViewController {
             userDefault.set(true, forKey: UserDefaultShowGuideCameraView)
             userDefault.synchronize()
         }
-        
     }
     
     @IBAction func btnClosedTapped(_ sender: Any) {
@@ -41,11 +40,9 @@ class GuideCaptureViewController: BaseViewController {
     }
     
     @IBAction func btnShowCameraTapped(_ sender: Any) {
-        
         self.dismiss(animated: true) {
             self.delegate?.showCamera()
         }
-        
     }
     
     @IBAction func btnDisplayAgainTapped(_ sender: Any) {
@@ -53,6 +50,5 @@ class GuideCaptureViewController: BaseViewController {
         userDefault.set(self.btnDisplayAgain.isSelected, forKey: UserDefaultShowGuideCameraView)
         userDefault.synchronize()
     }
-    
     
 }

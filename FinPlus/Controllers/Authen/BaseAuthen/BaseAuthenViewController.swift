@@ -11,6 +11,8 @@ import MessageUI
 
 class BaseAuthenViewController: BaseViewController {
     
+    @IBOutlet weak var tfPass: UITextField?
+    
     var accountType : AccountType = .Borrower {
         didSet {
             if accountType == .Investor {
@@ -19,15 +21,10 @@ class BaseAuthenViewController: BaseViewController {
         }
     }
     
-    
-    @IBOutlet weak var tfPass: UITextField?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
-
     func checkConnectedToNetwork() {
         if !FinPlusHelper.isConnectedToNetwork() {
             if DataManager.shared.isCanShowAlertAPIError {
@@ -42,20 +39,15 @@ class BaseAuthenViewController: BaseViewController {
                     } else {
                         self.checkConnectedToNetwork()
                     }
-                    
                 }
             }
-            
         }
     }
-    
     
     func getVersion(completion: @escaping() -> Void) {
         APIClient.shared.getConfigs()
             .done(on: DispatchQueue.main) { model in
-                
                 DataManager.shared.config = model
-                
                 guard let version = userDefault.value(forKey: fVERSION_CONFIG) as? String else {
                     userDefault.set(model.version!, forKey: fVERSION_CONFIG)
                     userDefault.synchronize()
@@ -103,12 +95,9 @@ class BaseAuthenViewController: BaseViewController {
             } else {
                 self.checkConnectedToNetwork()
             }
-            
             return
         }
-        
         self.handleLogin(account: account, pass: pass)
-        
     }
     
     func handleLogin(account: String, pass: String) {
@@ -154,7 +143,6 @@ class BaseAuthenViewController: BaseViewController {
                     }
                     
                     self?.getUserInfo()
-                    break
                 case 1:
                     DataManager.shared.updatePushNotificationToken()
                     userDefault.set(accountTemp, forKey: fUSER_DEFAUT_ACCOUNT_NAME)
@@ -180,8 +168,6 @@ class BaseAuthenViewController: BaseViewController {
                     }
                     
                     self?.getUserInfo()
-                    
-                    break
                 default :
                     if let returnMessage = model.returnMsg {
                         self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "OK", cancelTitle: nil)
@@ -253,20 +239,16 @@ class BaseAuthenViewController: BaseViewController {
         self.present(alert, animated: true, completion: {
             print("completion block")
         })
-        
     }
     
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
-        
         mailComposerVC.setToRecipients(["support@mony.vn"])
         mailComposerVC.setSubject("[Mony - Hỗ trợ \(DataManager.shared.currentAccount)]")
         mailComposerVC.setMessageBody("Hi Mony,\n", isHTML: false)
-        
         return mailComposerVC
     }
-    
     
 }
 

@@ -18,16 +18,13 @@ class LoanSummaryViewController: BaseViewController {
     var dataSource: [LoanSummaryModel] = []
     var activeLoan: BrowwerActiveLoan?
     var userInfo: BrowwerInfo!
-    
     var bottom_state: BOTTOM_STATE!
-    
-    let cellIdentifier = "cell"
+//    let cellIdentifier = "cell"
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
         super.viewWillDisappear(animated)
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,13 +45,13 @@ class LoanSummaryViewController: BaseViewController {
         var payMounthTitle = "Trả góp hàng tháng"
         var term = "\((loan.term ?? 0)/30) tháng"
         
-        if (loan.loanCategoryId == Loan_Student_Category_ID) && (loan.term ?? 0) <= 30 {
+        if loan.loanCategoryId == Loan_Student_Category_ID && loan.term ?? 0 <= 30 {
             payMounthTitle = "Thanh toán dự kiến"
-            term = "\((loan.term ?? 0)) ngày"
+            term = "\(loan.term ?? 0) ngày"
         } else {
-            if (loan.term ?? 0) < 30 {
+            if loan.term ?? 0 < 30 {
                 payMounthTitle = TitleAmountUnderAMounth
-                term = "\((loan.term ?? 0)) ngày"
+                term = "\(loan.term ?? 0) ngày"
             }
         }
         
@@ -74,13 +71,11 @@ class LoanSummaryViewController: BaseViewController {
         let payMounth = FinPlusHelper.CalculateMoneyPayMonth(month: Double(loan.amount ?? 0), term: Double((loan.term ?? 0)/30), rate: Double(rate))
         var payMounthString = FinPlusHelper.formatDisplayCurrency(payMounth) + "đ"
         
-        
         //Ngày tạo đơn
         var dateString = " "
         if let date_ = loan.createdAt, date_.length() > 0 {
             let date = Date.init(fromString: date_, format: DateFormat.custom(DATE_FORMATTER_WITH_SERVER))
             dateString = date.toString(.custom(kDisplayFormat))
-            
         } else {
             dateString = Date().toString(.custom(kDisplayFormat))
         }
@@ -88,16 +83,12 @@ class LoanSummaryViewController: BaseViewController {
         //Số tiền huy động được
         let funded = FinPlusHelper.formatDisplayCurrency(Double(loan.funded ?? 0)) + "đ"
         var serviceFeeFunded: Double = 0
-        
         var payMounthStringWithFunded = "0đ"
         
         if let config = DataManager.shared.config, let fun = loan.funded, fun > 0 {
             serviceFeeFunded = Double(Int(fun) * (config.serviceFee ?? 0 ) / 100)
-            
-            
             let payMounthWithFunded = FinPlusHelper.CalculateMoneyPayMonth(month: Double(fun), term: Double((loan.term ?? 0)/30), rate: Double(rate))
             payMounthStringWithFunded = FinPlusHelper.formatDisplayCurrency(payMounthWithFunded) + "đ"
-            
         }
         
         if let expectedAmount = loan.expectedPaymentAmount, expectedAmount > 0 {
@@ -145,7 +136,6 @@ class LoanSummaryViewController: BaseViewController {
 //            let datelimit = Date(fromString: loan.acceptedAt ?? "", format: .iso8601(ISO8601Format.DateTimeSec)).dateByAddingHours(rasingCapital)
 //            limitFunding = datelimit.toString(.custom("dd/MM/yyyy HH:mm"))
         }
- 
         
         switch bottom_state {
             
@@ -256,12 +246,10 @@ class LoanSummaryViewController: BaseViewController {
 //            self.btnBottomView.addTarget(self, action: #selector(LoanStateViewController.confirmRate), for: .touchUpInside)
 //            self.labelBottomView.text = "Tiền phí sẽ được trừ ngay sau khi giải ngân tiền vay."
 //            isEnableFooterView = true
-            break
             
         default:
             break
         }
-        
         
         // get loan bank
         let loanBankId = DataManager.shared.loanInfo.bankId
@@ -285,34 +273,25 @@ class LoanSummaryViewController: BaseViewController {
                         dataSource.append(LoanSummaryModel(name: "Tài khoản nhận tiền", value: prefixBankName + bankName, attributed: nil))
                         dataSource.append(LoanSummaryModel(name: "Chủ tài khoản", value: "\(bank.accountBankName ?? "None")", attributed: nil))
                         dataSource.append(LoanSummaryModel(name: "Số tài khoản", value: accountNumber, attributed: nil))
-                        
                     }
                 }
             }
         }
         
-        let cellNib = UINib(nibName: "DoubleTextTableViewCell", bundle: nil)
-        self.dataTableView?.register(cellNib, forCellReuseIdentifier: cellIdentifier)
-        
-        
+//        let cellNib = UINib(nibName: "DoubleTextTableViewCell", bundle: nil)
+//        self.dataTableView?.register(cellNib, forCellReuseIdentifier: cellIdentifier)
+        self.dataTableView.registerCell(DoubleTextTableViewCell.className)
         self.dataTableView?.tableHeaderView = UIView()
         self.dataTableView?.estimatedRowHeight = 123
         self.dataTableView?.rowHeight = UITableViewAutomaticDimension
-        self.dataTableView?.alwaysBounceVertical = false;
-        
-        
+        self.dataTableView?.alwaysBounceVertical = false
     }
     
-    
     /// Convert Hour to Day
-    ///
-    /// - Parameter hour: <#hour description#>
-    /// - Returns: <#return value description#>
     private func convertHourToDay(hour: Int) -> Int {
         if hour % 24 == 0 {
             return Int(hour / 24)
         }
-        
         return Int(hour / 24) + 1
     }
     
@@ -332,15 +311,12 @@ class LoanSummaryViewController: BaseViewController {
         APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
             .done(on: DispatchQueue.main) { model in
                 DataManager.shared.loanID = model.loanId!
-                
                 self.confirm_rate_success()
             }
             .catch { error in }
-        
     }
     
-    private func confirm_rate_success()
-    {
+    private func confirm_rate_success() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONFIRM_RATE_SUCCESS")
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
@@ -348,32 +324,20 @@ class LoanSummaryViewController: BaseViewController {
     
     //Giải ngân
     
-    
-    //MARK: Actions
-    
     @IBAction func btnNextTapped(_ sender: Any) {
-        
         switch bottom_state {
         case .DISBURSEMENT_SOON?:
             self.confirmSignContract()
-            break
         case .DISBURSEMENT_ONTIME?:
             self.confirmSignContract()
-            break
-            
         case .SIGN_CONTRACT?:
             self.confirmSignContract()
-            break
-            
         case .CONFIRM_RATE?:
             self.confirmRate()
-            break
         default:
             break
         }
-        
     }
-    
     
 }
 
@@ -386,39 +350,24 @@ extension LoanSummaryViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = self.dataSource[indexPath.row]
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DoubleTextTableViewCell
-        if cell == nil {
-            tableView.register(UINib(nibName: "DoubleTextTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-            cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DoubleTextTableViewCell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: DoubleTextTableViewCell.className) as! DoubleTextTableViewCell
+//        if cell == nil {
+//            tableView.register(UINib(nibName: "DoubleTextTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+//            cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DoubleTextTableViewCell
+//        }
         
-        cell?.nameLabel.text = NSLocalizedString(item.name, comment: "")
-        cell?.desLabel.text = item.value
+        cell.nameLabel.text = NSLocalizedString(item.name, comment: "")
+        cell.desLabel.text = item.value
         
-        //            if (item.attributed != nil)
-        //            {
-        //                cell?.desLabel.attributedText = item.attributed!
-        //            }
-        
-        if (item.attributed != nil)
-        {
-            let oldAttributed = NSMutableAttributedString(attributedString: (cell?.desLabel?.attributedText)!)
-            
+        if item.attributed != nil {
+            let oldAttributed = NSMutableAttributedString(attributedString: (cell.desLabel?.attributedText)!)
             if let range = item.value.range(of: item.attributed!.string)  {
                 oldAttributed.addAttributes(item.attributed!.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, item.attributed!.length)), range: NSRange(range, in: item.value))
             }
-            
-            cell?.desLabel.attributedText = oldAttributed
+            cell.desLabel.attributedText = oldAttributed
         }
         
-        if let cell_ = cell { return cell_ }
-        
-        return UITableViewCell()
+        return cell
     }
     
-    
-    
-    
 }
-
-

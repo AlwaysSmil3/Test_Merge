@@ -19,7 +19,6 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
     var isSigned = false
     var activeLoan: BrowwerActiveLoan?
     var data: APIResponseGeneral?
-    
     var contractUrl: String?
     
     override func viewDidLoad() {
@@ -28,29 +27,23 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             delegate.timeCount = 60
         }
-
-        // Do any additional setup after loading the view.
+        
         self.webView.delegate = self
+        self.webView.scrollView.showsVerticalScrollIndicator = false
+        self.webView.scrollView.showsHorizontalScrollIndicator = false
         
         self.borderView.layer.borderWidth = 0.5
         self.borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         self.borderView.layer.cornerRadius = 8
         
-        self.webView.scrollView.showsVerticalScrollIndicator = false;
-        self.webView.scrollView.showsHorizontalScrollIndicator = false;
-        
-        
-        if (isSigned)
-        {
+        if isSigned {
             self.btnSign.setTitle("Đã ký hợp đồng", for: .normal)
             self.btnSign.backgroundColor = UIColor(hexString: "#B8C9D3")
             self.btnSign?.tintColor = .white
             self.btnSign.isEnabled = true
             self.btnSign.layer.cornerRadius = 8
             self.btnSign.layer.masksToBounds = true
-        }
-        else
-        {
+        } else {
             self.btnSign.setBackgroundColor(color: MAIN_COLOR, forState: .normal)
             self.btnSign.setBackgroundColor(color: UIColor(hexString: "#4D6678"), forState: .focused)
             self.btnSign?.tintColor = .white
@@ -60,16 +53,11 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         
         self.btnSign.titleLabel?.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)
         self.title = "Ký hợp đồng"
-        
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         self.navigationController?.isNavigationBarHidden = false
-        
         super.viewWillAppear(animated)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -89,7 +77,6 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
                 self.getContractSign()
             }
         }
-        
         self.initLocationManager()
     }
 
@@ -97,7 +84,6 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     /// Zoom webView
     func enableZoomPageWebView() {
@@ -118,17 +104,12 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
                     DispatchQueue.main.async {
                         self?.webView.loadRequest(request)
                     }
-                    
                 }
             }
             .catch { error in
                 SVProgressHUD.dismiss()
         }
-        
     }
-    
-    
-    
     
     func getPermissionLocation(completion: () -> Void) {
         let status = CLLocationManager.authorizationStatus()
@@ -164,19 +145,14 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
                         }
                     }
                 }
-                
             })
-            
-            
             return
         }
         
         self.checkLocationsIsValid {
             completion()
         }
-        
     }
-    
     
     @IBAction func navi_back() {
         self.navigationController?.isNavigationBarHidden = true
@@ -189,28 +165,23 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
     }
     
     private func toReadContract() {
-        
         let readContract = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "ReadContractViewController") as! ReadContractViewController
         self.present(readContract, animated: true, completion: nil)
-        
     }
     
     func getOTPContract() {
         APIClient.shared.getOTPContract(loanID: (self.activeLoan?.loanId)!)
             .done(on: DispatchQueue.main) { [weak self]model in
                 self?.toVerifyVC()
-                
             }
             .catch { error in
                 self.showAlertView(title: "Có lỗi", message: "Đã có lỗi trong quá trình gửi mã xác thực. Vui lòng thử lại.", okTitle: "Thử lại", cancelTitle: "Hủy", completion: { (okAction) in
-                    if (okAction)
-                    {
+                    if okAction {
                         self.sendOTP()
                     }
                 })
         }
     }
-    
     
     func sendOTP() {
         self.getPermissionLocation {
@@ -241,19 +212,8 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
             self.navigationController?.isNavigationBarHidden = true
             self.navigationController?.pushViewController(verifyVC, animated: true)
         }
-        
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     func webViewDidStartLoad(_ webView: UIWebView) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
@@ -262,6 +222,5 @@ class SignContractViewController: BaseViewController, UIWebViewDelegate {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         self.enableZoomPageWebView()
     }
+    
 }
-
-

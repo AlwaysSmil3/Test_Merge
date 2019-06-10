@@ -13,6 +13,7 @@ class SubInfoLastTableViewCell: UITableViewCell {
     @IBOutlet weak var detailLb: UILabel!
     @IBOutlet weak var valueLb: UILabel!
     @IBOutlet weak var titleLb: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

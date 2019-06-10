@@ -14,31 +14,24 @@ protocol UpdateStatusInvalidRelationPhoneDelegate: class {
 
 class LoanTypePhoneRelationSubTBCell: LoanTypeBaseRelationTBCell {
     
-    
     var data: LoanBuilderMultipleData? {
         didSet {
             guard let data_ = data else { return }
             self.tfRelationPhone?.placeholder = data_.placeholder
-            
             self.tfRelationPhone?.text = self.getDisplayPhone(relationPhone: data_.phoneNumber ?? "")
-            
             self.tfTypeRelation?.text = DataManager.getTitleRelationShip(id: data_.type ?? -1)
             self.setupUI(id: data_.type ?? -1)
-            
             self.checkInvalidPersionalRelationData()
-            
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         self.tfRelationPhone?.delegate = self
         self.tfNameRelation?.delegate = self
         if #available(iOS 11.0, *) {
             self.tfRelationPhone?.textContentType = .username
         }
-        
 //        self.lblAddressRelationTitle?.font = FONT_CAPTION
 //        self.lblAddressRelationTitle?.textColor = TEXT_NORMAL_COLOR
     }
@@ -65,7 +58,6 @@ class LoanTypePhoneRelationSubTBCell: LoanTypeBaseRelationTBCell {
             self.lblAddressRelation?.text = "Nhấn để chọn địa chỉ \(text)"
         }
         */
-        
     }
     
     //MARK: Check invalid
@@ -82,58 +74,40 @@ class LoanTypePhoneRelationSubTBCell: LoanTypeBaseRelationTBCell {
             } else {
                 DataManager.shared.isRelationPhone1Invalid = true
             }
-            
         } else {
-            
             if bool1, bool2 {
                 DataManager.shared.isRelationPhone2Invalid = false
             } else {
                 DataManager.shared.isRelationPhone2Invalid = true
             }
-            
         }
         self.updateStatus()
     }
     
-    
     /// Check invalid Phone
-    ///
-    /// - Returns: <#return value description#>
     private func checkInvalidPhoneNumber() -> Bool {
         guard let value = self.tfRelationPhone?.text, DataManager.shared.missingRelationsShip != nil else { return true }
-        
         let valueTemp = FinPlusHelper.updatePhoneNumber(phone: value)
-        
         if valueTemp != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0) {
             self.tfRelationPhone?.textColor = UIColor(hexString: "#08121E")
             return true
-        } else {
-            self.tfRelationPhone?.textColor = UIColor(hexString: "#DA3535")
-            return false
-            
         }
+        self.tfRelationPhone?.textColor = UIColor(hexString: "#DA3535")
+        return false
     }
     
-    
     /// Check invalid Name
-    ///
-    /// - Returns: <#return value description#>
     private func checkInvalidName() -> Bool {
         guard let value = self.tfNameRelation?.text else { return true }
-        
         if DataManager.shared.checkNameRelationInvalid(name: value, index: self.currentIndex) {
             self.tfNameRelation?.textColor = UIColor(hexString: "#08121E")
             return true
         }
-        
         self.tfNameRelation?.textColor = UIColor(hexString: "#DA3535")
         return false
     }
     
-    
     /// Check invalid Address
-    ///
-    /// - Returns: <#return value description#>
     private func checkInvalidAddress() -> Bool {
         guard self.currentIndex < DataManager.shared.loanInfo.userInfo.relationships.count else { return true }
         let add = DataManager.shared.loanInfo.userInfo.relationships[self.currentIndex].address ?? ""
@@ -141,11 +115,9 @@ class LoanTypePhoneRelationSubTBCell: LoanTypeBaseRelationTBCell {
             self.lblAddressRelation?.textColor = UIColor(hexString: "#08121E")
             return true
         }
-        
         self.lblAddressRelation?.textColor = UIColor(hexString: "#DA3535")
         return false
     }
-    
     
     func updateStatus() {
         if !DataManager.shared.isRelationPhone1Invalid && !DataManager.shared.isRelationPhone2Invalid {
@@ -186,35 +158,26 @@ class LoanTypePhoneRelationSubTBCell: LoanTypeBaseRelationTBCell {
     */
     
     @IBAction func tfNameEditEnd(_ sender: Any) {
-        
         guard let value = self.tfNameRelation?.text else { return }
-        
         if DataManager.shared.loanInfo.userInfo.relationships.count > self.currentIndex {
             DataManager.shared.loanInfo.userInfo.relationships[self.currentIndex].name = value
         }
-        
         self.checkInvalidPersionalRelationData()
     }
     
     @IBAction func tfEditEnd(_ sender: Any) {
         if let value = self.tfRelationPhone?.text {
-            
             let valueTemp = FinPlusHelper.updatePhoneNumber(phone: value)
             if DataManager.shared.loanInfo.userInfo.relationships.count > 0 {
                 DataManager.shared.loanInfo.userInfo.relationships[self.currentIndex].phoneNumber = valueTemp
             }
-            
             self.checkInvalidPersionalRelationData()
-            
         }
-        
     }
     
     @IBAction func btnTypeRelationTapped(_ sender: Any) {
         guard let data_ = self.data, let options = data_.options else { return }
-        
         var dataSource: [LoanBuilderData] = []
-        
         var otherSelection: Int?
         
         if self.currentIndex == 0 {
@@ -236,18 +199,15 @@ class LoanTypePhoneRelationSubTBCell: LoanTypeBaseRelationTBCell {
                 da.title = op.title
                 dataSource.append(da)
             }
-            
         }
         
         let popup = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "LoanTypePopupVC") as! LoanTypePopupVC
         popup.indexRelationPhone = self.currentIndex
         popup.setDataSource(data: dataSource, type: .RelationShipPhone)
         popup.delegate = self
-        
         popup.show()
     }
     
-
 }
 
 //MARK: TextField Delegate
@@ -261,10 +221,7 @@ extension LoanTypePhoneRelationSubTBCell: UITextFieldDelegate {
             }
         }
         
-        let currentString: NSString = textField.text! as NSString
-        let newString: NSString =
-            currentString.replacingCharacters(in: range, with: string) as NSString
-        
+        let newString = (textField.text ?? "") + string
     
         guard textField == self.tfRelationPhone else {
             
@@ -273,10 +230,7 @@ extension LoanTypePhoneRelationSubTBCell: UITextFieldDelegate {
             } else {
                 self.tfNameRelation?.textColor = UIColor(hexString: "#DA3535")
             }
-            
-            if newString.length > 50 { return false }
-            
-            return true
+            return newString.count <= 50
         }
         
         if DataManager.shared.missingRelationsShip != nil {
@@ -298,12 +252,8 @@ extension LoanTypePhoneRelationSubTBCell: UITextFieldDelegate {
         
         // Giới hạn ký tự nhập vào
         let maxLength = FinPlusHelper.getMaxLengthPhone1(phoneNumber: textField.text)
-        
-        if newString.length > maxLength { return false }
-        
-        return true
+        return newString.count <= maxLength
     }
-    
     
 }
 

@@ -10,15 +10,9 @@ import Foundation
 
 class LoanSendSuccessVC: BaseViewController {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
-    
-    
-    //MARK: Actions
     
     @IBAction func btnEnableNotificationTapped(_ sender: Any) {
         
@@ -31,7 +25,6 @@ class LoanSendSuccessVC: BaseViewController {
         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
             .done(on: DispatchQueue.main) { model in
                 DataManager.shared.browwerInfo = model
-
                 if let info = DataManager.shared.browwerInfo?.activeLoan,  let loanId = info.loanId, loanId > 0 {
                     let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
                     if let window = UIApplication.shared.delegate?.window, let win = window {
@@ -40,17 +33,10 @@ class LoanSendSuccessVC: BaseViewController {
                 } else {
                     self.navigationController?.popToRootViewController(animated: true)
                 }
-                
             }
             .catch { error in
                 self.navigationController?.popToRootViewController(animated: true)
         }
     }
-    
-    
-    
-    
-    
-    
     
 }

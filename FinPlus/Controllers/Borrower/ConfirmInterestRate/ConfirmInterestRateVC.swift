@@ -13,17 +13,14 @@ class ConfirmInterestRateVC: BaseViewController {
     @IBOutlet var lblAmountLoan: UILabel!
     @IBOutlet var lblTimeLoan: UILabel!
     @IBOutlet var lblInterestRate: UILabel!
-    
     @IBOutlet var lblServiceFee: UILabel!
     @IBOutlet var lblYearFee: UILabel!
-    
     @IBOutlet var lblMounthPay: UILabel!
     @IBOutlet var lblPeriodPay: UILabel!
     @IBOutlet var lblDateReview: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.updateUI()
     }
     
@@ -45,31 +42,21 @@ class ConfirmInterestRateVC: BaseViewController {
         }
         
         self.lblServiceFee.text = FinPlusHelper.formatDisplayCurrency(serviceFee) + " VND"
-        
     }
     
 
     @IBAction func btnLoanAcceptTapped(_ sender: Any) {
-        
         DataManager.shared.loanInfo.status = STATUS_LOAN.RAISING_CAPITAL.rawValue
-        
         APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
-            .done(on: DispatchQueue.main) { [weak self]model in
+            .done(on: DispatchQueue.main) { [weak self] model in
                 DataManager.shared.loanID = model.loanId!
-                
                 self?.showAlertView(title: MS_TITLE_ALERT, message: "", okTitle: "Trở về trang chủ", cancelTitle: nil, completion: { (status) in
                     if status {
                         self?.navigationController?.popToRootViewController(animated: true)
                     }
                 })
             }
-            .catch { error in
-                
-                
-            }
-        
+            .catch { error in }
     }
-    
-    
     
 }

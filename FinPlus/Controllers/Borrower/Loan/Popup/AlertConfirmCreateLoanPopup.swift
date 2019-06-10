@@ -14,19 +14,14 @@ protocol AlertAggreeCreateLoanDelegate {
 
 class AlertConfirmCreateLoanPopup: BasePopup {
     
-    
     @IBOutlet weak var btnChecked: UIButton!
-    var loanCategory: LoanCategories?
     
+    var loanCategory: LoanCategories?
     var delegate: AlertAggreeCreateLoanDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
-    
-    //MARK: Actions
     
     @IBAction func btnAggreeTapped(_ sender: Any) {
         self.hide {
@@ -35,14 +30,11 @@ class AlertConfirmCreateLoanPopup: BasePopup {
                 userDefault.synchronize()
             }
             self.delegate?.confirmAggree()
-            
         }
     }
     
     @IBAction func btnSaveTapped(_ sender: Any) {
         self.btnChecked.isSelected = !self.btnChecked.isSelected
-        
     }
-    
     
 }
