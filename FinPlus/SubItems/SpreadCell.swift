@@ -10,6 +10,7 @@ import UIKit
 import SpreadsheetView
 
 class TitleCell: Cell {
+    
     let label = UILabel()
     var color: UIColor = .clear {
         didSet {

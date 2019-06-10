@@ -18,7 +18,6 @@ class LoanTypeBaseTBCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         self.selectionStyle = .none
     }
     
@@ -34,10 +33,7 @@ class LoanTypeBaseTBCell: UITableViewCell {
         }
     }
     
-    
     /// Khi server trả về thông tin cần cập nhật
-    ///
-    /// - Parameter pre: <#pre description#>
     func updateInfoFalse(pre: String) {
         guard let id = DataManager.shared.browwerInfo?.activeLoan?.loanId, id > 0 else {
             return
@@ -45,8 +41,5 @@ class LoanTypeBaseTBCell: UITableViewCell {
         self.isNeedUpdate = true
         self.lblDescriptionNeedUpdate?.text = pre + " không hợp lệ"
     }
-    
-    
-    
     
 }

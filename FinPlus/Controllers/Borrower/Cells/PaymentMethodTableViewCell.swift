@@ -18,31 +18,32 @@ class PaymentMethodTableViewCell: UITableViewCell {
     
     var cellData : PaymentMethod!
     var isSelectedCell = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        self.selectionStyle = .none
         self.containView.layer.borderWidth = 1
         self.containView.layer.cornerRadius = 8
     }
     
     func updateCellView() {
         if let methodType = cellData.methodType {
-            switch(MethodType(rawValue: methodType))
-            {
-            case .CashIn? : self.methodImg.image = #imageLiteral(resourceName: "cashin_payment_img")
-            case .ATM?: self.methodImg.image = #imageLiteral(resourceName: "atm_payment_img")
-            case .ViettelPay?: self.methodImg.image = #imageLiteral(resourceName: "viettel_payment_img")
-            case .Momo?: self.methodImg.image = UIImage(named: "momo_selected")
+            switch MethodType(rawValue: methodType) {
+            case .CashIn? :
+                self.methodImg.image = #imageLiteral(resourceName: "cashin_payment_img")
+            case .ATM?:
+                self.methodImg.image = #imageLiteral(resourceName: "atm_payment_img")
+            case .ViettelPay?:
+                self.methodImg.image = #imageLiteral(resourceName: "viettel_payment_img")
+            case .Momo?:
+                self.methodImg.image = #imageLiteral(resourceName: "momo_selected")
             case .none:
                 break
             }
         }
         
-        
         self.methodTitleLb.text = cellData.methodTitle
         self.methodDesLb.text = cellData.methodDescription
-        if isSelectedCell == true {
+        if isSelectedCell {
             self.containView.layer.borderColor = MAIN_COLOR.cgColor
             self.selectImg.image = #imageLiteral(resourceName: "ic_radio_on")
 //            if let bankType = cellData.bankType {
@@ -56,8 +57,6 @@ class PaymentMethodTableViewCell: UITableViewCell {
 //                    break
 //                }
 //            }
-            
-            
         } else {
             self.containView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
             self.selectImg.image = #imageLiteral(resourceName: "ic_radio_off")

@@ -19,9 +19,6 @@ class ContractSuccessViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
         self.btnComeHome.layer.cornerRadius = 8
         self.btnComeHome.layer.masksToBounds = true
         self.btnComeHome.titleLabel?.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)
@@ -49,19 +46,14 @@ class ContractSuccessViewController: UIViewController {
                 self?.contractUrl = model.activeLoan?.contractUrl
                 completion()
             }
-            .catch { error in
-                
-        }
+            .catch { error in }
     }
     
     @IBAction func comHome(_ sender: Any) {
-        
         self.reLoadStatusLoanVC()
-        
     }
     
     @IBAction func reviewContract(_ sender: Any) {
-        
         self.updateContractURL {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "CONTRACT_SIGN") as! SignContractViewController
             vc.isSigned = true
@@ -69,17 +61,6 @@ class ContractSuccessViewController: UIViewController {
             self.navigationController?.isNavigationBarHidden = false
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

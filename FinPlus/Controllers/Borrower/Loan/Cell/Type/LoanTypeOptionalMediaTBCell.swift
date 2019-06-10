@@ -14,7 +14,6 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     @IBOutlet weak var mainCollectionView: UICollectionView?
     
     var currentSelectedCollection: IndexPath?
-    
     var MAX_COUNT_IMAGE = 20
     
     var field: LoanBuilderFields? {
@@ -49,13 +48,10 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         self.mainCollectionView?.delegate = self
         self.mainCollectionView?.dataSource = self
         self.mainCollectionView?.register(UINib(nibName: "LoanOtherInfoCollectionCell", bundle: nil), forCellWithReuseIdentifier: "Loan_Other_Info_Collection_Cell")
-        
         self.updateData()
-        
     }
     
     private func updateData() {
@@ -187,16 +183,13 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
             popoverPresentationController.sourceRect = CGRect(x: 20, y: 20, width: 64, height: 64)
         }
         
-        UIApplication.shared.topViewController()?.present(alert, animated: true, completion: {
-            
-        })
+        UIApplication.shared.topViewController()?.present(alert, animated: true, completion: nil)
     }
     
     func showLibrary() {
         CameraHandler.shared.photoLibrary(vc: UIApplication.shared.topViewController()!)
         CameraHandler.shared.imagePickedBlock = { (image) in
             //let img = FinPlusHelper.resizeImage(image: image, newWidth: 300)
-
             self.uploadData(img: image)
         }
     }
@@ -266,11 +259,9 @@ class LoanTypeOptionalMediaTBCell: LoanTypeBaseTBCell {
                     }
                 }
             }
-            
         }) { (error) in
             topVC.handleLoadingView(isShow: false)
             topVC.showToastWithMessage(message: "Có lỗi xảy ra, vui lòng thử lại" )
-            
             if let error = error {
                 print("error \(error.localizedDescription)")
             }
@@ -352,7 +343,6 @@ extension LoanTypeOptionalMediaTBCell: UICollectionViewDataSource, UICollectionV
 extension LoanTypeOptionalMediaTBCell: OptionMediaDelegate {
     
     func deleteOptionMedia(index: Int, urlImg: String?) {
-        
         self.removeUrlInValidInList(url: urlImg)
         self.dataSourceCollection.remove(at: index)
         
@@ -368,7 +358,3 @@ extension LoanTypeOptionalMediaTBCell: OptionMediaDelegate {
     }
     
 }
-
-
-
-

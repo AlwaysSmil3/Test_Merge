@@ -13,14 +13,12 @@ let ROW_HEIGHT_REFERENCEFRIEND_TB_CELL: CGFloat = 291
 
 class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
-
     @IBOutlet weak var mainTableView: UITableView?
-    
     @IBOutlet weak var heightMainTableViewConstraint: NSLayoutConstraint!
     
     weak var parentVC: LoanBaseViewController?
     
-    var isRelationShip: Bool = true
+    var isRelationShip = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,7 +30,6 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         self.mainTableView?.register(UINib(nibName: "LoanTypeReferenceFriendTBCell", bundle: nil), forCellReuseIdentifier: "LoanTypeReferenceFriendTBCell")
         self.mainTableView?.rowHeight = ROW_HEIGHT_RELATIONSHIP_TB_CELL
         self.mainTableView?.tableFooterView = UIView()
-        
     }
     
     var field: LoanBuilderFields? {
@@ -47,14 +44,11 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 }
             }
             
-            
             if let data = field_.multipleData {
                 self.dataSource = data
             }
-            
             self.getData()
         }
-    
     }
     
     var dataSource: [LoanBuilderMultipleData] = [] {
@@ -72,7 +66,6 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 if self.dataSource.count > 0 {
                     self.heightMainTableViewConstraint.constant = CGFloat(Int(ROW_HEIGHT_REFERENCEFRIEND_TB_CELL) * self.dataSource.count)
                 }
-                
                 self.parentVC?.mainTBView?.reloadData()
             }
             
@@ -81,7 +74,6 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
             self.getDataForReferenceFriend()
-            
         } else {
             if self.mainTableView?.rowHeight == ROW_HEIGHT_REFERENCEFRIEND_TB_CELL || (self.heightMainTableViewConstraint.constant != CGFloat(Int(ROW_HEIGHT_RELATIONSHIP_TB_CELL) * self.dataSource.count)) {
                 self.mainTableView?.rowHeight = ROW_HEIGHT_RELATIONSHIP_TB_CELL
@@ -97,9 +89,7 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             
             self.getDataForRelationship()
         }
-        
     }
-    
     
     /// Get Data for relationship
     private func getDataForRelationship() {
@@ -107,7 +97,6 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             //Cap nhat thong tin khong hop le
             self.updateInfoFalse(pre: self.field?.title ?? "")
         } else {
-            
             if let need = self.isNeedUpdate, need {
                 self.isNeedUpdate = false
             }
@@ -118,12 +107,10 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             for pho in phones {
                 if let phoneNumber = pho.phoneNumber, phoneNumber.length() > 0 {
                     var d = LoanBuilderMultipleData(object: NSObject())
-                    
                     d.phoneNumber = pho.phoneNumber
                     d.type = pho.type
                     d.name = pho.name
                     d.address = pho.address
-                    
                     value.append(d)
                 }
             }
@@ -134,12 +121,10 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             for pho in DataManager.shared.loanInfo.userInfo.relationships {
                 if pho.phoneNumber.length() > 0 {
                     var d = LoanBuilderMultipleData(object: NSObject())
-                    
                     d.phoneNumber = pho.phoneNumber
                     d.type = Int(pho.type)
                     d.name = pho.name
                     d.address = pho.address
-                    
                     tempValue.append(d)
                 }
             }
@@ -149,7 +134,6 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         }
         
         if value.count > 0 {
-            
             guard let field_ = self.field, let data_ = field_.multipleData, data_.count > 0 else { return }
             
             for (i, d_) in data_.enumerated() {
@@ -157,13 +141,11 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     value[i].options = d_.options
                     value[i].placeholder = d_.placeholder
                 }
-                
             }
             
             DataManager.shared.loanInfo.userInfo.relationships.removeAll()
             for (i, pho) in value.enumerated() {
                 var d = RelationShipPhone()
-                
                 d.phoneNumber = pho.phoneNumber ?? ""
                 d.type = Int16(pho.type ?? 0)
                 d.name = pho.name
@@ -184,12 +166,8 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                         }
                     }
                 }
-                
-                
             }
-            
             self.dataSource = value
-            
         }
     }
     
@@ -209,17 +187,13 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         if let references = DataManager.shared.loanInfo.userInfo.referenceFriend, references.count > 0 {
             var tempValue: [LoanBuilderMultipleData] = []
             for pho in references {
-                
                 var d = LoanBuilderMultipleData(object: NSObject())
-                
                 d.phoneNumber = pho.phoneNumber
                 d.type = Int(pho.type)
                 d.name = pho.name
                 d.address = pho.address
                 d.loanPurpose = pho.loanPurpose
-                
                 tempValue.append(d)
-                
             }
             if tempValue.count > 0 {
                 value = tempValue
@@ -228,9 +202,7 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             DataManager.shared.checkAndInitReferenceFriend()
         }
         
-        
         if value.count > 0 {
-            
             guard let field_ = self.field, let data_ = field_.multipleData, data_.count > 0 else { return }
             
             for (i, d_) in data_.enumerated() {
@@ -238,7 +210,6 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     value[i].options = d_.options
                     value[i].placeholder = d_.placeholder
                 }
-                
             }
             
             /*
@@ -256,14 +227,10 @@ class LoanTypePhoneRelationTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             */
             
             self.dataSource = value
-            
         }
-        
     }
     
-    
 }
-
 
 //MARK: TableViewDelegate, DataSource
 extension LoanTypePhoneRelationTBCell: UITableViewDelegate, UITableViewDataSource {
@@ -275,15 +242,12 @@ extension LoanTypePhoneRelationTBCell: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard self.isRelationShip else {
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "LoanTypeReferenceFriendTBCell", for: indexPath) as! LoanTypeReferenceFriendTBCell
             cell.delegateUpdateStatusInvalid = self
             cell.currentIndex = indexPath.row
             cell.data = self.dataSource[indexPath.row]
             cell.parentVC = self.parentVC
-            
             return cell
-            
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Loan_Type_Phone_Relation_Sub_TB_Cell", for: indexPath) as! LoanTypePhoneRelationSubTBCell
@@ -291,10 +255,8 @@ extension LoanTypePhoneRelationTBCell: UITableViewDelegate, UITableViewDataSourc
         cell.currentIndex = indexPath.row
         cell.data = self.dataSource[indexPath.row]
         cell.parentVC = self.parentVC
-        
         return cell
     }
-    
     
 }
 
@@ -308,8 +270,3 @@ extension LoanTypePhoneRelationTBCell: UpdateStatusInvalidRelationPhoneDelegate 
         self.isNeedUpdate = isNeed
     }
 }
-
-
-
-
-

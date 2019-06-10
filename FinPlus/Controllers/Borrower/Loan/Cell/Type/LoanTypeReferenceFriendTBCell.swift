@@ -13,42 +13,32 @@ class LoanTypeReferenceFriendTBCell: LoanTypeBaseRelationTBCell {
     @IBOutlet weak var lblLoanPurposeTitle: UILabel?
     @IBOutlet weak var tfLoanPurpose: UITextField?
     
-    
     var data: LoanBuilderMultipleData? {
         didSet {
             guard let data_ = data else { return }
             self.tfRelationPhone?.placeholder = data_.placeholder
-            
             self.tfRelationPhone?.text = self.getDisplayPhone(relationPhone: data_.phoneNumber ?? "")
-            
             let temp = DataManager.getTitleRelationShip(id: data_.type ?? -1, key: "referenceFriend")
             self.tfTypeRelation?.text = temp == "Người thân" ? "Người vay cùng" : temp.replacingOccurrences(of: "Người vay cùng", with: "...")
-            
             self.setupUI()
-            
             self.checkInvalidReferenceFriendData()
-            
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         self.tfRelationPhone?.delegate = self
         self.tfNameRelation?.delegate = self
         if #available(iOS 11.0, *) {
             self.tfRelationPhone?.textContentType = .username
         }
-        
         self.lblAddressRelationTitle?.font = FONT_CAPTION
         self.lblAddressRelationTitle?.textColor = TEXT_NORMAL_COLOR
     }
     
     private func setupUI() {
-
         self.tfNameRelation?.placeholder = "Nhập họ và tên"
         self.tfRelationPhone?.placeholder = "Nhập số điện thoại"
-        
         self.lblAddressRelationTitle?.text = "Địa chỉ"
         
         if let referenceFriend = DataManager.shared.loanInfo.userInfo.referenceFriend, referenceFriend.count > self.currentIndex, let name = DataManager.shared.loanInfo.userInfo.referenceFriend?[self.currentIndex].name, name.count > 0 {
@@ -68,9 +58,7 @@ class LoanTypeReferenceFriendTBCell: LoanTypeBaseRelationTBCell {
         } else {
             self.tfLoanPurpose?.text = ""
         }
-        
     }
-    
     
     /// Sang màn chọn địa chỉ
     private func gotoAddressVC(title: String, id: String) {
@@ -86,9 +74,6 @@ class LoanTypeReferenceFriendTBCell: LoanTypeBaseRelationTBCell {
         self.parentVC?.show(firstAddressVC, sender: nil)
     }
     
-    
-    //MARK: Actions
-    
     @IBAction func btnAddressTapped(_ sender: Any) {
         self.parentVC?.view.endEditing(true)
         let title = self.lblAddressRelationTitle?.text ?? "Địa chỉ người thân \(self.currentIndex + 1)"
@@ -97,21 +82,17 @@ class LoanTypeReferenceFriendTBCell: LoanTypeBaseRelationTBCell {
     }
     
     @IBAction func tfNameEditEnd(_ sender: Any) {
-        
         guard let value = self.tfNameRelation?.text else { return }
         guard let referenceFriend = DataManager.shared.loanInfo.userInfo.referenceFriend, referenceFriend.count > self.currentIndex else { return }
         DataManager.shared.loanInfo.userInfo.referenceFriend?[self.currentIndex].name = value
-
         self.checkInvalidReferenceFriendData()
     }
     
     @IBAction func tfEditEnd(_ sender: Any) {
         guard let value = self.tfRelationPhone?.text else { return }
-        
         let valueTemp = FinPlusHelper.updatePhoneNumber(phone: value)
         guard let referenceFriend = DataManager.shared.loanInfo.userInfo.referenceFriend, referenceFriend.count > self.currentIndex else { return }
         DataManager.shared.loanInfo.userInfo.referenceFriend?[self.currentIndex].phoneNumber = valueTemp
-        
         self.checkInvalidReferenceFriendData()
     }
     
@@ -156,9 +137,7 @@ extension LoanTypeReferenceFriendTBCell: UITextFieldDelegate {
 //            }
 //        }
         
-        let currentString: NSString = textField.text! as NSString
-        let newString: NSString =
-            currentString.replacingCharacters(in: range, with: string) as NSString
+        let newString = (textField.text ?? "") + string
         
         guard textField == self.tfRelationPhone else {
             if textField == self.tfNameRelation {
@@ -174,11 +153,7 @@ extension LoanTypeReferenceFriendTBCell: UITextFieldDelegate {
                     self.tfLoanPurpose?.textColor = UIColor(hexString: "#DA3535")
                 }
             }
-            
-            
-            if newString.length > 50 { return false }
-            
-            return true
+            return newString.count <= 50
         }
         
         if DataManager.shared.missingReferenceFriend != nil {
@@ -197,15 +172,10 @@ extension LoanTypeReferenceFriendTBCell: UITextFieldDelegate {
                 }
             }
         }
-        
         // Giới hạn ký tự nhập vào
         let maxLength = FinPlusHelper.getMaxLengthPhone1(phoneNumber: textField.text)
-        
-        if newString.length > maxLength { return false }
-        
-        return true
+        return newString.count <= maxLength
     }
-    
     
 }
 
@@ -283,8 +253,6 @@ extension LoanTypeReferenceFriendTBCell {
     
     
     /// Check invalidType
-    ///
-    /// - Returns: <#return value description#>
     private func checkInvalidType() -> Bool {
         guard let referenceFriend = DataManager.shared.loanInfo.userInfo.referenceFriend, referenceFriend.count > self.currentIndex else { return true }
         
@@ -292,19 +260,15 @@ extension LoanTypeReferenceFriendTBCell {
         
         if DataManager.shared.checkTypeRelationReferrenceFriendInvalid(type: Int(type), index: self.currentIndex) {
             self.tfTypeRelation?.textColor = UIColor(hexString: "#08121E")
-            
             return true
         }
         
         self.tfTypeRelation?.textColor = UIColor(hexString: "#DA3535")
-        
         return false
     }
     
     
     /// Check invalid LoanPurpose
-    ///
-    /// - Returns: <#return value description#>
     private func checkInvalidLoanPurpose() -> Bool {
         //guard let value = self.tfLoanPurpose?.text else { return true }
         let value = self.tfLoanPurpose?.text ?? ""
@@ -315,7 +279,6 @@ extension LoanTypeReferenceFriendTBCell {
                 //self.lblLoanPurposeTitle?.textColor = UIColor(hexString: "#08121E")
                 self.tfLoanPurpose?.attributedPlaceholder = NSAttributedString(string: "Nhập mục đích vay", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
             }
-            
             return true
         }
         
@@ -324,19 +287,14 @@ extension LoanTypeReferenceFriendTBCell {
             //self.lblLoanPurposeTitle?.textColor = UIColor(hexString: "#DA3535")
             self.tfLoanPurpose?.attributedPlaceholder = NSAttributedString(string: "Nhập mục đích vay", attributes: [NSAttributedString.Key.foregroundColor: UIColor(hexString: "#DA3535")])
         }
-        
         return false
     }
     
-    
     /// Check invalid Phone
-    ///
-    /// - Returns: <#return value description#>
     private func checkInvalidPhoneNumber() -> Bool {
 //        guard let value = self.tfRelationPhone?.text, DataManager.shared.missingReferenceFriend != nil else { return true }
         
         let value = self.tfRelationPhone?.text ?? ""
-        
         let valueTemp = FinPlusHelper.updatePhoneNumber(phone: value)
         
         if valueTemp != DataManager.shared.getPhoneInValid(type: self.data?.type ?? 0, key: "referenceFriend", countItems: 3, index: self.currentIndex) {
@@ -353,10 +311,7 @@ extension LoanTypeReferenceFriendTBCell {
         return false
     }
     
-    
     /// Check invalid Name
-    ///
-    /// - Returns: <#return value description#>
     private func checkInvalidName() -> Bool {
         //guard let value = self.tfNameRelation?.text else { return true }
         let value = self.tfNameRelation?.text ?? ""
@@ -367,7 +322,6 @@ extension LoanTypeReferenceFriendTBCell {
                 //self.lblNameRelationTitle?.textColor = UIColor(hexString: "#08121E")
                 self.tfNameRelation?.attributedPlaceholder = NSAttributedString(string: "Nhập họ và tên", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
             }
-            
             return true
         }
         
@@ -380,10 +334,7 @@ extension LoanTypeReferenceFriendTBCell {
         return false
     }
     
-    
     /// Check invalid Address
-    ///
-    /// - Returns: <#return value description#>
     private func checkInvalidAddress() -> Bool {
         guard let references = DataManager.shared.loanInfo.userInfo.referenceFriend, self.currentIndex < references.count else { return true }
         
@@ -393,11 +344,9 @@ extension LoanTypeReferenceFriendTBCell {
             self.lblAddressRelation?.textColor = UIColor(hexString: "#08121E")
             return true
         }
-        
         self.lblAddressRelation?.textColor = UIColor(hexString: "#DA3535")
         return false
     }
-    
     
     func updateStatus() {
         if !DataManager.shared.isReferenceFriend1Invalid && !DataManager.shared.isReferenceFriend2Invalid && !DataManager.shared.isReferenceFriend3Invalid {
@@ -409,7 +358,4 @@ extension LoanTypeReferenceFriendTBCell {
         }
     }
     
-    
 }
-
-

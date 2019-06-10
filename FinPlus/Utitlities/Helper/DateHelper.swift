@@ -823,12 +823,10 @@ public extension Date {
     /**
      A string representation using input format.
      */
-    func convertDateToDisplayFormat(_ date: Date) -> String
-    {
+    func convertDateToDisplayFormat(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = kDisplayFormat
         return dateFormatter.string(from: date)
-
     }
     
     /**

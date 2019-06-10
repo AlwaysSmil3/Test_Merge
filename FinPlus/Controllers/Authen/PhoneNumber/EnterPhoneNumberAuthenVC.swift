@@ -32,14 +32,11 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
         if #available(iOS 11.0, *) {
             self.tfPhoneNumber.textContentType = .username
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         self.checkConnectedToNetwork()
-        
         DataManager.shared.getListBank {
             
         }
@@ -49,7 +46,6 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
         if let accountName = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String {
             self.tfPhoneNumber.text = accountName
         }
-        
     }
     
     /// Set link cho UITextView
@@ -70,15 +66,10 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
         
         myMutableString.append(string2)
         
-        
         UITextView.appearance().linkTextAttributes = [ NSAttributedStringKey.foregroundColor.rawValue: UIColor(hexString: "#3EAA5F")]
         
         self.textDescription.attributedText = myMutableString
-        
     }
-    
-    
-    //MARK: Actions
     
     @IBAction func btnOptionTapped(_ sender: Any) {
         let alert = UIAlertController(title: "", message: "Lựa chọn", preferredStyle: .actionSheet)
@@ -94,7 +85,6 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
                 self.showSendMailErrorAlert()
             }
             // go to email form
-            
         })
         
         let hotLineAction = UIAlertAction(title: "Gọi hotline: \(phoneNumberMony)", style: .default, handler: { (alert: UIAlertAction!) -> Void in
@@ -103,8 +93,6 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
             }
             // show call popup
             FinPlusHelper.makeCall(forPhoneNumber: phoneNumberMony)
-            
-            
         })
         
         alert.addAction(emailAction)
@@ -124,7 +112,6 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
         self.present(alert, animated: true, completion: {
             print("completion block")
         })
-        
     }
     
     @IBAction func tfPhoneNumberEditChanged(_ sender: Any) {
@@ -150,8 +137,7 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
     }
     
     @IBAction func btnContinueTapped(_ sender: Any) {
-        
-        func continueAction() {
+//        func continueAction() {
             var phone = self.tfPhoneNumber.text!
             if phone.hasPrefix("0") {
                 
@@ -172,7 +158,7 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
                 
                 var accountTemp = phone
                 APIClient.shared.authentication(phoneNumber: phone)
-                    .done(on: DispatchQueue.main) { [weak self]model in
+                    .done(on: DispatchQueue.main) { [weak self] model in
                         guard let strongSelf = self else { return }
                         
                         if let acc = model.data?.phoneNumber, acc.count > 0 {
@@ -195,7 +181,6 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
                                 self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: returnMessage, okTitle: "Đóng", cancelTitle: nil)
                                 return
                             }
-                            break
                         default :
                             // new account
                             DataManager.shared.currentAccount = accountTemp
@@ -210,7 +195,6 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
                             DataManager.shared.updatePushNotificationToken()
                             // get config
                             userDefault.set(accountTemp, forKey: fNEW_ACCOUNT_NAME)
-                            break
                         }
                         
                         strongSelf.pushToVerifyVC(verifyType: .Login, phone: accountTemp)
@@ -221,21 +205,19 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
             else {
                 self.pushToVerifyVC(verifyType: .Login, phone: phone)
             }
-        }
+//        }
         
         if DataManager.shared.config == nil || DataManager.shared.loanCategories.count == 0 {
             if FinPlusHelper.isConnectedToNetwork() {
                 self.getLoanCategories {
-                    continueAction()
+//                    continueAction()
                 }
             } else {
                 self.checkConnectedToNetwork()
             }
-            
             return
         }
-        
-        continueAction()
+//        continueAction()
     }
 
 
@@ -258,7 +240,6 @@ class EnterPhoneNumberAuthenVC: BaseAuthenViewController {
     func pushToLoginVC() {
         self.view.endEditing(true)
         let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-
         self.navigationController?.pushViewController(loginVC, animated: true)
     }
     
@@ -270,13 +251,9 @@ extension EnterPhoneNumberAuthenVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Giới hạn ký tự nhập vào
         let maxLength = FinPlusHelper.getMaxLengthPhone(phoneNumber: textField.text)
-        let currentString: NSString = textField.text! as NSString
-        let newString: NSString =
-            currentString.replacingCharacters(in: range, with: string) as NSString
-        
-        if newString.length > maxLength { return false }
-        
-        return true
+        guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+        return newLength <= maxLength
     }
 }
 

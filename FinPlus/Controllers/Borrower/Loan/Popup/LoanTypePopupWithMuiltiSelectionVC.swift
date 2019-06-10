@@ -34,34 +34,27 @@ class LoanTypePopupWithMuiltiSelectionVC: BasePopup {
     
     //Loại popup
     var type: TypePopup?
-    
-    var titleString: String = "Thông báo"
+    var titleString = "Thông báo"
     var otherTextSelection: String?
-    
-    var indexRelationPhone: Int = 0
+    var indexRelationPhone = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.mainTBView?.tableFooterView = UIView()
         self.mainTBView?.separatorColor = UIColor.clear
         self.mainTBView?.rowHeight = UITableViewAutomaticDimension
         //self.mainTBView?.register(UINib(nibName: "LoanTypePopupAddTextTBCell", bundle: nil), forCellReuseIdentifier: "Loan_Type_Popup_Add_Text_TB_Cell")
         
         self.updateSelected()
-        
         self.lblTitle?.text = titleString
         
         if self.listCurrentSelection == nil {
             self.updateDataSelectedFromServer()
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
     }
     
     private func handleSelection(index: Int) {
@@ -92,25 +85,18 @@ class LoanTypePopupWithMuiltiSelectionVC: BasePopup {
         }
         
         self.listCurrentSelection = tempList.joined(separator: keyComponentSeparateOptionalText)
-        
     }
-    
     
     private func updateListTitleValue() {
         guard let selections = self.listCurrentSelection else { return }
-        
         let value = FinPlusHelper.getListTitleValue(selections: selections, dataSource: dataSource)
         if value.count > 0 {
             self.listValueTitle = value
         }
-        
     }
-    
-    
     
     private func checkCellIsSelecting(index: Int) -> Bool {
         guard let currentValue = self.listCurrentSelection else { return false }
-        
         let list = currentValue.components(separatedBy: keyComponentSeparateOptionalText)
         
         for l in list {
@@ -118,15 +104,10 @@ class LoanTypePopupWithMuiltiSelectionVC: BasePopup {
                 return true
             }
         }
-        
         return false
     }
     
-    
-    
     /// set DataSource for tableView
-    ///
-    /// - Parameter data: <#data description#>
     func setDataSource(data: [LoanBuilderData], type: TypePopup? = nil) {
         if let type_ = type {
             self.type = type_
@@ -135,16 +116,12 @@ class LoanTypePopupWithMuiltiSelectionVC: BasePopup {
     }
     
     private func updateDataSelectedFromServer() {
-        guard let type_ = self.type else { return }
-        switch type_ {
-            
+        guard let type = self.type else { return }
+        switch type {
         case .TypeLoanedFrom:
-            
             if let value = DataManager.shared.loanInfo.borrowedPlace {
                 self.listCurrentSelection = value
             }
-            
-            break
         default:
             break
         }
@@ -153,24 +130,17 @@ class LoanTypePopupWithMuiltiSelectionVC: BasePopup {
     
     /// Update index hiện tại đang chọn
     func updateSelected() {
-        guard let type_ = self.type else { return }
-        switch type_ {
-            
+        guard let type = self.type else { return }
+        switch type {
         case .TypeLoanedFrom:
             self.titleString = "Bạn đã từng vay tiền ở đâu"
-            
             if let current = DataManager.shared.currentListIndexLoanedFromSelectedPopup {
                 self.listCurrentSelection = current
             }
-            
-            break
         default:
             break
-            
         }
-        
     }
-    
     
     @IBAction func btnOkTapped(_ sender: Any) {
         guard let listIndex = self.listCurrentSelection, let listTitle = self.listValueTitle else { return }
@@ -178,12 +148,10 @@ class LoanTypePopupWithMuiltiSelectionVC: BasePopup {
         self.hide {
             self.delegate?.multiDataSelected(value: listTitle, listIndex: listIndex)
             
-            guard let type_ = self.type else { return }
-            switch type_ {
-
+            guard let type = self.type else { return }
+            switch type {
             case .TypeLoanedFrom:
                 DataManager.shared.currentListIndexLoanedFromSelectedPopup = listIndex
-                break
             default:
                 break
             }
@@ -223,17 +191,13 @@ extension LoanTypePopupWithMuiltiSelectionVC: UITableViewDelegate, UITableViewDa
         }
         
         cell.imgIcon?.image = #imageLiteral(resourceName: "ic_radio_on")
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
         self.handleSelection(index: indexPath.row)
-        
     }
-    
     
 }
 
@@ -253,12 +217,10 @@ extension LoanTypePopupWithMuiltiSelectionVC: PopupAddTextDelegate {
         }, completion: { (finished) -> Void in
             // ....
         })
-        
     }
     
     //Hide keyboard
     func endEditing() {
-        
         UIView.animate(withDuration: 0.5,
                        delay: 0.2,
                        options: UIViewAnimationOptions.curveEaseIn,
@@ -273,7 +235,3 @@ extension LoanTypePopupWithMuiltiSelectionVC: PopupAddTextDelegate {
     }
     
 }
-
-
-
-

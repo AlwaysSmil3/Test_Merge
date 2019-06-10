@@ -16,12 +16,15 @@ class ReadContractViewController: BaseViewController {
     @IBOutlet var btnStartRecordVideo: UIButton!
     @IBOutlet var btnSign: UIButton!
     
+    let captureSession = AVCaptureSession()
+    let movieOutput = AVCaptureMovieFileOutput()
+    var previewLayer: AVCaptureVideoPreviewLayer!
+    var activeInput: AVCaptureDeviceInput!
+    var outputURL: URL!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.setupUI()
-        
         if setupSession() {
             setupPreview()
             startSession()
@@ -40,19 +43,10 @@ class ReadContractViewController: BaseViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    let captureSession = AVCaptureSession()
-    let movieOutput = AVCaptureMovieFileOutput()
-    
-    var previewLayer: AVCaptureVideoPreviewLayer!
-    var activeInput: AVCaptureDeviceInput!
-    var outputURL: URL!
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     func setupPreview() {
         // Configure previewLayer
@@ -94,7 +88,6 @@ class ReadContractViewController: BaseViewController {
             return false
         }
         
-        
         // Movie output
         if captureSession.canAddOutput(movieOutput) {
             captureSession.addOutput(movieOutput)
@@ -105,13 +98,10 @@ class ReadContractViewController: BaseViewController {
     
     func setupCaptureMode(_ mode: Int) {
         // Video Mode
-        
     }
     
     //MARK:- Camera Session
     func startSession() {
-        
-        
         if !captureSession.isRunning {
             videoQueue().async {
                 self.captureSession.startRunning()
@@ -131,11 +121,9 @@ class ReadContractViewController: BaseViewController {
         return DispatchQueue.main
     }
     
-    
-    
     func currentVideoOrientation() -> AVCaptureVideoOrientation {
         var orientation: AVCaptureVideoOrientation
-
+        
         switch UIDevice.current.orientation {
         case .portrait:
             orientation = AVCaptureVideoOrientation.portrait
@@ -146,16 +134,13 @@ class ReadContractViewController: BaseViewController {
         default:
             orientation = AVCaptureVideoOrientation.landscapeRight
         }
-
+        
         return orientation
     }
     
     func startCapture() {
-        
         startRecording()
-        
     }
-    
     
     func tempURL() -> URL? {
         let directory = NSTemporaryDirectory() as NSString
@@ -164,26 +149,22 @@ class ReadContractViewController: BaseViewController {
             let path = directory.appendingPathComponent(NSUUID().uuidString + ".mp4")
             return URL(fileURLWithPath: path)
         }
-        
         return nil
     }
     
-    
     func startRecording() {
-        
-        if movieOutput.isRecording == false {
-            
+        if !movieOutput.isRecording {
             let connection = movieOutput.connection(with: .video)
-            if (connection?.isVideoOrientationSupported)! {
+            if connection?.isVideoOrientationSupported ?? false {
                 connection?.videoOrientation = currentVideoOrientation()
             }
             
-            if (connection?.isVideoStabilizationSupported)! {
+            if connection?.isVideoStabilizationSupported ?? false {
                 connection?.preferredVideoStabilizationMode = AVCaptureVideoStabilizationMode.auto
             }
             
             let device = activeInput.device
-            if (device.isSmoothAutoFocusSupported) {
+            if device.isSmoothAutoFocusSupported {
                 do {
                     try device.lockForConfiguration()
                     device.isSmoothAutoFocusEnabled = false
@@ -191,27 +172,20 @@ class ReadContractViewController: BaseViewController {
                 } catch {
                     print("Error setting configuration: \(error)")
                 }
-                
             }
-            
             
             outputURL = tempURL()
             movieOutput.startRecording(to: outputURL, recordingDelegate: self)
-            
-        }
-        else {
+        } else {
             stopRecording()
         }
-        
     }
     
     func stopRecording() {
-        
-        if movieOutput.isRecording == true {
+        if movieOutput.isRecording {
             movieOutput.stopRecording()
         }
     }
-    
     
 }
 
@@ -228,4 +202,5 @@ extension ReadContractViewController: AVCaptureFileOutputRecordingDelegate {
         }
         outputURL = nil
     }
+    
 }

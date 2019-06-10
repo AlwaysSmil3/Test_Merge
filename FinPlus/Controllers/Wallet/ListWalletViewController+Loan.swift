@@ -11,7 +11,6 @@ import Foundation
 //Loan
 extension ListWalletViewController {
     
-    
     func initForCreateLoan() {
         
         tableview.register(UINib(nibName: "LoanTypeDropdownTBCell", bundle: nil), forCellReuseIdentifier: Loan_Identifier_TB_Cell.DropDown)
@@ -36,10 +35,7 @@ extension ListWalletViewController {
         }
         
         self.listFieldsForLoan.addObjects(from: fields)
-        
     }
-    
-    
     
     /// Get Data from JSON
     func getDataLoanFromJSONStep4() {
@@ -59,14 +55,12 @@ extension ListWalletViewController {
                         DataManager.shared.listFieldForStep4 = listTemp
                         self.listFieldsForLoan.addObjects(from: listTemp)
                     }
-                    
                 }
             } catch {
                 // handle error
             }
         }
     }
-    
     
     /// Cho Loan - Xong mỗi bước là gửi api put cập nhật dữ liệu cho mỗi bước
     func updateDataToServer(completion: @escaping() -> Void) {
@@ -96,7 +90,6 @@ extension ListWalletViewController {
             return
         }
         
-        
         if DataManager.shared.listKeyMissingLoanKey != nil && DataManager.shared.listKeyMissingLoanKey!.count > 0  {
             if !DataManager.shared.checkIndexLastStepHaveMissingData(index: 4) {
                 DataManager.shared.loanInfo.currentStep = 3
@@ -107,18 +100,9 @@ extension ListWalletViewController {
         
         self.updateDataToServer {
             let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
-            
             self.navigationController?.isNavigationBarHidden = true
             self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
 }

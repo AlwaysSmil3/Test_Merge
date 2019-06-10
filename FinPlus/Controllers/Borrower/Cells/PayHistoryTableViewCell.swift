@@ -18,14 +18,12 @@ class PayHistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var statusImg: UIImageView!
     @IBOutlet weak var imgBackgroundView: UIView!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         mainBackgroundView.layer.cornerRadius = 8
         mainBackgroundView.layer.borderWidth = 1
         imgBackgroundView.layer.cornerRadius = 15
         imgBackgroundView.layer.borderWidth = 1
-        // Initialization code
     }
 
     func displayCell(cellData: CollectionPay, index: Int) {
@@ -36,29 +34,23 @@ class PayHistoryTableViewCell: UITableViewCell {
         
         amountLb.text = FinPlusHelper.formatDisplayCurrency(cellData.principal! + cellData.interest! + cellData.overdue! + cellData.feeOverdue! + cellData.borrowerManagingFee! ) + "đ"
         
-
         // set theme cell
         switch cellData.status! {
         case 0:
             //chưa phát sinh
             self.notYetCellView()
-            break
         case 1:
             //Chưa thanh toán
             amountLb.text = FinPlusHelper.formatDisplayCurrency((cellData.principal! + cellData.interest! + cellData.overdue! + cellData.feeOverdue! + cellData.borrowerManagingFee! ) - (cellData.repayFeeOverdue! + cellData.repayOverdue! + cellData.repayInterest! + cellData.repayPrincipal! + cellData.repayBorrowerManagingFee!)) + "đ"
             self.needToPayCellView()
-            break
         case 2:
             //Đã thanh toán
             amountLb.text = "0 đ"
             self.paidViewCell()
-            break
         case 3:
             // Trễ thanh toán
             self.needToPayNowViewCell()
-            break
         default:
-            
             break
         }
     }
@@ -116,7 +108,6 @@ class PayHistoryTableViewCell: UITableViewCell {
         statusImg.image = #imageLiteral(resourceName: "paid")
     }
     
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

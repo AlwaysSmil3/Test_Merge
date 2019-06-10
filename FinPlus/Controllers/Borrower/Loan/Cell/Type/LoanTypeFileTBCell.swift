@@ -42,7 +42,6 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                 self.lblDescription?.text = desc
             }
             
-            //Update Data
             self.getData()
         }
     }
@@ -139,7 +138,6 @@ class LoanTypeFileTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     self.isNeedUpdate = false
                 }
             }
-            
         } else if id.contains("nationalIdBackImg") {
             var value = ""
             if let data = DataManager.shared.browwerInfo?.activeLoan?.nationalIdBackImg, data.length() > 0 {

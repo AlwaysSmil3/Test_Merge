@@ -13,12 +13,10 @@ class BaseViewController: UIViewController {
     
     @IBOutlet var btnContinue: UIButton?
     @IBOutlet var imgBgBtnContinue: UIImageView?
-    
     @IBOutlet var errorConnectView: UIView?
     
     //Current Location
     var locationManager: CLLocationManager?
-    
     
     func setupTitleView(title: String, subTitle: String? = nil) {
         let topText = NSLocalizedString(title, comment: "")
@@ -53,13 +51,10 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Add shadow for button
         if let btn = self.btnContinue {
             btn.dropShadow(color: DISABLE_BUTTON_COLOR)
         }
-        
-        
     }
     
     deinit {
@@ -83,14 +78,9 @@ class BaseViewController: UIViewController {
             locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager?.startUpdatingLocation()
         }
-        
     }
     
-    
-    
     /// cho trạng thái enable hay disable button
-    ///
-    /// - Parameter isEnable: <#isEnable description#>
     func isEnableContinueButton(isEnable: Bool) {
         guard isEnable else {
             if let imgbg = self.imgBgBtnContinue {
@@ -101,7 +91,6 @@ class BaseViewController: UIViewController {
                 btn.dropShadow(color: DISABLE_BUTTON_COLOR)
                 btn.isEnabled = false
             }
-            
             return
         }
         
@@ -113,33 +102,25 @@ class BaseViewController: UIViewController {
             btn.dropShadow(color: MAIN_COLOR)
             btn.isEnabled = true
         }
-        
     }
     
-    // MARK: - Action
-    
-    
     @IBAction func btnBackCurrentClicked(_ sender: Any) {
-        
-        _ = self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnBackToRootClicked(_ sender: Any) {
-        
-        _ = self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     //Goto App Investor
     func gotoAppInvestor() {
         if let url = URL(string: "monyInvestor://") {
-            
             if UIApplication.shared.canOpenURL(url) {
                 //da cai app
                 if #available(iOS 10, *) {
                     UIApplication.shared.open(url, options: [:],
                                               completionHandler: {
                                                 (success) in
-                                                
                     })
                 } else {
                     UIApplication.shared.openURL(url)
@@ -151,24 +132,16 @@ class BaseViewController: UIViewController {
                         UIApplication.shared.open(link, options: [:],
                                                   completionHandler: {
                                                     (success) in
-                                                    
                         })
                     } else {
                         UIApplication.shared.openURL(link)
                     }
                 }
-                
             }
         }
     }
     
-    
     /// show nack View
-    ///
-    /// - Parameters:
-    ///   - message: <#message description#>
-    ///   - titleButton: <#titleButton description#>
-    ///   - completion: <#completion description#>
     func showSnackView(message: String, titleButton: String, completion: @escaping () -> Void) {
         // Present a snack to allow the user to undo this action
         let snack = LPSnackbar(title: message, buttonTitle: titleButton)
@@ -180,17 +153,13 @@ class BaseViewController: UIViewController {
             // whether user tapped the button or not
             guard undone else { return }
             completion()
-            
         }
     }
     
     func checkLocationsIsValid(completion: () -> Void) {
         guard let _ = DataManager.shared.currentLocation else {
-            
             self.showGreenBtnMessage(title: "Không thể xác minh vị trí", message: "Rất tiếc! thiết bị không thể lấy được vị trí hiện tại của bạn. Vui lòng thử lại sau!", okTitle: "Đóng", cancelTitle: nil)
-            
             return
-            
         }
         completion()
     }
@@ -205,5 +174,3 @@ extension BaseViewController: CLLocationManagerDelegate {
         DataManager.shared.currentLocation = locValue
     }
 }
-
-

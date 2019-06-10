@@ -8,17 +8,14 @@
 
 import Foundation
 
-
 class LoanInfoJobVC: LoanBaseViewController {
     
     override func viewDidLoad() {
         self.index = 1
         super.viewDidLoad()
-        
         self.currentStep = 2
         //self.updateDataToServer()
         self.configTextMesseageView()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,11 +27,9 @@ class LoanInfoJobVC: LoanBaseViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: Notification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: Notification.Name.UIKeyboardWillShow, object: nil)
-        
     }
     
     //MARK: Get API
-    
     private func updateDataForLoanAPI(completion: () -> Void) {
         
         if  !DataManager.shared.isLendingforStudent() {
@@ -73,11 +68,7 @@ class LoanInfoJobVC: LoanBaseViewController {
                 self.showToastWithMessage(message: "Vui lòng chọn địa chỉ làm việc.")
                 return
             }
-            
-            
         } else {
-            
-            
             if DataManager.shared.loanInfo.jobInfo.academicName.length() == 0 {
                 self.showToastWithMessage(message: "Vui lòng nhập tên trường học để tiếp tục.")
                 return
@@ -88,33 +79,25 @@ class LoanInfoJobVC: LoanBaseViewController {
                 return
             }
             
-            
             if DataManager.shared.loanInfo.jobInfo.academicAddress.city.length() == 0 {
                 self.showToastWithMessage(message: "Vui lòng chọn địa trường học.")
                 return
             }
         }
         
-        
         if !DataManager.shared.checkDataInvalidChangedInStepJobInfo() {
             //For Missing Data
             self.showToastWithMessage(message: "Vui lòng thay đổi các thông tin không chính xác.")
             return
         }
-
-        
         
         completion()
     }
     
-    
-    //MARK: Actions
-
     @IBAction func btnContinueTapped(_ sender: Any) {
         self.view.endEditing(true)
         
         self.updateDataForLoanAPI {
-            
             if DataManager.shared.listKeyMissingLoanKey != nil && DataManager.shared.listKeyMissingLoanKey!.count > 0  {
                 if !DataManager.shared.checkIndexLastStepHaveMissingData(index: 3) {
                     DataManager.shared.loanInfo.currentStep = 2
@@ -126,16 +109,9 @@ class LoanInfoJobVC: LoanBaseViewController {
             self.updateDataToServer(step: 2, completion: {
                 let loanWalletVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "LIST_WALLET") as! ListWalletViewController
                 loanWalletVC.walletAction = .LoanNation
-                
                 self.navigationController?.pushViewController(loanWalletVC, animated: true)
             })
-            
         }
-        
     }
     
 }
-
-
-
-

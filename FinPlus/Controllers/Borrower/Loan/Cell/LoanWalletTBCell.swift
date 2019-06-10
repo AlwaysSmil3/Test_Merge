@@ -10,10 +10,8 @@ import Foundation
 
 class LoanWalletTBCell: UITableViewCell {
     
-    
     @IBOutlet var lblTypeService: UILabel!
     @IBOutlet var lblAccountNumber: UILabel!
     @IBOutlet var lblOwnerName: UILabel!
-    
     
 }

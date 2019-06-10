@@ -13,17 +13,14 @@ class InfoInterestRatePopupVC: BasePopup {
     @IBOutlet var lblTitle: UILabel!
     @IBOutlet var mainTBView: UITableView?
     
-    var titleString: String = ""
+    var titleString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.lblTitle.text = self.titleString
         self.mainTBView?.tableFooterView = UIView()
         self.mainTBView?.separatorColor = UIColor.clear
-        
     }
-    
     
     @IBAction func btnHiddenTapped(_ sender: Any) {
         self.hide()
@@ -31,12 +28,10 @@ class InfoInterestRatePopupVC: BasePopup {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch: UITouch? = touches.first
-        
         if touch?.view == self.view {
             self.hide()
         }
     }
-    
     
 }
 
@@ -48,12 +43,9 @@ extension InfoInterestRatePopupVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Loan_Type_Popup_TB_Cell", for: indexPath) as! LoanTypePopupTBCell
-        
         let rate = DataManager.shared.listRateInfo[indexPath.row]
-        
         cell.lblValue?.text = rate.name!
         cell.lblSubTitle?.text = "Lãi suất vay \(rate.rate!)%"
-        
         return cell
     }
     

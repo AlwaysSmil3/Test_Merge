@@ -17,32 +17,26 @@ class CameraHandler: NSObject{
     var imagePickedBlock: ((UIImage) -> Void)?
     
     //Show Camera View
-    func showCamera(vc: UIViewController)
-    {
+    func showCamera(vc: UIViewController) {
         self.currentVC = vc
-        
         if UIImagePickerController.isSourceTypeAvailable(.camera){
             let myPickerController = UIImagePickerController()
             myPickerController.delegate = self;
             myPickerController.sourceType = .camera
             currentVC.present(myPickerController, animated: true, completion: nil)
         }
-        
     }
     
-    func camera()
-    {
+    func camera() {
         if UIImagePickerController.isSourceTypeAvailable(.camera){
             let myPickerController = UIImagePickerController()
             myPickerController.delegate = self;
             myPickerController.sourceType = .camera
             currentVC.present(myPickerController, animated: true, completion: nil)
         }
-        
     }
     
-    func photoLibrary(vc: UIViewController)
-    {
+    func photoLibrary(vc: UIViewController) {
         self.currentVC = vc
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             let myPickerController = UIImagePickerController()
@@ -50,7 +44,6 @@ class CameraHandler: NSObject{
             myPickerController.sourceType = .photoLibrary
             currentVC.present(myPickerController, animated: true, completion: nil)
         }
-        
     }
     
     func showActionSheet(vc: UIViewController) {
@@ -86,7 +79,7 @@ extension CameraHandler: UIImagePickerControllerDelegate, UINavigationController
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.imagePickedBlock?(image)
-        }else{
+        } else {
             print("Something went wrong")
         }
         currentVC.dismiss(animated: true, completion: nil)

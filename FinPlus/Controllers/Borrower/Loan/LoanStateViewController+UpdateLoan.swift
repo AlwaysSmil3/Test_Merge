@@ -13,13 +13,9 @@ extension LoanStateViewController {
     
     // Lấy danh sách các loại khoản vay
     func getLoanCategories() {
-        
 //        guard DataManager.shared.isUpdateFromConfig || DataManager.shared.loanCategories.count == 0 else { return }
         //Có thay đổi cần cập nhật lại dữ liệu
-        
         //self.updateCoreData()
-
-        
 //        APIClient.shared.getLoanCategories()
 //            .done(on: DispatchQueue.main) { model in
 //                print(model)
@@ -49,14 +45,11 @@ extension LoanStateViewController {
             } catch let error as NSError {
                 print(error)
             }
-            
         }
         
         // Cập nhật dữ liệu mới
         for data in DataManager.shared.loanCategories {
-            
             let categoryEntity = NSManagedObject(entity: entity!, insertInto: self.managedContext)
-            
             categoryEntity.setValue(data.id, forKey: CDLoanCategoryID)
             categoryEntity.setValue(data.title, forKey: CDLoanCategoryTitle)
             categoryEntity.setValue(data.descriptionValue, forKey: CDLoanCategoryDescription)
@@ -106,11 +99,9 @@ extension LoanStateViewController {
                         let bankName = bank.bankName ?? ""
                         let prefixBankName = FinPlusHelper.getPrefixBankName(bankName: bankName)
                         
-                        
                         dataSource.append(LoanSummaryModel(name: "Tài khoản nhận tiền", value: prefixBankName + bankName, attributed: nil))
                         dataSource.append(LoanSummaryModel(name: "Chủ tài khoản", value: "\(bank.accountBankName ?? "None")", attributed: nil))
                         dataSource.append(LoanSummaryModel(name: "Số tài khoản", value: accountNumber, attributed: nil))
-                        
                     }
                 }
             }
@@ -118,14 +109,11 @@ extension LoanStateViewController {
     }
     
     // Hoan thien don
-    @IBAction func update_loan()
-    {
+    @IBAction func update_loan() {
         guard DataManager.shared.loanCategories.count > 0 else { return }
         guard let _ = DataManager.shared.browwerInfo else { return }
         
-        
         let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
-        
         loanFirstVC.hidesBottomBarWhenPushed = true
         loanFirstVC.loanCategory = DataManager.shared.getCurrentCategory()
         //DataManager.shared.currentIndexCategoriesSelectedPopup = 0
@@ -133,11 +121,8 @@ extension LoanStateViewController {
         self.navigationController?.pushViewController(loanFirstVC, animated: true)
     }
     
-    @IBAction func update_loan_MissData()
-    {
-        
+    @IBAction func update_loan_MissData() {
         if DataManager.shared.listKeyMissingLoanKey == nil || DataManager.shared.listKeyMissingLoanKey!.count == 0 {
- 
             //Khi user da nhap het rồi thì chuyển trạng thái luôn
             updateLoanStatusInvalidData()
             return
@@ -145,7 +130,6 @@ extension LoanStateViewController {
         
         guard DataManager.shared.loanCategories.count > 0 else { return }
         guard let _ = DataManager.shared.browwerInfo else { return }
-        
         self.gotoFirstVCHaveInvalidData()
     }
     
@@ -156,7 +140,6 @@ extension LoanStateViewController {
             loanPersionalInfoVC.hidesBottomBarWhenPushed = true
             self.navigationController?.isNavigationBarHidden = true
             self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
-            
             return
         }
         
@@ -166,61 +149,39 @@ extension LoanStateViewController {
             loanPersionalInfoVC.hidesBottomBarWhenPushed = true
             self.navigationController?.isNavigationBarHidden = true
             self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
-            
-            break
         case 3:
             let loanInfoJobVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanInfoJobVC") as! LoanInfoJobVC
             loanInfoJobVC.hidesBottomBarWhenPushed = true
             self.navigationController?.isNavigationBarHidden = true
             self.navigationController?.pushViewController( loanInfoJobVC, animated: true)
-            
-            break
         case 4:
             let loanWalletVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "LIST_WALLET") as! ListWalletViewController
             loanWalletVC.walletAction = .LoanNation
             loanWalletVC.hidesBottomBarWhenPushed = true
             self.navigationController?.isNavigationBarHidden = true
-            
             self.navigationController?.pushViewController(loanWalletVC, animated: true)
-            
-            break
         case 5:
             let loanNationalIDVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanNationalIDViewController") as! LoanNationalIDViewController
             loanNationalIDVC.hidesBottomBarWhenPushed = true
             self.navigationController?.isNavigationBarHidden = true
             self.navigationController?.pushViewController(loanNationalIDVC, animated: true)
-            
-            break
         case 6:
             let loanOtherInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanOtherInfoVC") as! LoanOtherInfoVC
-            
             loanOtherInfoVC.hidesBottomBarWhenPushed = true
             self.navigationController?.isNavigationBarHidden = true
-            
             self.navigationController?.pushViewController(loanOtherInfoVC, animated: true)
-            
-            break
         default:
             let loanPersionalInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanPersionalInfoVC") as! LoanPersionalInfoVC
             loanPersionalInfoVC.hidesBottomBarWhenPushed = true
             self.navigationController?.isNavigationBarHidden = true
             self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
-            
-            break
         }
-        
-        
-        
-        
     }
-    
-    
     
 }
 
 extension LoanStateViewController: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        
         return true
     }
 }

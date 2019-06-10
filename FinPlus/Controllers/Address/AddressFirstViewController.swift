@@ -215,7 +215,6 @@ extension AddressFirstViewController: UITableViewDelegate, UITableViewDataSource
                 if let stress = numberHouse {
                     cell.tfValue?.text = stress
                 }
-                
             }
             return cell
             

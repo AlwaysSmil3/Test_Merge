@@ -11,6 +11,7 @@ import UIKit
 class BorrowingPayInfoTableViewCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
     var tableData : BorrowingInfoBasicData! {
         didSet {
             tableView.reloadData()
@@ -19,20 +20,12 @@ class BorrowingPayInfoTableViewCell: UITableViewCell, UITableViewDataSource, UIT
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
         self.tableView.registerNibCell(type: SubInfoTableViewCell.self)
         self.tableView.registerNibCell(type: SubInfoLastTableViewCell.self)
         self.tableView.allowsSelection = false
         self.tableView.layer.cornerRadius = 5
         self.tableView.layer.borderWidth = 1
         self.tableView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
-        // update data
-        // Initialization code
-    }
-
-    func updateData() {
-
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -44,18 +37,15 @@ class BorrowingPayInfoTableViewCell: UITableViewCell, UITableViewDataSource, UIT
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        if indexPath.row + 1 == 6 {
+        if indexPath.row == 5 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubInfoLastTableViewCell", for: indexPath) as! SubInfoLastTableViewCell
             cell.titleLb.text = "Ngày thanh toán tiếp theo"
-            let dateStr = Date().convertDateToDisplayFormat(tableData.nextDayHaveToPaid)
-            cell.valueLb.text = dateStr
-            let numberOfDay = 5
-            cell.detailLb.text = "Chú ý: Đơn vay này còn \(numberOfDay) ngày nữa đến ngày thanh toán tiếp theo"
+            cell.valueLb.text = Date().convertDateToDisplayFormat(tableData.nextDayHaveToPaid)
+            cell.detailLb.text = "Chú ý: Đơn vay này còn 5 ngày nữa đến ngày thanh toán tiếp theo"
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubInfoTableViewCell", for: indexPath) as! SubInfoTableViewCell
-            switch indexPath.row{
+            switch indexPath.row {
             case 0:
                 cell.titleLb.text = "Mã hợp đồng"
                 cell.valueLb.text = tableData.contractCode
@@ -96,11 +86,7 @@ class BorrowingPayInfoTableViewCell: UITableViewCell, UITableViewDataSource, UIT
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row + 1 == 6 {
-            return 100
-        } else {
-            return 50
-        }
+        return indexPath.row == 5 ? 100 : 50
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

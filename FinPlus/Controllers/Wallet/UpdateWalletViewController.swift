@@ -126,17 +126,16 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
     
     //MARK: TF Delegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentString: NSString = textField.text! as NSString
-        let newString: NSString =
-            currentString.replacingCharacters(in: range, with: string) as NSString
+        
+        let newString = (textField.text ?? "") + string
         
         if let _ = self.missBank {
             if textField == self.nameTextField {
-                self.checkInputNameText(text: newString as String)
+                self.checkInputNameText(text: newString)
             }
             
             if textField == self.accTextField {
-                self.checkinputAccText(text: newString as String)
+                self.checkinputAccText(text: newString)
             }
         }
         return true
@@ -144,13 +143,13 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
     
     func updateBank() {
         
-        if self.nameTextField.text?.length() ?? 0 < 1 {
+        if self.nameTextField.text?.count == 0 {
             self.showAlertView(title: "Thông báo", message: "Bạn chưa điền thông tin họ và tên", okTitle: "Đồng ý", cancelTitle: nil)
             self.nameTextField.becomeFirstResponder()
             return
         }
         
-        if self.accTextField.text?.length() ?? 0 < 1 {
+        if self.accTextField.text?.count == 0 {
             self.showAlertView(title: "Thông báo", message: "Bạn chưa điền số tài khoản", okTitle: "Đồng ý", cancelTitle: nil)
             self.accTextField.becomeFirstResponder()
             return
@@ -230,8 +229,7 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
     
     private func updateBank(bankId: Int32, params: JSONDictionary) {
         APIClient.shared.updateBankAccount(bankAccountID: bankId, params: params)
-            .done(on: DispatchQueue.main) { [weak self]model in
-                
+            .done(on: DispatchQueue.main) { [weak self] model in
                 var messeage = model.returnMsg!
                 if messeage.removeVietnameseMark().contains("success") {
                     messeage = "Thay đổi thông tin thành công!"
@@ -248,9 +246,10 @@ class UpdateWalletViewController: BaseViewController, UITextFieldDelegate {
                     self?.delegate?.isReloadBankData(isReload: true, newAccountNumber: "")
                     self?.navigationController?.popToRootViewController(animated: true)
                 })
-                
             }
-            .catch { error in }
+            .catch { error in
+                print("error API updateBankAccount")
+        }
     }
     
     //MARK: Actions

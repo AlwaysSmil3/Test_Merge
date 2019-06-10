@@ -9,8 +9,6 @@
 import Foundation
 
 protocol LoanTypeTBCellProtocol {
-    
     //Update Data khi co khoan vay
     func getData()
-    
 }

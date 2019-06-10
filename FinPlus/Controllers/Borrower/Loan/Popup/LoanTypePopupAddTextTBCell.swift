@@ -11,14 +11,12 @@ import Foundation
 protocol PopupAddTextDelegate {
     func beginEditing()
     func endEditing()
-    
 }
 
 class LoanTypePopupAddTextTBCell: UITableViewCell {
     
     @IBOutlet weak var imgIcon: UIImageView?
     @IBOutlet weak var lblTitle: UILabel?
-    
     @IBOutlet weak var tfValue: AnimatableTextField?
     
     var delegate: PopupAddTextDelegate?
@@ -28,18 +26,14 @@ class LoanTypePopupAddTextTBCell: UITableViewCell {
             guard let data_ = self.data else { return }
             self.tfValue?.placeholder = data_.placeholder
             self.lblTitle?.text = data_.title
-            
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         self.tfValue?.delegate = self
-        
         let toolbar = UIToolbar()
-        let nextButtonItem = UIBarButtonItem(title: NSLocalizedString("Xong",
-                                                                      comment: ""),
+        let nextButtonItem = UIBarButtonItem(title: NSLocalizedString("Xong", comment: ""),
                                              style: .done,
                                              target: self,
                                              action: #selector(tfValueNextAction))
@@ -47,15 +41,12 @@ class LoanTypePopupAddTextTBCell: UITableViewCell {
         toolbar.barStyle = .default
         toolbar.sizeToFit()
         self.tfValue?.inputAccessoryView = toolbar
-        
     }
     
     @objc private func tfValueNextAction() {
         self.tfValue?.endEditing(true)
         self.delegate?.endEditing()
     }
-    
-    //MARK: Actions
     
     @IBAction func tfValueEditingDidBegin(_ sender: Any) {
         self.delegate?.beginEditing()
@@ -65,24 +56,15 @@ class LoanTypePopupAddTextTBCell: UITableViewCell {
         self.delegate?.endEditing()
     }
     
-    
-    
 }
 
 //MARK: UITextFieldDelegate
 extension LoanTypePopupAddTextTBCell: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // Giới hạn ký tự nhập vào
-        let maxLength = 50
-        let currentString: NSString = textField.text! as NSString
-        let newString: NSString =
-            currentString.replacingCharacters(in: range, with: string) as NSString
-        
-        if newString.length > maxLength { return false }
-        
-        return true
-        
+        guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+        return newLength <= 50
     }
     
 }

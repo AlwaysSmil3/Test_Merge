@@ -22,17 +22,12 @@ class BorrowHomeViewController: BaseViewController {
     @IBOutlet var headerView: UIView!
     
     // Loan status cho các trạng thái của Loan
-    var loanStatus: Int = DataManager.shared.browwerInfo?.activeLoan?.status ?? -1 {
-        didSet {
-            
-        }
-    }
+    var loanStatus: Int = DataManager.shared.browwerInfo?.activeLoan?.status ?? -1
     // CoreData
     var managedContext: NSManagedObjectContext? {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return nil
         }
-        
         return appDelegate.managedObjectContext
     }
 
@@ -70,20 +65,16 @@ class BorrowHomeViewController: BaseViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         // nếu self.tabBar.isTranslucent = false thì + 64
         self.heightConstraintContentView.constant = self.headerView.frame.size.height + self.getHeightCollectionView() - BOUND_SCREEN.size.height + 10 + 64
     }
     
     private func setupUI() {
         guard let brow = DataManager.shared.browwerInfo else { return }
-        
         var name = DataManager.shared.currentAccount
-        
         if let fullName = brow.fullName, fullName.length() > 0 {
             name = fullName
         }
-        
         self.lblTitle.text = "Xin chào " + name + "!"
     }
     
@@ -93,32 +84,25 @@ class BorrowHomeViewController: BaseViewController {
         }
         return CGFloat(((DataManager.shared.loanCategories.count / 3) + 1) * 146 + 16)
     }
-
 }
-
 
 //MARK: UICollectionView Delegate, DataSource
 
 extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return DataManager.shared.loanCategories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Home_Brower_Collection_Cell", for: indexPath) as! HomeBrowerCollectionCell
-        
         let model = DataManager.shared.loanCategories[indexPath.row]
-        
         let urlString = APIClient.shared.baseURLString + model.imageUrl!
         let url = URL(string: urlString)
 //        cell.imgIcon.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "ic_homeBrower_group1"), options: nil, progressBlock: nil, completionHandler: nil)
         cell.imgIcon.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic_homeBrower_group1"), options: .transformAnimatedImage)
         cell.lblName.text = FinPlusHelper.addCharactorToString(input: model.title!)
         cell.lblDistanceAmount.text = "\(model.min! / MONEY_TERM_DISPLAY)-\(model.max! / MONEY_TERM_DISPLAY) triệu"
-        
         return cell
     }
     
@@ -126,12 +110,10 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
      * Initial size
      */
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         return FinPlusHelper.setCellSizeDisplayFitThird(indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         guard DataManager.shared.loanCategories.count > 0 else { return }
         DataManager.shared.reloadOptionalData()
         DataManager.shared.reloadDataFirstLoanVC()
@@ -149,10 +131,8 @@ extension BorrowHomeViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func gotoLoanFirstVC() {
         let loanFirstVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanFirstViewController") as! LoanFirstViewController
-        
         loanFirstVC.hidesBottomBarWhenPushed = true
         loanFirstVC.loanCategory = DataManager.shared.getCurrentCategory()
-        
         self.navigationController?.pushViewController(loanFirstVC, animated: true)
     }
     

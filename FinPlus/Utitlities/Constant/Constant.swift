@@ -186,9 +186,7 @@ enum STATUS_LOAN: Int {
     case TIMELY_DEPT = 16 // Nợ đúng hạn
     case CANCELED = 17 // Đã hủy
     case SETTLED = 18 // Khoản vay đã thanh toán thành công
-
 }
-
 
 /// Các kiểu type TB cell from Loan_Builder
 enum DATA_TYPE_TB_CELL {

@@ -17,18 +17,14 @@ class VerifyFacebookVC: BaseViewController {
     
     // facebook Info
     var faceBookInfo: FacebookInfo?
-    
     // Loại user: Browwer hay Investor, browwer = 0, investor = 1
     var accountType: TypeAccount?
-    
     var pw: String?
+    var delegate: FacebookInfoDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
-    
-    var delegate: FacebookInfoDelegate?
     
     // Pasre Facebook Data Info
     private func getFaceBookInfoData(data: FacebookDataType) {
@@ -78,33 +74,20 @@ class VerifyFacebookVC: BaseViewController {
                         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
                             .done(on: DispatchQueue.main) { model in
                                 DataManager.shared.browwerInfo = model
-                                
                                 let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
-                                
-                                self?.navigationController?.present(tabbarVC, animated: true, completion: {
-                                    
-                                })
+                                self?.navigationController?.present(tabbarVC, animated: true, completion: nil)
                             }
                             .catch { error in }
-                        
                     }
-                    .catch { error in
-                        
-                }
-                
+                    .catch { error in }
             } else {
                 print(error!)
             }
         }
     }
     
-    //MARK: Actions
-    
     @IBAction func btnConnectFBTapped(_ sender: Any) {
         self.facebookSignIn()
     }
-    
-    
-    
     
 }

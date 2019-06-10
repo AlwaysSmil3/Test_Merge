@@ -47,10 +47,8 @@ class LoginViewController: BaseAuthenViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         self.getNotificationSettings()
         self.checkConnectedToNetwork()
-
         DataManager.shared.getListBank {
             
         }
@@ -84,7 +82,6 @@ class LoginViewController: BaseAuthenViewController {
                             }
                         }
                     })
-                    
                     return
                 case .notDetermined:
                     print("Notification not Determined")
@@ -245,14 +242,8 @@ class LoginViewController: BaseAuthenViewController {
 //MARK: TextField Delegate
 extension LoginViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // Giới hạn ký tự nhập vào
-        let maxLength = 6
-        let currentString: NSString = textField.text! as NSString
-        let newString: NSString =
-            currentString.replacingCharacters(in: range, with: string) as NSString
-        
-        if newString.length > maxLength { return false }
-        
-        return true
+        guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+        return newLength <= 6
     }
 }

@@ -12,14 +12,12 @@ class PayAllTableViewCell: UITableViewCell {
 
     @IBOutlet weak var containView: UIView!
     @IBOutlet weak var borrowingLb: UILabel!
-    
     @IBOutlet weak var lblBorrowerManagingFee: UILabel?
 //    @IBOutlet weak var lblLeftDebt: UILabel?
 //    @IBOutlet weak var lblDebt: UILabel?
     @IBOutlet weak var originMoneyLb: UILabel!
     @IBOutlet weak var interestMoneyLb: UILabel!
     @IBOutlet weak var feeReturnBeforeDueDateLb: UILabel!
-    
     @IBOutlet weak var selectImg: UIImageView!
     @IBOutlet weak var titleLb: UILabel!
     
@@ -37,13 +35,10 @@ class PayAllTableViewCell: UITableViewCell {
 //                self.lblDebt?.isHidden = true
 //                self.lblLeftDebt?.isHidden = true
 //                self.originMoneyLb.isHidden = true
-                
                 if data.interest! > 0 && data.fee! > 0 {
                     self.originMoneyLb.isHidden = false
                     self.originMoneyLb.text = "Tiền gốc: " + FinPlusHelper.formatDisplayCurrency(data.outstanding!) + "đ"
-                    
                     self.interestMoneyLb?.text = "Tiền lãi: " + FinPlusHelper.formatDisplayCurrency(data.interest!) + "đ"
-                    
                     self.feeReturnBeforeDueDateLb?.text = "Phí trả nợ trước hạn: " + FinPlusHelper.formatDisplayCurrency(data.fee!) + "đ"
                 } else {
                     self.originMoneyLb?.text = "Tiền gốc: " + FinPlusHelper.formatDisplayCurrency(data.outstanding!) + "đ"
@@ -58,12 +53,9 @@ class PayAllTableViewCell: UITableViewCell {
             } else {
 //                self.lblDebt?.isHidden = false
 //                self.lblLeftDebt?.isHidden = false
-//                
 //                self.lblDebt?.text = FinPlusHelper.formatDisplayCurrency(data.debt!) + "đ"
                  self.originMoneyLb.text = "Tiền gốc phải trả: " + FinPlusHelper.formatDisplayCurrency(data.outstanding!) + "đ"
-                
                 self.interestMoneyLb?.text = "Tiền lãi cộng dồn trong kỳ: " + FinPlusHelper.formatDisplayCurrency(data.interest!) + "đ"
-                
                 self.feeReturnBeforeDueDateLb?.text = "Phí tất toán: " + FinPlusHelper.formatDisplayCurrency(data.fee!) + "đ"
             }
             
@@ -73,7 +65,6 @@ class PayAllTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.selectionStyle = .none
         self.containView.layer.borderWidth = 1
         self.containView.layer.cornerRadius = 8
         // Initialization code
@@ -83,8 +74,7 @@ class PayAllTableViewCell: UITableViewCell {
     }
 
     func updateCellView() {
-        
-        if isSelectedCell == true {
+        if isSelectedCell {
             self.containView.layer.borderColor = MAIN_COLOR.cgColor
             self.selectImg.image = #imageLiteral(resourceName: "ic_radio_on")
         } else {

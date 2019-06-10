@@ -12,14 +12,12 @@ class AddNewWalletTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLb: UILabel!
     @IBOutlet weak var containView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.containView.layer.borderWidth = 1
         self.containView.layer.cornerRadius = 5
         self.containView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
-        self.selectionStyle = .none
-
-        // Initialization code
     }
 
 //    func updateCellView() {
@@ -29,7 +27,7 @@ class AddNewWalletTableViewCell: UITableViewCell {
 //            self.titleLb.textColor = LIGHT_BODY_TEXT_COLOR
 //        }
 //    }
-//
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

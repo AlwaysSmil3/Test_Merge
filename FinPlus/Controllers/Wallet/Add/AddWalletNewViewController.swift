@@ -10,15 +10,11 @@ import Foundation
 
 class AddWalletNewViewController: BaseViewController {
     
-    
     @IBOutlet weak var nameTextField: HoshiTextField!
     @IBOutlet weak var accTextField: HoshiTextField!
-
     @IBOutlet weak var leftBarBtn: UIBarButtonItem!
     @IBOutlet weak var rightBarBtn: UIBarButtonItem!
-    
     @IBOutlet weak var lblBankName: UILabel!
-    
     
     //CaoHai tra ve du lieu bank khi chon bank
     weak var delegate: BankDataDelegate?
@@ -27,22 +23,16 @@ class AddWalletNewViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.setupInit()
-    
     }
     
     private func setupInit() {
-        
-        // Do any additional setup after loading the view.
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         self.accTextField.delegate = self
         self.nameTextField.delegate = self
-        
         
         self.rightBarBtn.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : MAIN_COLOR], for: .normal)
         
@@ -52,10 +42,7 @@ class AddWalletNewViewController: BaseViewController {
         accTextField.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
         accTextField.placeholderLabel.font = UIFont(name: FONT_FAMILY_SEMIBOLD, size: FONT_SIZE_SMALL)
         
-        
         self.title = "Thêm tài khoản ngân hàng"
-        
-        
     }
     
     func addNewBank() {
@@ -65,14 +52,12 @@ class AddWalletNewViewController: BaseViewController {
             return
         }
         
-        if ((self.nameTextField.text?.count ?? 0) < 1)
-        {
+        if self.nameTextField.text?.count ?? 0 < 1 {
             self.showToastWithMessage(message: "Bạn chưa nhập thông tin họ và tên chủ tài khoản")
             return
         }
         
-        if ((self.accTextField.text?.count ?? 0) < 1)
-        {
+        if self.accTextField.text?.count ?? 0 < 1 {
             self.showToastWithMessage(message: "Bạn chưa nhập số tài khoản")
             return
         }
@@ -81,7 +66,6 @@ class AddWalletNewViewController: BaseViewController {
             self.showToastWithMessage(message: "Vui lòng nhập đúng số tài khoản")
             return
         }
-        
         
         let bankName = bank.type!
         
@@ -95,14 +79,11 @@ class AddWalletNewViewController: BaseViewController {
         ]
         
         self.addBank(params: params)
-        
     }
     
     private func addBank(params: JSONDictionary) {
-        
         APIClient.shared.addNewBank(uId: DataManager.shared.userID, params: params)
-            .done(on: DispatchQueue.main) { [weak self]model in
-                
+            .done(on: DispatchQueue.main) { [weak self] model in
                 guard let code = model.returnCode, code > 0 else {
                     self?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: model.returnMsg!, okTitle: "OK", cancelTitle: nil)
                     return
@@ -112,14 +93,12 @@ class AddWalletNewViewController: BaseViewController {
                     self?.delegate?.isReloadBankData(isReload: true, newAccountNumber: accountNumber)
                     self?.navigationController?.popViewController(animated: true)
                 }
-                
             }
             .catch { error in
+                print("error API addNewBank")
         }
     }
     
-    
-    //MARK: Actions
     
     @IBAction func navi_cancel(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -138,11 +117,7 @@ class AddWalletNewViewController: BaseViewController {
         bankPopup.show {
             //bankPopup.scrollToSelection()
         }
-        
     }
-    
-    
-    
     
 }
 
@@ -159,25 +134,15 @@ extension AddWalletNewViewController: BankPopupSelectedProtocol {
 extension AddWalletNewViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Giới hạn ký tự nhập vào
-        var maxLength = 30
-        
-        if textField == self.nameTextField {
-            maxLength = 50
-        }
-        
-        let currentString: NSString = textField.text! as NSString
-        let newString: NSString =
-            currentString.replacingCharacters(in: range, with: string) as NSString
-        
-        if newString.length > maxLength { return false }
-        
-        return true
+        let maxLength = textField == self.nameTextField ? 50 : 30
+        guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+        return newLength <= maxLength
     }
 }
 
 extension AddWalletNewViewController: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        
         return true
     }
 }

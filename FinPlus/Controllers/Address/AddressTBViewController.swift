@@ -20,12 +20,10 @@ protocol AddressModelDelegate {
 
 class AddressTBViewController: BaseViewController {
     
-    
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var mainTBView: UITableView!
     
     var delegate: AddressModelDelegate?
-    
     var type: TypeAddressTBView = .City
     var id: Int16?
     
@@ -41,17 +39,13 @@ class AddressTBViewController: BaseViewController {
         }
     }
     
-    
-    var isSearch: Bool = false {
-        
+    var isSearch = false {
         didSet {
             guard !self.isSearch else { return }
-            
             self.view.endEditing(true)
             self.dataSourceTemp = self.dataSource
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,8 +54,7 @@ class AddressTBViewController: BaseViewController {
         
         //Add ToolBar
         let toolbar = UIToolbar()
-        let nextButtonItem = UIBarButtonItem(title: NSLocalizedString("Xong",
-                                                                      comment: ""),
+        let nextButtonItem = UIBarButtonItem(title: NSLocalizedString("Xong", comment: ""),
                                              style: .done,
                                              target: self,
                                              action: #selector(pinCodeNextAction))
@@ -69,7 +62,6 @@ class AddressTBViewController: BaseViewController {
         toolbar.barStyle = .default
         toolbar.sizeToFit()
         self.searchBar.inputAccessoryView = toolbar
-
         
         self.getData()
     }
@@ -82,19 +74,15 @@ class AddressTBViewController: BaseViewController {
         switch self.type {
         case .City:
             self.getCities()
-            break
         case .District:
             if let id = self.id {
                 self.getDistricts(cityID: id)
             }
-            break
         case .Commune:
             if let id = self.id {
                 self.getComunes(districtsID: id)
             }
-            break
         }
-        
     }
     
     private func getCities() {
@@ -111,11 +99,8 @@ class AddressTBViewController: BaseViewController {
             .done(on: DispatchQueue.main) { [weak self]model in
                 guard model.count > 0 else { return }
                 self?.dataSource = model
-                
             }
             .catch{ error in }
-        
-        
     }
     
     private func getComunes(districtsID: Int16) {
@@ -125,10 +110,7 @@ class AddressTBViewController: BaseViewController {
                 self?.dataSource = model
             }
             .catch { error in }
-        
     }
-    
-
     
 }
 
@@ -140,20 +122,17 @@ extension AddressTBViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Address_First_TB_Cell", for: indexPath) as! AddressFirstTBCell
-        
         let model = self.dataSourceTemp[indexPath.row]
         cell.lblTitleCell.text = model.name!
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
         self.delegate?.getModel1(model: self.dataSourceTemp[indexPath.row], type: self.type)
         self.navigationController?.popViewController(animated: true)
-        
     }
+    
 }
 
 extension AddressTBViewController: UISearchBarDelegate {
@@ -187,9 +166,4 @@ extension AddressTBViewController: UISearchBarDelegate {
         self.isSearch = false
     }
     
-    
 }
-
-
-
-

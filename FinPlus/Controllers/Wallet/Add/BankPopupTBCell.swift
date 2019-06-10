@@ -11,7 +11,6 @@ import SDWebImage
 
 class BankPopupTBCell: UITableViewCell {
     
-    
     @IBOutlet weak var lblBankName: UILabel?
     @IBOutlet weak var lblBankCode: UILabel?
     @IBOutlet weak var iconBank: UIImageView?
@@ -23,7 +22,6 @@ class BankPopupTBCell: UITableViewCell {
             
             self.lblBankName?.text = data.displayName
             self.lblBankCode?.text = data.type
-//            self.iconBank?.kf.setImage(with: URL(string: d.image!))
             if let image = data.image {
                 self.iconBank?.sd_setImage(with: URL(string: image))
             }
@@ -32,9 +30,7 @@ class BankPopupTBCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         self.selectionStyle = .none
     }
-    
     
 }

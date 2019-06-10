@@ -14,7 +14,4 @@ class HomeBrowerCollectionCell: UICollectionViewCell {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblDistanceAmount: UILabel!
     
-    
 }
-
-

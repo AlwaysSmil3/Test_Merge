@@ -14,7 +14,6 @@ protocol ShowTextInputMesseageViewDelegate {
 
 class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
-    
     @IBOutlet var lblValue: UILabel?
     
     var showInputViewDelegate: ShowTextInputMesseageViewDelegate?
@@ -22,16 +21,12 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
     override func awakeFromNib() {
         super.awakeFromNib()
         self.lblTitle?.font = FONT_CAPTION
-        
-        
         lblValue?.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapFunction(sender:)))
         lblValue?.addGestureRecognizer(tapGesture)
-        
     }
     
     var currentIndex: IndexPath?
-    
     var parent: String?
     
     var field: LoanBuilderFields? {
@@ -56,35 +51,24 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
                 self.lblValue?.textColor = UIColor(hexString: "#08121E")
             }
             
-            
             self.getData()
-            
         }
     }
     
     @objc func tapFunction(sender:UITapGestureRecognizer) {
         guard let index = self.currentIndex else { return }
-        
         self.showInputViewDelegate?.showTextInput(indexPath: index)
-        
     }
     
     
     /// Check Other Invalid
-    ///
-    /// - Parameters:
-    ///   - indexArray: <#indexArray description#>
-    ///   - currentValue: <#currentValue description#>
-    /// - Returns: <#return value description#>
     func checkOtherInfoInvalid(indexArray: String, currentValue: String) -> Bool {
         guard let data = DataManager.shared.missingOptionalText else { return false }
         if let value = data[indexArray] as? String, value == currentValue {
             return true
         }
-
         return false
     }
-    
     
     func getData() {
         guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
@@ -118,11 +102,6 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
                 if let arrayIndex = field_.arrayIndex, let data = DataManager.shared.missingOptionalText {
                     if let text = data["\(arrayIndex)"] as? String {
                         //Cap nhat thong tin khong hop le
-                        print(text)
-                        
-                        if self.valueTemp == nil {
-                            
-                        }
                         self.updateInfoFalse(pre: title)
                         self.valueTemp = value
                     }
@@ -147,13 +126,9 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
             self.lblValue?.text = value
             DataManager.shared.loanInfo.jobInfo.jobDescription = value
             
-            
             if DataManager.shared.checkFieldIsMissing(key: "jobDescription", parentKey: "jobInfo", currentValue: value) {
                 //Cap nhat thong tin khong hop le
                 //self.updateInfoFalse(pre: title)
-                if self.valueTemp == nil {
-                    
-                }
                 self.updateInfoFalse(pre: title)
                 self.valueTemp = value
             } else {
@@ -162,12 +137,6 @@ class LoanTypeInputTextMuiltiLineTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProto
                 }
             }
         }
-        
-        
     }
-
-    
-    
     
 }
-

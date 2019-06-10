@@ -14,30 +14,23 @@ class LoanFirstViewController: LoanBaseViewController {
     
     @IBOutlet var contentBtnContinueView: UIView!
     @IBOutlet var btnContinueRight: UIButton!
-    
     @IBOutlet var lblCategoriesName: UILabel!
-    
     @IBOutlet var amountSlider: VSSlider!
     @IBOutlet var termSlider: VSSlider!
-    
     @IBOutlet var lblMinAmountSlider: UILabel!
     @IBOutlet var lblMinTermSlider: UILabel!
     @IBOutlet var lblMaxAmounSlider: UILabel!
     @IBOutlet var lblMaxTermSlider: UILabel!
-    
     @IBOutlet var lblMoneySlider: UILabel!
     @IBOutlet var lblTermSlider: UILabel!
-    
     @IBOutlet var lblInterestRate: UILabel!
     @IBOutlet var lblTempFee: UILabel!
     @IBOutlet var lblTempTotalAmount: UILabel!
     @IBOutlet var lblLeftTempTotalAmount: UILabel!
-    
     @IBOutlet var lblPayTermTotal: UILabel!
     @IBOutlet var lblLeftPayTermTotal: UILabel!
     
     var halo: PulsingHaloLayer?
-    
     var isChangedTerm: Bool?
     var isChangedAmount: Bool?
     
@@ -48,7 +41,6 @@ class LoanFirstViewController: LoanBaseViewController {
     }
     
     var listDataCategoriesForPopup: [LoanBuilderData] = []
-    
     var listLoanBorrowerFee: [LoanBorrowerFee] = []
     
     override func viewDidLoad() {
@@ -106,7 +98,6 @@ class LoanFirstViewController: LoanBaseViewController {
         }
     }
     
-    
     /// Update data khi đã tạo 1 loan
     private func updateData() {
         var term: Float = 0
@@ -122,7 +113,6 @@ class LoanFirstViewController: LoanBaseViewController {
             if let amount_ = loan.amount, amount_ > 0 {
                 amount = Double(amount_)
             }
-            
         }
         
         if let loan = DataManager.shared.browwerInfo?.activeLoan, let cateId_ = loan.loanCategoryId, cateId_ > 0 {
@@ -175,10 +165,7 @@ class LoanFirstViewController: LoanBaseViewController {
         self.updateTotalAmountMounth()
     }
     
-    
     /// Update Tearm Slider for Loan
-    ///
-    /// - Parameter loan: <#loan description#>
     private func updateTearmSlider(loan: LoanCategories, value: Float? = nil) {
         self.termSlider?.minimumValue = Float(loan.termMin!)
         self.termSlider?.maximumValue = Float(loan.termMax!)
@@ -191,18 +178,14 @@ class LoanFirstViewController: LoanBaseViewController {
         
         self.lblLeftTempTotalAmount?.text = "Số kỳ thanh toán"
         
-        
         if loan.id == Loan_Student_Category_ID {
-            
             self.lblTermSlider?.text = "\(Int(loan.termMin!))" + " Ngày"
             if let value_ = value {
                 self.lblTermSlider?.text = "\(Int(value_))" + " Ngày"
             }
             self.termSlider?.increment = 10
-            
             self.lblMinTermSlider?.text = "\(Int(loan.termMin!)) NGÀY"
             self.lblMaxTermSlider?.text = "\(Int(loan.termMax!)) NGÀY"
-            
             self.lblLeftTempTotalAmount?.text = TitleAmountTempUnderAMounth
             
             if let term = self.termSlider?.value, term > 30 {
@@ -211,7 +194,6 @@ class LoanFirstViewController: LoanBaseViewController {
                 }
                 self.lblLeftTempTotalAmount?.text = TitleAmountTempAboveAMounth
             }
-            
         } else {
             self.lblTermSlider?.text = "\(Int(loan.termMin! / 30))" + " Tháng"
             if let value_ = value {
@@ -226,7 +208,6 @@ class LoanFirstViewController: LoanBaseViewController {
             }
             
             self.lblMaxTermSlider?.text = "\(Int(loan.termMax! / 30)) THÁNG"
-            
             self.lblLeftTempTotalAmount?.text = TitleAmountTempAboveAMounth
             
             if let term = self.termSlider?.value, term < 30 {
@@ -234,21 +215,16 @@ class LoanFirstViewController: LoanBaseViewController {
                 if let va = value {
                     self.lblTermSlider?.text = "\(Int(va))" + " Ngày"
                 }
-                
                 self.lblLeftTempTotalAmount?.text = TitleAmountTempUnderAMounth
             }
         }
     }
     
-    
     /// Update Amount Slider For Loan
-    ///
-    /// - Parameter loan: <#loan description#>
     private func updateAmountSlider(loan: LoanCategories, value: Float? = nil) {
         self.amountSlider?.minimumValue = Float(loan.min!/MONEY_TERM_DISPLAY)
         self.amountSlider?.maximumValue = Float(loan.max!/MONEY_TERM_DISPLAY)
         self.amountSlider?.value = Float(loan.min!/MONEY_TERM_DISPLAY)
-        
         self.updateServiceFee(loan: loan)
         
         var amountDouble = Double(loan.min!)
@@ -258,15 +234,11 @@ class LoanFirstViewController: LoanBaseViewController {
         }
         
         self.lblMoneySlider?.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ"
-        
         self.lblMinAmountSlider?.text = "\(Int(loan.min!/MONEY_TERM_DISPLAY)) TRIỆU"
         self.lblMaxAmounSlider?.text = "\(Int(loan.max!/MONEY_TERM_DISPLAY)) TRIỆU"
     }
     
-    
     /// Update Service Fee
-    ///
-    /// - Parameter loan: <#loan description#>
     private func updateServiceFee(loan: LoanCategories) {
         if let config = DataManager.shared.config {
             let fee = Int(loan.min!) * config.serviceFee! / 100
@@ -297,13 +269,9 @@ class LoanFirstViewController: LoanBaseViewController {
         completion()
     }
     
-    //MARK: Actions
-    
     @IBAction func btnGotoCaculatoFee(_ sender: Any) {
         let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "CALCULATE_PAY") as! CalPayViewController
-        
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     @IBAction func btnListCategoriesShow(_ sender: Any) {
@@ -317,7 +285,6 @@ class LoanFirstViewController: LoanBaseViewController {
         popup.setDataSource(data: listDataCategoriesForPopup, type: .Categories)
         popup.titleString = "Mục đích vay"
         popup.delegate = self
-        
         popup.show()
     }
     
@@ -327,7 +294,6 @@ class LoanFirstViewController: LoanBaseViewController {
         let amountInt = Int(self.amountSlider.value) / Int(self.amountSlider.minimumValue) * 1000000
         let amountDouble = Double(amountInt)
         self.lblMoneySlider.text = FinPlusHelper.formatDisplayCurrency(amountDouble) + "đ"
-        
         self.updateTotalAmountMounth()
         
         if DataManager.shared.browwerInfo?.activeLoan?.loanId == nil || DataManager.shared.browwerInfo?.activeLoan?.loanId == 0 {
@@ -336,7 +302,6 @@ class LoanFirstViewController: LoanBaseViewController {
             }
             self.checkStartHalo()
         }
-        
     }
     
     func updatePayTerm(term: Float) {
@@ -368,7 +333,6 @@ class LoanFirstViewController: LoanBaseViewController {
             self.lblTermSlider.text = "\(Int(self.termSlider.value / 10) * 10)" + " Ngày"
             
             if let term = self.termSlider?.value, term > 45 {
-                
                 if term >= 45 && term < 75 {
                     self.lblTermSlider.text = "2 Tháng"
                 } else if term >= 75 && term < 105 {
@@ -376,7 +340,6 @@ class LoanFirstViewController: LoanBaseViewController {
                 } else {
                     self.lblTermSlider.text = "\(Int(self.termSlider.value / 30))" + " Tháng"
                 }
-                
                 self.lblLeftTempTotalAmount?.text = TitleAmountTempAboveAMounth
             } else {
                 self.lblLeftTempTotalAmount?.text = TitleAmountTempUnderAMounth
@@ -391,7 +354,6 @@ class LoanFirstViewController: LoanBaseViewController {
                 self.lblTermSlider.text = "\(Int(self.termSlider.value / 30))" + " Tháng"
                 self.lblLeftTempTotalAmount?.text = TitleAmountTempAboveAMounth
             }
-            
         }
         self.updatePayTerm(term: self.termSlider.value)
         self.updateTotalAmountMounth()
@@ -403,7 +365,6 @@ class LoanFirstViewController: LoanBaseViewController {
             self.checkStartHalo()
         }
     }
-    
     
     //Update số tiền trả góp hàng tháng
     private func updateTotalAmountMounth() {
@@ -435,10 +396,8 @@ class LoanFirstViewController: LoanBaseViewController {
         self.updateDataToLoanAPI {
             if let info = DataManager.shared.browwerInfo?.activeLoan,  let loanId = info.loanId, loanId > 0 {
                 //Cập nhật
-                
                 self.updateDataToServer(step: 0, completion: {
                     let loanPersionalInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanPersionalInfoVC") as! LoanPersionalInfoVC
-                    
                     self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
                 })
             } else {
@@ -446,31 +405,24 @@ class LoanFirstViewController: LoanBaseViewController {
                 APIClient.shared.loan(isShowLoandingView: true, httpType: .POST)
                     .done(on: DispatchQueue.main) { model in
                         DataManager.shared.loanID = model.loanId!
-                        
                         //Lay thong tin nguoi dung
                         APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
                             .done(on: DispatchQueue.main) { model in
                                 DataManager.shared.browwerInfo = model
-                                
                                 let loanPersionalInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanPersionalInfoVC") as! LoanPersionalInfoVC
-                                
                                 self.navigationController?.pushViewController(loanPersionalInfoVC, animated: true)
-                                
                             }
                             .catch { error in
                                 self.navigationController?.popToRootViewController(animated: true)
                         }
-                        
                     }
                     .catch { error in }
             }
         }
-        
     }
     
     @IBAction func showInfoFee(_ sender: Any) {
         let interestRateVC = UIStoryboard(name: "Popup", bundle: nil).instantiateViewController(withIdentifier: "InfoInterestRatePopupVC") as! InfoInterestRatePopupVC
-        
         interestRateVC.titleString = "Thông tin lãi xuất"
         interestRateVC.show()
     }
@@ -485,7 +437,6 @@ class LoanFirstViewController: LoanBaseViewController {
 extension LoanFirstViewController: DataSelectedFromPopupProtocol {
     func dataSelected(data: LoanBuilderData) {
         guard data.id != self.loanCategory?.id else { return }
-        
         DataManager.shared.reloadOptionalData()
         DataManager.shared.loanInfo.loanCategoryID = data.id!
         self.loanCategory = DataManager.shared.getCurrentCategory()

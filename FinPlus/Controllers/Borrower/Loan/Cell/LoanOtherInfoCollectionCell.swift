@@ -21,7 +21,6 @@ class LoanOtherInfoCollectionCell: UICollectionViewCell {
     
     var currentSelectedCollection: IndexPath?
     var urlImg: String?
-    
     var delegate: OptionMediaDelegate?
     
     override func awakeFromNib() {

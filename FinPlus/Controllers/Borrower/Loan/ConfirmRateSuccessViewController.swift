@@ -15,11 +15,8 @@ class ConfirmRateSuccessViewController: BaseViewController {
     @IBOutlet weak var desLabel: UILabel!
     @IBOutlet weak var btnComeHome: UIButton!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         self.btnComeHome.layer.cornerRadius = 8
         self.btnComeHome.layer.masksToBounds = true
         self.btnComeHome.titleLabel?.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)
@@ -30,7 +27,6 @@ class ConfirmRateSuccessViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         self.initLocationManager()
     }
     
@@ -73,10 +69,7 @@ class ConfirmRateSuccessViewController: BaseViewController {
                         }
                     }
                 }
-                
             })
-            
-            
             return
         }
         
@@ -97,34 +90,15 @@ class ConfirmRateSuccessViewController: BaseViewController {
                     APIClient.shared.getUserInfo(uId: DataManager.shared.userID)
                         .done(on: DispatchQueue.main) { model in
                             DataManager.shared.browwerInfo = model
-                            
                             let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
                             if let window = UIApplication.shared.delegate?.window, let win = window {
                                 win.rootViewController = tabbarVC
                             }
-                            
                         }
-                        .catch { error in
-                            
-                    }
-                    
+                        .catch { error in }
                 }
                 .catch { error in }
         }
-        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
-
-

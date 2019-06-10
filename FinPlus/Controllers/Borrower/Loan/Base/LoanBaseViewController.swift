@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 /// Identifier TB Cell For Loan
 enum Loan_Identifier_TB_Cell {
     static let TextField = "Loan_Type_TextField_TB_Cell"
@@ -22,27 +21,23 @@ enum Loan_Identifier_TB_Cell {
     static let TextView = "LoanTypeTextViewTBCell"
 }
 
-
 class LoanBaseViewController: BaseViewController {
     
     //Table View For data from LoanBuilder
     @IBOutlet var mainTBView: TPKeyboardAvoidingTableView?
     @IBOutlet var bottomScrollView: UIScrollView?
-    
     @IBOutlet var contentInputView: UIView?
     @IBOutlet var sbInputView: SBMessageInputView?
     @IBOutlet var bottomConstraintContentInputView: NSLayoutConstraint?
-    
-    
     
     //DataSource cho main tablview, dữ liệu tuỳ theo index màn hình
     var dataSource: LoanBuilderBase?
     
     //Màn hình hay bước trong Loan
-    var index: Int = 0
+    var index = 0
     
     //Cho body api
-    var currentStep: Int = 0 {
+    var currentStep = 0 {
         didSet {
             DataManager.shared.loanInfo.currentStep = self.currentStep
         }
@@ -61,7 +56,6 @@ class LoanBaseViewController: BaseViewController {
                     //let timeISO8601 = date1.toString(.iso8601(ISO8601Format.DateTimeSec))
                     let timeISO8601 = date1.toString(.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER))
                     
-                    
                     guard let id = cell.field?.id else { return }
                     
                     if id.contains("birthday") {
@@ -72,7 +66,6 @@ class LoanBaseViewController: BaseViewController {
                         }
                     }
                     cell.field?.placeholder = date
-                    
                 }
             }
         }
@@ -95,7 +88,6 @@ class LoanBaseViewController: BaseViewController {
                     }
                 }
             }
-
         }
     }
     
@@ -104,14 +96,11 @@ class LoanBaseViewController: BaseViewController {
     
     //Cell đang chọn hiện tại
     var currentIndexSelected: IndexPath?
-    
     var loanCate: LoanCategories?
-    
-    var isMuiltiLineText: Bool = false
+    var isMuiltiLineText = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.setupMainTBView()
     }
     
@@ -139,8 +128,6 @@ class LoanBaseViewController: BaseViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorColor = UIColor.clear
         tableView.tableFooterView = UIView()
-        
-        
     }
     
     func initLoanCate() {
@@ -163,14 +150,11 @@ class LoanBaseViewController: BaseViewController {
         self.mainTBView?.reloadData()
     }
     
-    
     /// Show date time Picker
     func showDateDialog() {
-        
         let defaultDate = Date(fromString: "01/01/2000", format: DateFormat.custom(kDisplayFormat))
         
         DatePickerDialog().show("Ngày sinh", doneButtonTitle: "Đồng ý", cancelButtonTitle: "Huỷ", defaultDate: defaultDate , minimumDate: nil, maximumDate: Date(), datePickerMode: UIDatePickerMode.date) { (date) in
-            
             if let date = date {
                 self.birthDay = date
             }
@@ -180,8 +164,8 @@ class LoanBaseViewController: BaseViewController {
     /// Xong mỗi bước là gửi api put cập nhật dữ liệu cho mỗi bước
     func updateDataToServer(step: Int? = nil, completion: @escaping() -> Void) {
         
-        if let step_ = step {
-            self.currentStep = step_
+        if let step = step {
+            self.currentStep = step
         }
         
         APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
@@ -195,24 +179,20 @@ class LoanBaseViewController: BaseViewController {
         }
     }
     
-    
     /// Sang màn chọn địa chỉ
     func gotoAddressVC(title: String, id: String) {
         let firstAddressVC = UIStoryboard(name: "Address", bundle: nil).instantiateViewController(withIdentifier: "AddressFirstViewController") as! AddressFirstViewController
         firstAddressVC.delegate = self
         firstAddressVC.titleString = title
         firstAddressVC.id = id
-        
         self.navigationController?.pushViewController(firstAddressVC, animated: true)
     }
     
     func gotoDropdownSearchVC() {
         let universityVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "UniversityViewController") as! UniversityViewController
         universityVC.delegateUniversity = self
-
         self.navigationController?.pushViewController(universityVC, animated: true)
     }
-    
     
     /// Show Alert for chossen image from galery
     func showAlertAllowGetImageFromGalery() {
@@ -240,10 +220,7 @@ class LoanBaseViewController: BaseViewController {
             popoverPresentationController.sourceRect = CGRect(x: 20, y: 20, width: 64, height: 64)
         }
         
-        self.present(alert, animated: true, completion: {
-            
-        })
-        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func showCameraView(descriptionStr: String? = nil) {
@@ -254,9 +231,7 @@ class LoanBaseViewController: BaseViewController {
             cameraVC.typeImgFile = self.typeImgFile
             cameraVC.descriptionText = descriptionStr
             
-            self.present(cameraVC, animated: true) {
-                
-            }
+            self.present(cameraVC, animated: true, completion: nil)
         } else {
             if self.typeImgFile == .ALL {
                 if let value = userDefault.value(forKey: UserDefaultShowGuideCameraView) as? Bool, value {
@@ -264,19 +239,15 @@ class LoanBaseViewController: BaseViewController {
                 } else {
                     self.showGuideCaptureView()
                 }
-                
             } else {
                 self.selectedFile()
             }
         }
-        
     }
     
     func selectedFile() {
-        
         CameraHandler.shared.photoLibrary(vc: UIApplication.shared.topViewController()!)
         CameraHandler.shared.imagePickedBlock = { (image) in
-            
             self.uploadData(img: image, typeImg: self.typeImgFile)
         }
     }
@@ -284,16 +255,13 @@ class LoanBaseViewController: BaseViewController {
     func showGuideCaptureView() {
         let guideVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "GuideCaptureViewController") as! GuideCaptureViewController
         guideVC.delegate = self
-        self.present(guideVC, animated: true, completion: {
-            
-        })
+        self.present(guideVC, animated: true, completion: nil)
     }
     
     //Upload Data Image
     func uploadData(img: UIImage, typeImg: FILE_TYPE_IMG?) {
         
         guard let type = typeImg else { return }
-        
         guard let imgResize = img.resizeMonyImage(originSize: img.size), let data = imgResize.jpeg(.lowest) else { return }
         
         let loanID = DataManager.shared.loanID ?? 0
@@ -311,9 +279,7 @@ class LoanBaseViewController: BaseViewController {
             cell.activityIndicator.stopAnimating()
             
             guard let res = response, let data = res["data"] as? [JSONDictionary], data.count > 0 else {
-                
                 self?.showToastWithMessage(message: "Có lỗi xảy ra, vui lòng thử lại")
-                
                 return
             }
             
@@ -325,27 +291,19 @@ class LoanBaseViewController: BaseViewController {
                 cell.isNeedUpdate = false
             }
             
-            
             switch type {
             case .ALL:
-                
                 if let url = data[0]["url"] as? String {
                     DataManager.shared.loanInfo.nationalIdAllImg = url
                 }
-                
-                break
             case .BACK:
                 if let url = data[0]["url"] as? String {
                     DataManager.shared.loanInfo.nationalIdBackImg = url
                 }
-                
-                break
             case .FRONT:
                 if let url = data[0]["url"] as? String {
                     DataManager.shared.loanInfo.nationalIdFrontImg = url
                 }
-                
-                break
             case .Optional:
                 DataManager.shared.loanInfo.optionalMedia.removeAll()
                 for d in data {
@@ -353,8 +311,6 @@ class LoanBaseViewController: BaseViewController {
                         DataManager.shared.loanInfo.optionalMedia[0].append(url)
                     }
                 }
-                
-                break
             }
             
         }) { (error) in
@@ -402,7 +358,6 @@ class LoanBaseViewController: BaseViewController {
                 self.sbInputView?.textView.becomeFirstResponder()
             }
         }
-        
     }
     
     //Check nếu có text nhập rồi thì input vào cho edit từ đã có
@@ -424,21 +379,17 @@ class LoanBaseViewController: BaseViewController {
         completion()
     }
     
-    
     /// Check nếu có text nhập rồi thì input vào cho edit từ đã có
-    ///
-    /// - Parameter completion: <#completion description#>
     private func checkOtherTextMuiltiline(id: String, completion: () -> Void) {
-        
         if id.contains("jobDescription") {
             guard let text = DataManager.shared.loanInfo.jobInfo.jobDescription else {
                 completion()
-                return }
+                return
+            }
             
             self.sbInputView?.lineHeight = 20
             self.sbInputView?.numberOfLines = CGFloat(self.getCountLine(text: text))
             self.sbInputView?.tempValue = text
-        
         }
         completion()
     }
@@ -448,7 +399,6 @@ class LoanBaseViewController: BaseViewController {
         if lines.count > 0 {
             return lines.count
         }
-        
         return 1
     }
     
@@ -458,12 +408,10 @@ class LoanBaseViewController: BaseViewController {
         self.sbInputView?.numberOfLines = 1
     }
     
-    
     @IBAction func btnInputMuiltiTextDoneTapped(_ sender: Any) {
         self.hideInputMessageView()
         self.view.endEditing(true)
         guard let index = self.currentIndexSelected, let text = self.sbInputView?.textView.text, text.count > 0 else { return }
-        
         guard let field = self.dataSource?.fieldsDisplay?[index.row], let id = field.id else { return }
         
         if id.contains("optionalText") {
@@ -475,10 +423,7 @@ class LoanBaseViewController: BaseViewController {
         }
         
         self.dataSource?.fieldsDisplay?[index.row].textInputMuiltiline = text
-        
         self.mainTBView?.reloadRows(at: [index], with: UITableViewRowAnimation.automatic)
-        
-        
     }
     
     //MARK: For TextInputMuiltiline
@@ -494,6 +439,7 @@ class LoanBaseViewController: BaseViewController {
                 self.bottomConstraintContentInputView?.constant = keyboardHeight
                 self.view.layoutIfNeeded()
             }) { (status) in
+                
             }
         }
     }
@@ -503,12 +449,10 @@ class LoanBaseViewController: BaseViewController {
         self.hideInputMessageView()
     }
     
-    
     @objc func showInputMesseage(notification: NSNotification) {
         self.isMuiltiLineText = true
         self.sbInputView?.textView.becomeFirstResponder()
     }
-    
     
 }
 
@@ -520,9 +464,7 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         return fields.count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let data = self.dataSource, let fields = data.fieldsDisplay else { return UITableViewCell() }
         let model = fields[indexPath.row]
         
@@ -531,84 +473,59 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.Address, for: indexPath) as! LoanTypeAddressTBCell
             cell.field = model
             return cell
-            
         case DATA_TYPE_TB_CELL.TextBox:
-            
             if let multiline = model.multipleLine, multiline {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "LoanTypeInputTextMuiltiLineTBCell", for: indexPath) as! LoanTypeInputTextMuiltiLineTBCell
-                
                 //cell.parent = data.id
                 cell.field = model
                 cell.currentIndex = indexPath
                 cell.showInputViewDelegate = self
-                
                 return cell
-                
             }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.TextField, for: indexPath) as! LoanTypeTextFieldTBCell
-            
             cell.parent = data.id
             cell.field = model
             cell.delegateTextField = self
-            
-            
             return cell
-            
         case DATA_TYPE_TB_CELL.DropDown:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.DropDown, for: indexPath) as! LoanTypeDropdownTBCell
             cell.field = model
             cell.parentVC = self
             return cell
-            
         case DATA_TYPE_TB_CELL.DateTime:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.DropDown, for: indexPath) as! LoanTypeDropdownTBCell
-            
             cell.field = model
             return cell
-            
-            
         case DATA_TYPE_TB_CELL.DropdownTexBox:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.PhoneRelation, for: indexPath) as! LoanTypePhoneRelationTBCell
              cell.field = model
             cell.parentVC = self
             return cell
-            
         case DATA_TYPE_TB_CELL.Address:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.Address, for: indexPath) as! LoanTypeAddressTBCell
             cell.field = model
             return cell
-            
         case DATA_TYPE_TB_CELL.File:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.File, for: indexPath) as! LoanTypeFileTBCell
             cell.field = model
             return cell
-            
         case DATA_TYPE_TB_CELL.Footer:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.Footer, for: indexPath) as! LoanTypeFooterTBView
-            
             cell.lblDesciption?.text = model.title ?? ""
-            
             return cell
-            
         case DATA_TYPE_TB_CELL.MultipleFile:
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.OptionalMedia, for: indexPath) as! LoanTypeOptionalMediaTBCell
             cell.field = model
             return cell
-            
         case DATA_TYPE_TB_CELL.Choice:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.Choice, for: indexPath) as! LoanTypeChoiceTBCell
             cell.field = model
             return cell
-            
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: Loan_Identifier_TB_Cell.TextField, for: indexPath) as! LoanTypeTextFieldTBCell
-            
             return cell
-            
         }
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -621,27 +538,20 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
         switch model.type! {
         case DATA_TYPE_TB_CELL.DropDownSearch:
             self.gotoDropdownSearchVC()
-            break
-            
         case DATA_TYPE_TB_CELL.TextBox:
             //self.showInputMesseageView()
-            
             break
         case DATA_TYPE_TB_CELL.DropDown:
             //Chức vụ
             //Nghề nghiệp
             tableView.deselectRow(at: indexPath, animated: true)
-            
-            break
         case DATA_TYPE_TB_CELL.DateTime:
             self.showDateDialog()
-            break
         case DATA_TYPE_TB_CELL.DropdownTexBox:
             //Xử lý trong cell
             break
         case DATA_TYPE_TB_CELL.Address:
             self.gotoAddressVC(title: model.title!, id: model.id!)
-            break
         case DATA_TYPE_TB_CELL.File:
             
             if model.id!.contains("nationalIdAllImg") {
@@ -656,29 +566,18 @@ extension LoanBaseViewController: UITableViewDelegate, UITableViewDataSource {
             
             if let isAllowGetImageFromGalery = model.allowGetImageFromGalery, isAllowGetImageFromGalery {
                 self.showAlertAllowGetImageFromGalery()
-                
             } else {
                 self.showCameraView(descriptionStr: model.descriptionValue)
             }
-            
-            
-            break
-            
         case DATA_TYPE_TB_CELL.MultipleFile:
-            
             break
-            
         case DATA_TYPE_TB_CELL.Choice:
-            
             break
-            
         case DATA_TYPE_TB_CELL.Footer:
-            
             break
         default:
             break
         }
-        
     }
     
 }
@@ -709,7 +608,6 @@ extension LoanBaseViewController: GuideCaptureDelegate {
     func showCamera() {
         self.selectedFile()
     }
-
 }
 
 //MARK: SBMessageInputViewDelegate
@@ -721,8 +619,6 @@ extension LoanBaseViewController: SBMessageInputViewDelegate {
     
     func inputViewShouldBeginEditing(textView: UITextView) -> Bool {
         //textView.text = ""
-        
-        
         return true
     }
     
@@ -732,7 +628,6 @@ extension LoanBaseViewController: SBMessageInputViewDelegate {
         let textLast = trimmedText.replacingOccurrences(of: "\n", with: "")
         let numberOfChars = textLast.count // for Swift use count(newText)
         return numberOfChars < 500
-
     }
     
     func inputViewDidBeginEditing(textView: UITextView) {
@@ -780,10 +675,6 @@ extension LoanBaseViewController: AddressDelegate {
         if let cell = self.mainTBView?.cellForRow(at: indexPath) as? LoanTypeAddressTBCell {
             cell.field?.placeholder = add
         }
-        
-        
     }
+    
 }
-
-
-

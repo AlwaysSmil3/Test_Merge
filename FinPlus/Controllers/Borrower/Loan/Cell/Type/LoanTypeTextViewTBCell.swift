@@ -17,7 +17,6 @@ class LoanTypeTextViewTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         super.awakeFromNib()
         self.lblTitle?.font = FONT_CAPTION
         self.tfValue?.delegate = self
-        
     }
     
     var parent: String?
@@ -45,67 +44,53 @@ class LoanTypeTextViewTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             
             self.getData()
-            
         }
     }
     
-    
     func getData() {
         guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
-            if id.contains("optionalText") {
-                
-                //thông tin khác
-                if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
-                    //Cap nhat thong tin khong hop le
-                    self.updateInfoFalse(pre: title)
-                }
-                
-                var index = 0
-                if let i = field_.arrayIndex {
-                    index = i
-                }
-                
-                guard let data = DataManager.shared.browwerInfo?.activeLoan?.optionalText, data.count > index, DataManager.shared.loanInfo.optionalText.count > index else { return }
-                
-                var value = ""
-                if data.count > 0 {
-                    value = data[index]
-                }
-                
-                if DataManager.shared.loanInfo.optionalText[index].length() > 0 {
-                    value = DataManager.shared.loanInfo.optionalText[index]
-                }
-                
-                if value.length() > 0 {
-                    self.tfValue?.text = value
-                    DataManager.shared.loanInfo.optionalText[index] = value
-                }
-                
+        if id.contains("optionalText") {
+            //thông tin khác
+            if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
+                //Cap nhat thong tin khong hop le
+                self.updateInfoFalse(pre: title)
             }
             
-        
+            var index = 0
+            if let i = field_.arrayIndex {
+                index = i
+            }
+            
+            guard let data = DataManager.shared.browwerInfo?.activeLoan?.optionalText, data.count > index, DataManager.shared.loanInfo.optionalText.count > index else { return }
+            
+            var value = ""
+            if data.count > 0 {
+                value = data[index]
+            }
+            
+            if DataManager.shared.loanInfo.optionalText[index].length() > 0 {
+                value = DataManager.shared.loanInfo.optionalText[index]
+            }
+            
+            if value.length() > 0 {
+                self.tfValue?.text = value
+                DataManager.shared.loanInfo.optionalText[index] = value
+            }
+        }
     }
 
 }
 
 //MARK: AnimatedTextInputDelegate
 extension LoanTypeTextViewTBCell: UITextViewDelegate {
-    
     func textViewDidEndEditing(_ textView: UITextView) {
         guard let field_ = self.field, let id = field_.id else { return }
-            if id.contains("optionalText") {
-                //thông tin khác
-                if let index = field_.arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
-                    DataManager.shared.loanInfo.optionalText[index] = self.tfValue?.text ?? ""
-                }
+        if id.contains("optionalText") {
+            //thông tin khác
+            if let index = field_.arrayIndex, DataManager.shared.loanInfo.optionalText.count > index {
+                DataManager.shared.loanInfo.optionalText[index] = self.tfValue?.text ?? ""
             }
-        
+        }
     }
-        
     
 }
-
-
-
-
-

@@ -10,7 +10,6 @@ import Foundation
 
 class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
-    
     @IBOutlet weak var mainCollectionView: UICollectionView!
     
     //Giới tính
@@ -43,16 +42,9 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             if let cell = self.mainCollectionView.cellForItem(at: current) as? LoanTypeChoiceCollectionCell {
                 cell.isSelectedCell = true
             }
-            
-            if current.row == 0 {
-                self.gender = .Male
-            } else {
-                self.gender = .Female
-            }
-            
+            self.gender = current.row == 0 ? .Male : .Female
         }
     }
-    
     
     var field: LoanBuilderFields? {
         didSet {
@@ -67,7 +59,6 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             }
             self.getData()
             self.dataSourceCollection = field_.data ?? []
-            
         }
     }
     
@@ -79,16 +70,12 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         }
     }
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.lblTitle?.font = FONT_CAPTION
-        
         self.mainCollectionView.delegate = self
         self.mainCollectionView.dataSource = self
         self.mainCollectionView?.register(UINib(nibName: "LoanTypeChoiceCollectionCell", bundle: nil), forCellWithReuseIdentifier: "Loan_Type_Choice_Collection_Cell")
-        
     }
     
     //Update Data khi co khoan vay
@@ -96,7 +83,6 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
         guard let field_ = self.field, let id = field_.id, let title = field_.title else { return }
         
         if id.contains("gender") {
-            
             var value = ""
             if let data = DataManager.shared.browwerInfo?.activeLoan?.userInfo?.gender, data.length() > 0 {
                 value = data
@@ -111,9 +97,7 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     self.currentSelectedCollection = IndexPath(row: 1, section: 0)
                 } else {
                     self.currentSelectedCollection = IndexPath(row: 0, section: 0)
-                    
                 }
-                
                 DataManager.shared.loanInfo.userInfo.gender = value
             }
             
@@ -123,11 +107,7 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     self.valueTemp = value
                     self.updateInfoFalse(pre: title)
                 }
-                
-                
             }
-            
-            
         } else if id.contains("optionalText") {
             //thông tin khác
             
@@ -152,7 +132,6 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
                     self.currentSelectedCollection = IndexPath(row: 0, section: 0)
                 } else {
                     self.currentSelectedCollection = IndexPath(row: 1, section: 0)
-                    
                 }
                 DataManager.shared.loanInfo.optionalText[index] = value
             }
@@ -160,27 +139,22 @@ class LoanTypeChoiceTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
             if DataManager.shared.checkFieldIsMissing(key: "optionalText") {
                 //Cap nhat thong tin khong hop le
                 if let arrayIndex = field_.arrayIndex, let data = DataManager.shared.missingOptionalText {
-                    
                     if let text = data["\(arrayIndex)"] as? String {
                         //Cap nhat thong tin khong hop le
                         print("OptionalText \(text)")
                         if self.valueTemp == nil {
-                            
                             if value == "Nam" || value == "0" {
                                 self.valueTemp = "0"
                             } else {
                                 self.valueTemp = "1"
                             }
-                            
                             self.updateInfoFalse(pre: title)
                         }
-                        
                     }
                 }
             }
         }
     }
-    
     
 }
 
@@ -195,7 +169,7 @@ extension LoanTypeChoiceTBCell: UICollectionViewDataSource, UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Loan_Type_Choice_Collection_Cell", for: indexPath) as! LoanTypeChoiceCollectionCell
         cell.data = self.dataSourceCollection[indexPath.row]
         
-        if let indexPath_ = self.currentSelectedCollection, indexPath_ == indexPath {
+        if self.currentSelectedCollection == indexPath {
             cell.isSelectedCell = true
         } else {
             cell.isSelectedCell = false
@@ -205,14 +179,11 @@ extension LoanTypeChoiceTBCell: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         if let indexPrev = self.currentSelectedCollection {
             let cellPev = collectionView.cellForItem(at: indexPrev) as! LoanTypeChoiceCollectionCell
             cellPev.isSelectedCell = false
         }
-        
         self.currentSelectedCollection = indexPath
-        
     }
     
     /**
@@ -228,10 +199,6 @@ extension LoanTypeChoiceTBCell: UICollectionViewDataSource, UICollectionViewDele
         default:
             return CGSize(width: 116, height: 30)
         }
-        
-        
     }
     
 }
-
-

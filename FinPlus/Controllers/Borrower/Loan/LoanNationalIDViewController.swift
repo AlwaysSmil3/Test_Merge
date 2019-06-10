@@ -14,7 +14,6 @@ class LoanNationalIDViewController: LoanBaseViewController {
     override func viewDidLoad() {
         self.index = 2
         super.viewDidLoad()
-        
         self.currentStep = 4
         //self.updateDataToServer()
     
@@ -23,25 +22,19 @@ class LoanNationalIDViewController: LoanBaseViewController {
         }
         
         FinPlusHelper.checkCameraPermission { (status) in
-            
             self.requestInitPermissionCamera()
-            
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         if let isHidden = self.navigationController?.isNavigationBarHidden, !isHidden {
             self.navigationController?.isNavigationBarHidden = true
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
     
     private func requestInitPermissionCamera() {
@@ -53,12 +46,9 @@ class LoanNationalIDViewController: LoanBaseViewController {
                     //access denied
                 }
             })
-            
             return
         }
     }
-
-    //MARK: Actions
     
     @IBAction func btnContinueTapped(_ sender: Any) {
         
@@ -95,12 +85,8 @@ class LoanNationalIDViewController: LoanBaseViewController {
         
         self.updateDataToServer(step: 4) {
             let loanOtherInfoVC = UIStoryboard(name: "Loan", bundle: nil).instantiateViewController(withIdentifier: "LoanOtherInfoVC") as! LoanOtherInfoVC
-            
             self.navigationController?.pushViewController(loanOtherInfoVC, animated: true)
         }
-
-        
     }
+    
 }
-
-

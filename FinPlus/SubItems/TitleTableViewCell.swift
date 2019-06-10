@@ -19,8 +19,8 @@ class TitleTableViewCell: UITableViewCell {
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var rightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var label: UILabel!
+    
     private var textCellType: TextCellType = .TitleType
     
     func setTextCellType(type: TextCellType) {
@@ -29,9 +29,7 @@ class TitleTableViewCell: UITableViewCell {
         if textCellType == .TitleType {
             label.font = UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_BIG)
             label.textColor = .black
-        }
-        else
-        {
+        } else {
             label.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_SEMIMALL)
             label.textColor = UIColor(hexString: "#4D6678")
         }
