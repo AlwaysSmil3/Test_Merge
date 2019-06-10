@@ -77,7 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Facebook init
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        
         // Init FireBase
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
@@ -109,23 +108,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
                 completionHandler: {(granted, error) in
-                    
                     print("Permission granted: \(granted)")
                     
-                    
-                    //                    let viewAction = UNNotificationAction(identifier: viewActionIdentifier,
-                    //                                                          title: "View",
-                    //                                                          options: [.foreground])
-                    //
-                    //                    let newsCategory = UNNotificationCategory(identifier: newsCategoryIdentifier,
-                    //                                                              actions: [viewAction],
-                    //                                                              intentIdentifiers: [],
-                    //                                                              options: [])
-                    //
-                    //                    UNUserNotificationCenter.current().setNotificationCategories([newsCategory])
+//                    let viewAction = UNNotificationAction(identifier: viewActionIdentifier,
+//                                                          title: "View",
+//                                                          options: [.foreground])
+//
+//                    let newsCategory = UNNotificationCategory(identifier: newsCategoryIdentifier,
+//                                                              actions: [viewAction],
+//                                                              intentIdentifiers: [],
+//                                                              options: [])
+//
+//                    UNUserNotificationCenter.current().setNotificationCategories([newsCategory])
                     
                     self.getNotificationSettings()
-                    
             })
         } else {
             let settings: UIUserNotificationSettings =
@@ -134,7 +130,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         application.registerForRemoteNotifications()
-        
     }
     
     
@@ -148,21 +143,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     DispatchQueue.main.async {
                         UIApplication.shared.registerForRemoteNotifications()
                     }
-                    
-                    break
-                    
                 case .denied:
                     print("Notification denied")
-                    
-                    break
                 case .notDetermined:
                     print("Notification not Determined")
-                    
-                    break
-                    
                 case .provisional:
                     break
-                    
                 }
             }
         } else {
@@ -180,16 +166,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         token = tokenParts.joined()
-        
         print("deviceToken \(token)")
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         print("userInfo \(userInfo)")
         self.handleNotificationFireBase(userInfo: userInfo)
-        
     }
-    
     
     func handleNotificationFireBase(userInfo: [AnyHashable : Any]) {
         
@@ -201,10 +184,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if let body = alert["body"] as? String {
-            
             var title = "Thông báo"
-            if let t = alert["title"] as? String {
-                title = t
+            if let tit = alert["title"] as? String {
+                title = tit
             }
             
             guard let topVC = UIApplication.shared.topViewController() else { return }
@@ -220,16 +202,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 currentVC.showAlertView(title: title, message: body, okTitle: "Đồng ý", cancelTitle: nil) { (status) in
                     currentVC.reLoadStatusLoanVC()
                 }
-                
                 return
             } else {
                 DataManager.shared.isNeedReloadLoanStatusVC = true
             }
             
             topVC.showAlertView(title: title, message: body, okTitle: "Đồng ý", cancelTitle: nil)
-            
         }
-        
     }
     
     //    func loadConfigFromFireBase() {
@@ -269,7 +248,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         print("applicationDidEnterBackground")
         backgroundTimer = Timer.scheduledTimer(timeInterval: BACKGROUND_TIME, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
-        
     }
     
     @objc func runTimedCode() {
@@ -284,27 +262,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        if self.isShowLogin == true {
-            if let wd = UIApplication.shared.delegate?.window, let wd_ = wd {
-                var vc = wd_.rootViewController
-                if(vc is UINavigationController) {
+        if self.isShowLogin {
+            if let wd = UIApplication.shared.delegate?.window, let _wd = wd {
+                var vc = _wd.rootViewController
+                if vc is UINavigationController {
                     vc = (vc as! UINavigationController).visibleViewController
                 }
                 
-                if ((vc is LoginViewController) || (vc is EnterPhoneNumberAuthenVC) || (vc is SetPassAuthenVC)) {
+                self.isShowLogin = false
+                
+                if vc is LoginViewController || vc is EnterPhoneNumberAuthenVC || vc is SetPassAuthenVC {
                     //do something if it's an instance of that class
-                    self.isShowLogin = false
-                    
                 } else {
-                    
-                    self.isShowLogin = false
-                    
                     let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
                     let navi = UINavigationController(rootViewController: loginVC)
                     navi.isNavigationBarHidden = true
                     
-                    UIView.transition(with: wd_, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
-                        
+                    UIView.transition(with: _wd, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
                         self.window?.rootViewController = navi
                     }, completion: { (status) in
                         
@@ -329,41 +303,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         print("applicationWillTerminate")
-        
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        
         let handled = ApplicationDelegate.shared.application(app, open: url, options: options)
-        
         return handled
     }
     
     //MARK: Setup Start View Controller
-    
     private func setupStartVC() {
-        
         let isFirstLaunch = UserDefaults.isFirstLaunch()
         if isFirstLaunch == true {
             let enterPhoneVC = UIStoryboard(name: "OnBoard", bundle: nil).instantiateInitialViewController()
             self.window?.rootViewController = enterPhoneVC
-            
             return
         } else {
             guard let _ = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String else {
                 // chưa có account Login
                 let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
-                
                 self.window?.rootViewController = enterPhoneVC
-                
                 return
             }
             //Đã có account Login
             let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewControllerNavi") as! UINavigationController
-            
             self.window?.rootViewController = loginVC
         }
-        
     }
     
     //MARK: GetVersion
@@ -371,28 +335,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func getVersion() {
         APIClient.shared.getConfigs()
             .done(on: DispatchQueue.main) { model in
-                
                 DataManager.shared.config = model
-                
                 FinPlusHelper.checkVersionWithConfigAndShowAlert {
                     
                 }
                 
                 guard let version = userDefault.value(forKey: fVERSION_CONFIG) as? String else {
-                    userDefault.set(model.version!, forKey: fVERSION_CONFIG)
+                    userDefault.set(model.version, forKey: fVERSION_CONFIG)
                     userDefault.synchronize()
                     return
                 }
                 
-                if version == model.version! {
+                if version == model.version {
                     //Không cần thay đổi dữ liệu local
                     DataManager.shared.isUpdateFromConfig = false
                 } else {
-                    userDefault.set(model.version!, forKey: fVERSION_CONFIG)
+                    userDefault.set(model.version, forKey: fVERSION_CONFIG)
                     userDefault.synchronize()
                 }
             }
             .catch { error in
+                print("error API getConfigs")
         }
     }
     
@@ -403,7 +366,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 DataManager.shared.loanCategories.append(contentsOf: model)
             }
             .catch { error in
-                
+                print("error API getLoanCategories")
         }
     }
     
@@ -414,7 +377,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 DataManager.shared.loanBorrowerFee.append(contentsOf: model)
             }
             .catch { error in
-                
+                print("error API getLoanBorrowerFee")
         }
     }
     
@@ -429,9 +392,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             .catch { error in
+                print("error API checkVersion")
         }
     }
-    
     
     // MARK: - Core Data stack
     lazy var applicationDocumentsDirectory: URL = {
@@ -494,7 +457,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func updateVersionAppCurrent() throws -> Bool {
         guard let info = Bundle.main.infoDictionary,
-            let currentVersion = info["CFBundleShortVersionString"] as? String,
+//            let currentVersion = info["CFBundleShortVersionString"] as? String,
             let identifier = info["CFBundleIdentifier"] as? String,
             let url = URL(string: "http://itunes.apple.com/lookup?bundleId=\(identifier)") else {
                 throw VersionError.invalidBundleInfo
@@ -569,14 +532,9 @@ extension AppDelegate: MessagingDelegate {
         print("Firebase registration token: \(fcmToken)")
         DataManager.shared.pushNotificationToken = fcmToken
         
-        
         // TODO: If necessary send token to application server.
         // Note: This callback is fired at each app startup and whenever a new token is generated.
-        
-        
     }
-    
-    
     
 }
 

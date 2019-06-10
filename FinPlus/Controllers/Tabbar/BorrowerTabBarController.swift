@@ -8,18 +8,16 @@
 
 import UIKit
 
-extension UIImage{
+extension UIImage {
     //Draws the top indicator by making image with filling color
     class func drawTabBarIndicator(color: UIColor, size: CGSize, onTop: Bool) -> UIImage {
         let indicatorHeight = size.height / 30
         let yPosition = onTop ? 0 : (size.height - indicatorHeight)
-        
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         color.setFill()
         UIRectFill(CGRect(x: 0, y: yPosition, width: size.width, height: indicatorHeight))
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
         return image!
     }
 }
@@ -44,7 +42,6 @@ class BorrowerTabBarController: UITabBarController {
         print("----- deinit: \(String(describing: self.self))")
     }
     
-    
     //MARK:- View Controller Life Cycle
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -63,8 +60,7 @@ class BorrowerTabBarController: UITabBarController {
 //        self.tabBar.selectionIndicatorImage = indicatorImage
     }
     
-//    func updateBadge(isShow: Bool)
-//    {
+//    func updateBadge(isShow: Bool) {
 //        self.tabBar.items?[3].badgeValue = isShow ? "" : nil
 //    }
     
@@ -73,12 +69,10 @@ class BorrowerTabBarController: UITabBarController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: ShowNotificationIdentifier), object: nil, queue: nil, using: { (notification) in
-            
             self.handleShowRedDot(isShow: true)
         })
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: HiddenNotificationIdentifier), object: nil, queue: nil, using: { (notification) in
-            
             self.handleShowRedDot(isShow: false)
         })
         
@@ -117,7 +111,6 @@ class BorrowerTabBarController: UITabBarController {
             //Chưa có Khoản vay
             self.viewControllers = [v11, v2, v3, v4, v5]
         }
-    
         
 //        for vc in self.viewControllers! {
 //            self.formatTabBarItem(tabBarItem: vc.tabBarItem)
@@ -141,7 +134,6 @@ class BorrowerTabBarController: UITabBarController {
         UINavigationBar.appearance().titleTextAttributes = attributes
         UINavigationBar.appearance().barTintColor = LIGHT_MODE_NAVI_COLOR
         UINavigationBar.appearance().tintColor = LIGHT_MODE_MAIN_TEXT_COLOR
-        
         
         UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .normal)
         
@@ -167,7 +159,6 @@ class BorrowerTabBarController: UITabBarController {
     //Add Badge Custom
     func addRedDotAtTabBarItemIndex(index: Int) {
         for subview in self.tabBar.subviews {
-        
             if subview.tag == 1234 {
                 subview.removeFromSuperview()
                 break
@@ -176,26 +167,18 @@ class BorrowerTabBarController: UITabBarController {
         
         let RedDotRadius: CGFloat = 5
         let RedDotDiameter = RedDotRadius * 2
-        
         let TopMargin:CGFloat = 5
-        
         let TabBarItemCount = CGFloat(self.tabBar.items!.count)
-        
         let screenSize = UIScreen.main.bounds
         let HalfItemWidth = (screenSize.width) / (TabBarItemCount * 2)
-        
-        let  xOffset = HalfItemWidth * CGFloat(index * 2 + 1)
-        
+        let xOffset = HalfItemWidth * CGFloat(index * 2 + 1)
         let imageHalfWidth: CGFloat = (self.tabBar.items![index]).selectedImage!.size.width / 2
-        
         self.redDot = UIView(frame: CGRect(x: xOffset + imageHalfWidth - 7, y: TopMargin, width: RedDotDiameter, height: RedDotDiameter))
-        
         redDot?.tag = 1234
         redDot?.backgroundColor = UIColor(hexString: "#DA3535")
         redDot?.layer.cornerRadius = RedDotRadius
         
         self.tabBar.addSubview(redDot!)
-        
     }
     
 }

@@ -10,9 +10,7 @@ import Foundation
 
 extension APIClient {
     
-    /*
-     Lấy thông tin người dùng
-     */
+    // Lấy thông tin người dùng
     func getUserInfo(uId: Int32) -> Promise<BrowwerInfo> {
         
         return Promise<BrowwerInfo> { seal in
@@ -20,7 +18,6 @@ extension APIClient {
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: true)
                 .done { json in
-                    //print(json)
                     if let data = json[API_RESPONSE_RETURN_DATA] as? JSONDictionary {
                         let model = BrowwerInfo(object: data)
                         
@@ -64,7 +61,6 @@ extension APIClient {
                         } else {
                             DataManager.shared.clearMissingLoanData()
                         }
-                        
                         seal.fulfill(model)
                     }
                 }
@@ -74,23 +70,7 @@ extension APIClient {
         }
     }
     
-    /*
-     
-     PUT [Done] Cập push notification token
-     HEADERS
-     Content-Type
-     application/json
-     PATH VARIABLES
-     uid
-     
-     Mã khách hàng của Fin+
-     BODY
-     
-     {
-     "token":"xxxxxxxxxxxxxxxxxxxxxxx"
-     }
-     
-     */
+    // PUT [Done] Cập push notification token
     func pushNotificationToken() -> Promise<APIResponseGeneral> {
         let token = DataManager.shared.pushNotificationToken ?? ""
         let params = ["token": token]
@@ -110,17 +90,13 @@ extension APIClient {
         }
     }
     
-    /*
-     Lấy danh sách tài khoản ngân hàng
-     */
+    // Lấy danh sách tài khoản ngân hàng
     func getListBank(uId: Int32) -> Promise<[AccountBank]> {
-        
         return Promise<[AccountBank]> { seal in
             let endPoint = EndPoint.User.User + "\(uId)/bank-account"
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
                 .done { json in
                     var array: [AccountBank] = []
-                    
                     if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
                         array = data.compactMap{ AccountBank(object: $0) }
                     }
@@ -132,9 +108,7 @@ extension APIClient {
         }
     }
     
-    /*
-     Thêm tài khoản ngân hàng
-     */
+    // Thêm tài khoản ngân hàng
     func addNewBank(uId: Int32, params: JSONDictionary) -> Promise<APIResponseGeneral> {
         let endPoint = EndPoint.User.User + "\(uId)/bank-account"
         return Promise<APIResponseGeneral> { seal in
@@ -149,9 +123,7 @@ extension APIClient {
         }
     }
     
-    /*
-     Xóa tài khoản ngân hàng
-     */
+    // Xóa tài khoản ngân hàng
     func delBank(uId: Int32, params: JSONDictionary) -> Promise<APIResponseGeneral> {
         let endPoint = EndPoint.User.User + "\(uId)/bank-account"
         return Promise<APIResponseGeneral> { seal in
@@ -167,11 +139,6 @@ extension APIClient {
     }
     
     /// forget password
-    ///
-    /// - Parameters:
-    ///   - phoneNumber: <#phoneNumber description#>
-    ///   - nationalId: <#nationalId description#>
-    /// - Returns: <#return value description#>
     func forgetPassword(phoneNumber: String, nationalId: String = "") -> Promise<APIResponseGeneral> {
         let params = ["phoneNumber": phoneNumber, "nationalId": nationalId]
         
@@ -188,11 +155,6 @@ extension APIClient {
     }
     
     /// Quen pass verify otp
-    ///
-    /// - Parameters:
-    ///   - phoneNumber: <#phoneNumber description#>
-    ///   - otp: <#otp description#>
-    /// - Returns: <#return value description#>
     func forgetPasswordOTP(phoneNumber: String, otp: String) -> Promise<APIResponseGeneral> {
         let params = ["phoneNumber": phoneNumber, "otp": otp]
         
@@ -209,11 +171,6 @@ extension APIClient {
     }
     
     /// Cap nhat pass moi khi quen pass
-    ///
-    /// - Parameters:
-    ///   - phoneNumber: <#phoneNumber description#>
-    ///   - pwd: <#pwd description#>
-    /// - Returns: <#return value description#>
     func forgetPasswordNewPass(phoneNumber: String, pwd: String) -> Promise<APIResponseGeneral> {
         let params = ["phoneNumber": phoneNumber, "password": pwd]
         
@@ -230,11 +187,6 @@ extension APIClient {
     }
     
     /// Đổi password
-    ///
-    /// - Parameters:
-    ///   - phoneNumber: <#phoneNumber description#>
-    ///   - pwd: <#pwd description#>
-    /// - Returns: <#return value description#>
     func changePassword(oldPass: String, newPass: String) -> Promise<APIResponseGeneral> {
         let params: JSONDictionary = ["oldPassword": oldPass, "newPassword": newPass]
         let uID = DataManager.shared.userID
@@ -245,11 +197,7 @@ extension APIClient {
                 .done { json in
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
                         if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
-                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
-                                if status {
-                                    
-                                }
-                            })
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil)
                         }
                         return
                     }
@@ -263,8 +211,6 @@ extension APIClient {
     }
     
     /// gui lai otp mục quên mật khẩu
-    ///
-    /// - Returns: <#return value description#>
     func getForgetPasswordOTP() -> Promise<APIResponseGeneral> {
         let endPoint = EndPoint.User.GetOTPForgetPassword
         
@@ -273,11 +219,7 @@ extension APIClient {
                 .done { json in
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
                         if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
-                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
-                                if status {
-                                    
-                                }
-                            })
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil)
                         }
                         return
                     }

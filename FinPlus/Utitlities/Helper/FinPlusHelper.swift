@@ -34,8 +34,6 @@ class FinPlusHelper {
     
     //MARK: Check permissions
     /// Check permission Contact
-    ///
-    /// - Parameter completion: <#completion description#>
     class func checkContactPermission(completion: @escaping(_ accessGranted: Bool) -> Void) {
         
         switch CNContactStore.authorizationStatus(for: .contacts) {
@@ -53,8 +51,6 @@ class FinPlusHelper {
     }
     
     /// Check Camera Permission
-    ///
-    /// - Parameter completion: <#completion description#>
     class func checkCameraPermission(completion: @escaping(_ accessGranted: Bool) -> Void) {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
             
@@ -72,8 +68,6 @@ class FinPlusHelper {
     }
     
     /// Check Location Permission
-    ///
-    /// - Parameter completion: <#completion description#>
     class func checkLocationPermission(completion: @escaping(_ accessGranted: Bool) -> Void) {
         switch CLLocationManager.authorizationStatus() {
             
@@ -95,9 +89,6 @@ class FinPlusHelper {
     }
     
     /// get indexValue
-    ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
     class func getIndexWithOtherSelection(value: String) -> Int? {
         let list = value.components(separatedBy: keyComponentSeparateOptionalText)
         guard list.count > 1, let index = Int(list[0]) else { return nil }
@@ -105,9 +96,6 @@ class FinPlusHelper {
     }
     
     /// Get title value
-    ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
     class func getTitleWithOtherSelection(value: String) -> String? {
         let list = value.components(separatedBy: keyComponentSeparateOptionalText)
         
@@ -128,11 +116,6 @@ class FinPlusHelper {
     }
     
     /// Update title Value wiht muilte selectionIndex
-    ///
-    /// - Parameters:
-    ///   - selections: <#selections description#>
-    ///   - dataSource: <#dataSource description#>
-    /// - Returns: <#return value description#>
     class func getListTitleValue(selections: String, dataSource: [LoanBuilderData]) -> String {
         var listTitle = ""
         let listIndex = selections.components(separatedBy: keyComponentSeparateOptionalText)
@@ -153,9 +136,6 @@ class FinPlusHelper {
     }
     
     /// Display Current Money
-    ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
     static func formatDisplayCurrency(_ value: Double) -> String {
         let valueNumber = value as NSNumber
         
@@ -184,14 +164,11 @@ class FinPlusHelper {
     // Validate email
     static func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
     }
     
     /// Get current date
-    ///
-    /// - Parameter format: <#format description#>
     static func getCurrentDate(format: String) -> String {
         let date = Date()
         let formatter = DateFormatter()
@@ -201,9 +178,7 @@ class FinPlusHelper {
     
     //MARK: Make Call
     class func isMakeCallAvailable() -> Bool {
-        
         guard let url = URL.init(string: "tel://") else { return false }
-        
         return UIApplication.shared.canOpenURL(url)
     }
     
@@ -211,7 +186,7 @@ class FinPlusHelper {
         let mHotline = number.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ".", with: "").replacingOccurrences(of: ",", with: "")
         
         if let url = URL(string: String(format: "tel://%@", mHotline)) {
-            if FinPlusHelper.isMakeCallAvailable() == true {
+            if FinPlusHelper.isMakeCallAvailable() {
                 if #available(iOS 10.0, *) {
                     UIApplication.shared.open((url as URL), options: [:], completionHandler: nil)
                 } else {
@@ -228,9 +203,6 @@ class FinPlusHelper {
     
     /**
      Resize image
-     - parameter image:    <#image description#>
-     - parameter newWidth: <#newWidth description#>
-     - returns: <#return value description#>
      */
     static func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
         

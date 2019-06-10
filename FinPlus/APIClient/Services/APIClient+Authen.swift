@@ -11,22 +11,8 @@ import Foundation
 extension APIClient {
     
     /* Đăng ký số điện thoại mới
-     phoneNumber
-     
-     Số điện thoại đăng ký
-     uuid
-     xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-     
-     Device unique id
-     deviceType
-     0
-     
-     1: iOS, 0 : android
-     password
-     xxxxxxxxxxxxxxxxxxxxxxx
-     
+     deviceType : 1: iOS, 0 : android
      Optional: Mật khẩu của người dùng
-     
      */
     func authentication(phoneNumber: String, pass: String = "") -> Promise<AuthenticationBase> {
         
@@ -47,9 +33,9 @@ extension APIClient {
                 "uuid": id,
                 "deviceType": API_DEVICE_TYPE_OS,
                 "password": pass,
-                "appType": 0,
                 "deviceName": UIDevice.modelName,
-                "deviceEmail": "",
+                "appType": 0,
+                "deviceEmail": ""
             ]
         }
         
@@ -69,19 +55,11 @@ extension APIClient {
         }
     }
     
-    /*  Xác thực số điện thoại vừa đăng ký
-     
-     phoneNumber
-     0966003631
-     
-     Số điện thoại sử dụng để đăng ký
-     otp
-     xxxxxx
-     
+    /*
+     Xác thực số điện thoại vừa đăng ký
      Mã OTP 6 số
-     */
+    */
     func verifyOTPAuthen(phoneNumber: String, otp: String) -> Promise<OTP> {
-        
         let params = ["phoneNumber": phoneNumber, "otp": otp]
         
         return Promise<OTP> { seal in
@@ -151,7 +129,7 @@ extension APIClient {
         if let accessToken = accessToken {
             params = [
                 "phoneNumber": phoneNumber,
-                //                "password": pass,
+                //"password": pass,
                 "accountType": 0,
                 "accessToken": accessToken,
                 "avatar": avatar ?? "",
@@ -181,13 +159,9 @@ extension APIClient {
     
     
     /// Update in cho đăng ký là nhà đầu tư
-    ///
-    /// - Parameter investInfo: <#investInfo description#>
-    /// - Returns: <#return value description#>
     func updateInfoForInvestor(investInfo: InvestorRegisterModel) -> Promise<BrowwerInfo> {
         
         let params: JSONDictionary = ["" : ""]
-        
         let investInfoData = try? JSONEncoder().encode(investInfo)
         
         var dataAPI = Data()
@@ -196,7 +170,6 @@ extension APIClient {
         }
         
         return Promise<BrowwerInfo> { seal in
-            
             requestWithEndPoint(endPoint: EndPoint.Authen.Authen, params: params, isShowLoadingView: true, httpType: HTTPMethodType.PUT, jsonData: dataAPI)
                 .done { json in
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode == 1 else {
@@ -216,15 +189,6 @@ extension APIClient {
     
     /*
      POST [Done] Đăng xuất ứng dụng điện thoại
-     HEADERS
-     Content-Type
-     application/json
-     BODY
-     
-     {
-     "token": "xxxxxxxxxxxxxx"
-     }
-     
      */
     func logOut() -> Promise<APIResponseGeneral> {
         let token = DataManager.shared.pushNotificationToken ?? ""
@@ -243,10 +207,7 @@ extension APIClient {
     }
     
     /// gui yeu cau gửi lại otp khi Authen
-    ///
-    /// - Returns: <#return value description#>
     func getAuthenOTP() -> Promise<APIResponseGeneral> {
-        
         let endPoint = EndPoint.Authen.resendOTPAuthen + DataManager.shared.currentAccount
         
         return Promise<APIResponseGeneral> { seal in
@@ -254,18 +215,16 @@ extension APIClient {
                 .done { json in
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
                         if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
-                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
-                                if status {
-                                    
-                                }
-                            })
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil)
                         }
                         return
                     }
                     let model = APIResponseGeneral(object: json)
                     seal.fulfill(model)
                 }
-                .catch { error in seal.reject(error)}
+                .catch { error in
+                    seal.reject(error)
+            }
         }
     }
     

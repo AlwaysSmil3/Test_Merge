@@ -10,31 +10,21 @@ import UIKit
 
 class ListLoanViewController: BaseViewController {
     
-    // MARK: - Outlet
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var noWalletLabel: UILabel!
     @IBOutlet weak var addBtn: UIButton!
     
-    let cellIdentifier = "cell"
     private var listLoan: NSMutableArray = []
     private var pageSize = 30
-    
-    var isCanReload: Bool = true
-    var currentPage: Int = 1
-//    var isCanClearData: Bool = false
+    var isCanReload = true
+    var currentPage = 1
     var totalCountItems = 0
-//
-//    var completeArray:NSMutableArray = []
-//    var unCompleteArray:NSMutableArray = []
+    let cellIdentifier = "cell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-
-        //self.title = NSLocalizedString("LOAN_MANAGER", comment: "")
         self.setupTitleView(title: "Quản lý các khoản vay")
-        
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         self.noWalletLabel.text = NSLocalizedString("NO_LOAN", comment: "")
@@ -44,12 +34,14 @@ class ListLoanViewController: BaseViewController {
         self.addBtn.layer.masksToBounds = false
         self.addBtn.layer.borderColor = MAIN_COLOR.cgColor
         
-        let cellNib = UINib(nibName: "LoanTableViewCell", bundle: nil)
-        self.tableview.register(cellNib, forCellReuseIdentifier: cellIdentifier)
+//        let cellNib = UINib(nibName: "LoanTableViewCell", bundle: nil)
+//        self.tableview.register(cellNib, forCellReuseIdentifier: cellIdentifier)
         
-        let loadCellNib = UINib(nibName: "FetchingDataTableViewCell", bundle: nil)
-        self.tableview.register(loadCellNib, forCellReuseIdentifier: "FetchingDataTableViewCell")
+//        let loadCellNib = UINib(nibName: "FetchingDataTableViewCell", bundle: nil)
+//        self.tableview.register(loadCellNib, forCellReuseIdentifier: "FetchingDataTableViewCell")
         
+        tableview.registerCell(LoanTableViewCell.className)
+        tableview.registerCell(FetchingDataTableViewCell.className)
     }
     
     override func didReceiveMemoryWarning() {
@@ -64,19 +56,14 @@ class ListLoanViewController: BaseViewController {
             DataManager.shared.isBackFromLoanStatusVC = nil
             return
         }
-
-        // reload data
-        self.getAllLoans()
         
+        self.getAllLoans()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         self.currentPage = 1
     }
-    
-    
     
     private func getAllLoans() {
         guard self.isCanReload else { return }
@@ -87,7 +74,6 @@ class ListLoanViewController: BaseViewController {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         APIClient.shared.getUserLoans(currentPage: self.currentPage, pageSize: self.pageSize)
             .done(on: DispatchQueue.global()) { json in
-                
                 DispatchQueue.main.async {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     self.errorConnectView?.isHidden = true
@@ -102,23 +88,17 @@ class ListLoanViewController: BaseViewController {
                             self.isCanReload = true
                             if status {
                                 self.getAllLoans()
-                            } else {
-                                
                             }
                         })
                     }
-                    
                     return
                 }
-                
                 
                 var model: [BrowwerActiveLoan] = []
                 
                 if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
                     model = data.compactMap {BrowwerActiveLoan(object: $0)}
-                    
                 }
-                
                 
                 self.isCanReload = true
                 
@@ -134,24 +114,17 @@ class ListLoanViewController: BaseViewController {
                     //let unCompleteArr:NSMutableArray = []
                     if let sectionItem = self.listLoan.lastObject as? NSDictionary, let items = sectionItem["sub_array"] as? [BrowwerActiveLoan] {
                         completeArr.addObjects(from: items)
-                        
                     }
                     
                     model.forEach({ (loan) in
-                        
                         if let status = loan.status {
                             if status == 17 || status == 18 || status == 5 {
                                 completeArr.add(loan)
-                            } else {
-                                //unCompleteArr.add(loan)
                             }
                         }
-                        
                     })
                     
-                    
-                    if (completeArr.count > 0)
-                    {
+                    if completeArr.count > 0 {
                         self.listLoan.removeLastObject()
                         self.listLoan.add(["title" : "END_LOAN", "sub_array" : completeArr])
                     }
@@ -160,13 +133,10 @@ class ListLoanViewController: BaseViewController {
                     
                     DispatchQueue.main.async {
                         self.tableview.reloadData()
-                        
                         self.tableview.isHidden = self.listLoan.count < 1
                         self.noWalletLabel.isHidden = self.listLoan.count > 0
                         self.addBtn.isHidden = self.listLoan.count > 0
                     }
-                    
-                    
                     return
                 }
                 
@@ -178,7 +148,6 @@ class ListLoanViewController: BaseViewController {
                 let unCompleteArr:NSMutableArray = []
                 
                 model.forEach({ (loan) in
-                    
                     if let status = loan.status {
                         if status == 17 || status == 18 || status == 5 {
                             completeArr.add(loan)
@@ -186,23 +155,16 @@ class ListLoanViewController: BaseViewController {
                             unCompleteArr.add(loan)
                         }
                     }
-    
                 })
                 
-                
                 if self.currentPage == 2 {
-                    
-                    if unCompleteArr.count > 0 || completeArr.count > 0 {
+                    if unCompleteArr.count > 0 {
                         self.listLoan.removeAllObjects()
-                    }
-                    
-                    if (unCompleteArr.count > 0)
-                    {
                         self.listLoan.add(["title" : "CURRENT_LOAN", "sub_array" : unCompleteArr])
                     }
                     
-                    if (completeArr.count > 0)
-                    {
+                    if completeArr.count > 0 {
+                        self.listLoan.removeAllObjects()
                         self.listLoan.add(["title" : "END_LOAN", "sub_array" : completeArr])
                     }
                 }
@@ -211,19 +173,16 @@ class ListLoanViewController: BaseViewController {
                 
                 DispatchQueue.main.async {
                     self.tableview.reloadData()
-                    
                     self.tableview.isHidden = self.listLoan.count < 1
                     self.noWalletLabel.isHidden = self.listLoan.count > 0
                     self.addBtn.isHidden = self.listLoan.count > 0
                 }
-                
             }
             .catch { error in
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 let err = error as NSError
                 self.isCanReload = true
                 if err.code == NSURLErrorTimedOut {
-                    
                     guard self.listLoan.count > 0 else {
                         self.errorConnectView?.isHidden = false
                         return
@@ -231,15 +190,11 @@ class ListLoanViewController: BaseViewController {
                     self.errorConnectView?.isHidden = true
                     
                     self.showSnackView(message: "Lỗi timeout đường truyền.", titleButton: "THỬ LẠI", completion: {
-                        
                         self.getAllLoans()
-                        
                     })
                 }
-                
         }
     }
-    
     
     @IBAction func addNewLoan(_ sender: Any) {
         self.tabBarController?.selectedIndex = 0
@@ -259,11 +214,9 @@ extension ListLoanViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         guard listLoan.count > 0 else { return 1 }
         let sectionItem = listLoan[section] as! NSDictionary
         return (sectionItem["sub_array"] as! NSArray).count
-
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -286,8 +239,6 @@ extension ListLoanViewController: UITableViewDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
-        
-        
     }
     
 }
@@ -304,7 +255,6 @@ extension ListLoanViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         guard listLoan.count > 0 else { return nil }
         let sectionItem = listLoan[section] as! NSDictionary
         return NSLocalizedString((sectionItem["title"] as? String)!, comment: "")
@@ -314,27 +264,26 @@ extension ListLoanViewController: UITableViewDataSource {
         
         guard listLoan.count > 0 else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FetchingDataTableViewCell", for: indexPath) as! FetchingDataTableViewCell
-            
             return cell
         }
         
         let sectionItem = listLoan[indexPath.section] as! NSDictionary
         let item = (sectionItem["sub_array"] as! NSArray)[indexPath.row] as! BrowwerActiveLoan
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? LoanTableViewCell
-        if cell == nil {
-            tableView.register(UINib(nibName: "LoanTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-            cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? LoanTableViewCell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: LoanTableViewCell.className) as! LoanTableViewCell
+//        if cell == nil {
+//            tableView.register(UINib(nibName: "LoanTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+//            cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? LoanTableViewCell
+//        }
         
         let state = item.status ?? 0
         
-        cell?.dateLabel.text = Date.init(fromString: item.createdTime ?? "", format: DateFormat.custom(DATE_FORMATTER_FROM_SERVER)).toString(DateFormat.custom(kDisplayFormat))
-        cell?.statusLabel.text = NSLocalizedString("STATUS", comment: "") + ":"
-        cell?.statusValueLabel.text = getState(type: STATUS_LOAN(rawValue: state)!)
-        cell?.statusValueLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: state)!)
+        cell.dateLabel.text = Date.init(fromString: item.createdTime ?? "", format: DateFormat.custom(DATE_FORMATTER_FROM_SERVER)).toString(DateFormat.custom(kDisplayFormat))
+        cell.statusLabel.text = NSLocalizedString("STATUS", comment: "") + ":"
+        cell.statusValueLabel.text = getState(type: STATUS_LOAN(rawValue: state)!)
+        cell.statusValueLabel.textColor = getColorText(type: STATUS_LOAN(rawValue: state)!)
         let amount = FinPlusHelper.formatDisplayCurrency(Double(item.amount?.description ?? "") ?? 0) + " đ"
-        cell?.moneyLabel.text = amount
+        cell.moneyLabel.text = amount
         
         let termInt = item.term ?? 0
         var term = "\(termInt/30) tháng"
@@ -347,20 +296,18 @@ extension ListLoanViewController: UITableViewDataSource {
             titleCate = "Đang cập nhật"
         }
         
-        cell?.disLabel.text = "Thời hạn: \(term) - \(titleCate)"
+        cell.disLabel.text = "Thời hạn: \(term) - \(titleCate)"
         
-        return cell!
+        return cell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
         if self.listLoan.count > 0 && indexPath.section + 1 == self.listLoan.count {
             if let sectionItem = listLoan[indexPath.section] as? NSDictionary, let items = sectionItem["sub_array"] as? NSArray {
-
                 if self.totalCountItems > 2, self.totalCountItems % self.pageSize == 0, indexPath.row == items.count - 2 {
                     self.getAllLoans()
                 }
-
             }
         }
     }

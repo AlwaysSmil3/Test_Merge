@@ -88,27 +88,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         ]
     
     var data: NSArray!
-    
     var mode = false
     var isInvestor = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
         self.title = NSLocalizedString("BRIEF", comment: "")
-        
         self.data = self.isInvestor ? self.data_investor as NSArray : self.data_borrower as NSArray
-        
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.configTBView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.navigationController?.isNavigationBarHidden = true
-        
         self.mode = UserDefaults.standard.bool(forKey: APP_MODE)
         setupMode()
     }
@@ -118,21 +111,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
     func configTBView() {
         self.tableView.tableFooterView = UIView()
-        
         let cellNib = UINib(nibName: "ProfileTableViewCell", bundle: nil)
         self.tableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
-        
         self.tableView.estimatedRowHeight = 44
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        
         self.tableView.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
         self.view.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
         
@@ -145,32 +129,28 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func setupMode() {
         guard let bundleNib = Bundle.main.loadNibNamed("ProfileHeaderView", owner: nil, options: nil), bundleNib.count > 0, let header = bundleNib[0] as? ProfileHeaderView else { return }
         
-        if #available(iOS 10.0, *) {
-            
-        } else {
-//            let tempRect = header.frame
-//            header.frame = CGRect(x: tempRect.origin.x, y: tempRect.origin.y, width: BOUND_SCREEN.size.width, height: tempRect.size.height)
-//            header.layoutIfNeeded()
-        }
+//        if #available(iOS 10.0, *) {
+//
+//        } else {
+////            let tempRect = header.frame
+////            header.frame = CGRect(x: tempRect.origin.x, y: tempRect.origin.y, width: BOUND_SCREEN.size.width, height: tempRect.size.height)
+////            header.layoutIfNeeded()
+//        }
         
         if let info = DataManager.shared.browwerInfo {
             header.usernameLabel.text = info.fullName ?? info.displayName
             header.phoneLabel.text = info.phoneNumber ?? ""
-
             header.avatarBtn.sd_setImage(with: URL(string: info.avatar ?? ""), for: .normal, placeholderImage: UIImage(named: "user-default"), options: .fromCacheOnly, completed: nil)
         }
         
         //header.delegate = self
-        
         header.avatarBtn.tintColor = LIGHT_MODE_MAIN_TEXT_COLOR
         header.usernameLabel.textColor = LIGHT_MODE_MAIN_TEXT_COLOR
         header.phoneLabel.textColor = LIGHT_MODE_SUB_TEXT_COLOR
         
         self.tableView.tableHeaderView = header
-        
         self.tableView.reloadData()
     }
-    
     
     //tableView DataSource & Delegate
     
@@ -193,24 +173,19 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.nameLabel.text = NSLocalizedString((item["name"] as? String) ?? "", comment: "")
         cell.desLabel.text = ""
         
-        if (self.mode && self.isInvestor)
-        {
+        if self.mode && self.isInvestor {
             cell.nameLabel.textColor = DARK_MODE_MAIN_TEXT_COLOR
             cell.desLabel.textColor = DARK_MODE_SUB_TEXT_COLOR
-        }
-        else
-        {
+        } else {
             cell.nameLabel.textColor = LIGHT_MODE_MAIN_TEXT_COLOR
             cell.desLabel.textColor = LIGHT_MODE_SUB_TEXT_COLOR
         }
         
-        if (self.isInvestor && indexPath.row == 2)
-        {
+        if self.isInvestor && indexPath.row == 2 {
             cell.desLabel.text = self.mode ? NSLocalizedString("DARK_MODE", comment: "") : NSLocalizedString("LIGHT_MODE", comment: "")
         }
         
-        if (indexPath.row + 1 == self.data.count)
-        {
+        if indexPath.row + 1 == self.data.count {
             cell.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0)
         }
         
@@ -220,71 +195,57 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
-
-            switch indexPath.row {
-            case 0:
-                self.navigationController?.isNavigationBarHidden = false
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "CHANG_PASSWORD") as! ChangePWViewController
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
-            case 1:
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "CALCULATE_PAY") as! CalPayViewController
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
-            case 2:
-                // call to hotline
-                
-                FinPlusHelper.makeCall(forPhoneNumber: phoneNumberMony)
-            case 3:
-                sendEmail()
-            case 4:
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "FAQ") as! FAQViewController
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
-            case 5:
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "WEBVIEW") as! WebViewViewController
-                vc.webViewType = .termView
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
-            case 6:
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "WEBVIEW") as! WebViewViewController
-                vc.webViewType = .aboutView
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
-                
-            case 7:
-                //LogOut
-                self.showAlertView(title: "Đăng xuất", message: "Bạn có chắc chắn muốn đăng xuất tài khoản này?", okTitle: "Đồng ý", cancelTitle: "Huỷ") { (status) in
-                    
-                    if status {
-                        
-                        APIClient.shared.logOut()
-                            .done(on: DispatchQueue.main) { [weak self] model in
-                                
-                                guard let reponseCode = model.returnCode, reponseCode > 0 else {
-                                    self?.showToastWithMessage(message: model.returnMsg!)
-                                    return
-                                }
-                                
-                                self?.logoutAndSetRootVCIsEnterPhone()
-                                
-                        }
-                            .catch { error in}
-                        
-                    }
-                    
-                }
-                
-                
-                
-                break
-                
-            default: break
-                
-            }
         
+        switch indexPath.row {
+        case 0:
+            self.navigationController?.isNavigationBarHidden = false
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "CHANG_PASSWORD") as! ChangePWViewController
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "CALCULATE_PAY") as! CalPayViewController
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            // call to hotline
+            FinPlusHelper.makeCall(forPhoneNumber: phoneNumberMony)
+        case 3:
+            sendEmail()
+        case 4:
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "FAQ") as! FAQViewController
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 5:
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "WEBVIEW") as! WebViewViewController
+            vc.webViewType = .termView
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 6:
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "WEBVIEW") as! WebViewViewController
+            vc.webViewType = .aboutView
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 7:
+            //LogOut
+            self.showAlertView(title: "Đăng xuất", message: "Bạn có chắc chắn muốn đăng xuất tài khoản này?", okTitle: "Đồng ý", cancelTitle: "Huỷ") { (status) in
+                
+                if status {
+                    APIClient.shared.logOut()
+                        .done(on: DispatchQueue.main) { [weak self] model in
+                            guard let reponseCode = model.returnCode, reponseCode > 0 else {
+                                self?.showToastWithMessage(message: model.returnMsg!)
+                                return
+                            }
+                            self?.logoutAndSetRootVCIsEnterPhone()
+                        }
+                        .catch { error in }
+                }
+            }
+            
+        default:
+            break
+        }
     }
-    
     
     func sendEmail() {
         let mailComposeViewController = configuredMailComposeViewController()
@@ -298,11 +259,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
-        
         mailComposerVC.setToRecipients(["support@mony.vn"])
         mailComposerVC.setSubject("[Mony - Hỗ trợ \(DataManager.shared.currentAccount)]")
         mailComposerVC.setMessageBody("Hi Mony,\n", isHTML: false)
-        
         return mailComposerVC
     }
     
@@ -316,7 +275,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 //        self.present(alert, animated: true, completion: {
 //            print("completion block")
 //        })
-        
     }
     
     // MARK: MFMailComposeViewControllerDelegate Method

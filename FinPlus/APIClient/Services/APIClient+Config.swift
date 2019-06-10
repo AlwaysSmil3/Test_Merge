@@ -10,9 +10,7 @@ import Foundation
 
 extension APIClient {
     
-    /*
-     GET Lấy cấu hình hệ thống
-     */
+    //GET Lấy cấu hình hệ thống
     func getConfigs() -> Promise<Config> {
         return Promise<Config> { seal in
             getDataWithEndPoint(endPoint: EndPoint.Config.Configs, isShowLoadingView: false)
@@ -20,11 +18,7 @@ extension APIClient {
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
                         SVProgressHUD.dismiss()
                         let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
-                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil, completion: { (status) in
-                            if status {
-                                
-                            }
-                        })
+                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil)
                         return
                     }
                     
@@ -50,9 +44,7 @@ extension APIClient {
         }
     }
     
-    /*
-     GET Lấy danh sách các tỉnh thành phố
-     */
+    // GET Lấy danh sách các tỉnh thành phố
     func getCities() -> Promise<[Model1]> {
         return Promise<[Model1]> { seal in
             getDataWithEndPoint(endPoint: EndPoint.Config.Cities, isShowLoadingView: false)
@@ -72,12 +64,9 @@ extension APIClient {
         }
     }
     
-    /*
-     GET Lấy danh sách quận/huyện
-     */
+    // GET Lấy danh sách quận/huyện
     func getDistricts(cityID: Int16) -> Promise<[Model1]> {
         return Promise<[Model1]> { seal in
-            
             let endPoint = "\(APIService.LoanService)cities/\(cityID)/" + EndPoint.Config.Districts
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
@@ -97,12 +86,9 @@ extension APIClient {
         }
     }
     
-    /*
-     GET Lấy danh sách xã/phường
-     */
+    // GET Lấy danh sách xã/phường
     func getCommunes(districtID: Int16) -> Promise<[Model1]> {
         return Promise<[Model1]> { seal in
-            
             let endPoint = "\(APIService.LoanService)districts/\(districtID)/" + EndPoint.Config.Communes
             
             getDataWithEndPoint(endPoint: endPoint, isShowLoadingView: false)
@@ -122,9 +108,7 @@ extension APIClient {
         }
     }
     
-    /*
-     GET Lấy danh sách nghề nghiệp
-     */
+    // GET Lấy danh sách nghề nghiệp
     func getJobs() -> Promise<[Model1]> {
         return Promise<[Model1]> { seal in
             getDataWithEndPoint(endPoint: EndPoint.Config.Job, isShowLoadingView: false)
@@ -144,9 +128,7 @@ extension APIClient {
         }
     }
     
-    /*
-     GET Lấy danh sách vị trí làm việc
-     */
+    // GET Lấy danh sách vị trí làm việc
     func getPositions() -> Promise<[Model1]> {
         return Promise<[Model1]> { seal in
             getDataWithEndPoint(endPoint: EndPoint.Config.Position, isShowLoadingView: false)
@@ -166,20 +148,14 @@ extension APIClient {
         }
     }
     
-    /*
-     GET Lấy danh sách ngan hang
-     */
+    // GET Lấy danh sách ngan hang
     func getBanks() -> Promise<[Bank]> {
         return Promise<[Bank]> { seal in
             getDataWithEndPoint(endPoint: EndPoint.Config.Banks, isShowLoadingView: false)
                 .done { json in
 //                    guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
 //                        let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
-//                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil, completion: { (status) in
-//                            if status {
-//
-//                            }
-//                        })
+//                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil)
 //                        return
 //                    }
                     var array: [Bank] = []

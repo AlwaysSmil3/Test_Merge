@@ -33,7 +33,6 @@ enum EndPoint {
         static let verifyOTP = "\(APIService.AccountService)auth/otp"
         static let Logout = "\(APIService.AccountService)logout"
         static let resendOTPAuthen = "\(APIService.AccountService)auth/otp?phoneNumber="
-        
     }
     
     enum User {
@@ -83,7 +82,5 @@ enum EndPoint {
         static let GetList = "\(APIService.AccountService)/users/(uID)/notification?page=(pageIndex)&limit=(20)"
         static let UpdateNoti = "\(APIService.AccountService)/users/{uid}/notification"
     }
-    
-    
     
 }

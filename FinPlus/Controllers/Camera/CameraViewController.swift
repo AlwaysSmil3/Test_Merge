@@ -25,13 +25,10 @@ class CameraViewController: BaseViewController {
     @IBOutlet var btnUsePhoto: UIButton!
     @IBOutlet var btnExitsRight: UIButton!
     @IBOutlet var btnSwitchCamera: UIButton!
-    
     @IBOutlet var contentCurrentImageAll: UIView!
     @IBOutlet var imgCurrentCaptureAll: UIImageView!
-    
     @IBOutlet var contentCurrentImageOther: UIView!
     @IBOutlet var imgCurrentCaptureOther: UIImageView!
-    
     @IBOutlet var btnRetakeOhter: UIButton!
     @IBOutlet var btnCaptureOhter: UIButton!
     @IBOutlet var lblDescriptionOther: UILabel!
@@ -40,10 +37,8 @@ class CameraViewController: BaseViewController {
     var typeImgFile: FILE_TYPE_IMG?
     var currentPhoto: UIImage?
     var descriptionText: String?
-    
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-    
     var capturePhotoOutput: AVCapturePhotoOutput?
     var currentDevice: AVCaptureDevice?
     
@@ -52,9 +47,7 @@ class CameraViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.contentCurrentImageAll.isHidden = true
-        
         self.initCamera()
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -66,9 +59,7 @@ class CameraViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
-    
     
     //MARK: Camera
     private func initCamera() {
@@ -100,17 +91,13 @@ class CameraViewController: BaseViewController {
                                 } else {
                                     UIApplication.shared.openURL(settingsUrl)
                                 }
-                                
                             }
                         }
-                        
                     })
                 }
             })
-            
             return
         }
-        
         
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video as the media type parameter
         guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
@@ -119,10 +106,8 @@ class CameraViewController: BaseViewController {
         }
         
         do {
-            
             // Get an instance of the AVCaptureDeviceInput class using the previous deivce object
             let input = try AVCaptureDeviceInput(device: captureDevice)
-            
             
             // Initialize the captureSession object
             captureSession = AVCaptureSession()
@@ -193,15 +178,12 @@ class CameraViewController: BaseViewController {
                 self.lblDescriptionOther.text = self.descriptionText
                 self.btnSwitchCamera.transform = CGAffineTransform(rotationAngle: .pi/2)
             } else {
-                
                 self.setTypeCamera(position: .back)
                 self.lblDescription.isHidden = false
                 self.lblDescription.text = self.descriptionText
                 self.imgBackgound.isHidden = true
             }
         }
-        
-        
     }
     
     // Find a camera with the specified AVCaptureDevicePosition, returning nil if one is not found
@@ -212,7 +194,6 @@ class CameraViewController: BaseViewController {
                 return device
             }
         }
-        
         return nil
     }
     
@@ -224,7 +205,7 @@ class CameraViewController: BaseViewController {
         }
         
         if let input = currentCameraInput as? AVCaptureDeviceInput {
-            if (input.device.position == .back) {
+            if input.device.position == .back {
                 //self.currentDevice = cameraWithPosition(position: .front)
                 self.setTypeCamera(position: .front)
             } else {
@@ -255,13 +236,11 @@ class CameraViewController: BaseViewController {
         do {
             try camera.lockForConfiguration()
             if camera.isFocusModeSupported(.continuousAutoFocus) {
-                
                 camera.focusMode = .continuousAutoFocus
                 if camera.isSmoothAutoFocusSupported {
                     camera.isSmoothAutoFocusEnabled = true
                 }
             }
-            
             
             if camera.isExposureModeSupported(.continuousAutoExposure) {
                 camera.exposureMode = .continuousAutoExposure
@@ -274,7 +253,6 @@ class CameraViewController: BaseViewController {
             if camera.isLowLightBoostSupported {
                 camera.automaticallyEnablesLowLightBoostWhenAvailable = true
             }
-            
             
             camera.unlockForConfiguration()
         } catch let error as NSError {
@@ -303,7 +281,6 @@ class CameraViewController: BaseViewController {
     
     @IBAction func btnSwitchCameraTapped(_ sender: Any) {
         self.changeCamera()
-        
     }
     
     @IBAction func btnCaptureTapped(_ sender: Any) {
@@ -318,19 +295,15 @@ class CameraViewController: BaseViewController {
         
         if let device = self.currentDevice, device.hasFlash {
             let position = device.position
-            
             photoSettings.flashMode = position == .front || position == .unspecified ? .off : .auto
         }
-        
         
         // Call capturePhoto method by passing our photo settings and a delegate implementing AVCapturePhotoCaptureDelegate
         capturePhotoOutput.capturePhoto(with: photoSettings, delegate: self)
     }
     
     @IBAction func btnExitsTapped(_ sender: Any) {
-        self.dismiss(animated: true) {
-            
-        }
+        self.dismiss(animated: true)
     }
     
     @IBAction func btnUsePhotoTapped(_ sender: Any) {
@@ -350,18 +323,13 @@ class CameraViewController: BaseViewController {
     @IBAction func btnRetakeTapped(_ sender: Any) {
         if !self.contentCurrentImageAll.isHidden {
             //self.contentCurrentImageAll.isHidden = true
-            self.animationShowHideView(isHidden: true, currentView: self.contentCurrentImageAll) {
-                
-            }
+            self.animationShowHideView(isHidden: true, currentView: self.contentCurrentImageAll) { }
         }
         
         if !self.contentCurrentImageOther.isHidden {
             //self.contentCurrentImageOther.isHidden = true
-            self.animationShowHideView(isHidden: true, currentView: self.contentCurrentImageOther) {
-                
-            }
+            self.animationShowHideView(isHidden: true, currentView: self.contentCurrentImageOther) { }
         }
-        
     }
     
     private func animationShowHideView(isHidden: Bool, currentView: UIView, completion: @escaping() -> Void) {
@@ -372,8 +340,6 @@ class CameraViewController: BaseViewController {
             completion()
         }
     }
-    
-    
     
 }
 
@@ -401,36 +367,24 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         // Initialise an UIImage with our image data
         let capturedImage = UIImage.init(data: imageData , scale: 1.0)
         
-        
         if let image = capturedImage {
             // Save our captured image to photos album
             print("image capture succeess")
-            
             if let type = self.typeImgFile, type == .FRONT || type == .BACK {
                 self.currentPhoto = image.rotate(radians: .pi * 3/2)
-                
                 if self.contentCurrentImageOther.isHidden {
                     //self.contentCurrentImageOther.isHidden = false
                     self.imgCurrentCaptureOther.image = image.rotate(radians: .pi * 2)
-                    self.animationShowHideView(isHidden: false, currentView: self.contentCurrentImageOther) {
-                    }
-                    
+                    self.animationShowHideView(isHidden: false, currentView: self.contentCurrentImageOther) { }
                 }
-            
             } else {
                 self.currentPhoto = image
-                
                 if self.contentCurrentImageAll.isHidden {
                     //self.contentCurrentImageAll.isHidden = false
                     self.imgCurrentCaptureAll.image = image
-                    self.animationShowHideView(isHidden: false, currentView: self.contentCurrentImageAll) {
-                        
-                    }
-                    
+                    self.animationShowHideView(isHidden: false, currentView: self.contentCurrentImageAll) { }
                 }
-                
             }
-            
             //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         }
     }
@@ -440,13 +394,19 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
 extension UIInterfaceOrientation {
     var videoOrientation: AVCaptureVideoOrientation? {
         switch self {
-        case .portraitUpsideDown: return .portraitUpsideDown
-        case .landscapeRight: return .landscapeRight
-        case .landscapeLeft: return .landscapeLeft
-        case .portrait: return .portrait
-        default: return nil
+            case .portraitUpsideDown:
+                return .portraitUpsideDown
+            case .landscapeRight:
+                return .landscapeRight
+            case .landscapeLeft:
+                return .landscapeLeft
+            case .portrait:
+                return .portrait
+            default:
+                return nil
         }
     }
+    
 }
 
 
