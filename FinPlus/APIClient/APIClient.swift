@@ -116,10 +116,7 @@ class APIClient {
         }
     }
     
-    
     /// Show alert Messeage
-    ///
-    /// - Parameter json: <#json description#>
     func showErrorMessage(json: JSONDictionary) {
         if let returnMess = json[API_RESPONSE_RETURN_MESSAGE] as? String {
             UIApplication.shared.topViewController()?.showAlertView(title: MS_TITLE_ALERT, message: returnMess, okTitle: "OK", cancelTitle: nil)
@@ -328,7 +325,6 @@ class APIClient {
                     case .failure(let error):
                         onError?(error)
                     }
-                    
                 }
             case .failure(let error):
                 print("Error in upload: \(error.localizedDescription)")
@@ -369,7 +365,6 @@ class APIClient {
     public func getDisplayMessage(error: Error) -> String {
         
         var errMessage = ""
-        
         let err = error as NSError
         
         if  err.code == NSURLErrorNotConnectedToInternet {
@@ -395,9 +390,7 @@ class APIClient {
                        userInfo: [NSLocalizedDescriptionKey: message])
     }
     
-    /**
-     By pass SSL Certificate
-     */
+    // By pass SSL Certificate
     private func bypassURLAuthentication() {
         let manager = Alamofire.SessionManager.default
         manager.delegate.sessionDidReceiveChallenge = { session, challenge in

@@ -21,6 +21,7 @@ extension UINib {
     }
 
 }
+
 extension UITableView {
 
     func registerNibCell<T: UITableViewCell>(type: T.Type) {
@@ -39,4 +40,8 @@ extension UITableView {
         return dequeueReusableHeaderFooterView(withIdentifier: String(describing: type)) as? T
     }
 
+    func registerCell(_ cellID : String) {
+        self.register(UINib(nibName: cellID, bundle: nil), forCellReuseIdentifier: cellID)
+    }
+    
 }

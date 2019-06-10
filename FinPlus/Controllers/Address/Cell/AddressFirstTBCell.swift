@@ -10,7 +10,6 @@ import Foundation
 
 class AddressFirstTBCell: UITableViewCell {
     
-    
     @IBOutlet weak var lblTitleCell: UILabel!
     
 }

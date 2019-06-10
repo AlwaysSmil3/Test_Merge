@@ -14,6 +14,7 @@ class NotificationTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLb: UILabel!
     @IBOutlet weak var contentLb: UILabel!
     @IBOutlet weak var titleLb: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,7 +22,6 @@ class NotificationTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     

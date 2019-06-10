@@ -23,7 +23,6 @@ class BaseViewController: UIViewController {
     func setupTitleView(title: String, subTitle: String? = nil) {
         let topText = NSLocalizedString(title, comment: "")
         
-        
         let titleParameters = [NSAttributedStringKey.foregroundColor: UIColor(hexString: "#08121E"),
                                NSAttributedStringKey.font : UIFont(name: FONT_FAMILY_BOLD, size: 17)]
         let subtitleParameters = [NSAttributedStringKey.foregroundColor : UIColor(hexString: "#4D6678"),

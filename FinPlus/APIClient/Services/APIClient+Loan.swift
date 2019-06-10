@@ -15,11 +15,8 @@ import Foundation
 
 extension APIClient {
     
-    /*
-     GET Lấy danh sách các phí vay _ QUANNM
-     */
+    // GET Lấy danh sách các phí vay _ QUANNM
     func getLoanBorrowerFee() -> Promise<[LoanBorrowerFee]> {
-        
         return Promise<[LoanBorrowerFee]> { seal in
             getDataWithEndPoint(endPoint: EndPoint.Loan.LoanBorrowerFee, isShowLoadingView: false)
                 .done { json in
@@ -28,6 +25,12 @@ extension APIClient {
                     if let data = json["data"] as? JSONDictionary, let values = ListLoanBorrowerFee(JSON: data) {
                         array = values.list
                     }
+                    
+//                    var haha: [LoanBorrowerFee] = []
+//                    if let data = json["data"] as? JSONDictionary, let value = data["values"] as? [JSONDictionary] {
+//                        haha = value.compactMap { LoanBorrowerFee(JSON: $0) }
+//                    }
+                    
                     seal.fulfill(array)
                 }
                 .catch { error in
@@ -36,18 +39,15 @@ extension APIClient {
         }
     }
     
-    /*
-     GET Lấy danh sách các loại khoản vay
-     */
+    // GET Lấy danh sách các loại khoản vay
     func getLoanCategories() -> Promise<[LoanCategories]> {
-        
         return Promise<[LoanCategories]> { seal in
             getDataWithEndPoint(endPoint: EndPoint.Loan.LoanCategories, isShowLoadingView: false)
                 .done { json in
                     var array: [LoanCategories] = []
                     
                     if let data = json[API_RESPONSE_RETURN_DATA] as? [JSONDictionary] {
-                        array = data.compactMap {LoanCategories(object: $0)}
+                        array = data.compactMap { LoanCategories(object: $0) }
                     }
                     seal.fulfill(array)
                 }
@@ -57,9 +57,7 @@ extension APIClient {
         }
     }
     
-    /*
-     GET Lấy danh sách tất cả các khoản vay
-     */
+    // GET Lấy danh sách tất cả các khoản vay
     func getAllLoans() -> Promise<[BrowwerActiveLoan]> {
         return Promise<[BrowwerActiveLoan]> { seal in
             let endPoint = EndPoint.Loan.Loans
@@ -78,9 +76,7 @@ extension APIClient {
         }
     }
     
-    /*
-     GET Lấy danh sách các khoản vay có thể đầu tư
-     */
+    // GET Lấy danh sách các khoản vay có thể đầu tư
     func getInvesableLoans() -> Promise<[BrowwerActiveLoan]> {
         return Promise<[BrowwerActiveLoan]> { seal in
             let endPoint = EndPoint.Loan.InvesableLoans
@@ -99,9 +95,7 @@ extension APIClient {
         }
     }
     
-    /*
-     GET Lấy danh sách khoản vay của người dùng
-     */
+    // GET Lấy danh sách khoản vay của người dùng
     func getUserLoans(currentPage: Int, pageSize: Int = 30) -> Promise<JSONDictionary> {
         return Promise<JSONDictionary> { seal in
             
@@ -174,9 +168,7 @@ extension APIClient {
         }
     }
     
-    /*
-     POST Xác thực khoản vay qua OTP
-     */
+    // POST Xác thực khoản vay qua OTP
     func loanVerify(otp: String, loanID: Int32) -> Promise<APIResponseGeneral> {
         let endPoint = "loans/" + "\(loanID)/" + "otp"
         let params = ["otp": otp]
@@ -186,11 +178,7 @@ extension APIClient {
                 .done { json in
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
                         let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
-                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil, completion: { (status) in
-                            if status {
-                                
-                            }
-                        })
+                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil)
                         return
                     }
                     let model = APIResponseGeneral(object: json)
@@ -203,12 +191,9 @@ extension APIClient {
     }
     
     /// Upload contact
-    ///
-    /// - Parameter list: <#list description#>
-    /// - Returns: <#return value description#>
     func uploadContacts(list: ContactParamsList) -> Promise<APIResponseGeneral> {
         let endPoint = "\(APIService.LoanService)loans/contacts/" + "\(DataManager.shared.userID)"
-        let params = ["": ""]
+        let params = ["" : ""]
         let contactData = try? JSONEncoder().encode(list)
         var dataAPI = Data()
         
@@ -221,11 +206,7 @@ extension APIClient {
                 .done { json in
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
                         let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
-                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil, completion: { (status) in
-                            if status {
-                                
-                            }
-                        })
+                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil)
                         return
                     }
                     let model = APIResponseGeneral(object: json)
@@ -237,12 +218,8 @@ extension APIClient {
         }
     }
     
-    /*
-     GET [Done]Y/c gửi lại OTP xác thực khoản vay
-     */
-    
+    // GET [Done]Y/c gửi lại OTP xác thực khoản vay
     func getLoanOTP(loanID: Int32) -> Promise<APIResponseGeneral> {
-        
         let endPoint = "\(APIService.LoanService)loans/" + "\(loanID)/" + "otp"
         
         return Promise<APIResponseGeneral> { seal in
@@ -250,11 +227,7 @@ extension APIClient {
                 .done { json in
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
                         let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
-                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil, completion: { (status) in
-                            if status {
-                                
-                            }
-                        })
+                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil)
                         return
                     }
                     let model = APIResponseGeneral(object: json)
@@ -267,7 +240,6 @@ extension APIClient {
     }
     
     func delLoan(loanID: Int32) -> Promise<APIResponseGeneral> {
-        
         let endPoint = "\(APIService.LoanService)loans/" + "\(loanID)"
         
         return Promise<APIResponseGeneral> { seal in
@@ -282,15 +254,11 @@ extension APIClient {
         }
     }
     
-    /*
-     API Invest A Loan
-     */
+    // API Invest A Loan
     func investLoan(loanId: Int32, investorId: Int32, notes: Int32) -> Promise<InvestLoanBaseClass> {
-        
         let endPoint = "\(APIService.LoanService)loans/" + "\(loanId)/" + "notes"
-        // fix wallet
         let walletId : Int32 = 1
-        let params = [ "investorId" : investorId, "notes" : notes, "bankId" : walletId]
+        let params = ["investorId" : investorId, "notes" : notes, "bankId" : walletId]
         
         return Promise<InvestLoanBaseClass> { seal in
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
@@ -304,10 +272,7 @@ extension APIClient {
         }
     }
     
-    /*
-     API request OTP to Invest A Loan
-     */
-    
+    // API request OTP to Invest A Loan
     func investLoanOTP(loanId: Int32, noteId: Int) -> Promise<APIResponseGeneral> {
         return Promise<APIResponseGeneral> { seal in
             let endPoint = "\(APIService.LoanService)loans/" + "\(loanId)/" + "notes/" + "\(noteId)/" + "otp"
@@ -323,7 +288,6 @@ extension APIClient {
     }
     
     func getOTPContract(loanID: Int32) -> Promise<APIResponseGeneral> {
-        
         let endPoint = "\(APIService.LoanService)loans/" + "\(loanID)/contract"
         
         return Promise<APIResponseGeneral> { seal in
@@ -331,11 +295,7 @@ extension APIClient {
                 .done { json in
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
                         let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
-                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil, completion: { (status) in
-                            if status {
-                                
-                            }
-                        })
+                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil)
                         return
                     }
                     let model = APIResponseGeneral(object: json)
@@ -347,14 +307,11 @@ extension APIClient {
         }
     }
     
-    /*
-     API confirm OTP to Invest A Loan
-     */
-    
+    // API confirm OTP to Invest A Loan
     func confirmOTPInvestLoan(loanId: Int32, noteId: Int32, OTP: String) -> Promise<APIResponseGeneral> {
-        //        /loans/604/notes/3/otp
         let endPoint = "\(APIService.LoanService)loans/" + "\(loanId)/" + "notes/" + "\(noteId)/" + "otp"
         let params = ["otp" : OTP]
+        
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
                 .done { json in
@@ -368,23 +325,19 @@ extension APIClient {
     }
     
     func signContract(otp: String, loanID: Int32) -> Promise<APIResponseGeneral> {
-        
         let endPoint = "\(APIService.LoanService)loans/" + "\(loanID)/contract/otp"
         let params: JSONDictionary = [
             "otp": otp,
             "longitude": DataManager.shared.currentLocation?.longitude ?? 0,
             "latitude": DataManager.shared.currentLocation?.latitude ?? 0
         ]
+        
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: true, httpType: .POST)
                 .done { json in
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
                         let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
-                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil, completion: { (status) in
-                            if status {
-                                
-                            }
-                        })
+                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil)
                         return
                     }
                     let model = APIResponseGeneral(object: json)
@@ -397,23 +350,16 @@ extension APIClient {
     }
     
     /// lấy hợp đồng
-    ///
-    /// - Parameter loanID: <#loanID description#>
-    /// - Returns: <#return value description#>
     func getContractWhenSign() -> Promise<APIResponseGeneral> {
-        
         let endPoint = "\(APIService.LoanService)loans/" + "\(DataManager.shared.loanID ?? 0)/contract/sign"
         let params: JSONDictionary = [:]
+        
         return Promise<APIResponseGeneral> { seal in
             requestWithEndPoint(endPoint: endPoint, params: params, isShowLoadingView: false, httpType: .POST)
                 .done { json in
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
                         let message = json[API_RESPONSE_RETURN_MESSAGE] as? String ?? API_MESSAGE.OTHER_ERROR
-                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil, completion: { (status) in
-                            if status {
-                                
-                            }
-                        })
+                        UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "Đóng", cancelTitle: nil)
                         return
                     }
                     let model = APIResponseGeneral(object: json)

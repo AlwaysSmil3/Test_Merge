@@ -11,34 +11,26 @@ import DateToolsSwift
 
 class NotificationListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var currentAfter: Int = 0
-    
-    var notificationList: [NotificationModel] = []
-    
-    let countItemsOnAPage = 20
-    
-    var refresher: UIRefreshControl!
-    
     @IBOutlet weak var noNotificationView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    
+    var currentAfter = 0
+    var notificationList: [NotificationModel] = []
+    let countItemsOnAPage = 20
+    var refresher: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Thông báo"
         configTableView()
         updateData()
-        
         self.initRefresher()
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        // Do any additional setup after loading the view.
-        
         self.getListNotification()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: HiddenNotificationIdentifier), object: nil)
         userDefault.set(false, forKey: Notification_Have_New)
     }
@@ -74,10 +66,10 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
     
     private func getListNotification() {
         APIClient.shared.getListNotifications(after: self.currentAfter, limit: self.countItemsOnAPage)
-            .done(on: DispatchQueue.main) { [weak self]model in
+            .done(on: DispatchQueue.main) { [weak self] model in
                 self?.refresher.endRefreshing()
                 
-                if model.count > 0{
+                if model.count > 0 {
                     if self?.currentAfter == 0 && (self?.notificationList.count ?? 0) > 0 {
                         self?.notificationList.removeAll()
                     }
@@ -89,18 +81,14 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
                 } else {
                     self?.noNotificationView.isHidden = false
                 }
-                
             }
             .catch { error in
                 self.refresher.endRefreshing()
                 self.noNotificationView.isHidden = false
         }
-        
-        
     }
     
     private func updateNoti(index: IndexPath) {
-        
         var data = self.notificationList[index.row]
         
         APIClient.shared.updateNotification(notiID: data.id!)
@@ -108,38 +96,32 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
                 data.status = false
                 self?.notificationList[index.row] = data
             }
-            .catch { error in}
+            .catch { error in
+                print("error API updateNotification")
+        }
     }
     
-    
     /// Format Date
-    ///
-    /// - Parameter date: <#date description#>
-    /// - Returns: <#return value description#>
     private func formatDateDisplay(date: Date) -> String {
         let currentDate = Date()
         
         if currentDate.hours(from: date) < 24 {
             let hours = currentDate.hours(from: date)
-            
             if hours == 0 {
                 let minute = currentDate.minutes(from: date)
                 return "\(minute) phút trước"
             }
-            
             return "\(hours) giờ trước"
         }
-        
         
         if currentDate.days(from: date) < 7 {
             return "\(currentDate.days(from: date)) ngày trước"
         }
         
-        
         return date.toString(.custom("HH:mm dd/MM/yyyy"))
     }
     
-    //MARK:
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -153,15 +135,12 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         if let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationCell") as? NotificationTableViewCell {
             cell.containView.layer.cornerRadius = 8
             
-            if (cellData.status)!
-            {
+            if cellData.status ?? false {
                 cell.timeLb.textColor = MAIN_COLOR
                 cell.containView.layer.borderColor = MAIN_COLOR.cgColor
                 cell.titleLb.textColor = UIColor(hexString: "#08121E")
                 cell.contentLb.textColor = UIColor(hexString: "#08121E")
-            }
-            else
-            {
+            } else {
                 cell.containView.layer.borderColor = UIColor.lightGray.cgColor
                 cell.titleLb.textColor = UIColor(hexString: "#4D6678")
                 cell.contentLb.textColor = UIColor(hexString: "#4D6678")
@@ -187,7 +166,6 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         tableView.deselectRow(at: indexPath, animated: true)
         
         if let cell = tableView.cellForRow(at: indexPath) as? NotificationTableViewCell {
-            
             cell.containView.layer.borderColor = UIColor.lightGray.cgColor
             cell.titleLb.textColor = UIColor(hexString: "#4D6678")
             cell.contentLb.textColor = UIColor(hexString: "#4D6678")
@@ -195,10 +173,9 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
         }
         
         let data = self.notificationList[indexPath.row]
-        if let status = data.status, status == true {
+        if let status = data.status, status {
             self.updateNoti(index: indexPath)
         }
-        
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -211,31 +188,11 @@ class NotificationListViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
         if indexPath.row == self.notificationList.count - 1 {
-            
             if self.notificationList.count % countItemsOnAPage == 0 {
                 self.getListNotification()
             }
         }
     }
-    
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

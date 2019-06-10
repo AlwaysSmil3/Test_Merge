@@ -11,17 +11,6 @@ import Foundation
 extension APIClient {
     
     /// Create a transaction
-    ///
-    /// - Parameters:
-    ///   - loanID: <#loanID description#>
-    ///   - from: <#from description#>
-    ///   - to: <#to description#>
-    ///   - paymentType: <#paymentType description#>
-    ///   - note: <#note description#>
-    ///   - amount: <#amount description#>
-    ///   - type: <#type description#>
-    ///   - recept: <#recept description#>
-    /// - Returns: <#return value description#>
     func createTransaction(from: Int, to: Int, paymentType: Int, note: String = "", amount: Double, type: Int, recept: String = "") -> Promise<APIResponseGeneral> {
         
         let params: JSONDictionary = [
@@ -54,8 +43,6 @@ extension APIClient {
     }
     
     /// Get List Transaction
-    ///
-    /// - Returns: <#return value description#>
     func getTransactions() -> Promise<[Transaction]> {
         return Promise<[Transaction]> { seal in
             let uid = DataManager.shared.userID
@@ -83,8 +70,6 @@ extension APIClient {
     }
     
     /// Get Collections - Các kỳ thu hồi nợ
-    ///
-    /// - Returns: <#return value description#>
     func getCollections() -> Promise<[CollectionPay]> {
         return Promise<[CollectionPay]> { seal in
             let loanId = DataManager.shared.loanID ?? 0
@@ -112,8 +97,6 @@ extension APIClient {
     }
     
     /// Get Money Info
-    ///
-    /// - Returns: <#return value description#>
     func getPaymentMoneyInfo() -> Promise<PaymentInfoMoney> {
         let dateString = Date().toString(.custom(DATE_FORMATTER_WITH_SERVER), timeZone: .utc)
         let endPoint = "\(APIService.LoanService)loans/" + "\(DataManager.shared.loanID ?? 0)/" + "transactions/payment-info?paymentDate=" + dateString
@@ -123,11 +106,7 @@ extension APIClient {
                 .done { json in
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
                         if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
-                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
-                                if status {
-                                    
-                                }
-                            })
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil)
                         }
                         return
                     }

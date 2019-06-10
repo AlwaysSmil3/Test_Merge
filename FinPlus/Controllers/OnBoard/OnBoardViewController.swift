@@ -19,14 +19,12 @@ class OnBoardViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
 
     @IBAction func skipBtnAction(_ sender: Any) {
         guard let _ = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String else {
             // chưa có account Login
             let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
-
             self.present(enterPhoneVC, animated: true, completion: nil)
             return
         }
@@ -34,11 +32,9 @@ class OnBoardViewController: UIViewController, UIScrollViewDelegate {
         self.present(loginVC, animated: true, completion: nil)
     }
     
-    
-
     @IBAction func nextBtnAction(_ sender: Any) {
         let currentIndex = getCurrentScrollViewIndex()
-        if (currentIndex + 1 < totalPage) {
+        if currentIndex + 1 < totalPage {
             let nextIndex = currentIndex + 1
             scrollView.scrollRectToVisible(CGRect(x: CGFloat(nextIndex) * scrollView.frame.width, y: scrollView.frame.origin.y, width: scrollView.frame.width, height: scrollView.frame.height), animated: true)
         } else {
@@ -49,7 +45,6 @@ class OnBoardViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
-        
         pageControl.scp_style = .SCNormal
         pageControl.set_view(totalPage, current: 0, tint_color: MAIN_COLOR, invisible_color: UIColor(hexString: "#B8C9D3"))
     }

@@ -33,20 +33,16 @@ extension UIViewController {
     
     
     /// Set animation fro setRootViewController
-    ///
-    /// - Parameter rootVC: <#rootView description#>
     func addAnimationForSetRootView(rootVC: UIViewController) {
         guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {
             return
         }
         UIView.transition(with: window, duration: 0.3, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
-            
             window.rootViewController = rootVC
         }, completion: { (status) in
             
         })
     }
-    
     
     /// Log out and set rootVC with animation
     func logoutAndSetRootVCIsEnterPhone() {
@@ -59,15 +55,12 @@ extension UIViewController {
             let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
             
             UIView.transition(with: window, duration: 0.3, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
-                
                 window.rootViewController = enterPhoneVC
             }, completion: { (status) in
                 
             })
-            
         }
     }
-    
     
     func reLoadStatusLoanVC() {
         //Lay thong tin nguoi dung
@@ -80,18 +73,15 @@ extension UIViewController {
                 if let window = UIApplication.shared.delegate?.window, let win = window {
                     win.rootViewController = tabbarVC
                 }
-                
             }
             .catch { error in
-                
+                print("error API getUserInfo")
         }
     }
-    
     
     /// update Loan status Invalid data khi user thay doi het thong tin sai
     func updateLoanStatusInvalidData() {
         DataManager.shared.loanInfo.status = DataManager.shared.loanInfo.status - 1
-        
         clearValueInValidUserDefaultData()
         
         APIClient.shared.loan(isShowLoandingView: true, httpType: .PUT)
@@ -105,7 +95,7 @@ extension UIViewController {
                         
                         self.showGreenBtnMessage(title: MS_TITLE_ALERT, message: "Bạn đã cập nhật thông tin xong!", okTitle: "Về trang chủ", cancelTitle: nil) { (status) in
                             if status {
-                                if let info = DataManager.shared.browwerInfo?.activeLoan,  let loanId = info.loanId, loanId > 0 {
+                                if let info = DataManager.shared.browwerInfo?.activeLoan, let loanId = info.loanId, loanId > 0 {
                                     let tabbarVC = BorrowerTabBarController(nibName: nil, bundle: nil)
                                     if let window = UIApplication.shared.delegate?.window, let win = window {
                                         win.rootViewController = tabbarVC
@@ -115,16 +105,14 @@ extension UIViewController {
                                 }
                             }
                         }
-                        
                     }
                     .catch { error in
                         self.navigationController?.popToRootViewController(animated: true)
                 }
-                
             }
-            .catch { error in }
-        
-        
+            .catch { error in
+                print("error API getUserInfo")
+        }
     }
     
     //MARK:----------------- Show Alert View----------------------
@@ -132,7 +120,7 @@ extension UIViewController {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        if (cancelTitle != nil) {
+        if cancelTitle != nil {
             let cancelAction = UIAlertAction(title: cancelTitle, style: .default, handler: { (result: UIAlertAction) in
                 print("Cancel")
                 completion?(false)
@@ -140,7 +128,7 @@ extension UIViewController {
             cancelAction.setValue(MAIN_COLOR, forKey: "titleTextColor")
             alert.addAction(cancelAction)
         }
-        if (okTitle != nil) {
+        if okTitle != nil {
             let okAction = UIAlertAction(title: okTitle, style: .destructive, handler: { (result: UIAlertAction) in
                 print("OK")
                 completion?(true)
@@ -149,14 +137,13 @@ extension UIViewController {
             alert.addAction(okAction)
         }
         
-        
         self.present(alert, animated: true, completion: nil)
     }
 
     func showGreenBtnMessage(title: String, message: String, okTitle: String?, cancelTitle: String?, completion:((_ isPressedOK: Bool) -> Swift.Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
 
-        if (cancelTitle != nil) {
+        if cancelTitle != nil {
             let cancelAction = UIAlertAction(title: cancelTitle, style: .default, handler: { (result: UIAlertAction) in
                 print("Cancel")
                 completion?(false)
@@ -165,13 +152,12 @@ extension UIViewController {
             alert.addAction(cancelAction)
         }
         
-        if (okTitle != nil) {
+        if okTitle != nil {
             let okAction = UIAlertAction(title: okTitle, style: .destructive, handler: { (result: UIAlertAction) in
                 print("OK")
                 completion?(true)
             })
             okAction.setValue(MAIN_COLOR, forKey: "titleTextColor")
-            
             alert.addAction(okAction)
         }
         
@@ -183,7 +169,7 @@ extension UIViewController {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        if (cancelTitle != nil) {
+        if cancelTitle != nil {
             let cancelAction = UIAlertAction(title: cancelTitle, style: .default, handler: { (result: UIAlertAction) in
                 print("Cancel")
                 completion?(false)
@@ -191,7 +177,7 @@ extension UIViewController {
             cancelAction.setValue(MAIN_COLOR, forKey: "titleTextColor")
             alert.addAction(cancelAction)
         }
-        if (okTitle != nil) {
+        if okTitle != nil {
             let okAction = UIAlertAction(title: okTitle, style: .destructive, handler: { (result: UIAlertAction) in
                 print("OK")
                 completion?(true)
@@ -199,7 +185,6 @@ extension UIViewController {
             okAction.setValue(MAIN_COLOR, forKey: "titleTextColor")
             alert.addAction(okAction)
         }
-        
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.left
@@ -214,8 +199,6 @@ extension UIViewController {
         )
         
         alert.setValue(messageText, forKey: "attributedMessage")
-        
-        
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -230,7 +213,6 @@ extension UIViewController {
     // Show loading view
     private func showLoadingView() {
         SVProgressHUD.show(withStatus: "Mony...")
-        
     }
     
     // Hide
@@ -239,4 +221,3 @@ extension UIViewController {
     }
     
 }
-

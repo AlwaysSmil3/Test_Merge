@@ -10,11 +10,8 @@ import Foundation
 
 extension APIClient {
     
-    /*
-     GET Lấy danh sách ví theo tài khoản người dùng
-     */
+    //GET Lấy danh sách ví theo tài khoản người dùng
     func getWallets() -> Promise<[AccountBank]> {
-        
         return Promise<[AccountBank]> { seal in
             let uID = DataManager.shared.userID
             let endPoint = "\(APIService.AccountService)users/" + "\(uID)/" + "wallets"
@@ -27,17 +24,14 @@ extension APIClient {
                     }
                     seal.fulfill(array)
                 }
-                .catch{ error in
+                .catch { error in
                     seal.reject(error)
             }
         }
     }
     
-    /*
-     POST Thêm ví vào tài khoản người dùng
-     */
+    //POST Thêm ví vào tài khoản người dùng
     func addWallet(walletNumber: String, type: Int, bankNo: String, accType: Int = 0) -> Promise<[AccountBank]> {
-        
         return Promise<[AccountBank]> { seal in
             let uID = DataManager.shared.userID
             let endPoint = "\(APIService.AccountService)users/" + "\(uID)/" + "wallets"
@@ -63,9 +57,6 @@ extension APIClient {
     }
     
     /// xoá Tài khoản bank
-    ///
-    /// - Parameter bankAccountID: <#bankAccountID description#>
-    /// - Returns: <#return value description#>
     func deleteBankAccount(bankAccountID: Int32) -> Promise<APIResponseGeneral> {
         let userID = DataManager.shared.userID
         let endPoint = "\(APIService.AccountService)users/\(userID)" + "/bank-account/\(bankAccountID)"
@@ -75,11 +66,7 @@ extension APIClient {
                 .done { json in
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
                         if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
-                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
-                                if status {
-                                    
-                                }
-                            })
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil)
                         }
                         return
                     }
@@ -93,9 +80,6 @@ extension APIClient {
     }
     
     /// Cập nhật tài khoản ngân hàng
-    ///
-    /// - Parameter bankAccountID: <#bankAccountID description#>
-    /// - Returns: <#return value description#>
     func updateBankAccount(bankAccountID: Int32, params: JSONDictionary) -> Promise<APIResponseGeneral> {
         let userID = DataManager.shared.userID
         let endPoint = "\(APIService.AccountService)users/\(userID)" + "/bank-account/\(bankAccountID)/"
@@ -105,11 +89,7 @@ extension APIClient {
                 .done { json in
                     guard let returnCode = json[API_RESPONSE_RETURN_CODE] as? Int, returnCode > 0 else {
                         if let message = json[API_RESPONSE_RETURN_MESSAGE] as? String {
-                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil, completion: { (status) in
-                                if status {
-                                    
-                                }
-                            })
+                            UIApplication.shared.topViewController()?.showGreenBtnMessage(title: MS_TITLE_ALERT, message: message, okTitle: "OK", cancelTitle: nil)
                         }
                         return
                     }

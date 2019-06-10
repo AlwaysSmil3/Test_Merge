@@ -33,7 +33,6 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
     let titles = ["Kỳ trả nợ", "Tiền gốc", "Tiền lãi", "Tiền gốc + lãi"]
     var months: NSMutableArray = []
     var data = [CalculatorPay]()
-    
     var currentDate: Date = Date()
     let dateFormatter = DateFormatter()
     
@@ -43,8 +42,7 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         if let ishidden = self.navigationController?.isNavigationBarHidden, ishidden {
             self.navigationController?.isNavigationBarHidden = false
         }
-
-        // Do any additional setup after loading the view.
+        
         self.title = NSLocalizedString("CALCULATE_PAY", comment: "")
         
         self.calBtn.layer.cornerRadius = 4
@@ -90,7 +88,6 @@ class CalPayViewController: UIViewController, SpreadsheetViewDataSource, Spreads
         spreadsheetView.register(MonthCell.self, forCellWithReuseIdentifier: String(describing: MonthCell.self))
         spreadsheetView.register(MoneyCell.self, forCellWithReuseIdentifier: String(describing: MoneyCell.self))
         spreadsheetView.register(PayCell.self, forCellWithReuseIdentifier: String(describing: PayCell.self))
-
     }
 
     override func didReceiveMemoryWarning() {

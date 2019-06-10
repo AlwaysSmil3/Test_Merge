@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		015D908722AA5EFE00FB3EE6 /* ExNSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D908622AA5EFE00FB3EE6 /* ExNSObject.swift */; };
 		01F1C3C122A66EC6006DFC41 /* LoanBorrowerFee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F1C3C022A66EC6006DFC41 /* LoanBorrowerFee.swift */; };
 		15942B202105B32300591BA4 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15942B1F2105B32300591BA4 /* PaymentMethod.swift */; };
 		48D46DDE05C608E1D160EC14 /* Pods_FinPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD802BCBB7AF131EA69949 /* Pods_FinPlus.framework */; };
@@ -368,6 +369,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		015D908622AA5EFE00FB3EE6 /* ExNSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExNSObject.swift; sourceTree = "<group>"; };
 		01F1C3C022A66EC6006DFC41 /* LoanBorrowerFee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanBorrowerFee.swift; sourceTree = "<group>"; };
 		15942B1F2105B32300591BA4 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		6300B8EF21DCA7530083708E /* LoanTypeReferenceFriendTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanTypeReferenceFriendTBCell.swift; sourceTree = "<group>"; };
@@ -1384,6 +1386,7 @@
 				6305974921240C0F00EEADEF /* ExNotificationCenter.swift */,
 				6355279B21300DA800F2CDA1 /* ExUIPageControl.swift */,
 				636C535F2138FD03005D24A2 /* ExUIDevice.swift */,
+				015D908622AA5EFE00FB3EE6 /* ExNSObject.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2248,6 +2251,7 @@
 				6303ECC2213509A1002C4C03 /* PaymentInfoMoney.swift in Sources */,
 				E7F51A2A20CE6D3F00F72682 /* LoanTypeFooterTBView.swift in Sources */,
 				630467B920B50BDD0069469A /* AddressFirstTBCell.swift in Sources */,
+				015D908722AA5EFE00FB3EE6 /* ExNSObject.swift in Sources */,
 				84D7400520D0F8DC00770FB5 /* AuthenticationBase.swift in Sources */,
 				63D4CB7320F3080A00519FFB /* LoanTypeChoiceCollectionCell.swift in Sources */,
 				633AF9BE20A9921B00BAE2BB /* LoginViewController.swift in Sources */,
@@ -2498,7 +2502,7 @@
 				CODE_SIGN_ENTITLEMENTS = FinPlus/FinPlus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M4N5ARQQ2A;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = FinPlus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2521,7 +2525,7 @@
 				CODE_SIGN_ENTITLEMENTS = FinPlus/FinPlus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M4N5ARQQ2A;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = FinPlus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

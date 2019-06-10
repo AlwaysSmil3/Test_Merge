@@ -11,7 +11,6 @@ import Foundation
 
 class LoanTypeDropdownTBCell: LoanTypeBaseTBCell, LoanTypeTBCellProtocol {
     
-
     @IBOutlet weak var lblValue: UILabel?
     
     weak var parentVC: LoanBaseViewController?

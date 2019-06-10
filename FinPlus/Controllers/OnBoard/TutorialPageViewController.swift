@@ -99,7 +99,7 @@ extension TutorialPageViewController: UIPageViewControllerDataSource {
         guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
             return nil
         }
-//        print(viewControllerIndex)
+        
         if viewControllerIndex == 0 {
             return nil
         }
@@ -123,8 +123,7 @@ extension TutorialPageViewController: UIPageViewControllerDataSource {
         guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
             return nil
         }
-//        print(viewControllerIndex)
-//        print(orderedViewControllers.count)
+        
         if (viewControllerIndex + 1) >= orderedViewControllers.count {
             return nil
         }
@@ -140,7 +139,7 @@ extension TutorialPageViewController: UIPageViewControllerDataSource {
         guard orderedViewControllersCount > nextIndex else {
             return nil
         }
-
+        
         return orderedViewControllers[nextIndex]
     }
 

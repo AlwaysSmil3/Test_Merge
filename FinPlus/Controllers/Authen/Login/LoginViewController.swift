@@ -16,11 +16,11 @@ enum AccountType {
     case Investor
     case Borrower
 }
+
 class LoginViewController: BaseAuthenViewController {
     
     @IBOutlet var lblHeaderAccount: UILabel!
     //@IBOutlet var tfPass: UITextField!
-    
     @IBOutlet var btnHideShowPass: UIButton!
     var isShowPass: Bool = false {
         didSet {
@@ -43,9 +43,7 @@ class LoginViewController: BaseAuthenViewController {
         if #available(iOS 11.0, *) {
             self.tfPass?.textContentType = .password
         }
-        
     }
-
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -66,9 +64,6 @@ class LoginViewController: BaseAuthenViewController {
                 switch settings.authorizationStatus {
                 case .authorized:
                     print("Notification authorized")
-                    
-                    break
-                    
                 case .denied:
                     print("Notification denied")
                     self.showAlertView(title: MS_TITLE_ALERT, message: "Vui lòng vào: Cài đặt > Thông báo -> Mony -> Bật thông báo, để nhận những thông báo mới nhất từ Mony", okTitle: "Huỷ", cancelTitle: "Đồng ý", completion: { (status) in
@@ -88,22 +83,17 @@ class LoginViewController: BaseAuthenViewController {
                                 })
                             }
                         }
-                        
                     })
                     
                     return
                 case .notDetermined:
                     print("Notification not Determined")
-                    
-                    break
                 case .provisional:
                     break
-                    
                 }
                 DispatchQueue.main.async {
                     self.tfPass?.becomeFirstResponder()
                 }
-                
             }
         } else {
             // Fallback on earlier versions
@@ -129,9 +119,7 @@ class LoginViewController: BaseAuthenViewController {
 //        controller.dismiss(animated: true, completion: nil)
 //    }
     
-    
     //MARK: Actions
-    
     @IBAction func btnLogoutTapped(_ sender: Any) {
         let alert = UIAlertController(title: "", message: "Lựa chọn", preferredStyle: .actionSheet)
         
@@ -146,7 +134,6 @@ class LoginViewController: BaseAuthenViewController {
                 self.showSendMailErrorAlert()
             }
             // go to email form
-            
         })
         
         let hotLineAction = UIAlertAction(title: "Gọi hotline: \(phoneNumberMony)", style: .default, handler: { (alert: UIAlertAction!) -> Void in
@@ -155,18 +142,13 @@ class LoginViewController: BaseAuthenViewController {
             }
             // show call popup
             FinPlusHelper.makeCall(forPhoneNumber: phoneNumberMony)
-            
-            
         })
         
         alert.addAction(emailAction)
         alert.addAction(hotLineAction)
 
-        
-        alert.addAction(UIAlertAction(title: "Đăng xuất", style: .destructive , handler:{ (UIAlertAction)in
-            
+        alert.addAction(UIAlertAction(title: "Đăng xuất", style: .destructive , handler:{ (UIAlertAction) in
             self.logoutAndSetRootVCIsEnterPhone()
-        
         }))
         
         alert.addAction(UIAlertAction(title: "Hủy", style: .cancel, handler:{ (UIAlertAction)in
@@ -183,9 +165,7 @@ class LoginViewController: BaseAuthenViewController {
         self.present(alert, animated: true, completion: {
             print("completion block")
         })
-        
     }
-    
     
     @IBAction func tfEditChanged(_ sender: Any) {
         //guard !FinPlusHelper.checkStatusVersionIsNeedUpdate() else { return }
@@ -217,7 +197,6 @@ class LoginViewController: BaseAuthenViewController {
         
         self.login(account: account, pass: tfPass?.text! ?? "")
     }
-
     
     @IBAction func btnForgotPassTapped(_ sender: Any) {
         //guard !FinPlusHelper.checkStatusVersionIsNeedUpdate() else { return }
@@ -251,22 +230,16 @@ class LoginViewController: BaseAuthenViewController {
                     verifyVC.account = account
                     self?.navigationController?.pushViewController(verifyVC, animated: true)
                 }
-                
-                
-                
-        }
+            }
             .catch { errror in }
-        
-        
-        
     }
 
     func pushToPhoneVC() {
         self.view.endEditing(true)
         let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
-
         self.present(enterPhoneVC, animated: true, completion: nil)
     }
+    
 }
 
 //MARK: TextField Delegate
@@ -283,9 +256,3 @@ extension LoginViewController: UITextFieldDelegate {
         return true
     }
 }
-
-
-
-
-
-

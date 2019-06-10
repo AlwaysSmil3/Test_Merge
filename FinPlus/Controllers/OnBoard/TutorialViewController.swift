@@ -9,10 +9,10 @@
 import UIKit
 
 class TutorialViewController: UIViewController {
-
-
+    
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var pageControl: UIPageControl!
+    
     var tutorialPageViewController: TutorialPageViewController? {
         didSet {
             tutorialPageViewController?.tutorialDelegate = self
@@ -21,18 +21,14 @@ class TutorialViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
         pageControl.addTarget(self, action: #selector(self.didChangePageControlValue), for: .valueChanged)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
     }
 
     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
         if let tutorialPageViewController = segue.destination as? TutorialPageViewController {
             self.tutorialPageViewController = tutorialPageViewController
         }
@@ -42,15 +38,15 @@ class TutorialViewController: UIViewController {
         guard let _ = userDefault.value(forKey: fUSER_DEFAUT_ACCOUNT_NAME) as? String else {
             // chưa có account Login
             let enterPhoneVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "EnterPhoneNumberAuthenNavi") as! UINavigationController
-
             self.present(enterPhoneVC, animated: true, completion: nil)
             return
         }
-
+        
 //        Đã có account Login
         let loginVC = UIStoryboard(name: "Authen", bundle: nil).instantiateViewController(withIdentifier: "LoginViewControllerNavi") as! UINavigationController
         self.present(loginVC, animated: true, completion: nil)
     }
+    
     @IBAction func nextAction(_ sender: Any) {
         if tutorialPageViewController != nil {
             // get current index child view and check to start
@@ -67,6 +63,7 @@ class TutorialViewController: UIViewController {
     @objc func didChangePageControlValue() {
         tutorialPageViewController?.scrollToViewController(index: pageControl.currentPage)
     }
+    
 }
 
 extension TutorialViewController: TutorialPageViewControllerDelegate {
@@ -78,7 +75,6 @@ extension TutorialViewController: TutorialPageViewControllerDelegate {
 
     func tutorialPageViewController(tutorialPageViewController: TutorialPageViewController,
                                     didUpdatePageIndex index: Int) {
-
         pageControl.currentPage = index
     }
 

@@ -15,12 +15,9 @@ class ModeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         self.title = NSLocalizedString("APP_MODE", comment: "")
         self.modeSwitch.isOn = UserDefaults.standard.bool(forKey: APP_MODE)
         self.modeLabel.font = UIFont(name: FONT_FAMILY_REGULAR, size: FONT_SIZE_NORMAL)
-        
         //setupMode(mode: UserDefaults.standard.bool(forKey: APP_MODE))
     }
 
@@ -38,13 +35,11 @@ class ModeViewController: UIViewController {
         UserDefaults.standard.set(sender.isOn, forKey: APP_MODE)
         UserDefaults.standard.synchronize()
 //        setupMode(mode: sender.isOn)
-        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: ModeNotificationIdentifier), object: nil)
     }
     
 //    func setupMode(mode: Bool) {
-//        if (mode)
-//        {
+//        if mode {
 //            self.modeLabel.textColor = DARK_MODE_MAIN_TEXT_COLOR
 //            self.view.backgroundColor = DARK_MODE_BACKGROUND_COLOR
 //
@@ -52,9 +47,7 @@ class ModeViewController: UIViewController {
 //            self.navigationController?.navigationBar.barTintColor = DARK_MODE_NAVI_COLOR
 //            self.navigationController?.navigationBar.tintColor = DARK_MODE_MAIN_TEXT_COLOR
 //            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: DARK_MODE_MAIN_TEXT_COLOR, NSAttributedStringKey.font: UIFont(name: FONT_FAMILY_BOLD, size: FONT_SIZE_NORMAL)]
-//        }
-//        else
-//        {
+//        } else {
 //            self.modeLabel.textColor = LIGHT_MODE_MAIN_TEXT_COLOR
 //            self.view.backgroundColor = LIGHT_MODE_BACKGROUND_COLOR
 //

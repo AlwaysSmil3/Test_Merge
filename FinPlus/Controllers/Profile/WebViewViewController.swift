@@ -23,18 +23,14 @@ class WebViewViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-       
+        
         self.borderView.layer.borderWidth = 0.5
         self.borderView.layer.borderColor = LIGHT_MODE_BORDER_COLOR.cgColor
         self.borderView.layer.cornerRadius = 8
         
         self.webView.delegate = self
-        
-        self.webView.scrollView.showsVerticalScrollIndicator = false;
-        self.webView.scrollView.showsHorizontalScrollIndicator = false;
-        
+        self.webView.scrollView.showsVerticalScrollIndicator = false
+        self.webView.scrollView.showsHorizontalScrollIndicator = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,16 +47,12 @@ class WebViewViewController: UIViewController, UIWebViewDelegate {
         case .termView:
             self.title = NSLocalizedString("TERMS_OF_USE", comment: "")
             url = URL(string: DataManager.shared.config?.policy ?? "")
-            break
         case .aboutView:
             self.title = NSLocalizedString("ABOUT_FINSMART", comment: "")
             url = URL(string: DataManager.shared.config?.about ?? "")
-            break
         case .contractView:
             self.title = "Điều khoản & Điều kiện vay"
             url = URL(string: DataManager.shared.config?.policyBorrow ?? "")
-            break
-
         }
         
         //        let url = URL(fileURLWithPath: htmlPath)
@@ -68,7 +60,6 @@ class WebViewViewController: UIViewController, UIWebViewDelegate {
             let request = URLRequest(url: url_)
             self.webView.loadRequest(request)
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
