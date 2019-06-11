@@ -11,6 +11,4 @@ import Foundation
 extension Notification.Name {
     
     static let showMuiltiLineInputText = Notification.Name("ShowMuiltiLineInputText")
-    
-    
 }

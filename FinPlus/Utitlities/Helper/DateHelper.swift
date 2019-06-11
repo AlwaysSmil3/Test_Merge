@@ -81,8 +81,7 @@ public extension Date {
     - Returns A new date
     */
     
-    init(fromString string: String, format:DateFormat, timeZone: TimeZone = .local)
-    {
+    init(fromString string: String, format:DateFormat, timeZone: TimeZone = .local) {
         if string.isEmpty {
             self.init()
             return
@@ -102,16 +101,13 @@ public extension Date {
         switch format {
             
         case .dotNet:
-            
             let startIndex = string.range(of: "(").location + 1
             let endIndex = string.range(of: ")").location
             let range = NSRange(location: startIndex, length: endIndex-startIndex)
             let milliseconds = (string.substring(with: range) as NSString).longLongValue
             let interval = TimeInterval(milliseconds / 1000)
             self.init(timeIntervalSince1970: interval)
-            
         case .iso8601(let isoFormat):
-            
             let dateFormat = (isoFormat != nil) ? isoFormat! : ISO8601Format(dateString: string as String)
             let formatter = Date.formatter(dateFormat.rawValue)
             formatter.locale = Foundation.Locale(identifier: "en_US_POSIX")
@@ -122,9 +118,7 @@ public extension Date {
             } else {
                 self.init()
             }
-            
         case .rss:
-            
             var s  = string
             if string.hasSuffix("Z") {
                 s = s.substring(to: s.length-1).appending("GMT") as NSString
@@ -135,9 +129,7 @@ public extension Date {
             } else {
                 self.init()
             }
-            
         case .altRSS:
-            
             var s  = string
             if string.hasSuffix("Z") {
                 s = s.substring(to: s.length-1).appending("GMT") as NSString
@@ -148,9 +140,7 @@ public extension Date {
             } else {
                 self.init()
             }
-            
         case .custom(let dateFormat):
-            
             let formatter = Date.formatter(dateFormat, timeZone: zone)
             if let date = formatter.date(from: string as String) {
                 self.init(timeInterval:0, since:date)
@@ -160,8 +150,6 @@ public extension Date {
         }
     }
     
-    
-    
     // MARK: Comparing Dates
     
     /**
@@ -169,8 +157,7 @@ public extension Date {
     
     - Parameter date: The Date to compare.
     */
-    func isEqualToDateIgnoringTime(_ date: Date) -> Bool
-    {
+    func isEqualToDateIgnoringTime(_ date: Date) -> Bool {
         let comp1 = Date.components(self)
         let comp2 = Date.components(date)
         return ((comp1!.year == comp2!.year) && (comp1!.month == comp2!.month) && (comp1!.day == comp2!.day))
@@ -179,24 +166,21 @@ public extension Date {
     /**
     Returns Returns true if date is today.
     */
-    func isToday() -> Bool
-    {
+    func isToday() -> Bool {
         return self.isEqualToDateIgnoringTime(Date())
     }
     
     /**
     Returns true if date is tomorrow.
     */
-    func isTomorrow() -> Bool
-    {
+    func isTomorrow() -> Bool {
         return self.isEqualToDateIgnoringTime(Date().dateByAddingDays(1))
     }
     
     /**
     Returns true if date is yesterday.
     */
-    func isYesterday() -> Bool
-    {
+    func isYesterday() -> Bool {
         return self.isEqualToDateIgnoringTime(Date().dateBySubtractingDays(1))
     }
     
@@ -205,8 +189,7 @@ public extension Date {
      
     - Parameter date: The date to compare.
     */
-    func isSameWeekAsDate(_ date: Date) -> Bool
-    {
+    func isSameWeekAsDate(_ date: Date) -> Bool {
         let comp1 = Date.components(self)
         let comp2 = Date.components(date)
         // Must be same week. 12/31 and 1/1 will both be week "1" if they are in the same week
@@ -220,16 +203,14 @@ public extension Date {
     /**
     Returns true if date is this week.
     */
-    func isThisWeek() -> Bool
-    {
+    func isThisWeek() -> Bool {
         return self.isSameWeekAsDate(Date())
     }
     
     /**
     Returns true if date is next week.
     */
-    func isNextWeek() -> Bool
-    {
+    func isNextWeek() -> Bool {
         let interval: TimeInterval = Date().timeIntervalSinceReferenceDate + Date.weekInSeconds()
         let date = Date(timeIntervalSinceReferenceDate: interval)
         return self.isSameWeekAsDate(date)
@@ -238,8 +219,7 @@ public extension Date {
     /**
     Returns true if date is last week.
     */
-    func isLastWeek() -> Bool
-    {
+    func isLastWeek() -> Bool {
         let interval: TimeInterval = Date().timeIntervalSinceReferenceDate - Date.weekInSeconds()
         let date = Date(timeIntervalSinceReferenceDate: interval)
         return self.isSameWeekAsDate(date)
@@ -250,8 +230,7 @@ public extension Date {
     
     - Parameter date: The date to compare.
     */
-    func isSameYearAsDate(_ date: Date) -> Bool
-    {
+    func isSameYearAsDate(_ date: Date) -> Bool {
         let comp1 = Date.components(self)
         let comp2 = Date.components(date)
         return comp1!.year == comp2!.year
@@ -262,8 +241,7 @@ public extension Date {
      
      - Parameter date: The date to compare
      */
-    func isSameMonthAsDate(_ date: Date) -> Bool
-    {
+    func isSameMonthAsDate(_ date: Date) -> Bool {
       let comp1 = Date.components(self)
       let comp2 = Date.components(date)
       
@@ -273,16 +251,14 @@ public extension Date {
     /**
     Returns true if date is this year.
     */
-    func isThisYear() -> Bool
-    {
+    func isThisYear() -> Bool {
         return self.isSameYearAsDate(Date())
     }
     
     /**
     Returns true if date is next year.
     */
-    func isNextYear() -> Bool
-    {
+    func isNextYear() -> Bool {
         let comp1 = Date.components(self)
         let comp2 = Date.components(Date())
         return (comp1!.year! == comp2!.year! + 1)
@@ -291,8 +267,7 @@ public extension Date {
     /**
     Returns true if date is last year.
     */
-    func isLastYear() -> Bool
-    {
+    func isLastYear() -> Bool {
         let comp1 = Date.components(self)
         let comp2 = Date.components(Date())
         return (comp1!.year! == comp2!.year! - 1)
@@ -303,8 +278,7 @@ public extension Date {
     
     - Parameter date: The date to compare.
     */
-    func isEarlierThanDate(_ date: Date) -> Bool
-    {
+    func isEarlierThanDate(_ date: Date) -> Bool {
         return (self as NSDate).earlierDate(date) == self
     }
     
@@ -313,27 +287,23 @@ public extension Date {
      
      - Parameter date: The date to compare.
      */
-    func isLaterThanDate(_ date: Date) -> Bool
-    {
+    func isLaterThanDate(_ date: Date) -> Bool {
         return (self as NSDate).laterDate(date) == self
     }
     
     /**
     Returns true if date is in future.
     */
-    func isInFuture() -> Bool
-    {
+    func isInFuture() -> Bool {
         return self.isLaterThanDate(Date())
     }
     
     /**
     Returns true if date is in past.
     */
-    func isInPast() -> Bool
-    {
+    func isInPast() -> Bool {
         return self.isEarlierThanDate(Date())
     }
-    
     
     // MARK: Adjusting Dates
     
@@ -343,8 +313,7 @@ public extension Date {
      - Parameter days: The number of months to add.
      - Returns A new date object.
      */
-    func dateByAddingMonths(_ months: Int) -> Date
-    {
+    func dateByAddingMonths(_ months: Int) -> Date {
         var dateComp = DateComponents()
         dateComp.month = months
         return Calendar.current.date(byAdding: dateComp, to: self)!
@@ -356,8 +325,7 @@ public extension Date {
      - Parameter days: The number of months to substract.
      - Returns A new date object.
      */
-    func dateBySubtractingMonths(_ months: Int) -> Date
-    {
+    func dateBySubtractingMonths(_ months: Int) -> Date {
         var dateComp = DateComponents()
         dateComp.month = (months * -1)
         return Calendar.current.date(byAdding: dateComp, to: self)!
@@ -369,8 +337,7 @@ public extension Date {
      - Parameter days: The number of weeks to add.
      - Returns A new date object.
      */
-    func dateByAddingWeeks(_ weeks: Int) -> Date
-    {
+    func dateByAddingWeeks(_ weeks: Int) -> Date {
         var dateComp = DateComponents()
         dateComp.day = 7 * weeks
         return Calendar.current.date(byAdding: dateComp, to: self)!
@@ -382,8 +349,7 @@ public extension Date {
      - Parameter days: The number of weeks to substract.
      - Returns A new date object.
      */
-    func dateBySubtractingWeeks(_ weeks: Int) -> Date
-    {
+    func dateBySubtractingWeeks(_ weeks: Int) -> Date {
         var dateComp = DateComponents()
         dateComp.day = ((7 * weeks) * -1)
         return Calendar.current.date(byAdding: dateComp, to: self)!
@@ -395,8 +361,7 @@ public extension Date {
     - Parameter days: The number of days to add.
     - Returns A new date object.
     */
-    func dateByAddingDays(_ days: Int) -> Date
-    {
+    func dateByAddingDays(_ days: Int) -> Date {
         var dateComp = DateComponents()
         dateComp.day = days
         return Calendar.current.date(byAdding: dateComp, to: self)!
@@ -408,8 +373,7 @@ public extension Date {
     - Parameter days: The number of days to substract.
     - Returns A new date object.
     */
-    func dateBySubtractingDays(_ days: Int) -> Date
-    {
+    func dateBySubtractingDays(_ days: Int) -> Date {
         var dateComp = DateComponents()
         dateComp.day = (days * -1)
         return Calendar.current.date(byAdding: dateComp, to: self)!
@@ -421,8 +385,7 @@ public extension Date {
     - Parameter days: The number of hours to add.
     - Returns A new date object.
     */
-    func dateByAddingHours(_ hours: Int) -> Date
-    {
+    func dateByAddingHours(_ hours: Int) -> Date {
         var dateComp = DateComponents()
         dateComp.hour = hours
         return Calendar.current.date(byAdding: dateComp, to: self)!
@@ -434,8 +397,7 @@ public extension Date {
     - Parameter days: The number of hours to substract.
     - Returns A new date object.
     */
-    func dateBySubtractingHours(_ hours: Int) -> Date
-    {
+    func dateBySubtractingHours(_ hours: Int) -> Date {
         var dateComp = DateComponents()
         dateComp.hour = (hours * -1)
         return Calendar.current.date(byAdding: dateComp, to: self)!
@@ -447,8 +409,7 @@ public extension Date {
     - Parameter days: The number of minutes to add.
     - Returns A new date object.
     */
-    func dateByAddingMinutes(_ minutes: Int) -> Date
-    {
+    func dateByAddingMinutes(_ minutes: Int) -> Date {
         var dateComp = DateComponents()
         dateComp.minute = minutes
         return Calendar.current.date(byAdding: dateComp, to: self)!
@@ -460,8 +421,7 @@ public extension Date {
     - Parameter days: The number of minutes to add.
     - Returns A new date object.
     */
-    func dateBySubtractingMinutes(_ minutes: Int) -> Date
-    {
+    func dateBySubtractingMinutes(_ minutes: Int) -> Date {
         var dateComp = DateComponents()
         dateComp.minute = (minutes * -1)
         return Calendar.current.date(byAdding: dateComp, to: self)!
@@ -473,8 +433,7 @@ public extension Date {
      - Parameter seconds: The number of seconds to add.
      - Returns A new date object.
      */
-    func dateByAddingSeconds(_ seconds: Int) -> Date
-    {
+    func dateByAddingSeconds(_ seconds: Int) -> Date {
         var dateComp = DateComponents()
         dateComp.second = seconds
         return Calendar.current.date(byAdding: dateComp, to: self)!
@@ -486,8 +445,7 @@ public extension Date {
      - Parameter days: The number of seconds to substract.
      - Returns A new date object.
      */
-    func dateBySubtractingSeconds(_ seconds: Int) -> Date
-    {
+    func dateBySubtractingSeconds(_ seconds: Int) -> Date {
         var dateComp = DateComponents()
         dateComp.second = (seconds * -1)
         return Calendar.current.date(byAdding: dateComp, to: self)!
@@ -498,8 +456,7 @@ public extension Date {
     
     - Returns A new date object.
     */
-    func dateAtStartOfDay() -> Date
-    {
+    func dateAtStartOfDay() -> Date {
         var components = self.components()
         components.hour = 0
         components.minute = 0
@@ -512,8 +469,7 @@ public extension Date {
     
     - Returns A new date object.
     */
-    func dateAtEndOfDay() -> Date
-    {
+    func dateAtEndOfDay() -> Date {
         var components = self.components()
         components.hour = 23
         components.minute = 59
@@ -526,8 +482,7 @@ public extension Date {
     
     - Returns A new date object.
     */
-    func dateAtStartOfWeek() -> Date
-    {
+    func dateAtStartOfWeek() -> Date {
         let flags: Set<Calendar.Component> = [Calendar.Component.year, Calendar.Component.month, Calendar.Component.weekOfYear, Calendar.Component.weekday]
         var components = Calendar.current.dateComponents(flags, from: self)
         components.weekday = Calendar.current.firstWeekday
@@ -542,8 +497,7 @@ public extension Date {
     
     - Returns A new date object.
     */
-    func dateAtEndOfWeek() -> Date
-    {
+    func dateAtEndOfWeek() -> Date {
         let flags: Set<Calendar.Component> = [Calendar.Component.year, Calendar.Component.month, Calendar.Component.weekOfYear, Calendar.Component.weekday]
         var components = Calendar.current.dateComponents(flags, from: self)
         components.weekday = Calendar.current.firstWeekday + 6
@@ -558,8 +512,7 @@ public extension Date {
     
     - Returns A new date object.
     */
-    func dateAtTheStartOfMonth() -> Date
-    {
+    func dateAtTheStartOfMonth() -> Date {
         //Create the date components
         var components = self.components()
         components.day = 1
@@ -567,7 +520,6 @@ public extension Date {
         let firstDayOfMonthDate :Date = Calendar.current.date(from: components)!
         
         return firstDayOfMonthDate
-        
     }
     
     /**
@@ -576,7 +528,6 @@ public extension Date {
     - Returns A new date object.
     */
     func dateAtTheEndOfMonth() -> Date {
-        
         //Create the date components
         var components = self.components()
         //Set the last day of this month
@@ -587,7 +538,6 @@ public extension Date {
         let lastDayOfMonth :Date = Calendar.current.date(from: components)!
         
         return lastDayOfMonth
-        
     }
     
     /**
@@ -595,8 +545,7 @@ public extension Date {
      
      - Returns A new date object.
      */
-    static func tomorrow() -> Date
-    {
+    static func tomorrow() -> Date {
         return Date().dateByAddingDays(1).dateAtStartOfDay()
     }
     
@@ -605,8 +554,7 @@ public extension Date {
      
      - Returns A new date object.
      */
-    static func yesterday() -> Date
-    {
+    static func yesterday() -> Date {
         return Date().dateBySubtractingDays(1).dateAtStartOfDay()
     }
     
@@ -623,7 +571,6 @@ public extension Date {
         return Calendar.current.date(from: components)!
     }
     
-    
     // MARK: Retrieving Intervals
     
     /**
@@ -632,8 +579,7 @@ public extension Date {
     - Parameter date: the date to compare.
     - Returns The number of seconds
     */
-    func secondsAfterDate(_ date: Date) -> Int
-    {
+    func secondsAfterDate(_ date: Date) -> Int {
         return Int(self.timeIntervalSince(date))
     }
     
@@ -643,8 +589,7 @@ public extension Date {
      - Parameter date: The date to compare.
      - Returns The number of seconds
      */
-    func secondsBeforeDate(_ date: Date) -> Int
-    {
+    func secondsBeforeDate(_ date: Date) -> Int {
         return Int(date.timeIntervalSince(self))
     }
     
@@ -654,8 +599,7 @@ public extension Date {
     - Parameter date: the date to compare.
     - Returns The number of minutes
     */
-    func minutesAfterDate(_ date: Date) -> Int
-    {
+    func minutesAfterDate(_ date: Date) -> Int {
         let interval = self.timeIntervalSince(date)
         return Int(interval / Date.minuteInSeconds())
     }
@@ -666,8 +610,7 @@ public extension Date {
     - Parameter date: The date to compare.
     - Returns The number of minutes
     */
-    func minutesBeforeDate(_ date: Date) -> Int
-    {
+    func minutesBeforeDate(_ date: Date) -> Int {
         let interval = date.timeIntervalSince(self)
         return Int(interval / Date.minuteInSeconds())
     }
@@ -678,8 +621,7 @@ public extension Date {
     - Parameter date: The date to compare.
     - Returns The number of hours
     */
-    func hoursAfterDate(_ date: Date) -> Int
-    {
+    func hoursAfterDate(_ date: Date) -> Int {
         let interval = self.timeIntervalSince(date)
         return Int(interval / Date.hourInSeconds())
     }
@@ -690,8 +632,7 @@ public extension Date {
     - Parameter date: The date to compare.
     - Returns The number of hours
     */
-    func hoursBeforeDate(_ date: Date) -> Int
-    {
+    func hoursBeforeDate(_ date: Date) -> Int {
         let interval = date.timeIntervalSince(self)
         return Int(interval / Date.hourInSeconds())
     }
@@ -702,8 +643,7 @@ public extension Date {
     - Parameter date: The date to compare.
     - Returns The number of days
     */
-    func daysAfterDate(_ date: Date) -> Int
-    {
+    func daysAfterDate(_ date: Date) -> Int {
         let interval = self.timeIntervalSince(date)
         return Int(interval / Date.dayInSeconds())
     }
@@ -714,12 +654,10 @@ public extension Date {
     - Parameter date: The date to compare.
     - Returns The number of days
     */
-    func daysBeforeDate(_ date: Date) -> Int
-    {
+    func daysBeforeDate(_ date: Date) -> Int {
         let interval = date.timeIntervalSince(self)
         return Int(interval / Date.dayInSeconds())
     }
-    
     
     // MARK: Decomposing Dates
     
@@ -836,8 +774,7 @@ public extension Date {
     - Parameter timeZone: The time zone to interpret the date can be .Local, .UTC applies to Custom format only
     - Returns The date string representation
     */
-    func toString(_ format: DateFormat, timeZone: TimeZone = .local) -> String
-    {
+    func toString(_ format: DateFormat, timeZone: TimeZone = .local) -> String {
         var dateFormat: String
         let zone: Foundation.TimeZone
         switch format {
@@ -878,8 +815,7 @@ public extension Date {
     - Parameter locale: The locale to use.
     - Returns A string representation of the date.
     */
-    func toString(_ dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, doesRelativeDateFormatting: Bool = false, timeZone: Foundation.TimeZone = Foundation.NSTimeZone.local, locale: Locale = Locale.current) -> String
-    {
+    func toString(_ dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, doesRelativeDateFormatting: Bool = false, timeZone: Foundation.TimeZone = Foundation.NSTimeZone.local, locale: Locale = Locale.current) -> String {
         let formatter = Date.formatter(dateStyle, timeStyle: timeStyle, doesRelativeDateFormatting: doesRelativeDateFormatting, timeZone: timeZone, locale: locale)
         return formatter.string(from: self)
     }
@@ -887,8 +823,7 @@ public extension Date {
     /**
     A string representation based on a relative time language. i.e. just now, 1 minute ago etc..
     */
-    func relativeTimeToString() -> String
-    {
+    func relativeTimeToString() -> String {
         let time = self.timeIntervalSince1970
         let now = Date().timeIntervalSince1970
         
@@ -1059,7 +994,5 @@ public extension Date {
             return formatter
         }
     }
-    
-    
     
 }

@@ -7,7 +7,9 @@
 //
 
 import Foundation
+
 extension Float {
+    
     func toString() -> String {
         if floor(self) == self {
             return "\(Int(self))"
@@ -15,6 +17,7 @@ extension Float {
             return String(format: "%.2f", self)
         }
     }
+    
     func toLocalCurrencyFormat() -> String {
         let formatter = NumberFormatter()
         formatter.locale = Locale.current

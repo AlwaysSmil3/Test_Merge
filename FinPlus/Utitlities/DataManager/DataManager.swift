@@ -112,10 +112,8 @@ class DataManager {
     }
     
     var missingLoanDataDictionary: JSONDictionary? {
-        
         didSet {
             guard let miss = self.missingLoanDataDictionary else { return }
-            
             guard let userInfo = miss["userInfo"] as? JSONDictionary else { return }
             
             if let relationShip = userInfo["relationships"] as? JSONDictionary {
@@ -125,7 +123,6 @@ class DataManager {
             if let referenceFriends = userInfo["referenceFriend"] as? JSONDictionary {
                 self.checkHaveInvalidDataReferenceFriends(json: referenceFriends)
             }
-            
         }
     }
     
@@ -147,13 +144,13 @@ class DataManager {
     var listKeyMissingLoanTitle: [String]?
     
     //Nếu số có số điện thoại người thân không hợp lệ
-    var isRelationPhone1Invalid: Bool = false
-    var isRelationPhone2Invalid: Bool = false
+    var isRelationPhone1Invalid = false
+    var isRelationPhone2Invalid = false
     
     //Nếu có thông tin người vay cùng không hợp lệ
-    var isReferenceFriend1Invalid: Bool = false
-    var isReferenceFriend2Invalid: Bool = false
-    var isReferenceFriend3Invalid: Bool = false
+    var isReferenceFriend1Invalid = false
+    var isReferenceFriend2Invalid = false
+    var isReferenceFriend3Invalid = false
     
     //Data when push notification
     var notificationData: NSDictionary?
@@ -164,14 +161,13 @@ class DataManager {
     //Check khi back tu Loan Status
     var isBackFromLoanStatusVC: Bool?
     
-    
     var isNoShowAlertTimeout: Bool?
     
     //Show error when call api Error
-    var isCanShowAlertAPIError: Bool = true
+    var isCanShowAlertAPIError = true
     //Show popup Select
-    var isCanShowPopup: Bool = true
-    var isCanShowPopupNeedUpdate: Bool = true
+    var isCanShowPopup = true
+    var isCanShowPopupNeedUpdate = true
     
     //Data Vercode from Config
     var jsonDataVercodeFromConfig: JSONDictionary?
@@ -188,7 +184,6 @@ class DataManager {
                 DataManager.shared.loanInfo.longitudeAccepted = location.longitude
                 DataManager.shared.loanInfo.latitudeAccepted = location.latitude
             }
-            
         }
     }
     
@@ -202,7 +197,6 @@ class DataManager {
         userDefault.synchronize()
     }
     
-    
     /// Check and init list Current Index Reference Friends
     func checkAndInitListCurrentIndexReferenceFriends() {
         if self.listCurrentSelectedTypeReferenceFriend == nil {
@@ -211,8 +205,6 @@ class DataManager {
     }
     
     /// Get List Bank
-    ///
-    /// - Parameter completion: <#completion description#>
     func getListBank(completion: @escaping() -> Void) {
         guard DataManager.shared.listBankData == nil else {
             completion()
@@ -225,7 +217,6 @@ class DataManager {
                 completion()
             }
             .catch { error in }
-        
     }
     
     /// Get Data from JSON
@@ -236,7 +227,6 @@ class DataManager {
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
                 if let jsonResult = jsonResult as? [Any] {
                     // do stuff
-
                     jsonResult.forEach({ (data) in
                         let toll = LoanCategories(object: data)
                         //self.loanBuilder.append(toll)
@@ -300,35 +290,26 @@ class DataManager {
             .done(on: DispatchQueue.main) { model in
                 print("update fcm token to server")
             }
-            .catch { error in}
-        
+            .catch { error in }
     }
     
     
     /// Check khoan vay hien tai co phai sinh vien
-    ///
-    /// - Returns: <#return value description#>
     func isLendingforStudent() -> Bool {
         var value = false
         if self.loanInfo.loanCategoryID == Loan_Student_Category_ID {
             value = true
         }
-        
         return value
     }
     
-    
     /// Get Category hiện tại
-    ///
-    /// - Returns: <#return value description#>
     func getCurrentCategory() -> LoanCategories? {
         let id = self.loanInfo.loanCategoryID
-        let cates = self.loanCategories.filter{ $0.id == id }
-        
+        let cates = self.loanCategories.filter { $0.id == id }
         guard cates.count > 0 else { return nil }
         return cates[0]
     }
-    
     
     /// Update IntRate
     func updateIntRate() {
@@ -336,7 +317,6 @@ class DataManager {
         DataManager.shared.loanInfo.intRate = Float(cate.interestRate ?? 0)
     }
     
-    /// <#Description#>
     func mapDataBrowwerAndLoan() {
         
         guard let brow = self.browwerInfo, let activeLoan = brow.activeLoan,let loanId = activeLoan.loanId, loanId > 0 else { return }
@@ -367,7 +347,6 @@ class DataManager {
         
         if let bank = activeLoan.bank, let bankID = bank.id, bankID > 0 {
             DataManager.shared.loanInfo.bankId = bankID
-            
         }
         
         if let bankId = activeLoan.bankId {
@@ -381,7 +360,6 @@ class DataManager {
         if let value = activeLoan.totalBorrowedAmount {
             DataManager.shared.loanInfo.totalBorrowedAmount = value
         }
-        
         
         if let userInfo = activeLoan.userInfo {
             //Thong tin user
@@ -411,7 +389,6 @@ class DataManager {
                         }
                     }
                 }
-                
             }
             
             if let referenceFriend = userInfo.referenceFriend, referenceFriend.count > 0 {
@@ -461,8 +438,6 @@ class DataManager {
             if let value = userInfo.phoneUsageTime {
                 DataManager.shared.loanInfo.userInfo.phoneUsageTime = value
             }
-            
-            
         }
         
         if let jobInfo = activeLoan.jobInfo {
@@ -521,7 +496,6 @@ class DataManager {
             if let value = jobInfo.jobDescription {
                 DataManager.shared.loanInfo.jobInfo.jobDescription = value
             }
-            
         }
         
         if let url = activeLoan.nationalIdAllImg {
@@ -543,11 +517,9 @@ class DataManager {
         }
         
         if let optionMedia = activeLoan.optionalMedia {
-            
             let countInit = getCountOptionalMedia(cateId: DataManager.shared.loanInfo.loanCategoryID)
             
             if optionMedia.count == countInit {
-                
                 var temp: [[String]] = []
                 for i in optionMedia {
                     if let item = i as? [String] {
@@ -559,7 +531,6 @@ class DataManager {
                     DataManager.shared.loanInfo.optionalMedia.removeAll()
                     DataManager.shared.loanInfo.optionalMedia = temp
                 }
-                
             } else if optionMedia.count < countInit {
                 for (i, v) in optionMedia.enumerated() {
                     if let item = v as? [String], item.count > 0 {
@@ -568,9 +539,7 @@ class DataManager {
                         }
                     }
                 }
-                
             } else {
-                
                 let count = countInit
                 if count > 0 {
                     var temp: [[String]] = []
@@ -585,22 +554,11 @@ class DataManager {
                         DataManager.shared.loanInfo.optionalMedia = temp
                     }
                 }
-                
             }
-            
         }
-        
-        self.updateFieldsDisplay {
-            
-        }
-        
     }
     
-    
     /// Title RelationShip
-    ///
-    /// - Parameter id: <#id description#>
-    /// - Returns: <#return value description#>
     class func getTitleRelationShip(id: Int, key: String = "relationships") -> String {
         guard let cate = DataManager.shared.getCurrentCategory(), (cate.builders?.count ?? 0) > 0, let fields = cate.builders![0].fieldsDisplay else { return "Người thân" }
         
@@ -624,14 +582,9 @@ class DataManager {
             }
         }
         return "Người thân"
-        
-        
     }
     
-    
     /// Update LoanCategories for dynamic ui display
-    ///
-    /// - Parameter completion: <#completion description#>
     func updateFieldsDisplay(completion: @escaping () -> Void) {
         for (index, value) in self.loanCategories.enumerated() {
             if value.id == self.loanInfo.loanCategoryID {
@@ -639,11 +592,8 @@ class DataManager {
                 break
             }
         }
-        
         completion()
-        
     }
-    
     
     /// Check if nil then init ReferenceFriend
     func checkAndInitReferenceFriend() {
@@ -651,8 +601,5 @@ class DataManager {
             DataManager.shared.loanInfo.userInfo.referenceFriend = [RelationShipPhone(), RelationShipPhone(), RelationShipPhone()]
         }
     }
-    
-    
-    
     
 }

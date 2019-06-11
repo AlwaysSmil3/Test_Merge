@@ -11,15 +11,12 @@ import Foundation
 extension UIView {
     
     /// Add Gradient Color
-    ///
-    /// - Parameter colors: <#colors description#>
     func addGradient(colors: [UIColor]) {
         let gl = CAGradientLayer()
         gl.colors = colors.map { $0.cgColor }
         gl.locations = [0.0, 1.0]
         gl.frame.size = frame.size
         gl.cornerRadius = 5
-        
         self.layer.addSublayer(gl)
     }
     
@@ -30,7 +27,6 @@ extension UIView {
         layer.shadowOpacity = 0.1
         layer.shadowOffset = CGSize(width: 0, height: 8)
         layer.shadowRadius = 24
-    
         layer.shadowPath = UIBezierPath(rect: bounds).cgPath
         layer.shouldRasterize = true
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
@@ -43,11 +39,9 @@ extension UIView {
         layer.shadowOpacity = opacity
         layer.shadowOffset = offSet
         layer.shadowRadius = radius
-        
         layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         layer.shouldRasterize = true
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
-    
     
 }

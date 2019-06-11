@@ -9,7 +9,6 @@
 import Foundation
 
 extension UIApplication {
-    
     // Get TopViewController in every Where
     func topViewController() -> UIViewController? {
         if var topController = UIApplication.shared.keyWindow?.rootViewController {
@@ -23,6 +22,7 @@ extension UIApplication {
         return nil
     }
 }
+
 extension UserDefaults {
     // check for is first launch - only true on first invocation after app install, false on all further invocations
     // Note: Store this value in AppDelegate if you have multiple places where you are checking for this flag

@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 extension UIImage {
     
     enum JPEGQuality: CGFloat {
@@ -26,11 +25,7 @@ extension UIImage {
         return UIImageJPEGRepresentation(self, quality.rawValue)
     }
     
-    
     /// Resize with size Mony
-    ///
-    /// - Parameter originSize: <#originSize description#>
-    /// - Returns: <#return value description#>
     func resizeMonyImage(originSize: CGSize) -> UIImage? {
         let value: CGFloat = 2048
         
@@ -39,12 +34,10 @@ extension UIImage {
         }
         
         if originSize.width > originSize.height && originSize.height > value {
-            
             return self.resizeImage(size: CGSize(width: value, height: (originSize.height * value)/originSize.width))
         }
         
         if originSize.height > originSize.width && originSize.width > value {
-            
             return self.resizeImage(size: CGSize(width: (originSize.width * value)/originSize.height, height: value))
         }
         
@@ -60,16 +53,10 @@ extension UIImage {
         self.draw(in: rect)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
         return newImage
-        
     }
     
-    
     /// Rotate image
-    ///
-    /// - Parameter radians: <#radians description#>
-    /// - Returns: <#return value description#>
     func rotate(radians: Float) -> UIImage? {
         var newSize = CGRect(origin: CGPoint.zero, size: self.size).applying(CGAffineTransform(rotationAngle: CGFloat(radians))).size
         // Trim off the extremely small float value to prevent core graphics from rounding it up
@@ -91,9 +78,5 @@ extension UIImage {
         
         return newImage
     }
-    
-    
-
-    
     
 }
