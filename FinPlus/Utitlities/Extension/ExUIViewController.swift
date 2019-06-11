@@ -31,7 +31,6 @@ extension UIViewController {
         }
     }
     
-    
     /// Set animation fro setRootViewController
     func addAnimationForSetRootView(rootVC: UIViewController) {
         guard let appDelegate = UIApplication.shared.delegate, let win = appDelegate.window, let window = win else {

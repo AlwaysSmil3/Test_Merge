@@ -47,7 +47,6 @@ class FacebookSignInManager: NSObject {
                         onCompletion(nil, error as NSError?)
                     }
                 })
-            
         } else {
             LoginManager().logIn(permissions: ["email", "public_profile"], from: fromViewController as? UIViewController, handler: { (result, error) -> Void in
                 if error != nil {
@@ -60,7 +59,6 @@ class FacebookSignInManager: NSObject {
                     } else {
                         onCompletion(nil, error as NSError?)
                     }
-                    
                 } else if (result?.isCancelled)! {
                     // User Cancelled
                     LoginManager().logOut()
@@ -85,10 +83,5 @@ class FacebookSignInManager: NSObject {
             })
         }
     }
-    
-    
-    
-    
-    
     
 }

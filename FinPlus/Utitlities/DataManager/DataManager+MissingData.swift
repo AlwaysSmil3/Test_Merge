@@ -10,13 +10,9 @@ import Foundation
 
 extension DataManager {
     
-    
     /// Check and change state invalid' RelationShip
-    ///
-    /// - Parameter json: <#json description#>
     func checkHaveInvalidDataRelationShips(json: JSONDictionary) {
         if let relation = json["0"] as? JSONDictionary {
-            
             if let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
                 self.isRelationPhone1Invalid = true
             }
@@ -28,11 +24,9 @@ extension DataManager {
             if let value = relation["checkaddress"] as? Bool, value {
                 self.isRelationPhone1Invalid = true
             }
-            
         }
         
         if let relation = json["1"] as? JSONDictionary {
-            
             if let isPhone = relation["checkphoneNumber"] as? Bool, isPhone {
                 self.isRelationPhone2Invalid = true
             }
@@ -44,87 +38,61 @@ extension DataManager {
             if let value = relation["checkaddress"] as? Bool, value {
                 self.isRelationPhone2Invalid = true
             }
-            
         }
     }
     
-    
     /// Check and change state invalid' ReferenceFriends
-    ///
-    /// - Parameter json: <#json description#>
     func checkHaveInvalidDataReferenceFriends(json: JSONDictionary) {
         if let relation = json["0"] as? JSONDictionary {
-            
             if let value = relation["checkType"] as? Bool, value {
                 self.isReferenceFriend1Invalid = true
             }
             
             if let isPhone = relation["checkPhoneNumber"] as? Bool, isPhone {
                 self.isReferenceFriend1Invalid = true
-            }
-            else if let value = relation["checkName"] as? Bool, value {
+            } else if let value = relation["checkName"] as? Bool, value {
                 self.isReferenceFriend1Invalid = true
-            }
-            else if let value = relation["checkAddress"] as? Bool, value {
+            } else if let value = relation["checkAddress"] as? Bool, value {
                 self.isReferenceFriend1Invalid = true
-            }
-            else if let loanPurpose = relation["checkLoanPurpose"] as? Bool, loanPurpose {
+            } else if let loanPurpose = relation["checkLoanPurpose"] as? Bool, loanPurpose {
                 self.isReferenceFriend1Invalid = true
             }
         }
         
         if let relation = json["1"] as? JSONDictionary {
-            
             if let value = relation["checkType"] as? Bool, value {
                 self.isReferenceFriend2Invalid = true
             }
             
             if let isPhone = relation["checkPhoneNumber"] as? Bool, isPhone {
                 self.isReferenceFriend2Invalid = true
-            }
-            else if let value = relation["checkName"] as? Bool, value {
+            } else if let value = relation["checkName"] as? Bool, value {
+                self.isReferenceFriend2Invalid = true
+            } else if let value = relation["checkAddress"] as? Bool, value {
+                self.isReferenceFriend2Invalid = true
+            } else if let loanPurpose = relation["checkLoanPurpose"] as? Bool, loanPurpose {
                 self.isReferenceFriend2Invalid = true
             }
-            else if let value = relation["checkAddress"] as? Bool, value {
-                self.isReferenceFriend2Invalid = true
-            }
-            else if let loanPurpose = relation["checkLoanPurpose"] as? Bool, loanPurpose {
-                self.isReferenceFriend2Invalid = true
-            }
-            
         }
         
         if let relation = json["2"] as? JSONDictionary {
-            
             if let value = relation["checkType"] as? Bool, value {
                 self.isReferenceFriend3Invalid = true
             }
             
             if let isPhone = relation["checkPhoneNumber"] as? Bool, isPhone {
                 self.isReferenceFriend3Invalid = true
-            }
-            else if let value = relation["checkName"] as? Bool, value {
+            } else if let value = relation["checkName"] as? Bool, value {
+                self.isReferenceFriend3Invalid = true
+            } else if let value = relation["checkAddress"] as? Bool, value {
+                self.isReferenceFriend3Invalid = true
+            } else if let loanPurpose = relation["checkLoanPurpose"] as? Bool, loanPurpose {
                 self.isReferenceFriend3Invalid = true
             }
-            else if let value = relation["checkAddress"] as? Bool, value {
-                self.isReferenceFriend3Invalid = true
-            }
-            else if let loanPurpose = relation["checkLoanPurpose"] as? Bool, loanPurpose {
-                self.isReferenceFriend3Invalid = true
-            }
-            
         }
     }
     
-    
     /// Check Type reference friend
-    ///
-    /// - Parameters:
-    ///   - type: <#type description#>
-    ///   - index: <#index description#>
-    ///   - key: <#key description#>
-    ///   - subKey: <#subKey description#>
-    /// - Returns: <#return value description#>
     func checkTypeRelationReferrenceFriendInvalid(type: Int, index: Int, key: String = "referenceFriend", subKey: String = "type") -> Bool {
         
         guard let data = DataManager.shared.missingLoanDataDictionary, let userInfo = data["userInfo"] as? JSONDictionary, let relationPhone = userInfo[key] as? JSONDictionary, let relation = relationPhone["\(index)"] as? JSONDictionary else {
@@ -134,15 +102,10 @@ extension DataManager {
         if let nameValid = relation[subKey] as? Int, type == nameValid {
             return false
         }
-        
         return true
     }
     
-    
     /// Check name Relation Invalid
-    ///
-    /// - Parameter name: <#name description#>
-    /// - Returns: <#return value description#>
     func checkNameRelationInvalid(name: String, index: Int, key: String = "relationships", subKey: String = "name") -> Bool {
         
         guard let data = DataManager.shared.missingLoanDataDictionary, let userInfo = data["userInfo"] as? JSONDictionary, let relationPhone = userInfo[key] as? JSONDictionary, let relation = relationPhone["\(index)"] as? JSONDictionary else {
@@ -152,18 +115,12 @@ extension DataManager {
         if let nameValid = relation[subKey] as? String, name == nameValid {
             return false
         }
-        
         return true
     }
     
     /// Check address relation invalid
-    ///
-    /// - Parameters:
-    ///   - address: <#address description#>
-    ///   - index: <#index description#>
-    /// - Returns: <#return value description#>
     func checkAddressRelationInvalid(address: String, index: Int, key: String = "relationships") -> Bool {
-        
+
         guard let data = DataManager.shared.missingLoanDataDictionary, let userInfo = data["userInfo"] as? JSONDictionary, let relationPhone = userInfo[key] as? JSONDictionary, let relation = relationPhone["\(index)"] as? JSONDictionary else {
             return true
         }
@@ -193,7 +150,6 @@ extension DataManager {
         if let index_ = index {
             if let relation1 = relationPhone["\(index_)"] as? JSONDictionary, let phone = relation1["phoneNumber"] as? String {
                 return FinPlusHelper.updatePhoneNumber(phone: phone)
-                
             } else {
                 return "-"
             }
@@ -206,8 +162,6 @@ extension DataManager {
             }
         }
         
-        
-        
         if let re = relation, let phone_ = re["phoneNumber"] as? String {
             if phone_.contains("_") {
                 let array = phone_.components(separatedBy: "_")
@@ -217,13 +171,9 @@ extension DataManager {
             } else {
                 phone = phone_
             }
-            
         }
-        
         return FinPlusHelper.updatePhoneNumber(phone: phone)
     }
-    
-    
     
     //Update Các thông tin không hợp lệ
     func updateListMissingKeyData() {
@@ -266,7 +216,6 @@ extension DataManager {
                 missingListTitle.append("Thông tin người vay cùng")
             }
             
-            
             if let add = userInfo.residentAddress, let city = add.city, city.count > 0 {
                 missingListKey.append("residentAddress")
                 missingListTitle.append("Địa chỉ nhà thường trú")
@@ -296,7 +245,6 @@ extension DataManager {
                 missingListKey.append("maritalStatus")
                 missingListTitle.append("Tình trạng hôn nhân")
             }
-            
         }
         
         if let jobInfo = miss.jobInfo {
@@ -368,7 +316,6 @@ extension DataManager {
                 missingListKey.append("jobDescription")
                 missingListTitle.append("Mô tả công việc của bạn")
             }
-            
         }
         
         //if let bank = miss.bank,
@@ -387,7 +334,6 @@ extension DataManager {
                 missingListTitle.append("Tài khoản nhận tiền")
             }
         }
-        
         
         if let _ = miss.borrowedPlace {
             missingListKey.append("borrowedPlace")
@@ -428,10 +374,7 @@ extension DataManager {
         
         self.listKeyMissingLoanKey = missingListKey
         self.listKeyMissingLoanTitle = missingListTitle
-        
         self.getListTitleMissingOptionalData()
-        
-    
         self.listKeyMissingLoanTitle?.append(DataManager.shared.browwerInfo?.activeLoan?.note ?? "")
     }
     
@@ -467,9 +410,7 @@ extension DataManager {
         if missingListTitle.count > 0 {
             self.listKeyMissingLoanTitle?.append(contentsOf: missingListTitle)
         }
-        
     }
-    
     
     func checkIndexLastStepHaveMissingData(index: Int) -> Bool {
         
@@ -481,12 +422,10 @@ extension DataManager {
             }
         }
         
-        
         if index < 4 {
             if let _ = data["bank"]  {
                 return true
             }
-            
             
             if let _ = data["borrowedPlace"]  {
                 return true
@@ -494,7 +433,6 @@ extension DataManager {
             if let _ = data["totalBorrowedAmount"]  {
                 return true
             }
- 
         }
         
         if index < 5 {
@@ -518,14 +456,10 @@ extension DataManager {
                 return true
             }
         }
-        
         return false
     }
     
-    
     /// Get start index Have Invalid Data
-    ///
-    /// - Returns: <#return value description#>
     func getStartIndexHaveMissingData() -> Int? {
         
         guard let data = self.missingLoanDataDictionary else { return nil }
@@ -542,10 +476,10 @@ extension DataManager {
             return 4
         }
         
-        
         if let _ = data["borrowedPlace"]  {
             return 4
         }
+        
         if let _ = data["totalBorrowedAmount"]  {
             return 4
         }
@@ -553,9 +487,11 @@ extension DataManager {
         if let _ = data["nationalIdAllImg"]  {
             return 5
         }
+        
         if let _ = data["nationalIdFrontImg"]  {
             return 5
         }
+        
         if let _ = data["nationalIdBackImg"]  {
             return 5
         }
@@ -573,12 +509,6 @@ extension DataManager {
     
     
     /// Check missing bankData
-    ///
-    /// - Parameters:
-    ///   - key: <#key description#>
-    ///   - currentBankHolder: <#currentBankHolder description#>
-    ///   - currenAccount: <#currenAccount description#>
-    /// - Returns: <#return value description#>
     func checkMissingBankData(key: String, currentBankHolder: String? = nil, currenAccount: String? = nil, id: Int? = nil) -> Bool {
         guard let list = self.listKeyMissingLoanKey else { return false }
         guard let data = self.missingLoanDataDictionary, let bankData = data["bank"] as? JSONDictionary else { return false }
@@ -599,17 +529,11 @@ extension DataManager {
             return true
         }
         
-        
         return false
     }
     
     
     /// Get Value Invalid from missing Data
-    ///
-    /// - Parameters:
-    ///   - key: <#key description#>
-    ///   - parentKey: <#parentKey description#>
-    /// - Returns: <#return value description#>
     func getValueInvalid(key: String, parentKey: String?) -> Any {
         
         guard let list = self.listKeyMissingLoanKey else { return "" }
@@ -629,7 +553,6 @@ extension DataManager {
             if let parent = data[parentKey_] as? JSONDictionary, let invalidValue = parent[key] as? Int {
                 return invalidValue
             }
-            
         } else {
             if let invalidValue = data[key] as? String {
                 return invalidValue
@@ -639,15 +562,10 @@ extension DataManager {
                 return invalidValue
             }
         }
-        
         return ""
     }
     
-    
     /// check field missing in list Missing
-    ///
-    /// - Parameter key: <#key description#>
-    /// - Returns: <#return value description#>
     func checkFieldIsMissing(key: String, parentKey: String? = nil, currentValue: String? = nil, currentValueIndex: Int? = nil, currentDoubleValue: Double? = nil) -> Bool {
         guard let list = self.listKeyMissingLoanKey else { return false }
         guard let data = self.missingLoanDataDictionary else { return false }
@@ -670,7 +588,6 @@ extension DataManager {
             if let parent = data[parentKey_] as? JSONDictionary, let invalidValue = parent[key] as? Int, currentValueIndex == invalidValue {
                 return true
             }
-            
         } else {
             if let invalidValue = data[key] as? String, currentValue == invalidValue {
                 return true
@@ -684,14 +601,10 @@ extension DataManager {
                 return true
             }
         }
-        
         return false
     }
     
-    
     /// Check Invalid Data in step persionalInfo did changed
-    ///
-    /// - Returns: <#return value description#>
     func checkDataInvalidChangedInStepJobInfo() -> Bool {
         guard let data = self.missingLoanDataDictionary else { return true }
         
@@ -721,6 +634,7 @@ extension DataManager {
         if let value = jobInfo["studentId"] as? String, value == DataManager.shared.loanInfo.jobInfo.studentId {
             return false
         }
+        
         if let value = jobInfo["academicName"] as? String, value == DataManager.shared.loanInfo.jobInfo.academicName {
             return false
         }
@@ -762,17 +676,13 @@ extension DataManager {
         }
         
         return true
-        
     }
     
     
     /// Check Invalid Data in step persionalInfo did changed checkDataInvalidChangedInStepJobInfo
-    ///
-    /// - Returns: <#return value description#>
     func checkDataInvalidChangedInStepPersionalInfo() -> Bool {
         //guard let list = self.listKeyMissingLoanKey else { return true }
         guard let data = self.missingLoanDataDictionary else { return true }
-        
         guard let userInfo = data["userInfo"] as? JSONDictionary else { return true }
         
         if DataManager.shared.isRelationPhone1Invalid || DataManager.shared.isRelationPhone2Invalid {
@@ -811,7 +721,6 @@ extension DataManager {
             return false
         }
         
-        
         if let value = userInfo["birthday"] as? String, Date.init(fromString: value, format: DateFormat.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER)).toString(.custom(kDisplayFormat)) ==  Date.init(fromString: DataManager.shared.loanInfo.userInfo.birthDay, format: DateFormat.custom(DATE_FORMATTER_BIRTHDAY_WITH_SERVER)).toString(.custom(kDisplayFormat)) {
             return false
         }
@@ -839,13 +748,9 @@ extension DataManager {
         return true
     }
     
-    
     /// Check Invalid Data in step Bank did changed
-    ///
-    /// - Returns: <#return value description#>
     func checkDataInvalidChangedInStepBank(currentBank: AccountBank?) -> Bool {
         guard let data = self.missingLoanDataDictionary else { return true }
-        
         
         if let value = data["borrowedPlace"] as? String, value == DataManager.shared.loanInfo.borrowedPlace {
             return false
@@ -856,9 +761,7 @@ extension DataManager {
         }
  
         guard let bank = data["bank"] as? JSONDictionary else { return true }
-        
         guard let currbank = currentBank else { return true }
-        
         guard let id = bank["id"] as? Int, Int(currbank.id!) == id else { return true }
         
         if let value = bank["accountHolder"] as? String, value == currbank.accountBankName {
@@ -869,15 +772,11 @@ extension DataManager {
             return false
         }
         
-        
         return true
     }
     
     
-    
     /// Check Invalid Data in step NationalID did changed
-    ///
-    /// - Returns: <#return value description#>
     func checkDataInvalidChangedInStepNationalID() -> Bool {
         guard let data = self.missingLoanDataDictionary else { return true }
         
@@ -896,10 +795,7 @@ extension DataManager {
         return true
     }
     
-    
     /// Check Invalid Data in step OtherInfo did changed
-    ///
-    /// - Returns: <#return value description#>
     func checkDataInvalidChangedInStepOtherInfo() -> Bool {
         guard let builder = self.getCurrentCategory()?.builders, builder.count > 3, let listField = builder[3].fieldsDisplay else { return true }
         
@@ -908,17 +804,14 @@ extension DataManager {
         if let optionText = data["optionalText"] as? JSONDictionary {
             var index1 = 0
             for text in DataManager.shared.loanInfo.optionalText {
-                
                 if let value = optionText["\(index1)"] as? String, value == text {
                     return false
                 }
-                
                 index1 += 1
             }
         }
         
         if let optionalMedia = data["optionalMedia"] as? JSONDictionary {
-            
             for fi in listField {
                 if fi.id == "optionalMedia", let arrayIndex = fi.arrayIndex {
                     let media = DataManager.shared.loanInfo.optionalMedia[arrayIndex]
@@ -932,13 +825,8 @@ extension DataManager {
                     }
                 }
             }
-
         }
-
-
         return true
     }
-    
-    
     
 }

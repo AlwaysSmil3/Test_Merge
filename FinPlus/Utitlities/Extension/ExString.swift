@@ -15,8 +15,6 @@ extension String {
     }
     
     /// Bỏ dấu tiếng Việt
-    ///
-    /// - Returns: <#return value description#>
     func removeVietnameseMark() -> String {
         return self.folding(options: [.diacriticInsensitive, .widthInsensitive, .caseInsensitive], locale: .current)
     }

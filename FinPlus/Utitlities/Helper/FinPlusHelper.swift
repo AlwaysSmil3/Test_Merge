@@ -220,9 +220,6 @@ class FinPlusHelper {
     
     
     /// Lấy lãi xuất từ LoanCategoryID
-    ///
-    /// - Parameter id: <#id description#>
-    /// - Returns: <#return value description#>
     static func getInterestRateFromLoanCategoryID(id: Int16) -> Double? {
         let cates = DataManager.shared.loanCategories.filter { $0.id == id }
         guard cates.count >= 1 else { return nil }
@@ -230,11 +227,6 @@ class FinPlusHelper {
     }
     
     //MARK: Color Gradient
-    /// <#Description#>
-    /// - Parameters:
-    ///   - colorBottom: <#colorBottom description#>
-    ///   - colorTop: <#colorTop description#>
-    /// - Returns: <#return value description#>
     static func setGradientColor(colorBottom: UIColor, colorTop: UIColor, frame: CGRect) -> CAGradientLayer {
         let gl = CAGradientLayer()
         gl.colors = [colorTop.cgColor, colorBottom.cgColor]
@@ -244,16 +236,12 @@ class FinPlusHelper {
     }
     
     /// Set Space Display CollectionView similar
-    /// - Parameter indexPath: <#indexPath description#>
-    /// - Returns: <#return value description#>
     class func setCellSizeDisplayFitThird(_ indexPath: IndexPath) -> CGSize {
         let width = UIScreen.main.bounds.width / 3 - 1
         return CGSize(width: width, height: 144)
     }
     
     /// set caption text cho loan
-    /// - Parameter text: <#text description#>
-    /// - Returns: <#return value description#>
     class func setAttributeTextForLoan(text: String) -> NSMutableAttributedString {
         let input = text + " "
         let font = FONT_CAPTION
@@ -268,7 +256,6 @@ class FinPlusHelper {
  
     // CoreData
     // MARK: - Helper Methods
-    
     class func createRecordForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObject? {
         // Helpers
         var result: NSManagedObject? = nil
@@ -305,9 +292,6 @@ class FinPlusHelper {
         return result
     }
     
-    /// <#Description#>
-    /// - Parameter input: <#input description#>
-    /// - Returns: <#return value description#>
     class func addCharactorToString(input: String) -> String {
         var result = ""
         
@@ -332,8 +316,6 @@ class FinPlusHelper {
     }
     
     /// Tinh số tiền phải trả hàng tháng
-    ///
-    /// - Parameters:
     ///   - mounth: Số tiền
     ///   - term: Kỳ hạn
     ///   - rate: lãi xuất
@@ -362,8 +344,6 @@ class FinPlusHelper {
     }
     
     /// Lấy dữ liệu từ CoreData
-    ///
-    /// - Parameter completion: <#completion description#>
     class func fetchCoreData(context: NSManagedObjectContext, completion: () -> Void) {
         //guard let context = managedContext else { return }
         //Lay list entity
@@ -483,9 +463,6 @@ class FinPlusHelper {
     
     
     /// Return Prefix BankName
-    ///
-    /// - Parameter bankName: <#bankName description#>
-    /// - Returns: <#return value description#>
     class func getPrefixBankName(bankName: String) -> String {
         var prefixBankName = "TK ngân hàng "
         if FinPlusHelper.checkIsWallet(bankName: bankName) {
@@ -495,8 +472,6 @@ class FinPlusHelper {
     }
     
     /// Check is Wallet
-    /// - Parameter bankName: <#bankName description#>
-    /// - Returns: <#return value description#>
     class func checkIsWallet(bankName: String) -> Bool {
         if bankName.removeVietnameseMark().contains("momo") || bankName.removeVietnameseMark().contains("viettelpay") {
             return true
@@ -505,8 +480,6 @@ class FinPlusHelper {
     }
     
     /// Check current version with fireBase Remote Config
-    /// - Parameter versionConfig: <#versionConfig description#>
-    /// - Returns: <#return value description#>
     class func checkVersionFromConfig(versionConfig: String) -> Bool {
         var configList = versionConfig.components(separatedBy: ".")
         
@@ -691,9 +664,6 @@ class FinPlusHelper {
     
     
     /// Get Max Length Phone
-    ///
-    /// - Parameter phoneNumber: <#phoneNumber description#>
-    /// - Returns: <#return value description#>
     class func getMaxLengthPhone(phoneNumber: String?) -> Int {
         var maxLength = 10
         guard let phone = phoneNumber, phone.count > 2 else { return maxLength }
@@ -714,9 +684,6 @@ class FinPlusHelper {
     
     
     /// check nhập số điện thoại theo đầu số mới ở nhập sdt ngừoi thân
-    ///
-    /// - Parameter phoneNumber: <#phoneNumber description#>
-    /// - Returns: <#return value description#>
     class func getMaxLengthPhone1(phoneNumber: String?) -> Int {
         let maxLength = 13
         guard let phone = phoneNumber, phone.count > 2 else { return maxLength }
@@ -734,11 +701,7 @@ class FinPlusHelper {
         return maxLength
     }
     
-    
     /// URL string icon bank
-    ///
-    /// - Parameter type: <#type description#>
-    /// - Returns: <#return value description#>
     class func getStringURLIconBank(type: String) -> String {
         guard let list = DataManager.shared.listBankData else {
             DataManager.shared.getListBank {
@@ -754,4 +717,3 @@ class FinPlusHelper {
     }
     
 }
-
