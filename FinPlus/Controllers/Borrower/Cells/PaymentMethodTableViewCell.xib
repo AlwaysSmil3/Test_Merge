@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="93" id="KGk-i7-Jjw" customClass="PaymentMethodTableViewCell" customModule="FinPlus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="93"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="390" height="92.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbN-qB-W5t">
+                        <rect key="frame" x="12" y="4" width="366" height="84.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qbj-JV-xEv">
+                                <rect key="frame" x="16" y="16" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="Bnu-Ql-Jed"/>
+                                    <constraint firstAttribute="width" secondItem="Qbj-JV-xEv" secondAttribute="height" multiplier="1:1" id="nBd-bG-obw"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chuyển khoản/tiền mặt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XP7-t1-MH0">
+                                <rect key="frame" x="52" y="16" width="274" height="20"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_radio_off" translatesAutoresizingMaskIntoConstraints="NO" id="qnj-hD-Yky">
+                                <rect key="frame" x="342" y="18" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qnj-hD-Yky" secondAttribute="height" multiplier="1:1" id="5Pk-LF-yZf"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chuyển khoản qua internet hoặc đến ngân hàng để chuyển tiền mặt đến một trong những tài khoản ngân hàng của chúng tôi." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7PX-5i-cjN">
+                                <rect key="frame" x="52" y="42" width="274" height="39.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.40000000000000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XP7-t1-MH0" firstAttribute="leading" secondItem="Qbj-JV-xEv" secondAttribute="trailing" constant="16" id="0Xk-XA-hgH"/>
+                            <constraint firstItem="XP7-t1-MH0" firstAttribute="centerY" secondItem="Qbj-JV-xEv" secondAttribute="centerY" id="ICF-uj-MmV"/>
+                            <constraint firstItem="Qbj-JV-xEv" firstAttribute="leading" secondItem="WbN-qB-W5t" secondAttribute="leading" constant="16" id="UkW-5C-aTU"/>
+                            <constraint firstItem="qnj-hD-Yky" firstAttribute="width" secondItem="qnj-hD-Yky" secondAttribute="height" multiplier="1:1" id="WWs-hW-s7e"/>
+                            <constraint firstItem="Qbj-JV-xEv" firstAttribute="top" secondItem="WbN-qB-W5t" secondAttribute="top" constant="16" id="dr8-L4-dH3"/>
+                            <constraint firstAttribute="trailing" secondItem="qnj-hD-Yky" secondAttribute="trailing" constant="8" id="fcR-PS-V4M"/>
+                            <constraint firstItem="7PX-5i-cjN" firstAttribute="top" secondItem="XP7-t1-MH0" secondAttribute="bottom" constant="6" id="grm-Oa-8Eh"/>
+                            <constraint firstItem="7PX-5i-cjN" firstAttribute="leading" secondItem="XP7-t1-MH0" secondAttribute="leading" id="mOg-Uk-CbH"/>
+                            <constraint firstItem="qnj-hD-Yky" firstAttribute="leading" secondItem="XP7-t1-MH0" secondAttribute="trailing" constant="16" id="plE-F3-vkj"/>
+                            <constraint firstItem="qnj-hD-Yky" firstAttribute="centerY" secondItem="Qbj-JV-xEv" secondAttribute="centerY" id="sfK-O9-xMh"/>
+                            <constraint firstAttribute="trailing" secondItem="7PX-5i-cjN" secondAttribute="trailing" constant="40" id="wwL-cs-E8B"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="WbN-qB-W5t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="HwI-8Y-a5O"/>
+                    <constraint firstAttribute="bottom" secondItem="WbN-qB-W5t" secondAttribute="bottom" constant="4" id="S2p-DB-Km6"/>
+                    <constraint firstAttribute="trailing" secondItem="WbN-qB-W5t" secondAttribute="trailing" constant="12" id="WwM-X5-zZj"/>
+                    <constraint firstItem="WbN-qB-W5t" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="eKn-Og-bCs"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="containView" destination="WbN-qB-W5t" id="vx2-pu-afG"/>
+                <outlet property="methodDesLb" destination="7PX-5i-cjN" id="Ubv-4K-Fqd"/>
+                <outlet property="methodImg" destination="Qbj-JV-xEv" id="iLK-ja-JbV"/>
+                <outlet property="methodTitleLb" destination="XP7-t1-MH0" id="4Co-eQ-X1F"/>
+                <outlet property="selectImg" destination="qnj-hD-Yky" id="9XR-fQ-wx8"/>
+            </connections>
+            <point key="canvasLocation" x="60" y="76.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_radio_off" width="16" height="16"/>
+    </resources>
+</document>

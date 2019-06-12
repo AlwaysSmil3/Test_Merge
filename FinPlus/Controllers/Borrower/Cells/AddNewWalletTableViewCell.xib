@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="AddNewWalletTableViewCell" customModule="FinPlus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="343" height="49.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixQ-Id-zls">
+                        <rect key="frame" x="12" y="4" width="319" height="41.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_wallet" translatesAutoresizingMaskIntoConstraints="NO" id="mS2-tv-Sj7">
+                                <rect key="frame" x="8" y="8" width="25.5" height="25.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mS2-tv-Sj7" secondAttribute="height" multiplier="1:1" id="po9-ag-spe"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_left" translatesAutoresizingMaskIntoConstraints="NO" id="kLv-Ip-NEI">
+                                <rect key="frame" x="298" y="14.5" width="13" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kLv-Ip-NEI" secondAttribute="height" multiplier="1:1" id="eVX-qD-tfY"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thêm tài khoản mới" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJ8-p2-L0E">
+                                <rect key="frame" x="41.5" y="10.5" width="139.5" height="21"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kLv-Ip-NEI" firstAttribute="centerY" secondItem="ixQ-Id-zls" secondAttribute="centerY" id="2tA-K4-MWX"/>
+                            <constraint firstItem="kLv-Ip-NEI" firstAttribute="width" secondItem="kLv-Ip-NEI" secondAttribute="height" multiplier="1:1" id="8Sv-Tl-EoV"/>
+                            <constraint firstItem="mS2-tv-Sj7" firstAttribute="leading" secondItem="ixQ-Id-zls" secondAttribute="leading" constant="8" id="CqA-08-0Ru"/>
+                            <constraint firstAttribute="bottom" secondItem="mS2-tv-Sj7" secondAttribute="bottom" constant="8" id="His-Mr-YUC"/>
+                            <constraint firstItem="fJ8-p2-L0E" firstAttribute="centerY" secondItem="ixQ-Id-zls" secondAttribute="centerY" id="gbd-Fi-qEi"/>
+                            <constraint firstAttribute="trailing" secondItem="kLv-Ip-NEI" secondAttribute="trailing" constant="8" id="n5K-iq-VGI"/>
+                            <constraint firstItem="mS2-tv-Sj7" firstAttribute="top" secondItem="ixQ-Id-zls" secondAttribute="top" constant="8" id="say-Xn-izs"/>
+                            <constraint firstItem="fJ8-p2-L0E" firstAttribute="leading" secondItem="mS2-tv-Sj7" secondAttribute="trailing" constant="8" id="tFi-aH-NFe"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="ixQ-Id-zls" secondAttribute="bottom" constant="4" id="jdJ-0F-xuX"/>
+                    <constraint firstItem="ixQ-Id-zls" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="kvP-Vi-tpk"/>
+                    <constraint firstAttribute="trailing" secondItem="ixQ-Id-zls" secondAttribute="trailing" constant="12" id="lPR-Vo-M8q"/>
+                    <constraint firstItem="ixQ-Id-zls" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="xsI-ZQ-CTQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="containView" destination="ixQ-Id-zls" id="tFr-QB-OdF"/>
+                <outlet property="titleLb" destination="fJ8-p2-L0E" id="f8S-bq-tbC"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="add_wallet" width="30" height="30"/>
+        <image name="arrow_left" width="8" height="13"/>
+    </resources>
+</document>
