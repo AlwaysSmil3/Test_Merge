@@ -26,7 +26,7 @@ target 'FinPlus' do
   pod 'SVProgressHUD'
   pod 'DateToolsSwift'
   pod 'APAddressBook/Swift'
-  pod 'MYTableViewIndex'
+#  pod 'MYTableViewIndex'
 
   # Pods for FinPlus
 
